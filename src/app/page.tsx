@@ -1,8 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import type { User } from 'firebase/auth';
 import { Boxes, ListOrdered, PlayCircle, RadioTower, Repeat2, RotateCcw } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
+import { useAuth } from '@/components/auth/AuthProvider';
+import { UserMenu } from '@/components/auth/UserMenu';
+import { DiagramManager } from '@/components/diagrams/DiagramManager';
 import { JsonInspector } from '@/components/JsonInspector';
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { EdgeInspector } from '@/components/EdgeInspector';
@@ -26,6 +31,7 @@ import {
 } from '@/lib/execution-timing';
 import { useEditor } from '@/lib/use-editor';
 import { resolveNodeStyle } from '@/lib/node-style';
+import type { StoredDiagram } from '@/lib/firebase/diagrams';
 
 type RunMode = 'sequential' | 'concurrent';
 type RunPhase = 'node' | 'line';
@@ -35,8 +41,20 @@ const LINE_PHASE_MS = EDGE_DRAW_DURATION_MS;
 const REPEAT_PAUSE_MS = 800;
 
 export default function Home() {
+  const { user, loading } = useAuth();
+
+  if (loading) return <AuthLoadingScreen />;
+  if (!user) return <LoginForm />;
+
+  return <FlowEditor user={user} />;
+}
+
+function FlowEditor({ user }: { user: User }) {
   const [doc, setDoc] = useState<FlowDocumentJSON>(initialDocument);
   const [templateId, setTemplateId] = useState<DiagramTemplateId>('software-architecture');
+  const [currentDiagramId, setCurrentDiagramId] = useState<string | null>(null);
+  const [currentDiagramName, setCurrentDiagramName] = useState('Software Architecture');
+  const [savedSignature, setSavedSignature] = useState<string | null>(null);
   const [seed, setSeed] = useState(0);
   const [runMode, setRunMode] = useState<RunMode>('sequential');
   const [repeatEnabled, setRepeatEnabled] = useState(false);
@@ -49,6 +67,8 @@ export default function Home() {
   const [paletteDragPreset, setPaletteDragPreset] = useState<NodePreset | null>(null);
 
   const editor = useEditor(doc, setDoc);
+  const documentSignature = useMemo(() => JSON.stringify(doc), [doc]);
+  const dirty = savedSignature !== documentSignature;
   const orderedNodes = useMemo(
     () => doc.nodes
       .map((node, index) => ({ node, index }))
@@ -177,6 +197,9 @@ export default function Home() {
     const template = getDiagramTemplate(id);
     setTemplateId(id);
     setDoc(template.document);
+    setCurrentDiagramId(null);
+    setCurrentDiagramName(template.name);
+    setSavedSignature(null);
     setSeed((value) => value + 1);
     setRunStep(0);
     setRunPhase('node');
@@ -186,6 +209,50 @@ export default function Home() {
     setLinkingFromId(null);
     setPaletteDragPreset(null);
   }, []);
+
+  const resetCanvasState = useCallback(() => {
+    setSeed((value) => value + 1);
+    setRunStep(0);
+    setRunPhase('node');
+    setSelectedNodeId(null);
+    setSelectedEdgeId(null);
+    setDraggingNodeId(null);
+    setLinkingFromId(null);
+    setPaletteDragPreset(null);
+  }, []);
+
+  const handleDiagramSaved = useCallback((
+    diagramId: string,
+    name: string,
+    savedDocument: FlowDocumentJSON,
+  ) => {
+    setCurrentDiagramId(diagramId);
+    setCurrentDiagramName(name);
+    setSavedSignature(JSON.stringify(savedDocument));
+  }, []);
+
+  const handleDiagramLoaded = useCallback((diagram: StoredDiagram) => {
+    setDoc(diagram.document);
+    setCurrentDiagramId(diagram.id);
+    setCurrentDiagramName(diagram.name);
+    setSavedSignature(JSON.stringify(diagram.document));
+    resetCanvasState();
+  }, [resetCanvasState]);
+
+  const handleDiagramDeleted = useCallback((diagramId: string) => {
+    if (diagramId !== currentDiagramId) return;
+    setCurrentDiagramId(null);
+    setSavedSignature(null);
+  }, [currentDiagramId]);
+
+  const handleNewDiagram = useCallback(() => {
+    setDoc(initialDocument);
+    setTemplateId('software-architecture');
+    setCurrentDiagramId(null);
+    setCurrentDiagramName('Untitled Diagram');
+    setSavedSignature(null);
+    resetCanvasState();
+  }, [resetCanvasState]);
 
   return (
     <div className="flex h-screen flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100">
@@ -197,7 +264,8 @@ export default function Home() {
           <div>
             <h1 className="text-base font-semibold">Flowgram Tools</h1>
             <p className="text-xs text-zinc-400">
-              Multi-model visual editor · Architecture · ERP · Business flows
+              {currentDiagramName}
+              {dirty && <span className="ml-1.5 text-amber-300">• chưa lưu</span>}
             </p>
           </div>
         </div>
@@ -209,6 +277,17 @@ export default function Home() {
         />
 
         <div className="flex items-center gap-2">
+          <DiagramManager
+            userId={user.uid}
+            document={doc}
+            currentDiagramId={currentDiagramId}
+            currentName={currentDiagramName}
+            dirty={dirty}
+            onSaved={handleDiagramSaved}
+            onLoaded={handleDiagramLoaded}
+            onDeleted={handleDiagramDeleted}
+            onNew={handleNewDiagram}
+          />
           <div
             className="flex items-center rounded-lg bg-black/25 p-1 ring-1 ring-white/10"
             role="group"
@@ -280,19 +359,19 @@ export default function Home() {
             whileTap={{ scale: 0.97 }}
             type="button"
             onClick={() => {
-              setDoc(getDiagramTemplate(templateId).document);
-              setSeed(0);
-              setRunStep(0);
-              setRunPhase('node');
-              setSelectedNodeId(null);
-              setSelectedEdgeId(null);
-              setLinkingFromId(null);
+              const template = getDiagramTemplate(templateId);
+              setDoc(template.document);
+              setCurrentDiagramId(null);
+              setCurrentDiagramName(template.name);
+              setSavedSignature(null);
+              resetCanvasState();
             }}
             className="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 hover:bg-white/10"
           >
             <RotateCcw size={14} />
             Reset
           </motion.button>
+          <UserMenu user={user} />
         </div>
       </header>
 
