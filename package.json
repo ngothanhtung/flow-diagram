@@ -11,6 +11,7 @@
   "dependencies": {
     "@flowgram.ai/editor": "^1.0.12",
     "@tabler/icons-react": "^3.46.0",
+    "firebase": "^12.17.0",
     "framer-motion": "^12.43.0",
     "lucide-react": "^1.28.0",
     "next": "16.2.12",
