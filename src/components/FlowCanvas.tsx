@@ -863,9 +863,6 @@ function EndpointHandle({
         fill="#09090b"
         stroke={color}
         strokeWidth={2 / safeScale}
-        style={{
-          filter: `drop-shadow(0 0 ${active ? 9 : 5}px ${color})`,
-        }}
       />
       <circle r={radius * 0.62} fill={color} opacity={active ? 0.34 : 0.18} />
       <text
@@ -901,15 +898,6 @@ function ReconnectPreview({
         d={`M ${fixed.x} ${fixed.y} L ${pointer.x} ${pointer.y}`}
         fill="none"
         stroke="currentColor"
-        strokeWidth={7 / safeScale}
-        strokeLinecap="round"
-        opacity={0.13}
-        style={{ filter: 'drop-shadow(0 0 8px currentColor)' }}
-      />
-      <path
-        d={`M ${fixed.x} ${fixed.y} L ${pointer.x} ${pointer.y}`}
-        fill="none"
-        stroke="currentColor"
         strokeWidth={2 / safeScale}
         strokeDasharray={`${7 / safeScale} ${7 / safeScale}`}
         strokeLinecap="round"
@@ -920,7 +908,6 @@ function ReconnectPreview({
         cy={pointer.y}
         r={6 / safeScale}
         fill="currentColor"
-        style={{ filter: 'drop-shadow(0 0 7px currentColor)' }}
       />
     </g>
   );

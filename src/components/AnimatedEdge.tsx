@@ -135,23 +135,18 @@ export function AnimatedEdge({
       opacity={lowPower ? 0.42 : executionState === 'completed' ? 0.72 : 1}
       style={{ color: lowPower && !selected ? '#52525b' : color }}
     >
-      {((!performanceMode && !lowPower) || selected) && (
+      {selected && (
         <path
           d={d}
           pathLength={isDrawing ? 1 : undefined}
           stroke="currentColor"
-          strokeWidth={lineWidth + effectSize * 5}
-          strokeOpacity={selected ? 0.2 : 0.1}
+          strokeWidth={lineWidth + 6}
+          strokeOpacity={0.12}
           strokeLinecap="round"
           fill="none"
           pointerEvents="none"
           className={isDrawing ? 'edge-power-draw' : undefined}
-          style={{
-            ...drawStyle,
-            filter: performanceMode || lowPower
-              ? undefined
-              : 'drop-shadow(0 0 8px currentColor)',
-          }}
+          style={drawStyle}
         />
       )}
       <path
@@ -159,7 +154,7 @@ export function AnimatedEdge({
         pathLength={isDrawing ? 1 : undefined}
         stroke="currentColor"
         strokeWidth={selected ? lineWidth + 2 : lineWidth}
-        strokeOpacity={selected ? 0.62 : 0.34}
+        strokeOpacity={selected ? 0.82 : 0.52}
         fill="none"
         className={isDrawing ? 'edge-power-draw' : undefined}
         style={drawStyle}
@@ -426,8 +421,8 @@ export function AnimatedEdge({
         className={isDrawing ? 'edge-after-draw' : undefined}
         style={drawStyle}
       >
-        <EdgeMarkerShape marker={startMarker} x={start.x} y={start.y} angle={startAngle} performanceMode={performanceMode || lowPower} />
-        <EdgeMarkerShape marker={endMarker} x={end.x} y={end.y} angle={angle} performanceMode={performanceMode || lowPower} />
+        <EdgeMarkerShape marker={startMarker} x={start.x} y={start.y} angle={startAngle} />
+        <EdgeMarkerShape marker={endMarker} x={end.x} y={end.y} angle={angle} />
       </g>
 
       {edge.label && (
@@ -478,13 +473,11 @@ function EdgeMarkerShape({
   x,
   y,
   angle,
-  performanceMode,
 }: {
   marker: EdgeMarker;
   x: number;
   y: number;
   angle: number;
-  performanceMode: boolean;
 }) {
   if (marker === 'none') return null;
 
@@ -524,10 +517,6 @@ function EdgeMarkerShape({
     <g
       transform={`translate(${x} ${y}) rotate(${angle})`}
       pointerEvents="none"
-      style={performanceMode ? undefined : {
-        filter:
-          'drop-shadow(0 0 3px currentColor) drop-shadow(0 0 8px currentColor)',
-      }}
     >
       {shape}
     </g>
