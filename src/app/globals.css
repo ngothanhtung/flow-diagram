@@ -5,6 +5,253 @@
   --foreground: #171717;
 }
 
+/* Halo animation for the active-path node ring. Uses transform
+   (composited) instead of animating `r` directly — animating SVG
+   geometry properties like `r` is cheap on modern browsers but
+   triggers a non-composited repaint each frame. The scale is
+   anchored so the centre stays put via transform-origin. */
+@keyframes halo {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.48;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0;
+  }
+}
+
+/* Sequential execution states: pending nodes look unpowered. The current
+   node fades in while its color and restrained electrical glow return in a
+   single composited animation. Only one node animates at a time. */
+.node-power-pending {
+  filter: grayscale(1) saturate(0.08) brightness(0.44);
+  transition: opacity 260ms ease, filter 260ms ease;
+}
+
+.node-power-active {
+  animation: node-electric-charge var(--node-fade-duration, 200ms) cubic-bezier(.22, .72, .28, 1) both;
+}
+
+@keyframes node-electric-charge {
+  0% {
+    opacity: calc(var(--node-opacity, 1) * .38);
+    filter: grayscale(1) saturate(.08) brightness(.44) drop-shadow(0 0 0 currentColor);
+  }
+  55% {
+    opacity: calc(var(--node-opacity, 1) * .82);
+    filter: grayscale(.22) saturate(.72) brightness(.9) drop-shadow(0 0 2px currentColor);
+  }
+  100% {
+    opacity: var(--node-opacity, 1);
+    filter: grayscale(0) saturate(1) brightness(1.06) drop-shadow(0 0 4px currentColor);
+  }
+}
+
+.node-electric-core {
+  animation: node-electric-core var(--node-fade-duration, 200ms) ease-out both;
+}
+
+.node-electric-burst {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-electric-burst var(--node-fade-duration, 200ms) ease-out both;
+  filter: drop-shadow(0 0 2px currentColor);
+}
+
+@keyframes node-electric-core {
+  0% { opacity: 0; }
+  55% { opacity: .28; }
+  100% { opacity: .18; }
+}
+
+@keyframes node-electric-burst {
+  0% { transform: scale(.99); opacity: 0; }
+  45% { opacity: .2; }
+  100% { transform: scale(1.055); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node-power-active {
+    animation: none;
+    filter: grayscale(0) saturate(1) brightness(1.05) drop-shadow(0 0 4px currentColor);
+  }
+
+  .node-electric-core,
+  .node-electric-burst {
+    animation: none;
+  }
+}
+
+/* Arrowhead ride: nudges the arrow head in and out by 4px on the
+   x axis. We animate `transform: translateX(...)` so the browser
+   can composite it. The wrapper sets a base translateX; this
+   keyframe adds an extra -4px on top via the wrapper's own
+   animation. */
+@keyframes arrow-ride {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-4px); }
+}
+
+/* Edge-dash: the moving dashes along an AnimatedEdge's stroke.
+   Animates `stroke-dashoffset` to give the impression of flow
+   along the line. The stroke itself has a dasharray of "8 12"
+   (period 20), so 0 → -20 is one full cycle. */
+@keyframes edge-dash {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -20; }
+}
+
+/* An enabled connector is first traced from its source to destination. Line
+   effects, markers and labels reveal only after this pass reaches the end. */
+.edge-power-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: edge-power-draw var(--edge-draw-duration, 760ms) ease-in-out forwards;
+}
+
+.edge-after-draw {
+  opacity: 0;
+  animation: edge-after-draw 1ms linear var(--edge-draw-duration, 760ms) forwards;
+}
+
+@keyframes edge-power-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes edge-after-draw {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .edge-power-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .edge-after-draw {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@keyframes edge-packet-stream {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -13; }
+}
+
+@keyframes edge-travel {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -100; }
+}
+
+@keyframes edge-pulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+@keyframes edge-packets {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -12; }
+}
+
+@keyframes edge-dots {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -8; }
+}
+
+@keyframes edge-wave {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -24; }
+}
+
+@keyframes edge-traffic {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -17; }
+}
+
+/* Tiny live previews in the line inspector. */
+.edge-preview-flow,
+.edge-preview-dash {
+  background: repeating-linear-gradient(90deg, currentColor 0 5px, transparent 5px 9px);
+  background-size: 18px 1px;
+  animation: preview-slide .8s linear infinite;
+}
+.edge-preview-dash {
+  animation-direction: reverse;
+}
+.edge-preview-pulse,
+.edge-preview-glow {
+  right: auto;
+  width: 15px;
+  border-radius: 999px;
+  animation: preview-travel 1.15s linear infinite;
+}
+.edge-preview-glow {
+  width: 22px;
+  box-shadow: 0 0 5px currentColor;
+}
+.edge-preview-comet {
+  background: radial-gradient(circle, currentColor 0 1.5px, transparent 2px) 0 center / 10px 6px repeat-x;
+  animation: preview-slide .55s linear infinite;
+}
+.edge-preview-dots {
+  background: radial-gradient(circle, currentColor 0 1.5px, transparent 2px) 0 center / 8px 6px repeat-x;
+  animation: preview-slide .8s linear infinite;
+}
+.edge-preview-wave,
+.edge-preview-traffic,
+.edge-preview-bidirectional {
+  background: repeating-linear-gradient(90deg, currentColor 0 7px, transparent 7px 11px, currentColor 11px 13px, transparent 13px 18px);
+  animation: preview-slide .7s linear infinite;
+}
+.edge-preview-bidirectional {
+  animation: preview-slide .7s linear infinite alternate;
+}
+.edge-preview-scanner {
+  right: auto;
+  width: 10px;
+  border-radius: 999px;
+  box-shadow: 0 0 5px currentColor;
+  animation: preview-travel 1s linear infinite;
+}
+.edge-preview-laser,
+.edge-preview-fade {
+  right: auto;
+  width: 30px;
+  border-radius: 999px;
+  box-shadow: 0 0 6px currentColor;
+  animation: preview-travel 1s linear infinite;
+}
+.edge-preview-meteor {
+  right: auto;
+  width: 6px;
+  border-radius: 999px;
+  box-shadow: 0 0 7px 2px currentColor;
+  animation: preview-travel .8s linear infinite;
+}
+.edge-preview-spark {
+  background: radial-gradient(circle, currentColor 0 1.5px, transparent 2px) 0 center / 5px 6px repeat-x;
+  filter: drop-shadow(0 0 2px currentColor);
+  animation: preview-slide .55s linear infinite;
+}
+.edge-preview-marching,
+.edge-preview-binary,
+.edge-preview-heartbeat,
+.edge-preview-rail {
+  background: repeating-linear-gradient(90deg, currentColor 0 3px, transparent 3px 6px, currentColor 6px 13px, transparent 13px 17px);
+  animation: preview-slide .7s linear infinite;
+}
+
+@keyframes preview-slide {
+  to { background-position: 18px center; }
+}
+
+@keyframes preview-travel {
+  from { transform: translateX(-18px); }
+  to { transform: translateX(48px); }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
