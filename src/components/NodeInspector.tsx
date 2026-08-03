@@ -18,6 +18,21 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Separator } from '@/components/ui/separator';
+import { Slider } from '@/components/ui/slider';
+import { Textarea } from '@/components/ui/textarea';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type {
   ConnectionSide,
   FlowNode,
@@ -91,13 +106,13 @@ export function NodeInspector({
 
   if (!node) {
     return (
-      <div className="rounded-xl bg-zinc-900/70 p-4 ring-1 ring-white/10">
+      <Card size="sm" className="gap-0 bg-zinc-900/70 p-4">
         <h2 className="text-sm font-semibold">Inspector</h2>
         <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">
           Click a node to inspect and edit it. Drag from a node&apos;s
           output port to another node&apos;s input port to connect them.
         </p>
-      </div>
+      </Card>
     );
   }
 
@@ -113,16 +128,17 @@ export function NodeInspector({
   };
 
   return (
-    <div className="rounded-xl bg-zinc-900/70 p-4 ring-1 ring-sky-400/30">
+    <Card size="sm" className="gap-0 bg-zinc-900/70 p-4 ring-sky-400/30">
       <div className="flex items-center justify-between">
         <h2 className="text-sm font-semibold">Inspector</h2>
-        <button
-          type="button"
+        <Button
+          variant="ghost"
+          size="xs"
           onClick={onClose}
-          className="text-[11px] text-zinc-500 hover:text-zinc-300"
+          className="text-[10px] text-zinc-500 hover:text-zinc-200"
         >
           close
-        </button>
+        </Button>
       </div>
 
       <p className="mt-1 text-[10px] uppercase tracking-wider text-zinc-500">
@@ -169,19 +185,20 @@ export function NodeInspector({
           { label: 'Square', width: 112, height: 112 },
           { label: 'Wide', width: 180, height: 96 },
         ].map((preset) => (
-          <button
+          <Button
             key={preset.label}
-            type="button"
+            variant="outline"
+            size="xs"
             onClick={() =>
               onUpdate(node.id, {
                 width: preset.width,
                 height: preset.height,
               })
             }
-            className="rounded-md bg-white/5 px-1 py-1 text-[9px] text-zinc-400 ring-1 ring-white/10 transition hover:bg-white/10 hover:text-zinc-100"
+            className="h-7 border-white/10 bg-white/5 px-1 text-[9px] text-zinc-400 hover:bg-white/10 hover:text-zinc-100"
           >
             {preset.label}
-          </button>
+          </Button>
         ))}
       </div>
       <RangeField
@@ -202,10 +219,11 @@ export function NodeInspector({
         }
       />
 
-      <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
+      <Label htmlFor="node-title" className="mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
         Title
-      </label>
-      <input
+      </Label>
+      <Input
+        id="node-title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         onBlur={() => {
@@ -214,13 +232,14 @@ export function NodeInspector({
         onKeyDown={(e) => {
           if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
         }}
-        className="mt-1 w-full rounded-md bg-zinc-800/80 px-2 py-1 text-sm text-zinc-100 ring-1 ring-white/10 outline-none focus:ring-sky-400/60"
+        className="mt-1 border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15"
       />
 
-      <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
+      <Label htmlFor="node-subtitle" className="mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
         Sub title
-      </label>
-      <textarea
+      </Label>
+      <Textarea
+        id="node-subtitle"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         onBlur={() => {
@@ -229,7 +248,7 @@ export function NodeInspector({
           }
         }}
         rows={2}
-        className="mt-1 w-full resize-none rounded-md bg-zinc-800/80 px-2 py-1 text-xs text-zinc-100 ring-1 ring-white/10 outline-none focus:ring-sky-400/60"
+        className="mt-1 min-h-14 resize-none border-white/10 bg-zinc-800/80 text-xs focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15"
       />
 
       <SectionLabel>Typography</SectionLabel>
@@ -237,16 +256,16 @@ export function NodeInspector({
         {NODE_FONT_OPTIONS.map((option) => {
           const selected = style.fontFamily === option.value;
           return (
-            <button
+            <Button
               key={option.value}
-              type="button"
+              variant="outline"
               onClick={() => onUpdate(node.id, { fontFamily: option.value })}
               aria-pressed={selected}
               className={[
-                'min-w-0 rounded-lg px-2.5 py-2 text-left ring-1 transition',
+                'h-auto min-w-0 flex-col items-start justify-start gap-0 rounded-lg px-2.5 py-2 text-left',
                 selected
-                  ? 'bg-sky-400/12 text-sky-100 ring-sky-400/55'
-                  : 'bg-white/4 text-zinc-300 ring-white/10 hover:bg-white/8 hover:ring-white/20',
+                  ? 'border-sky-400/55 bg-sky-400/12 text-sky-100'
+                  : 'border-white/10 bg-white/4 text-zinc-300 hover:bg-white/8',
               ].join(' ')}
             >
               <span
@@ -258,7 +277,7 @@ export function NodeInspector({
               <span className="mt-0.5 block truncate text-[8px] text-zinc-500">
                 {option.label}
               </span>
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -270,23 +289,27 @@ export function NodeInspector({
           max={28}
           onChange={(fontSize) => onUpdate(node.id, { fontSize })}
         />
-        <label className="rounded-md bg-white/5 px-2 py-1.5 ring-1 ring-white/10">
-          <span className="block text-[9px] text-zinc-500">Weight</span>
-          <select
+        <div>
+          <Label className="mb-1 block text-[9px] text-zinc-500">Weight</Label>
+          <Select
             value={style.fontWeight}
-            onChange={(event) =>
-              onUpdate(node.id, {
-                fontWeight: event.target.value as FlowNode['fontWeight'],
-              })
-            }
-            className="mt-0.5 w-full bg-transparent text-[11px] text-zinc-200 outline-none"
+            onValueChange={(nextValue) => {
+              if (nextValue) {
+                onUpdate(node.id, { fontWeight: nextValue as FlowNode['fontWeight'] });
+              }
+            }}
           >
-            <option value="normal">Normal</option>
-            <option value="medium">Medium</option>
-            <option value="semibold">Semibold</option>
-            <option value="bold">Bold</option>
-          </select>
-        </label>
+            <SelectTrigger className="w-full border-white/10 bg-white/5 text-[11px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="border-white/10 bg-zinc-950">
+              <SelectItem value="normal">Normal</SelectItem>
+              <SelectItem value="medium">Medium</SelectItem>
+              <SelectItem value="semibold">Semibold</SelectItem>
+              <SelectItem value="bold">Bold</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
       <SegmentedButtons
         label="Alignment"
@@ -303,31 +326,31 @@ export function NodeInspector({
       <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
         Shape
       </label>
-      <label className="mt-1.5 flex items-center gap-2 rounded-lg bg-black/25 px-2.5 py-2 ring-1 ring-white/10 focus-within:ring-violet-400/70">
-        <Search size={15} className="shrink-0 text-zinc-500" />
-        <input
+      <div className="relative mt-1.5">
+        <Search size={15} className="pointer-events-none absolute top-1/2 left-2.5 z-10 -translate-y-1/2 text-zinc-500" />
+        <Input
           value={shapeQuery}
           onChange={(event) => setShapeQuery(event.target.value)}
           placeholder="Search for a shape"
-          className="min-w-0 flex-1 bg-transparent text-xs text-zinc-100 outline-none placeholder:text-zinc-600"
+          className="border-white/10 bg-black/25 pl-8 text-xs placeholder:text-zinc-600 focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15"
         />
-      </label>
+      </div>
       <div className="mt-2 grid max-h-64 grid-cols-5 gap-1.5 overflow-y-auto rounded-xl bg-black/20 p-1.5 ring-1 ring-white/8">
         {filteredShapes.map((shapeKey) => {
           const spec = SHAPES[shapeKey];
           const isActive = currentShape === shapeKey;
           return (
-            <button
+            <Button
               key={shapeKey}
-              type="button"
+              variant="outline"
               onClick={() => onUpdate(node.id, { shape: shapeKey })}
               title={spec.label}
               aria-pressed={isActive}
               className={[
-                'group grid h-12 place-items-center rounded-lg transition',
+                'group h-12 w-full rounded-lg p-0',
                 isActive
-                  ? 'bg-violet-500 text-white shadow-[0_5px_16px_rgba(139,92,246,.3)] ring-1 ring-violet-300/70'
-                  : 'bg-white/4 text-zinc-300 ring-1 ring-white/8 hover:bg-white/10 hover:text-white hover:ring-white/20',
+                  ? 'border-violet-300/70 bg-violet-500 text-white shadow-[0_5px_16px_rgba(139,92,246,.2)]'
+                  : 'border-white/8 bg-white/4 text-zinc-300 hover:bg-white/10 hover:text-white',
               ].join(' ')}
             >
               <ShapeThumb
@@ -335,7 +358,7 @@ export function NodeInspector({
                 fill={isActive ? '#6d28d9' : style.background}
                 stroke={isActive ? '#ffffff' : style.foreground}
               />
-            </button>
+            </Button>
           );
         })}
         {filteredShapes.length === 0 && (
@@ -359,9 +382,10 @@ export function NodeInspector({
             style.foreground === COLORS[colorKey].foreground &&
             style.background === COLORS[colorKey].background;
           return (
-            <button
+            <Button
               key={colorKey}
-              type="button"
+              variant="outline"
+              size="icon-sm"
               onClick={() =>
                 onUpdate(node.id, {
                   color: COLORS[colorKey].foreground,
@@ -370,8 +394,8 @@ export function NodeInspector({
               }
               title={colorKey}
               className={[
-                'relative h-7 w-7 overflow-hidden rounded-full ring-1 ring-white/15 transition',
-                isActive ? 'ring-2 ring-sky-300' : 'hover:scale-110',
+                'relative size-7 overflow-hidden rounded-full border-white/15 p-0 transition',
+                isActive ? 'border-2 border-sky-300' : 'hover:scale-110',
               ].join(' ')}
               style={{ background: COLORS[colorKey].background }}
             >
@@ -379,7 +403,7 @@ export function NodeInspector({
                 className="absolute inset-[7px] rounded-full"
                 style={{ background: COLOR_HEX[colorKey] }}
               />
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -438,19 +462,19 @@ export function NodeInspector({
       <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
         Icon
       </label>
-      <button
-        type="button"
+      <Button
+        variant="outline"
         onClick={() => onUpdate(node.id, { icon: null })}
         aria-pressed={currentIcon === null}
         className={[
-          'mt-1.5 inline-flex h-9 w-full items-center justify-center gap-2 rounded-lg text-[10px] font-semibold uppercase tracking-wider transition',
+          'mt-1.5 h-9 w-full gap-2 text-[10px] font-semibold uppercase tracking-wider',
           currentIcon === null
-            ? 'bg-sky-500/20 text-sky-100 ring-1 ring-sky-400/60'
-            : 'bg-white/5 text-zinc-400 ring-1 ring-white/10 hover:bg-white/10 hover:text-zinc-200',
+            ? 'border-sky-400/60 bg-sky-500/20 text-sky-100'
+            : 'border-white/10 bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-zinc-200',
         ].join(' ')}
       >
         <Ban size={14} /> No icon
-      </button>
+      </Button>
       {ICON_GROUPS.map((group) => (
         <div key={group.label} className="mt-1.5">
           <p className="mb-1 text-[10px] text-zinc-500">{group.label}</p>
@@ -459,21 +483,22 @@ export function NodeInspector({
               const Icon = ICONS[iconKey];
               const isActive = currentIcon === iconKey;
               return (
-                <button
+                <Button
                   key={iconKey}
-                  type="button"
+                  variant="outline"
+                  size="icon-sm"
                   onClick={() => onUpdate(node.id, { icon: iconKey })}
                   title={iconKey.replace(/^(lucide|tabler):/, '')}
                   aria-label={`Use ${iconKey} icon`}
                   className={[
-                    'flex h-8 items-center justify-center rounded-md transition',
+                    'h-8 w-full rounded-md',
                     isActive
-                      ? 'bg-sky-500/20 text-sky-100 ring-1 ring-sky-400/60'
-                      : 'bg-white/5 text-zinc-400 ring-1 ring-white/10 hover:bg-white/10',
+                      ? 'border-sky-400/60 bg-sky-500/20 text-sky-100'
+                      : 'border-white/10 bg-white/5 text-zinc-400 hover:bg-white/10',
                   ].join(' ')}
                 >
                   <Icon size={15} />
-                </button>
+                </Button>
               );
             })}
           </div>
@@ -505,18 +530,19 @@ export function NodeInspector({
         <label className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
           Connection points
         </label>
-        <button
-          type="button"
+        <Button
+          variant="ghost"
+          size="icon-xs"
           onClick={() =>
             onUpdate(node.id, {
               connectionPoints: { input: 'left', output: 'right' },
             })
           }
           title="Reset connection points"
-          className="rounded p-1 text-zinc-500 transition hover:bg-white/10 hover:text-zinc-200"
+          className="text-zinc-500 hover:bg-white/10 hover:text-zinc-200"
         >
           <RotateCcw size={12} />
-        </button>
+        </Button>
       </div>
       <p className="mt-1 text-[10px] leading-relaxed text-zinc-500">
         All four ports are active. These defaults are only used by older or
@@ -563,15 +589,17 @@ export function NodeInspector({
 
       <SectionLabel>Actions</SectionLabel>
       <div className="mt-1.5 grid grid-cols-3 gap-2">
-        <button
-          type="button"
+        <Button
+          variant="outline"
+          size="sm"
           onClick={() => onDuplicate(node.id)}
-          className="inline-flex items-center justify-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 hover:bg-white/10"
+          className="border-white/10 bg-white/5 px-2 text-[10px] text-zinc-200 hover:bg-white/10"
         >
           <Copy size={12} /> Duplicate
-        </button>
-        <button
-          type="button"
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
           onClick={() =>
             onUpdate(node.id, {
               width: undefined,
@@ -597,19 +625,20 @@ export function NodeInspector({
               connectionPoints: undefined,
             })
           }
-          className="inline-flex items-center justify-center gap-1 rounded-md bg-white/5 px-2 py-1.5 text-[10px] font-semibold text-zinc-300 ring-1 ring-white/10 hover:bg-white/10"
+          className="border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10"
         >
           <RotateCcw size={11} /> Reset
-        </button>
-        <button
-          type="button"
+        </Button>
+        <Button
+          variant="destructive"
+          size="sm"
           onClick={() => onDelete(node.id)}
-          className="inline-flex items-center justify-center gap-1.5 rounded-md bg-rose-500/15 px-3 py-1.5 text-xs font-semibold text-rose-200 ring-1 ring-rose-400/30 hover:bg-rose-500/25"
+          className="px-2 text-[10px]"
         >
           <Trash2 size={12} /> Delete
-        </button>
+        </Button>
       </div>
-    </div>
+    </Card>
   );
 }
 
@@ -619,7 +648,7 @@ function SectionLabel({ children }: { children: string }) {
       <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-sky-300/80">
         {children}
       </span>
-      <span className="h-px flex-1 bg-white/8" />
+      <Separator className="flex-1 bg-white/8" />
     </div>
   );
 }
@@ -640,9 +669,9 @@ function NumberField({
   onChange: (value: number) => void;
 }) {
   return (
-    <label className="rounded-md bg-white/5 px-2 py-1.5 ring-1 ring-white/10 focus-within:ring-sky-400/50">
-      <span className="block text-[9px] text-zinc-500">{label}</span>
-      <input
+    <div>
+      <Label className="mb-1 block text-[9px] text-zinc-500">{label}</Label>
+      <Input
         type="number"
         value={value}
         min={min}
@@ -653,9 +682,9 @@ function NumberField({
             onChange(event.target.valueAsNumber);
           }
         }}
-        className="mt-0.5 w-full bg-transparent font-mono text-[11px] text-zinc-200 outline-none"
+        className="h-8 border-white/10 bg-white/5 font-mono text-[11px] text-zinc-200 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15"
       />
-    </label>
+    </div>
   );
 }
 
@@ -675,20 +704,19 @@ function RangeField({
   onChange: (value: number) => void;
 }) {
   return (
-    <label className="mt-2 block">
+    <div className="mt-2">
       <span className="flex items-center justify-between text-[10px] text-zinc-500">
         <span>{label}</span>
         <span className="font-mono text-zinc-300">{value}{suffix}</span>
       </span>
-      <input
-        type="range"
+      <Slider
         value={value}
         min={min}
         max={max}
-        onChange={(event) => onChange(event.target.valueAsNumber)}
-        className="mt-1 h-1.5 w-full cursor-pointer accent-sky-400"
+        onValueChange={(nextValue) => onChange(nextValue as number)}
+        className="mt-2 [&_[data-slot=slider-range]]:bg-sky-400 [&_[data-slot=slider-thumb]]:border-sky-300"
       />
-    </label>
+    </div>
   );
 }
 
@@ -704,18 +732,24 @@ function SelectField<T extends string>({
   onChange: (value: T) => void;
 }) {
   return (
-    <label className="rounded-md bg-white/5 px-2 py-1.5 ring-1 ring-white/10">
-      <span className="block text-[9px] text-zinc-500">{label}</span>
-      <select
+    <div>
+      <Label className="mb-1 block text-[9px] text-zinc-500">{label}</Label>
+      <Select
         value={value}
-        onChange={(event) => onChange(event.target.value as T)}
-        className="mt-0.5 w-full bg-transparent text-[11px] capitalize text-zinc-200 outline-none"
+        onValueChange={(nextValue) => {
+          if (nextValue) onChange(nextValue as T);
+        }}
       >
-        {options.map((option) => (
-          <option key={option} value={option}>{option}</option>
-        ))}
-      </select>
-    </label>
+        <SelectTrigger className="w-full border-white/10 bg-white/5 text-[11px] capitalize">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent className="border-white/10 bg-zinc-950">
+          {options.map((option) => (
+            <SelectItem key={option} value={option} className="capitalize">{option}</SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 }
 
@@ -733,24 +767,33 @@ function SegmentedButtons<T extends string>({
   return (
     <div className="mt-2 grid grid-cols-[70px_1fr] items-center gap-2">
       <span className="text-[10px] text-zinc-500">{label}</span>
-      <div className="flex gap-1">
+      <ToggleGroup
+        value={[value]}
+        onValueChange={(nextValue) => {
+          const selected = nextValue.at(-1);
+          if (selected) onChange(selected as T);
+        }}
+        spacing={1}
+        variant="outline"
+        size="sm"
+        className="w-full"
+      >
         {options.map(({ value: option, label: optionLabel, Icon }) => (
-          <button
+          <ToggleGroupItem
             key={option}
-            type="button"
+            value={option}
             title={optionLabel}
-            onClick={() => onChange(option)}
             className={[
-              'grid h-7 flex-1 place-items-center rounded-md ring-1 transition',
+              'h-7 flex-1 border-white/10 bg-white/5 p-0',
               value === option
-                ? 'bg-sky-500/20 text-sky-100 ring-sky-400/60'
-                : 'bg-white/5 text-zinc-500 ring-white/10 hover:text-zinc-200',
+                ? 'border-sky-400/60 bg-sky-500/20 text-sky-100'
+                : 'text-zinc-500 hover:text-zinc-200',
             ].join(' ')}
           >
             <Icon size={13} />
-          </button>
+          </ToggleGroupItem>
         ))}
-      </div>
+      </ToggleGroup>
     </div>
   );
 }
@@ -765,20 +808,20 @@ function ColorField({
   onChange: (value: `#${string}`) => void;
 }) {
   return (
-    <label className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
-      <span className="block text-[10px] text-zinc-500">{label}</span>
+    <div className="rounded-lg border border-white/10 bg-white/5 p-2">
+      <Label className="block text-[10px] text-zinc-500">{label}</Label>
       <span className="mt-1 flex items-center gap-2">
-        <input
+        <Input
           type="color"
           value={value}
           onChange={(event) => onChange(event.target.value as `#${string}`)}
-          className="h-6 w-7 cursor-pointer rounded border-0 bg-transparent p-0"
+          className="h-7 w-8 cursor-pointer border-white/10 bg-transparent p-0.5"
         />
         <span className="font-mono text-[10px] uppercase text-zinc-300">
           {value}
         </span>
       </span>
-    </label>
+    </div>
   );
 }
 
@@ -794,25 +837,34 @@ function ConnectionSidePicker({
   return (
     <div className="mt-1.5 grid grid-cols-[52px_1fr] items-center gap-2">
       <span className="text-[10px] text-zinc-500">{label}</span>
-      <div className="grid grid-cols-4 gap-1">
+      <ToggleGroup
+        value={[value]}
+        onValueChange={(nextValue) => {
+          const selected = nextValue.at(-1);
+          if (selected) onChange(selected as ConnectionSide);
+        }}
+        spacing={1}
+        variant="outline"
+        size="sm"
+        className="grid w-full grid-cols-4"
+      >
         {SIDES.map(({ value: side, label: sideLabel, Icon }) => (
-          <button
+          <ToggleGroupItem
             key={side}
-            type="button"
-            onClick={() => onChange(side)}
+            value={side}
             title={sideLabel}
             aria-label={`${label} connection on ${sideLabel}`}
             className={[
-              'grid h-7 place-items-center rounded-md transition',
+              'h-7 w-full border-white/10 bg-white/5 p-0',
               value === side
-                ? 'bg-sky-500/20 text-sky-100 ring-1 ring-sky-400/60'
-                : 'bg-white/5 text-zinc-500 ring-1 ring-white/10 hover:text-zinc-200',
+                ? 'border-sky-400/60 bg-sky-500/20 text-sky-100'
+                : 'text-zinc-500 hover:text-zinc-200',
             ].join(' ')}
           >
             <Icon size={13} />
-          </button>
+          </ToggleGroupItem>
         ))}
-      </div>
+      </ToggleGroup>
     </div>
   );
 }

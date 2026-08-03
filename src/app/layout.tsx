@@ -11,6 +11,7 @@ import {
 import "./globals.css";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -68,7 +69,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${beVietnamPro.variable} ${notoSans.variable} ${sourceSans3.variable} ${robotoSlab.variable} ${merriweather.variable} dark h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <AuthProvider>{children}</AuthProvider>
+        <TooltipProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </TooltipProvider>
         <Toaster theme="dark" richColors position="top-right" />
       </body>
     </html>
