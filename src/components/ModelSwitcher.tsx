@@ -31,7 +31,7 @@ export function ModelSwitcher({ templates, value, onChange }: ModelSwitcherProps
       }}
     >
       <SelectTrigger
-        aria-label="Chọn model diagram"
+        aria-label="Select diagram model"
         className="group h-auto min-w-72 max-w-[34vw] gap-3 rounded-2xl border-white/10 bg-black/20 px-3.5 py-2.5 text-left hover:border-sky-400/30 hover:bg-white/[.025] focus-visible:border-sky-400/45 focus-visible:ring-sky-400/15"
       >
         <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-sky-500/10 text-sky-300 ring-1 ring-sky-400/25 transition group-hover:bg-sky-400/15">
@@ -57,7 +57,7 @@ export function ModelSwitcher({ templates, value, onChange }: ModelSwitcherProps
       >
         <SelectGroup>
           <SelectLabel className="px-2 py-2 font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-600">
-            Chọn diagram model
+            Select diagram model
           </SelectLabel>
           {templates.map((template) => (
             <SelectItem

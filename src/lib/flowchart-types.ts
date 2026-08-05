@@ -44,12 +44,34 @@ export type NodeShape =
   | 'speech-bubble';
 
 /** Background hue. Optional — defaults are derived from `type`. */
-export type NodeColor = 'sky' | 'indigo' | 'amber' | 'emerald' | 'rose' | 'violet';
+export type NodeColor =
+  | 'red'
+  | 'orange'
+  | 'amber'
+  | 'yellow'
+  | 'lime'
+  | 'emerald'
+  | 'teal'
+  | 'cyan'
+  | 'sky'
+  | 'blue'
+  | 'indigo'
+  | 'violet'
+  | 'purple'
+  | 'fuchsia'
+  | 'pink'
+  | 'rose';
 
 /** A CSS colour. Palette names are retained for backwards compatibility. */
 export type NodePaint = NodeColor | `#${string}`;
 
-/** Icon name. Legacy Lucide names remain valid for existing documents. */
+/**
+ * Icon name. `lucide:<Name>` and `tabler:<Name>` reference any icon from
+ * the full Lucide / Tabler catalogs (thousands of icons, loaded on demand
+ * — see `@/lib/icon-library`). The bare names below are legacy short forms
+ * kept so existing documents keep resolving instantly without a network
+ * fetch; they are plain Lucide icon names.
+ */
 export type NodeIcon =
   | 'cog'
   | 'play'
@@ -61,38 +83,8 @@ export type NodeIcon =
   | 'code'
   | 'send'
   | 'sparkles'
-  | 'lucide:workflow'
-  | 'lucide:rocket'
-  | 'lucide:user'
-  | 'lucide:webhook'
-  | 'lucide:zap'
-  | 'lucide:shield'
-  | 'lucide:refresh-ccw'
-  | 'lucide:boxes'
-  | 'lucide:puzzle'
-  | 'lucide:circle-check'
-  | 'lucide:circle-x'
-  | 'lucide:message-circle'
-  | 'tabler:settings'
-  | 'tabler:player-play'
-  | 'tabler:flag'
-  | 'tabler:bell'
-  | 'tabler:mail'
-  | 'tabler:database'
-  | 'tabler:cloud'
-  | 'tabler:code'
-  | 'tabler:send'
-  | 'tabler:sparkles'
-  | 'tabler:route'
-  | 'tabler:robot'
-  | 'tabler:world'
-  | 'tabler:shield'
-  | 'tabler:refresh'
-  | 'tabler:box'
-  | 'tabler:puzzle'
-  | 'tabler:circle-check'
-  | 'tabler:circle-x'
-  | 'tabler:message-circle';
+  | `lucide:${string}`
+  | `tabler:${string}`;
 
 export type ConnectionSide = 'top' | 'right' | 'bottom' | 'left';
 export type ExecutionState = 'normal' | 'pending' | 'active' | 'completed';

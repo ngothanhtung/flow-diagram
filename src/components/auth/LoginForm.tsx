@@ -16,17 +16,17 @@ import {
 type AuthMode = 'login' | 'register';
 
 function authErrorMessage(error: unknown) {
-  if (!(error instanceof FirebaseError)) return 'Không thể đăng nhập. Vui lòng thử lại.';
+  if (!(error instanceof FirebaseError)) return 'Could not sign in. Please try again.';
   const messages: Record<string, string> = {
-    'auth/invalid-credential': 'Email hoặc mật khẩu không chính xác.',
-    'auth/email-already-in-use': 'Email này đã có tài khoản.',
-    'auth/weak-password': 'Mật khẩu cần tối thiểu 6 ký tự.',
-    'auth/invalid-email': 'Địa chỉ email không hợp lệ.',
-    'auth/popup-closed-by-user': 'Cửa sổ đăng nhập Google đã bị đóng.',
-    'auth/popup-blocked': 'Trình duyệt đang chặn cửa sổ đăng nhập Google.',
-    'auth/operation-not-allowed': 'Phương thức đăng nhập này chưa được bật trên Firebase.',
+    'auth/invalid-credential': 'Incorrect email or password.',
+    'auth/email-already-in-use': 'This email already has an account.',
+    'auth/weak-password': 'Password must be at least 6 characters.',
+    'auth/invalid-email': 'Invalid email address.',
+    'auth/popup-closed-by-user': 'The Google sign-in window was closed.',
+    'auth/popup-blocked': 'Your browser is blocking the Google sign-in window.',
+    'auth/operation-not-allowed': 'This sign-in method is not enabled on Firebase.',
   };
-  return messages[error.code] ?? 'Firebase không thể xác thực tài khoản này.';
+  return messages[error.code] ?? 'Firebase could not authenticate this account.';
 }
 
 export function LoginForm() {
@@ -86,10 +86,10 @@ export function LoginForm() {
             <span className="font-mono text-[10px] uppercase tracking-[.28em]">Design the system</span>
           </div>
           <h1 className="max-w-lg font-mono text-5xl leading-[1.08] font-semibold tracking-[-.045em] text-zinc-100">
-            Biến kiến trúc phức tạp thành một luồng rõ ràng.
+            Turn complex architecture into one clear flow.
           </h1>
           <p className="mt-6 max-w-lg text-sm leading-7 text-zinc-400">
-            Vẽ, mô phỏng và lưu trữ các software architecture diagram trong không gian riêng của bạn.
+            Draw, simulate, and store your software architecture diagrams in your own private space.
           </p>
           <div className="mt-10 grid max-w-lg grid-cols-3 gap-3">
             {[
@@ -123,12 +123,12 @@ export function LoginForm() {
               </span>
             </div>
             <CardTitle className="font-mono text-2xl font-semibold tracking-tight">
-              {mode === 'login' ? 'Đăng nhập workspace' : 'Tạo tài khoản'}
+              {mode === 'login' ? 'Sign in to workspace' : 'Create account'}
             </CardTitle>
             <CardDescription className="mt-1 text-zinc-500">
               {mode === 'login'
-                ? 'Tiếp tục với các diagram đã lưu của bạn.'
-                : 'Mỗi tài khoản có một thư viện diagram riêng.'}
+                ? 'Continue with your saved diagrams.'
+                : 'Each account gets its own diagram library.'}
             </CardDescription>
           </CardHeader>
           <CardContent className="px-7 pt-6 pb-7">
@@ -141,10 +141,10 @@ export function LoginForm() {
                 </div>
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="auth-password" className="text-[10px] uppercase tracking-[.14em] text-zinc-400">Mật khẩu</Label>
+                <Label htmlFor="auth-password" className="text-[10px] uppercase tracking-[.14em] text-zinc-400">Password</Label>
                 <div className="relative">
                   <LockKeyhole className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-zinc-600" />
-                  <Input id="auth-password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete={mode === 'login' ? 'current-password' : 'new-password'} minLength={6} required placeholder="Tối thiểu 6 ký tự" className="h-11 border-white/8 bg-white/[.035] pl-10" />
+                  <Input id="auth-password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete={mode === 'login' ? 'current-password' : 'new-password'} minLength={6} required placeholder="At least 6 characters" className="h-11 border-white/8 bg-white/[.035] pl-10" />
                 </div>
               </div>
               {error && (
@@ -154,23 +154,23 @@ export function LoginForm() {
               )}
               <Button type="submit" disabled={pending !== null} className="h-11 w-full bg-cyan-300 text-zinc-950 hover:bg-cyan-200">
                 {pending === 'email' && <LoaderCircle className="animate-spin" />}
-                {mode === 'login' ? 'Đăng nhập' : 'Tạo tài khoản'}
+                {mode === 'login' ? 'Sign in' : 'Create account'}
               </Button>
             </form>
 
             <div className="my-5 flex items-center gap-3 text-[9px] uppercase tracking-[.18em] text-zinc-700">
-              <span className="h-px flex-1 bg-white/7" /> hoặc <span className="h-px flex-1 bg-white/7" />
+              <span className="h-px flex-1 bg-white/7" /> or <span className="h-px flex-1 bg-white/7" />
             </div>
 
             <Button type="button" variant="outline" disabled={pending !== null} onClick={submitGoogle} className="h-11 w-full border-white/10 bg-white/[.025]">
               {pending === 'google' ? <LoaderCircle className="animate-spin" /> : <span className="font-bold text-cyan-300">G</span>}
-              Tiếp tục với Google
+              Continue with Google
             </Button>
 
             <p className="mt-6 text-center text-xs text-zinc-500">
-              {mode === 'login' ? 'Chưa có tài khoản?' : 'Đã có tài khoản?'}{' '}
+              {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}{' '}
               <button type="button" onClick={() => { setMode((value) => value === 'login' ? 'register' : 'login'); setError(null); }} className="font-semibold text-cyan-300 hover:text-cyan-200">
-                {mode === 'login' ? 'Đăng ký' : 'Đăng nhập'}
+                {mode === 'login' ? 'Sign up' : 'Sign in'}
               </button>
             </p>
           </CardContent>
@@ -187,7 +187,7 @@ export function AuthLoadingScreen() {
         <span className="grid size-12 place-items-center rounded-2xl bg-cyan-300/10 ring-1 ring-cyan-200/25">
           <Boxes className="size-5 animate-pulse text-cyan-200" />
         </span>
-        <p className="font-mono text-[10px] uppercase tracking-[.2em] text-zinc-600">Đang xác thực workspace</p>
+        <p className="font-mono text-[10px] uppercase tracking-[.2em] text-zinc-600">Authenticating workspace</p>
       </div>
     </main>
   );

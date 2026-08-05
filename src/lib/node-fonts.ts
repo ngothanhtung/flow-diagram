@@ -5,12 +5,12 @@ export const NODE_FONT_OPTIONS: ReadonlyArray<{
   label: string;
   character: string;
 }> = [
-  { value: 'geist-mono', label: 'Geist Mono', character: 'Kỹ thuật' },
-  { value: 'be-vietnam-pro', label: 'Be Vietnam Pro', character: 'Hiện đại' },
-  { value: 'noto-sans', label: 'Noto Sans', character: 'Dễ đọc' },
-  { value: 'source-sans-3', label: 'Source Sans 3', character: 'Gọn gàng' },
-  { value: 'roboto-slab', label: 'Roboto Slab', character: 'Kiến trúc' },
-  { value: 'merriweather', label: 'Merriweather', character: 'Trang trọng' },
+  { value: 'geist-mono', label: 'Geist Mono', character: 'Technical' },
+  { value: 'be-vietnam-pro', label: 'Be Vietnam Pro', character: 'Modern' },
+  { value: 'noto-sans', label: 'Noto Sans', character: 'Readable' },
+  { value: 'source-sans-3', label: 'Source Sans 3', character: 'Clean' },
+  { value: 'roboto-slab', label: 'Roboto Slab', character: 'Structural' },
+  { value: 'merriweather', label: 'Merriweather', character: 'Formal' },
 ];
 
 export const NODE_FONT_FAMILIES: Record<NodeFont, string> = {

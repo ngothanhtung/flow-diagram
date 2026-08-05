@@ -16,17 +16,8 @@
 // the same shape again (or pressing Esc) deselects.
 
 import { useEffect, useState } from 'react';
-import {
-  ArrowUpRight,
-  ChevronDown,
-  Minus,
-  Spline,
-} from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { ChevronDown } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { SHAPES, type NodeShape } from '@/lib/node-style';
 
 // Every shape exposed in the dock. We intentionally show only the
@@ -64,13 +55,7 @@ const QUICK_DRAW_SHAPES: ReadonlyArray<{ id: NodeShape; label: string }> = [
   { id: 'rectangle', label: 'Rectangle (R)' },
   { id: 'rounded', label: 'Rounded' },
   { id: 'pill', label: 'Pill' },
-  { id: 'ellipse', label: 'Ellipse (E)' },
   { id: 'diamond', label: 'Diamond' },
-  { id: 'hexagon', label: 'Hexagon' },
-  { id: 'triangle', label: 'Triangle' },
-  { id: 'cloud', label: 'Cloud' },
-  { id: 'database', label: 'Cylinder' },
-  { id: 'document', label: 'Document' },
 ];
 
 const DEFAULT_SHAPE: NodeShape = 'rectangle';
@@ -94,13 +79,11 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
   // wrapper). Instead, each grid button calls `choose` and closes
   // its menu explicitly.
   const [shapeMenuOpen, setShapeMenuOpen] = useState(false);
-  const [moreMenuOpen, setMoreMenuOpen] = useState(false);
 
   const choose = (shape: NodeShape) => {
     setLastPicked(shape);
     onSelect(shape);
     setShapeMenuOpen(false);
-    setMoreMenuOpen(false);
   };
 
   // Esc clears the active tool — the Figma shortcut every user knows.
@@ -114,53 +97,38 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
 
   return (
     <div
-      className="pointer-events-auto absolute left-1/2 bottom-4 z-20 flex -translate-x-1/2 items-center gap-1 rounded-2xl bg-zinc-900/92 p-1.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl"
-      role="toolbar"
-      aria-label="Shape drawing tools"
+      className='pointer-events-auto absolute left-1/2 bottom-4 z-20 flex -translate-x-1/2 items-center gap-1 rounded-2xl bg-zinc-900/92 p-1.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl'
+      role='toolbar'
+      aria-label='Shape drawing tools'
     >
       {/* Shape picker — arms the canvas draw tool. A small dropdown
           exposes every shape; the most common ones also appear as
           one-click buttons to the right. */}
       <DropdownMenu open={shapeMenuOpen} onOpenChange={setShapeMenuOpen}>
         <DropdownMenuTrigger
-          className="group inline-flex h-9 items-center gap-1 rounded-lg pl-2.5 pr-1.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-300 transition hover:bg-white/8 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100"
-          aria-label="Choose a shape to draw"
+          className='group inline-flex h-9 items-center gap-1 rounded-lg pl-2.5 pr-1.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-300 transition hover:bg-white/8 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
+          aria-label='Choose a shape to draw'
         >
           <ShapeIcon shape={activeShape ?? lastPicked} size={18} />
-          <ChevronDown
-            size={11}
-            className="opacity-70 transition group-data-popup-open:rotate-180"
-          />
+          <ChevronDown size={11} className='opacity-70 transition group-data-popup-open:rotate-180' />
         </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="center"
-          sideOffset={10}
-          className="w-[min(420px,90vw)] border-white/10 bg-zinc-950/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.68)] backdrop-blur-xl"
-        >
-          <div className="mb-2 px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-            Shapes
-          </div>
-          <div className="grid grid-cols-6 gap-1.5">
+        <DropdownMenuContent align='center' sideOffset={10} className='w-[min(420px,90vw)] border-white/10 bg-zinc-950/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.68)] backdrop-blur-xl'>
+          <div className='mb-2 px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-zinc-500'>Shapes</div>
+          <div className='grid grid-cols-6 gap-1.5'>
             {QUICK_SHAPES.map((shape) => {
               const isActive = activeShape === shape.id;
               return (
                 <button
                   key={shape.id}
-                  type="button"
+                  type='button'
                   onClick={() => choose(shape.id)}
-                  className={[
-                    'flex h-12 w-12 flex-col items-center justify-center gap-0.5 rounded-lg ring-1 transition',
-                    isActive
-                      ? 'bg-cyan-400/15 text-cyan-100 ring-cyan-400/40'
-                      : 'text-zinc-300 ring-white/8 hover:bg-white/8 hover:text-zinc-100',
-                  ].join(' ')}
+                  className={['flex h-12 w-12 items-center justify-center rounded-lg ring-1 transition', isActive ? 'bg-cyan-400/15 text-cyan-100 ring-cyan-400/40' : 'text-zinc-300 ring-white/8 hover:bg-white/8 hover:text-zinc-100'].join(
+                    ' ',
+                  )}
                   title={shape.label}
                   aria-label={shape.label}
                 >
-                  <ShapeIcon shape={shape.id} size={20} />
-                  <span className="text-[8px] font-semibold uppercase tracking-wider opacity-70">
-                    {shape.label.split(' ')[0]}
-                  </span>
+                  <ShapeIcon shape={shape.id} size={24} />
                 </button>
               );
             })}
@@ -177,14 +145,11 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
         return (
           <button
             key={shape.id}
-            type="button"
+            type='button'
             onClick={() => (isActive ? onSelect(null) : choose(shape.id))}
-            className={[
-              'flex h-9 w-9 items-center justify-center rounded-lg transition',
-              isActive
-                ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40'
-                : 'text-zinc-300 hover:bg-white/8 hover:text-zinc-100',
-            ].join(' ')}
+            className={['flex h-9 w-9 items-center justify-center rounded-lg transition', isActive ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300 hover:bg-white/8 hover:text-zinc-100'].join(
+              ' ',
+            )}
             title={shape.label}
             aria-label={shape.label}
           >
@@ -192,70 +157,6 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           </button>
         );
       })}
-
-      <Divider />
-
-      {/* Quick-action placeholders. These match the screenshot but the
-          behaviours land in a follow‑up phase. */}
-      <QuickAction
-        label="Connect curve (coming soon)"
-        icon={<Spline size={16} />}
-      />
-      <QuickAction
-        label="Connect sharp (coming soon)"
-        icon={<Spline size={16} className="rotate-90" />}
-      />
-      <QuickAction
-        label="Arrow (coming soon)"
-        icon={<ArrowUpRight size={16} />}
-      />
-      <QuickAction
-        label="Line (coming soon)"
-        icon={<Minus size={16} className="-rotate-45" />}
-      />
-
-      <Divider />
-
-      <DropdownMenu open={moreMenuOpen} onOpenChange={setMoreMenuOpen}>
-        <DropdownMenuTrigger className="inline-flex h-9 items-center gap-1 rounded-lg px-3 text-[10px] font-semibold text-zinc-300 transition hover:bg-white/8 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100">
-          More shapes
-          <ChevronDown size={11} className="opacity-70" />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          align="end"
-          sideOffset={10}
-          className="w-[min(420px,90vw)] border-white/10 bg-zinc-950/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.68)] backdrop-blur-xl"
-        >
-          <div className="mb-2 px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-            All shapes
-          </div>
-          <div className="grid grid-cols-6 gap-1.5">
-            {QUICK_SHAPES.map((shape) => {
-              const isActive = activeShape === shape.id;
-              return (
-                <button
-                  key={shape.id}
-                  type="button"
-                  onClick={() => choose(shape.id)}
-                  className={[
-                    'flex h-12 w-12 flex-col items-center justify-center gap-0.5 rounded-lg ring-1 transition',
-                    isActive
-                      ? 'bg-cyan-400/15 text-cyan-100 ring-cyan-400/40'
-                      : 'text-zinc-300 ring-white/8 hover:bg-white/8 hover:text-zinc-100',
-                  ].join(' ')}
-                  title={shape.label}
-                  aria-label={shape.label}
-                >
-                  <ShapeIcon shape={shape.id} size={20} />
-                  <span className="text-[8px] font-semibold uppercase tracking-wider opacity-70">
-                    {shape.label.split(' ')[0]}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </DropdownMenuContent>
-      </DropdownMenu>
     </div>
   );
 }
@@ -268,41 +169,12 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
 function ShapeIcon({ shape, size = 18 }: { shape: NodeShape; size?: number }) {
   const spec = SHAPES[shape];
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="-60 -60 120 120"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={4}
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      vectorEffect="non-scaling-stroke"
-      className="shrink-0"
-      aria-hidden="true"
-    >
-      {shape === 'ellipse' ? (
-        <ellipse cx={0} cy={0} rx={56} ry={36} />
-      ) : (
-        <path d={spec.d} />
-      )}
+    <svg width={size} height={size} viewBox='-60 -60 120 120' fill='none' stroke='currentColor' strokeWidth={4} strokeLinejoin='round' strokeLinecap='round' vectorEffect='non-scaling-stroke' className='shrink-0' aria-hidden='true'>
+      {shape === 'ellipse' ? <ellipse cx={0} cy={0} rx={56} ry={36} /> : <path d={spec.d} />}
     </svg>
   );
 }
 
 function Divider() {
-  return <div className="mx-0.5 h-6 w-px bg-white/10" aria-hidden="true" />;
-}
-
-function QuickAction({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <span
-      title={label}
-      aria-label={label}
-      aria-disabled="true"
-      className="inline-flex h-9 w-9 cursor-not-allowed items-center justify-center rounded-lg text-zinc-600 opacity-70"
-    >
-      {icon}
-    </span>
-  );
+  return <div className='mx-0.5 h-6 w-px bg-white/10' aria-hidden='true' />;
 }

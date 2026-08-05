@@ -2,10 +2,30 @@
 
 import { motion } from 'framer-motion';
 import type { User } from 'firebase/auth';
-import { Boxes, Info, ListOrdered, LoaderCircle, PlayCircle, RadioTower, Repeat2, RotateCcw, Save } from 'lucide-react';
+import { Boxes, Hand, Info, LayoutTemplate, ListOrdered, LoaderCircle, PlayCircle, RadioTower, Repeat2, RotateCcw, Save, SkipForward } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { UserMenu } from '@/components/auth/UserMenu';
@@ -23,8 +43,9 @@ import { EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from '@/lib/execution-ti
 import { useEditor } from '@/lib/use-editor';
 import { resolveNodeStyle } from '@/lib/node-style';
 import { createDiagram, saveDiagram, type StoredDiagram } from '@/lib/firebase/diagrams';
+import { loadEditorSession, saveEditorSession } from '@/lib/editor-session';
 
-type RunMode = 'sequential' | 'concurrent';
+type RunMode = 'sequential' | 'concurrent' | 'manual';
 type RunPhase = 'node' | 'line';
 
 const NODE_PHASE_MS = NODE_FADE_DURATION_MS;
@@ -41,11 +62,13 @@ export default function Home() {
 }
 
 function FlowEditor({ user }: { user: User }) {
-  const [doc, setDoc] = useState<FlowDocumentJSON>(initialDocument);
-  const [templateId, setTemplateId] = useState<DiagramTemplateId>('software-architecture');
-  const [currentDiagramId, setCurrentDiagramId] = useState<string | null>(null);
-  const [currentDiagramName, setCurrentDiagramName] = useState('Software Architecture');
-  const [savedSignature, setSavedSignature] = useState<string | null>(null);
+  // Restores the diagram that was open before the last refresh (including
+  // unsaved edits) instead of always booting into the default template.
+  const [doc, setDoc] = useState<FlowDocumentJSON>(() => loadEditorSession(user.uid)?.doc ?? initialDocument);
+  const [templateId, setTemplateId] = useState<DiagramTemplateId>('client-server-database');
+  const [currentDiagramId, setCurrentDiagramId] = useState<string | null>(() => loadEditorSession(user.uid)?.currentDiagramId ?? null);
+  const [currentDiagramName, setCurrentDiagramName] = useState(() => loadEditorSession(user.uid)?.currentDiagramName ?? 'Client / Server / Database');
+  const [savedSignature, setSavedSignature] = useState<string | null>(() => loadEditorSession(user.uid)?.savedSignature ?? null);
   const [seed, setSeed] = useState(0);
   const [runMode, setRunMode] = useState<RunMode>('sequential');
   const [repeatEnabled, setRepeatEnabled] = useState(false);
@@ -58,12 +81,17 @@ function FlowEditor({ user }: { user: User }) {
   const [activeShape, setActiveShape] = useState<NodeShape | null>(null);
   const [infoOpen, setInfoOpen] = useState(false);
   const [savingDiagram, setSavingDiagram] = useState(false);
+  const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
 
   const hasSidebar = selectedNodeId !== null || selectedEdgeId !== null || infoOpen;
 
   const editor = useEditor(doc, setDoc);
   const documentSignature = useMemo(() => JSON.stringify(doc), [doc]);
   const dirty = savedSignature !== documentSignature;
+
+  useEffect(() => {
+    saveEditorSession(user.uid, { doc, currentDiagramId, currentDiagramName, savedSignature });
+  }, [doc, currentDiagramId, currentDiagramName, savedSignature, user.uid]);
   // Nodes sharing the same resolved sort order animate together as one
   // step, rather than strictly one node at a time — order only expresses
   // "before/after", not "one by one".
@@ -88,14 +116,13 @@ function FlowEditor({ user }: { user: User }) {
     }
     return groups;
   }, [doc.nodes]);
-  const groupIndexByNodeId = useMemo(
-    () => new Map(orderedGroups.flatMap((group, groupIndex) => group.map((node) => [node.id, groupIndex] as const))),
-    [orderedGroups],
-  );
+  const groupIndexByNodeId = useMemo(() => new Map(orderedGroups.flatMap((group, groupIndex) => group.map((node) => [node.id, groupIndex] as const))), [orderedGroups]);
   const active = useMemo(() => (runMode === 'concurrent' ? doc.nodes.map((node) => node.id) : runPhase === 'node' && orderedGroups[runStep] ? orderedGroups[runStep].map((node) => node.id) : []), [doc.nodes, orderedGroups, runMode, runPhase, runStep]);
   const nodeExecutionStates = useMemo(() => {
     if (runMode === 'concurrent') return undefined;
-    return Object.fromEntries(orderedGroups.flatMap((group, groupIndex) => group.map((node) => [node.id, groupIndex < runStep || (groupIndex === runStep && runPhase === 'line') ? 'completed' : groupIndex === runStep && runPhase === 'node' ? 'active' : 'pending']))) as Record<string, ExecutionState>;
+    return Object.fromEntries(
+      orderedGroups.flatMap((group, groupIndex) => group.map((node) => [node.id, groupIndex < runStep || (groupIndex === runStep && runPhase === 'line') ? 'completed' : groupIndex === runStep && runPhase === 'node' ? 'active' : 'pending'])),
+    ) as Record<string, ExecutionState>;
   }, [orderedGroups, runMode, runPhase, runStep]);
   const edgeExecutionStates = useMemo(() => {
     if (runMode === 'concurrent') {
@@ -116,6 +143,23 @@ function FlowEditor({ user }: { user: User }) {
   const runningEdgeIds = useMemo(() => (runMode === 'concurrent' ? null : doc.edges.filter((edge) => edgeExecutionStates?.[edge.id] === 'active').map((edge) => edge.id)), [doc.edges, edgeExecutionStates, runMode]);
   const currentTemplate = useMemo(() => getDiagramTemplate(templateId), [templateId]);
 
+  // Shared by the sequential auto-timer and the manual mode's "Next" button
+  // — both just move the same node/line cursor forward by one tick.
+  const advanceStep = useCallback(() => {
+    const reachedLastNode = runStep >= orderedGroups.length - 1 && runPhase === 'node';
+    if (reachedLastNode) {
+      setRunStep(0);
+      setRunPhase('node');
+      return;
+    }
+    if (runPhase === 'node') {
+      setRunPhase('line');
+    } else {
+      setRunStep((step) => step + 1);
+      setRunPhase('node');
+    }
+  }, [runStep, runPhase, orderedGroups.length]);
+
   useEffect(() => {
     if (runMode !== 'sequential' || orderedGroups.length === 0) return;
 
@@ -123,23 +167,11 @@ function FlowEditor({ user }: { user: User }) {
     if (reachedLastNode && !repeatEnabled) return;
 
     const timer = window.setTimeout(
-      () => {
-        if (reachedLastNode) {
-          setRunStep(0);
-          setRunPhase('node');
-          return;
-        }
-        if (runPhase === 'node') {
-          setRunPhase('line');
-        } else {
-          setRunStep((step) => step + 1);
-          setRunPhase('node');
-        }
-      },
+      advanceStep,
       reachedLastNode ? NODE_PHASE_MS + REPEAT_PAUSE_MS : runPhase === 'line' ? LINE_PHASE_MS : NODE_PHASE_MS,
     );
     return () => window.clearTimeout(timer);
-  }, [orderedGroups.length, repeatEnabled, runMode, runPhase, runStep, seed]);
+  }, [orderedGroups.length, repeatEnabled, runMode, runPhase, runStep, seed, advanceStep]);
 
   const selectedNode = useMemo(() => doc.nodes.find((n) => n.id === selectedNodeId) ?? null, [doc, selectedNodeId]);
   const selectedEdge = useMemo(() => doc.edges.find((edge) => edge.id === selectedEdgeId) ?? null, [doc, selectedEdgeId]);
@@ -180,7 +212,7 @@ function FlowEditor({ user }: { user: User }) {
   const handleSaveDiagram = useCallback(async () => {
     const nextName = currentDiagramName.trim();
     if (!nextName) {
-      toast.error('Hãy đặt tên cho diagram');
+      toast.error('Please name the diagram');
       return;
     }
     setSavingDiagram(true);
@@ -192,10 +224,10 @@ function FlowEditor({ user }: { user: User }) {
         diagramId = await createDiagram(user.uid, nextName, doc);
       }
       handleDiagramSaved(diagramId, nextName, doc);
-      toast.success('Đã lưu diagram', { description: nextName });
+      toast.success('Diagram saved', { description: nextName });
     } catch {
-      toast.error('Không thể lưu diagram', {
-        description: 'Bạn cần đăng nhập và có quyền ghi đúng UID.',
+      toast.error('Could not save diagram', {
+        description: 'You need to be signed in with write access for this UID.',
       });
     } finally {
       setSavingDiagram(false);
@@ -224,7 +256,7 @@ function FlowEditor({ user }: { user: User }) {
 
   const handleNewDiagram = useCallback(() => {
     setDoc(initialDocument);
-    setTemplateId('software-architecture');
+    setTemplateId('client-server-database');
     setCurrentDiagramId(null);
     setCurrentDiagramName('Untitled Diagram');
     setSavedSignature(null);
@@ -240,17 +272,15 @@ function FlowEditor({ user }: { user: User }) {
           </div>
           <div>
             <h1 className='text-base font-semibold'>Flowgram Tools</h1>
-            <p className='text-xs text-zinc-400'>
-              {currentDiagramName}
-              {dirty && <span className='ml-1.5 text-amber-300'>• chưa lưu</span>}
-            </p>
+            <p className='text-xs text-zinc-400'>{currentDiagramName}</p>
           </div>
         </div>
 
         <div className='flex items-center gap-2'>
-          <Button onClick={handleSaveDiagram} disabled={savingDiagram} className='h-10 bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
+          <Button onClick={handleSaveDiagram} disabled={savingDiagram} className='h-9 bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
             {savingDiagram ? <LoaderCircle className='animate-spin' /> : <Save />}
             {currentDiagramId ? 'Save' : 'Save as'}
+            {dirty && <span className='size-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(180,83,9,.8)]' />}
           </Button>
           <button
             type='button'
@@ -258,7 +288,7 @@ function FlowEditor({ user }: { user: User }) {
             aria-pressed={infoOpen}
             title='Toggle document info'
             className={[
-              'inline-flex h-10 items-center gap-1.5 rounded-lg px-3 text-[10px] font-semibold ring-1 transition',
+              'inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-[10px] font-semibold ring-1 transition',
               infoOpen ? 'bg-sky-400/15 text-sky-100 ring-sky-400/40' : 'bg-black/25 text-zinc-500 ring-white/10 hover:bg-white/6 hover:text-zinc-200',
             ].join(' ')}
           >
@@ -275,11 +305,39 @@ function FlowEditor({ user }: { user: User }) {
             onDeleted={handleDiagramDeleted}
             onNew={handleNewDiagram}
           />
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={<Button variant='outline' className='h-9 border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8' />}
+            >
+              <LayoutTemplate size={14} />
+              Open templates
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align='end' className='w-80 border-white/8 bg-zinc-950/95 p-1.5 backdrop-blur-xl'>
+              <DropdownMenuGroup>
+                <DropdownMenuLabel className='px-2 py-1.5'>Templates</DropdownMenuLabel>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator className='bg-white/8' />
+              {diagramTemplates.map((template) => (
+                <DropdownMenuItem
+                  key={template.id}
+                  onClick={() => loadTemplate(template.id)}
+                  className='flex-col items-start gap-0.5 px-2 py-2'
+                >
+                  <span className='flex w-full items-center justify-between gap-2 text-xs font-semibold text-zinc-100'>
+                    {template.name}
+                    <span className='shrink-0 font-mono text-[9px] font-normal text-zinc-600'>{template.document.nodes.length} blocks</span>
+                  </span>
+                  <span className='block truncate text-[10px] font-normal text-zinc-500'>{template.category} · {template.description}</span>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <div className='flex items-center rounded-lg bg-black/25 p-1 ring-1 ring-white/10' role='group' aria-label='Execution mode'>
             {(
               [
                 { value: 'sequential', label: 'Sequential', Icon: ListOrdered },
                 { value: 'concurrent', label: 'Concurrent', Icon: RadioTower },
+                { value: 'manual', label: 'Manual', Icon: Hand },
               ] as const
             ).map((mode) => (
               <button
@@ -293,7 +351,7 @@ function FlowEditor({ user }: { user: User }) {
                 }}
                 aria-pressed={runMode === mode.value}
                 className={[
-                  'inline-flex h-8 items-center gap-1.5 rounded-md px-2.5 text-[10px] font-semibold transition',
+                  'inline-flex h-7 items-center gap-1.5 rounded-md px-2.5 text-[10px] font-semibold transition',
                   runMode === mode.value ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-500 hover:bg-white/6 hover:text-zinc-200',
                 ].join(' ')}
               >
@@ -306,15 +364,15 @@ function FlowEditor({ user }: { user: User }) {
             disabled={runMode !== 'sequential'}
             onClick={() => setRepeatEnabled((enabled) => !enabled)}
             aria-pressed={repeatEnabled}
-            title='Tự động chạy lại sau khi hoàn tất luồng tuần tự'
+            title='Automatically replay after the sequential run completes'
             className={[
-              'inline-flex h-10 items-center gap-1.5 rounded-lg px-3 text-[10px] font-semibold ring-1 transition',
+              'inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-[10px] font-semibold ring-1 transition',
               repeatEnabled && runMode === 'sequential' ? 'bg-emerald-400/15 text-emerald-100 ring-emerald-400/40' : 'bg-black/25 text-zinc-500 ring-white/10 hover:bg-white/6 hover:text-zinc-200',
               runMode !== 'sequential' ? 'cursor-not-allowed opacity-40 hover:bg-black/25 hover:text-zinc-500' : '',
             ].join(' ')}
           >
             <Repeat2 size={13} className={repeatEnabled && runMode === 'sequential' ? 'text-emerald-300' : ''} />
-            Lặp
+            Repeat
           </button>
           <motion.button
             whileHover={{ y: -1 }}
@@ -325,24 +383,31 @@ function FlowEditor({ user }: { user: User }) {
               setRunPhase('node');
               setSeed((s) => s + 1);
             }}
-            className='inline-flex items-center gap-1.5 rounded-md bg-sky-500/90 px-3 py-1.5 text-xs font-semibold text-sky-950 shadow-sm hover:bg-sky-400'
+            className='inline-flex h-9 items-center gap-1.5 rounded-md bg-sky-500/90 px-3 text-xs font-semibold text-sky-950 shadow-sm hover:bg-sky-400'
           >
             <PlayCircle size={14} />
             Replay path
           </motion.button>
+          {runMode === 'manual' && (
+            <motion.button
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              type='button'
+              onClick={advanceStep}
+              disabled={orderedGroups.length === 0}
+              title='Run the next step'
+              className='inline-flex h-9 items-center gap-1.5 rounded-md bg-emerald-500/90 px-3 text-xs font-semibold text-emerald-950 shadow-sm hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-40'
+            >
+              <SkipForward size={14} />
+              Next
+            </motion.button>
+          )}
           <motion.button
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.97 }}
             type='button'
-            onClick={() => {
-              const template = getDiagramTemplate(templateId);
-              setDoc(template.document);
-              setCurrentDiagramId(null);
-              setCurrentDiagramName(template.name);
-              setSavedSignature(null);
-              resetCanvasState();
-            }}
-            className='inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-1.5 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 hover:bg-white/10'
+            onClick={() => setResetConfirmOpen(true)}
+            className='inline-flex h-9 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 hover:bg-white/10'
           >
             <RotateCcw size={14} />
             Reset
@@ -350,6 +415,35 @@ function FlowEditor({ user }: { user: User }) {
           <UserMenu user={user} />
         </div>
       </header>
+
+      <AlertDialog open={resetConfirmOpen} onOpenChange={setResetConfirmOpen}>
+        <AlertDialogContent className='border border-white/8 bg-zinc-950'>
+          <AlertDialogHeader>
+            <AlertDialogMedia className='bg-rose-400/10 text-rose-300'><RotateCcw /></AlertDialogMedia>
+            <AlertDialogTitle>Reset canvas?</AlertDialogTitle>
+            <AlertDialogDescription>
+              All unsaved changes on the current canvas will be lost and it will revert to the original template. This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              variant='destructive'
+              onClick={() => {
+                const template = getDiagramTemplate(templateId);
+                setDoc(template.document);
+                setCurrentDiagramId(null);
+                setCurrentDiagramName(template.name);
+                setSavedSignature(null);
+                resetCanvasState();
+                setResetConfirmOpen(false);
+              }}
+            >
+              Reset
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       <main className={['grid min-h-0 flex-1 gap-4 overflow-hidden p-4', hasSidebar ? 'grid-cols-[1fr_320px]' : 'grid-cols-1'].join(' ')}>
         <section className='relative h-full min-h-0 overflow-hidden rounded-2xl bg-zinc-950 ring-1 ring-white/10'>

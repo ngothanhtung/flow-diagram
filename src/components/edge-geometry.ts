@@ -131,6 +131,7 @@ export function buildPath(
   startAngle: number;
   angle: number;
   length: number;
+  points: Point[] | undefined;
 } {
   // Absolute positions of the two endpoints on their respective shapes.
   const startX = fromCenter.x + fromAnchor.x;
@@ -175,6 +176,7 @@ export function buildPath(
       { x: cp2x, y: cp2y },
       { x: endX, y: endY },
     ),
+    points: undefined as Point[] | undefined,
   };
 }
 
@@ -299,6 +301,7 @@ export function buildStraightPath(
     startAngle: toDegrees((angle * Math.PI) / 180 + Math.PI),
     angle,
     length: Math.hypot(end.x - start.x, end.y - start.y),
+    points: undefined as Point[] | undefined,
   };
 }
 

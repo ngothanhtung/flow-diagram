@@ -59,8 +59,8 @@ interface DiagramManagerProps {
 function dateLabel(diagram: StoredDiagram) {
   const value = diagram.updatedAt ?? diagram.createdAt;
   return value
-    ? value.toDate().toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' })
-    : 'Vừa cập nhật';
+    ? value.toDate().toLocaleString('en-US', { dateStyle: 'short', timeStyle: 'short' })
+    : 'Just updated';
 }
 
 export function DiagramManager({
@@ -86,8 +86,8 @@ export function DiagramManager({
     try {
       setDiagrams(await listDiagrams(userId));
     } catch {
-      toast.error('Không thể tải thư viện diagram', {
-        description: 'Kiểm tra Firestore rules và kết nối mạng.',
+      toast.error('Could not load diagram library', {
+        description: 'Check your Firestore rules and network connection.',
       });
     } finally {
       setLoading(false);
@@ -100,9 +100,9 @@ export function DiagramManager({
   };
 
   const visibleDiagrams = useMemo(() => {
-    const keyword = search.trim().toLocaleLowerCase('vi');
+    const keyword = search.trim().toLocaleLowerCase();
     if (!keyword) return diagrams;
-    return diagrams.filter((diagram) => diagram.name.toLocaleLowerCase('vi').includes(keyword));
+    return diagrams.filter((diagram) => diagram.name.toLocaleLowerCase().includes(keyword));
   }, [diagrams, search]);
 
   const loadSelected = async (diagram: StoredDiagram) => {
@@ -112,9 +112,9 @@ export function DiagramManager({
       if (!latest) throw new Error('Diagram no longer exists.');
       onLoaded(latest);
       setOpen(false);
-      toast.success('Đã tải diagram', { description: latest.name });
+      toast.success('Diagram loaded', { description: latest.name });
     } catch {
-      toast.error('Không thể tải diagram');
+      toast.error('Could not load diagram');
     } finally {
       setBusy(null);
     }
@@ -129,9 +129,9 @@ export function DiagramManager({
       setDiagrams((items) => items.filter((item) => item.id !== target.id));
       onDeleted(target.id);
       setDeleteTarget(null);
-      toast.success('Đã xóa diagram', { description: target.name });
+      toast.success('Diagram deleted', { description: target.name });
     } catch {
-      toast.error('Không thể xóa diagram');
+      toast.error('Could not delete diagram');
     } finally {
       setBusy(null);
     }
@@ -141,11 +141,10 @@ export function DiagramManager({
     <>
       <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogTrigger
-          render={<Button variant="outline" className="h-10 border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8" />}
+          render={<Button variant="outline" className="h-9 border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8" />}
         >
           <FolderOpen className="text-cyan-300" />
           Diagrams
-          {dirty && <span className="size-1.5 rounded-full bg-amber-300 shadow-[0_0_8px_rgba(252,211,77,.8)]" />}
         </DialogTrigger>
         <DialogContent className="max-h-[88vh] gap-0 overflow-hidden border border-white/8 bg-zinc-950/96 p-0 sm:max-w-3xl">
           <DialogHeader className="border-b border-white/7 px-6 py-5">
@@ -164,7 +163,7 @@ export function DiagramManager({
             <section className="border-b border-white/7 p-5 md:border-r md:border-b-0">
               <p className="font-mono text-[9px] uppercase tracking-[.18em] text-cyan-400">Current canvas</p>
               <div className="mt-4 space-y-2">
-                <Label htmlFor="diagram-name" className="text-[10px] uppercase tracking-wider text-zinc-500">Tên diagram</Label>
+                <Label htmlFor="diagram-name" className="text-[10px] uppercase tracking-wider text-zinc-500">Diagram name</Label>
                 <Input id="diagram-name" value={currentName} maxLength={80} onChange={(event) => onRename(event.target.value)} placeholder="Software Architecture" className="h-10 border-white/9 bg-white/[.035]" />
               </div>
               <div className="mt-4 grid grid-cols-2 gap-2">
@@ -178,13 +177,13 @@ export function DiagramManager({
                 </div>
               </div>
               <div className="mt-4 flex items-center justify-between rounded-lg border border-white/7 bg-black/20 px-3 py-2">
-                <span className="text-[10px] text-zinc-500">Trạng thái</span>
+                <span className="text-[10px] text-zinc-500">Status</span>
                 <Badge variant={dirty ? 'secondary' : 'outline'} className={dirty ? 'bg-amber-300/10 text-amber-200' : 'text-emerald-300'}>
-                  {dirty ? 'Chưa lưu' : 'Đã đồng bộ'}
+                  {dirty ? 'Unsaved' : 'Synced'}
                 </Badge>
               </div>
               <Button variant="outline" onClick={() => { onNew(); setOpen(false); }} className="mt-4 h-9 w-full border-white/9 bg-transparent">
-                <FilePlus2 /> Canvas mới
+                <FilePlus2 /> New canvas
               </Button>
             </section>
 
@@ -192,7 +191,7 @@ export function DiagramManager({
               <div className="flex items-center gap-2">
                 <div className="relative flex-1">
                   <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-zinc-600" />
-                  <Input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Tìm diagram..." className="h-9 border-white/8 bg-white/[.025] pl-9" />
+                  <Input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search diagrams..." className="h-9 border-white/8 bg-white/[.025] pl-9" />
                 </div>
                 <Button variant="outline" size="icon-lg" onClick={refresh} disabled={loading} className="border-white/8 bg-transparent">
                   <RefreshCw className={loading ? 'animate-spin' : ''} />
@@ -207,8 +206,8 @@ export function DiagramManager({
                   <div className="grid h-52 place-items-center rounded-xl border border-dashed border-white/10 text-center">
                     <div>
                       <FolderOpen className="mx-auto size-6 text-zinc-700" />
-                      <p className="mt-3 text-xs text-zinc-400">Chưa có diagram nào</p>
-                      <p className="mt-1 text-[10px] text-zinc-600">Lưu canvas hiện tại để bắt đầu.</p>
+                      <p className="mt-3 text-xs text-zinc-400">No diagrams yet</p>
+                      <p className="mt-1 text-[10px] text-zinc-600">Save the current canvas to get started.</p>
                     </div>
                   </div>
                 ) : (
@@ -236,7 +235,7 @@ export function DiagramManager({
                               </Button>
                             </div>
                           </div>
-                          {selected && <Badge variant="outline" className="mt-2 border-cyan-300/20 text-[8px] text-cyan-300">Đang mở</Badge>}
+                          {selected && <Badge variant="outline" className="mt-2 border-cyan-300/20 text-[8px] text-cyan-300">Open</Badge>}
                         </article>
                       );
                     })}
@@ -256,14 +255,14 @@ export function DiagramManager({
         <AlertDialogContent className="border border-white/8 bg-zinc-950">
           <AlertDialogHeader>
             <AlertDialogMedia className="bg-rose-400/10 text-rose-300"><Trash2 /></AlertDialogMedia>
-            <AlertDialogTitle>Xóa diagram?</AlertDialogTitle>
+            <AlertDialogTitle>Delete diagram?</AlertDialogTitle>
             <AlertDialogDescription>
-              “{deleteTarget?.name}” sẽ bị xóa khỏi Firestore và không thể khôi phục.
+              &ldquo;{deleteTarget?.name}&rdquo; will be deleted from Firestore and cannot be recovered.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Hủy</AlertDialogCancel>
-            <AlertDialogAction variant="destructive" onClick={confirmDelete} disabled={busy !== null}>Xóa</AlertDialogAction>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction variant="destructive" onClick={confirmDelete} disabled={busy !== null}>Delete</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

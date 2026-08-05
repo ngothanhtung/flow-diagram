@@ -1,10 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { createElement, useEffect, useRef } from 'react';
 import { screenToData } from '@/lib/coords';
 import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
+import { useResolvedIcon } from '@/lib/icon-library';
 import type {
   ConnectionSide,
   ExecutionState,
@@ -180,9 +181,9 @@ export function FlowNodeCard({
   registerSvgRef,
 }: FlowNodeCardProps) {
   const style = resolveNodeStyle(node);
+  const Icon = useResolvedIcon(style.icon);
   const {
     shapeSpec,
-    Icon,
     foreground,
     background,
     borderColor,
@@ -644,7 +645,7 @@ export function FlowNodeCard({
                     : `drop-shadow(0 0 5px ${foreground}80)`,
                 }}
               >
-                <Icon size={iconSize} className="opacity-95" />
+                {createElement(Icon, { size: iconSize, className: 'opacity-95' })}
               </span>
             </span>
           )}

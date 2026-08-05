@@ -1,6 +1,6 @@
 'use client';
 
-import { Magnet, Maximize2, Minus, Plus } from 'lucide-react';
+import { Grid2x2, Magnet, Maximize2, Minus, Plus } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type {
   ConnectionSide,
@@ -144,6 +144,7 @@ export function FlowCanvas({
   } | null>(null);
   const [viewOverride, setViewOverride] = useState<ViewTransform | null>(null);
   const [snapEnabled, setSnapEnabled] = useState(true);
+  const [gridVisible, setGridVisible] = useState(true);
   const [isPanning, setIsPanning] = useState(false);
   const panRef = useRef<PanState | null>(null);
   const suppressCanvasClickRef = useRef(false);
@@ -646,15 +647,17 @@ export function FlowCanvas({
         }
       }}
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)',
-          backgroundSize: `${Math.max(12, GRID_SIZE * viewTransform.scale)}px ${Math.max(12, GRID_SIZE * viewTransform.scale)}px`,
-          backgroundPosition: `${viewTransform.x}px ${viewTransform.y}px`,
-        }}
-      />
+      {gridVisible && (
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)',
+            backgroundSize: `${Math.max(12, GRID_SIZE * viewTransform.scale)}px ${Math.max(12, GRID_SIZE * viewTransform.scale)}px`,
+            backgroundPosition: `${viewTransform.x}px ${viewTransform.y}px`,
+          }}
+        />
+      )}
 
       <div
         className="absolute right-4 bottom-4 z-20 flex items-center overflow-hidden rounded-xl bg-zinc-900/92 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl"
@@ -715,6 +718,29 @@ export function FlowCanvas({
             className={[
               'h-1.5 w-1.5 rounded-full',
               snapEnabled
+                ? 'bg-cyan-300 shadow-[0_0_7px_rgba(103,232,249,.8)]'
+                : 'bg-zinc-700',
+            ].join(' ')}
+          />
+        </button>
+        <button
+          type="button"
+          onClick={() => setGridVisible((visible) => !visible)}
+          aria-pressed={gridVisible}
+          className={[
+            'inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition',
+            gridVisible
+              ? 'bg-cyan-400/10 text-cyan-200'
+              : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300',
+          ].join(' ')}
+          aria-label={`${gridVisible ? 'Hide' : 'Show'} grid`}
+          title={`${gridVisible ? 'Hide' : 'Show'} grid`}
+        >
+          <Grid2x2 size={13} /> Grid
+          <span
+            className={[
+              'h-1.5 w-1.5 rounded-full',
+              gridVisible
                 ? 'bg-cyan-300 shadow-[0_0_7px_rgba(103,232,249,.8)]'
                 : 'bg-zinc-700',
             ].join(' ')}

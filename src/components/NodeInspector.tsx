@@ -8,18 +8,17 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUp,
-  Ban,
   Copy,
   PanelLeft,
   PanelTop,
   RotateCcw,
-  Search,
   Trash2,
   type LucideIcon,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { IconPicker } from '@/components/IconPicker';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -42,7 +41,6 @@ import type {
 } from '@/lib/flowchart-types';
 import {
   COLORS,
-  ICONS,
   SHAPES,
   resolveNodeStyle,
   type NodeColor,
@@ -60,12 +58,22 @@ interface NodeInspectorProps {
 }
 
 const COLOR_HEX: Record<NodeColor, string> = {
-  sky: '#0ea5e9',
-  indigo: '#6366f1',
+  red: '#ef4444',
+  orange: '#f97316',
   amber: '#f59e0b',
+  yellow: '#eab308',
+  lime: '#84cc16',
   emerald: '#10b981',
-  rose: '#f43f5e',
+  teal: '#14b8a6',
+  cyan: '#06b6d4',
+  sky: '#0ea5e9',
+  blue: '#3b82f6',
+  indigo: '#6366f1',
   violet: '#8b5cf6',
+  purple: '#a855f7',
+  fuchsia: '#d946ef',
+  pink: '#ec4899',
+  rose: '#f43f5e',
 };
 
 const SIDES: {
@@ -77,21 +85,6 @@ const SIDES: {
   { value: 'right', label: 'Right', Icon: ArrowRight },
   { value: 'bottom', label: 'Bottom', Icon: ArrowDown },
   { value: 'left', label: 'Left', Icon: ArrowLeft },
-];
-
-const ICON_GROUPS = [
-  {
-    label: 'Lucide',
-    icons: (Object.keys(ICONS) as NodeIcon[]).filter(
-      (key) => !key.startsWith('tabler:'),
-    ),
-  },
-  {
-    label: 'Tabler',
-    icons: (Object.keys(ICONS) as NodeIcon[]).filter((key) =>
-      key.startsWith('tabler:'),
-    ),
-  },
 ];
 
 export function NodeInspector({
@@ -158,7 +151,7 @@ export function NodeInspector({
   };
 
   return (
-    <Card size="sm" className="gap-0 bg-zinc-900/70 p-4 ring-sky-400/30">
+    <Card size="sm" className="gap-0 bg-zinc-900/70 p-4">
       <div className="flex items-center justify-between">
         <h2 className="text-sm font-semibold">Inspector</h2>
         <Button
@@ -466,48 +459,10 @@ export function NodeInspector({
       <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
         Icon
       </label>
-      <Button
-        variant="outline"
-        onClick={() => onUpdate(node.id, { icon: null })}
-        aria-pressed={currentIcon === null}
-        className={[
-          'mt-1.5 h-9 w-full gap-2 text-[10px] font-semibold uppercase tracking-wider',
-          currentIcon === null
-            ? 'border-sky-400/60 bg-sky-500/20 text-sky-100'
-            : 'border-white/10 bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-zinc-200',
-        ].join(' ')}
-      >
-        <Ban size={14} /> No icon
-      </Button>
-      {ICON_GROUPS.map((group) => (
-        <div key={group.label} className="mt-1.5">
-          <p className="mb-1 text-[10px] text-zinc-500">{group.label}</p>
-          <div className="grid grid-cols-7 gap-1">
-            {group.icons.map((iconKey) => {
-              const Icon = ICONS[iconKey];
-              const isActive = currentIcon === iconKey;
-              return (
-                <Button
-                  key={iconKey}
-                  variant="outline"
-                  size="icon-sm"
-                  onClick={() => onUpdate(node.id, { icon: iconKey })}
-                  title={iconKey.replace(/^(lucide|tabler):/, '')}
-                  aria-label={`Use ${iconKey} icon`}
-                  className={[
-                    'h-8 w-full rounded-md',
-                    isActive
-                      ? 'border-sky-400/60 bg-sky-500/20 text-sky-100'
-                      : 'border-white/10 bg-white/5 text-zinc-400 hover:bg-white/10',
-                  ].join(' ')}
-                >
-                  <Icon size={15} />
-                </Button>
-              );
-            })}
-          </div>
-        </div>
-      ))}
+      <IconPicker
+        value={currentIcon}
+        onChange={(icon) => onUpdate(node.id, { icon })}
+      />
       {currentIcon !== null && (
         <>
           <RangeField

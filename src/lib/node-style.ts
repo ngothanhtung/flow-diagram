@@ -463,21 +463,21 @@ export interface ColorSpec {
 }
 
 export const COLORS: Record<NodeColor, ColorSpec> = {
-  sky: {
-    gradient: 'from-sky-500/25 to-sky-500/5',
-    ring: 'sky-400/50',
-    text: 'sky-100',
-    port: 'sky-300',
-    foreground: '#dbeafe',
-    background: '#082f49',
+  red: {
+    gradient: 'from-red-500/25 to-red-500/5',
+    ring: 'red-400/50',
+    text: 'red-100',
+    port: 'red-300',
+    foreground: '#fee2e2',
+    background: '#450a0a',
   },
-  indigo: {
-    gradient: 'from-indigo-500/25 to-indigo-500/5',
-    ring: 'indigo-400/50',
-    text: 'indigo-100',
-    port: 'indigo-300',
-    foreground: '#e0e7ff',
-    background: '#1e1b4b',
+  orange: {
+    gradient: 'from-orange-500/25 to-orange-500/5',
+    ring: 'orange-400/50',
+    text: 'orange-100',
+    port: 'orange-300',
+    foreground: '#ffedd5',
+    background: '#431407',
   },
   amber: {
     gradient: 'from-amber-500/25 to-amber-500/5',
@@ -487,6 +487,22 @@ export const COLORS: Record<NodeColor, ColorSpec> = {
     foreground: '#fef3c7',
     background: '#451a03',
   },
+  yellow: {
+    gradient: 'from-yellow-500/25 to-yellow-500/5',
+    ring: 'yellow-400/50',
+    text: 'yellow-100',
+    port: 'yellow-300',
+    foreground: '#fef9c3',
+    background: '#422006',
+  },
+  lime: {
+    gradient: 'from-lime-500/25 to-lime-500/5',
+    ring: 'lime-400/50',
+    text: 'lime-100',
+    port: 'lime-300',
+    foreground: '#ecfccb',
+    background: '#1a2e05',
+  },
   emerald: {
     gradient: 'from-emerald-500/25 to-emerald-500/5',
     ring: 'emerald-400/50',
@@ -495,13 +511,45 @@ export const COLORS: Record<NodeColor, ColorSpec> = {
     foreground: '#d1fae5',
     background: '#022c22',
   },
-  rose: {
-    gradient: 'from-rose-500/25 to-rose-500/5',
-    ring: 'rose-400/50',
-    text: 'rose-100',
-    port: 'rose-300',
-    foreground: '#ffe4e6',
-    background: '#4c0519',
+  teal: {
+    gradient: 'from-teal-500/25 to-teal-500/5',
+    ring: 'teal-400/50',
+    text: 'teal-100',
+    port: 'teal-300',
+    foreground: '#ccfbf1',
+    background: '#042f2e',
+  },
+  cyan: {
+    gradient: 'from-cyan-500/25 to-cyan-500/5',
+    ring: 'cyan-400/50',
+    text: 'cyan-100',
+    port: 'cyan-300',
+    foreground: '#cffafe',
+    background: '#083344',
+  },
+  sky: {
+    gradient: 'from-sky-500/25 to-sky-500/5',
+    ring: 'sky-400/50',
+    text: 'sky-100',
+    port: 'sky-300',
+    foreground: '#dbeafe',
+    background: '#082f49',
+  },
+  blue: {
+    gradient: 'from-blue-500/25 to-blue-500/5',
+    ring: 'blue-400/50',
+    text: 'blue-100',
+    port: 'blue-300',
+    foreground: '#dbeafe',
+    background: '#172554',
+  },
+  indigo: {
+    gradient: 'from-indigo-500/25 to-indigo-500/5',
+    ring: 'indigo-400/50',
+    text: 'indigo-100',
+    port: 'indigo-300',
+    foreground: '#e0e7ff',
+    background: '#1e1b4b',
   },
   violet: {
     gradient: 'from-violet-500/25 to-violet-500/5',
@@ -510,6 +558,38 @@ export const COLORS: Record<NodeColor, ColorSpec> = {
     port: 'violet-300',
     foreground: '#ede9fe',
     background: '#2e1065',
+  },
+  purple: {
+    gradient: 'from-purple-500/25 to-purple-500/5',
+    ring: 'purple-400/50',
+    text: 'purple-100',
+    port: 'purple-300',
+    foreground: '#f3e8ff',
+    background: '#3b0764',
+  },
+  fuchsia: {
+    gradient: 'from-fuchsia-500/25 to-fuchsia-500/5',
+    ring: 'fuchsia-400/50',
+    text: 'fuchsia-100',
+    port: 'fuchsia-300',
+    foreground: '#fae8ff',
+    background: '#4a044e',
+  },
+  pink: {
+    gradient: 'from-pink-500/25 to-pink-500/5',
+    ring: 'pink-400/50',
+    text: 'pink-100',
+    port: 'pink-300',
+    foreground: '#fce7f3',
+    background: '#500724',
+  },
+  rose: {
+    gradient: 'from-rose-500/25 to-rose-500/5',
+    ring: 'rose-400/50',
+    text: 'rose-100',
+    port: 'rose-300',
+    foreground: '#ffe4e6',
+    background: '#4c0519',
   },
 };
 
@@ -521,7 +601,11 @@ export type NodeIconComponent = ComponentType<{
   strokeWidth?: number;
 }>;
 
-export const ICONS: Record<NodeIcon, NodeIconComponent> = {
+// A small curated set resolved instantly with no network fetch. Anything
+// outside this set (picked from the full Lucide / Tabler catalogs in the
+// icon picker) is resolved on demand — see `useResolvedIcon` in
+// `@/lib/icon-library`.
+export const LEGACY_ICONS: Record<string, NodeIconComponent> = {
   cog: Cog,
   play: Play,
   flag: Flag,
@@ -591,7 +675,6 @@ export interface ResolvedNodeStyle {
   shape: NodeShape;
   color: NodeColor;
   icon: NodeIcon | null;
-  Icon: NodeIconComponent | null;
   shapeSpec: ShapeSpec;
   colorSpec: ColorSpec;
   foreground: `#${string}`;
@@ -624,7 +707,6 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
   const icon: NodeIcon | null = node.icon === null
     ? null
     : (node.icon ?? DEFAULT_BY_TYPE[node.type].icon);
-  const Icon = icon ? ICONS[icon] : null;
   const shapeSpec = SHAPES[shape];
   const colorSpec = COLORS[color];
   const foreground =
@@ -640,7 +722,6 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     shape,
     color,
     icon,
-    Icon,
     shapeSpec,
     colorSpec,
     foreground,
