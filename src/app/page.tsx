@@ -20,14 +20,13 @@ import { ShapeToolbar } from '@/components/ShapeToolbar';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { diagramTemplates, getDiagramTemplate, type DiagramTemplateId } from '@/lib/diagram-templates';
 import { initialDocument } from '@/lib/flowchart-data';
-import type { ExecutionState, FlowDocumentJSON, NodeShape } from '@/lib/flowchart-types';
+import type { DiagramSettings, ExecutionState, FlowDocumentJSON, NodeShape, RunMode } from '@/lib/flowchart-types';
 import { EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { useEditor } from '@/lib/use-editor';
 import { resolveNodeStyle } from '@/lib/node-style';
 import { createDiagram, saveDiagram, type StoredDiagram } from '@/lib/firebase/diagrams';
 import { loadEditorSession, saveEditorSession } from '@/lib/editor-session';
 
-type RunMode = 'sequential' | 'concurrent' | 'manual';
 type RunPhase = 'node' | 'line';
 
 const NODE_PHASE_MS = NODE_FADE_DURATION_MS;
@@ -99,8 +98,13 @@ function FlowEditor({ user }: { user: User }) {
   const [currentDiagramName, setCurrentDiagramName] = useState(() => loadEditorSession(user.uid)?.currentDiagramName ?? 'Client / Server / Database');
   const [savedSignature, setSavedSignature] = useState<string | null>(() => loadEditorSession(user.uid)?.savedSignature ?? null);
   const [seed, setSeed] = useState(0);
-  const [runMode, setRunMode] = useState<RunMode>('sequential');
-  const [repeatEnabled, setRepeatEnabled] = useState(false);
+  // Run mode + Repeat live inside doc.settings so they are saved to
+  // Firebase with the diagram and restored on load / session restore.
+  const runMode: RunMode = doc.settings?.runMode ?? 'sequential';
+  const repeatEnabled = doc.settings?.repeatEnabled ?? false;
+  const applyDiagramSettings = useCallback((patch: DiagramSettings) => {
+    setDoc((prev) => ({ ...prev, settings: { ...prev.settings, ...patch } }));
+  }, []);
   const [runStep, setRunStep] = useState(0);
   const [runPhase, setRunPhase] = useState<RunPhase>('node');
   const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
@@ -335,7 +339,7 @@ function FlowEditor({ user }: { user: User }) {
                 key={mode.value}
                 type='button'
                 onClick={() => {
-                  setRunMode(mode.value);
+                  applyDiagramSettings({ runMode: mode.value });
                   setRunStep(0);
                   setRunPhase('node');
                   setSeed((value) => value + 1);
@@ -353,7 +357,7 @@ function FlowEditor({ user }: { user: User }) {
           <button
             type='button'
             disabled={runMode !== 'sequential'}
-            onClick={() => setRepeatEnabled((enabled) => !enabled)}
+            onClick={() => applyDiagramSettings({ repeatEnabled: !repeatEnabled })}
             aria-pressed={repeatEnabled}
             title='Automatically replay after the sequential run completes'
             className={[

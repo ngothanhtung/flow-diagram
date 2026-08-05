@@ -161,7 +161,20 @@ export interface FlowEdge {
   animationSpeed?: number;
 }
 
+/** How the play bar walks through the diagram. */
+export type RunMode = 'sequential' | 'concurrent' | 'manual';
+
+/** Editor settings persisted with the diagram. */
+export interface DiagramSettings {
+  /** Execution mode for the play bar. Defaults to "sequential". */
+  runMode?: RunMode;
+  /** Whether the sequential run automatically replays. */
+  repeatEnabled?: boolean;
+}
+
 export interface FlowDocumentJSON {
   nodes: FlowNode[];
   edges: FlowEdge[];
+  /** Editor settings saved together with the diagram. */
+  settings?: DiagramSettings;
 }
