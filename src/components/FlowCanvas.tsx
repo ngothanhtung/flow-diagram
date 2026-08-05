@@ -84,6 +84,10 @@ interface FlowCanvasProps {
   /** Whether the document info sidebar is open — toggled from the dock. */
   infoOpen: boolean;
   onToggleInfo: () => void;
+  /** Read-only viewer mode: only pan/zoom/info stay active — every
+   *  editing affordance (drag, resize, link, bend, snap, grid picker)
+   *  is disabled or hidden. */
+  readOnly?: boolean;
 }
 
 const MIN_ZOOM_RATIO = 0.25;
@@ -119,6 +123,7 @@ export function FlowCanvas({
   onShapeDrawn,
   infoOpen,
   onToggleInfo,
+  readOnly = false,
 }: FlowCanvasProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -128,7 +133,7 @@ export function FlowCanvas({
   } | null>(null);
   const [viewOverride, setViewOverride] = useState<ViewTransform | null>(null);
   const [snapEnabled, setSnapEnabled] = useState(true);
-  const [gridVisible, setGridVisible] = useState(true);
+  const [gridVisible, setGridVisible] = useState(!readOnly);
   const [gridSize, setGridSize] = useState<number>(DEFAULT_GRID_SIZE);
   const [isPanning, setIsPanning] = useState(false);
   const panRef = useRef<PanState | null>(null);
@@ -569,6 +574,7 @@ export function FlowCanvas({
   }, [activeShape, drawCurrent, drawStart, onShapeDrawn]);
 
   const handlePortPointerDown = (nodeId: string, side: ConnectionSide) => {
+    if (readOnly) return;
     const node = nodesById.get(nodeId);
     if (!node || !svgRef.current) return;
     const outputAnchor = nodePortAnchor(node, side);
@@ -673,44 +679,52 @@ export function FlowCanvas({
         >
           <Maximize2 size={13} /> Fit
         </button>
-        <button
-          type='button'
-          onClick={() => setSnapEnabled((enabled) => !enabled)}
-          aria-pressed={snapEnabled}
-          className={['inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', snapEnabled ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
-          aria-label={`${snapEnabled ? 'Disable' : 'Enable'} snap to grid`}
-          title={`Snap to ${gridSize}px grid: ${snapEnabled ? 'on' : 'off'}`}
-        >
-          <Magnet size={13} /> Snap
-        </button>
-        <button
-          type='button'
-          onClick={() => setGridVisible((visible) => !visible)}
-          aria-pressed={gridVisible}
-          className={['inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', gridVisible ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
-          aria-label={`${gridVisible ? 'Hide' : 'Show'} grid`}
-          title={`${gridVisible ? 'Hide' : 'Show'} grid`}
-        >
-          <Grid2x2 size={13} /> Grid
-        </button>
-        <Select
-          value={String(gridSize)}
-          onValueChange={(nextValue) => {
-            const parsed = Number(nextValue);
-            if (!Number.isNaN(parsed)) setGridSize(parsed);
-          }}
-        >
-          <SelectTrigger className='inline-flex h-10 items-center gap-1 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-white/6 hover:text-cyan-200' aria-label='Grid size' title='Grid size'>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent className='border-white/10 bg-zinc-950'>
-            {GRID_SIZE_OPTIONS.map((size) => (
-              <SelectItem key={size} value={String(size)}>
-                {size}px
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        {!readOnly && (
+          <>
+            <button
+              type='button'
+              onClick={() => setSnapEnabled((enabled) => !enabled)}
+              aria-pressed={snapEnabled}
+              className={['inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', snapEnabled ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
+              aria-label={`${snapEnabled ? 'Disable' : 'Enable'} snap to grid`}
+              title={`Snap to ${gridSize}px grid: ${snapEnabled ? 'on' : 'off'}`}
+            >
+              <Magnet size={13} /> Snap
+            </button>
+            <button
+              type='button'
+              onClick={() => setGridVisible((visible) => !visible)}
+              aria-pressed={gridVisible}
+              className={['inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', gridVisible ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
+              aria-label={`${gridVisible ? 'Hide' : 'Show'} grid`}
+              title={`${gridVisible ? 'Hide' : 'Show'} grid`}
+            >
+              <Grid2x2 size={13} /> Grid
+            </button>
+            <Select
+              value={String(gridSize)}
+              onValueChange={(nextValue) => {
+                const parsed = Number(nextValue);
+                if (!Number.isNaN(parsed)) setGridSize(parsed);
+              }}
+            >
+              <SelectTrigger
+                className='inline-flex h-10 items-center gap-1 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-white/6 hover:text-cyan-200'
+                aria-label='Grid size'
+                title='Grid size'
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className='border-white/10 bg-zinc-950'>
+                {GRID_SIZE_OPTIONS.map((size) => (
+                  <SelectItem key={size} value={String(size)}>
+                    {size}px
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </>
+        )}
       </div>
 
       <svg
@@ -749,9 +763,9 @@ export function FlowCanvas({
                 from={from}
                 to={to}
                 paused={isDragging || link !== null || reconnect !== null || bendDrag !== null || (runningEdges !== null && !runningEdges.has(edge.id))}
-                interactive
+                interactive={!readOnly}
                 selected={selectedEdgeId === edge.id}
-                onClick={(id) => onSelectEdge(id)}
+                onClick={readOnly ? undefined : (id) => onSelectEdge(id)}
                 color={edgeColor}
                 effectColor={edge.effectColor}
                 performanceMode={performanceMode}
@@ -788,6 +802,7 @@ export function FlowCanvas({
                 isActive={active.has(node.id)}
                 executionState={nodeExecutionStates?.[node.id] ?? 'normal'}
                 isSelected={selectedNodeId === node.id}
+                readOnly={readOnly}
                 linkTargetFromId={reconnect?.fixedNodeId ?? link?.fromId ?? linkingFromId}
                 viewTransform={viewTransform}
                 onSelect={onSelectNode}

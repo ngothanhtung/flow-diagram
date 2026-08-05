@@ -2,9 +2,31 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Administrators are flagged by a doc keyed by their uid:
+    //   users-roles/{uid} -> { roles: ['administrators', ...] }
+    // Rules cannot query collections, so the doc id must be the uid.
+    // `get()` on a missing doc fails the expression, which denies access.
+    function isAdministrator() {
+      return get(/databases/$(database)/documents/users-roles/$(request.auth.uid)).data.get('roles', []).hasAny(['administrators']);
+    }
+
+    // Users may read their own role document (the admin page gates on it).
+    match /users-roles/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+    }
+
     match /users/{userId}/diagrams/{diagramId} {
-      allow read, create, update, delete: if request.auth != null
+      // Owner has full control; administrators only ever get read access.
+      allow create, update, delete: if request.auth != null
         && request.auth.uid == userId;
+      allow read: if request.auth != null
+        && (request.auth.uid == userId || isAdministrator());
+    }
+
+    // Cross-user collection-group read powering the /admin/diagrams
+    // overview — administrators only, and strictly get/list.
+    match /{path=**}/diagrams/{diagramId} {
+      allow get, list: if isAdministrator();
     }
 
     match /{document=**} {

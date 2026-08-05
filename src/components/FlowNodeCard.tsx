@@ -18,6 +18,8 @@ interface FlowNodeCardProps {
   executionState?: ExecutionState;
   isActive?: boolean;
   isSelected?: boolean;
+  /** Viewer mode: no dragging, no ports — the node renders inert. */
+  readOnly?: boolean;
   /**
    * If set, this node is a valid drop target for a pending link from
    * the given source id. The in port renders a pulsing ring so the
@@ -156,6 +158,7 @@ export function FlowNodeCard({
   executionState = 'normal',
   isActive = false,
   isSelected = false,
+  readOnly = false,
   linkTargetFromId = null,
   viewTransform,
   onSelect,
@@ -306,6 +309,7 @@ export function FlowNodeCard({
   };
 
   const handlePointerDown = (e: React.PointerEvent<SVGGElement>) => {
+    if (readOnly) return;
     if (e.button !== 0) return;
     e.stopPropagation();
     const target = e.currentTarget;
@@ -587,63 +591,65 @@ export function FlowNodeCard({
           ))}
 
         {/* Every node exposes a bidirectional port on all four sides.
-          The selected source and target sides are stored on the edge. */}
-        {CONNECTION_SIDES.map((side) => {
-          const anchor = portAnchors[side];
-          const canReceive = !!linkTargetFromId && linkTargetFromId !== node.id;
-          return (
-            <g
-              key={side}
-              pointerEvents='all'
-              data-port
-              data-node-id={node.id}
-              data-side={side}
-              className={[canReceive ? 'cursor-copy opacity-100' : 'cursor-crosshair opacity-0 group-hover/node:opacity-100', 'transition-opacity duration-150'].join(' ')}
-              style={{ touchAction: 'none' }}
-              transform={`translate(${anchor.x} ${anchor.y})`}
-            >
-              <circle
-                r={Math.max(PORT_HIT_R, portSize + 8)}
-                className='fill-transparent'
-                onPointerDown={(e) => {
-                  e.stopPropagation();
-                  onPortPointerDown(node.id, side, e);
-                }}
-                onPointerUp={(e) => {
-                  e.stopPropagation();
-                  onPortPointerUp(node.id, side, e);
-                }}
-              />
-              <circle
-                r={portSize}
-                className={canReceive ? 'animate-pulse' : undefined}
-                fill={background}
-                stroke={canReceive ? '#7dd3fc' : foreground}
-                strokeWidth={canReceive ? 3 : 2}
-                style={{
-                  filter: performanceMode && !canReceive ? undefined : `drop-shadow(0 0 4px ${canReceive ? '#7dd3fc' : neonSoft})${performanceMode ? '' : ` drop-shadow(0 0 10px ${canReceive ? '#7dd3fc70' : neonFaint})`}`,
-                }}
-                onPointerDown={(e) => {
-                  e.stopPropagation();
-                  onPortPointerDown(node.id, side, e);
-                }}
-                onPointerUp={(e) => {
-                  e.stopPropagation();
-                  onPortPointerUp(node.id, side, e);
-                }}
-              />
-              <circle
-                r={2.25}
-                fill={foreground}
-                pointerEvents='none'
-                style={{
-                  filter: performanceMode ? undefined : `drop-shadow(0 0 4px ${neonSoft})`,
-                }}
-              />
-              {canReceive && <circle r={portSize + 7} className='fill-none stroke-sky-300' strokeWidth={2} pointerEvents='none' />}
-            </g>
-          );
-        })}
+          The selected source and target sides are stored on the edge.
+          Ports are editor-only — hidden entirely in read-only mode. */}
+        {!readOnly &&
+          CONNECTION_SIDES.map((side) => {
+            const anchor = portAnchors[side];
+            const canReceive = !!linkTargetFromId && linkTargetFromId !== node.id;
+            return (
+              <g
+                key={side}
+                pointerEvents='all'
+                data-port
+                data-node-id={node.id}
+                data-side={side}
+                className={[canReceive ? 'cursor-copy opacity-100' : 'cursor-crosshair opacity-0 group-hover/node:opacity-100', 'transition-opacity duration-150'].join(' ')}
+                style={{ touchAction: 'none' }}
+                transform={`translate(${anchor.x} ${anchor.y})`}
+              >
+                <circle
+                  r={Math.max(PORT_HIT_R, portSize + 8)}
+                  className='fill-transparent'
+                  onPointerDown={(e) => {
+                    e.stopPropagation();
+                    onPortPointerDown(node.id, side, e);
+                  }}
+                  onPointerUp={(e) => {
+                    e.stopPropagation();
+                    onPortPointerUp(node.id, side, e);
+                  }}
+                />
+                <circle
+                  r={portSize}
+                  className={canReceive ? 'animate-pulse' : undefined}
+                  fill={background}
+                  stroke={canReceive ? '#7dd3fc' : foreground}
+                  strokeWidth={canReceive ? 3 : 2}
+                  style={{
+                    filter: performanceMode && !canReceive ? undefined : `drop-shadow(0 0 4px ${canReceive ? '#7dd3fc' : neonSoft})${performanceMode ? '' : ` drop-shadow(0 0 10px ${canReceive ? '#7dd3fc70' : neonFaint})`}`,
+                  }}
+                  onPointerDown={(e) => {
+                    e.stopPropagation();
+                    onPortPointerDown(node.id, side, e);
+                  }}
+                  onPointerUp={(e) => {
+                    e.stopPropagation();
+                    onPortPointerUp(node.id, side, e);
+                  }}
+                />
+                <circle
+                  r={2.25}
+                  fill={foreground}
+                  pointerEvents='none'
+                  style={{
+                    filter: performanceMode ? undefined : `drop-shadow(0 0 4px ${neonSoft})`,
+                  }}
+                />
+                {canReceive && <circle r={portSize + 7} className='fill-none stroke-sky-300' strokeWidth={2} pointerEvents='none' />}
+              </g>
+            );
+          })}
       </g>
     </motion.g>
   );
