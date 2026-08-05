@@ -1,17 +1,12 @@
 'use client';
 
-import { Grid2x2, Magnet, Maximize2, Minus, Plus } from 'lucide-react';
+import { Grid2x2, Info, Magnet, Maximize2, Minus, Plus } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type {
-  ConnectionSide,
-  ExecutionState,
-  FlowDocumentJSON,
-  FlowPoint,
-  NodeShape,
-} from '@/lib/flowchart-types';
+import type { ConnectionSide, ExecutionState, FlowDocumentJSON, FlowPoint, NodeShape } from '@/lib/flowchart-types';
 import { screenToData } from '@/lib/coords';
 import { resolveNodeStyle, SHAPES } from '@/lib/node-style';
 import type { ViewTransform } from '@/lib/view-transform';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AnimatedEdge } from './AnimatedEdge';
 import { FlowNodeCard } from './FlowNodeCard';
 import { GhostEdge } from './GhostEdge';
@@ -67,12 +62,7 @@ interface FlowCanvasProps {
   ) => void;
   onNodeDragStart: (id: string) => void;
   onNodeDragEnd: () => void;
-  onConnect: (
-    fromId: string,
-    toId: string,
-    fromSide?: ConnectionSide,
-    toSide?: ConnectionSide,
-  ) => void;
+  onConnect: (fromId: string, toId: string, fromSide?: ConnectionSide, toSide?: ConnectionSide) => void;
   /** True when any node is currently being moved. Used to pause the edge animation. */
   isDragging: boolean;
   /**
@@ -85,31 +75,23 @@ interface FlowCanvasProps {
   onLinkEnd: (toId: string | null) => void;
   selectedEdgeId: string | null;
   onSelectEdge: (id: string | null) => void;
-  onEdgeReconnect: (
-    edgeId: string,
-    endpoint: 'from' | 'to',
-    nodeId: string,
-    side: ConnectionSide,
-  ) => void;
-  onEdgeUpdate: (
-    edgeId: string,
-    patch: { bendPoints?: FlowPoint[] },
-  ) => void;
+  onEdgeReconnect: (edgeId: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
+  onEdgeUpdate: (edgeId: string, patch: { bendPoints?: FlowPoint[] }) => void;
   /** Shape currently armed by the dock. When set, the canvas draws. */
   activeShape: NodeShape | null;
   /** Called when the user finishes drawing a shape on the canvas. */
-  onShapeDrawn: (
-    shape: NodeShape,
-    position: { x: number; y: number },
-    width: number,
-    height: number,
-  ) => void;
+  onShapeDrawn: (shape: NodeShape, position: { x: number; y: number }, width: number, height: number) => void;
+  /** Whether the document info sidebar is open — toggled from the dock. */
+  infoOpen: boolean;
+  onToggleInfo: () => void;
 }
 
 const MIN_ZOOM_RATIO = 0.25;
 const MAX_ZOOM_RATIO = 4;
 const ZOOM_BUTTON_FACTOR = 1.2;
-const GRID_SIZE = 40;
+/** Grid spacings (in data units) offered by the dock picker. */
+const GRID_SIZE_OPTIONS = [10, 20, 40, 80] as const;
+const DEFAULT_GRID_SIZE = 40;
 
 export function FlowCanvas({
   document,
@@ -135,6 +117,8 @@ export function FlowCanvas({
   onEdgeUpdate,
   activeShape,
   onShapeDrawn,
+  infoOpen,
+  onToggleInfo,
 }: FlowCanvasProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -145,6 +129,7 @@ export function FlowCanvas({
   const [viewOverride, setViewOverride] = useState<ViewTransform | null>(null);
   const [snapEnabled, setSnapEnabled] = useState(true);
   const [gridVisible, setGridVisible] = useState(true);
+  const [gridSize, setGridSize] = useState<number>(DEFAULT_GRID_SIZE);
   const [isPanning, setIsPanning] = useState(false);
   const panRef = useRef<PanState | null>(null);
   const suppressCanvasClickRef = useRef(false);
@@ -180,13 +165,7 @@ export function FlowCanvas({
   }, []);
 
   const dataViewBox = useMemo(() => computeDataViewBox(document), [document]);
-  const viewBox = useMemo(
-    () =>
-      containerSize
-        ? { x: 0, y: 0, width: containerSize.width, height: containerSize.height }
-        : dataViewBox,
-    [containerSize, dataViewBox],
-  );
+  const viewBox = useMemo(() => (containerSize ? { x: 0, y: 0, width: containerSize.width, height: containerSize.height } : dataViewBox), [containerSize, dataViewBox]);
 
   /**
    * viewTransform maps data coords → viewBox (container pixel) coords.
@@ -198,10 +177,7 @@ export function FlowCanvas({
     const PAD = 60;
     const drawW = Math.max(1, containerSize.width - PAD * 2);
     const drawH = Math.max(1, containerSize.height - PAD * 2);
-    const scale = Math.min(
-      drawW / Math.max(1, dataViewBox.width),
-      drawH / Math.max(1, dataViewBox.height),
-    );
+    const scale = Math.min(drawW / Math.max(1, dataViewBox.width), drawH / Math.max(1, dataViewBox.height));
     const drawnW = dataViewBox.width * scale;
     const drawnH = dataViewBox.height * scale;
     const offsetX = (containerSize.width - drawnW) / 2;
@@ -213,9 +189,7 @@ export function FlowCanvas({
     };
   }, [containerSize, dataViewBox]);
   const viewTransform = viewOverride ?? fitTransform;
-  const zoomRatio = fitTransform.scale > 0
-    ? viewTransform.scale / fitTransform.scale
-    : 1;
+  const zoomRatio = fitTransform.scale > 0 ? viewTransform.scale / fitTransform.scale : 1;
 
   const zoomAt = useCallback(
     (factor: number, anchor?: { x: number; y: number }) => {
@@ -228,10 +202,7 @@ export function FlowCanvas({
         const current = currentOverride ?? fitTransform;
         const minScale = fitTransform.scale * MIN_ZOOM_RATIO;
         const maxScale = fitTransform.scale * MAX_ZOOM_RATIO;
-        const nextScale = Math.max(
-          minScale,
-          Math.min(maxScale, current.scale * factor),
-        );
+        const nextScale = Math.max(minScale, Math.min(maxScale, current.scale * factor));
         if (Math.abs(nextScale - current.scale) < 0.0001) return current;
         const dataX = (focus.x - current.x) / current.scale;
         const dataY = (focus.y - current.y) / current.scale;
@@ -259,25 +230,21 @@ export function FlowCanvas({
   );
 
   const snapPoint = useCallback(
-    (point: { x: number; y: number }) => snapEnabled
-      ? {
-          x: Math.round(point.x / GRID_SIZE) * GRID_SIZE,
-          y: Math.round(point.y / GRID_SIZE) * GRID_SIZE,
-        }
-      : point,
-    [snapEnabled],
+    (point: { x: number; y: number }) =>
+      snapEnabled
+        ? {
+            x: Math.round(point.x / gridSize) * gridSize,
+            y: Math.round(point.y / gridSize) * gridSize,
+          }
+        : point,
+    [snapEnabled, gridSize],
   );
 
   const handlePanPointerDown = useCallback(
     (event: React.PointerEvent<SVGSVGElement>) => {
       const isMiddleButton = event.button === 1;
       const isEmptyCanvas = event.button === 0 && event.target === event.currentTarget;
-      if (
-        (!isMiddleButton && !isEmptyCanvas) ||
-        link !== null ||
-        reconnect !== null
-        || bendDrag !== null
-      ) {
+      if ((!isMiddleButton && !isEmptyCanvas) || link !== null || reconnect !== null || bendDrag !== null) {
         return;
       }
 
@@ -316,43 +283,37 @@ export function FlowCanvas({
     [activeShape, bendDrag, link, reconnect, snapPoint, viewTransform],
   );
 
-  const handlePanPointerMove = useCallback(
-    (event: React.PointerEvent<SVGSVGElement>) => {
-      const pan = panRef.current;
-      if (!pan || pan.pointerId !== event.pointerId) return;
-      event.preventDefault();
-      event.stopPropagation();
-      const dx = event.clientX - pan.startClientX;
-      const dy = event.clientY - pan.startClientY;
-      if (!pan.moved && Math.hypot(dx, dy) >= 3) {
-        pan.moved = true;
-        suppressCanvasClickRef.current = true;
-      }
-      setViewOverride({
-        ...pan.startTransform,
-        x: pan.startTransform.x + dx,
-        y: pan.startTransform.y + dy,
-      });
-    },
-    [],
-  );
+  const handlePanPointerMove = useCallback((event: React.PointerEvent<SVGSVGElement>) => {
+    const pan = panRef.current;
+    if (!pan || pan.pointerId !== event.pointerId) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const dx = event.clientX - pan.startClientX;
+    const dy = event.clientY - pan.startClientY;
+    if (!pan.moved && Math.hypot(dx, dy) >= 3) {
+      pan.moved = true;
+      suppressCanvasClickRef.current = true;
+    }
+    setViewOverride({
+      ...pan.startTransform,
+      x: pan.startTransform.x + dx,
+      y: pan.startTransform.y + dy,
+    });
+  }, []);
 
-  const finishPan = useCallback(
-    (event: React.PointerEvent<SVGSVGElement>) => {
-      const pan = panRef.current;
-      if (!pan || pan.pointerId !== event.pointerId) return;
-      event.preventDefault();
-      event.stopPropagation();
-      try {
-        event.currentTarget.releasePointerCapture(event.pointerId);
-      } catch {
-        /* Pointer capture may already have been released. */
-      }
-      panRef.current = null;
-      setIsPanning(false);
-    },
-    [],
-  );
+  const finishPan = useCallback((event: React.PointerEvent<SVGSVGElement>) => {
+    const pan = panRef.current;
+    if (!pan || pan.pointerId !== event.pointerId) return;
+    event.preventDefault();
+    event.stopPropagation();
+    try {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    } catch {
+      /* Pointer capture may already have been released. */
+    }
+    panRef.current = null;
+    setIsPanning(false);
+  }, []);
 
   const handleNodeMove = useCallback(
     (id: string, position: { x: number; y: number }) => {
@@ -361,10 +322,54 @@ export function FlowCanvas({
     [onNodeMove, snapPoint],
   );
 
-  const nodesById = useMemo(
-    () => new Map(document.nodes.map((n) => [n.id, n])),
-    [document],
+  const nodesById = useMemo(() => new Map(document.nodes.map((n) => [n.id, n])), [document]);
+
+  // Resizing follows the same snap mode as moving: with snap on, the
+  // corner being dragged locks to the grid and the opposite corner
+  // stays anchored; with snap off the resize is fully free.
+  const handleNodeResize = useCallback(
+    (
+      id: string,
+      geometry: {
+        position: { x: number; y: number };
+        width: number;
+        height: number;
+      },
+    ) => {
+      if (!snapEnabled) {
+        onNodeResize(id, geometry);
+        return;
+      }
+      const node = nodesById.get(id);
+      if (!node) {
+        onNodeResize(id, geometry);
+        return;
+      }
+      const style = resolveNodeStyle(node);
+      const oldLeft = node.position.x - style.width / 2;
+      const oldRight = node.position.x + style.width / 2;
+      const oldTop = node.position.y - style.height / 2;
+      const oldBottom = node.position.y + style.height / 2;
+      const newLeft = geometry.position.x - geometry.width / 2;
+      const newRight = geometry.position.x + geometry.width / 2;
+      const newTop = geometry.position.y - geometry.height / 2;
+      const newBottom = geometry.position.y + geometry.height / 2;
+      // The anchored corner is whichever old edge did not move.
+      const left = newLeft === oldLeft ? oldLeft : snapPoint({ x: newLeft, y: 0 }).x;
+      const right = newRight === oldRight ? oldRight : snapPoint({ x: newRight, y: 0 }).x;
+      const top = newTop === oldTop ? oldTop : snapPoint({ x: 0, y: newTop }).y;
+      const bottom = newBottom === oldBottom ? oldBottom : snapPoint({ x: 0, y: newBottom }).y;
+      const width = Math.max(72, right - left);
+      const height = Math.max(72, bottom - top);
+      onNodeResize(id, {
+        position: { x: left + width / 2, y: top + height / 2 },
+        width,
+        height,
+      });
+    },
+    [nodesById, onNodeResize, snapEnabled, snapPoint],
   );
+
   const performanceMode = document.nodes.length > 20 || document.edges.length > 28;
   const visibleNodeIds = useMemo(() => {
     if (!performanceMode || !containerSize) {
@@ -379,10 +384,7 @@ export function FlowCanvas({
           const halfHeight = (style.height * viewTransform.scale) / 2;
           const x = node.position.x * viewTransform.scale + viewTransform.x;
           const y = node.position.y * viewTransform.scale + viewTransform.y;
-          return x + halfWidth >= -margin &&
-            x - halfWidth <= containerSize.width + margin &&
-            y + halfHeight >= -margin &&
-            y - halfHeight <= containerSize.height + margin;
+          return x + halfWidth >= -margin && x - halfWidth <= containerSize.width + margin && y + halfHeight >= -margin && y - halfHeight <= containerSize.height + margin;
         })
         .map((node) => node.id),
     );
@@ -405,25 +407,11 @@ export function FlowCanvas({
       const maxX = Math.max(...points.map((point) => point.x));
       const minY = Math.min(...points.map((point) => point.y));
       const maxY = Math.max(...points.map((point) => point.y));
-      return maxX >= -margin &&
-        minX <= containerSize.width + margin &&
-        maxY >= -margin &&
-        minY <= containerSize.height + margin;
+      return maxX >= -margin && minX <= containerSize.width + margin && maxY >= -margin && minY <= containerSize.height + margin;
     });
-  }, [
-    containerSize,
-    document.edges,
-    nodesById,
-    performanceMode,
-    selectedEdgeId,
-    viewTransform,
-    visibleNodeIds,
-  ]);
+  }, [containerSize, document.edges, nodesById, performanceMode, selectedEdgeId, viewTransform, visibleNodeIds]);
   const active = useMemo(() => new Set(activeNodeIds), [activeNodeIds]);
-  const runningEdges = useMemo(
-    () => runningEdgeIds === null ? null : new Set(runningEdgeIds),
-    [runningEdgeIds],
-  );
+  const runningEdges = useMemo(() => (runningEdgeIds === null ? null : new Set(runningEdgeIds)), [runningEdgeIds]);
   const selectedEdgeRoute = useMemo(() => {
     const edge = document.edges.find((item) => item.id === selectedEdgeId);
     if (!edge) return null;
@@ -494,19 +482,11 @@ export function FlowCanvas({
     if (!reconnect) return;
     const onMove = (event: PointerEvent) => {
       if (!svgRef.current) return;
-      const pointer = screenToData(
-        svgRef.current,
-        event.clientX,
-        event.clientY,
-        viewTransform,
-      );
-      setReconnect((current) => current ? { ...current, pointer } : current);
+      const pointer = screenToData(svgRef.current, event.clientX, event.clientY, viewTransform);
+      setReconnect((current) => (current ? { ...current, pointer } : current));
     };
     const onUp = (event: PointerEvent) => {
-      const target = globalThis.document.elementFromPoint(
-        event.clientX,
-        event.clientY,
-      ) as HTMLElement | null;
+      const target = globalThis.document.elementFromPoint(event.clientX, event.clientY) as HTMLElement | null;
       const port = target?.closest('[data-port]') as HTMLElement | null;
       const nodeId = port?.getAttribute('data-node-id') ?? null;
       const side = port?.getAttribute('data-side') as ConnectionSide | null;
@@ -529,17 +509,10 @@ export function FlowCanvas({
     if (!bendDrag) return;
     const onMove = (event: PointerEvent) => {
       if (!svgRef.current) return;
-      const point = snapPoint(screenToData(
-        svgRef.current,
-        event.clientX,
-        event.clientY,
-        viewTransform,
-      ));
+      const point = snapPoint(screenToData(svgRef.current, event.clientX, event.clientY, viewTransform));
       setBendDrag((current) => {
         if (!current) return current;
-        const points = current.points.map((item, index) =>
-          index === current.pointIndex ? point : item,
-        );
+        const points = current.points.map((item, index) => (index === current.pointIndex ? point : item));
         onEdgeUpdate(current.edgeId, { bendPoints: points });
         return { ...current, points };
       });
@@ -615,12 +588,7 @@ export function FlowCanvas({
     // that same pointerup, so relying on the global listener alone is racy.
     if (reconnect) {
       if (nodeId !== reconnect.fixedNodeId) {
-        onEdgeReconnect(
-          reconnect.edgeId,
-          reconnect.endpoint,
-          nodeId,
-          side,
-        );
+        onEdgeReconnect(reconnect.edgeId, reconnect.endpoint, nodeId, side);
       }
       setReconnect(null);
       return;
@@ -635,7 +603,7 @@ export function FlowCanvas({
     <div
       ref={containerRef}
       data-flowgram-canvas
-      className="relative h-full w-full overflow-hidden rounded-2xl bg-zinc-950 ring-1 ring-white/10"
+      className='relative h-full w-full overflow-hidden bg-zinc-950'
       onWheel={handleWheel}
       onPointerDown={(e) => {
         // Clicking the canvas background clears the selection. We
@@ -649,117 +617,107 @@ export function FlowCanvas({
     >
       {gridVisible && (
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          className='pointer-events-none absolute inset-0 opacity-[0.07]'
           style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)',
-            backgroundSize: `${Math.max(12, GRID_SIZE * viewTransform.scale)}px ${Math.max(12, GRID_SIZE * viewTransform.scale)}px`,
+            backgroundImage: 'linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)',
+            backgroundSize: `${Math.max(12, gridSize * viewTransform.scale)}px ${Math.max(12, gridSize * viewTransform.scale)}px`,
             backgroundPosition: `${viewTransform.x}px ${viewTransform.y}px`,
           }}
         />
       )}
 
       <div
-        className="absolute right-4 bottom-4 z-20 flex items-center overflow-hidden rounded-xl bg-zinc-900/92 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl"
-        role="group"
-        aria-label="Canvas zoom controls"
+        className='absolute right-4 bottom-4 z-20 flex items-center overflow-hidden rounded-xl bg-zinc-900/92 p-1 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl'
+        role='group'
+        aria-label='Canvas zoom controls'
       >
         <button
-          type="button"
+          type='button'
+          onClick={onToggleInfo}
+          aria-pressed={infoOpen}
+          className={['inline-flex h-10 items-center gap-1.5 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', infoOpen ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
+          aria-label={`${infoOpen ? 'Hide' : 'Show'} document info`}
+          title={`${infoOpen ? 'Hide' : 'Show'} document info`}
+        >
+          <Info size={13} /> Info
+        </button>
+        <button
+          type='button'
           onClick={() => zoomAt(1 / ZOOM_BUTTON_FACTOR)}
           disabled={zoomRatio <= MIN_ZOOM_RATIO + 0.001}
-          className="grid h-10 w-10 place-items-center transition hover:bg-white/8 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-30"
-          aria-label="Zoom out"
-          title="Zoom out"
+          className='grid h-10 w-10 place-items-center border-l border-white/8 transition hover:bg-white/8 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-30'
+          aria-label='Zoom out'
+          title='Zoom out'
         >
           <Minus size={15} />
         </button>
-        <output
-          className="grid h-10 min-w-14 place-items-center border-x border-white/8 px-2 font-mono text-[10px] font-semibold text-cyan-100"
-          aria-live="polite"
-          aria-label={`Zoom ${Math.round(zoomRatio * 100)} percent`}
-        >
+        <output className='grid h-10 min-w-14 place-items-center border-x border-white/8 px-2 font-mono text-[10px] font-semibold text-cyan-100' aria-live='polite' aria-label={`Zoom ${Math.round(zoomRatio * 100)} percent`}>
           {Math.round(zoomRatio * 100)}%
         </output>
         <button
-          type="button"
+          type='button'
           onClick={() => zoomAt(ZOOM_BUTTON_FACTOR)}
           disabled={zoomRatio >= MAX_ZOOM_RATIO - 0.001}
-          className="grid h-10 w-10 place-items-center transition hover:bg-white/8 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-30"
-          aria-label="Zoom in"
-          title="Zoom in"
+          className='grid h-10 w-10 place-items-center transition hover:bg-white/8 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-30'
+          aria-label='Zoom in'
+          title='Zoom in'
         >
           <Plus size={15} />
         </button>
         <button
-          type="button"
+          type='button'
           onClick={() => setViewOverride(null)}
-          className="inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-500 transition hover:bg-cyan-400/8 hover:text-cyan-200"
-          aria-label="Fit diagram to view"
-          title="Fit diagram to view"
+          className='inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-500 transition hover:bg-cyan-400/8 hover:text-cyan-200'
+          aria-label='Fit diagram to view'
+          title='Fit diagram to view'
         >
           <Maximize2 size={13} /> Fit
         </button>
         <button
-          type="button"
+          type='button'
           onClick={() => setSnapEnabled((enabled) => !enabled)}
           aria-pressed={snapEnabled}
-          className={[
-            'inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition',
-            snapEnabled
-              ? 'bg-cyan-400/10 text-cyan-200'
-              : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300',
-          ].join(' ')}
+          className={['inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', snapEnabled ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
           aria-label={`${snapEnabled ? 'Disable' : 'Enable'} snap to grid`}
-          title={`Snap to ${GRID_SIZE}px grid: ${snapEnabled ? 'on' : 'off'}`}
+          title={`Snap to ${gridSize}px grid: ${snapEnabled ? 'on' : 'off'}`}
         >
           <Magnet size={13} /> Snap
-          <span
-            className={[
-              'h-1.5 w-1.5 rounded-full',
-              snapEnabled
-                ? 'bg-cyan-300 shadow-[0_0_7px_rgba(103,232,249,.8)]'
-                : 'bg-zinc-700',
-            ].join(' ')}
-          />
         </button>
         <button
-          type="button"
+          type='button'
           onClick={() => setGridVisible((visible) => !visible)}
           aria-pressed={gridVisible}
-          className={[
-            'inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition',
-            gridVisible
-              ? 'bg-cyan-400/10 text-cyan-200'
-              : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300',
-          ].join(' ')}
+          className={['inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', gridVisible ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
           aria-label={`${gridVisible ? 'Hide' : 'Show'} grid`}
           title={`${gridVisible ? 'Hide' : 'Show'} grid`}
         >
           <Grid2x2 size={13} /> Grid
-          <span
-            className={[
-              'h-1.5 w-1.5 rounded-full',
-              gridVisible
-                ? 'bg-cyan-300 shadow-[0_0_7px_rgba(103,232,249,.8)]'
-                : 'bg-zinc-700',
-            ].join(' ')}
-          />
         </button>
+        <Select
+          value={String(gridSize)}
+          onValueChange={(nextValue) => {
+            const parsed = Number(nextValue);
+            if (!Number.isNaN(parsed)) setGridSize(parsed);
+          }}
+        >
+          <SelectTrigger className='inline-flex h-10 items-center gap-1 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-white/6 hover:text-cyan-200' aria-label='Grid size' title='Grid size'>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent className='border-white/10 bg-zinc-950'>
+            {GRID_SIZE_OPTIONS.map((size) => (
+              <SelectItem key={size} value={String(size)}>
+                {size}px
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       <svg
         ref={svgRef}
         viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
-        className={[
-          'relative h-full w-full touch-none',
-          activeShape !== null
-            ? 'cursor-crosshair'
-            : isPanning
-              ? 'cursor-grabbing'
-              : 'cursor-grab',
-        ].join(' ')}
-        preserveAspectRatio="none"
+        className={['relative h-full w-full touch-none', activeShape !== null ? 'cursor-crosshair' : isPanning ? 'cursor-grabbing' : 'cursor-grab'].join(' ')}
+        preserveAspectRatio='none'
         onPointerDownCapture={handlePanPointerDown}
         onPointerMoveCapture={handlePanPointerMove}
         onPointerUpCapture={finishPan}
@@ -778,178 +736,148 @@ export function FlowCanvas({
         {/* Wrapping group: maps data coords into the viewBox (= the
             container's pixel size) so the chart fills the canvas
             uniformly regardless of aspect ratio. */}
-        <g
-          transform={`translate(${viewTransform.x} ${viewTransform.y}) scale(${viewTransform.scale})`}
-        >
-        {visibleEdges.map((edge) => {
-          const from = nodesById.get(edge.from);
-          const to = nodesById.get(edge.to);
-          if (!from || !to) return null;
-          const edgeColor = edge.color ?? resolveNodeStyle(from).foreground;
-          return (
-            <AnimatedEdge
-              key={edge.id}
-              edge={edge}
-              from={from}
-              to={to}
-              paused={
-                isDragging ||
-                link !== null ||
-                reconnect !== null ||
-                bendDrag !== null ||
-                (runningEdges !== null && !runningEdges.has(edge.id))
-              }
-              interactive
-              selected={selectedEdgeId === edge.id}
-              onClick={(id) => onSelectEdge(id)}
-              color={edgeColor}
-              effectColor={edge.effectColor}
-              performanceMode={performanceMode}
-              executionState={edgeExecutionStates?.[edge.id] ?? 'normal'}
+        <g transform={`translate(${viewTransform.x} ${viewTransform.y}) scale(${viewTransform.scale})`}>
+          {visibleEdges.map((edge) => {
+            const from = nodesById.get(edge.from);
+            const to = nodesById.get(edge.to);
+            if (!from || !to) return null;
+            const edgeColor = edge.color ?? resolveNodeStyle(from).foreground;
+            return (
+              <AnimatedEdge
+                key={edge.id}
+                edge={edge}
+                from={from}
+                to={to}
+                paused={isDragging || link !== null || reconnect !== null || bendDrag !== null || (runningEdges !== null && !runningEdges.has(edge.id))}
+                interactive
+                selected={selectedEdgeId === edge.id}
+                onClick={(id) => onSelectEdge(id)}
+                color={edgeColor}
+                effectColor={edge.effectColor}
+                performanceMode={performanceMode}
+                executionState={edgeExecutionStates?.[edge.id] ?? 'normal'}
+              />
+            );
+          })}
+
+          {reconnect && selectedEdgeRoute && (
+            <ReconnectPreview fixed={reconnect.endpoint === 'from' ? selectedEdgeRoute.geometry.end : selectedEdgeRoute.geometry.start} pointer={reconnect.pointer} color={selectedEdgeRoute.color} scale={viewTransform.scale} />
+          )}
+
+          {/* Ghost edge while drawing a new link. */}
+          {link && nodesById.get(link.fromId) && (
+            <GhostEdge
+              fromX={nodesById.get(link.fromId)!.position.x}
+              fromY={nodesById.get(link.fromId)!.position.y}
+              toX={link.toX}
+              toY={link.toY}
+              fromShape={nodesById.get(link.fromId)!.shape}
+              fromSide={link.fromSide}
+              fromAnchor={nodePortAnchor(nodesById.get(link.fromId)!, link.fromSide)}
+              color={resolveNodeStyle(nodesById.get(link.fromId)!).foreground}
             />
-          );
-        })}
+          )}
 
-        {reconnect && selectedEdgeRoute && (
-          <ReconnectPreview
-            fixed={
-              reconnect.endpoint === 'from'
-                ? selectedEdgeRoute.geometry.end
-                : selectedEdgeRoute.geometry.start
-            }
-            pointer={reconnect.pointer}
-            color={selectedEdgeRoute.color}
-            scale={viewTransform.scale}
-          />
-        )}
-
-        {/* Ghost edge while drawing a new link. */}
-        {link && nodesById.get(link.fromId) && (
-          <GhostEdge
-            fromX={nodesById.get(link.fromId)!.position.x}
-            fromY={nodesById.get(link.fromId)!.position.y}
-            toX={link.toX}
-            toY={link.toY}
-            fromShape={nodesById.get(link.fromId)!.shape}
-            fromSide={
-              link.fromSide
-            }
-            fromAnchor={nodePortAnchor(
-              nodesById.get(link.fromId)!,
-              link.fromSide,
-            )}
-            color={resolveNodeStyle(nodesById.get(link.fromId)!).foreground}
-          />
-        )}
-
-        {document.nodes.filter((node) => visibleNodeIds.has(node.id)).map((node) => (
-          <FlowNodeCard
-            key={node.id}
-            node={node}
-            performanceMode={performanceMode}
-            isActive={active.has(node.id)}
-            executionState={nodeExecutionStates?.[node.id] ?? 'normal'}
-            isSelected={selectedNodeId === node.id}
-            linkTargetFromId={
-              reconnect?.fixedNodeId ?? link?.fromId ?? linkingFromId
-            }
-            viewTransform={viewTransform}
-            onSelect={onSelectNode}
-            onMove={handleNodeMove}
-            onResize={onNodeResize}
-            onDragStart={onNodeDragStart}
-            onDragEnd={onNodeDragEnd}
-            onPortPointerDown={handlePortPointerDown}
-            onPortPointerUp={handlePortPointerUp}
-            registerSvgRef={() => {
-              // We rely on the parent SVG ref for coord conversion;
-              // individual node refs aren't needed at the canvas level.
-            }}
-          />
-        ))}
-
-        {selectedEdgeRoute && (
-          <>
-            {selectedEdgeRoute.geometry.points?.slice(1, -1).map((point, index) => (
-              <BendHandle
-                key={`${selectedEdgeRoute.edge.id}-bend-${index}`}
-                index={index}
-                point={point}
-                color={selectedEdgeRoute.color}
-                scale={viewTransform.scale}
-                active={bendDrag?.pointIndex === index}
-                onPointerDown={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  const points = selectedEdgeRoute.geometry.points!.slice(1, -1);
-                  onEdgeUpdate(selectedEdgeRoute.edge.id, { bendPoints: points });
-                  setBendDrag({
-                    edgeId: selectedEdgeRoute.edge.id,
-                    pointIndex: index,
-                    points,
-                  });
-                }}
-                onDoubleClick={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  const points = selectedEdgeRoute.geometry.points!
-                    .slice(1, -1)
-                    .filter((_, pointIndex) => pointIndex !== index);
-                  onEdgeUpdate(selectedEdgeRoute.edge.id, {
-                    bendPoints: points.length ? points : undefined,
-                  });
+          {document.nodes
+            .filter((node) => visibleNodeIds.has(node.id))
+            .map((node) => (
+              <FlowNodeCard
+                key={node.id}
+                node={node}
+                performanceMode={performanceMode}
+                isActive={active.has(node.id)}
+                executionState={nodeExecutionStates?.[node.id] ?? 'normal'}
+                isSelected={selectedNodeId === node.id}
+                linkTargetFromId={reconnect?.fixedNodeId ?? link?.fromId ?? linkingFromId}
+                viewTransform={viewTransform}
+                onSelect={onSelectNode}
+                onMove={handleNodeMove}
+                onResize={handleNodeResize}
+                onDragStart={onNodeDragStart}
+                onDragEnd={onNodeDragEnd}
+                onPortPointerDown={handlePortPointerDown}
+                onPortPointerUp={handlePortPointerUp}
+                registerSvgRef={() => {
+                  // We rely on the parent SVG ref for coord conversion;
+                  // individual node refs aren't needed at the canvas level.
                 }}
               />
             ))}
-            <EndpointHandle
-              label="A"
-              point={selectedEdgeRoute.geometry.start}
-              color={selectedEdgeRoute.color}
-              scale={viewTransform.scale}
-              active={reconnect?.endpoint === 'from'}
-              onPointerDown={(event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                setReconnect({
-                  edgeId: selectedEdgeRoute.edge.id,
-                  endpoint: 'from',
-                  fixedNodeId: selectedEdgeRoute.edge.to,
-                  pointer: selectedEdgeRoute.geometry.start,
-                });
-              }}
-            />
-            <EndpointHandle
-              label="B"
-              point={selectedEdgeRoute.geometry.end}
-              color={selectedEdgeRoute.color}
-              scale={viewTransform.scale}
-              active={reconnect?.endpoint === 'to'}
-              onPointerDown={(event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                setReconnect({
-                  edgeId: selectedEdgeRoute.edge.id,
-                  endpoint: 'to',
-                  fixedNodeId: selectedEdgeRoute.edge.from,
-                  pointer: selectedEdgeRoute.geometry.end,
-                });
-              }}
-            />
-          </>
-        )}
 
-        {/* Figma-style shape-draw preview. The preview uses the same
+          {selectedEdgeRoute && (
+            <>
+              {selectedEdgeRoute.geometry.points?.slice(1, -1).map((point, index) => (
+                <BendHandle
+                  key={`${selectedEdgeRoute.edge.id}-bend-${index}`}
+                  index={index}
+                  point={point}
+                  color={selectedEdgeRoute.color}
+                  scale={viewTransform.scale}
+                  active={bendDrag?.pointIndex === index}
+                  onPointerDown={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const points = selectedEdgeRoute.geometry.points!.slice(1, -1);
+                    onEdgeUpdate(selectedEdgeRoute.edge.id, { bendPoints: points });
+                    setBendDrag({
+                      edgeId: selectedEdgeRoute.edge.id,
+                      pointIndex: index,
+                      points,
+                    });
+                  }}
+                  onDoubleClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    const points = selectedEdgeRoute.geometry.points!.slice(1, -1).filter((_, pointIndex) => pointIndex !== index);
+                    onEdgeUpdate(selectedEdgeRoute.edge.id, {
+                      bendPoints: points.length ? points : undefined,
+                    });
+                  }}
+                />
+              ))}
+              <EndpointHandle
+                label='A'
+                point={selectedEdgeRoute.geometry.start}
+                color={selectedEdgeRoute.color}
+                scale={viewTransform.scale}
+                active={reconnect?.endpoint === 'from'}
+                onPointerDown={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setReconnect({
+                    edgeId: selectedEdgeRoute.edge.id,
+                    endpoint: 'from',
+                    fixedNodeId: selectedEdgeRoute.edge.to,
+                    pointer: selectedEdgeRoute.geometry.start,
+                  });
+                }}
+              />
+              <EndpointHandle
+                label='B'
+                point={selectedEdgeRoute.geometry.end}
+                color={selectedEdgeRoute.color}
+                scale={viewTransform.scale}
+                active={reconnect?.endpoint === 'to'}
+                onPointerDown={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setReconnect({
+                    edgeId: selectedEdgeRoute.edge.id,
+                    endpoint: 'to',
+                    fixedNodeId: selectedEdgeRoute.edge.from,
+                    pointer: selectedEdgeRoute.geometry.end,
+                  });
+                }}
+              />
+            </>
+          )}
+
+          {/* Figma-style shape-draw preview. The preview uses the same
             SHAPES path table as the final node so the user sees the
             exact silhouette they will get. We render the silhouette
             scaled to the drag rectangle, with a cyan dashed stroke
             and a translucent fill — Figma's draw affordance. */}
-        {activeShape && drawStart && drawCurrent && (
-          <DrawPreview
-            shape={activeShape}
-            start={drawStart}
-            current={drawCurrent}
-          />
-        )}
+          {activeShape && drawStart && drawCurrent && <DrawPreview shape={activeShape} start={drawStart} current={drawCurrent} />}
         </g>
       </svg>
     </div>
@@ -976,110 +904,35 @@ function BendHandle({
   const safeScale = Math.max(0.08, scale);
   const size = 9 / safeScale;
   return (
-    <g
-      transform={`translate(${point.x} ${point.y})`}
-      className="cursor-move"
-      pointerEvents="all"
-      onPointerDown={onPointerDown}
-      onDoubleClick={onDoubleClick}
-      role="button"
-      aria-label={`Move bend point ${index + 1}`}
-    >
-      <circle r={20 / safeScale} fill="transparent" />
-      <rect
-        x={-size}
-        y={-size}
-        width={size * 2}
-        height={size * 2}
-        rx={3 / safeScale}
-        fill={active ? color : '#09090b'}
-        stroke={color}
-        strokeWidth={2 / safeScale}
-        transform="rotate(45)"
-      />
+    <g transform={`translate(${point.x} ${point.y})`} className='cursor-move' pointerEvents='all' onPointerDown={onPointerDown} onDoubleClick={onDoubleClick} role='button' aria-label={`Move bend point ${index + 1}`}>
+      <circle r={20 / safeScale} fill='transparent' />
+      <rect x={-size} y={-size} width={size * 2} height={size * 2} rx={3 / safeScale} fill={active ? color : '#09090b'} stroke={color} strokeWidth={2 / safeScale} transform='rotate(45)' />
       <circle r={2.25 / safeScale} fill={active ? '#09090b' : color} />
     </g>
   );
 }
 
-function EndpointHandle({
-  label,
-  point,
-  color,
-  scale,
-  active,
-  onPointerDown,
-}: {
-  label: 'A' | 'B';
-  point: { x: number; y: number };
-  color: string;
-  scale: number;
-  active: boolean;
-  onPointerDown: (event: React.PointerEvent<SVGGElement>) => void;
-}) {
+function EndpointHandle({ label, point, color, scale, active, onPointerDown }: { label: 'A' | 'B'; point: { x: number; y: number }; color: string; scale: number; active: boolean; onPointerDown: (event: React.PointerEvent<SVGGElement>) => void }) {
   const safeScale = Math.max(0.08, scale);
   const radius = 11 / safeScale;
   return (
-    <g
-      transform={`translate(${point.x} ${point.y})`}
-      className="cursor-grab active:cursor-grabbing"
-      pointerEvents="all"
-      onPointerDown={onPointerDown}
-      role="button"
-      aria-label={`Reconnect endpoint ${label}`}
-    >
-      <circle r={20 / safeScale} fill="transparent" />
-      <circle
-        r={radius + (active ? 3 : 0) / safeScale}
-        fill="#09090b"
-        stroke={color}
-        strokeWidth={2 / safeScale}
-      />
+    <g transform={`translate(${point.x} ${point.y})`} className='cursor-grab active:cursor-grabbing' pointerEvents='all' onPointerDown={onPointerDown} role='button' aria-label={`Reconnect endpoint ${label}`}>
+      <circle r={20 / safeScale} fill='transparent' />
+      <circle r={radius + (active ? 3 : 0) / safeScale} fill='#09090b' stroke={color} strokeWidth={2 / safeScale} />
       <circle r={radius * 0.62} fill={color} opacity={active ? 0.34 : 0.18} />
-      <text
-        textAnchor="middle"
-        dominantBaseline="central"
-        fill="#ffffff"
-        fontSize={9 / safeScale}
-        fontWeight={800}
-        fontFamily="var(--font-geist-mono), ui-monospace, monospace"
-        pointerEvents="none"
-      >
+      <text textAnchor='middle' dominantBaseline='central' fill='#ffffff' fontSize={9 / safeScale} fontWeight={800} fontFamily='var(--font-geist-mono), ui-monospace, monospace' pointerEvents='none'>
         {label}
       </text>
     </g>
   );
 }
 
-function ReconnectPreview({
-  fixed,
-  pointer,
-  color,
-  scale,
-}: {
-  fixed: { x: number; y: number };
-  pointer: { x: number; y: number };
-  color: string;
-  scale: number;
-}) {
+function ReconnectPreview({ fixed, pointer, color, scale }: { fixed: { x: number; y: number }; pointer: { x: number; y: number }; color: string; scale: number }) {
   const safeScale = Math.max(0.08, scale);
   return (
-    <g pointerEvents="none" style={{ color }}>
-      <path
-        d={`M ${fixed.x} ${fixed.y} L ${pointer.x} ${pointer.y}`}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={2 / safeScale}
-        strokeDasharray={`${7 / safeScale} ${7 / safeScale}`}
-        strokeLinecap="round"
-        opacity={0.92}
-      />
-      <circle
-        cx={pointer.x}
-        cy={pointer.y}
-        r={6 / safeScale}
-        fill="currentColor"
-      />
+    <g pointerEvents='none' style={{ color }}>
+      <path d={`M ${fixed.x} ${fixed.y} L ${pointer.x} ${pointer.y}`} fill='none' stroke='currentColor' strokeWidth={2 / safeScale} strokeDasharray={`${7 / safeScale} ${7 / safeScale}`} strokeLinecap='round' opacity={0.92} />
+      <circle cx={pointer.x} cy={pointer.y} r={6 / safeScale} fill='currentColor' />
     </g>
   );
 }
@@ -1091,15 +944,7 @@ function ReconnectPreview({
  * get. The `ellipse` shape isn't path-based — it has to be drawn
  * with the SVG <ellipse> primitive.
  */
-function DrawPreview({
-  shape,
-  start,
-  current,
-}: {
-  shape: NodeShape;
-  start: { x: number; y: number };
-  current: { x: number; y: number };
-}) {
+function DrawPreview({ shape, start, current }: { shape: NodeShape; start: { x: number; y: number }; current: { x: number; y: number } }) {
   const minX = Math.min(start.x, current.x);
   const minY = Math.min(start.y, current.y);
   const maxX = Math.max(start.x, current.x);
@@ -1115,27 +960,18 @@ function DrawPreview({
   const spec = SHAPES[shape];
 
   return (
-    <g transform={`translate(${cx} ${cy}) scale(${scaleX} ${scaleY})`} pointerEvents="none">
+    <g transform={`translate(${cx} ${cy}) scale(${scaleX} ${scaleY})`} pointerEvents='none'>
       {shape === 'ellipse' ? (
-        <ellipse
-          cx={0}
-          cy={0}
-          rx={56}
-          ry={36}
-          fill="rgba(34, 211, 238, 0.12)"
-          stroke="#22d3ee"
-          strokeWidth={2 / Math.max(scaleX, scaleY)}
-          strokeDasharray={`${8 / Math.max(scaleX, scaleY)} ${6 / Math.max(scaleX, scaleY)}`}
-        />
+        <ellipse cx={0} cy={0} rx={56} ry={36} fill='rgba(34, 211, 238, 0.12)' stroke='#22d3ee' strokeWidth={2 / Math.max(scaleX, scaleY)} strokeDasharray={`${8 / Math.max(scaleX, scaleY)} ${6 / Math.max(scaleX, scaleY)}`} />
       ) : (
         <path
           d={spec.d}
-          fill="rgba(34, 211, 238, 0.12)"
-          stroke="#22d3ee"
+          fill='rgba(34, 211, 238, 0.12)'
+          stroke='#22d3ee'
           strokeWidth={2 / Math.max(scaleX, scaleY)}
           strokeDasharray={`${8 / Math.max(scaleX, scaleY)} ${6 / Math.max(scaleX, scaleY)}`}
-          strokeLinejoin="round"
-          vectorEffect="non-scaling-stroke"
+          strokeLinejoin='round'
+          vectorEffect='non-scaling-stroke'
         />
       )}
     </g>
@@ -1151,26 +987,10 @@ function computeDataViewBox(doc: FlowDocumentJSON) {
     return { x: 0, y: 0, width: 800, height: 480 };
   }
   const PAD = 120;
-  const minX = Math.min(
-    ...doc.nodes.map((node) =>
-      node.position.x - Math.max(node.width ?? 112, node.height ?? 112) / 2,
-    ),
-  ) - PAD;
-  const minY = Math.min(
-    ...doc.nodes.map((node) =>
-      node.position.y - Math.max(node.width ?? 112, node.height ?? 112) / 2,
-    ),
-  ) - PAD;
-  const maxX = Math.max(
-    ...doc.nodes.map((node) =>
-      node.position.x + Math.max(node.width ?? 112, node.height ?? 112) / 2,
-    ),
-  ) + PAD;
-  const maxY = Math.max(
-    ...doc.nodes.map((node) =>
-      node.position.y + Math.max(node.width ?? 112, node.height ?? 112) / 2,
-    ),
-  ) + PAD;
+  const minX = Math.min(...doc.nodes.map((node) => node.position.x - Math.max(node.width ?? 112, node.height ?? 112) / 2)) - PAD;
+  const minY = Math.min(...doc.nodes.map((node) => node.position.y - Math.max(node.width ?? 112, node.height ?? 112) / 2)) - PAD;
+  const maxX = Math.max(...doc.nodes.map((node) => node.position.x + Math.max(node.width ?? 112, node.height ?? 112) / 2)) + PAD;
+  const maxY = Math.max(...doc.nodes.map((node) => node.position.y + Math.max(node.width ?? 112, node.height ?? 112) / 2)) + PAD;
   return {
     x: minX,
     y: minY,

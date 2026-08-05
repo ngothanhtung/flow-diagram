@@ -1,15 +1,8 @@
 'use client';
 
-import type {
-  EdgeMarker,
-  ExecutionState,
-  FlowEdge,
-  FlowNode,
-} from '@/lib/flowchart-types';
+import type { EdgeMarker, ExecutionState, FlowEdge, FlowNode } from '@/lib/flowchart-types';
 import { EDGE_DRAW_DURATION_MS } from '@/lib/execution-timing';
-import {
-  buildEdgeGeometry,
-} from './edge-geometry';
+import { buildEdgeGeometry } from './edge-geometry';
 import { EdgeEffectLayer } from './edge-effect-layer';
 import { EdgeMarkerSymbol } from './edge-marker';
 
@@ -36,20 +29,7 @@ interface AnimatedEdgeProps {
   executionState?: ExecutionState;
 }
 
-export function AnimatedEdge({
-  edge,
-  from,
-  to,
-  paused = false,
-  interactive = false,
-  onClick,
-  selected = false,
-  tone = 'text-sky-300',
-  color,
-  effectColor,
-  performanceMode = false,
-  executionState = 'normal',
-}: AnimatedEdgeProps) {
+export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal' }: AnimatedEdgeProps) {
   const geometry = buildEdgeGeometry(edge, from, to);
   const { d, mid, start, end, startAngle, angle, length } = geometry;
   const effect = edge.effect ?? 'flow';
@@ -69,92 +49,67 @@ export function AnimatedEdge({
         animationPlayState: paused ? 'paused' : 'running',
       } as React.CSSProperties)
     : undefined;
-  const labelWidth = edge.label
-    ? Math.max(44, Math.min(180, edge.label.length * 7 + 24))
-    : 44;
+  const labelWidth = edge.label ? Math.max(44, Math.min(180, edge.label.length * 7 + 24)) : 44;
+  // Where the label pill anchors along the line. "left"/"right" sit at
+  // the quarter/three-quarter marks between the endpoints; "top"/"bottom"
+  // offset from the midpoint so the pill clears the line itself.
+  const labelPosition = edge.labelPosition ?? 'center';
+  const labelAnchor =
+    labelPosition === 'left'
+      ? { x: (start.x + mid.x) / 2, y: (start.y + mid.y) / 2 }
+      : labelPosition === 'right'
+        ? { x: (mid.x + end.x) / 2, y: (mid.y + end.y) / 2 }
+        : labelPosition === 'top'
+          ? { x: mid.x, y: mid.y - 26 }
+          : labelPosition === 'bottom'
+            ? { x: mid.x, y: mid.y + 26 }
+            : mid;
   // The arrowhead rides at the silhouette — its offset from the
   // destination's centre is the length of the in-anchor plus a small
   // gap so the arrow doesn't overlap the port dot.
   return (
-    <g
-      className={tone}
-      opacity={lowPower ? 0.42 : executionState === 'completed' ? 0.72 : 1}
-      style={{ color: lowPower && !selected ? '#52525b' : color }}
-    >
+    <g className={tone} opacity={lowPower ? 0.42 : executionState === 'completed' ? 0.72 : 1} style={{ color: lowPower && !selected ? '#52525b' : color }}>
       {selected && (
         <path
           d={d}
           pathLength={isDrawing ? 1 : undefined}
-          stroke="currentColor"
+          stroke='currentColor'
           strokeWidth={lineWidth + 6}
           strokeOpacity={0.12}
-          strokeLinecap="round"
-          fill="none"
-          pointerEvents="none"
+          strokeLinecap='round'
+          fill='none'
+          pointerEvents='none'
           className={isDrawing ? 'edge-power-draw' : undefined}
           style={drawStyle}
         />
       )}
-      <path
-        d={d}
-        pathLength={isDrawing ? 1 : undefined}
-        stroke="currentColor"
-        strokeWidth={selected ? lineWidth + 2 : lineWidth}
-        strokeOpacity={selected ? 0.82 : 0.52}
-        fill="none"
-        className={isDrawing ? 'edge-power-draw' : undefined}
-        style={drawStyle}
-      />
+      <path d={d} pathLength={isDrawing ? 1 : undefined} stroke='currentColor' strokeWidth={selected ? lineWidth + 2 : lineWidth} strokeOpacity={selected ? 0.82 : 0.52} fill='none' className={isDrawing ? 'edge-power-draw' : undefined} style={drawStyle} />
 
-      <g
-        opacity={showEffect ? 1 : 0}
-        className={isDrawing ? 'edge-after-draw' : undefined}
-        style={effectColor ? { ...drawStyle, color: effectColor } : drawStyle}
-      >
-      <EdgeEffectLayer
-        d={d}
-        effect={effect}
-        direction={direction}
-        length={length}
-        lineWidth={lineWidth}
-        effectSize={effectSize}
-        speed={speed}
-        paused={paused}
-        performanceMode={performanceMode || lowPower}
-        isDrawing={isDrawing}
-        drawDuration={drawDuration}
-      />
+      <g opacity={showEffect ? 1 : 0} className={isDrawing ? 'edge-after-draw' : undefined} style={effectColor ? { ...drawStyle, color: effectColor } : drawStyle}>
+        <EdgeEffectLayer
+          d={d}
+          effect={effect}
+          direction={direction}
+          length={length}
+          lineWidth={lineWidth}
+          effectSize={effectSize}
+          speed={speed}
+          paused={paused}
+          performanceMode={performanceMode || lowPower}
+          isDrawing={isDrawing}
+          drawDuration={drawDuration}
+        />
       </g>
 
-      <g
-        className={isDrawing ? 'edge-after-draw' : undefined}
-        style={drawStyle}
-      >
+      <g className={isDrawing ? 'edge-after-draw' : undefined} style={drawStyle}>
         <EdgeMarkerShape marker={startMarker} x={start.x} y={start.y} angle={startAngle} />
         <EdgeMarkerShape marker={endMarker} x={end.x} y={end.y} angle={angle} />
       </g>
 
       {edge.label && (
-        <g
-          transform={`translate(${mid.x} ${mid.y})`}
-          pointerEvents="none"
-          className={isDrawing ? 'edge-after-draw' : undefined}
-          style={drawStyle}
-        >
-          <rect
-            x={-labelWidth / 2}
-            y={-12}
-            width={labelWidth}
-            height={24}
-            rx={12}
-            className="fill-zinc-900 dark:fill-zinc-100"
-            opacity={0.9}
-          />
-          <text
-            textAnchor="middle"
-            dominantBaseline="central"
-            className="fill-white dark:fill-zinc-900 text-[11px] font-semibold uppercase tracking-wider"
-          >
+        <g transform={`translate(${labelAnchor.x} ${labelAnchor.y})`} pointerEvents='none' className={isDrawing ? 'edge-after-draw' : undefined} style={drawStyle}>
+          <rect x={-labelWidth / 2} y={-12} width={labelWidth} height={24} rx={12} className='fill-zinc-900 dark:fill-zinc-100' opacity={0.9} />
+          <text textAnchor='middle' dominantBaseline='central' className='fill-white dark:fill-zinc-900 text-[11px] font-semibold uppercase tracking-wider'>
             {edge.label}
           </text>
         </g>
@@ -163,10 +118,10 @@ export function AnimatedEdge({
       {interactive && (
         <path
           d={d}
-          stroke="transparent"
+          stroke='transparent'
           strokeWidth={16}
-          fill="none"
-          className="cursor-pointer"
+          fill='none'
+          className='cursor-pointer'
           onClick={(e) => {
             e.stopPropagation();
             onClick?.(edge.id);
@@ -177,23 +132,10 @@ export function AnimatedEdge({
   );
 }
 
-function EdgeMarkerShape({
-  marker,
-  x,
-  y,
-  angle,
-}: {
-  marker: EdgeMarker;
-  x: number;
-  y: number;
-  angle: number;
-}) {
+function EdgeMarkerShape({ marker, x, y, angle }: { marker: EdgeMarker; x: number; y: number; angle: number }) {
   if (marker === 'none') return null;
   return (
-    <g
-      transform={`translate(${x} ${y}) rotate(${angle})`}
-      pointerEvents="none"
-    >
+    <g transform={`translate(${x} ${y}) rotate(${angle})`} pointerEvents='none'>
       <EdgeMarkerSymbol marker={marker} />
     </g>
   );

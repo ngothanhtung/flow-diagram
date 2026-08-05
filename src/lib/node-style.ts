@@ -54,14 +54,7 @@ import {
   IconWorld,
 } from '@tabler/icons-react';
 import type { ComponentType } from 'react';
-import type {
-  ConnectionSide,
-  FlowNode,
-  NodeColor,
-  NodeIcon,
-  NodeShape,
-  NodeType,
-} from './flowchart-types';
+import type { ConnectionSide, FlowNode, NodeColor, NodeIcon, NodeShape, NodeType } from './flowchart-types';
 
 export type { NodeColor, NodeIcon, NodeShape } from './flowchart-types';
 
@@ -288,8 +281,10 @@ export const SHAPES: Record<NodeShape, ShapeSpec> = {
   folder: {
     d: `M ${-R} -36 H -18 L -8 -52 H 23 L 31 -36 H ${R} V ${R} H ${-R} Z`,
     anchors: {
-      top: { x: 8, y: -52 }, right: { x: R, y: 10 },
-      bottom: { x: 0, y: R }, left: { x: -R, y: 10 },
+      top: { x: 8, y: -52 },
+      right: { x: R, y: 10 },
+      bottom: { x: 0, y: R },
+      left: { x: -R, y: 10 },
     },
     label: 'Folder',
   },
@@ -301,16 +296,20 @@ export const SHAPES: Record<NodeShape, ShapeSpec> = {
   triangle: {
     d: `M 0 ${-R} L ${R} ${R} H ${-R} Z`,
     anchors: {
-      top: { x: 0, y: -R }, right: { x: 28, y: 0 },
-      bottom: { x: 0, y: R }, left: { x: -28, y: 0 },
+      top: { x: 0, y: -R },
+      right: { x: 28, y: 0 },
+      bottom: { x: 0, y: R },
+      left: { x: -28, y: 0 },
     },
     label: 'Triangle',
   },
   'triangle-down': {
     d: `M ${-R} ${-R} H ${R} L 0 ${R} Z`,
     anchors: {
-      top: { x: 0, y: -R }, right: { x: 28, y: 0 },
-      bottom: { x: 0, y: R }, left: { x: -28, y: 0 },
+      top: { x: 0, y: -R },
+      right: { x: 28, y: 0 },
+      bottom: { x: 0, y: R },
+      left: { x: -28, y: 0 },
     },
     label: 'Triangle Down',
   },
@@ -327,24 +326,30 @@ export const SHAPES: Record<NodeShape, ShapeSpec> = {
   'multi-document': {
     d: `M ${-R} -44 H 44 V 42 C 22 29, -22 55, ${-R} 42 Z`,
     anchors: {
-      top: { x: -6, y: -44 }, right: { x: 44, y: 0 },
-      bottom: { x: 0, y: 48 }, left: { x: -R, y: 0 },
+      top: { x: -6, y: -44 },
+      right: { x: 44, y: 0 },
+      bottom: { x: 0, y: 48 },
+      left: { x: -R, y: 0 },
     },
     label: 'Multiple Documents',
   },
   'manual-input': {
     d: `M ${-R} -34 L ${R} ${-R} V ${R} H ${-R} Z`,
     anchors: {
-      top: { x: 0, y: -45 }, right: { x: R, y: 0 },
-      bottom: { x: 0, y: R }, left: { x: -R, y: 10 },
+      top: { x: 0, y: -45 },
+      right: { x: R, y: 0 },
+      bottom: { x: 0, y: R },
+      left: { x: -R, y: 10 },
     },
     label: 'Manual Input',
   },
   delay: {
     d: `M -38 ${-R} H 27 C 66 ${-R}, 66 ${R}, 27 ${R} H -38 C -62 ${R}, -62 ${-R}, -38 ${-R} Z`,
     anchors: {
-      top: { x: 0, y: -R }, right: { x: R, y: 0 },
-      bottom: { x: 0, y: R }, left: { x: -50, y: 0 },
+      top: { x: 0, y: -R },
+      right: { x: R, y: 0 },
+      bottom: { x: 0, y: R },
+      left: { x: -50, y: 0 },
     },
     label: 'Delay',
   },
@@ -403,8 +408,10 @@ export const SHAPES: Record<NodeShape, ShapeSpec> = {
   'speech-bubble': {
     d: `M -40 -46 H 40 Q ${R} -46 ${R} -30 V 22 Q ${R} 40 38 40 H 5 L -18 ${R} L -13 40 H -40 Q ${-R} 40 ${-R} 22 V -30 Q ${-R} -46 -40 -46 Z`,
     anchors: {
-      top: { x: 0, y: -46 }, right: { x: R, y: 0 },
-      bottom: { x: -8, y: R }, left: { x: -R, y: 0 },
+      top: { x: 0, y: -46 },
+      right: { x: R, y: 0 },
+      bottom: { x: -8, y: R },
+      left: { x: -R, y: 0 },
     },
     label: 'Speech Bubble',
   },
@@ -419,11 +426,7 @@ export const SHAPES: Record<NodeShape, ShapeSpec> = {
  * rounded-rect path directly from the node's real width/height keeps the
  * corner radius constant on both axes instead.
  */
-export function nodeOutline(
-  shape: NodeShape,
-  width: number,
-  height: number,
-): { d: string; transform: string } {
+export function nodeOutline(shape: NodeShape, width: number, height: number): { d: string; transform: string } {
   if (shape === 'rounded') {
     const hw = width / 2;
     const hh = height / 2;
@@ -652,6 +655,9 @@ export const LEGACY_ICONS: Record<string, NodeIconComponent> = {
 
 // --- Defaults from `type` -------------------------------------------------
 
+/** Default text / icon and border color for nodes without an explicit color. */
+export const DEFAULT_FOREGROUND = '#ffffff';
+
 const DEFAULT_BY_TYPE: Record<NodeType, { shape: NodeShape; color: NodeColor; icon: NodeIcon }> = {
   start: { shape: 'circle', color: 'sky', icon: 'flag' },
   process: { shape: 'circle', color: 'indigo', icon: 'cog' },
@@ -701,22 +707,14 @@ export interface ResolvedNodeStyle {
 export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
   const shape: NodeShape = node.shape ?? DEFAULT_BY_TYPE[node.type].shape;
   const fallbackColor = DEFAULT_BY_TYPE[node.type].color;
-  const paletteColor =
-    node.color && node.color in COLORS ? (node.color as NodeColor) : fallbackColor;
+  const paletteColor = node.color && node.color in COLORS ? (node.color as NodeColor) : fallbackColor;
   const color: NodeColor = paletteColor;
-  const icon: NodeIcon | null = node.icon === null
-    ? null
-    : (node.icon ?? DEFAULT_BY_TYPE[node.type].icon);
+  const icon: NodeIcon | null = node.icon === null ? null : (node.icon ?? DEFAULT_BY_TYPE[node.type].icon);
   const shapeSpec = SHAPES[shape];
   const colorSpec = COLORS[color];
-  const foreground =
-    node.color?.startsWith('#') ? (node.color as `#${string}`) : colorSpec.foreground;
+  const foreground = node.color?.startsWith('#') ? (node.color as `#${string}`) : DEFAULT_FOREGROUND;
   const background = node.backgroundColor ?? colorSpec.background;
-  const borderColor = node.borderColor?.startsWith('#')
-    ? (node.borderColor as `#${string}`)
-    : node.borderColor && node.borderColor in COLORS
-      ? COLORS[node.borderColor as NodeColor].foreground
-      : foreground;
+  const borderColor = node.borderColor?.startsWith('#') ? (node.borderColor as `#${string}`) : node.borderColor && node.borderColor in COLORS ? COLORS[node.borderColor as NodeColor].foreground : foreground;
   const bodyClass = `bg-linear-to-br ${colorSpec.gradient} ring-1 ring-${colorSpec.ring} text-${colorSpec.text}`;
   return {
     shape,

@@ -6,12 +6,7 @@ import { screenToData } from '@/lib/coords';
 import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
-import type {
-  ConnectionSide,
-  ExecutionState,
-  FlowNode,
-  NodeShape,
-} from '@/lib/flowchart-types';
+import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
 import { nodeOutline, resolveNodeStyle } from '@/lib/node-style';
 import type { ViewTransform } from '@/lib/view-transform';
 import { NODE_BOUNDING_RADIUS } from './edge-geometry';
@@ -46,16 +41,8 @@ interface FlowNodeCardProps {
   ) => void;
   onDragStart: (id: string) => void;
   onDragEnd: () => void;
-  onPortPointerDown: (
-    nodeId: string,
-    side: ConnectionSide,
-    e: React.PointerEvent<SVGElement>,
-  ) => void;
-  onPortPointerUp: (
-    nodeId: string,
-    side: ConnectionSide,
-    e: React.PointerEvent<SVGElement>,
-  ) => void;
+  onPortPointerDown: (nodeId: string, side: ConnectionSide, e: React.PointerEvent<SVGElement>) => void;
+  onPortPointerUp: (nodeId: string, side: ConnectionSide, e: React.PointerEvent<SVGElement>) => void;
   registerSvgRef: (el: SVGGElement | null) => void;
 }
 
@@ -102,13 +89,13 @@ function ShapeDecoration({ shape, color }: { shape: NodeShape; color: string }) 
     case 'database':
       return (
         <>
-          <path d="M -56 -34 C -56 -19 56 -19 56 -34" {...common} />
+          <path d='M -56 -34 C -56 -19 56 -19 56 -34' {...common} />
         </>
       );
     case 'server':
       return (
         <>
-          <path d="M -56 -19 H 56 M -56 19 H 56" {...common} />
+          <path d='M -56 -19 H 56 M -56 19 H 56' {...common} />
           {[-37, -29, 29, 37].map((x) => (
             <circle key={x} cx={x} cy={-37} r={2.3} fill={color} opacity={0.5} />
           ))}
@@ -120,9 +107,9 @@ function ShapeDecoration({ shape, color }: { shape: NodeShape; color: string }) 
     case 'queue':
       return (
         <>
-          <path d="M -56 -46 H 46 V 56" {...common} />
-          <path d="M -46 -46 H 46 V 46 H -46 Z" {...common} />
-          <path d="M -34 -16 H 34 M -34 0 H 34 M -34 16 H 34" {...common} />
+          <path d='M -56 -46 H 46 V 56' {...common} />
+          <path d='M -46 -46 H 46 V 46 H -46 Z' {...common} />
+          <path d='M -34 -16 H 34 M -34 0 H 34 M -34 16 H 34' {...common} />
         </>
       );
     case 'component':
@@ -130,28 +117,28 @@ function ShapeDecoration({ shape, color }: { shape: NodeShape; color: string }) 
         <>
           <rect x={-46} y={-19} width={20} height={11} rx={1.5} {...common} />
           <rect x={-46} y={8} width={20} height={11} rx={1.5} {...common} />
-          <path d="M -21 -14 H -11 M -21 14 H -11" {...common} />
+          <path d='M -21 -14 H -11 M -21 14 H -11' {...common} />
         </>
       );
     case 'predefined-process':
-      return <path d="M -38 -56 V 56 M 38 -56 V 56" {...common} />;
+      return <path d='M -38 -56 V 56 M 38 -56 V 56' {...common} />;
     case 'internal-storage':
-      return <path d="M -38 -56 V 56 M -56 -37 H 56" {...common} />;
+      return <path d='M -38 -56 V 56 M -56 -37 H 56' {...common} />;
     case 'note':
-      return <path d="M 23 -56 V -23 H 56" {...common} />;
+      return <path d='M 23 -56 V -23 H 56' {...common} />;
     case 'multi-document':
       return (
         <>
-          <path d="M -44 -56 H 56 V 28 C 28 14 -14 42 -44 30" {...common} />
-          <path d="M -50 -50 H 50" {...common} />
+          <path d='M -44 -56 H 56 V 28 C 28 14 -14 42 -44 30' {...common} />
+          <path d='M -50 -50 H 50' {...common} />
         </>
       );
     case 'delay':
-      return <path d="M 27 -56 C 6 -42 6 42 27 56" {...common} />;
+      return <path d='M 27 -56 C 6 -42 6 42 27 56' {...common} />;
     case 'circle-x':
-      return <path d="M -34 -34 L 34 34 M 34 -34 L -34 34" {...common} />;
+      return <path d='M -34 -34 L 34 34 M 34 -34 L -34 34' {...common} />;
     case 'circle-plus':
-      return <path d="M 0 -40 V 40 M -40 0 H 40" {...common} />;
+      return <path d='M 0 -40 V 40 M -40 0 H 40' {...common} />;
     default:
       return null;
   }
@@ -182,26 +169,7 @@ export function FlowNodeCard({
 }: FlowNodeCardProps) {
   const style = resolveNodeStyle(node);
   const Icon = useResolvedIcon(style.icon);
-  const {
-    shapeSpec,
-    foreground,
-    background,
-    borderColor,
-    width,
-    height,
-    rotation,
-    borderWidth,
-    borderStyle,
-    opacity,
-    shadow,
-    iconSize,
-    iconPosition,
-    fontSize,
-    fontFamily,
-    fontWeight,
-    textAlign,
-    portSize,
-  } = style;
+  const { shapeSpec, foreground, background, borderColor, width, height, rotation, borderWidth, borderStyle, opacity, shadow, iconSize, iconPosition, fontSize, fontFamily, fontWeight, textAlign, portSize } = style;
   const scaleX = width / BASE_SIZE;
   const scaleY = height / BASE_SIZE;
   const outline = nodeOutline(style.shape, width, height);
@@ -214,35 +182,22 @@ export function FlowNodeCard({
       },
     ]),
   ) as Record<ConnectionSide, { x: number; y: number }>;
-  const dashArray =
-    borderStyle === 'dashed'
-      ? `${borderWidth * 5} ${borderWidth * 3}`
-      : borderStyle === 'dotted'
-        ? `${borderWidth} ${borderWidth * 2.5}`
-        : undefined;
+  const dashArray = borderStyle === 'dashed' ? `${borderWidth * 5} ${borderWidth * 3}` : borderStyle === 'dotted' ? `${borderWidth} ${borderWidth * 2.5}` : undefined;
   const neonFaint = borderColor.length === 7 ? `${borderColor}38` : borderColor;
   const neonSoft = borderColor.length === 7 ? `${borderColor}70` : borderColor;
   const neonIntensity = shadow === 'glow' ? 0.42 : shadow === 'soft' ? 0.24 : 0.12;
-  const filter =
-    performanceMode
-      ? shadow === 'none'
-        ? undefined
-        : 'drop-shadow(0 5px 8px rgba(0,0,0,.32))'
-      : shadow === 'soft'
+  const filter = performanceMode
+    ? shadow === 'none'
+      ? undefined
+      : 'drop-shadow(0 5px 8px rgba(0,0,0,.32))'
+    : shadow === 'soft'
       ? `drop-shadow(0 8px 12px rgba(0,0,0,.38)) drop-shadow(0 0 5px ${neonFaint})`
       : shadow === 'glow'
         ? `drop-shadow(0 8px 14px rgba(0,0,0,.4)) drop-shadow(0 0 5px ${neonSoft}) drop-shadow(0 0 15px ${neonFaint})`
         : undefined;
   const gradientId = `node-sheen-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const chargeGradientId = `node-charge-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
-  const cardAccent = [
-    'server',
-    'component',
-    'predefined-process',
-    'internal-storage',
-    'folder',
-    'note',
-  ].includes(style.shape);
+  const cardAccent = ['server', 'component', 'predefined-process', 'internal-storage', 'folder', 'note'].includes(style.shape);
 
   const dragRef = useRef<{
     pointerId: number;
@@ -270,10 +225,7 @@ export function FlowNodeCard({
     handlersRef.current = { onMove, onResize, onDragStart, onDragEnd };
   }, [onMove, onResize, onDragStart, onDragEnd]);
 
-  const handleResizePointerDown = (
-    direction: ResizeDirection,
-    e: React.PointerEvent<SVGCircleElement>,
-  ) => {
+  const handleResizePointerDown = (direction: ResizeDirection, e: React.PointerEvent<SVGCircleElement>) => {
     if (e.button !== 0) return;
     e.stopPropagation();
     const svg = e.currentTarget.ownerSVGElement;
@@ -385,13 +337,7 @@ export function FlowNodeCard({
     const drag = dragRef.current;
     if (!drag || drag.pointerId !== e.pointerId) return;
     e.stopPropagation();
-    if (
-      !drag.moved &&
-      Math.hypot(
-        e.clientX - drag.startClientX,
-        e.clientY - drag.startClientY,
-      ) < 4
-    ) {
+    if (!drag.moved && Math.hypot(e.clientX - drag.startClientX, e.clientY - drag.startClientY) < 4) {
       return;
     }
     const svg = e.currentTarget.ownerSVGElement;
@@ -426,350 +372,279 @@ export function FlowNodeCard({
     // static inner <g> applies the position translate so framer-motion
     // (which owns the transform when initial/animate is set) doesn't
     // override the position.
-    <motion.g
-      initial={performanceMode ? false : { scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 220, damping: 18 }}
-      className="group/node cursor-grab active:cursor-grabbing"
-    >
-    <g
-      ref={registerSvgRef}
-      transform={`translate(${node.position.x} ${node.position.y}) rotate(${rotation})`}
-      opacity={executionState === 'pending' ? opacity * 0.38 : opacity}
-      className={
-        executionState === 'pending'
-          ? 'node-power-pending'
-          : executionState === 'active'
-            ? 'node-power-active'
-            : undefined
-      }
-      style={{
-        color: foreground,
-        '--node-opacity': opacity,
-        '--node-fade-duration': `${NODE_FADE_DURATION_MS}ms`,
-      } as React.CSSProperties}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
-    >
-      <defs>
-        <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={foreground} stopOpacity={0.18} />
-          <stop offset="52%" stopColor={foreground} stopOpacity={0.06} />
-          <stop offset="100%" stopColor={background} stopOpacity={0} />
-        </linearGradient>
-        <radialGradient id={chargeGradientId} cx="50%" cy="48%" r="68%">
-          <stop offset="0%" stopColor={foreground} stopOpacity={0.2} />
-          <stop offset="58%" stopColor={foreground} stopOpacity={0.05} />
-          <stop offset="100%" stopColor={foreground} stopOpacity={0} />
-        </radialGradient>
-      </defs>
-      {/* Active halo reuses the exact node silhouette. Size scaling
+    <motion.g initial={performanceMode ? false : { scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 220, damping: 18 }} className='group/node cursor-grab active:cursor-grabbing'>
+      <g
+        ref={registerSvgRef}
+        transform={`translate(${node.position.x} ${node.position.y}) rotate(${rotation})`}
+        opacity={executionState === 'pending' ? opacity * 0.38 : opacity}
+        className={executionState === 'pending' ? 'node-power-pending' : executionState === 'active' ? 'node-power-active' : undefined}
+        style={
+          {
+            color: foreground,
+            '--node-opacity': opacity,
+            '--node-fade-duration': `${NODE_FADE_DURATION_MS}ms`,
+          } as React.CSSProperties
+        }
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+      >
+        <defs>
+          <linearGradient id={gradientId} x1='0' y1='0' x2='0' y2='1'>
+            <stop offset='0%' stopColor={foreground} stopOpacity={0.18} />
+            <stop offset='52%' stopColor={foreground} stopOpacity={0.06} />
+            <stop offset='100%' stopColor={background} stopOpacity={0} />
+          </linearGradient>
+          <radialGradient id={chargeGradientId} cx='50%' cy='48%' r='68%'>
+            <stop offset='0%' stopColor={foreground} stopOpacity={0.2} />
+            <stop offset='58%' stopColor={foreground} stopOpacity={0.05} />
+            <stop offset='100%' stopColor={foreground} stopOpacity={0} />
+          </radialGradient>
+        </defs>
+        {/* Active halo reuses the exact node silhouette. Size scaling
           lives on the parent group so the CSS pulse can animate the
           path without replacing the shape transform. */}
-      {isActive && executionState !== 'active' && (
-        <g transform={outline.transform} pointerEvents="none">
-          <path
-            d={outline.d}
-            className={performanceMode
-              ? 'fill-none'
-              : 'fill-none animate-[halo_1.6s_ease-in-out_infinite]'}
-            stroke={foreground}
-            strokeWidth={2}
-            strokeLinejoin="round"
-            vectorEffect="non-scaling-stroke"
-            style={{
-              transformBox: 'fill-box',
-              transformOrigin: 'center',
-              filter: performanceMode
-                ? undefined
-                : `drop-shadow(0 0 4px ${neonSoft}) drop-shadow(0 0 12px ${neonFaint})`,
-            }}
-          />
-        </g>
-      )}
+        {isActive && executionState !== 'active' && (
+          <g transform={outline.transform} pointerEvents='none'>
+            <path
+              d={outline.d}
+              className={performanceMode ? 'fill-none' : 'fill-none animate-[halo_1.6s_ease-in-out_infinite]'}
+              stroke={foreground}
+              strokeWidth={2}
+              strokeLinejoin='round'
+              vectorEffect='non-scaling-stroke'
+              style={{
+                transformBox: 'fill-box',
+                transformOrigin: 'center',
+                filter: performanceMode ? undefined : `drop-shadow(0 0 4px ${neonSoft}) drop-shadow(0 0 12px ${neonFaint})`,
+              }}
+            />
+          </g>
+        )}
 
-      {/* Selection ring follows the exact silhouette as well. */}
-      {isSelected && (
-        <g transform={outline.transform} pointerEvents="none">
-        <path
-          d={outline.d}
-          className="fill-none"
-          stroke={foreground}
-          strokeWidth={2}
-          strokeDasharray="4 4"
-          strokeLinejoin="round"
-          vectorEffect="non-scaling-stroke"
-          style={{
-            transformBox: 'fill-box',
-            transformOrigin: 'center',
-            transform: 'scale(1.065)',
-            filter: performanceMode
-              ? undefined
-              : `drop-shadow(0 0 4px ${neonSoft}) drop-shadow(0 0 10px ${neonFaint})`,
-          }}
-        />
-        </g>
-      )}
+        {/* Selection ring follows the exact silhouette as well. */}
+        {isSelected && (
+          <g transform={outline.transform} pointerEvents='none'>
+            <path
+              d={outline.d}
+              className='fill-none'
+              stroke={foreground}
+              strokeWidth={2}
+              strokeDasharray='4 4'
+              strokeLinejoin='round'
+              vectorEffect='non-scaling-stroke'
+              style={{
+                transformBox: 'fill-box',
+                transformOrigin: 'center',
+                transform: 'scale(1.065)',
+                filter: performanceMode ? undefined : `drop-shadow(0 0 4px ${neonSoft}) drop-shadow(0 0 10px ${neonFaint})`,
+              }}
+            />
+          </g>
+        )}
 
-      {/* Body — single <path> with per-shape `d`. The fill and stroke
+        {/* Body — single <path> with per-shape `d`. The fill and stroke
           are set inline because the colour tokens are dynamic per
           node and Tailwind can't synthesize them at runtime. The
           gradient is approximated by an opacity step: a darker fill
           plus a translucent overlay would be ideal but the current
           palette maps cleanly to a single mid-tone per colour. */}
-      <path
-        d={outline.d}
-        transform={outline.transform}
-        fill="none"
-        stroke={borderColor}
-        strokeWidth={borderWidth + 5}
-        strokeLinejoin="round"
-        opacity={performanceMode ? neonIntensity * 0.45 : neonIntensity}
-        vectorEffect="non-scaling-stroke"
-        pointerEvents="none"
-        style={{
-          filter: performanceMode
-            ? undefined
-            : `drop-shadow(0 0 5px ${neonSoft}) drop-shadow(0 0 14px ${neonFaint})`,
-        }}
-      />
-
-      <path
-        d={outline.d}
-        transform={outline.transform}
-        style={{
-          fill: background,
-          stroke: borderColor,
-          filter,
-        }}
-        fillRule="evenodd"
-        strokeWidth={borderWidth}
-        strokeDasharray={dashArray}
-        strokeLinecap={borderStyle === 'dotted' ? 'round' : undefined}
-        vectorEffect="non-scaling-stroke"
-        pointerEvents="all"
-      />
-
-      <path
-        d={outline.d}
-        transform={outline.transform}
-        fill={`url(#${gradientId})`}
-        fillRule="evenodd"
-        pointerEvents="none"
-      />
-
-      {executionState === 'active' && (
-        <g pointerEvents="none">
-          <g transform={outline.transform}>
-            <path
-              d={outline.d}
-              fill={`url(#${chargeGradientId})`}
-              fillRule="evenodd"
-              className="node-electric-core"
-            />
-            <path
-              d={outline.d}
-              fill="none"
-              stroke={foreground}
-              strokeWidth={1.4}
-              strokeLinejoin="round"
-              vectorEffect="non-scaling-stroke"
-              className="node-electric-burst"
-            />
-          </g>
-        </g>
-      )}
-
-      {cardAccent && (
         <path
-          d={`M ${-width / 2 + 1} ${-height / 2 + 14} V ${height / 2 - 14}`}
-          stroke={foreground}
-          strokeWidth={3}
-          strokeLinecap="round"
-          opacity={0.8}
-          pointerEvents="none"
-          vectorEffect="non-scaling-stroke"
+          d={outline.d}
+          transform={outline.transform}
+          fill='none'
+          stroke={borderColor}
+          strokeWidth={borderWidth + 5}
+          strokeLinejoin='round'
+          opacity={performanceMode ? neonIntensity * 0.45 : neonIntensity}
+          pointerEvents='none'
           style={{
-            filter: performanceMode
-              ? undefined
-              : `drop-shadow(0 0 5px ${neonSoft})`,
+            filter: performanceMode ? undefined : `drop-shadow(0 0 5px ${neonSoft}) drop-shadow(0 0 14px ${neonFaint})`,
           }}
         />
-      )}
 
-      <g transform={`scale(${scaleX} ${scaleY})`} pointerEvents="none">
-        <ShapeDecoration shape={style.shape} color={borderColor} />
-      </g>
+        <path
+          d={outline.d}
+          transform={outline.transform}
+          style={{
+            fill: background,
+            stroke: borderColor,
+            filter,
+          }}
+          fillRule='evenodd'
+          strokeWidth={borderWidth}
+          strokeDasharray={dashArray}
+          strokeLinecap={borderStyle === 'dotted' ? 'round' : undefined}
+          pointerEvents='all'
+        />
 
-      {/* Icon + text inside a clipped foreignObject. The wrapper
+        <path d={outline.d} transform={outline.transform} fill={`url(#${gradientId})`} fillRule='evenodd' pointerEvents='none' />
+
+        {executionState === 'active' && (
+          <g pointerEvents='none'>
+            <g transform={outline.transform}>
+              <path d={outline.d} fill={`url(#${chargeGradientId})`} fillRule='evenodd' className='node-electric-core' />
+              <path d={outline.d} fill='none' stroke={foreground} strokeWidth={1.4} strokeLinejoin='round' className='node-electric-burst' />
+            </g>
+          </g>
+        )}
+
+        {cardAccent && (
+          <path
+            d={`M ${-width / 2 + 1} ${-height / 2 + 14} V ${height / 2 - 14}`}
+            stroke={foreground}
+            strokeWidth={3}
+            strokeLinecap='round'
+            opacity={0.8}
+            pointerEvents='none'
+            style={{
+              filter: performanceMode ? undefined : `drop-shadow(0 0 5px ${neonSoft})`,
+            }}
+          />
+        )}
+
+        <g transform={`scale(${scaleX} ${scaleY})`} pointerEvents='none'>
+          <ShapeDecoration shape={style.shape} color={borderColor} />
+        </g>
+
+        {/* Icon + text inside a clipped foreignObject. The wrapper
           inherits the SVG's `color` from the parent <g> we don't
           explicitly set; instead we apply colour via inline style
           using the resolved Tailwind token. */}
-      <foreignObject
-        x={-width / 2}
-        y={-height / 2}
-        width={width}
-        height={height}
-        pointerEvents="none"
-      >
-        <div
-          className="flex h-full w-full items-center justify-center select-none"
-          style={{
-            color: foreground,
-            fontFamily: NODE_FONT_FAMILIES[fontFamily],
-            flexDirection: iconPosition === 'left' ? 'row' : 'column',
-            gap: Icon ? (iconPosition === 'left' ? 12 : 7) : 0,
-            padding: Math.max(10, Math.min(width, height) * 0.13),
-          }}
-        >
-          {Icon && (
-            <span
-              className="grid shrink-0 place-items-center rounded-xl"
-              style={{
-                width: iconSize + 25,
-                height: iconSize + 25,
-                background: `${foreground}12`,
-                border: `1px solid ${foreground}38`,
-                boxShadow: performanceMode
-                  ? `inset 0 0 12px ${foreground}12`
-                  : `inset 0 0 18px ${foreground}16, 0 0 12px ${foreground}20`,
-              }}
-            >
-              <span
-                className="inline-flex"
-                style={{
-                  filter: performanceMode
-                    ? undefined
-                    : `drop-shadow(0 0 5px ${foreground}80)`,
-                }}
-              >
-                {createElement(Icon, { size: iconSize, className: 'opacity-95' })}
-              </span>
-            </span>
-          )}
+        <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none'>
           <div
-            className="min-w-0"
+            className='flex h-full w-full items-center justify-center select-none'
             style={{
-              textAlign,
-              width: iconPosition === 'top' ? '100%' : undefined,
+              color: foreground,
+              fontFamily: NODE_FONT_FAMILIES[fontFamily],
+              flexDirection: iconPosition === 'left' ? 'row' : 'column',
+              gap: Icon ? (iconPosition === 'left' ? 12 : 7) : 0,
+              padding: Math.max(10, Math.min(width, height) * 0.13),
             }}
           >
-            <div
-              className="leading-tight tracking-tight"
-              style={{ fontSize, fontWeight: FONT_WEIGHT[fontWeight] }}
-            >
-              {node.title}
-            </div>
-            {node.description && (
-              <div
-                className="mt-1 leading-tight opacity-70"
-                style={{ fontSize: Math.max(9, fontSize - 4) }}
+            {Icon && (
+              <span
+                className='grid shrink-0 place-items-center rounded-xl'
+                style={{
+                  width: iconSize + 25,
+                  height: iconSize + 25,
+                  background: `${foreground}12`,
+                  border: `1px solid ${foreground}38`,
+                  boxShadow: performanceMode ? `inset 0 0 12px ${foreground}12` : `inset 0 0 18px ${foreground}16, 0 0 12px ${foreground}20`,
+                }}
               >
-                {node.description}
+                <span
+                  className='inline-flex'
+                  style={{
+                    filter: performanceMode ? undefined : `drop-shadow(0 0 5px ${foreground}80)`,
+                  }}
+                >
+                  {createElement(Icon, { size: iconSize, className: 'opacity-95' })}
+                </span>
+              </span>
+            )}
+            <div
+              className='min-w-0'
+              style={{
+                textAlign,
+                width: iconPosition === 'top' ? '100%' : undefined,
+              }}
+            >
+              <div className='leading-tight tracking-tight' style={{ fontSize, fontWeight: FONT_WEIGHT[fontWeight] }}>
+                {node.title}
               </div>
-            )}
+              {node.description && (
+                <div className='mt-1 leading-tight opacity-70' style={{ fontSize: Math.max(9, fontSize - 4) }}>
+                  {node.description}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </foreignObject>
+        </foreignObject>
 
-      {/* Four corner resize handles. Their radius is corrected
+        {/* Four corner resize handles. Their radius is corrected
           for canvas zoom so the hit target stays usable on large charts. */}
-      {isSelected &&
-        RESIZE_HANDLES.map((handle) => (
-          <circle
-            key={handle.direction}
-            cx={(handle.x * width) / 2}
-            cy={(handle.y * height) / 2}
-            r={6 / Math.max(viewTransform.scale, 0.35)}
-            fill="#e0f2fe"
-            stroke="#0284c7"
-            strokeWidth={1.5}
-            vectorEffect="non-scaling-stroke"
-            pointerEvents="all"
-            style={{ cursor: handle.cursor }}
-            aria-label={`Resize ${handle.direction}`}
-            onPointerDown={(e) => handleResizePointerDown(handle.direction, e)}
-            onPointerMove={handleResizePointerMove}
-            onPointerUp={handleResizePointerUp}
-            onPointerCancel={handleResizePointerUp}
-          />
-        ))}
+        {isSelected &&
+          RESIZE_HANDLES.map((handle) => (
+            <circle
+              key={handle.direction}
+              cx={(handle.x * width) / 2}
+              cy={(handle.y * height) / 2}
+              r={6 / Math.max(viewTransform.scale, 0.35)}
+              fill='#e0f2fe'
+              stroke='#0284c7'
+              strokeWidth={1.5}
+              vectorEffect='non-scaling-stroke'
+              pointerEvents='all'
+              style={{ cursor: handle.cursor }}
+              aria-label={`Resize ${handle.direction}`}
+              onPointerDown={(e) => handleResizePointerDown(handle.direction, e)}
+              onPointerMove={handleResizePointerMove}
+              onPointerUp={handleResizePointerUp}
+              onPointerCancel={handleResizePointerUp}
+            />
+          ))}
 
-      {/* Every node exposes a bidirectional port on all four sides.
+        {/* Every node exposes a bidirectional port on all four sides.
           The selected source and target sides are stored on the edge. */}
-      {CONNECTION_SIDES.map((side) => {
-        const anchor = portAnchors[side];
-        const canReceive = !!linkTargetFromId && linkTargetFromId !== node.id;
-        return (
-          <g
-            key={side}
-            pointerEvents="all"
-            data-port
-            data-node-id={node.id}
-            data-side={side}
-            className={[
-              canReceive ? 'cursor-copy opacity-100' : 'cursor-crosshair opacity-0 group-hover/node:opacity-100',
-              'transition-opacity duration-150',
-            ].join(' ')}
-            style={{ touchAction: 'none' }}
-            transform={`translate(${anchor.x} ${anchor.y})`}
-          >
-            <circle
-              r={Math.max(PORT_HIT_R, portSize + 8)}
-              className="fill-transparent"
-              onPointerDown={(e) => {
-                e.stopPropagation();
-                onPortPointerDown(node.id, side, e);
-              }}
-              onPointerUp={(e) => {
-                e.stopPropagation();
-                onPortPointerUp(node.id, side, e);
-              }}
-            />
-            <circle
-              r={portSize}
-              className={canReceive ? 'animate-pulse' : undefined}
-              fill={background}
-              stroke={canReceive ? '#7dd3fc' : foreground}
-              strokeWidth={canReceive ? 3 : 2}
-              style={{
-                filter: performanceMode && !canReceive
-                  ? undefined
-                  : `drop-shadow(0 0 4px ${canReceive ? '#7dd3fc' : neonSoft})${performanceMode ? '' : ` drop-shadow(0 0 10px ${canReceive ? '#7dd3fc70' : neonFaint})`}`,
-              }}
-              onPointerDown={(e) => {
-                e.stopPropagation();
-                onPortPointerDown(node.id, side, e);
-              }}
-              onPointerUp={(e) => {
-                e.stopPropagation();
-                onPortPointerUp(node.id, side, e);
-              }}
-            />
-            <circle
-              r={2.25}
-              fill={foreground}
-              pointerEvents="none"
-              style={{
-                filter: performanceMode
-                  ? undefined
-                  : `drop-shadow(0 0 4px ${neonSoft})`,
-              }}
-            />
-            {canReceive && (
+        {CONNECTION_SIDES.map((side) => {
+          const anchor = portAnchors[side];
+          const canReceive = !!linkTargetFromId && linkTargetFromId !== node.id;
+          return (
+            <g
+              key={side}
+              pointerEvents='all'
+              data-port
+              data-node-id={node.id}
+              data-side={side}
+              className={[canReceive ? 'cursor-copy opacity-100' : 'cursor-crosshair opacity-0 group-hover/node:opacity-100', 'transition-opacity duration-150'].join(' ')}
+              style={{ touchAction: 'none' }}
+              transform={`translate(${anchor.x} ${anchor.y})`}
+            >
               <circle
-                r={portSize + 7}
-                className="fill-none stroke-sky-300"
-                strokeWidth={2}
-                pointerEvents="none"
+                r={Math.max(PORT_HIT_R, portSize + 8)}
+                className='fill-transparent'
+                onPointerDown={(e) => {
+                  e.stopPropagation();
+                  onPortPointerDown(node.id, side, e);
+                }}
+                onPointerUp={(e) => {
+                  e.stopPropagation();
+                  onPortPointerUp(node.id, side, e);
+                }}
               />
-            )}
-          </g>
-        );
-      })}
-    </g>
+              <circle
+                r={portSize}
+                className={canReceive ? 'animate-pulse' : undefined}
+                fill={background}
+                stroke={canReceive ? '#7dd3fc' : foreground}
+                strokeWidth={canReceive ? 3 : 2}
+                style={{
+                  filter: performanceMode && !canReceive ? undefined : `drop-shadow(0 0 4px ${canReceive ? '#7dd3fc' : neonSoft})${performanceMode ? '' : ` drop-shadow(0 0 10px ${canReceive ? '#7dd3fc70' : neonFaint})`}`,
+                }}
+                onPointerDown={(e) => {
+                  e.stopPropagation();
+                  onPortPointerDown(node.id, side, e);
+                }}
+                onPointerUp={(e) => {
+                  e.stopPropagation();
+                  onPortPointerUp(node.id, side, e);
+                }}
+              />
+              <circle
+                r={2.25}
+                fill={foreground}
+                pointerEvents='none'
+                style={{
+                  filter: performanceMode ? undefined : `drop-shadow(0 0 4px ${neonSoft})`,
+                }}
+              />
+              {canReceive && <circle r={portSize + 7} className='fill-none stroke-sky-300' strokeWidth={2} pointerEvents='none' />}
+            </g>
+          );
+        })}
+      </g>
     </motion.g>
   );
 }

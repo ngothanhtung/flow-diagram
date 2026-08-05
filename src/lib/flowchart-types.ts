@@ -44,23 +44,7 @@ export type NodeShape =
   | 'speech-bubble';
 
 /** Background hue. Optional — defaults are derived from `type`. */
-export type NodeColor =
-  | 'red'
-  | 'orange'
-  | 'amber'
-  | 'yellow'
-  | 'lime'
-  | 'emerald'
-  | 'teal'
-  | 'cyan'
-  | 'sky'
-  | 'blue'
-  | 'indigo'
-  | 'violet'
-  | 'purple'
-  | 'fuchsia'
-  | 'pink'
-  | 'rose';
+export type NodeColor = 'red' | 'orange' | 'amber' | 'yellow' | 'lime' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'violet' | 'purple' | 'fuchsia' | 'pink' | 'rose';
 
 /** A CSS colour. Palette names are retained for backwards compatibility. */
 export type NodePaint = NodeColor | `#${string}`;
@@ -72,29 +56,11 @@ export type NodePaint = NodeColor | `#${string}`;
  * kept so existing documents keep resolving instantly without a network
  * fetch; they are plain Lucide icon names.
  */
-export type NodeIcon =
-  | 'cog'
-  | 'play'
-  | 'flag'
-  | 'bell'
-  | 'mail'
-  | 'database'
-  | 'cloud'
-  | 'code'
-  | 'send'
-  | 'sparkles'
-  | `lucide:${string}`
-  | `tabler:${string}`;
+export type NodeIcon = 'cog' | 'play' | 'flag' | 'bell' | 'mail' | 'database' | 'cloud' | 'code' | 'send' | 'sparkles' | `lucide:${string}` | `tabler:${string}`;
 
 export type ConnectionSide = 'top' | 'right' | 'bottom' | 'left';
 export type ExecutionState = 'normal' | 'pending' | 'active' | 'completed';
-export type NodeFont =
-  | 'geist-mono'
-  | 'be-vietnam-pro'
-  | 'noto-sans'
-  | 'source-sans-3'
-  | 'roboto-slab'
-  | 'merriweather';
+export type NodeFont = 'geist-mono' | 'be-vietnam-pro' | 'noto-sans' | 'source-sans-3' | 'roboto-slab' | 'merriweather';
 
 export interface NodeConnectionPoints {
   input: ConnectionSide;
@@ -149,43 +115,18 @@ export interface NodePreset {
   height?: number;
 }
 
-export type EdgeEffect =
-  | 'flow'
-  | 'dash'
-  | 'pulse'
-  | 'glow'
-  | 'comet'
-  | 'dots'
-  | 'wave'
-  | 'scanner'
-  | 'traffic'
-  | 'bidirectional'
-  | 'laser'
-  | 'meteor'
-  | 'spark'
-  | 'marching'
-  | 'binary'
-  | 'heartbeat'
-  | 'rail'
-  | 'fade';
+export type EdgeEffect = 'flow' | 'dash' | 'pulse' | 'glow' | 'comet' | 'dots' | 'wave' | 'scanner' | 'traffic' | 'bidirectional' | 'laser' | 'meteor' | 'spark' | 'marching' | 'binary' | 'heartbeat' | 'rail' | 'fade';
 
-export type EdgeMarker =
-  | 'none'
-  | 'arrow'
-  | 'open-arrow'
-  | 'triangle'
-  | 'circle'
-  | 'diamond'
-  | 'tee'
-  | 'cross'
-  | 'circle-cross'
-  | 'arrow-both'
-  | 'arrow-bar'
-  | 'bar';
+export type EdgeMarker = 'none' | 'arrow' | 'open-arrow' | 'triangle' | 'circle' | 'diamond' | 'tee' | 'cross' | 'circle-cross' | 'arrow-both' | 'arrow-bar' | 'bar';
 
 export type EdgeDirection = 'forward' | 'reverse' | 'both';
 export type EdgeRouting = 'straight' | 'smooth-step' | 'orthogonal' | 'curved';
-export interface FlowPoint { x: number; y: number }
+/** Where the label pill sits along the line. */
+export type EdgeLabelPosition = 'center' | 'left' | 'right' | 'top' | 'bottom';
+export interface FlowPoint {
+  x: number;
+  y: number;
+}
 
 export interface FlowEdge {
   id: string;
@@ -196,6 +137,8 @@ export interface FlowEdge {
   toSide?: ConnectionSide;
   /** Optional label for decision branches (e.g. "yes", "no"). */
   label?: string;
+  /** Placement of the label along the line. Defaults to "center". */
+  labelPosition?: EdgeLabelPosition;
   effect?: EdgeEffect;
   /** Animation direction without changing the logical source/target. */
   direction?: EdgeDirection;
