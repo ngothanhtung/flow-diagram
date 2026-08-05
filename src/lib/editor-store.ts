@@ -9,6 +9,16 @@ import type { StoredDiagram } from './firebase/diagrams';
 
 export type RunPhase = 'node' | 'line';
 
+/** Snapshot of the template currently on the canvas — feeds the info
+ *  panel and the Reset action. Built-in and Firestore templates both
+ *  fit this shape. */
+export interface LoadedTemplate {
+  name: string;
+  category: string;
+  description: string;
+  document: FlowDocumentJSON;
+}
+
 const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColor: `#${string}` }> = {
   start: { color: '#bae6fd', backgroundColor: '#172554' },
   process: { color: '#c7d2fe', backgroundColor: '#1e293b' },
@@ -50,8 +60,12 @@ interface EditorState {
   // Document + persistence meta
   doc: FlowDocumentJSON;
   templateId: DiagramTemplateId;
+  /** Metadata + original document of the template on the canvas. */
+  loadedTemplate: LoadedTemplate | null;
   currentDiagramId: string | null;
   currentDiagramName: string;
+  /** Viewer visibility persisted on the diagram doc (`public` field). */
+  currentDiagramPublic: boolean;
   savedSignature: string | null;
   savingDiagram: boolean;
 
@@ -73,10 +87,12 @@ interface EditorState {
 
   // Diagram meta
   renameDiagram: (name: string) => void;
+  setDiagramPublic: (isPublic: boolean) => void;
   markDiagramSaved: (diagramId: string, name: string, savedDocument: FlowDocumentJSON) => void;
   loadStoredDiagram: (diagram: StoredDiagram) => void;
-  diagramDeleted: (diagramId: string) => void;
   loadTemplate: (id: DiagramTemplateId) => void;
+  loadRemoteTemplate: (template: LoadedTemplate) => void;
+  resetToTemplate: () => void;
   resetCanvasState: () => void;
 
   // Settings (persisted inside doc.settings)
@@ -112,8 +128,10 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   hydrated: false,
   doc: initialDocument,
   templateId: 'client-server-database',
+  loadedTemplate: getDiagramTemplate('client-server-database'),
   currentDiagramId: null,
   currentDiagramName: 'Client / Server / Database',
+  currentDiagramPublic: false,
   savedSignature: null,
   savingDiagram: false,
 
@@ -138,11 +156,14 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       doc: session?.doc ?? initialDocument,
       currentDiagramId: session?.currentDiagramId ?? null,
       currentDiagramName: session?.currentDiagramName ?? 'Client / Server / Database',
+      currentDiagramPublic: session?.currentDiagramPublic ?? false,
       savedSignature: session?.savedSignature ?? null,
     });
   },
 
   renameDiagram: (name) => set({ currentDiagramName: name }),
+
+  setDiagramPublic: (isPublic) => set({ currentDiagramPublic: isPublic }),
 
   markDiagramSaved: (diagramId, name, savedDocument) =>
     set({
@@ -156,25 +177,49 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       doc: diagram.document,
       currentDiagramId: diagram.id,
       currentDiagramName: diagram.name,
+      currentDiagramPublic: diagram.public === true,
       savedSignature: JSON.stringify(diagram.document),
+      // Snapshot so Reset restores the fetched document, not a template.
+      loadedTemplate: { name: diagram.name, category: 'Saved diagram', description: '', document: diagram.document },
     });
     get().resetCanvasState();
   },
 
-  diagramDeleted: (diagramId) => {
-    if (diagramId !== get().currentDiagramId) return;
-    set({ currentDiagramId: null, savedSignature: null });
-  },
-
   loadTemplate: (id) => {
     const template = getDiagramTemplate(id);
+    const hasDiagram = get().currentDiagramId !== null;
     set({
       templateId: id,
       doc: template.document,
-      currentDiagramId: null,
-      currentDiagramName: template.name,
+      // On the per-diagram edit route a template replaces the canvas
+      // content but the diagram being edited (id / name / visibility)
+      // is kept.
+      ...(hasDiagram ? {} : { currentDiagramName: template.name, currentDiagramPublic: false }),
       savedSignature: null,
+      loadedTemplate: template,
     });
+    get().resetCanvasState();
+  },
+
+  // Template chosen from the shared Firestore library (`templates`
+  // collection) — same behaviour as a built-in template load.
+  loadRemoteTemplate: (template) => {
+    const hasDiagram = get().currentDiagramId !== null;
+    set({
+      doc: template.document,
+      ...(hasDiagram ? {} : { currentDiagramName: template.name, currentDiagramPublic: false }),
+      savedSignature: null,
+      loadedTemplate: template,
+    });
+    get().resetCanvasState();
+  },
+
+  // Reset action: restore the original document of whatever template is
+  // on the canvas (built-in or remote).
+  resetToTemplate: () => {
+    const loaded = get().loadedTemplate;
+    if (!loaded) return;
+    set({ doc: loaded.document, savedSignature: null });
     get().resetCanvasState();
   },
 

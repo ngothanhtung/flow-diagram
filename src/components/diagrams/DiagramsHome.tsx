@@ -1,16 +1,19 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type Header, type SortingState } from '@tanstack/react-table';
-import { ArrowDown, ArrowUp, ArrowUpDown, Braces, ChevronLeft, ChevronRight, Database, ExternalLink, Eye, RefreshCw, ShieldOff } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, Boxes, ChevronLeft, ChevronRight, ExternalLink, Globe, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
+import { UserMenu } from '@/components/auth/UserMenu';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
-import { listAllDiagrams, type AdminDiagramRow } from '@/lib/firebase/diagrams';
-import { isAdminUser } from '@/lib/firebase/roles';
+import { initialDocument } from '@/lib/flowchart-data';
+import { createDiagram, deleteDiagram, listDiagrams, type StoredDiagram } from '@/lib/firebase/diagrams';
 
 const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
   dateStyle: 'medium',
@@ -21,8 +24,32 @@ function formatDateTime(value: number | null) {
   return value ? dateTimeFormat.format(new Date(value)) : '—';
 }
 
+/** Flattened row for the owner's diagram list (timestamps as millis). */
+interface DiagramRow {
+  id: string;
+  name: string;
+  public: boolean;
+  nodeCount: number;
+  edgeCount: number;
+  createdAt: number | null;
+  updatedAt: number | null;
+}
+
+function toDiagramRow(diagram: StoredDiagram): DiagramRow {
+  const document = diagram.document ?? { nodes: [], edges: [] };
+  return {
+    id: diagram.id,
+    name: diagram.name || '(untitled)',
+    public: diagram.public === true,
+    nodeCount: document.nodes?.length ?? 0,
+    edgeCount: document.edges?.length ?? 0,
+    createdAt: diagram.createdAt ? diagram.createdAt.toMillis() : null,
+    updatedAt: diagram.updatedAt ? diagram.updatedAt.toMillis() : null,
+  };
+}
+
 /** Sort header button — shows the current sort direction of the column. */
-function SortButton({ header }: { header: Header<AdminDiagramRow, unknown> }) {
+function SortButton({ header }: { header: Header<DiagramRow, unknown> }) {
   const column = header.column;
   const sorted = column.getIsSorted();
   return (
@@ -33,69 +60,90 @@ function SortButton({ header }: { header: Header<AdminDiagramRow, unknown> }) {
   );
 }
 
-export function AdminDiagramsPage() {
+/**
+ * Landing page: lists every diagram owned by the signed-in user
+ * (`users/{uid}/diagrams`). Opening one navigates to its editor at
+ * `/diagrams/{id}/edit`.
+ */
+export function DiagramsHome() {
   const { user, loading } = useAuth();
-  const [rows, setRows] = useState<AdminDiagramRow[]>([]);
+  const router = useRouter();
+  const [rows, setRows] = useState<DiagramRow[]>([]);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [sorting, setSorting] = useState<SortingState>([{ id: 'updatedAt', desc: true }]);
   const [globalFilter, setGlobalFilter] = useState('');
-  const [viewing, setViewing] = useState<AdminDiagramRow | null>(null);
-  const [roleStatus, setRoleStatus] = useState<'checking' | 'denied' | 'admin'>('checking');
+  const [busy, setBusy] = useState(false);
+  const [deleting, setDeleting] = useState<DiagramRow | null>(null);
 
-  // Gate on `users-roles/{uid}` before touching any diagram data.
+  const refresh = useCallback(async (userId: string) => {
+    setStatus('loading');
+    try {
+      const diagrams = await listDiagrams(userId);
+      setRows(diagrams.map(toDiagramRow));
+      setStatus('ready');
+    } catch {
+      setStatus('error');
+    }
+  }, []);
+
   useEffect(() => {
     if (!user) return;
-    let cancelled = false;
-    void isAdminUser(user.uid).then((allowed) => {
-      if (!cancelled) setRoleStatus(allowed ? 'admin' : 'denied');
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [user]);
+    void refresh(user.uid);
+  }, [user, refresh]);
 
-  const refresh = useMemo(
-    () => async () => {
-      setStatus('loading');
-      try {
-        setRows(await listAllDiagrams());
-        setStatus('ready');
-      } catch {
-        setStatus('error');
-      }
-    },
-    [],
-  );
+  const handleCreate = async () => {
+    if (!user) return;
+    setBusy(true);
+    try {
+      const id = await createDiagram(user.uid, 'Untitled diagram', initialDocument, false);
+      router.push(`/diagrams/${id}/edit`);
+    } catch {
+      toast.error('Could not create diagram', { description: 'Check sign-in and Firestore rules.' });
+      setBusy(false);
+    }
+  };
 
-  useEffect(() => {
-    if (roleStatus === 'admin') void refresh();
-  }, [roleStatus, refresh]);
+  const handleDelete = async () => {
+    if (!user || !deleting) return;
+    setBusy(true);
+    try {
+      await deleteDiagram(user.uid, deleting.id);
+      toast.success('Diagram deleted', { description: deleting.name });
+      setDeleting(null);
+      await refresh(user.uid);
+    } catch {
+      toast.error('Could not delete diagram');
+    } finally {
+      setBusy(false);
+    }
+  };
 
-  const columns = useMemo<ColumnDef<AdminDiagramRow>[]>(
+  const columns = useMemo<ColumnDef<DiagramRow>[]>(
     () => [
       {
         accessorKey: 'name',
         header: 'Diagram',
         cell: ({ row }) => (
-          <div className='min-w-0'>
+          <Link href={`/diagrams/${row.original.id}/edit`} className='block min-w-0 transition hover:opacity-80' title='Open in editor'>
             <p className='truncate font-medium text-zinc-100'>{row.original.name}</p>
             <p className='truncate font-mono text-[10px] text-zinc-500'>{row.original.id}</p>
-          </div>
+          </Link>
         ),
-      },
-      {
-        accessorKey: 'ownerUid',
-        header: 'Owner UID',
-        cell: ({ getValue }) => <span className='font-mono text-[11px] text-zinc-400'>{getValue<string>().slice(0, 10)}…</span>,
       },
       {
         accessorKey: 'public',
         header: 'Visibility',
         cell: ({ getValue }) =>
           getValue<boolean>() ? (
-            <span className='whitespace-nowrap rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-200 ring-1 ring-emerald-400/30'>Public</span>
+            <span className='inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-200 ring-1 ring-emerald-400/30'>
+              <Globe size={10} />
+              Public
+            </span>
           ) : (
-            <span className='whitespace-nowrap rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-semibold text-zinc-500 ring-1 ring-white/10'>Private</span>
+            <span className='inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-semibold text-zinc-500 ring-1 ring-white/10'>
+              <LockKeyhole size={10} />
+              Private
+            </span>
           ),
       },
       {
@@ -127,14 +175,18 @@ export function AdminDiagramsPage() {
         enableGlobalFilter: false,
         cell: ({ row }) => (
           <div className='flex items-center gap-1'>
-            <Button variant='ghost' size='xs' onClick={() => setViewing(row.original)} className='text-zinc-400 hover:text-sky-200'>
-              <Eye size={13} />
-              View
-            </Button>
+            <Link href={`/diagrams/${row.original.id}/edit`} className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-zinc-400 transition hover:bg-white/6 hover:text-sky-200' title='Open in editor'>
+              <Pencil size={13} />
+              Edit
+            </Link>
             <Link href={`/diagrams/${row.original.id}/view`} target='_blank' className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-zinc-400 transition hover:bg-white/6 hover:text-sky-200' title='Open read-only viewer'>
               <ExternalLink size={13} />
-              Open
+              View
             </Link>
+            <Button variant='ghost' size='xs' onClick={() => setDeleting(row.original)} className='text-zinc-500 hover:text-rose-200'>
+              <Trash2 size={13} />
+              Delete
+            </Button>
           </div>
         ),
       },
@@ -156,58 +208,36 @@ export function AdminDiagramsPage() {
     initialState: { pagination: { pageSize: 25 } },
   });
 
-  if (loading || roleStatus === 'checking') return <AuthLoadingScreen />;
+  if (loading) return <AuthLoadingScreen />;
   if (!user) return <LoginForm />;
-
-  if (roleStatus === 'denied') {
-    return (
-      <div className='grid h-screen place-items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
-        <div className='flex max-w-sm flex-col items-center gap-4 rounded-xl bg-zinc-900/70 px-8 py-10 text-center'>
-          <div className='grid size-12 place-items-center rounded-full bg-red-500/15 ring-1 ring-red-400/40'>
-            <ShieldOff size={22} className='text-red-300' />
-          </div>
-          <div>
-            <h1 className='text-sm font-semibold'>Không có quyền truy cập</h1>
-            <p className='mt-1.5 text-xs leading-relaxed text-zinc-500'>Trang này chỉ dành cho người dùng có role `administrators` trong `users-roles`.</p>
-          </div>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Back to editor
-          </Button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className='flex h-screen flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
       <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
         <div className='flex items-center gap-3'>
           <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
-            <Database size={18} className='text-sky-300' />
+            <Boxes size={18} className='text-sky-300' />
           </div>
           <div>
-            <h1 className='text-base font-semibold'>Diagrams admin</h1>
-            <p className='text-xs text-zinc-500'>
-              users/{'{uid}'}/diagrams/{'{diagram_id}'} · read-only
-            </p>
+            <h1 className='text-base font-semibold'>Flowgram Tools</h1>
+            <p className='text-xs text-zinc-500'>Your diagrams · click one to open the editor</p>
           </div>
         </div>
         <div className='flex items-center gap-2'>
-          <Button variant='outline' size='sm' onClick={() => void refresh()} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
+          <Button size='sm' disabled={busy} onClick={() => void handleCreate()} className='bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
+            {busy ? <LoaderCircle size={13} className='animate-spin' /> : <Plus size={13} />}
+            New diagram
+          </Button>
+          <Button variant='outline' size='sm' onClick={() => void refresh(user.uid)} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
           </Button>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/admin/templates')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Templates
-          </Button>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Back to editor
-          </Button>
+          <UserMenu user={user} />
         </div>
       </header>
 
       <div className='flex items-center gap-3 px-6 py-3'>
-        <Input value={globalFilter} onChange={(event) => setGlobalFilter(event.target.value)} placeholder='Search by name, id or owner…' className='max-w-xs border-white/10 bg-black/25' />
+        <Input value={globalFilter} onChange={(event) => setGlobalFilter(event.target.value)} placeholder='Search by name or id…' className='max-w-xs border-white/10 bg-black/25' />
         <p className='text-xs text-zinc-500'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} diagram(s)` : status === 'error' ? 'Failed to load diagrams' : 'Loading diagrams…'}</p>
       </div>
 
@@ -228,7 +258,7 @@ export function AdminDiagramsPage() {
             {table.getRowModel().rows.length === 0 ? (
               <tr>
                 <td colSpan={columns.length} className='px-3 py-16 text-center text-sm text-zinc-500'>
-                  {status === 'error' ? 'Could not read Firestore. Check sign-in and rules.' : status === 'loading' ? 'Loading…' : 'No diagrams found.'}
+                  {status === 'error' ? 'Could not read Firestore. Check sign-in and rules.' : status === 'loading' ? 'Loading…' : 'No diagrams yet — create your first one with “New diagram”.'}
                 </td>
               </tr>
             ) : (
@@ -269,20 +299,23 @@ export function AdminDiagramsPage() {
         </div>
       </footer>
 
-      <Dialog open={viewing !== null} onOpenChange={(open) => !open && setViewing(null)}>
-        <DialogContent className='max-w-3xl border-white/10 bg-zinc-950/95 text-zinc-100 backdrop-blur-xl'>
-          <DialogHeader>
-            <DialogTitle className='flex items-center gap-2 text-sm font-semibold'>
-              <Braces size={14} className='text-sky-300' />
-              {viewing?.name}
-            </DialogTitle>
-            <DialogDescription className='font-mono text-[11px] text-zinc-500'>
-              users/{viewing?.ownerUid}/diagrams/{viewing?.id}
-            </DialogDescription>
-          </DialogHeader>
-          <pre className='max-h-[60vh] overflow-auto rounded-lg bg-black/40 p-4 font-mono text-[11px] leading-relaxed text-zinc-300 ring-1 ring-white/8'>{viewing ? JSON.stringify(viewing.document, null, 2) : ''}</pre>
-        </DialogContent>
-      </Dialog>
+      <AlertDialog open={deleting !== null} onOpenChange={(open) => !open && setDeleting(null)}>
+        <AlertDialogContent className='border border-white/8 bg-zinc-950'>
+          <AlertDialogHeader>
+            <AlertDialogMedia className='bg-rose-400/10 text-rose-300'>
+              <Trash2 />
+            </AlertDialogMedia>
+            <AlertDialogTitle>Delete diagram?</AlertDialogTitle>
+            <AlertDialogDescription>“{deleting?.name}” will be permanently deleted. This action cannot be undone.</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction variant='destructive' disabled={busy} onClick={() => void handleDelete()}>
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

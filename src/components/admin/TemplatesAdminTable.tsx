@@ -1,15 +1,17 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type Header, type SortingState } from '@tanstack/react-table';
-import { ArrowDown, ArrowUp, ArrowUpDown, Braces, ChevronLeft, ChevronRight, Database, ExternalLink, Eye, RefreshCw, ShieldOff } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, ChevronLeft, ChevronRight, LayoutTemplate, Pencil, Plus, RefreshCw, ShieldOff, Trash2 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
-import { listAllDiagrams, type AdminDiagramRow } from '@/lib/firebase/diagrams';
+import { createTemplate, deleteTemplate, listTemplates, type StoredTemplate } from '@/lib/firebase/templates';
 import { isAdminUser } from '@/lib/firebase/roles';
 
 const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
@@ -21,8 +23,34 @@ function formatDateTime(value: number | null) {
   return value ? dateTimeFormat.format(new Date(value)) : '—';
 }
 
+/** Flattened row for the admin table (timestamps as epoch millis). */
+interface TemplateRow {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  nodeCount: number;
+  edgeCount: number;
+  createdAt: number | null;
+  updatedAt: number | null;
+}
+
+function toTemplateRow(template: StoredTemplate): TemplateRow {
+  const document = template.document ?? { nodes: [], edges: [] };
+  return {
+    id: template.id,
+    name: template.name || '(untitled)',
+    category: template.category ?? '—',
+    description: template.description ?? '',
+    nodeCount: document.nodes?.length ?? 0,
+    edgeCount: document.edges?.length ?? 0,
+    createdAt: template.createdAt ? template.createdAt.toMillis() : null,
+    updatedAt: template.updatedAt ? template.updatedAt.toMillis() : null,
+  };
+}
+
 /** Sort header button — shows the current sort direction of the column. */
-function SortButton({ header }: { header: Header<AdminDiagramRow, unknown> }) {
+function SortButton({ header }: { header: Header<TemplateRow, unknown> }) {
   const column = header.column;
   const sorted = column.getIsSorted();
   return (
@@ -33,16 +61,18 @@ function SortButton({ header }: { header: Header<AdminDiagramRow, unknown> }) {
   );
 }
 
-export function AdminDiagramsPage() {
+export function AdminTemplatesPage() {
   const { user, loading } = useAuth();
-  const [rows, setRows] = useState<AdminDiagramRow[]>([]);
+  const router = useRouter();
+  const [rows, setRows] = useState<TemplateRow[]>([]);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
-  const [sorting, setSorting] = useState<SortingState>([{ id: 'updatedAt', desc: true }]);
+  const [sorting, setSorting] = useState<SortingState>([{ id: 'name', desc: false }]);
   const [globalFilter, setGlobalFilter] = useState('');
-  const [viewing, setViewing] = useState<AdminDiagramRow | null>(null);
   const [roleStatus, setRoleStatus] = useState<'checking' | 'denied' | 'admin'>('checking');
+  const [busy, setBusy] = useState(false);
+  const [deleting, setDeleting] = useState<TemplateRow | null>(null);
 
-  // Gate on `users-roles/{uid}` before touching any diagram data.
+  // Gate on `users-roles/{uid}` before touching any template data.
   useEffect(() => {
     if (!user) return;
     let cancelled = false;
@@ -54,28 +84,52 @@ export function AdminDiagramsPage() {
     };
   }, [user]);
 
-  const refresh = useMemo(
-    () => async () => {
-      setStatus('loading');
-      try {
-        setRows(await listAllDiagrams());
-        setStatus('ready');
-      } catch {
-        setStatus('error');
-      }
-    },
-    [],
-  );
+  const refresh = useCallback(async () => {
+    setStatus('loading');
+    try {
+      const templates = await listTemplates();
+      setRows(templates.map(toTemplateRow));
+      setStatus('ready');
+    } catch {
+      setStatus('error');
+    }
+  }, []);
 
   useEffect(() => {
     if (roleStatus === 'admin') void refresh();
   }, [roleStatus, refresh]);
 
-  const columns = useMemo<ColumnDef<AdminDiagramRow>[]>(
+  const handleCreate = async () => {
+    setBusy(true);
+    try {
+      const id = await createTemplate('Untitled template', 'General', '', { nodes: [], edges: [] });
+      router.push(`/admin/templates/${id}/edit`);
+    } catch {
+      toast.error('Could not create template', { description: 'Check sign-in and Firestore rules.' });
+      setBusy(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!deleting) return;
+    setBusy(true);
+    try {
+      await deleteTemplate(deleting.id);
+      toast.success('Template deleted', { description: deleting.name });
+      setDeleting(null);
+      await refresh();
+    } catch {
+      toast.error('Could not delete template');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const columns = useMemo<ColumnDef<TemplateRow>[]>(
     () => [
       {
         accessorKey: 'name',
-        header: 'Diagram',
+        header: 'Template',
         cell: ({ row }) => (
           <div className='min-w-0'>
             <p className='truncate font-medium text-zinc-100'>{row.original.name}</p>
@@ -84,19 +138,14 @@ export function AdminDiagramsPage() {
         ),
       },
       {
-        accessorKey: 'ownerUid',
-        header: 'Owner UID',
-        cell: ({ getValue }) => <span className='font-mono text-[11px] text-zinc-400'>{getValue<string>().slice(0, 10)}…</span>,
+        accessorKey: 'category',
+        header: 'Category',
+        cell: ({ getValue }) => <span className='whitespace-nowrap rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-semibold text-zinc-400 ring-1 ring-white/10'>{getValue<string>()}</span>,
       },
       {
-        accessorKey: 'public',
-        header: 'Visibility',
-        cell: ({ getValue }) =>
-          getValue<boolean>() ? (
-            <span className='whitespace-nowrap rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-200 ring-1 ring-emerald-400/30'>Public</span>
-          ) : (
-            <span className='whitespace-nowrap rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-semibold text-zinc-500 ring-1 ring-white/10'>Private</span>
-          ),
+        accessorKey: 'description',
+        header: 'Description',
+        cell: ({ getValue }) => <span className='block max-w-64 truncate text-xs text-zinc-500'>{getValue<string>() || '—'}</span>,
       },
       {
         accessorKey: 'nodeCount',
@@ -115,26 +164,20 @@ export function AdminDiagramsPage() {
         sortDescFirst: true,
       },
       {
-        accessorKey: 'createdAt',
-        header: 'Created',
-        cell: ({ getValue }) => <span className='whitespace-nowrap text-zinc-500'>{formatDateTime(getValue<number | null>())}</span>,
-        sortDescFirst: true,
-      },
-      {
         id: 'actions',
         header: '',
         enableSorting: false,
         enableGlobalFilter: false,
         cell: ({ row }) => (
           <div className='flex items-center gap-1'>
-            <Button variant='ghost' size='xs' onClick={() => setViewing(row.original)} className='text-zinc-400 hover:text-sky-200'>
-              <Eye size={13} />
-              View
-            </Button>
-            <Link href={`/diagrams/${row.original.id}/view`} target='_blank' className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-zinc-400 transition hover:bg-white/6 hover:text-sky-200' title='Open read-only viewer'>
-              <ExternalLink size={13} />
-              Open
+            <Link href={`/admin/templates/${row.original.id}/edit`} className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-zinc-400 transition hover:bg-white/6 hover:text-sky-200' title='Edit template'>
+              <Pencil size={13} />
+              Edit
             </Link>
+            <Button variant='ghost' size='xs' onClick={() => setDeleting(row.original)} className='text-zinc-500 hover:text-rose-200'>
+              <Trash2 size={13} />
+              Delete
+            </Button>
           </div>
         ),
       },
@@ -183,22 +226,24 @@ export function AdminDiagramsPage() {
       <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
         <div className='flex items-center gap-3'>
           <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
-            <Database size={18} className='text-sky-300' />
+            <LayoutTemplate size={18} className='text-sky-300' />
           </div>
           <div>
-            <h1 className='text-base font-semibold'>Diagrams admin</h1>
-            <p className='text-xs text-zinc-500'>
-              users/{'{uid}'}/diagrams/{'{diagram_id}'} · read-only
-            </p>
+            <h1 className='text-base font-semibold'>Templates admin</h1>
+            <p className='text-xs text-zinc-500'>templates/{'{template_id}'} · shared library for every user</p>
           </div>
         </div>
         <div className='flex items-center gap-2'>
+          <Button size='sm' disabled={busy} onClick={() => void handleCreate()} className='bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
+            <Plus size={13} />
+            New template
+          </Button>
           <Button variant='outline' size='sm' onClick={() => void refresh()} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
           </Button>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/admin/templates')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Templates
+          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/admin/diagrams')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
+            Diagrams
           </Button>
           <Button variant='outline' size='sm' onClick={() => (window.location.href = '/')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
             Back to editor
@@ -207,8 +252,8 @@ export function AdminDiagramsPage() {
       </header>
 
       <div className='flex items-center gap-3 px-6 py-3'>
-        <Input value={globalFilter} onChange={(event) => setGlobalFilter(event.target.value)} placeholder='Search by name, id or owner…' className='max-w-xs border-white/10 bg-black/25' />
-        <p className='text-xs text-zinc-500'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} diagram(s)` : status === 'error' ? 'Failed to load diagrams' : 'Loading diagrams…'}</p>
+        <Input value={globalFilter} onChange={(event) => setGlobalFilter(event.target.value)} placeholder='Search by name, category or id…' className='max-w-xs border-white/10 bg-black/25' />
+        <p className='text-xs text-zinc-500'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} template(s)` : status === 'error' ? 'Failed to load templates' : 'Loading templates…'}</p>
       </div>
 
       <div className='min-h-0 flex-1 overflow-auto px-6'>
@@ -228,7 +273,7 @@ export function AdminDiagramsPage() {
             {table.getRowModel().rows.length === 0 ? (
               <tr>
                 <td colSpan={columns.length} className='px-3 py-16 text-center text-sm text-zinc-500'>
-                  {status === 'error' ? 'Could not read Firestore. Check sign-in and rules.' : status === 'loading' ? 'Loading…' : 'No diagrams found.'}
+                  {status === 'error' ? 'Could not read Firestore. Check sign-in and rules.' : status === 'loading' ? 'Loading…' : 'No templates yet — use “New template”.'}
                 </td>
               </tr>
             ) : (
@@ -269,20 +314,23 @@ export function AdminDiagramsPage() {
         </div>
       </footer>
 
-      <Dialog open={viewing !== null} onOpenChange={(open) => !open && setViewing(null)}>
-        <DialogContent className='max-w-3xl border-white/10 bg-zinc-950/95 text-zinc-100 backdrop-blur-xl'>
-          <DialogHeader>
-            <DialogTitle className='flex items-center gap-2 text-sm font-semibold'>
-              <Braces size={14} className='text-sky-300' />
-              {viewing?.name}
-            </DialogTitle>
-            <DialogDescription className='font-mono text-[11px] text-zinc-500'>
-              users/{viewing?.ownerUid}/diagrams/{viewing?.id}
-            </DialogDescription>
-          </DialogHeader>
-          <pre className='max-h-[60vh] overflow-auto rounded-lg bg-black/40 p-4 font-mono text-[11px] leading-relaxed text-zinc-300 ring-1 ring-white/8'>{viewing ? JSON.stringify(viewing.document, null, 2) : ''}</pre>
-        </DialogContent>
-      </Dialog>
+      <AlertDialog open={deleting !== null} onOpenChange={(open) => !open && setDeleting(null)}>
+        <AlertDialogContent className='border border-white/8 bg-zinc-950'>
+          <AlertDialogHeader>
+            <AlertDialogMedia className='bg-rose-400/10 text-rose-300'>
+              <Trash2 />
+            </AlertDialogMedia>
+            <AlertDialogTitle>Delete template?</AlertDialogTitle>
+            <AlertDialogDescription>“{deleting?.name}” will be removed from the shared library. Users will no longer be able to load it. This action cannot be undone.</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction variant='destructive' disabled={busy} onClick={() => void handleDelete()}>
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

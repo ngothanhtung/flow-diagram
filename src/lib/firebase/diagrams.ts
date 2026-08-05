@@ -1,6 +1,6 @@
 'use client';
 
-import { addDoc, collection, collectionGroup, deleteDoc, doc, documentId, getDoc, getDocs, orderBy, query, serverTimestamp, setDoc, where, type Timestamp } from 'firebase/firestore';
+import { addDoc, collection, collectionGroup, deleteDoc, doc, getDoc, getDocs, orderBy, query, serverTimestamp, setDoc, where, type Timestamp } from 'firebase/firestore';
 import type { FlowDocumentJSON } from '../flowchart-types';
 import { firestore } from './client';
 
@@ -8,6 +8,8 @@ export interface StoredDiagram {
   id: string;
   name: string;
   document: FlowDocumentJSON;
+  /** Public diagrams are readable by any signed-in user via the viewer. */
+  public?: boolean;
   createdAt: Timestamp | null;
   updatedAt: Timestamp | null;
 }
@@ -23,23 +25,25 @@ function cleanDocument(document: FlowDocumentJSON): FlowDocumentJSON {
   return JSON.parse(JSON.stringify(document)) as FlowDocumentJSON;
 }
 
-export async function createDiagram(userId: string, name: string, document: FlowDocumentJSON) {
+export async function createDiagram(userId: string, name: string, document: FlowDocumentJSON, isPublic = false) {
   const reference = await addDoc(diagramsCollection(userId), {
     name,
     document: cleanDocument(document),
+    public: isPublic,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   });
   return reference.id;
 }
 
-export async function saveDiagram(userId: string, diagramId: string, name: string, document: FlowDocumentJSON) {
+export async function saveDiagram(userId: string, diagramId: string, name: string, document: FlowDocumentJSON, isPublic = false) {
   if (!diagramId) throw new Error('A diagram id is required.');
   await setDoc(
     doc(diagramsCollection(userId), diagramId),
     {
       name,
       document: cleanDocument(document),
+      public: isPublic,
       updatedAt: serverTimestamp(),
     },
     { merge: true },
@@ -67,6 +71,7 @@ export interface AdminDiagramRow {
   id: string;
   ownerUid: string;
   name: string;
+  public: boolean;
   nodeCount: number;
   edgeCount: number;
   createdAt: number | null;
@@ -74,28 +79,36 @@ export interface AdminDiagramRow {
   document: FlowDocumentJSON;
 }
 
-/**
- * Finds a single diagram by its document id across all users — the
- * viewer route `/diagrams/{id}/view` only knows the id, not the owner
- * uid. Uses a collection-group query filtered by `documentId()`.
- */
-export async function findDiagramById(diagramId: string): Promise<AdminDiagramRow | null> {
-  if (!diagramId) return null;
-  const snapshot = await getDocs(query(collectionGroup(firestore, 'diagrams'), where(documentId(), '==', diagramId)));
-  const item = snapshot.docs[0];
-  if (!item) return null;
-  const data = item.data() as Partial<Omit<StoredDiagram, 'id'>>;
+/** Shared mapper from a raw Firestore doc into a flattened viewer row.
+ *  Exported so the viewer can convert a direct owner read as well. */
+export function toViewerRow(id: string, ownerUid: string, data: Partial<Omit<StoredDiagram, 'id'>>): AdminDiagramRow {
   const document: FlowDocumentJSON = data.document ?? { nodes: [], edges: [] };
   return {
-    id: item.id,
-    ownerUid: item.ref.parent.parent?.id ?? 'unknown',
+    id,
+    ownerUid,
     name: data.name || '(untitled)',
+    public: data.public === true,
     nodeCount: document.nodes?.length ?? 0,
     edgeCount: document.edges?.length ?? 0,
     createdAt: data.createdAt ? data.createdAt.toMillis() : null,
     updatedAt: data.updatedAt ? data.updatedAt.toMillis() : null,
     document,
   };
+}
+
+/**
+ * Finds a single public diagram by its document id — the non-admin
+ * viewer path. The query is constrained to `public == true` so the
+ * security rules allow it (`request.query.public == true`); matching
+ * the id itself happens client-side. Requires the collection-group
+ * index defined in firestore.indexes.json.
+ */
+export async function findPublicDiagramById(diagramId: string): Promise<AdminDiagramRow | null> {
+  if (!diagramId) return null;
+  const snapshot = await getDocs(query(collectionGroup(firestore, 'diagrams'), where('public', '==', true)));
+  const item = snapshot.docs.find((docItem) => docItem.id === diagramId);
+  if (!item) return null;
+  return toViewerRow(item.id, item.ref.parent.parent?.id ?? 'unknown', item.data() as Partial<Omit<StoredDiagram, 'id'>>);
 }
 
 /**
@@ -107,19 +120,8 @@ export async function findDiagramById(diagramId: string): Promise<AdminDiagramRo
 export async function listAllDiagrams(): Promise<AdminDiagramRow[]> {
   const snapshot = await getDocs(collectionGroup(firestore, 'diagrams'));
   return snapshot.docs.map((item) => {
-    const data = item.data() as Partial<Omit<StoredDiagram, 'id'>>;
-    const document: FlowDocumentJSON = data.document ?? { nodes: [], edges: [] };
-    return {
-      id: item.id,
-      // Doc path is users/{uid}/diagrams/{diagramId} — the grandparent
-      // document id is the owner's uid.
-      ownerUid: item.ref.parent.parent?.id ?? 'unknown',
-      name: data.name || '(untitled)',
-      nodeCount: document.nodes?.length ?? 0,
-      edgeCount: document.edges?.length ?? 0,
-      createdAt: data.createdAt ? data.createdAt.toMillis() : null,
-      updatedAt: data.updatedAt ? data.updatedAt.toMillis() : null,
-      document,
-    };
+    // Doc path is users/{uid}/diagrams/{diagramId} — the grandparent
+    // document id is the owner's uid.
+    return toViewerRow(item.id, item.ref.parent.parent?.id ?? 'unknown', item.data() as Partial<Omit<StoredDiagram, 'id'>>);
   });
 }

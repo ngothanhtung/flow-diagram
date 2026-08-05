@@ -15,18 +15,36 @@ service cloud.firestore {
       allow read: if request.auth != null && request.auth.uid == userId;
     }
 
+    // A diagram is readable by anyone signed in when it is flagged
+    // `public: true`; `.get()` keeps missing-field docs private.
+    function isPublicDiagram() {
+      return resource.data.get('public', false) == true;
+    }
+
     match /users/{userId}/diagrams/{diagramId} {
-      // Owner has full control; administrators only ever get read access.
+      // Owner has full control; read access additionally covers
+      // administrators and public diagrams (viewer route).
       allow create, update, delete: if request.auth != null
         && request.auth.uid == userId;
       allow read: if request.auth != null
-        && (request.auth.uid == userId || isAdministrator());
+        && (request.auth.uid == userId || isAdministrator() || isPublicDiagram());
     }
 
-    // Cross-user collection-group read powering the /admin/diagrams
-    // overview — administrators only, and strictly get/list.
+    // Cross-user collection-group reads: administrators may browse
+    // freely; everyone else only through queries constrained to
+    // public diagrams (findPublicDiagramById in the viewer).
     match /{path=**}/diagrams/{diagramId} {
-      allow get, list: if isAdministrator();
+      allow get: if isAdministrator() || isPublicDiagram();
+      // Query constraints keep their client types, so the boolean
+      // `where('public', '==', true)` compares against `true`.
+      allow list: if isAdministrator() || request.query.public == true;
+    }
+
+    // Shared template library. Every signed-in user can read templates
+    // (the editor loads them); only administrators manage them.
+    match /templates/{templateId} {
+      allow read: if request.auth != null;
+      allow create, update, delete: if request.auth != null && isAdministrator();
     }
 
     match /{document=**} {

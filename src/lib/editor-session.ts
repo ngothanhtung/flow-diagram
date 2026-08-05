@@ -9,6 +9,8 @@ export interface EditorSession {
   doc: FlowDocumentJSON;
   currentDiagramId: string | null;
   currentDiagramName: string;
+  /** Visibility of the open diagram — restored so re-saving keeps it. */
+  currentDiagramPublic?: boolean;
   savedSignature: string | null;
 }
 
