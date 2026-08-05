@@ -2,7 +2,7 @@
 
 import type { EdgeMarker, ExecutionState, FlowEdge, FlowNode } from '@/lib/flowchart-types';
 import { EDGE_DRAW_DURATION_MS } from '@/lib/execution-timing';
-import { buildEdgeGeometry } from './edge-geometry';
+import { buildEdgeGeometry, pointAlongEdgeGeometry } from './edge-geometry';
 import { EdgeEffectLayer } from './edge-effect-layer';
 import { EdgeMarkerSymbol } from './edge-marker';
 
@@ -31,7 +31,7 @@ interface AnimatedEdgeProps {
 
 export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal' }: AnimatedEdgeProps) {
   const geometry = buildEdgeGeometry(edge, from, to);
-  const { d, mid, start, end, startAngle, angle, length } = geometry;
+  const { d, start, end, startAngle, angle } = geometry;
   const effect = edge.effect ?? 'flow';
   const direction = edge.direction ?? 'forward';
   const lineWidth = Math.max(1, Math.min(6, edge.width ?? 2.5));
@@ -50,20 +50,36 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
       } as React.CSSProperties)
     : undefined;
   const labelWidth = edge.label ? Math.max(44, Math.min(180, edge.label.length * 7 + 24)) : 44;
-  // Where the label pill anchors along the line. "left"/"right" sit at
-  // the quarter/three-quarter marks between the endpoints; "top"/"bottom"
-  // offset from the midpoint so the pill clears the line itself.
+  // Where the label pill anchors — sampled on the drawn path itself
+  // (not the endpoint chord, which diverges on bent routes). Which
+  // options travel along vs. across the line follows the local segment
+  // direction at the midpoint: on a horizontal segment left/right ride
+  // the quarter marks and top/bottom float clear; on a vertical segment
+  // the roles swap so the pill never sits on the stroke.
   const labelPosition = edge.labelPosition ?? 'center';
+  const midSample = pointAlongEdgeGeometry(geometry, 0.5);
+  const horizontalAtMid = Math.abs(midSample.direction.x) >= Math.abs(midSample.direction.y);
+  const startSample = pointAlongEdgeGeometry(geometry, 0.25);
+  const endSample = pointAlongEdgeGeometry(geometry, 0.75);
+  const sideOffset = labelWidth / 2 + 10;
   const labelAnchor =
     labelPosition === 'left'
-      ? { x: (start.x + mid.x) / 2, y: (start.y + mid.y) / 2 }
+      ? horizontalAtMid
+        ? startSample.point
+        : { x: midSample.point.x - sideOffset, y: midSample.point.y }
       : labelPosition === 'right'
-        ? { x: (mid.x + end.x) / 2, y: (mid.y + end.y) / 2 }
+        ? horizontalAtMid
+          ? endSample.point
+          : { x: midSample.point.x + sideOffset, y: midSample.point.y }
         : labelPosition === 'top'
-          ? { x: mid.x, y: mid.y - 26 }
+          ? horizontalAtMid
+            ? { x: midSample.point.x, y: midSample.point.y - 26 }
+            : startSample.point
           : labelPosition === 'bottom'
-            ? { x: mid.x, y: mid.y + 26 }
-            : mid;
+            ? horizontalAtMid
+              ? { x: midSample.point.x, y: midSample.point.y + 26 }
+              : endSample.point
+            : midSample.point;
   // The arrowhead rides at the silhouette — its offset from the
   // destination's centre is the length of the in-anchor plus a small
   // gap so the arrow doesn't overlap the port dot.
@@ -86,19 +102,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
       <path d={d} pathLength={isDrawing ? 1 : undefined} stroke='currentColor' strokeWidth={selected ? lineWidth + 2 : lineWidth} strokeOpacity={selected ? 0.82 : 0.52} fill='none' className={isDrawing ? 'edge-power-draw' : undefined} style={drawStyle} />
 
       <g opacity={showEffect ? 1 : 0} className={isDrawing ? 'edge-after-draw' : undefined} style={effectColor ? { ...drawStyle, color: effectColor } : drawStyle}>
-        <EdgeEffectLayer
-          d={d}
-          effect={effect}
-          direction={direction}
-          length={length}
-          lineWidth={lineWidth}
-          effectSize={effectSize}
-          speed={speed}
-          paused={paused}
-          performanceMode={performanceMode || lowPower}
-          isDrawing={isDrawing}
-          drawDuration={drawDuration}
-        />
+        <EdgeEffectLayer d={d} effect={effect} direction={direction} lineWidth={lineWidth} effectSize={effectSize} speed={speed} paused={paused} performanceMode={performanceMode || lowPower} isDrawing={isDrawing} drawDuration={drawDuration} />
       </g>
 
       <g className={isDrawing ? 'edge-after-draw' : undefined} style={drawStyle}>
@@ -107,8 +111,21 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
       </g>
 
       {edge.label && (
-        <g transform={`translate(${labelAnchor.x} ${labelAnchor.y})`} pointerEvents='none' className={isDrawing ? 'edge-after-draw' : undefined} style={drawStyle}>
-          <rect x={-labelWidth / 2} y={-12} width={labelWidth} height={24} rx={12} className='fill-zinc-900 dark:fill-zinc-100' opacity={0.9} />
+        <g
+          transform={`translate(${labelAnchor.x} ${labelAnchor.y})`}
+          pointerEvents={interactive ? 'auto' : 'none'}
+          className={isDrawing ? 'edge-after-draw' : interactive ? 'cursor-pointer' : undefined}
+          style={drawStyle}
+          onClick={
+            interactive
+              ? (e) => {
+                  e.stopPropagation();
+                  onClick?.(edge.id);
+                }
+              : undefined
+          }
+        >
+          <rect x={-labelWidth / 2} y={-12} width={labelWidth} height={24} rx={12} className='fill-zinc-900 dark:fill-zinc-100' />
           <text textAnchor='middle' dominantBaseline='central' className='fill-white dark:fill-zinc-900 text-[11px] font-semibold uppercase tracking-wider'>
             {edge.label}
           </text>

@@ -505,14 +505,13 @@ const PREVIEW_POINTS = [
   { x: 368, y: 90 },
 ];
 const PREVIEW_PATH = PREVIEW_POINTS.map((point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`).join(' ');
-const PREVIEW_LENGTH = Math.hypot(PREVIEW_POINTS[1].x - PREVIEW_POINTS[0].x, PREVIEW_POINTS[1].y - PREVIEW_POINTS[0].y);
 
 function EffectPreviewLarge({ effect, direction, color, effectColor, width, effectSize, speed }: { effect: EdgeEffect; direction: EdgeDirection; color: string; effectColor?: string; width: number; effectSize: number; speed: number }) {
   return (
     <svg viewBox='0 0 400 180' className='h-auto w-full max-w-96' style={{ color }}>
       <path d={PREVIEW_PATH} stroke='currentColor' strokeWidth={width} strokeOpacity={0.52} fill='none' />
       <g style={effectColor ? { color: effectColor } : undefined}>
-        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} />
+        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} lineWidth={width} effectSize={effectSize} speed={speed} />
       </g>
     </svg>
   );
