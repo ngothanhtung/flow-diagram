@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Boxes, FileQuestion, Globe, Hand, ListOrdered, LoaderCircle, Play, RadioTower, Repeat2, SkipForward } from 'lucide-react';
+import { Boxes, FileQuestion, Hand, ListOrdered, LoaderCircle, Play, RadioTower, Repeat2, SkipForward } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
@@ -125,7 +125,7 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
                 onClick={() => run.setRunMode(mode.value as RunMode)}
                 aria-pressed={run.runMode === mode.value}
                 className={[
-                  'inline-flex h-7 items-center gap-1.5 rounded-md px-2.5 text-[10px] font-semibold transition',
+                  'inline-flex h-6 items-center gap-1.5 rounded-md px-2.5 text-xs font-semibold transition',
                   run.runMode === mode.value ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-500 hover:bg-white/6 hover:text-zinc-200',
                 ].join(' ')}
               >
@@ -140,7 +140,7 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
             aria-pressed={run.repeatEnabled}
             title='Automatically replay after the sequential run completes'
             className={[
-              'inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-[10px] font-semibold ring-1 transition',
+              'inline-flex h-8 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold ring-1 transition',
               run.repeatEnabled && run.runMode === 'sequential' ? 'bg-emerald-400/15 text-emerald-100 ring-emerald-400/40' : 'bg-black/25 text-zinc-500 ring-white/10 hover:bg-white/6 hover:text-zinc-200',
               run.runMode !== 'sequential' ? 'cursor-not-allowed opacity-40 hover:bg-black/25 hover:text-zinc-500' : '',
             ].join(' ')}
@@ -148,9 +148,9 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
             <Repeat2 size={13} className={run.repeatEnabled && run.runMode === 'sequential' ? 'text-emerald-300' : ''} />
             Repeat
           </button>
-          <motion.button whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }} type='button' onClick={run.replay} className='inline-flex h-9 items-center gap-1.5 rounded-md bg-sky-500/90 px-3 text-xs font-semibold text-sky-950 shadow-sm hover:bg-sky-400'>
+          <motion.button whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }} type='button' onClick={run.replay} className='inline-flex h-8 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 hover:bg-white/10'>
             <Play size={14} />
-            Replay path
+            Replay
           </motion.button>
           {run.runMode === 'manual' && (
             <motion.button
@@ -159,21 +159,12 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
               type='button'
               onClick={run.advanceStep}
               title='Run the next step'
-              className='inline-flex h-9 items-center gap-1.5 rounded-md bg-emerald-500/90 px-3 text-xs font-semibold text-emerald-950 shadow-sm hover:bg-emerald-400'
+              className='inline-flex h-8 items-center gap-1.5 rounded-md bg-emerald-500/90 px-3 text-xs font-semibold text-emerald-950 shadow-sm hover:bg-emerald-400'
             >
               <SkipForward size={14} />
               Next
             </motion.button>
           )}
-          {diagram.public && (
-            <span className='inline-flex h-7 items-center gap-1.5 rounded-full bg-emerald-400/10 px-3 text-[10px] font-semibold uppercase tracking-wider text-emerald-200 ring-1 ring-emerald-400/30'>
-              <Globe size={12} />
-              Public
-            </span>
-          )}
-          <Link href='/' className='inline-flex h-9 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10'>
-            Back to editor
-          </Link>
         </div>
       </header>
 

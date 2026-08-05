@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { DiagramViewer } from '@/components/viewer/DiagramViewer';
 
 export const metadata: Metadata = {
-  title: 'Diagram view — Flowgram Tools',
+  title: 'Diagram view — X Flow Tool',
   description: 'Read-only viewer for a shared flowgram diagram.',
 };
 

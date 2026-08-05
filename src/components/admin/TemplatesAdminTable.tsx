@@ -2,19 +2,16 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type Header, type SortingState } from '@tanstack/react-table';
-import { ArrowDown, ArrowUp, ArrowUpDown, ChevronLeft, ChevronRight, LayoutTemplate, Pencil, Plus, RefreshCw, ShieldOff, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, ChevronLeft, ChevronRight, LayoutTemplate, Pencil, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
-import { useAuth } from '@/components/auth/AuthProvider';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { createTemplate, deleteTemplate, listTemplates, type StoredTemplate } from '@/lib/firebase/templates';
-import { isAdminUser } from '@/lib/firebase/roles';
 
-const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
+const dateTimeFormat = new Intl.DateTimeFormat('en-US', {
   dateStyle: 'medium',
   timeStyle: 'short',
 });
@@ -22,6 +19,13 @@ const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
 function formatDateTime(value: number | null) {
   return value ? dateTimeFormat.format(new Date(value)) : '—';
 }
+
+const numberFormat = new Intl.NumberFormat('en-US');
+
+/** Columns that should shrink to their content instead of stretching. */
+const NARROW_COLUMNS = new Set(['nodeCount', 'edgeCount', 'updatedAt', 'actions']);
+/** Columns whose content should align to the right (numbers, actions). */
+const RIGHT_ALIGNED_COLUMNS = new Set(['nodeCount', 'edgeCount', 'actions']);
 
 /** Flattened row for the admin table (timestamps as epoch millis). */
 interface TemplateRow {
@@ -62,27 +66,13 @@ function SortButton({ header }: { header: Header<TemplateRow, unknown> }) {
 }
 
 export function AdminTemplatesPage() {
-  const { user, loading } = useAuth();
   const router = useRouter();
   const [rows, setRows] = useState<TemplateRow[]>([]);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [sorting, setSorting] = useState<SortingState>([{ id: 'name', desc: false }]);
   const [globalFilter, setGlobalFilter] = useState('');
-  const [roleStatus, setRoleStatus] = useState<'checking' | 'denied' | 'admin'>('checking');
   const [busy, setBusy] = useState(false);
   const [deleting, setDeleting] = useState<TemplateRow | null>(null);
-
-  // Gate on `users-roles/{uid}` before touching any template data.
-  useEffect(() => {
-    if (!user) return;
-    let cancelled = false;
-    void isAdminUser(user.uid).then((allowed) => {
-      if (!cancelled) setRoleStatus(allowed ? 'admin' : 'denied');
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [user]);
 
   const refresh = useCallback(async () => {
     setStatus('loading');
@@ -96,8 +86,8 @@ export function AdminTemplatesPage() {
   }, []);
 
   useEffect(() => {
-    if (roleStatus === 'admin') void refresh();
-  }, [roleStatus, refresh]);
+    void refresh();
+  }, [refresh]);
 
   const handleCreate = async () => {
     setBusy(true);
@@ -150,12 +140,12 @@ export function AdminTemplatesPage() {
       {
         accessorKey: 'nodeCount',
         header: 'Nodes',
-        cell: ({ getValue }) => <span className='tabular-nums'>{getValue<number>()}</span>,
+        cell: ({ getValue }) => <span className='tabular-nums'>{numberFormat.format(getValue<number>())}</span>,
       },
       {
         accessorKey: 'edgeCount',
         header: 'Edges',
-        cell: ({ getValue }) => <span className='tabular-nums'>{getValue<number>()}</span>,
+        cell: ({ getValue }) => <span className='tabular-nums'>{numberFormat.format(getValue<number>())}</span>,
       },
       {
         accessorKey: 'updatedAt',
@@ -199,30 +189,8 @@ export function AdminTemplatesPage() {
     initialState: { pagination: { pageSize: 25 } },
   });
 
-  if (loading || roleStatus === 'checking') return <AuthLoadingScreen />;
-  if (!user) return <LoginForm />;
-
-  if (roleStatus === 'denied') {
-    return (
-      <div className='grid h-screen place-items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
-        <div className='flex max-w-sm flex-col items-center gap-4 rounded-xl bg-zinc-900/70 px-8 py-10 text-center'>
-          <div className='grid size-12 place-items-center rounded-full bg-red-500/15 ring-1 ring-red-400/40'>
-            <ShieldOff size={22} className='text-red-300' />
-          </div>
-          <div>
-            <h1 className='text-sm font-semibold'>Không có quyền truy cập</h1>
-            <p className='mt-1.5 text-xs leading-relaxed text-zinc-500'>Trang này chỉ dành cho người dùng có role `administrators` trong `users-roles`.</p>
-          </div>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Back to editor
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className='flex h-screen flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
+    <div className='flex h-full flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
       <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
         <div className='flex items-center gap-3'>
           <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
@@ -234,19 +202,13 @@ export function AdminTemplatesPage() {
           </div>
         </div>
         <div className='flex items-center gap-2'>
-          <Button size='sm' disabled={busy} onClick={() => void handleCreate()} className='bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
+          <Button disabled={busy} onClick={() => void handleCreate()} className='bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
             <Plus size={13} />
             New template
           </Button>
-          <Button variant='outline' size='sm' onClick={() => void refresh()} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
+          <Button variant='outline' onClick={() => void refresh()} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
-          </Button>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/admin/diagrams')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Diagrams
-          </Button>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Back to editor
           </Button>
         </div>
       </header>
@@ -262,7 +224,14 @@ export function AdminTemplatesPage() {
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} className='border-b border-white/8 bg-zinc-950/95 px-3 py-2.5 text-[10px] font-bold text-zinc-400 backdrop-blur-xl'>
+                  <th
+                    key={header.id}
+                    className={[
+                      'border-b border-white/8 bg-zinc-950/95 px-3 py-2.5 text-[10px] font-bold text-zinc-400 backdrop-blur-xl',
+                      NARROW_COLUMNS.has(header.column.id) ? 'w-px whitespace-nowrap' : '',
+                      RIGHT_ALIGNED_COLUMNS.has(header.column.id) ? 'text-right' : '',
+                    ].join(' ')}
+                  >
                     {header.column.getCanSort() ? <SortButton header={header} /> : flexRender(header.column.columnDef.header, header.getContext())}
                   </th>
                 ))}
@@ -280,7 +249,14 @@ export function AdminTemplatesPage() {
               table.getRowModel().rows.map((row) => (
                 <tr key={row.id} className='group transition hover:bg-white/4'>
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className='border-b border-white/5 px-3 py-2.5'>
+                    <td
+                      key={cell.id}
+                      className={[
+                        'border-b border-white/5 px-3 py-2.5',
+                        NARROW_COLUMNS.has(cell.column.id) ? 'w-px whitespace-nowrap' : '',
+                        RIGHT_ALIGNED_COLUMNS.has(cell.column.id) ? 'text-right' : '',
+                      ].join(' ')}
+                    >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   ))}

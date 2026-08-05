@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type Header, type SortingState } from '@tanstack/react-table';
-import { ArrowDown, ArrowUp, ArrowUpDown, Boxes, ChevronLeft, ChevronRight, ExternalLink, Globe, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, Boxes, ChevronLeft, ChevronRight, Ellipsis, ExternalLink, Globe, LayoutTemplate, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Share2, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -11,11 +11,17 @@ import { useAuth } from '@/components/auth/AuthProvider';
 import { UserMenu } from '@/components/auth/UserMenu';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
+import { Command, CommandGroup, CommandItem, CommandList } from '@/components/ui/command';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
-import { initialDocument } from '@/lib/flowchart-data';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { ShareDialog } from '@/components/diagrams/ShareDialog';
+import { diagramTemplates } from '@/lib/diagram-templates';
+import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { createDiagram, deleteDiagram, listDiagrams, type StoredDiagram } from '@/lib/firebase/diagrams';
+import { listTemplates, type StoredTemplate } from '@/lib/firebase/templates';
 
-const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
+const dateTimeFormat = new Intl.DateTimeFormat('en-US', {
   dateStyle: 'medium',
   timeStyle: 'short',
 });
@@ -23,6 +29,13 @@ const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
 function formatDateTime(value: number | null) {
   return value ? dateTimeFormat.format(new Date(value)) : '—';
 }
+
+const numberFormat = new Intl.NumberFormat('en-US');
+
+/** Columns that should shrink to their content instead of stretching. */
+const NARROW_COLUMNS = new Set(['no', 'public', 'nodeCount', 'edgeCount', 'updatedAt', 'createdAt', 'actions']);
+/** Columns whose content should align to the right (numbers, actions). */
+const RIGHT_ALIGNED_COLUMNS = new Set(['no', 'nodeCount', 'edgeCount', 'actions']);
 
 /** Flattened row for the owner's diagram list (timestamps as millis). */
 interface DiagramRow {
@@ -60,6 +73,68 @@ function SortButton({ header }: { header: Header<DiagramRow, unknown> }) {
   );
 }
 
+/** Single-column row actions (Edit / View / Share / Delete) behind an ellipsis trigger. */
+function RowActionsMenu({ diagram, onDelete, onShare }: { diagram: DiagramRow; onDelete: () => void; onShare: () => void }) {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger render={<Button variant='ghost' size='icon-xs' className='text-zinc-500 hover:text-zinc-200' />}>
+        <Ellipsis size={14} />
+        <span className='sr-only'>Actions</span>
+      </PopoverTrigger>
+      <PopoverContent align='end' className='w-40 border-white/8 bg-zinc-950/95 p-1 backdrop-blur-xl'>
+        <Command className='bg-transparent p-0'>
+          <CommandList className='max-h-none overflow-visible'>
+            <CommandGroup>
+              <CommandItem
+                onSelect={() => {
+                  setOpen(false);
+                  router.push(`/diagrams/${diagram.id}/edit`);
+                }}
+              >
+                <Pencil size={13} />
+                Edit
+              </CommandItem>
+              <CommandItem
+                onSelect={() => {
+                  setOpen(false);
+                  window.open(`/diagrams/${diagram.id}/view`, '_blank');
+                }}
+              >
+                <ExternalLink size={13} />
+                View
+              </CommandItem>
+              <CommandItem
+                disabled={!diagram.public}
+                title={diagram.public ? undefined : 'Make the diagram public to share it'}
+                onSelect={() => {
+                  setOpen(false);
+                  onShare();
+                }}
+              >
+                <Share2 size={13} />
+                Share
+              </CommandItem>
+              <CommandItem
+                className='text-rose-300 data-selected:bg-rose-500/10 data-selected:text-rose-100'
+                onSelect={() => {
+                  setOpen(false);
+                  onDelete();
+                }}
+              >
+                <Trash2 size={13} />
+                Delete
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
 /**
  * Landing page: lists every diagram owned by the signed-in user
  * (`users/{uid}/diagrams`). Opening one navigates to its editor at
@@ -74,6 +149,44 @@ export function DiagramsHome() {
   const [globalFilter, setGlobalFilter] = useState('');
   const [busy, setBusy] = useState(false);
   const [deleting, setDeleting] = useState<DiagramRow | null>(null);
+  const [sharing, setSharing] = useState<DiagramRow | null>(null);
+  const [remoteTemplates, setRemoteTemplates] = useState<StoredTemplate[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    listTemplates()
+      .then((templates) => {
+        if (!cancelled) setRemoteTemplates(templates);
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const templateItems = useMemo(
+    () =>
+      remoteTemplates.length > 0
+        ? remoteTemplates.map((template) => ({
+            id: template.id,
+            name: template.name,
+            category: template.category ?? 'General',
+            description: template.description ?? '',
+            nodeCount: template.document?.nodes?.length ?? 0,
+            document: template.document ?? { nodes: [], edges: [] },
+          }))
+        : diagramTemplates
+            .filter((template) => template.id !== 'blank')
+            .map((template) => ({
+              id: template.id,
+              name: template.name,
+              category: template.category,
+              description: template.description,
+              nodeCount: template.document.nodes.length,
+              document: template.document,
+            })),
+    [remoteTemplates],
+  );
 
   const refresh = useCallback(async (userId: string) => {
     setStatus('loading');
@@ -91,11 +204,11 @@ export function DiagramsHome() {
     void refresh(user.uid);
   }, [user, refresh]);
 
-  const handleCreate = async () => {
+  const handleCreate = async (document: FlowDocumentJSON = { nodes: [], edges: [] }, name = 'Untitled diagram') => {
     if (!user) return;
     setBusy(true);
     try {
-      const id = await createDiagram(user.uid, 'Untitled diagram', initialDocument, false);
+      const id = await createDiagram(user.uid, name, document, false);
       router.push(`/diagrams/${id}/edit`);
     } catch {
       toast.error('Could not create diagram', { description: 'Check sign-in and Firestore rules.' });
@@ -120,6 +233,13 @@ export function DiagramsHome() {
 
   const columns = useMemo<ColumnDef<DiagramRow>[]>(
     () => [
+      {
+        id: 'no',
+        header: '#',
+        enableSorting: false,
+        enableGlobalFilter: false,
+        cell: ({ row }) => <span className='tabular-nums text-zinc-500'>{row.index + 1}</span>,
+      },
       {
         accessorKey: 'name',
         header: 'Diagram',
@@ -149,12 +269,12 @@ export function DiagramsHome() {
       {
         accessorKey: 'nodeCount',
         header: 'Nodes',
-        cell: ({ getValue }) => <span className='tabular-nums'>{getValue<number>()}</span>,
+        cell: ({ getValue }) => <span className='tabular-nums'>{numberFormat.format(getValue<number>())}</span>,
       },
       {
         accessorKey: 'edgeCount',
         header: 'Edges',
-        cell: ({ getValue }) => <span className='tabular-nums'>{getValue<number>()}</span>,
+        cell: ({ getValue }) => <span className='tabular-nums'>{numberFormat.format(getValue<number>())}</span>,
       },
       {
         accessorKey: 'updatedAt',
@@ -173,22 +293,7 @@ export function DiagramsHome() {
         header: '',
         enableSorting: false,
         enableGlobalFilter: false,
-        cell: ({ row }) => (
-          <div className='flex items-center gap-1'>
-            <Link href={`/diagrams/${row.original.id}/edit`} className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-zinc-400 transition hover:bg-white/6 hover:text-sky-200' title='Open in editor'>
-              <Pencil size={13} />
-              Edit
-            </Link>
-            <Link href={`/diagrams/${row.original.id}/view`} target='_blank' className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-zinc-400 transition hover:bg-white/6 hover:text-sky-200' title='Open read-only viewer'>
-              <ExternalLink size={13} />
-              View
-            </Link>
-            <Button variant='ghost' size='xs' onClick={() => setDeleting(row.original)} className='text-zinc-500 hover:text-rose-200'>
-              <Trash2 size={13} />
-              Delete
-            </Button>
-          </div>
-        ),
+        cell: ({ row }) => <RowActionsMenu diagram={row.original} onDelete={() => setDeleting(row.original)} onShare={() => setSharing(row.original)} />,
       },
     ],
     [],
@@ -219,16 +324,39 @@ export function DiagramsHome() {
             <Boxes size={18} className='text-sky-300' />
           </div>
           <div>
-            <h1 className='text-base font-semibold'>Flowgram Tools</h1>
+            <h1 className='text-base font-semibold'>X Flow Tool</h1>
             <p className='text-xs text-zinc-500'>Your diagrams · click one to open the editor</p>
           </div>
         </div>
         <div className='flex items-center gap-2'>
-          <Button size='sm' disabled={busy} onClick={() => void handleCreate()} className='bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
+          <DropdownMenu>
+            <DropdownMenuTrigger render={<Button variant='outline' disabled={busy} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8' />}>
+              <LayoutTemplate size={13} />
+              New from template
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align='end' className='w-80 border-white/8 bg-zinc-950/95 p-1.5 backdrop-blur-xl'>
+              <DropdownMenuGroup>
+                <DropdownMenuLabel className='px-2 py-1.5'>Templates</DropdownMenuLabel>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator className='bg-white/8' />
+              {templateItems.map((template) => (
+                <DropdownMenuItem key={template.id} onClick={() => void handleCreate(template.document, template.name)} className='flex-col items-start gap-0.5 px-2 py-2'>
+                  <span className='flex w-full items-center justify-between gap-2 text-xs font-semibold text-zinc-100'>
+                    {template.name}
+                    <span className='shrink-0 font-mono text-[9px] font-normal text-zinc-600'>{template.nodeCount} blocks</span>
+                  </span>
+                  <span className='block truncate text-[10px] font-normal text-zinc-500'>
+                    {template.category} · {template.description}
+                  </span>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button disabled={busy} onClick={() => void handleCreate()} className='bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
             {busy ? <LoaderCircle size={13} className='animate-spin' /> : <Plus size={13} />}
             New diagram
           </Button>
-          <Button variant='outline' size='sm' onClick={() => void refresh(user.uid)} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
+          <Button variant='outline' onClick={() => void refresh(user.uid)} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
           </Button>
@@ -247,7 +375,14 @@ export function DiagramsHome() {
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} className='border-b border-white/8 bg-zinc-950/95 px-3 py-2.5 text-[10px] font-bold text-zinc-400 backdrop-blur-xl'>
+                  <th
+                    key={header.id}
+                    className={[
+                      'border-b border-white/8 bg-zinc-950/95 px-3 py-2.5 text-[10px] font-bold text-zinc-400 backdrop-blur-xl',
+                      NARROW_COLUMNS.has(header.column.id) ? 'w-px whitespace-nowrap' : '',
+                      RIGHT_ALIGNED_COLUMNS.has(header.column.id) ? 'text-right' : '',
+                    ].join(' ')}
+                  >
                     {header.column.getCanSort() ? <SortButton header={header} /> : flexRender(header.column.columnDef.header, header.getContext())}
                   </th>
                 ))}
@@ -265,7 +400,7 @@ export function DiagramsHome() {
               table.getRowModel().rows.map((row) => (
                 <tr key={row.id} className='group transition hover:bg-white/4'>
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className='border-b border-white/5 px-3 py-2.5'>
+                    <td key={cell.id} className={['border-b border-white/5 px-3 py-2.5', NARROW_COLUMNS.has(cell.column.id) ? 'w-px whitespace-nowrap' : '', RIGHT_ALIGNED_COLUMNS.has(cell.column.id) ? 'text-right' : ''].join(' ')}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   ))}
@@ -316,6 +451,8 @@ export function DiagramsHome() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      <ShareDialog diagramId={sharing?.id ?? ''} isPublic={sharing?.public ?? false} open={sharing !== null} onOpenChange={(open) => !open && setSharing(null)} />
     </div>
   );
 }

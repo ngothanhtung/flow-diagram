@@ -75,7 +75,7 @@ export function LoginForm() {
             <Boxes className="size-5 text-cyan-200" />
           </span>
           <div>
-            <p className="font-mono text-sm font-semibold tracking-wide">FLOWGRAM TOOLS</p>
+            <p className="font-mono text-sm font-semibold tracking-wide">X FLOW TOOL</p>
             <p className="text-xs text-zinc-500">Architecture canvas · live systems</p>
           </div>
         </div>

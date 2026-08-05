@@ -47,7 +47,7 @@ export function UserMenu({ user }: { user: User }) {
           <DropdownMenuLabel className="flex items-center gap-2 px-2 py-2">
             <span className="grid size-8 place-items-center rounded-lg bg-white/5"><UserRound className="size-4 text-cyan-300" /></span>
             <span className="min-w-0">
-              <span className="block truncate text-xs text-zinc-200">{user.displayName || 'Flowgram user'}</span>
+              <span className="block truncate text-xs text-zinc-200">{user.displayName || 'X Flow Tool user'}</span>
               <span className="block truncate text-[10px] font-normal text-zinc-500">{user.email}</span>
             </span>
           </DropdownMenuLabel>

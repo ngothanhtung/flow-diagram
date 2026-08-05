@@ -2,17 +2,14 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type Header, type SortingState } from '@tanstack/react-table';
-import { ArrowDown, ArrowUp, ArrowUpDown, Braces, ChevronLeft, ChevronRight, Database, ExternalLink, Eye, RefreshCw, ShieldOff } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, Braces, ChevronLeft, ChevronRight, Database, ExternalLink, Eye, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
-import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
-import { useAuth } from '@/components/auth/AuthProvider';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { listAllDiagrams, type AdminDiagramRow } from '@/lib/firebase/diagrams';
-import { isAdminUser } from '@/lib/firebase/roles';
 
-const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
+const dateTimeFormat = new Intl.DateTimeFormat('en-US', {
   dateStyle: 'medium',
   timeStyle: 'short',
 });
@@ -20,6 +17,13 @@ const dateTimeFormat = new Intl.DateTimeFormat('vi-VN', {
 function formatDateTime(value: number | null) {
   return value ? dateTimeFormat.format(new Date(value)) : '—';
 }
+
+const numberFormat = new Intl.NumberFormat('en-US');
+
+/** Columns that should shrink to their content instead of stretching. */
+const NARROW_COLUMNS = new Set(['public', 'nodeCount', 'edgeCount', 'updatedAt', 'createdAt', 'actions']);
+/** Columns whose content should align to the right (numbers, actions). */
+const RIGHT_ALIGNED_COLUMNS = new Set(['nodeCount', 'edgeCount', 'actions']);
 
 /** Sort header button — shows the current sort direction of the column. */
 function SortButton({ header }: { header: Header<AdminDiagramRow, unknown> }) {
@@ -34,25 +38,11 @@ function SortButton({ header }: { header: Header<AdminDiagramRow, unknown> }) {
 }
 
 export function AdminDiagramsPage() {
-  const { user, loading } = useAuth();
   const [rows, setRows] = useState<AdminDiagramRow[]>([]);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [sorting, setSorting] = useState<SortingState>([{ id: 'updatedAt', desc: true }]);
   const [globalFilter, setGlobalFilter] = useState('');
   const [viewing, setViewing] = useState<AdminDiagramRow | null>(null);
-  const [roleStatus, setRoleStatus] = useState<'checking' | 'denied' | 'admin'>('checking');
-
-  // Gate on `users-roles/{uid}` before touching any diagram data.
-  useEffect(() => {
-    if (!user) return;
-    let cancelled = false;
-    void isAdminUser(user.uid).then((allowed) => {
-      if (!cancelled) setRoleStatus(allowed ? 'admin' : 'denied');
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [user]);
 
   const refresh = useMemo(
     () => async () => {
@@ -68,8 +58,8 @@ export function AdminDiagramsPage() {
   );
 
   useEffect(() => {
-    if (roleStatus === 'admin') void refresh();
-  }, [roleStatus, refresh]);
+    void refresh();
+  }, [refresh]);
 
   const columns = useMemo<ColumnDef<AdminDiagramRow>[]>(
     () => [
@@ -101,12 +91,12 @@ export function AdminDiagramsPage() {
       {
         accessorKey: 'nodeCount',
         header: 'Nodes',
-        cell: ({ getValue }) => <span className='tabular-nums'>{getValue<number>()}</span>,
+        cell: ({ getValue }) => <span className='tabular-nums'>{numberFormat.format(getValue<number>())}</span>,
       },
       {
         accessorKey: 'edgeCount',
         header: 'Edges',
-        cell: ({ getValue }) => <span className='tabular-nums'>{getValue<number>()}</span>,
+        cell: ({ getValue }) => <span className='tabular-nums'>{numberFormat.format(getValue<number>())}</span>,
       },
       {
         accessorKey: 'updatedAt',
@@ -156,30 +146,8 @@ export function AdminDiagramsPage() {
     initialState: { pagination: { pageSize: 25 } },
   });
 
-  if (loading || roleStatus === 'checking') return <AuthLoadingScreen />;
-  if (!user) return <LoginForm />;
-
-  if (roleStatus === 'denied') {
-    return (
-      <div className='grid h-screen place-items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
-        <div className='flex max-w-sm flex-col items-center gap-4 rounded-xl bg-zinc-900/70 px-8 py-10 text-center'>
-          <div className='grid size-12 place-items-center rounded-full bg-red-500/15 ring-1 ring-red-400/40'>
-            <ShieldOff size={22} className='text-red-300' />
-          </div>
-          <div>
-            <h1 className='text-sm font-semibold'>Không có quyền truy cập</h1>
-            <p className='mt-1.5 text-xs leading-relaxed text-zinc-500'>Trang này chỉ dành cho người dùng có role `administrators` trong `users-roles`.</p>
-          </div>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Back to editor
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className='flex h-screen flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
+    <div className='flex h-full flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
       <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
         <div className='flex items-center gap-3'>
           <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
@@ -193,15 +161,9 @@ export function AdminDiagramsPage() {
           </div>
         </div>
         <div className='flex items-center gap-2'>
-          <Button variant='outline' size='sm' onClick={() => void refresh()} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
+          <Button variant='outline' onClick={() => void refresh()} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
-          </Button>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/admin/templates')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Templates
-          </Button>
-          <Button variant='outline' size='sm' onClick={() => (window.location.href = '/')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Back to editor
           </Button>
         </div>
       </header>
@@ -217,7 +179,14 @@ export function AdminDiagramsPage() {
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} className='border-b border-white/8 bg-zinc-950/95 px-3 py-2.5 text-[10px] font-bold text-zinc-400 backdrop-blur-xl'>
+                  <th
+                    key={header.id}
+                    className={[
+                      'border-b border-white/8 bg-zinc-950/95 px-3 py-2.5 text-[10px] font-bold text-zinc-400 backdrop-blur-xl',
+                      NARROW_COLUMNS.has(header.column.id) ? 'w-px whitespace-nowrap' : '',
+                      RIGHT_ALIGNED_COLUMNS.has(header.column.id) ? 'text-right' : '',
+                    ].join(' ')}
+                  >
                     {header.column.getCanSort() ? <SortButton header={header} /> : flexRender(header.column.columnDef.header, header.getContext())}
                   </th>
                 ))}
@@ -235,7 +204,14 @@ export function AdminDiagramsPage() {
               table.getRowModel().rows.map((row) => (
                 <tr key={row.id} className='group transition hover:bg-white/4'>
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className='border-b border-white/5 px-3 py-2.5'>
+                    <td
+                      key={cell.id}
+                      className={[
+                        'border-b border-white/5 px-3 py-2.5',
+                        NARROW_COLUMNS.has(cell.column.id) ? 'w-px whitespace-nowrap' : '',
+                        RIGHT_ALIGNED_COLUMNS.has(cell.column.id) ? 'text-right' : '',
+                      ].join(' ')}
+                    >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   ))}

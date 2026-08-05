@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { DiagramsHome } from '@/components/diagrams/DiagramsHome';
 
 export const metadata: Metadata = {
-  title: 'Flowgram Tools — Your diagrams',
+  title: 'X Flow Tool — Your diagrams',
   description: 'List, open, create and delete your flow diagrams.',
 };
 

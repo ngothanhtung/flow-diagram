@@ -54,7 +54,7 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: "Flowgram Tools",
+  title: "X Flow Tool",
   description: "Animated flowchart editor built with Next.js and flowgram.ai",
 };
 

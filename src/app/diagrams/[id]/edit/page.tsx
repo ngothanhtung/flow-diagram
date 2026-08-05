@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { DiagramEditor } from '@/components/editor/DiagramEditor';
 
 export const metadata: Metadata = {
-  title: 'Edit diagram — Flowgram Tools',
+  title: 'Edit diagram — X Flow Tool',
   description: 'Edit one of your diagrams in the flow editor.',
 };
 

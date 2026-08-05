@@ -1,16 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowLeft, Boxes, FileQuestion, Globe, Hand, LayoutTemplate, ListOrdered, LoaderCircle, LockKeyhole, Play, RadioTower, Repeat2, RotateCcw, Save, SkipForward } from 'lucide-react';
+import { Boxes, Copy, FileJson, FilePlus, FileQuestion, FolderOpen, Globe, Hand, LayoutTemplate, ListOrdered, LoaderCircle, LockKeyhole, Play, RadioTower, Repeat2, RotateCcw, Save, Share2, SkipForward } from 'lucide-react';
 import Link from 'next/link';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
+import { ButtonGroup } from '@/components/ui/button-group';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { UserMenu } from '@/components/auth/UserMenu';
+import { ShareDialog } from '@/components/diagrams/ShareDialog';
 import { JsonInspector } from '@/components/JsonInspector';
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { EdgeInspector } from '@/components/EdgeInspector';
@@ -22,7 +26,7 @@ import type { ExecutionState } from '@/lib/flowchart-types';
 import { EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { computeOrderedGroups, useEditorStore } from '@/lib/editor-store';
 import { resolveNodeStyle } from '@/lib/node-style';
-import { loadDiagram, saveDiagram } from '@/lib/firebase/diagrams';
+import { createDiagram, loadDiagram, saveDiagram } from '@/lib/firebase/diagrams';
 import { listTemplates, type StoredTemplate } from '@/lib/firebase/templates';
 import { saveEditorSession } from '@/lib/editor-session';
 
@@ -85,24 +89,30 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
  */
 export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const { user, loading } = useAuth();
+  const router = useRouter();
+
+  const [status, setStatus] = useState<'loading' | 'not-found' | 'error'>('loading');
 
   // All global editor state lives in the zustand store. Hydrate from the
-  // localStorage session exactly once, synchronously before first read.
-  if (user && !useEditorStore.getState().hydrated) {
-    useEditorStore.getState().hydrate(user.uid);
-  }
-
-  // Session hydration is synchronous, so a session that restored this
-  // exact diagram (unsaved edits included) is known before first paint.
-  const [status, setStatus] = useState<'loading' | 'ready' | 'not-found' | 'error'>(() => {
+  // localStorage session exactly once. This has to run in a layout effect
+  // rather than directly in the render body — mutating the store mid-render
+  // trips React's "setState while rendering a different component" guard.
+  // A layout effect still resolves before paint, so this never causes a
+  // visible flash.
+  useLayoutEffect(() => {
+    if (!user) return;
     const state = useEditorStore.getState();
-    return state.hydrated && state.currentDiagramId === diagramId ? 'ready' : 'loading';
-  });
+    if (!state.hydrated) state.hydrate(user.uid);
+  }, [user]);
 
   const doc = useEditorStore((state) => state.doc);
   const templateId = useEditorStore((state) => state.templateId);
   const loadedTemplate = useEditorStore((state) => state.loadedTemplate);
+  const hydrated = useEditorStore((state) => state.hydrated);
   const currentDiagramId = useEditorStore((state) => state.currentDiagramId);
+  // A session that already restored this exact diagram (unsaved edits
+  // included) is ready as soon as the store hydrates — no Firestore fetch.
+  const effectiveStatus = hydrated && currentDiagramId === diagramId ? 'ready' : status;
   const currentDiagramName = useEditorStore((state) => state.currentDiagramName);
   const currentDiagramPublic = useEditorStore((state) => state.currentDiagramPublic);
   const savedSignature = useEditorStore((state) => state.savedSignature);
@@ -147,6 +157,9 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   } = useEditorStore();
 
   const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
+  const [templatesDialogOpen, setTemplatesDialogOpen] = useState(false);
+  const [savingAs, setSavingAs] = useState(false);
 
   // Load the route's diagram into the store — unless the session already
   // restored this exact diagram, in which case unsaved edits are kept.
@@ -163,7 +176,6 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
           return;
         }
         loadStoredDiagram(diagram);
-        setStatus('ready');
       })
       .catch(() => {
         if (!cancelled) setStatus('error');
@@ -291,10 +303,45 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     }
   }, [user, diagramId, currentDiagramName, currentDiagramPublic, doc, markDiagramSaved, setSavingDiagram]);
 
+  const handleNewDiagram = useCallback(async () => {
+    if (!user) return;
+    try {
+      const id = await createDiagram(user.uid, 'Untitled diagram', { nodes: [], edges: [] }, false);
+      router.push(`/diagrams/${id}/edit`);
+    } catch {
+      toast.error('Could not create diagram', { description: 'Check sign-in and Firestore rules.' });
+    }
+  }, [user, router]);
+
+  const handleSaveAs = useCallback(async () => {
+    if (!user) return;
+    const nextName = `${currentDiagramName.trim() || 'Untitled diagram'} copy`;
+    setSavingAs(true);
+    try {
+      const id = await createDiagram(user.uid, nextName, doc, false);
+      toast.success('Saved as a new diagram', { description: nextName });
+      router.push(`/diagrams/${id}/edit`);
+    } catch {
+      toast.error('Could not save as a new diagram', { description: 'Check sign-in and Firestore rules.' });
+    } finally {
+      setSavingAs(false);
+    }
+  }, [user, currentDiagramName, doc, router]);
+
+  const handleExportJson = useCallback(() => {
+    const blob = new Blob([JSON.stringify(doc, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `${(currentDiagramName.trim() || 'diagram').replace(/[^a-z0-9-_]+/gi, '-')}.json`;
+    anchor.click();
+    URL.revokeObjectURL(url);
+  }, [doc, currentDiagramName]);
+
   if (loading) return <AuthLoadingScreen />;
   if (!user) return <LoginForm />;
 
-  if (status !== 'ready') {
+  if (effectiveStatus !== 'ready') {
     return (
       <div className='grid h-screen place-items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
         <div className='flex max-w-sm flex-col items-center gap-4 rounded-xl bg-zinc-900/70 px-8 py-10 text-center'>
@@ -319,62 +366,99 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     <div className='flex h-screen flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
       <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
         <div className='flex items-center gap-3'>
-          <Link href='/' title='Back to your diagrams' className='inline-flex h-9 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10'>
-            <ArrowLeft size={14} />
-            Diagrams
-          </Link>
           <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
             <Boxes size={18} className='text-sky-300' />
           </div>
           <div>
-            <h1 className='text-base font-semibold'>Flowgram Tools</h1>
+            <h1 className='text-base font-semibold'>X Flow Tool</h1>
             <DiagramName name={currentDiagramName} onRename={renameDiagram} />
           </div>
-        </div>
-
-        <div className='flex items-center gap-2'>
-          <button
-            type='button'
+          <NavigationMenu className='max-w-none'>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className='h-9 gap-1.5 rounded-lg border border-white/10 bg-black/25 px-3 text-xs font-semibold text-zinc-300 hover:bg-white/8 data-popup-open:bg-white/8 data-popup-open:text-zinc-100 dark:bg-input/30 dark:hover:bg-input/50 dark:data-popup-open:bg-input/50'>
+                  File
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className='grid w-56 gap-0.5 p-1'>
+                    <li>
+                      <NavigationMenuLink closeOnClick render={<button type='button' onClick={() => void handleNewDiagram()} />} className='gap-2 text-xs text-zinc-200'>
+                        <FilePlus size={14} />
+                        New
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink closeOnClick render={<button type='button' onClick={() => setTemplatesDialogOpen(true)} />} className='gap-2 text-xs text-zinc-200'>
+                        <LayoutTemplate size={14} />
+                        New from template
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink closeOnClick render={<Link href='/' />} className='gap-2 text-xs text-zinc-200'>
+                        <FolderOpen size={14} />
+                        Open
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink closeOnClick render={<button type='button' disabled={savingAs} onClick={() => void handleSaveAs()} />} className='gap-2 text-xs text-zinc-200 disabled:pointer-events-none disabled:opacity-50'>
+                        {savingAs ? <LoaderCircle size={14} className='animate-spin' /> : <Copy size={14} />}
+                        Save as
+                      </NavigationMenuLink>
+                    </li>
+                    <li className='my-1 h-px bg-white/8' />
+                    <li>
+                      <NavigationMenuLink closeOnClick render={<button type='button' onClick={handleExportJson} />} className='gap-2 text-xs text-zinc-200'>
+                        <FileJson size={14} />
+                        Export to JSON
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink
+                        closeOnClick
+                        render={<button type='button' disabled={!currentDiagramPublic} onClick={() => setShareOpen(true)} />}
+                        className='gap-2 text-xs text-orange-300 disabled:pointer-events-none disabled:opacity-50'
+                      >
+                        <Share2 size={14} />
+                        Share
+                      </NavigationMenuLink>
+                    </li>
+                    <li className='my-1 h-px bg-white/8' />
+                    <li>
+                      <NavigationMenuLink closeOnClick render={<button type='button' onClick={() => setResetConfirmOpen(true)} />} className='gap-2 text-xs text-rose-300'>
+                        <RotateCcw size={14} />
+                        Reset
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <Button
+            variant='outline'
             onClick={() => setDiagramPublic(!currentDiagramPublic)}
             aria-pressed={currentDiagramPublic}
             title={currentDiagramPublic ? 'Public — anyone signed in can view via /diagrams/{id}/view' : 'Private — only you and administrators can view'}
-            className={[
-              'inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-[10px] font-semibold ring-1 transition',
-              currentDiagramPublic ? 'bg-emerald-400/15 text-emerald-100 ring-emerald-400/40' : 'bg-black/25 text-zinc-500 ring-white/10 hover:bg-white/6 hover:text-zinc-200',
-            ].join(' ')}
+            className={['h-9 gap-1.5 border-white/10 bg-black/25 px-3 text-xs font-semibold text-zinc-300 hover:bg-white/8 dark:border-white/10 dark:bg-input/30 dark:hover:bg-input/50', currentDiagramPublic ? 'text-emerald-300' : ''].join(' ')}
           >
             {currentDiagramPublic ? <Globe size={13} className='text-emerald-300' /> : <LockKeyhole size={13} />}
             {currentDiagramPublic ? 'Public' : 'Private'}
-          </button>
-          <Button onClick={handleSaveDiagram} disabled={savingDiagram} className='h-9 bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
-            {savingDiagram ? <LoaderCircle className='animate-spin' /> : <Save />}
+          </Button>
+          <Button
+            variant='outline'
+            disabled={savingDiagram}
+            onClick={() => void handleSaveDiagram()}
+            title='Save'
+            className='h-9 border-white/10 bg-black/25 text-xs font-semibold text-zinc-300 hover:bg-white/8 dark:bg-input/30 dark:hover:bg-input/50'
+          >
+            {savingDiagram ? <LoaderCircle size={13} className='animate-spin' /> : <Save size={13} />}
             Save
             {dirty && <span className='size-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(180,83,9,.8)]' />}
           </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger render={<Button variant='outline' className='h-9 border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8' />}>
-              <LayoutTemplate size={14} />
-              Open templates
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align='end' className='w-80 border-white/8 bg-zinc-950/95 p-1.5 backdrop-blur-xl'>
-              <DropdownMenuGroup>
-                <DropdownMenuLabel className='px-2 py-1.5'>Templates</DropdownMenuLabel>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator className='bg-white/8' />
-              {templateItems.map((template) => (
-                <DropdownMenuItem key={template.id} onClick={template.onSelect} className='flex-col items-start gap-0.5 px-2 py-2'>
-                  <span className='flex w-full items-center justify-between gap-2 text-xs font-semibold text-zinc-100'>
-                    {template.name}
-                    <span className='shrink-0 font-mono text-[9px] font-normal text-zinc-600'>{template.nodeCount} blocks</span>
-                  </span>
-                  <span className='block truncate text-[10px] font-normal text-zinc-500'>
-                    {template.category} · {template.description}
-                  </span>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <div className='flex items-center rounded-lg bg-black/25 p-1 ring-1 ring-white/10' role='group' aria-label='Execution mode'>
+        </div>
+
+        <div className='flex items-center gap-2'>
+          <ButtonGroup aria-label='Execution mode'>
             {(
               [
                 { value: 'sequential', label: 'Sequential', Icon: ListOrdered },
@@ -382,42 +466,23 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
                 { value: 'manual', label: 'Manual', Icon: Hand },
               ] as const
             ).map((mode) => (
-              <button
+              <Button
                 key={mode.value}
-                type='button'
+                variant='outline'
                 onClick={() => {
                   applySettings({ runMode: mode.value });
                   replay();
                 }}
                 aria-pressed={runMode === mode.value}
                 className={[
-                  'inline-flex h-7 items-center gap-1.5 rounded-md px-2.5 text-[10px] font-semibold transition',
-                  runMode === mode.value ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-500 hover:bg-white/6 hover:text-zinc-200',
+                  'h-9 gap-1.5 border-white/10 bg-black/25 px-3 text-xs font-semibold dark:bg-input/30 dark:hover:bg-input/50',
+                  runMode === mode.value ? 'bg-cyan-400/15 text-cyan-100 hover:bg-cyan-400/15 dark:bg-cyan-400/15 dark:hover:bg-cyan-400/15' : 'text-zinc-500 hover:text-zinc-200',
                 ].join(' ')}
               >
                 <mode.Icon size={12} /> {mode.label}
-              </button>
+              </Button>
             ))}
-          </div>
-          <button
-            type='button'
-            disabled={runMode !== 'sequential'}
-            onClick={() => applySettings({ repeatEnabled: !repeatEnabled })}
-            aria-pressed={repeatEnabled}
-            title='Automatically replay after the sequential run completes'
-            className={[
-              'inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-[10px] font-semibold ring-1 transition',
-              repeatEnabled && runMode === 'sequential' ? 'bg-emerald-400/15 text-emerald-100 ring-emerald-400/40' : 'bg-black/25 text-zinc-500 ring-white/10 hover:bg-white/6 hover:text-zinc-200',
-              runMode !== 'sequential' ? 'cursor-not-allowed opacity-40 hover:bg-black/25 hover:text-zinc-500' : '',
-            ].join(' ')}
-          >
-            <Repeat2 size={13} className={repeatEnabled && runMode === 'sequential' ? 'text-emerald-300' : ''} />
-            Repeat
-          </button>
-          <motion.button whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }} type='button' onClick={replay} className='inline-flex h-9 items-center gap-1.5 rounded-md bg-sky-500/90 px-3 text-xs font-semibold text-sky-950 shadow-sm hover:bg-sky-400'>
-            <Play size={14} />
-            Replay path
-          </motion.button>
+          </ButtonGroup>
           {runMode === 'manual' && (
             <motion.button
               whileHover={{ y: -1 }}
@@ -432,16 +497,25 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
               Next
             </motion.button>
           )}
-          <motion.button
-            whileHover={{ y: -1 }}
-            whileTap={{ scale: 0.97 }}
+          <button
             type='button'
-            onClick={() => setResetConfirmOpen(true)}
-            className='inline-flex h-9 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 hover:bg-white/10'
+            disabled={runMode !== 'sequential'}
+            onClick={() => applySettings({ repeatEnabled: !repeatEnabled })}
+            aria-pressed={repeatEnabled}
+            title='Automatically replay after the sequential run completes'
+            className={[
+              'inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold ring-1 transition',
+              repeatEnabled && runMode === 'sequential' ? 'bg-emerald-400/15 text-emerald-100 ring-emerald-400/40' : 'bg-black/25 text-zinc-500 ring-white/10 hover:bg-white/6 hover:text-zinc-200',
+              runMode !== 'sequential' ? 'cursor-not-allowed opacity-40 hover:bg-black/25 hover:text-zinc-500' : '',
+            ].join(' ')}
           >
-            <RotateCcw size={14} />
-            Reset
-          </motion.button>
+            <Repeat2 size={13} className={repeatEnabled && runMode === 'sequential' ? 'text-emerald-300' : ''} />
+            Repeat
+          </button>
+          <Button variant='outline' onClick={replay} className='h-9 border-white/10 bg-black/25 text-xs font-semibold text-zinc-300 hover:bg-white/8'>
+            <Play size={14} />
+            Replay
+          </Button>
           <UserMenu user={user} />
         </div>
       </header>
@@ -469,6 +543,41 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      <ShareDialog diagramId={diagramId} isPublic={currentDiagramPublic} open={shareOpen} onOpenChange={setShareOpen} />
+
+      <Dialog open={templatesDialogOpen} onOpenChange={setTemplatesDialogOpen}>
+        <DialogContent className='max-w-2xl border-white/10 bg-zinc-950/95 text-zinc-100 backdrop-blur-xl'>
+          <DialogHeader>
+            <DialogTitle className='flex items-center gap-2 text-sm font-semibold'>
+              <LayoutTemplate size={14} className='text-sky-300' />
+              New from template
+            </DialogTitle>
+            <DialogDescription className='text-xs text-zinc-500'>Replaces the current canvas with a starting template.</DialogDescription>
+          </DialogHeader>
+          <div className='flex max-h-80 flex-col gap-1 overflow-y-auto'>
+            {templateItems.map((template) => (
+              <button
+                key={template.id}
+                type='button'
+                onClick={() => {
+                  template.onSelect();
+                  setTemplatesDialogOpen(false);
+                }}
+                className='flex flex-col items-start gap-0.5 rounded-lg px-3 py-2 text-left transition hover:bg-white/6'
+              >
+                <span className='flex w-full items-center justify-between gap-2 text-xs font-semibold text-zinc-100'>
+                  {template.name}
+                  <span className='shrink-0 font-mono text-[9px] font-normal text-zinc-600'>{template.nodeCount} blocks</span>
+                </span>
+                <span className='block truncate text-[10px] font-normal text-zinc-500'>
+                  {template.category} · {template.description}
+                </span>
+              </button>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <main className={['grid min-h-0 flex-1 gap-2 overflow-hidden', hasSidebar ? 'grid-cols-[1fr_320px]' : 'grid-cols-1'].join(' ')}>
         <section className='relative h-full min-h-0 overflow-hidden bg-zinc-950'>
