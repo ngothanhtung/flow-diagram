@@ -108,7 +108,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
 
   return (
     <Card size='sm' className='gap-0 border-cyan-300/10 bg-zinc-900/80 py-0 ring-cyan-400/35 shadow-[0_18px_60px_rgba(0,0,0,.3)]'>
-      <CardHeader className='sticky top-0 z-10 grid grid-cols-[1fr_auto] border-b border-white/8 bg-zinc-900/95 px-4 py-3 backdrop-blur-xl'>
+      <CardHeader className='sticky top-0 z-10 grid grid-cols-[1fr_auto] border-b border-white/8 bg-zinc-900/95 py-3 pr-4 pl-1 backdrop-blur-xl'>
         <div className='min-w-0'>
           <CardTitle className='text-sm font-semibold'>Line inspector</CardTitle>
           <CardDescription className='mt-1 max-w-[230px] truncate text-[10px] text-zinc-500'>
@@ -120,7 +120,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
         </Button>
       </CardHeader>
 
-      <CardContent className='px-4 pb-4'>
+      <CardContent className='pb-4 pr-4 pl-1'>
         <p className='mt-3 rounded-lg bg-cyan-400/8 px-2.5 py-2 text-[9px] leading-relaxed text-cyan-100/70 ring-1 ring-cyan-400/18'>Drag A/B to reconnect. Drag the diamond points to reshape the line; double-click one to remove it.</p>
 
         <Label htmlFor='edge-label' className='mt-4 block text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>
@@ -505,13 +505,17 @@ const PREVIEW_POINTS = [
   { x: 368, y: 90 },
 ];
 const PREVIEW_PATH = PREVIEW_POINTS.map((point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`).join(' ');
+const PREVIEW_LENGTH = PREVIEW_POINTS.slice(1).reduce((total, point, index) => {
+  const previous = PREVIEW_POINTS[index];
+  return total + Math.hypot(point.x - previous.x, point.y - previous.y);
+}, 0);
 
 function EffectPreviewLarge({ effect, direction, color, effectColor, width, effectSize, speed }: { effect: EdgeEffect; direction: EdgeDirection; color: string; effectColor?: string; width: number; effectSize: number; speed: number }) {
   return (
     <svg viewBox='0 0 400 180' className='h-auto w-full max-w-96' style={{ color }}>
       <path d={PREVIEW_PATH} stroke='currentColor' strokeWidth={width} strokeOpacity={0.52} fill='none' />
       <g style={effectColor ? { color: effectColor } : undefined}>
-        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} lineWidth={width} effectSize={effectSize} speed={speed} />
+        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} />
       </g>
     </svg>
   );

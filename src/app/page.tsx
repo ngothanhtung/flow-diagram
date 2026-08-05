@@ -355,7 +355,7 @@ function FlowEditor({ user }: { user: User }) {
         </AlertDialogContent>
       </AlertDialog>
 
-      <main className={['grid min-h-0 flex-1 gap-4 overflow-hidden', hasSidebar ? 'grid-cols-[1fr_320px]' : 'grid-cols-1'].join(' ')}>
+      <main className={['grid min-h-0 flex-1 gap-2 overflow-hidden', hasSidebar ? 'grid-cols-[1fr_320px]' : 'grid-cols-1'].join(' ')}>
         <section className='relative h-full min-h-0 overflow-hidden bg-zinc-950'>
           <FlowCanvas
             key={seed}
@@ -405,7 +405,9 @@ function FlowEditor({ user }: { user: User }) {
         {hasSidebar && (
           <aside className='h-full min-h-0 overflow-hidden' aria-label='Editor inspector'>
             <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
-              <div className='flex min-h-full flex-col gap-3 pb-1'>
+              {/* Gentle slide-in each time the panel appears (the whole
+                  aside mounts when something becomes selected). */}
+              <motion.div initial={{ x: 18, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.24, ease: 'easeOut' }} className='flex min-h-full flex-col gap-3 pb-1'>
                 {selectedNode && !selectedEdge && (
                   <NodeInspector
                     key={selectedNode.id}
@@ -440,7 +442,7 @@ function FlowEditor({ user }: { user: User }) {
                 )}
 
                 {infoOpen && (
-                  <div className='rounded-xl bg-zinc-900/70 p-4 ring-1 ring-white/10'>
+                  <div className='rounded-xl bg-zinc-900/70 py-3 pr-3 pl-1'>
                     <div className='flex items-start justify-between gap-3'>
                       <div>
                         <p className='text-[9px] font-semibold uppercase tracking-[0.18em] text-sky-400'>{currentTemplate.category}</p>
@@ -461,7 +463,7 @@ function FlowEditor({ user }: { user: User }) {
                 )}
 
                 {infoOpen && <JsonInspector value={JSON.stringify(doc, null, 2)} />}
-              </div>
+              </motion.div>
             </ScrollArea>
           </aside>
         )}

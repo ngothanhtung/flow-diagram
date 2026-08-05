@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -10,7 +10,8 @@
    triggers a non-composited repaint each frame. The scale is
    anchored so the centre stays put via transform-origin. */
 @keyframes halo {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.48;
   }
@@ -25,21 +26,23 @@
    single composited animation. Only one node animates at a time. */
 .node-power-pending {
   filter: grayscale(1) saturate(0.08) brightness(0.44);
-  transition: opacity 260ms ease, filter 260ms ease;
+  transition:
+    opacity 260ms ease,
+    filter 260ms ease;
 }
 
 .node-power-active {
-  animation: node-electric-charge var(--node-fade-duration, 200ms) cubic-bezier(.22, .72, .28, 1) both;
+  animation: node-electric-charge var(--node-fade-duration, 200ms) cubic-bezier(0.22, 0.72, 0.28, 1) both;
 }
 
 @keyframes node-electric-charge {
   0% {
-    opacity: calc(var(--node-opacity, 1) * .38);
-    filter: grayscale(1) saturate(.08) brightness(.44) drop-shadow(0 0 0 currentColor);
+    opacity: calc(var(--node-opacity, 1) * 0.38);
+    filter: grayscale(1) saturate(0.08) brightness(0.44) drop-shadow(0 0 0 currentColor);
   }
   55% {
-    opacity: calc(var(--node-opacity, 1) * .82);
-    filter: grayscale(.22) saturate(.72) brightness(.9) drop-shadow(0 0 2px currentColor);
+    opacity: calc(var(--node-opacity, 1) * 0.82);
+    filter: grayscale(0.22) saturate(0.72) brightness(0.9) drop-shadow(0 0 2px currentColor);
   }
   100% {
     opacity: var(--node-opacity, 1);
@@ -59,15 +62,29 @@
 }
 
 @keyframes node-electric-core {
-  0% { opacity: 0; }
-  55% { opacity: .28; }
-  100% { opacity: .18; }
+  0% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 0.28;
+  }
+  100% {
+    opacity: 0.18;
+  }
 }
 
 @keyframes node-electric-burst {
-  0% { transform: scale(.99); opacity: 0; }
-  45% { opacity: .2; }
-  100% { transform: scale(1.055); opacity: 0; }
+  0% {
+    transform: scale(0.99);
+    opacity: 0;
+  }
+  45% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.055);
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -88,8 +105,12 @@
    keyframe adds an extra -4px on top via the wrapper's own
    animation. */
 @keyframes arrow-ride {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-4px); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-4px);
+  }
 }
 
 /* Edge-dash: the moving dashes along an AnimatedEdge's stroke.
@@ -97,8 +118,12 @@
    along the line. The stroke itself has a dasharray of "8 12"
    (period 20), so 0 → -20 is one full cycle. */
 @keyframes edge-dash {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -20; }
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -20;
+  }
 }
 
 /* An enabled connector is first traced from its source to destination. Line
@@ -115,11 +140,15 @@
 }
 
 @keyframes edge-power-draw {
-  to { stroke-dashoffset: 0; }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes edge-after-draw {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -135,38 +164,80 @@
 }
 
 @keyframes edge-packet-stream {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -13; }
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -13;
+  }
 }
 
 @keyframes edge-travel {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -100; }
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+/* Seamless one-period shift for effects whose dash period is dynamic
+   (the laser stretches its period to the full path length so only one
+   beam travels per run); each path sets `--edge-period` to its own
+   period, falling back to the classic 200px. */
+@keyframes edge-travel-long {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: var(--edge-period, -200px);
+  }
 }
 
 @keyframes edge-pulse {
-  0%, 100% { opacity: 0.45; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes edge-packets {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -12; }
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -12;
+  }
 }
 
 @keyframes edge-dots {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -8; }
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -8;
+  }
 }
 
 @keyframes edge-wave {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -24; }
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -24;
+  }
 }
 
 @keyframes edge-traffic {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -17; }
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -17;
+  }
 }
 
 /* Edge-binary: bit-stream travel for the `binary` effect. Two paths share
@@ -175,8 +246,12 @@
    2, 8 bits). Both dasharrays have period 40, so offsetting by exactly -40
    keeps them moving in lockstep with no visible seam. */
 @keyframes edge-binary {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -40; }
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -40;
+  }
 }
 
 /* Tiny live previews in the line inspector. */
@@ -184,7 +259,7 @@
 .edge-preview-dash {
   background: repeating-linear-gradient(90deg, currentColor 0 5px, transparent 5px 9px);
   background-size: 18px 1px;
-  animation: preview-slide .8s linear infinite;
+  animation: preview-slide 0.8s linear infinite;
 }
 .edge-preview-dash {
   animation-direction: reverse;
@@ -202,20 +277,20 @@
 }
 .edge-preview-comet {
   background: radial-gradient(circle, currentColor 0 1.5px, transparent 2px) 0 center / 10px 6px repeat-x;
-  animation: preview-slide .55s linear infinite;
+  animation: preview-slide 0.55s linear infinite;
 }
 .edge-preview-dots {
   background: radial-gradient(circle, currentColor 0 1.5px, transparent 2px) 0 center / 8px 6px repeat-x;
-  animation: preview-slide .8s linear infinite;
+  animation: preview-slide 0.8s linear infinite;
 }
 .edge-preview-wave,
 .edge-preview-traffic,
 .edge-preview-bidirectional {
   background: repeating-linear-gradient(90deg, currentColor 0 7px, transparent 7px 11px, currentColor 11px 13px, transparent 13px 18px);
-  animation: preview-slide .7s linear infinite;
+  animation: preview-slide 0.7s linear infinite;
 }
 .edge-preview-bidirectional {
-  animation: preview-slide .7s linear infinite alternate;
+  animation: preview-slide 0.7s linear infinite alternate;
 }
 .edge-preview-scanner {
   right: auto;
@@ -237,32 +312,38 @@
   width: 6px;
   border-radius: 999px;
   box-shadow: 0 0 7px 2px currentColor;
-  animation: preview-travel .8s linear infinite;
+  animation: preview-travel 0.8s linear infinite;
 }
 .edge-preview-spark {
   background: radial-gradient(circle, currentColor 0 1.5px, transparent 2px) 0 center / 5px 6px repeat-x;
   filter: drop-shadow(0 0 2px currentColor);
-  animation: preview-slide .55s linear infinite;
+  animation: preview-slide 0.55s linear infinite;
 }
 .edge-preview-marching,
 .edge-preview-heartbeat,
 .edge-preview-rail {
   background: repeating-linear-gradient(90deg, currentColor 0 3px, transparent 3px 6px, currentColor 6px 13px, transparent 13px 17px);
-  animation: preview-slide .7s linear infinite;
+  animation: preview-slide 0.7s linear infinite;
 }
 .edge-preview-binary {
   background: repeating-linear-gradient(90deg, currentColor 0 3px, transparent 3px 4px, currentColor 4px 6px, transparent 6px 9px);
   background-size: 18px 1px;
-  animation: preview-slide .75s linear infinite;
+  animation: preview-slide 0.75s linear infinite;
 }
 
 @keyframes preview-slide {
-  to { background-position: 18px center; }
+  to {
+    background-position: 18px center;
+  }
 }
 
 @keyframes preview-travel {
-  from { transform: translateX(-18px); }
-  to { transform: translateX(48px); }
+  from {
+    transform: translateX(-18px);
+  }
+  to {
+    transform: translateX(48px);
+  }
 }
 
 @theme inline {
@@ -385,7 +466,8 @@
   body {
     @apply bg-background text-foreground;
   }
-  button:not(:disabled), [role="button"]:not(:disabled) {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
     cursor: pointer;
   }
   html {

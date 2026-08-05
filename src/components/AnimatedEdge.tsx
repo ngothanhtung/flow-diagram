@@ -31,7 +31,7 @@ interface AnimatedEdgeProps {
 
 export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal' }: AnimatedEdgeProps) {
   const geometry = buildEdgeGeometry(edge, from, to);
-  const { d, start, end, startAngle, angle } = geometry;
+  const { d, start, end, startAngle, angle, length } = geometry;
   const effect = edge.effect ?? 'flow';
   const direction = edge.direction ?? 'forward';
   const lineWidth = Math.max(1, Math.min(6, edge.width ?? 2.5));
@@ -102,7 +102,19 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
       <path d={d} pathLength={isDrawing ? 1 : undefined} stroke='currentColor' strokeWidth={selected ? lineWidth + 2 : lineWidth} strokeOpacity={selected ? 0.82 : 0.52} fill='none' className={isDrawing ? 'edge-power-draw' : undefined} style={drawStyle} />
 
       <g opacity={showEffect ? 1 : 0} className={isDrawing ? 'edge-after-draw' : undefined} style={effectColor ? { ...drawStyle, color: effectColor } : drawStyle}>
-        <EdgeEffectLayer d={d} effect={effect} direction={direction} lineWidth={lineWidth} effectSize={effectSize} speed={speed} paused={paused} performanceMode={performanceMode || lowPower} isDrawing={isDrawing} drawDuration={drawDuration} />
+        <EdgeEffectLayer
+          d={d}
+          effect={effect}
+          direction={direction}
+          length={length}
+          lineWidth={lineWidth}
+          effectSize={effectSize}
+          speed={speed}
+          paused={paused}
+          performanceMode={performanceMode || lowPower}
+          isDrawing={isDrawing}
+          drawDuration={drawDuration}
+        />
       </g>
 
       <g className={isDrawing ? 'edge-after-draw' : undefined} style={drawStyle}>

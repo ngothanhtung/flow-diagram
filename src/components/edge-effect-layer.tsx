@@ -36,6 +36,9 @@ interface EdgeEffectLayerProps {
   d: string;
   effect: EdgeEffect;
   direction: EdgeDirection;
+  /** Routed path length in px — lets the laser run a single beam per
+   *  pass by stretching its dash period across the whole route. */
+  length?: number;
   lineWidth: number;
   effectSize: number;
   speed: number;
@@ -70,7 +73,7 @@ export function EdgeEffectLayer(props: EdgeEffectLayerProps) {
   return <EdgeEffectLayerSingle {...props} />;
 }
 
-function EdgeEffectLayerSingle({ d, effect, direction, lineWidth, effectSize, speed, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
+function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, effectSize, speed, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
   // Every effect's traveling object — including backdrop/track layers and
   // secondary passes — is sized as the same fixed multiple of the line's
   // own width, scaled by the `effectSize` slider (0.5x-3x, default 1x). At
@@ -91,7 +94,16 @@ function EdgeEffectLayerSingle({ d, effect, direction, lineWidth, effectSize, sp
   const pulseDash = objectDash(objectLength(16));
   const glowDash = objectDash(objectLength(32));
   const scannerDash = objectDash(objectLength(8));
-  const laserDash = objectDash(objectLength(44));
+  // The laser shows exactly ONE beam per run: its dash period stretches
+  // to the full path length so the pattern never repeats mid-line, and the
+  // beam only re-enters once it has fully exited at the destination. The
+  // beam itself keeps its fixed ~130px length (scaled by the size slider).
+  // `edge-travel-long` shifts by this period via the `--edge-period` CSS
+  // variable, keeping the loop seamless and the px-per-second speed constant.
+  const LASER_PERIOD = 200;
+  const laserLength = Math.max(1, Math.min(LASER_PERIOD - 4, 130 * effectSize));
+  const laserPeriod = Math.max(LASER_PERIOD, Math.ceil(length));
+  const laserDash = `${laserLength} ${Math.max(0.5, laserPeriod - laserLength)}`;
   const meteorDash = objectDash(objectLength(2));
   const fadeDash = objectDash(objectLength(55));
   const bidirectionalDash = objectDash(objectLength(9));
@@ -101,11 +113,15 @@ function EdgeEffectLayerSingle({ d, effect, direction, lineWidth, effectSize, sp
   // the stroke width, so the spacing alone needs a period here.
   const dotDash = `0.1 ${PERIOD - 0.1}`;
   const travelVelocity = TRAVEL_VELOCITY[effect];
-  const baseDuration = travelVelocity ? PERIOD / travelVelocity : (PATTERN_DURATION[effect] ?? 1.1);
+  const travelPeriod = effect === 'laser' ? laserPeriod : PERIOD;
+  const baseDuration = travelVelocity ? travelPeriod / travelVelocity : (PATTERN_DURATION[effect] ?? 1.1);
   const animationDurationSeconds = baseDuration / speed;
   const animationDuration = `${animationDurationSeconds}s`;
-  const neonFilter = performanceMode ? undefined : `drop-shadow(0 0 ${Math.max(2, effectSize * 2.5)}px currentColor) drop-shadow(0 0 ${Math.max(5, effectSize * 5)}px currentColor)`;
-  const strongNeonFilter = performanceMode ? undefined : `drop-shadow(0 0 ${Math.max(4, effectSize * 4)}px currentColor) drop-shadow(0 0 ${Math.max(9, effectSize * 8)}px currentColor)`;
+  // One shared neon glow for EVERY effect — the lit halo around each
+  // travelling object must look identical from effect to effect, so no
+  // effect gets a stronger variant. White by default (independent of the
+  // line/effect colour), scaled by the size slider.
+  const neonFilter = performanceMode ? undefined : `drop-shadow(0 0 ${Math.max(3, effectSize * 3)}px #ffffff) drop-shadow(0 0 ${Math.max(7, effectSize * 6)}px rgba(255,255,255,0.6))`;
   const animationStyle = {
     animationDuration,
     animationDelay: isDrawing ? drawDuration : undefined,
@@ -120,25 +136,26 @@ function EdgeEffectLayerSingle({ d, effect, direction, lineWidth, effectSize, sp
       {effect === 'flow' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray='8 12' className='animate-[edge-dash_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'dash' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray='6 7' className='animate-[edge-packet-stream_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'pulse' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={pulseDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
-      {effect === 'glow' && (
-        <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={glowDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={{ ...animationStyle, filter: strongNeonFilter }} />
-      )}
+      {effect === 'glow' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={glowDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'comet' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={cometDash} className='animate-[edge-travel_.9s_linear_infinite]' style={animationStyle} />}
       {effect === 'dots' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={dotDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'wave' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray='10 6 2 6' className='animate-[edge-wave_1.2s_linear_infinite]' style={animationStyle} />}
-      {effect === 'scanner' && (
-        <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={scannerDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={{ ...animationStyle, filter: strongNeonFilter }} />
-      )}
+      {effect === 'scanner' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={scannerDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'traffic' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray='4 6 1 6' className='animate-[edge-traffic_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'laser' && (
-        <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={laserDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={{ ...animationStyle, filter: strongNeonFilter }} />
+        <path
+          d={d}
+          stroke='currentColor'
+          strokeWidth={baseWidth}
+          strokeLinecap='round'
+          fill='none'
+          strokeDasharray={laserDash}
+          className='animate-[edge-travel-long_1.2s_linear_infinite]'
+          style={{ ...animationStyle, '--edge-period': `-${laserPeriod}px` } as React.CSSProperties}
+        />
       )}
-      {effect === 'meteor' && (
-        <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={meteorDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={{ ...animationStyle, filter: strongNeonFilter }} />
-      )}
-      {effect === 'spark' && (
-        <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={dotDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={{ ...animationStyle, filter: strongNeonFilter }} />
-      )}
+      {effect === 'meteor' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={meteorDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
+      {effect === 'spark' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={dotDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'marching' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='square' fill='none' strokeDasharray='14 5' className='animate-[edge-dash_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'binary' && (
         <>
@@ -169,9 +186,7 @@ function EdgeEffectLayerSingle({ d, effect, direction, lineWidth, effectSize, sp
           <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='butt' fill='none' strokeDasharray='3 5' className='animate-[edge-packet-stream_1.2s_linear_infinite]' style={animationStyle} />
         </>
       )}
-      {effect === 'fade' && (
-        <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={fadeDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={{ ...animationStyle, filter: strongNeonFilter, opacity: 0.78 }} />
-      )}
+      {effect === 'fade' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={fadeDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={{ ...animationStyle, opacity: 0.78 }} />}
       {effect === 'bidirectional' && (
         <>
           <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={bidirectionalDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />

@@ -44,7 +44,7 @@ export type NodeShape =
   | 'speech-bubble';
 
 /** Background hue. Optional — defaults are derived from `type`. */
-export type NodeColor = 'red' | 'orange' | 'amber' | 'yellow' | 'lime' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'violet' | 'purple' | 'fuchsia' | 'pink' | 'rose';
+export type NodeColor = 'red' | 'orange' | 'amber' | 'yellow' | 'lime' | 'green' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'violet' | 'purple' | 'pink' | 'coral' | 'brown' | 'rose';
 
 /** A CSS colour. Palette names are retained for backwards compatibility. */
 export type NodePaint = NodeColor | `#${string}`;

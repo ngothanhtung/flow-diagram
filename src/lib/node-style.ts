@@ -506,6 +506,14 @@ export const COLORS: Record<NodeColor, ColorSpec> = {
     foreground: '#ecfccb',
     background: '#1a2e05',
   },
+  green: {
+    gradient: 'from-green-500/25 to-green-500/5',
+    ring: 'green-400/50',
+    text: 'green-100',
+    port: 'green-300',
+    foreground: '#dcfce7',
+    background: '#052e16',
+  },
   emerald: {
     gradient: 'from-emerald-500/25 to-emerald-500/5',
     ring: 'emerald-400/50',
@@ -570,14 +578,6 @@ export const COLORS: Record<NodeColor, ColorSpec> = {
     foreground: '#f3e8ff',
     background: '#3b0764',
   },
-  fuchsia: {
-    gradient: 'from-fuchsia-500/25 to-fuchsia-500/5',
-    ring: 'fuchsia-400/50',
-    text: 'fuchsia-100',
-    port: 'fuchsia-300',
-    foreground: '#fae8ff',
-    background: '#4a044e',
-  },
   pink: {
     gradient: 'from-pink-500/25 to-pink-500/5',
     ring: 'pink-400/50',
@@ -593,6 +593,22 @@ export const COLORS: Record<NodeColor, ColorSpec> = {
     port: 'rose-300',
     foreground: '#ffe4e6',
     background: '#4c0519',
+  },
+  brown: {
+    gradient: 'from-[#a97142]/25 to-[#a97142]/5',
+    ring: '[#c08a5a]/50',
+    text: '[#f3e3d3]',
+    port: '[#c08a5a]',
+    foreground: '#f3e3d3',
+    background: '#2a1a10',
+  },
+  coral: {
+    gradient: 'from-[#ff6f61]/25 to-[#ff6f61]/5',
+    ring: '[#ff8f80]/50',
+    text: '[#ffdfd9]',
+    port: '[#ff8f80]',
+    foreground: '#ffdfd9',
+    background: '#341411',
   },
 };
 

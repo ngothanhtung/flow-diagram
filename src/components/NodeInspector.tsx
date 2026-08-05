@@ -30,6 +30,7 @@ const COLOR_HEX: Record<NodeColor, string> = {
   amber: '#f59e0b',
   yellow: '#eab308',
   lime: '#84cc16',
+  green: '#22c55e',
   emerald: '#10b981',
   teal: '#14b8a6',
   cyan: '#06b6d4',
@@ -38,9 +39,10 @@ const COLOR_HEX: Record<NodeColor, string> = {
   indigo: '#6366f1',
   violet: '#8b5cf6',
   purple: '#a855f7',
-  fuchsia: '#d946ef',
   pink: '#ec4899',
   rose: '#f43f5e',
+  brown: '#a97142',
+  coral: '#ff6f61',
 };
 
 // Text / icon and Border share the same light-tint palette; Background uses deep tones.
@@ -98,7 +100,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, onClose }
 
   if (!node) {
     return (
-      <Card size='sm' className='gap-0 bg-zinc-900/70 p-4'>
+      <Card size='sm' className='gap-0 bg-zinc-900/70 py-3 pr-3 pl-1 ring-0'>
         <h2 className='text-sm font-semibold'>Inspector</h2>
         <p className='mt-1 text-[11px] leading-relaxed text-zinc-500'>Click a node to inspect and edit it. Drag from a node&apos;s output port to another node&apos;s input port to connect them.</p>
       </Card>
@@ -114,7 +116,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, onClose }
   };
 
   return (
-    <Card size='sm' className='gap-0 bg-zinc-900/70 p-4'>
+    <Card size='sm' className='gap-0 bg-zinc-900/70 py-3 pr-3 pl-1 ring-0'>
       <div className='flex items-center justify-between'>
         <h2 className='text-sm font-semibold'>Inspector</h2>
         <Button variant='ghost' size='xs' onClick={onClose} className='text-[10px] text-zinc-500 hover:text-zinc-200'>
