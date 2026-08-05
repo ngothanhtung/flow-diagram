@@ -6,10 +6,11 @@ import type {
   ConnectionSide,
   ExecutionState,
   FlowDocumentJSON,
-  NodePreset,
+  FlowPoint,
+  NodeShape,
 } from '@/lib/flowchart-types';
 import { screenToData } from '@/lib/coords';
-import { resolveNodeStyle } from '@/lib/node-style';
+import { resolveNodeStyle, SHAPES } from '@/lib/node-style';
 import type { ViewTransform } from '@/lib/view-transform';
 import { AnimatedEdge } from './AnimatedEdge';
 import { FlowNodeCard } from './FlowNodeCard';
@@ -40,6 +41,12 @@ interface PanState {
   moved: boolean;
 }
 
+interface BendDragState {
+  edgeId: string;
+  pointIndex: number;
+  points: FlowPoint[];
+}
+
 interface FlowCanvasProps {
   document: FlowDocumentJSON;
   activeNodeIds?: string[];
@@ -66,12 +73,8 @@ interface FlowCanvasProps {
     fromSide?: ConnectionSide,
     toSide?: ConnectionSide,
   ) => void;
-  onPaletteDrop: (preset: NodePreset, position: { x: number; y: number }) => void;
   /** True when any node is currently being moved. Used to pause the edge animation. */
   isDragging: boolean;
-  /** True when the palette is being dragged — dims the canvas contents slightly. */
-  isPaletteDragging: boolean;
-  paletteDragPreset: NodePreset | null;
   /**
    * When set, the canvas is currently drawing a link from this node.
    * Used to highlight valid in-ports on every other node.
@@ -87,6 +90,19 @@ interface FlowCanvasProps {
     endpoint: 'from' | 'to',
     nodeId: string,
     side: ConnectionSide,
+  ) => void;
+  onEdgeUpdate: (
+    edgeId: string,
+    patch: { bendPoints?: FlowPoint[] },
+  ) => void;
+  /** Shape currently armed by the dock. When set, the canvas draws. */
+  activeShape: NodeShape | null;
+  /** Called when the user finishes drawing a shape on the canvas. */
+  onShapeDrawn: (
+    shape: NodeShape,
+    position: { x: number; y: number },
+    width: number,
+    height: number,
   ) => void;
 }
 
@@ -108,10 +124,7 @@ export function FlowCanvas({
   onNodeDragStart,
   onNodeDragEnd,
   onConnect,
-  onPaletteDrop,
   isDragging,
-  isPaletteDragging,
-  paletteDragPreset,
   linkingFromId,
   onLinkStart,
   onLinkMove,
@@ -119,6 +132,9 @@ export function FlowCanvas({
   selectedEdgeId,
   onSelectEdge,
   onEdgeReconnect,
+  onEdgeUpdate,
+  activeShape,
+  onShapeDrawn,
 }: FlowCanvasProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -131,10 +147,18 @@ export function FlowCanvas({
   const [isPanning, setIsPanning] = useState(false);
   const panRef = useRef<PanState | null>(null);
   const suppressCanvasClickRef = useRef(false);
-  // Pointer-tracking state for palette drops, links and endpoint reconnects.
-  const [paletteHover, setPaletteHover] = useState<{ x: number; y: number } | null>(null);
+  // Pointer-tracking state for links, endpoint reconnects and shape drawing.
   const [link, setLink] = useState<LinkState | null>(null);
   const [reconnect, setReconnect] = useState<ReconnectState | null>(null);
+  const [bendDrag, setBendDrag] = useState<BendDragState | null>(null);
+
+  // Figma-style draw gesture. `drawStart` is captured on the first
+  // pointerdown when a shape is armed; `drawCurrent` follows the
+  // pointer until release. The rect is stored normalised (min/max +
+  // width/height) so flipping the drag direction never produces
+  // negative dimensions.
+  const [drawStart, setDrawStart] = useState<{ x: number; y: number } | null>(null);
+  const [drawCurrent, setDrawCurrent] = useState<{ x: number; y: number } | null>(null);
 
   // Track the container's pixel size so the viewBox can be set to
   // match. Without this, a container smaller than the data extent
@@ -233,16 +257,40 @@ export function FlowCanvas({
     [zoomAt],
   );
 
+  const snapPoint = useCallback(
+    (point: { x: number; y: number }) => snapEnabled
+      ? {
+          x: Math.round(point.x / GRID_SIZE) * GRID_SIZE,
+          y: Math.round(point.y / GRID_SIZE) * GRID_SIZE,
+        }
+      : point,
+    [snapEnabled],
+  );
+
   const handlePanPointerDown = useCallback(
     (event: React.PointerEvent<SVGSVGElement>) => {
       const isMiddleButton = event.button === 1;
       const isEmptyCanvas = event.button === 0 && event.target === event.currentTarget;
       if (
         (!isMiddleButton && !isEmptyCanvas) ||
-        isPaletteDragging ||
         link !== null ||
         reconnect !== null
+        || bendDrag !== null
       ) {
+        return;
+      }
+
+      // When a shape is armed and the user pointerdowns on empty
+      // canvas, start a Figma-style draw instead of panning. We
+      // capture the data-space start so a later pointermove (handled
+      // by the window-level effect) can render the live preview.
+      if (activeShape && isEmptyCanvas && svgRef.current) {
+        event.preventDefault();
+        event.stopPropagation();
+        const p = screenToData(svgRef.current, event.clientX, event.clientY, viewTransform);
+        const snapped = snapPoint(p);
+        setDrawStart(snapped);
+        setDrawCurrent(snapped);
         return;
       }
 
@@ -264,7 +312,7 @@ export function FlowCanvas({
         /* Pointer capture is unavailable in some test environments. */
       }
     },
-    [isPaletteDragging, link, reconnect, viewTransform],
+    [activeShape, bendDrag, link, reconnect, snapPoint, viewTransform],
   );
 
   const handlePanPointerMove = useCallback(
@@ -303,16 +351,6 @@ export function FlowCanvas({
       setIsPanning(false);
     },
     [],
-  );
-
-  const snapPoint = useCallback(
-    (point: { x: number; y: number }) => snapEnabled
-      ? {
-          x: Math.round(point.x / GRID_SIZE) * GRID_SIZE,
-          y: Math.round(point.y / GRID_SIZE) * GRID_SIZE,
-        }
-      : point,
-    [snapEnabled],
   );
 
   const handleNodeMove = useCallback(
@@ -484,39 +522,77 @@ export function FlowCanvas({
     };
   }, [onEdgeReconnect, reconnect, viewTransform]);
 
-  // While the palette is being dragged, track the cursor's canvas-
-  // space position so we can both render a drop preview and hand the
-  // coords to the page on release.
+  // Bend handles update the persisted waypoint on every move so the line,
+  // markers and animated effects remain locked to the pointer.
   useEffect(() => {
-    if (!isPaletteDragging) return;
+    if (!bendDrag) return;
+    const onMove = (event: PointerEvent) => {
+      if (!svgRef.current) return;
+      const point = snapPoint(screenToData(
+        svgRef.current,
+        event.clientX,
+        event.clientY,
+        viewTransform,
+      ));
+      setBendDrag((current) => {
+        if (!current) return current;
+        const points = current.points.map((item, index) =>
+          index === current.pointIndex ? point : item,
+        );
+        onEdgeUpdate(current.edgeId, { bendPoints: points });
+        return { ...current, points };
+      });
+    };
+    const onUp = () => setBendDrag(null);
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
+    return () => {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+    };
+  }, [bendDrag, onEdgeUpdate, snapPoint, viewTransform]);
+
+  // While a shape is being drawn, follow the pointer at the window
+  // level so the user can leave the SVG and still see the preview.
+  useEffect(() => {
+    if (drawStart === null) return;
     const onMove = (e: PointerEvent) => {
       if (!svgRef.current) return;
       const p = screenToData(svgRef.current, e.clientX, e.clientY, viewTransform);
-      setPaletteHover(snapPoint(p));
+      setDrawCurrent(snapPoint(p));
     };
     window.addEventListener('pointermove', onMove);
     return () => window.removeEventListener('pointermove', onMove);
-  }, [isPaletteDragging, snapPoint, viewTransform]);
+  }, [drawStart, snapPoint, viewTransform]);
 
-  // On palette drop, perform the create. The page passes a callback
-  // that takes the data-space point — the canvas is the only thing
-  // that knows how to translate viewport coords, so we do the drop
-  // here rather than threading the conversion up to the page.
+  // Pointerup anywhere on the window finalises the draw. If the user
+  // barely moved we fall back to a default-sized shape so a single
+  // click still produces a usable block.
   useEffect(() => {
-    if (!isPaletteDragging) return;
-    const onUp = (e: PointerEvent) => {
-      const target = globalThis.document.elementFromPoint(e.clientX, e.clientY);
-      if (!target?.closest('[data-flowgram-canvas]')) return;
-      if (!svgRef.current || !paletteDragPreset) return;
-      const p = screenToData(svgRef.current, e.clientX, e.clientY, viewTransform);
-      onPaletteDrop(paletteDragPreset, snapPoint(p));
+    if (drawStart === null || activeShape === null) return;
+    const onUp = () => {
+      const start = drawStart;
+      const end = drawCurrent ?? start;
+      const minX = Math.min(start.x, end.x);
+      const minY = Math.min(start.y, end.y);
+      const maxX = Math.max(start.x, end.x);
+      const maxY = Math.max(start.y, end.y);
+      const dragged = Math.hypot(maxX - minX, maxY - minY) >= 4;
+      const width = dragged ? Math.max(40, maxX - minX) : 190;
+      const height = dragged ? Math.max(40, maxY - minY) : 86;
+      onShapeDrawn(activeShape, { x: (minX + maxX) / 2, y: (minY + maxY) / 2 }, width, height);
+      setDrawStart(null);
+      setDrawCurrent(null);
     };
-    // Capture phase is intentional: the palette also owns a window-level
-    // pointerup listener that clears the drag state. Handling the drop first
-    // prevents that cleanup render from removing this listener mid-event.
-    window.addEventListener('pointerup', onUp, { capture: true });
-    return () => window.removeEventListener('pointerup', onUp, { capture: true });
-  }, [isPaletteDragging, paletteDragPreset, onPaletteDrop, snapPoint, viewTransform]);
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
+    return () => {
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+    };
+  }, [activeShape, drawCurrent, drawStart, onShapeDrawn]);
 
   const handlePortPointerDown = (nodeId: string, side: ConnectionSide) => {
     const node = nodesById.get(nodeId);
@@ -651,8 +727,8 @@ export function FlowCanvas({
         viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
         className={[
           'relative h-full w-full touch-none',
-          isPaletteDragging
-            ? 'cursor-copy'
+          activeShape !== null
+            ? 'cursor-crosshair'
             : isPanning
               ? 'cursor-grabbing'
               : 'cursor-grab',
@@ -694,12 +770,14 @@ export function FlowCanvas({
                 isDragging ||
                 link !== null ||
                 reconnect !== null ||
+                bendDrag !== null ||
                 (runningEdges !== null && !runningEdges.has(edge.id))
               }
               interactive
               selected={selectedEdgeId === edge.id}
               onClick={(id) => onSelectEdge(id)}
               color={edgeColor}
+              effectColor={edge.effectColor}
               performanceMode={performanceMode}
               executionState={edgeExecutionStates?.[edge.id] ?? 'normal'}
             />
@@ -766,6 +844,37 @@ export function FlowCanvas({
 
         {selectedEdgeRoute && (
           <>
+            {selectedEdgeRoute.geometry.points?.slice(1, -1).map((point, index) => (
+              <BendHandle
+                key={`${selectedEdgeRoute.edge.id}-bend-${index}`}
+                index={index}
+                point={point}
+                color={selectedEdgeRoute.color}
+                scale={viewTransform.scale}
+                active={bendDrag?.pointIndex === index}
+                onPointerDown={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  const points = selectedEdgeRoute.geometry.points!.slice(1, -1);
+                  onEdgeUpdate(selectedEdgeRoute.edge.id, { bendPoints: points });
+                  setBendDrag({
+                    edgeId: selectedEdgeRoute.edge.id,
+                    pointIndex: index,
+                    points,
+                  });
+                }}
+                onDoubleClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  const points = selectedEdgeRoute.geometry.points!
+                    .slice(1, -1)
+                    .filter((_, pointIndex) => pointIndex !== index);
+                  onEdgeUpdate(selectedEdgeRoute.edge.id, {
+                    bendPoints: points.length ? points : undefined,
+                  });
+                }}
+              />
+            ))}
             <EndpointHandle
               label="A"
               point={selectedEdgeRoute.geometry.start}
@@ -803,31 +912,67 @@ export function FlowCanvas({
           </>
         )}
 
-        {/* Drop preview while the user drags a palette tile over the
-            canvas. Renders a hollow ring at the hover position. */}
-        {isPaletteDragging && paletteHover && (
-          <g
-            transform={`translate(${paletteHover.x} ${paletteHover.y})`}
-            pointerEvents="none"
-          >
-            <circle
-              r={56}
-              className="fill-sky-500/10 stroke-sky-300"
-              strokeWidth={2}
-              strokeDasharray="6 6"
-            />
-            <text
-              textAnchor="middle"
-              dy={4}
-              className="fill-sky-200 text-[11px] font-semibold uppercase tracking-wider"
-            >
-              {paletteDragPreset?.label}
-            </text>
-          </g>
+        {/* Figma-style shape-draw preview. The preview uses the same
+            SHAPES path table as the final node so the user sees the
+            exact silhouette they will get. We render the silhouette
+            scaled to the drag rectangle, with a cyan dashed stroke
+            and a translucent fill — Figma's draw affordance. */}
+        {activeShape && drawStart && drawCurrent && (
+          <DrawPreview
+            shape={activeShape}
+            start={drawStart}
+            current={drawCurrent}
+          />
         )}
         </g>
       </svg>
     </div>
+  );
+}
+
+function BendHandle({
+  index,
+  point,
+  color,
+  scale,
+  active,
+  onPointerDown,
+  onDoubleClick,
+}: {
+  index: number;
+  point: FlowPoint;
+  color: string;
+  scale: number;
+  active: boolean;
+  onPointerDown: (event: React.PointerEvent<SVGGElement>) => void;
+  onDoubleClick: (event: React.MouseEvent<SVGGElement>) => void;
+}) {
+  const safeScale = Math.max(0.08, scale);
+  const size = 9 / safeScale;
+  return (
+    <g
+      transform={`translate(${point.x} ${point.y})`}
+      className="cursor-move"
+      pointerEvents="all"
+      onPointerDown={onPointerDown}
+      onDoubleClick={onDoubleClick}
+      role="button"
+      aria-label={`Move bend point ${index + 1}`}
+    >
+      <circle r={20 / safeScale} fill="transparent" />
+      <rect
+        x={-size}
+        y={-size}
+        width={size * 2}
+        height={size * 2}
+        rx={3 / safeScale}
+        fill={active ? color : '#09090b'}
+        stroke={color}
+        strokeWidth={2 / safeScale}
+        transform="rotate(45)"
+      />
+      <circle r={2.25 / safeScale} fill={active ? '#09090b' : color} />
+    </g>
   );
 }
 
@@ -909,6 +1054,64 @@ function ReconnectPreview({
         r={6 / safeScale}
         fill="currentColor"
       />
+    </g>
+  );
+}
+
+/**
+ * Live preview rendered while the user click-drags a shape on the
+ * canvas. We re-use the same SHAPES path table the final node will
+ * use, scaled to the drag rectangle, so what you see is what you
+ * get. The `ellipse` shape isn't path-based — it has to be drawn
+ * with the SVG <ellipse> primitive.
+ */
+function DrawPreview({
+  shape,
+  start,
+  current,
+}: {
+  shape: NodeShape;
+  start: { x: number; y: number };
+  current: { x: number; y: number };
+}) {
+  const minX = Math.min(start.x, current.x);
+  const minY = Math.min(start.y, current.y);
+  const maxX = Math.max(start.x, current.x);
+  const maxY = Math.max(start.y, current.y);
+  const width = Math.max(8, maxX - minX);
+  const height = Math.max(8, maxY - minY);
+  const cx = (minX + maxX) / 2;
+  const cy = (minY + maxY) / 2;
+  // SHAPES paths are authored in a 112×112 box centred on the origin
+  // (NODE_BOUNDING_RADIUS = 56). Scale to fit the drag rectangle.
+  const scaleX = width / 112;
+  const scaleY = height / 112;
+  const spec = SHAPES[shape];
+
+  return (
+    <g transform={`translate(${cx} ${cy}) scale(${scaleX} ${scaleY})`} pointerEvents="none">
+      {shape === 'ellipse' ? (
+        <ellipse
+          cx={0}
+          cy={0}
+          rx={56}
+          ry={36}
+          fill="rgba(34, 211, 238, 0.12)"
+          stroke="#22d3ee"
+          strokeWidth={2 / Math.max(scaleX, scaleY)}
+          strokeDasharray={`${8 / Math.max(scaleX, scaleY)} ${6 / Math.max(scaleX, scaleY)}`}
+        />
+      ) : (
+        <path
+          d={spec.d}
+          fill="rgba(34, 211, 238, 0.12)"
+          stroke="#22d3ee"
+          strokeWidth={2 / Math.max(scaleX, scaleY)}
+          strokeDasharray={`${8 / Math.max(scaleX, scaleY)} ${6 / Math.max(scaleX, scaleY)}`}
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
+        />
+      )}
     </g>
   );
 }

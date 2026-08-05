@@ -7,6 +7,7 @@ import type {
   FlowNode,
   ConnectionSide,
   NodePreset,
+  NodeShape,
   NodeType,
 } from './flowchart-types';
 
@@ -120,13 +121,13 @@ export function useEditor(
             to: toId,
             fromSide,
             toSide,
-            effect: 'flow',
+            effect: 'comet',
             direction: 'forward',
-            routing: 'orthogonal',
+            routing: 'smooth-step',
             startMarker: 'none',
-            endMarker: 'open-arrow',
+            endMarker: 'arrow',
             animationSpeed: 1,
-            effectSize: 1,
+            effectSize: 1.5,
             width: 2,
           },
         ],
@@ -164,6 +165,65 @@ export function useEditor(
             fontSize: 14,
             fontWeight: 'semibold',
             textAlign: 'left',
+            color: paint.color,
+            backgroundColor: paint.backgroundColor,
+            borderColor: paint.color,
+            borderWidth: 1.5,
+            shadow: 'soft',
+          },
+        ],
+        edges: doc.edges,
+      });
+      return id;
+    },
+    [doc, setDoc],
+  );
+
+  /**
+   * Drop a free-floating shape node (Figma-style). The shape is the
+   * `node.shape` field, no icon is added so the block reads as a
+   * neutral diagram primitive rather than a flowchart step. Inspector
+   * still allows the user to add a title, icon, or change the type
+   * afterwards.
+   */
+  const onShapeCreate = useCallback(
+    (
+      shape: NodeShape,
+      position: { x: number; y: number },
+      width: number,
+      height: number,
+    ) => {
+      const id = `n${doc.nodes.length + 1}-${Date.now().toString(36)}`;
+      const paint = DEFAULT_NODE_PAINT.process;
+      // `position` is the centre of the new shape, matching the rest
+      // of the editor's coordinate convention. Width/height are clamped
+      // to a sensible minimum so a stray click doesn't produce a
+      // 1-pixel sliver.
+      const w = Math.max(40, Math.min(640, width));
+      const h = Math.max(40, Math.min(480, height));
+      setDoc({
+        nodes: [
+          ...doc.nodes,
+          {
+            id,
+            type: 'process',
+            title: '',
+            description: '',
+            position,
+            sortOrder:
+              Math.max(
+                0,
+                ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1),
+              ) + 1,
+            shape,
+            width: w,
+            height: h,
+            icon: null,
+            iconPosition: 'left',
+            iconSize: 18,
+            fontSize: 13,
+            fontWeight: 'medium',
+            textAlign: 'center',
             color: paint.color,
             backgroundColor: paint.backgroundColor,
             borderColor: paint.color,
@@ -225,6 +285,7 @@ export function useEditor(
     onNodeDuplicate,
     onConnect,
     onNodeCreate,
+    onShapeCreate,
     onEdgeDelete,
     onEdgeUpdate,
     onEdgeReconnect,

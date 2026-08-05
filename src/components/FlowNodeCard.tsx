@@ -11,7 +11,7 @@ import type {
   FlowNode,
   NodeShape,
 } from '@/lib/flowchart-types';
-import { resolveNodeStyle } from '@/lib/node-style';
+import { nodeOutline, resolveNodeStyle } from '@/lib/node-style';
 import type { ViewTransform } from '@/lib/view-transform';
 import { NODE_BOUNDING_RADIUS } from './edge-geometry';
 
@@ -102,8 +102,6 @@ function ShapeDecoration({ shape, color }: { shape: NodeShape; color: string }) 
       return (
         <>
           <path d="M -56 -34 C -56 -19 56 -19 56 -34" {...common} />
-          <path d="M -56 2 C -56 17 56 17 56 2" {...common} />
-          <path d="M -56 20 C -56 35 56 35 56 20" {...common} />
         </>
       );
     case 'server':
@@ -205,6 +203,7 @@ export function FlowNodeCard({
   } = style;
   const scaleX = width / BASE_SIZE;
   const scaleY = height / BASE_SIZE;
+  const outline = nodeOutline(style.shape, width, height);
   const portAnchors = Object.fromEntries(
     CONNECTION_SIDES.map((side) => [
       side,
@@ -469,9 +468,9 @@ export function FlowNodeCard({
           lives on the parent group so the CSS pulse can animate the
           path without replacing the shape transform. */}
       {isActive && executionState !== 'active' && (
-        <g transform={`scale(${scaleX} ${scaleY})`} pointerEvents="none">
+        <g transform={outline.transform} pointerEvents="none">
           <path
-            d={shapeSpec.d}
+            d={outline.d}
             className={performanceMode
               ? 'fill-none'
               : 'fill-none animate-[halo_1.6s_ease-in-out_infinite]'}
@@ -492,9 +491,9 @@ export function FlowNodeCard({
 
       {/* Selection ring follows the exact silhouette as well. */}
       {isSelected && (
-        <g transform={`scale(${scaleX} ${scaleY})`} pointerEvents="none">
+        <g transform={outline.transform} pointerEvents="none">
         <path
-          d={shapeSpec.d}
+          d={outline.d}
           className="fill-none"
           stroke={foreground}
           strokeWidth={2}
@@ -520,8 +519,8 @@ export function FlowNodeCard({
           plus a translucent overlay would be ideal but the current
           palette maps cleanly to a single mid-tone per colour. */}
       <path
-        d={shapeSpec.d}
-        transform={`scale(${scaleX} ${scaleY})`}
+        d={outline.d}
+        transform={outline.transform}
         fill="none"
         stroke={borderColor}
         strokeWidth={borderWidth + 5}
@@ -537,13 +536,14 @@ export function FlowNodeCard({
       />
 
       <path
-        d={shapeSpec.d}
-        transform={`scale(${scaleX} ${scaleY})`}
+        d={outline.d}
+        transform={outline.transform}
         style={{
           fill: background,
           stroke: borderColor,
           filter,
         }}
+        fillRule="evenodd"
         strokeWidth={borderWidth}
         strokeDasharray={dashArray}
         strokeLinecap={borderStyle === 'dotted' ? 'round' : undefined}
@@ -552,22 +552,24 @@ export function FlowNodeCard({
       />
 
       <path
-        d={shapeSpec.d}
-        transform={`scale(${scaleX} ${scaleY})`}
+        d={outline.d}
+        transform={outline.transform}
         fill={`url(#${gradientId})`}
+        fillRule="evenodd"
         pointerEvents="none"
       />
 
       {executionState === 'active' && (
         <g pointerEvents="none">
-          <g transform={`scale(${scaleX} ${scaleY})`}>
+          <g transform={outline.transform}>
             <path
-              d={shapeSpec.d}
+              d={outline.d}
               fill={`url(#${chargeGradientId})`}
+              fillRule="evenodd"
               className="node-electric-core"
             />
             <path
-              d={shapeSpec.d}
+              d={outline.d}
               fill="none"
               stroke={foreground}
               strokeWidth={1.4}

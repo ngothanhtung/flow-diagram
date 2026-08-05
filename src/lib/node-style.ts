@@ -22,20 +22,34 @@ import {
   Workflow,
   Rocket,
   Zap,
+  Shield,
+  RefreshCcw,
+  Boxes,
+  Puzzle,
+  CircleCheck,
+  CircleX,
+  MessageCircle,
   type LucideIcon,
 } from 'lucide-react';
 import {
   IconBell,
+  IconBox,
+  IconCircleCheck,
+  IconCircleX,
   IconCloud,
   IconCode,
   IconDatabase,
   IconFlag,
   IconMail,
+  IconMessageCircle,
   IconPlayerPlay,
+  IconPuzzle,
+  IconRefresh,
   IconRobot,
   IconRoute,
   IconSend,
   IconSettings,
+  IconShield,
   IconSparkles,
   IconWorld,
 } from '@tabler/icons-react';
@@ -93,6 +107,20 @@ export const SHAPES: Record<NodeShape, ShapeSpec> = {
       left: { x: -R, y: 0 },
     },
     label: 'Circle',
+  },
+  // Ellipse — same path data as the circle when width === height.
+  // Renderers (FlowNodeCard, draw preview) branch on the shape
+  // name and draw a true <ellipse> so the silhouette respects the
+  // node's actual width/height ratio.
+  ellipse: {
+    d: `M ${R} 0 A ${R} ${R} 0 1 1 -${R} 0 A ${R} ${R} 0 1 1 ${R} 0 Z`,
+    anchors: {
+      top: { x: 0, y: -R },
+      right: { x: R, y: 0 },
+      bottom: { x: 0, y: R },
+      left: { x: -R, y: 0 },
+    },
+    label: 'Ellipse',
   },
   rectangle: {
     d: `M ${-R} ${-R} L ${R} ${-R} L ${R} ${R} L ${-R} ${R} Z`,
@@ -356,12 +384,14 @@ export const SHAPES: Record<NodeShape, ShapeSpec> = {
     label: 'Cross',
   },
   'arrow-left': {
-    d: `M ${-R} 0 L -12 ${-R} V -24 H ${R} V 24 H -12 V ${R} Z`,
+    d: `M ${R} -24 H -12 L -12 ${-R} L ${-R} 0 L -12 ${R} L -12 24 H ${R} Z
+        M ${R - 8} -16 H -4 L -4 ${-R + 6} L ${-R + 6} 0 L -4 ${R - 6} L -4 16 H ${R - 8} Z`,
     anchors: BOX_ANCHORS,
     label: 'Left Arrow',
   },
   'arrow-right': {
-    d: `M ${R} 0 L 12 ${-R} V -24 H ${-R} V 24 H 12 V ${R} Z`,
+    d: `M ${-R} -24 H 12 L 12 ${-R} L ${R} 0 L 12 ${R} L 12 24 H ${-R} Z
+        M ${-R + 8} -16 H 4 L 4 ${-R + 6} L ${R - 6} 0 L 4 ${R - 6} L 4 16 H ${-R + 8} Z`,
     anchors: BOX_ANCHORS,
     label: 'Right Arrow',
   },
@@ -379,6 +409,42 @@ export const SHAPES: Record<NodeShape, ShapeSpec> = {
     label: 'Speech Bubble',
   },
 };
+
+/**
+ * Outline for a node's actual pixel size. `SHAPES[shape].d` is defined
+ * once inside a unit square and stretched by non-uniform `scale(x, y)` to
+ * fit each node — fine for straight-edged shapes, but for `rounded` that
+ * turns the corner's quarter-circle into an ellipse, so wide/short nodes
+ * end up with visibly mismatched corner radii between axes. Building the
+ * rounded-rect path directly from the node's real width/height keeps the
+ * corner radius constant on both axes instead.
+ */
+export function nodeOutline(
+  shape: NodeShape,
+  width: number,
+  height: number,
+): { d: string; transform: string } {
+  if (shape === 'rounded') {
+    const hw = width / 2;
+    const hh = height / 2;
+    const radius = Math.min(CORNER, hw, hh);
+    return {
+      d: `M ${-hw + radius} ${-hh}
+          L ${hw - radius} ${-hh}
+          Q ${hw} ${-hh} ${hw} ${-hh + radius}
+          L ${hw} ${hh - radius}
+          Q ${hw} ${hh} ${hw - radius} ${hh}
+          L ${-hw + radius} ${hh}
+          Q ${-hw} ${hh} ${-hw} ${hh - radius}
+          L ${-hw} ${-hh + radius}
+          Q ${-hw} ${-hh} ${-hw + radius} ${-hh} Z`,
+      transform: '',
+    };
+  }
+  const scaleX = width / (R * 2);
+  const scaleY = height / (R * 2);
+  return { d: SHAPES[shape].d, transform: `scale(${scaleX} ${scaleY})` };
+}
 
 // --- Colors ---------------------------------------------------------------
 
@@ -471,6 +537,13 @@ export const ICONS: Record<NodeIcon, NodeIconComponent> = {
   'lucide:user': User,
   'lucide:webhook': Webhook,
   'lucide:zap': Zap,
+  'lucide:shield': Shield,
+  'lucide:refresh-ccw': RefreshCcw,
+  'lucide:boxes': Boxes,
+  'lucide:puzzle': Puzzle,
+  'lucide:circle-check': CircleCheck,
+  'lucide:circle-x': CircleX,
+  'lucide:message-circle': MessageCircle,
   'tabler:settings': IconSettings,
   'tabler:player-play': IconPlayerPlay,
   'tabler:flag': IconFlag,
@@ -484,6 +557,13 @@ export const ICONS: Record<NodeIcon, NodeIconComponent> = {
   'tabler:route': IconRoute,
   'tabler:robot': IconRobot,
   'tabler:world': IconWorld,
+  'tabler:shield': IconShield,
+  'tabler:refresh': IconRefresh,
+  'tabler:box': IconBox,
+  'tabler:puzzle': IconPuzzle,
+  'tabler:circle-check': IconCircleCheck,
+  'tabler:circle-x': IconCircleX,
+  'tabler:message-circle': IconMessageCircle,
 };
 
 // --- Defaults from `type` -------------------------------------------------

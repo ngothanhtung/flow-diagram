@@ -8,6 +8,7 @@ export type NodeType = 'start' | 'process' | 'decision' | 'output';
  *  from `type` so older documents render unchanged. */
 export type NodeShape =
   | 'circle'
+  | 'ellipse'
   | 'rectangle'
   | 'rounded'
   | 'pill'
@@ -65,6 +66,13 @@ export type NodeIcon =
   | 'lucide:user'
   | 'lucide:webhook'
   | 'lucide:zap'
+  | 'lucide:shield'
+  | 'lucide:refresh-ccw'
+  | 'lucide:boxes'
+  | 'lucide:puzzle'
+  | 'lucide:circle-check'
+  | 'lucide:circle-x'
+  | 'lucide:message-circle'
   | 'tabler:settings'
   | 'tabler:player-play'
   | 'tabler:flag'
@@ -77,7 +85,14 @@ export type NodeIcon =
   | 'tabler:sparkles'
   | 'tabler:route'
   | 'tabler:robot'
-  | 'tabler:world';
+  | 'tabler:world'
+  | 'tabler:shield'
+  | 'tabler:refresh'
+  | 'tabler:box'
+  | 'tabler:puzzle'
+  | 'tabler:circle-check'
+  | 'tabler:circle-x'
+  | 'tabler:message-circle';
 
 export type ConnectionSide = 'top' | 'right' | 'bottom' | 'left';
 export type ExecutionState = 'normal' | 'pending' | 'active' | 'completed';
@@ -168,10 +183,17 @@ export type EdgeMarker =
   | 'open-arrow'
   | 'triangle'
   | 'circle'
-  | 'diamond';
+  | 'diamond'
+  | 'tee'
+  | 'cross'
+  | 'circle-cross'
+  | 'arrow-both'
+  | 'arrow-bar'
+  | 'bar';
 
-export type EdgeDirection = 'forward' | 'reverse';
+export type EdgeDirection = 'forward' | 'reverse' | 'both';
 export type EdgeRouting = 'straight' | 'smooth-step' | 'orthogonal' | 'curved';
+export interface FlowPoint { x: number; y: number }
 
 export interface FlowEdge {
   id: string;
@@ -187,10 +209,16 @@ export interface FlowEdge {
   direction?: EdgeDirection;
   /** Geometry of the connector path. */
   routing?: EdgeRouting;
+  /** User-positioned intermediate points for orthogonal/smooth routes. */
+  bendPoints?: FlowPoint[];
   /** Independently configurable symbols at both ends of the line. */
   startMarker?: EdgeMarker;
   endMarker?: EdgeMarker;
   color?: `#${string}`;
+  /** Foreground colour for the animated objects travelling the line.
+   *  Undefined falls back to `color` so the objects inherit the line
+   *  colour by default. */
+  effectColor?: `#${string}`;
   width?: number;
   /** Scale multiplier for animated packets/pulses, independent of line width. */
   effectSize?: number;

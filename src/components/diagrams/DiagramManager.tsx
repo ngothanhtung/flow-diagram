@@ -6,7 +6,6 @@ import {
   FolderOpen,
   LoaderCircle,
   RefreshCw,
-  Save,
   Search,
   Trash2,
 } from 'lucide-react';
@@ -38,11 +37,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
-  createDiagram,
   deleteDiagram,
   listDiagrams,
   loadDiagram,
-  saveDiagram,
   type StoredDiagram,
 } from '@/lib/firebase/diagrams';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
@@ -53,7 +50,7 @@ interface DiagramManagerProps {
   currentDiagramId: string | null;
   currentName: string;
   dirty: boolean;
-  onSaved: (diagramId: string, name: string, document: FlowDocumentJSON) => void;
+  onRename: (name: string) => void;
   onLoaded: (diagram: StoredDiagram) => void;
   onDeleted: (diagramId: string) => void;
   onNew: () => void;
@@ -72,13 +69,12 @@ export function DiagramManager({
   currentDiagramId,
   currentName,
   dirty,
-  onSaved,
+  onRename,
   onLoaded,
   onDeleted,
   onNew,
 }: DiagramManagerProps) {
   const [open, setOpen] = useState(false);
-  const [name, setName] = useState(currentName);
   const [search, setSearch] = useState('');
   const [diagrams, setDiagrams] = useState<StoredDiagram[]>([]);
   const [loading, setLoading] = useState(false);
@@ -100,10 +96,7 @@ export function DiagramManager({
 
   const handleOpenChange = (nextOpen: boolean) => {
     setOpen(nextOpen);
-    if (nextOpen) {
-      setName(currentName);
-      void refresh();
-    }
+    if (nextOpen) void refresh();
   };
 
   const visibleDiagrams = useMemo(() => {
@@ -112,39 +105,12 @@ export function DiagramManager({
     return diagrams.filter((diagram) => diagram.name.toLocaleLowerCase('vi').includes(keyword));
   }, [diagrams, search]);
 
-  const saveCurrent = async () => {
-    const nextName = name.trim();
-    if (!nextName) {
-      toast.error('Hãy đặt tên cho diagram');
-      return;
-    }
-    setBusy('save');
-    try {
-      let diagramId = currentDiagramId;
-      if (diagramId) {
-        await saveDiagram(userId, diagramId, nextName, document);
-      } else {
-        diagramId = await createDiagram(userId, nextName, document);
-      }
-      onSaved(diagramId, nextName, document);
-      toast.success('Đã lưu diagram', { description: nextName });
-      await refresh();
-    } catch {
-      toast.error('Không thể lưu diagram', {
-        description: 'Bạn cần đăng nhập và có quyền ghi đúng UID.',
-      });
-    } finally {
-      setBusy(null);
-    }
-  };
-
   const loadSelected = async (diagram: StoredDiagram) => {
     setBusy(diagram.id);
     try {
       const latest = await loadDiagram(userId, diagram.id);
       if (!latest) throw new Error('Diagram no longer exists.');
       onLoaded(latest);
-      setName(latest.name);
       setOpen(false);
       toast.success('Đã tải diagram', { description: latest.name });
     } catch {
@@ -199,7 +165,7 @@ export function DiagramManager({
               <p className="font-mono text-[9px] uppercase tracking-[.18em] text-cyan-400">Current canvas</p>
               <div className="mt-4 space-y-2">
                 <Label htmlFor="diagram-name" className="text-[10px] uppercase tracking-wider text-zinc-500">Tên diagram</Label>
-                <Input id="diagram-name" value={name} maxLength={80} onChange={(event) => setName(event.target.value)} placeholder="Software Architecture" className="h-10 border-white/9 bg-white/[.035]" />
+                <Input id="diagram-name" value={currentName} maxLength={80} onChange={(event) => onRename(event.target.value)} placeholder="Software Architecture" className="h-10 border-white/9 bg-white/[.035]" />
               </div>
               <div className="mt-4 grid grid-cols-2 gap-2">
                 <div className="rounded-xl bg-white/[.025] p-3 ring-1 ring-white/7">
@@ -217,11 +183,7 @@ export function DiagramManager({
                   {dirty ? 'Chưa lưu' : 'Đã đồng bộ'}
                 </Badge>
               </div>
-              <Button onClick={saveCurrent} disabled={busy !== null} className="mt-4 h-10 w-full bg-cyan-300 text-zinc-950 hover:bg-cyan-200">
-                {busy === 'save' ? <LoaderCircle className="animate-spin" /> : <Save />}
-                {currentDiagramId ? 'Lưu thay đổi' : 'Lưu diagram mới'}
-              </Button>
-              <Button variant="outline" onClick={() => { onNew(); setOpen(false); }} className="mt-2 h-9 w-full border-white/9 bg-transparent">
+              <Button variant="outline" onClick={() => { onNew(); setOpen(false); }} className="mt-4 h-9 w-full border-white/9 bg-transparent">
                 <FilePlus2 /> Canvas mới
               </Button>
             </section>

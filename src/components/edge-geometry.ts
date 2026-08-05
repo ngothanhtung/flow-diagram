@@ -60,11 +60,24 @@ export function buildEdgeGeometry(
   const toSide = edge.toSide ?? to.connectionPoints?.input ?? 'left';
   const fromAnchor = nodePortAnchor(from, fromSide);
   const toAnchor = nodePortAnchor(to, toSide);
+  const bendPoints = edge.bendPoints?.filter(
+    (point) => Number.isFinite(point.x) && Number.isFinite(point.y),
+  );
 
   switch (edge.routing ?? 'orthogonal') {
     case 'straight':
       return buildStraightPath(from.position, fromAnchor, to.position, toAnchor);
     case 'smooth-step':
+      if (bendPoints?.length) {
+        return buildCustomPolylinePath(
+          from.position,
+          fromAnchor,
+          to.position,
+          toAnchor,
+          bendPoints,
+          true,
+        );
+      }
       return buildSmoothStepPath(
         from.position,
         fromAnchor,
@@ -74,6 +87,16 @@ export function buildEdgeGeometry(
         toSide,
       );
     case 'orthogonal':
+      if (bendPoints?.length) {
+        return buildCustomPolylinePath(
+          from.position,
+          fromAnchor,
+          to.position,
+          toAnchor,
+          bendPoints,
+          false,
+        );
+      }
       return buildOrthogonalPath(
         from.position,
         fromAnchor,
@@ -182,6 +205,7 @@ export function buildOrthogonalPath(
     fromAnchor,
     toAnchor,
     polylineLength(points),
+    points,
   );
 }
 
@@ -210,7 +234,45 @@ export function buildSmoothStepPath(
     fromAnchor,
     toAnchor,
     polylineLength(points),
+    points,
   );
+}
+
+/** A persisted route whose intermediate points can be dragged on the canvas. */
+function buildCustomPolylinePath(
+  fromCenter: Point,
+  fromAnchor: Point,
+  toCenter: Point,
+  toAnchor: Point,
+  bendPoints: Point[],
+  rounded: boolean,
+) {
+  const start = {
+    x: fromCenter.x + fromAnchor.x,
+    y: fromCenter.y + fromAnchor.y,
+  };
+  const end = {
+    x: toCenter.x + toAnchor.x,
+    y: toCenter.y + toAnchor.y,
+  };
+  const points = [start, ...bendPoints, end];
+  const d = rounded
+    ? roundedPolyline(points, 18)
+    : points
+        .map((point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`)
+        .join(' ');
+  const next = points[1];
+  const previous = points.at(-2)!;
+  return {
+    d,
+    mid: polylineMidpoint(points),
+    start,
+    end,
+    startAngle: toDegrees(Math.atan2(start.y - next.y, start.x - next.x)),
+    angle: toDegrees(Math.atan2(end.y - previous.y, end.x - previous.x)),
+    length: polylineLength(points),
+    points,
+  };
 }
 
 /** Direct point-to-point connector. */
@@ -242,6 +304,40 @@ export function buildStraightPath(
 
 type Point = { x: number; y: number };
 
+/** Outward-facing unit normal for a port side, e.g. 'right' leaves the node heading +x. */
+function sideNormal(side: ConnectionSide): Point {
+  switch (side) {
+    case 'right':
+      return { x: 1, y: 0 };
+    case 'left':
+      return { x: -1, y: 0 };
+    case 'top':
+      return { x: 0, y: -1 };
+    case 'bottom':
+      return { x: 0, y: 1 };
+  }
+}
+
+/** Drop consecutive points that coincide, so zero-length segments don't reach the renderer. */
+function dedupeConsecutive(points: Point[]): Point[] {
+  const result: Point[] = [];
+  for (const point of points) {
+    const previous = result.at(-1);
+    if (!previous || Math.hypot(point.x - previous.x, point.y - previous.y) > 0.01) {
+      result.push(point);
+    }
+  }
+  return result;
+}
+
+/**
+ * Right-angle route between two ports that respects BOTH endpoints'
+ * facing direction, not just the source's. Each port gets a short
+ * straight lead-out/lead-in along its own normal, and those leads are
+ * joined with a corner (or lane) chosen from the combination of the
+ * two directions — so a line into a bottom-facing port always arrives
+ * travelling vertically, never doglegs sideways into the node.
+ */
 function orthogonalPoints(
   fromCenter: Point,
   fromAnchor: Point,
@@ -252,25 +348,45 @@ function orthogonalPoints(
 ): Point[] {
   const start = { x: fromCenter.x + fromAnchor.x, y: fromCenter.y + fromAnchor.y };
   const end = { x: toCenter.x + toAnchor.x, y: toCenter.y + toAnchor.y };
-  const horizontalSource = fromSide === 'left' || fromSide === 'right';
 
-  if (horizontalSource) {
-    let laneX = (start.x + end.x) / 2;
-    if (fromSide === toSide && fromSide === 'right') {
-      laneX = Math.max(start.x, end.x) + 64;
-    } else if (fromSide === toSide && fromSide === 'left') {
-      laneX = Math.min(start.x, end.x) - 64;
+  const LEAD = 28;
+  const fromN = sideNormal(fromSide);
+  const toN = sideNormal(toSide);
+  const p1 = { x: start.x + fromN.x * LEAD, y: start.y + fromN.y * LEAD };
+  const p2 = { x: end.x + toN.x * LEAD, y: end.y + toN.y * LEAD };
+
+  const fromHorizontal = fromN.x !== 0;
+  const toHorizontal = toN.x !== 0;
+  const sameDirection = fromN.x === toN.x && fromN.y === toN.y;
+
+  let mid: Point[];
+  if (fromHorizontal && toHorizontal) {
+    if (sameDirection) {
+      const laneX = fromN.x > 0 ? Math.max(p1.x, p2.x) : Math.min(p1.x, p2.x);
+      mid = [{ x: laneX, y: p1.y }, { x: laneX, y: p2.y }];
+    } else if (Math.abs(p1.y - p2.y) < 0.01) {
+      mid = [];
+    } else {
+      const laneX = (p1.x + p2.x) / 2;
+      mid = [{ x: laneX, y: p1.y }, { x: laneX, y: p2.y }];
     }
-    return [start, { x: laneX, y: start.y }, { x: laneX, y: end.y }, end];
+  } else if (!fromHorizontal && !toHorizontal) {
+    if (sameDirection) {
+      const laneY = fromN.y > 0 ? Math.max(p1.y, p2.y) : Math.min(p1.y, p2.y);
+      mid = [{ x: p1.x, y: laneY }, { x: p2.x, y: laneY }];
+    } else if (Math.abs(p1.x - p2.x) < 0.01) {
+      mid = [];
+    } else {
+      const laneY = (p1.y + p2.y) / 2;
+      mid = [{ x: p1.x, y: laneY }, { x: p2.x, y: laneY }];
+    }
+  } else if (fromHorizontal && !toHorizontal) {
+    mid = [{ x: p2.x, y: p1.y }];
+  } else {
+    mid = [{ x: p1.x, y: p2.y }];
   }
 
-  let laneY = (start.y + end.y) / 2;
-  if (fromSide === toSide && fromSide === 'bottom') {
-    laneY = Math.max(start.y, end.y) + 64;
-  } else if (fromSide === toSide && fromSide === 'top') {
-    laneY = Math.min(start.y, end.y) - 64;
-  }
-  return [start, { x: start.x, y: laneY }, { x: end.x, y: laneY }, end];
+  return dedupeConsecutive([start, p1, ...mid, p2, end]);
 }
 
 function roundedPolyline(points: Point[], radius: number): string {
@@ -305,6 +421,7 @@ function connectorGeometry(
   fromAnchor: Point,
   toAnchor: Point,
   length: number,
+  points?: Point[],
 ) {
   return {
     d,
@@ -314,7 +431,29 @@ function connectorGeometry(
     startAngle: toDegrees(Math.atan2(-fromAnchor.y, -fromAnchor.x)),
     angle: toDegrees(Math.atan2(-toAnchor.y, -toAnchor.x)),
     length,
+    points,
   };
+}
+
+function polylineMidpoint(points: Point[]): Point {
+  const total = polylineLength(points);
+  if (total <= 0.001) return points[0];
+  const target = total / 2;
+  let travelled = 0;
+  for (let index = 1; index < points.length; index += 1) {
+    const previous = points[index - 1];
+    const point = points[index];
+    const segment = Math.hypot(point.x - previous.x, point.y - previous.y);
+    if (travelled + segment >= target) {
+      const ratio = segment <= 0.001 ? 0 : (target - travelled) / segment;
+      return {
+        x: previous.x + (point.x - previous.x) * ratio,
+        y: previous.y + (point.y - previous.y) * ratio,
+      };
+    }
+    travelled += segment;
+  }
+  return points.at(-1)!;
 }
 
 function polylineLength(points: Point[]): number {

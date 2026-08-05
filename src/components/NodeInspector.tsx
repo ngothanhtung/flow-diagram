@@ -17,7 +17,7 @@ import {
   Trash2,
   type LucideIcon,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -25,7 +25,9 @@ import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
@@ -36,6 +38,7 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type {
   ConnectionSide,
   FlowNode,
+  NodeFont,
 } from '@/lib/flowchart-types';
 import {
   COLORS,
@@ -102,7 +105,37 @@ export function NodeInspector({
   // the document. Commit on blur, Enter, or type change.
   const [title, setTitle] = useState(node?.title ?? '');
   const [description, setDescription] = useState(node?.description ?? '');
-  const [shapeQuery, setShapeQuery] = useState('');
+
+  // Clicking outside the panel deselects the node, which unmounts this
+  // component (see the `key={selectedNode.id}` + conditional render in
+  // page.tsx) before the input's blur event has a chance to fire — so
+  // the commit-on-blur handlers below never run and the draft is lost.
+  // Refs always hold the latest values so this cleanup can flush them
+  // on unmount regardless of whether blur fired.
+  const nodeRef = useRef(node);
+  const onUpdateRef = useRef(onUpdate);
+  const titleRef = useRef(title);
+  const descriptionRef = useRef(description);
+
+  useEffect(() => {
+    nodeRef.current = node;
+    onUpdateRef.current = onUpdate;
+    titleRef.current = title;
+    descriptionRef.current = description;
+  });
+
+  useEffect(() => {
+    return () => {
+      const current = nodeRef.current;
+      if (!current) return;
+      if (titleRef.current !== current.title) {
+        onUpdateRef.current(current.id, { title: titleRef.current });
+      }
+      if (descriptionRef.current !== (current.description ?? '')) {
+        onUpdateRef.current(current.id, { description: descriptionRef.current });
+      }
+    };
+  }, []);
 
   if (!node) {
     return (
@@ -119,9 +152,6 @@ export function NodeInspector({
   const style = resolveNodeStyle(node);
   const currentShape: NodeShape = style.shape;
   const currentIcon: NodeIcon | null = style.icon;
-  const filteredShapes = (Object.keys(SHAPES) as NodeShape[]).filter((shape) =>
-    SHAPES[shape].label.toLowerCase().includes(shapeQuery.trim().toLowerCase()),
-  );
   const connectionPoints = node.connectionPoints ?? {
     input: 'left' as const,
     output: 'right' as const,
@@ -144,6 +174,38 @@ export function NodeInspector({
       <p className="mt-1 text-[10px] uppercase tracking-wider text-zinc-500">
         {node.id}
       </p>
+
+      <Label htmlFor="node-title" className="mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+        Title
+      </Label>
+      <Input
+        id="node-title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        onBlur={() => {
+          if (title !== node.title) onUpdate(node.id, { title });
+        }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
+        }}
+        className="mt-1 border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15"
+      />
+
+      <Label htmlFor="node-subtitle" className="mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+        Sub title
+      </Label>
+      <Textarea
+        id="node-subtitle"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        onBlur={() => {
+          if (description !== (node.description ?? '')) {
+            onUpdate(node.id, { description });
+          }
+        }}
+        rows={2}
+        className="mt-1 min-h-14 resize-none border-white/10 bg-zinc-800/80 text-xs focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15"
+      />
 
       <SectionLabel>Geometry</SectionLabel>
       <p className="mt-1 text-[10px] leading-relaxed text-zinc-500">
@@ -179,28 +241,6 @@ export function NodeInspector({
           onChange={(height) => onUpdate(node.id, { height })}
         />
       </div>
-      <div className="mt-1.5 grid grid-cols-3 gap-1">
-        {[
-          { label: 'Compact', width: 96, height: 72 },
-          { label: 'Square', width: 112, height: 112 },
-          { label: 'Wide', width: 180, height: 96 },
-        ].map((preset) => (
-          <Button
-            key={preset.label}
-            variant="outline"
-            size="xs"
-            onClick={() =>
-              onUpdate(node.id, {
-                width: preset.width,
-                height: preset.height,
-              })
-            }
-            className="h-7 border-white/10 bg-white/5 px-1 text-[9px] text-zinc-400 hover:bg-white/10 hover:text-zinc-100"
-          >
-            {preset.label}
-          </Button>
-        ))}
-      </div>
       <RangeField
         label="Rotation"
         value={style.rotation}
@@ -219,68 +259,43 @@ export function NodeInspector({
         }
       />
 
-      <Label htmlFor="node-title" className="mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
-        Title
-      </Label>
-      <Input
-        id="node-title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        onBlur={() => {
-          if (title !== node.title) onUpdate(node.id, { title });
-        }}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
-        }}
-        className="mt-1 border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15"
-      />
-
-      <Label htmlFor="node-subtitle" className="mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
-        Sub title
-      </Label>
-      <Textarea
-        id="node-subtitle"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        onBlur={() => {
-          if (description !== (node.description ?? '')) {
-            onUpdate(node.id, { description });
-          }
-        }}
-        rows={2}
-        className="mt-1 min-h-14 resize-none border-white/10 bg-zinc-800/80 text-xs focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15"
-      />
-
       <SectionLabel>Typography</SectionLabel>
-      <div className="mt-1.5 grid grid-cols-2 gap-1.5">
-        {NODE_FONT_OPTIONS.map((option) => {
-          const selected = style.fontFamily === option.value;
-          return (
-            <Button
-              key={option.value}
-              variant="outline"
-              onClick={() => onUpdate(node.id, { fontFamily: option.value })}
-              aria-pressed={selected}
-              className={[
-                'h-auto min-w-0 flex-col items-start justify-start gap-0 rounded-lg px-2.5 py-2 text-left',
-                selected
-                  ? 'border-sky-400/55 bg-sky-400/12 text-sky-100'
-                  : 'border-white/10 bg-white/4 text-zinc-300 hover:bg-white/8',
-              ].join(' ')}
-            >
-              <span
-                className="block truncate text-[11px] font-semibold"
-                style={{ fontFamily: NODE_FONT_FAMILIES[option.value] }}
-              >
-                {option.character}
-              </span>
-              <span className="mt-0.5 block truncate text-[8px] text-zinc-500">
-                {option.label}
-              </span>
-            </Button>
-          );
-        })}
-      </div>
+      <Select
+        value={style.fontFamily}
+        onValueChange={(nextValue) => {
+          if (nextValue) onUpdate(node.id, { fontFamily: nextValue as NodeFont });
+        }}
+      >
+        <SelectTrigger className="mt-1.5 h-auto w-full border-white/10 bg-white/5 px-2.5 py-2 text-left hover:bg-white/8 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15">
+          <span
+            className="min-w-0 flex-1 truncate text-[11px] font-semibold text-zinc-200"
+            style={{ fontFamily: NODE_FONT_FAMILIES[style.fontFamily] }}
+          >
+            {NODE_FONT_OPTIONS.find((option) => option.value === style.fontFamily)?.character}
+            <span className="ml-1 font-normal text-zinc-500">
+              ({NODE_FONT_OPTIONS.find((option) => option.value === style.fontFamily)?.label})
+            </span>
+          </span>
+        </SelectTrigger>
+        <SelectContent className="border-white/10 bg-zinc-950 p-1.5">
+          <SelectGroup>
+            <SelectLabel className="px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600">
+              Typography
+            </SelectLabel>
+            {NODE_FONT_OPTIONS.map((option) => (
+              <SelectItem key={option.value} value={option.value} className="px-2.5 py-2 pr-8">
+                <span
+                  className="truncate text-[11px] font-semibold"
+                  style={{ fontFamily: NODE_FONT_FAMILIES[option.value] }}
+                >
+                  {option.character}
+                  <span className="ml-1 font-normal text-zinc-500">({option.label})</span>
+                </span>
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
       <div className="mt-1.5 grid grid-cols-2 gap-2">
         <NumberField
           label="Font size"
@@ -326,51 +341,40 @@ export function NodeInspector({
       <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
         Shape
       </label>
-      <div className="relative mt-1.5">
-        <Search size={15} className="pointer-events-none absolute top-1/2 left-2.5 z-10 -translate-y-1/2 text-zinc-500" />
-        <Input
-          value={shapeQuery}
-          onChange={(event) => setShapeQuery(event.target.value)}
-          placeholder="Search for a shape"
-          className="border-white/10 bg-black/25 pl-8 text-xs placeholder:text-zinc-600 focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15"
-        />
-      </div>
-      <div className="mt-2 grid max-h-64 grid-cols-5 gap-1.5 overflow-y-auto rounded-xl bg-black/20 p-1.5 ring-1 ring-white/8">
-        {filteredShapes.map((shapeKey) => {
-          const spec = SHAPES[shapeKey];
-          const isActive = currentShape === shapeKey;
-          return (
-            <Button
-              key={shapeKey}
-              variant="outline"
-              onClick={() => onUpdate(node.id, { shape: shapeKey })}
-              title={spec.label}
-              aria-pressed={isActive}
-              className={[
-                'group h-12 w-full rounded-lg p-0',
-                isActive
-                  ? 'border-violet-300/70 bg-violet-500 text-white shadow-[0_5px_16px_rgba(139,92,246,.2)]'
-                  : 'border-white/8 bg-white/4 text-zinc-300 hover:bg-white/10 hover:text-white',
-              ].join(' ')}
-            >
-              <ShapeThumb
-                shape={shapeKey}
-                fill={isActive ? '#6d28d9' : style.background}
-                stroke={isActive ? '#ffffff' : style.foreground}
-              />
-            </Button>
-          );
-        })}
-        {filteredShapes.length === 0 && (
-          <p className="col-span-5 px-2 py-5 text-center text-[10px] text-zinc-500">
-            No matching shapes
-          </p>
-        )}
-      </div>
-      <p className="mt-1.5 text-[10px] text-zinc-500">
-        Selected: <span className="text-zinc-300">{SHAPES[currentShape].label}</span>
-        <span className="float-right">{filteredShapes.length} shapes</span>
-      </p>
+      <Select
+        value={currentShape}
+        onValueChange={(nextValue) => {
+          if (nextValue) onUpdate(node.id, { shape: nextValue as NodeShape });
+        }}
+      >
+        <SelectTrigger className="mt-1.5 h-auto w-full gap-2.5 border-white/10 bg-zinc-800 px-3 py-2.5 text-left hover:bg-zinc-700/80 focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15">
+          <span className="grid size-7 shrink-0 place-items-center rounded-md bg-black/20 text-violet-200">
+            <ShapeThumb shape={currentShape} fill={style.background} stroke={style.foreground} />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-xs font-semibold">{SHAPES[currentShape].label}</span>
+          </span>
+        </SelectTrigger>
+        <SelectContent className="max-h-72 min-w-[290px] border-violet-400/25 bg-zinc-950 p-1.5">
+          {(Object.keys(SHAPES) as NodeShape[]).map((shapeKey) => {
+            const spec = SHAPES[shapeKey];
+            return (
+              <SelectItem
+                key={shapeKey}
+                value={shapeKey}
+                className="gap-2.5 px-2.5 py-2 pr-9"
+              >
+                <span className="grid size-7 shrink-0 place-items-center rounded-md bg-black/25 text-violet-200">
+                  <ShapeThumb shape={shapeKey} fill={style.background} stroke={style.foreground} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-[11px] font-semibold">{spec.label}</span>
+                </span>
+              </SelectItem>
+            );
+          })}
+        </SelectContent>
+      </Select>
 
       {/* --- Color ------------------------------------------------- */}
       <label className="mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
@@ -525,67 +529,6 @@ export function NodeInspector({
           />
         </>
       )}
-
-      <div className="mt-3 flex items-center justify-between">
-        <label className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
-          Connection points
-        </label>
-        <Button
-          variant="ghost"
-          size="icon-xs"
-          onClick={() =>
-            onUpdate(node.id, {
-              connectionPoints: { input: 'left', output: 'right' },
-            })
-          }
-          title="Reset connection points"
-          className="text-zinc-500 hover:bg-white/10 hover:text-zinc-200"
-        >
-          <RotateCcw size={12} />
-        </Button>
-      </div>
-      <p className="mt-1 text-[10px] leading-relaxed text-zinc-500">
-        All four ports are active. These defaults are only used by older or
-        template lines that do not yet store a specific side.
-      </p>
-      <ConnectionSidePicker
-        label="Default input"
-        value={connectionPoints.input}
-        onChange={(input) =>
-          onUpdate(node.id, {
-            connectionPoints:
-              input === connectionPoints.output
-                ? {
-                    input,
-                    output: connectionPoints.input,
-                  }
-                : { ...connectionPoints, input },
-          })
-        }
-      />
-      <ConnectionSidePicker
-        label="Default output"
-        value={connectionPoints.output}
-        onChange={(output) =>
-          onUpdate(node.id, {
-            connectionPoints:
-              output === connectionPoints.input
-                ? {
-                    input: connectionPoints.output,
-                    output,
-                  }
-                : { ...connectionPoints, output },
-          })
-        }
-      />
-      <RangeField
-        label="Point size"
-        value={style.portSize}
-        min={4}
-        max={14}
-        suffix="px"
-        onChange={(portSize) => onUpdate(node.id, { portSize })}
-      />
 
       <SectionLabel>Actions</SectionLabel>
       <div className="mt-1.5 grid grid-cols-3 gap-2">

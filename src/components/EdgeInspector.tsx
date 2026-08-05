@@ -3,23 +3,45 @@
 import {
   Activity,
   ArrowLeft,
+  ArrowLeftRight,
   ArrowRight,
   CircleDot,
+  Diamond,
   Gauge,
   GitCompareArrows,
   Minus,
+  Palette,
   Radio,
   Route,
   ScanLine,
   Sparkles,
   Trash2,
+  Triangle,
+  Undo2,
   Waves,
+  X,
   Zap,
   type LucideIcon,
 } from 'lucide-react';
+import * as React from 'react';
 import { useState } from 'react';
+import { EdgeEffectLayer } from './edge-effect-layer';
+import { EdgeMarkerSymbol } from './edge-marker';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -79,6 +101,25 @@ const EFFECTS: {
   { value: 'fade', label: 'Energy Fade', description: 'Long fading data envelope', Icon: Waves },
 ];
 
+const ROUTING_OPTIONS: Array<{ value: EdgeRouting; label: string }> = [
+  { value: 'straight', label: 'Straight' },
+  { value: 'smooth-step', label: 'Smooth step' },
+  { value: 'orthogonal', label: 'Orthogonal' },
+  { value: 'curved', label: 'Bezier curve' },
+];
+
+const LINE_COLORS: Array<{ value: `#${string}`; label: string }> = [
+  { value: '#f4f4f5', label: 'White' },
+  { value: '#38bdf8', label: 'Sky' },
+  { value: '#22d3ee', label: 'Cyan' },
+  { value: '#6366f1', label: 'Indigo' },
+  { value: '#8b5cf6', label: 'Violet' },
+  { value: '#f43f5e', label: 'Rose' },
+  { value: '#f59e0b', label: 'Amber' },
+  { value: '#10b981', label: 'Emerald' },
+  { value: '#71717a', label: 'Zinc' },
+];
+
 const MARKERS: Array<{ value: EdgeMarker; label: string }> = [
   { value: 'none', label: 'None' },
   { value: 'arrow', label: 'Arrow' },
@@ -86,8 +127,13 @@ const MARKERS: Array<{ value: EdgeMarker; label: string }> = [
   { value: 'triangle', label: 'Triangle' },
   { value: 'circle', label: 'Circle' },
   { value: 'diamond', label: 'Diamond' },
+  { value: 'tee', label: 'Tee' },
+  { value: 'cross', label: 'Cross' },
+  { value: 'circle-cross', label: 'Circle cross' },
+  { value: 'arrow-both', label: 'Both ways' },
+  { value: 'arrow-bar', label: 'Arrow bar' },
+  { value: 'bar', label: 'Bar' },
 ];
-
 export function EdgeInspector({
   edge,
   sourceTitle,
@@ -98,8 +144,10 @@ export function EdgeInspector({
   onClose,
 }: EdgeInspectorProps) {
   const [label, setLabel] = useState(edge.label ?? '');
+  const [draftEffect, setDraftEffect] = useState<EdgeEffect | null>(null);
   const effect = edge.effect ?? 'flow';
   const direction = edge.direction ?? 'forward';
+  const isDialogOpen = draftEffect !== null;
   const color = edge.color ?? fallbackColor;
   const width = edge.width ?? 2.5;
   const speed = edge.animationSpeed ?? 1;
@@ -112,26 +160,29 @@ export function EdgeInspector({
   const SelectedEffectIcon = selectedEffect.Icon;
 
   return (
-    <Card size="sm" className="gap-0 bg-zinc-900/80 p-4 ring-cyan-400/35">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <h2 className="text-sm font-semibold">Line inspector</h2>
-          <p className="mt-1 max-w-[230px] truncate text-[10px] text-zinc-500">
+    <Card size="sm" className="gap-0 border-cyan-300/10 bg-zinc-900/80 py-0 ring-cyan-400/35 shadow-[0_18px_60px_rgba(0,0,0,.3)]">
+      <CardHeader className="sticky top-0 z-10 grid grid-cols-[1fr_auto] border-b border-white/8 bg-zinc-900/95 px-4 py-3 backdrop-blur-xl">
+        <div className="min-w-0">
+          <CardTitle className="text-sm font-semibold">Line inspector</CardTitle>
+          <CardDescription className="mt-1 max-w-[230px] truncate text-[10px] text-zinc-500">
             {sourceTitle} → {targetTitle}
-          </p>
+          </CardDescription>
         </div>
         <Button
           variant="ghost"
-          size="xs"
+          size="icon-sm"
           onClick={onClose}
-          className="text-[10px] text-zinc-500 hover:text-zinc-200"
+          aria-label="Close line inspector"
+          className="text-zinc-500 hover:bg-white/8 hover:text-zinc-100"
         >
-          close
+          <X />
         </Button>
-      </div>
+      </CardHeader>
+
+      <CardContent className="px-4 pb-4">
 
       <p className="mt-3 rounded-lg bg-cyan-400/8 px-2.5 py-2 text-[9px] leading-relaxed text-cyan-100/70 ring-1 ring-cyan-400/18">
-        Drag handle A or B on the canvas, then drop it onto any highlighted node port.
+        Drag A/B to reconnect. Drag the diamond points to reshape the line; double-click one to remove it.
       </p>
 
       <Label htmlFor="edge-label" className="mt-4 block text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80">
@@ -166,87 +217,248 @@ export function EdgeInspector({
         <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80">
           Routing
         </p>
-        <ToggleGroup
-          value={[edge.routing ?? 'orthogonal']}
+        <Select
+          value={edge.routing ?? 'orthogonal'}
           onValueChange={(nextValue) => {
-            const routing = nextValue.at(-1);
-            if (routing) onUpdate(edge.id, { routing: routing as EdgeRouting });
+            if (nextValue) {
+              onUpdate(edge.id, {
+                routing: nextValue as EdgeRouting,
+                bendPoints: undefined,
+              });
+            }
           }}
-          variant="outline"
-          size="sm"
-          spacing={1}
-          className="mt-1.5 grid w-full grid-cols-2 rounded-xl bg-black/30 p-1.5 ring-1 ring-white/10"
         >
-          {([
-            { value: 'straight', label: 'Straight' },
-            { value: 'smooth-step', label: 'Smooth step' },
-            { value: 'orthogonal', label: 'Orthogonal' },
-            { value: 'curved', label: 'Bezier curve' },
-          ] as const).map((option) => {
-            const active = (edge.routing ?? 'orthogonal') === option.value;
-            return (
-              <ToggleGroupItem
-                key={option.value}
-                value={option.value}
-                aria-pressed={active}
-                className={[
-                  'h-8 w-full border-white/8 bg-transparent text-[10px] font-semibold',
-                  active
-                    ? 'border-violet-400/55 bg-violet-500/20 text-violet-100'
-                    : 'text-zinc-500 hover:bg-white/8 hover:text-zinc-200',
-                ].join(' ')}
-              >
-                {option.label}
-              </ToggleGroupItem>
-            );
-          })}
-        </ToggleGroup>
+          <SelectTrigger className="mt-1.5 h-9 w-full border-white/10 bg-white/5 px-3 text-left hover:bg-white/8 focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15">
+            <span className="flex-1 truncate text-[11px] font-semibold text-zinc-200">
+              {ROUTING_OPTIONS.find((option) => option.value === (edge.routing ?? 'orthogonal'))?.label}
+            </span>
+          </SelectTrigger>
+          <SelectContent className="border-violet-400/25 bg-zinc-950 p-1.5">
+            <SelectGroup>
+              <SelectLabel className="px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600">
+                Routing
+              </SelectLabel>
+              {ROUTING_OPTIONS.map((option) => (
+                <SelectItem key={option.value} value={option.value} className="px-2 py-1.5 pr-8 text-[11px] font-semibold">
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        {(edge.routing ?? 'orthogonal') === 'orthogonal' ||
+        (edge.routing ?? 'orthogonal') === 'smooth-step' ? (
+          <div className="mt-2 flex items-center justify-between rounded-lg bg-white/4 px-2.5 py-2 ring-1 ring-white/8">
+            <span className="text-[9px] text-zinc-500">
+              {edge.bendPoints?.length
+                ? `${edge.bendPoints.length} custom bend points`
+                : 'Automatic bend points'}
+            </span>
+            <Button
+              variant="ghost"
+              size="xs"
+              disabled={!edge.bendPoints?.length}
+              onClick={() => onUpdate(edge.id, { bendPoints: undefined })}
+              className="text-zinc-400 hover:bg-white/8 hover:text-cyan-100"
+            >
+              <Undo2 /> Reset route
+            </Button>
+          </div>
+        ) : null}
       </div>
 
-      <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80">
-        Effect
-      </p>
-      <Select
-        value={effect}
-        onValueChange={(nextValue) => {
-          if (nextValue) onUpdate(edge.id, { effect: nextValue as EdgeEffect });
+      <Dialog
+        open={draftEffect !== null}
+        onOpenChange={(open) => {
+          if (open) setDraftEffect(effect);
+          else setDraftEffect(null);
         }}
       >
-        <SelectTrigger className="mt-1.5 h-auto w-full gap-2.5 border-white/10 bg-zinc-800 px-3 py-2.5 text-left hover:bg-zinc-700/80 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15">
-          <span className="grid size-7 shrink-0 place-items-center rounded-md bg-black/20 text-cyan-200">
-            <SelectedEffectIcon size={14} />
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block text-xs font-semibold">{selectedEffect.label}</span>
-            <span className="block truncate text-[9px] font-normal text-zinc-500">
-              {selectedEffect.description}
-            </span>
-          </span>
-        </SelectTrigger>
-        <SelectContent className="max-h-72 min-w-[290px] border-cyan-400/25 bg-zinc-950 p-1.5">
-          <SelectGroup>
-            <SelectLabel className="px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600">
-              Line effect
-            </SelectLabel>
-            {EFFECTS.map((item) => {
-              const Icon = item.Icon;
-              return (
-                <SelectItem key={item.value} value={item.value} className="gap-2.5 px-2.5 py-2 pr-9">
-                  <span className="grid size-7 shrink-0 place-items-center rounded-md bg-black/25 text-cyan-200">
-                    <Icon size={14} />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-[11px] font-semibold">{item.label}</span>
-                    <span className="block truncate text-[9px] font-normal text-zinc-600">
+        <DialogTrigger
+          render={
+            <button
+              type="button"
+              className="mt-1.5 flex h-auto w-full cursor-pointer items-center gap-2.5 rounded-md border border-white/10 bg-zinc-800 px-3 py-2.5 text-left hover:bg-zinc-700/80 focus-visible:border-cyan-400/50 focus-visible:ring-1 focus-visible:ring-cyan-400/15 focus-visible:outline-hidden"
+            >
+              <span className="grid size-7 shrink-0 place-items-center rounded-md bg-black/20 text-cyan-200">
+                <SelectedEffectIcon size={14} />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-xs font-semibold">{selectedEffect.label}</span>
+                <span className="block truncate text-[9px] font-normal text-zinc-500">
+                  {selectedEffect.description}
+                </span>
+              </span>
+            </button>
+          }
+        />
+        <DialogContent className="flex h-[90vh] max-h-225 w-[92vw] max-w-6xl sm:max-w-6xl flex-col gap-0 overflow-hidden border-cyan-400/25 bg-zinc-950 p-0 ring-1 ring-cyan-400/25">
+          <DialogHeader className="shrink-0 px-8 pt-6 pb-4">
+            <DialogTitle className="text-base font-semibold text-zinc-100">Line effect</DialogTitle>
+          </DialogHeader>
+          <div className="grid min-h-0 flex-1 grid-cols-8 overflow-hidden">
+            <div className="col-span-5 grid auto-rows-min grid-cols-3 gap-4 overflow-y-auto pr-4 pb-6 pl-8">
+              {EFFECTS.map((item) => {
+                const Icon = item.Icon;
+                const active = item.value === draftEffect;
+                return (
+                  <button
+                    key={item.value}
+                    type="button"
+                    onClick={() => setDraftEffect(item.value)}
+                    className={[
+                      'flex flex-col items-start gap-2 rounded-xl border p-4 text-left transition',
+                      active
+                        ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100'
+                        : 'border-white/10 bg-zinc-900/70 text-zinc-300 hover:border-white/20 hover:bg-zinc-800',
+                    ].join(' ')}
+                  >
+                    <span className="flex w-full items-center justify-between gap-2">
+                      <span className="flex items-center gap-2">
+                        <span className="grid size-9 place-items-center rounded-md bg-black/30 text-cyan-200">
+                          <Icon size={16} />
+                        </span>
+                        <span className="text-[13px] font-semibold">{item.label}</span>
+                      </span>
+                      {active && (
+                        <span className="rounded-full bg-cyan-400/20 px-2 py-0.5 text-[9px] font-semibold text-cyan-200">
+                          Selected
+                        </span>
+                      )}
+                    </span>
+                    <span className="block text-[11px] leading-relaxed text-zinc-500">
                       {item.description}
                     </span>
+                  </button>
+                );
+              })}
+            </div>
+            <div className="col-span-3 flex flex-col overflow-y-auto pb-6 pr-8 pl-4">
+              <div className="flex h-48 shrink-0 items-center justify-center rounded-xl border border-[#28282A] bg-[#09090B]">
+                <EffectPreviewLarge
+                  effect={draftEffect ?? effect}
+                  direction={direction}
+                  color={color}
+                  effectColor={edge.effectColor}
+                  width={width}
+                  effectSize={effectSize}
+                  speed={speed}
+                />
+              </div>
+
+              <div className="mt-4">
+                <span className="flex items-center justify-between text-[10px] text-zinc-500">
+                  <span className="inline-flex items-center gap-1">
+                    <Palette size={11} /> Effect object color
                   </span>
-                </SelectItem>
-              );
-            })}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
+                  {edge.effectColor ? (
+                    <Button
+                      variant="ghost"
+                      size="xs"
+                      onClick={() => onUpdate(edge.id, { effectColor: undefined })}
+                      className="text-zinc-400 hover:bg-white/8 hover:text-cyan-100"
+                    >
+                      <Undo2 /> Use line color
+                    </Button>
+                  ) : (
+                    <span className="text-[8px] uppercase tracking-wider text-zinc-600">
+                      Auto · line color
+                    </span>
+                  )}
+                </span>
+                <span className="mt-1.5 flex items-center gap-2">
+                  <Input
+                    type="color"
+                    value={edge.effectColor ?? color}
+                    onChange={(event) =>
+                      onUpdate(edge.id, {
+                        effectColor: event.target.value as `#${string}`,
+                      })
+                    }
+                    className="h-7 w-8 cursor-pointer border-white/10 bg-transparent p-0.5"
+                  />
+                  <span className="font-mono text-[9px] uppercase text-zinc-300">
+                    {edge.effectColor ?? color}
+                  </span>
+                </span>
+                <span className="mt-1 block text-[9px] leading-relaxed text-zinc-600">
+                  Colour of the moving objects. Leave on auto to match the line.
+                </span>
+              </div>
+
+              <div className="mt-3">
+                <span className="flex items-center justify-between text-[10px] text-zinc-500">
+                  <span className="inline-flex items-center gap-1">
+                    <CircleDot size={11} /> Effect object size
+                  </span>
+                  <span className="font-mono text-zinc-300">{effectSize.toFixed(1)}×</span>
+                </span>
+                <Slider
+                  min={0.5}
+                  max={3}
+                  step={0.1}
+                  value={effectSize}
+                  onValueChange={(nextValue) =>
+                    onUpdate(edge.id, { effectSize: nextValue as number })
+                  }
+                  className="mt-2 [&_[data-slot=slider-range]]:bg-violet-400 [&_[data-slot=slider-thumb]]:border-violet-300"
+                />
+                <span className="mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700">
+                  <span>Small</span><span>Large</span>
+                </span>
+                <span className="mt-1 block text-[9px] leading-relaxed text-zinc-600">
+                  Object count adapts automatically to the routed line length.
+                </span>
+              </div>
+
+              <div className="mt-3">
+                <span className="flex items-center justify-between text-[10px] text-zinc-500">
+                  <span className="inline-flex items-center gap-1"><Gauge size={11} /> Speed</span>
+                  <span className="font-mono text-zinc-300">{formattedSpeed}×</span>
+                </span>
+                <Slider
+                  min={0.25}
+                  max={3}
+                  step={0.05}
+                  value={speed}
+                  onValueChange={(nextValue) =>
+                    onUpdate(edge.id, { animationSpeed: nextValue as number })
+                  }
+                  className="mt-2 [&_[data-slot=slider-range]]:bg-cyan-400 [&_[data-slot=slider-thumb]]:border-cyan-300"
+                />
+                <span className="mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700">
+                  <span>0.25×</span><span>3×</span>
+                </span>
+                <span className="mt-1 block text-[9px] leading-relaxed text-zinc-600">
+                  Traveling effects keep a consistent speed across different line lengths.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="flex shrink-0 justify-end gap-2 border-t border-white/10 px-8 py-4">
+            <Button
+              type="button"
+              variant="ghost"
+              size="xs"
+              onClick={() => setDraftEffect(null)}
+              className="text-zinc-400 hover:bg-white/8 hover:text-zinc-100"
+            >
+              Cancel
+            </Button>
+            <Button
+              type="button"
+              size="xs"
+              onClick={() => {
+                if (draftEffect) onUpdate(edge.id, { effect: draftEffect });
+                setDraftEffect(null);
+              }}
+              className="bg-cyan-500/20 text-cyan-100 ring-1 ring-cyan-400/50 hover:bg-cyan-500/30"
+            >
+              Confirm
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
       {effect !== 'bidirectional' ? (
         <ToggleGroup
           value={[direction]}
@@ -259,25 +471,27 @@ export function EdgeInspector({
           variant="outline"
           size="sm"
           spacing={1}
-          className="mt-1.5 grid w-full grid-cols-2 rounded-xl bg-black/30 p-1.5 ring-1 ring-white/10"
+          className="mt-1.5 grid w-full grid-cols-3 rounded-xl bg-black/30 p-1.5 ring-1 ring-white/10"
         >
           {([
             { value: 'forward', label: 'A → B', Icon: ArrowRight },
             { value: 'reverse', label: 'B → A', Icon: ArrowLeft },
+            { value: 'both', label: 'A ↔ B', Icon: ArrowLeftRight },
           ] as const).map((option) => (
             <ToggleGroupItem
               key={option.value}
               value={option.value}
               aria-pressed={direction === option.value}
+              aria-label={option.label}
+              title={option.label}
               className={[
-                'h-9 w-full gap-1.5 border-white/8 bg-transparent text-[11px] font-semibold',
+                'h-9 w-full border-white/8 bg-transparent text-[11px] font-semibold',
                 direction === option.value
                   ? 'border-cyan-400/60 bg-cyan-500/20 text-cyan-100'
                   : 'text-zinc-500 hover:bg-white/8 hover:text-zinc-200',
               ].join(' ')}
             >
               <option.Icon size={14} />
-              {option.label}
             </ToggleGroupItem>
           ))}
         </ToggleGroup>
@@ -286,38 +500,42 @@ export function EdgeInspector({
           Two-way runs simultaneously from A → B and B → A.
         </p>
       )}
-      <p className="mt-1.5 truncate text-[9px] text-zinc-600">
-        A: {sourceTitle} · B: {targetTitle}
-      </p>
-      <div className="mt-2 flex items-center gap-2.5 rounded-xl bg-cyan-500/8 px-2.5 py-2.5 text-cyan-100 ring-1 ring-cyan-400/20">
-        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-black/20">
-          <SelectedEffectIcon size={15} />
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block text-[11px] font-semibold">{selectedEffect.label}</span>
-          <span className="block truncate text-[9px] text-zinc-500">{selectedEffect.description}</span>
-        </span>
-        <EffectPreview effect={effect} active direction={direction} />
-      </div>
 
       <div className="mt-4 grid grid-cols-2 gap-2">
-        <div className="rounded-lg border border-white/10 bg-white/5 p-2">
-          <Label className="block text-[9px] text-zinc-500">Line color</Label>
-          <span className="mt-1 flex items-center gap-2">
-            <Input
-              type="color"
-              value={color}
-              onChange={(event) =>
-                onUpdate(edge.id, {
-                  color: event.target.value as `#${string}`,
-                })
-              }
-              className="h-7 w-8 cursor-pointer border-white/10 bg-transparent p-0.5"
-            />
-            <span className="font-mono text-[9px] uppercase text-zinc-300">
-              {color}
-            </span>
-          </span>
+        <div>
+          <Label className="mb-1 block text-[9px] text-zinc-500">Line color</Label>
+          <Select
+            value={LINE_COLORS.some((item) => item.value === color) ? color : undefined}
+            onValueChange={(nextValue) => {
+              if (nextValue) onUpdate(edge.id, { color: nextValue as `#${string}` });
+            }}
+          >
+            <SelectTrigger className="h-auto w-full gap-2 border-white/10 bg-white/5 px-2 py-1.5 text-left hover:bg-white/8 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15">
+              <span
+                className="size-4 shrink-0 rounded-full ring-1 ring-white/20"
+                style={{ background: color }}
+              />
+              <span className="min-w-0 flex-1 truncate font-mono text-[9px] uppercase text-zinc-300">
+                {LINE_COLORS.find((item) => item.value === color)?.label ?? color}
+              </span>
+            </SelectTrigger>
+            <SelectContent className="border-cyan-400/25 bg-zinc-950 p-1.5">
+              <SelectGroup>
+                <SelectLabel className="px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600">
+                  Line color
+                </SelectLabel>
+                {LINE_COLORS.map((item) => (
+                  <SelectItem key={item.value} value={item.value} className="gap-2 px-2 py-1.5 pr-8">
+                    <span
+                      className="size-4 shrink-0 rounded-full ring-1 ring-white/20"
+                      style={{ background: item.value }}
+                    />
+                    <span className="min-w-0 flex-1 text-[11px] font-semibold">{item.label}</span>
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
         <div>
           <Label htmlFor="edge-width" className="mb-1 block text-[9px] text-zinc-500">Width</Label>
@@ -336,54 +554,6 @@ export function EdgeInspector({
         </div>
       </div>
 
-      <div className="mt-3">
-        <span className="flex items-center justify-between text-[10px] text-zinc-500">
-          <span className="inline-flex items-center gap-1">
-            <CircleDot size={11} /> Effect object size
-          </span>
-          <span className="font-mono text-zinc-300">{effectSize.toFixed(1)}×</span>
-        </span>
-        <Slider
-          min={0.5}
-          max={3}
-          step={0.1}
-          value={effectSize}
-          onValueChange={(nextValue) =>
-            onUpdate(edge.id, { effectSize: nextValue as number })
-          }
-          className="mt-2 [&_[data-slot=slider-range]]:bg-violet-400 [&_[data-slot=slider-thumb]]:border-violet-300"
-        />
-        <span className="mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700">
-          <span>Small</span><span>Large</span>
-        </span>
-        <span className="mt-1 block text-[9px] leading-relaxed text-zinc-600">
-          Object count adapts automatically to the routed line length.
-        </span>
-      </div>
-
-      <div className="mt-3">
-        <span className="flex items-center justify-between text-[10px] text-zinc-500">
-          <span className="inline-flex items-center gap-1"><Gauge size={11} /> Speed</span>
-          <span className="font-mono text-zinc-300">{formattedSpeed}×</span>
-        </span>
-        <Slider
-          min={0.25}
-          max={3}
-          step={0.05}
-          value={speed}
-          onValueChange={(nextValue) =>
-            onUpdate(edge.id, { animationSpeed: nextValue as number })
-          }
-          className="mt-2 [&_[data-slot=slider-range]]:bg-cyan-400 [&_[data-slot=slider-thumb]]:border-cyan-300"
-        />
-        <span className="mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700">
-          <span>0.25×</span><span>3×</span>
-        </span>
-        <span className="mt-1 block text-[9px] leading-relaxed text-zinc-600">
-          Traveling effects keep a consistent speed across different line lengths.
-        </span>
-      </div>
-
       <Button
         variant="destructive"
         onClick={() => onDelete(edge.id)}
@@ -391,6 +561,7 @@ export function EdgeInspector({
       >
         <Trash2 size={12} /> Delete line
       </Button>
+      </CardContent>
     </Card>
   );
 }
@@ -404,91 +575,119 @@ function MarkerPicker({
   value: EdgeMarker;
   onChange: (marker: EdgeMarker) => void;
 }) {
+  const selected = MARKERS.find((m) => m.value === value) ?? MARKERS[0];
   return (
     <div className="mt-3">
-      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80">
+      <Label className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80">
         {label}
-      </p>
-      <ToggleGroup
-        value={[value]}
+      </Label>
+      <Select
+        value={value}
         onValueChange={(nextValue) => {
-          const marker = nextValue.at(-1);
-          if (marker) onChange(marker as EdgeMarker);
+          if (nextValue) onChange(nextValue as EdgeMarker);
         }}
-        variant="outline"
-        size="sm"
-        spacing={1}
-        className="mt-1.5 grid w-full grid-cols-6 rounded-xl bg-black/30 p-1.5 ring-1 ring-white/10"
       >
-        {MARKERS.map((marker) => {
-          const active = marker.value === value;
-          return (
-            <ToggleGroupItem
-              key={marker.value}
-              value={marker.value}
-              title={marker.label}
-              aria-label={`${label}: ${marker.label}`}
-              aria-pressed={active}
-              className={[
-                'h-9 w-full border-white/8 bg-transparent p-0',
-                active
-                  ? 'border-violet-300/60 bg-violet-500 text-white'
-                  : 'text-zinc-300 hover:bg-white/10 hover:text-white',
-              ].join(' ')}
-            >
-              <MarkerPreview marker={marker.value} />
-            </ToggleGroupItem>
-          );
-        })}
-      </ToggleGroup>
+        <SelectTrigger className="mt-1.5 h-auto w-full gap-2.5 border-white/10 bg-zinc-800 px-3 py-2.5 text-left hover:bg-zinc-700/80 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15">
+          <span className="grid h-7 w-9 shrink-0 place-items-center rounded-md bg-black/20 text-cyan-200">
+            <MarkerSwatch marker={value} />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-xs font-semibold">{selected.label}</span>
+          </span>
+        </SelectTrigger>
+        <SelectContent className="max-h-72 min-w-65 border-cyan-400/25 bg-zinc-950 p-1.5">
+          <SelectGroup>
+            <SelectLabel className="px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600">
+              {label}
+            </SelectLabel>
+            {MARKERS.map((marker) => (
+              <SelectItem
+                key={marker.value}
+                value={marker.value}
+                className="gap-2.5 px-2.5 py-2 pr-9"
+              >
+                <span className="grid h-7 w-9 shrink-0 place-items-center rounded-md bg-black/25 text-cyan-200">
+                  <MarkerSwatch marker={marker.value} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-[11px] font-semibold">{marker.label}</span>
+                </span>
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
     </div>
   );
 }
 
-function MarkerPreview({ marker }: { marker: EdgeMarker }) {
-  const markerShape = (() => {
-    switch (marker) {
-      case 'none':
-        return null;
-      case 'arrow':
-        return <path d="M 17 6 L 23 10 L 17 14 Z" fill="currentColor" />;
-      case 'open-arrow':
-        return <path d="M 17 5 L 23 10 L 17 15" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinejoin="round" />;
-      case 'triangle':
-        return <path d="M 17 5 L 23 10 L 17 15 Z" fill="#18181b" stroke="currentColor" strokeWidth={1.6} />;
-      case 'circle':
-        return <circle cx={19.5} cy={10} r={3.8} fill="#18181b" stroke="currentColor" strokeWidth={1.6} />;
-      case 'diamond':
-        return <path d="M 15 10 L 19 6 L 23 10 L 19 14 Z" fill="#18181b" stroke="currentColor" strokeWidth={1.6} />;
-    }
-  })();
-
+/**
+ * A short line stub feeding into the marker, so the swatch reads as
+ * "what the end of a real line looks like" instead of an isolated glyph.
+ */
+function MarkerSwatch({ marker }: { marker: EdgeMarker }) {
   return (
-    <svg width={28} height={20} viewBox="0 0 28 20" aria-hidden="true">
-      <path d={marker === 'none' ? 'M 4 10 H 24' : 'M 4 10 H 20'} stroke="currentColor" strokeWidth={1.7} />
-      {markerShape}
+    <svg width={28} height={20} viewBox="-30 -12 34 24" className="text-cyan-200">
+      <line x1={-28} y1={0} x2={0} y2={0} stroke="currentColor" strokeWidth={1.5} strokeOpacity={0.7} />
+      <EdgeMarkerSymbol marker={marker} />
     </svg>
   );
 }
 
-function EffectPreview({
+/**
+ * A straight preview line so the effect and line width/colour render
+ * through the exact same `EdgeEffectLayer` used live — no separate CSS
+ * approximation to keep in sync.
+ */
+const PREVIEW_POINTS = [
+  { x: 32, y: 90 },
+  { x: 368, y: 90 },
+];
+const PREVIEW_PATH = PREVIEW_POINTS.map(
+  (point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`,
+).join(' ');
+const PREVIEW_LENGTH = Math.hypot(
+  PREVIEW_POINTS[1].x - PREVIEW_POINTS[0].x,
+  PREVIEW_POINTS[1].y - PREVIEW_POINTS[0].y,
+);
+
+function EffectPreviewLarge({
   effect,
-  active,
   direction,
+  color,
+  effectColor,
+  width,
+  effectSize,
+  speed,
 }: {
   effect: EdgeEffect;
-  active: boolean;
   direction: EdgeDirection;
+  color: string;
+  effectColor?: string;
+  width: number;
+  effectSize: number;
+  speed: number;
 }) {
   return (
-    <span className="relative h-3 w-12 overflow-hidden rounded-full bg-black/20">
-      <span
-        className={[
-          'absolute left-1 right-1 top-[5px] h-px bg-current',
-          active ? `edge-preview-${effect}` : '',
-        ].join(' ')}
-        style={{ animationDirection: direction === 'reverse' ? 'reverse' : 'normal' }}
+    <svg viewBox="0 0 400 180" className="h-auto w-full max-w-96" style={{ color }}>
+      <path
+        d={PREVIEW_PATH}
+        stroke="currentColor"
+        strokeWidth={width}
+        strokeOpacity={0.52}
+        fill="none"
       />
-    </span>
+      <g style={effectColor ? { color: effectColor } : undefined}>
+        <EdgeEffectLayer
+          d={PREVIEW_PATH}
+          effect={effect}
+          direction={direction}
+          length={PREVIEW_LENGTH}
+          lineWidth={width}
+          effectSize={effectSize}
+          speed={speed}
+        />
+      </g>
+    </svg>
   );
 }

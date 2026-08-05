@@ -169,6 +169,16 @@
   to { stroke-dashoffset: -17; }
 }
 
+/* Edge-binary: bit-stream travel for the `binary` effect. Two paths share
+   this keyframe — one dasharray lights the "1" slots, the complementary one
+   lights the "0" slots at reduced opacity — for byte 10110010 (mark 3, gap
+   2, 8 bits). Both dasharrays have period 40, so offsetting by exactly -40
+   keeps them moving in lockstep with no visible seam. */
+@keyframes edge-binary {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -40; }
+}
+
 /* Tiny live previews in the line inspector. */
 .edge-preview-flow,
 .edge-preview-dash {
@@ -235,11 +245,15 @@
   animation: preview-slide .55s linear infinite;
 }
 .edge-preview-marching,
-.edge-preview-binary,
 .edge-preview-heartbeat,
 .edge-preview-rail {
   background: repeating-linear-gradient(90deg, currentColor 0 3px, transparent 3px 6px, currentColor 6px 13px, transparent 13px 17px);
   animation: preview-slide .7s linear infinite;
+}
+.edge-preview-binary {
+  background: repeating-linear-gradient(90deg, currentColor 0 3px, transparent 3px 4px, currentColor 4px 6px, transparent 6px 9px);
+  background-size: 18px 1px;
+  animation: preview-slide .75s linear infinite;
 }
 
 @keyframes preview-slide {
