@@ -18,16 +18,13 @@ import { EdgeInspector } from '@/components/EdgeInspector';
 import { NodeInspector } from '@/components/NodeInspector';
 import { ShapeToolbar } from '@/components/ShapeToolbar';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { diagramTemplates, getDiagramTemplate, type DiagramTemplateId } from '@/lib/diagram-templates';
-import { initialDocument } from '@/lib/flowchart-data';
-import type { DiagramSettings, ExecutionState, FlowDocumentJSON, NodeShape, RunMode } from '@/lib/flowchart-types';
+import { diagramTemplates, getDiagramTemplate } from '@/lib/diagram-templates';
+import type { ExecutionState } from '@/lib/flowchart-types';
 import { EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
-import { useEditor } from '@/lib/use-editor';
+import { computeOrderedGroups, useEditorStore } from '@/lib/editor-store';
 import { resolveNodeStyle } from '@/lib/node-style';
-import { createDiagram, saveDiagram, type StoredDiagram } from '@/lib/firebase/diagrams';
-import { loadEditorSession, saveEditorSession } from '@/lib/editor-session';
-
-type RunPhase = 'node' | 'line';
+import { createDiagram, saveDiagram } from '@/lib/firebase/diagrams';
+import { saveEditorSession } from '@/lib/editor-session';
 
 const NODE_PHASE_MS = NODE_FADE_DURATION_MS;
 const LINE_PHASE_MS = EDGE_DRAW_DURATION_MS;
@@ -90,65 +87,70 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
 }
 
 function FlowEditor({ user }: { user: User }) {
-  // Restores the diagram that was open before the last refresh (including
-  // unsaved edits) instead of always booting into the default template.
-  const [doc, setDoc] = useState<FlowDocumentJSON>(() => loadEditorSession(user.uid)?.doc ?? initialDocument);
-  const [templateId, setTemplateId] = useState<DiagramTemplateId>('client-server-database');
-  const [currentDiagramId, setCurrentDiagramId] = useState<string | null>(() => loadEditorSession(user.uid)?.currentDiagramId ?? null);
-  const [currentDiagramName, setCurrentDiagramName] = useState(() => loadEditorSession(user.uid)?.currentDiagramName ?? 'Client / Server / Database');
-  const [savedSignature, setSavedSignature] = useState<string | null>(() => loadEditorSession(user.uid)?.savedSignature ?? null);
-  const [seed, setSeed] = useState(0);
-  // Run mode + Repeat live inside doc.settings so they are saved to
-  // Firebase with the diagram and restored on load / session restore.
-  const runMode: RunMode = doc.settings?.runMode ?? 'sequential';
-  const repeatEnabled = doc.settings?.repeatEnabled ?? false;
-  const applyDiagramSettings = useCallback((patch: DiagramSettings) => {
-    setDoc((prev) => ({ ...prev, settings: { ...prev.settings, ...patch } }));
-  }, []);
-  const [runStep, setRunStep] = useState(0);
-  const [runPhase, setRunPhase] = useState<RunPhase>('node');
-  const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
-  const [selectedEdgeId, setSelectedEdgeId] = useState<string | null>(null);
-  const [draggingNodeId, setDraggingNodeId] = useState<string | null>(null);
-  const [linkingFromId, setLinkingFromId] = useState<string | null>(null);
-  const [activeShape, setActiveShape] = useState<NodeShape | null>(null);
-  const [infoOpen, setInfoOpen] = useState(false);
-  const [savingDiagram, setSavingDiagram] = useState(false);
+  // All global editor state lives in the zustand store. Hydrate from the
+  // localStorage session exactly once, synchronously before first read.
+  if (!useEditorStore.getState().hydrated) {
+    useEditorStore.getState().hydrate(user.uid);
+  }
+
+  const doc = useEditorStore((state) => state.doc);
+  const templateId = useEditorStore((state) => state.templateId);
+  const currentDiagramId = useEditorStore((state) => state.currentDiagramId);
+  const currentDiagramName = useEditorStore((state) => state.currentDiagramName);
+  const savedSignature = useEditorStore((state) => state.savedSignature);
+  const savingDiagram = useEditorStore((state) => state.savingDiagram);
+  const seed = useEditorStore((state) => state.seed);
+  const runStep = useEditorStore((state) => state.runStep);
+  const runPhase = useEditorStore((state) => state.runPhase);
+  const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
+  const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
+  const draggingNodeId = useEditorStore((state) => state.draggingNodeId);
+  const linkingFromId = useEditorStore((state) => state.linkingFromId);
+  const activeShape = useEditorStore((state) => state.activeShape);
+  const infoOpen = useEditorStore((state) => state.infoOpen);
+
+  const {
+    renameDiagram,
+    markDiagramSaved,
+    loadStoredDiagram,
+    diagramDeleted,
+    loadTemplate,
+    applySettings,
+    replay,
+    advanceStep,
+    selectNode,
+    selectEdge,
+    setDraggingNodeId,
+    setLinkingFromId,
+    setActiveShape,
+    toggleInfo,
+    setSavingDiagram,
+    onNodeMove,
+    onNodeUpdate,
+    onNodeDuplicate,
+    onNodeDelete,
+    onConnect,
+    onShapeCreate,
+    onEdgeDelete,
+    onEdgeUpdate,
+    onEdgeReconnect,
+  } = useEditorStore();
+
   const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
 
   const hasSidebar = selectedNodeId !== null || selectedEdgeId !== null || infoOpen;
 
-  const editor = useEditor(doc, setDoc);
+  // Run mode + Repeat live inside doc.settings so they are saved to
+  // Firebase with the diagram and restored on load / session restore.
+  const runMode = doc.settings?.runMode ?? 'sequential';
+  const repeatEnabled = doc.settings?.repeatEnabled ?? false;
   const documentSignature = useMemo(() => JSON.stringify(doc), [doc]);
   const dirty = savedSignature !== documentSignature;
 
   useEffect(() => {
     saveEditorSession(user.uid, { doc, currentDiagramId, currentDiagramName, savedSignature });
   }, [doc, currentDiagramId, currentDiagramName, savedSignature, user.uid]);
-  // Nodes sharing the same resolved sort order animate together as one
-  // step, rather than strictly one node at a time — order only expresses
-  // "before/after", not "one by one".
-  const orderedGroups = useMemo(() => {
-    const resolved = doc.nodes
-      .map((node, index) => ({
-        node,
-        order: node.sortOrder && node.sortOrder > 0 ? node.sortOrder : index + 1,
-        index,
-      }))
-      .sort((a, b) => a.order - b.order || a.index - b.index);
-    const groups: FlowDocumentJSON['nodes'][] = [];
-    let lastOrder: number | null = null;
-    for (const item of resolved) {
-      const currentGroup = groups.at(-1);
-      if (lastOrder === item.order && currentGroup) {
-        currentGroup.push(item.node);
-      } else {
-        groups.push([item.node]);
-        lastOrder = item.order;
-      }
-    }
-    return groups;
-  }, [doc.nodes]);
+  const orderedGroups = useMemo(() => computeOrderedGroups(doc.nodes), [doc.nodes]);
   const groupIndexByNodeId = useMemo(() => new Map(orderedGroups.flatMap((group, groupIndex) => group.map((node) => [node.id, groupIndex] as const))), [orderedGroups]);
   const active = useMemo(() => (runMode === 'concurrent' ? doc.nodes.map((node) => node.id) : runPhase === 'node' && orderedGroups[runStep] ? orderedGroups[runStep].map((node) => node.id) : []), [doc.nodes, orderedGroups, runMode, runPhase, runStep]);
   const nodeExecutionStates = useMemo(() => {
@@ -176,23 +178,6 @@ function FlowEditor({ user }: { user: User }) {
   const runningEdgeIds = useMemo(() => (runMode === 'concurrent' ? null : doc.edges.filter((edge) => edgeExecutionStates?.[edge.id] === 'active').map((edge) => edge.id)), [doc.edges, edgeExecutionStates, runMode]);
   const currentTemplate = useMemo(() => getDiagramTemplate(templateId), [templateId]);
 
-  // Shared by the sequential auto-timer and the manual mode's "Next" button
-  // — both just move the same node/line cursor forward by one tick.
-  const advanceStep = useCallback(() => {
-    const reachedLastNode = runStep >= orderedGroups.length - 1 && runPhase === 'node';
-    if (reachedLastNode) {
-      setRunStep(0);
-      setRunPhase('node');
-      return;
-    }
-    if (runPhase === 'node') {
-      setRunPhase('line');
-    } else {
-      setRunStep((step) => step + 1);
-      setRunPhase('node');
-    }
-  }, [runStep, runPhase, orderedGroups.length]);
-
   useEffect(() => {
     if (runMode !== 'sequential' || orderedGroups.length === 0) return;
 
@@ -205,39 +190,6 @@ function FlowEditor({ user }: { user: User }) {
 
   const selectedNode = useMemo(() => doc.nodes.find((n) => n.id === selectedNodeId) ?? null, [doc, selectedNodeId]);
   const selectedEdge = useMemo(() => doc.edges.find((edge) => edge.id === selectedEdgeId) ?? null, [doc, selectedEdgeId]);
-
-  const loadTemplate = useCallback((id: DiagramTemplateId) => {
-    const template = getDiagramTemplate(id);
-    setTemplateId(id);
-    setDoc(template.document);
-    setCurrentDiagramId(null);
-    setCurrentDiagramName(template.name);
-    setSavedSignature(null);
-    setSeed((value) => value + 1);
-    setRunStep(0);
-    setRunPhase('node');
-    setSelectedNodeId(null);
-    setSelectedEdgeId(null);
-    setDraggingNodeId(null);
-    setLinkingFromId(null);
-  }, []);
-
-  const resetCanvasState = useCallback(() => {
-    setSeed((value) => value + 1);
-    setRunStep(0);
-    setRunPhase('node');
-    setSelectedNodeId(null);
-    setSelectedEdgeId(null);
-    setDraggingNodeId(null);
-    setLinkingFromId(null);
-    setActiveShape(null);
-  }, []);
-
-  const handleDiagramSaved = useCallback((diagramId: string, name: string, savedDocument: FlowDocumentJSON) => {
-    setCurrentDiagramId(diagramId);
-    setCurrentDiagramName(name);
-    setSavedSignature(JSON.stringify(savedDocument));
-  }, []);
 
   const handleSaveDiagram = useCallback(async () => {
     const nextName = currentDiagramName.trim();
@@ -253,7 +205,7 @@ function FlowEditor({ user }: { user: User }) {
       } else {
         diagramId = await createDiagram(user.uid, nextName, doc);
       }
-      handleDiagramSaved(diagramId, nextName, doc);
+      markDiagramSaved(diagramId, nextName, doc);
       toast.success('Diagram saved', { description: nextName });
     } catch {
       toast.error('Could not save diagram', {
@@ -262,27 +214,7 @@ function FlowEditor({ user }: { user: User }) {
     } finally {
       setSavingDiagram(false);
     }
-  }, [currentDiagramName, currentDiagramId, doc, user.uid, handleDiagramSaved]);
-
-  const handleDiagramLoaded = useCallback(
-    (diagram: StoredDiagram) => {
-      setDoc(diagram.document);
-      setCurrentDiagramId(diagram.id);
-      setCurrentDiagramName(diagram.name);
-      setSavedSignature(JSON.stringify(diagram.document));
-      resetCanvasState();
-    },
-    [resetCanvasState],
-  );
-
-  const handleDiagramDeleted = useCallback(
-    (diagramId: string) => {
-      if (diagramId !== currentDiagramId) return;
-      setCurrentDiagramId(null);
-      setSavedSignature(null);
-    },
-    [currentDiagramId],
-  );
+  }, [currentDiagramName, currentDiagramId, doc, user.uid, markDiagramSaved, setSavingDiagram]);
 
   return (
     <div className='flex h-screen flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
@@ -293,7 +225,7 @@ function FlowEditor({ user }: { user: User }) {
           </div>
           <div>
             <h1 className='text-base font-semibold'>Flowgram Tools</h1>
-            <DiagramName name={currentDiagramName} onRename={setCurrentDiagramName} />
+            <DiagramName name={currentDiagramName} onRename={renameDiagram} />
           </div>
         </div>
 
@@ -303,7 +235,7 @@ function FlowEditor({ user }: { user: User }) {
             {currentDiagramId ? 'Save' : 'Save as'}
             {dirty && <span className='size-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(180,83,9,.8)]' />}
           </Button>
-          <DiagramManager userId={user.uid} currentDiagramId={currentDiagramId} onLoaded={handleDiagramLoaded} onDeleted={handleDiagramDeleted} />
+          <DiagramManager userId={user.uid} currentDiagramId={currentDiagramId} onLoaded={loadStoredDiagram} onDeleted={diagramDeleted} />
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant='outline' className='h-9 border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8' />}>
               <LayoutTemplate size={14} />
@@ -339,10 +271,8 @@ function FlowEditor({ user }: { user: User }) {
                 key={mode.value}
                 type='button'
                 onClick={() => {
-                  applyDiagramSettings({ runMode: mode.value });
-                  setRunStep(0);
-                  setRunPhase('node');
-                  setSeed((value) => value + 1);
+                  applySettings({ runMode: mode.value });
+                  replay();
                 }}
                 aria-pressed={runMode === mode.value}
                 className={[
@@ -357,7 +287,7 @@ function FlowEditor({ user }: { user: User }) {
           <button
             type='button'
             disabled={runMode !== 'sequential'}
-            onClick={() => applyDiagramSettings({ repeatEnabled: !repeatEnabled })}
+            onClick={() => applySettings({ repeatEnabled: !repeatEnabled })}
             aria-pressed={repeatEnabled}
             title='Automatically replay after the sequential run completes'
             className={[
@@ -369,17 +299,7 @@ function FlowEditor({ user }: { user: User }) {
             <Repeat2 size={13} className={repeatEnabled && runMode === 'sequential' ? 'text-emerald-300' : ''} />
             Repeat
           </button>
-          <motion.button
-            whileHover={{ y: -1 }}
-            whileTap={{ scale: 0.97 }}
-            type='button'
-            onClick={() => {
-              setRunStep(0);
-              setRunPhase('node');
-              setSeed((s) => s + 1);
-            }}
-            className='inline-flex h-9 items-center gap-1.5 rounded-md bg-sky-500/90 px-3 text-xs font-semibold text-sky-950 shadow-sm hover:bg-sky-400'
-          >
+          <motion.button whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }} type='button' onClick={replay} className='inline-flex h-9 items-center gap-1.5 rounded-md bg-sky-500/90 px-3 text-xs font-semibold text-sky-950 shadow-sm hover:bg-sky-400'>
             <Play size={14} />
             Replay path
           </motion.button>
@@ -425,12 +345,7 @@ function FlowEditor({ user }: { user: User }) {
             <AlertDialogAction
               variant='destructive'
               onClick={() => {
-                const template = getDiagramTemplate(templateId);
-                setDoc(template.document);
-                setCurrentDiagramId(null);
-                setCurrentDiagramName(template.name);
-                setSavedSignature(null);
-                resetCanvasState();
+                loadTemplate(templateId);
                 setResetConfirmOpen(false);
               }}
             >
@@ -446,21 +361,18 @@ function FlowEditor({ user }: { user: User }) {
             key={seed}
             document={doc}
             infoOpen={infoOpen}
-            onToggleInfo={() => setInfoOpen((open) => !open)}
+            onToggleInfo={toggleInfo}
             activeNodeIds={active}
             runningEdgeIds={runningEdgeIds}
             nodeExecutionStates={nodeExecutionStates}
             edgeExecutionStates={edgeExecutionStates}
             selectedNodeId={selectedNodeId}
-            onSelectNode={(id) => {
-              setSelectedNodeId(id);
-              if (id) setSelectedEdgeId(null);
-            }}
-            onNodeMove={editor.onNodeMove}
-            onNodeResize={editor.onNodeUpdate}
+            onSelectNode={selectNode}
+            onNodeMove={onNodeMove}
+            onNodeResize={onNodeUpdate}
             onNodeDragStart={(id) => setDraggingNodeId(id)}
             onNodeDragEnd={() => setDraggingNodeId(null)}
-            onConnect={editor.onConnect}
+            onConnect={onConnect}
             isDragging={draggingNodeId !== null}
             linkingFromId={linkingFromId}
             onLinkStart={(id) => setLinkingFromId(id)}
@@ -469,21 +381,18 @@ function FlowEditor({ user }: { user: User }) {
             }}
             onLinkEnd={(toId) => {
               if (linkingFromId && toId && linkingFromId !== toId) {
-                editor.onConnect(linkingFromId, toId);
+                onConnect(linkingFromId, toId);
               }
               setLinkingFromId(null);
             }}
             selectedEdgeId={selectedEdgeId}
-            onEdgeReconnect={editor.onEdgeReconnect}
-            onEdgeUpdate={editor.onEdgeUpdate}
-            onSelectEdge={(id) => {
-              setSelectedEdgeId(id);
-              if (id) setSelectedNodeId(null);
-            }}
+            onEdgeReconnect={onEdgeReconnect}
+            onEdgeUpdate={onEdgeUpdate}
+            onSelectEdge={selectEdge}
             activeShape={activeShape}
             onShapeDrawn={(shape, position, width, height) => {
-              const newId = editor.onShapeCreate(shape, position, width, height);
-              if (newId) setSelectedNodeId(newId);
+              const newId = onShapeCreate(shape, position, width, height);
+              if (newId) selectNode(newId);
               // Figma-style: the tool disarms after each draw so a
               // single click doesn't accidentally produce a flood of
               // shapes. The user re-arms via the toolbar.
@@ -501,16 +410,16 @@ function FlowEditor({ user }: { user: User }) {
                   <NodeInspector
                     key={selectedNode.id}
                     node={selectedNode}
-                    onUpdate={editor.onNodeUpdate}
+                    onUpdate={onNodeUpdate}
                     onDuplicate={(id) => {
-                      const duplicateId = editor.onNodeDuplicate(id);
-                      if (duplicateId) setSelectedNodeId(duplicateId);
+                      const duplicateId = onNodeDuplicate(id);
+                      if (duplicateId) selectNode(duplicateId);
                     }}
                     onDelete={(id) => {
-                      editor.onNodeDelete(id);
-                      setSelectedNodeId(null);
+                      onNodeDelete(id);
+                      selectNode(null);
                     }}
-                    onClose={() => setSelectedNodeId(null)}
+                    onClose={() => selectNode(null)}
                   />
                 )}
 
@@ -521,12 +430,12 @@ function FlowEditor({ user }: { user: User }) {
                     sourceTitle={doc.nodes.find((node) => node.id === selectedEdge.from)?.title ?? selectedEdge.from}
                     targetTitle={doc.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
                     fallbackColor={doc.nodes.find((node) => node.id === selectedEdge.from) ? resolveNodeStyle(doc.nodes.find((node) => node.id === selectedEdge.from)!).foreground : '#67e8f9'}
-                    onUpdate={editor.onEdgeUpdate}
+                    onUpdate={onEdgeUpdate}
                     onDelete={(id) => {
-                      editor.onEdgeDelete(id);
-                      setSelectedEdgeId(null);
+                      onEdgeDelete(id);
+                      selectEdge(null);
                     }}
-                    onClose={() => setSelectedEdgeId(null)}
+                    onClose={() => selectEdge(null)}
                   />
                 )}
 
