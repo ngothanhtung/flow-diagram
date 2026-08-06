@@ -1,41 +1,19 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type Header, type SortingState } from '@tanstack/react-table';
-import { ArrowDown, ArrowUp, ArrowUpDown, Braces, ChevronLeft, ChevronRight, Database, ExternalLink, Eye, RefreshCw } from 'lucide-react';
+import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type SortingState } from '@tanstack/react-table';
+import { Braces, Database, ExternalLink, Eye, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
+import { DataTable, DataTableFooter, formatDateTime, formatNumber } from '@/components/data-table';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { listAllDiagrams, type AdminDiagramRow } from '@/lib/firebase/diagrams';
 
-const dateTimeFormat = new Intl.DateTimeFormat('en-US', {
-  dateStyle: 'medium',
-  timeStyle: 'short',
-});
-
-function formatDateTime(value: number | null) {
-  return value ? dateTimeFormat.format(new Date(value)) : '—';
-}
-
-const numberFormat = new Intl.NumberFormat('en-US');
-
 /** Columns that should shrink to their content instead of stretching. */
 const NARROW_COLUMNS = new Set(['public', 'nodeCount', 'edgeCount', 'updatedAt', 'createdAt', 'actions']);
 /** Columns whose content should align to the right (numbers, actions). */
 const RIGHT_ALIGNED_COLUMNS = new Set(['nodeCount', 'edgeCount', 'actions']);
-
-/** Sort header button — shows the current sort direction of the column. */
-function SortButton({ header }: { header: Header<AdminDiagramRow, unknown> }) {
-  const column = header.column;
-  const sorted = column.getIsSorted();
-  return (
-    <button type='button' onClick={column.getToggleSortingHandler()} className='inline-flex items-center gap-1 uppercase tracking-wider transition hover:text-zinc-100'>
-      {flexRender(column.columnDef.header, header.getContext())}
-      {sorted === 'asc' ? <ArrowUp size={12} className='text-sky-300' /> : sorted === 'desc' ? <ArrowDown size={12} className='text-sky-300' /> : <ArrowUpDown size={12} className='text-zinc-600' />}
-    </button>
-  );
-}
 
 export function AdminDiagramsPage() {
   const [rows, setRows] = useState<AdminDiagramRow[]>([]);
@@ -91,12 +69,12 @@ export function AdminDiagramsPage() {
       {
         accessorKey: 'nodeCount',
         header: 'Nodes',
-        cell: ({ getValue }) => <span className='tabular-nums'>{numberFormat.format(getValue<number>())}</span>,
+        cell: ({ getValue }) => <span className='tabular-nums'>{formatNumber(getValue<number>())}</span>,
       },
       {
         accessorKey: 'edgeCount',
         header: 'Edges',
-        cell: ({ getValue }) => <span className='tabular-nums'>{numberFormat.format(getValue<number>())}</span>,
+        cell: ({ getValue }) => <span className='tabular-nums'>{formatNumber(getValue<number>())}</span>,
       },
       {
         accessorKey: 'updatedAt',
@@ -161,7 +139,7 @@ export function AdminDiagramsPage() {
           </div>
         </div>
         <div className='flex items-center gap-2'>
-          <Button variant='outline' onClick={() => void refresh()} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
+          <Button variant='toolbar' onClick={() => void refresh()}>
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
           </Button>
@@ -169,81 +147,18 @@ export function AdminDiagramsPage() {
       </header>
 
       <div className='flex items-center gap-3 px-6 py-3'>
-        <Input value={globalFilter} onChange={(event) => setGlobalFilter(event.target.value)} placeholder='Search by name, id or owner…' className='max-w-xs border-white/10 bg-black/25' />
+        <Input value={globalFilter} onChange={(event) => setGlobalFilter(event.target.value)} placeholder='Search by name, id or owner…' variant='toolbar' className='max-w-xs' />
         <p className='text-xs text-zinc-500'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} diagram(s)` : status === 'error' ? 'Failed to load diagrams' : 'Loading diagrams…'}</p>
       </div>
 
-      <div className='min-h-0 flex-1 overflow-auto px-6'>
-        <table className='w-full border-separate border-spacing-0 text-left text-sm'>
-          <thead className='sticky top-0 z-10'>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    className={[
-                      'border-b border-white/8 bg-zinc-950/95 px-3 py-2.5 text-[10px] font-bold text-zinc-400 backdrop-blur-xl',
-                      NARROW_COLUMNS.has(header.column.id) ? 'w-px whitespace-nowrap' : '',
-                      RIGHT_ALIGNED_COLUMNS.has(header.column.id) ? 'text-right' : '',
-                    ].join(' ')}
-                  >
-                    {header.column.getCanSort() ? <SortButton header={header} /> : flexRender(header.column.columnDef.header, header.getContext())}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.length === 0 ? (
-              <tr>
-                <td colSpan={columns.length} className='px-3 py-16 text-center text-sm text-zinc-500'>
-                  {status === 'error' ? 'Could not read Firestore. Check sign-in and rules.' : status === 'loading' ? 'Loading…' : 'No diagrams found.'}
-                </td>
-              </tr>
-            ) : (
-              table.getRowModel().rows.map((row) => (
-                <tr key={row.id} className='group transition hover:bg-white/4'>
-                  {row.getVisibleCells().map((cell) => (
-                    <td
-                      key={cell.id}
-                      className={[
-                        'border-b border-white/5 px-3 py-2.5',
-                        NARROW_COLUMNS.has(cell.column.id) ? 'w-px whitespace-nowrap' : '',
-                        RIGHT_ALIGNED_COLUMNS.has(cell.column.id) ? 'text-right' : '',
-                      ].join(' ')}
-                    >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  ))}
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        table={table}
+        narrowColumns={NARROW_COLUMNS}
+        rightAlignedColumns={RIGHT_ALIGNED_COLUMNS}
+        emptyMessage={status === 'error' ? 'Could not read Firestore. Check sign-in and rules.' : status === 'loading' ? 'Loading…' : 'No diagrams found.'}
+      />
 
-      <footer className='flex items-center justify-between border-t border-white/5 px-6 py-3 text-xs text-zinc-400'>
-        <span>
-          Page {table.getState().pagination.pageIndex + 1} of {Math.max(1, table.getPageCount())}
-        </span>
-        <div className='flex items-center gap-2'>
-          <Button variant='outline' size='xs' onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            <ChevronLeft size={13} />
-            Prev
-          </Button>
-          <Button variant='outline' size='xs' onClick={() => table.nextPage()} disabled={!table.getCanNextPage()} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
-            Next
-            <ChevronRight size={13} />
-          </Button>
-          <select value={table.getState().pagination.pageSize} onChange={(event) => table.setPageSize(Number(event.target.value))} className='h-7 rounded-md border border-white/10 bg-black/40 px-2 text-xs text-zinc-300 outline-none'>
-            {[10, 25, 50, 100].map((size) => (
-              <option key={size} value={size}>
-                {size} / page
-              </option>
-            ))}
-          </select>
-        </div>
-      </footer>
+      <DataTableFooter table={table} />
 
       <Dialog open={viewing !== null} onOpenChange={(open) => !open && setViewing(null)}>
         <DialogContent className='max-w-3xl border-white/10 bg-zinc-950/95 text-zinc-100 backdrop-blur-xl'>

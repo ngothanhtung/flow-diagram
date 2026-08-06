@@ -44,7 +44,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
             <h1 className='text-sm font-semibold'>Không có quyền truy cập</h1>
             <p className='mt-1.5 text-xs leading-relaxed text-zinc-500'>Trang này chỉ dành cho người dùng có role `administrators` trong `users-roles`.</p>
           </div>
-          <Button variant='outline' onClick={() => (window.location.href = '/')} className='border-white/10 bg-black/25 text-zinc-300 hover:bg-white/8'>
+          <Button variant='toolbar' onClick={() => (window.location.href = '/')}>
             Back to editor
           </Button>
         </div>

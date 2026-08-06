@@ -131,9 +131,9 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
       actions={<SaveButton saving={saving} dirty={dirty} onSave={() => void handleSave()} />}
       subBar={
         <div className='flex items-center gap-2 border-b border-white/5 px-6 py-2.5'>
-          <Input value={meta.name} onChange={(event) => setMeta((current) => ({ ...current, name: event.target.value }))} placeholder='Template name' aria-label='Template name' className='max-w-64 border-white/10 bg-black/25' />
-          <Input value={meta.category} onChange={(event) => setMeta((current) => ({ ...current, category: event.target.value }))} placeholder='Category' aria-label='Category' className='max-w-40 border-white/10 bg-black/25' />
-          <Input value={meta.description} onChange={(event) => setMeta((current) => ({ ...current, description: event.target.value }))} placeholder='Description' aria-label='Description' className='border-white/10 bg-black/25' />
+          <Input value={meta.name} onChange={(event) => setMeta((current) => ({ ...current, name: event.target.value }))} placeholder='Template name' aria-label='Template name' variant='toolbar' className='max-w-64' />
+          <Input value={meta.category} onChange={(event) => setMeta((current) => ({ ...current, category: event.target.value }))} placeholder='Category' aria-label='Category' variant='toolbar' className='max-w-40' />
+          <Input value={meta.description} onChange={(event) => setMeta((current) => ({ ...current, description: event.target.value }))} placeholder='Description' aria-label='Description' variant='toolbar' />
         </div>
       }
       info={{

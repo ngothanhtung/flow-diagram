@@ -152,7 +152,7 @@ export function LoginForm() {
                   {error}
                 </div>
               )}
-              <Button type="submit" disabled={pending !== null} className="h-11 w-full bg-cyan-300 text-zinc-950 hover:bg-cyan-200">
+              <Button variant="accent" type="submit" disabled={pending !== null} className="h-11 w-full">
                 {pending === 'email' && <LoaderCircle className="animate-spin" />}
                 {mode === 'login' ? 'Sign in' : 'Create account'}
               </Button>

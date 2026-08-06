@@ -3,7 +3,8 @@
 import { FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, RotateCcw, Save } from 'lucide-react';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import { useEditorStore } from '@/lib/editor-store';
@@ -15,7 +16,7 @@ export function FileMenu({ children }: { children: ReactNode }) {
     <NavigationMenu className='max-w-none'>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className='h-9 gap-1.5 rounded-lg border border-white/10 bg-black/25 px-3 text-xs font-semibold text-zinc-300 hover:bg-white/8 data-popup-open:bg-white/8 data-popup-open:text-zinc-100 dark:bg-input/30 dark:hover:bg-input/50 dark:data-popup-open:bg-input/50'>
+          <NavigationMenuTrigger className={cn(buttonVariants({ variant: 'toolbar', size: 'lg' }), 'px-3')}>
             File
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -95,7 +96,7 @@ export function EditorFileMenu({
 /** Save button with the amber unsaved-changes dot. */
 export function SaveButton({ saving, dirty, onSave }: { saving: boolean; dirty: boolean; onSave: () => void }) {
   return (
-    <Button variant='outline' disabled={saving} onClick={onSave} title='Save' className='h-9 border-white/10 bg-black/25 text-xs font-semibold text-zinc-300 hover:bg-white/8 dark:bg-input/30 dark:hover:bg-input/50'>
+    <Button variant='toolbar' size='lg' disabled={saving} onClick={onSave} title='Save'>
       {saving ? <LoaderCircle size={13} className='animate-spin' /> : <Save size={13} />}
       Save
       {dirty && <span className='size-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(180,83,9,.8)]' />}

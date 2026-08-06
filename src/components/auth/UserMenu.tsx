@@ -34,7 +34,7 @@ export function UserMenu({ user }: { user: User }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={<Button variant="outline" size="icon-lg" className="rounded-full border-white/10 bg-black/25" />}
+        render={<Button variant="toolbar" size="icon-lg" className="rounded-full" />}
       >
         <Avatar size="sm">
           {user.photoURL && <AvatarImage src={user.photoURL} alt={user.displayName ?? 'User'} />}

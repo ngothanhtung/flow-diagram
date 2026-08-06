@@ -232,11 +232,12 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       actions={
         <>
           <Button
-            variant='outline'
+            variant='toolbar'
+            size='lg'
             onClick={() => setDiagramPublic(!currentDiagramPublic)}
             aria-pressed={currentDiagramPublic}
             title={currentDiagramPublic ? 'Public — anyone signed in can view via /diagrams/{id}/view' : 'Private — only you and administrators can view'}
-            className={['h-9 gap-1.5 border-white/10 bg-black/25 px-3 text-xs font-semibold text-zinc-300 hover:bg-white/8 dark:border-white/10 dark:bg-input/30 dark:hover:bg-input/50', currentDiagramPublic ? 'text-emerald-300' : ''].join(' ')}
+            className={currentDiagramPublic ? 'text-emerald-300 hover:text-emerald-200' : ''}
           >
             {currentDiagramPublic ? <Globe size={13} className='text-emerald-300' /> : <LockKeyhole size={13} />}
             {currentDiagramPublic ? 'Public' : 'Private'}

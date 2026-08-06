@@ -18,6 +18,11 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        // App-wide cyan call-to-action (New diagram, Copy link, Sign in…).
+        accent: "bg-cyan-300 text-zinc-950 hover:bg-cyan-200",
+        // App-wide frosted header/toolbar control (dark chrome surfaces).
+        toolbar:
+          "border-white/10 bg-black/25 text-xs font-semibold text-zinc-300 hover:bg-white/8 hover:text-zinc-100 aria-expanded:bg-white/8 data-popup-open:bg-white/8 data-popup-open:text-zinc-100 dark:bg-input/30 dark:hover:bg-input/50 dark:data-popup-open:bg-input/50",
       },
       size: {
         default:

@@ -13,26 +13,35 @@ const RUN_MODES = [
   { value: 'manual', label: 'Manual', Icon: Hand },
 ] as const satisfies ReadonlyArray<{ value: RunMode; label: string; Icon: typeof Hand }>;
 
-/** Run mode + Next / Repeat / Replay cluster in an editor header. */
-export function PlaybackControls({ runMode, repeatEnabled, stepCount }: { runMode: RunMode; repeatEnabled: boolean; stepCount: number }) {
-  const { applySettings, replay, advanceStep } = useEditorStore();
+export interface RunControlsProps {
+  runMode: RunMode;
+  repeatEnabled: boolean;
+  /** Disables the manual-mode Next button (e.g. nothing to step through). */
+  advanceDisabled: boolean;
+  onSelectMode: (mode: RunMode) => void;
+  onAdvance: () => void;
+  onToggleRepeat: () => void;
+  onReplay: () => void;
+}
 
+/**
+ * Presentational run cluster — mode picker + Next / Repeat / Replay.
+ * Shared by the editor header (store-wired via `PlaybackControls`) and
+ * the read-only viewer (local run state), so the two surfaces cannot
+ * drift apart visually.
+ */
+export function RunControls({ runMode, repeatEnabled, advanceDisabled, onSelectMode, onAdvance, onToggleRepeat, onReplay }: RunControlsProps) {
   return (
     <>
       <ButtonGroup aria-label='Execution mode'>
         {RUN_MODES.map((mode) => (
           <Button
             key={mode.value}
-            variant='outline'
-            onClick={() => {
-              applySettings({ runMode: mode.value });
-              replay();
-            }}
+            variant='toolbar'
+            size='lg'
+            onClick={() => onSelectMode(mode.value)}
             aria-pressed={runMode === mode.value}
-            className={[
-              'h-9 gap-1.5 border-white/10 bg-black/25 px-3 text-xs font-semibold dark:bg-input/30 dark:hover:bg-input/50',
-              runMode === mode.value ? 'bg-cyan-400/15 text-cyan-100 hover:bg-cyan-400/15 dark:bg-cyan-400/15 dark:hover:bg-cyan-400/15' : 'text-zinc-500 hover:text-zinc-200',
-            ].join(' ')}
+            className={runMode === mode.value ? 'bg-cyan-400/15 text-cyan-100 hover:bg-cyan-400/15 hover:text-cyan-100 dark:bg-cyan-400/15 dark:hover:bg-cyan-400/15' : 'text-zinc-500'}
           >
             <mode.Icon size={12} /> {mode.label}
           </Button>
@@ -43,8 +52,8 @@ export function PlaybackControls({ runMode, repeatEnabled, stepCount }: { runMod
           whileHover={{ y: -1 }}
           whileTap={{ scale: 0.97 }}
           type='button'
-          onClick={advanceStep}
-          disabled={stepCount === 0}
+          onClick={onAdvance}
+          disabled={advanceDisabled}
           title='Run the next step'
           className='inline-flex h-9 items-center gap-1.5 rounded-md bg-emerald-500/90 px-3 text-xs font-semibold text-emerald-950 shadow-sm hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-40'
         >
@@ -52,25 +61,42 @@ export function PlaybackControls({ runMode, repeatEnabled, stepCount }: { runMod
           Next
         </motion.button>
       )}
-      <button
-        type='button'
+      <Button
+        variant='toolbar'
+        size='lg'
         disabled={runMode !== 'sequential'}
-        onClick={() => applySettings({ repeatEnabled: !repeatEnabled })}
+        onClick={onToggleRepeat}
         aria-pressed={repeatEnabled}
         title='Automatically replay after the sequential run completes'
-        className={[
-          'inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold ring-1 transition',
-          repeatEnabled && runMode === 'sequential' ? 'bg-emerald-400/15 text-emerald-100 ring-emerald-400/40' : 'bg-black/25 text-zinc-500 ring-white/10 hover:bg-white/6 hover:text-zinc-200',
-          runMode !== 'sequential' ? 'cursor-not-allowed opacity-40 hover:bg-black/25 hover:text-zinc-500' : '',
-        ].join(' ')}
+        className={repeatEnabled && runMode === 'sequential' ? 'border-emerald-400/40 bg-emerald-400/15 text-emerald-100 hover:bg-emerald-400/15 hover:text-emerald-100 dark:bg-emerald-400/15 dark:hover:bg-emerald-400/15' : 'text-zinc-500'}
       >
         <Repeat2 size={13} className={repeatEnabled && runMode === 'sequential' ? 'text-emerald-300' : ''} />
         Repeat
-      </button>
-      <Button variant='outline' onClick={replay} className='h-9 border-white/10 bg-black/25 text-xs font-semibold text-zinc-300 hover:bg-white/8'>
+      </Button>
+      <Button variant='toolbar' size='lg' onClick={onReplay}>
         <Play size={14} />
         Replay
       </Button>
     </>
+  );
+}
+
+/** Store-wired run cluster used by every editing surface's header. */
+export function PlaybackControls({ runMode, repeatEnabled, stepCount }: { runMode: RunMode; repeatEnabled: boolean; stepCount: number }) {
+  const { applySettings, replay, advanceStep } = useEditorStore();
+
+  return (
+    <RunControls
+      runMode={runMode}
+      repeatEnabled={repeatEnabled}
+      advanceDisabled={stepCount === 0}
+      onSelectMode={(mode) => {
+        applySettings({ runMode: mode });
+        replay();
+      }}
+      onAdvance={advanceStep}
+      onToggleRepeat={() => applySettings({ repeatEnabled: !repeatEnabled })}
+      onReplay={replay}
+    />
   );
 }

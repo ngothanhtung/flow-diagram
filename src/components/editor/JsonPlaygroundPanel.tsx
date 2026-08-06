@@ -86,18 +86,17 @@ export function JsonPlaygroundPanel({ document }: { document: FlowDocumentJSON }
       />
       {error && <p className='mt-2 rounded-md bg-rose-500/10 px-2 py-1.5 text-[11px] leading-relaxed text-rose-300 ring-1 ring-rose-400/30'>{error}</p>}
       <div className='mt-3 flex items-center gap-2'>
-        <Button onClick={handleRender} disabled={!draft.trim()} className='h-8 flex-1 gap-1.5 bg-cyan-300 text-xs font-semibold text-zinc-950 hover:bg-cyan-200'>
+        <Button variant='accent' onClick={handleRender} disabled={!draft.trim()} className='flex-1 text-xs font-semibold'>
           <Play size={13} />
           Render
         </Button>
         <Button
-          variant='outline'
+          variant='toolbar'
           onClick={() => {
             setDraft(JSON.stringify(document, null, 2));
             setError(null);
           }}
           title='Fill with the current canvas document'
-          className='h-8 border-white/10 bg-black/25 text-xs text-zinc-300 hover:bg-white/8'
         >
           <FileJson size={13} />
         </Button>

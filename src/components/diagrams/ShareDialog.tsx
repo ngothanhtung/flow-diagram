@@ -42,8 +42,8 @@ export function ShareDialog({ diagramId, isPublic, open, onOpenChange }: { diagr
           <DialogDescription className='text-xs text-zinc-500'>Anyone with this link opens a read-only viewer — it does not grant edit access.</DialogDescription>
         </DialogHeader>
         <div className='flex items-center gap-2'>
-          <Input readOnly value={url} onFocus={(event) => event.target.select()} className='border-white/10 bg-black/25 font-mono text-xs' />
-          <Button onClick={() => void copy()} disabled={!url} className='shrink-0 bg-cyan-300 text-zinc-950 hover:bg-cyan-200'>
+          <Input readOnly value={url} onFocus={(event) => event.target.select()} variant='toolbar' className='font-mono text-xs' />
+          <Button variant='accent' onClick={() => void copy()} disabled={!url} className='shrink-0'>
             {copied ? <Check size={14} /> : <Copy size={14} />}
             {copied ? 'Copied' : 'Copy'}
           </Button>
