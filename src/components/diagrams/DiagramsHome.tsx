@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type Header, type SortingState } from '@tanstack/react-table';
-import { ArrowDown, ArrowUp, ArrowUpDown, Boxes, ChevronLeft, ChevronRight, Ellipsis, ExternalLink, Globe, LayoutTemplate, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Share2, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, BookOpen, Boxes, ChevronLeft, ChevronRight, Ellipsis, ExternalLink, Globe, LayoutTemplate, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Share2, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -360,6 +360,10 @@ export function DiagramsHome() {
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
           </Button>
+          <Link href='/guide' title='Diagram authoring guide' className='inline-flex h-9 items-center gap-1.5 rounded-md border border-white/10 bg-black/25 px-3 text-xs font-semibold text-zinc-300 transition hover:bg-white/8'>
+            <BookOpen size={13} />
+            Guide
+          </Link>
           <UserMenu user={user} />
         </div>
       </header>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Boxes, Copy, FileJson, FilePlus, FileQuestion, FolderOpen, Globe, Hand, LayoutTemplate, ListOrdered, LoaderCircle, LockKeyhole, Play, RadioTower, Repeat2, RotateCcw, Save, Share2, SkipForward } from 'lucide-react';
+import { Boxes, Copy, FileJson, FilePlus, FileQuestion, FlaskConical, FolderOpen, Globe, Hand, LayoutTemplate, ListOrdered, LoaderCircle, LockKeyhole, Play, RadioTower, Repeat2, RotateCcw, Save, Share2, SkipForward, X } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
@@ -22,7 +22,7 @@ import { NodeInspector } from '@/components/NodeInspector';
 import { ShapeToolbar } from '@/components/ShapeToolbar';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { diagramTemplates, getDiagramTemplate } from '@/lib/diagram-templates';
-import type { ExecutionState } from '@/lib/flowchart-types';
+import type { ExecutionState, FlowDocumentJSON } from '@/lib/flowchart-types';
 import { EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { computeOrderedGroups, useEditorStore } from '@/lib/editor-store';
 import { resolveNodeStyle } from '@/lib/node-style';
@@ -160,6 +160,9 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const [shareOpen, setShareOpen] = useState(false);
   const [templatesDialogOpen, setTemplatesDialogOpen] = useState(false);
   const [savingAs, setSavingAs] = useState(false);
+  const [playgroundOpen, setPlaygroundOpen] = useState(false);
+  const [jsonDraft, setJsonDraft] = useState('');
+  const [jsonError, setJsonError] = useState<string | null>(null);
 
   // Load the route's diagram into the store — unless the session already
   // restored this exact diagram, in which case unsaved edits are kept.
@@ -185,7 +188,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     };
   }, [diagramId, user, loadStoredDiagram]);
 
-  const hasSidebar = selectedNodeId !== null || selectedEdgeId !== null || infoOpen;
+  const hasSidebar = selectedNodeId !== null || selectedEdgeId !== null || infoOpen || playgroundOpen;
 
   // Run mode + Repeat live inside doc.settings so they are saved to
   // Firebase with the diagram and restored on load / session restore.
@@ -328,6 +331,54 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     }
   }, [user, currentDiagramName, doc, router]);
 
+  // Playground: parses/validates a pasted FlowDocumentJSON (same rules as
+  // /guide's checklist — unique node ids, edges referencing real nodes)
+  // and, if valid, replaces the canvas via the same path a template load
+  // uses, so Reset/dirty-tracking behave exactly as they do for a template.
+  const handleRenderJson = useCallback(() => {
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(jsonDraft);
+    } catch (err) {
+      setJsonError(`Invalid JSON: ${(err as Error).message}`);
+      return;
+    }
+    if (typeof parsed !== 'object' || parsed === null || !Array.isArray((parsed as { nodes?: unknown }).nodes) || !Array.isArray((parsed as { edges?: unknown }).edges)) {
+      setJsonError('Document must be an object with "nodes" and "edges" arrays.');
+      return;
+    }
+    const document = parsed as FlowDocumentJSON;
+    const nodeIds = new Set<string>();
+    for (const node of document.nodes) {
+      if (!node || typeof node.id !== 'string' || !node.id) {
+        setJsonError('Every node needs a non-empty string "id".');
+        return;
+      }
+      if (nodeIds.has(node.id)) {
+        setJsonError(`Duplicate node id "${node.id}".`);
+        return;
+      }
+      if (!node.type || !node.title || !node.position) {
+        setJsonError(`Node "${node.id}" is missing "type", "title", or "position".`);
+        return;
+      }
+      nodeIds.add(node.id);
+    }
+    for (const edge of document.edges) {
+      if (!edge || typeof edge.id !== 'string' || !edge.id) {
+        setJsonError('Every edge needs a non-empty string "id".');
+        return;
+      }
+      if (!nodeIds.has(edge.from) || !nodeIds.has(edge.to)) {
+        setJsonError(`Edge "${edge.id}" references a node id that doesn't exist ("${edge.from}" → "${edge.to}").`);
+        return;
+      }
+    }
+    setJsonError(null);
+    loadRemoteTemplate({ name: 'Pasted JSON', category: 'Playground', description: 'Rendered from the JSON playground panel.', document });
+    toast.success('Rendered pasted JSON', { description: `${document.nodes.length} nodes, ${document.edges.length} edges` });
+  }, [jsonDraft, loadRemoteTemplate]);
+
   const handleExportJson = useCallback(() => {
     const blob = new Blob([JSON.stringify(doc, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -410,6 +461,25 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
                       <NavigationMenuLink closeOnClick render={<button type='button' onClick={handleExportJson} />} className='gap-2 text-xs text-zinc-200'>
                         <FileJson size={14} />
                         Export to JSON
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink
+                        closeOnClick
+                        render={
+                          <button
+                            type='button'
+                            onClick={() => {
+                              setPlaygroundOpen(true);
+                              selectNode(null);
+                              selectEdge(null);
+                            }}
+                          />
+                        }
+                        className='gap-2 text-xs text-zinc-200'
+                      >
+                        <FlaskConical size={14} />
+                        JSON Playground
                       </NavigationMenuLink>
                     </li>
                     <li>
@@ -687,6 +757,52 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
                 )}
 
                 {infoOpen && <JsonInspector value={JSON.stringify(doc, null, 2)} />}
+
+                {playgroundOpen && (
+                  <div className='rounded-xl bg-zinc-900/70 p-3'>
+                    <div className='flex items-center justify-between gap-2'>
+                      <span className='flex items-center gap-1.5 text-xs font-semibold text-zinc-200'>
+                        <FlaskConical size={13} className='text-cyan-300' />
+                        JSON Playground
+                      </span>
+                      <button type='button' onClick={() => setPlaygroundOpen(false)} title='Close' className='rounded p-1 text-zinc-500 transition hover:bg-white/6 hover:text-zinc-200'>
+                        <X size={13} />
+                      </button>
+                    </div>
+                    <p className='mt-2 text-[11px] leading-relaxed text-zinc-500'>
+                      Paste a FlowDocumentJSON below and render it on the canvas — see the{' '}
+                      <Link href='/guide' target='_blank' className='text-cyan-300 underline underline-offset-2 hover:text-cyan-200'>
+                        authoring guide
+                      </Link>{' '}
+                      for the schema. Rendering replaces the current canvas — Save to keep it, or Reset to revert.
+                    </p>
+                    <textarea
+                      value={jsonDraft}
+                      onChange={(event) => setJsonDraft(event.target.value)}
+                      placeholder='{ "nodes": [...], "edges": [...] }'
+                      spellCheck={false}
+                      className='mt-3 h-56 w-full resize-y rounded-lg border border-white/10 bg-black/40 p-2 font-mono text-[11px] leading-relaxed text-zinc-200 outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/30'
+                    />
+                    {jsonError && <p className='mt-2 rounded-md bg-rose-500/10 px-2 py-1.5 text-[11px] leading-relaxed text-rose-300 ring-1 ring-rose-400/30'>{jsonError}</p>}
+                    <div className='mt-3 flex items-center gap-2'>
+                      <Button onClick={handleRenderJson} disabled={!jsonDraft.trim()} className='h-8 flex-1 gap-1.5 bg-cyan-300 text-xs font-semibold text-zinc-950 hover:bg-cyan-200'>
+                        <Play size={13} />
+                        Render
+                      </Button>
+                      <Button
+                        variant='outline'
+                        onClick={() => {
+                          setJsonDraft(JSON.stringify(doc, null, 2));
+                          setJsonError(null);
+                        }}
+                        title='Fill with the current canvas document'
+                        className='h-8 border-white/10 bg-black/25 text-xs text-zinc-300 hover:bg-white/8'
+                      >
+                        <FileJson size={13} />
+                      </Button>
+                    </div>
+                  </div>
+                )}
               </motion.div>
             </ScrollArea>
           </aside>
