@@ -1,5 +1,7 @@
 'use client';
 
+import { BookOpen } from 'lucide-react';
+import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { EditorCanvas } from '@/components/editor/EditorCanvas';
 import { EditorInfoPanels, InspectorSidebar } from '@/components/editor/InspectorSidebar';
@@ -67,6 +69,10 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
 
         <div className='flex items-center gap-2'>
           <PlaybackControls runMode={playback.runMode} repeatEnabled={playback.repeatEnabled} stepCount={playback.orderedGroups.length} />
+          <Link href='/help' title='User guide' className='inline-flex h-9 items-center gap-1.5 rounded-md border border-white/10 bg-black/25 px-3 text-xs font-semibold text-zinc-300 transition hover:bg-white/8 dark:bg-input/30 dark:hover:bg-input/50'>
+            <BookOpen size={13} />
+            Help
+          </Link>
           {headerEnd}
         </div>
       </header>
