@@ -176,6 +176,18 @@ export interface FlowEdge {
    *  automatic: spacing-based, so longer lines carry more objects.
    *  Pattern effects (flow, dash, wave…) tile the line and ignore it. */
   effectCount?: number;
+  /** Mark density for the pattern effects (flow, dash, wave…), 0.5×–2×.
+   *  Higher = more, smaller marks per length; 1 (default) keeps the
+   *  classic pattern. Travelling-object effects ignore it (use
+   *  `effectCount` there instead). */
+  effectDensity?: number;
+  /** Neon glow strength around the moving objects, 0–3×. 1 (default)
+   *  is the classic halo; 0 disables the glow entirely. */
+  glowIntensity?: number;
+  /** Animation phase offset as a fraction of one cycle (0–1). Lines
+   *  sharing an effect run in lockstep by default; offsetting phases
+   *  makes parallel connectors read more organically. */
+  phaseOffset?: number;
   /** Animation speed multiplier, from 0.25× to 3×. */
   animationSpeed?: number;
 }

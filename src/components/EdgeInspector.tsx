@@ -106,6 +106,9 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
   const formattedSpeed = speed.toFixed(2).replace(/0+$/, '').replace(/\.$/, '');
   const effectSize = edge.effectSize ?? 1;
   const effectCount = edge.effectCount;
+  const effectDensity = edge.effectDensity ?? 1;
+  const glowIntensity = edge.glowIntensity ?? 1;
+  const phaseOffset = edge.phaseOffset ?? 0;
   // Object count only applies to travelling-object effects; pattern
   // effects (flow, dash, wave…) tile the line and have no object count.
   const previewEffect = draftEffect ?? effect;
@@ -348,7 +351,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
               </div>
               <div className='col-span-3 flex flex-col overflow-y-auto pb-6 pr-8 pl-4'>
                 <div className='flex h-48 shrink-0 items-center justify-center rounded-xl border border-[#28282A] bg-[#09090B]'>
-                  <EffectPreviewLarge effect={previewEffect} direction={direction} color={color} effectColor={edge.effectColor} width={width} effectSize={effectSize} speed={speed} count={effectCount} />
+                  <EffectPreviewLarge effect={previewEffect} direction={direction} color={color} effectColor={edge.effectColor} width={width} effectSize={effectSize} speed={speed} count={effectCount} density={effectDensity} glow={glowIntensity} phase={phaseOffset} />
                 </div>
 
                 <div className='mt-4'>
@@ -405,14 +408,18 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
                 <div className='mt-3'>
                   <span className='flex items-center justify-between text-[10px] text-zinc-500'>
                     <span className='inline-flex items-center gap-1'>
-                      <Hash size={11} /> Objects on line
+                      <Hash size={11} /> {supportsCount ? 'Objects on line' : 'Pattern density'}
                     </span>
-                    {supportsCount && effectCount !== undefined ? (
-                      <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { effectCount: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
-                        <Undo2 /> Auto
-                      </Button>
+                    {supportsCount ? (
+                      effectCount !== undefined ? (
+                        <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { effectCount: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
+                          <Undo2 /> Auto
+                        </Button>
+                      ) : (
+                        <span className='font-mono text-zinc-300'>Auto</span>
+                      )
                     ) : (
-                      <span className='font-mono text-zinc-300'>{supportsCount ? 'Auto' : '—'}</span>
+                      <span className='font-mono text-zinc-300'>{effectDensity.toFixed(1).replace(/\.0$/, '')}×</span>
                     )}
                   </span>
                   {supportsCount ? (
@@ -434,7 +441,21 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
                       </span>
                     </>
                   ) : (
-                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>This effect tiles a repeating pattern along the whole line, so an object count does not apply.</span>
+                    <>
+                      <Slider
+                        min={0.5}
+                        max={2}
+                        step={0.1}
+                        value={effectDensity}
+                        onValueChange={(nextValue) => onUpdate(edge.id, { effectDensity: (nextValue as number) === 1 ? undefined : (nextValue as number) })}
+                        className='mt-2 [&_[data-slot=slider-range]]:bg-emerald-400 [&_[data-slot=slider-thumb]]:border-emerald-300'
+                      />
+                      <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                        <span>Sparse</span>
+                        <span>Dense</span>
+                      </span>
+                      <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>How tightly the repeating pattern packs its marks — the apparent speed stays the same.</span>
+                    </>
                   )}
                 </div>
 
@@ -458,6 +479,50 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
                     <span>3×</span>
                   </span>
                   <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Traveling effects keep a consistent speed across different line lengths.</span>
+                </div>
+
+                <div className='mt-3'>
+                  <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                    <span className='inline-flex items-center gap-1'>
+                      <Sparkles size={11} /> Glow
+                    </span>
+                    <span className='font-mono text-zinc-300'>{glowIntensity === 0 ? 'Off' : `${glowIntensity.toFixed(1).replace(/\.0$/, '')}×`}</span>
+                  </span>
+                  <Slider
+                    min={0}
+                    max={3}
+                    step={0.1}
+                    value={glowIntensity}
+                    onValueChange={(nextValue) => onUpdate(edge.id, { glowIntensity: (nextValue as number) === 1 ? undefined : (nextValue as number) })}
+                    className='mt-2 [&_[data-slot=slider-range]]:bg-amber-400 [&_[data-slot=slider-thumb]]:border-amber-300'
+                  />
+                  <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                    <span>Off</span>
+                    <span>Bright</span>
+                  </span>
+                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Strength of the neon halo around the moving objects. Turn it down on dense diagrams.</span>
+                </div>
+
+                <div className='mt-3'>
+                  <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                    <span className='inline-flex items-center gap-1'>
+                      <Activity size={11} /> Phase offset
+                    </span>
+                    <span className='font-mono text-zinc-300'>{Math.round(phaseOffset * 100)}%</span>
+                  </span>
+                  <Slider
+                    min={0}
+                    max={1}
+                    step={0.05}
+                    value={phaseOffset}
+                    onValueChange={(nextValue) => onUpdate(edge.id, { phaseOffset: (nextValue as number) === 0 ? undefined : (nextValue as number) })}
+                    className='mt-2 [&_[data-slot=slider-range]]:bg-sky-400 [&_[data-slot=slider-thumb]]:border-sky-300'
+                  />
+                  <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                    <span>0%</span>
+                    <span>100%</span>
+                  </span>
+                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Starts this line&apos;s animation partway through its cycle, so parallel lines don&apos;t run in lockstep.</span>
                 </div>
               </div>
             </div>
@@ -657,12 +722,36 @@ const PREVIEW_LENGTH = PREVIEW_POINTS.slice(1).reduce((total, point, index) => {
   return total + Math.hypot(point.x - previous.x, point.y - previous.y);
 }, 0);
 
-function EffectPreviewLarge({ effect, direction, color, effectColor, width, effectSize, speed, count }: { effect: EdgeEffect; direction: EdgeDirection; color: string; effectColor?: string; width: number; effectSize: number; speed: number; count?: number }) {
+function EffectPreviewLarge({
+  effect,
+  direction,
+  color,
+  effectColor,
+  width,
+  effectSize,
+  speed,
+  count,
+  density,
+  glow,
+  phase,
+}: {
+  effect: EdgeEffect;
+  direction: EdgeDirection;
+  color: string;
+  effectColor?: string;
+  width: number;
+  effectSize: number;
+  speed: number;
+  count?: number;
+  density?: number;
+  glow?: number;
+  phase?: number;
+}) {
   return (
     <svg viewBox='0 0 400 180' className='h-auto w-full max-w-96' style={{ color }}>
       <path d={PREVIEW_PATH} stroke='currentColor' strokeWidth={width} strokeOpacity={0.52} fill='none' />
       <g style={effectColor ? { color: effectColor } : undefined}>
-        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} count={count} />
+        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} count={count} density={density} glow={glow} phase={phase} />
       </g>
     </svg>
   );
