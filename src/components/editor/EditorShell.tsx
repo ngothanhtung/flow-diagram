@@ -70,7 +70,7 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
 
         <div className='flex items-center gap-2'>
           <PlaybackControls runMode={playback.runMode} repeatEnabled={playback.repeatEnabled} stepCount={playback.orderedGroups.length} />
-          <Button variant='toolbar' size='lg' render={<Link href='/help' title='User guide' />}>
+          <Button variant='toolbar' size='lg' nativeButton={false} render={<Link href='/help' title='User guide' />}>
             <BookOpen size={13} />
             Help
           </Button>

@@ -338,11 +338,11 @@ export function DiagramsHome() {
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
           </Button>
-          <Button variant='toolbar' render={<Link href='/help' title='User guide' />}>
+          <Button variant='toolbar' nativeButton={false} render={<Link href='/help' title='User guide' />}>
             <BookOpen size={13} />
             Help
           </Button>
-          <Button variant='toolbar' render={<Link href='/guide' title='Diagram authoring guide' />}>
+          <Button variant='toolbar' nativeButton={false} render={<Link href='/guide' title='Diagram authoring guide' />}>
             <BookOpen size={13} />
             Guide
           </Button>
