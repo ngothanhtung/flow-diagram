@@ -360,6 +360,10 @@ export function DiagramsHome() {
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
           </Button>
+          <Link href='/help' title='User guide' className='inline-flex h-9 items-center gap-1.5 rounded-md border border-white/10 bg-black/25 px-3 text-xs font-semibold text-zinc-300 transition hover:bg-white/8'>
+            <BookOpen size={13} />
+            Help
+          </Link>
           <Link href='/guide' title='Diagram authoring guide' className='inline-flex h-9 items-center gap-1.5 rounded-md border border-white/10 bg-black/25 px-3 text-xs font-semibold text-zinc-300 transition hover:bg-white/8'>
             <BookOpen size={13} />
             Guide
