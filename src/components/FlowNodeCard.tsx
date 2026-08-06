@@ -538,14 +538,11 @@ export function FlowNodeCard({
                   boxShadow: performanceMode ? `inset 0 0 12px ${foreground}12` : `inset 0 0 18px ${foreground}16, 0 0 12px ${foreground}20`,
                 }}
               >
-                <span
-                  className='inline-flex'
-                  style={{
-                    filter: performanceMode ? undefined : `drop-shadow(0 0 5px ${foreground}80)`,
-                  }}
-                >
-                  {createElement(Icon, { size: iconSize, className: 'opacity-95' })}
-                </span>
+                {/* No `filter`/`opacity` on anything inside the
+                  foreignObject: Safari paints such elements at document
+                  coords instead of in the SVG, so they vanish from the
+                  card. Alpha goes in the colour instead. */}
+                {createElement(Icon, { size: iconSize })}
               </span>
             )}
             <div
@@ -559,7 +556,7 @@ export function FlowNodeCard({
                 {node.title}
               </div>
               {node.description && (
-                <div className='mt-1 leading-tight opacity-70' style={{ fontSize: Math.max(9, fontSize - 4) }}>
+                <div className='mt-1 leading-tight' style={{ fontSize: Math.max(9, fontSize - 4), color: `${foreground}b3` }}>
                   {node.description}
                 </div>
               )}
