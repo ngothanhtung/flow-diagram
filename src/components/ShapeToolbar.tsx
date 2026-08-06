@@ -17,7 +17,9 @@
 
 import { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Separator } from '@/components/ui/separator';
 import { SHAPES, type NodeShape } from '@/lib/node-style';
 
 // Every shape exposed in the dock. We intentionally show only the
@@ -106,7 +108,8 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           one-click buttons to the right. */}
       <DropdownMenu open={shapeMenuOpen} onOpenChange={setShapeMenuOpen}>
         <DropdownMenuTrigger
-          className='group inline-flex h-9 items-center gap-1 rounded-lg pl-2.5 pr-1.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-300 transition hover:bg-white/8 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
+          render={<Button variant='ghost' />}
+          className='group h-9 gap-1 pl-2.5 pr-1.5 text-zinc-300 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
           aria-label='Choose a shape to draw'
         >
           <ShapeIcon shape={activeShape ?? lastPicked} size={18} />
@@ -118,18 +121,17 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
             {QUICK_SHAPES.map((shape) => {
               const isActive = activeShape === shape.id;
               return (
-                <button
+                <Button
                   key={shape.id}
-                  type='button'
+                  variant='ghost'
                   onClick={() => choose(shape.id)}
-                  className={['flex h-12 w-12 items-center justify-center rounded-lg ring-1 transition', isActive ? 'bg-cyan-400/15 text-cyan-100 ring-cyan-400/40' : 'text-zinc-300 ring-white/8 hover:bg-white/8 hover:text-zinc-100'].join(
-                    ' ',
-                  )}
+                  aria-pressed={isActive}
+                  className={['h-12 w-12 ring-1', isActive ? 'bg-cyan-400/15 text-cyan-100 ring-cyan-400/40' : 'text-zinc-300 ring-white/8'].join(' ')}
                   title={shape.label}
                   aria-label={shape.label}
                 >
                   <ShapeIcon shape={shape.id} size={24} />
-                </button>
+                </Button>
               );
             })}
           </div>
@@ -143,18 +145,18 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
       {QUICK_DRAW_SHAPES.map((shape) => {
         const isActive = activeShape === shape.id;
         return (
-          <button
+          <Button
             key={shape.id}
-            type='button'
+            variant='ghost'
+            size='icon-lg'
             onClick={() => (isActive ? onSelect(null) : choose(shape.id))}
-            className={['flex h-9 w-9 items-center justify-center rounded-lg transition', isActive ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300 hover:bg-white/8 hover:text-zinc-100'].join(
-              ' ',
-            )}
+            aria-pressed={isActive}
+            className={isActive ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}
             title={shape.label}
             aria-label={shape.label}
           >
             <ShapeIcon shape={shape.id} size={18} />
-          </button>
+          </Button>
         );
       })}
     </div>
@@ -176,5 +178,5 @@ function ShapeIcon({ shape, size = 18 }: { shape: NodeShape; size?: number }) {
 }
 
 function Divider() {
-  return <div className='mx-0.5 h-6 w-px bg-white/10' aria-hidden='true' />;
+  return <Separator orientation='vertical' className='self-stretch bg-white/10' />;
 }

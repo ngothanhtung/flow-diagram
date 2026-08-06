@@ -132,6 +132,23 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
         <EdgeMarkerShape marker={endMarker} x={end.x} y={end.y} angle={angle} />
       </g>
 
+      {interactive && (
+        <path
+          d={d}
+          stroke='transparent'
+          strokeWidth={16}
+          fill='none'
+          className='cursor-pointer'
+          onClick={(e) => {
+            e.stopPropagation();
+            onClick?.(edge.id);
+          }}
+          onDoubleClick={onDoubleClick ? (e) => onDoubleClick(edge.id, e) : undefined}
+        />
+      )}
+      {/* Painted after the hit area on purpose: that 16px transparent band
+          runs straight through the chip, so drawing the label first would
+          leave the pointer hitting the line instead of the label. */}
       {edge.label && (
         <g
           transform={`translate(${labelAnchor.x} ${labelAnchor.y})`}
@@ -160,7 +177,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
             textAnchor='middle'
             dominantBaseline='central'
             fill={labelStyle.color}
-            className='font-semibold uppercase tracking-wider'
+            className='font-semibold uppercase tracking-wider select-none'
             style={{ fontSize: labelStyle.fontSize, fontFamily: NODE_FONT_FAMILIES[labelStyle.fontFamily] }}
           >
             {edge.label}
@@ -168,20 +185,6 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
         </g>
       )}
 
-      {interactive && (
-        <path
-          d={d}
-          stroke='transparent'
-          strokeWidth={16}
-          fill='none'
-          className='cursor-pointer'
-          onClick={(e) => {
-            e.stopPropagation();
-            onClick?.(edge.id);
-          }}
-          onDoubleClick={onDoubleClick ? (e) => onDoubleClick(edge.id, e) : undefined}
-        />
-      )}
     </g>
   );
 }

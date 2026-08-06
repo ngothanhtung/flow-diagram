@@ -6,7 +6,9 @@ import type { ConnectionSide, ExecutionState, FlowDocumentJSON, FlowPoint, NodeS
 import { screenToData } from '@/lib/coords';
 import { resolveNodeStyle, SHAPES } from '@/lib/node-style';
 import type { ViewTransform } from '@/lib/view-transform';
+import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Separator } from '@/components/ui/separator';
 import { AnimatedEdge } from './AnimatedEdge';
 import { FlowNodeCard } from './FlowNodeCard';
 import { GhostEdge } from './GhostEdge';
@@ -98,6 +100,17 @@ const GRID_SIZE_OPTIONS = [10, 20, 40, 80] as const;
 const DEFAULT_GRID_SIZE = 40;
 /** Resolution of the pointer→path projection (label sliding, bend insertion). */
 const PATH_SAMPLES = 160;
+
+// Every canvas dock button is the same shadcn `Button`: ghost variant at
+// h-9, with the dock's small uppercase label styling.
+const DOCK_BUTTON = 'h-9 gap-1.5 px-3 text-[9px] font-bold uppercase tracking-[0.14em]';
+const DOCK_ICON_BUTTON = 'h-9 w-9 text-zinc-300 hover:text-cyan-200 disabled:opacity-30';
+
+function DockDivider() {
+  // Full-height rule between button groups, matching the flush dividers
+  // the dock had when they were `border-l` on each button.
+  return <Separator orientation='vertical' className='self-stretch bg-white/10' />;
+}
 
 /** Parameter along the drawn path (0…1) closest to a data-space point. */
 function nearestPathT(geometry: ReturnType<typeof buildEdgeGeometry>, point: { x: number; y: number }): number {
@@ -711,100 +724,87 @@ export function FlowCanvas({
         />
       )}
 
+      {/* Info + zoom + Fit live in the bottom-left corner; the shape dock
+          owns the bottom centre and the grid controls the right corner. */}
       <div
-        className='absolute right-4 bottom-4 z-20 flex items-center overflow-hidden rounded-xl bg-zinc-900/92 p-1 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl'
+        className='absolute bottom-4 left-4 z-20 flex items-center overflow-hidden rounded-xl bg-zinc-900/92 p-1 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl'
         role='group'
-        aria-label='Canvas zoom controls'
+        aria-label='Canvas view controls'
       >
-        <button
-          type='button'
+        <Button
+          variant='ghost'
           onClick={onToggleInfo}
           aria-pressed={infoOpen}
-          className={['inline-flex h-10 items-center gap-1.5 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', infoOpen ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
+          className={[DOCK_BUTTON, infoOpen ? 'text-cyan-200' : 'text-zinc-500'].join(' ')}
           aria-label={`${infoOpen ? 'Hide' : 'Show'} document info`}
           title={`${infoOpen ? 'Hide' : 'Show'} document info`}
         >
           <Info size={13} /> Info
-        </button>
-        <button
-          type='button'
-          onClick={() => zoomAt(1 / ZOOM_BUTTON_FACTOR)}
-          disabled={zoomRatio <= MIN_ZOOM_RATIO + 0.001}
-          className='grid h-10 w-10 place-items-center border-l border-white/8 transition hover:bg-white/8 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-30'
-          aria-label='Zoom out'
-          title='Zoom out'
-        >
+        </Button>
+        <DockDivider />
+        <Button variant='ghost' size='icon-lg' onClick={() => zoomAt(1 / ZOOM_BUTTON_FACTOR)} disabled={zoomRatio <= MIN_ZOOM_RATIO + 0.001} className={DOCK_ICON_BUTTON} aria-label='Zoom out' title='Zoom out'>
           <Minus size={15} />
-        </button>
-        <output className='grid h-10 min-w-14 place-items-center border-x border-white/8 px-2 font-mono text-[10px] font-semibold text-cyan-100' aria-live='polite' aria-label={`Zoom ${Math.round(zoomRatio * 100)} percent`}>
+        </Button>
+        <output className='grid h-9 min-w-14 place-items-center px-2 font-mono text-[10px] font-semibold text-cyan-100' aria-live='polite' aria-label={`Zoom ${Math.round(zoomRatio * 100)} percent`}>
           {Math.round(zoomRatio * 100)}%
         </output>
-        <button
-          type='button'
-          onClick={() => zoomAt(ZOOM_BUTTON_FACTOR)}
-          disabled={zoomRatio >= MAX_ZOOM_RATIO - 0.001}
-          className='grid h-10 w-10 place-items-center transition hover:bg-white/8 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-30'
-          aria-label='Zoom in'
-          title='Zoom in'
-        >
+        <Button variant='ghost' size='icon-lg' onClick={() => zoomAt(ZOOM_BUTTON_FACTOR)} disabled={zoomRatio >= MAX_ZOOM_RATIO - 0.001} className={DOCK_ICON_BUTTON} aria-label='Zoom in' title='Zoom in'>
           <Plus size={15} />
-        </button>
-        <button
-          type='button'
-          onClick={() => setViewOverride(null)}
-          className='inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-500 transition hover:bg-cyan-400/8 hover:text-cyan-200'
-          aria-label='Fit diagram to view'
-          title='Fit diagram to view'
-        >
+        </Button>
+        <DockDivider />
+        <Button variant='ghost' onClick={() => setViewOverride(null)} className={[DOCK_BUTTON, 'text-zinc-500 hover:text-cyan-200'].join(' ')} aria-label='Fit diagram to view' title='Fit diagram to view'>
           <Maximize2 size={13} /> Fit
-        </button>
-        {!readOnly && (
-          <>
-            <button
-              type='button'
-              onClick={() => setSnapEnabled((enabled) => !enabled)}
-              aria-pressed={snapEnabled}
-              className={['inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', snapEnabled ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
-              aria-label={`${snapEnabled ? 'Disable' : 'Enable'} snap to grid`}
-              title={`Snap to ${gridSize}px grid: ${snapEnabled ? 'on' : 'off'}`}
-            >
-              <Magnet size={13} /> Snap
-            </button>
-            <button
-              type='button'
-              onClick={() => setGridVisible((visible) => !visible)}
-              aria-pressed={gridVisible}
-              className={['inline-flex h-10 items-center gap-1.5 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] transition', gridVisible ? 'text-cyan-200' : 'text-zinc-600 hover:bg-white/6 hover:text-zinc-300'].join(' ')}
-              aria-label={`${gridVisible ? 'Hide' : 'Show'} grid`}
-              title={`${gridVisible ? 'Hide' : 'Show'} grid`}
-            >
-              <Grid2x2 size={13} /> Grid
-            </button>
-            <Select
-              value={String(gridSize)}
-              onValueChange={(nextValue) => {
-                const parsed = Number(nextValue);
-                if (!Number.isNaN(parsed)) setGridSize(parsed);
-              }}
-            >
-              <SelectTrigger
-                className='inline-flex h-10 items-center gap-1 border-l border-white/8 px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-white/6 hover:text-cyan-200'
-                aria-label='Grid size'
-                title='Grid size'
-              >
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className='border-white/10 bg-zinc-950'>
-                {GRID_SIZE_OPTIONS.map((size) => (
-                  <SelectItem key={size} value={String(size)}>
-                    {size}px
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </>
-        )}
+        </Button>
       </div>
+
+      {!readOnly && (
+        <div
+          className='absolute right-4 bottom-4 z-20 flex items-center overflow-hidden rounded-xl bg-zinc-900/92 p-1 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl'
+          role='group'
+          aria-label='Canvas grid controls'
+        >
+          <Button
+            variant='ghost'
+            onClick={() => setSnapEnabled((enabled) => !enabled)}
+            aria-pressed={snapEnabled}
+            className={[DOCK_BUTTON, snapEnabled ? 'text-cyan-200' : 'text-zinc-500'].join(' ')}
+            aria-label={`${snapEnabled ? 'Disable' : 'Enable'} snap to grid`}
+            title={`Snap to ${gridSize}px grid: ${snapEnabled ? 'on' : 'off'}`}
+          >
+            <Magnet size={13} /> Snap
+          </Button>
+          <DockDivider />
+          <Button
+            variant='ghost'
+            onClick={() => setGridVisible((visible) => !visible)}
+            aria-pressed={gridVisible}
+            className={[DOCK_BUTTON, gridVisible ? 'text-cyan-200' : 'text-zinc-500'].join(' ')}
+            aria-label={`${gridVisible ? 'Hide' : 'Show'} grid`}
+            title={`${gridVisible ? 'Hide' : 'Show'} grid`}
+          >
+            <Grid2x2 size={13} /> Grid
+          </Button>
+          <DockDivider />
+          <Select
+            value={String(gridSize)}
+            onValueChange={(nextValue) => {
+              const parsed = Number(nextValue);
+              if (!Number.isNaN(parsed)) setGridSize(parsed);
+            }}
+          >
+            <SelectTrigger className='inline-flex h-9 items-center gap-1 rounded-lg border-transparent bg-transparent px-2.5 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-muted/50 hover:text-cyan-200' aria-label='Grid size' title='Grid size'>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className='border-white/10 bg-zinc-950'>
+              {GRID_SIZE_OPTIONS.map((size) => (
+                <SelectItem key={size} value={String(size)}>
+                  {size}px
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      )}
 
       <svg
         ref={svgRef}
