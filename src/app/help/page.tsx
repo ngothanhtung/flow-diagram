@@ -103,7 +103,7 @@ export default function HelpPage() {
           </li>
           <li>
             <strong>Connector inspector:</strong> label, animated effect (comet, dots, pulse, wave, scanner, binary and a dozen more), routing style (straight, curved, orthogonal,
-            smooth-step), direction (forward / reverse / both), start and end markers (arrowheads), line width, effect object size and animation speed — plus <strong>Delete</strong>.
+            smooth-step), direction (forward / reverse / both), start and end markers (arrowheads), line width, effect object size, the number of objects travelling the line, and animation speed — plus <strong>Delete</strong>.
           </li>
         </ul>
         <p>

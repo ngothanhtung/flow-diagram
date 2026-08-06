@@ -1,9 +1,9 @@
 'use client';
 
-import { Activity, ArrowLeft, ArrowLeftRight, ArrowRight, CircleDot, Diamond, Gauge, GitCompareArrows, Minus, Palette, Radio, Route, ScanLine, Sparkles, Trash2, Triangle, Undo2, Waves, X, Zap, type LucideIcon } from 'lucide-react';
+import { Activity, ArrowLeft, ArrowLeftRight, ArrowRight, CircleDot, Diamond, Gauge, GitCompareArrows, Hash, Minus, Palette, Radio, Route, ScanLine, Sparkles, Trash2, Triangle, Undo2, Waves, X, Zap, type LucideIcon } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
-import { EdgeEffectLayer } from './edge-effect-layer';
+import { EdgeEffectLayer, TRAVEL_VELOCITY } from './edge-effect-layer';
 import { EdgeMarkerSymbol } from './edge-marker';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -105,6 +105,11 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
   const speed = edge.animationSpeed ?? 1;
   const formattedSpeed = speed.toFixed(2).replace(/0+$/, '').replace(/\.$/, '');
   const effectSize = edge.effectSize ?? 1;
+  const effectCount = edge.effectCount;
+  // Object count only applies to travelling-object effects; pattern
+  // effects (flow, dash, wave…) tile the line and have no object count.
+  const previewEffect = draftEffect ?? effect;
+  const supportsCount = previewEffect in TRAVEL_VELOCITY;
   const labelStyle = resolveEdgeLabelStyle(edge);
   const selectedEffect = EFFECTS.find((item) => item.value === effect) ?? EFFECTS[0];
   const SelectedEffectIcon = selectedEffect.Icon;
@@ -343,7 +348,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
               </div>
               <div className='col-span-3 flex flex-col overflow-y-auto pb-6 pr-8 pl-4'>
                 <div className='flex h-48 shrink-0 items-center justify-center rounded-xl border border-[#28282A] bg-[#09090B]'>
-                  <EffectPreviewLarge effect={draftEffect ?? effect} direction={direction} color={color} effectColor={edge.effectColor} width={width} effectSize={effectSize} speed={speed} />
+                  <EffectPreviewLarge effect={previewEffect} direction={direction} color={color} effectColor={edge.effectColor} width={width} effectSize={effectSize} speed={speed} count={effectCount} />
                 </div>
 
                 <div className='mt-4'>
@@ -394,7 +399,43 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
                     <span>Small</span>
                     <span>Large</span>
                   </span>
-                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Object count adapts automatically to the routed line length.</span>
+                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>How large each moving object renders, relative to the line width.</span>
+                </div>
+
+                <div className='mt-3'>
+                  <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                    <span className='inline-flex items-center gap-1'>
+                      <Hash size={11} /> Objects on line
+                    </span>
+                    {supportsCount && effectCount !== undefined ? (
+                      <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { effectCount: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
+                        <Undo2 /> Auto
+                      </Button>
+                    ) : (
+                      <span className='font-mono text-zinc-300'>{supportsCount ? 'Auto' : '—'}</span>
+                    )}
+                  </span>
+                  {supportsCount ? (
+                    <>
+                      <Slider
+                        min={1}
+                        max={8}
+                        step={1}
+                        value={effectCount ?? 3}
+                        onValueChange={(nextValue) => onUpdate(edge.id, { effectCount: nextValue as number })}
+                        className='mt-2 [&_[data-slot=slider-range]]:bg-emerald-400 [&_[data-slot=slider-thumb]]:border-emerald-300'
+                      />
+                      <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                        <span>1</span>
+                        <span>8</span>
+                      </span>
+                      <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>
+                        {effectCount !== undefined ? `Exactly ${effectCount} object${effectCount > 1 ? 's' : ''} evenly spaced along the line.` : 'Auto — spacing-based, longer lines carry more objects. Drag to pin an exact count.'}
+                      </span>
+                    </>
+                  ) : (
+                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>This effect tiles a repeating pattern along the whole line, so an object count does not apply.</span>
+                  )}
                 </div>
 
                 <div className='mt-3'>
@@ -616,12 +657,12 @@ const PREVIEW_LENGTH = PREVIEW_POINTS.slice(1).reduce((total, point, index) => {
   return total + Math.hypot(point.x - previous.x, point.y - previous.y);
 }, 0);
 
-function EffectPreviewLarge({ effect, direction, color, effectColor, width, effectSize, speed }: { effect: EdgeEffect; direction: EdgeDirection; color: string; effectColor?: string; width: number; effectSize: number; speed: number }) {
+function EffectPreviewLarge({ effect, direction, color, effectColor, width, effectSize, speed, count }: { effect: EdgeEffect; direction: EdgeDirection; color: string; effectColor?: string; width: number; effectSize: number; speed: number; count?: number }) {
   return (
     <svg viewBox='0 0 400 180' className='h-auto w-full max-w-96' style={{ color }}>
       <path d={PREVIEW_PATH} stroke='currentColor' strokeWidth={width} strokeOpacity={0.52} fill='none' />
       <g style={effectColor ? { color: effectColor } : undefined}>
-        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} />
+        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} count={count} />
       </g>
     </svg>
   );

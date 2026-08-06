@@ -104,7 +104,7 @@ export default function HelpViPage() {
           </li>
           <li>
             <strong>Bảng thuộc tính đường nối:</strong> nhãn, hiệu ứng động (comet, dots, pulse, wave, scanner, binary và hơn chục kiểu khác), kiểu đi dây (thẳng, cong, vuông góc,
-            smooth-step), chiều chạy (xuôi / ngược / cả hai), mũi tên hai đầu, độ dày nét, cỡ vật thể hiệu ứng và tốc độ chuyển động — cùng nút <strong>Delete</strong>.
+            smooth-step), chiều chạy (xuôi / ngược / cả hai), mũi tên hai đầu, độ dày nét, cỡ vật thể hiệu ứng, số lượng vật thể chạy trên đường nối và tốc độ chuyển động — cùng nút <strong>Delete</strong>.
           </li>
         </ul>
         <p>

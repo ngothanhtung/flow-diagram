@@ -164,6 +164,7 @@ export default function GuidePage() {
                 ['direction', 'forward · reverse · both', 'Defaults to forward. `both` animates the effect in both directions without changing logical from/to.'],
                 ['startMarker / endMarker', 'none · arrow · open-arrow · triangle · circle · diamond · tee · cross · circle-cross · arrow-both · arrow-bar · bar', 'Arrowheads at each end, independently configurable.'],
                 ['width / effectSize / animationSpeed', 'number', 'Line width, animated-object scale multiplier, and playback speed (0.25×–3×). Keep these consistent across a diagram — see §5.'],
+                ['effectCount', '1 – 8', 'Exact number of objects travelling the line for the travelling-object effects (pulse, comet, dots, laser…). Omit for automatic spacing (longer lines carry more objects). Pattern effects (flow, dash, wave…) tile the line and ignore it.'],
               ]}
             />
           </Section>

@@ -42,6 +42,11 @@ interface EdgeEffectLayerProps {
   lineWidth: number;
   effectSize: number;
   speed: number;
+  /** Exact number of objects travelling the line (1–8). Undefined keeps
+   *  the automatic spacing (one object per 100px of route). Only the
+   *  travelling-object effects listed in TRAVEL_VELOCITY honour it —
+   *  pattern effects tile the whole line and have no object count. */
+  count?: number;
   paused?: boolean;
   /** Keep motion but remove expensive blur layers on dense diagrams. */
   performanceMode?: boolean;
@@ -73,7 +78,7 @@ export function EdgeEffectLayer(props: EdgeEffectLayerProps) {
   return <EdgeEffectLayerSingle {...props} />;
 }
 
-function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, effectSize, speed, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
+function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, effectSize, speed, count, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
   // Every effect's traveling object — including backdrop/track layers and
   // secondary passes — is sized as the same fixed multiple of the line's
   // own width, scaled by the `effectSize` slider (0.5x-3x, default 1x). At
@@ -88,7 +93,11 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   // a fixed dash period. The `edge-travel` keyframes shift exactly one
   // period per loop (seamless), and duration = period / velocity keeps
   // the px-per-second speed constant across short and long connectors.
-  const PERIOD = 100;
+  // With an explicit `count`, the dash period becomes length/count so
+  // exactly N objects ride the route, evenly spaced, whatever its length.
+  // Without it, the classic fixed 100px period applies (auto spacing).
+  const objectCount = count !== undefined && length > 0 ? Math.max(1, Math.min(8, Math.round(count))) : undefined;
+  const PERIOD = objectCount ? Math.max(4, length / objectCount) : 100;
   const objectLength = (base: number) => Math.max(0.5, Math.min(PERIOD - 0.5, base * effectSize));
   const objectDash = (len: number) => `${len} ${Math.max(0.5, PERIOD - len)}`;
   const pulseDash = objectDash(objectLength(16));
@@ -102,7 +111,9 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   // variable, keeping the loop seamless and the px-per-second speed constant.
   const LASER_PERIOD = 200;
   const laserLength = Math.max(1, Math.min(LASER_PERIOD - 4, 130 * effectSize));
-  const laserPeriod = Math.max(LASER_PERIOD, Math.ceil(length));
+  // With an explicit count, N beams share the route; otherwise one beam
+  // spans the whole path as before.
+  const laserPeriod = objectCount ? Math.max(laserLength + 4, Math.ceil(length / objectCount)) : Math.max(LASER_PERIOD, Math.ceil(length));
   const laserDash = `${laserLength} ${Math.max(0.5, laserPeriod - laserLength)}`;
   const meteorDash = objectDash(objectLength(2));
   const fadeDash = objectDash(objectLength(55));
@@ -130,17 +141,23 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
     animationFillMode: isDrawing ? 'backwards' : undefined,
     filter: neonFilter,
   } as const;
+  // Travelling effects shift exactly one dash period per loop. The fixed
+  // 100px period maps to the classic `edge-travel` keyframes; a custom
+  // period (explicit object count) rides `edge-travel-long`, which reads
+  // the period from the `--edge-period` CSS variable instead.
+  const travelClass = objectCount ? 'animate-[edge-travel-long_1.2s_linear_infinite]' : 'animate-[edge-travel_1.2s_linear_infinite]';
+  const travelStyle = (objectCount ? { ...animationStyle, '--edge-period': `-${PERIOD}px` } : animationStyle) as React.CSSProperties;
 
   return (
     <>
       {effect === 'flow' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray='8 12' className='animate-[edge-dash_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'dash' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray='6 7' className='animate-[edge-packet-stream_1.2s_linear_infinite]' style={animationStyle} />}
-      {effect === 'pulse' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={pulseDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
-      {effect === 'glow' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={glowDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
-      {effect === 'comet' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={cometDash} className='animate-[edge-travel_.9s_linear_infinite]' style={animationStyle} />}
-      {effect === 'dots' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={dotDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
+      {effect === 'pulse' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={pulseDash} className={travelClass} style={travelStyle} />}
+      {effect === 'glow' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={glowDash} className={travelClass} style={travelStyle} />}
+      {effect === 'comet' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={cometDash} className={travelClass} style={travelStyle} />}
+      {effect === 'dots' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={dotDash} className={travelClass} style={travelStyle} />}
       {effect === 'wave' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray='10 6 2 6' className='animate-[edge-wave_1.2s_linear_infinite]' style={animationStyle} />}
-      {effect === 'scanner' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={scannerDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
+      {effect === 'scanner' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={scannerDash} className={travelClass} style={travelStyle} />}
       {effect === 'traffic' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray='4 6 1 6' className='animate-[edge-traffic_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'laser' && (
         <path
@@ -154,8 +171,8 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
           style={{ ...animationStyle, '--edge-period': `-${laserPeriod}px` } as React.CSSProperties}
         />
       )}
-      {effect === 'meteor' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={meteorDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
-      {effect === 'spark' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={dotDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />}
+      {effect === 'meteor' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={meteorDash} className={travelClass} style={travelStyle} />}
+      {effect === 'spark' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={dotDash} className={travelClass} style={travelStyle} />}
       {effect === 'marching' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='square' fill='none' strokeDasharray='14 5' className='animate-[edge-dash_1.2s_linear_infinite]' style={animationStyle} />}
       {effect === 'binary' && (
         <>
@@ -186,10 +203,10 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
           <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='butt' fill='none' strokeDasharray='3 5' className='animate-[edge-packet-stream_1.2s_linear_infinite]' style={animationStyle} />
         </>
       )}
-      {effect === 'fade' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={fadeDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={{ ...animationStyle, opacity: 0.78 }} />}
+      {effect === 'fade' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={fadeDash} className={travelClass} style={{ ...travelStyle, opacity: 0.78 }} />}
       {effect === 'bidirectional' && (
         <>
-          <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={bidirectionalDash} className='animate-[edge-travel_1.2s_linear_infinite]' style={animationStyle} />
+          <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={bidirectionalDash} className={travelClass} style={travelStyle} />
           <path
             d={d}
             stroke='currentColor'
@@ -197,9 +214,9 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
             strokeLinecap='round'
             fill='none'
             strokeDasharray={bidirectionalDash}
-            className='animate-[edge-travel_1.2s_linear_infinite]'
+            className={travelClass}
             style={{
-              ...animationStyle,
+              ...travelStyle,
               // Mirrors the first path exactly — same duration, same delay,
               // only the direction flips — so the two objects start at
               // opposite ends, cross in the middle, and arrive together.

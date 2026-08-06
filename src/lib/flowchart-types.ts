@@ -171,6 +171,11 @@ export interface FlowEdge {
   width?: number;
   /** Scale multiplier for animated packets/pulses, independent of line width. */
   effectSize?: number;
+  /** Number of objects travelling the line at once (1–8) for the
+   *  travelling-object effects (pulse, comet, dots, laser…). Unset =
+   *  automatic: spacing-based, so longer lines carry more objects.
+   *  Pattern effects (flow, dash, wave…) tile the line and ignore it. */
+  effectCount?: number;
   /** Animation speed multiplier, from 0.25× to 3×. */
   animationSpeed?: number;
 }
