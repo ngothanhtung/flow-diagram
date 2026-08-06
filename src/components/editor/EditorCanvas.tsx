@@ -1,0 +1,80 @@
+'use client';
+
+import { FlowCanvas } from '@/components/FlowCanvas';
+import { ShapeToolbar } from '@/components/ShapeToolbar';
+import { useEditorStore } from '@/lib/editor-store';
+import type { ExecutionState, FlowDocumentJSON } from '@/lib/flowchart-types';
+
+interface EditorCanvasProps {
+  document: FlowDocumentJSON;
+  activeNodeIds: string[];
+  runningEdgeIds: string[] | null;
+  nodeExecutionStates: Record<string, ExecutionState> | undefined;
+  edgeExecutionStates: Record<string, ExecutionState>;
+}
+
+/**
+ * Canvas + shape dock, wired to the editor store. Every editing surface
+ * (diagram editor, template editor) mounts this instead of repeating the
+ * ~40 props `FlowCanvas` needs, so a change to canvas behaviour lands in
+ * both places at once.
+ */
+export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExecutionStates, edgeExecutionStates }: EditorCanvasProps) {
+  const seed = useEditorStore((state) => state.seed);
+  const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
+  const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
+  const draggingNodeId = useEditorStore((state) => state.draggingNodeId);
+  const linkingFromId = useEditorStore((state) => state.linkingFromId);
+  const activeShape = useEditorStore((state) => state.activeShape);
+  const infoOpen = useEditorStore((state) => state.infoOpen);
+
+  const { selectNode, selectEdge, setDraggingNodeId, setLinkingFromId, setActiveShape, toggleInfo, onNodeMove, onNodeUpdate, onConnect, onShapeCreate, onEdgeUpdate, onEdgeReconnect } = useEditorStore();
+
+  return (
+    <section className='relative h-full min-h-0 overflow-hidden bg-zinc-950'>
+      <FlowCanvas
+        key={seed}
+        document={document}
+        infoOpen={infoOpen}
+        onToggleInfo={toggleInfo}
+        activeNodeIds={activeNodeIds}
+        runningEdgeIds={runningEdgeIds}
+        nodeExecutionStates={nodeExecutionStates}
+        edgeExecutionStates={edgeExecutionStates}
+        selectedNodeId={selectedNodeId}
+        onSelectNode={selectNode}
+        onNodeMove={onNodeMove}
+        onNodeResize={onNodeUpdate}
+        onNodeDragStart={(id) => setDraggingNodeId(id)}
+        onNodeDragEnd={() => setDraggingNodeId(null)}
+        onConnect={onConnect}
+        isDragging={draggingNodeId !== null}
+        linkingFromId={linkingFromId}
+        onLinkStart={(id) => setLinkingFromId(id)}
+        onLinkMove={() => {
+          /* canvas-side effect already updates the ghost via internal state */
+        }}
+        onLinkEnd={(toId) => {
+          if (linkingFromId && toId && linkingFromId !== toId) {
+            onConnect(linkingFromId, toId);
+          }
+          setLinkingFromId(null);
+        }}
+        selectedEdgeId={selectedEdgeId}
+        onEdgeReconnect={onEdgeReconnect}
+        onEdgeUpdate={onEdgeUpdate}
+        onSelectEdge={selectEdge}
+        activeShape={activeShape}
+        onShapeDrawn={(shape, position, width, height) => {
+          const newId = onShapeCreate(shape, position, width, height);
+          if (newId) selectNode(newId);
+          // Figma-style: the tool disarms after each draw so a single
+          // click doesn't accidentally produce a flood of shapes. The
+          // user re-arms via the toolbar.
+          setActiveShape(null);
+        }}
+      />
+      <ShapeToolbar activeShape={activeShape} onSelect={setActiveShape} />
+    </section>
+  );
+}

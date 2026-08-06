@@ -1,6 +1,6 @@
 'use client';
 
-import { AlignCenter, AlignLeft, AlignRight, ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Copy, PanelLeft, PanelTop, RotateCcw, Trash2, type LucideIcon } from 'lucide-react';
+import { AlignCenter, AlignHorizontalJustifyCenter, AlignHorizontalJustifyEnd, AlignHorizontalJustifyStart, AlignLeft, AlignRight, ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Copy, PanelLeft, PanelRight, PanelTop, RotateCcw, Trash2, type LucideIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -219,16 +219,6 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, onClose }
           </Select>
         </div>
       </div>
-      <SegmentedButtons
-        label='Alignment'
-        value={style.textAlign}
-        options={[
-          { value: 'left', label: 'Left', Icon: AlignLeft },
-          { value: 'center', label: 'Center', Icon: AlignCenter },
-          { value: 'right', label: 'Right', Icon: AlignRight },
-        ]}
-        onChange={(textAlign) => onUpdate(node.id, { textAlign })}
-      />
 
       {/* --- Shape ------------------------------------------------- */}
       <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>Shape</label>
@@ -305,20 +295,41 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, onClose }
       {/* --- Icon -------------------------------------------------- */}
       <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>Icon</label>
       <IconPicker value={currentIcon} onChange={(icon) => onUpdate(node.id, { icon })} />
+      {currentIcon !== null && <RangeField label='Icon size' value={style.iconSize} min={12} max={48} suffix='px' onChange={(iconSize) => onUpdate(node.id, { iconSize })} />}
+
+      <SectionLabel>Alignment</SectionLabel>
       {currentIcon !== null && (
-        <>
-          <RangeField label='Icon size' value={style.iconSize} min={12} max={48} suffix='px' onChange={(iconSize) => onUpdate(node.id, { iconSize })} />
-          <SegmentedButtons
-            label='Icon position'
-            value={style.iconPosition}
-            options={[
-              { value: 'top', label: 'Top', Icon: PanelTop },
-              { value: 'left', label: 'Left', Icon: PanelLeft },
-            ]}
-            onChange={(iconPosition) => onUpdate(node.id, { iconPosition })}
-          />
-        </>
+        <SegmentedButtons
+          label='Icon'
+          value={style.iconPosition}
+          options={[
+            { value: 'top', label: 'Top', Icon: PanelTop },
+            { value: 'left', label: 'Left', Icon: PanelLeft },
+            { value: 'right', label: 'Right', Icon: PanelRight },
+          ]}
+          onChange={(iconPosition) => onUpdate(node.id, { iconPosition })}
+        />
       )}
+      <SegmentedButtons
+        label='Block'
+        value={style.blockAlign}
+        options={[
+          { value: 'left', label: 'Left', Icon: AlignHorizontalJustifyStart },
+          { value: 'center', label: 'Center', Icon: AlignHorizontalJustifyCenter },
+          { value: 'right', label: 'Right', Icon: AlignHorizontalJustifyEnd },
+        ]}
+        onChange={(blockAlign) => onUpdate(node.id, { blockAlign })}
+      />
+      <SegmentedButtons
+        label='Text'
+        value={style.textAlign}
+        options={[
+          { value: 'left', label: 'Left', Icon: AlignLeft },
+          { value: 'center', label: 'Center', Icon: AlignCenter },
+          { value: 'right', label: 'Right', Icon: AlignRight },
+        ]}
+        onChange={(textAlign) => onUpdate(node.id, { textAlign })}
+      />
 
       <SectionLabel>Actions</SectionLabel>
       <div className='mt-1.5 grid grid-cols-3 gap-2'>
@@ -345,6 +356,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, onClose }
               icon: undefined,
               iconSize: undefined,
               iconPosition: undefined,
+              blockAlign: undefined,
               fontSize: undefined,
               fontFamily: undefined,
               fontWeight: undefined,

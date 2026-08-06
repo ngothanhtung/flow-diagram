@@ -391,10 +391,9 @@ export const useEditorStore = create<EditorState>((set, get) => ({
 
   /**
    * Drop a free-floating shape node (Figma-style). The shape is the
-   * `node.shape` field, no icon is added so the block reads as a
-   * neutral diagram primitive rather than a flowchart step. Inspector
-   * still allows the user to add a title, icon, or change the type
-   * afterwards.
+   * `node.shape` field. The block starts with placeholder title, sub
+   * title and icon so it reads as a real card straight away; the
+   * inspector edits all three afterwards.
    */
   onShapeCreate: (shape, position, width, height) => {
     const { doc } = get();
@@ -413,19 +412,22 @@ export const useEditorStore = create<EditorState>((set, get) => ({
           {
             id,
             type: 'process',
-            title: '',
-            description: '',
+            title: 'Title',
+            description: 'Sub Title',
             position,
             sortOrder: Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1)) + 1,
             shape,
             width: w,
             height: h,
-            icon: null,
+            // Export name as the icon picker stores it — lucide-react's
+            // `Settings` alias dedupes to `LucideSettings`.
+            icon: 'lucide:LucideSettings',
             iconPosition: 'left',
             iconSize: 18,
             fontSize: 13,
             fontWeight: 'medium',
-            textAlign: 'center',
+            blockAlign: 'left',
+            textAlign: 'left',
             color: paint.color,
             backgroundColor: paint.backgroundColor,
             borderColor: paint.color,

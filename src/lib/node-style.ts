@@ -710,7 +710,8 @@ export interface ResolvedNodeStyle {
   opacity: number;
   shadow: 'none' | 'soft' | 'glow';
   iconSize: number;
-  iconPosition: 'top' | 'left';
+  iconPosition: 'top' | 'left' | 'right';
+  blockAlign: 'left' | 'center' | 'right';
   fontSize: number;
   fontFamily: NonNullable<FlowNode['fontFamily']>;
   fontWeight: 'normal' | 'medium' | 'semibold' | 'bold';
@@ -750,10 +751,12 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     shadow: node.shadow ?? 'none',
     iconSize: Math.max(12, Math.min(48, node.iconSize ?? 20)),
     iconPosition: node.iconPosition ?? 'top',
+    blockAlign: node.blockAlign ?? 'center',
     fontFamily: node.fontFamily ?? 'geist-mono',
     fontSize: Math.max(10, Math.min(28, node.fontSize ?? 14)),
     fontWeight: node.fontWeight ?? 'semibold',
-    textAlign: node.textAlign ?? 'center',
+    // `justify` existed briefly and may sit in a saved document.
+    textAlign: node.textAlign === 'left' || node.textAlign === 'right' ? node.textAlign : 'center',
     portSize: Math.max(4, Math.min(14, node.portSize ?? 9)),
     bodyClass,
   };

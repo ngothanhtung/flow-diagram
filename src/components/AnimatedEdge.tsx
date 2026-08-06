@@ -2,6 +2,8 @@
 
 import type { EdgeMarker, ExecutionState, FlowEdge, FlowNode } from '@/lib/flowchart-types';
 import { EDGE_DRAW_DURATION_MS } from '@/lib/execution-timing';
+import { edgeLabelBox, resolveEdgeLabelStyle } from '@/lib/edge-label-style';
+import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
 import { buildEdgeGeometry, pointAlongEdgeGeometry } from './edge-geometry';
 import { EdgeEffectLayer } from './edge-effect-layer';
 import { EdgeMarkerSymbol } from './edge-marker';
@@ -15,6 +17,11 @@ interface AnimatedEdgeProps {
   /** When true, render a hit area over the edge to receive pointer events for deletion. */
   interactive?: boolean;
   onClick?: (edgeId: string) => void;
+  /** Starts a drag that slides the label along the line. Editor only —
+   *  the canvas owns the pointer maths and writes `labelOffset`. */
+  onLabelPointerDown?: (edgeId: string, event: React.PointerEvent<SVGGElement>) => void;
+  /** Double-click on the line body — the canvas turns it into a bend point. */
+  onDoubleClick?: (edgeId: string, event: React.MouseEvent<SVGPathElement>) => void;
   selected?: boolean;
   /** Tailwind text-colour class (e.g. "text-sky-300") used for the
    *  line + arrowhead via `currentColor`. Falls back to text-sky-300. */
@@ -29,7 +36,7 @@ interface AnimatedEdgeProps {
   executionState?: ExecutionState;
 }
 
-export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal' }: AnimatedEdgeProps) {
+export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, onLabelPointerDown, onDoubleClick, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal' }: AnimatedEdgeProps) {
   const geometry = buildEdgeGeometry(edge, from, to);
   const { d, start, end, startAngle, angle, length } = geometry;
   const effect = edge.effect ?? 'flow';
@@ -49,7 +56,9 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
         animationPlayState: paused ? 'paused' : 'running',
       } as React.CSSProperties)
     : undefined;
-  const labelWidth = edge.label ? Math.max(44, Math.min(180, edge.label.length * 7 + 24)) : 44;
+  const labelStyle = resolveEdgeLabelStyle(edge);
+  const labelBox = edgeLabelBox(edge.label ?? '', labelStyle);
+  const labelWidth = labelBox.width;
   // Where the label pill anchors — sampled on the drawn path itself
   // (not the endpoint chord, which diverges on bent routes). Which
   // options travel along vs. across the line follows the local segment
@@ -62,8 +71,9 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   const startSample = pointAlongEdgeGeometry(geometry, 0.25);
   const endSample = pointAlongEdgeGeometry(geometry, 0.75);
   const sideOffset = labelWidth / 2 + 10;
-  const labelAnchor =
-    labelPosition === 'left'
+  const labelAnchor = edge.labelOffset !== undefined
+    ? pointAlongEdgeGeometry(geometry, Math.max(0, Math.min(1, edge.labelOffset))).point
+    : labelPosition === 'left'
       ? horizontalAtMid
         ? startSample.point
         : { x: midSample.point.x - sideOffset, y: midSample.point.y }
@@ -126,8 +136,16 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
         <g
           transform={`translate(${labelAnchor.x} ${labelAnchor.y})`}
           pointerEvents={interactive ? 'auto' : 'none'}
-          className={isDrawing ? 'edge-after-draw' : interactive ? 'cursor-pointer' : undefined}
+          className={isDrawing ? 'edge-after-draw' : interactive ? (onLabelPointerDown ? 'cursor-move' : 'cursor-pointer') : undefined}
           style={drawStyle}
+          onPointerDown={
+            interactive && onLabelPointerDown
+              ? (e) => {
+                  e.stopPropagation();
+                  onLabelPointerDown(edge.id, e);
+                }
+              : undefined
+          }
           onClick={
             interactive
               ? (e) => {
@@ -137,8 +155,14 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
               : undefined
           }
         >
-          <rect x={-labelWidth / 2} y={-12} width={labelWidth} height={24} rx={12} className='fill-zinc-900 dark:fill-zinc-100' />
-          <text textAnchor='middle' dominantBaseline='central' className='fill-white dark:fill-zinc-900 text-[11px] font-semibold uppercase tracking-wider'>
+          <path d={labelBox.path} fill={labelStyle.background} />
+          <text
+            textAnchor='middle'
+            dominantBaseline='central'
+            fill={labelStyle.color}
+            className='font-semibold uppercase tracking-wider'
+            style={{ fontSize: labelStyle.fontSize, fontFamily: NODE_FONT_FAMILIES[labelStyle.fontFamily] }}
+          >
             {edge.label}
           </text>
         </g>
@@ -155,6 +179,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
             e.stopPropagation();
             onClick?.(edge.id);
           }}
+          onDoubleClick={onDoubleClick ? (e) => onDoubleClick(edge.id, e) : undefined}
         />
       )}
     </g>

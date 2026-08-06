@@ -93,7 +93,9 @@ export interface FlowNode {
   /** Explicit null hides the icon; undefined uses the type default. */
   icon?: NodeIcon | null;
   iconSize?: number;
-  iconPosition?: 'top' | 'left';
+  iconPosition?: 'top' | 'left' | 'right';
+  /** Flex placement of the whole icon + text cluster inside the card. */
+  blockAlign?: 'left' | 'center' | 'right';
   /** Self-hosted font with full Vietnamese glyph coverage. */
   fontFamily?: NodeFont;
   fontSize?: number;
@@ -123,6 +125,8 @@ export type EdgeDirection = 'forward' | 'reverse' | 'both';
 export type EdgeRouting = 'straight' | 'smooth-step' | 'orthogonal' | 'curved';
 /** Where the label pill sits along the line. */
 export type EdgeLabelPosition = 'center' | 'left' | 'right' | 'top' | 'bottom';
+/** Silhouette drawn behind the label text. */
+export type EdgeLabelShape = 'pill' | 'hexagon' | 'rectangle';
 export interface FlowPoint {
   x: number;
   y: number;
@@ -139,6 +143,16 @@ export interface FlowEdge {
   label?: string;
   /** Placement of the label along the line. Defaults to "center". */
   labelPosition?: EdgeLabelPosition;
+  /** Free position along the drawn path, 0 = start … 1 = end. Set by
+   *  dragging the label; overrides `labelPosition` while present. */
+  labelOffset?: number;
+  /** Label styling. All optional — unset falls back to the dark pill
+   *  the editor has always drawn (see `resolveEdgeLabelStyle`). */
+  labelShape?: EdgeLabelShape;
+  labelColor?: `#${string}`;
+  labelBackground?: `#${string}`;
+  labelFontSize?: number;
+  labelFontFamily?: NodeFont;
   effect?: EdgeEffect;
   /** Animation direction without changing the logical source/target. */
   direction?: EdgeDirection;

@@ -13,7 +13,9 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeMarker, EdgeRouting, FlowEdge } from '@/lib/flowchart-types';
+import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeRouting, FlowEdge, NodeFont } from '@/lib/flowchart-types';
+import { EDGE_LABEL_BACKGROUNDS, EDGE_LABEL_COLORS, EDGE_LABEL_FONT_SIZE_MAX, EDGE_LABEL_FONT_SIZE_MIN, EDGE_LABEL_SHAPES, resolveEdgeLabelStyle } from '@/lib/edge-label-style';
+import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 interface EdgeInspectorProps {
   edge: FlowEdge;
@@ -103,6 +105,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
   const speed = edge.animationSpeed ?? 1;
   const formattedSpeed = speed.toFixed(2).replace(/0+$/, '').replace(/\.$/, '');
   const effectSize = edge.effectSize ?? 1;
+  const labelStyle = resolveEdgeLabelStyle(edge);
   const selectedEffect = EFFECTS.find((item) => item.value === effect) ?? EFFECTS[0];
   const SelectedEffectIcon = selectedEffect.Icon;
 
@@ -144,7 +147,9 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
         <Select
           value={edge.labelPosition ?? 'center'}
           onValueChange={(nextValue) => {
-            if (nextValue) onUpdate(edge.id, { labelPosition: nextValue as EdgeLabelPosition });
+            // Picking a preset drops the hand-dragged offset, otherwise the
+            // preset would look like it does nothing.
+            if (nextValue) onUpdate(edge.id, { labelPosition: nextValue as EdgeLabelPosition, labelOffset: undefined });
           }}
         >
           <SelectTrigger id='edge-label-position' className='mt-1.5 h-9 w-full border-white/10 bg-white/5 px-3 text-left hover:bg-white/8 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
@@ -161,6 +166,84 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
             </SelectGroup>
           </SelectContent>
         </Select>
+
+        <div className='mt-3 grid grid-cols-2 gap-2'>
+          <div>
+            <Label className='mb-1 block text-[9px] text-zinc-500'>Label shape</Label>
+            <Select
+              value={labelStyle.shape}
+              onValueChange={(nextValue) => {
+                if (nextValue) onUpdate(edge.id, { labelShape: nextValue as EdgeLabelShape });
+              }}
+            >
+              <SelectTrigger className='h-8 w-full border-white/10 bg-white/5 px-2.5 text-left hover:bg-white/8 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
+                <span className='flex-1 truncate text-[11px] font-semibold text-zinc-200'>{EDGE_LABEL_SHAPES.find((option) => option.value === labelStyle.shape)?.label}</span>
+              </SelectTrigger>
+              <SelectContent className='border-cyan-400/25 bg-zinc-950 p-1.5'>
+                <SelectGroup>
+                  <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600'>Label shape</SelectLabel>
+                  {EDGE_LABEL_SHAPES.map((option) => (
+                    <SelectItem key={option.value} value={option.value} className='px-2 py-1.5 pr-8 text-[11px] font-semibold'>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <Label htmlFor='edge-label-font-size' className='mb-1 block text-[9px] text-zinc-500'>
+              Font size · {labelStyle.fontSize}px
+            </Label>
+            <Input
+              id='edge-label-font-size'
+              type='number'
+              value={labelStyle.fontSize}
+              min={EDGE_LABEL_FONT_SIZE_MIN}
+              max={EDGE_LABEL_FONT_SIZE_MAX}
+              onChange={(event) => {
+                const next = Number(event.target.value);
+                if (Number.isFinite(next)) {
+                  onUpdate(edge.id, { labelFontSize: Math.max(EDGE_LABEL_FONT_SIZE_MIN, Math.min(EDGE_LABEL_FONT_SIZE_MAX, next)) });
+                }
+              }}
+              className='h-8 border-white/10 bg-zinc-800/80 text-xs focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'
+            />
+          </div>
+        </div>
+
+        <Label htmlFor='edge-label-font' className='mt-3 block text-[9px] text-zinc-500'>
+          Label font
+        </Label>
+        <Select
+          value={labelStyle.fontFamily}
+          onValueChange={(nextValue) => {
+            if (nextValue) onUpdate(edge.id, { labelFontFamily: nextValue as NodeFont });
+          }}
+        >
+          <SelectTrigger id='edge-label-font' className='mt-1 h-8 w-full border-white/10 bg-white/5 px-2.5 text-left hover:bg-white/8 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
+            <span className='min-w-0 flex-1 truncate text-[11px] font-semibold text-zinc-200' style={{ fontFamily: NODE_FONT_FAMILIES[labelStyle.fontFamily] }}>
+              {NODE_FONT_OPTIONS.find((option) => option.value === labelStyle.fontFamily)?.character}
+              <span className='ml-1 font-normal text-zinc-500'>({NODE_FONT_OPTIONS.find((option) => option.value === labelStyle.fontFamily)?.label})</span>
+            </span>
+          </SelectTrigger>
+          <SelectContent className='border-cyan-400/25 bg-zinc-950 p-1.5'>
+            <SelectGroup>
+              <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600'>Label font</SelectLabel>
+              {NODE_FONT_OPTIONS.map((option) => (
+                <SelectItem key={option.value} value={option.value} className='px-2.5 py-2 pr-8'>
+                  <span className='truncate text-[11px] font-semibold' style={{ fontFamily: NODE_FONT_FAMILIES[option.value] }}>
+                    {option.character}
+                    <span className='ml-1 font-normal text-zinc-500'>({option.label})</span>
+                  </span>
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+
+        <SwatchRow label='Label color' value={labelStyle.color} options={EDGE_LABEL_COLORS} onChange={(labelColor) => onUpdate(edge.id, { labelColor })} />
+        <SwatchRow label='Label background' value={labelStyle.background} options={EDGE_LABEL_BACKGROUNDS} onChange={(labelBackground) => onUpdate(edge.id, { labelBackground })} />
 
         <MarkerPicker label='Line start' value={edge.startMarker ?? 'none'} onChange={(startMarker) => onUpdate(edge.id, { startMarker })} />
         <MarkerPicker label='Line end' value={edge.endMarker ?? 'arrow'} onChange={(endMarker) => onUpdate(edge.id, { endMarker })} />
@@ -440,6 +523,29 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
         </Button>
       </CardContent>
     </Card>
+  );
+}
+
+function SwatchRow({ label, value, options, onChange }: { label: string; value: `#${string}`; options: ReadonlyArray<{ value: `#${string}`; label: string }>; onChange: (value: `#${string}`) => void }) {
+  return (
+    <div className='mt-3'>
+      <Label className='mb-1 block text-[9px] text-zinc-500'>{label}</Label>
+      <div className='flex flex-wrap gap-1.5'>
+        {options.map((option) => (
+          <Button
+            key={option.value}
+            variant='outline'
+            size='icon-sm'
+            onClick={() => onChange(option.value)}
+            title={option.label}
+            aria-label={`${label} ${option.label}`}
+            aria-pressed={value.toLowerCase() === option.value.toLowerCase()}
+            className={['size-6 rounded-full border-white/15 p-0 transition', value.toLowerCase() === option.value.toLowerCase() ? 'border-2 border-cyan-300' : 'hover:scale-110'].join(' ')}
+            style={{ background: option.value }}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 

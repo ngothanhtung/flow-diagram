@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { AnimatedEdge } from './AnimatedEdge';
 import { FlowNodeCard } from './FlowNodeCard';
 import { GhostEdge } from './GhostEdge';
-import { buildEdgeGeometry, nodePortAnchor } from './edge-geometry';
+import { buildEdgeGeometry, nodePortAnchor, pointAlongEdgeGeometry } from './edge-geometry';
 
 interface LinkState {
   fromId: string;
@@ -76,7 +76,7 @@ interface FlowCanvasProps {
   selectedEdgeId: string | null;
   onSelectEdge: (id: string | null) => void;
   onEdgeReconnect: (edgeId: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
-  onEdgeUpdate: (edgeId: string, patch: { bendPoints?: FlowPoint[] }) => void;
+  onEdgeUpdate: (edgeId: string, patch: { bendPoints?: FlowPoint[]; labelOffset?: number }) => void;
   /** Shape currently armed by the dock. When set, the canvas draws. */
   activeShape: NodeShape | null;
   /** Called when the user finishes drawing a shape on the canvas. */
@@ -96,6 +96,24 @@ const ZOOM_BUTTON_FACTOR = 1.2;
 /** Grid spacings (in data units) offered by the dock picker. */
 const GRID_SIZE_OPTIONS = [10, 20, 40, 80] as const;
 const DEFAULT_GRID_SIZE = 40;
+/** Resolution of the pointer→path projection (label sliding, bend insertion). */
+const PATH_SAMPLES = 160;
+
+/** Parameter along the drawn path (0…1) closest to a data-space point. */
+function nearestPathT(geometry: ReturnType<typeof buildEdgeGeometry>, point: { x: number; y: number }): number {
+  let bestT = 0;
+  let bestDistance = Infinity;
+  for (let step = 0; step <= PATH_SAMPLES; step += 1) {
+    const t = step / PATH_SAMPLES;
+    const sample = pointAlongEdgeGeometry(geometry, t).point;
+    const distance = Math.hypot(sample.x - point.x, sample.y - point.y);
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      bestT = t;
+    }
+  }
+  return bestT;
+}
 
 export function FlowCanvas({
   document,
@@ -142,6 +160,8 @@ export function FlowCanvas({
   const [link, setLink] = useState<LinkState | null>(null);
   const [reconnect, setReconnect] = useState<ReconnectState | null>(null);
   const [bendDrag, setBendDrag] = useState<BendDragState | null>(null);
+  /** Id of the edge whose label is being slid along the line. */
+  const [labelDrag, setLabelDrag] = useState<string | null>(null);
 
   // Figma-style draw gesture. `drawStart` is captured on the first
   // pointerdown when a shape is armed; `drawCurrent` follows the
@@ -329,6 +349,40 @@ export function FlowCanvas({
 
   const nodesById = useMemo(() => new Map(document.nodes.map((n) => [n.id, n])), [document]);
 
+  const handleLabelPointerDown = useCallback((edgeId: string) => {
+    setLabelDrag(edgeId);
+  }, []);
+
+  // Double-clicking the line drops a new bend point where the pointer is.
+  // Double-clicking an existing handle removes it (see BendHandle below),
+  // so the two gestures mirror each other.
+  const handleEdgeDoubleClick = useCallback(
+    (edgeId: string, event: React.MouseEvent<SVGPathElement>) => {
+      if (!svgRef.current) return;
+      const edge = document.edges.find((item) => item.id === edgeId);
+      if (!edge) return;
+      const routing = edge.routing ?? 'orthogonal';
+      // Only the polyline routes carry waypoints; straight and curved
+      // lines ignore `bendPoints` entirely.
+      if (routing !== 'orthogonal' && routing !== 'smooth-step') return;
+      const from = nodesById.get(edge.from);
+      const to = nodesById.get(edge.to);
+      if (!from || !to) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const geometry = buildEdgeGeometry(edge, from, to);
+      const point = snapPoint(screenToData(svgRef.current, event.clientX, event.clientY, viewTransform));
+      const existing = geometry.points?.slice(1, -1) ?? [];
+      // Insert in path order so the new corner lands between the right
+      // neighbours instead of at the end of the list.
+      const insertAt = existing.findIndex((bend) => nearestPathT(geometry, bend) > nearestPathT(geometry, point));
+      const bendPoints = insertAt === -1 ? [...existing, point] : [...existing.slice(0, insertAt), point, ...existing.slice(insertAt)];
+      onEdgeUpdate(edgeId, { bendPoints });
+      onSelectEdge(edgeId);
+    },
+    [document.edges, nodesById, onEdgeUpdate, onSelectEdge, snapPoint, viewTransform],
+  );
+
   // Resizing follows the same snap mode as moving: with snap on, the
   // corner being dragged locks to the grid and the opposite corner
   // stays anchored; with snap off the resize is fully free.
@@ -507,6 +561,31 @@ export function FlowCanvas({
       window.removeEventListener('pointerup', onUp);
     };
   }, [onEdgeReconnect, reconnect, viewTransform]);
+
+  // Sliding the label keeps it on the path: the pointer is projected onto
+  // the drawn geometry by sampling it, and the nearest sample's `t`
+  // becomes the persisted `labelOffset`.
+  useEffect(() => {
+    if (!labelDrag) return;
+    const onMove = (event: PointerEvent) => {
+      if (!svgRef.current) return;
+      const edge = document.edges.find((item) => item.id === labelDrag);
+      const from = edge && nodesById.get(edge.from);
+      const to = edge && nodesById.get(edge.to);
+      if (!edge || !from || !to) return;
+      const pointer = screenToData(svgRef.current, event.clientX, event.clientY, viewTransform);
+      onEdgeUpdate(labelDrag, { labelOffset: nearestPathT(buildEdgeGeometry(edge, from, to), pointer) });
+    };
+    const onUp = () => setLabelDrag(null);
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
+    return () => {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+    };
+  }, [document.edges, labelDrag, nodesById, onEdgeUpdate, viewTransform]);
 
   // Bend handles update the persisted waypoint on every move so the line,
   // markers and animated effects remain locked to the pointer.
@@ -762,10 +841,12 @@ export function FlowCanvas({
                 edge={edge}
                 from={from}
                 to={to}
-                paused={isDragging || link !== null || reconnect !== null || bendDrag !== null || (runningEdges !== null && !runningEdges.has(edge.id))}
+                paused={isDragging || link !== null || reconnect !== null || bendDrag !== null || labelDrag !== null || (runningEdges !== null && !runningEdges.has(edge.id))}
                 interactive={!readOnly}
                 selected={selectedEdgeId === edge.id}
                 onClick={readOnly ? undefined : (id) => onSelectEdge(id)}
+                onLabelPointerDown={readOnly ? undefined : handleLabelPointerDown}
+                onDoubleClick={readOnly ? undefined : handleEdgeDoubleClick}
                 color={edgeColor}
                 effectColor={edge.effectColor}
                 performanceMode={performanceMode}
@@ -788,6 +869,11 @@ export function FlowCanvas({
               fromShape={nodesById.get(link.fromId)!.shape}
               fromSide={link.fromSide}
               fromAnchor={nodePortAnchor(nodesById.get(link.fromId)!, link.fromSide)}
+              // The drop point is the cursor itself, not a node port, so the
+              // target anchor is a bare unit vector: it still gives the curve
+              // its horizontal approach without offsetting the endpoint away
+              // from the pointer by a shape radius.
+              toAnchor={{ x: -1, y: 0 }}
               color={resolveNodeStyle(nodesById.get(link.fromId)!).foreground}
             />
           )}

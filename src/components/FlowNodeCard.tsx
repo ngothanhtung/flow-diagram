@@ -172,7 +172,11 @@ export function FlowNodeCard({
 }: FlowNodeCardProps) {
   const style = resolveNodeStyle(node);
   const Icon = useResolvedIcon(style.icon);
-  const { shapeSpec, foreground, background, borderColor, width, height, rotation, borderWidth, borderStyle, opacity, shadow, iconSize, iconPosition, fontSize, fontFamily, fontWeight, textAlign, portSize } = style;
+  const { shapeSpec, foreground, background, borderColor, width, height, rotation, borderWidth, borderStyle, opacity, shadow, iconSize, iconPosition, blockAlign, fontSize, fontFamily, fontWeight, textAlign, portSize } = style;
+  const clusterAlign = blockAlign === 'left' ? 'flex-start' : blockAlign === 'right' ? 'flex-end' : 'center';
+  // Horizontal padding runs wider than vertical so text never crowds the
+  // rounded corners or the side ports.
+  const cardPadding = Math.max(10, Math.min(width, height) * 0.13);
   const scaleX = width / BASE_SIZE;
   const scaleY = height / BASE_SIZE;
   const outline = nodeOutline(style.shape, width, height);
@@ -518,19 +522,27 @@ export function FlowNodeCard({
           using the resolved Tailwind token. */}
         <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none'>
           <div
-            className='flex h-full w-full items-center justify-center select-none'
+            className='flex h-full w-full select-none'
             style={{
               color: foreground,
               fontFamily: NODE_FONT_FAMILIES[fontFamily],
-              flexDirection: iconPosition === 'left' ? 'row' : 'column',
-              gap: Icon ? (iconPosition === 'left' ? 12 : 7) : 0,
-              padding: Math.max(10, Math.min(width, height) * 0.13),
+              flexDirection: iconPosition === 'top' ? 'column' : 'row',
+              // Block alignment moves the whole icon + text cluster: it's
+              // the main axis when the icon sits beside the text, the
+              // cross axis when it sits on top.
+              justifyContent: iconPosition === 'top' ? 'center' : clusterAlign,
+              alignItems: iconPosition === 'top' ? clusterAlign : 'center',
+              gap: Icon ? (iconPosition === 'top' ? 7 : 12) : 0,
+              padding: `${cardPadding}px ${cardPadding + 8}px`,
             }}
           >
             {Icon && (
               <span
                 className='grid shrink-0 place-items-center rounded-xl'
                 style={{
+                  // `order` rather than `row-reverse` so `justifyContent`
+                  // keeps pointing at the visual left/centre either way.
+                  order: iconPosition === 'right' ? 1 : 0,
                   width: iconSize + 25,
                   height: iconSize + 25,
                   background: `${foreground}12`,
@@ -549,7 +561,11 @@ export function FlowNodeCard({
               className='min-w-0'
               style={{
                 textAlign,
-                width: iconPosition === 'top' ? '100%' : undefined,
+                // `fit-content` (not 100%) so the block shrink-wraps its
+                // text and `blockAlign` has room to shift the cluster,
+                // while long text still wraps at the available width.
+                width: 'fit-content',
+                maxWidth: '100%',
               }}
             >
               <div className='leading-tight tracking-tight' style={{ fontSize, fontWeight: FONT_WEIGHT[fontWeight] }}>

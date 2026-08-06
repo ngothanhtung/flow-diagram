@@ -14,6 +14,7 @@ interface GhostEdgeProps {
   fromSide?: ConnectionSide;
   toSide?: ConnectionSide;
   fromAnchor?: { x: number; y: number };
+  toAnchor?: { x: number; y: number };
   tone?: string;
   color?: string;
 }
@@ -33,11 +34,12 @@ export function GhostEdge({
   fromSide = 'right',
   toSide = 'left',
   fromAnchor: customFromAnchor,
+  toAnchor: customToAnchor,
   tone = 'text-sky-300/80',
   color,
 }: GhostEdgeProps) {
   const fromAnchor = customFromAnchor ?? portAnchor(fromShape, fromSide);
-  const toAnchor = portAnchor(toShape, toSide);
+  const toAnchor = customToAnchor ?? portAnchor(toShape, toSide);
   const { d, end, angle } = buildPath(
     { x: fromX, y: fromY },
     fromAnchor,
