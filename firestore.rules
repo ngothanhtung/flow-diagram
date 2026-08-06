@@ -30,14 +30,38 @@ service cloud.firestore {
         && (request.auth.uid == userId || isAdministrator() || isPublicDiagram());
     }
 
-    // Cross-user collection-group reads: administrators may browse
-    // freely; everyone else only through queries constrained to
-    // public diagrams (findPublicDiagramById in the viewer).
+    // Flat mirror of any diagram flagged `public: true`, keyed by the
+    // same doc id as its `users/{uid}/diagrams/{id}` source. Lets
+    // anonymous viewers read a public diagram with a single-doc get()
+    // and no collection-group query / isAdministrator() call in the
+    // path (see DiagramViewer + findPublicDiagramById).
+    match /public-diagrams/{diagramId} {
+      allow read: if true;
+
+      // Only the confirmed owner of the source diagram may create or
+      // update its mirror, and only while the mirror itself claims
+      // public: true — the exists() check is the only real ownership
+      // proof available without Cloud Functions (ids are addDoc
+      // auto-ids, not derivable from uid).
+      allow create: if request.auth != null
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.public == true
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid)/diagrams/$(diagramId));
+
+      allow update: if request.auth != null
+        && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.public == true
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid)/diagrams/$(diagramId));
+
+      allow delete: if request.auth != null
+        && resource.data.ownerUid == request.auth.uid;
+    }
+
+    // Cross-user collection-group reads: administrators only. Public
+    // diagram access goes through the public-diagrams mirror above.
     match /{path=**}/diagrams/{diagramId} {
-      allow get: if isAdministrator() || isPublicDiagram();
-      // Query constraints keep their client types, so the boolean
-      // `where('public', '==', true)` compares against `true`.
-      allow list: if isAdministrator() || request.query.public == true;
+      allow get, list: if isAdministrator();
     }
 
     // Shared template library. Every signed-in user can read templates

@@ -1,6 +1,6 @@
 'use client';
 
-import { addDoc, collection, collectionGroup, deleteDoc, doc, getDoc, getDocs, orderBy, query, serverTimestamp, setDoc, where, type Timestamp } from 'firebase/firestore';
+import { addDoc, collection, collectionGroup, deleteDoc, doc, getDoc, getDocs, orderBy, query, serverTimestamp, setDoc, type Timestamp } from 'firebase/firestore';
 import type { FlowDocumentJSON } from '../flowchart-types';
 import { firestore } from './client';
 
@@ -25,6 +25,38 @@ function cleanDocument(document: FlowDocumentJSON): FlowDocumentJSON {
   return JSON.parse(JSON.stringify(document)) as FlowDocumentJSON;
 }
 
+function publicDiagramDoc(diagramId: string) {
+  return doc(firestore, 'public-diagrams', diagramId);
+}
+
+/**
+ * Keeps the flat `public-diagrams/{id}` mirror in sync with a diagram's
+ * `public` flag, so anonymous viewers can read it without a collection-group
+ * query (see `findPublicDiagramById`). Best-effort: logs rather than throws,
+ * since a mirror sync failure shouldn't fail the caller's save/create/delete.
+ */
+async function syncPublicMirror(userId: string, diagramId: string, name: string, document: FlowDocumentJSON, isPublic: boolean) {
+  try {
+    if (isPublic) {
+      await setDoc(
+        publicDiagramDoc(diagramId),
+        {
+          ownerUid: userId,
+          name,
+          document: cleanDocument(document),
+          public: true,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true },
+      );
+    } else {
+      await deleteDoc(publicDiagramDoc(diagramId));
+    }
+  } catch (err) {
+    console.error('Failed to sync public diagram mirror', err);
+  }
+}
+
 export async function createDiagram(userId: string, name: string, document: FlowDocumentJSON, isPublic = false) {
   const reference = await addDoc(diagramsCollection(userId), {
     name,
@@ -33,6 +65,7 @@ export async function createDiagram(userId: string, name: string, document: Flow
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   });
+  await syncPublicMirror(userId, reference.id, name, document, isPublic);
   return reference.id;
 }
 
@@ -48,6 +81,7 @@ export async function saveDiagram(userId: string, diagramId: string, name: strin
     },
     { merge: true },
   );
+  await syncPublicMirror(userId, diagramId, name, document, isPublic);
 }
 
 export async function loadDiagram(userId: string, diagramId: string) {
@@ -61,8 +95,9 @@ export async function listDiagrams(userId: string) {
   return snapshot.docs.map((item) => ({ id: item.id, ...item.data() }) as StoredDiagram);
 }
 
-export function deleteDiagram(userId: string, diagramId: string) {
-  return deleteDoc(doc(diagramsCollection(userId), diagramId));
+export async function deleteDiagram(userId: string, diagramId: string) {
+  await deleteDoc(doc(diagramsCollection(userId), diagramId));
+  await deleteDoc(publicDiagramDoc(diagramId)).catch(() => undefined);
 }
 
 /** Flattened row for the read-only admin overview. Timestamps are
@@ -97,18 +132,17 @@ export function toViewerRow(id: string, ownerUid: string, data: Partial<Omit<Sto
 }
 
 /**
- * Finds a single public diagram by its document id — the non-admin
- * viewer path. The query is constrained to `public == true` so the
- * security rules allow it (`request.query.public == true`); matching
- * the id itself happens client-side. Requires the collection-group
- * index defined in firestore.indexes.json.
+ * Finds a single public diagram by its document id — the anonymous/
+ * non-admin viewer path. Reads the flat `public-diagrams/{id}` mirror
+ * directly (see `syncPublicMirror`), so it needs no auth and no
+ * collection-group query.
  */
 export async function findPublicDiagramById(diagramId: string): Promise<AdminDiagramRow | null> {
   if (!diagramId) return null;
-  const snapshot = await getDocs(query(collectionGroup(firestore, 'diagrams'), where('public', '==', true)));
-  const item = snapshot.docs.find((docItem) => docItem.id === diagramId);
-  if (!item) return null;
-  return toViewerRow(item.id, item.ref.parent.parent?.id ?? 'unknown', item.data() as Partial<Omit<StoredDiagram, 'id'>>);
+  const snapshot = await getDoc(publicDiagramDoc(diagramId));
+  if (!snapshot.exists()) return null;
+  const data = snapshot.data() as Partial<Omit<StoredDiagram, 'id'>> & { ownerUid?: string };
+  return toViewerRow(snapshot.id, data.ownerUid ?? 'unknown', data);
 }
 
 /**

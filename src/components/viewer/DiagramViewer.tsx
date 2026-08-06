@@ -1,10 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Boxes, FileQuestion, Hand, ListOrdered, LoaderCircle, Play, RadioTower, Repeat2, SkipForward } from 'lucide-react';
+import { Boxes, FileQuestion, Hand, ListOrdered, Play, RadioTower, Repeat2, SkipForward } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
+import { AuthLoadingScreen } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { JsonInspector } from '@/components/JsonInspector';
@@ -16,10 +16,11 @@ import type { RunMode } from '@/lib/flowchart-types';
 
 /**
  * Read-only viewer for a single diagram (`/diagrams/{id}/view`).
- * Access policy: the diagram opens when it is flagged `public`, when
- * the viewer owns it, or when the viewer is an administrator —
- * anything else resolves to "not found". Every editing tool is hidden;
- * only pan, zoom, fit, the info panel and the read-only play bar
+ * Access policy: the diagram opens when it is flagged `public` (no
+ * login required — that's what makes it a share link), when the
+ * viewer owns it, or when the viewer is an administrator — anything
+ * else resolves to "not found". Every editing tool is hidden; only
+ * pan, zoom, fit, the info panel and the read-only play bar
  * (mode / repeat / replay) remain.
  */
 export function DiagramViewer({ diagramId }: { diagramId: string }) {
@@ -28,17 +29,21 @@ export function DiagramViewer({ diagramId }: { diagramId: string }) {
   const [status, setStatus] = useState<'loading' | 'ready' | 'not-found' | 'error'>('loading');
 
   useEffect(() => {
-    if (!user) return;
+    if (loading) return;
     let cancelled = false;
 
     // Resolution order: owner (direct path read) → administrator
-    // (full collection-group list) → public flag (constrained query).
+    // (full collection-group list) → public flag (flat mirror read,
+    // works without a signed-in user).
     const resolve = async (): Promise<AdminDiagramRow | null> => {
-      const own = await loadDiagram(user.uid, diagramId).catch(() => null);
-      if (own) return toViewerRow(own.id, user.uid, own);
-      if (await isAdminUser(user.uid)) {
-        const all = await listAllDiagrams();
-        return all.find((item) => item.id === diagramId) ?? null;
+      if (user) {
+        const own = await loadDiagram(user.uid, diagramId).catch(() => null);
+        if (own) return toViewerRow(own.id, user.uid, own);
+        if (await isAdminUser(user.uid)) {
+          const all = await listAllDiagrams();
+          const found = all.find((item) => item.id === diagramId);
+          if (found) return found;
+        }
       }
       return findPublicDiagramById(diagramId);
     };
@@ -59,27 +64,33 @@ export function DiagramViewer({ diagramId }: { diagramId: string }) {
     return () => {
       cancelled = true;
     };
-  }, [diagramId, user]);
+  }, [diagramId, user, loading]);
 
-  if (loading) return <AuthLoadingScreen />;
-  if (!user) return <LoginForm />;
+  if (loading || status === 'loading') return <AuthLoadingScreen />;
 
   if (status !== 'ready' || !diagram) {
     return (
       <div className='grid h-screen place-items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
         <div className='flex max-w-sm flex-col items-center gap-4 rounded-xl bg-zinc-900/70 px-8 py-10 text-center'>
           <div className='grid size-12 place-items-center rounded-full bg-sky-500/15 ring-1 ring-sky-400/40'>
-            {status === 'loading' ? <LoaderCircle size={22} className='animate-spin text-sky-300' /> : <FileQuestion size={22} className='text-sky-300' />}
+            <FileQuestion size={22} className='text-sky-300' />
           </div>
           <div>
-            <h1 className='text-sm font-semibold'>{status === 'loading' ? 'Loading diagram…' : status === 'not-found' ? 'Diagram not found' : 'Could not load diagram'}</h1>
+            <h1 className='text-sm font-semibold'>{status === 'not-found' ? 'Diagram not found' : 'Could not load diagram'}</h1>
             <p className='mt-1.5 text-xs leading-relaxed text-zinc-500'>
-              {status === 'loading' ? `Looking up ${diagramId} across all diagrams.` : status === 'not-found' ? 'No diagram matches this id, or you do not have access to it.' : 'Check your connection and try again.'}
+              {status === 'not-found' ? 'No diagram matches this id, or you do not have access to it.' : 'Check your connection and try again.'}
             </p>
           </div>
-          <Link href='/' className='inline-flex h-8 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10'>
-            Back to editor
-          </Link>
+          <div className='flex items-center gap-2'>
+            <Link href='/' className='inline-flex h-8 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10'>
+              Back to editor
+            </Link>
+            {!user && (
+              <Link href='/' className='inline-flex h-8 items-center gap-1.5 rounded-md bg-sky-500/15 px-3 text-xs font-semibold text-sky-200 ring-1 ring-sky-400/40 transition hover:bg-sky-500/25'>
+                Sign in
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     );
