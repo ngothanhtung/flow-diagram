@@ -117,7 +117,31 @@ export interface NodePreset {
   height?: number;
 }
 
-export type EdgeEffect = 'flow' | 'dash' | 'pulse' | 'glow' | 'comet' | 'dots' | 'wave' | 'scanner' | 'traffic' | 'bidirectional' | 'laser' | 'meteor' | 'spark' | 'marching' | 'binary' | 'heartbeat' | 'rail' | 'fade';
+export type EdgeEffect =
+  | 'flow'
+  | 'dash'
+  | 'pulse'
+  | 'glow'
+  | 'comet'
+  | 'dots'
+  | 'wave'
+  | 'scanner'
+  | 'traffic'
+  | 'bidirectional'
+  | 'laser'
+  | 'meteor'
+  | 'spark'
+  | 'marching'
+  | 'binary'
+  | 'heartbeat'
+  | 'rail'
+  | 'fade'
+  | 'convoy'
+  | 'chase'
+  | 'charging'
+  | 'morse'
+  | 'ants'
+  | 'blink';
 
 export type EdgeMarker = 'none' | 'arrow' | 'open-arrow' | 'triangle' | 'circle' | 'diamond' | 'tee' | 'cross' | 'circle-cross' | 'arrow-both' | 'arrow-bar' | 'bar';
 

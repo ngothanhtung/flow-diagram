@@ -17,7 +17,12 @@ export const TRAVEL_VELOCITY: Partial<Record<EdgeEffect, number>> = {
   meteor: 230,
   spark: 135,
   fade: 100,
+  convoy: 150,
+  chase: 165,
 };
+
+/** The charging fill sweeps the whole route at this px/s. */
+const CHARGING_VELOCITY = 170;
 
 /**
  * Pattern effects tile a repeating dash texture along the whole line.
@@ -34,6 +39,12 @@ export const PATTERN_DASHES: Partial<Record<EdgeEffect, number[]>> = {
   marching: [14, 5],
   heartbeat: [1, 4, 18, 4],
   rail: [3, 5],
+  // "SOS" in dots and dashes — reads instantly as a telegraph signal.
+  morse: [2, 3, 2, 3, 2, 6, 8, 3, 8, 3, 8, 6, 2, 3, 2, 3, 2, 12],
+  // Tiny dots packed tight — a slow trail of ants.
+  ants: [0.5, 4.5],
+  // Stationary checkpoint marks; they pulse in place instead of moving.
+  blink: [2.5, 27.5],
 };
 
 export const PATTERN_VELOCITY: Partial<Record<EdgeEffect, number>> = {
@@ -45,6 +56,10 @@ export const PATTERN_VELOCITY: Partial<Record<EdgeEffect, number>> = {
   binary: 40 / 1.15,
   heartbeat: 24 / 1.25,
   rail: 13 / 0.85,
+  morse: 26,
+  ants: 9,
+  // Blink doesn't translate — this only sets its pulse beat (period/velocity).
+  blink: 25,
 };
 
 /** Byte 10110010 — complementary "1" (bright) and "0" (dim) bit slots. */
@@ -147,6 +162,18 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   const bidirectionalDash = objectDash(objectLength(9));
   // Comet's tail grows with the size slider together with its width.
   const cometDash = objectDash(objectLength(20));
+  // Convoy: three vehicles bumper-to-bumper, then open road until the
+  // next group. The trio + gaps must fit the period, so each piece is
+  // clamped against the space the previous ones left over.
+  const convoyUnit = Math.max(0.5, Math.min((PERIOD - 2.5) / 3, 8 * effectSize));
+  const convoyGap = Math.max(0.5, Math.min((PERIOD - 3 * convoyUnit - 0.5) / 2, 3 * effectSize));
+  const convoyDash = `${convoyUnit} ${convoyGap} ${convoyUnit} ${convoyGap} ${convoyUnit} ${Math.max(0.5, PERIOD - 3 * convoyUnit - 2 * convoyGap)}`;
+  // Chase: a lead object and a faster pursuer on the same route.
+  const chaseLeadDash = objectDash(objectLength(12));
+  const chasePursuerDash = objectDash(objectLength(6));
+  // Charging: the classic SVG draw trick — dasharray [L, L] and a full-
+  // period offset sweep fills the route end-to-end once per cycle.
+  const chargeLength = Math.max(24, Math.ceil(length) || 240);
   // Round line caps turn a near-zero dash into a dot whose diameter is
   // the stroke width, so the spacing alone needs a period here.
   const dotDash = `0.1 ${PERIOD - 0.1}`;
@@ -163,7 +190,7 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   const travelVelocity = TRAVEL_VELOCITY[effect];
   const patternVelocity = PATTERN_VELOCITY[effect];
   const travelPeriod = effect === 'laser' ? laserPeriod : PERIOD;
-  const baseDuration = travelVelocity ? travelPeriod / travelVelocity : patternVelocity ? patternPeriod / patternVelocity : 1.1;
+  const baseDuration = travelVelocity ? travelPeriod / travelVelocity : patternVelocity ? patternPeriod / patternVelocity : effect === 'charging' ? chargeLength / CHARGING_VELOCITY : 1.1;
   const animationDurationSeconds = baseDuration / speed;
   const animationDuration = `${animationDurationSeconds}s`;
   // One shared neon glow for EVERY effect — the lit halo around each
@@ -256,6 +283,52 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
         </>
       )}
       {effect === 'fade' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={fadeDash} className={travelClass} style={{ ...travelStyle, opacity: 0.78 }} />}
+      {effect === 'convoy' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={convoyDash} className={travelClass} style={travelStyle} />}
+      {effect === 'chase' && (
+        <>
+          <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={chaseLeadDash} className={travelClass} style={travelStyle} />
+          {/* The pursuer runs the same loop ~38% faster, so it laps the
+              lead periodically — that speed difference IS the effect. */}
+          <path
+            d={d}
+            stroke='currentColor'
+            strokeWidth={baseWidth * 0.8}
+            strokeLinecap='round'
+            fill='none'
+            strokeDasharray={chasePursuerDash}
+            className={travelClass}
+            style={{ ...travelStyle, animationDuration: `${animationDurationSeconds * 0.62}s` }}
+          />
+        </>
+      )}
+      {effect === 'charging' && (
+        <>
+          <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeOpacity={0.16} fill='none' />
+          {/* Keyframes run 0 → ±L; played in reverse that is ±L → 0, which
+              grows the lit segment from the source (+L) or, for reversed
+              lines, from the target (−L). */}
+          <path
+            d={d}
+            stroke='currentColor'
+            strokeWidth={baseWidth}
+            strokeLinecap='round'
+            fill='none'
+            strokeDasharray={`${chargeLength} ${chargeLength}`}
+            className='animate-[edge-travel-long_1.2s_linear_infinite]'
+            style={{ ...animationStyle, '--edge-period': `${direction === 'reverse' ? -chargeLength : chargeLength}px`, animationDirection: 'reverse', animationTimingFunction: 'ease-in-out' } as React.CSSProperties}
+          />
+        </>
+      )}
+      {effect === 'morse' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={patternDash} className={patternClass} style={patternStyle} />}
+      {effect === 'ants' && <path d={d} stroke='currentColor' strokeWidth={Math.max(1, baseWidth * 0.6)} strokeLinecap='round' fill='none' strokeDasharray={patternDash} className={patternClass} style={patternStyle} />}
+      {effect === 'blink' && (
+        <>
+          <path d={d} stroke='currentColor' strokeWidth={Math.max(1, baseWidth * 0.4)} strokeOpacity={0.14} fill='none' />
+          {/* Static marks — only their opacity pulses (edge-pulse), so they
+              read as checkpoints lighting up rather than moving traffic. */}
+          <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={patternDash} className='animate-[edge-pulse_1.2s_ease-in-out_infinite]' style={animationStyle} />
+        </>
+      )}
       {effect === 'bidirectional' && (
         <>
           <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={bidirectionalDash} className={travelClass} style={travelStyle} />

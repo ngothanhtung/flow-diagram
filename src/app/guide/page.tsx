@@ -157,7 +157,7 @@ export default function GuidePage() {
                 ['label', 'string', 'Use it for decision branches ("yes"/"no") or to name the data/action flowing across the edge ("sync", "candidates").'],
                 [
                   'effect',
-                  'flow · dash · pulse · glow · comet · dots · wave · scanner · traffic · bidirectional · laser · meteor · spark · marching · binary · heartbeat · rail · fade',
+                  'flow · dash · pulse · glow · comet · dots · wave · scanner · traffic · bidirectional · laser · meteor · spark · marching · binary · heartbeat · rail · fade · convoy · chase · charging · morse · ants · blink',
                   'The animated overlay. Templates default to `flow` for routine links and reach for `comet`/`pulse`/`dots`/`wave`/`scanner`/`traffic` to draw attention to a specific hop.',
                 ],
                 ['routing', 'straight · smooth-step · orthogonal · curved', 'Optional — the canvas picks a sane default. `orthogonal` reads best for dense system diagrams.'],

@@ -1,9 +1,9 @@
 'use client';
 
-import { Activity, ArrowLeft, ArrowLeftRight, ArrowRight, CircleDot, Diamond, Gauge, GitCompareArrows, Hash, Minus, Palette, Radio, Route, ScanLine, Sparkles, Trash2, Triangle, Undo2, Waves, X, Zap, type LucideIcon } from 'lucide-react';
+import { Activity, ArrowLeft, ArrowLeftRight, ArrowRight, BatteryCharging, Bug, CircleDot, Diamond, Gauge, GitCompareArrows, Hash, Lightbulb, Minus, Palette, Rabbit, Radio, Route, ScanLine, Sparkles, Trash2, Triangle, Truck, Undo2, Waves, X, Zap, type LucideIcon } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
-import { EdgeEffectLayer, TRAVEL_VELOCITY } from './edge-effect-layer';
+import { EdgeEffectLayer, PATTERN_DASHES, TRAVEL_VELOCITY } from './edge-effect-layer';
 import { EdgeMarkerSymbol } from './edge-marker';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -51,6 +51,12 @@ const EFFECTS: {
   { value: 'heartbeat', label: 'Heartbeat', description: 'Rhythmic telemetry signal', Icon: Activity },
   { value: 'rail', label: 'Rail', description: 'Framed transport channel', Icon: Radio },
   { value: 'fade', label: 'Energy Fade', description: 'Long fading data envelope', Icon: Waves },
+  { value: 'convoy', label: 'Convoy', description: 'Grouped batches with open road between', Icon: Truck },
+  { value: 'chase', label: 'Chase', description: 'A pursuer laps the lead object', Icon: Rabbit },
+  { value: 'charging', label: 'Charging', description: 'Line fills end-to-end, then resets', Icon: BatteryCharging },
+  { value: 'morse', label: 'Morse', description: 'Dot-dash telegraph signal (SOS)', Icon: Radio },
+  { value: 'ants', label: 'Ant Trail', description: 'Slow trail of tiny marching dots', Icon: Bug },
+  { value: 'blink', label: 'Blink', description: 'Stationary checkpoints pulsing in place', Icon: Lightbulb },
 ];
 
 const ROUTING_OPTIONS: Array<{ value: EdgeRouting; label: string }> = [
@@ -110,9 +116,11 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
   const glowIntensity = edge.glowIntensity ?? 1;
   const phaseOffset = edge.phaseOffset ?? 0;
   // Object count only applies to travelling-object effects; pattern
-  // effects (flow, dash, wave…) tile the line and have no object count.
+  // effects (flow, dash, wave…) get a density slider instead, and the
+  // remaining effects (charging) have neither knob.
   const previewEffect = draftEffect ?? effect;
   const supportsCount = previewEffect in TRAVEL_VELOCITY;
+  const supportsDensity = previewEffect in PATTERN_DASHES || previewEffect === 'binary';
   const labelStyle = resolveEdgeLabelStyle(edge);
   const selectedEffect = EFFECTS.find((item) => item.value === effect) ?? EFFECTS[0];
   const SelectedEffectIcon = selectedEffect.Icon;
@@ -418,8 +426,10 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
                       ) : (
                         <span className='font-mono text-zinc-300'>Auto</span>
                       )
-                    ) : (
+                    ) : supportsDensity ? (
                       <span className='font-mono text-zinc-300'>{effectDensity.toFixed(1).replace(/\.0$/, '')}×</span>
+                    ) : (
+                      <span className='font-mono text-zinc-300'>—</span>
                     )}
                   </span>
                   {supportsCount ? (
@@ -440,7 +450,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
                         {effectCount !== undefined ? `Exactly ${effectCount} object${effectCount > 1 ? 's' : ''} evenly spaced along the line.` : 'Auto — spacing-based, longer lines carry more objects. Drag to pin an exact count.'}
                       </span>
                     </>
-                  ) : (
+                  ) : supportsDensity ? (
                     <>
                       <Slider
                         min={0.5}
@@ -456,6 +466,8 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
                       </span>
                       <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>How tightly the repeating pattern packs its marks — the apparent speed stays the same.</span>
                     </>
+                  ) : (
+                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>One filling sweep runs the whole route per cycle — count and density do not apply.</span>
                   )}
                 </div>
 
