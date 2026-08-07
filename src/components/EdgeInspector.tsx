@@ -554,7 +554,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
                     <span>Off</span>
                     <span>Bright</span>
                   </span>
-                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Strength of the neon halo around the moving objects. Turn it down on dense diagrams.</span>
+                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Strength of the neon halo around the moving objects. Dense diagrams dim the halo automatically — setting a value here keeps it.</span>
                 </div>
 
                 <div className='mt-3'>

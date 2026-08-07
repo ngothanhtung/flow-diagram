@@ -203,8 +203,20 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   // line/effect colour), scaled by the size slider and the glow slider
   // (0 turns the halo off entirely).
   const glowLevel = Math.max(0, Math.min(3, glow ?? 1));
-  const neonFilter =
-    performanceMode || glowLevel === 0 ? undefined : `drop-shadow(0 0 ${Math.max(3, effectSize * 3) * glowLevel}px #ffffff) drop-shadow(0 0 ${Math.max(7, effectSize * 6) * glowLevel}px rgba(255,255,255,0.6))`;
+  // Dense diagrams drop the halo automatically, because a stacked pair of
+  // blurs on dozens of moving objects is the most expensive thing here.
+  // An explicitly configured glow is a user decision though, so it still
+  // renders in that mode — as a single blur layer rather than two, which
+  // keeps the control meaningful without paying the full cost. (Without
+  // this, the slider silently did nothing past ~20 nodes / ~28 edges.)
+  const buildGlow = (inner: number, outer: number, outerAlpha: number) => {
+    if (glowLevel === 0) return undefined;
+    if (performanceMode) {
+      return glow !== undefined ? `drop-shadow(0 0 ${inner * glowLevel}px #ffffff)` : undefined;
+    }
+    return `drop-shadow(0 0 ${inner * glowLevel}px #ffffff) drop-shadow(0 0 ${outer * glowLevel}px rgba(255,255,255,${outerAlpha}))`;
+  };
+  const neonFilter = buildGlow(Math.max(3, effectSize * 3), Math.max(7, effectSize * 6), 0.6);
   // A negative delay starts the loop mid-cycle — the standard CSS idiom
   // for a phase offset. During the execution draw-in the delay slot is
   // needed to hold the effect back, so the phase applies afterwards only.
@@ -246,8 +258,7 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
     // A softer halo than the dash effects get: the same slider drives it,
     // but a silhouette has to stay recognisable, and the dash-calibrated
     // bloom washes out details like an envelope's flap.
-    const shapeGlow =
-      performanceMode || glowLevel === 0 ? undefined : `drop-shadow(0 0 ${Math.max(2, effectSize * 1.8) * glowLevel}px #ffffff) drop-shadow(0 0 ${Math.max(4, effectSize * 3.2) * glowLevel}px rgba(255,255,255,0.45))`;
+    const shapeGlow = buildGlow(Math.max(2, effectSize * 1.8), Math.max(4, effectSize * 3.2), 0.45);
     const motionProps = {
       d,
       shape,
