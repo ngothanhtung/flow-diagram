@@ -109,7 +109,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
       <DropdownMenu open={shapeMenuOpen} onOpenChange={setShapeMenuOpen}>
         <DropdownMenuTrigger
           render={<Button variant='ghost' />}
-          className='group h-9 gap-1 pl-2.5 pr-1.5 text-zinc-300 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
+          className='group h-8 gap-1 pl-2.5 pr-1.5 text-zinc-300 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
           aria-label='Choose a shape to draw'
         >
           <ShapeIcon shape={activeShape ?? lastPicked} size={18} />
@@ -148,7 +148,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           <Button
             key={shape.id}
             variant='ghost'
-            size='icon-lg'
+            size='icon'
             onClick={() => (isActive ? onSelect(null) : choose(shape.id))}
             aria-pressed={isActive}
             className={isActive ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}

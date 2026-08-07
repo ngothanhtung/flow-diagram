@@ -1,6 +1,35 @@
 'use client';
 
-import { Activity, ArrowLeft, ArrowLeftRight, ArrowRight, BatteryCharging, Bug, CircleDot, Diamond, Gauge, GitCompareArrows, Hash, Lightbulb, Minus, Palette, Rabbit, Radio, Route, ScanLine, Shapes, Sparkles, Trash2, Triangle, Truck, Undo2, Waves, X, Zap, type LucideIcon } from 'lucide-react';
+import {
+  Activity,
+  ArrowLeft,
+  ArrowLeftRight,
+  ArrowRight,
+  BatteryCharging,
+  Bug,
+  CircleDot,
+  Diamond,
+  Gauge,
+  GitCompareArrows,
+  Hash,
+  Lightbulb,
+  Minus,
+  Palette,
+  Rabbit,
+  Radio,
+  Route,
+  ScanLine,
+  Shapes,
+  Sparkles,
+  Trash2,
+  Triangle,
+  Truck,
+  Undo2,
+  Waves,
+  X,
+  Zap,
+  type LucideIcon,
+} from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
 import { EdgeEffectLayer, PATTERN_DASHES, TRAVEL_VELOCITY } from './edge-effect-layer';
@@ -15,7 +44,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeObjectShape, EdgeRouting, FlowEdge, NodeFont } from '@/lib/flowchart-types';
-import { EDGE_LABEL_BACKGROUNDS, EDGE_LABEL_COLORS, EDGE_LABEL_FONT_SIZE_MAX, EDGE_LABEL_FONT_SIZE_MIN, EDGE_LABEL_SHAPES, resolveEdgeLabelStyle } from '@/lib/edge-label-style';
+import { EDGE_LABEL_FONT_SIZE_MAX, EDGE_LABEL_FONT_SIZE_MIN, EDGE_LABEL_PRESETS, EDGE_LABEL_SHAPES, findEdgeLabelPreset, resolveEdgeLabelStyle, type EdgeLabelPreset } from '@/lib/edge-label-style';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 interface EdgeInspectorProps {
@@ -129,11 +158,11 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
   const SelectedEffectIcon = selectedEffect.Icon;
 
   return (
-    <Card size='sm' className='gap-0 border-cyan-300/10 bg-zinc-900/80 py-0 ring-cyan-400/35 shadow-[0_18px_60px_rgba(0,0,0,.3)]'>
+    <Card size='sm' className='gap-0 bg-zinc-900/70 py-0 ring-0'>
       <CardHeader className='sticky top-0 z-10 grid grid-cols-[1fr_auto] border-b border-white/8 bg-zinc-900/95 py-3 pr-4 pl-1 backdrop-blur-xl'>
         <div className='min-w-0'>
           <CardTitle className='text-sm font-semibold'>Line inspector</CardTitle>
-          <CardDescription className='mt-1 max-w-[230px] truncate text-[10px] text-zinc-500'>
+          <CardDescription className='mt-1 max-w-57.5 truncate text-[10px] text-zinc-500'>
             {sourceTitle} → {targetTitle}
           </CardDescription>
         </div>
@@ -143,8 +172,6 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
       </CardHeader>
 
       <CardContent className='pb-4 pr-4 pl-1'>
-        <p className='mt-3 rounded-lg bg-cyan-400/8 px-2.5 py-2 text-[9px] leading-relaxed text-cyan-100/70 ring-1 ring-cyan-400/18'>Drag A/B to reconnect. Drag the diamond points to reshape the line; double-click one to remove it.</p>
-
         <Label htmlFor='edge-label' className='mt-4 block text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>
           Label
         </Label>
@@ -261,8 +288,12 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
           </SelectContent>
         </Select>
 
-        <SwatchRow label='Label color' value={labelStyle.color} options={EDGE_LABEL_COLORS} onChange={(labelColor) => onUpdate(edge.id, { labelColor })} />
-        <SwatchRow label='Label background' value={labelStyle.background} options={EDGE_LABEL_BACKGROUNDS} onChange={(labelBackground) => onUpdate(edge.id, { labelBackground })} />
+        <LabelColorField
+          label='Label color'
+          color={labelStyle.color}
+          background={labelStyle.background}
+          onChange={(preset) => onUpdate(edge.id, { labelColor: preset.color, labelBackground: preset.background })}
+        />
 
         <MarkerPicker label='Line start' value={edge.startMarker ?? 'none'} onChange={(startMarker) => onUpdate(edge.id, { startMarker })} />
         <MarkerPicker label='Line end' value={edge.endMarker ?? 'arrow'} onChange={(endMarker) => onUpdate(edge.id, { endMarker })} />
@@ -362,7 +393,21 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
               </div>
               <div className='col-span-3 flex flex-col overflow-y-auto pb-6 pr-8 pl-4'>
                 <div className='flex h-48 shrink-0 items-center justify-center rounded-xl border border-[#28282A] bg-[#09090B]'>
-                  <EffectPreviewLarge effect={previewEffect} direction={direction} color={color} effectColor={edge.effectColor} width={width} effectSize={effectSize} speed={speed} count={effectCount} density={effectDensity} glow={glowIntensity} glowColor={glowColor} phase={phaseOffset} shape={edge.effectShape} />
+                  <EffectPreviewLarge
+                    effect={previewEffect}
+                    direction={direction}
+                    color={color}
+                    effectColor={edge.effectColor}
+                    width={width}
+                    effectSize={effectSize}
+                    speed={speed}
+                    count={effectCount}
+                    density={effectDensity}
+                    glow={glowIntensity}
+                    glowColor={glowColor}
+                    phase={phaseOffset}
+                    shape={edge.effectShape}
+                  />
                 </div>
 
                 {supportsCount && (
@@ -722,25 +767,47 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
   );
 }
 
-function SwatchRow({ label, value, options, onChange }: { label: string; value: `#${string}`; options: ReadonlyArray<{ value: `#${string}`; label: string }>; onChange: (value: `#${string}`) => void }) {
+/** A preset's ink and fill are only meaningful together, so the swatch is
+ *  the label chip itself rather than two separate colour dots. */
+function LabelChipSwatch({ preset }: { preset: { color: `#${string}`; background: `#${string}` } }) {
+  return (
+    <span className='flex size-5 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold ring-1 ring-white/20' style={{ background: preset.background, color: preset.color }}>
+      Aa
+    </span>
+  );
+}
+
+/** One picker for the label's ink + chip fill. Selecting a preset writes
+ *  both `labelColor` and `labelBackground` in a single update. */
+function LabelColorField({ label, color, background, onChange }: { label: string; color: `#${string}`; background: `#${string}`; onChange: (preset: EdgeLabelPreset) => void }) {
+  const active = findEdgeLabelPreset(color, background);
   return (
     <div className='mt-3'>
       <Label className='mb-1 block text-[9px] text-zinc-500'>{label}</Label>
-      <div className='flex flex-wrap gap-1.5'>
-        {options.map((option) => (
-          <Button
-            key={option.value}
-            variant='outline'
-            size='icon-sm'
-            onClick={() => onChange(option.value)}
-            title={option.label}
-            aria-label={`${label} ${option.label}`}
-            aria-pressed={value.toLowerCase() === option.value.toLowerCase()}
-            className={['size-6 rounded-full border-white/15 p-0 transition', value.toLowerCase() === option.value.toLowerCase() ? 'border-2 border-cyan-300' : 'hover:scale-110'].join(' ')}
-            style={{ background: option.value }}
-          />
-        ))}
-      </div>
+      <Select
+        value={active?.label}
+        onValueChange={(nextValue) => {
+          const preset = EDGE_LABEL_PRESETS.find((item) => item.label === nextValue);
+          if (preset) onChange(preset);
+        }}
+      >
+        <SelectTrigger className='h-auto w-full border-white/10 bg-white/5 px-2 py-1.5 text-left hover:bg-white/8 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
+          <span className='flex items-center gap-2'>
+            <LabelChipSwatch preset={{ color, background }} />
+            <span className='text-[11px] font-semibold text-zinc-200'>{active?.label ?? 'Custom'}</span>
+          </span>
+        </SelectTrigger>
+        <SelectContent className='border-cyan-400/25 bg-zinc-950 p-1.5'>
+          {EDGE_LABEL_PRESETS.map((preset) => (
+            <SelectItem key={preset.label} value={preset.label} className='px-2 py-1.5 pr-8'>
+              <span className='flex items-center gap-2'>
+                <LabelChipSwatch preset={preset} />
+                <span className='text-[11px] font-semibold text-zinc-200'>{preset.label}</span>
+              </span>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
     </div>
   );
 }

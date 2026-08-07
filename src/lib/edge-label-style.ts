@@ -4,31 +4,37 @@
 
 import type { EdgeLabelShape, FlowEdge, NodeFont } from './flowchart-types';
 
-/** Dark ink, meant to sit on one of the light backgrounds below. */
-export const EDGE_LABEL_COLORS: ReadonlyArray<{ value: `#${string}`; label: string }> = [
-  { value: '#18181b', label: 'Ink' },
-  { value: '#0c4a6e', label: 'Sky' },
-  { value: '#164e63', label: 'Cyan' },
-  { value: '#312e81', label: 'Indigo' },
-  { value: '#4c1d95', label: 'Violet' },
-  { value: '#831843', label: 'Pink' },
-  { value: '#7f1d1d', label: 'Red' },
-  { value: '#78350f', label: 'Amber' },
-  { value: '#064e3b', label: 'Emerald' },
+/**
+ * Ink and chip fill always travel together: every preset is a dark ink
+ * already paired with the light fill it reads best on, so the inspector
+ * needs one picker rather than two palettes a user can mismatch.
+ * `labelColor` / `labelBackground` stay separate fields on the edge, so a
+ * document written before these presets existed still renders its own
+ * pair — the inspector just reports it as "Custom".
+ */
+export interface EdgeLabelPreset {
+  label: string;
+  color: `#${string}`;
+  background: `#${string}`;
+}
+
+export const EDGE_LABEL_PRESETS: ReadonlyArray<EdgeLabelPreset> = [
+  { label: 'Ink', color: '#18181b', background: '#f4f4f5' },
+  { label: 'Sky', color: '#0c4a6e', background: '#e0f2fe' },
+  { label: 'Cyan', color: '#164e63', background: '#cffafe' },
+  { label: 'Indigo', color: '#312e81', background: '#e0e7ff' },
+  { label: 'Violet', color: '#4c1d95', background: '#ede9fe' },
+  { label: 'Pink', color: '#831843', background: '#fce7f3' },
+  { label: 'Red', color: '#7f1d1d', background: '#fee2e2' },
+  { label: 'Amber', color: '#78350f', background: '#fef3c7' },
+  { label: 'Emerald', color: '#064e3b', background: '#d1fae5' },
 ];
 
-/** Light chip fills, meant to carry one of the dark inks above. */
-export const EDGE_LABEL_BACKGROUNDS: ReadonlyArray<{ value: `#${string}`; label: string }> = [
-  { value: '#f4f4f5', label: 'Zinc' },
-  { value: '#ffffff', label: 'White' },
-  { value: '#e0f2fe', label: 'Sky' },
-  { value: '#cffafe', label: 'Cyan' },
-  { value: '#e0e7ff', label: 'Indigo' },
-  { value: '#ede9fe', label: 'Violet' },
-  { value: '#fce7f3', label: 'Pink' },
-  { value: '#fef3c7', label: 'Amber' },
-  { value: '#d1fae5', label: 'Emerald' },
-];
+/** The preset a label currently matches, or null when it carries a pair
+ *  no preset covers (hand-edited JSON, or a pre-preset document). */
+export function findEdgeLabelPreset(color: string, background: string): EdgeLabelPreset | null {
+  return EDGE_LABEL_PRESETS.find((preset) => preset.color.toLowerCase() === color.toLowerCase() && preset.background.toLowerCase() === background.toLowerCase()) ?? null;
+}
 
 export const EDGE_LABEL_SHAPES: ReadonlyArray<{ value: EdgeLabelShape; label: string }> = [
   { value: 'pill', label: 'Pill' },

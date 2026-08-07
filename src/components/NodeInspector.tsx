@@ -1,6 +1,20 @@
 'use client';
 
-import { AlignCenter, AlignHorizontalJustifyCenter, AlignHorizontalJustifyEnd, AlignHorizontalJustifyStart, AlignLeft, AlignRight, ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Copy, PanelLeft, PanelRight, PanelTop, RotateCcw, Trash2, type LucideIcon } from 'lucide-react';
+import {
+  AlignCenter,
+  AlignHorizontalJustifyCenter,
+  AlignHorizontalJustifyEnd,
+  AlignHorizontalJustifyStart,
+  AlignLeft,
+  AlignRight,
+  Copy,
+  PanelLeft,
+  PanelRight,
+  PanelTop,
+  RotateCcw,
+  Trash2,
+  type LucideIcon,
+} from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -12,7 +26,7 @@ import { Separator } from '@/components/ui/separator';
 import { Slider } from '@/components/ui/slider';
 import { Textarea } from '@/components/ui/textarea';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import type { ConnectionSide, FlowNode, NodeFont } from '@/lib/flowchart-types';
+import type { FlowNode, NodeFont } from '@/lib/flowchart-types';
 import { COLORS, SHAPES, resolveNodeStyle, type NodeColor, type NodeIcon, type NodeShape } from '@/lib/node-style';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
@@ -50,18 +64,7 @@ const COLOR_HEX: Record<NodeColor, string> = {
 const PRESET_FOREGROUNDS: `#${string}`[] = ['#ffffff', ...(Object.keys(COLORS) as NodeColor[]).map((colorKey) => COLORS[colorKey].foreground as `#${string}`)];
 const PRESET_BACKGROUNDS = (Object.keys(COLORS) as NodeColor[]).map((colorKey) => COLORS[colorKey].background as `#${string}`);
 
-const SIDES: {
-  value: ConnectionSide;
-  label: string;
-  Icon: typeof ArrowUp;
-}[] = [
-  { value: 'top', label: 'Top', Icon: ArrowUp },
-  { value: 'right', label: 'Right', Icon: ArrowRight },
-  { value: 'bottom', label: 'Bottom', Icon: ArrowDown },
-  { value: 'left', label: 'Left', Icon: ArrowLeft },
-];
-
-export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, onClose }: NodeInspectorProps) {
+export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeInspectorProps) {
   // Local draft so the user can type without every keystroke mutating
   // the document. Commit on blur, Enter, or type change.
   const [title, setTitle] = useState(node?.title ?? '');
@@ -110,22 +113,15 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, onClose }
   const style = resolveNodeStyle(node);
   const currentShape: NodeShape = style.shape;
   const currentIcon: NodeIcon | null = style.icon;
-  const connectionPoints = node.connectionPoints ?? {
-    input: 'left' as const,
-    output: 'right' as const,
-  };
 
   return (
     <Card size='sm' className='gap-0 bg-zinc-900/70 py-3 pr-3 pl-1 ring-0'>
       <div className='flex items-center justify-between'>
-        <h2 className='text-sm font-semibold'>Inspector</h2>
-        <Button variant='ghost' size='xs' onClick={onClose} className='text-[10px] text-zinc-500 hover:text-zinc-200'>
-          close
-        </Button>
+        <h2 className='text-sm font-semibold'>Block Inspector</h2>
       </div>
 
-      <p className='mt-1 text-[10px] uppercase tracking-wider text-zinc-500'>{node.id}</p>
-
+      <p className='mt-1 mb-2 text-[10px] uppercase tracking-wider text-zinc-500'>{node.id}</p>
+      <hr />
       <Label htmlFor='node-title' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400'>
         Title
       </Label>
@@ -236,7 +232,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, onClose }
             <span className='block text-xs font-semibold'>{SHAPES[currentShape].label}</span>
           </span>
         </SelectTrigger>
-        <SelectContent className='max-h-72 min-w-[290px] border-violet-400/25 bg-zinc-950 p-1.5'>
+        <SelectContent className='max-h-72 min-w-72.5 border-violet-400/25 bg-zinc-950 p-1.5'>
           {(Object.keys(SHAPES) as NodeShape[]).map((shapeKey) => {
             const spec = SHAPES[shapeKey];
             return (
@@ -275,7 +271,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, onClose }
               className={['relative size-7 overflow-hidden rounded-full border-white/15 p-0 transition', isActive ? 'border-2 border-sky-300' : 'hover:scale-110'].join(' ')}
               style={{ background: spec.background }}
             >
-              <span className='absolute inset-[7px] rounded-full' style={{ background: COLOR_HEX[colorKey] }} />
+              <span className='absolute inset-1.75 rounded-full' style={{ background: COLOR_HEX[colorKey] }} />
             </Button>
           );
         })}
@@ -417,7 +413,7 @@ function RangeField({ label, value, min, max, suffix, onChange }: { label: strin
           {suffix}
         </span>
       </span>
-      <Slider value={value} min={min} max={max} onValueChange={(nextValue) => onChange(nextValue as number)} className='mt-2 [&_[data-slot=slider-range]]:bg-sky-400 [&_[data-slot=slider-thumb]]:border-sky-300' />
+      <Slider value={value} min={min} max={max} onValueChange={(nextValue) => onChange(nextValue as number)} className='mt-2 **:data-[slot=slider-range]:bg-sky-400 [&_[data-slot=slider-thumb]]:border-sky-300' />
     </div>
   );
 }
@@ -502,37 +498,6 @@ function ColorField({ label, value, presets, onChange }: { label: string; value:
           ))}
         </SelectContent>
       </Select>
-    </div>
-  );
-}
-
-function ConnectionSidePicker({ label, value, onChange }: { label: string; value: ConnectionSide; onChange: (value: ConnectionSide) => void }) {
-  return (
-    <div className='mt-1.5 grid grid-cols-[52px_1fr] items-center gap-2'>
-      <span className='text-[10px] text-zinc-500'>{label}</span>
-      <ToggleGroup
-        value={[value]}
-        onValueChange={(nextValue) => {
-          const selected = nextValue.at(-1);
-          if (selected) onChange(selected as ConnectionSide);
-        }}
-        spacing={1}
-        variant='outline'
-        size='sm'
-        className='grid w-full grid-cols-4'
-      >
-        {SIDES.map(({ value: side, label: sideLabel, Icon }) => (
-          <ToggleGroupItem
-            key={side}
-            value={side}
-            title={sideLabel}
-            aria-label={`${label} connection on ${sideLabel}`}
-            className={['h-7 w-full border-white/10 bg-white/5 p-0', value === side ? 'border-sky-400/60 bg-sky-500/20 text-sky-100' : 'text-zinc-500 hover:text-zinc-200'].join(' ')}
-          >
-            <Icon size={13} />
-          </ToggleGroupItem>
-        ))}
-      </ToggleGroup>
     </div>
   );
 }

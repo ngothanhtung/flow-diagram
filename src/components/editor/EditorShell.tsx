@@ -49,11 +49,8 @@ interface EditorShellProps {
  * its persistence dialogs.
  */
 export function EditorShell({ document, icon, subtitle, fileMenu, actions, headerEnd, subBar, info, inspectorLabel, fullScreen = false, children }: EditorShellProps) {
-  const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
-  const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
   const infoOpen = useEditorStore((state) => state.infoOpen);
   const playback = useExecutionPlayback(document);
-  const hasSidebar = selectedNodeId !== null || selectedEdgeId !== null || infoOpen;
 
   return (
     <div className={['flex flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100', fullScreen ? 'h-screen' : 'h-full'].join(' ')}>
@@ -81,14 +78,14 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
       {subBar}
       {children}
 
-      <main className={['grid min-h-0 flex-1 gap-2 overflow-hidden', hasSidebar ? 'grid-cols-[1fr_320px]' : 'grid-cols-1'].join(' ')}>
+      {/* The inspector is a drawer floating over the canvas, so the canvas
+          always owns the full width. */}
+      <main className='min-h-0 flex-1 overflow-hidden'>
         <EditorCanvas document={document} activeNodeIds={playback.active} runningEdgeIds={playback.runningEdgeIds} nodeExecutionStates={playback.nodeExecutionStates} edgeExecutionStates={playback.edgeExecutionStates} />
 
-        {hasSidebar && (
-          <InspectorSidebar document={document} ariaLabel={inspectorLabel}>
-            {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
-          </InspectorSidebar>
-        )}
+        <InspectorSidebar document={document} ariaLabel={inspectorLabel}>
+          {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
+        </InspectorSidebar>
       </main>
     </div>
   );

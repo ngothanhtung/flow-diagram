@@ -1,73 +1,91 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { EdgeInspector } from '@/components/EdgeInspector';
 import { JsonInspector } from '@/components/JsonInspector';
 import { JsonPlaygroundPanel } from '@/components/editor/JsonPlaygroundPanel';
 import { NodeInspector } from '@/components/NodeInspector';
+import { Drawer, DrawerContent } from '@/components/ui/drawer';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useEditorStore } from '@/lib/editor-store';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { resolveNodeStyle } from '@/lib/node-style';
 
 /**
- * Right-hand inspector column. Node and edge inspectors are identical on
- * every editing surface; `children` carries whatever info panels that
- * surface wants below them (rendered only while Info is toggled on).
+ * Right-hand inspector, rendered as a non-modal drawer that floats over
+ * the canvas so the canvas keeps its full width and stays clickable while
+ * you edit. Node and edge inspectors are identical on every editing
+ * surface; `children` carries whatever info panels that surface wants
+ * below them (rendered only while Info is toggled on).
  */
 export function InspectorSidebar({ document, ariaLabel, children }: { document: FlowDocumentJSON; ariaLabel: string; children?: ReactNode }) {
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
   const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
-  const { selectNode, selectEdge, onNodeUpdate, onNodeDuplicate, onNodeDelete, onEdgeUpdate, onEdgeDelete } = useEditorStore();
+  const infoOpen = useEditorStore((state) => state.infoOpen);
+  const { selectNode, selectEdge, toggleInfo, onNodeUpdate, onNodeDuplicate, onNodeDelete, onEdgeUpdate, onEdgeDelete } = useEditorStore();
 
   const selectedNode = document.nodes.find((node) => node.id === selectedNodeId) ?? null;
   const selectedEdge = document.edges.find((edge) => edge.id === selectedEdgeId) ?? null;
   const edgeSource = selectedEdge ? document.nodes.find((node) => node.id === selectedEdge.from) : undefined;
 
   return (
-    <aside className='h-full min-h-0 overflow-hidden' aria-label={ariaLabel}>
-      <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
-        {/* Gentle slide-in each time the panel appears (the whole aside
-            mounts when something becomes selected). */}
-        <motion.div initial={{ x: 18, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.24, ease: 'easeOut' }} className='flex min-h-full flex-col gap-3 pb-1'>
-          {selectedNode && !selectedEdge && (
-            <NodeInspector
-              key={selectedNode.id}
-              node={selectedNode}
-              onUpdate={onNodeUpdate}
-              onDuplicate={(id) => {
-                const duplicateId = onNodeDuplicate(id);
-                if (duplicateId) selectNode(duplicateId);
-              }}
-              onDelete={(id) => {
-                onNodeDelete(id);
-                selectNode(null);
-              }}
-              onClose={() => selectNode(null)}
-            />
-          )}
+    <Drawer
+      open={selectedNode !== null || selectedEdge !== null || infoOpen}
+      // Escape and the swipe gesture dismiss the whole inspector; clearing
+      // both selections and Info is what actually drives `open` back to false.
+      onOpenChange={(next) => {
+        if (next) return;
+        selectNode(null);
+        selectEdge(null);
+        if (infoOpen) toggleInfo();
+      }}
+      modal={false}
+      // Without this, every click on the canvas (selecting the next node)
+      // counts as an outside press and races the new selection.
+      disablePointerDismissal
+      swipeDirection='right'
+    >
+      <DrawerContent aria-label={ariaLabel}>
+        <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
+          <div className='flex min-h-full flex-col gap-3 p-2'>
+            {selectedNode && !selectedEdge && (
+              <NodeInspector
+                key={selectedNode.id}
+                node={selectedNode}
+                onUpdate={onNodeUpdate}
+                onDuplicate={(id) => {
+                  const duplicateId = onNodeDuplicate(id);
+                  if (duplicateId) selectNode(duplicateId);
+                }}
+                onDelete={(id) => {
+                  onNodeDelete(id);
+                  selectNode(null);
+                }}
+                onClose={() => selectNode(null)}
+              />
+            )}
 
-          {selectedEdge && (
-            <EdgeInspector
-              key={selectedEdge.id}
-              edge={selectedEdge}
-              sourceTitle={edgeSource?.title ?? selectedEdge.from}
-              targetTitle={document.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
-              fallbackColor={edgeSource ? resolveNodeStyle(edgeSource).foreground : '#67e8f9'}
-              onUpdate={onEdgeUpdate}
-              onDelete={(id) => {
-                onEdgeDelete(id);
-                selectEdge(null);
-              }}
-              onClose={() => selectEdge(null)}
-            />
-          )}
+            {selectedEdge && (
+              <EdgeInspector
+                key={selectedEdge.id}
+                edge={selectedEdge}
+                sourceTitle={edgeSource?.title ?? selectedEdge.from}
+                targetTitle={document.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
+                fallbackColor={edgeSource ? resolveNodeStyle(edgeSource).foreground : '#67e8f9'}
+                onUpdate={onEdgeUpdate}
+                onDelete={(id) => {
+                  onEdgeDelete(id);
+                  selectEdge(null);
+                }}
+                onClose={() => selectEdge(null)}
+              />
+            )}
 
-          {children}
-        </motion.div>
-      </ScrollArea>
-    </aside>
+            {children}
+          </div>
+        </ScrollArea>
+      </DrawerContent>
+    </Drawer>
   );
 }
 

@@ -102,9 +102,9 @@ const DEFAULT_GRID_SIZE = 40;
 const PATH_SAMPLES = 160;
 
 // Every canvas dock button is the same shadcn `Button`: ghost variant at
-// h-9, with the dock's small uppercase label styling.
-const DOCK_BUTTON = 'h-9 gap-1.5 px-3 text-[9px] font-bold uppercase tracking-[0.14em]';
-const DOCK_ICON_BUTTON = 'h-9 w-9 text-zinc-300 hover:text-cyan-200 disabled:opacity-30';
+// h-8, with the dock's small uppercase label styling.
+const DOCK_BUTTON = 'h-8 gap-1.5 px-3 text-[9px] font-bold uppercase tracking-[0.14em]';
+const DOCK_ICON_BUTTON = 'h-8 w-8 text-zinc-300 hover:text-cyan-200 disabled:opacity-30';
 
 function DockDivider() {
   // Full-height rule between button groups, matching the flush dividers
@@ -742,13 +742,13 @@ export function FlowCanvas({
           <Info size={13} /> Info
         </Button>
         <DockDivider />
-        <Button variant='ghost' size='icon-lg' onClick={() => zoomAt(1 / ZOOM_BUTTON_FACTOR)} disabled={zoomRatio <= MIN_ZOOM_RATIO + 0.001} className={DOCK_ICON_BUTTON} aria-label='Zoom out' title='Zoom out'>
+        <Button variant='ghost' size='icon' onClick={() => zoomAt(1 / ZOOM_BUTTON_FACTOR)} disabled={zoomRatio <= MIN_ZOOM_RATIO + 0.001} className={DOCK_ICON_BUTTON} aria-label='Zoom out' title='Zoom out'>
           <Minus size={15} />
         </Button>
-        <output className='grid h-9 min-w-14 place-items-center px-2 font-mono text-[10px] font-semibold text-cyan-100' aria-live='polite' aria-label={`Zoom ${Math.round(zoomRatio * 100)} percent`}>
+        <output className='grid h-8 min-w-14 place-items-center px-2 font-mono text-[10px] font-semibold text-cyan-100' aria-live='polite' aria-label={`Zoom ${Math.round(zoomRatio * 100)} percent`}>
           {Math.round(zoomRatio * 100)}%
         </output>
-        <Button variant='ghost' size='icon-lg' onClick={() => zoomAt(ZOOM_BUTTON_FACTOR)} disabled={zoomRatio >= MAX_ZOOM_RATIO - 0.001} className={DOCK_ICON_BUTTON} aria-label='Zoom in' title='Zoom in'>
+        <Button variant='ghost' size='icon' onClick={() => zoomAt(ZOOM_BUTTON_FACTOR)} disabled={zoomRatio >= MAX_ZOOM_RATIO - 0.001} className={DOCK_ICON_BUTTON} aria-label='Zoom in' title='Zoom in'>
           <Plus size={15} />
         </Button>
         <DockDivider />
@@ -792,7 +792,7 @@ export function FlowCanvas({
               if (!Number.isNaN(parsed)) setGridSize(parsed);
             }}
           >
-            <SelectTrigger className='inline-flex h-9 items-center gap-1 rounded-lg border-transparent bg-transparent px-2.5 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-muted/50 hover:text-cyan-200' aria-label='Grid size' title='Grid size'>
+            <SelectTrigger className='inline-flex h-8 items-center gap-1 rounded-lg border-transparent bg-transparent px-2.5 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-muted/50 hover:text-cyan-200' aria-label='Grid size' title='Grid size'>
               <SelectValue />
             </SelectTrigger>
             <SelectContent className='border-white/10 bg-zinc-950'>
