@@ -102,9 +102,10 @@ const DEFAULT_GRID_SIZE = 40;
 const PATH_SAMPLES = 160;
 
 // Every canvas dock button is the same shadcn `Button`: ghost variant at
-// h-8, with the dock's small uppercase label styling.
-const DOCK_BUTTON = 'h-8 gap-1.5 px-3 text-[9px] font-bold uppercase tracking-[0.14em]';
-const DOCK_ICON_BUTTON = 'h-8 w-8 text-zinc-300 hover:text-cyan-200 disabled:opacity-30';
+// the `sm` tier (h-7), with the dock's small uppercase label styling.
+// The shape dock sits on the same tier so all three docks line up.
+const DOCK_BUTTON = 'h-7 gap-1.5 px-2.5 text-[9px] font-bold uppercase tracking-[0.14em]';
+const DOCK_ICON_BUTTON = 'h-7 w-7 text-zinc-300 hover:text-cyan-200 disabled:opacity-30';
 
 function DockDivider() {
   // Full-height rule between button groups, matching the flush dividers
@@ -727,7 +728,7 @@ export function FlowCanvas({
       {/* Info + zoom + Fit live in the bottom-left corner; the shape dock
           owns the bottom centre and the grid controls the right corner. */}
       <div
-        className='absolute bottom-4 left-4 z-20 flex items-center overflow-hidden rounded-xl bg-zinc-900/92 p-1 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl'
+        className='absolute bottom-4 left-4 z-20 flex items-center overflow-hidden rounded-lg bg-zinc-900/92 p-0.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48)] backdrop-blur-xl'
         role='group'
         aria-label='Canvas view controls'
       >
@@ -739,27 +740,27 @@ export function FlowCanvas({
           aria-label={`${infoOpen ? 'Hide' : 'Show'} document info`}
           title={`${infoOpen ? 'Hide' : 'Show'} document info`}
         >
-          <Info size={13} /> Info
+          <Info size={12} /> Info
         </Button>
         <DockDivider />
         <Button variant='ghost' size='icon' onClick={() => zoomAt(1 / ZOOM_BUTTON_FACTOR)} disabled={zoomRatio <= MIN_ZOOM_RATIO + 0.001} className={DOCK_ICON_BUTTON} aria-label='Zoom out' title='Zoom out'>
-          <Minus size={15} />
+          <Minus size={14} />
         </Button>
-        <output className='grid h-8 min-w-14 place-items-center px-2 font-mono text-[10px] font-semibold text-cyan-100' aria-live='polite' aria-label={`Zoom ${Math.round(zoomRatio * 100)} percent`}>
+        <output className='grid h-7 min-w-12 place-items-center px-1.5 font-mono text-[10px] font-semibold text-cyan-100' aria-live='polite' aria-label={`Zoom ${Math.round(zoomRatio * 100)} percent`}>
           {Math.round(zoomRatio * 100)}%
         </output>
         <Button variant='ghost' size='icon' onClick={() => zoomAt(ZOOM_BUTTON_FACTOR)} disabled={zoomRatio >= MAX_ZOOM_RATIO - 0.001} className={DOCK_ICON_BUTTON} aria-label='Zoom in' title='Zoom in'>
-          <Plus size={15} />
+          <Plus size={14} />
         </Button>
         <DockDivider />
         <Button variant='ghost' onClick={() => setViewOverride(null)} className={[DOCK_BUTTON, 'text-zinc-500 hover:text-cyan-200'].join(' ')} aria-label='Fit diagram to view' title='Fit diagram to view'>
-          <Maximize2 size={13} /> Fit
+          <Maximize2 size={12} /> Fit
         </Button>
       </div>
 
       {!readOnly && (
         <div
-          className='absolute right-4 bottom-4 z-20 flex items-center overflow-hidden rounded-xl bg-zinc-900/92 p-1 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl'
+          className='absolute right-4 bottom-4 z-20 flex items-center overflow-hidden rounded-lg bg-zinc-900/92 p-0.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48)] backdrop-blur-xl'
           role='group'
           aria-label='Canvas grid controls'
         >
@@ -771,7 +772,7 @@ export function FlowCanvas({
             aria-label={`${snapEnabled ? 'Disable' : 'Enable'} snap to grid`}
             title={`Snap to ${gridSize}px grid: ${snapEnabled ? 'on' : 'off'}`}
           >
-            <Magnet size={13} /> Snap
+            <Magnet size={12} /> Snap
           </Button>
           <DockDivider />
           <Button
@@ -782,7 +783,7 @@ export function FlowCanvas({
             aria-label={`${gridVisible ? 'Hide' : 'Show'} grid`}
             title={`${gridVisible ? 'Hide' : 'Show'} grid`}
           >
-            <Grid2x2 size={13} /> Grid
+            <Grid2x2 size={12} /> Grid
           </Button>
           <DockDivider />
           <Select
@@ -792,7 +793,15 @@ export function FlowCanvas({
               if (!Number.isNaN(parsed)) setGridSize(parsed);
             }}
           >
-            <SelectTrigger className='inline-flex h-8 items-center gap-1 rounded-lg border-transparent bg-transparent px-2.5 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-muted/50 hover:text-cyan-200' aria-label='Grid size' title='Grid size'>
+            {/* Matched to DOCK_BUTTON by hand: SelectTrigger's base styling
+                carries a `dark:bg-input/30` fill, a border and a size-4
+                chevron, none of which the ghost dock buttons beside it have. */}
+            <SelectTrigger
+              size='sm'
+              className='inline-flex h-7 items-center gap-1 rounded-md border-0 bg-transparent px-2 py-0 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-muted/50 hover:text-cyan-200 dark:bg-transparent dark:hover:bg-muted/50 [&_svg]:size-3'
+              aria-label='Grid size'
+              title='Grid size'
+            >
               <SelectValue />
             </SelectTrigger>
             <SelectContent className='border-white/10 bg-zinc-950'>

@@ -23,7 +23,7 @@ import { Separator } from '@/components/ui/separator';
 import { SHAPES, type NodeShape } from '@/lib/node-style';
 
 // Every shape exposed in the dock. We intentionally show only the
-// silhouettes that read well at the dock's 18×18 icon size — UML
+// silhouettes that read well at the dock's 16×16 icon size — UML
 // component shapes (server, queue, document, …) are still drawable
 // from the Inspector's shape picker but would clutter the dock.
 const QUICK_SHAPES: ReadonlyArray<{ id: NodeShape; label: string }> = [
@@ -99,7 +99,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
 
   return (
     <div
-      className='pointer-events-auto absolute left-1/2 bottom-4 z-20 flex -translate-x-1/2 items-center gap-1 rounded-2xl bg-zinc-900/92 p-1.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48),0_0_24px_rgba(34,211,238,.08)] backdrop-blur-xl'
+      className='pointer-events-auto absolute left-1/2 bottom-4 z-20 flex -translate-x-1/2 items-center gap-0.5 rounded-lg bg-zinc-900/92 p-0.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48)] backdrop-blur-xl'
       role='toolbar'
       aria-label='Shape drawing tools'
     >
@@ -109,11 +109,11 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
       <DropdownMenu open={shapeMenuOpen} onOpenChange={setShapeMenuOpen}>
         <DropdownMenuTrigger
           render={<Button variant='ghost' />}
-          className='group h-8 gap-1 pl-2.5 pr-1.5 text-zinc-300 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
+          className='group h-7 gap-0.5 pl-2 pr-1 text-zinc-300 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
           aria-label='Choose a shape to draw'
         >
-          <ShapeIcon shape={activeShape ?? lastPicked} size={18} />
-          <ChevronDown size={11} className='opacity-70 transition group-data-popup-open:rotate-180' />
+          <ShapeIcon shape={activeShape ?? lastPicked} size={16} />
+          <ChevronDown size={10} className='opacity-70 transition group-data-popup-open:rotate-180' />
         </DropdownMenuTrigger>
         <DropdownMenuContent align='center' sideOffset={10} className='w-[min(420px,90vw)] border-white/10 bg-zinc-950/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.68)] backdrop-blur-xl'>
           <div className='mb-2 px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-zinc-500'>Shapes</div>
@@ -148,14 +148,14 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           <Button
             key={shape.id}
             variant='ghost'
-            size='icon'
+            size='icon-sm'
             onClick={() => (isActive ? onSelect(null) : choose(shape.id))}
             aria-pressed={isActive}
             className={isActive ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}
             title={shape.label}
             aria-label={shape.label}
           >
-            <ShapeIcon shape={shape.id} size={18} />
+            <ShapeIcon shape={shape.id} size={16} />
           </Button>
         );
       })}
