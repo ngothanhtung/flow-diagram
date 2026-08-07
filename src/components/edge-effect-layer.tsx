@@ -86,8 +86,11 @@ interface EdgeEffectLayerProps {
   /** Mark density for pattern effects, 0.5×–2× (default 1). Higher =
    *  more, smaller marks per length at the same apparent speed. */
   density?: number;
-  /** Neon glow strength, 0–3× (default 1). 0 removes the halo. */
+  /** Neon glow strength, 0–3×. Unset (or 0) means no halo. */
   glow?: number;
+  /** Halo colour: undefined = white, 'auto' = the object's own colour,
+   *  or a hex value. */
+  glowColor?: string;
   /** Phase offset as a fraction of one animation cycle (0–1). */
   phase?: number;
   /** Draws real silhouettes (arrow, envelope, coin…) riding the route
@@ -124,7 +127,7 @@ export function EdgeEffectLayer(props: EdgeEffectLayerProps) {
   return <EdgeEffectLayerSingle {...props} />;
 }
 
-function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, effectSize, speed, count, density, glow, phase, shape, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
+function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, effectSize, speed, count, density, glow, glowColor, phase, shape, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
   // Every effect's traveling object — including backdrop/track layers and
   // secondary passes — is sized as the same fixed multiple of the line's
   // own width, scaled by the `effectSize` slider (0.5x-3x, default 1x). At
@@ -199,22 +202,23 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   const animationDuration = `${animationDurationSeconds}s`;
   // One shared neon glow for EVERY effect — the lit halo around each
   // travelling object must look identical from effect to effect, so no
-  // effect gets a stronger variant. White by default (independent of the
-  // line/effect colour), scaled by the size slider and the glow slider
-  // (0 turns the halo off entirely).
-  const glowLevel = Math.max(0, Math.min(3, glow ?? 1));
-  // Dense diagrams drop the halo automatically, because a stacked pair of
-  // blurs on dozens of moving objects is the most expensive thing here.
-  // An explicitly configured glow is a user decision though, so it still
-  // renders in that mode — as a single blur layer rather than two, which
-  // keeps the control meaningful without paying the full cost. (Without
-  // this, the slider silently did nothing past ~20 nodes / ~28 edges.)
+  // effect gets a stronger variant. It is off unless the line asks for
+  // one (new lines are created with 1), and scales with both the size
+  // and the glow sliders.
+  const glowLevel = Math.max(0, Math.min(3, glow ?? 0));
+  // White by default — the classic neon look, independent of the line
+  // colour. 'auto' follows the object's own colour via currentColor,
+  // which is exactly what the effect layer is already painted with.
+  const glowInk = glowColor === 'auto' ? 'currentColor' : (glowColor ?? '#ffffff');
+  const softGlowInk = (alpha: number) =>
+    glowColor === 'auto' ? `color-mix(in srgb, currentColor ${Math.round(alpha * 100)}%, transparent)` : `${glowInk}${Math.round(alpha * 255).toString(16).padStart(2, '0')}`;
+  // Dense diagrams get a single blur layer instead of two: stacked blurs
+  // on dozens of moving objects are the most expensive thing here, and
+  // one layer keeps the control meaningful at a fraction of the cost.
   const buildGlow = (inner: number, outer: number, outerAlpha: number) => {
     if (glowLevel === 0) return undefined;
-    if (performanceMode) {
-      return glow !== undefined ? `drop-shadow(0 0 ${inner * glowLevel}px #ffffff)` : undefined;
-    }
-    return `drop-shadow(0 0 ${inner * glowLevel}px #ffffff) drop-shadow(0 0 ${outer * glowLevel}px rgba(255,255,255,${outerAlpha}))`;
+    if (performanceMode) return `drop-shadow(0 0 ${inner * glowLevel}px ${glowInk})`;
+    return `drop-shadow(0 0 ${inner * glowLevel}px ${glowInk}) drop-shadow(0 0 ${outer * glowLevel}px ${softGlowInk(outerAlpha)})`;
   };
   const neonFilter = buildGlow(Math.max(3, effectSize * 3), Math.max(7, effectSize * 6), 0.6);
   // A negative delay starts the loop mid-cycle — the standard CSS idiom

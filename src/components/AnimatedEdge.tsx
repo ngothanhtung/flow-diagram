@@ -47,6 +47,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   const effectDensity = edge.effectDensity !== undefined ? Math.max(0.5, Math.min(2, edge.effectDensity)) : undefined;
   const glowIntensity = edge.glowIntensity !== undefined ? Math.max(0, Math.min(3, edge.glowIntensity)) : undefined;
   const phaseOffset = edge.phaseOffset !== undefined ? Math.max(0, Math.min(1, edge.phaseOffset)) : undefined;
+  const glowColor = edge.glowColor;
   const speed = Math.max(0.25, Math.min(3, edge.animationSpeed ?? 1));
   const startMarker = edge.startMarker ?? 'none';
   const endMarker = edge.endMarker ?? 'arrow';
@@ -128,6 +129,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
           shape={edge.effectShape}
           density={effectDensity}
           glow={glowIntensity}
+          glowColor={glowColor}
           phase={phaseOffset}
           paused={paused}
           performanceMode={performanceMode || lowPower}

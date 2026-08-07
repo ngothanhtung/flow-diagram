@@ -114,7 +114,9 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
   const effectSize = edge.effectSize ?? 1;
   const effectCount = edge.effectCount;
   const effectDensity = edge.effectDensity ?? 1;
-  const glowIntensity = edge.glowIntensity ?? 1;
+  // Glow is opt-in: unset means no halo (new lines are created with 1).
+  const glowIntensity = edge.glowIntensity ?? 0;
+  const glowColor = edge.glowColor;
   const phaseOffset = edge.phaseOffset ?? 0;
   // Object count only applies to travelling-object effects; pattern
   // effects (flow, dash, wave…) get a density slider instead, and the
@@ -360,7 +362,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
               </div>
               <div className='col-span-3 flex flex-col overflow-y-auto pb-6 pr-8 pl-4'>
                 <div className='flex h-48 shrink-0 items-center justify-center rounded-xl border border-[#28282A] bg-[#09090B]'>
-                  <EffectPreviewLarge effect={previewEffect} direction={direction} color={color} effectColor={edge.effectColor} width={width} effectSize={effectSize} speed={speed} count={effectCount} density={effectDensity} glow={glowIntensity} phase={phaseOffset} shape={edge.effectShape} />
+                  <EffectPreviewLarge effect={previewEffect} direction={direction} color={color} effectColor={edge.effectColor} width={width} effectSize={effectSize} speed={speed} count={effectCount} density={effectDensity} glow={glowIntensity} glowColor={glowColor} phase={phaseOffset} shape={edge.effectShape} />
                 </div>
 
                 {supportsCount && (
@@ -547,14 +549,48 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
                     max={3}
                     step={0.1}
                     value={glowIntensity}
-                    onValueChange={(nextValue) => onUpdate(edge.id, { glowIntensity: (nextValue as number) === 1 ? undefined : (nextValue as number) })}
+                    onValueChange={(nextValue) => onUpdate(edge.id, { glowIntensity: (nextValue as number) === 0 ? undefined : (nextValue as number) })}
                     className='mt-2 [&_[data-slot=slider-range]]:bg-amber-400 [&_[data-slot=slider-thumb]]:border-amber-300'
                   />
                   <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
                     <span>Off</span>
                     <span>Bright</span>
                   </span>
-                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Strength of the neon halo around the moving objects. Dense diagrams dim the halo automatically — setting a value here keeps it.</span>
+                  {glowIntensity > 0 && (
+                    <>
+                      <span className='mt-2 flex items-center justify-between text-[10px] text-zinc-500'>
+                        <span className='inline-flex items-center gap-1'>
+                          <Palette size={11} /> Glow color
+                        </span>
+                        {glowColor ? (
+                          <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { glowColor: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
+                            <Undo2 /> White
+                          </Button>
+                        ) : (
+                          <span className='text-[8px] uppercase tracking-wider text-zinc-600'>White · default</span>
+                        )}
+                      </span>
+                      <span className='mt-1.5 flex items-center gap-2'>
+                        <Input
+                          type='color'
+                          value={glowColor && glowColor !== 'auto' ? glowColor : (edge.effectColor ?? color)}
+                          onChange={(event) => onUpdate(edge.id, { glowColor: event.target.value as `#${string}` })}
+                          className='h-7 w-8 cursor-pointer border-white/10 bg-transparent p-0.5'
+                        />
+                        <Button
+                          variant='outline'
+                          size='xs'
+                          onClick={() => onUpdate(edge.id, { glowColor: glowColor === 'auto' ? undefined : 'auto' })}
+                          aria-pressed={glowColor === 'auto'}
+                          className={['border-white/12 bg-black/25 text-[10px]', glowColor === 'auto' ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'text-zinc-400 hover:text-zinc-100'].join(' ')}
+                        >
+                          Match object
+                        </Button>
+                        <span className='font-mono text-[9px] uppercase text-zinc-400'>{glowColor === 'auto' ? 'auto' : (glowColor ?? '#ffffff')}</span>
+                      </span>
+                    </>
+                  )}
+                  <span className='mt-1.5 block text-[9px] leading-relaxed text-zinc-600'>Neon halo around the moving objects — off unless you turn it on. Newly drawn lines start at 1×.</span>
                 </div>
 
                 <div className='mt-3'>
@@ -787,6 +823,7 @@ function EffectPreviewLarge({
   count,
   density,
   glow,
+  glowColor,
   phase,
   shape,
 }: {
@@ -800,6 +837,7 @@ function EffectPreviewLarge({
   count?: number;
   density?: number;
   glow?: number;
+  glowColor?: string;
   phase?: number;
   shape?: EdgeObjectShape;
 }) {
@@ -807,7 +845,7 @@ function EffectPreviewLarge({
     <svg viewBox='0 0 400 180' className='h-auto w-full max-w-96' style={{ color }}>
       <path d={PREVIEW_PATH} stroke='currentColor' strokeWidth={width} strokeOpacity={0.52} fill='none' />
       <g style={effectColor ? { color: effectColor } : undefined}>
-        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} count={count} density={density} glow={glow} phase={phase} shape={shape} />
+        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} count={count} density={density} glow={glow} glowColor={glowColor} phase={phase} shape={shape} />
       </g>
     </svg>
   );

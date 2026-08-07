@@ -342,6 +342,10 @@ export const useEditorStore = create<EditorState>((set, get) => ({
             endMarker: 'arrow',
             animationSpeed: 1,
             effectSize: 1.5,
+            // Glow is off unless a line asks for it, so a freshly drawn
+            // line carries the halo explicitly rather than relying on a
+            // default that dense-diagram mode would strip away.
+            glowIntensity: 1,
             width: 2,
           },
         ],

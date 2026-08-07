@@ -171,7 +171,8 @@ export default function GuidePage() {
                   'Replaces the travelling effect\u2019s dash objects with a real silhouette riding the route (an arrow for control flow, an envelope for messages, a coin for payments\u2026). Arrows/chevrons/planes/bolts turn to follow the line; the rest stay upright. Travelling effects only.',
                 ],
                 ['effectDensity', '0.5 – 2', 'Mark density for the pattern effects (flow, dash, wave…): higher = more, smaller marks at the same apparent speed. Travelling-object effects ignore it — use effectCount there.'],
-                ['glowIntensity', '0 – 3', 'Strength of the neon halo around the moving objects. 1 (default) is the classic glow; 0 removes it entirely.'],
+                ['glowIntensity', '0 – 3', 'Strength of the neon halo around the moving objects. Omit for no halo at all — the editor puts 1 on newly drawn lines, so a glow is always a deliberate choice.'],
+                ['glowColor', '#hex · auto', 'Halo colour. Omit for white (the classic neon look); \u2018auto\u2019 follows the travelling object\u2019s own colour.'],
                 ['phaseOffset', '0 – 1', "Starts the animation partway through its cycle (fraction of one loop), so parallel connectors don't run in lockstep."],
               ]}
             />

@@ -216,9 +216,13 @@ export interface FlowEdge {
    *  classic pattern. Travelling-object effects ignore it (use
    *  `effectCount` there instead). */
   effectDensity?: number;
-  /** Neon glow strength around the moving objects, 0–3×. 1 (default)
-   *  is the classic halo; 0 disables the glow entirely. */
+  /** Neon glow strength around the moving objects, 0–3×. Unset means no
+   *  halo at all — the editor sets `1` on newly drawn lines, so a glow
+   *  is always an explicit choice rather than an inherited default. */
   glowIntensity?: number;
+  /** Halo colour. Unset is white (the classic neon look); `'auto'`
+   *  follows the travelling object's own colour; a hex value pins it. */
+  glowColor?: `#${string}` | 'auto';
   /** Animation phase offset as a fraction of one cycle (0–1). Lines
    *  sharing an effect run in lockstep by default; offsetting phases
    *  makes parallel connectors read more organically. */
