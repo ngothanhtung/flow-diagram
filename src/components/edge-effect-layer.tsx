@@ -1,6 +1,7 @@
 'use client';
 
-import type { EdgeDirection, EdgeEffect } from '@/lib/flowchart-types';
+import { EdgeMotionObjects } from '@/components/edge-motion-objects';
+import type { EdgeDirection, EdgeEffect, EdgeObjectShape } from '@/lib/flowchart-types';
 
 /**
  * Effects whose object travels the entire route use pixels/second, so the
@@ -89,6 +90,9 @@ interface EdgeEffectLayerProps {
   glow?: number;
   /** Phase offset as a fraction of one animation cycle (0–1). */
   phase?: number;
+  /** Draws real silhouettes (arrow, envelope, coin…) riding the route
+   *  instead of the effect's dash objects. Travelling effects only. */
+  shape?: EdgeObjectShape;
   paused?: boolean;
   /** Keep motion but remove expensive blur layers on dense diagrams. */
   performanceMode?: boolean;
@@ -120,7 +124,7 @@ export function EdgeEffectLayer(props: EdgeEffectLayerProps) {
   return <EdgeEffectLayerSingle {...props} />;
 }
 
-function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, effectSize, speed, count, density, glow, phase, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
+function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, effectSize, speed, count, density, glow, phase, shape, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
   // Every effect's traveling object — including backdrop/track layers and
   // secondary passes — is sized as the same fixed multiple of the line's
   // own width, scaled by the `effectSize` slider (0.5x-3x, default 1x). At
@@ -226,6 +230,47 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   // fixed keyframes exactly (marching, heartbeat, rail).
   const patternClass = 'animate-[edge-travel-long_1.2s_linear_infinite]';
   const patternStyle = { ...animationStyle, '--edge-period': `-${patternPeriod}px` } as React.CSSProperties;
+
+  // A chosen object shape replaces the travelling effect's dash objects
+  // with real silhouettes on the same route. Pattern effects tile a
+  // texture rather than carry objects, so they keep their own look.
+  if (shape && travelVelocity) {
+    // Glyphs read at roughly 4× the line width — the same multiplicative
+    // rule every other effect sizes by, just a larger constant because a
+    // silhouette needs more room than a dash to be recognisable.
+    const glyphSize = Math.max(6, lineWidth * 4 * effectSize);
+    // One lap = the whole route, so the px/s velocity stays honest on
+    // short and long connectors alike.
+    const lapSeconds = Math.max(0.2, (length || 240) / travelVelocity / speed);
+    const shapeCount = objectCount ?? Math.max(1, Math.min(5, Math.round((length || 240) / 220)));
+    // A softer halo than the dash effects get: the same slider drives it,
+    // but a silhouette has to stay recognisable, and the dash-calibrated
+    // bloom washes out details like an envelope's flap.
+    const shapeGlow =
+      performanceMode || glowLevel === 0 ? undefined : `drop-shadow(0 0 ${Math.max(2, effectSize * 1.8) * glowLevel}px #ffffff) drop-shadow(0 0 ${Math.max(4, effectSize * 3.2) * glowLevel}px rgba(255,255,255,0.45))`;
+    const motionProps = {
+      d,
+      shape,
+      count: shapeCount,
+      duration: lapSeconds,
+      size: glyphSize,
+      paused,
+      phase: phaseFraction,
+      filter: shapeGlow,
+      drawDelay: isDrawing ? drawDuration : undefined,
+    };
+    // `bidirectional` means two-way by definition, so it keeps carrying a
+    // mirrored second set of objects rather than collapsing to one lane.
+    if (effect === 'bidirectional') {
+      return (
+        <>
+          <EdgeMotionObjects {...motionProps} reverse={direction === 'reverse'} />
+          <EdgeMotionObjects {...motionProps} reverse={direction !== 'reverse'} />
+        </>
+      );
+    }
+    return <EdgeMotionObjects {...motionProps} reverse={direction === 'reverse'} />;
+  }
 
   return (
     <>

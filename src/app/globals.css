@@ -194,6 +194,20 @@
   }
 }
 
+/* Real object silhouettes riding a connector: the glyph is placed by the
+   CSS motion path (`offset-path: path(...)`) and this walks it from the
+   source to the destination. Being a plain CSS animation, it inherits the
+   same duration / delay / direction / play-state plumbing every other line
+   effect already uses. */
+@keyframes edge-motion {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
 @keyframes edge-pulse {
   0%,
   100% {

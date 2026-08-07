@@ -165,6 +165,11 @@ export default function GuidePage() {
                 ['startMarker / endMarker', 'none · arrow · open-arrow · triangle · circle · diamond · tee · cross · circle-cross · arrow-both · arrow-bar · bar', 'Arrowheads at each end, independently configurable.'],
                 ['width / effectSize / animationSpeed', 'number', 'Line width, animated-object scale multiplier, and playback speed (0.25×–3×). Keep these consistent across a diagram — see §5.'],
                 ['effectCount', '1 – 8', 'Exact number of objects travelling the line for the travelling-object effects (pulse, comet, dots, laser…). Omit for automatic spacing (longer lines carry more objects). Pattern effects (flow, dash, wave…) tile the line and ignore it.'],
+                [
+                  'effectShape',
+                  'arrow · chevron · plane · bolt · envelope · box · coin · dot · ring · square · diamond · star',
+                  'Replaces the travelling effect\u2019s dash objects with a real silhouette riding the route (an arrow for control flow, an envelope for messages, a coin for payments\u2026). Arrows/chevrons/planes/bolts turn to follow the line; the rest stay upright. Travelling effects only.',
+                ],
                 ['effectDensity', '0.5 – 2', 'Mark density for the pattern effects (flow, dash, wave…): higher = more, smaller marks at the same apparent speed. Travelling-object effects ignore it — use effectCount there.'],
                 ['glowIntensity', '0 – 3', 'Strength of the neon halo around the moving objects. 1 (default) is the classic glow; 0 removes it entirely.'],
                 ['phaseOffset', '0 – 1', "Starts the animation partway through its cycle (fraction of one loop), so parallel connectors don't run in lockstep."],

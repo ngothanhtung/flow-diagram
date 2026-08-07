@@ -125,6 +125,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
           effectSize={effectSize}
           speed={speed}
           count={effectCount}
+          shape={edge.effectShape}
           density={effectDensity}
           glow={glowIntensity}
           phase={phaseOffset}

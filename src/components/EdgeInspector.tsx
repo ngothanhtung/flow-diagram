@@ -1,9 +1,10 @@
 'use client';
 
-import { Activity, ArrowLeft, ArrowLeftRight, ArrowRight, BatteryCharging, Bug, CircleDot, Diamond, Gauge, GitCompareArrows, Hash, Lightbulb, Minus, Palette, Rabbit, Radio, Route, ScanLine, Sparkles, Trash2, Triangle, Truck, Undo2, Waves, X, Zap, type LucideIcon } from 'lucide-react';
+import { Activity, ArrowLeft, ArrowLeftRight, ArrowRight, BatteryCharging, Bug, CircleDot, Diamond, Gauge, GitCompareArrows, Hash, Lightbulb, Minus, Palette, Rabbit, Radio, Route, ScanLine, Shapes, Sparkles, Trash2, Triangle, Truck, Undo2, Waves, X, Zap, type LucideIcon } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
 import { EdgeEffectLayer, PATTERN_DASHES, TRAVEL_VELOCITY } from './edge-effect-layer';
+import { EDGE_OBJECT_SHAPE_OPTIONS, EdgeObjectShapeSwatch } from './edge-object-shapes';
 import { EdgeMarkerSymbol } from './edge-marker';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,7 +14,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeRouting, FlowEdge, NodeFont } from '@/lib/flowchart-types';
+import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeObjectShape, EdgeRouting, FlowEdge, NodeFont } from '@/lib/flowchart-types';
 import { EDGE_LABEL_BACKGROUNDS, EDGE_LABEL_COLORS, EDGE_LABEL_FONT_SIZE_MAX, EDGE_LABEL_FONT_SIZE_MIN, EDGE_LABEL_SHAPES, resolveEdgeLabelStyle } from '@/lib/edge-label-style';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
@@ -359,8 +360,49 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
               </div>
               <div className='col-span-3 flex flex-col overflow-y-auto pb-6 pr-8 pl-4'>
                 <div className='flex h-48 shrink-0 items-center justify-center rounded-xl border border-[#28282A] bg-[#09090B]'>
-                  <EffectPreviewLarge effect={previewEffect} direction={direction} color={color} effectColor={edge.effectColor} width={width} effectSize={effectSize} speed={speed} count={effectCount} density={effectDensity} glow={glowIntensity} phase={phaseOffset} />
+                  <EffectPreviewLarge effect={previewEffect} direction={direction} color={color} effectColor={edge.effectColor} width={width} effectSize={effectSize} speed={speed} count={effectCount} density={effectDensity} glow={glowIntensity} phase={phaseOffset} shape={edge.effectShape} />
                 </div>
+
+                {supportsCount && (
+                  <div className='mt-4'>
+                    <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                      <span className='inline-flex items-center gap-1'>
+                        <Shapes size={11} /> Object shape
+                      </span>
+                      <span className='text-[8px] uppercase tracking-wider text-zinc-600'>{edge.effectShape ? EDGE_OBJECT_SHAPE_OPTIONS.find((option) => option.value === edge.effectShape)?.label : 'Dash · default'}</span>
+                    </span>
+                    <div className='mt-1.5 flex flex-wrap gap-1.5'>
+                      <Button
+                        variant='outline'
+                        size='icon-sm'
+                        onClick={() => onUpdate(edge.id, { effectShape: undefined })}
+                        aria-pressed={!edge.effectShape}
+                        title='Dash (default)'
+                        aria-label='Dash (default)'
+                        className={['h-8 w-10 border-white/12 bg-black/30 p-0', !edge.effectShape ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'text-zinc-400 hover:text-zinc-100'].join(' ')}
+                      >
+                        <svg width={22} height={10} viewBox='-11 -5 22 10' aria-hidden='true'>
+                          <line x1={-8} y1={0} x2={8} y2={0} stroke='currentColor' strokeWidth={3.4} strokeLinecap='round' />
+                        </svg>
+                      </Button>
+                      {EDGE_OBJECT_SHAPE_OPTIONS.map((option) => (
+                        <Button
+                          key={option.value}
+                          variant='outline'
+                          size='icon-sm'
+                          onClick={() => onUpdate(edge.id, { effectShape: option.value as EdgeObjectShape })}
+                          aria-pressed={edge.effectShape === option.value}
+                          title={option.label}
+                          aria-label={option.label}
+                          className={['h-8 w-10 border-white/12 bg-black/30 p-0', edge.effectShape === option.value ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'text-zinc-400 hover:text-zinc-100'].join(' ')}
+                        >
+                          <EdgeObjectShapeSwatch shape={option.value} size={18} />
+                        </Button>
+                      ))}
+                    </div>
+                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Real silhouettes ride the route instead of plain dashes. Arrows and chevrons turn to follow the line; the rest stay upright.</span>
+                  </div>
+                )}
 
                 <div className='mt-4'>
                   <span className='flex items-center justify-between text-[10px] text-zinc-500'>
@@ -746,6 +788,7 @@ function EffectPreviewLarge({
   density,
   glow,
   phase,
+  shape,
 }: {
   effect: EdgeEffect;
   direction: EdgeDirection;
@@ -758,12 +801,13 @@ function EffectPreviewLarge({
   density?: number;
   glow?: number;
   phase?: number;
+  shape?: EdgeObjectShape;
 }) {
   return (
     <svg viewBox='0 0 400 180' className='h-auto w-full max-w-96' style={{ color }}>
       <path d={PREVIEW_PATH} stroke='currentColor' strokeWidth={width} strokeOpacity={0.52} fill='none' />
       <g style={effectColor ? { color: effectColor } : undefined}>
-        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} count={count} density={density} glow={glow} phase={phase} />
+        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} count={count} density={density} glow={glow} phase={phase} shape={shape} />
       </g>
     </svg>
   );
