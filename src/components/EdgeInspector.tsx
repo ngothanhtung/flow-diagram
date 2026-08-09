@@ -43,7 +43,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeObjectShape, EdgeRouting, FlowEdge, NodeFont } from '@/lib/flowchart-types';
+import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeObjectShape, EdgeRouting, FlowEdge, NodeFont, TableColumn } from '@/lib/flowchart-types';
 import { EDGE_LABEL_FONT_SIZE_MAX, EDGE_LABEL_FONT_SIZE_MIN, EDGE_LABEL_PRESETS, EDGE_LABEL_SHAPES, findEdgeLabelPreset, resolveEdgeLabelStyle, type EdgeLabelPreset } from '@/lib/edge-label-style';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
@@ -52,6 +52,10 @@ interface EdgeInspectorProps {
   sourceTitle: string;
   targetTitle: string;
   fallbackColor: `#${string}`;
+  /** Columns of each end, when that end is a database table. Present on
+   *  both sides means this line is an ERD relationship. */
+  sourceColumns?: TableColumn[];
+  targetColumns?: TableColumn[];
   onUpdate: (id: string, patch: Partial<Omit<FlowEdge, 'id' | 'from' | 'to'>>) => void;
   onDelete: (id: string) => void;
   onClose: () => void;
@@ -129,8 +133,13 @@ const MARKERS: Array<{ value: EdgeMarker; label: string }> = [
   { value: 'arrow-both', label: 'Both ways' },
   { value: 'arrow-bar', label: 'Arrow bar' },
   { value: 'bar', label: 'Bar' },
+  { value: 'crow-one', label: 'ERD · one' },
+  { value: 'crow-many', label: 'ERD · many' },
+  { value: 'crow-one-many', label: 'ERD · one or many' },
+  { value: 'crow-zero-one', label: 'ERD · zero or one' },
+  { value: 'crow-zero-many', label: 'ERD · zero or many' },
 ];
-export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, onUpdate, onDelete, onClose }: EdgeInspectorProps) {
+export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, sourceColumns, targetColumns, onUpdate, onDelete, onClose }: EdgeInspectorProps) {
   const [label, setLabel] = useState(edge.label ?? '');
   const [draftEffect, setDraftEffect] = useState<EdgeEffect | null>(null);
   const effect = edge.effect ?? 'flow';
@@ -153,6 +162,9 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
   const previewEffect = draftEffect ?? effect;
   const supportsCount = previewEffect in TRAVEL_VELOCITY;
   const supportsDensity = previewEffect in PATTERN_DASHES || previewEffect === 'binary';
+  // Both ends being tables makes this an ERD relationship, which unlocks
+  // the column pickers and the generated label.
+  const isRelationship = Boolean(sourceColumns && targetColumns);
   const labelStyle = resolveEdgeLabelStyle(edge);
   const selectedEffect = EFFECTS.find((item) => item.value === effect) ?? EFFECTS[0];
   const SelectedEffectIcon = selectedEffect.Icon;
@@ -294,6 +306,32 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, o
           background={labelStyle.background}
           onChange={(preset) => onUpdate(edge.id, { labelColor: preset.color, labelBackground: preset.background })}
         />
+
+        {isRelationship && (
+          <div className='mt-3 rounded-lg bg-cyan-400/6 p-2 ring-1 ring-cyan-400/15'>
+            <p className='text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>Relationship</p>
+            <div className='mt-1.5 grid grid-cols-2 gap-2'>
+              <ColumnPicker label={sourceTitle} columns={sourceColumns ?? []} value={edge.fromColumn} onChange={(fromColumn) => onUpdate(edge.id, relationshipPatch(edge, { fromColumn }))} />
+              <ColumnPicker label={targetTitle} columns={targetColumns ?? []} value={edge.toColumn} onChange={(toColumn) => onUpdate(edge.id, relationshipPatch(edge, { toColumn }))} />
+            </div>
+            <div className='mt-2 flex items-center justify-between gap-2'>
+              <Button
+                variant='outline'
+                size='xs'
+                onClick={() => onUpdate(edge.id, { startMarker: 'crow-one', endMarker: 'crow-many', routing: 'orthogonal' })}
+                title='Set crow&apos;s foot ends for a one-to-many relationship'
+                className='border-white/12 bg-black/25 text-[10px] text-zinc-300 hover:text-zinc-100'
+              >
+                One-to-many ends
+              </Button>
+              {(edge.fromColumn || edge.toColumn) && (
+                <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { fromColumn: undefined, toColumn: undefined, label: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
+                  <Undo2 /> Clear
+                </Button>
+              )}
+            </div>
+          </div>
+        )}
 
         <MarkerPicker label='Line start' value={edge.startMarker ?? 'none'} onChange={(startMarker) => onUpdate(edge.id, { startMarker })} />
         <MarkerPicker label='Line end' value={edge.endMarker ?? 'arrow'} onChange={(endMarker) => onUpdate(edge.id, { endMarker })} />
@@ -806,6 +844,57 @@ function LabelColorField({ label, color, background, onChange }: { label: string
               </span>
             </SelectItem>
           ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}
+
+/** `id → user_id` — the label a chosen column pair generates. */
+function relationshipLabel(fromColumn?: string, toColumn?: string) {
+  return fromColumn && toColumn ? `${fromColumn} → ${toColumn}` : undefined;
+}
+
+/**
+ * Picking either column also rewrites the line's label, which is the
+ * whole point of choosing them — but only while the label is still one
+ * this function wrote, so a hand-typed label is never clobbered.
+ *
+ * The label carries the column names alone, not `table.column`: both
+ * table names are already painted at the ends of the line, and the
+ * qualified form overflowed the gap between two adjacent tables.
+ */
+function relationshipPatch(edge: FlowEdge, patch: { fromColumn?: string; toColumn?: string }): Partial<Omit<FlowEdge, 'id' | 'from' | 'to'>> {
+  const fromColumn = patch.fromColumn ?? edge.fromColumn;
+  const toColumn = patch.toColumn ?? edge.toColumn;
+  const labelIsOurs = !edge.label || edge.label === relationshipLabel(edge.fromColumn, edge.toColumn);
+  const label = relationshipLabel(fromColumn, toColumn) ?? edge.label;
+  return { ...patch, ...(labelIsOurs ? { label } : {}) };
+}
+
+function ColumnPicker({ label, columns, value, onChange }: { label: string; columns: TableColumn[]; value?: string; onChange: (column: string) => void }) {
+  return (
+    <div className='min-w-0'>
+      <Label className='mb-1 block truncate text-[9px] text-zinc-500'>{label}</Label>
+      <Select
+        value={value ?? ''}
+        onValueChange={(nextValue) => {
+          if (nextValue) onChange(nextValue);
+        }}
+      >
+        <SelectTrigger className='h-8 w-full border-white/10 bg-white/5 px-2 text-left hover:bg-white/8 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
+          <span className='min-w-0 flex-1 truncate font-mono text-[10px] text-zinc-200'>{value || 'column…'}</span>
+        </SelectTrigger>
+        <SelectContent className='border-cyan-400/25 bg-zinc-950 p-1.5'>
+          <SelectGroup>
+            <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600'>{label}</SelectLabel>
+            {columns.map((column) => (
+              <SelectItem key={column.id} value={column.name} className='px-2 py-1.5 pr-8'>
+                <span className='font-mono text-[11px]'>{column.name}</span>
+                <span className='ml-1.5 text-[9px] text-zinc-500'>{column.dataType}</span>
+              </SelectItem>
+            ))}
+          </SelectGroup>
         </SelectContent>
       </Select>
     </div>

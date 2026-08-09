@@ -72,6 +72,8 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
                 sourceTitle={edgeSource?.title ?? selectedEdge.from}
                 targetTitle={document.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
                 fallbackColor={edgeSource ? resolveNodeStyle(edgeSource).foreground : '#67e8f9'}
+                sourceColumns={edgeSource?.table?.columns}
+                targetColumns={document.nodes.find((node) => node.id === selectedEdge.to)?.table?.columns}
                 onUpdate={onEdgeUpdate}
                 onDelete={(id) => {
                   onEdgeDelete(id);

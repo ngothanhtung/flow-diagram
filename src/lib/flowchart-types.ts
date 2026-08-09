@@ -180,7 +180,25 @@ export type EdgeEffect =
   | 'ants'
   | 'blink';
 
-export type EdgeMarker = 'none' | 'arrow' | 'open-arrow' | 'triangle' | 'circle' | 'diamond' | 'tee' | 'cross' | 'circle-cross' | 'arrow-both' | 'arrow-bar' | 'bar';
+export type EdgeMarker =
+  | 'none'
+  | 'arrow'
+  | 'open-arrow'
+  | 'triangle'
+  | 'circle'
+  | 'diamond'
+  | 'tee'
+  | 'cross'
+  | 'circle-cross'
+  | 'arrow-both'
+  | 'arrow-bar'
+  | 'bar'
+  // Crow's foot (IE) cardinality, for ERD relationships.
+  | 'crow-one'
+  | 'crow-many'
+  | 'crow-one-many'
+  | 'crow-zero-one'
+  | 'crow-zero-many';
 
 /**
  * Real silhouettes that can ride a connector instead of the plain dash
@@ -230,6 +248,12 @@ export interface FlowEdge {
   /** Independently configurable symbols at both ends of the line. */
   startMarker?: EdgeMarker;
   endMarker?: EdgeMarker;
+  /** ERD relationship: which column each end refers to. Only used for
+   *  the line's label and for emitting foreign keys on SQL export —
+   *  the line itself still attaches to the table's edge like any
+   *  other connector. */
+  fromColumn?: string;
+  toColumn?: string;
   color?: `#${string}`;
   /** Foreground colour for the animated objects travelling the line.
    *  Undefined falls back to `color` so the objects inherit the line

@@ -125,5 +125,35 @@ export function EdgeMarkerSymbol({
       );
     case 'bar':
       return <path d="M -4 -7 V 7" {...commonStroke} className={className} />;
+
+    // --- Crow's foot (IE) cardinality -------------------------------
+    // The foot fans out towards the table it touches (x = 0) and the
+    // optionality symbols stack further back along the line, so the
+    // pair reads in the usual order: [zero/one] then [one/many].
+    case 'crow-many':
+      return <path d="M -12 0 L 0 -6 M -12 0 L 0 0 M -12 0 L 0 6" {...commonStroke} className={className} />;
+    case 'crow-one':
+      return <path d="M -8 -6 V 6" {...commonStroke} className={className} />;
+    case 'crow-one-many':
+      return (
+        <>
+          <path d="M -17 -6 V 6" {...commonStroke} className={className} />
+          <path d="M -12 0 L 0 -6 M -12 0 L 0 0 M -12 0 L 0 6" {...commonStroke} className={className} />
+        </>
+      );
+    case 'crow-zero-one':
+      return (
+        <>
+          <circle cx={-17} cy={0} r={4.5} fill={FILL_BACK} stroke="currentColor" strokeWidth={STROKE_WIDTH_THIN} className={className} />
+          <path d="M -8 -6 V 6" {...commonStroke} className={className} />
+        </>
+      );
+    case 'crow-zero-many':
+      return (
+        <>
+          <circle cx={-18} cy={0} r={4.5} fill={FILL_BACK} stroke="currentColor" strokeWidth={STROKE_WIDTH_THIN} className={className} />
+          <path d="M -12 0 L 0 -6 M -12 0 L 0 0 M -12 0 L 0 6" {...commonStroke} className={className} />
+        </>
+      );
   }
 }
