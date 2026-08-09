@@ -17,7 +17,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { ShareDialog } from '@/components/diagrams/ShareDialog';
-import { diagramTemplates } from '@/lib/diagram-templates';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { createDiagram, deleteDiagram, listDiagrams, type StoredDiagram } from '@/lib/firebase/diagrams';
 import { listTemplates, type StoredTemplate } from '@/lib/firebase/templates';
@@ -131,6 +130,7 @@ export function DiagramsHome() {
   const [remoteTemplates, setRemoteTemplates] = useState<StoredTemplate[]>([]);
 
   useEffect(() => {
+    if (!user) return;
     let cancelled = false;
     listTemplates()
       .then((templates) => {
@@ -140,29 +140,18 @@ export function DiagramsHome() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [user]);
 
   const templateItems = useMemo(
     () =>
-      remoteTemplates.length > 0
-        ? remoteTemplates.map((template) => ({
-            id: template.id,
-            name: template.name,
-            category: template.category ?? 'General',
-            description: template.description ?? '',
-            nodeCount: template.document?.nodes?.length ?? 0,
-            document: template.document ?? { nodes: [], edges: [] },
-          }))
-        : diagramTemplates
-            .filter((template) => template.id !== 'blank')
-            .map((template) => ({
-              id: template.id,
-              name: template.name,
-              category: template.category,
-              description: template.description,
-              nodeCount: template.document.nodes.length,
-              document: template.document,
-            })),
+      remoteTemplates.map((template) => ({
+        id: template.id,
+        name: template.name,
+        category: template.category ?? 'General',
+        description: template.description ?? '',
+        nodeCount: template.document?.nodes?.length ?? 0,
+        document: template.document ?? { nodes: [], edges: [] },
+      })),
     [remoteTemplates],
   );
 
@@ -317,6 +306,7 @@ export function DiagramsHome() {
                 <DropdownMenuLabel className='px-2 py-1.5'>Templates</DropdownMenuLabel>
               </DropdownMenuGroup>
               <DropdownMenuSeparator className='bg-white/8' />
+              {templateItems.length === 0 && <p className='px-2 py-4 text-center text-xs text-zinc-500'>No templates are available in Firestore.</p>}
               {templateItems.map((template) => (
                 <DropdownMenuItem key={template.id} onClick={() => void handleCreate(template.document, template.name)} className='flex-col items-start gap-0.5 px-2 py-2'>
                   <span className='flex w-full items-center justify-between gap-2 text-xs font-semibold text-zinc-100'>

@@ -13,7 +13,6 @@ import { EditorFileMenu, EditorStatusScreen, FileMenuItem, ResetCanvasDialog, Sa
 import { EditorShell } from '@/components/editor/EditorShell';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
-import { getDiagramTemplate } from '@/lib/diagram-templates';
 import { useEditorStore } from '@/lib/editor-store';
 import { createDiagram, loadDiagram, saveDiagram } from '@/lib/firebase/diagrams';
 import { saveEditorSession } from '@/lib/editor-session';
@@ -90,7 +89,6 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   }, [user]);
 
   const doc = useEditorStore((state) => state.doc);
-  const templateId = useEditorStore((state) => state.templateId);
   const loadedTemplate = useEditorStore((state) => state.loadedTemplate);
   const hydrated = useEditorStore((state) => state.hydrated);
   const currentDiagramId = useEditorStore((state) => state.currentDiagramId);
@@ -142,7 +140,11 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     if (!user) return;
     saveEditorSession(user.uid, { doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature });
   }, [doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature, user]);
-  const currentTemplate = useMemo(() => loadedTemplate ?? getDiagramTemplate(templateId), [loadedTemplate, templateId]);
+  const currentTemplate = loadedTemplate ?? {
+    category: 'Saved diagram',
+    name: currentDiagramName,
+    description: '',
+  };
 
   const handleSaveDiagram = useCallback(async () => {
     if (!user) return;

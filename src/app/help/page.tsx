@@ -109,7 +109,7 @@ export default function HelpPage() {
         </ul>
         <p>
           Tip: diagrams read best when they use one shape family and a small, consistent color palette. The <Link href='/guide' className='text-sky-300 underline-offset-2 hover:underline'>authoring guide</Link>{' '}
-          has the full set of visual conventions the built-in templates follow.
+          has the full set of visual conventions the shared Firestore templates follow.
         </p>
       </Section>
 

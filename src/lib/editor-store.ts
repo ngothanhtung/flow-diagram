@@ -1,9 +1,7 @@
 'use client';
 
 import { create } from 'zustand';
-import { getDiagramTemplate, type DiagramTemplateId } from './diagram-templates';
 import { loadEditorSession } from './editor-session';
-import { initialDocument } from './flowchart-data';
 import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
 import { TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, tableCardHeight } from './node-style';
@@ -11,9 +9,8 @@ import { starterColumns } from '@/components/TableColumnsEditor';
 
 export type RunPhase = 'node' | 'line';
 
-/** Snapshot of the template currently on the canvas — feeds the info
- *  panel and the Reset action. Built-in and Firestore templates both
- *  fit this shape. */
+/** Snapshot of the Firestore template currently on the canvas — feeds
+ *  the info panel and the Reset action. */
 export interface LoadedTemplate {
   name: string;
   category: string;
@@ -61,7 +58,6 @@ interface EditorState {
 
   // Document + persistence meta
   doc: FlowDocumentJSON;
-  templateId: DiagramTemplateId;
   /** Metadata + original document of the template on the canvas. */
   loadedTemplate: LoadedTemplate | null;
   currentDiagramId: string | null;
@@ -92,7 +88,6 @@ interface EditorState {
   setDiagramPublic: (isPublic: boolean) => void;
   markDiagramSaved: (diagramId: string, name: string, savedDocument: FlowDocumentJSON) => void;
   loadStoredDiagram: (diagram: StoredDiagram) => void;
-  loadTemplate: (id: DiagramTemplateId) => void;
   loadRemoteTemplate: (template: LoadedTemplate) => void;
   resetToTemplate: () => void;
   resetCanvasState: () => void;
@@ -128,11 +123,10 @@ interface EditorState {
 
 export const useEditorStore = create<EditorState>((set, get) => ({
   hydrated: false,
-  doc: initialDocument,
-  templateId: 'client-server-database',
-  loadedTemplate: getDiagramTemplate('client-server-database'),
+  doc: { nodes: [], edges: [] },
+  loadedTemplate: null,
   currentDiagramId: null,
-  currentDiagramName: 'Client / Server / Database',
+  currentDiagramName: 'Untitled diagram',
   currentDiagramPublic: false,
   savedSignature: null,
   savingDiagram: false,
@@ -155,9 +149,9 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     const session = loadEditorSession(userId);
     set({
       hydrated: true,
-      doc: session?.doc ?? initialDocument,
+      doc: session?.doc ?? { nodes: [], edges: [] },
       currentDiagramId: session?.currentDiagramId ?? null,
-      currentDiagramName: session?.currentDiagramName ?? 'Client / Server / Database',
+      currentDiagramName: session?.currentDiagramName ?? 'Untitled diagram',
       currentDiagramPublic: session?.currentDiagramPublic ?? false,
       savedSignature: session?.savedSignature ?? null,
     });
@@ -187,24 +181,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     get().resetCanvasState();
   },
 
-  loadTemplate: (id) => {
-    const template = getDiagramTemplate(id);
-    const hasDiagram = get().currentDiagramId !== null;
-    set({
-      templateId: id,
-      doc: template.document,
-      // On the per-diagram edit route a template replaces the canvas
-      // content but the diagram being edited (id / name / visibility)
-      // is kept.
-      ...(hasDiagram ? {} : { currentDiagramName: template.name, currentDiagramPublic: false }),
-      savedSignature: null,
-      loadedTemplate: template,
-    });
-    get().resetCanvasState();
-  },
-
   // Template chosen from the shared Firestore library (`templates`
-  // collection) — same behaviour as a built-in template load.
+  // collection).
   loadRemoteTemplate: (template) => {
     const hasDiagram = get().currentDiagramId !== null;
     set({
@@ -216,8 +194,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     get().resetCanvasState();
   },
 
-  // Reset action: restore the original document of whatever template is
-  // on the canvas (built-in or remote).
+  // Reset action: restore the fetched diagram or Firestore template that
+  // was originally loaded onto the canvas.
   resetToTemplate: () => {
     const loaded = get().loadedTemplate;
     if (!loaded) return;

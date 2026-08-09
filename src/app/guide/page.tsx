@@ -232,8 +232,7 @@ export default function GuidePage() {
 
           <Section id='style' title='6. Visual conventions (so a diagram reads as one system, not a shape showcase)'>
             <p>
-              Every shipped template (<Pill>src/lib/diagram-templates.ts</Pill>) builds nodes through one local factory that fixes almost everything except position, title, description, and theme
-              color. Follow the same discipline:
+              Templates in the shared Firestore library should keep almost everything consistent except position, title, description, and theme color. Follow the same discipline:
             </p>
             <ul className='list-disc space-y-1.5 pl-5'>
               <li>
@@ -285,8 +284,7 @@ export default function GuidePage() {
   ]
 }`}</Code>
             <p>
-              For richer, real-world references, read the full generated documents in <Pill>src/lib/diagram-templates.ts</Pill> (HRM, CRM, software architecture, e-commerce, CI/CD) and the default
-              boot document in <Pill>src/lib/flowchart-data.ts</Pill>.
+              For richer, real-world references, open the shared templates from Firestore in the template admin.
             </p>
           </Section>
 

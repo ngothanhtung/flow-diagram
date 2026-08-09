@@ -2,8 +2,8 @@
 
 import { LayoutTemplate } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
+import { useAuth } from '@/components/auth/AuthProvider';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { diagramTemplates } from '@/lib/diagram-templates';
 import { useEditorStore } from '@/lib/editor-store';
 import { listTemplates, type StoredTemplate } from '@/lib/firebase/templates';
 
@@ -17,14 +17,15 @@ interface TemplateItem {
 }
 
 /**
- * The shared template library: Firestore's `templates` collection when it
- * has entries, otherwise the built-in ones bundled with the app.
+ * The shared template library backed by Firestore's `templates` collection.
  */
 export function useTemplateLibrary(): TemplateItem[] {
-  const { loadTemplate, loadRemoteTemplate } = useEditorStore();
+  const userId = useAuth().user?.uid;
+  const loadRemoteTemplate = useEditorStore((state) => state.loadRemoteTemplate);
   const [remoteTemplates, setRemoteTemplates] = useState<StoredTemplate[]>([]);
 
   useEffect(() => {
+    if (!userId) return;
     let cancelled = false;
     listTemplates()
       .then((templates) => {
@@ -34,34 +35,25 @@ export function useTemplateLibrary(): TemplateItem[] {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [userId]);
 
   return useMemo(
     () =>
-      remoteTemplates.length > 0
-        ? remoteTemplates.map((template) => ({
-            id: template.id,
+      remoteTemplates.map((template) => ({
+        id: template.id,
+        name: template.name,
+        category: template.category ?? 'General',
+        description: template.description ?? '',
+        nodeCount: template.document?.nodes?.length ?? 0,
+        onSelect: () =>
+          loadRemoteTemplate({
             name: template.name,
             category: template.category ?? 'General',
             description: template.description ?? '',
-            nodeCount: template.document?.nodes?.length ?? 0,
-            onSelect: () =>
-              loadRemoteTemplate({
-                name: template.name,
-                category: template.category ?? 'General',
-                description: template.description ?? '',
-                document: template.document ?? { nodes: [], edges: [] },
-              }),
-          }))
-        : diagramTemplates.map((template) => ({
-            id: template.id,
-            name: template.name,
-            category: template.category,
-            description: template.description,
-            nodeCount: template.document.nodes.length,
-            onSelect: () => loadTemplate(template.id),
-          })),
-    [remoteTemplates, loadRemoteTemplate, loadTemplate],
+            document: template.document ?? { nodes: [], edges: [] },
+          }),
+      })),
+    [remoteTemplates, loadRemoteTemplate],
   );
 }
 
@@ -77,6 +69,7 @@ export function TemplatePickerDialog({ open, onOpenChange, items }: { open: bool
           <DialogDescription className='text-xs text-zinc-500'>Replaces the current canvas with a starting template.</DialogDescription>
         </DialogHeader>
         <div className='flex max-h-80 flex-col gap-1 overflow-y-auto'>
+          {items.length === 0 && <p className='px-3 py-6 text-center text-xs text-zinc-500'>No templates are available in Firestore.</p>}
           {items.map((template) => (
             <button
               key={template.id}

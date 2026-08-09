@@ -39,7 +39,7 @@ The whole diagram is one JSON value, `FlowDocumentJSON` (`src/lib/flowchart-type
 
 ### Templates
 
-`src/lib/diagram-templates.ts` exports `diagramTemplates: DiagramTemplate[]`, built with local `node()`/`edge()` factory helpers (fixed theme palette, forces `shape: 'rounded'`, edge `width: 1`, `effectSize: 1.5` so every template reads as one consistent visual system). The default boot document (`src/lib/flowchart-data.ts`'s `initialDocument`, a minimal Client→Server→Database example) is itself one of the templates. The "Open templates" dropdown in the topbar calls `loadTemplate()` in `page.tsx`, which swaps `doc` wholesale and resets execution/run state.
+Templates live only in Firestore's shared `templates` collection and are managed through `/admin/templates`. `src/lib/firebase/templates.ts` owns reads and writes. Choosing a template passes its document to `loadRemoteTemplate()` in the editor store, which swaps `doc` wholesale and resets execution/run state. There is no bundled local-template fallback; an empty Firestore collection produces an empty template library.
 
 ### Canvas rendering
 
