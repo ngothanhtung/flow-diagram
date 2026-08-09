@@ -205,6 +205,7 @@ export function FlowNodeCard({
         : undefined;
   const gradientId = `node-sheen-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const chargeGradientId = `node-charge-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+  const clipId = `node-clip-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const cardAccent = ['server', 'component', 'predefined-process', 'internal-storage', 'folder', 'note'].includes(style.shape);
 
   const dragRef = useRef<{
@@ -521,7 +522,21 @@ export function FlowNodeCard({
           inherits the SVG's `color` from the parent <g> we don't
           explicitly set; instead we apply colour via inline style
           using the resolved Tailwind token. */}
-        <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none'>
+        {/* A table's header and rows are painted surfaces, so the
+            rectangular foreignObject would poke square corners out past a
+            rounded (or any other) silhouette. Clipping to the outline
+            fixes that for every shape at once. Only tables need it:
+            ordinary cards paint no background inside the foreignObject,
+            and clipping them would crop text out of narrow silhouettes
+            like a diamond, where overflow is intended. */}
+        {node.table && (
+          <defs>
+            <clipPath id={clipId}>
+              <path d={outline.d} transform={outline.transform} />
+            </clipPath>
+          </defs>
+        )}
+        <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none' clipPath={node.table ? `url(#${clipId})` : undefined}>
           {node.table ? (
             <div className='h-full w-full' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
               <TableCardBody title={node.title} table={node.table} foreground={foreground} fontSize={fontSize} />
