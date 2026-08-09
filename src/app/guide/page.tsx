@@ -58,6 +58,7 @@ const TOC = [
   ['nodes', 'Node rules'],
   ['edges', 'Edge rules'],
   ['execution', 'Execution order'],
+  ['tables', 'Database tables'],
   ['style', 'Visual conventions'],
   ['example', 'Worked example'],
   ['checklist', 'Checklist'],
@@ -187,7 +188,49 @@ export default function GuidePage() {
             <p>Only set <Pill>sortOrder</Pill> when the natural left-to-right / top-to-bottom reading order of the diagram doesn&apos;t already match the intended execution order — otherwise omit it.</p>
           </Section>
 
-          <Section id='style' title='5. Visual conventions (so a diagram reads as one system, not a shape showcase)'>
+          <Section id='tables' title='5. Database tables (ERD)'>
+            <p>
+              A node with a <Pill>table</Pill> field renders as a database table — a name header plus one row per column — instead of the icon + title card. Everything else about the node
+              (shape, colours, ports, dragging) is unchanged, so ERD tables and flow blocks live in the same document.
+            </p>
+            <Code>{`{
+  "id": "orders", "type": "process", "title": "orders",
+  "position": { "x": 470, "y": 170 }, "shape": "rounded", "icon": null,
+  "table": {
+    "schema": "public",
+    "columns": [
+      { "id": "c1", "name": "id",      "dataType": "bigserial",   "primaryKey": true },
+      { "id": "c2", "name": "user_id", "dataType": "uuid",        "foreignKey": true, "index": true },
+      { "id": "c3", "name": "status",  "dataType": "varchar(24)", "index": true },
+      { "id": "c4", "name": "note",    "dataType": "text",        "nullable": true }
+    ]
+  }
+}`}</Code>
+            <Table
+              head={['column field', 'values', 'notes']}
+              rows={[
+                ['name / dataType', 'string', 'Data types are free text and are emitted verbatim on SQL export, so any dialect works: uuid, varchar(255), timestamptz…'],
+                ['primaryKey / foreignKey', 'boolean', 'Drawn as the PK / FK badge on the row. Primary keys are NOT NULL by definition, so they don’t also carry a null flag.'],
+                ['unique / index', 'boolean', 'Rendered as the U / IX flags; on export they become UNIQUE and a CREATE INDEX statement.'],
+                ['nullable', 'boolean', 'Columns are NOT NULL unless this is true — the card flags the exceptions with NULL rather than stamping NN on every other row.'],
+                ['defaultValue', 'string', 'Emitted as DEFAULT … on export. Written raw, so `now()` stays a function call rather than a string.'],
+              ]}
+            />
+            <p>
+              Set <Pill>height</Pill> from the column count (header 34px + 24px per row + 8px padding) so no row is clipped; the editor does this for you on every column change. Tables may be
+              up to 420 × 900, well past the 320 × 240 ceiling that still applies to ordinary nodes.
+            </p>
+            <p>
+              Relationships are ordinary edges between two table nodes, plus <Pill>fromColumn</Pill> / <Pill>toColumn</Pill> naming the joined columns. Those drive the line&apos;s label and the{' '}
+              <Pill>FOREIGN KEY</Pill> statements on SQL export — the direction you draw in does <em>not</em> decide which side holds the key, the column flags do. Use the crow&apos;s foot
+              markers (<Pill>crow-one</Pill>, <Pill>crow-many</Pill>, <Pill>crow-one-many</Pill>, <Pill>crow-zero-one</Pill>, <Pill>crow-zero-many</Pill>) at each end for cardinality.
+            </p>
+            <Code>{`{ "id": "r1", "from": "users", "to": "orders",
+  "fromColumn": "id", "toColumn": "user_id", "label": "id → user_id",
+  "routing": "orthogonal", "startMarker": "crow-one", "endMarker": "crow-many" }`}</Code>
+          </Section>
+
+          <Section id='style' title='6. Visual conventions (so a diagram reads as one system, not a shape showcase)'>
             <p>
               Every shipped template (<Pill>src/lib/diagram-templates.ts</Pill>) builds nodes through one local factory that fixes almost everything except position, title, description, and theme
               color. Follow the same discipline:
@@ -216,7 +259,7 @@ export default function GuidePage() {
             </ul>
           </Section>
 
-          <Section id='example' title='6. Worked example'>
+          <Section id='example' title='7. Worked example'>
             <p>A minimal three-node flow, following every rule above:</p>
             <Code>{`{
   "nodes": [
@@ -247,7 +290,7 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='checklist' title='7. Checklist before shipping a diagram'>
+          <Section id='checklist' title='8. Checklist before shipping a diagram'>
             <ul className='list-disc space-y-1.5 pl-5'>
               <li>Every node id is unique; every edge&apos;s <Pill>from</Pill>/<Pill>to</Pill> matches a real node id.</li>
               <li>One shape family, one small color palette, mapped to meaning (layer/domain/status) — not decoration.</li>

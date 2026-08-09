@@ -1,13 +1,16 @@
 import { initialDocument } from './flowchart-data';
 import type {
   EdgeEffect,
+  EdgeMarker,
   FlowDocumentJSON,
   FlowEdge,
   FlowNode,
   NodeIcon,
   NodeShape,
   NodeType,
+  TableColumn,
 } from './flowchart-types';
+import { TABLE_DEFAULT_WIDTH, tableCardHeight } from './node-style';
 
 export type DiagramTemplateId =
   | 'client-server-database'
@@ -16,6 +19,7 @@ export type DiagramTemplateId =
   | 'software-architecture'
   | 'ecommerce'
   | 'cicd'
+  | 'database-schema'
   | 'blank';
 
 export interface DiagramTemplate {
@@ -87,6 +91,84 @@ function edge(
 ) {
   return { id, from, to, label, effect, animationSpeed: 0.9, width: 1, effectSize: 1.5 } as const;
 }
+
+/**
+ * Table factory for the ERD template. Columns are written compactly as
+ * `name type` plus optional flag letters — `p` primary key, `f` foreign
+ * key, `u` unique, `i` indexed, `n` nullable — so a whole schema stays
+ * readable in source.
+ */
+function tableNode(id: string, title: string, x: number, y: number, theme: Theme, specs: string[]): FlowNode {
+  const paint = THEMES[theme];
+  const columns: TableColumn[] = specs.map((spec, index) => {
+    const [name, dataType, flags = ''] = spec.split('|');
+    return {
+      id: `${id}-c${index + 1}`,
+      name,
+      dataType,
+      primaryKey: flags.includes('p') || undefined,
+      foreignKey: flags.includes('f') || undefined,
+      unique: flags.includes('u') || undefined,
+      index: flags.includes('i') || undefined,
+      nullable: flags.includes('n') || undefined,
+    };
+  });
+  return {
+    id,
+    type: 'process',
+    title,
+    position: { x, y },
+    width: TABLE_DEFAULT_WIDTH,
+    height: tableCardHeight(columns.length),
+    shape: 'rounded',
+    color: paint.color,
+    backgroundColor: paint.background,
+    borderColor: paint.color,
+    borderWidth: 1.5,
+    shadow: 'soft',
+    icon: null,
+    fontSize: 13,
+    connectionPoints: { input: 'left', output: 'right' },
+    table: { columns },
+  };
+}
+
+/** One-to-many relationship drawn parent → child, with crow's foot ends. */
+function relation(id: string, from: string, fromColumn: string, to: string, toColumn: string, endMarker: EdgeMarker = 'crow-many'): FlowEdge {
+  return {
+    id,
+    from,
+    to,
+    fromColumn,
+    toColumn,
+    label: `${fromColumn} → ${toColumn}`,
+    routing: 'orthogonal',
+    startMarker: 'crow-one',
+    endMarker,
+    effect: 'flow',
+    width: 1,
+    effectSize: 1.2,
+    animationSpeed: 0.9,
+  };
+}
+
+// --- Database schema (ERD) ------------------------------------------------
+const databaseSchemaDocument: FlowDocumentJSON = {
+  nodes: [
+    tableNode('db-users', 'users', 120, 160, 'blue', ['id|uuid|p', 'email|varchar(255)|ui', 'full_name|varchar(120)', 'password_hash|varchar(255)', 'created_at|timestamptz']),
+    tableNode('db-products', 'products', 120, 470, 'violet', ['id|uuid|p', 'sku|varchar(64)|ui', 'name|varchar(200)', 'price_cents|integer', 'stock|integer', 'archived_at|timestamptz|n']),
+    tableNode('db-orders', 'orders', 500, 200, 'green', ['id|bigserial|p', 'user_id|uuid|fi', 'status|varchar(24)|i', 'total_cents|integer', 'placed_at|timestamptz', 'shipped_at|timestamptz|n']),
+    tableNode('db-order-items', 'order_items', 880, 420, 'amber', ['id|bigserial|p', 'order_id|bigint|fi', 'product_id|uuid|fi', 'quantity|integer', 'unit_price_cents|integer']),
+    tableNode('db-payments', 'payments', 880, 150, 'rose', ['id|uuid|p', 'order_id|bigint|fui', 'provider|varchar(32)', 'amount_cents|integer', 'paid_at|timestamptz|n']),
+  ],
+  edges: [
+    relation('db-r1', 'db-users', 'id', 'db-orders', 'user_id'),
+    relation('db-r2', 'db-orders', 'id', 'db-order-items', 'order_id'),
+    relation('db-r3', 'db-products', 'id', 'db-order-items', 'product_id'),
+    // A payment belongs to exactly one order, so the child end is "one".
+    relation('db-r4', 'db-orders', 'id', 'db-payments', 'order_id', 'crow-zero-one'),
+  ],
+};
 
 // --- HRM (Hiring → Onboarding → Ongoing People Ops) -----------------------
 const hrmDocument: FlowDocumentJSON = {
@@ -383,6 +465,13 @@ export const diagramTemplates: DiagramTemplate[] = [
     category: 'DevOps',
     description: 'Build, test, security gates, deployment and observability.',
     document: cicdDocument,
+  },
+  {
+    id: 'database-schema',
+    name: 'Database Schema',
+    category: 'Technology',
+    description: 'ERD tables with keys, indexes and crow’s foot relationships.',
+    document: databaseSchemaDocument,
   },
   {
     id: 'blank',

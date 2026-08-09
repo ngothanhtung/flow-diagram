@@ -12,6 +12,7 @@ const TOC = [
   ['create', 'Tạo sơ đồ'],
   ['canvas', 'Thao tác trên canvas'],
   ['inspect', 'Chỉnh sửa khối & đường nối'],
+  ['database', 'Sơ đồ cơ sở dữ liệu'],
   ['run', 'Chạy mô phỏng'],
   ['save', 'Lưu công việc'],
   ['share', 'Chia sẻ sơ đồ'],
@@ -113,7 +114,30 @@ export default function HelpViPage() {
         </p>
       </Section>
 
-      <Section id='run' title='5. Chạy mô phỏng'>
+      <Section id='database' title='5. Sơ đồ cơ sở dữ liệu (ERD)'>
+        <p>
+          Cùng canvas đó vẽ được sơ đồ quan hệ thực thể. Nút <strong>Table</strong> ở bên phải thanh công cụ hình vẽ ra một bảng CSDL thay vì khối thường: bấm-kéo là có ngay thẻ bảng với ba
+          cột mẫu <Pill>id</Pill> / <Pill>name</Pill> / <Pill>created_at</Pill>. Khối thường có thể chuyển thành bảng bằng nút <strong>Convert to database table</strong> trong bảng thuộc tính,
+          và bảng cũng quay về khối thường theo cách tương tự.
+        </p>
+        <p>
+          Chọn một bảng, bảng thuộc tính sẽ hiện mục <strong>Columns</strong>: tên cột, kiểu dữ liệu (nhập tự do, có sẵn danh sách gợi ý nên dùng được với mọi hệ CSDL), các nút bật/tắt{' '}
+          <strong>PK · FK · U · IX · NULL</strong>, giá trị mặc định, cùng nút đổi thứ tự và xoá. Thẻ bảng tự co giãn theo số cột nên không bao giờ bị cụt dòng. Ô <strong>schema</strong> (tuỳ
+          chọn) hiển thị cạnh tên bảng.
+        </p>
+        <p>
+          <strong>Quan hệ</strong> chính là đường nối thông thường giữa hai bảng. Chọn đường nối, bảng thuộc tính sẽ có thêm khối Relationship để chọn cột ở mỗi đầu — việc này tự điền nhãn cho
+          đường (<Pill>id → user_id</Pill>) và quyết định khoá ngoại khi xuất SQL. Nút <strong>One-to-many ends</strong> đặt ký hiệu chân quạ cho cả hai đầu chỉ bằng một cú bấm; bộ đầy đủ (một,
+          nhiều, một-hoặc-nhiều, không-hoặc-một, không-hoặc-nhiều) nằm trong hai ô chọn Line start / Line end.
+        </p>
+        <p>
+          <strong>File → Export SQL</strong> chuyển cả sơ đồ thành script <Pill>CREATE TABLE</Pill> — cột kèm NOT NULL / DEFAULT / UNIQUE, khoá chính, index, và khoá ngoại dạng ALTER TABLE —
+          sẵn sàng để sao chép hoặc tải về dưới dạng file <Pill>.sql</Pill>. Kiểu dữ liệu giữ nguyên đúng như bạn gõ. Muốn bắt đầu từ một sơ đồ hoàn chỉnh, hãy nạp template{' '}
+          <strong>Database Schema</strong>.
+        </p>
+      </Section>
+
+      <Section id='run' title='6. Chạy mô phỏng'>
         <p>
           Mọi sơ đồ đều có thể <em>chạy</em>: các khối lần lượt sáng lên và các đường nối tự vẽ theo thứ tự thực thi — rất hợp để thuyết trình một quy trình theo từng bước. Cụm điều khiển
           phát nằm trên thanh header của trình soạn thảo:
@@ -135,7 +159,7 @@ export default function HelpViPage() {
         </p>
       </Section>
 
-      <Section id='save' title='6. Lưu công việc'>
+      <Section id='save' title='7. Lưu công việc'>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
             <strong>Save</strong> (nút trên header) ghi sơ đồ lên cloud. Chấm vàng trên nút nghĩa là bạn còn thay đổi chưa lưu.
@@ -153,7 +177,7 @@ export default function HelpViPage() {
         </ul>
       </Section>
 
-      <Section id='share' title='7. Chia sẻ sơ đồ'>
+      <Section id='share' title='8. Chia sẻ sơ đồ'>
         <p>Sơ đồ mặc định ở chế độ <strong>riêng tư (Private)</strong> — chỉ bạn (và quản trị viên) mở được. Để chia sẻ:</p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
@@ -167,7 +191,7 @@ export default function HelpViPage() {
         </ul>
       </Section>
 
-      <Section id='json' title='8. Xuất file & công cụ JSON'>
+      <Section id='json' title='9. Xuất file & công cụ JSON'>
         <p>
           Bên dưới, mỗi sơ đồ là một tài liệu JSON duy nhất. <strong>File → Export to JSON</strong> tải nó về dưới dạng file <Pill>.json</Pill> — tiện để sao lưu, đưa vào version control,
           hoặc sửa tay.
@@ -178,7 +202,7 @@ export default function HelpViPage() {
         </p>
       </Section>
 
-      <Section id='reference' title='9. Tra cứu nhanh'>
+      <Section id='reference' title='10. Tra cứu nhanh'>
         <Table
           head={['Thao tác', 'Cách làm']}
           rows={[
@@ -194,6 +218,10 @@ export default function HelpViPage() {
             ['Lưu lên cloud', 'Nút Save trên header (chấm vàng = còn thay đổi chưa lưu)'],
             ['Chạy hiệu ứng', 'Replay — chọn Sequential, Concurrent hoặc Manual trước'],
             ['Chia sẻ chỉ-đọc', 'Đặt sơ đồ Public, rồi File → Share → Copy'],
+            ['Vẽ một bảng CSDL', 'Nút Table bên phải thanh công cụ hình, rồi bấm-kéo'],
+            ['Sửa các cột', 'Chọn bảng — mục Columns nằm trong bảng thuộc tính'],
+            ['Nối hai bảng', 'Nối chúng lại, rồi chọn cột ở mỗi đầu trong khối Relationship'],
+            ['Lấy mã SQL', 'File → Export SQL → Copy hoặc Download .sql'],
           ]}
         />
       </Section>

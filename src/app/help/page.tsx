@@ -12,6 +12,7 @@ const TOC = [
   ['create', 'Creating a diagram'],
   ['canvas', 'Working on the canvas'],
   ['inspect', 'Editing nodes & edges'],
+  ['database', 'Database diagrams'],
   ['run', 'Running the flow'],
   ['save', 'Saving your work'],
   ['share', 'Sharing a diagram'],
@@ -112,7 +113,30 @@ export default function HelpPage() {
         </p>
       </Section>
 
-      <Section id='run' title='5. Running the flow'>
+      <Section id='database' title='5. Database diagrams (ERD)'>
+        <p>
+          The same canvas draws entity-relationship diagrams. The <strong>Table</strong> button at the right of the shape dock draws a database table instead of a plain block: click-drag and
+          you get a card with a starter <Pill>id</Pill> / <Pill>name</Pill> / <Pill>created_at</Pill> column list. An existing block can become one via <strong>Convert to database table</strong>
+          in its inspector, and a table can drop back to a plain block the same way.
+        </p>
+        <p>
+          Select a table and the inspector shows a <strong>Columns</strong> section: name, data type (free text, with a dropdown of common types, so any database works), the{' '}
+          <strong>PK · FK · U · IX · NULL</strong> toggles, a default value, and reorder / delete buttons. The card grows and shrinks with the list, so no row is ever cut off. The optional{' '}
+          <strong>schema</strong> field prints next to the table name.
+        </p>
+        <p>
+          <strong>Relationships</strong> are ordinary connectors between two tables. Select one and the inspector adds a Relationship block where you pick the column at each end — that fills in
+          the line&apos;s label (<Pill>id → user_id</Pill>) and drives the foreign keys on export. <strong>One-to-many ends</strong> sets crow&apos;s foot markers on both ends in one click; the
+          full set (one, many, one-or-many, zero-or-one, zero-or-many) is in the Line start / Line end pickers.
+        </p>
+        <p>
+          <strong>File → Export SQL</strong> turns the whole diagram into a <Pill>CREATE TABLE</Pill> script — columns with NOT NULL / DEFAULT / UNIQUE, primary keys, indexes, and foreign keys
+          as ALTER TABLE — ready to copy or download as a <Pill>.sql</Pill> file. Data types come out exactly as you typed them. To start from something complete, load the{' '}
+          <strong>Database Schema</strong> template.
+        </p>
+      </Section>
+
+      <Section id='run' title='6. Running the flow'>
         <p>
           Every diagram can be <em>played</em>: blocks light up and connectors draw themselves in execution order, which is great for walking an audience through a process step by step. The
           playback cluster sits in the editor header:
@@ -134,7 +158,7 @@ export default function HelpPage() {
         </p>
       </Section>
 
-      <Section id='save' title='6. Saving your work'>
+      <Section id='save' title='7. Saving your work'>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
             <strong>Save</strong> (header button) writes the diagram to the cloud. An amber dot on the button means you have unsaved changes.
@@ -152,7 +176,7 @@ export default function HelpPage() {
         </ul>
       </Section>
 
-      <Section id='share' title='7. Sharing a diagram'>
+      <Section id='share' title='8. Sharing a diagram'>
         <p>Diagrams are <strong>private</strong> by default — only you (and administrators) can open them. To share one:</p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
@@ -166,7 +190,7 @@ export default function HelpPage() {
         </ul>
       </Section>
 
-      <Section id='json' title='8. Export & JSON tools'>
+      <Section id='json' title='9. Export & JSON tools'>
         <p>
           A diagram is a single JSON document under the hood. <strong>File → Export to JSON</strong> downloads it as a <Pill>.json</Pill> file — useful for backups, version control, or
           hand-editing.
@@ -177,7 +201,7 @@ export default function HelpPage() {
         </p>
       </Section>
 
-      <Section id='reference' title='9. Quick reference'>
+      <Section id='reference' title='10. Quick reference'>
         <Table
           head={['Action', 'How']}
           rows={[
@@ -193,6 +217,10 @@ export default function HelpPage() {
             ['Save to the cloud', 'Save button in the header (amber dot = unsaved changes)'],
             ['Play the animation', 'Replay — pick Sequential, Concurrent or Manual first'],
             ['Share read-only', 'Set the diagram to Public, then File → Share → Copy'],
+            ['Draw a database table', 'Table button at the right of the shape dock, then click-drag'],
+            ['Edit columns', 'Select the table — the Columns section is in the inspector'],
+            ['Link two tables', 'Connect them, then pick a column at each end in the Relationship block'],
+            ['Get the SQL', 'File → Export SQL → Copy or Download .sql'],
           ]}
         />
       </Section>
