@@ -11,6 +11,7 @@ import { UserMenu } from '@/components/auth/UserMenu';
 import { ShareDialog } from '@/components/diagrams/ShareDialog';
 import { EditorFileMenu, EditorStatusScreen, FileMenuItem, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { EditorShell } from '@/components/editor/EditorShell';
+import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
 import { getDiagramTemplate } from '@/lib/diagram-templates';
 import { useEditorStore } from '@/lib/editor-store';
@@ -107,6 +108,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [templatesDialogOpen, setTemplatesDialogOpen] = useState(false);
+  const [sqlOpen, setSqlOpen] = useState(false);
   const [savingAs, setSavingAs] = useState(false);
 
   // Load the route's diagram into the store — unless the session already
@@ -216,6 +218,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
           onNewFromTemplate={() => setTemplatesDialogOpen(true)}
           openHref='/'
           onExport={() => downloadDocumentJson(doc, currentDiagramName.trim() || 'diagram')}
+          onExportSql={() => setSqlOpen(true)}
           onReset={() => setResetConfirmOpen(true)}
           afterOpen={
             <FileMenuItem icon={savingAs ? <LoaderCircle size={14} className='animate-spin' /> : <Copy size={14} />} disabled={savingAs} onClick={() => void handleSaveAs()}>
@@ -257,6 +260,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       <ResetCanvasDialog open={resetConfirmOpen} onOpenChange={setResetConfirmOpen} />
       <ShareDialog diagramId={diagramId} isPublic={currentDiagramPublic} open={shareOpen} onOpenChange={setShareOpen} />
       <TemplatePickerDialog open={templatesDialogOpen} onOpenChange={setTemplatesDialogOpen} items={templateItems} />
+      <SqlExportDialog document={doc} filename={currentDiagramName.trim() || 'diagram'} open={sqlOpen} onOpenChange={setSqlOpen} />
     </EditorShell>
   );
 }

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import { EditorFileMenu, EditorStatusScreen, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
+import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { EditorShell } from '@/components/editor/EditorShell';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
 import { Input } from '@/components/ui/input';
@@ -32,6 +33,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
   const [saving, setSaving] = useState(false);
   const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
   const [templatesDialogOpen, setTemplatesDialogOpen] = useState(false);
+  const [sqlOpen, setSqlOpen] = useState(false);
   const [creating, setCreating] = useState(false);
 
   // The canvas itself lives in the shared editor store.
@@ -125,6 +127,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
           onNewFromTemplate={() => setTemplatesDialogOpen(true)}
           openHref='/admin/templates'
           onExport={() => downloadDocumentJson(doc, meta.name.trim() || 'template')}
+          onExportSql={() => setSqlOpen(true)}
           onReset={() => setResetConfirmOpen(true)}
         />
       }
@@ -146,6 +149,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
     >
       <ResetCanvasDialog open={resetConfirmOpen} onOpenChange={setResetConfirmOpen} />
       <TemplatePickerDialog open={templatesDialogOpen} onOpenChange={setTemplatesDialogOpen} items={templateItems} />
+      <SqlExportDialog document={doc} filename={meta.name.trim() || 'template'} open={sqlOpen} onOpenChange={setSqlOpen} />
     </EditorShell>
   );
 }

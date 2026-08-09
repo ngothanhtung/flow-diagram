@@ -1,6 +1,6 @@
 'use client';
 
-import { FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, RotateCcw, Save } from 'lucide-react';
+import { Database, FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, RotateCcw, Save } from 'lucide-react';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -55,6 +55,7 @@ export function EditorFileMenu({
   onNewFromTemplate,
   openHref,
   onExport,
+  onExportSql,
   onReset,
   afterOpen,
   afterExport,
@@ -64,6 +65,9 @@ export function EditorFileMenu({
   onNewFromTemplate: () => void;
   openHref: string;
   onExport: () => void;
+  /** Opens the SQL export dialog — every surface that can hold table
+   *  nodes wires this, so the command sits next to Export to JSON. */
+  onExportSql?: () => void;
   onReset: () => void;
   afterOpen?: ReactNode;
   afterExport?: ReactNode;
@@ -84,6 +88,11 @@ export function EditorFileMenu({
       <FileMenuItem icon={<FileJson size={14} />} onClick={onExport}>
         Export to JSON
       </FileMenuItem>
+      {onExportSql && (
+        <FileMenuItem icon={<Database size={14} />} onClick={onExportSql}>
+          Export SQL
+        </FileMenuItem>
+      )}
       {afterExport}
       <FileMenuSeparator />
       <FileMenuItem icon={<RotateCcw size={14} />} tone='danger' onClick={onReset}>
