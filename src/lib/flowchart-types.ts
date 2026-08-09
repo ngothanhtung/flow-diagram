@@ -67,6 +67,34 @@ export interface NodeConnectionPoints {
   output: ConnectionSide;
 }
 
+/** One column of a database table (see `TableSpec`). */
+export interface TableColumn {
+  id: string;
+  name: string;
+  /** Free text so any dialect works: 'uuid', 'varchar(255)', 'timestamptz'. */
+  dataType: string;
+  primaryKey?: boolean;
+  foreignKey?: boolean;
+  unique?: boolean;
+  index?: boolean;
+  /** Columns are NOT NULL unless this says otherwise. */
+  nullable?: boolean;
+  defaultValue?: string;
+  note?: string;
+}
+
+/**
+ * Turns a node into a database table: the card renders a header plus one
+ * row per column instead of the icon + title layout. Everything else
+ * about the node (shape, colours, ports, dragging) stays the same, so an
+ * ERD and a flow diagram can share one document.
+ */
+export interface TableSpec {
+  columns: TableColumn[];
+  /** Optional schema shown next to the table name ('public.users'). */
+  schema?: string;
+}
+
 export interface FlowNode {
   id: string;
   type: NodeType;
@@ -104,7 +132,16 @@ export interface FlowNode {
   portSize?: number;
   /** Editable input/output handle positions. */
   connectionPoints?: NodeConnectionPoints;
+  /** Present on database tables — renders the card as an ERD table. */
+  table?: TableSpec;
 }
+
+/**
+ * What the canvas draw tool is armed with. Every shape can be drawn, plus
+ * `'table'`, which produces a database-table node (a `rounded` card
+ * carrying a `TableSpec`) rather than a new silhouette.
+ */
+export type DrawTool = NodeShape | 'table';
 
 /** A reusable semantic block from the left-hand model palette. */
 export interface NodePreset {

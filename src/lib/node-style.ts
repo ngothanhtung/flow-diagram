@@ -74,6 +74,25 @@ export interface ShapeSpec {
  *  logic and the active-path halo both use this. */
 export const NODE_BOUNDING_RADIUS = 56;
 
+// --- Database tables ------------------------------------------------------
+// One place owns the table card's geometry so the renderer, the size the
+// editor writes on create/add-column, and the size ceiling all agree.
+
+/** Height of a table card's name header, in px. */
+export const TABLE_HEADER_HEIGHT = 34;
+/** Height of one column row, in px. */
+export const TABLE_ROW_HEIGHT = 24;
+/** Padding below the last row. */
+export const TABLE_BODY_PADDING = 8;
+export const TABLE_DEFAULT_WIDTH = 236;
+export const TABLE_MAX_WIDTH = 420;
+export const TABLE_MAX_HEIGHT = 900;
+
+/** Exact height a table card needs for `columnCount` rows. */
+export function tableCardHeight(columnCount: number) {
+  return Math.min(TABLE_MAX_HEIGHT, TABLE_HEADER_HEIGHT + Math.max(1, columnCount) * TABLE_ROW_HEIGHT + TABLE_BODY_PADDING);
+}
+
 const R = NODE_BOUNDING_RADIUS;
 // Slight inset so the rounded square doesn't visually clip the inner
 // padding of the foreignObject.
@@ -742,8 +761,11 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     foreground,
     background,
     borderColor,
-    width: Math.max(72, Math.min(320, node.width ?? 112)),
-    height: Math.max(72, Math.min(240, node.height ?? 112)),
+    // Database tables grow with their column list, so they need a much
+    // taller ceiling than a labelled block — a 12-column table is ~440px.
+    // Regular nodes keep the original limits so nothing else can drift.
+    width: Math.max(72, Math.min(node.table ? TABLE_MAX_WIDTH : 320, node.width ?? 112)),
+    height: Math.max(72, Math.min(node.table ? TABLE_MAX_HEIGHT : 240, node.height ?? 112)),
     rotation: node.rotation ?? 0,
     borderWidth: Math.max(0, Math.min(8, node.borderWidth ?? 1.5)),
     borderStyle: node.borderStyle ?? 'solid',

@@ -4,8 +4,9 @@ import { create } from 'zustand';
 import { getDiagramTemplate, type DiagramTemplateId } from './diagram-templates';
 import { loadEditorSession } from './editor-session';
 import { initialDocument } from './flowchart-data';
-import type { ConnectionSide, DiagramSettings, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeShape, NodeType } from './flowchart-types';
+import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
+import { TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, tableCardHeight } from './node-style';
 
 export type RunPhase = 'node' | 'line';
 
@@ -79,7 +80,7 @@ interface EditorState {
   selectedEdgeId: string | null;
   draggingNodeId: string | null;
   linkingFromId: string | null;
-  activeShape: NodeShape | null;
+  activeShape: DrawTool | null;
   infoOpen: boolean;
 
   // Lifecycle
@@ -107,7 +108,7 @@ interface EditorState {
   selectEdge: (id: string | null) => void;
   setDraggingNodeId: (id: string | null) => void;
   setLinkingFromId: (id: string | null) => void;
-  setActiveShape: (shape: NodeShape | null) => void;
+  setActiveShape: (shape: DrawTool | null) => void;
   toggleInfo: () => void;
   setSavingDiagram: (saving: boolean) => void;
 
@@ -118,10 +119,20 @@ interface EditorState {
   onNodeDelete: (id: string) => void;
   onConnect: (fromId: string, toId: string, fromSide?: ConnectionSide, toSide?: ConnectionSide) => void;
   onNodeCreate: (preset: NodePreset, position: { x: number; y: number }) => string;
-  onShapeCreate: (shape: NodeShape, position: { x: number; y: number }, width: number, height: number) => string;
+  onShapeCreate: (tool: DrawTool, position: { x: number; y: number }, width: number, height: number) => string;
   onEdgeDelete: (id: string) => void;
   onEdgeUpdate: (id: string, patch: Partial<Omit<FlowEdge, 'id' | 'from' | 'to'>>) => void;
   onEdgeReconnect: (id: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
+}
+
+/** Starter columns for a freshly drawn table. */
+function newTableColumns() {
+  const stamp = Date.now().toString(36);
+  return [
+    { id: `c-${stamp}-1`, name: 'id', dataType: 'uuid', primaryKey: true },
+    { id: `c-${stamp}-2`, name: 'name', dataType: 'varchar(255)' },
+    { id: `c-${stamp}-3`, name: 'created_at', dataType: 'timestamptz', defaultValue: 'now()' },
+  ];
 }
 
 export const useEditorStore = create<EditorState>((set, get) => ({
@@ -399,10 +410,44 @@ export const useEditorStore = create<EditorState>((set, get) => ({
    * title and icon so it reads as a real card straight away; the
    * inspector edits all three afterwards.
    */
-  onShapeCreate: (shape, position, width, height) => {
+  onShapeCreate: (tool, position, width, height) => {
     const { doc } = get();
     const id = `n${doc.nodes.length + 1}-${Date.now().toString(36)}`;
     const paint = DEFAULT_NODE_PAINT.process;
+    // The table tool draws a rounded card carrying a starter TableSpec.
+    // Its height comes from the column count rather than the drag, so a
+    // new table is never born with rows clipped off.
+    if (tool === 'table') {
+      const columns = newTableColumns();
+      set({
+        doc: {
+          ...doc,
+          nodes: [
+            ...doc.nodes,
+            {
+              id,
+              type: 'process',
+              title: 'new_table',
+              position,
+              sortOrder: Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1)) + 1,
+              shape: 'rounded',
+              width: Math.max(TABLE_DEFAULT_WIDTH, Math.min(TABLE_MAX_WIDTH, width)),
+              height: tableCardHeight(columns.length),
+              fontSize: 13,
+              icon: null,
+              color: paint.color,
+              backgroundColor: paint.backgroundColor,
+              borderColor: paint.color,
+              borderWidth: 1.5,
+              shadow: 'soft',
+              table: { columns },
+            },
+          ],
+        },
+      });
+      return id;
+    }
+    const shape = tool;
     // `position` is the centre of the new shape, matching the rest
     // of the editor's coordinate convention. Width/height are clamped
     // to a sensible minimum so a stray click doesn't produce a

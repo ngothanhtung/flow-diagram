@@ -8,6 +8,7 @@ import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
 import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
 import { nodeOutline, resolveNodeStyle } from '@/lib/node-style';
+import { TableCardBody } from './TableCardBody';
 import type { ViewTransform } from '@/lib/view-transform';
 import { NODE_BOUNDING_RADIUS } from './edge-geometry';
 
@@ -521,6 +522,11 @@ export function FlowNodeCard({
           explicitly set; instead we apply colour via inline style
           using the resolved Tailwind token. */}
         <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none'>
+          {node.table ? (
+            <div className='h-full w-full' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
+              <TableCardBody title={node.title} table={node.table} foreground={foreground} fontSize={fontSize} />
+            </div>
+          ) : (
           <div
             className='flex h-full w-full select-none'
             style={{
@@ -578,6 +584,7 @@ export function FlowNodeCard({
               )}
             </div>
           </div>
+          )}
         </foreignObject>
 
         {/* Four corner resize handles. Their radius is corrected

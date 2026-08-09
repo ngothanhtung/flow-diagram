@@ -16,11 +16,12 @@
 // the same shape again (or pressing Esc) deselects.
 
 import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Table2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
 import { SHAPES, type NodeShape } from '@/lib/node-style';
+import type { DrawTool } from '@/lib/flowchart-types';
 
 // Every shape exposed in the dock. We intentionally show only the
 // silhouettes that read well at the dock's 16×16 icon size — UML
@@ -63,8 +64,8 @@ const QUICK_DRAW_SHAPES: ReadonlyArray<{ id: NodeShape; label: string }> = [
 const DEFAULT_SHAPE: NodeShape = 'rectangle';
 
 interface ShapeToolbarProps {
-  activeShape: NodeShape | null;
-  onSelect: (shape: NodeShape | null) => void;
+  activeShape: DrawTool | null;
+  onSelect: (tool: DrawTool | null) => void;
 }
 
 export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
@@ -112,7 +113,9 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           className='group h-7 gap-0.5 pl-2 pr-1 text-zinc-300 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
           aria-label='Choose a shape to draw'
         >
-          <ShapeIcon shape={activeShape ?? lastPicked} size={16} />
+          {/* The table tool lives in its own button, so the shape trigger
+              keeps showing the last picked silhouette while it is armed. */}
+          <ShapeIcon shape={activeShape && activeShape !== 'table' ? activeShape : lastPicked} size={16} />
           <ChevronDown size={10} className='opacity-70 transition group-data-popup-open:rotate-180' />
         </DropdownMenuTrigger>
         <DropdownMenuContent align='center' sideOffset={10} className='w-[min(420px,90vw)] border-white/10 bg-zinc-950/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.68)] backdrop-blur-xl'>
@@ -159,6 +162,22 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           </Button>
         );
       })}
+
+      <Divider />
+
+      {/* Database table — draws a card with a starter column list rather
+          than a plain silhouette, but arms the same draw gesture. */}
+      <Button
+        variant='ghost'
+        size='icon-sm'
+        onClick={() => (activeShape === 'table' ? onSelect(null) : onSelect('table'))}
+        aria-pressed={activeShape === 'table'}
+        className={activeShape === 'table' ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}
+        title='Database table'
+        aria-label='Database table'
+      >
+        <Table2 size={16} />
+      </Button>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import { Grid2x2, Info, Magnet, Maximize2, Minus, Plus } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { ConnectionSide, ExecutionState, FlowDocumentJSON, FlowPoint, NodeShape } from '@/lib/flowchart-types';
+import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPoint, NodeShape } from '@/lib/flowchart-types';
 import { screenToData } from '@/lib/coords';
 import { resolveNodeStyle, SHAPES } from '@/lib/node-style';
 import type { ViewTransform } from '@/lib/view-transform';
@@ -80,9 +80,9 @@ interface FlowCanvasProps {
   onEdgeReconnect: (edgeId: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
   onEdgeUpdate: (edgeId: string, patch: { bendPoints?: FlowPoint[]; labelOffset?: number }) => void;
   /** Shape currently armed by the dock. When set, the canvas draws. */
-  activeShape: NodeShape | null;
+  activeShape: DrawTool | null;
   /** Called when the user finishes drawing a shape on the canvas. */
-  onShapeDrawn: (shape: NodeShape, position: { x: number; y: number }, width: number, height: number) => void;
+  onShapeDrawn: (tool: DrawTool, position: { x: number; y: number }, width: number, height: number) => void;
   /** Whether the document info sidebar is open — toggled from the dock. */
   infoOpen: boolean;
   onToggleInfo: () => void;
@@ -1054,7 +1054,9 @@ function ReconnectPreview({ fixed, pointer, color, scale }: { fixed: { x: number
  * get. The `ellipse` shape isn't path-based — it has to be drawn
  * with the SVG <ellipse> primitive.
  */
-function DrawPreview({ shape, start, current }: { shape: NodeShape; start: { x: number; y: number }; current: { x: number; y: number } }) {
+function DrawPreview({ shape, start, current }: { shape: DrawTool; start: { x: number; y: number }; current: { x: number; y: number } }) {
+  // The table tool previews as the rounded card it creates.
+  const previewShape: NodeShape = shape === 'table' ? 'rounded' : shape;
   const minX = Math.min(start.x, current.x);
   const minY = Math.min(start.y, current.y);
   const maxX = Math.max(start.x, current.x);
@@ -1067,11 +1069,11 @@ function DrawPreview({ shape, start, current }: { shape: NodeShape; start: { x: 
   // (NODE_BOUNDING_RADIUS = 56). Scale to fit the drag rectangle.
   const scaleX = width / 112;
   const scaleY = height / 112;
-  const spec = SHAPES[shape];
+  const spec = SHAPES[previewShape];
 
   return (
     <g transform={`translate(${cx} ${cy}) scale(${scaleX} ${scaleY})`} pointerEvents='none'>
-      {shape === 'ellipse' ? (
+      {previewShape === 'ellipse' ? (
         <ellipse cx={0} cy={0} rx={56} ry={36} fill='rgba(34, 211, 238, 0.12)' stroke='#22d3ee' strokeWidth={2 / Math.max(scaleX, scaleY)} strokeDasharray={`${8 / Math.max(scaleX, scaleY)} ${6 / Math.max(scaleX, scaleY)}`} />
       ) : (
         <path
