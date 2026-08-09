@@ -7,6 +7,7 @@ import { initialDocument } from './flowchart-data';
 import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
 import { TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, tableCardHeight } from './node-style';
+import { starterColumns } from '@/components/TableColumnsEditor';
 
 export type RunPhase = 'node' | 'line';
 
@@ -123,16 +124,6 @@ interface EditorState {
   onEdgeDelete: (id: string) => void;
   onEdgeUpdate: (id: string, patch: Partial<Omit<FlowEdge, 'id' | 'from' | 'to'>>) => void;
   onEdgeReconnect: (id: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
-}
-
-/** Starter columns for a freshly drawn table. */
-function newTableColumns() {
-  const stamp = Date.now().toString(36);
-  return [
-    { id: `c-${stamp}-1`, name: 'id', dataType: 'uuid', primaryKey: true },
-    { id: `c-${stamp}-2`, name: 'name', dataType: 'varchar(255)' },
-    { id: `c-${stamp}-3`, name: 'created_at', dataType: 'timestamptz', defaultValue: 'now()' },
-  ];
 }
 
 export const useEditorStore = create<EditorState>((set, get) => ({
@@ -418,7 +409,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     // Its height comes from the column count rather than the drag, so a
     // new table is never born with rows clipped off.
     if (tool === 'table') {
-      const columns = newTableColumns();
+      const columns = starterColumns();
       set({
         doc: {
           ...doc,

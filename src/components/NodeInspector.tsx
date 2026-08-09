@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { IconPicker } from '@/components/IconPicker';
+import { TableColumnsEditor } from '@/components/TableColumnsEditor';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -327,6 +328,9 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeIns
         onChange={(textAlign) => onUpdate(node.id, { textAlign })}
       />
 
+      <SectionLabel>{node.table ? 'Columns' : 'Database table'}</SectionLabel>
+      <TableColumnsEditor node={node} onUpdate={onUpdate} />
+
       <SectionLabel>Actions</SectionLabel>
       <div className='mt-1.5 grid grid-cols-3 gap-2'>
         <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-200 hover:bg-white/10'>
@@ -359,6 +363,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeIns
               textAlign: undefined,
               portSize: undefined,
               connectionPoints: undefined,
+              // `table` is content, not styling — Reset leaves it alone.
             })
           }
           className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'
