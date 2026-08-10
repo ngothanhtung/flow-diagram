@@ -304,6 +304,9 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     // Dedupe the same pair of ports while still allowing parallel lines
     // between two nodes when they use different sides.
     if (doc.edges.some((edge) => edge.from === fromId && edge.to === toId && (edge.fromSide ?? 'right') === (fromSide ?? 'right') && (edge.toSide ?? 'left') === (toSide ?? 'left'))) return;
+    // A line between two database tables is an ERD relationship, and a
+    // schema diagram reads better still: no travelling objects, no halo.
+    const isRelationship = Boolean(doc.nodes.find((node) => node.id === fromId)?.table && doc.nodes.find((node) => node.id === toId)?.table);
     set({
       doc: {
         ...doc,
@@ -315,17 +318,19 @@ export const useEditorStore = create<EditorState>((set, get) => ({
             to: toId,
             fromSide,
             toSide,
-            effect: 'comet',
+            effect: isRelationship ? 'none' : 'comet',
             direction: 'forward',
             routing: 'smooth-step',
+            // Both ends start bare — an arrowhead is an explicit choice
+            // in the line inspector, not something a new line inherits.
             startMarker: 'none',
-            endMarker: 'arrow',
+            endMarker: 'none',
             animationSpeed: 1,
             effectSize: 1.5,
             // Glow is off unless a line asks for it, so a freshly drawn
             // line carries the halo explicitly rather than relying on a
             // default that dense-diagram mode would strip away.
-            glowIntensity: 1,
+            glowIntensity: isRelationship ? undefined : 1,
             width: 2,
           },
         ],

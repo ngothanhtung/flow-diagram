@@ -116,6 +116,8 @@ interface EdgeEffectLayerProps {
  * it's excluded here to avoid quadrupling its objects.
  */
 export function EdgeEffectLayer(props: EdgeEffectLayerProps) {
+  // "none" draws nothing on top of the line — the connector stays static.
+  if (props.effect === 'none') return null;
   if (props.direction === 'both' && props.effect !== 'bidirectional') {
     return (
       <>

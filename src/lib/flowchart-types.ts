@@ -155,6 +155,9 @@ export interface NodePreset {
 }
 
 export type EdgeEffect =
+  /** No animation at all — a plain static connector. ERD relationships
+   *  default to this, since a schema diagram reads better still. */
+  | 'none'
   | 'flow'
   | 'dash'
   | 'pulse'
@@ -241,7 +244,8 @@ export interface FlowEdge {
   effect?: EdgeEffect;
   /** Animation direction without changing the logical source/target. */
   direction?: EdgeDirection;
-  /** Geometry of the connector path. */
+  /** Geometry of the connector path. Unset = "smooth-step", the default
+   *  every diagram draws with. */
   routing?: EdgeRouting;
   /** User-positioned intermediate points for orthogonal/smooth routes. */
   bendPoints?: FlowPoint[];

@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   ArrowLeftRight,
   ArrowRight,
+  Ban,
   BatteryCharging,
   Bug,
   CircleDot,
@@ -67,6 +68,7 @@ const EFFECTS: {
   description: string;
   Icon: LucideIcon;
 }[] = [
+  { value: 'none', label: 'None', description: 'No animation — a static line', Icon: Ban },
   { value: 'flow', label: 'Flow', description: 'Continuous data stream', Icon: Waves },
   { value: 'dash', label: 'Packets', description: 'Moving packet stream', Icon: Minus },
   { value: 'pulse', label: 'Signal', description: 'Single traveling pulse', Icon: Activity },
@@ -334,12 +336,12 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
         )}
 
         <MarkerPicker label='Line start' value={edge.startMarker ?? 'none'} onChange={(startMarker) => onUpdate(edge.id, { startMarker })} />
-        <MarkerPicker label='Line end' value={edge.endMarker ?? 'arrow'} onChange={(endMarker) => onUpdate(edge.id, { endMarker })} />
+        <MarkerPicker label='Line end' value={edge.endMarker ?? 'none'} onChange={(endMarker) => onUpdate(edge.id, { endMarker })} />
 
         <div className='mt-3'>
           <p className='text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>Routing</p>
           <Select
-            value={edge.routing ?? 'orthogonal'}
+            value={edge.routing ?? 'smooth-step'}
             onValueChange={(nextValue) => {
               if (nextValue) {
                 onUpdate(edge.id, {
@@ -350,7 +352,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
             }}
           >
             <SelectTrigger className='mt-1.5 h-9 w-full border-white/10 bg-white/5 px-3 text-left hover:bg-white/8 focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15'>
-              <span className='flex-1 truncate text-[11px] font-semibold text-zinc-200'>{ROUTING_OPTIONS.find((option) => option.value === (edge.routing ?? 'orthogonal'))?.label}</span>
+              <span className='flex-1 truncate text-[11px] font-semibold text-zinc-200'>{ROUTING_OPTIONS.find((option) => option.value === (edge.routing ?? 'smooth-step'))?.label}</span>
             </SelectTrigger>
             <SelectContent className='border-violet-400/25 bg-zinc-950 p-1.5'>
               <SelectGroup>
@@ -363,7 +365,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
               </SelectGroup>
             </SelectContent>
           </Select>
-          {(edge.routing ?? 'orthogonal') === 'orthogonal' || (edge.routing ?? 'orthogonal') === 'smooth-step' ? (
+          {(edge.routing ?? 'smooth-step') === 'orthogonal' || (edge.routing ?? 'smooth-step') === 'smooth-step' ? (
             <div className='mt-2 flex items-center justify-between rounded-lg bg-white/4 px-2.5 py-2 ring-1 ring-white/8'>
               <span className='text-[9px] text-zinc-500'>{edge.bendPoints?.length ? `${edge.bendPoints.length} custom bend points` : 'Automatic bend points'}</span>
               <Button variant='ghost' size='xs' disabled={!edge.bendPoints?.length} onClick={() => onUpdate(edge.id, { bendPoints: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
@@ -448,255 +450,263 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                   />
                 </div>
 
-                {supportsCount && (
+                {previewEffect === 'none' ? (
+                  <p className='mt-4 rounded-lg bg-white/4 px-3 py-2.5 text-[10px] leading-relaxed text-zinc-500 ring-1 ring-white/8'>
+                    Animation is off for this line — it renders as a plain static connector. Colour, width, markers and label still apply.
+                  </p>
+                ) : (
+                  <>
+                  {supportsCount && (
+                    <div className='mt-4'>
+                      <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                        <span className='inline-flex items-center gap-1'>
+                          <Shapes size={11} /> Object shape
+                        </span>
+                        <span className='text-[8px] uppercase tracking-wider text-zinc-600'>{edge.effectShape ? EDGE_OBJECT_SHAPE_OPTIONS.find((option) => option.value === edge.effectShape)?.label : 'Dash · default'}</span>
+                      </span>
+                      <div className='mt-1.5 flex flex-wrap gap-1.5'>
+                        <Button
+                          variant='outline'
+                          size='icon-sm'
+                          onClick={() => onUpdate(edge.id, { effectShape: undefined })}
+                          aria-pressed={!edge.effectShape}
+                          title='Dash (default)'
+                          aria-label='Dash (default)'
+                          className={['h-8 w-10 border-white/12 bg-black/30 p-0', !edge.effectShape ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'text-zinc-400 hover:text-zinc-100'].join(' ')}
+                        >
+                          <svg width={22} height={10} viewBox='-11 -5 22 10' aria-hidden='true'>
+                            <line x1={-8} y1={0} x2={8} y2={0} stroke='currentColor' strokeWidth={3.4} strokeLinecap='round' />
+                          </svg>
+                        </Button>
+                        {EDGE_OBJECT_SHAPE_OPTIONS.map((option) => (
+                          <Button
+                            key={option.value}
+                            variant='outline'
+                            size='icon-sm'
+                            onClick={() => onUpdate(edge.id, { effectShape: option.value as EdgeObjectShape })}
+                            aria-pressed={edge.effectShape === option.value}
+                            title={option.label}
+                            aria-label={option.label}
+                            className={['h-8 w-10 border-white/12 bg-black/30 p-0', edge.effectShape === option.value ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'text-zinc-400 hover:text-zinc-100'].join(' ')}
+                          >
+                            <EdgeObjectShapeSwatch shape={option.value} size={18} />
+                          </Button>
+                        ))}
+                      </div>
+                      <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Real silhouettes ride the route instead of plain dashes. Arrows and chevrons turn to follow the line; the rest stay upright.</span>
+                    </div>
+                  )}
+
                   <div className='mt-4'>
                     <span className='flex items-center justify-between text-[10px] text-zinc-500'>
                       <span className='inline-flex items-center gap-1'>
-                        <Shapes size={11} /> Object shape
+                        <Palette size={11} /> Effect object color
                       </span>
-                      <span className='text-[8px] uppercase tracking-wider text-zinc-600'>{edge.effectShape ? EDGE_OBJECT_SHAPE_OPTIONS.find((option) => option.value === edge.effectShape)?.label : 'Dash · default'}</span>
-                    </span>
-                    <div className='mt-1.5 flex flex-wrap gap-1.5'>
-                      <Button
-                        variant='outline'
-                        size='icon-sm'
-                        onClick={() => onUpdate(edge.id, { effectShape: undefined })}
-                        aria-pressed={!edge.effectShape}
-                        title='Dash (default)'
-                        aria-label='Dash (default)'
-                        className={['h-8 w-10 border-white/12 bg-black/30 p-0', !edge.effectShape ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'text-zinc-400 hover:text-zinc-100'].join(' ')}
-                      >
-                        <svg width={22} height={10} viewBox='-11 -5 22 10' aria-hidden='true'>
-                          <line x1={-8} y1={0} x2={8} y2={0} stroke='currentColor' strokeWidth={3.4} strokeLinecap='round' />
-                        </svg>
-                      </Button>
-                      {EDGE_OBJECT_SHAPE_OPTIONS.map((option) => (
-                        <Button
-                          key={option.value}
-                          variant='outline'
-                          size='icon-sm'
-                          onClick={() => onUpdate(edge.id, { effectShape: option.value as EdgeObjectShape })}
-                          aria-pressed={edge.effectShape === option.value}
-                          title={option.label}
-                          aria-label={option.label}
-                          className={['h-8 w-10 border-white/12 bg-black/30 p-0', edge.effectShape === option.value ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'text-zinc-400 hover:text-zinc-100'].join(' ')}
-                        >
-                          <EdgeObjectShapeSwatch shape={option.value} size={18} />
-                        </Button>
-                      ))}
-                    </div>
-                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Real silhouettes ride the route instead of plain dashes. Arrows and chevrons turn to follow the line; the rest stay upright.</span>
-                  </div>
-                )}
-
-                <div className='mt-4'>
-                  <span className='flex items-center justify-between text-[10px] text-zinc-500'>
-                    <span className='inline-flex items-center gap-1'>
-                      <Palette size={11} /> Effect object color
-                    </span>
-                    {edge.effectColor ? (
-                      <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { effectColor: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
-                        <Undo2 /> Use line color
-                      </Button>
-                    ) : (
-                      <span className='text-[8px] uppercase tracking-wider text-zinc-600'>Auto · line color</span>
-                    )}
-                  </span>
-                  <span className='mt-1.5 flex items-center gap-2'>
-                    <Input
-                      type='color'
-                      value={edge.effectColor ?? color}
-                      onChange={(event) =>
-                        onUpdate(edge.id, {
-                          effectColor: event.target.value as `#${string}`,
-                        })
-                      }
-                      className='h-7 w-8 cursor-pointer border-white/10 bg-transparent p-0.5'
-                    />
-                    <span className='font-mono text-[9px] uppercase text-zinc-300'>{edge.effectColor ?? color}</span>
-                  </span>
-                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Colour of the moving objects. Leave on auto to match the line.</span>
-                </div>
-
-                <div className='mt-3'>
-                  <span className='flex items-center justify-between text-[10px] text-zinc-500'>
-                    <span className='inline-flex items-center gap-1'>
-                      <CircleDot size={11} /> Effect object size
-                    </span>
-                    <span className='font-mono text-zinc-300'>{effectSize.toFixed(1)}×</span>
-                  </span>
-                  <Slider
-                    min={0.5}
-                    max={3}
-                    step={0.1}
-                    value={effectSize}
-                    onValueChange={(nextValue) => onUpdate(edge.id, { effectSize: nextValue as number })}
-                    className='mt-2 [&_[data-slot=slider-range]]:bg-violet-400 [&_[data-slot=slider-thumb]]:border-violet-300'
-                  />
-                  <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
-                    <span>Small</span>
-                    <span>Large</span>
-                  </span>
-                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>How large each moving object renders, relative to the line width.</span>
-                </div>
-
-                <div className='mt-3'>
-                  <span className='flex items-center justify-between text-[10px] text-zinc-500'>
-                    <span className='inline-flex items-center gap-1'>
-                      <Hash size={11} /> {supportsCount ? 'Objects on line' : 'Pattern density'}
-                    </span>
-                    {supportsCount ? (
-                      effectCount !== undefined ? (
-                        <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { effectCount: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
-                          <Undo2 /> Auto
+                      {edge.effectColor ? (
+                        <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { effectColor: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
+                          <Undo2 /> Use line color
                         </Button>
                       ) : (
-                        <span className='font-mono text-zinc-300'>Auto</span>
-                      )
-                    ) : supportsDensity ? (
-                      <span className='font-mono text-zinc-300'>{effectDensity.toFixed(1).replace(/\.0$/, '')}×</span>
-                    ) : (
-                      <span className='font-mono text-zinc-300'>—</span>
-                    )}
-                  </span>
-                  {supportsCount ? (
-                    <>
-                      <Slider
-                        min={1}
-                        max={8}
-                        step={1}
-                        value={effectCount ?? 3}
-                        onValueChange={(nextValue) => onUpdate(edge.id, { effectCount: nextValue as number })}
-                        className='mt-2 [&_[data-slot=slider-range]]:bg-emerald-400 [&_[data-slot=slider-thumb]]:border-emerald-300'
-                      />
-                      <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
-                        <span>1</span>
-                        <span>8</span>
-                      </span>
-                      <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>
-                        {effectCount !== undefined ? `Exactly ${effectCount} object${effectCount > 1 ? 's' : ''} evenly spaced along the line.` : 'Auto — spacing-based, longer lines carry more objects. Drag to pin an exact count.'}
-                      </span>
-                    </>
-                  ) : supportsDensity ? (
-                    <>
-                      <Slider
-                        min={0.5}
-                        max={2}
-                        step={0.1}
-                        value={effectDensity}
-                        onValueChange={(nextValue) => onUpdate(edge.id, { effectDensity: (nextValue as number) === 1 ? undefined : (nextValue as number) })}
-                        className='mt-2 [&_[data-slot=slider-range]]:bg-emerald-400 [&_[data-slot=slider-thumb]]:border-emerald-300'
-                      />
-                      <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
-                        <span>Sparse</span>
-                        <span>Dense</span>
-                      </span>
-                      <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>How tightly the repeating pattern packs its marks — the apparent speed stays the same.</span>
-                    </>
-                  ) : (
-                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>One filling sweep runs the whole route per cycle — count and density do not apply.</span>
-                  )}
-                </div>
-
-                <div className='mt-3'>
-                  <span className='flex items-center justify-between text-[10px] text-zinc-500'>
-                    <span className='inline-flex items-center gap-1'>
-                      <Gauge size={11} /> Speed
+                        <span className='text-[8px] uppercase tracking-wider text-zinc-600'>Auto · line color</span>
+                      )}
                     </span>
-                    <span className='font-mono text-zinc-300'>{formattedSpeed}×</span>
-                  </span>
-                  <Slider
-                    min={0.25}
-                    max={3}
-                    step={0.05}
-                    value={speed}
-                    onValueChange={(nextValue) => onUpdate(edge.id, { animationSpeed: nextValue as number })}
-                    className='mt-2 [&_[data-slot=slider-range]]:bg-cyan-400 [&_[data-slot=slider-thumb]]:border-cyan-300'
-                  />
-                  <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
-                    <span>0.25×</span>
-                    <span>3×</span>
-                  </span>
-                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Traveling effects keep a consistent speed across different line lengths.</span>
-                </div>
-
-                <div className='mt-3'>
-                  <span className='flex items-center justify-between text-[10px] text-zinc-500'>
-                    <span className='inline-flex items-center gap-1'>
-                      <Sparkles size={11} /> Glow
+                    <span className='mt-1.5 flex items-center gap-2'>
+                      <Input
+                        type='color'
+                        value={edge.effectColor ?? color}
+                        onChange={(event) =>
+                          onUpdate(edge.id, {
+                            effectColor: event.target.value as `#${string}`,
+                          })
+                        }
+                        className='h-7 w-8 cursor-pointer border-white/10 bg-transparent p-0.5'
+                      />
+                      <span className='font-mono text-[9px] uppercase text-zinc-300'>{edge.effectColor ?? color}</span>
                     </span>
-                    <span className='font-mono text-zinc-300'>{glowIntensity === 0 ? 'Off' : `${glowIntensity.toFixed(1).replace(/\.0$/, '')}×`}</span>
-                  </span>
-                  <Slider
-                    min={0}
-                    max={3}
-                    step={0.1}
-                    value={glowIntensity}
-                    onValueChange={(nextValue) => onUpdate(edge.id, { glowIntensity: (nextValue as number) === 0 ? undefined : (nextValue as number) })}
-                    className='mt-2 [&_[data-slot=slider-range]]:bg-amber-400 [&_[data-slot=slider-thumb]]:border-amber-300'
-                  />
-                  <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
-                    <span>Off</span>
-                    <span>Bright</span>
-                  </span>
-                  {glowIntensity > 0 && (
-                    <>
-                      <span className='mt-2 flex items-center justify-between text-[10px] text-zinc-500'>
-                        <span className='inline-flex items-center gap-1'>
-                          <Palette size={11} /> Glow color
-                        </span>
-                        {glowColor ? (
-                          <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { glowColor: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
-                            <Undo2 /> White
+                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Colour of the moving objects. Leave on auto to match the line.</span>
+                  </div>
+
+                  <div className='mt-3'>
+                    <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                      <span className='inline-flex items-center gap-1'>
+                        <CircleDot size={11} /> Effect object size
+                      </span>
+                      <span className='font-mono text-zinc-300'>{effectSize.toFixed(1)}×</span>
+                    </span>
+                    <Slider
+                      min={0.5}
+                      max={3}
+                      step={0.1}
+                      value={effectSize}
+                      onValueChange={(nextValue) => onUpdate(edge.id, { effectSize: nextValue as number })}
+                      className='mt-2 [&_[data-slot=slider-range]]:bg-violet-400 [&_[data-slot=slider-thumb]]:border-violet-300'
+                    />
+                    <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                      <span>Small</span>
+                      <span>Large</span>
+                    </span>
+                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>How large each moving object renders, relative to the line width.</span>
+                  </div>
+
+                  <div className='mt-3'>
+                    <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                      <span className='inline-flex items-center gap-1'>
+                        <Hash size={11} /> {supportsCount ? 'Objects on line' : 'Pattern density'}
+                      </span>
+                      {supportsCount ? (
+                        effectCount !== undefined ? (
+                          <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { effectCount: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
+                            <Undo2 /> Auto
                           </Button>
                         ) : (
-                          <span className='text-[8px] uppercase tracking-wider text-zinc-600'>White · default</span>
-                        )}
-                      </span>
-                      <span className='mt-1.5 flex items-center gap-2'>
-                        <Input
-                          type='color'
-                          value={glowColor && glowColor !== 'auto' ? glowColor : (edge.effectColor ?? color)}
-                          onChange={(event) => onUpdate(edge.id, { glowColor: event.target.value as `#${string}` })}
-                          className='h-7 w-8 cursor-pointer border-white/10 bg-transparent p-0.5'
-                        />
-                        <Button
-                          variant='outline'
-                          size='xs'
-                          onClick={() => onUpdate(edge.id, { glowColor: glowColor === 'auto' ? undefined : 'auto' })}
-                          aria-pressed={glowColor === 'auto'}
-                          className={['border-white/12 bg-black/25 text-[10px]', glowColor === 'auto' ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'text-zinc-400 hover:text-zinc-100'].join(' ')}
-                        >
-                          Match object
-                        </Button>
-                        <span className='font-mono text-[9px] uppercase text-zinc-400'>{glowColor === 'auto' ? 'auto' : (glowColor ?? '#ffffff')}</span>
-                      </span>
-                    </>
-                  )}
-                  <span className='mt-1.5 block text-[9px] leading-relaxed text-zinc-600'>Neon halo around the moving objects — off unless you turn it on. Newly drawn lines start at 1×.</span>
-                </div>
-
-                <div className='mt-3'>
-                  <span className='flex items-center justify-between text-[10px] text-zinc-500'>
-                    <span className='inline-flex items-center gap-1'>
-                      <Activity size={11} /> Phase offset
+                          <span className='font-mono text-zinc-300'>Auto</span>
+                        )
+                      ) : supportsDensity ? (
+                        <span className='font-mono text-zinc-300'>{effectDensity.toFixed(1).replace(/\.0$/, '')}×</span>
+                      ) : (
+                        <span className='font-mono text-zinc-300'>—</span>
+                      )}
                     </span>
-                    <span className='font-mono text-zinc-300'>{Math.round(phaseOffset * 100)}%</span>
-                  </span>
-                  <Slider
-                    min={0}
-                    max={1}
-                    step={0.05}
-                    value={phaseOffset}
-                    onValueChange={(nextValue) => onUpdate(edge.id, { phaseOffset: (nextValue as number) === 0 ? undefined : (nextValue as number) })}
-                    className='mt-2 [&_[data-slot=slider-range]]:bg-sky-400 [&_[data-slot=slider-thumb]]:border-sky-300'
-                  />
-                  <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
-                    <span>0%</span>
-                    <span>100%</span>
-                  </span>
-                  <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Starts this line&apos;s animation partway through its cycle, so parallel lines don&apos;t run in lockstep.</span>
-                </div>
+                    {supportsCount ? (
+                      <>
+                        <Slider
+                          min={1}
+                          max={8}
+                          step={1}
+                          value={effectCount ?? 3}
+                          onValueChange={(nextValue) => onUpdate(edge.id, { effectCount: nextValue as number })}
+                          className='mt-2 [&_[data-slot=slider-range]]:bg-emerald-400 [&_[data-slot=slider-thumb]]:border-emerald-300'
+                        />
+                        <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                          <span>1</span>
+                          <span>8</span>
+                        </span>
+                        <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>
+                          {effectCount !== undefined ? `Exactly ${effectCount} object${effectCount > 1 ? 's' : ''} evenly spaced along the line.` : 'Auto — spacing-based, longer lines carry more objects. Drag to pin an exact count.'}
+                        </span>
+                      </>
+                    ) : supportsDensity ? (
+                      <>
+                        <Slider
+                          min={0.5}
+                          max={2}
+                          step={0.1}
+                          value={effectDensity}
+                          onValueChange={(nextValue) => onUpdate(edge.id, { effectDensity: (nextValue as number) === 1 ? undefined : (nextValue as number) })}
+                          className='mt-2 [&_[data-slot=slider-range]]:bg-emerald-400 [&_[data-slot=slider-thumb]]:border-emerald-300'
+                        />
+                        <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                          <span>Sparse</span>
+                          <span>Dense</span>
+                        </span>
+                        <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>How tightly the repeating pattern packs its marks — the apparent speed stays the same.</span>
+                      </>
+                    ) : (
+                      <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>One filling sweep runs the whole route per cycle — count and density do not apply.</span>
+                    )}
+                  </div>
+
+                  <div className='mt-3'>
+                    <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                      <span className='inline-flex items-center gap-1'>
+                        <Gauge size={11} /> Speed
+                      </span>
+                      <span className='font-mono text-zinc-300'>{formattedSpeed}×</span>
+                    </span>
+                    <Slider
+                      min={0.25}
+                      max={3}
+                      step={0.05}
+                      value={speed}
+                      onValueChange={(nextValue) => onUpdate(edge.id, { animationSpeed: nextValue as number })}
+                      className='mt-2 [&_[data-slot=slider-range]]:bg-cyan-400 [&_[data-slot=slider-thumb]]:border-cyan-300'
+                    />
+                    <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                      <span>0.25×</span>
+                      <span>3×</span>
+                    </span>
+                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Traveling effects keep a consistent speed across different line lengths.</span>
+                  </div>
+
+                  <div className='mt-3'>
+                    <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                      <span className='inline-flex items-center gap-1'>
+                        <Sparkles size={11} /> Glow
+                      </span>
+                      <span className='font-mono text-zinc-300'>{glowIntensity === 0 ? 'Off' : `${glowIntensity.toFixed(1).replace(/\.0$/, '')}×`}</span>
+                    </span>
+                    <Slider
+                      min={0}
+                      max={3}
+                      step={0.1}
+                      value={glowIntensity}
+                      onValueChange={(nextValue) => onUpdate(edge.id, { glowIntensity: (nextValue as number) === 0 ? undefined : (nextValue as number) })}
+                      className='mt-2 [&_[data-slot=slider-range]]:bg-amber-400 [&_[data-slot=slider-thumb]]:border-amber-300'
+                    />
+                    <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                      <span>Off</span>
+                      <span>Bright</span>
+                    </span>
+                    {glowIntensity > 0 && (
+                      <>
+                        <span className='mt-2 flex items-center justify-between text-[10px] text-zinc-500'>
+                          <span className='inline-flex items-center gap-1'>
+                            <Palette size={11} /> Glow color
+                          </span>
+                          {glowColor ? (
+                            <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { glowColor: undefined })} className='text-zinc-400 hover:bg-white/8 hover:text-cyan-100'>
+                              <Undo2 /> White
+                            </Button>
+                          ) : (
+                            <span className='text-[8px] uppercase tracking-wider text-zinc-600'>White · default</span>
+                          )}
+                        </span>
+                        <span className='mt-1.5 flex items-center gap-2'>
+                          <Input
+                            type='color'
+                            value={glowColor && glowColor !== 'auto' ? glowColor : (edge.effectColor ?? color)}
+                            onChange={(event) => onUpdate(edge.id, { glowColor: event.target.value as `#${string}` })}
+                            className='h-7 w-8 cursor-pointer border-white/10 bg-transparent p-0.5'
+                          />
+                          <Button
+                            variant='outline'
+                            size='xs'
+                            onClick={() => onUpdate(edge.id, { glowColor: glowColor === 'auto' ? undefined : 'auto' })}
+                            aria-pressed={glowColor === 'auto'}
+                            className={['border-white/12 bg-black/25 text-[10px]', glowColor === 'auto' ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'text-zinc-400 hover:text-zinc-100'].join(' ')}
+                          >
+                            Match object
+                          </Button>
+                          <span className='font-mono text-[9px] uppercase text-zinc-400'>{glowColor === 'auto' ? 'auto' : (glowColor ?? '#ffffff')}</span>
+                        </span>
+                      </>
+                    )}
+                    <span className='mt-1.5 block text-[9px] leading-relaxed text-zinc-600'>Neon halo around the moving objects — off unless you turn it on. Newly drawn lines start at 1×.</span>
+                  </div>
+
+                  <div className='mt-3'>
+                    <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+                      <span className='inline-flex items-center gap-1'>
+                        <Activity size={11} /> Phase offset
+                      </span>
+                      <span className='font-mono text-zinc-300'>{Math.round(phaseOffset * 100)}%</span>
+                    </span>
+                    <Slider
+                      min={0}
+                      max={1}
+                      step={0.05}
+                      value={phaseOffset}
+                      onValueChange={(nextValue) => onUpdate(edge.id, { phaseOffset: (nextValue as number) === 0 ? undefined : (nextValue as number) })}
+                      className='mt-2 [&_[data-slot=slider-range]]:bg-sky-400 [&_[data-slot=slider-thumb]]:border-sky-300'
+                    />
+                    <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-zinc-700'>
+                      <span>0%</span>
+                      <span>100%</span>
+                    </span>
+                    <span className='mt-1 block text-[9px] leading-relaxed text-zinc-600'>Starts this line&apos;s animation partway through its cycle, so parallel lines don&apos;t run in lockstep.</span>
+                  </div>
+                  </>
+                )}
               </div>
             </div>
             <div className='flex shrink-0 justify-end gap-2 border-t border-white/10 px-8 py-4'>

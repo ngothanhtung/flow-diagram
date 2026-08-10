@@ -304,10 +304,8 @@
       "routing": "orthogonal",
       "startMarker": "crow-one",
       "endMarker": "crow-many",
-      "effect": "flow",
-      "width": 1,
-      "effectSize": 1.2,
-      "animationSpeed": 0.9
+      "effect": "none",
+      "width": 1
     },
     {
       "id": "db-r2",
@@ -319,10 +317,8 @@
       "routing": "orthogonal",
       "startMarker": "crow-one",
       "endMarker": "crow-many",
-      "effect": "flow",
-      "width": 1,
-      "effectSize": 1.2,
-      "animationSpeed": 0.9
+      "effect": "none",
+      "width": 1
     },
     {
       "id": "db-r3",
@@ -334,10 +330,8 @@
       "routing": "orthogonal",
       "startMarker": "crow-one",
       "endMarker": "crow-many",
-      "effect": "flow",
-      "width": 1,
-      "effectSize": 1.2,
-      "animationSpeed": 0.9
+      "effect": "none",
+      "width": 1
     },
     {
       "id": "db-r4",
@@ -349,10 +343,8 @@
       "routing": "orthogonal",
       "startMarker": "crow-one",
       "endMarker": "crow-zero-one",
-      "effect": "flow",
-      "width": 1,
-      "effectSize": 1.2,
-      "animationSpeed": 0.9
+      "effect": "none",
+      "width": 1
     }
   ]
 }

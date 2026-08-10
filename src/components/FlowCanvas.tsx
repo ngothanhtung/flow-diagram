@@ -375,7 +375,7 @@ export function FlowCanvas({
       if (!svgRef.current) return;
       const edge = document.edges.find((item) => item.id === edgeId);
       if (!edge) return;
-      const routing = edge.routing ?? 'orthogonal';
+      const routing = edge.routing ?? 'smooth-step';
       // Only the polyline routes carry waypoints; straight and curved
       // lines ignore `bendPoints` entirely.
       if (routing !== 'orthogonal' && routing !== 'smooth-step') return;

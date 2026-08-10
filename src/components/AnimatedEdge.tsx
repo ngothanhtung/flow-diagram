@@ -50,7 +50,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   const glowColor = edge.glowColor;
   const speed = Math.max(0.25, Math.min(3, edge.animationSpeed ?? 1));
   const startMarker = edge.startMarker ?? 'none';
-  const endMarker = edge.endMarker ?? 'arrow';
+  const endMarker = edge.endMarker ?? 'none';
   const lowPower = executionState === 'pending';
   const isDrawing = executionState === 'active';
   const showEffect = executionState === 'normal' || executionState === 'active';

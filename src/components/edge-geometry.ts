@@ -47,7 +47,7 @@ export function buildEdgeGeometry(edge: FlowEdge, from: FlowNode, to: FlowNode) 
   const toAnchor = nodePortAnchor(to, toSide);
   const bendPoints = edge.bendPoints?.filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
 
-  switch (edge.routing ?? 'orthogonal') {
+  switch (edge.routing ?? 'smooth-step') {
     case 'straight':
       return buildStraightPath(from.position, fromAnchor, to.position, toAnchor);
     case 'smooth-step':
