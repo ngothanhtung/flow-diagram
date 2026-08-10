@@ -173,6 +173,8 @@ export function FlowNodeCard({
 }: FlowNodeCardProps) {
   const style = resolveNodeStyle(node);
   const Icon = useResolvedIcon(style.icon);
+  const logoSlug = style.icon?.startsWith('logo:') ? style.icon.slice('logo:'.length) : null;
+  const hasIcon = Boolean(Icon || logoSlug);
   const { shapeSpec, foreground, background, borderColor, width, height, rotation, borderWidth, borderStyle, opacity, shadow, iconSize, iconPosition, blockAlign, fontSize, fontFamily, fontWeight, textAlign, portSize } = style;
   const clusterAlign = blockAlign === 'left' ? 'flex-start' : blockAlign === 'right' ? 'flex-end' : 'center';
   // Horizontal padding runs wider than vertical so text never crowds the
@@ -529,17 +531,44 @@ export function FlowNodeCard({
             ordinary cards paint no background inside the foreignObject,
             and clipping them would crop text out of narrow silhouettes
             like a diamond, where overflow is intended. */}
-        {node.table && (
+        {(node.table || node.type === 'logo') && (
           <defs>
             <clipPath id={clipId}>
               <path d={outline.d} transform={outline.transform} />
             </clipPath>
           </defs>
         )}
-        <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none' clipPath={node.table ? `url(#${clipId})` : undefined}>
+        <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none' clipPath={node.table || node.type === 'logo' ? `url(#${clipId})` : undefined}>
           {node.table ? (
             <div className='h-full w-full' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
               <TableCardBody title={node.title} table={node.table} foreground={foreground} fontSize={fontSize} />
+            </div>
+          ) : node.type === 'logo' ? (
+            <div
+              className='flex h-full w-full select-none flex-col items-center justify-center'
+              style={{
+                color: foreground,
+                fontFamily: NODE_FONT_FAMILIES[fontFamily],
+                gap: 8,
+                padding: cardPadding,
+              }}
+            >
+              {logoSlug ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={`/logos/${logoSlug}.svg`}
+                  alt=''
+                  className='object-contain'
+                  style={{ width: iconSize, height: iconSize }}
+                />
+              ) : (
+                <span className='text-[11px] opacity-50'>Choose a logo</span>
+              )}
+              {node.title && (
+                <div className='max-w-full truncate leading-tight tracking-tight' style={{ fontSize, fontWeight: FONT_WEIGHT[fontWeight], textAlign: 'center' }}>
+                  {node.title}
+                </div>
+              )}
             </div>
           ) : (
           <div
@@ -553,11 +582,11 @@ export function FlowNodeCard({
               // cross axis when it sits on top.
               justifyContent: iconPosition === 'top' ? 'center' : clusterAlign,
               alignItems: iconPosition === 'top' ? clusterAlign : 'center',
-              gap: Icon ? (iconPosition === 'top' ? 7 : 12) : 0,
+              gap: hasIcon ? (iconPosition === 'top' ? 7 : 12) : 0,
               padding: `${cardPadding}px ${cardPadding + 8}px`,
             }}
           >
-            {Icon && (
+            {hasIcon && (
               <span
                 className='grid shrink-0 place-items-center rounded-xl'
                 style={{
@@ -575,7 +604,17 @@ export function FlowNodeCard({
                   foreignObject: Safari paints such elements at document
                   coords instead of in the SVG, so they vanish from the
                   card. Alpha goes in the colour instead. */}
-                {createElement(Icon, { size: iconSize })}
+                {logoSlug ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={`/logos/${logoSlug}.svg`}
+                    alt=''
+                    className='object-contain'
+                    style={{ width: iconSize, height: iconSize }}
+                  />
+                ) : (
+                  createElement(Icon!, { size: iconSize })
+                )}
               </span>
             )}
             <div

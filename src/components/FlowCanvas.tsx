@@ -1055,8 +1055,8 @@ function ReconnectPreview({ fixed, pointer, color, scale }: { fixed: { x: number
  * with the SVG <ellipse> primitive.
  */
 function DrawPreview({ shape, start, current }: { shape: DrawTool; start: { x: number; y: number }; current: { x: number; y: number } }) {
-  // The table tool previews as the rounded card it creates.
-  const previewShape: NodeShape = shape === 'table' ? 'rounded' : shape;
+  // The table and logo tools preview as the rounded card they create.
+  const previewShape: NodeShape = shape === 'table' || shape === 'logo' ? 'rounded' : shape;
   const minX = Math.min(start.x, current.x);
   const minY = Math.min(start.y, current.y);
   const maxX = Math.max(start.x, current.x);

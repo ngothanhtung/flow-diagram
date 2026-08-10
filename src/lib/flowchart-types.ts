@@ -2,7 +2,7 @@
 // Mirrors a subset of Flowgram's FlowDocumentJSON so the visual editor and
 // the persisted document stay compatible with @flowgram.ai/editor.
 
-export type NodeType = 'start' | 'process' | 'decision' | 'output';
+export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo';
 
 /** Visual shape of the node's body. Optional — defaults are derived
  *  from `type` so older documents render unchanged. */
@@ -56,7 +56,7 @@ export type NodePaint = NodeColor | `#${string}`;
  * kept so existing documents keep resolving instantly without a network
  * fetch; they are plain Lucide icon names.
  */
-export type NodeIcon = 'cog' | 'play' | 'flag' | 'bell' | 'mail' | 'database' | 'cloud' | 'code' | 'send' | 'sparkles' | `lucide:${string}` | `tabler:${string}`;
+export type NodeIcon = 'cog' | 'play' | 'flag' | 'bell' | 'mail' | 'database' | 'cloud' | 'code' | 'send' | 'sparkles' | `lucide:${string}` | `tabler:${string}` | `logo:${string}`;
 
 export type ConnectionSide = 'top' | 'right' | 'bottom' | 'left';
 export type ExecutionState = 'normal' | 'pending' | 'active' | 'completed';
@@ -139,9 +139,11 @@ export interface FlowNode {
 /**
  * What the canvas draw tool is armed with. Every shape can be drawn, plus
  * `'table'`, which produces a database-table node (a `rounded` card
- * carrying a `TableSpec`) rather than a new silhouette.
+ * carrying a `TableSpec`) rather than a new silhouette, and `'logo'`,
+ * which drops a dedicated logo block whose selected brand mark is rendered
+ * large and centred.
  */
-export type DrawTool = NodeShape | 'table';
+export type DrawTool = NodeShape | 'table' | 'logo';
 
 /** A reusable semantic block from the left-hand model palette. */
 export interface NodePreset {

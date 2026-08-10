@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { IconPicker } from '@/components/IconPicker';
+import { LogoPicker } from '@/components/LogoPicker';
 import { TableColumnsEditor } from '@/components/TableColumnsEditor';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -27,8 +28,10 @@ import { Separator } from '@/components/ui/separator';
 import { Slider } from '@/components/ui/slider';
 import { Textarea } from '@/components/ui/textarea';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { cn } from '@/lib/utils';
 import type { FlowNode, NodeFont } from '@/lib/flowchart-types';
-import { COLORS, SHAPES, resolveNodeStyle, type NodeColor, type NodeIcon, type NodeShape } from '@/lib/node-style';
+import { resolveClosestLogoColor } from '@/lib/logo-color';
+import { COLORS, SHAPES, resolveNodeStyle, type NodeIcon, type NodeShape } from '@/lib/node-style';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 interface NodeInspectorProps {
@@ -39,31 +42,64 @@ interface NodeInspectorProps {
   onClose: () => void;
 }
 
-const COLOR_HEX: Record<NodeColor, string> = {
-  red: '#ef4444',
-  orange: '#f97316',
-  amber: '#f59e0b',
-  yellow: '#eab308',
-  lime: '#84cc16',
-  green: '#22c55e',
-  emerald: '#10b981',
-  teal: '#14b8a6',
-  cyan: '#06b6d4',
-  sky: '#0ea5e9',
-  blue: '#3b82f6',
-  indigo: '#6366f1',
-  violet: '#8b5cf6',
-  purple: '#a855f7',
-  pink: '#ec4899',
-  rose: '#f43f5e',
-  brown: '#a97142',
-  coral: '#ff6f61',
-};
+// 10 main color families, each with 3 shades.
+// Foreground palette: light tints (text / icon / border).
+// Background palette: deep tones (body fill).
+const COLOR_FAMILIES = [
+  {
+    name: 'red',
+    foregrounds: ['#fee2e2', '#fca5a5', '#f87171'] as `#${string}`[],
+    backgrounds: ['#1a0505', '#2a0a0a', '#3d0f0f'] as `#${string}`[],
+  },
+  {
+    name: 'orange',
+    foregrounds: ['#ffedd5', '#fdba74', '#fb923c'] as `#${string}`[],
+    backgrounds: ['#1a0a03', '#2a1005', '#3d1507'] as `#${string}`[],
+  },
+  {
+    name: 'amber',
+    foregrounds: ['#fef9c3', '#fde047', '#facc15'] as `#${string}`[],
+    backgrounds: ['#1a1204', '#281c04', '#422006'] as `#${string}`[],
+  },
+  {
+    name: 'green',
+    foregrounds: ['#dcfce7', '#86efac', '#4ade80'] as `#${string}`[],
+    backgrounds: ['#022c0e', '#052e16', '#0f3d1f'] as `#${string}`[],
+  },
+  {
+    name: 'teal',
+    foregrounds: ['#ccfbf1', '#5eead4', '#2dd4bf'] as `#${string}`[],
+    backgrounds: ['#021f1e', '#042f2e', '#0a3d39'] as `#${string}`[],
+  },
+  {
+    name: 'cyan',
+    foregrounds: ['#cffafe', '#67e8f9', '#22d3ee'] as `#${string}`[],
+    backgrounds: ['#052637', '#083344', '#0e3d4e'] as `#${string}`[],
+  },
+  {
+    name: 'blue',
+    foregrounds: ['#dbeafe', '#93c5fd', '#60a5fa'] as `#${string}`[],
+    backgrounds: ['#051537', '#0a1f4c', '#102a5c'] as `#${string}`[],
+  },
+  {
+    name: 'indigo',
+    foregrounds: ['#e0e7ff', '#a5b4fc', '#818cf8'] as `#${string}`[],
+    backgrounds: ['#0a0a2e', '#12104a', '#1c1b5e'] as `#${string}`[],
+  },
+  {
+    name: 'purple',
+    foregrounds: ['#f3e8ff', '#d8b4fe', '#c084fc'] as `#${string}`[],
+    backgrounds: ['#120328', '#1e0437', '#2d0654'] as `#${string}`[],
+  },
+  {
+    name: 'pink',
+    foregrounds: ['#fce7f3', '#f9a8d4', '#f472b6'] as `#${string}`[],
+    backgrounds: ['#2a0510', '#330515', '#4a081d'] as `#${string}`[],
+  },
+] as const;
 
-// Text / icon and Border share the same light-tint palette; Background uses deep tones.
-// White is the default and always comes first.
-const PRESET_FOREGROUNDS: `#${string}`[] = ['#ffffff', ...(Object.keys(COLORS) as NodeColor[]).map((colorKey) => COLORS[colorKey].foreground as `#${string}`)];
-const PRESET_BACKGROUNDS = (Object.keys(COLORS) as NodeColor[]).map((colorKey) => COLORS[colorKey].background as `#${string}`);
+const PRESET_FOREGROUNDS: `#${string}`[] = ['#ffffff', ...COLOR_FAMILIES.flatMap((family) => [...family.foregrounds])];
+const PRESET_BACKGROUNDS: `#${string}`[] = COLOR_FAMILIES.flatMap((family) => [...family.backgrounds]);
 
 export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeInspectorProps) {
   // Local draft so the user can type without every keystroke mutating
@@ -252,30 +288,41 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeIns
 
       {/* --- Color ------------------------------------------------- */}
       <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>Color preset</label>
-      <div className='mt-1 flex flex-wrap gap-1.5'>
-        {(Object.keys(COLORS) as NodeColor[]).map((colorKey) => {
-          const spec = COLORS[colorKey];
-          const isActive = style.foreground === spec.foreground && style.background === spec.background && style.borderColor === spec.foreground;
-          return (
-            <Button
-              key={colorKey}
-              variant='outline'
-              size='icon-sm'
-              onClick={() =>
-                onUpdate(node.id, {
-                  color: spec.foreground,
-                  backgroundColor: spec.background,
-                  borderColor: spec.foreground,
-                })
-              }
-              title={colorKey}
-              className={['relative size-7 overflow-hidden rounded-full border-white/15 p-0 transition', isActive ? 'border-2 border-sky-300' : 'hover:scale-110'].join(' ')}
-              style={{ background: spec.background }}
-            >
-              <span className='absolute inset-1.75 rounded-full' style={{ background: COLOR_HEX[colorKey] }} />
-            </Button>
-          );
-        })}
+      <div className='mt-1.5 grid grid-cols-10 gap-1.5'>
+        {COLOR_FAMILIES.flatMap((family) =>
+          family.foregrounds.map((foreground, index) => {
+            const background = family.backgrounds[index];
+            const isActive =
+              style.foreground === foreground &&
+              style.background === background &&
+              style.borderColor === foreground;
+            return (
+              <Button
+                key={`${family.name}-${index}`}
+                variant='outline'
+                size='icon-sm'
+                onClick={() =>
+                  onUpdate(node.id, {
+                    color: foreground,
+                    backgroundColor: background,
+                    borderColor: foreground,
+                  })
+                }
+                title={`${family.name} ${index + 1}`}
+                className={cn(
+                  'relative size-7 overflow-hidden rounded-full p-0 transition',
+                  isActive ? 'border-2 border-sky-300' : 'border-white/20 hover:scale-110',
+                )}
+                style={{ background }}
+              >
+                <span
+                  className='absolute inset-1 rounded-full border border-white/25 shadow-sm'
+                  style={{ background: foreground }}
+                />
+              </Button>
+            );
+          }),
+        )}
       </div>
 
       <div className='mt-2 grid grid-cols-2 gap-2'>
@@ -289,13 +336,56 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeIns
       </div>
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
 
-      {/* --- Icon -------------------------------------------------- */}
-      <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>Icon</label>
-      <IconPicker value={currentIcon} onChange={(icon) => onUpdate(node.id, { icon })} />
-      {currentIcon !== null && <RangeField label='Icon size' value={style.iconSize} min={12} max={48} suffix='px' onChange={(iconSize) => onUpdate(node.id, { iconSize })} />}
+      {/* --- Icon / Logo ------------------------------------------ */}
+      <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>{node.type === 'logo' ? 'Logo' : 'Icon'}</label>
+      <div className='mt-1.5'>
+        {node.type === 'logo' ? (
+          <LogoPicker
+            value={currentIcon}
+            onChange={(icon, name) => {
+              const updateColor = async () => {
+                const slug = icon?.startsWith('logo:') ? icon.slice('logo:'.length) : null;
+                if (!slug) return;
+                try {
+                  const nearest = await resolveClosestLogoColor(slug);
+                  if (nearest) {
+                    const spec = COLORS[nearest];
+                    onUpdate(node.id, {
+                      color: spec.foreground,
+                      backgroundColor: spec.background,
+                      borderColor: spec.foreground,
+                    });
+                  }
+                } catch {
+                  // Ignore colour extraction failures; the logo still applies.
+                }
+              };
+
+              onUpdate(node.id, { icon });
+              if (name && name !== node.title) {
+                setTitle(name);
+                onUpdate(node.id, { title: name });
+              }
+              void updateColor();
+            }}
+          />
+        ) : (
+          <IconPicker value={currentIcon} onChange={(icon) => onUpdate(node.id, { icon })} />
+        )}
+      </div>
+      {(node.type === 'logo' || (currentIcon !== null && !String(currentIcon).startsWith('logo:'))) && (
+        <RangeField
+          label={node.type === 'logo' ? 'Logo size' : 'Icon size'}
+          value={style.iconSize}
+          min={12}
+          max={node.type === 'logo' ? 256 : 48}
+          suffix='px'
+          onChange={(iconSize) => onUpdate(node.id, { iconSize })}
+        />
+      )}
 
       <SectionLabel>Alignment</SectionLabel>
-      {currentIcon !== null && (
+      {currentIcon !== null && node.type !== 'logo' && (
         <SegmentedButtons
           label='Icon'
           value={style.iconPosition}

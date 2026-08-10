@@ -13,6 +13,7 @@ import {
   Code,
   Flag,
   GitBranch,
+  Image,
   Mail,
   Play,
   Send,
@@ -693,11 +694,12 @@ export const LEGACY_ICONS: Record<string, NodeIconComponent> = {
 /** Default text / icon and border color for nodes without an explicit color. */
 export const DEFAULT_FOREGROUND = '#ffffff';
 
-const DEFAULT_BY_TYPE: Record<NodeType, { shape: NodeShape; color: NodeColor; icon: NodeIcon }> = {
+const DEFAULT_BY_TYPE: Record<NodeType, { shape: NodeShape; color: NodeColor; icon: NodeIcon | null }> = {
   start: { shape: 'circle', color: 'sky', icon: 'flag' },
   process: { shape: 'circle', color: 'indigo', icon: 'cog' },
   decision: { shape: 'hexagon', color: 'amber', icon: 'play' },
   output: { shape: 'circle', color: 'emerald', icon: 'bell' },
+  logo: { shape: 'rounded', color: 'blue', icon: null },
 };
 
 // Type-level icons that the picker can fall back to when a node carries
@@ -708,6 +710,7 @@ const TYPE_DEFAULT_ICON: Record<NodeType, LucideIcon> = {
   process: Cog,
   decision: GitBranch,
   output: CheckCircle2,
+  logo: Image,
 };
 
 // --- Resolver -------------------------------------------------------------
@@ -771,7 +774,7 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     borderStyle: node.borderStyle ?? 'solid',
     opacity: Math.max(0.2, Math.min(1, node.opacity ?? 1)),
     shadow: node.shadow ?? 'none',
-    iconSize: Math.max(12, Math.min(48, node.iconSize ?? 20)),
+    iconSize: Math.max(12, Math.min(node.type === 'logo' ? 256 : 48, node.iconSize ?? (node.type === 'logo' ? 64 : 20))),
     iconPosition: node.iconPosition ?? 'top',
     blockAlign: node.blockAlign ?? 'center',
     fontFamily: node.fontFamily ?? 'geist-mono',

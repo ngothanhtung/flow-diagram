@@ -106,5 +106,6 @@ function tintFor(type: NodeType): string {
     case 'process': return 'bg-indigo-500/15 text-indigo-300 ring-indigo-400/40';
     case 'decision': return 'bg-amber-500/15 text-amber-300 ring-amber-400/40';
     case 'output': return 'bg-emerald-500/15 text-emerald-300 ring-emerald-400/40';
+    case 'logo': return 'bg-zinc-500/15 text-zinc-300 ring-zinc-400/40';
   }
 }
