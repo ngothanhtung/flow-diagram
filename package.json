@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:logos": "node scripts/build-logo-index.mjs",
     "dev": "next dev",
     "build": "next build",
-    "prebuild": "npm run build:logos",
     "start": "next start",
     "lint": "eslint"
   },
