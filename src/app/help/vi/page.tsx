@@ -132,8 +132,9 @@ export default function HelpViPage() {
         </p>
         <p>
           <strong>File → Export SQL</strong> chuyển cả sơ đồ thành script <Pill>CREATE TABLE</Pill> — cột kèm NOT NULL / DEFAULT / UNIQUE, khoá chính, index, và khoá ngoại dạng ALTER TABLE —
-          sẵn sàng để sao chép hoặc tải về dưới dạng file <Pill>.sql</Pill>. Kiểu dữ liệu giữ nguyên đúng như bạn gõ. Muốn bắt đầu từ một sơ đồ hoàn chỉnh, hãy nạp template{' '}
-          <strong>Database Schema</strong>.
+          sẵn sàng để sao chép hoặc tải về dưới dạng file <Pill>.sql</Pill>. Kiểu dữ liệu giữ nguyên đúng như bạn gõ. Muốn bắt đầu từ một sơ đồ hoàn chỉnh,
+          quản trị viên có thể nhập sẵn tài liệu <strong>Database Schema</strong> từ thư mục <Pill>seed/templates/</Pill> trong repository — sau đó nó xuất hiện trong{' '}
+          <strong>New from template</strong> cho mọi người.
         </p>
       </Section>
 

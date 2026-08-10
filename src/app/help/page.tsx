@@ -131,8 +131,9 @@ export default function HelpPage() {
         </p>
         <p>
           <strong>File → Export SQL</strong> turns the whole diagram into a <Pill>CREATE TABLE</Pill> script — columns with NOT NULL / DEFAULT / UNIQUE, primary keys, indexes, and foreign keys
-          as ALTER TABLE — ready to copy or download as a <Pill>.sql</Pill> file. Data types come out exactly as you typed them. To start from something complete, load the{' '}
-          <strong>Database Schema</strong> template.
+          as ALTER TABLE — ready to copy or download as a <Pill>.sql</Pill> file. Data types come out exactly as you typed them. To start from something
+          complete, an administrator can import the ready-made <strong>Database Schema</strong> document from <Pill>seed/templates/</Pill> in the repository — it then shows up in{' '}
+          <strong>New from template</strong> for everyone.
         </p>
       </Section>
 

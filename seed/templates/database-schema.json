@@ -1,0 +1,358 @@
+{
+  "nodes": [
+    {
+      "id": "db-users",
+      "type": "process",
+      "title": "users",
+      "position": {
+        "x": 120,
+        "y": 160
+      },
+      "width": 236,
+      "height": 162,
+      "shape": "rounded",
+      "color": "#dbeafe",
+      "backgroundColor": "#082f49",
+      "borderColor": "#dbeafe",
+      "borderWidth": 1.5,
+      "shadow": "soft",
+      "icon": null,
+      "fontSize": 13,
+      "connectionPoints": {
+        "input": "left",
+        "output": "right"
+      },
+      "table": {
+        "columns": [
+          {
+            "id": "db-users-c1",
+            "name": "id",
+            "dataType": "uuid",
+            "primaryKey": true
+          },
+          {
+            "id": "db-users-c2",
+            "name": "email",
+            "dataType": "varchar(255)",
+            "unique": true,
+            "index": true
+          },
+          {
+            "id": "db-users-c3",
+            "name": "full_name",
+            "dataType": "varchar(120)"
+          },
+          {
+            "id": "db-users-c4",
+            "name": "password_hash",
+            "dataType": "varchar(255)"
+          },
+          {
+            "id": "db-users-c5",
+            "name": "created_at",
+            "dataType": "timestamptz"
+          }
+        ]
+      }
+    },
+    {
+      "id": "db-products",
+      "type": "process",
+      "title": "products",
+      "position": {
+        "x": 120,
+        "y": 470
+      },
+      "width": 236,
+      "height": 186,
+      "shape": "rounded",
+      "color": "#ede9fe",
+      "backgroundColor": "#2e1065",
+      "borderColor": "#ede9fe",
+      "borderWidth": 1.5,
+      "shadow": "soft",
+      "icon": null,
+      "fontSize": 13,
+      "connectionPoints": {
+        "input": "left",
+        "output": "right"
+      },
+      "table": {
+        "columns": [
+          {
+            "id": "db-products-c1",
+            "name": "id",
+            "dataType": "uuid",
+            "primaryKey": true
+          },
+          {
+            "id": "db-products-c2",
+            "name": "sku",
+            "dataType": "varchar(64)",
+            "unique": true,
+            "index": true
+          },
+          {
+            "id": "db-products-c3",
+            "name": "name",
+            "dataType": "varchar(200)"
+          },
+          {
+            "id": "db-products-c4",
+            "name": "price_cents",
+            "dataType": "integer"
+          },
+          {
+            "id": "db-products-c5",
+            "name": "stock",
+            "dataType": "integer"
+          },
+          {
+            "id": "db-products-c6",
+            "name": "archived_at",
+            "dataType": "timestamptz",
+            "nullable": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "db-orders",
+      "type": "process",
+      "title": "orders",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "width": 236,
+      "height": 186,
+      "shape": "rounded",
+      "color": "#d1fae5",
+      "backgroundColor": "#022c22",
+      "borderColor": "#d1fae5",
+      "borderWidth": 1.5,
+      "shadow": "soft",
+      "icon": null,
+      "fontSize": 13,
+      "connectionPoints": {
+        "input": "left",
+        "output": "right"
+      },
+      "table": {
+        "columns": [
+          {
+            "id": "db-orders-c1",
+            "name": "id",
+            "dataType": "bigserial",
+            "primaryKey": true
+          },
+          {
+            "id": "db-orders-c2",
+            "name": "user_id",
+            "dataType": "uuid",
+            "foreignKey": true,
+            "index": true
+          },
+          {
+            "id": "db-orders-c3",
+            "name": "status",
+            "dataType": "varchar(24)",
+            "index": true
+          },
+          {
+            "id": "db-orders-c4",
+            "name": "total_cents",
+            "dataType": "integer"
+          },
+          {
+            "id": "db-orders-c5",
+            "name": "placed_at",
+            "dataType": "timestamptz"
+          },
+          {
+            "id": "db-orders-c6",
+            "name": "shipped_at",
+            "dataType": "timestamptz",
+            "nullable": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "db-order-items",
+      "type": "process",
+      "title": "order_items",
+      "position": {
+        "x": 880,
+        "y": 420
+      },
+      "width": 236,
+      "height": 162,
+      "shape": "rounded",
+      "color": "#fef3c7",
+      "backgroundColor": "#451a03",
+      "borderColor": "#fef3c7",
+      "borderWidth": 1.5,
+      "shadow": "soft",
+      "icon": null,
+      "fontSize": 13,
+      "connectionPoints": {
+        "input": "left",
+        "output": "right"
+      },
+      "table": {
+        "columns": [
+          {
+            "id": "db-order-items-c1",
+            "name": "id",
+            "dataType": "bigserial",
+            "primaryKey": true
+          },
+          {
+            "id": "db-order-items-c2",
+            "name": "order_id",
+            "dataType": "bigint",
+            "foreignKey": true,
+            "index": true
+          },
+          {
+            "id": "db-order-items-c3",
+            "name": "product_id",
+            "dataType": "uuid",
+            "foreignKey": true,
+            "index": true
+          },
+          {
+            "id": "db-order-items-c4",
+            "name": "quantity",
+            "dataType": "integer"
+          },
+          {
+            "id": "db-order-items-c5",
+            "name": "unit_price_cents",
+            "dataType": "integer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "db-payments",
+      "type": "process",
+      "title": "payments",
+      "position": {
+        "x": 880,
+        "y": 150
+      },
+      "width": 236,
+      "height": 162,
+      "shape": "rounded",
+      "color": "#ffe4e6",
+      "backgroundColor": "#4c0519",
+      "borderColor": "#ffe4e6",
+      "borderWidth": 1.5,
+      "shadow": "soft",
+      "icon": null,
+      "fontSize": 13,
+      "connectionPoints": {
+        "input": "left",
+        "output": "right"
+      },
+      "table": {
+        "columns": [
+          {
+            "id": "db-payments-c1",
+            "name": "id",
+            "dataType": "uuid",
+            "primaryKey": true
+          },
+          {
+            "id": "db-payments-c2",
+            "name": "order_id",
+            "dataType": "bigint",
+            "foreignKey": true,
+            "unique": true,
+            "index": true
+          },
+          {
+            "id": "db-payments-c3",
+            "name": "provider",
+            "dataType": "varchar(32)"
+          },
+          {
+            "id": "db-payments-c4",
+            "name": "amount_cents",
+            "dataType": "integer"
+          },
+          {
+            "id": "db-payments-c5",
+            "name": "paid_at",
+            "dataType": "timestamptz",
+            "nullable": true
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "db-r1",
+      "from": "db-users",
+      "to": "db-orders",
+      "fromColumn": "id",
+      "toColumn": "user_id",
+      "label": "id → user_id",
+      "routing": "orthogonal",
+      "startMarker": "crow-one",
+      "endMarker": "crow-many",
+      "effect": "flow",
+      "width": 1,
+      "effectSize": 1.2,
+      "animationSpeed": 0.9
+    },
+    {
+      "id": "db-r2",
+      "from": "db-orders",
+      "to": "db-order-items",
+      "fromColumn": "id",
+      "toColumn": "order_id",
+      "label": "id → order_id",
+      "routing": "orthogonal",
+      "startMarker": "crow-one",
+      "endMarker": "crow-many",
+      "effect": "flow",
+      "width": 1,
+      "effectSize": 1.2,
+      "animationSpeed": 0.9
+    },
+    {
+      "id": "db-r3",
+      "from": "db-products",
+      "to": "db-order-items",
+      "fromColumn": "id",
+      "toColumn": "product_id",
+      "label": "id → product_id",
+      "routing": "orthogonal",
+      "startMarker": "crow-one",
+      "endMarker": "crow-many",
+      "effect": "flow",
+      "width": 1,
+      "effectSize": 1.2,
+      "animationSpeed": 0.9
+    },
+    {
+      "id": "db-r4",
+      "from": "db-orders",
+      "to": "db-payments",
+      "fromColumn": "id",
+      "toColumn": "order_id",
+      "label": "id → order_id",
+      "routing": "orthogonal",
+      "startMarker": "crow-one",
+      "endMarker": "crow-zero-one",
+      "effect": "flow",
+      "width": 1,
+      "effectSize": 1.2,
+      "animationSpeed": 0.9
+    }
+  ]
+}
