@@ -129,7 +129,7 @@ A container is a node with `type: 'group'`; a member points at it with `parentId
 
 `type: 'text'` is a node that renders only words — no silhouette, fill, border, icon or ports. Its content is `title` (newlines preserved via `white-space: pre-wrap`); `description` is not rendered. `FlowNodeCard`'s text branch draws an invisible `<rect pointerEvents='all'>` as the hit area, because there is no painted body to click, plus a hairline that appears on hover so an empty label stays findable. Like frames, text is filtered out of `computeOrderedGroups` — a caption isn't a step.
 
-`NodeInspector` hides everything that describes a box for text nodes (shape picker, background, border, shadow, icon, block alignment, the table section) and swaps the Title input for a Textarea. If you add a control that only makes sense on a painted body, guard it the same way rather than letting it sit there doing nothing.
+`TextInspector` is its own panel rather than a stack of guards — see *Inspector panels* below.
 
 ### Node size limits
 
@@ -149,6 +149,18 @@ An ER diagram is not a separate document type: a table is just a `FlowNode` carr
 ### Execution simulation (the "replay" animation)
 
 `computeOrderedGroups()` groups nodes by resolved `sortOrder` — nodes sharing an order animate simultaneously as one step, not strictly one-by-one. `runMode` (`doc.settings.runMode`) is `sequential` (auto-advances on a timer, `EDGE_DRAW_DURATION_MS`/`NODE_FADE_DURATION_MS` from `src/lib/execution-timing.ts`), `concurrent` (everything active at once), or `manual` (user-driven). The sequential timer and the manual "Next" button both call the store's single `advanceStep()`, so the two modes can't drift out of sync.
+
+### Inspector panels
+
+`components/inspector/NodeInspector.tsx` is a dispatcher, not a panel: it renders `BlockInspector`, `TextInspector` or `GroupInspector` based on `node.type`. The three kinds paint genuinely different things — a block has a body, a text object has only words, a frame has a wash and a title bar — so each panel lists only the controls that do something for that kind. Don't add a `node.type === …` guard inside a panel; put the control in the panel it belongs to.
+
+- **`BlockInspector`** — everything with a painted body (process/start/decision/output cards, logo blocks, database tables): title + sub title, geometry, sort order, typography, shape, the paired colour grid, border/shadow, icon or logo, all three alignment rows, and the table section.
+- **`TextInspector`** — the text itself (a Textarea, since newlines are content), geometry, typography, a foreground-only colour grid, opacity and text alignment. No sort order: the replay skips text, so an execution position would do nothing.
+- **`GroupInspector`** — title, a **Contents** block (member count + Fit to contents / Ungroup), geometry, typography, wash/border colours, opacity. No shadow (the frame branch paints none) and no sort order.
+
+`components/inspector/fields.tsx` holds everything shared: the field primitives (`NumberField`, `RangeField`, `SelectField`, `SegmentedButtons`, `ColorField`, `ShapeThumb`), the colour palettes, the composed sections used by more than one panel (`GeometryFields`, `TypographyFields`, `ColorPresetGrid`, `TextAlignField`, `GroupMembershipSection`, `ActionsSection`, `InspectorShell`), and `useNodeFieldDraft`.
+
+`useNodeFieldDraft` is the reason edits aren't lost: clicking away deselects the node, which unmounts the panel *before* the input's blur fires, so commit-on-blur alone drops the last keystrokes. The hook mirrors the draft into a ref and flushes it from the unmount cleanup.
 
 ### UI primitives and shared conventions
 

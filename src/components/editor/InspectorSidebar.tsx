@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { EdgeInspector } from '@/components/EdgeInspector';
 import { JsonInspector } from '@/components/JsonInspector';
 import { JsonPlaygroundPanel } from '@/components/editor/JsonPlaygroundPanel';
-import { NodeInspector } from '@/components/NodeInspector';
+import { NodeInspector } from '@/components/inspector/NodeInspector';
 import { Drawer, DrawerContent } from '@/components/ui/drawer';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useEditorStore } from '@/lib/editor-store';
