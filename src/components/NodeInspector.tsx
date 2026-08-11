@@ -33,7 +33,7 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { cn } from '@/lib/utils';
 import type { FlowNode, NodeFont } from '@/lib/flowchart-types';
 import { resolveClosestLogoColor } from '@/lib/logo-color';
-import { COLORS, GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, SHAPES, TABLE_MAX_HEIGHT, TABLE_MAX_WIDTH, resolveNodeStyle, type NodeIcon, type NodeShape } from '@/lib/node-style';
+import { COLORS, SHAPES, nodeSizeLimits, resolveNodeStyle, type NodeIcon, type NodeShape } from '@/lib/node-style';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 interface NodeInspectorProps {
@@ -157,10 +157,10 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
 
   const style = resolveNodeStyle(node);
   const isGroup = node.type === 'group';
-  // Same three ceilings the renderer clamps to, so typing an exact size
-  // can reach what dragging a corner can.
-  const maxWidth = isGroup ? GROUP_MAX_WIDTH : node.table ? TABLE_MAX_WIDTH : 320;
-  const maxHeight = isGroup ? GROUP_MAX_HEIGHT : node.table ? TABLE_MAX_HEIGHT : 240;
+  const isText = node.type === 'text';
+  // Same limits the renderer clamps to, so typing an exact size can
+  // reach what dragging a corner can.
+  const limits = nodeSizeLimits(node);
   const currentShape: NodeShape = style.shape;
   const currentIcon: NodeIcon | null = style.icon;
 
@@ -173,24 +173,41 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
       <p className='mt-1 mb-2 text-[10px] uppercase tracking-wider text-zinc-500'>{node.id}</p>
       <hr />
       <Label htmlFor='node-title' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400'>
-        Title
+        {isText ? 'Text' : 'Title'}
       </Label>
-      <Input
-        id='node-title'
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        onBlur={() => {
-          if (title !== node.title) onUpdate(node.id, { title });
-        }}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
-        }}
-        className='mt-1 border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
-      />
+      {/* A text object's whole content is its title, so it gets a
+          multi-line field — Enter inserts a newline instead of
+          committing, and the newline survives to the canvas. */}
+      {isText ? (
+        <Textarea
+          id='node-title'
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          onBlur={() => {
+            if (title !== node.title) onUpdate(node.id, { title });
+          }}
+          rows={4}
+          className='mt-1 min-h-20 resize-none border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+        />
+      ) : (
+        <Input
+          id='node-title'
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          onBlur={() => {
+            if (title !== node.title) onUpdate(node.id, { title });
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
+          }}
+          className='mt-1 border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+        />
+      )}
 
-      {/* A frame paints only its title bar, so offering a sub title
-          would be a field the user types into with nothing to show. */}
-      {!isGroup && (
+      {/* A frame paints only its title bar and a text object paints only
+          its text, so offering a sub title on either would be a field the
+          user types into with nothing to show. */}
+      {!isGroup && !isText && (
         <>
           <Label htmlFor='node-subtitle' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400'>
             Sub title
@@ -215,8 +232,8 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <NumberField label='X' value={Math.round(node.position.x)} onChange={(x) => onUpdate(node.id, { position: { ...node.position, x } })} />
         <NumberField label='Y' value={Math.round(node.position.y)} onChange={(y) => onUpdate(node.id, { position: { ...node.position, y } })} />
-        <NumberField label='Width' value={style.width} min={72} max={maxWidth} onChange={(width) => onUpdate(node.id, { width })} />
-        <NumberField label='Height' value={style.height} min={72} max={maxHeight} onChange={(height) => onUpdate(node.id, { height })} />
+        <NumberField label='Width' value={style.width} min={limits.minWidth} max={limits.maxWidth} onChange={(width) => onUpdate(node.id, { width })} />
+        <NumberField label='Height' value={style.height} min={limits.minHeight} max={limits.maxHeight} onChange={(height) => onUpdate(node.id, { height })} />
       </div>
       <NumberField label='Sort order · 0 = auto' value={node.sortOrder ?? 0} min={0} step={1} onChange={(sortOrder) => onUpdate(node.id, { sortOrder: sortOrder > 0 ? sortOrder : undefined })} />
 
@@ -273,6 +290,10 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
       </div>
 
       {/* --- Shape ------------------------------------------------- */}
+      {/* A text object draws no silhouette, so a shape picker would be a
+          control with nothing to change. */}
+      {!isText && (
+        <>
       <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>Shape</label>
       <Select
         value={currentShape}
@@ -304,6 +325,9 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
           })}
         </SelectContent>
       </Select>
+
+        </>
+      )}
 
       {/* --- Color ------------------------------------------------- */}
       <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>Color preset</label>
@@ -345,17 +369,23 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
       </div>
 
       <div className='mt-2 grid grid-cols-2 gap-2'>
-        <ColorField label='Text / icon · Border' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
-        <ColorField label='Background' value={style.background} presets={PRESET_BACKGROUNDS} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
-        <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />
+        <ColorField label={isText ? 'Text colour' : 'Text / icon · Border'} value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
+        {/* Fill, border and shadow all describe a box a text object
+            doesn't have. */}
+        {!isText && <ColorField label='Background' value={style.background} presets={PRESET_BACKGROUNDS} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />}
+        {!isText && <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />}
       </div>
-      <div className='mt-2 grid grid-cols-2 gap-2'>
-        <SelectField label='Border style' value={style.borderStyle} options={['solid', 'dashed', 'dotted']} onChange={(borderStyle) => onUpdate(node.id, { borderStyle })} />
-        <SelectField label='Shadow' value={style.shadow} options={['none', 'soft', 'glow']} onChange={(shadow) => onUpdate(node.id, { shadow })} />
-      </div>
+      {!isText && (
+        <div className='mt-2 grid grid-cols-2 gap-2'>
+          <SelectField label='Border style' value={style.borderStyle} options={['solid', 'dashed', 'dotted']} onChange={(borderStyle) => onUpdate(node.id, { borderStyle })} />
+          <SelectField label='Shadow' value={style.shadow} options={['none', 'soft', 'glow']} onChange={(shadow) => onUpdate(node.id, { shadow })} />
+        </div>
+      )}
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
 
       {/* --- Icon / Logo ------------------------------------------ */}
+      {!isText && (
+        <>
       <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>{node.type === 'logo' ? 'Logo' : 'Icon'}</label>
       <div className='mt-1.5'>
         {node.type === 'logo' ? (
@@ -402,6 +432,8 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
           onChange={(iconSize) => onUpdate(node.id, { iconSize })}
         />
       )}
+        </>
+      )}
 
       <SectionLabel>Alignment</SectionLabel>
       {currentIcon !== null && node.type !== 'logo' && (
@@ -416,6 +448,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
           onChange={(iconPosition) => onUpdate(node.id, { iconPosition })}
         />
       )}
+      {!isText && (
       <SegmentedButtons
         label='Block'
         value={style.blockAlign}
@@ -426,6 +459,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
         ]}
         onChange={(blockAlign) => onUpdate(node.id, { blockAlign })}
       />
+      )}
       <SegmentedButtons
         label='Text'
         value={style.textAlign}
@@ -469,7 +503,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
         </>
       )}
 
-      {!isGroup && (
+      {!isGroup && !isText && (
         <>
           <SectionLabel>{node.table ? 'Columns' : 'Database table'}</SectionLabel>
           <TableColumnsEditor node={node} onUpdate={onUpdate} />

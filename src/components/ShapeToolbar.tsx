@@ -16,7 +16,7 @@
 // the same shape again (or pressing Esc) deselects.
 
 import { useEffect, useState } from 'react';
-import { ChevronDown, Group, Image as ImageIcon, Table2 } from 'lucide-react';
+import { ChevronDown, Group, Image as ImageIcon, Table2, Type } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
@@ -113,10 +113,10 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           className='group h-7 gap-0.5 pl-2 pr-1 text-zinc-300 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
           aria-label='Choose a shape to draw'
         >
-          {/* The table, logo and group tools live in their own buttons, so
-              the shape trigger keeps showing the last picked silhouette
-              while one of those special tools is armed. */}
-          {activeShape === 'logo' ? <ImageIcon size={16} /> : <ShapeIcon shape={activeShape && activeShape !== 'table' && activeShape !== 'group' ? activeShape : lastPicked} size={16} />}
+          {/* The table, logo, group and text tools live in their own
+              buttons, so the shape trigger keeps showing the last picked
+              silhouette while one of those special tools is armed. */}
+          {activeShape === 'logo' ? <ImageIcon size={16} /> : <ShapeIcon shape={activeShape && activeShape !== 'table' && activeShape !== 'group' && activeShape !== 'text' ? activeShape : lastPicked} size={16} />}
           <ChevronDown size={10} className='opacity-70 transition group-data-popup-open:rotate-180' />
         </DropdownMenuTrigger>
         <DropdownMenuContent align='center' sideOffset={10} className='w-[min(420px,90vw)] border-white/10 bg-zinc-950/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.68)] backdrop-blur-xl'>
@@ -210,6 +210,21 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
         aria-label='Group frame'
       >
         <Group size={16} />
+      </Button>
+
+      <Divider />
+
+      {/* Free text — words on the canvas with no box around them. */}
+      <Button
+        variant='ghost'
+        size='icon-sm'
+        onClick={() => (activeShape === 'text' ? onSelect(null) : onSelect('text'))}
+        aria-pressed={activeShape === 'text'}
+        className={activeShape === 'text' ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}
+        title='Text'
+        aria-label='Text'
+      >
+        <Type size={16} />
       </Button>
     </div>
   );

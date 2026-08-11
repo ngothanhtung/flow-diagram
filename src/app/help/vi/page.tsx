@@ -79,6 +79,12 @@ export default function HelpViPage() {
           tiếp theo. Nhấn <Kbd>Esc</Kbd> để huỷ công cụ đang chọn.
         </p>
         <p>
+          <strong>Thêm chữ tự do:</strong> nút <strong>T</strong> ở cuối thanh dock đặt một đoạn chữ trần lên canvas — không khung, không viền, không cổng nối, chỉ có chữ. Dùng cho tiêu đề,
+          chú thích, ghi chú. Cách vẽ vẫn như cũ (kéo thả để định vùng chữ, bấm một cái thì được khung mặc định), rồi gõ nội dung vào ô <strong>Text</strong> trong Inspector; nhấn Enter trong
+          ô đó để xuống dòng. Cỡ chữ, font, độ đậm, màu và canh lề dùng chung các điều khiển typography quen thuộc. Chữ là phần trang trí chứ không phải một bước, nên thanh Play để nó hiển
+          thị suốt quá trình chạy.
+        </p>
+        <p>
           <strong>Di chuyển &amp; đổi kích thước:</strong> kéo khối để di chuyển. Chọn khối trước để hiện bốn tay nắm ở góc, rồi kéo tay nắm để đổi kích thước.
         </p>
         <p>

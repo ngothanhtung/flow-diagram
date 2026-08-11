@@ -4,7 +4,7 @@ import { create } from 'zustand';
 import { loadEditorSession } from './editor-session';
 import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
-import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, tableCardHeight } from './node-style';
+import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, tableCardHeight } from './node-style';
 import { childrenOf, descendantIds, findDropTarget, groupGeometryFor } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
 
@@ -26,6 +26,7 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
   output: { color: '#a7f3d0', backgroundColor: '#052e2b' },
   logo: { color: '#f4f4f5', backgroundColor: '#27272a' },
   group: { color: '#c4b5fd', backgroundColor: '#1e1b4b' },
+  text: { color: '#e4e4e7', backgroundColor: '#00000000' },
 };
 
 /**
@@ -35,10 +36,10 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
  */
 export function computeOrderedGroups(nodes: FlowNode[]): FlowNode[][] {
   const resolved = nodes
-    // Group frames are containers, not steps: a frame flashing as its own
-    // step would interrupt the run of the blocks inside it. They stay
-    // fully visible for the whole replay instead.
-    .filter((node) => node.type !== 'group')
+    // Frames and text objects are scenery, not steps: a container or a
+    // caption flashing as its own step would interrupt the run of the
+    // blocks it describes. They stay fully visible for the whole replay.
+    .filter((node) => node.type !== 'group' && node.type !== 'text')
     .map((node, index) => ({
       node,
       order: node.sortOrder && node.sortOrder > 0 ? node.sortOrder : index + 1,
@@ -599,6 +600,38 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       });
       return id;
     }
+    // Free text: words on the canvas with no box, so it carries no
+    // silhouette, fill, border or icon — only typography.
+    if (tool === 'text') {
+      const limits = nodeSizeLimits({ type: 'text' });
+      set({
+        doc: {
+          ...doc,
+          nodes: [
+            ...doc.nodes,
+            {
+              id,
+              type: 'text',
+              title: 'Text',
+              position,
+              sortOrder: Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1)) + 1,
+              // The canvas already substitutes a sensible box for a plain
+              // click, so the drawn rectangle just needs clamping.
+              width: Math.max(limits.minWidth, Math.min(limits.maxWidth, width)),
+              height: Math.max(limits.minHeight, Math.min(limits.maxHeight, height)),
+              icon: null,
+              color: DEFAULT_NODE_PAINT.text.color,
+              fontSize: 16,
+              fontWeight: 'medium',
+              textAlign: 'left',
+              borderWidth: 0,
+              shadow: 'none',
+            },
+          ],
+        },
+      });
+      return id;
+    }
     const shape = tool;
     // `position` is the centre of the new shape, matching the rest
     // of the editor's coordinate convention. Width/height are clamped
@@ -679,6 +712,8 @@ function defaultTitleFor(type: NodeType): string {
       return 'Logo';
     case 'group':
       return 'Group';
+    case 'text':
+      return 'Text';
   }
 }
 

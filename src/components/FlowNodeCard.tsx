@@ -7,7 +7,7 @@ import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
 import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
-import { GROUP_HEADER_HEIGHT, GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, TABLE_MAX_HEIGHT, TABLE_MAX_WIDTH, nodeOutline, resolveNodeStyle } from '@/lib/node-style';
+import { GROUP_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
 import { TableCardBody } from './TableCardBody';
 import type { ViewTransform } from '@/lib/view-transform';
 import { NODE_BOUNDING_RADIUS } from './edge-geometry';
@@ -53,19 +53,6 @@ interface FlowNodeCardProps {
 
 const PORT_HIT_R = 18;
 const BASE_SIZE = NODE_BOUNDING_RADIUS * 2;
-const MIN_WIDTH = 72;
-const MAX_WIDTH = 320;
-const MIN_HEIGHT = 72;
-const MAX_HEIGHT = 240;
-
-/** Drag-resize ceiling, mirroring `resolveNodeStyle`'s clamps — otherwise
- *  the handle would stop at a card's limit on a frame or a table that the
- *  resolver is happy to render much larger. */
-function sizeLimits(node: FlowNode) {
-  if (node.type === 'group') return { maxWidth: GROUP_MAX_WIDTH, maxHeight: GROUP_MAX_HEIGHT };
-  if (node.table) return { maxWidth: TABLE_MAX_WIDTH, maxHeight: TABLE_MAX_HEIGHT };
-  return { maxWidth: MAX_WIDTH, maxHeight: MAX_HEIGHT };
-}
 
 type ResizeDirection = 'nw' | 'ne' | 'se' | 'sw';
 
@@ -184,6 +171,7 @@ export function FlowNodeCard({
 }: FlowNodeCardProps) {
   const style = resolveNodeStyle(node);
   const isGroup = node.type === 'group';
+  const isText = node.type === 'text';
   const Icon = useResolvedIcon(style.icon);
   const logoSlug = style.icon?.startsWith('logo:') ? style.icon.slice('logo:'.length) : null;
   const hasIcon = Boolean(Icon || logoSlug);
@@ -290,12 +278,14 @@ export function FlowNodeCard({
     let right = resize.startWidth / 2;
     let top = -resize.startHeight / 2;
     let bottom = resize.startHeight / 2;
-    if (resize.direction.includes('w')) left = Math.min(right - MIN_WIDTH, left + dx);
-    if (resize.direction.includes('e')) right = Math.max(left + MIN_WIDTH, right + dx);
-    if (resize.direction.includes('n')) top = Math.min(bottom - MIN_HEIGHT, top + dy);
-    if (resize.direction.includes('s')) bottom = Math.max(top + MIN_HEIGHT, bottom + dy);
+    // Same limits `resolveNodeStyle` clamps to, so a handle can reach
+    // exactly what the renderer is willing to draw.
+    const limits = nodeSizeLimits(node);
+    if (resize.direction.includes('w')) left = Math.min(right - limits.minWidth, left + dx);
+    if (resize.direction.includes('e')) right = Math.max(left + limits.minWidth, right + dx);
+    if (resize.direction.includes('n')) top = Math.min(bottom - limits.minHeight, top + dy);
+    if (resize.direction.includes('s')) bottom = Math.max(top + limits.minHeight, bottom + dy);
 
-    const limits = sizeLimits(node);
     const nextWidth = Math.min(limits.maxWidth, right - left);
     const nextHeight = Math.min(limits.maxHeight, bottom - top);
     // Preserve the opposite edge when the maximum size is reached.
@@ -514,6 +504,57 @@ export function FlowNodeCard({
               </div>
             </foreignObject>
           </>
+        ) : isText ? (
+          /* Free text: just words on the canvas. There is no silhouette,
+             fill or border to click, so an invisible rectangle over the
+             box provides the hit area for selecting and dragging, and a
+             hairline appears on hover so an empty or short label is
+             still findable. */
+          <>
+            <rect x={-width / 2} y={-height / 2} width={width} height={height} fill='transparent' pointerEvents='all' />
+            {!isSelected && (
+              <rect
+                x={-width / 2}
+                y={-height / 2}
+                width={width}
+                height={height}
+                fill='none'
+                stroke={foreground}
+                strokeOpacity={0.35}
+                strokeWidth={1}
+                strokeDasharray='3 3'
+                vectorEffect='non-scaling-stroke'
+                pointerEvents='none'
+                className='opacity-0 transition-opacity duration-150 group-hover/node:opacity-100'
+              />
+            )}
+            <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none'>
+              <div
+                className='flex h-full w-full select-none items-center'
+                style={{
+                  color: foreground,
+                  fontFamily: NODE_FONT_FAMILIES[fontFamily],
+                  padding: TEXT_PADDING,
+                  justifyContent: textAlign === 'left' ? 'flex-start' : textAlign === 'right' ? 'flex-end' : 'center',
+                }}
+              >
+                <div
+                  className='max-h-full w-full overflow-hidden break-words'
+                  style={{
+                    fontSize,
+                    fontWeight: FONT_WEIGHT[fontWeight],
+                    textAlign,
+                    lineHeight: 1.35,
+                    // Newlines the user typed in the inspector are part of
+                    // the content, so they have to survive rendering.
+                    whiteSpace: 'pre-wrap',
+                  }}
+                >
+                  {node.title}
+                </div>
+              </div>
+            </foreignObject>
+          </>
         ) : (
           <>
         {/* Body — single <path> with per-shape `d`. The fill and stroke
@@ -729,11 +770,12 @@ export function FlowNodeCard({
         {/* Every node exposes a bidirectional port on all four sides.
           The selected source and target sides are stored on the edge.
           Ports are editor-only — hidden entirely in read-only mode.
-          A group frame has none: it is a container rather than a step in
-          the flow (it is skipped by the replay too), and its top port
-          would sit exactly on top of the title bar the user drags it by. */}
+          Frames and text objects have none: both are scenery rather than
+          steps in the flow (the replay skips them too), and a frame's top
+          port would sit exactly on the title bar the user drags it by. */}
         {!readOnly &&
           !isGroup &&
+          !isText &&
           CONNECTION_SIDES.map((side) => {
             const anchor = portAnchors[side];
             const canReceive = !!linkTargetFromId && linkTargetFromId !== node.id;

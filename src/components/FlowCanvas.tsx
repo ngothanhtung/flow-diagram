@@ -660,6 +660,11 @@ export function FlowCanvas({
       const dragged = Math.hypot(maxX - minX, maxY - minY) >= 4;
       const width = dragged ? Math.max(40, maxX - minX) : 190;
       const height = dragged ? Math.max(40, maxY - minY) : 86;
+      // The pointerup that ends the draw is followed by a click on the
+      // SVG background, which would clear the selection `onShapeDrawn`
+      // just made — so the freshly drawn block would never open in the
+      // inspector. Suppress that one click, the same way panning does.
+      suppressCanvasClickRef.current = true;
       onShapeDrawn(activeShape, { x: (minX + maxX) / 2, y: (minY + maxY) / 2 }, width, height);
       setDrawStart(null);
       setDrawCurrent(null);
@@ -1062,8 +1067,9 @@ function ReconnectPreview({ fixed, pointer, color, scale }: { fixed: { x: number
  */
 function DrawPreview({ shape, start, current }: { shape: DrawTool; start: { x: number; y: number }; current: { x: number; y: number } }) {
   // The table, logo and group tools all preview as the rounded box they
-  // create, so the drag affordance matches the result.
-  const previewShape: NodeShape = shape === 'table' || shape === 'logo' || shape === 'group' ? 'rounded' : shape;
+  // create; the text tool previews as a plain rectangle, matching the
+  // box the text will be laid out in.
+  const previewShape: NodeShape = shape === 'table' || shape === 'logo' || shape === 'group' ? 'rounded' : shape === 'text' ? 'rectangle' : shape;
   const minX = Math.min(start.x, current.x);
   const minY = Math.min(start.y, current.y);
   const maxX = Math.max(start.x, current.x);

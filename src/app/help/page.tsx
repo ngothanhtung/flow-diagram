@@ -78,6 +78,12 @@ export default function HelpPage() {
           disarms after each draw, so re-pick a shape for the next block. Press <Kbd>Esc</Kbd> to cancel an armed tool.
         </p>
         <p>
+          <strong>Add free text:</strong> the <strong>T</strong> button at the end of the dock drops plain text on the canvas — no box, no border, no ports, just words. Use it for headings,
+          captions and annotations. Draw it the same way (click-drag sets the text area, a plain click gives a default box), then type into the <strong>Text</strong> field in the inspector;
+          press Enter there for a second line. Size, font, weight, colour and alignment are the usual typography controls. Text is scenery rather than a step, so the play bar leaves it
+          visible for the whole run.
+        </p>
+        <p>
           <strong>Move &amp; resize:</strong> drag a block to move it. Select it first to reveal the four corner handles, then drag a handle to resize.
         </p>
         <p>

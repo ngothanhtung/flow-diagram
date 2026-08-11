@@ -30,6 +30,7 @@ import {
   CircleCheck,
   CircleX,
   MessageCircle,
+  Type,
   type LucideIcon,
 } from 'lucide-react';
 import {
@@ -108,6 +109,47 @@ export const GROUP_DEFAULT_HEIGHT = 260;
 export const GROUP_MIN_SIZE = 120;
 export const GROUP_MAX_WIDTH = 4000;
 export const GROUP_MAX_HEIGHT = 4000;
+
+// --- Free text ------------------------------------------------------------
+// A text object is just words on the canvas: no silhouette, no fill, no
+// ports. It needs a much smaller floor than a card (a two-word label is
+// tiny) and a wider ceiling (a paragraph is not).
+
+export const TEXT_MIN_SIZE = 24;
+export const TEXT_DEFAULT_WIDTH = 220;
+export const TEXT_DEFAULT_HEIGHT = 48;
+export const TEXT_MAX_WIDTH = 1600;
+export const TEXT_MAX_HEIGHT = 1200;
+/** Inset between the text and its box, so a selected label isn't cramped. */
+export const TEXT_PADDING = 6;
+
+export interface NodeSizeLimits {
+  minWidth: number;
+  minHeight: number;
+  maxWidth: number;
+  maxHeight: number;
+  defaultWidth: number;
+  defaultHeight: number;
+}
+
+/**
+ * The one place that decides how large a node may be. `resolveNodeStyle`,
+ * the drag-resize handles and the inspector's number fields all read it,
+ * so a frame, a table, a text object and an ordinary card can't end up
+ * with three different opinions about their own ceiling.
+ */
+export function nodeSizeLimits(node: Pick<FlowNode, 'type' | 'table'>): NodeSizeLimits {
+  if (node.type === 'group') {
+    return { minWidth: GROUP_MIN_SIZE, minHeight: GROUP_MIN_SIZE, maxWidth: GROUP_MAX_WIDTH, maxHeight: GROUP_MAX_HEIGHT, defaultWidth: GROUP_DEFAULT_WIDTH, defaultHeight: GROUP_DEFAULT_HEIGHT };
+  }
+  if (node.type === 'text') {
+    return { minWidth: TEXT_MIN_SIZE, minHeight: TEXT_MIN_SIZE, maxWidth: TEXT_MAX_WIDTH, maxHeight: TEXT_MAX_HEIGHT, defaultWidth: TEXT_DEFAULT_WIDTH, defaultHeight: TEXT_DEFAULT_HEIGHT };
+  }
+  if (node.table) {
+    return { minWidth: 72, minHeight: 72, maxWidth: TABLE_MAX_WIDTH, maxHeight: TABLE_MAX_HEIGHT, defaultWidth: TABLE_DEFAULT_WIDTH, defaultHeight: 112 };
+  }
+  return { minWidth: 72, minHeight: 72, maxWidth: 320, maxHeight: 240, defaultWidth: 112, defaultHeight: 112 };
+}
 
 const R = NODE_BOUNDING_RADIUS;
 // Slight inset so the rounded square doesn't visually clip the inner
@@ -716,6 +758,7 @@ const DEFAULT_BY_TYPE: Record<NodeType, { shape: NodeShape; color: NodeColor; ic
   output: { shape: 'circle', color: 'emerald', icon: 'bell' },
   logo: { shape: 'rounded', color: 'blue', icon: null },
   group: { shape: 'rounded', color: 'violet', icon: null },
+  text: { shape: 'rectangle', color: 'sky', icon: null },
 };
 
 // Type-level icons that the picker can fall back to when a node carries
@@ -728,6 +771,7 @@ const TYPE_DEFAULT_ICON: Record<NodeType, LucideIcon> = {
   output: CheckCircle2,
   logo: Image,
   group: Boxes,
+  text: Type,
 };
 
 // --- Resolver -------------------------------------------------------------
@@ -772,6 +816,7 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
   const background = node.backgroundColor ?? colorSpec.background;
   const borderColor = node.borderColor?.startsWith('#') ? (node.borderColor as `#${string}`) : node.borderColor && node.borderColor in COLORS ? COLORS[node.borderColor as NodeColor].foreground : foreground;
   const bodyClass = `bg-linear-to-br ${colorSpec.gradient} ring-1 ring-${colorSpec.ring} text-${colorSpec.text}`;
+  const limits = nodeSizeLimits(node);
   return {
     shape,
     color,
@@ -781,12 +826,11 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     foreground,
     background,
     borderColor,
-    // Three ceilings, widest first: a group frame has to hold other
-    // blocks, a database table grows with its column list (a 12-column
-    // table is ~440px), and every other node keeps the original limits
-    // so nothing else can drift.
-    width: Math.max(node.type === 'group' ? GROUP_MIN_SIZE : 72, Math.min(node.type === 'group' ? GROUP_MAX_WIDTH : node.table ? TABLE_MAX_WIDTH : 320, node.width ?? (node.type === 'group' ? GROUP_DEFAULT_WIDTH : 112))),
-    height: Math.max(node.type === 'group' ? GROUP_MIN_SIZE : 72, Math.min(node.type === 'group' ? GROUP_MAX_HEIGHT : node.table ? TABLE_MAX_HEIGHT : 240, node.height ?? (node.type === 'group' ? GROUP_DEFAULT_HEIGHT : 112))),
+    // Limits are per node kind — a frame holds other blocks, a table
+    // grows with its column list, a text object can be tiny — and they
+    // all come from `nodeSizeLimits` so nothing drifts.
+    width: Math.max(limits.minWidth, Math.min(limits.maxWidth, node.width ?? limits.defaultWidth)),
+    height: Math.max(limits.minHeight, Math.min(limits.maxHeight, node.height ?? limits.defaultHeight)),
     rotation: node.rotation ?? 0,
     borderWidth: Math.max(0, Math.min(8, node.borderWidth ?? 1.5)),
     borderStyle: node.borderStyle ?? 'solid',

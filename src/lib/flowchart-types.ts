@@ -2,7 +2,7 @@
 // Mirrors a subset of Flowgram's FlowDocumentJSON so the visual editor and
 // the persisted document stay compatible with @flowgram.ai/editor.
 
-export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group';
+export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group' | 'text';
 
 /** Visual shape of the node's body. Optional — defaults are derived
  *  from `type` so older documents render unchanged. */
@@ -150,10 +150,11 @@ export interface FlowNode {
  * `'table'`, which produces a database-table node (a `rounded` card
  * carrying a `TableSpec`) rather than a new silhouette, `'logo'`, which
  * drops a dedicated logo block whose selected brand mark is rendered
- * large and centred, and `'group'`, which draws a container frame other
- * blocks can be dropped into.
+ * large and centred, `'group'`, which draws a container frame other
+ * blocks can be dropped into, and `'text'`, which drops a free-standing
+ * piece of text with no box around it.
  */
-export type DrawTool = NodeShape | 'table' | 'logo' | 'group';
+export type DrawTool = NodeShape | 'table' | 'logo' | 'group' | 'text';
 
 /** A reusable semantic block from the left-hand model palette. */
 export interface NodePreset {

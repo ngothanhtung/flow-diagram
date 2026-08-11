@@ -60,6 +60,7 @@ const TOC = [
   ['execution', 'Execution order'],
   ['tables', 'Database tables'],
   ['groups', 'Groups (nested blocks)'],
+  ['text', 'Free text'],
   ['style', 'Visual conventions'],
   ['example', 'Worked example'],
   ['checklist', 'Checklist'],
@@ -264,7 +265,27 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='style' title='7. Visual conventions (so a diagram reads as one system, not a shape showcase)'>
+          <Section id='text' title='7. Free text'>
+            <p>
+              A node with <Pill>type: &quot;text&quot;</Pill> is words on the canvas: no silhouette, no fill, no border, no ports. Its whole content is <Pill>title</Pill>, and newlines in that
+              string are preserved, so a caption is a single node rather than a stack of them. <Pill>description</Pill> is not rendered — put everything in the title.
+            </p>
+            <Code>{`{ "id": "note1", "type": "text",
+  "title": "Retry 3× then dead-letter\nSLA: 5 minutes",
+  "position": { "x": 690, "y": 380 }, "width": 300, "height": 80,
+  "icon": null, "color": "#a5b4fc", "fontSize": 13, "textAlign": "left" }`}</Code>
+            <p>
+              Only the typography fields apply: <Pill>fontSize</Pill>, <Pill>fontFamily</Pill>, <Pill>fontWeight</Pill>, <Pill>textAlign</Pill>, <Pill>color</Pill> (the text colour) and{' '}
+              <Pill>opacity</Pill>. Setting <Pill>backgroundColor</Pill>, <Pill>borderWidth</Pill>, <Pill>shadow</Pill>, <Pill>shape</Pill> or an <Pill>icon</Pill> on a text node has no effect —
+              use a real shape node if you want a box. Sizes run from 24 × 24 up to 1600 × 1200; the box only bounds where the text wraps, it is never painted.
+            </p>
+            <p>
+              Like a group frame, a text object is skipped by the play bar, so a caption stays readable for the whole run and does not need a <Pill>sortOrder</Pill>. Text nodes can sit inside a
+              group frame (<Pill>parentId</Pill>) and travel with it like any other member.
+            </p>
+          </Section>
+
+          <Section id='style' title='8. Visual conventions (so a diagram reads as one system, not a shape showcase)'>
             <p>
               Templates in the shared Firestore library should keep almost everything consistent except position, title, description, and theme color. Follow the same discipline:
             </p>
@@ -292,7 +313,7 @@ export default function GuidePage() {
             </ul>
           </Section>
 
-          <Section id='example' title='8. Worked example'>
+          <Section id='example' title='9. Worked example'>
             <p>A minimal three-node flow, following every rule above:</p>
             <Code>{`{
   "nodes": [
@@ -322,7 +343,7 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='checklist' title='9. Checklist before shipping a diagram'>
+          <Section id='checklist' title='10. Checklist before shipping a diagram'>
             <ul className='list-disc space-y-1.5 pl-5'>
               <li>Every node id is unique; every edge&apos;s <Pill>from</Pill>/<Pill>to</Pill> matches a real node id.</li>
               <li>One shape family, one small color palette, mapped to meaning (layer/domain/status) — not decoration.</li>
