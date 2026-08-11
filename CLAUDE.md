@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev      # start the dev server (Turbopack) at localhost:3000
+npm run dev      # start the dev server at localhost:3000
 npm run build    # production build
 npm run start    # serve the production build
 npm run lint     # eslint (flat config: eslint-config-next core-web-vitals + typescript)
@@ -16,52 +16,135 @@ npx tsc --noEmit -p .   # typecheck (no dedicated `typecheck` script exists)
 
 There is no test runner configured in this repo (no test script, no Jest/Vitest/Playwright). Don't assume one exists.
 
-Known pre-existing issue: `src/components/FlowCanvas.tsx` has a handful of `tsc` errors around `geometry.points` (a union-type narrowing gap in `buildEdgeGeometry`'s return type). These predate most feature work in this repo — verify with `git stash` before assuming a change you made caused them.
+`npm run build` needs the `NEXT_PUBLIC_FIREBASE_*` env vars set — `src/lib/firebase/client.ts` throws on a missing var, and pages are prerendered at build time. Placeholder values are enough for a build check.
+
+If `tsc` reports errors in `.next/dev/types/`, they are stale generated route types (usually left behind by a deleted page). `rm -rf .next` and re-run.
 
 ## What this app is
 
-A browser-based flowchart/diagram editor (SaaS architecture diagrams, CRM/HRM flows, etc.) with animated connectors, built on Next.js 16 App Router + React 19. Diagrams are saved to Firestore per authenticated user. It is effectively a single-page app: `src/app/page.tsx`'s `FlowEditor` component holds nearly all editor state and renders the whole UI (canvas + inspectors + topbar).
+A browser-based flowchart / diagram editor (SaaS architecture diagrams, CRM/HRM flows, ER diagrams) with animated connectors, built on Next.js 16 App Router + React 19. Diagrams are saved to Firestore per authenticated user, can be shared read-only, and a shared template library is managed by administrators.
+
+## Routes
+
+| Route | Component | Notes |
+| --- | --- | --- |
+| `/` | `components/diagrams/DiagramsHome` | The user's diagram list (create / open / delete / share) |
+| `/diagrams/[id]/edit` | `components/editor/DiagramEditor` | The editor. Reads `users/{uid}/diagrams/{id}` — owner only |
+| `/diagrams/[id]/view` | `components/viewer/DiagramViewer` | Read-only viewer for a public diagram |
+| `/admin/diagrams`, `/admin/templates`, `/admin/templates/[id]/edit` | `components/admin/*` | Administrators only (see Roles) |
+| `/guide` | `app/guide/page.tsx` | Authoring reference for `FlowDocumentJSON` (aimed at AI/devs writing documents by hand) |
+| `/help`, `/help/vi` | `app/help/*` | End-user guide, bilingual EN/VI. Shared shell in `app/help/ui.tsx` |
+
+There is no `FlowEditor` component and no `src/lib/use-editor.ts` — the editor was moved into a zustand store and a shared shell. Don't reintroduce prop-drilled `doc`/`setDoc`.
 
 ## Architecture
 
-### Entry / auth gate
+### Editor state lives in a zustand store
 
-`src/app/page.tsx`'s `Home()` gates on `useAuth()` (`src/components/auth/AuthProvider.tsx`): shows `AuthLoadingScreen` / `LoginForm` until a Firebase user exists, then mounts `FlowEditor`. Because of this, `FlowEditor` only ever mounts client-side after hydration — lazy `useState(() => ...)` initializers in it that touch `localStorage`/`window` are safe (no SSR/hydration mismatch risk).
+`src/lib/editor-store.ts` (`useEditorStore`) holds the whole editing session: the document (`doc`), persistence metadata (`currentDiagramId`/`currentDiagramName`/`currentDiagramPublic`/`savedSignature`), run cursor (`seed`/`runStep`/`runPhase`), selection (`selectedNodeId`/`selectedEdgeId`/`draggingNodeId`/`linkingFromId`/`activeShape`/`infoOpen`), and every document mutation (`onNodeMove`, `onNodeUpdate`, `onConnect`, `onShapeCreate`, `onEdgeUpdate`, …). Components read what they need with a selector; nothing passes `setDoc` around.
+
+`hydrate(uid)` restores the localStorage session and is guarded by `hydrated` so it runs once per page load. `DiagramEditor` calls it from a **layout** effect, not during render — mutating the store mid-render trips React's "setState while rendering a different component" guard, and a layout effect still resolves before paint.
+
+### Shared editor shell
+
+`src/components/editor/EditorShell.tsx` is the frame every editing surface shares (header, playback controls, canvas, inspector drawer, info panels). Two surfaces mount it — `editor/DiagramEditor.tsx` (a user's diagram) and `admin/TemplateEditor.tsx` (a library template) — and supply only what differs: branding icon, subtitle, File menu, action buttons, persistence dialogs. Put anything both editors need into the shell (or `EditorChrome.tsx`), not into one surface.
+
+- `editor/EditorChrome.tsx` — `EditorFileMenu` (with `afterOpen`/`afterExport` slots), `FileMenuItem`, `SaveButton`, `ResetCanvasDialog`, `EditorStatusScreen`, `downloadDocumentJson`.
+- `editor/InspectorSidebar.tsx` — the inspector is a **non-modal drawer floating over the canvas** (`modal={false}` + `disablePointerDismissal`, so canvas clicks don't race the next selection); it hosts `NodeInspector`, `EdgeInspector`, and the Info panels.
+- `editor/PlaybackControls.tsx` — split into presentational `RunControls` (pure props) and store-wired `PlaybackControls`. The viewer reuses `RunControls`, so the play bar can't drift between editor and viewer.
+- `lib/use-execution-playback.ts` — derives every per-node/per-edge execution state from the store's run cursor, and drives the sequential timer. Shared by both editors and the viewer.
 
 ### Document model
 
-The whole diagram is one JSON value, `FlowDocumentJSON` (`src/lib/flowchart-types.ts`): `{ nodes: FlowNode[], edges: FlowEdge[] }`. `FlowEditor` owns it as a single `doc` state and passes `doc`/`setDoc` into `useEditor()` (`src/lib/use-editor.ts`), which returns memoized CRUD callbacks (`onNodeMove`, `onNodeCreate`, `onConnect`, `onNodeResize`, etc.) consumed by the canvas and inspectors. New nodes get an auto-incrementing `sortOrder` (`max existing + 1`) so execution-order stays sane without manual numbering.
+The whole diagram is one JSON value, `FlowDocumentJSON` (`src/lib/flowchart-types.ts`): `{ nodes: FlowNode[], edges: FlowEdge[], settings?: DiagramSettings }`. Almost every field on `FlowNode`/`FlowEdge` is optional so older documents keep rendering — read styling through the resolvers (below), never off the raw fields. New nodes get an auto-incrementing `sortOrder` (`max existing + 1`).
 
 ### Persistence — two independent layers
 
-- **Local autosave** (`src/lib/editor-session.ts`): every `doc`/`currentDiagramId`/`currentDiagramName`/`savedSignature` change is written to `localStorage` under `flowgram:session:{uid}` and restored on mount. This is what makes a page refresh preserve in-progress (unsaved) work — it is NOT the save-to-cloud path.
-- **Cloud save** (`src/lib/firebase/diagrams.ts` + `src/components/diagrams/DiagramManager.tsx`): explicit "Save" persists to Firestore at `users/{uid}/diagrams/{id}` (`firestore.rules` restricts each collection to its owner). `dirty` is computed by comparing `JSON.stringify(doc)` against `savedSignature` (the signature at last successful cloud save).
+- **Local autosave** (`src/lib/editor-session.ts`): the editor writes `{doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature}` to `localStorage` under `flowgram:session:{uid}` on every change and restores it on mount. This is what makes a refresh preserve in-progress (unsaved) work — it is NOT the save-to-cloud path. If a restored session already holds the route's diagram id, `DiagramEditor` skips the Firestore fetch so unsaved edits survive.
+- **Cloud save** (`src/lib/firebase/diagrams.ts`): explicit "Save" writes `users/{uid}/diagrams/{id}`. `dirty` is `JSON.stringify(doc) !== savedSignature` (the signature at last successful cloud save).
+- **Public mirror**: a diagram flagged `public: true` is mirrored to a flat `public-diagrams/{id}` doc by `syncPublicMirror()`, so the viewer can read it with one `get()` — no collection-group query, no `isAdministrator()` in the path. The mirror sync is best-effort (logs, never throws); toggling public off deletes the mirror.
+
+### Roles / admin
+
+`src/lib/firebase/roles.ts` reads `users-roles/{uid}` and checks `roles` contains `administrators`. The doc **must** be keyed by uid because `firestore.rules` cannot query collections (`isAdministrator()` mirrors this exactly). Admins get cross-user diagram reads and full write access to `templates`.
 
 ### Templates
 
-Templates live only in Firestore's shared `templates` collection and are managed through `/admin/templates`. `src/lib/firebase/templates.ts` owns reads and writes. Choosing a template passes its document to `loadRemoteTemplate()` in the editor store, which swaps `doc` wholesale and resets execution/run state. There is no bundled local-template fallback; an empty Firestore collection produces an empty template library.
+Templates live only in Firestore's shared `templates` collection and are managed through `/admin/templates`. `src/lib/firebase/templates.ts` owns reads and writes; `editor/TemplatePickerDialog.tsx`'s `useTemplateLibrary()` is the read hook. Choosing a template calls `loadRemoteTemplate()`, which swaps `doc` wholesale and resets run state. There is no bundled local-template fallback — an empty collection produces an empty library.
+
+Ready-made template documents ship as JSON under `seed/templates/` (e.g. `database-schema.json`, the ERD sample) and are imported through the admin UI. See `seed/templates/README.md`.
 
 ### Canvas rendering
 
 `src/components/FlowCanvas.tsx` is a single SVG whose content sits in a `<g transform="translate(...) scale(...)">`. Pointer↔data coordinate conversion always goes through `src/lib/coords.ts` (`screenToData`) using the current `ViewTransform` (`src/lib/view-transform.ts`) — never hand-roll that math elsewhere. Each node renders as `FlowNodeCard`; each edge as `AnimatedEdge`.
 
+**Performance mode**: `FlowCanvas` sets `performanceMode = nodes.length > 20 || edges.length > 28` and culls off-screen nodes/edges. The flag is threaded down to cards and edge effects, where it strips *default* decoration (halos, spring-in animation) — it must never strip something the user explicitly configured. A past bug: the glow slider was dead on any real diagram because the effect layer short-circuited on `performanceMode` before reading the configured value.
+
 ### Edge geometry vs. edge effects (kept deliberately separate)
 
-- **Geometry** (`src/components/edge-geometry.ts`): `buildEdgeGeometry()` computes the SVG path `d` for a given `routing` (`straight` | `smooth-step` | `orthogonal` | `curved`). The orthogonal/smooth-step router builds each port's lead-out along its own side normal (`sideNormal()`) so a line always approaches a port in that port's natural direction — it does not just dogleg based on the source side. This same builder produces the path for both the live edge and the "ghost" preview while a user is dragging a new connection, so a newly completed connection never jumps.
-- **Effects** (`src/components/edge-effect-layer.tsx`): `EdgeEffectLayer` renders the animated overlay (comet/dots/pulse/binary/etc.) along that same path. `direction: 'both'` is implemented by having the component render itself twice internally (`EdgeEffectLayerSingle`, once forward once reverse) rather than every effect branch special-casing bidirectionality. All effects share one sizing formula, `objectWidth = lineWidth * scale * effectSize`, so the "Effect object size" control means the same thing across every effect.
+- **Geometry** (`src/components/edge-geometry.ts`): `buildEdgeGeometry()` computes the SVG path `d` for a given `routing` (`straight` | `smooth-step` | `orthogonal` | `curved`). The orthogonal/smooth-step router builds each port's lead-out along its own side normal (`sideNormal()`) so a line always approaches a port in that port's natural direction — it does not just dogleg based on the source side. This same builder produces the path for both the live edge and the "ghost" preview while dragging a new connection, so a completed connection never jumps.
+- **Effects** (`src/components/edge-effect-layer.tsx`): `EdgeEffectLayer` renders the animated overlay along that same path. `direction: 'both'` is implemented by rendering the component twice internally (`EdgeEffectLayerSingle`, once forward once reverse) rather than every effect branch special-casing bidirectionality. All effects share one sizing formula, `objectWidth = lineWidth * scale * effectSize`, so "Effect object size" means the same thing everywhere.
+
+Effects split into two families, and the per-edge knobs apply to one family each:
+
+| Family | Examples | Knob |
+| --- | --- | --- |
+| Travelling objects | `comet`, `pulse`, `dots`, `laser`, `meteor`, `convoy`, `chase` | `effectCount` (1–8 objects; unset = spacing-based), `effectShape` |
+| Tiled patterns | `flow`, `dash`, `wave`, `marching`, `ants`, `morse` | `effectDensity` (0.5×–2× mark density) |
+
+`effect: 'none'` is the opt-out — `EdgeEffectLayer` returns `null` before any of the above, leaving a static line.
+
+Shared knobs: `glowIntensity` (0–3, **unset = no halo**; `onConnect` stamps `1` on newly drawn lines so a glow is always explicit), `glowColor` (unset = white, `'auto'` = follow the object's colour, or a hex), `phaseOffset` (0–1 cycle, so parallel lines don't run in lockstep), `animationSpeed`, `effectColor`.
+
+`effectShape` swaps the plain dash segment for a real silhouette from `edge-object-shapes.tsx` (12 glyphs authored in a 20×20 box, each declaring whether it `rotate`s), placed by `edge-motion-objects.tsx` using CSS `offset-path`/`offset-distance` against the same `d`. Reversed objects need `offset-rotate: 'auto 180deg'` — plain `auto` follows the *path* direction, not travel direction, and makes them fly backwards.
 
 ### Node styling
 
-`src/lib/node-style.ts` defines `SHAPES`/`ICONS`/`COLORS` and `resolveNodeStyle(node)`, which merges a node's explicit fields over type-based defaults (e.g. a `decision` node defaults to a diamond, `start`/`output` get distinct palettes) — always read a node's rendered style through `resolveNodeStyle`, not by reading `node.shape`/`node.color` directly, since those are optional.
+`src/lib/node-style.ts` defines `SHAPES`/`ICONS`/`COLORS` and `resolveNodeStyle(node)`, which merges a node's explicit fields over type-based defaults (a `decision` node defaults to a diamond, `start`/`output` get distinct palettes) — always read a node's rendered style through `resolveNodeStyle`, not `node.shape`/`node.color`, since those are optional.
+
+`resolveNodeStyle` clamps geometry, and the ceiling depends on whether the node is a table: `width ≤ 320` / `height ≤ 240` for normal nodes, `≤ TABLE_MAX_WIDTH (420)` / `≤ TABLE_MAX_HEIGHT (900)` for table nodes. Keep that split — a 12-column table needs the taller ceiling, an ordinary card must not get it.
+
+### Icons and brand logos
+
+`NodeIcon` accepts `lucide:<Name>` / `tabler:<Name>` (resolved on demand from the full catalogs by `src/lib/icon-library.ts`), a handful of legacy bare names kept so old documents resolve without a fetch, and `logo:<slug>`.
+
+Brand marks are ~15K static SVGs committed under `public/logos/<slug>.svg`, indexed by `public/logos.json`. `src/lib/logo-catalog.ts` fetches that index once and caches it in-module (`loadLogoCatalog` / `getCachedLogoCatalog`); `LogoPicker.tsx` searches it and `FlowNodeCard` renders the chosen mark as an `<img src="/logos/{slug}.svg">`. Both the catalog and the SVGs are checked in — the `build:logos` script and its `prebuild` hook were removed, so nothing regenerates them at build time.
+
+The `logo` node type (and the dock's matching `DrawTool` value) is a dedicated brand-mark block: no icon by default until one is picked, and a much larger icon ceiling than other nodes (`resolveNodeStyle` allows `iconSize` up to 256 with a default of 64, versus 48/20 elsewhere).
+
+### Database tables (ERD)
+
+An ER diagram is not a separate document type: a table is just a `FlowNode` carrying `table?: TableSpec` (`{ columns: TableColumn[], schema?: string }`), so ERD and flow blocks mix on one canvas and inherit saving, sharing, templates, and line effects for free.
+
+- **Creating**: the dock's Table tool arms `activeShape = 'table'` (`DrawTool = NodeShape | 'table' | 'logo'`); `onShapeCreate` builds a `rounded` card with `starterColumns()` and a height from `tableCardHeight(columnCount)`, not from the drag — a new table is never born with rows clipped.
+- **Rendering**: `TableCardBody.tsx` draws the header (title + schema) and one row per column. Flags are shown the sparse way round: `U`, `IX`, and `NULL` — nullable is the exception, so `NOT NULL` gets no badge.
+- **Clipping**: table content lives in a `<foreignObject>`, which is always a rectangle. `FlowNodeCard` clips it to the node's silhouette (`clipPath` from `outline.d`) **for table nodes only**, otherwise a `rounded` card shows square corners poking past its outline.
+- **Editing**: `TableColumnsEditor.tsx` (rendered by `NodeInspector`) writes straight through to the document, and every column write recomputes `height: tableCardHeight(next.length)`. It also offers "Convert to database table" on a node without `table`.
+- **Relationships**: lines attach table-to-table like any other edge — there are no field-level anchors. `FlowEdge.fromColumn`/`toColumn` are metadata used for the label and for SQL FK emission. Cardinality uses the crow's-foot markers in `edge-marker.tsx` (`crow-one`, `crow-many`, `crow-one-many`, `crow-zero-one`, `crow-zero-many`), which follow the file's convention of "tip at the origin, body running towards −x". `EdgeInspector` only overwrites a relationship label it generated itself, and keeps it short (`id → user_id`) so it doesn't overflow into neighbouring tables.
+- **Export**: `src/lib/sql-export.ts`'s `buildCreateTableSql(document)` emits `CREATE TABLE` + `CREATE INDEX` + `ALTER TABLE … ADD FOREIGN KEY`, surfaced by `editor/SqlExportDialog.tsx` from the File menu's `afterExport` slot. Data types are free text so the output suits whatever dialect the user had in mind. `resolveForeignKey` picks the child side from the column flags (explicit `foreignKey` wins, else the end pointing at a primary key is the parent), so which direction the user drew the line doesn't matter. Export only — there is no SQL import.
 
 ### Execution simulation (the "replay" animation)
 
-`FlowEditor` groups nodes by resolved `sortOrder` into `orderedGroups` — nodes sharing the same order animate simultaneously as one step, not strictly one-by-one. `runMode` is one of `sequential` (auto-advances on a timer, `EDGE_DRAW_DURATION_MS`/`NODE_FADE_DURATION_MS` from `src/lib/execution-timing.ts`), `concurrent` (everything active at once), or `manual` (user-driven — the shared `advanceStep()` callback is reused by both the sequential timer and the manual "Next" button, so the two modes can't drift out of sync).
+`computeOrderedGroups()` groups nodes by resolved `sortOrder` — nodes sharing an order animate simultaneously as one step, not strictly one-by-one. `runMode` (`doc.settings.runMode`) is `sequential` (auto-advances on a timer, `EDGE_DRAW_DURATION_MS`/`NODE_FADE_DURATION_MS` from `src/lib/execution-timing.ts`), `concurrent` (everything active at once), or `manual` (user-driven). The sequential timer and the manual "Next" button both call the store's single `advanceStep()`, so the two modes can't drift out of sync.
 
-### UI primitives
+### UI primitives and shared conventions
 
-`src/components/ui/*` are shadcn components (`components.json`, style `base-nova`) built on `@base-ui/react`, not Radix. Base UI has sharper structural requirements than Radix — e.g. `DropdownMenuLabel` must be inside a `DropdownMenuGroup` or it throws at runtime (`MenuGroupContext is missing`), and `AlertDialogAction`/similar action buttons do not auto-close their dialog when given a custom `onClick` — the handler must close it explicitly (see how `DiagramManager.tsx`'s delete confirmation and `page.tsx`'s reset confirmation both call their `setOpen(false)` at the end of the handler). Prefer extending an existing `components/ui` primitive over reaching for a raw `<dialog>`/custom popover.
+`src/components/ui/*` are shadcn components (`components.json`, style `base-nova`) built on **`@base-ui/react`, not Radix**. Base UI has sharper structural requirements:
+
+- `DropdownMenuLabel` must sit inside a `DropdownMenuGroup` or it throws at runtime (`MenuGroupContext is missing`).
+- `AlertDialogAction` and similar action buttons do **not** auto-close their dialog when given a custom `onClick` — the handler must call `setOpen(false)` itself (see `ResetCanvasDialog` and the delete confirmation in the diagrams list).
+- A `Button` rendered as something other than a native button (e.g. `render={<Link …/>}`) needs `nativeButton={false}`, or Base UI logs "A component that acts as a button expected a native `<button>`".
+
+Prefer extending an existing `components/ui` primitive over a raw `<dialog>` or hand-rolled popover, and prefer these shared pieces over restyling per-surface:
+
+- `Button` variants `toolbar` (frosted dark header/toolbar control) and `accent` (cyan call-to-action: New diagram, Copy link, Sign in) — added on top of the stock shadcn variants.
+- `Input` variant `toolbar`, matching the `toolbar` button.
+- `src/components/data-table.tsx` — `DataTable`, `DataTableFooter`, `SortHeaderButton`, `formatDateTime`, `formatNumber`, shared by the diagrams list and both admin tables (TanStack Table).
 
 ### Firebase
 
-`src/lib/firebase/client.ts` initializes the app from `NEXT_PUBLIC_FIREBASE_*` env vars (see `.env.example`) and throws immediately if any required var is missing — there's no silent-degrade path. `src/lib/firebase/auth.ts` and `diagrams.ts` are the only modules that talk to Firebase directly; everything else goes through them.
+`src/lib/firebase/client.ts` initializes the app from `NEXT_PUBLIC_FIREBASE_*` env vars (see `.env.example`) and throws immediately if a required var is missing — there's no silent-degrade path. `auth.ts`, `diagrams.ts`, `templates.ts` and `roles.ts` are the only modules that talk to Firebase; everything else goes through them. `firestore.rules` is the source of truth for access and is deployed separately (`firebase deploy --only firestore:rules`) — a change to a collection's shape usually needs a matching rules change.
+
+## Verifying UI work
+
+There's no test runner, so visual changes are checked by hand: run `npm run dev` with placeholder Firebase env vars, add a temporary page under `src/app/` that renders the component with fixture data, drive it with Playwright (Chromium is available at `/opt/pw-browsers`) — screenshots plus `page.evaluate` to read computed styles, which is how several "looks fine, is actually dead" bugs were caught. **Delete the temporary page before committing**, then run `npx tsc --noEmit -p .`, `npm run lint`, and a production build.
