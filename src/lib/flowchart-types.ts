@@ -58,6 +58,31 @@ export type NodePaint = NodeColor | `#${string}`;
  */
 export type NodeIcon = 'cog' | 'play' | 'flag' | 'bell' | 'mail' | 'database' | 'cloud' | 'code' | 'send' | 'sparkles' | `lucide:${string}` | `tabler:${string}` | `logo:${string}`;
 
+/**
+ * Animation applied to a node. Off (`'none'`) unless the user picks one —
+ * a block, frame or text object is completely static by default, exactly
+ * like a line with `effect: 'none'`.
+ *
+ * Two families, and the knobs below apply to one each:
+ *  - motion (`float`…`blink`) animates the node itself;
+ *  - decoration (`glow`…`sheen`) paints an extra layer around or over it.
+ */
+export type NodeEffect =
+  | 'none'
+  // Motion — the node moves.
+  | 'float'
+  | 'breathe'
+  | 'shake'
+  | 'wobble'
+  | 'bounce'
+  | 'blink'
+  // Decoration — an extra layer is painted.
+  | 'glow'
+  | 'pulse'
+  | 'ripple'
+  | 'trace'
+  | 'sheen';
+
 export type ConnectionSide = 'top' | 'right' | 'bottom' | 'left';
 export type ExecutionState = 'normal' | 'pending' | 'active' | 'completed';
 export type NodeFont = 'geist-mono' | 'be-vietnam-pro' | 'noto-sans' | 'source-sans-3' | 'roboto-slab' | 'merriweather';
@@ -132,6 +157,14 @@ export interface FlowNode {
   portSize?: number;
   /** Editable input/output handle positions. */
   connectionPoints?: NodeConnectionPoints;
+  /** Animation. Unset = `'none'`: nothing moves and nothing is painted. */
+  effect?: NodeEffect;
+  /** Halo / ring colour for the decoration effects. Unset follows `color`. */
+  effectColor?: `#${string}`;
+  /** Animation rate multiplier, 0.25–3. Unset = 1. */
+  effectSpeed?: number;
+  /** Strength of the effect, 0.25–3. Unset = 1. */
+  effectIntensity?: number;
   /** Present on database tables — renders the card as an ERD table. */
   table?: TableSpec;
   /**

@@ -111,6 +111,12 @@ export default function HelpViPage() {
             chữ, xoay, cạnh kết nối (đường nối vào/ra ở cạnh nào), và thứ tự thực thi. Kèm hai nút <strong>Duplicate</strong> (nhân bản) và <strong>Delete</strong> (xoá).
           </li>
           <li>
+            <strong>Hiệu ứng khối:</strong> khối, khung nhóm và chữ đều bắt đầu ở trạng thái hoàn toàn tĩnh — không phát sáng, không chuyển động. Bộ chọn <strong>Effect</strong> hoạt động y hệt
+            bộ chọn hiệu ứng cho đường nối: mở ra rồi chọn giữa nhóm <em>motion</em> (chính khối chuyển động: float, breathe, bounce, wobble, shake, blink) và nhóm <em>decoration</em> (vẽ thêm
+            một lớp quanh khối: glow, pulse, ripple, trace, sheen). Có ô xem trước trực tiếp trước khi bấm Apply, cùng ba thông số <strong>Speed</strong>, <strong>Intensity</strong> và{' '}
+            <strong>Effect colour</strong>. Dùng để làm nổi bật một khối — nếu khối nào cũng nhấp nháy thì chẳng khối nào nổi bật.
+          </li>
+          <li>
             <strong>Bảng thuộc tính đường nối:</strong> nhãn, hiệu ứng động (comet, dots, pulse, wave, scanner, binary và hơn chục kiểu khác), kiểu đi dây (thẳng, cong, vuông góc,
             smooth-step), chiều chạy (xuôi / ngược / cả hai), mũi tên hai đầu, độ dày nét, cỡ vật thể hiệu ứng, hình dạng vật thể chạy trên đường nối (mũi tên, phong bì, đồng xu…), số lượng vật thể, mật độ hoạ tiết, độ sáng và màu quầng neon, độ lệch pha và tốc độ chuyển động — cùng nút <strong>Delete</strong>.
           </li>

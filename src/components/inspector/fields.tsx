@@ -369,6 +369,10 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
               textAlign: undefined,
               portSize: undefined,
               connectionPoints: undefined,
+              effect: undefined,
+              effectColor: undefined,
+              effectSpeed: undefined,
+              effectIntensity: undefined,
               // `table` is content, not styling — Reset leaves it alone.
               // So is `parentId`: resetting the look shouldn't eject a
               // node from its frame.

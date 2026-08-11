@@ -110,6 +110,12 @@ export default function HelpPage() {
             rotation, connection sides (which side edges enter and leave), and execution order. It also has <strong>Duplicate</strong> and <strong>Delete</strong> buttons.
           </li>
           <li>
+            <strong>Block effect:</strong> blocks, frames and text all start completely static — no glow, no movement. The <strong>Effect</strong> picker works exactly like the one for
+            connectors: open it and choose from <em>motion</em> effects, where the block itself moves (float, breathe, bounce, wobble, shake, blink), or <em>decoration</em> effects, where
+            something extra is painted around it (glow, pulse, ripple, trace, sheen). A live preview shows the choice before you apply it, and <strong>Speed</strong>, <strong>Intensity</strong>{' '}
+            and <strong>Effect colour</strong> tune it. Use it to make one block stand out — if everything pulses, nothing does.
+          </li>
+          <li>
             <strong>Connector inspector:</strong> label, animated effect (comet, dots, pulse, wave, scanner, binary and a dozen more), routing style (straight, curved, orthogonal,
             smooth-step), direction (forward / reverse / both), start and end markers (arrowheads), line width, effect object size, the shape of the objects riding the line (arrow, envelope, coin and more), the number of them, pattern density, glow strength and colour, phase offset, and animation speed — plus <strong>Delete</strong>.
           </li>

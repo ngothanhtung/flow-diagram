@@ -149,6 +149,29 @@ export default function GuidePage() {
               <Pill>top | right | bottom | left</Pill>) pins where edges attach — for a left-to-right flow, set <Pill>{`{ input: 'left', output: 'right' }`}</Pill> on every node so connectors read
               consistently.
             </p>
+            <p>
+              <strong className='text-zinc-300'>Effects are opt-in.</strong> Omit <Pill>effect</Pill> (or set <Pill>&quot;none&quot;</Pill>) and the node is completely static — no motion, no halo,
+              nothing painted. That is the default for every kind of node, exactly as <Pill>effect: &quot;none&quot;</Pill> is for a line. Pick one when the node genuinely needs attention, not as
+              decoration on every block.
+            </p>
+            <Table
+              head={['effect', 'family', 'what it does']}
+              rows={[
+                ['float · breathe · bounce · wobble · shake', 'motion', 'The node itself animates — drifts, scales, hops, rocks or jitters.'],
+                ['blink', 'motion', 'Fades out and back on a loop.'],
+                ['glow · pulse', 'decoration', 'A halo around the outline: steady, or swelling in and out.'],
+                ['ripple', 'decoration', 'Rings radiating outwards from the outline.'],
+                ['trace', 'decoration', 'Dashes marching around the border.'],
+                ['sheen', 'decoration', 'A band of light sweeping across the body.'],
+              ]}
+            />
+            <p>
+              Three shared knobs, all optional: <Pill>effectSpeed</Pill> and <Pill>effectIntensity</Pill> (0.25–3, default 1 — cycle rate and how far it travels or how bright it burns) and{' '}
+              <Pill>effectColor</Pill> (hex; unset follows the node&apos;s <Pill>color</Pill>). They mean the same thing for every effect.
+            </p>
+            <Code>{`{ "id": "alert", "type": "process", "title": "Rate limiter",
+  "position": { "x": 300, "y": 200 },
+  "effect": "pulse", "effectColor": "#f43f5e", "effectIntensity": 1.6 }`}</Code>
           </Section>
 
           <Section id='edges' title='3. Edge rules'>

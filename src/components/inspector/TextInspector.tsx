@@ -18,6 +18,7 @@ import {
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
+import { NodeEffectField } from './NodeEffectField';
 
 /**
  * Inspector for a free text object (`type: 'text'`).
@@ -61,6 +62,8 @@ export function TextInspector({ node, onUpdate, onDuplicate, onDelete, parentTit
 
       <SectionLabel>Alignment</SectionLabel>
       <TextAlignField node={node} onUpdate={onUpdate} textAlign={style.textAlign} />
+
+      <NodeEffectField node={node} onUpdate={onUpdate} foreground={style.foreground} />
 
       <GroupMembershipSection node={node} onUpdate={onUpdate} parentTitle={parentTitle} />
 

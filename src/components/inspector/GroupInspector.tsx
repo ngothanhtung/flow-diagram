@@ -22,6 +22,7 @@ import {
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
+import { NodeEffectField } from './NodeEffectField';
 
 interface GroupInspectorProps extends InspectorPanelProps {
   /** How many blocks this frame holds. */
@@ -87,6 +88,8 @@ export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         <SelectField label='Border style' value={style.borderStyle} options={['solid', 'dashed', 'dotted']} onChange={(borderStyle) => onUpdate(node.id, { borderStyle })} />
       </div>
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
+
+      <NodeEffectField node={node} onUpdate={onUpdate} foreground={style.foreground} />
 
       {/* A frame can itself sit inside another frame. */}
       <GroupMembershipSection node={node} onUpdate={onUpdate} parentTitle={parentTitle} />

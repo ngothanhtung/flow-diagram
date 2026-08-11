@@ -8,6 +8,7 @@ import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
 import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
 import { GROUP_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
+import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from './node-effect-layer';
 import { TableCardBody } from './TableCardBody';
 import type { ViewTransform } from '@/lib/view-transform';
 import { NODE_BOUNDING_RADIUS } from './edge-geometry';
@@ -195,7 +196,9 @@ export function FlowNodeCard({
   const dashArray = borderStyle === 'dashed' ? `${borderWidth * 5} ${borderWidth * 3}` : borderStyle === 'dotted' ? `${borderWidth} ${borderWidth * 2.5}` : undefined;
   const neonFaint = borderColor.length === 7 ? `${borderColor}38` : borderColor;
   const neonSoft = borderColor.length === 7 ? `${borderColor}70` : borderColor;
-  const neonIntensity = shadow === 'glow' ? 0.42 : shadow === 'soft' ? 0.24 : 0.12;
+  // `none` means none: no underlay at all. Anything glowing on a node is
+  // now something the user asked for, via `shadow` or via `effect`.
+  const neonIntensity = shadow === 'glow' ? 0.42 : shadow === 'soft' ? 0.24 : 0;
   const filter = performanceMode
     ? shadow === 'none'
       ? undefined
@@ -205,7 +208,14 @@ export function FlowNodeCard({
       : shadow === 'glow'
         ? `drop-shadow(0 8px 14px rgba(0,0,0,.4)) drop-shadow(0 0 5px ${neonSoft}) drop-shadow(0 0 15px ${neonFaint})`
         : undefined;
-  const gradientId = `node-sheen-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+  const safeId = node.id.replace(/[^a-zA-Z0-9_-]/g, '-');
+  const gradientId = `node-sheen-${safeId}`;
+  // Effects are entirely opt-in: with no `effect` the node paints and
+  // behaves exactly as it did before the field existed.
+  const effect = node.effect ?? 'none';
+  const { speed: effectSpeed, intensity: effectIntensity } = resolveEffectKnobs(node.effectSpeed, node.effectIntensity);
+  const effectColor = node.effectColor ?? foreground;
+  const motionStyle = nodeMotionStyle(effect, effectSpeed, effectIntensity);
   const chargeGradientId = `node-charge-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const clipId = `node-clip-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const cardAccent = ['server', 'component', 'predefined-process', 'internal-storage', 'folder', 'note'].includes(style.shape);
@@ -407,6 +417,10 @@ export function FlowNodeCard({
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
       >
+        {/* Motion effects animate this wrapper rather than the group
+            above, whose transform carries the node's position — a CSS
+            animation on that one would fight the translate. */}
+        <g style={motionStyle}>
         <defs>
           <linearGradient id={gradientId} x1='0' y1='0' x2='0' y2='1'>
             <stop offset='0%' stopColor={foreground} stopOpacity={0.18} />
@@ -832,6 +846,22 @@ export function FlowNodeCard({
               </g>
             );
           })}
+
+        {/* Painted last so a halo, ring or sheen sits above the body and
+            its contents, whatever the node kind is. */}
+        <NodeEffectLayer
+          d={outline.d}
+          transform={outline.transform}
+          effect={effect}
+          color={effectColor}
+          speed={effectSpeed}
+          intensity={effectIntensity}
+          width={width}
+          height={height}
+          clipId={`node-fx-${safeId}`}
+          performanceMode={performanceMode}
+        />
+        </g>
       </g>
     </motion.g>
   );

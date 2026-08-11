@@ -98,6 +98,19 @@ Shared knobs: `glowIntensity` (0–3, **unset = no halo**; `onConnect` stamps `1
 
 `effectShape` swaps the plain dash segment for a real silhouette from `edge-object-shapes.tsx` (12 glyphs authored in a 20×20 box, each declaring whether it `rotate`s), placed by `edge-motion-objects.tsx` using CSS `offset-path`/`offset-distance` against the same `d`. Reversed objects need `offset-rotate: 'auto 180deg'` — plain `auto` follows the *path* direction, not travel direction, and makes them fly backwards.
 
+### Node effects
+
+`FlowNode.effect` (`src/components/node-effect-layer.tsx`) is the node counterpart to `FlowEdge.effect`, and it is **off by default**: unset (or `'none'`) means nothing moves and nothing extra is painted. Two families, same split as the edges:
+
+| Family | Effects | How it renders |
+| --- | --- | --- |
+| Motion | `float`, `breathe`, `bounce`, `wobble`, `shake`, `blink` | `nodeMotionStyle()` returns a CSS animation for a wrapper `<g>` **inside** the positioned group — animating the positioned group itself would fight its `translate` |
+| Decoration | `glow`, `pulse`, `ripple`, `trace`, `sheen` | `<NodeEffectLayer>` paints extra SVG over the silhouette, using the same `outline.d` as the body |
+
+Shared knobs (`effectSpeed`, `effectIntensity`, `effectColor`) mean the same thing for every effect. Intensity reaches the motion keyframes through the `--node-fx-intensity` custom property, so one keyframe set covers the whole range instead of one per level; `sheen` likewise gets its sweep distance from `--node-fx-sweep`, because a percentage translate would be relative to the band rather than the card.
+
+**A node has no implicit decoration.** `resolveNodeStyle`'s `shadow` still drives the drop-shadow, but `shadow: 'none'` now really means none — it used to leave a 12%-opacity neon underlay on every node — and every creation path in the store stamps `shadow: 'none'`. Anything glowing on a node is something the user asked for.
+
 ### Node styling
 
 `src/lib/node-style.ts` defines `SHAPES`/`ICONS`/`COLORS` and `resolveNodeStyle(node)`, which merges a node's explicit fields over type-based defaults (a `decision` node defaults to a diamond, `start`/`output` get distinct palettes) — always read a node's rendered style through `resolveNodeStyle`, not `node.shape`/`node.color`, since those are optional.

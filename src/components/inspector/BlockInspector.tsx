@@ -30,6 +30,7 @@ import {
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
+import { NodeEffectField } from './NodeEffectField';
 
 /**
  * Inspector for an ordinary block — every node that paints a body:
@@ -186,6 +187,8 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         onChange={(blockAlign) => onUpdate(node.id, { blockAlign })}
       />
       <TextAlignField node={node} onUpdate={onUpdate} textAlign={style.textAlign} />
+
+      <NodeEffectField node={node} onUpdate={onUpdate} foreground={style.foreground} />
 
       <GroupMembershipSection node={node} onUpdate={onUpdate} parentTitle={parentTitle} />
 
