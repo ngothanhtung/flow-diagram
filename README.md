@@ -2,7 +2,25 @@
 
 **English** | [Tiếng Việt](#flowgram-tools-tiếng-việt)
 
-A browser-based flowchart/diagram editor (SaaS architecture diagrams, CRM/HRM flows, etc.) with animated connectors, built on [Next.js 16](https://nextjs.org) (App Router) + React 19. Diagrams are saved to Cloud Firestore per authenticated user (Firebase Authentication).
+A browser-based diagram editor with animated connectors — SaaS architecture diagrams, CRM/HRM flows and ER diagrams — built on [Next.js 16](https://nextjs.org) (App Router) + React 19. Diagrams are saved to Cloud Firestore per authenticated user (Firebase Authentication), can be shared read-only, and a shared template library is managed by administrators.
+
+## Features
+
+- **Flow diagrams** — 30+ block silhouettes, editable ports and routing (straight, smooth-step, orthogonal, curved), free positioning with pan/zoom.
+- **Animated connectors** — 20+ line effects (comet, dots, wave, marching ants, morse…), configurable object count, real object silhouettes riding the line, glow, phase offset and speed. `none` turns the animation off.
+- **Database diagrams (ERD)** — a block can carry a column list (data type, PK/FK, unique, index, nullable, default) and render as a table. Relationships use crow's foot cardinality, and the schema exports as `CREATE TABLE` / `CREATE INDEX` / `ALTER TABLE … ADD FOREIGN KEY` SQL DDL.
+- **Replay animation** — walk the diagram step by step (sequential, concurrent or manual) to present a flow.
+- **Brand logos** — ~15,000 company marks bundled as static SVGs, searchable from the icon picker.
+- **Sharing** — flag a diagram public to get a read-only `/diagrams/{id}/view` link that works without signing in.
+- **Template library** — administrators publish reusable starting documents to a shared Firestore collection.
+- **JSON in / out** — export or paste a whole `FlowDocumentJSON` document, which is what makes AI-authored diagrams practical.
+
+### In-app documentation
+
+| Page | For |
+| --- | --- |
+| `/help` · `/help/vi` | End-user guide, bilingual EN/VI |
+| `/guide` | `FlowDocumentJSON` authoring reference, aimed at AI/developers writing documents by hand |
 
 ## Requirements
 
@@ -10,6 +28,8 @@ A browser-based flowchart/diagram editor (SaaS architecture diagrams, CRM/HRM fl
 - A [Firebase](https://console.firebase.google.com) account (the free Spark plan is enough)
 - A [Vercel](https://vercel.com) account (for production deployment)
 - Firebase CLI (to deploy Firestore rules/indexes): `npm install -g firebase-tools`
+
+> The repo ships the logo library as committed static assets (`public/logos/`, ~106 MB across ~15K SVGs, plus a 2 MB `public/logos.json` index). Nothing generates them at build time, so expect a slow first clone and a large deployment upload.
 
 ## 1. Firebase setup
 
@@ -54,6 +74,8 @@ The admin page requires the `administrators` role. To grant it, create a Firesto
 - Collection: `users-roles`
 - Document ID: the user's `uid` (see **Authentication → Users**)
 - Content: `{ "roles": ["administrators"] }`
+
+Administrators also get the cross-user diagram overview (`/admin/diagrams`) and write access to the shared template library (`/admin/templates`).
 
 ## 2. Run locally
 
@@ -140,6 +162,11 @@ Skipping this step makes Google sign-in fail with `auth/unauthorized-domain` on 
 - Open the production URL, sign in with Google and Email/Password.
 - Create a diagram, click **Save**, reload the page and confirm the diagram loads back from Firestore.
 - In Firebase Console → Firestore, verify a document exists at `users/{uid}/diagrams/{id}`.
+- Flag a diagram **Public**, open its `/diagrams/{id}/view` link in a private window and confirm it renders without signing in (it is served from the `public-diagrams` mirror).
+
+### 3.5. Seed the template library
+
+A fresh Firestore has no templates, so **New from template** starts out empty — this is expected, not a bug. Ready-made documents ship in [`seed/templates/`](seed/templates) and are imported through the admin UI (sign in as an administrator, **Admin → Templates → New template**, paste the JSON into the **JSON Playground** panel, **Save**). See [`seed/templates/README.md`](seed/templates/README.md) for the step-by-step.
 
 ## Troubleshooting
 
@@ -149,6 +176,9 @@ Skipping this step makes Google sign-in fail with `auth/unauthorized-domain` on 
 | `auth/unauthorized-domain` on Google sign-in | Domain not added to **Authentication → Authorized domains** (step 3.3). |
 | `Missing or insufficient permissions` when saving/loading diagrams | Firestore rules not deployed — run `firebase deploy --only firestore` (step 1.3). |
 | Changed an env var on Vercel but nothing happens | `NEXT_PUBLIC_*` variables are inlined at build time — **Redeploy**. |
+| **New from template** is empty | The `templates` collection has no documents yet — import one from `seed/templates/` (step 3.5). |
+| A shared `/view` link says "Diagram not found" | The diagram is still private. Toggle **Public** in the editor and save — that is what writes the `public-diagrams` mirror the viewer reads. |
+| The admin pages redirect away | No `users-roles/{uid}` document with `{ "roles": ["administrators"] }` (step 1.4). |
 
 ## Learn more
 
@@ -163,7 +193,25 @@ Skipping this step makes Google sign-in fail with `auth/unauthorized-domain` on 
 
 [English](#flowgram-tools) | **Tiếng Việt**
 
-Trình soạn thảo sơ đồ / flowchart chạy trên trình duyệt (sơ đồ kiến trúc SaaS, luồng CRM/HRM, v.v.) với hiệu ứng kết nối động, xây dựng trên [Next.js 16](https://nextjs.org) (App Router) + React 19. Sơ đồ được lưu vào Cloud Firestore theo từng người dùng đã đăng nhập (Firebase Authentication).
+Trình soạn thảo sơ đồ chạy trên trình duyệt với hiệu ứng kết nối động — sơ đồ kiến trúc SaaS, luồng CRM/HRM và sơ đồ cơ sở dữ liệu (ERD) — xây dựng trên [Next.js 16](https://nextjs.org) (App Router) + React 19. Sơ đồ được lưu vào Cloud Firestore theo từng người dùng đã đăng nhập (Firebase Authentication), có thể chia sẻ ở chế độ chỉ-đọc, và thư viện template dùng chung do administrator quản lý.
+
+## Tính năng
+
+- **Sơ đồ luồng** — hơn 30 kiểu khối, cổng nối và kiểu đi dây tuỳ chỉnh (straight, smooth-step, orthogonal, curved), tự do bố cục với pan/zoom.
+- **Hiệu ứng đường nối** — hơn 20 hiệu ứng (comet, dots, wave, marching ants, morse…), cấu hình được số lượng object chạy trên line, hình dáng object thật, độ phát sáng (glow), lệch pha và tốc độ. Chọn `none` để tắt hiệu ứng.
+- **Sơ đồ cơ sở dữ liệu (ERD)** — một khối có thể mang danh sách cột (kiểu dữ liệu, PK/FK, unique, index, nullable, default) và hiển thị dạng bảng. Quan hệ dùng ký hiệu chân quạ (crow's foot), và xuất được SQL DDL `CREATE TABLE` / `CREATE INDEX` / `ALTER TABLE … ADD FOREIGN KEY`.
+- **Chạy mô phỏng (replay)** — chạy sơ đồ theo từng bước (sequential, concurrent hoặc manual) để trình bày một luồng nghiệp vụ.
+- **Logo thương hiệu** — khoảng 15.000 logo công ty đóng gói sẵn dạng SVG tĩnh, tìm kiếm ngay trong trình chọn icon.
+- **Chia sẻ** — bật chế độ public để có link chỉ-đọc `/diagrams/{id}/view`, người xem không cần đăng nhập.
+- **Thư viện template** — administrator đăng các tài liệu mẫu dùng chung lên collection Firestore.
+- **Xuất / nhập JSON** — xuất hoặc dán trực tiếp cả tài liệu `FlowDocumentJSON`, nhờ đó có thể nhờ AI sinh sơ đồ.
+
+### Tài liệu ngay trong ứng dụng
+
+| Trang | Dành cho |
+| --- | --- |
+| `/help` · `/help/vi` | Hướng dẫn sử dụng, song ngữ Anh/Việt |
+| `/guide` | Tài liệu tham chiếu cấu trúc `FlowDocumentJSON`, dành cho AI/lập trình viên tự viết tài liệu |
 
 ## Yêu cầu
 
@@ -171,6 +219,8 @@ Trình soạn thảo sơ đồ / flowchart chạy trên trình duyệt (sơ đ�
 - Một tài khoản [Firebase](https://console.firebase.google.com) (gói Spark miễn phí là đủ)
 - Một tài khoản [Vercel](https://vercel.com) (để triển khai production)
 - Firebase CLI (để deploy Firestore rules/indexes): `npm install -g firebase-tools`
+
+> Repo commit sẵn thư viện logo dưới dạng file tĩnh (`public/logos/`, khoảng 106 MB cho ~15K file SVG, cộng file index `public/logos.json` 2 MB). Không có bước build nào sinh lại chúng, nên lần clone đầu sẽ lâu và dung lượng upload khi deploy khá lớn.
 
 ## 1. Thiết lập Firebase
 
@@ -215,6 +265,8 @@ Trang quản trị yêu cầu người dùng có role `administrators`. Để c�
 - Collection: `users-roles`
 - Document ID: chính là `uid` của người dùng (xem trong **Authentication → Users**)
 - Nội dung: `{ "roles": ["administrators"] }`
+
+Administrator cũng được xem toàn bộ sơ đồ của mọi người (`/admin/diagrams`) và có quyền quản lý thư viện template dùng chung (`/admin/templates`).
 
 ## 2. Chạy local
 
@@ -301,6 +353,11 @@ Nếu bỏ qua bước này, đăng nhập Google trên bản deploy sẽ báo l
 - Mở URL production, đăng nhập bằng Google và Email/Password.
 - Tạo một sơ đồ, bấm **Save**, tải lại trang và xác nhận sơ đồ được nạp lại từ Firestore.
 - Kiểm tra trong Firebase Console → Firestore thấy document tại `users/{uid}/diagrams/{id}`.
+- Bật **Public** cho một sơ đồ, mở link `/diagrams/{id}/view` ở cửa sổ ẩn danh và xác nhận xem được mà không cần đăng nhập (nội dung lấy từ bản mirror `public-diagrams`).
+
+### 3.5. Nạp thư viện template
+
+Firestore mới tinh chưa có template nào, nên mục **New from template** sẽ trống — đây là điều bình thường, không phải lỗi. Các tài liệu mẫu nằm sẵn trong [`seed/templates/`](seed/templates) và được nạp qua giao diện quản trị (đăng nhập bằng tài khoản administrator, vào **Admin → Templates → New template**, dán JSON vào panel **JSON Playground**, bấm **Save**). Xem [`seed/templates/README.md`](seed/templates/README.md) để biết chi tiết từng bước.
 
 ## Xử lý sự cố thường gặp
 
@@ -310,6 +367,9 @@ Nếu bỏ qua bước này, đăng nhập Google trên bản deploy sẽ báo l
 | `auth/unauthorized-domain` khi đăng nhập Google | Chưa thêm domain vào **Authentication → Authorized domains** (bước 3.3). |
 | `Missing or insufficient permissions` khi lưu/đọc sơ đồ | Chưa deploy Firestore rules — chạy `firebase deploy --only firestore` (bước 1.3). |
 | Đổi biến môi trường trên Vercel nhưng không thấy thay đổi | Biến `NEXT_PUBLIC_*` được nhúng lúc build — cần **Redeploy**. |
+| **New from template** trống trơn | Collection `templates` chưa có document nào — nạp một mẫu từ `seed/templates/` (bước 3.5). |
+| Link `/view` chia sẻ báo "Diagram not found" | Sơ đồ vẫn đang ở chế độ private. Bật **Public** trong editor rồi lưu — thao tác này mới ghi bản mirror `public-diagrams` mà trang xem đọc vào. |
+| Vào trang admin bị đá ra | Chưa có document `users-roles/{uid}` với `{ "roles": ["administrators"] }` (bước 1.4). |
 
 ## Tìm hiểu thêm
 
