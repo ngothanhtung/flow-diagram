@@ -142,6 +142,12 @@ export interface FlowNode {
   borderWidth?: number;
   borderStyle?: 'solid' | 'dashed' | 'dotted';
   opacity?: number;
+  /**
+   * How the body is painted: `'flat'` is the plain `backgroundColor`,
+   * `'sheen'` lays a soft top-to-bottom gradient over it. Unset means
+   * `'sheen'`, so documents written before this field keep their look.
+   */
+  fill?: 'flat' | 'sheen';
   shadow?: 'none' | 'soft' | 'glow';
   /** Explicit null hides the icon; undefined uses the type default. */
   icon?: NodeIcon | null;

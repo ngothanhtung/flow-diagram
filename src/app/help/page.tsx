@@ -110,6 +110,10 @@ export default function HelpPage() {
             rotation, connection sides (which side edges enter and leave), and execution order. It also has <strong>Duplicate</strong> and <strong>Delete</strong> buttons.
           </li>
           <li>
+            <strong>Fill:</strong> <strong>Flat colour</strong> paints the background as one solid tone; <strong>Gradient sheen</strong> lays a soft top-to-bottom sheen over it. New blocks and
+            frames start flat. The same choice is on the group frame&apos;s wash.
+          </li>
+          <li>
             <strong>Block effect:</strong> blocks, frames and text all start completely static — no glow, no movement. The <strong>Effect</strong> picker works exactly like the one for
             connectors: open it and choose from <em>motion</em> effects, where the block itself moves (float, breathe, bounce, wobble, shake, blink), or <em>decoration</em> effects, where
             something extra is painted around it (glow, pulse, ripple, trace, sheen). A live preview shows the choice before you apply it, and <strong>Speed</strong>, <strong>Intensity</strong>{' '}

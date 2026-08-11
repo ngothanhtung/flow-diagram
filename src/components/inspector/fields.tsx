@@ -4,7 +4,7 @@
 // group). Anything used by more than one panel lives here, so a panel
 // file contains only what makes that node kind different.
 
-import { AlignCenter, AlignLeft, AlignRight, Copy, RotateCcw, Trash2, Ungroup, type LucideIcon } from 'lucide-react';
+import { AlignCenter, AlignLeft, AlignRight, Blend, Copy, RotateCcw, Square, Trash2, Ungroup, type LucideIcon } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -295,6 +295,24 @@ export function ColorPresetGrid({
   );
 }
 
+/**
+ * Flat vs sheen body fill. Only offered on the panels whose node paints a
+ * body — a text object has none, so it never sees this.
+ */
+export function FillField({ node, onUpdate, fill }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; fill: 'flat' | 'sheen' }) {
+  return (
+    <SegmentedButtons
+      label='Fill'
+      value={fill}
+      options={[
+        { value: 'flat', label: 'Flat colour', Icon: Square },
+        { value: 'sheen', label: 'Gradient sheen', Icon: Blend },
+      ]}
+      onChange={(nextFill) => onUpdate(node.id, { fill: nextFill })}
+    />
+  );
+}
+
 /** Horizontal alignment of the node's own text. */
 export function TextAlignField({ node, onUpdate, textAlign }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; textAlign: 'left' | 'center' | 'right' }) {
   return (
@@ -358,6 +376,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
               borderWidth: undefined,
               borderStyle: undefined,
               opacity: undefined,
+              fill: undefined,
               shadow: undefined,
               icon: undefined,
               iconSize: undefined,

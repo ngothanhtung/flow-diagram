@@ -9,6 +9,7 @@ import {
   ActionsSection,
   ColorField,
   ColorPresetGrid,
+  FillField,
   GeometryFields,
   GroupMembershipSection,
   InspectorShell,
@@ -87,6 +88,7 @@ export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />
         <SelectField label='Border style' value={style.borderStyle} options={['solid', 'dashed', 'dotted']} onChange={(borderStyle) => onUpdate(node.id, { borderStyle })} />
       </div>
+      <FillField node={node} onUpdate={onUpdate} fill={style.fill} />
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
 
       <NodeEffectField node={node} onUpdate={onUpdate} foreground={style.foreground} />

@@ -109,6 +109,8 @@ Shared knobs: `glowIntensity` (0–3, **unset = no halo**; `onConnect` stamps `1
 
 Shared knobs (`effectSpeed`, `effectIntensity`, `effectColor`) mean the same thing for every effect. Intensity reaches the motion keyframes through the `--node-fx-intensity` custom property, so one keyframe set covers the whole range instead of one per level; `sheen` likewise gets its sweep distance from `--node-fx-sweep`, because a percentage translate would be relative to the band rather than the card.
 
+**Body fill is a choice.** `fill: 'flat'` paints just `backgroundColor`; `'sheen'` adds the top-to-bottom gradient overlay. `resolveNodeStyle` defaults an unset field to `'sheen'` so every saved document renders exactly as before, while every creation path in the store stamps `'flat'` — the same "old docs unchanged, new work plain" split used for `shadow`. Blocks and group frames both honour it; a text object paints no body, so `TextInspector` doesn't offer it.
+
 **A node has no implicit decoration.** `resolveNodeStyle`'s `shadow` still drives the drop-shadow, but `shadow: 'none'` now really means none — it used to leave a 12%-opacity neon underlay on every node — and every creation path in the store stamps `shadow: 'none'`. Anything glowing on a node is something the user asked for.
 
 ### Node styling

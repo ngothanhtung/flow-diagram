@@ -176,7 +176,7 @@ export function FlowNodeCard({
   const Icon = useResolvedIcon(style.icon);
   const logoSlug = style.icon?.startsWith('logo:') ? style.icon.slice('logo:'.length) : null;
   const hasIcon = Boolean(Icon || logoSlug);
-  const { shapeSpec, foreground, background, borderColor, width, height, rotation, borderWidth, borderStyle, opacity, shadow, iconSize, iconPosition, blockAlign, fontSize, fontFamily, fontWeight, textAlign, portSize } = style;
+  const { shapeSpec, foreground, background, borderColor, width, height, rotation, borderWidth, borderStyle, opacity, fill, shadow, iconSize, iconPosition, blockAlign, fontSize, fontFamily, fontWeight, textAlign, portSize } = style;
   const clusterAlign = blockAlign === 'left' ? 'flex-start' : blockAlign === 'right' ? 'flex-end' : 'center';
   // Horizontal padding runs wider than vertical so text never crowds the
   // rounded corners or the side ports.
@@ -490,6 +490,7 @@ export function FlowNodeCard({
               </clipPath>
             </defs>
             <path d={outline.d} transform={outline.transform} fill={background} fillOpacity={0.4} fillRule='evenodd' stroke='none' pointerEvents='none' />
+            {fill === 'sheen' && <path d={outline.d} transform={outline.transform} fill={`url(#${gradientId})`} fillRule='evenodd' stroke='none' pointerEvents='none' />}
             <g clipPath={`url(#${clipId})`}>
               <rect x={-width / 2} y={-height / 2} width={width} height={GROUP_HEADER_HEIGHT} fill={borderColor} fillOpacity={0.18} pointerEvents='all' />
               <line x1={-width / 2} y1={-height / 2 + GROUP_HEADER_HEIGHT} x2={width / 2} y2={-height / 2 + GROUP_HEADER_HEIGHT} stroke={borderColor} strokeOpacity={0.35} strokeWidth={1} pointerEvents='none' />
@@ -606,7 +607,10 @@ export function FlowNodeCard({
           pointerEvents='all'
         />
 
-        <path d={outline.d} transform={outline.transform} fill={`url(#${gradientId})`} fillRule='evenodd' pointerEvents='none' />
+        {/* The sheen is a soft top-to-bottom gradient over the fill.
+            `fill: 'flat'` skips it entirely, leaving the plain
+            backgroundColor — which is what new nodes are created with. */}
+        {fill === 'sheen' && <path d={outline.d} transform={outline.transform} fill={`url(#${gradientId})`} fillRule='evenodd' pointerEvents='none' />}
 
         {executionState === 'active' && (
           <g pointerEvents='none'>

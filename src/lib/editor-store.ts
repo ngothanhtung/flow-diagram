@@ -463,6 +463,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
             borderColor: paint.color,
             borderWidth: 1.5,
             shadow: 'none',
+            // Plain fill by default; the sheen gradient is opt-in.
+            fill: 'flat',
           },
         ],
         edges: doc.edges,
@@ -508,6 +510,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
               borderColor: paint.color,
               borderWidth: 1.5,
               shadow: 'none',
+              // Plain fill by default; the sheen gradient is opt-in.
+              fill: 'flat',
               table: { columns },
             },
           ],
@@ -547,6 +551,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
               borderColor: paint.color,
               borderWidth: 1.5,
               shadow: 'none',
+              // Plain fill by default; the sheen gradient is opt-in.
+              fill: 'flat',
             },
           ],
         },
@@ -594,6 +600,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
               borderWidth: 1.5,
               borderStyle: 'dashed',
               shadow: 'none',
+              // Plain fill by default; the sheen gradient is opt-in.
+              fill: 'flat',
             },
           ],
         },
@@ -667,6 +675,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
             borderColor: paint.color,
             borderWidth: 1.5,
             shadow: 'none',
+            // Plain fill by default; the sheen gradient is opt-in.
+            fill: 'flat',
           },
         ],
         edges: doc.edges,

@@ -150,6 +150,11 @@ export default function GuidePage() {
               consistently.
             </p>
             <p>
+              <Pill>fill</Pill> chooses how the body is painted: <Pill>&quot;flat&quot;</Pill> is the plain <Pill>backgroundColor</Pill>, <Pill>&quot;sheen&quot;</Pill> lays a soft top-to-bottom
+              gradient over it. Omitting the field means <Pill>&quot;sheen&quot;</Pill>, so documents written before it existed are unchanged; the editor stamps <Pill>&quot;flat&quot;</Pill> on
+              newly drawn blocks. Pick one and stay with it across a diagram — mixing the two reads as an accident.
+            </p>
+            <p>
               <strong className='text-zinc-300'>Effects are opt-in.</strong> Omit <Pill>effect</Pill> (or set <Pill>&quot;none&quot;</Pill>) and the node is completely static — no motion, no halo,
               nothing painted. That is the default for every kind of node, exactly as <Pill>effect: &quot;none&quot;</Pill> is for a line. Pick one when the node genuinely needs attention, not as
               decoration on every block.

@@ -14,6 +14,7 @@ import {
   ActionsSection,
   ColorField,
   ColorPresetGrid,
+  FillField,
   GeometryFields,
   GroupMembershipSection,
   InspectorShell,
@@ -120,6 +121,7 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         <SelectField label='Border style' value={style.borderStyle} options={['solid', 'dashed', 'dotted']} onChange={(borderStyle) => onUpdate(node.id, { borderStyle })} />
         <SelectField label='Shadow' value={style.shadow} options={['none', 'soft', 'glow']} onChange={(shadow) => onUpdate(node.id, { shadow })} />
       </div>
+      <FillField node={node} onUpdate={onUpdate} fill={style.fill} />
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
 
       {/* --- Icon / Logo ------------------------------------------ */}

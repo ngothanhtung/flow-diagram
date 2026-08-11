@@ -791,6 +791,7 @@ export interface ResolvedNodeStyle {
   borderWidth: number;
   borderStyle: 'solid' | 'dashed' | 'dotted';
   opacity: number;
+  fill: 'flat' | 'sheen';
   shadow: 'none' | 'soft' | 'glow';
   iconSize: number;
   iconPosition: 'top' | 'left' | 'right';
@@ -835,6 +836,9 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     borderWidth: Math.max(0, Math.min(8, node.borderWidth ?? 1.5)),
     borderStyle: node.borderStyle ?? 'solid',
     opacity: Math.max(0.2, Math.min(1, node.opacity ?? 1)),
+    // Unset = the gradient, so every saved diagram renders exactly as it
+    // did before the field existed. New nodes are stamped 'flat'.
+    fill: node.fill ?? 'sheen',
     shadow: node.shadow ?? 'none',
     iconSize: Math.max(12, Math.min(node.type === 'logo' ? 256 : 48, node.iconSize ?? (node.type === 'logo' ? 64 : 20))),
     iconPosition: node.iconPosition ?? 'top',

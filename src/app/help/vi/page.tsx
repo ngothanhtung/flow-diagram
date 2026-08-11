@@ -111,6 +111,10 @@ export default function HelpViPage() {
             chữ, xoay, cạnh kết nối (đường nối vào/ra ở cạnh nào), và thứ tự thực thi. Kèm hai nút <strong>Duplicate</strong> (nhân bản) và <strong>Delete</strong> (xoá).
           </li>
           <li>
+            <strong>Kiểu tô (Fill):</strong> <strong>Flat colour</strong> tô nền một màu phẳng đều; <strong>Gradient sheen</strong> phủ thêm một lớp chuyển sắc mờ từ trên xuống. Khối và khung
+            nhóm mới tạo mặc định là màu phẳng. Khung nhóm cũng có đúng lựa chọn này cho lớp nền của nó.
+          </li>
+          <li>
             <strong>Hiệu ứng khối:</strong> khối, khung nhóm và chữ đều bắt đầu ở trạng thái hoàn toàn tĩnh — không phát sáng, không chuyển động. Bộ chọn <strong>Effect</strong> hoạt động y hệt
             bộ chọn hiệu ứng cho đường nối: mở ra rồi chọn giữa nhóm <em>motion</em> (chính khối chuyển động: float, breathe, bounce, wobble, shake, blink) và nhóm <em>decoration</em> (vẽ thêm
             một lớp quanh khối: glow, pulse, ripple, trace, sheen). Có ô xem trước trực tiếp trước khi bấm Apply, cùng ba thông số <strong>Speed</strong>, <strong>Intensity</strong> và{' '}
