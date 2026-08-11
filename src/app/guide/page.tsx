@@ -59,6 +59,7 @@ const TOC = [
   ['edges', 'Edge rules'],
   ['execution', 'Execution order'],
   ['tables', 'Database tables'],
+  ['groups', 'Groups (nested blocks)'],
   ['style', 'Visual conventions'],
   ['example', 'Worked example'],
   ['checklist', 'Checklist'],
@@ -230,7 +231,40 @@ export default function GuidePage() {
   "routing": "orthogonal", "startMarker": "crow-one", "endMarker": "crow-many" }`}</Code>
           </Section>
 
-          <Section id='style' title='6. Visual conventions (so a diagram reads as one system, not a shape showcase)'>
+          <Section id='groups' title='6. Groups (blocks nested inside a block)'>
+            <p>
+              A container is a node with <Pill>type: &quot;group&quot;</Pill>; a block joins it by pointing at it with <Pill>parentId</Pill>. Membership is stored on the child only — a frame never
+              lists what it holds — so there is one field to keep consistent, and frames may be nested to any depth.
+            </p>
+            <Code>{`{ "id": "svc", "type": "group", "title": "Ingest subsystem",
+  "position": { "x": 320, "y": 250 }, "width": 460, "height": 320,
+  "shape": "rounded", "icon": null, "borderStyle": "dashed" }
+
+{ "id": "queue", "type": "process", "title": "Queue",
+  "position": { "x": 420, "y": 250 }, "parentId": "svc" }`}</Code>
+            <p>
+              <strong className='text-zinc-300'>Positions stay absolute.</strong> A member&apos;s <Pill>position</Pill> is a canvas coordinate, never an offset from its frame — moving a frame
+              rewrites every descendant&apos;s position by the same delta. So when you author by hand, place a frame so its box actually encloses the members you gave it; nothing recomputes that
+              for you.
+            </p>
+            <Table
+              head={['behaviour', 'rule']}
+              rows={[
+                ['Membership', 'A drag or resize ends by testing the node’s centre against every frame; the deepest frame containing it wins, and a centre outside every frame clears parentId.'],
+                ['Moving', 'Moving a frame moves all of its descendants. Moving a member moves only itself, and may take it out of the frame.'],
+                ['Deleting', 'Deleting a frame deletes what it holds. Ungroup first to keep the members.'],
+                ['Replay', 'Frames are skipped by the play bar — a container is not a step — so they stay visible for the whole run and need no sortOrder.'],
+                ['Ports', 'Frames have none: lines connect blocks, not containers.'],
+                ['Size', 'Up to 4000 × 4000, versus 320 × 240 for an ordinary node.'],
+              ]}
+            />
+            <p>
+              Never point <Pill>parentId</Pill> at a node that is not a frame, and never build a cycle (a frame inside its own descendant). The editor refuses both; a hand-written document that
+              breaks them will still render, because every tree walk is bounded, but the nesting will not mean what you intended.
+            </p>
+          </Section>
+
+          <Section id='style' title='7. Visual conventions (so a diagram reads as one system, not a shape showcase)'>
             <p>
               Templates in the shared Firestore library should keep almost everything consistent except position, title, description, and theme color. Follow the same discipline:
             </p>
@@ -258,7 +292,7 @@ export default function GuidePage() {
             </ul>
           </Section>
 
-          <Section id='example' title='7. Worked example'>
+          <Section id='example' title='8. Worked example'>
             <p>A minimal three-node flow, following every rule above:</p>
             <Code>{`{
   "nodes": [
@@ -288,7 +322,7 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='checklist' title='8. Checklist before shipping a diagram'>
+          <Section id='checklist' title='9. Checklist before shipping a diagram'>
             <ul className='list-disc space-y-1.5 pl-5'>
               <li>Every node id is unique; every edge&apos;s <Pill>from</Pill>/<Pill>to</Pill> matches a real node id.</li>
               <li>One shape family, one small color palette, mapped to meaning (layer/domain/status) — not decoration.</li>

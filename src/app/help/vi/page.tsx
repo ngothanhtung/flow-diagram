@@ -13,6 +13,7 @@ const TOC = [
   ['canvas', 'Thao tác trên canvas'],
   ['inspect', 'Chỉnh sửa khối & đường nối'],
   ['database', 'Sơ đồ cơ sở dữ liệu'],
+  ['groups', 'Nhóm các khối'],
   ['run', 'Chạy mô phỏng'],
   ['save', 'Lưu công việc'],
   ['share', 'Chia sẻ sơ đồ'],
@@ -138,7 +139,29 @@ export default function HelpViPage() {
         </p>
       </Section>
 
-      <Section id='run' title='6. Chạy mô phỏng'>
+      <Section id='groups' title='6. Nhóm khối (khối lồng trong khối)'>
+        <p>
+          Nút <strong>Group</strong> ở ngoài cùng bên phải thanh dock vẽ ra một <em>khung nhóm</em> — một khối chứa các khối khác bên trong, dùng cho một hệ thống con, một swimlane hay một
+          phân vùng nghiệp vụ. Kéo thả để vẽ khung ở bất kỳ đâu; nếu bạn vẽ bao quanh các khối có sẵn thì chúng vào nhóm ngay lập tức.
+        </p>
+        <Table
+          head={['Bạn muốn', 'Cách làm']}
+          rows={[
+            ['Cho một khối vào nhóm', 'Kéo khối thả vào trong khung. Khối thuộc về khung nào là tuỳ tâm điểm của nó rơi vào khung đó.'],
+            ['Đưa một khối ra khỏi nhóm', 'Kéo khối ra ngoài khung rồi thả ở vùng trống. Hoặc bấm Remove from group trong Inspector.'],
+            ['Di chuyển cả hệ thống con', 'Kéo khung bằng thanh tiêu đề hoặc đường viền: mọi thứ bên trong đi theo, giữ nguyên khoảng cách tương đối.'],
+            ['Đổi kích thước khung', 'Chọn khung rồi kéo một trong 4 góc, hoặc bấm Fit to contents trong Inspector để khung tự ôm sát nội dung.'],
+            ['Lồng nhiều tầng', 'Thả một khung vào trong khung khác. Lồng bao nhiêu tầng cũng được; một khung không bao giờ chui được vào chính nó.'],
+            ['Rã nhóm', 'Ungroup trong Inspector thả tự do mọi khối và giữ lại khung rỗng. Còn xoá khung thì xoá luôn những gì bên trong.'],
+          ]}
+        />
+        <p>
+          Khung nhóm là vật chứa chứ không phải một bước: thanh Play bỏ qua nó, khung hiển thị suốt quá trình chạy, và khung không có cổng nối — hãy nối đường giữa các khối. Phần ruột của
+          khung cũng cho click xuyên qua, nên khối và đường bên trong vẫn chọn được bình thường; khi muốn chọn chính khung thì bấm vào thanh tiêu đề hoặc đường viền nét đứt.
+        </p>
+      </Section>
+
+      <Section id='run' title='7. Chạy mô phỏng'>
         <p>
           Mọi sơ đồ đều có thể <em>chạy</em>: các khối lần lượt sáng lên và các đường nối tự vẽ theo thứ tự thực thi — rất hợp để thuyết trình một quy trình theo từng bước. Cụm điều khiển
           phát nằm trên thanh header của trình soạn thảo:
@@ -160,7 +183,7 @@ export default function HelpViPage() {
         </p>
       </Section>
 
-      <Section id='save' title='7. Lưu công việc'>
+      <Section id='save' title='8. Lưu công việc'>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
             <strong>Save</strong> (nút trên header) ghi sơ đồ lên cloud. Chấm vàng trên nút nghĩa là bạn còn thay đổi chưa lưu.
@@ -178,7 +201,7 @@ export default function HelpViPage() {
         </ul>
       </Section>
 
-      <Section id='share' title='8. Chia sẻ sơ đồ'>
+      <Section id='share' title='9. Chia sẻ sơ đồ'>
         <p>Sơ đồ mặc định ở chế độ <strong>riêng tư (Private)</strong> — chỉ bạn (và quản trị viên) mở được. Để chia sẻ:</p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
@@ -192,7 +215,7 @@ export default function HelpViPage() {
         </ul>
       </Section>
 
-      <Section id='json' title='9. Xuất file & công cụ JSON'>
+      <Section id='json' title='10. Xuất file & công cụ JSON'>
         <p>
           Bên dưới, mỗi sơ đồ là một tài liệu JSON duy nhất. <strong>File → Export to JSON</strong> tải nó về dưới dạng file <Pill>.json</Pill> — tiện để sao lưu, đưa vào version control,
           hoặc sửa tay.
@@ -203,7 +226,7 @@ export default function HelpViPage() {
         </p>
       </Section>
 
-      <Section id='reference' title='10. Tra cứu nhanh'>
+      <Section id='reference' title='11. Tra cứu nhanh'>
         <Table
           head={['Thao tác', 'Cách làm']}
           rows={[

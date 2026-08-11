@@ -94,6 +94,21 @@ export function tableCardHeight(columnCount: number) {
   return Math.min(TABLE_MAX_HEIGHT, TABLE_HEADER_HEIGHT + Math.max(1, columnCount) * TABLE_ROW_HEIGHT + TABLE_BODY_PADDING);
 }
 
+// --- Group frames ---------------------------------------------------------
+// A group is a container other blocks are dropped into, so its ceiling is
+// the whole canvas rather than a card's, and its title sits in a bar the
+// user can grab (the body itself stays click-through — see FlowNodeCard).
+
+/** Height of a group frame's title bar, in px. */
+export const GROUP_HEADER_HEIGHT = 30;
+/** Breathing room a frame keeps around its members when fitted. */
+export const GROUP_PADDING = 28;
+export const GROUP_DEFAULT_WIDTH = 360;
+export const GROUP_DEFAULT_HEIGHT = 260;
+export const GROUP_MIN_SIZE = 120;
+export const GROUP_MAX_WIDTH = 4000;
+export const GROUP_MAX_HEIGHT = 4000;
+
 const R = NODE_BOUNDING_RADIUS;
 // Slight inset so the rounded square doesn't visually clip the inner
 // padding of the foreignObject.
@@ -700,6 +715,7 @@ const DEFAULT_BY_TYPE: Record<NodeType, { shape: NodeShape; color: NodeColor; ic
   decision: { shape: 'hexagon', color: 'amber', icon: 'play' },
   output: { shape: 'circle', color: 'emerald', icon: 'bell' },
   logo: { shape: 'rounded', color: 'blue', icon: null },
+  group: { shape: 'rounded', color: 'violet', icon: null },
 };
 
 // Type-level icons that the picker can fall back to when a node carries
@@ -711,6 +727,7 @@ const TYPE_DEFAULT_ICON: Record<NodeType, LucideIcon> = {
   decision: GitBranch,
   output: CheckCircle2,
   logo: Image,
+  group: Boxes,
 };
 
 // --- Resolver -------------------------------------------------------------
@@ -764,11 +781,12 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     foreground,
     background,
     borderColor,
-    // Database tables grow with their column list, so they need a much
-    // taller ceiling than a labelled block — a 12-column table is ~440px.
-    // Regular nodes keep the original limits so nothing else can drift.
-    width: Math.max(72, Math.min(node.table ? TABLE_MAX_WIDTH : 320, node.width ?? 112)),
-    height: Math.max(72, Math.min(node.table ? TABLE_MAX_HEIGHT : 240, node.height ?? 112)),
+    // Three ceilings, widest first: a group frame has to hold other
+    // blocks, a database table grows with its column list (a 12-column
+    // table is ~440px), and every other node keeps the original limits
+    // so nothing else can drift.
+    width: Math.max(node.type === 'group' ? GROUP_MIN_SIZE : 72, Math.min(node.type === 'group' ? GROUP_MAX_WIDTH : node.table ? TABLE_MAX_WIDTH : 320, node.width ?? (node.type === 'group' ? GROUP_DEFAULT_WIDTH : 112))),
+    height: Math.max(node.type === 'group' ? GROUP_MIN_SIZE : 72, Math.min(node.type === 'group' ? GROUP_MAX_HEIGHT : node.table ? TABLE_MAX_HEIGHT : 240, node.height ?? (node.type === 'group' ? GROUP_DEFAULT_HEIGHT : 112))),
     rotation: node.rotation ?? 0,
     borderWidth: Math.max(0, Math.min(8, node.borderWidth ?? 1.5)),
     borderStyle: node.borderStyle ?? 'solid',

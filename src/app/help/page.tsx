@@ -13,6 +13,7 @@ const TOC = [
   ['canvas', 'Working on the canvas'],
   ['inspect', 'Editing nodes & edges'],
   ['database', 'Database diagrams'],
+  ['groups', 'Grouping blocks'],
   ['run', 'Running the flow'],
   ['save', 'Saving your work'],
   ['share', 'Sharing a diagram'],
@@ -137,7 +138,29 @@ export default function HelpPage() {
         </p>
       </Section>
 
-      <Section id='run' title='6. Running the flow'>
+      <Section id='groups' title='6. Grouping blocks (blocks inside a block)'>
+        <p>
+          The <strong>Group</strong> button at the far right of the shape dock draws a <em>frame</em> — a container other blocks live inside, for a subsystem, a swimlane, a bounded context.
+          Click-drag a frame anywhere; if you draw it around blocks that are already there, they join it immediately.
+        </p>
+        <Table
+          head={['To do this', 'Do that']}
+          rows={[
+            ['Put a block in a frame', 'Drag it so it drops inside the frame. It joins whichever frame its centre lands in.'],
+            ['Take a block out', 'Drag it out of the frame — dropping it on empty canvas releases it. Or use Remove from group in its inspector.'],
+            ['Move a whole subsystem', 'Drag the frame by its title bar or its border: everything inside travels with it, at the same relative spacing.'],
+            ['Resize a frame', 'Select it and drag a corner handle, or use Fit to contents in the inspector to shrink-wrap it around what it holds.'],
+            ['Nest frames', 'Drop a frame into another frame. Nesting goes as deep as you like; a frame can never end up inside itself.'],
+            ['Break a group up', 'Ungroup in the inspector releases every block but keeps the empty frame. Deleting the frame deletes what is inside it.'],
+          ]}
+        />
+        <p>
+          A frame is a container, not a step: it is skipped by the play bar and stays visible for the whole run, and it carries no connection ports — draw your lines between blocks. Its middle
+          is click-through too, so blocks and lines inside a frame stay selectable; grab the title bar or the dashed border when you want the frame itself.
+        </p>
+      </Section>
+
+      <Section id='run' title='7. Running the flow'>
         <p>
           Every diagram can be <em>played</em>: blocks light up and connectors draw themselves in execution order, which is great for walking an audience through a process step by step. The
           playback cluster sits in the editor header:
@@ -159,7 +182,7 @@ export default function HelpPage() {
         </p>
       </Section>
 
-      <Section id='save' title='7. Saving your work'>
+      <Section id='save' title='8. Saving your work'>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
             <strong>Save</strong> (header button) writes the diagram to the cloud. An amber dot on the button means you have unsaved changes.
@@ -177,7 +200,7 @@ export default function HelpPage() {
         </ul>
       </Section>
 
-      <Section id='share' title='8. Sharing a diagram'>
+      <Section id='share' title='9. Sharing a diagram'>
         <p>Diagrams are <strong>private</strong> by default — only you (and administrators) can open them. To share one:</p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
@@ -191,7 +214,7 @@ export default function HelpPage() {
         </ul>
       </Section>
 
-      <Section id='json' title='9. Export & JSON tools'>
+      <Section id='json' title='10. Export & JSON tools'>
         <p>
           A diagram is a single JSON document under the hood. <strong>File → Export to JSON</strong> downloads it as a <Pill>.json</Pill> file — useful for backups, version control, or
           hand-editing.
@@ -202,7 +225,7 @@ export default function HelpPage() {
         </p>
       </Section>
 
-      <Section id='reference' title='10. Quick reference'>
+      <Section id='reference' title='11. Quick reference'>
         <Table
           head={['Action', 'How']}
           rows={[

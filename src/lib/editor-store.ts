@@ -4,7 +4,8 @@ import { create } from 'zustand';
 import { loadEditorSession } from './editor-session';
 import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
-import { TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, tableCardHeight } from './node-style';
+import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, tableCardHeight } from './node-style';
+import { childrenOf, descendantIds, findDropTarget, groupGeometryFor } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
 
 export type RunPhase = 'node' | 'line';
@@ -24,6 +25,7 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
   decision: { color: '#fde68a', backgroundColor: '#422006' },
   output: { color: '#a7f3d0', backgroundColor: '#052e2b' },
   logo: { color: '#f4f4f5', backgroundColor: '#27272a' },
+  group: { color: '#c4b5fd', backgroundColor: '#1e1b4b' },
 };
 
 /**
@@ -33,6 +35,10 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
  */
 export function computeOrderedGroups(nodes: FlowNode[]): FlowNode[][] {
   const resolved = nodes
+    // Group frames are containers, not steps: a frame flashing as its own
+    // step would interrupt the run of the blocks inside it. They stay
+    // fully visible for the whole replay instead.
+    .filter((node) => node.type !== 'group')
     .map((node, index) => ({
       node,
       order: node.sortOrder && node.sortOrder > 0 ? node.sortOrder : index + 1,
@@ -111,6 +117,12 @@ interface EditorState {
 
   // Document mutations
   onNodeMove: (id: string, position: { x: number; y: number }) => void;
+  /** Drag finished — join, leave or stay in whatever frame it landed on. */
+  onNodeDrop: (id: string) => void;
+  /** Release every member of a group frame, keeping the frame. */
+  ungroupNode: (id: string) => void;
+  /** Resize a frame so it wraps its members with even padding. */
+  fitGroupToContents: (id: string) => void;
   onNodeUpdate: (id: string, patch: Partial<Omit<FlowNode, 'id'>>) => void;
   onNodeDuplicate: (id: string) => string | null;
   onNodeDelete: (id: string) => void;
@@ -248,13 +260,68 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   toggleInfo: () => set((state) => ({ infoOpen: !state.infoOpen })),
   setSavingDiagram: (saving) => set({ savingDiagram: saving }),
 
+  // Moving a group carries its members: positions stay absolute, so the
+  // whole subtree shifts by the same delta and nothing else in the app
+  // has to know the nodes were related.
   onNodeMove: (id, position) =>
+    set((state) => {
+      const moved = state.doc.nodes.find((node) => node.id === id);
+      if (!moved) return {};
+      const dx = position.x - moved.position.x;
+      const dy = position.y - moved.position.y;
+      const followers = moved.type === 'group' && (dx !== 0 || dy !== 0) ? descendantIds(state.doc.nodes, id) : null;
+      return {
+        doc: {
+          ...state.doc,
+          nodes: state.doc.nodes.map((node) => {
+            if (node.id === id) return { ...node, position };
+            if (followers?.has(node.id)) return { ...node, position: { x: node.position.x + dx, y: node.position.y + dy } };
+            return node;
+          }),
+        },
+      };
+    }),
+
+  // Called when a drag ends: whichever frame the node was dropped into
+  // becomes its parent, and a drop outside every frame releases it.
+  onNodeDrop: (id) =>
+    set((state) => {
+      const dropped = state.doc.nodes.find((node) => node.id === id);
+      if (!dropped) return {};
+      const target = findDropTarget(state.doc.nodes, id, dropped.position);
+      const nextParentId = target?.id;
+      if ((dropped.parentId ?? undefined) === nextParentId) return {};
+      return {
+        doc: {
+          ...state.doc,
+          nodes: state.doc.nodes.map((node) => (node.id === id ? { ...node, parentId: nextParentId } : node)),
+        },
+      };
+    }),
+
+  // Releases every member of a frame without touching the frame itself,
+  // so "ungroup" is undoable by simply dragging them back in.
+  ungroupNode: (id) =>
     set((state) => ({
       doc: {
         ...state.doc,
-        nodes: state.doc.nodes.map((node) => (node.id === id ? { ...node, position } : node)),
+        nodes: state.doc.nodes.map((node) => (node.parentId === id ? { ...node, parentId: undefined } : node)),
       },
     })),
+
+  // Shrinks or grows a frame to wrap its direct members. A frame with no
+  // members keeps whatever size the user drew.
+  fitGroupToContents: (id) =>
+    set((state) => {
+      const geometry = groupGeometryFor(childrenOf(state.doc.nodes, id));
+      if (!geometry) return {};
+      return {
+        doc: {
+          ...state.doc,
+          nodes: state.doc.nodes.map((node) => (node.id === id ? { ...node, ...geometry } : node)),
+        },
+      };
+    }),
 
   onNodeUpdate: (id, patch) =>
     set((state) => ({
@@ -264,40 +331,65 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       },
     })),
 
+  // Duplicating a group copies what it contains — a frame on its own
+  // would be an empty box, which is never what "duplicate" meant.
   onNodeDuplicate: (id) => {
     const { doc } = get();
     const source = doc.nodes.find((node) => node.id === id);
     if (!source) return null;
-    const duplicateId = `n${doc.nodes.length + 1}-${Date.now().toString(36)}`;
-    set({
-      doc: {
-        ...doc,
-        nodes: [
-          ...doc.nodes,
-          {
-            ...source,
-            id: duplicateId,
-            title: `${source.title} copy`,
-            sortOrder: Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1)) + 1,
-            position: {
-              x: source.position.x + 36,
-              y: source.position.y + 36,
-            },
-          },
-        ],
-      },
-    });
-    return duplicateId;
+    const stamp = Date.now().toString(36);
+    const members = source.type === 'group' ? descendantIds(doc.nodes, id) : new Set<string>();
+    const nextSortOrder = Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1));
+    // Ids are minted for the whole subtree first so the copies can point
+    // at each other rather than back at the originals.
+    const idMap = new Map<string, string>([[id, `n${doc.nodes.length + 1}-${stamp}`]]);
+    let offset = 1;
+    for (const memberId of members) idMap.set(memberId, `n${doc.nodes.length + 1 + offset++}-${stamp}`);
+
+    const copies = doc.nodes
+      .filter((node) => idMap.has(node.id))
+      .map((node, index) => ({
+        ...node,
+        id: idMap.get(node.id)!,
+        title: node.id === id ? `${node.title} copy` : node.title,
+        sortOrder: nextSortOrder + index + 1,
+        position: { x: node.position.x + 36, y: node.position.y + 36 },
+        // The root copy keeps the original's parent (it lands beside it,
+        // inside the same frame); members follow their copied frame.
+        parentId: node.id === id ? node.parentId : idMap.get(node.parentId ?? '') ?? node.parentId,
+      }));
+
+    // Lines wholly inside the duplicated group are copied too, so a
+    // duplicated subsystem keeps its internal wiring.
+    const copiedEdges = doc.edges
+      .filter((edge) => idMap.has(edge.from) && idMap.has(edge.to))
+      .map((edge, index) => ({
+        ...edge,
+        id: `e${doc.edges.length + 1 + index}-${Date.now()}`,
+        from: idMap.get(edge.from)!,
+        to: idMap.get(edge.to)!,
+      }));
+
+    set({ doc: { ...doc, nodes: [...doc.nodes, ...copies], edges: [...doc.edges, ...copiedEdges] } });
+    return idMap.get(id)!;
   },
 
+  // Deleting a frame deletes what it holds, matching how every other
+  // canvas tool treats a container. `Ungroup` first is the way to keep
+  // the members.
   onNodeDelete: (id) =>
-    set((state) => ({
-      doc: {
-        ...state.doc,
-        nodes: state.doc.nodes.filter((node) => node.id !== id),
-        edges: state.doc.edges.filter((edge) => edge.from !== id && edge.to !== id),
-      },
-    })),
+    set((state) => {
+      const target = state.doc.nodes.find((node) => node.id === id);
+      const doomed = new Set<string>([id]);
+      if (target?.type === 'group') for (const descendant of descendantIds(state.doc.nodes, id)) doomed.add(descendant);
+      return {
+        doc: {
+          ...state.doc,
+          nodes: state.doc.nodes.filter((node) => !doomed.has(node.id)),
+          edges: state.doc.edges.filter((edge) => !doomed.has(edge.from) && !doomed.has(edge.to)),
+        },
+      };
+    }),
 
   onConnect: (fromId, toId, fromSide, toSide) => {
     if (fromId === toId) return;
@@ -460,6 +552,53 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       });
       return id;
     }
+    // A group frame is drawn like a shape but is a container: no icon,
+    // no description, a dashed violet outline, and the drag rectangle is
+    // its real size (clamped to the frame ceiling, not the card one).
+    if (tool === 'group') {
+      const frameWidth = Math.max(GROUP_MIN_SIZE, Math.min(GROUP_MAX_WIDTH, width));
+      const frameHeight = Math.max(GROUP_MIN_SIZE, Math.min(GROUP_MAX_HEIGHT, height));
+      // Drawing a frame around existing blocks is the natural way to
+      // group them, so anything free-standing whose centre falls inside
+      // joins on creation. Blocks already in another frame keep it.
+      const enclosed = new Set(
+        doc.nodes
+          .filter(
+            (node) =>
+              node.parentId === undefined &&
+              Math.abs(node.position.x - position.x) <= frameWidth / 2 &&
+              Math.abs(node.position.y - position.y) <= frameHeight / 2,
+          )
+          .map((node) => node.id),
+      );
+      set({
+        doc: {
+          ...doc,
+          nodes: [
+            ...doc.nodes.map((node) => (enclosed.has(node.id) ? { ...node, parentId: id } : node)),
+            {
+              id,
+              type: 'group',
+              title: 'Group',
+              position,
+              sortOrder: Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1)) + 1,
+              shape: 'rounded',
+              width: frameWidth,
+              height: frameHeight,
+              fontSize: 13,
+              icon: null,
+              color: '#c4b5fd',
+              backgroundColor: '#1e1b4b',
+              borderColor: '#c4b5fd',
+              borderWidth: 1.5,
+              borderStyle: 'dashed',
+              shadow: 'none',
+            },
+          ],
+        },
+      });
+      return id;
+    }
     const shape = tool;
     // `position` is the centre of the new shape, matching the rest
     // of the editor's coordinate convention. Width/height are clamped
@@ -538,6 +677,8 @@ function defaultTitleFor(type: NodeType): string {
       return 'Output';
     case 'logo':
       return 'Logo';
+    case 'group':
+      return 'Group';
   }
 }
 

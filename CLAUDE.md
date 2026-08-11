@@ -112,11 +112,24 @@ Brand marks are ~15K static SVGs committed under `public/logos/<slug>.svg`, inde
 
 The `logo` node type (and the dock's matching `DrawTool` value) is a dedicated brand-mark block: no icon by default until one is picked, and a much larger icon ceiling than other nodes (`resolveNodeStyle` allows `iconSize` up to 256 with a default of 64, versus 48/20 elsewhere).
 
+### Groups (nested blocks)
+
+A container is a node with `type: 'group'`; a member points at it with `parentId`. Membership lives on the child only — a frame never lists its contents — so there is a single field to keep consistent. `src/lib/node-tree.ts` owns every tree operation (`descendantIds`, `sortByTreeDepth`, `findDropTarget`, `groupGeometryFor`).
+
+**Positions stay absolute.** A member's `position` is a canvas coordinate, never an offset from its frame; the store's `onNodeMove` applies the same delta to every descendant when a frame moves. That is what keeps edges, ports, SQL export and the viewer working without any knowledge of groups — don't switch to parent-relative coordinates.
+
+- **Membership** is decided on drop, not while dragging: `onNodeDrop(id)` (called from `EditorCanvas`'s `onNodeDragEnd`, and after a resize) finds the deepest frame containing the node's centre. `findDropTarget` skips the dragged node's own descendants, so a frame can't become its own ancestor. A drop outside every frame clears `parentId`.
+- **Paint order**: `FlowCanvas` renders `sortByTreeDepth(nodes)` instead of document order, so a frame always paints behind what it contains. The sort is stable, so same-depth nodes keep document order.
+- **A frame is not a card**: `FlowNodeCard` branches on `isGroup` and draws a translucent wash with `pointerEvents='none'`, a grabbable border (`pointerEvents='stroke'`) and a title bar. The body *must* stay click-through — edges paint before nodes, so a solid frame would make every line inside it unselectable. Frames also render **no ports**: they aren't flow steps, and a top port would sit exactly on the title bar the user drags.
+- **`computeOrderedGroups` filters frames out** of the replay — a container flashing as its own step would interrupt the run of the blocks inside it.
+- **Delete takes the contents with it**; `ungroupNode` releases members (one level) and keeps the frame; `fitGroupToContents` shrink-wraps a frame via `groupGeometryFor`. `onNodeDuplicate` copies a frame's whole subtree plus the edges wholly inside it.
+- **Size ceiling** is `GROUP_MAX_WIDTH`/`GROUP_MAX_HEIGHT` (4000). `resolveNodeStyle`, `FlowNodeCard`'s resize clamp (`sizeLimits`) and `NodeInspector`'s number fields all mirror the same three-way group/table/ordinary split — change one, change all three.
+
 ### Database tables (ERD)
 
 An ER diagram is not a separate document type: a table is just a `FlowNode` carrying `table?: TableSpec` (`{ columns: TableColumn[], schema?: string }`), so ERD and flow blocks mix on one canvas and inherit saving, sharing, templates, and line effects for free.
 
-- **Creating**: the dock's Table tool arms `activeShape = 'table'` (`DrawTool = NodeShape | 'table' | 'logo'`); `onShapeCreate` builds a `rounded` card with `starterColumns()` and a height from `tableCardHeight(columnCount)`, not from the drag — a new table is never born with rows clipped.
+- **Creating**: the dock's Table tool arms `activeShape = 'table'` (`DrawTool = NodeShape | 'table' | 'logo' | 'group'`); `onShapeCreate` builds a `rounded` card with `starterColumns()` and a height from `tableCardHeight(columnCount)`, not from the drag — a new table is never born with rows clipped.
 - **Rendering**: `TableCardBody.tsx` draws the header (title + schema) and one row per column. Flags are shown the sparse way round: `U`, `IX`, and `NULL` — nullable is the exception, so `NOT NULL` gets no badge.
 - **Clipping**: table content lives in a `<foreignObject>`, which is always a rectangle. `FlowNodeCard` clips it to the node's silhouette (`clipPath` from `outline.d`) **for table nodes only**, otherwise a `rounded` card shows square corners poking past its outline.
 - **Editing**: `TableColumnsEditor.tsx` (rendered by `NodeInspector`) writes straight through to the document, and every column write recomputes `height: tableCardHeight(next.length)`. It also offers "Convert to database table" on a node without `table`.

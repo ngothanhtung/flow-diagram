@@ -7,7 +7,7 @@ import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
 import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
-import { nodeOutline, resolveNodeStyle } from '@/lib/node-style';
+import { GROUP_HEADER_HEIGHT, GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, TABLE_MAX_HEIGHT, TABLE_MAX_WIDTH, nodeOutline, resolveNodeStyle } from '@/lib/node-style';
 import { TableCardBody } from './TableCardBody';
 import type { ViewTransform } from '@/lib/view-transform';
 import { NODE_BOUNDING_RADIUS } from './edge-geometry';
@@ -43,7 +43,9 @@ interface FlowNodeCardProps {
     },
   ) => void;
   onDragStart: (id: string) => void;
-  onDragEnd: () => void;
+  /** Drag finished. The id lets the canvas resolve what the node was
+   *  dropped on — that is how group membership is assigned. */
+  onDragEnd: (id: string) => void;
   onPortPointerDown: (nodeId: string, side: ConnectionSide, e: React.PointerEvent<SVGElement>) => void;
   onPortPointerUp: (nodeId: string, side: ConnectionSide, e: React.PointerEvent<SVGElement>) => void;
   registerSvgRef: (el: SVGGElement | null) => void;
@@ -55,6 +57,15 @@ const MIN_WIDTH = 72;
 const MAX_WIDTH = 320;
 const MIN_HEIGHT = 72;
 const MAX_HEIGHT = 240;
+
+/** Drag-resize ceiling, mirroring `resolveNodeStyle`'s clamps — otherwise
+ *  the handle would stop at a card's limit on a frame or a table that the
+ *  resolver is happy to render much larger. */
+function sizeLimits(node: FlowNode) {
+  if (node.type === 'group') return { maxWidth: GROUP_MAX_WIDTH, maxHeight: GROUP_MAX_HEIGHT };
+  if (node.table) return { maxWidth: TABLE_MAX_WIDTH, maxHeight: TABLE_MAX_HEIGHT };
+  return { maxWidth: MAX_WIDTH, maxHeight: MAX_HEIGHT };
+}
 
 type ResizeDirection = 'nw' | 'ne' | 'se' | 'sw';
 
@@ -172,6 +183,7 @@ export function FlowNodeCard({
   registerSvgRef,
 }: FlowNodeCardProps) {
   const style = resolveNodeStyle(node);
+  const isGroup = node.type === 'group';
   const Icon = useResolvedIcon(style.icon);
   const logoSlug = style.icon?.startsWith('logo:') ? style.icon.slice('logo:'.length) : null;
   const hasIcon = Boolean(Icon || logoSlug);
@@ -283,8 +295,9 @@ export function FlowNodeCard({
     if (resize.direction.includes('n')) top = Math.min(bottom - MIN_HEIGHT, top + dy);
     if (resize.direction.includes('s')) bottom = Math.max(top + MIN_HEIGHT, bottom + dy);
 
-    const nextWidth = Math.min(MAX_WIDTH, right - left);
-    const nextHeight = Math.min(MAX_HEIGHT, bottom - top);
+    const limits = sizeLimits(node);
+    const nextWidth = Math.min(limits.maxWidth, right - left);
+    const nextHeight = Math.min(limits.maxHeight, bottom - top);
     // Preserve the opposite edge when the maximum size is reached.
     if (resize.direction.includes('w')) left = right - nextWidth;
     if (resize.direction.includes('e')) right = left + nextWidth;
@@ -313,7 +326,9 @@ export function FlowNodeCard({
       /* harmless */
     }
     resizeRef.current = null;
-    handlersRef.current.onDragEnd();
+    // A resize moves the node's centre too, so it settles group
+    // membership on the same rule a drag does.
+    handlersRef.current.onDragEnd(node.id);
   };
 
   const handlePointerDown = (e: React.PointerEvent<SVGGElement>) => {
@@ -375,7 +390,7 @@ export function FlowNodeCard({
     if (!drag.moved) {
       onSelect(node.id);
     }
-    handlersRef.current.onDragEnd();
+    handlersRef.current.onDragEnd(node.id);
     dragRef.current = null;
   };
 
@@ -456,6 +471,51 @@ export function FlowNodeCard({
           </g>
         )}
 
+        {/* A group frame is a container, so it is deliberately NOT a card:
+          the body is a translucent wash that lets the blocks and lines
+          inside show through, and — crucially — it is click-through.
+          Edges paint before nodes, so a frame that swallowed pointer
+          events across its whole box would make every line inside it
+          unselectable. The border and the title bar are the grabbable
+          parts, which is also how the user drags the frame. */}
+        {isGroup ? (
+          <>
+            <defs>
+              <clipPath id={clipId}>
+                <path d={outline.d} transform={outline.transform} />
+              </clipPath>
+            </defs>
+            <path d={outline.d} transform={outline.transform} fill={background} fillOpacity={0.4} fillRule='evenodd' stroke='none' pointerEvents='none' />
+            <g clipPath={`url(#${clipId})`}>
+              <rect x={-width / 2} y={-height / 2} width={width} height={GROUP_HEADER_HEIGHT} fill={borderColor} fillOpacity={0.18} pointerEvents='all' />
+              <line x1={-width / 2} y1={-height / 2 + GROUP_HEADER_HEIGHT} x2={width / 2} y2={-height / 2 + GROUP_HEADER_HEIGHT} stroke={borderColor} strokeOpacity={0.35} strokeWidth={1} pointerEvents='none' />
+            </g>
+            <path
+              d={outline.d}
+              transform={outline.transform}
+              fill='none'
+              stroke={borderColor}
+              strokeWidth={borderWidth}
+              strokeDasharray={dashArray}
+              strokeLinejoin='round'
+              pointerEvents='stroke'
+            />
+            <foreignObject x={-width / 2} y={-height / 2} width={width} height={GROUP_HEADER_HEIGHT} pointerEvents='none'>
+              <div
+                className='flex h-full w-full select-none items-center truncate px-3'
+                style={{
+                  color: foreground,
+                  fontFamily: NODE_FONT_FAMILIES[fontFamily],
+                  fontSize: Math.min(fontSize, 14),
+                  fontWeight: FONT_WEIGHT[fontWeight],
+                }}
+              >
+                {node.title}
+              </div>
+            </foreignObject>
+          </>
+        ) : (
+          <>
         {/* Body — single <path> with per-shape `d`. The fill and stroke
           are set inline because the colour tokens are dynamic per
           node and Tailwind can't synthesize them at runtime. The
@@ -640,6 +700,8 @@ export function FlowNodeCard({
           </div>
           )}
         </foreignObject>
+          </>
+        )}
 
         {/* Four corner resize handles. Their radius is corrected
           for canvas zoom so the hit target stays usable on large charts. */}
@@ -666,8 +728,12 @@ export function FlowNodeCard({
 
         {/* Every node exposes a bidirectional port on all four sides.
           The selected source and target sides are stored on the edge.
-          Ports are editor-only — hidden entirely in read-only mode. */}
+          Ports are editor-only — hidden entirely in read-only mode.
+          A group frame has none: it is a container rather than a step in
+          the flow (it is skipped by the replay too), and its top port
+          would sit exactly on top of the title bar the user drags it by. */}
         {!readOnly &&
+          !isGroup &&
           CONNECTION_SIDES.map((side) => {
             const anchor = portAnchors[side];
             const canReceive = !!linkTargetFromId && linkTargetFromId !== node.id;

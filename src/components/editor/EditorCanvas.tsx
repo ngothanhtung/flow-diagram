@@ -28,7 +28,7 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
   const activeShape = useEditorStore((state) => state.activeShape);
   const infoOpen = useEditorStore((state) => state.infoOpen);
 
-  const { selectNode, selectEdge, setDraggingNodeId, setLinkingFromId, setActiveShape, toggleInfo, onNodeMove, onNodeUpdate, onConnect, onShapeCreate, onEdgeUpdate, onEdgeReconnect } = useEditorStore();
+  const { selectNode, selectEdge, setDraggingNodeId, setLinkingFromId, setActiveShape, toggleInfo, onNodeMove, onNodeDrop, onNodeUpdate, onConnect, onShapeCreate, onEdgeUpdate, onEdgeReconnect } = useEditorStore();
 
   return (
     <section className='relative h-full min-h-0 overflow-hidden bg-zinc-950'>
@@ -46,7 +46,11 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
         onNodeMove={onNodeMove}
         onNodeResize={onNodeUpdate}
         onNodeDragStart={(id) => setDraggingNodeId(id)}
-        onNodeDragEnd={() => setDraggingNodeId(null)}
+        onNodeDragEnd={(id) => {
+          setDraggingNodeId(null);
+          // Where it landed decides which group frame it belongs to.
+          onNodeDrop(id);
+        }}
         onConnect={onConnect}
         isDragging={draggingNodeId !== null}
         linkingFromId={linkingFromId}

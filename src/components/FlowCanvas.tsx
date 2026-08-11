@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPoint, NodeShape } from '@/lib/flowchart-types';
 import { screenToData } from '@/lib/coords';
 import { resolveNodeStyle, SHAPES } from '@/lib/node-style';
+import { sortByTreeDepth } from '@/lib/node-tree';
 import type { ViewTransform } from '@/lib/view-transform';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -63,7 +64,7 @@ interface FlowCanvasProps {
     },
   ) => void;
   onNodeDragStart: (id: string) => void;
-  onNodeDragEnd: () => void;
+  onNodeDragEnd: (id: string) => void;
   onConnect: (fromId: string, toId: string, fromSide?: ConnectionSide, toSide?: ConnectionSide) => void;
   /** True when any node is currently being moved. Used to pause the edge animation. */
   isDragging: boolean;
@@ -442,6 +443,11 @@ export function FlowCanvas({
     },
     [nodesById, onNodeResize, snapEnabled, snapPoint],
   );
+
+  // A group frame has to paint behind what it contains, so nodes are
+  // drawn shallowest first rather than in document order. Nodes at the
+  // same depth keep their document order, so nothing else re-stacks.
+  const paintOrder = useMemo(() => sortByTreeDepth(document.nodes), [document.nodes]);
 
   const performanceMode = document.nodes.length > 20 || document.edges.length > 28;
   const visibleNodeIds = useMemo(() => {
@@ -887,7 +893,7 @@ export function FlowCanvas({
             />
           )}
 
-          {document.nodes
+          {paintOrder
             .filter((node) => visibleNodeIds.has(node.id))
             .map((node) => (
               <FlowNodeCard
@@ -1055,8 +1061,9 @@ function ReconnectPreview({ fixed, pointer, color, scale }: { fixed: { x: number
  * with the SVG <ellipse> primitive.
  */
 function DrawPreview({ shape, start, current }: { shape: DrawTool; start: { x: number; y: number }; current: { x: number; y: number } }) {
-  // The table and logo tools preview as the rounded card they create.
-  const previewShape: NodeShape = shape === 'table' || shape === 'logo' ? 'rounded' : shape;
+  // The table, logo and group tools all preview as the rounded box they
+  // create, so the drag affordance matches the result.
+  const previewShape: NodeShape = shape === 'table' || shape === 'logo' || shape === 'group' ? 'rounded' : shape;
   const minX = Math.min(start.x, current.x);
   const minY = Math.min(start.y, current.y);
   const maxX = Math.max(start.x, current.x);

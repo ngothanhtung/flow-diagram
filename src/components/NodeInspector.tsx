@@ -12,7 +12,9 @@ import {
   PanelRight,
   PanelTop,
   RotateCcw,
+  Shrink,
   Trash2,
+  Ungroup,
   type LucideIcon,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -31,7 +33,7 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { cn } from '@/lib/utils';
 import type { FlowNode, NodeFont } from '@/lib/flowchart-types';
 import { resolveClosestLogoColor } from '@/lib/logo-color';
-import { COLORS, SHAPES, resolveNodeStyle, type NodeIcon, type NodeShape } from '@/lib/node-style';
+import { COLORS, GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, SHAPES, TABLE_MAX_HEIGHT, TABLE_MAX_WIDTH, resolveNodeStyle, type NodeIcon, type NodeShape } from '@/lib/node-style';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 interface NodeInspectorProps {
@@ -40,6 +42,12 @@ interface NodeInspectorProps {
   onDuplicate: (id: string) => void;
   onDelete: (id: string) => void;
   onClose: () => void;
+  /** How many blocks this frame holds — only read for a `group` node. */
+  memberCount?: number;
+  /** Title of the frame this node sits in, when it sits in one. */
+  parentTitle?: string | null;
+  onUngroup?: (id: string) => void;
+  onFitGroup?: (id: string) => void;
 }
 
 // 10 main color families, each with 3 shades.
@@ -101,7 +109,7 @@ const COLOR_FAMILIES = [
 const PRESET_FOREGROUNDS: `#${string}`[] = ['#ffffff', ...COLOR_FAMILIES.flatMap((family) => [...family.foregrounds])];
 const PRESET_BACKGROUNDS: `#${string}`[] = COLOR_FAMILIES.flatMap((family) => [...family.backgrounds]);
 
-export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeInspectorProps) {
+export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCount = 0, parentTitle = null, onUngroup, onFitGroup }: NodeInspectorProps) {
   // Local draft so the user can type without every keystroke mutating
   // the document. Commit on blur, Enter, or type change.
   const [title, setTitle] = useState(node?.title ?? '');
@@ -148,6 +156,11 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeIns
   }
 
   const style = resolveNodeStyle(node);
+  const isGroup = node.type === 'group';
+  // Same three ceilings the renderer clamps to, so typing an exact size
+  // can reach what dragging a corner can.
+  const maxWidth = isGroup ? GROUP_MAX_WIDTH : node.table ? TABLE_MAX_WIDTH : 320;
+  const maxHeight = isGroup ? GROUP_MAX_HEIGHT : node.table ? TABLE_MAX_HEIGHT : 240;
   const currentShape: NodeShape = style.shape;
   const currentIcon: NodeIcon | null = style.icon;
 
@@ -175,29 +188,35 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeIns
         className='mt-1 border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
 
-      <Label htmlFor='node-subtitle' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400'>
-        Sub title
-      </Label>
-      <Textarea
-        id='node-subtitle'
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        onBlur={() => {
-          if (description !== (node.description ?? '')) {
-            onUpdate(node.id, { description });
-          }
-        }}
-        rows={2}
-        className='mt-1 min-h-14 resize-none border-white/10 bg-zinc-800/80 text-xs focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
-      />
+      {/* A frame paints only its title bar, so offering a sub title
+          would be a field the user types into with nothing to show. */}
+      {!isGroup && (
+        <>
+          <Label htmlFor='node-subtitle' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400'>
+            Sub title
+          </Label>
+          <Textarea
+            id='node-subtitle'
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            onBlur={() => {
+              if (description !== (node.description ?? '')) {
+                onUpdate(node.id, { description });
+              }
+            }}
+            rows={2}
+            className='mt-1 min-h-14 resize-none border-white/10 bg-zinc-800/80 text-xs focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+          />
+        </>
+      )}
 
       <SectionLabel>Geometry</SectionLabel>
       <p className='mt-1 text-[10px] leading-relaxed text-zinc-500'>Drag one of the 4 corner handles, or enter an exact size below.</p>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <NumberField label='X' value={Math.round(node.position.x)} onChange={(x) => onUpdate(node.id, { position: { ...node.position, x } })} />
         <NumberField label='Y' value={Math.round(node.position.y)} onChange={(y) => onUpdate(node.id, { position: { ...node.position, y } })} />
-        <NumberField label='Width' value={style.width} min={72} max={320} onChange={(width) => onUpdate(node.id, { width })} />
-        <NumberField label='Height' value={style.height} min={72} max={240} onChange={(height) => onUpdate(node.id, { height })} />
+        <NumberField label='Width' value={style.width} min={72} max={maxWidth} onChange={(width) => onUpdate(node.id, { width })} />
+        <NumberField label='Height' value={style.height} min={72} max={maxHeight} onChange={(height) => onUpdate(node.id, { height })} />
       </div>
       <NumberField label='Sort order · 0 = auto' value={node.sortOrder ?? 0} min={0} step={1} onChange={(sortOrder) => onUpdate(node.id, { sortOrder: sortOrder > 0 ? sortOrder : undefined })} />
 
@@ -418,8 +437,44 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete }: NodeIns
         onChange={(textAlign) => onUpdate(node.id, { textAlign })}
       />
 
-      <SectionLabel>{node.table ? 'Columns' : 'Database table'}</SectionLabel>
-      <TableColumnsEditor node={node} onUpdate={onUpdate} />
+      {(isGroup || node.parentId) && (
+        <>
+          <SectionLabel>Group</SectionLabel>
+          {isGroup ? (
+            <>
+              <p className='mt-1 text-[10px] leading-relaxed text-zinc-500'>
+                {memberCount === 0 ? 'Empty frame — drag blocks inside to add them. Moving the frame moves everything in it.' : `Holds ${memberCount} ${memberCount === 1 ? 'block' : 'blocks'}. Moving the frame moves them with it; deleting it deletes them too.`}
+              </p>
+              <div className='mt-2 flex flex-wrap gap-1.5'>
+                <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onFitGroup?.(node.id)} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'>
+                  <Shrink size={11} /> Fit to contents
+                </Button>
+                <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onUngroup?.(node.id)} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'>
+                  <Ungroup size={11} /> Ungroup
+                </Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className='mt-1 text-[10px] leading-relaxed text-zinc-500'>
+                Inside <span className='text-zinc-300'>{parentTitle ?? 'a group'}</span>. Drag it out of the frame to leave, or:
+              </p>
+              <div className='mt-2'>
+                <Button variant='outline' size='sm' onClick={() => onUpdate(node.id, { parentId: undefined })} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'>
+                  <Ungroup size={11} /> Remove from group
+                </Button>
+              </div>
+            </>
+          )}
+        </>
+      )}
+
+      {!isGroup && (
+        <>
+          <SectionLabel>{node.table ? 'Columns' : 'Database table'}</SectionLabel>
+          <TableColumnsEditor node={node} onUpdate={onUpdate} />
+        </>
+      )}
 
       <SectionLabel>Actions</SectionLabel>
       <div className='mt-1.5 grid grid-cols-3 gap-2'>

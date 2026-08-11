@@ -2,7 +2,7 @@
 // Mirrors a subset of Flowgram's FlowDocumentJSON so the visual editor and
 // the persisted document stay compatible with @flowgram.ai/editor.
 
-export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo';
+export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group';
 
 /** Visual shape of the node's body. Optional — defaults are derived
  *  from `type` so older documents render unchanged. */
@@ -134,16 +134,26 @@ export interface FlowNode {
   connectionPoints?: NodeConnectionPoints;
   /** Present on database tables — renders the card as an ERD table. */
   table?: TableSpec;
+  /**
+   * Id of the group frame (`type: 'group'`) this node sits inside.
+   * Membership is stored on the child, never as a list on the parent, so
+   * there is exactly one place to keep in sync. Positions stay absolute
+   * whatever the nesting is — moving a group moves its members by the
+   * same delta, so every other part of the app (edges, ports, export)
+   * keeps reading `position` without knowing groups exist.
+   */
+  parentId?: string;
 }
 
 /**
  * What the canvas draw tool is armed with. Every shape can be drawn, plus
  * `'table'`, which produces a database-table node (a `rounded` card
- * carrying a `TableSpec`) rather than a new silhouette, and `'logo'`,
- * which drops a dedicated logo block whose selected brand mark is rendered
- * large and centred.
+ * carrying a `TableSpec`) rather than a new silhouette, `'logo'`, which
+ * drops a dedicated logo block whose selected brand mark is rendered
+ * large and centred, and `'group'`, which draws a container frame other
+ * blocks can be dropped into.
  */
-export type DrawTool = NodeShape | 'table' | 'logo';
+export type DrawTool = NodeShape | 'table' | 'logo' | 'group';
 
 /** A reusable semantic block from the left-hand model palette. */
 export interface NodePreset {
