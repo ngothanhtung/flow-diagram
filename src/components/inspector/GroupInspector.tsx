@@ -8,7 +8,6 @@ import { resolveNodeStyle } from '@/lib/node-style';
 import {
   ActionsSection,
   ColorField,
-  ColorPresetGrid,
   FillField,
   GeometryFields,
   GroupMembershipSection,
@@ -81,8 +80,7 @@ export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
       <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
 
       <SectionLabel>Colour</SectionLabel>
-      <ColorPresetGrid node={node} onUpdate={onUpdate} foreground={style.foreground} background={style.background} borderColor={style.borderColor} />
-      <div className='mt-2 grid grid-cols-2 gap-2'>
+      <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <ColorField label='Title · Border' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
         <ColorField label='Wash' value={style.background} presets={PRESET_BACKGROUNDS} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
         <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />

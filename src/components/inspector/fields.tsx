@@ -199,63 +199,6 @@ export function TypographyFields({
 }
 
 /**
- * The 30 paired swatches. `mode: 'pair'` writes foreground + background +
- * border together (a painted body); `mode: 'foreground'` writes only the
- * text colour, for nodes that paint no body.
- */
-export function ColorPresetGrid({
-  node,
-  onUpdate,
-  foreground,
-  background,
-  borderColor,
-  mode = 'pair',
-}: {
-  node: FlowNode;
-  onUpdate: InspectorPanelProps['onUpdate'];
-  foreground: string;
-  background?: string;
-  borderColor?: string;
-  mode?: 'pair' | 'foreground';
-}) {
-  return (
-    <>
-      <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>Color preset</label>
-      <div className='mt-1.5 flex flex-wrap gap-1.5'>
-        {COLOR_PRESETS.map((preset) => {
-          const active = mode === 'foreground' ? foreground === preset.foreground : foreground === preset.foreground && background === preset.background && borderColor === preset.foreground;
-          return (
-            <Button
-              key={preset.name}
-              variant='outline'
-              size='icon-sm'
-              onClick={() =>
-                onUpdate(
-                  node.id,
-                  mode === 'foreground'
-                    ? { color: preset.foreground }
-                    : {
-                        color: preset.foreground,
-                        backgroundColor: preset.background,
-                        borderColor: preset.foreground,
-                      },
-                )
-              }
-              title={preset.name}
-              className={cn('relative size-7 overflow-hidden rounded-full p-0 transition', active ? 'border-2 border-sky-300' : 'border-white/20 hover:scale-110')}
-              style={{ background: mode === 'foreground' ? preset.foreground : preset.background }}
-            >
-              {mode === 'pair' && <span className='absolute inset-1 rounded-full border border-white/25 shadow-sm' style={{ background: preset.foreground }} />}
-            </Button>
-          );
-        })}
-      </div>
-      <p className='mt-1.5 text-[10px] leading-relaxed text-zinc-500'>A preset sets the whole pair at once. For anything else, use the colour fields below — they take any colour.</p>
-    </>
-  );
-}
-
-/**
  * Flat vs sheen body fill. Only offered on the panels whose node paints a
  * body — a text object has none, so it never sees this.
  */

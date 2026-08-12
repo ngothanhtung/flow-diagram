@@ -6,7 +6,6 @@ import { resolveNodeStyle } from '@/lib/node-style';
 import {
   ActionsSection,
   ColorField,
-  ColorPresetGrid,
   GeometryFields,
   GroupMembershipSection,
   InspectorShell,
@@ -54,10 +53,7 @@ export function TextInspector({ node, onUpdate, onDuplicate, onDelete, parentTit
       <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
 
       <SectionLabel>Colour</SectionLabel>
-      <ColorPresetGrid node={node} onUpdate={onUpdate} foreground={style.foreground} mode='foreground' />
-      <div className='mt-2'>
-        <ColorField label='Text colour' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color })} />
-      </div>
+      <ColorField label='Text colour' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color })} />
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
 
       <SectionLabel>Alignment</SectionLabel>

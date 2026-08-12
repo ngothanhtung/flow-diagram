@@ -13,7 +13,6 @@ import { COLORS, SHAPES, resolveNodeStyle, type NodeShape } from '@/lib/node-sty
 import {
   ActionsSection,
   ColorField,
-  ColorPresetGrid,
   FillField,
   GeometryFields,
   GroupMembershipSection,
@@ -111,8 +110,11 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
       </Select>
 
       {/* --- Color ------------------------------------------------- */}
-      <ColorPresetGrid node={node} onUpdate={onUpdate} foreground={style.foreground} background={style.background} borderColor={style.borderColor} />
-      <div className='mt-2 grid grid-cols-2 gap-2'>
+      {/* Each field is a full colour picker on its own — a preset row for
+          quick picks, plus a native picker and hex box for anything else —
+          so there is no separate step to reach a custom colour. */}
+      <SectionLabel>Color</SectionLabel>
+      <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <ColorField label='Text / icon · Border' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
         <ColorField label='Background' value={style.background} presets={PRESET_BACKGROUNDS} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
         <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />

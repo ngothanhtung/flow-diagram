@@ -106,8 +106,8 @@ export default function HelpPage() {
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
-            <strong>Block inspector:</strong> title and description, shape, colour (ten presets that set text and background together, plus a picker and a hex box on every colour field so any
-            colour at all is reachable), icon (searchable picker with the full Lucide and Tabler catalogs), size, font,
+            <strong>Block inspector:</strong> title and description, shape, colour (every field — text/border, background — is its own picker: ten preset dots for a quick pick, plus a native
+            colour wheel and a hex box so any colour is one click away, no separate preset step needed), icon (searchable picker with the full Lucide and Tabler catalogs), size, font,
             rotation, connection sides (which side edges enter and leave), and execution order. It also has <strong>Duplicate</strong> and <strong>Delete</strong> buttons.
           </li>
           <li>

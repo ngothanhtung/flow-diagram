@@ -107,8 +107,8 @@ export default function HelpViPage() {
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
-            <strong>Bảng thuộc tính khối:</strong> tiêu đề và mô tả, hình dạng, màu sắc (10 preset đặt sẵn cặp màu chữ + nền, kèm bộ chọn màu và ô nhập mã hex ở mỗi ô màu nên chọn được màu bất
-            kỳ), icon (bộ chọn có tìm kiếm với đầy đủ thư viện Lucide và Tabler), kích thước, phông
+            <strong>Bảng thuộc tính khối:</strong> tiêu đề và mô tả, hình dạng, màu sắc (mỗi ô màu — chữ/viền, nền — là một bộ chọn độc lập: 10 chấm preset để chọn nhanh, cộng bánh xe chọn màu hệ
+            thống và ô nhập mã hex, nên chọn màu nào cũng chỉ một bước, không cần qua bước preset riêng), icon (bộ chọn có tìm kiếm với đầy đủ thư viện Lucide và Tabler), kích thước, phông
             chữ, xoay, cạnh kết nối (đường nối vào/ra ở cạnh nào), và thứ tự thực thi. Kèm hai nút <strong>Duplicate</strong> (nhân bản) và <strong>Delete</strong> (xoá).
           </li>
           <li>
