@@ -119,7 +119,8 @@ export default function HelpPage() {
             <strong>Block effect:</strong> blocks, frames and text all start completely static — no glow, no movement. The <strong>Effect</strong> picker works exactly like the one for
             connectors: open it and choose from <em>motion</em> effects, where the block itself moves (float, breathe, bounce, wobble, shake, blink), or <em>decoration</em> effects, where
             something extra is painted around it (glow, pulse, ripple, trace, sheen). A live preview shows the choice before you apply it, and <strong>Speed</strong>, <strong>Intensity</strong>{' '}
-            and <strong>Effect colour</strong> tune it. Use it to make one block stand out — if everything pulses, nothing does.
+            and <strong>Effect colour</strong> tune it. Use it to make one block stand out — if everything pulses, nothing does. Free text has no border to trace or halo to paint, so its picker
+            only offers the motion effects — the words themselves drift, breathe or blink, nothing is drawn around them.
           </li>
           <li>
             <strong>Connector inspector:</strong> label, animated effect (comet, dots, pulse, wave, scanner, binary and a dozen more), routing style (straight, curved, orthogonal,

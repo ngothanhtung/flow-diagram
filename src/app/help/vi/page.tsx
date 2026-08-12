@@ -120,7 +120,8 @@ export default function HelpViPage() {
             <strong>Hiệu ứng khối:</strong> khối, khung nhóm và chữ đều bắt đầu ở trạng thái hoàn toàn tĩnh — không phát sáng, không chuyển động. Bộ chọn <strong>Effect</strong> hoạt động y hệt
             bộ chọn hiệu ứng cho đường nối: mở ra rồi chọn giữa nhóm <em>motion</em> (chính khối chuyển động: float, breathe, bounce, wobble, shake, blink) và nhóm <em>decoration</em> (vẽ thêm
             một lớp quanh khối: glow, pulse, ripple, trace, sheen). Có ô xem trước trực tiếp trước khi bấm Apply, cùng ba thông số <strong>Speed</strong>, <strong>Intensity</strong> và{' '}
-            <strong>Effect colour</strong>. Dùng để làm nổi bật một khối — nếu khối nào cũng nhấp nháy thì chẳng khối nào nổi bật.
+            <strong>Effect colour</strong>. Dùng để làm nổi bật một khối — nếu khối nào cũng nhấp nháy thì chẳng khối nào nổi bật. Chữ tự do không có đường viền để vẽ hay hào quang để tô, nên bộ
+            chọn của nó chỉ còn nhóm motion — chính chữ trôi, phập phồng hay nhấp nháy, không có gì được vẽ thêm xung quanh.
           </li>
           <li>
             <strong>Bảng thuộc tính đường nối:</strong> nhãn, hiệu ứng động (comet, dots, pulse, wave, scanner, binary và hơn chục kiểu khác), kiểu đi dây (thẳng, cong, vuông góc,

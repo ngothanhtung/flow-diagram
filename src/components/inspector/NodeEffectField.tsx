@@ -58,6 +58,12 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
   const SelectedIcon = selected.Icon;
   const preview = draft ?? effect;
   const knobs = resolveEffectKnobs(node.effectSpeed, node.effectIntensity);
+  // Every decoration effect traces the node's outline — a halo, a ring, a
+  // dashed border. Free text has no outline to trace (it paints no body
+  // at all), so decoration would draw exactly the border a text object is
+  // defined not to have. Only motion — the words themselves moving — makes
+  // sense on it.
+  const isText = node.type === 'text';
 
   return (
     <>
@@ -91,8 +97,8 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
           <div className='grid min-h-0 flex-1 grid-cols-8 overflow-hidden'>
             <div className='col-span-5 space-y-5 overflow-y-auto pr-4 pb-6 pl-8'>
               <EffectGroup title='Off' options={[NONE_EFFECT]} draft={draft} onPick={setDraft} />
-              <EffectGroup title='Motion · the block itself moves' options={MOTION_EFFECTS} draft={draft} onPick={setDraft} />
-              <EffectGroup title='Decoration · an extra layer is painted' options={DECORATION_EFFECTS} draft={draft} onPick={setDraft} />
+              <EffectGroup title={isText ? 'Motion · the text itself moves' : 'Motion · the block itself moves'} options={MOTION_EFFECTS} draft={draft} onPick={setDraft} />
+              {!isText && <EffectGroup title='Decoration · an extra layer is painted' options={DECORATION_EFFECTS} draft={draft} onPick={setDraft} />}
             </div>
 
             <div className='col-span-3 flex flex-col overflow-y-auto pb-6 pr-8 pl-4'>

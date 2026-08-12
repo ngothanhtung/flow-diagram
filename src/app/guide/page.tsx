@@ -315,6 +315,11 @@ export default function GuidePage() {
               Like a group frame, a text object is skipped by the play bar, so a caption stays readable for the whole run and does not need a <Pill>sortOrder</Pill>. Text nodes can sit inside a
               group frame (<Pill>parentId</Pill>) and travel with it like any other member.
             </p>
+            <p>
+              <Pill>effect</Pill> only accepts the motion family (<Pill>float</Pill>, <Pill>breathe</Pill>, <Pill>bounce</Pill>, <Pill>wobble</Pill>, <Pill>shake</Pill>, <Pill>blink</Pill>) on a
+              text node — the words themselves move. The decoration family (<Pill>glow</Pill>, <Pill>pulse</Pill>, <Pill>ripple</Pill>, <Pill>trace</Pill>, <Pill>sheen</Pill>) traces a node&apos;s
+              outline, and text has none, so setting one is a no-op: nothing renders.
+            </p>
           </Section>
 
           <Section id='style' title='8. Visual conventions (so a diagram reads as one system, not a shape showcase)'>

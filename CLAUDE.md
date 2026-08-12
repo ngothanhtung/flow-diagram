@@ -152,6 +152,8 @@ A container is a node with `type: 'group'`; a member points at it with `parentId
 
 `TextInspector` is its own panel rather than a stack of guards — see *Inspector panels* below.
 
+**Text only gets the motion family of node effects.** Every decoration effect (`glow`/`pulse`/`ripple`/`trace`/`sheen`) traces `outline.d`, and a text node's outline defaults to a plain rectangle — rendering one on text would draw exactly the border a text object is defined not to have. `FlowNodeCard` skips mounting `<NodeEffectLayer>` for `isText` nodes (motion still applies, via the `<g style={motionStyle}>` wrapper), and `NodeEffectField` hides the whole Decoration group from the picker on a text node so the UI doesn't offer a choice that renders nothing.
+
 ### Node size limits
 
 `nodeSizeLimits(node)` in `node-style.ts` is the single source for min/max/default width and height, keyed on node kind (group 120–4000, text 24–1600×1200, table up to 420×900, ordinary card 72–320×240). `resolveNodeStyle`, `FlowNodeCard`'s drag-resize and `NodeInspector`'s number fields all read it — never re-derive a clamp locally, which is what previously left tables un-resizable past a card's 320×240 despite rendering much larger.

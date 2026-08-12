@@ -825,19 +825,25 @@ export function FlowNodeCard({
           })}
 
         {/* Painted last so a halo, ring or sheen sits above the body and
-            its contents, whatever the node kind is. */}
-        <NodeEffectLayer
-          d={outline.d}
-          transform={outline.transform}
-          effect={effect}
-          color={effectColor}
-          speed={effectSpeed}
-          intensity={effectIntensity}
-          width={width}
-          height={height}
-          clipId={`node-fx-${safeId}`}
-          performanceMode={performanceMode}
-        />
+            its contents. Text has no silhouette to decorate — every
+            decoration effect traces `outline.d`, which for a text node is
+            just its bounding rectangle, so rendering one here would draw
+            exactly the border a text object is defined not to have. Motion
+            (the `<g style={motionStyle}>` wrapper above) still applies. */}
+        {!isText && (
+          <NodeEffectLayer
+            d={outline.d}
+            transform={outline.transform}
+            effect={effect}
+            color={effectColor}
+            speed={effectSpeed}
+            intensity={effectIntensity}
+            width={width}
+            height={height}
+            clipId={`node-fx-${safeId}`}
+            performanceMode={performanceMode}
+          />
+        )}
         </g>
       </g>
     </g>
