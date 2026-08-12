@@ -37,9 +37,14 @@ export function useExecutionPlayback(doc: FlowDocumentJSON): ExecutionPlayback {
 
   const orderedGroups = useMemo(() => computeOrderedGroups(doc.nodes), [doc.nodes]);
   const groupIndexByNodeId = useMemo(() => new Map(orderedGroups.flatMap((group, groupIndex) => group.map((node) => [node.id, groupIndex] as const))), [orderedGroups]);
+  // Concurrent mode lights up every *step*, not every node — group frames
+  // and text objects are scenery, already filtered out of orderedGroups by
+  // computeOrderedGroups, so read the active set from there rather than
+  // doc.nodes directly. Mapping doc.nodes here previously gave every frame
+  // and text object a permanent, blinking "active" halo in concurrent mode.
   const active = useMemo(
-    () => (runMode === 'concurrent' ? doc.nodes.map((node) => node.id) : runPhase === 'node' && orderedGroups[runStep] ? orderedGroups[runStep].map((node) => node.id) : []),
-    [doc.nodes, orderedGroups, runMode, runPhase, runStep],
+    () => (runMode === 'concurrent' ? orderedGroups.flatMap((group) => group.map((node) => node.id)) : runPhase === 'node' && orderedGroups[runStep] ? orderedGroups[runStep].map((node) => node.id) : []),
+    [orderedGroups, runMode, runPhase, runStep],
   );
   const nodeExecutionStates = useMemo(() => {
     if (runMode === 'concurrent') return undefined;

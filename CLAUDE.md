@@ -171,7 +171,7 @@ An ER diagram is not a separate document type: a table is just a `FlowNode` carr
 
 ### Execution simulation (the "replay" animation)
 
-`computeOrderedGroups()` groups nodes by resolved `sortOrder` — nodes sharing an order animate simultaneously as one step, not strictly one-by-one. `runMode` (`doc.settings.runMode`) is `sequential` (auto-advances on a timer, `EDGE_DRAW_DURATION_MS`/`NODE_FADE_DURATION_MS` from `src/lib/execution-timing.ts`), `concurrent` (everything active at once), or `manual` (user-driven). The sequential timer and the manual "Next" button both call the store's single `advanceStep()`, so the two modes can't drift out of sync.
+`computeOrderedGroups()` groups nodes by resolved `sortOrder` — nodes sharing an order animate simultaneously as one step, not strictly one-by-one — and already filters out group frames and text objects (see below), so anything reading "which nodes are active" must go through it rather than `doc.nodes` directly. `runMode` (`doc.settings.runMode`) is `sequential` (auto-advances on a timer, `EDGE_DRAW_DURATION_MS`/`NODE_FADE_DURATION_MS` from `src/lib/execution-timing.ts`), `concurrent` (everything active at once — `use-execution-playback.ts`'s `active` array is `orderedGroups.flat()`, not `doc.nodes.map(...)`; the latter was a real bug that gave every frame and text object a permanent blinking halo in concurrent mode, since `FlowNodeCard` renders that halo for any `isActive` node regardless of type), or `manual` (user-driven). The sequential timer and the manual "Next" button both call the store's single `advanceStep()`, so the two modes can't drift out of sync.
 
 ### Inspector panels
 
