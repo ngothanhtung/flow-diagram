@@ -155,6 +155,10 @@ export default function GuidePage() {
               newly drawn blocks. Pick one and stay with it across a diagram — mixing the two reads as an accident.
             </p>
             <p>
+              <Pill>shadow</Pill> (<Pill>none | soft | glow</Pill>) casts a plain dark drop shadow for depth — it adds no colour. Every coloured halo comes from <Pill>effect</Pill>, so the two
+              never fight over the same look.
+            </p>
+            <p>
               <strong className='text-zinc-300'>Effects are opt-in.</strong> Omit <Pill>effect</Pill> (or set <Pill>&quot;none&quot;</Pill>) and the node is completely static — no motion, no halo,
               nothing painted. That is the default for every kind of node, exactly as <Pill>effect: &quot;none&quot;</Pill> is for a line. Pick one when the node genuinely needs attention, not as
               decoration on every block.

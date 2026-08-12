@@ -107,12 +107,14 @@ export default function HelpViPage() {
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
-            <strong>Bảng thuộc tính khối:</strong> tiêu đề và mô tả, hình dạng, bảng màu hoặc màu tuỳ chỉnh, icon (bộ chọn có tìm kiếm với đầy đủ thư viện Lucide và Tabler), kích thước, phông
+            <strong>Bảng thuộc tính khối:</strong> tiêu đề và mô tả, hình dạng, màu sắc (10 preset đặt sẵn cặp màu chữ + nền, kèm bộ chọn màu và ô nhập mã hex ở mỗi ô màu nên chọn được màu bất
+            kỳ), icon (bộ chọn có tìm kiếm với đầy đủ thư viện Lucide và Tabler), kích thước, phông
             chữ, xoay, cạnh kết nối (đường nối vào/ra ở cạnh nào), và thứ tự thực thi. Kèm hai nút <strong>Duplicate</strong> (nhân bản) và <strong>Delete</strong> (xoá).
           </li>
           <li>
             <strong>Kiểu tô (Fill):</strong> <strong>Flat colour</strong> tô nền một màu phẳng đều; <strong>Gradient sheen</strong> phủ thêm một lớp chuyển sắc mờ từ trên xuống. Khối và khung
-            nhóm mới tạo mặc định là màu phẳng. Khung nhóm cũng có đúng lựa chọn này cho lớp nền của nó.
+            nhóm mới tạo mặc định là màu phẳng. Khung nhóm cũng có đúng lựa chọn này cho lớp nền của nó. Ô <strong>Shadow</strong> bên cạnh chỉ đổ bóng tối để tạo chiều sâu — mọi quầng sáng màu
+            đều đến từ bộ chọn Effect, nên khối để effect <em>None</em> là hoàn toàn tĩnh: không chuyển động, không phát sáng.
           </li>
           <li>
             <strong>Hiệu ứng khối:</strong> khối, khung nhóm và chữ đều bắt đầu ở trạng thái hoàn toàn tĩnh — không phát sáng, không chuyển động. Bộ chọn <strong>Effect</strong> hoạt động y hệt

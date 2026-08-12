@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { createElement, useEffect, useRef } from 'react';
 import { screenToData } from '@/lib/coords';
 import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
@@ -196,18 +195,10 @@ export function FlowNodeCard({
   const dashArray = borderStyle === 'dashed' ? `${borderWidth * 5} ${borderWidth * 3}` : borderStyle === 'dotted' ? `${borderWidth} ${borderWidth * 2.5}` : undefined;
   const neonFaint = borderColor.length === 7 ? `${borderColor}38` : borderColor;
   const neonSoft = borderColor.length === 7 ? `${borderColor}70` : borderColor;
-  // `none` means none: no underlay at all. Anything glowing on a node is
-  // now something the user asked for, via `shadow` or via `effect`.
-  const neonIntensity = shadow === 'glow' ? 0.42 : shadow === 'soft' ? 0.24 : 0;
-  const filter = performanceMode
-    ? shadow === 'none'
-      ? undefined
-      : 'drop-shadow(0 5px 8px rgba(0,0,0,.32))'
-    : shadow === 'soft'
-      ? `drop-shadow(0 8px 12px rgba(0,0,0,.38)) drop-shadow(0 0 5px ${neonFaint})`
-      : shadow === 'glow'
-        ? `drop-shadow(0 8px 14px rgba(0,0,0,.4)) drop-shadow(0 0 5px ${neonSoft}) drop-shadow(0 0 15px ${neonFaint})`
-        : undefined;
+  // `shadow` casts depth and nothing else — a plain dark drop shadow. It
+  // used to add a coloured halo too, which meant a node glowed without any
+  // effect being chosen. Glow now comes only from `effect: 'glow'`/'pulse'.
+  const filter = shadow === 'none' ? undefined : shadow === 'glow' ? 'drop-shadow(0 10px 18px rgba(0,0,0,.5))' : 'drop-shadow(0 6px 10px rgba(0,0,0,.38))';
   const safeId = node.id.replace(/[^a-zA-Z0-9_-]/g, '-');
   const gradientId = `node-sheen-${safeId}`;
   // Effects are entirely opt-in: with no `effect` the node paints and
@@ -395,11 +386,11 @@ export function FlowNodeCard({
   };
 
   return (
-    // Outer <g> handles the entry animation via framer-motion. The
-    // static inner <g> applies the position translate so framer-motion
-    // (which owns the transform when initial/animate is set) doesn't
-    // override the position.
-    <motion.g initial={performanceMode ? false : { scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 220, damping: 18 }} className='group/node cursor-grab active:cursor-grabbing'>
+    // Outer <g> only carries the hover group and cursor; the inner <g>
+    // applies the position translate. There is deliberately no entry
+    // animation here — `effect: 'none'` has to mean the node never moves,
+    // and a spring-in ran on every mount and every canvas re-seed.
+    <g className='group/node cursor-grab active:cursor-grabbing'>
       <g
         ref={registerSvgRef}
         transform={`translate(${node.position.x} ${node.position.y}) rotate(${rotation})`}
@@ -573,25 +564,10 @@ export function FlowNodeCard({
         ) : (
           <>
         {/* Body — single <path> with per-shape `d`. The fill and stroke
-          are set inline because the colour tokens are dynamic per
-          node and Tailwind can't synthesize them at runtime. The
-          gradient is approximated by an opacity step: a darker fill
-          plus a translucent overlay would be ideal but the current
-          palette maps cleanly to a single mid-tone per colour. */}
-        <path
-          d={outline.d}
-          transform={outline.transform}
-          fill='none'
-          stroke={borderColor}
-          strokeWidth={borderWidth + 5}
-          strokeLinejoin='round'
-          opacity={performanceMode ? neonIntensity * 0.45 : neonIntensity}
-          pointerEvents='none'
-          style={{
-            filter: performanceMode ? undefined : `drop-shadow(0 0 5px ${neonSoft}) drop-shadow(0 0 14px ${neonFaint})`,
-          }}
-        />
-
+          are set inline because the colour tokens are dynamic per node
+          and Tailwind can't synthesize them at runtime. `filter` is a
+          plain depth shadow; the optional sheen overlay below is the only
+          other thing painted on the body. */}
         <path
           d={outline.d}
           transform={outline.transform}
@@ -629,9 +605,6 @@ export function FlowNodeCard({
             strokeLinecap='round'
             opacity={0.8}
             pointerEvents='none'
-            style={{
-              filter: performanceMode ? undefined : `drop-shadow(0 0 5px ${neonSoft})`,
-            }}
           />
         )}
 
@@ -867,6 +840,6 @@ export function FlowNodeCard({
         />
         </g>
       </g>
-    </motion.g>
+    </g>
   );
 }

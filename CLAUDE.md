@@ -78,7 +78,7 @@ Ready-made template documents ship as JSON under `seed/templates/` (e.g. `databa
 
 `src/components/FlowCanvas.tsx` is a single SVG whose content sits in a `<g transform="translate(...) scale(...)">`. Pointer↔data coordinate conversion always goes through `src/lib/coords.ts` (`screenToData`) using the current `ViewTransform` (`src/lib/view-transform.ts`) — never hand-roll that math elsewhere. Each node renders as `FlowNodeCard`; each edge as `AnimatedEdge`.
 
-**Performance mode**: `FlowCanvas` sets `performanceMode = nodes.length > 20 || edges.length > 28` and culls off-screen nodes/edges. The flag is threaded down to cards and edge effects, where it strips *default* decoration (halos, spring-in animation) — it must never strip something the user explicitly configured. A past bug: the glow slider was dead on any real diagram because the effect layer short-circuited on `performanceMode` before reading the configured value.
+**Performance mode**: `FlowCanvas` sets `performanceMode = nodes.length > 20 || edges.length > 28` and culls off-screen nodes/edges. The flag is threaded down to cards and edge effects, where it thins *default* decoration (blur radii, halo layers) — it must never strip something the user explicitly configured. A past bug: the glow slider was dead on any real diagram because the effect layer short-circuited on `performanceMode` before reading the configured value.
 
 ### Edge geometry vs. edge effects (kept deliberately separate)
 
@@ -111,7 +111,13 @@ Shared knobs (`effectSpeed`, `effectIntensity`, `effectColor`) mean the same thi
 
 **Body fill is a choice.** `fill: 'flat'` paints just `backgroundColor`; `'sheen'` adds the top-to-bottom gradient overlay. `resolveNodeStyle` defaults an unset field to `'sheen'` so every saved document renders exactly as before, while every creation path in the store stamps `'flat'` — the same "old docs unchanged, new work plain" split used for `shadow`. Blocks and group frames both honour it; a text object paints no body, so `TextInspector` doesn't offer it.
 
-**A node has no implicit decoration.** `resolveNodeStyle`'s `shadow` still drives the drop-shadow, but `shadow: 'none'` now really means none — it used to leave a 12%-opacity neon underlay on every node — and every creation path in the store stamps `shadow: 'none'`. Anything glowing on a node is something the user asked for.
+**`effect: 'none'` means the node is completely inert**, and three separate pieces of always-on decoration had to go for that to be true:
+
+- the framer-motion spring that scaled every node in on mount and on every canvas re-seed — `FlowNodeCard` no longer imports framer-motion at all;
+- the neon underlay path painted behind every body;
+- the coloured halo `shadow` used to add. `shadow` is now depth only — a plain black `drop-shadow` — so the glow/pulse effects are the only source of a coloured halo. The two systems no longer overlap.
+
+The one animation left that `effect` does not gate is the replay's active halo, which only runs while the play bar is running that node. Ports and the selection ring keep their glow: those are editor affordances, not node styling.
 
 ### Node styling
 

@@ -106,12 +106,14 @@ export default function HelpPage() {
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
-            <strong>Block inspector:</strong> title and description, shape, color palette or custom colors, icon (searchable picker with the full Lucide and Tabler catalogs), size, font,
+            <strong>Block inspector:</strong> title and description, shape, colour (ten presets that set text and background together, plus a picker and a hex box on every colour field so any
+            colour at all is reachable), icon (searchable picker with the full Lucide and Tabler catalogs), size, font,
             rotation, connection sides (which side edges enter and leave), and execution order. It also has <strong>Duplicate</strong> and <strong>Delete</strong> buttons.
           </li>
           <li>
             <strong>Fill:</strong> <strong>Flat colour</strong> paints the background as one solid tone; <strong>Gradient sheen</strong> lays a soft top-to-bottom sheen over it. New blocks and
-            frames start flat. The same choice is on the group frame&apos;s wash.
+            frames start flat. The same choice is on the group frame&apos;s wash. <strong>Shadow</strong> next to it casts plain depth only — every coloured glow comes from the Effect picker, so a
+            block with the effect set to <em>None</em> is completely inert: nothing moves, nothing glows.
           </li>
           <li>
             <strong>Block effect:</strong> blocks, frames and text all start completely static — no glow, no movement. The <strong>Effect</strong> picker works exactly like the one for

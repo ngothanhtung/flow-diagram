@@ -29,64 +29,26 @@ export interface InspectorPanelProps {
   parentTitle?: string | null;
 }
 
-// 10 main color families, each with 3 shades.
-// Foreground palette: light tints (text / icon / border).
-// Background palette: deep tones (body fill).
-export const COLOR_FAMILIES = [
-  {
-    name: 'red',
-    foregrounds: ['#fee2e2', '#fca5a5', '#f87171'] as `#${string}`[],
-    backgrounds: ['#1a0505', '#2a0a0a', '#3d0f0f'] as `#${string}`[],
-  },
-  {
-    name: 'orange',
-    foregrounds: ['#ffedd5', '#fdba74', '#fb923c'] as `#${string}`[],
-    backgrounds: ['#1a0a03', '#2a1005', '#3d1507'] as `#${string}`[],
-  },
-  {
-    name: 'amber',
-    foregrounds: ['#fef9c3', '#fde047', '#facc15'] as `#${string}`[],
-    backgrounds: ['#1a1204', '#281c04', '#422006'] as `#${string}`[],
-  },
-  {
-    name: 'green',
-    foregrounds: ['#dcfce7', '#86efac', '#4ade80'] as `#${string}`[],
-    backgrounds: ['#022c0e', '#052e16', '#0f3d1f'] as `#${string}`[],
-  },
-  {
-    name: 'teal',
-    foregrounds: ['#ccfbf1', '#5eead4', '#2dd4bf'] as `#${string}`[],
-    backgrounds: ['#021f1e', '#042f2e', '#0a3d39'] as `#${string}`[],
-  },
-  {
-    name: 'cyan',
-    foregrounds: ['#cffafe', '#67e8f9', '#22d3ee'] as `#${string}`[],
-    backgrounds: ['#052637', '#083344', '#0e3d4e'] as `#${string}`[],
-  },
-  {
-    name: 'blue',
-    foregrounds: ['#dbeafe', '#93c5fd', '#60a5fa'] as `#${string}`[],
-    backgrounds: ['#051537', '#0a1f4c', '#102a5c'] as `#${string}`[],
-  },
-  {
-    name: 'indigo',
-    foregrounds: ['#e0e7ff', '#a5b4fc', '#818cf8'] as `#${string}`[],
-    backgrounds: ['#0a0a2e', '#12104a', '#1c1b5e'] as `#${string}`[],
-  },
-  {
-    name: 'purple',
-    foregrounds: ['#f3e8ff', '#d8b4fe', '#c084fc'] as `#${string}`[],
-    backgrounds: ['#120328', '#1e0437', '#2d0654'] as `#${string}`[],
-  },
-  {
-    name: 'pink',
-    foregrounds: ['#fce7f3', '#f9a8d4', '#f472b6'] as `#${string}`[],
-    backgrounds: ['#2a0510', '#330515', '#4a081d'] as `#${string}`[],
-  },
-] as const;
+// Ten presets, one per hue: a themed foreground (text / icon / border)
+// paired with the deep background it reads well on. Deliberately one
+// shade each — three shades of ten hues was thirty swatches nobody
+// scanned, and any colour outside the set is now reachable through the
+// custom colour picker on every ColorField.
+export const COLOR_PRESETS = [
+  { name: 'Red', foreground: '#fca5a5', background: '#2a0a0a' },
+  { name: 'Orange', foreground: '#fdba74', background: '#2a1005' },
+  { name: 'Amber', foreground: '#fde047', background: '#281c04' },
+  { name: 'Green', foreground: '#86efac', background: '#052e16' },
+  { name: 'Teal', foreground: '#5eead4', background: '#042f2e' },
+  { name: 'Cyan', foreground: '#67e8f9', background: '#083344' },
+  { name: 'Blue', foreground: '#93c5fd', background: '#0a1f4c' },
+  { name: 'Indigo', foreground: '#a5b4fc', background: '#12104a' },
+  { name: 'Purple', foreground: '#d8b4fe', background: '#1e0437' },
+  { name: 'Pink', foreground: '#f9a8d4', background: '#330515' },
+] as const satisfies ReadonlyArray<{ name: string; foreground: `#${string}`; background: `#${string}` }>;
 
-export const PRESET_FOREGROUNDS: `#${string}`[] = ['#ffffff', ...COLOR_FAMILIES.flatMap((family) => [...family.foregrounds])];
-export const PRESET_BACKGROUNDS: `#${string}`[] = COLOR_FAMILIES.flatMap((family) => [...family.backgrounds]);
+export const PRESET_FOREGROUNDS: `#${string}`[] = ['#ffffff', ...COLOR_PRESETS.map((preset) => preset.foreground)];
+export const PRESET_BACKGROUNDS: `#${string}`[] = COLOR_PRESETS.map((preset) => preset.background);
 
 /**
  * Draft state for one text field on the node.
@@ -259,38 +221,36 @@ export function ColorPresetGrid({
   return (
     <>
       <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>Color preset</label>
-      <div className='mt-1.5 grid grid-cols-10 gap-1.5'>
-        {COLOR_FAMILIES.flatMap((family) =>
-          family.foregrounds.map((swatchForeground, index) => {
-            const swatchBackground = family.backgrounds[index];
-            const isActive = mode === 'foreground' ? foreground === swatchForeground : foreground === swatchForeground && background === swatchBackground && borderColor === swatchForeground;
-            return (
-              <Button
-                key={`${family.name}-${index}`}
-                variant='outline'
-                size='icon-sm'
-                onClick={() =>
-                  onUpdate(
-                    node.id,
-                    mode === 'foreground'
-                      ? { color: swatchForeground }
-                      : {
-                          color: swatchForeground,
-                          backgroundColor: swatchBackground,
-                          borderColor: swatchForeground,
-                        },
-                  )
-                }
-                title={`${family.name} ${index + 1}`}
-                className={cn('relative size-7 overflow-hidden rounded-full p-0 transition', isActive ? 'border-2 border-sky-300' : 'border-white/20 hover:scale-110')}
-                style={{ background: mode === 'foreground' ? swatchForeground : swatchBackground }}
-              >
-                {mode === 'pair' && <span className='absolute inset-1 rounded-full border border-white/25 shadow-sm' style={{ background: swatchForeground }} />}
-              </Button>
-            );
-          }),
-        )}
+      <div className='mt-1.5 flex flex-wrap gap-1.5'>
+        {COLOR_PRESETS.map((preset) => {
+          const active = mode === 'foreground' ? foreground === preset.foreground : foreground === preset.foreground && background === preset.background && borderColor === preset.foreground;
+          return (
+            <Button
+              key={preset.name}
+              variant='outline'
+              size='icon-sm'
+              onClick={() =>
+                onUpdate(
+                  node.id,
+                  mode === 'foreground'
+                    ? { color: preset.foreground }
+                    : {
+                        color: preset.foreground,
+                        backgroundColor: preset.background,
+                        borderColor: preset.foreground,
+                      },
+                )
+              }
+              title={preset.name}
+              className={cn('relative size-7 overflow-hidden rounded-full p-0 transition', active ? 'border-2 border-sky-300' : 'border-white/20 hover:scale-110')}
+              style={{ background: mode === 'foreground' ? preset.foreground : preset.background }}
+            >
+              {mode === 'pair' && <span className='absolute inset-1 rounded-full border border-white/25 shadow-sm' style={{ background: preset.foreground }} />}
+            </Button>
+          );
+        })}
       </div>
+      <p className='mt-1.5 text-[10px] leading-relaxed text-zinc-500'>A preset sets the whole pair at once. For anything else, use the colour fields below — they take any colour.</p>
     </>
   );
 }
@@ -497,36 +457,87 @@ export function SegmentedButtons<T extends string>({ label, value, options, onCh
   );
 }
 
+/**
+ * `<input type="color">` only accepts `#rrggbb`. Node colours are normally
+ * that already, but a transparent fill is stored as 8-digit `#rrggbbaa`,
+ * so the alpha is dropped for the swatch rather than handing the input a
+ * value it silently rejects.
+ */
+function toSwatchHex(value: string): string {
+  const hex = value.trim();
+  if (/^#[0-9a-f]{6}$/i.test(hex)) return hex;
+  if (/^#[0-9a-f]{8}$/i.test(hex)) return hex.slice(0, 7);
+  if (/^#[0-9a-f]{3}$/i.test(hex)) return `#${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}`;
+  return '#000000';
+}
+
+/** Accepts `#abc`, `#aabbcc`, `#aabbccdd` or the same without the hash. */
+function parseHex(raw: string): `#${string}` | null {
+  const hex = raw.trim().replace(/^#?/, '#');
+  if (/^#[0-9a-f]{3}$/i.test(hex)) return `#${hex[1]}${hex[1]}${hex[2]}${hex[2]}${hex[3]}${hex[3]}` as `#${string}`;
+  if (/^#([0-9a-f]{6}|[0-9a-f]{8})$/i.test(hex)) return hex as `#${string}`;
+  return null;
+}
+
+/**
+ * A colour: the ten presets for speed, plus a native colour picker and a
+ * hex field so any value at all is reachable. The hex box keeps a local
+ * draft so a half-typed value never reaches the document, and reverts if
+ * what was typed isn't a colour.
+ */
 export function ColorField({ label, value, presets, onChange }: { label: string; value: `#${string}`; presets: `#${string}`[]; onChange: (value: `#${string}`) => void }) {
-  const isPreset = presets.some((preset) => preset.toLowerCase() === value.toLowerCase());
+  const [draft, setDraft] = useState<string>(value);
+  const [syncedValue, setSyncedValue] = useState(value);
+  if (syncedValue !== value) {
+    // The colour changed underneath us (a preset click, a logo import):
+    // resync the draft during render rather than from an effect, so the
+    // field never paints a frame of stale text.
+    setSyncedValue(value);
+    setDraft(value);
+  }
+
+  const commit = () => {
+    const parsed = parseHex(draft);
+    if (parsed) onChange(parsed);
+    else setDraft(value);
+  };
+
   return (
     <div className='rounded-lg border border-white/10 bg-white/5 p-2'>
       <Label className='block text-[10px] text-zinc-500'>{label}</Label>
-      <Select
-        value={isPreset ? value : undefined}
-        onValueChange={(nextValue) => {
-          if (nextValue) onChange(nextValue as `#${string}`);
-        }}
-      >
-        <SelectTrigger className='mt-1 h-auto w-full border-white/10 bg-zinc-800/80 px-2 py-1.5 hover:bg-zinc-700/60 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'>
-          <SelectValue placeholder={<span className='text-[10px] text-zinc-500'>Custom</span>}>
-            <span className='flex items-center gap-2'>
-              <span className='size-4 shrink-0 rounded border border-white/20' style={{ background: value }} />
-              <span className='font-mono text-[10px] uppercase text-zinc-300'>{value}</span>
-            </span>
-          </SelectValue>
-        </SelectTrigger>
-        <SelectContent className='border-white/10 bg-zinc-950 p-1.5'>
-          {presets.map((preset) => (
-            <SelectItem key={preset} value={preset} className='px-2 py-1.5'>
-              <span className='flex items-center gap-2'>
-                <span className='size-4 shrink-0 rounded border border-white/15' style={{ background: preset }} />
-                <span className='font-mono text-[10px] uppercase text-zinc-300'>{preset}</span>
-              </span>
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      <div className='mt-1 flex items-center gap-1.5'>
+        <input
+          type='color'
+          aria-label={`${label} — pick any colour`}
+          title='Pick any colour'
+          value={toSwatchHex(value)}
+          onChange={(event) => onChange(event.target.value as `#${string}`)}
+          className='size-7 shrink-0 cursor-pointer rounded border border-white/20 bg-transparent p-0'
+        />
+        <Input
+          value={draft}
+          onChange={(event) => setDraft(event.target.value)}
+          onBlur={commit}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
+          }}
+          aria-label={`${label} — hex value`}
+          className='h-7 border-white/10 bg-zinc-800/80 px-1.5 font-mono text-[10px] uppercase text-zinc-300 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+        />
+      </div>
+      <div className='mt-1.5 flex flex-wrap gap-1'>
+        {presets.map((preset) => (
+          <button
+            key={preset}
+            type='button'
+            onClick={() => onChange(preset)}
+            title={preset}
+            aria-label={preset}
+            className={cn('size-4 rounded-full border transition hover:scale-115', preset.toLowerCase() === value.toLowerCase() ? 'border-2 border-sky-300' : 'border-white/20')}
+            style={{ background: preset }}
+          />
+        ))}
+      </div>
     </div>
   );
 }
