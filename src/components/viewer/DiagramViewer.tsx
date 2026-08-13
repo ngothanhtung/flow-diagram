@@ -144,6 +144,7 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
             runningEdgeIds={run.runningEdgeIds}
             nodeExecutionStates={run.nodeExecutionStates}
             edgeExecutionStates={run.edgeExecutionStates}
+            effectsPaused={run.runMode === 'static'}
             selectedNodeId={null}
             onSelectNode={noop}
             onNodeMove={noop}

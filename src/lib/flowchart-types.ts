@@ -348,8 +348,15 @@ export interface FlowEdge {
   animationSpeed?: number;
 }
 
-/** How the play bar walks through the diagram. */
-export type RunMode = 'sequential' | 'concurrent' | 'manual';
+/**
+ * How the play bar walks through the diagram. `static` is the odd one
+ * out: there is no run cursor at all, every node and edge always reads
+ * as `'normal'`, and every animation — the replay highlight, each edge's
+ * own travelling effect, each node's own motion/decoration effect — is
+ * frozen. It's for a diagram meant to be read as a plain reference
+ * chart, not walked through.
+ */
+export type RunMode = 'sequential' | 'concurrent' | 'manual' | 'static';
 
 /** Editor settings persisted with the diagram. */
 export interface DiagramSettings {

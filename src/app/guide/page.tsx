@@ -106,7 +106,7 @@ export default function GuidePage() {
             <Code>{`{
   "nodes": FlowNode[],
   "edges": FlowEdge[],
-  "settings"?: { "runMode"?: "sequential" | "concurrent" | "manual", "repeatEnabled"?: boolean }
+  "settings"?: { "runMode"?: "sequential" | "concurrent" | "manual" | "static", "repeatEnabled"?: boolean }
 }`}</Code>
             <p>
               <Pill>settings</Pill> is optional and only affects the play bar (the replay animation) — omit it unless you specifically want to control the default run mode.
@@ -220,6 +220,11 @@ export default function GuidePage() {
               node a unique, strictly increasing number.
             </p>
             <p>Only set <Pill>sortOrder</Pill> when the natural left-to-right / top-to-bottom reading order of the diagram doesn&apos;t already match the intended execution order — otherwise omit it.</p>
+            <p>
+              <Pill>settings.runMode: &quot;static&quot;</Pill> turns the play bar off entirely: nothing is ever marked pending/active/completed, and every line or node <Pill>effect</Pill> the
+              document configures is frozen rather than removed. Use it for a diagram authored purely as a reference chart — <Pill>sortOrder</Pill> still round-trips in the JSON, it just has
+              nothing to drive.
+            </p>
           </Section>
 
           <Section id='tables' title='5. Database tables (ERD)'>

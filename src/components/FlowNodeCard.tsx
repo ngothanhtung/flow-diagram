@@ -16,6 +16,8 @@ interface FlowNodeCardProps {
   node: FlowNode;
   /** Reduce costly SVG filters/entry motion on large diagrams. */
   performanceMode?: boolean;
+  /** Static run mode: freeze this node's own motion/decoration effect. */
+  effectsPaused?: boolean;
   executionState?: ExecutionState;
   isActive?: boolean;
   isSelected?: boolean;
@@ -154,6 +156,7 @@ function ShapeDecoration({ shape, color }: { shape: NodeShape; color: string }) 
 export function FlowNodeCard({
   node,
   performanceMode = false,
+  effectsPaused = false,
   executionState = 'normal',
   isActive = false,
   isSelected = false,
@@ -206,7 +209,7 @@ export function FlowNodeCard({
   const effect = node.effect ?? 'none';
   const { speed: effectSpeed, intensity: effectIntensity } = resolveEffectKnobs(node.effectSpeed, node.effectIntensity);
   const effectColor = node.effectColor ?? foreground;
-  const motionStyle = nodeMotionStyle(effect, effectSpeed, effectIntensity);
+  const motionStyle = nodeMotionStyle(effect, effectSpeed, effectIntensity, effectsPaused);
   const chargeGradientId = `node-charge-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const clipId = `node-clip-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const cardAccent = ['server', 'component', 'predefined-process', 'internal-storage', 'folder', 'note'].includes(style.shape);
@@ -842,6 +845,7 @@ export function FlowNodeCard({
             height={height}
             clipId={`node-fx-${safeId}`}
             performanceMode={performanceMode}
+            paused={effectsPaused}
           />
         )}
         </g>

@@ -191,9 +191,10 @@ export default function HelpViPage() {
             ['Sequential', 'Các bước tự chạy theo bộ đếm thời gian, mỗi lần một bước. Các khối có cùng thứ tự thực thi chạy cùng nhau trong một bước (nhánh song song).'],
             ['Concurrent', 'Mọi thứ chạy hiệu ứng cùng lúc — hữu ích để nhìn cả hệ thống "sống" một lượt.'],
             ['Manual', 'Không có gì tự chạy cho đến khi bạn bấm Next — bạn tự điều khiển từng bước, lý tưởng khi thuyết trình.'],
+            ['Static', 'Không chạy gì cả. Mọi khối và đường nối hiển thị ở trạng thái nghỉ — không tô sáng bước nào, và mọi hiệu ứng đã cấu hình trên khối hay đường nối cũng bị đóng băng theo. Dùng khi sơ đồ chỉ để tham khảo như một bản vẽ tĩnh, không cần trình diễn từng bước.'],
             ['Next', 'Chỉ trong chế độ Manual: chạy bước thực thi kế tiếp.'],
             ['Repeat', 'Chỉ trong chế độ Sequential: tự động chạy lại sau khi hoàn thành.'],
-            ['Replay', 'Chạy lại hiệu ứng từ đầu, ở mọi chế độ.'],
+            ['Replay', 'Ở Sequential, Concurrent hoặc Manual: chạy lại hiệu ứng từ đầu. Static không có gì để chạy lại, nên khi chọn Static thì cả Next / Repeat / Replay đều biến mất.'],
           ]}
         />
         <p>

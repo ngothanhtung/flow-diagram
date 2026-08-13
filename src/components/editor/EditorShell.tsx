@@ -81,7 +81,14 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
       {/* The inspector is a drawer floating over the canvas, so the canvas
           always owns the full width. */}
       <main className='min-h-0 flex-1 overflow-hidden'>
-        <EditorCanvas document={document} activeNodeIds={playback.active} runningEdgeIds={playback.runningEdgeIds} nodeExecutionStates={playback.nodeExecutionStates} edgeExecutionStates={playback.edgeExecutionStates} />
+        <EditorCanvas
+          document={document}
+          activeNodeIds={playback.active}
+          runningEdgeIds={playback.runningEdgeIds}
+          nodeExecutionStates={playback.nodeExecutionStates}
+          edgeExecutionStates={playback.edgeExecutionStates}
+          effectsPaused={playback.runMode === 'static'}
+        />
 
         <InspectorSidebar document={document} ariaLabel={inspectorLabel}>
           {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}

@@ -42,12 +42,23 @@ export function useExecutionPlayback(doc: FlowDocumentJSON): ExecutionPlayback {
   // computeOrderedGroups, so read the active set from there rather than
   // doc.nodes directly. Mapping doc.nodes here previously gave every frame
   // and text object a permanent, blinking "active" halo in concurrent mode.
+  // Static has no run cursor at all — nothing is ever "currently executing".
   const active = useMemo(
-    () => (runMode === 'concurrent' ? orderedGroups.flatMap((group) => group.map((node) => node.id)) : runPhase === 'node' && orderedGroups[runStep] ? orderedGroups[runStep].map((node) => node.id) : []),
+    () =>
+      runMode === 'static'
+        ? []
+        : runMode === 'concurrent'
+          ? orderedGroups.flatMap((group) => group.map((node) => node.id))
+          : runPhase === 'node' && orderedGroups[runStep]
+            ? orderedGroups[runStep].map((node) => node.id)
+            : [],
     [orderedGroups, runMode, runPhase, runStep],
   );
   const nodeExecutionStates = useMemo(() => {
-    if (runMode === 'concurrent') return undefined;
+    // Both fall back to 'normal' for every node (see FlowCanvas's
+    // `nodeExecutionStates?.[node.id] ?? 'normal'`) — concurrent because
+    // everything really is running, static because nothing is.
+    if (runMode === 'concurrent' || runMode === 'static') return undefined;
     return Object.fromEntries(
       orderedGroups.flatMap((group, groupIndex) => group.map((node) => [node.id, groupIndex < runStep || (groupIndex === runStep && runPhase === 'line') ? 'completed' : groupIndex === runStep && runPhase === 'node' ? 'active' : 'pending'])),
     ) as Record<string, ExecutionState>;
@@ -55,6 +66,12 @@ export function useExecutionPlayback(doc: FlowDocumentJSON): ExecutionPlayback {
   const edgeExecutionStates = useMemo(() => {
     if (runMode === 'concurrent') {
       return Object.fromEntries(doc.edges.map((edge) => [edge.id, 'active'])) as Record<string, ExecutionState>;
+    }
+    // Static keeps every edge at plain 'normal' — full opacity, no
+    // pending fade, no 'active' draw-in — the animation itself is
+    // stopped separately, by `runningEdgeIds` being `[]` below.
+    if (runMode === 'static') {
+      return Object.fromEntries(doc.edges.map((edge) => [edge.id, 'normal'])) as Record<string, ExecutionState>;
     }
     return Object.fromEntries(
       doc.edges.map((edge) => {
@@ -68,8 +85,12 @@ export function useExecutionPlayback(doc: FlowDocumentJSON): ExecutionPlayback {
       }),
     ) as Record<string, ExecutionState>;
   }, [doc.edges, groupIndexByNodeId, runMode, runPhase, runStep]);
+  // null means "every edge animates" (concurrent); an array means "only
+  // these ids do" — static passes an empty array, which pauses all of
+  // them, the same mechanism sequential/manual use to pause everything
+  // but the current step.
   const runningEdgeIds = useMemo(
-    () => (runMode === 'concurrent' ? null : doc.edges.filter((edge) => edgeExecutionStates[edge.id] === 'active').map((edge) => edge.id)),
+    () => (runMode === 'concurrent' ? null : runMode === 'static' ? [] : doc.edges.filter((edge) => edgeExecutionStates[edge.id] === 'active').map((edge) => edge.id)),
     [doc.edges, edgeExecutionStates, runMode],
   );
 

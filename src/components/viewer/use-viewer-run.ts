@@ -38,7 +38,9 @@ export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
   const groupIndexByNodeId = useMemo(() => new Map(orderedGroups.flatMap((group, groupIndex) => group.map((node) => [node.id, groupIndex] as const))), [orderedGroups]);
 
   const nodeExecutionStates = useMemo(() => {
-    if (runMode === 'concurrent') return undefined;
+    // Both fall back to 'normal' for every node — concurrent because
+    // everything really is running, static because nothing is.
+    if (runMode === 'concurrent' || runMode === 'static') return undefined;
     return Object.fromEntries(
       orderedGroups.flatMap((group, groupIndex) =>
         group.map((node) => [node.id, groupIndex < cursor.step || (groupIndex === cursor.step && cursor.phase === 'line') ? 'completed' : groupIndex === cursor.step && cursor.phase === 'node' ? 'active' : 'pending']),
@@ -49,6 +51,11 @@ export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
   const edgeExecutionStates = useMemo(() => {
     if (runMode === 'concurrent') {
       return Object.fromEntries(document.edges.map((edge) => [edge.id, 'active'])) as Record<string, ExecutionState>;
+    }
+    // Static keeps every edge at plain 'normal' — the animation itself is
+    // stopped separately, by `runningEdgeIds` being `[]` below.
+    if (runMode === 'static') {
+      return Object.fromEntries(document.edges.map((edge) => [edge.id, 'normal'])) as Record<string, ExecutionState>;
     }
     return Object.fromEntries(
       document.edges.map((edge) => {
@@ -63,7 +70,10 @@ export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
     ) as Record<string, ExecutionState>;
   }, [document.edges, groupIndexByNodeId, runMode, cursor]);
 
-  const runningEdgeIds = useMemo(() => (runMode === 'concurrent' ? null : document.edges.filter((edge) => edgeExecutionStates?.[edge.id] === 'active').map((edge) => edge.id)), [document.edges, edgeExecutionStates, runMode]);
+  const runningEdgeIds = useMemo(
+    () => (runMode === 'concurrent' ? null : runMode === 'static' ? [] : document.edges.filter((edge) => edgeExecutionStates?.[edge.id] === 'active').map((edge) => edge.id)),
+    [document.edges, edgeExecutionStates, runMode],
+  );
 
   const replay = useCallback(() => {
     setCursor({ step: 0, phase: 'node' });

@@ -11,6 +11,7 @@ interface EditorCanvasProps {
   runningEdgeIds: string[] | null;
   nodeExecutionStates: Record<string, ExecutionState> | undefined;
   edgeExecutionStates: Record<string, ExecutionState>;
+  effectsPaused: boolean;
 }
 
 /**
@@ -19,7 +20,7 @@ interface EditorCanvasProps {
  * ~40 props `FlowCanvas` needs, so a change to canvas behaviour lands in
  * both places at once.
  */
-export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExecutionStates, edgeExecutionStates }: EditorCanvasProps) {
+export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExecutionStates, edgeExecutionStates, effectsPaused }: EditorCanvasProps) {
   const seed = useEditorStore((state) => state.seed);
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
   const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
@@ -41,6 +42,7 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
         runningEdgeIds={runningEdgeIds}
         nodeExecutionStates={nodeExecutionStates}
         edgeExecutionStates={edgeExecutionStates}
+        effectsPaused={effectsPaused}
         selectedNodeId={selectedNodeId}
         onSelectNode={selectNode}
         onNodeMove={onNodeMove}

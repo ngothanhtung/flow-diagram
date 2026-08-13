@@ -52,6 +52,9 @@ interface FlowCanvasProps {
   runningEdgeIds?: string[] | null;
   nodeExecutionStates?: Record<string, ExecutionState>;
   edgeExecutionStates?: Record<string, ExecutionState>;
+  /** Static run mode: freeze every node's own motion/decoration effect.
+   *  Edge animation is paused separately, via `runningEdgeIds`. */
+  effectsPaused?: boolean;
   selectedNodeId: string | null;
   onSelectNode: (id: string | null) => void;
   onNodeMove: (id: string, position: { x: number; y: number }) => void;
@@ -136,6 +139,7 @@ export function FlowCanvas({
   runningEdgeIds = null,
   nodeExecutionStates,
   edgeExecutionStates,
+  effectsPaused = false,
   selectedNodeId,
   onSelectNode,
   onNodeMove,
@@ -905,6 +909,7 @@ export function FlowCanvas({
                 key={node.id}
                 node={node}
                 performanceMode={performanceMode}
+                effectsPaused={effectsPaused}
                 isActive={active.has(node.id)}
                 executionState={nodeExecutionStates?.[node.id] ?? 'normal'}
                 isSelected={selectedNodeId === node.id}

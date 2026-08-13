@@ -61,13 +61,17 @@ export function resolveEffectKnobs(speed: number | undefined, intensity: number 
  * `transform-box: fill-box` makes scale and rotate pivot on the node's own
  * centre rather than the canvas origin.
  */
-export function nodeMotionStyle(effect: NodeEffect | undefined, speed: number, intensity: number): React.CSSProperties | undefined {
+export function nodeMotionStyle(effect: NodeEffect | undefined, speed: number, intensity: number, paused = false): React.CSSProperties | undefined {
   if (!effect || !MOTION_EFFECTS.has(effect)) return undefined;
   return {
     animationName: `node-fx-${effect}`,
     animationDuration: `${(DURATION[effect as Exclude<NodeEffect, 'none'>] / speed).toFixed(3)}s`,
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease-in-out',
+    // Static run mode freezes every animation on the canvas, including a
+    // node's own opt-in motion — paused rather than unmounted, so the
+    // node still renders at whatever pose the animation was stopped at.
+    animationPlayState: paused ? 'paused' : 'running',
     transformBox: 'fill-box',
     transformOrigin: 'center',
     // The keyframes multiply their amplitude by this, so one keyframe
@@ -92,13 +96,15 @@ interface NodeEffectLayerProps {
   clipId: string;
   /** Dense diagrams drop the blur, never the effect itself. */
   performanceMode?: boolean;
+  /** Static run mode: freeze the animation, keep the decoration painted. */
+  paused?: boolean;
 }
 
 /**
  * The decoration family. Renders nothing for `none` or for a motion
  * effect, so `FlowNodeCard` can mount it unconditionally.
  */
-export function NodeEffectLayer({ d, transform, effect, color, speed, intensity, width, height, clipId, performanceMode = false }: NodeEffectLayerProps) {
+export function NodeEffectLayer({ d, transform, effect, color, speed, intensity, width, height, clipId, performanceMode = false, paused = false }: NodeEffectLayerProps) {
   if (!effect || !DECORATION_EFFECTS.has(effect)) return null;
 
   const duration = `${(DURATION[effect as Exclude<NodeEffect, 'none'>] / speed).toFixed(3)}s`;
@@ -127,6 +133,7 @@ export function NodeEffectLayer({ d, transform, effect, color, speed, intensity,
                   animationDuration: duration,
                   animationIterationCount: 'infinite',
                   animationTimingFunction: 'ease-in-out',
+                  animationPlayState: paused ? 'paused' : 'running',
                 }
               : {}),
           }}
@@ -158,6 +165,7 @@ export function NodeEffectLayer({ d, transform, effect, color, speed, intensity,
               animationIterationCount: 'infinite',
               animationTimingFunction: 'ease-out',
               animationDelay: `-${(DURATION.ripple / speed) * offset}s`,
+              animationPlayState: paused ? 'paused' : 'running',
             }}
           />
         ))}
@@ -183,6 +191,7 @@ export function NodeEffectLayer({ d, transform, effect, color, speed, intensity,
             animationDuration: duration,
             animationIterationCount: 'infinite',
             animationTimingFunction: 'linear',
+            animationPlayState: paused ? 'paused' : 'running',
           }}
         />
       </g>
@@ -218,6 +227,7 @@ export function NodeEffectLayer({ d, transform, effect, color, speed, intensity,
               animationDuration: duration,
               animationIterationCount: 'infinite',
               animationTimingFunction: 'ease-in-out',
+              animationPlayState: paused ? 'paused' : 'running',
               '--node-fx-sweep': `${width + bandWidth * 2}px`,
             } as React.CSSProperties
           }

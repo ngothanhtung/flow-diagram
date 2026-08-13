@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Hand, ListOrdered, Play, RadioTower, Repeat2, SkipForward } from 'lucide-react';
+import { Hand, Image as ImageIcon, ListOrdered, Play, RadioTower, Repeat2, SkipForward } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
 import { useEditorStore } from '@/lib/editor-store';
@@ -11,6 +11,7 @@ const RUN_MODES = [
   { value: 'sequential', label: 'Sequential', Icon: ListOrdered },
   { value: 'concurrent', label: 'Concurrent', Icon: RadioTower },
   { value: 'manual', label: 'Manual', Icon: Hand },
+  { value: 'static', label: 'Static', Icon: ImageIcon },
 ] as const satisfies ReadonlyArray<{ value: RunMode; label: string; Icon: typeof Hand }>;
 
 export interface RunControlsProps {
@@ -61,22 +62,30 @@ export function RunControls({ runMode, repeatEnabled, advanceDisabled, onSelectM
           Next
         </motion.button>
       )}
-      <Button
-        variant='toolbar'
-        size='lg'
-        disabled={runMode !== 'sequential'}
-        onClick={onToggleRepeat}
-        aria-pressed={repeatEnabled}
-        title='Automatically replay after the sequential run completes'
-        className={repeatEnabled && runMode === 'sequential' ? 'border-emerald-400/40 bg-emerald-400/15 text-emerald-100 hover:bg-emerald-400/15 hover:text-emerald-100 dark:bg-emerald-400/15 dark:hover:bg-emerald-400/15' : 'text-zinc-500'}
-      >
-        <Repeat2 size={13} className={repeatEnabled && runMode === 'sequential' ? 'text-emerald-300' : ''} />
-        Repeat
-      </Button>
-      <Button variant='toolbar' size='lg' onClick={onReplay}>
-        <Play size={14} />
-        Replay
-      </Button>
+      {/* Static has no run cursor to repeat or replay — nothing ever
+          moves, so both controls would either do nothing or, for Replay,
+          trigger a pointless canvas remount (it works by bumping the
+          canvas's `key`). */}
+      {runMode !== 'static' && (
+        <>
+          <Button
+            variant='toolbar'
+            size='lg'
+            disabled={runMode !== 'sequential'}
+            onClick={onToggleRepeat}
+            aria-pressed={repeatEnabled}
+            title='Automatically replay after the sequential run completes'
+            className={repeatEnabled && runMode === 'sequential' ? 'border-emerald-400/40 bg-emerald-400/15 text-emerald-100 hover:bg-emerald-400/15 hover:text-emerald-100 dark:bg-emerald-400/15 dark:hover:bg-emerald-400/15' : 'text-zinc-500'}
+          >
+            <Repeat2 size={13} className={repeatEnabled && runMode === 'sequential' ? 'text-emerald-300' : ''} />
+            Repeat
+          </Button>
+          <Button variant='toolbar' size='lg' onClick={onReplay}>
+            <Play size={14} />
+            Replay
+          </Button>
+        </>
+      )}
     </>
   );
 }

@@ -190,9 +190,10 @@ export default function HelpPage() {
             ['Sequential', 'Steps auto-advance on a timer, one execution step at a time. Blocks that share the same execution order animate together as one step (parallel branches).'],
             ['Concurrent', 'Everything animates at once — useful to see the whole system alive.'],
             ['Manual', 'Nothing advances until you click Next — you drive each step yourself, ideal for presentations.'],
+            ['Static', 'No run at all. Every block and connector renders at rest — no highlighting, and any line or block effect the diagram has configured is frozen too. For a diagram meant to be read as a plain reference chart, not walked through.'],
             ['Next', 'Manual mode only: run the next execution step.'],
             ['Repeat', 'Sequential mode only: automatically restart the run after it completes.'],
-            ['Replay', 'Restart the animation from the beginning in any mode.'],
+            ['Replay', 'Sequential, Concurrent or Manual: restart the animation from the beginning. Static has no run to restart, so Next / Repeat / Replay all disappear when it is selected.'],
           ]}
         />
         <p>
