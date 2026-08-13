@@ -133,10 +133,10 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
       }
       actions={<SaveButton saving={saving} dirty={dirty} onSave={() => void handleSave()} />}
       subBar={
-        <div className='flex items-center gap-2 border-b border-white/5 px-6 py-2.5'>
-          <Input value={meta.name} onChange={(event) => setMeta((current) => ({ ...current, name: event.target.value }))} placeholder='Template name' aria-label='Template name' variant='toolbar' className='max-w-64' />
-          <Input value={meta.category} onChange={(event) => setMeta((current) => ({ ...current, category: event.target.value }))} placeholder='Category' aria-label='Category' variant='toolbar' className='max-w-40' />
-          <Input value={meta.description} onChange={(event) => setMeta((current) => ({ ...current, description: event.target.value }))} placeholder='Description' aria-label='Description' variant='toolbar' />
+        <div className='flex flex-wrap items-center gap-2 border-b border-white/5 px-3 py-2.5 sm:px-6'>
+          <Input value={meta.name} onChange={(event) => setMeta((current) => ({ ...current, name: event.target.value }))} placeholder='Template name' aria-label='Template name' variant='toolbar' className='w-40 sm:max-w-64' />
+          <Input value={meta.category} onChange={(event) => setMeta((current) => ({ ...current, category: event.target.value }))} placeholder='Category' aria-label='Category' variant='toolbar' className='w-32 sm:max-w-40' />
+          <Input value={meta.description} onChange={(event) => setMeta((current) => ({ ...current, description: event.target.value }))} placeholder='Description' aria-label='Description' variant='toolbar' className='min-w-40 flex-1' />
         </div>
       }
       info={{

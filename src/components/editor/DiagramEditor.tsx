@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { UserMenu } from '@/components/auth/UserMenu';
@@ -25,8 +26,9 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
 
   if (editing) {
     return (
-      <input
+      <Input
         autoFocus
+        variant='toolbar'
         value={draft}
         maxLength={80}
         aria-label='Diagram name'
@@ -44,7 +46,7 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
             setEditing(false);
           }
         }}
-        className='w-56 rounded-md border border-sky-400/40 bg-zinc-900/80 px-1.5 py-0.5 text-xs text-zinc-100 outline-none focus-visible:ring-2 focus-visible:ring-sky-400/15'
+        className='h-6 w-40 border-sky-400/40 px-1.5 py-0.5 text-xs sm:w-56'
       />
     );
   }
@@ -57,7 +59,7 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
         setEditing(true);
       }}
       title='Rename diagram'
-      className='-mx-1 rounded px-1 text-xs text-zinc-400 transition hover:bg-white/6 hover:text-zinc-200'
+      className='-mx-1 max-w-40 truncate rounded px-1 text-xs text-zinc-400 transition hover:bg-white/6 hover:text-zinc-200 sm:max-w-none'
     >
       {name}
     </button>

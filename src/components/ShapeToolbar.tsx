@@ -100,7 +100,12 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
 
   return (
     <div
-      className='pointer-events-auto absolute left-1/2 bottom-4 z-20 flex -translate-x-1/2 items-center gap-0.5 rounded-lg bg-zinc-900/92 p-0.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48)] backdrop-blur-xl'
+      // The dock is a fixed-width row of ~10 controls; on a narrow phone
+      // viewport that's wider than the screen. `max-w` caps it to the
+      // viewport (minus a margin) and `overflow-x-auto` turns the excess
+      // into a horizontal scroll instead of clipping past the screen edge
+      // (it's still centered via the translate, just scrollable within).
+      className='pointer-events-auto absolute left-1/2 bottom-4 z-20 flex max-w-[calc(100vw-1rem)] -translate-x-1/2 items-center gap-0.5 overflow-x-auto rounded-lg bg-zinc-900/92 p-0.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48)] backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
       role='toolbar'
       aria-label='Shape drawing tools'
     >

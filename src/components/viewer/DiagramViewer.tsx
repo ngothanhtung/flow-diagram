@@ -108,20 +108,20 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
 
   return (
     <div className='flex h-screen flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
-      <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
-        <div className='flex items-center gap-3'>
-          <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
+      <header className='flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-white/5 px-3 py-3 sm:px-6 sm:py-4'>
+        <div className='flex min-w-0 items-center gap-3'>
+          <div className='grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
             <Boxes size={18} className='text-sky-300' />
           </div>
-          <div>
-            <h1 className='text-base font-semibold'>{diagram.name}</h1>
-            <p className='font-mono text-[10px] text-zinc-500'>
+          <div className='min-w-0'>
+            <h1 className='truncate text-base font-semibold'>{diagram.name}</h1>
+            <p className='hidden truncate font-mono text-[10px] text-zinc-500 sm:block'>
               {diagram.id} · owner {diagram.ownerUid.slice(0, 10)}
             </p>
           </div>
         </div>
 
-        <div className='flex items-center gap-2'>
+        <div className='flex flex-wrap items-center justify-end gap-2'>
           <RunControls
             runMode={run.runMode}
             repeatEnabled={run.repeatEnabled}

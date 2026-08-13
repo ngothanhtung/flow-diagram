@@ -203,6 +203,12 @@ Prefer extending an existing `components/ui` primitive over a raw `<dialog>` or 
 - `Input` variant `toolbar`, matching the `toolbar` button.
 - `src/components/data-table.tsx` — `DataTable`, `DataTableFooter`, `SortHeaderButton`, `formatDateTime`, `formatNumber`, shared by the diagrams list and both admin tables (TanStack Table).
 
+### Responsive header and toolbar
+
+The editor/viewer header (`EditorShell.tsx`'s `<header>`, and `DiagramViewer.tsx`'s own copy of the same layout) is `flex flex-wrap` rather than a fixed single row — on a narrow viewport the right-hand cluster (run-mode picker, Next/Repeat/Replay, Help, `headerEnd`) drops to its own line(s) instead of clipping or forcing horizontal scroll on the page. Within that cluster, `RunControls` (`editor/PlaybackControls.tsx`) hides its button labels behind Tailwind breakpoints and falls back to icon-only + `title` tooltip: the four run-mode buttons keep only their icon below `lg`, and Next/Repeat/Replay/Help keep only their icon below `sm`. This is shared by the viewer for free since `DiagramViewer` renders the same `RunControls` component. The branding title ("X Flow Tool") hides below `md` since the diagram name in `subtitle` already carries the identity at that width.
+
+`ShapeToolbar.tsx`'s floating shape dock is a fixed-width row of ~10 controls that doesn't wrap (wrapping would break its "one settled row centered on the canvas" look). Instead it's capped to `max-w-[calc(100vw-1rem)]` with `overflow-x-auto` and the scrollbar hidden (`[scrollbar-width:none] [&::-webkit-scrollbar]:hidden`), so on a phone-width canvas the dock scrolls horizontally within itself instead of overflowing past the screen edge.
+
 ### Firebase
 
 `src/lib/firebase/client.ts` initializes the app from `NEXT_PUBLIC_FIREBASE_*` env vars (see `.env.example`) and throws immediately if a required var is missing — there's no silent-degrade path. `auth.ts`, `diagrams.ts`, `templates.ts` and `roles.ts` are the only modules that talk to Firebase; everything else goes through them. `firestore.rules` is the source of truth for access and is deployed separately (`firebase deploy --only firestore:rules`) — a change to a collection's shape usually needs a matching rules change.
