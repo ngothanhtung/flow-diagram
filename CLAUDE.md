@@ -90,13 +90,15 @@ Effects split into two families, and the per-edge knobs apply to one family each
 | Family | Examples | Knob |
 | --- | --- | --- |
 | Travelling objects | `comet`, `pulse`, `dots`, `laser`, `meteor`, `convoy`, `chase` | `effectCount` (1–8 objects; unset = spacing-based), `effectShape` |
-| Tiled patterns | `flow`, `dash`, `wave`, `marching`, `ants`, `morse` | `effectDensity` (0.5×–2× mark density) |
+| Tiled patterns | `flow`, `heartbeat`, `rail`, `ants`, `morse` | `effectDensity` (0.5×–2× mark density) |
 
 `effect: 'none'` is the opt-out — `EdgeEffectLayer` returns `null` before any of the above, leaving a static line.
 
-Shared knobs: `glowIntensity` (0–3, **unset = no halo**; `onConnect` stamps `1` on newly drawn lines so a glow is always explicit), `glowColor` (unset = white, `'auto'` = follow the object's colour, or a hex), `phaseOffset` (0–1 cycle, so parallel lines don't run in lockstep), `animationSpeed`, `effectColor`.
+Shared knobs: `glowIntensity` (0–3, **unset = no halo**; `onConnect` stamps `1` on newly drawn lines so a glow is always explicit), `glowColor` (unset = white, `'auto'` = follow the object's colour, or a hex), `animationSpeed`, `effectColor`.
 
 `effectShape` (a `NodeIcon` reference, e.g. `lucide:Home`) swaps the plain dash segment for that icon riding the route instead — picked through `IconPicker`, the same dialog a block's icon field uses, so there's one icon-browsing experience in the app rather than a bespoke one. `edge-motion-icons.tsx` (`EdgeMotionIcons`) places it with CSS `offset-path`/`offset-distance` against the same `d`, at a **fixed 16px** — there's no size knob, unlike the rest of the sizing conventions on this page. It always renders upright (no `offset-rotate`), since a picked icon has no inherent "forward" direction to turn to. There is no catalog of built-in shapes (arrow, envelope, coin…) anymore — only an icon or the plain dash.
+
+Six pattern/travelling effects that were near-indistinguishable single-path dash textures or literal duplicates of another effect at a different speed — `dash`/"Packets", `wave`, `traffic`, `spark` (a `dots` duplicate), `marching`, and `binary` — were removed outright rather than kept as filler or reworked; a two-layer redesign was tried for `marching`/`binary` first, but they were cut anyway once decided the effect list itself was better off smaller. `heartbeat` is the one survivor that got a real rework instead of removal: its dasharray (`[3, 3, 5, 20]`) is a "lub-dub…" timing rhythm rather than an evenly spaced dash — a dasharray can only shape *timing* along the existing path, not bend the path into an actual EKG spike.
 
 ### Node effects
 

@@ -211,20 +211,14 @@ export type EdgeEffect =
    *  default to this, since a schema diagram reads better still. */
   | 'none'
   | 'flow'
-  | 'dash'
   | 'pulse'
   | 'glow'
   | 'comet'
   | 'dots'
-  | 'wave'
   | 'scanner'
-  | 'traffic'
   | 'bidirectional'
   | 'laser'
   | 'meteor'
-  | 'spark'
-  | 'marching'
-  | 'binary'
   | 'heartbeat'
   | 'rail'
   | 'fade'
@@ -335,10 +329,6 @@ export interface FlowEdge {
   /** Halo colour. Unset is white (the classic neon look); `'auto'`
    *  follows the travelling object's own colour; a hex value pins it. */
   glowColor?: `#${string}` | 'auto';
-  /** Animation phase offset as a fraction of one cycle (0–1). Lines
-   *  sharing an effect run in lockstep by default; offsetting phases
-   *  makes parallel connectors read more organically. */
-  phaseOffset?: number;
   /** Animation speed multiplier, from 0.25× to 3×. */
   animationSpeed?: number;
 }

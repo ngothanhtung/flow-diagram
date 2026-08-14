@@ -16,7 +16,6 @@ export const TRAVEL_VELOCITY: Partial<Record<EdgeEffect, number>> = {
   bidirectional: 135,
   laser: 145,
   meteor: 230,
-  spark: 135,
   fade: 100,
   convoy: 150,
   chase: 165,
@@ -34,11 +33,11 @@ const CHARGING_VELOCITY = 170;
  */
 export const PATTERN_DASHES: Partial<Record<EdgeEffect, number[]>> = {
   flow: [8, 12],
-  dash: [6, 7],
-  wave: [10, 6, 2, 6],
-  traffic: [4, 6, 1, 6],
-  marching: [14, 5],
-  heartbeat: [1, 4, 18, 4],
+  // Two short blips close together, then a long rest — a "lub-dub…"
+  // rhythm rather than an evenly spaced dash, since a beat is a timing
+  // pattern (dasharray can shape) not a spike shape (the path itself
+  // would have to bend for that, which isn't this layer's to change).
+  heartbeat: [3, 3, 5, 20],
   rail: [3, 5],
   // "SOS" in dots and dashes — reads instantly as a telegraph signal.
   morse: [2, 3, 2, 3, 2, 6, 8, 3, 8, 3, 8, 6, 2, 3, 2, 3, 2, 12],
@@ -50,11 +49,6 @@ export const PATTERN_DASHES: Partial<Record<EdgeEffect, number[]>> = {
 
 export const PATTERN_VELOCITY: Partial<Record<EdgeEffect, number>> = {
   flow: 20 / 0.95,
-  dash: 13 / 0.75,
-  wave: 24 / 1.1,
-  traffic: 17 / 0.82,
-  marching: 20 / 1.05,
-  binary: 40 / 1.15,
   heartbeat: 24 / 1.25,
   rail: 13 / 0.85,
   morse: 26,
@@ -62,10 +56,6 @@ export const PATTERN_VELOCITY: Partial<Record<EdgeEffect, number>> = {
   // Blink doesn't translate — this only sets its pulse beat (period/velocity).
   blink: 25,
 };
-
-/** Byte 10110010 — complementary "1" (bright) and "0" (dim) bit slots. */
-const BINARY_HIGH = [3, 2, 0, 5, 3, 2, 3, 2, 0, 5, 0, 5, 3, 2, 0, 5];
-const BINARY_LOW = [0, 5, 3, 2, 0, 5, 0, 5, 3, 2, 3, 2, 0, 5, 3, 2];
 
 interface EdgeEffectLayerProps {
   /** SVG path `d` the effect travels along — the exact same path drawn for the line itself. */
@@ -91,8 +81,6 @@ interface EdgeEffectLayerProps {
   /** Halo colour: undefined = white, 'auto' = the object's own colour,
    *  or a hex value. */
   glowColor?: string;
-  /** Phase offset as a fraction of one animation cycle (0–1). */
-  phase?: number;
   /** Draws a picked icon riding the route instead of the effect's dash
    *  objects. Travelling effects only. Fixed 16px, no size knob. */
   shape?: NodeIcon;
@@ -129,7 +117,7 @@ export function EdgeEffectLayer(props: EdgeEffectLayerProps) {
   return <EdgeEffectLayerSingle {...props} />;
 }
 
-function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, effectSize, speed, count, density, glow, glowColor, phase, shape, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
+function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, effectSize, speed, count, density, glow, glowColor, shape, paused = false, performanceMode = false, isDrawing = false, drawDuration = '0ms' }: EdgeEffectLayerProps) {
   // Every effect's traveling object — including backdrop/track layers and
   // secondary passes — is sized as the same fixed multiple of the line's
   // own width, scaled by the `effectSize` slider (0.5x-3x, default 1x). At
@@ -192,10 +180,9 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   // changes how fast the pattern appears to move.
   const densityScale = 1 / Math.max(0.5, Math.min(2, density ?? 1));
   const scaleDashes = (values: number[]) => values.map((value) => Math.round(value * densityScale * 100) / 100);
-  const patternBase = effect === 'binary' ? BINARY_HIGH : PATTERN_DASHES[effect];
+  const patternBase = PATTERN_DASHES[effect];
   const patternPeriod = patternBase ? patternBase.reduce((total, value) => total + value, 0) * densityScale : 0;
   const patternDash = patternBase ? scaleDashes(patternBase).join(' ') : undefined;
-  const binaryLowDash = effect === 'binary' ? scaleDashes(BINARY_LOW).join(' ') : undefined;
   const travelVelocity = TRAVEL_VELOCITY[effect];
   const patternVelocity = PATTERN_VELOCITY[effect];
   const travelPeriod = effect === 'laser' ? laserPeriod : PERIOD;
@@ -223,14 +210,9 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
     return `drop-shadow(0 0 ${inner * glowLevel}px ${glowInk}) drop-shadow(0 0 ${outer * glowLevel}px ${softGlowInk(outerAlpha)})`;
   };
   const neonFilter = buildGlow(Math.max(3, effectSize * 3), Math.max(7, effectSize * 6), 0.6);
-  // A negative delay starts the loop mid-cycle — the standard CSS idiom
-  // for a phase offset. During the execution draw-in the delay slot is
-  // needed to hold the effect back, so the phase applies afterwards only.
-  const phaseFraction = Math.max(0, Math.min(1, phase ?? 0));
-  const phaseDelay = phaseFraction > 0 ? `${-(phaseFraction * animationDurationSeconds).toFixed(4)}s` : undefined;
   const animationStyle = {
     animationDuration,
-    animationDelay: isDrawing ? drawDuration : phaseDelay,
+    animationDelay: isDrawing ? drawDuration : undefined,
     animationPlayState: paused ? 'paused' : 'running',
     animationDirection: direction === 'reverse' ? 'reverse' : 'normal',
     animationFillMode: isDrawing ? 'backwards' : undefined,
@@ -245,7 +227,7 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   // Pattern textures shift exactly one (density-scaled) period per loop
   // through the same `--edge-period` mechanism, so any density stays
   // seamless — including patterns whose period never matched the old
-  // fixed keyframes exactly (marching, heartbeat, rail).
+  // fixed keyframes exactly (heartbeat, rail).
   const patternClass = 'animate-[edge-travel-long_1.2s_linear_infinite]';
   const patternStyle = { ...animationStyle, '--edge-period': `-${patternPeriod}px` } as React.CSSProperties;
 
@@ -267,7 +249,6 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
       count: shapeCount,
       duration: lapSeconds,
       paused,
-      phase: phaseFraction,
       filter: shapeGlow,
       drawDelay: isDrawing ? drawDuration : undefined,
     };
@@ -287,14 +268,11 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
   return (
     <>
       {effect === 'flow' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={patternDash} className={patternClass} style={patternStyle} />}
-      {effect === 'dash' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={patternDash} className={patternClass} style={patternStyle} />}
       {effect === 'pulse' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={pulseDash} className={travelClass} style={travelStyle} />}
       {effect === 'glow' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={glowDash} className={travelClass} style={travelStyle} />}
       {effect === 'comet' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={cometDash} className={travelClass} style={travelStyle} />}
       {effect === 'dots' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={dotDash} className={travelClass} style={travelStyle} />}
-      {effect === 'wave' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={patternDash} className={patternClass} style={patternStyle} />}
       {effect === 'scanner' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={scannerDash} className={travelClass} style={travelStyle} />}
-      {effect === 'traffic' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={patternDash} className={patternClass} style={patternStyle} />}
       {effect === 'laser' && (
         <path
           d={d}
@@ -308,30 +286,6 @@ function EdgeEffectLayerSingle({ d, effect, direction, length = 0, lineWidth, ef
         />
       )}
       {effect === 'meteor' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={meteorDash} className={travelClass} style={travelStyle} />}
-      {effect === 'spark' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={dotDash} className={travelClass} style={travelStyle} />}
-      {effect === 'marching' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='square' fill='none' strokeDasharray={patternDash} className={patternClass} style={patternStyle} />}
-      {effect === 'binary' && (
-        <>
-          <path d={d} stroke='currentColor' strokeWidth={Math.max(1, baseWidth * 0.4)} strokeOpacity={0.14} fill='none' />
-          {/* Byte 10110010: two dasharrays that light up complementary bit
-              slots, so a "1" pulses bright and a "0" only pulses dim —
-              a high/low signal, the one shape universally read as binary
-              data, instead of a single-track dash pattern that just looked
-              like generic Morse-style dashes. */}
-          <path
-            d={d}
-            stroke='currentColor'
-            strokeWidth={baseWidth * 0.7}
-            strokeLinecap='square'
-            strokeOpacity={0.35}
-            fill='none'
-            strokeDasharray={binaryLowDash}
-            className={patternClass}
-            style={{ ...patternStyle, filter: undefined }}
-          />
-          <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='square' fill='none' strokeDasharray={patternDash} className={patternClass} style={patternStyle} />
-        </>
-      )}
       {effect === 'heartbeat' && <path d={d} stroke='currentColor' strokeWidth={baseWidth} strokeLinecap='round' fill='none' strokeDasharray={patternDash} className={patternClass} style={patternStyle} />}
       {effect === 'rail' && (
         <>

@@ -12,12 +12,11 @@ import {
   Gauge,
   GitCompareArrows,
   Hash,
+  HeartPulse,
   Lightbulb,
-  Minus,
   Palette,
   Rabbit,
   Radio,
-  Route,
   ScanLine,
   Shapes,
   Sparkles,
@@ -69,21 +68,15 @@ const EFFECTS: {
 }[] = [
   { value: 'none', label: 'None', description: 'No animation — a static line', Icon: Ban },
   { value: 'flow', label: 'Flow', description: 'Continuous data stream', Icon: Waves },
-  { value: 'dash', label: 'Packets', description: 'Moving packet stream', Icon: Minus },
   { value: 'pulse', label: 'Signal', description: 'Single traveling pulse', Icon: Activity },
   { value: 'glow', label: 'Beam', description: 'Traveling energy beam', Icon: Sparkles },
   { value: 'comet', label: 'Comet', description: 'Fast particle traffic', Icon: Zap },
   { value: 'dots', label: 'Dots', description: 'Evenly spaced moving dots', Icon: CircleDot },
-  { value: 'wave', label: 'Wave', description: 'Mixed rhythm data wave', Icon: Radio },
   { value: 'scanner', label: 'Scanner', description: 'Focused scanning packet', Icon: ScanLine },
-  { value: 'traffic', label: 'Traffic', description: 'Dense service traffic', Icon: Route },
   { value: 'bidirectional', label: 'Two-way', description: 'Traffic in both directions', Icon: GitCompareArrows },
   { value: 'laser', label: 'Laser', description: 'Long luminous energy sweep', Icon: Zap },
   { value: 'meteor', label: 'Meteor', description: 'Single high-energy moving point', Icon: Sparkles },
-  { value: 'spark', label: 'Spark', description: 'Dense glowing micro-particles', Icon: CircleDot },
-  { value: 'marching', label: 'Marching', description: 'Structured marching segments', Icon: Minus },
-  { value: 'binary', label: 'Binary', description: 'Short and long digital packets', Icon: Route },
-  { value: 'heartbeat', label: 'Heartbeat', description: 'Rhythmic telemetry signal', Icon: Activity },
+  { value: 'heartbeat', label: 'Heartbeat', description: 'P-QRS-T waveform, like a real EKG', Icon: HeartPulse },
   { value: 'rail', label: 'Rail', description: 'Framed transport channel', Icon: Radio },
   { value: 'fade', label: 'Energy Fade', description: 'Long fading data envelope', Icon: Waves },
   { value: 'convoy', label: 'Convoy', description: 'Grouped batches with open road between', Icon: Truck },
@@ -143,13 +136,12 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
   // Glow is opt-in: unset means no halo (new lines are created with 1).
   const glowIntensity = edge.glowIntensity ?? 0;
   const glowColor = edge.glowColor;
-  const phaseOffset = edge.phaseOffset ?? 0;
   // Object count only applies to travelling-object effects; pattern
-  // effects (flow, dash, wave…) get a density slider instead, and the
+  // effects (flow, heartbeat…) get a density slider instead, and the
   // remaining effects (charging) have neither knob.
   const previewEffect = draftEffect ?? effect;
   const supportsCount = previewEffect in TRAVEL_VELOCITY;
-  const supportsDensity = previewEffect in PATTERN_DASHES || previewEffect === 'binary';
+  const supportsDensity = previewEffect in PATTERN_DASHES;
   // Both ends being tables makes this an ERD relationship, which unlocks
   // the column pickers and the generated label.
   const isRelationship = Boolean(sourceColumns && targetColumns);
@@ -403,22 +395,21 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                         active ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-700 dark:text-cyan-100' : 'border-border bg-card text-muted-foreground hover:border-ring/40 hover:bg-muted/50',
                       ].join(' ')}
                     >
-                      <span className='flex w-full items-center justify-between gap-2'>
-                        <span className='flex items-center gap-2'>
-                          <span className='grid size-9 place-items-center rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-200'>
-                            <Icon size={16} />
-                          </span>
-                          <span className='text-[13px] font-semibold'>{item.label}</span>
+                      <span className='flex w-full items-center gap-2'>
+                        <span className='grid size-9 shrink-0 place-items-center rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-200'>
+                          <Icon size={16} />
                         </span>
-                        {active && <span className='rounded-full bg-cyan-400/20 px-2 py-0.5 text-[9px] font-semibold text-cyan-200'>Selected</span>}
+                        <span className='min-w-0 flex-1'>
+                          <span className='block text-[13px] font-semibold'>{item.label}</span>
+                          <span className='block truncate text-[11px] leading-relaxed text-muted-foreground'>{item.description}</span>
+                        </span>
                       </span>
-                      <span className='block text-[11px] leading-relaxed text-muted-foreground'>{item.description}</span>
                     </button>
                   );
                 })}
               </div>
               <div className='col-span-3 flex flex-col overflow-y-auto pb-6 pr-8 pl-4'>
-                <div className='flex h-48 shrink-0 items-center justify-center rounded-xl border border-[#28282A] bg-[#09090B]'>
+                <div className='flex h-32 shrink-0 items-center justify-center rounded-xl border border-[#28282A] bg-[#09090B]'>
                   <EffectPreviewLarge
                     effect={previewEffect}
                     direction={direction}
@@ -431,7 +422,6 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                     density={effectDensity}
                     glow={glowIntensity}
                     glowColor={glowColor}
-                    phase={phaseOffset}
                     shape={edge.effectShape}
                   />
                 </div>
@@ -641,28 +631,6 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                       </>
                     )}
                     <span className='mt-1.5 block text-[9px] leading-relaxed text-muted-foreground'>Neon halo around the moving objects — off unless you turn it on. Newly drawn lines start at 1×.</span>
-                  </div>
-
-                  <div className='mt-3'>
-                    <span className='flex items-center justify-between text-[10px] text-muted-foreground'>
-                      <span className='inline-flex items-center gap-1'>
-                        <Activity size={11} /> Phase offset
-                      </span>
-                      <span className='font-mono text-muted-foreground'>{Math.round(phaseOffset * 100)}%</span>
-                    </span>
-                    <Slider
-                      min={0}
-                      max={1}
-                      step={0.05}
-                      value={phaseOffset}
-                      onValueChange={(nextValue) => onUpdate(edge.id, { phaseOffset: (nextValue as number) === 0 ? undefined : (nextValue as number) })}
-                      className='mt-2 [&_[data-slot=slider-range]]:bg-sky-400 [&_[data-slot=slider-thumb]]:border-sky-300'
-                    />
-                    <span className='mt-1 flex justify-between text-[8px] uppercase tracking-wider text-muted-foreground'>
-                      <span>0%</span>
-                      <span>100%</span>
-                    </span>
-                    <span className='mt-1 block text-[9px] leading-relaxed text-muted-foreground'>Starts this line&apos;s animation partway through its cycle, so parallel lines don&apos;t run in lockstep.</span>
                   </div>
                   </>
                 )}
@@ -930,7 +898,6 @@ function EffectPreviewLarge({
   density,
   glow,
   glowColor,
-  phase,
   shape,
 }: {
   effect: EdgeEffect;
@@ -944,14 +911,13 @@ function EffectPreviewLarge({
   density?: number;
   glow?: number;
   glowColor?: string;
-  phase?: number;
   shape?: NodeIcon;
 }) {
   return (
-    <svg viewBox='0 0 400 180' className='h-auto w-full max-w-96' style={{ color }}>
+    <svg viewBox='0 0 400 180' className='h-full w-auto max-w-full' style={{ color }}>
       <path d={PREVIEW_PATH} stroke='currentColor' strokeWidth={width} strokeOpacity={0.52} fill='none' />
       <g style={effectColor ? { color: effectColor } : undefined}>
-        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} count={count} density={density} glow={glow} glowColor={glowColor} phase={phase} shape={shape} />
+        <EdgeEffectLayer d={PREVIEW_PATH} effect={effect} direction={direction} length={PREVIEW_LENGTH} lineWidth={width} effectSize={effectSize} speed={speed} count={count} density={density} glow={glow} glowColor={glowColor} shape={shape} />
       </g>
     </svg>
   );

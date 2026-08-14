@@ -196,18 +196,17 @@ export default function GuidePage() {
                 ['label', 'string', 'Use it for decision branches ("yes"/"no") or to name the data/action flowing across the edge ("sync", "candidates").'],
                 [
                   'effect',
-                  'flow · dash · pulse · glow · comet · dots · wave · scanner · traffic · bidirectional · laser · meteor · spark · marching · binary · heartbeat · rail · fade · convoy · chase · charging · morse · ants · blink',
-                  'The animated overlay. Templates default to `flow` for routine links and reach for `comet`/`pulse`/`dots`/`wave`/`scanner`/`traffic` to draw attention to a specific hop.',
+                  'flow · pulse · glow · comet · dots · scanner · bidirectional · laser · meteor · heartbeat · rail · fade · convoy · chase · charging · morse · ants · blink',
+                  'The animated overlay. Templates default to `flow` for routine links and reach for `comet`/`pulse`/`dots`/`scanner` to draw attention to a specific hop.',
                 ],
                 ['routing', 'straight · smooth-step · orthogonal · curved', 'Optional — the canvas picks a sane default. `orthogonal` reads best for dense system diagrams.'],
                 ['direction', 'forward · reverse · both', 'Defaults to forward. `both` animates the effect in both directions without changing logical from/to.'],
                 ['startMarker / endMarker', 'none · arrow · open-arrow · triangle · circle · diamond · tee · cross · circle-cross · arrow-both · arrow-bar · bar', 'Arrowheads at each end, independently configurable.'],
                 ['width / effectSize / animationSpeed', 'number', 'Line width, animated-object scale multiplier, and playback speed (0.25×–3×). Keep these consistent across a diagram — see §5.'],
-                ['effectCount', '1 – 8', 'Exact number of objects travelling the line for the travelling-object effects (pulse, comet, dots, laser…). Omit for automatic spacing (longer lines carry more objects). Pattern effects (flow, dash, wave…) tile the line and ignore it.'],
-                ['effectDensity', '0.5 – 2', 'Mark density for the pattern effects (flow, dash, wave…): higher = more, smaller marks at the same apparent speed. Travelling-object effects ignore it — use effectCount there.'],
+                ['effectCount', '1 – 8', 'Exact number of objects travelling the line for the travelling-object effects (pulse, comet, dots, laser…). Omit for automatic spacing (longer lines carry more objects). Pattern effects (flow, heartbeat, rail…) tile the line and ignore it.'],
+                ['effectDensity', '0.5 – 2', 'Mark density for the pattern effects (flow, heartbeat, rail…): higher = more, smaller marks at the same apparent speed. Travelling-object effects ignore it — use effectCount there.'],
                 ['glowIntensity', '0 – 3', 'Strength of the neon halo around the moving objects. Omit for no halo at all — the editor puts 1 on newly drawn lines, so a glow is always a deliberate choice.'],
                 ['glowColor', '#hex · auto', 'Halo colour. Omit for white (the classic neon look); \u2018auto\u2019 follows the travelling object\u2019s own colour.'],
-                ['phaseOffset', '0 – 1', "Starts the animation partway through its cycle (fraction of one loop), so parallel connectors don't run in lockstep."],
               ]}
             />
           </Section>

@@ -25,14 +25,12 @@ interface EdgeMotionIconsProps {
   duration: number;
   reverse: boolean;
   paused: boolean;
-  /** Fraction of a lap (0–1) every icon is shifted by. */
-  phase: number;
   filter?: string;
   /** Execution draw-in: hold the icons back until the line is traced. */
   drawDelay?: string;
 }
 
-export function EdgeMotionIcons({ d, icon, count, duration, reverse, paused, phase, filter, drawDelay }: EdgeMotionIconsProps) {
+export function EdgeMotionIcons({ d, icon, count, duration, reverse, paused, filter, drawDelay }: EdgeMotionIconsProps) {
   const Icon = useResolvedIcon(icon);
   if (!Icon) return null;
 
@@ -42,7 +40,7 @@ export function EdgeMotionIcons({ d, icon, count, duration, reverse, paused, pha
         // Negative delay = start mid-lap, which is what spreads the icons
         // out. During the draw-in the positive hold has to win, so the two
         // are summed in a calc() instead of one replacing the other.
-        const offsetSeconds = ((index / count + phase) % 1) * duration;
+        const offsetSeconds = (index / count) * duration;
         const delay = drawDelay ? `calc(${drawDelay} - ${offsetSeconds.toFixed(4)}s)` : `-${offsetSeconds.toFixed(4)}s`;
         const style: CSSProperties = {
           offsetPath: `path("${d}")`,
