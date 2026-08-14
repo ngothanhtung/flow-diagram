@@ -59,7 +59,7 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
         setEditing(true);
       }}
       title='Rename diagram'
-      className='-mx-1 max-w-40 truncate rounded px-1 text-xs text-zinc-400 transition hover:bg-white/6 hover:text-zinc-200 sm:max-w-none'
+      className='-mx-1 max-w-40 truncate rounded px-1 text-xs text-muted-foreground transition hover:bg-accent hover:text-accent-foreground sm:max-w-none'
     >
       {name}
     </button>
@@ -244,9 +244,9 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
             onClick={() => setDiagramPublic(!currentDiagramPublic)}
             aria-pressed={currentDiagramPublic}
             title={currentDiagramPublic ? 'Public — anyone signed in can view via /diagrams/{id}/view' : 'Private — only you and administrators can view'}
-            className={currentDiagramPublic ? 'text-emerald-300 hover:text-emerald-200' : ''}
+            className={currentDiagramPublic ? 'text-emerald-700 hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-200' : ''}
           >
-            {currentDiagramPublic ? <Globe size={13} className='text-emerald-300' /> : <LockKeyhole size={13} />}
+            {currentDiagramPublic ? <Globe size={13} className='text-emerald-700 dark:text-emerald-300' /> : <LockKeyhole size={13} />}
             {currentDiagramPublic ? 'Public' : 'Private'}
           </Button>
           <SaveButton saving={savingDiagram} dirty={dirty} onSave={() => void handleSaveDiagram()} />

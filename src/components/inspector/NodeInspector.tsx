@@ -31,9 +31,9 @@ interface NodeInspectorProps {
 export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCount = 0, parentTitle = null, onUngroup, onFitGroup }: NodeInspectorProps) {
   if (!node) {
     return (
-      <Card size='sm' className='gap-0 bg-zinc-900/70 py-3 pr-3 pl-1 ring-0'>
+      <Card size='sm' className='gap-0 bg-card py-3 pr-3 pl-1 ring-0'>
         <h2 className='text-sm font-semibold'>Inspector</h2>
-        <p className='mt-1 text-[11px] leading-relaxed text-zinc-500'>Click a node to inspect and edit it. Drag from a node&apos;s output port to another node&apos;s input port to connect them.</p>
+        <p className='mt-1 text-[11px] leading-relaxed text-muted-foreground'>Click a node to inspect and edit it. Drag from a node&apos;s output port to another node&apos;s input port to connect them.</p>
       </Card>
     );
   }

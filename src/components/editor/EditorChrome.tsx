@@ -29,7 +29,7 @@ export function FileMenu({ children }: { children: ReactNode }) {
 }
 
 export function FileMenuItem({ href, onClick, disabled, tone = 'default', icon, children }: { href?: string; onClick?: () => void; disabled?: boolean; tone?: 'default' | 'danger' | 'accent'; icon: ReactNode; children: ReactNode }) {
-  const toneClass = tone === 'danger' ? 'text-rose-300' : tone === 'accent' ? 'text-orange-300' : 'text-zinc-200';
+  const toneClass = tone === 'danger' ? 'text-rose-600 dark:text-rose-300' : tone === 'accent' ? 'text-orange-600 dark:text-orange-300' : 'text-foreground';
   return (
     <li>
       <NavigationMenuLink closeOnClick render={href ? <Link href={href} /> : <button type='button' disabled={disabled} onClick={onClick} />} className={`gap-2 text-xs ${toneClass} disabled:pointer-events-none disabled:opacity-50`}>
@@ -41,7 +41,7 @@ export function FileMenuItem({ href, onClick, disabled, tone = 'default', icon, 
 }
 
 export function FileMenuSeparator() {
-  return <li className='my-1 h-px bg-white/8' />;
+  return <li className='my-1 h-px bg-border' />;
 }
 
 /**
@@ -130,9 +130,9 @@ export function ResetCanvasDialog({ open, onOpenChange }: { open: boolean; onOpe
   const resetToTemplate = useEditorStore((state) => state.resetToTemplate);
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogContent className='border border-white/8 bg-zinc-950'>
+      <AlertDialogContent className='border border-border bg-popover'>
         <AlertDialogHeader>
-          <AlertDialogMedia className='bg-rose-400/10 text-rose-300'>
+          <AlertDialogMedia className='bg-rose-400/10 text-rose-600 dark:text-rose-300'>
             <RotateCcw />
           </AlertDialogMedia>
           <AlertDialogTitle>Reset canvas?</AlertDialogTitle>
@@ -160,16 +160,16 @@ export function ResetCanvasDialog({ open, onOpenChange }: { open: boolean; onOpe
 /** Full-surface placeholder while a document loads, or when it can't be. */
 export function EditorStatusScreen({ loading, title, description, backHref, backLabel, fullScreen = false }: { loading: boolean; title: string; description: string; backHref: string; backLabel: string; fullScreen?: boolean }) {
   return (
-    <div className={['grid place-items-center bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100', fullScreen ? 'h-screen' : 'h-full'].join(' ')}>
-      <div className='flex max-w-sm flex-col items-center gap-4 rounded-xl bg-zinc-900/70 px-8 py-10 text-center'>
+    <div className={['grid place-items-center bg-background text-foreground', fullScreen ? 'h-screen' : 'h-full'].join(' ')}>
+      <div className='flex max-w-sm flex-col items-center gap-4 rounded-xl bg-card px-8 py-10 text-center'>
         <div className='grid size-12 place-items-center rounded-full bg-sky-500/15 ring-1 ring-sky-400/40'>
-          {loading ? <LoaderCircle size={22} className='animate-spin text-sky-300' /> : <FileQuestion size={22} className='text-sky-300' />}
+          {loading ? <LoaderCircle size={22} className='animate-spin text-sky-600 dark:text-sky-300' /> : <FileQuestion size={22} className='text-sky-600 dark:text-sky-300' />}
         </div>
         <div>
           <h1 className='text-sm font-semibold'>{title}</h1>
-          <p className='mt-1.5 text-xs leading-relaxed text-zinc-500'>{description}</p>
+          <p className='mt-1.5 text-xs leading-relaxed text-muted-foreground'>{description}</p>
         </div>
-        <Link href={backHref} className='inline-flex h-8 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10'>
+        <Link href={backHref} className='inline-flex h-8 items-center gap-1.5 rounded-md bg-accent px-3 text-xs font-semibold text-accent-foreground ring-1 ring-border transition hover:bg-accent/70'>
           {backLabel}
         </Link>
       </div>

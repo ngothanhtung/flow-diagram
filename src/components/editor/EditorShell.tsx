@@ -54,8 +54,8 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
   const playback = useExecutionPlayback(document);
 
   return (
-    <div className={['flex flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100', fullScreen ? 'h-screen' : 'h-full'].join(' ')}>
-      <header className='flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-white/5 px-3 py-3 sm:px-6 sm:py-4'>
+    <div className={['flex flex-col bg-background text-foreground', fullScreen ? 'h-screen' : 'h-full'].join(' ')}>
+      <header className='flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-border px-3 py-3 sm:px-6 sm:py-4'>
         <div className='flex min-w-0 flex-wrap items-center gap-2 sm:gap-3'>
           <div className='grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>{icon}</div>
           <div className='min-w-0'>

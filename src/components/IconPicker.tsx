@@ -98,7 +98,7 @@ export function IconPicker({ value, onChange, className }: IconPickerProps) {
           <Button
             variant="outline"
             className={cn(
-              'h-9 w-full justify-start gap-2 border-white/10 bg-white/5 text-[11px] font-semibold text-zinc-300 hover:bg-white/10',
+              'h-9 w-full justify-start gap-2 border-border bg-muted/30 text-[11px] font-semibold text-muted-foreground hover:bg-accent',
               className,
             )}
           />
@@ -110,23 +110,23 @@ export function IconPicker({ value, onChange, className }: IconPickerProps) {
           // eslint-disable-next-line @next/next/no-img-element
           <img src={`/logos/${value.slice('logo:'.length)}.svg`} alt="" className="size-4 object-contain" />
         ) : (
-          <Ban size={14} className="text-zinc-500" />
+          <Ban size={14} className="text-muted-foreground" />
         )}
         {value ? (value.startsWith('logo:') ? 'Logo' : iconDisplayName(parseNodeIcon(value).name)) : 'No icon'}
       </DialogTrigger>
-      <DialogContent className="max-h-[80vh] gap-0 overflow-hidden border border-white/8 bg-zinc-950/96 p-0 sm:max-w-md">
-        <DialogHeader className="border-b border-white/7 px-5 py-4">
+      <DialogContent className="max-h-[80vh] gap-0 overflow-hidden border border-border bg-popover/96 p-0 sm:max-w-md">
+        <DialogHeader className="border-b border-border px-5 py-4">
           <DialogTitle className="text-sm">Choose icon</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-3 px-5 pt-4">
           <div className="relative">
-            <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-zinc-600" />
+            <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Search icons..."
-              className="h-9 border-white/8 bg-white/[.025] pl-9"
+              className="h-9 border-border bg-muted/20 pl-9"
               autoFocus
             />
           </div>
@@ -141,8 +141,8 @@ export function IconPicker({ value, onChange, className }: IconPickerProps) {
             className={[
               'h-9 w-full gap-2 text-[10px] font-semibold uppercase tracking-wider',
               value === null
-                ? 'border-sky-400/60 bg-sky-500/20 text-sky-100'
-                : 'border-white/10 bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-zinc-200',
+                ? 'border-sky-400/60 bg-sky-500/20 text-sky-700 dark:text-sky-100'
+                : 'border-border bg-muted/30 text-muted-foreground hover:bg-accent hover:text-foreground',
             ].join(' ')}
           >
             <Ban size={14} /> No icon
@@ -163,10 +163,10 @@ export function IconPicker({ value, onChange, className }: IconPickerProps) {
         <div ref={scrollRef} className="mt-3 h-[360px] overflow-y-auto px-5 pb-5">
           {!activeSnapshot ? (
             <div className="grid h-full place-items-center">
-              <LoaderCircle className="size-5 animate-spin text-cyan-300" />
+              <LoaderCircle className="size-5 animate-spin text-cyan-600 dark:text-cyan-300" />
             </div>
           ) : iconNames.length === 0 ? (
-            <p className="mt-8 text-center text-xs text-zinc-500">No icons found</p>
+            <p className="mt-8 text-center text-xs text-muted-foreground">No icons found</p>
           ) : (
             <div style={{ height: rowVirtualizer.getTotalSize(), position: 'relative' }}>
               {rowVirtualizer.getVirtualItems().map((virtualRow) => (
@@ -199,8 +199,8 @@ export function IconPicker({ value, onChange, className }: IconPickerProps) {
                           className={[
                             'h-9 w-full rounded-md',
                             isActive
-                              ? 'border-sky-400/60 bg-sky-500/20 text-sky-100'
-                              : 'border-white/10 bg-white/5 text-zinc-400 hover:bg-white/10',
+                              ? 'border-sky-400/60 bg-sky-500/20 text-sky-700 dark:text-sky-100'
+                              : 'border-border bg-muted/30 text-muted-foreground hover:bg-accent',
                           ].join(' ')}
                         >
                           <Icon size={15} />

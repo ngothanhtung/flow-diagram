@@ -90,11 +90,11 @@ export function useNodeFieldDraft(node: FlowNode, field: 'title' | 'description'
 /** Panel shell: the card, the heading and the node id. */
 export function InspectorShell({ title, nodeId, children }: { title: string; nodeId: string; children: React.ReactNode }) {
   return (
-    <Card size='sm' className='gap-0 bg-zinc-900/70 py-3 pr-3 pl-1 ring-0'>
+    <Card size='sm' className='gap-0 bg-card py-3 pr-3 pl-1 ring-0'>
       <div className='flex items-center justify-between'>
         <h2 className='text-sm font-semibold'>{title}</h2>
       </div>
-      <p className='mt-1 mb-2 text-[10px] uppercase tracking-wider text-zinc-500'>{nodeId}</p>
+      <p className='mt-1 mb-2 text-[10px] uppercase tracking-wider text-muted-foreground'>{nodeId}</p>
       <hr />
       {children}
     </Card>
@@ -104,8 +104,8 @@ export function InspectorShell({ title, nodeId, children }: { title: string; nod
 export function SectionLabel({ children }: { children: string }) {
   return (
     <div className='mt-4 flex items-center gap-2'>
-      <span className='text-[10px] font-bold uppercase tracking-[0.16em] text-sky-300/80'>{children}</span>
-      <Separator className='flex-1 bg-white/8' />
+      <span className='text-[10px] font-bold uppercase tracking-[0.16em] text-sky-600/80 dark:text-sky-300/80'>{children}</span>
+      <Separator className='flex-1 bg-border' />
     </div>
   );
 }
@@ -118,7 +118,7 @@ export function GeometryFields({ node, onUpdate, width, height }: { node: FlowNo
   return (
     <>
       <SectionLabel>Geometry</SectionLabel>
-      <p className='mt-1 text-[10px] leading-relaxed text-zinc-500'>Drag one of the 4 corner handles, or enter an exact size below.</p>
+      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>Drag one of the 4 corner handles, or enter an exact size below.</p>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <NumberField label='X' value={Math.round(node.position.x)} onChange={(x) => onUpdate(node.id, { position: { ...node.position, x } })} />
         <NumberField label='Y' value={Math.round(node.position.y)} onChange={(y) => onUpdate(node.id, { position: { ...node.position, y } })} />
@@ -152,20 +152,20 @@ export function TypographyFields({
           if (nextValue) onUpdate(node.id, { fontFamily: nextValue as NodeFont });
         }}
       >
-        <SelectTrigger className='mt-1.5 h-auto w-full border-white/10 bg-white/5 px-2.5 py-2 text-left hover:bg-white/8 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'>
-          <span className='min-w-0 flex-1 truncate text-[11px] font-semibold text-zinc-200' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
+        <SelectTrigger className='mt-1.5 h-auto w-full border-border bg-muted/30 px-2.5 py-2 text-left hover:bg-accent focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'>
+          <span className='min-w-0 flex-1 truncate text-[11px] font-semibold text-foreground' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
             {NODE_FONT_OPTIONS.find((option) => option.value === fontFamily)?.character}
-            <span className='ml-1 font-normal text-zinc-500'>({NODE_FONT_OPTIONS.find((option) => option.value === fontFamily)?.label})</span>
+            <span className='ml-1 font-normal text-muted-foreground'>({NODE_FONT_OPTIONS.find((option) => option.value === fontFamily)?.label})</span>
           </span>
         </SelectTrigger>
-        <SelectContent className='border-white/10 bg-zinc-950 p-1.5'>
+        <SelectContent className='border-border bg-popover p-1.5'>
           <SelectGroup>
-            <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600'>Typography</SelectLabel>
+            <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-muted-foreground'>Typography</SelectLabel>
             {NODE_FONT_OPTIONS.map((option) => (
               <SelectItem key={option.value} value={option.value} className='px-2.5 py-2 pr-8'>
                 <span className='truncate text-[11px] font-semibold' style={{ fontFamily: NODE_FONT_FAMILIES[option.value] }}>
                   {option.character}
-                  <span className='ml-1 font-normal text-zinc-500'>({option.label})</span>
+                  <span className='ml-1 font-normal text-muted-foreground'>({option.label})</span>
                 </span>
               </SelectItem>
             ))}
@@ -175,17 +175,17 @@ export function TypographyFields({
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <NumberField label='Font size' value={fontSize} min={10} max={28} onChange={(nextSize) => onUpdate(node.id, { fontSize: nextSize })} />
         <div>
-          <Label className='mb-1 block text-[9px] text-zinc-500'>Weight</Label>
+          <Label className='mb-1 block text-[9px] text-muted-foreground'>Weight</Label>
           <Select
             value={fontWeight}
             onValueChange={(nextValue) => {
               if (nextValue) onUpdate(node.id, { fontWeight: nextValue as FlowNode['fontWeight'] });
             }}
           >
-            <SelectTrigger className='w-full border-white/10 bg-white/5 text-[11px]'>
+            <SelectTrigger className='w-full border-border bg-muted/30 text-[11px]'>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className='border-white/10 bg-zinc-950'>
+            <SelectContent className='border-border bg-popover'>
               <SelectItem value='normal'>Normal</SelectItem>
               <SelectItem value='medium'>Medium</SelectItem>
               <SelectItem value='semibold'>Semibold</SelectItem>
@@ -242,11 +242,11 @@ export function GroupMembershipSection({ node, onUpdate, parentTitle }: { node: 
   return (
     <>
       <SectionLabel>Group</SectionLabel>
-      <p className='mt-1 text-[10px] leading-relaxed text-zinc-500'>
-        Inside <span className='text-zinc-300'>{parentTitle ?? 'a group'}</span>. Drag it out of the frame to leave, or:
+      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>
+        Inside <span className='text-muted-foreground'>{parentTitle ?? 'a group'}</span>. Drag it out of the frame to leave, or:
       </p>
       <div className='mt-2'>
-        <Button variant='outline' size='sm' onClick={() => onUpdate(node.id, { parentId: undefined })} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'>
+        <Button variant='outline' size='sm' onClick={() => onUpdate(node.id, { parentId: undefined })} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
           <Ungroup size={11} /> Remove from group
         </Button>
       </div>
@@ -260,7 +260,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
     <>
       <SectionLabel>Actions</SectionLabel>
       <div className='mt-1.5 grid grid-cols-3 gap-2'>
-        <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-200 hover:bg-white/10'>
+        <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-foreground hover:bg-accent'>
           <Copy size={12} /> Duplicate
         </Button>
         <Button
@@ -300,7 +300,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
               // node from its frame.
             })
           }
-          className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'
+          className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'
         >
           <RotateCcw size={11} /> Reset
         </Button>
@@ -317,7 +317,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
 export function NumberField({ label, value, min, max, step = 1, onChange }: { label: string; value: number; min?: number; max?: number; step?: number; onChange: (value: number) => void }) {
   return (
     <div>
-      <Label className='mb-1 block text-[9px] text-zinc-500'>{label}</Label>
+      <Label className='mb-1 block text-[9px] text-muted-foreground'>{label}</Label>
       <Input
         type='number'
         value={value}
@@ -329,7 +329,7 @@ export function NumberField({ label, value, min, max, step = 1, onChange }: { la
             onChange(event.target.valueAsNumber);
           }
         }}
-        className='h-8 border-white/10 bg-white/5 font-mono text-[11px] text-zinc-200 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+        className='h-8 border-border bg-muted/30 font-mono text-[11px] text-foreground focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
     </div>
   );
@@ -338,9 +338,9 @@ export function NumberField({ label, value, min, max, step = 1, onChange }: { la
 export function RangeField({ label, value, min, max, suffix, onChange }: { label: string; value: number; min: number; max: number; suffix: string; onChange: (value: number) => void }) {
   return (
     <div className='mt-2'>
-      <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+      <span className='flex items-center justify-between text-[10px] text-muted-foreground'>
         <span>{label}</span>
-        <span className='font-mono text-zinc-300'>
+        <span className='font-mono text-muted-foreground'>
           {value}
           {suffix}
         </span>
@@ -353,17 +353,17 @@ export function RangeField({ label, value, min, max, suffix, onChange }: { label
 export function SelectField<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: readonly T[]; onChange: (value: T) => void }) {
   return (
     <div>
-      <Label className='mb-1 block text-[9px] text-zinc-500'>{label}</Label>
+      <Label className='mb-1 block text-[9px] text-muted-foreground'>{label}</Label>
       <Select
         value={value}
         onValueChange={(nextValue) => {
           if (nextValue) onChange(nextValue as T);
         }}
       >
-        <SelectTrigger className='w-full border-white/10 bg-white/5 text-[11px] capitalize'>
+        <SelectTrigger className='w-full border-border bg-muted/30 text-[11px] capitalize'>
           <SelectValue />
         </SelectTrigger>
-        <SelectContent className='border-white/10 bg-zinc-950'>
+        <SelectContent className='border-border bg-popover'>
           {options.map((option) => (
             <SelectItem key={option} value={option} className='capitalize'>
               {option}
@@ -378,7 +378,7 @@ export function SelectField<T extends string>({ label, value, options, onChange 
 export function SegmentedButtons<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: { value: T; label: string; Icon: LucideIcon }[]; onChange: (value: T) => void }) {
   return (
     <div className='mt-2 grid grid-cols-[70px_1fr] items-center gap-2'>
-      <span className='text-[10px] text-zinc-500'>{label}</span>
+      <span className='text-[10px] text-muted-foreground'>{label}</span>
       <ToggleGroup
         value={[value]}
         onValueChange={(nextValue) => {
@@ -391,7 +391,7 @@ export function SegmentedButtons<T extends string>({ label, value, options, onCh
         className='w-full'
       >
         {options.map(({ value: option, label: optionLabel, Icon }) => (
-          <ToggleGroupItem key={option} value={option} title={optionLabel} className={['h-7 flex-1 border-white/10 bg-white/5 p-0', value === option ? 'border-sky-400/60 bg-sky-500/20 text-sky-100' : 'text-zinc-500 hover:text-zinc-200'].join(' ')}>
+          <ToggleGroupItem key={option} value={option} title={optionLabel} className={['h-7 flex-1 border-border bg-muted/30 p-0', value === option ? 'border-sky-400/60 bg-sky-500/20 text-sky-700 dark:text-sky-100' : 'text-muted-foreground hover:text-foreground'].join(' ')}>
             <Icon size={13} />
           </ToggleGroupItem>
         ))}
@@ -446,8 +446,8 @@ export function ColorField({ label, value, presets, onChange }: { label: string;
   };
 
   return (
-    <div className='rounded-lg border border-white/10 bg-white/5 p-2'>
-      <Label className='block text-[10px] text-zinc-500'>{label}</Label>
+    <div className='rounded-lg border border-border bg-muted/30 p-2'>
+      <Label className='block text-[10px] text-muted-foreground'>{label}</Label>
       <div className='mt-1 flex items-center gap-1.5'>
         <input
           type='color'
@@ -455,7 +455,7 @@ export function ColorField({ label, value, presets, onChange }: { label: string;
           title='Pick any colour'
           value={toSwatchHex(value)}
           onChange={(event) => onChange(event.target.value as `#${string}`)}
-          className='size-7 shrink-0 cursor-pointer rounded border border-white/20 bg-transparent p-0'
+          className='size-7 shrink-0 cursor-pointer rounded border border-border bg-transparent p-0'
         />
         <Input
           value={draft}
@@ -465,7 +465,7 @@ export function ColorField({ label, value, presets, onChange }: { label: string;
             if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
           }}
           aria-label={`${label} — hex value`}
-          className='h-7 border-white/10 bg-zinc-800/80 px-1.5 font-mono text-[10px] uppercase text-zinc-300 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+          className='h-7 border-border bg-muted/30 px-1.5 font-mono text-[10px] uppercase text-muted-foreground focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
         />
       </div>
       <div className='mt-1.5 flex flex-wrap gap-1'>
@@ -476,7 +476,7 @@ export function ColorField({ label, value, presets, onChange }: { label: string;
             onClick={() => onChange(preset)}
             title={preset}
             aria-label={preset}
-            className={cn('size-4 rounded-full border transition hover:scale-115', preset.toLowerCase() === value.toLowerCase() ? 'border-2 border-sky-300' : 'border-white/20')}
+            className={cn('size-4 rounded-full border transition hover:scale-115', preset.toLowerCase() === value.toLowerCase() ? 'border-2 border-sky-300' : 'border-border')}
             style={{ background: preset }}
           />
         ))}

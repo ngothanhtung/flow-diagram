@@ -21,11 +21,11 @@ const COMMON_TYPES = ['uuid', 'bigserial', 'serial', 'integer', 'bigint', 'small
 
 /** The flag toggles on each column row, in the order they render. */
 const FLAGS = [
-  { key: 'primaryKey', label: 'PK', title: 'Primary key', tone: 'text-amber-200 border-amber-400/50 bg-amber-400/15' },
-  { key: 'foreignKey', label: 'FK', title: 'Foreign key', tone: 'text-cyan-200 border-cyan-400/50 bg-cyan-400/15' },
-  { key: 'unique', label: 'U', title: 'Unique', tone: 'text-violet-200 border-violet-400/50 bg-violet-400/15' },
-  { key: 'index', label: 'IX', title: 'Indexed', tone: 'text-sky-200 border-sky-400/50 bg-sky-400/15' },
-  { key: 'nullable', label: 'NULL', title: 'Nullable (columns are NOT NULL by default)', tone: 'text-zinc-200 border-white/30 bg-white/15' },
+  { key: 'primaryKey', label: 'PK', title: 'Primary key', tone: 'text-amber-700 dark:text-amber-200 border-amber-400/50 bg-amber-400/15' },
+  { key: 'foreignKey', label: 'FK', title: 'Foreign key', tone: 'text-cyan-700 dark:text-cyan-200 border-cyan-400/50 bg-cyan-400/15' },
+  { key: 'unique', label: 'U', title: 'Unique', tone: 'text-violet-700 dark:text-violet-200 border-violet-400/50 bg-violet-400/15' },
+  { key: 'index', label: 'IX', title: 'Indexed', tone: 'text-sky-700 dark:text-sky-200 border-sky-400/50 bg-sky-400/15' },
+  { key: 'nullable', label: 'NULL', title: 'Nullable (columns are NOT NULL by default)', tone: 'text-foreground border-border bg-accent' },
 ] as const satisfies ReadonlyArray<{ key: keyof TableColumn; label: string; title: string; tone: string }>;
 
 function newColumn(index: number): TableColumn {
@@ -55,7 +55,7 @@ export function TableColumnsEditor({ node, onUpdate }: { node: FlowNode; onUpdat
           const columns = starterColumns();
           onUpdate(node.id, { table: { columns }, icon: null, height: tableCardHeight(columns.length), width: Math.max(node.width ?? 0, 236) });
         }}
-        className='mt-1.5 w-full border-white/10 bg-white/5 text-[10px] text-zinc-200 hover:bg-white/10'
+        className='mt-1.5 w-full border-border bg-muted/30 text-[10px] text-foreground hover:bg-accent'
       >
         <Table2 size={12} /> Convert to database table
       </Button>
@@ -84,7 +84,7 @@ export function TableColumnsEditor({ node, onUpdate }: { node: FlowNode; onUpdat
   return (
     <div className='mt-1.5'>
       <div className='flex items-center gap-2'>
-        <Label htmlFor='table-schema' className='shrink-0 text-[9px] text-zinc-500'>
+        <Label htmlFor='table-schema' className='shrink-0 text-[9px] text-muted-foreground'>
           Schema
         </Label>
         <Input
@@ -92,7 +92,7 @@ export function TableColumnsEditor({ node, onUpdate }: { node: FlowNode; onUpdat
           value={table.schema ?? ''}
           placeholder='public (optional)'
           onChange={(event) => onUpdate(node.id, { table: { ...table, schema: event.target.value.trim() || undefined } })}
-          className='h-7 border-white/10 bg-white/5 text-[11px]'
+          className='h-7 border-border bg-muted/30 text-[11px]'
         />
         <Button
           variant='ghost'
@@ -100,7 +100,7 @@ export function TableColumnsEditor({ node, onUpdate }: { node: FlowNode; onUpdat
           onClick={() => onUpdate(node.id, { table: undefined })}
           title='Remove the table (keep the block)'
           aria-label='Remove the table'
-          className='shrink-0 text-zinc-500 hover:text-rose-200'
+          className='shrink-0 text-muted-foreground hover:text-rose-600 dark:hover:text-rose-200'
         >
           <X size={12} />
         </Button>
@@ -114,20 +114,20 @@ export function TableColumnsEditor({ node, onUpdate }: { node: FlowNode; onUpdat
 
       <div className='mt-2 flex flex-col gap-2'>
         {columns.map((column, index) => (
-          <div key={column.id} className='rounded-lg bg-black/25 p-1.5 ring-1 ring-white/8'>
+          <div key={column.id} className='rounded-lg bg-muted/40 p-1.5 ring-1 ring-border'>
             <div className='flex items-center gap-1.5'>
               <Input
                 value={column.name}
                 aria-label={`Column ${index + 1} name`}
                 onChange={(event) => patchColumn(column.id, { name: event.target.value })}
-                className='h-7 border-white/10 bg-white/5 font-mono text-[11px]'
+                className='h-7 border-border bg-muted/30 font-mono text-[11px]'
               />
               <Input
                 value={column.dataType}
                 list='table-data-types'
                 aria-label={`Column ${index + 1} type`}
                 onChange={(event) => patchColumn(column.id, { dataType: event.target.value })}
-                className='h-7 max-w-28 border-white/10 bg-white/5 font-mono text-[11px] text-zinc-400'
+                className='h-7 max-w-28 border-border bg-muted/30 font-mono text-[11px] text-muted-foreground'
               />
             </div>
 
@@ -142,16 +142,16 @@ export function TableColumnsEditor({ node, onUpdate }: { node: FlowNode; onUpdat
                     aria-pressed={active}
                     title={flag.title}
                     onClick={() => patchColumn(column.id, { [flag.key]: active ? undefined : true })}
-                    className={['h-6 min-w-0 flex-1 px-1 text-[9px] font-bold', active ? flag.tone : 'border-white/10 bg-transparent text-zinc-500 hover:text-zinc-200'].join(' ')}
+                    className={['h-6 min-w-0 flex-1 px-1 text-[9px] font-bold', active ? flag.tone : 'border-border bg-transparent text-muted-foreground hover:text-foreground'].join(' ')}
                   >
                     {flag.label}
                   </Button>
                 );
               })}
-              <Button variant='ghost' size='icon-xs' disabled={index === 0} onClick={() => moveColumn(index, -1)} title='Move up' aria-label='Move column up' className='text-zinc-500 hover:text-zinc-200'>
+              <Button variant='ghost' size='icon-xs' disabled={index === 0} onClick={() => moveColumn(index, -1)} title='Move up' aria-label='Move column up' className='text-muted-foreground hover:text-foreground'>
                 <ArrowUp size={11} />
               </Button>
-              <Button variant='ghost' size='icon-xs' disabled={index === columns.length - 1} onClick={() => moveColumn(index, 1)} title='Move down' aria-label='Move column down' className='text-zinc-500 hover:text-zinc-200'>
+              <Button variant='ghost' size='icon-xs' disabled={index === columns.length - 1} onClick={() => moveColumn(index, 1)} title='Move down' aria-label='Move column down' className='text-muted-foreground hover:text-foreground'>
                 <ArrowDown size={11} />
               </Button>
               <Button
@@ -160,7 +160,7 @@ export function TableColumnsEditor({ node, onUpdate }: { node: FlowNode; onUpdat
                 onClick={() => writeColumns(columns.filter((item) => item.id !== column.id))}
                 title='Delete column'
                 aria-label='Delete column'
-                className='text-zinc-500 hover:text-rose-200'
+                className='text-muted-foreground hover:text-rose-600 dark:hover:text-rose-200'
               >
                 <Trash2 size={11} />
               </Button>
@@ -171,13 +171,13 @@ export function TableColumnsEditor({ node, onUpdate }: { node: FlowNode; onUpdat
               placeholder='default value (optional)'
               aria-label={`Column ${index + 1} default`}
               onChange={(event) => patchColumn(column.id, { defaultValue: event.target.value || undefined })}
-              className='mt-1.5 h-6 border-white/10 bg-white/5 font-mono text-[10px] text-zinc-400'
+              className='mt-1.5 h-6 border-border bg-muted/30 font-mono text-[10px] text-muted-foreground'
             />
           </div>
         ))}
       </div>
 
-      <Button variant='outline' size='sm' onClick={() => writeColumns([...columns, newColumn(columns.length)])} className='mt-2 w-full border-white/10 bg-white/5 text-[10px] text-zinc-200 hover:bg-white/10'>
+      <Button variant='outline' size='sm' onClick={() => writeColumns([...columns, newColumn(columns.length)])} className='mt-2 w-full border-border bg-muted/30 text-[10px] text-foreground hover:bg-accent'>
         <Plus size={12} /> Add column
       </Button>
     </div>

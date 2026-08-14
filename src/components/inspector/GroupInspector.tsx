@@ -46,7 +46,7 @@ export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
 
   return (
     <InspectorShell title='Group Inspector' nodeId={node.id}>
-      <Label htmlFor='node-title' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400'>
+      <Label htmlFor='node-title' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-muted-foreground'>
         Title
       </Label>
       <Input
@@ -57,20 +57,20 @@ export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         onKeyDown={(event) => {
           if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
         }}
-        className='mt-1 border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+        className='mt-1 border-border bg-muted/30 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
 
       <SectionLabel>Contents</SectionLabel>
-      <p className='mt-1 text-[10px] leading-relaxed text-zinc-500'>
+      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>
         {memberCount === 0
           ? 'Empty frame — drag blocks inside to add them. Moving the frame moves everything in it.'
           : `Holds ${memberCount} ${memberCount === 1 ? 'block' : 'blocks'}. Moving the frame moves them with it; deleting it deletes them too.`}
       </p>
       <div className='mt-2 flex flex-wrap gap-1.5'>
-        <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onFitGroup?.(node.id)} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'>
+        <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onFitGroup?.(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
           <Shrink size={11} /> Fit to contents
         </Button>
-        <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onUngroup?.(node.id)} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'>
+        <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onUngroup?.(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
           <Ungroup size={11} /> Ungroup
         </Button>
       </div>

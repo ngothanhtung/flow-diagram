@@ -78,21 +78,21 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
           render={
             <button
               type='button'
-              className='mt-1.5 flex h-auto w-full cursor-pointer items-center gap-2.5 rounded-md border border-white/10 bg-zinc-800 px-3 py-2.5 text-left hover:bg-zinc-700/80 focus-visible:border-cyan-400/50 focus-visible:ring-1 focus-visible:ring-cyan-400/15 focus-visible:outline-hidden'
+              className='mt-1.5 flex h-auto w-full cursor-pointer items-center gap-2.5 rounded-md border border-border bg-muted/40 px-3 py-2.5 text-left hover:bg-muted/60 focus-visible:border-cyan-400/50 focus-visible:ring-1 focus-visible:ring-cyan-400/15 focus-visible:outline-hidden'
             >
-              <span className='grid size-7 shrink-0 place-items-center rounded-md bg-black/20 text-cyan-200'>
+              <span className='grid size-7 shrink-0 place-items-center rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-200'>
                 <SelectedIcon size={14} />
               </span>
               <span className='min-w-0 flex-1'>
                 <span className='block text-xs font-semibold'>{selected.label}</span>
-                <span className='block truncate text-[9px] font-normal text-zinc-500'>{selected.description}</span>
+                <span className='block truncate text-[9px] font-normal text-muted-foreground'>{selected.description}</span>
               </span>
             </button>
           }
         />
-        <DialogContent className='flex h-[90vh] max-h-225 w-[92vw] max-w-5xl sm:max-w-5xl flex-col gap-0 overflow-hidden border-cyan-400/25 bg-zinc-950 p-0 ring-1 ring-cyan-400/25'>
+        <DialogContent className='flex h-[90vh] max-h-225 w-[92vw] max-w-5xl sm:max-w-5xl flex-col gap-0 overflow-hidden border-cyan-400/25 bg-popover p-0 ring-1 ring-cyan-400/25'>
           <DialogHeader className='shrink-0 px-8 pt-6 pb-4'>
-            <DialogTitle className='text-base font-semibold text-zinc-100'>Block effect</DialogTitle>
+            <DialogTitle className='text-base font-semibold text-foreground'>Block effect</DialogTitle>
           </DialogHeader>
           <div className='grid min-h-0 flex-1 grid-cols-8 overflow-hidden'>
             <div className='col-span-5 space-y-5 overflow-y-auto pr-4 pb-6 pl-8'>
@@ -107,7 +107,7 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
               </div>
 
               {preview === 'none' ? (
-                <p className='mt-5 text-[11px] leading-relaxed text-zinc-500'>The block stays completely still and paints nothing extra. This is how every new block, frame and text object starts.</p>
+                <p className='mt-5 text-[11px] leading-relaxed text-muted-foreground'>The block stays completely still and paints nothing extra. This is how every new block, frame and text object starts.</p>
               ) : (
                 <div className='mt-5 space-y-1'>
                   <RangeField label='Speed' value={Math.round(knobs.speed * 100)} min={25} max={300} suffix='%' onChange={(value) => onUpdate(node.id, { effectSpeed: value / 100 })} />
@@ -115,14 +115,14 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
                   <div className='pt-2'>
                     <ColorField label='Effect colour' value={node.effectColor ?? foreground} presets={PRESET_FOREGROUNDS} onChange={(effectColor) => onUpdate(node.id, { effectColor })} />
                   </div>
-                  <p className='pt-2 text-[10px] leading-relaxed text-zinc-500'>Speed and intensity mean the same thing for every effect: how fast the cycle runs, and how far it travels or how bright it burns.</p>
+                  <p className='pt-2 text-[10px] leading-relaxed text-muted-foreground'>Speed and intensity mean the same thing for every effect: how fast the cycle runs, and how far it travels or how bright it burns.</p>
                 </div>
               )}
             </div>
           </div>
 
-          <div className='flex shrink-0 items-center justify-end gap-2 border-t border-white/8 px-8 py-4'>
-            <Button type='button' variant='ghost' size='xs' onClick={() => setDraft(null)} className='text-zinc-400 hover:bg-white/8 hover:text-zinc-100'>
+          <div className='flex shrink-0 items-center justify-end gap-2 border-t border-border px-8 py-4'>
+            <Button type='button' variant='ghost' size='xs' onClick={() => setDraft(null)} className='text-muted-foreground hover:bg-accent hover:text-foreground'>
               Cancel
             </Button>
             <Button
@@ -146,7 +146,7 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
 function EffectGroup({ title, options, draft, onPick }: { title: string; options: EffectOption[]; draft: NodeEffect | null; onPick: (effect: NodeEffect) => void }) {
   return (
     <div>
-      <p className='mb-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-zinc-500'>{title}</p>
+      <p className='mb-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground'>{title}</p>
       <div className='grid grid-cols-3 gap-3'>
         {options.map((item) => {
           const Icon = item.Icon;
@@ -156,18 +156,18 @@ function EffectGroup({ title, options, draft, onPick }: { title: string; options
               key={item.value}
               type='button'
               onClick={() => onPick(item.value)}
-              className={['flex flex-col items-start gap-2 rounded-xl border p-3.5 text-left transition', active ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100' : 'border-white/10 bg-zinc-900/70 text-zinc-300 hover:border-white/20 hover:bg-zinc-800'].join(' ')}
+              className={['flex flex-col items-start gap-2 rounded-xl border p-3.5 text-left transition', active ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-700 dark:text-cyan-100' : 'border-border bg-card text-muted-foreground hover:border-ring/40 hover:bg-muted/50'].join(' ')}
             >
               <span className='flex w-full items-center justify-between gap-2'>
                 <span className='flex items-center gap-2'>
-                  <span className='grid size-8 place-items-center rounded-md bg-black/30 text-cyan-200'>
+                  <span className='grid size-8 place-items-center rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-200'>
                     <Icon size={15} />
                   </span>
                   <span className='text-[12px] font-semibold'>{item.label}</span>
                 </span>
-                {active && <span className='rounded-full bg-cyan-400/20 px-2 py-0.5 text-[9px] font-semibold text-cyan-200'>Selected</span>}
+                {active && <span className='rounded-full bg-cyan-400/20 px-2 py-0.5 text-[9px] font-semibold text-cyan-700 dark:text-cyan-200'>Selected</span>}
               </span>
-              <span className='block text-[10px] leading-relaxed text-zinc-500'>{item.description}</span>
+              <span className='block text-[10px] leading-relaxed text-muted-foreground'>{item.description}</span>
             </button>
           );
         })}

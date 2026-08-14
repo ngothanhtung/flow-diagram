@@ -46,7 +46,7 @@ export function RunControls({ runMode, repeatEnabled, advanceDisabled, onSelectM
             onClick={() => onSelectMode(mode.value)}
             aria-pressed={runMode === mode.value}
             title={mode.label}
-            className={runMode === mode.value ? 'bg-cyan-400/15 text-cyan-100 hover:bg-cyan-400/15 hover:text-cyan-100 dark:bg-cyan-400/15 dark:hover:bg-cyan-400/15' : 'text-zinc-500'}
+            className={runMode === mode.value ? 'bg-cyan-400/15 text-cyan-700 hover:bg-cyan-400/15 hover:text-cyan-700 dark:text-cyan-100 dark:hover:text-cyan-100' : 'text-muted-foreground'}
           >
             <mode.Icon size={12} /> <span className='hidden lg:inline'>{mode.label}</span>
           </Button>
@@ -79,9 +79,9 @@ export function RunControls({ runMode, repeatEnabled, advanceDisabled, onSelectM
             onClick={onToggleRepeat}
             aria-pressed={repeatEnabled}
             title='Automatically replay after the sequential run completes'
-            className={repeatEnabled && runMode === 'sequential' ? 'border-emerald-400/40 bg-emerald-400/15 text-emerald-100 hover:bg-emerald-400/15 hover:text-emerald-100 dark:bg-emerald-400/15 dark:hover:bg-emerald-400/15' : 'text-zinc-500'}
+            className={repeatEnabled && runMode === 'sequential' ? 'border-emerald-400/40 bg-emerald-400/15 text-emerald-700 hover:bg-emerald-400/15 hover:text-emerald-700 dark:text-emerald-100 dark:hover:text-emerald-100' : 'text-muted-foreground'}
           >
-            <Repeat2 size={13} className={repeatEnabled && runMode === 'sequential' ? 'text-emerald-300' : ''} />
+            <Repeat2 size={13} className={repeatEnabled && runMode === 'sequential' ? 'text-emerald-700 dark:text-emerald-300' : ''} />
             <span className='hidden sm:inline'>Repeat</span>
           </Button>
           <Button variant='toolbar' size='lg' onClick={onReplay} title='Replay'>

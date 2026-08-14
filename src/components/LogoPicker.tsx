@@ -278,7 +278,7 @@ export function LogoPicker({ value, onChange, className }: LogoPickerProps) {
           <Button
             variant="outline"
             className={cn(
-              'h-9 w-full justify-start gap-2 border-white/10 bg-white/5 text-[11px] font-semibold text-zinc-300 hover:bg-white/10',
+              'h-9 w-full justify-start gap-2 border-border bg-muted/30 text-[11px] font-semibold text-muted-foreground hover:bg-accent',
               className,
             )}
           />
@@ -292,20 +292,20 @@ export function LogoPicker({ value, onChange, className }: LogoPickerProps) {
             className="size-4 object-contain"
           />
         ) : (
-          <Ban size={14} className="text-zinc-500" />
+          <Ban size={14} className="text-muted-foreground" />
         )}
         <span className="truncate">{currentLabel}</span>
       </DialogTrigger>
 
-      <DialogContent className="flex h-[calc(100vh-3rem)] max-h-[calc(100vh-3rem)] w-[calc(100vw-3rem)] max-w-none! flex-col gap-0 overflow-hidden rounded-xl border-white/8 bg-zinc-950 p-0">
-        <DialogHeader className="border-b border-white/7 px-5 py-4">
+      <DialogContent className="flex h-[calc(100vh-3rem)] max-h-[calc(100vh-3rem)] w-[calc(100vw-3rem)] max-w-none! flex-col gap-0 overflow-hidden rounded-xl border-border bg-popover p-0">
+        <DialogHeader className="border-b border-border px-5 py-4">
           <DialogTitle className="text-sm">Choose logo</DialogTitle>
         </DialogHeader>
         <div className="flex flex-1 overflow-hidden">
           {/* Sidebar filters */}
-          <aside className="flex w-64 shrink-0 flex-col border-r border-white/10 bg-zinc-900/50">
-            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3.5 text-xs font-semibold text-zinc-300">
-              <LayoutGrid size={14} className="text-zinc-500" />
+          <aside className="flex w-64 shrink-0 flex-col border-r border-border bg-card/50">
+            <div className="flex items-center gap-2 border-b border-border px-4 py-3.5 text-xs font-semibold text-foreground">
+              <LayoutGrid size={14} className="text-muted-foreground" />
               Filters
             </div>
 
@@ -389,14 +389,14 @@ export function LogoPicker({ value, onChange, className }: LogoPickerProps) {
 
           {/* Main content */}
           <div className="flex flex-1 flex-col overflow-hidden">
-            <div className="flex items-center gap-3 border-b border-white/10 px-5 py-3">
+            <div className="flex items-center gap-3 border-b border-border px-5 py-3">
               <div className="relative flex-1">
-                <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-zinc-600" />
+                <Search className="pointer-events-none absolute top-1/2 left-3 size-3.5 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder='Search logos — try "react", "stripe", "figma"...'
-                  className="h-9 border-white/10 bg-white/2.5 pl-9 text-sm"
+                  className="h-9 border-border bg-muted/20 pl-9 text-sm"
                   autoFocus
                 />
               </div>
@@ -405,7 +405,7 @@ export function LogoPicker({ value, onChange, className }: LogoPickerProps) {
                   variant="ghost"
                   size="sm"
                   onClick={() => setSearch('')}
-                  className="text-[11px] text-zinc-400 hover:text-zinc-200"
+                  className="text-[11px] text-muted-foreground hover:text-foreground"
                 >
                   Clear
                 </Button>
@@ -415,20 +415,20 @@ export function LogoPicker({ value, onChange, className }: LogoPickerProps) {
             <div ref={scrollRef} className="flex-1 overflow-y-auto">
               {loading ? (
                 <div className="grid h-full place-items-center">
-                  <LoaderCircle className="size-5 animate-spin text-cyan-300" />
+                  <LoaderCircle className="size-5 animate-spin text-cyan-600 dark:text-cyan-300" />
                 </div>
               ) : error ? (
-                <p className="mt-8 text-center text-xs text-rose-300">
+                <p className="mt-8 text-center text-xs text-rose-600 dark:text-rose-300">
                   Could not load logo catalog.
                   <br />
-                  Run <code className="text-zinc-400">npm run build:logos</code> first.
+                  Run <code className="text-muted-foreground">npm run build:logos</code> first.
                 </p>
               ) : filteredLogos.length === 0 ? (
-                <p className="mt-8 text-center text-xs text-zinc-500">No logos found</p>
+                <p className="mt-8 text-center text-xs text-muted-foreground">No logos found</p>
               ) : (
                 <div
                   ref={gridRef}
-                  className="relative w-full bg-white/10"
+                  className="relative w-full bg-muted/10"
                   style={{ height: rowVirtualizer.getTotalSize() }}
                 >
                   {rowVirtualizer.getVirtualItems().map((virtualRow) => (
@@ -532,7 +532,7 @@ export function LogoPicker({ value, onChange, className }: LogoPickerProps) {
 function FilterSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-5">
-      <h3 className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">
+      <h3 className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
         {title}
       </h3>
       <div className="space-y-0.5">{children}</div>
@@ -563,20 +563,20 @@ function FilterItem({
       className={cn(
         'flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-sm transition',
         active
-          ? 'bg-zinc-800 text-zinc-100'
+          ? 'bg-accent text-accent-foreground'
           : isDisabled
-            ? 'cursor-not-allowed text-zinc-600'
-            : 'text-zinc-400 hover:bg-white/5 hover:text-zinc-200',
+            ? 'cursor-not-allowed text-muted-foreground/60'
+            : 'text-muted-foreground hover:bg-accent hover:text-foreground',
       )}
     >
       <span className="flex min-w-0 items-center gap-2">
         {Icon && <Icon size={14} className="shrink-0" />}
-        <span className={cn('truncate', isDisabled && 'text-zinc-600')}>{label}</span>
+        <span className={cn('truncate', isDisabled && 'text-muted-foreground/60')}>{label}</span>
       </span>
       <span
         className={cn(
           'shrink-0 font-mono text-xs tabular-nums',
-          isDisabled ? 'text-zinc-700' : 'text-zinc-500',
+          isDisabled ? 'text-muted-foreground/50' : 'text-muted-foreground',
         )}
       >
         {count.toLocaleString('en-US')}
