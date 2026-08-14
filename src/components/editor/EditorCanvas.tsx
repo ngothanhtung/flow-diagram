@@ -32,7 +32,7 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
   const { selectNode, selectEdge, setDraggingNodeId, setLinkingFromId, setActiveShape, toggleInfo, onNodeMove, onNodeDrop, onNodeUpdate, onConnect, onShapeCreate, onEdgeUpdate, onEdgeReconnect } = useEditorStore();
 
   return (
-    <section className='relative h-full min-h-0 overflow-hidden bg-zinc-950'>
+    <section className='relative h-full min-h-0 overflow-hidden bg-background'>
       <FlowCanvas
         key={seed}
         document={document}

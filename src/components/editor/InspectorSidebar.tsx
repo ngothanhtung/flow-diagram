@@ -104,7 +104,7 @@ export function EditorInfoPanels({ category, title, description, note, document 
   return (
     <>
       <InfoPanel category={category} title={title} description={description} document={document}>
-        <p className='mt-3 text-[11px] leading-relaxed text-zinc-500'>{note}</p>
+        <p className='mt-3 text-[11px] leading-relaxed text-muted-foreground'>{note}</p>
       </InfoPanel>
       <JsonInspector value={JSON.stringify(document, null, 2)} />
       <JsonPlaygroundPanel document={document} />
@@ -115,20 +115,20 @@ export function EditorInfoPanels({ category, title, description, note, document 
 /** Header block of an Info panel: category, title, block/line counts. */
 function InfoPanel({ category, title, description, document, children }: { category: string; title: string; description: string; document: FlowDocumentJSON; children?: ReactNode }) {
   return (
-    <div className='rounded-xl bg-zinc-900/70 py-3 pr-3 pl-1'>
+    <div className='rounded-xl bg-card py-3 pr-3 pl-1'>
       <div className='flex items-start justify-between gap-3'>
         <div>
-          <p className='text-[9px] font-semibold uppercase tracking-[0.18em] text-sky-400'>{category}</p>
+          <p className='text-[9px] font-semibold uppercase tracking-[0.18em] text-sky-600 dark:text-sky-400'>{category}</p>
           <h2 className='mt-1 text-sm font-semibold'>{title}</h2>
         </div>
-        <div className='shrink-0 rounded-lg bg-white/5 px-2 py-1 text-right ring-1 ring-white/10'>
-          <div className='text-xs font-semibold text-zinc-200'>
+        <div className='shrink-0 rounded-lg bg-accent px-2 py-1 text-right ring-1 ring-border'>
+          <div className='text-xs font-semibold text-accent-foreground'>
             {document.nodes.length} / {document.edges.length}
           </div>
-          <div className='text-[8px] uppercase tracking-wider text-zinc-500'>blocks / lines</div>
+          <div className='text-[8px] uppercase tracking-wider text-muted-foreground'>blocks / lines</div>
         </div>
       </div>
-      <p className='mt-2 text-[11px] leading-relaxed text-zinc-400'>{description}</p>
+      <p className='mt-2 text-[11px] leading-relaxed text-muted-foreground'>{description}</p>
       {children}
     </div>
   );

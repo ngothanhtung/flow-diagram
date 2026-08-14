@@ -31,7 +31,7 @@ export default function HelpViPage() {
       backLabel='Về danh sách sơ đồ'
       toc={TOC}
     >
-      <p className='max-w-2xl text-sm leading-relaxed text-zinc-400'>
+      <p className='max-w-2xl text-sm leading-relaxed text-muted-foreground'>
         X Flow Tool là trình soạn thảo sơ đồ luồng có hiệu ứng động chạy trên trình duyệt — kiến trúc hệ thống, quy trình nghiệp vụ, pipeline CI/CD. Trang này hướng dẫn quy trình làm việc
         hằng ngày. Nếu bạn cần quy tắc để tự viết (hoặc dùng AI viết) JSON của sơ đồ, hãy xem{' '}
         <Link href='/guide' className='text-sky-300 underline-offset-2 hover:underline'>hướng dẫn viết JSON</Link> (tiếng Anh).

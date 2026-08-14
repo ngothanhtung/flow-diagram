@@ -100,20 +100,20 @@ export function AdminTemplatesPage() {
         header: 'Template',
         cell: ({ row }) => (
           <div className='min-w-0'>
-            <p className='truncate font-medium text-zinc-100'>{row.original.name}</p>
-            <p className='truncate font-mono text-[10px] text-zinc-500'>{row.original.id}</p>
+            <p className='truncate font-medium text-foreground'>{row.original.name}</p>
+            <p className='truncate font-mono text-[10px] text-muted-foreground'>{row.original.id}</p>
           </div>
         ),
       },
       {
         accessorKey: 'category',
         header: 'Category',
-        cell: ({ getValue }) => <span className='whitespace-nowrap rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-semibold text-zinc-400 ring-1 ring-white/10'>{getValue<string>()}</span>,
+        cell: ({ getValue }) => <span className='whitespace-nowrap rounded-full bg-accent px-2 py-0.5 text-[10px] font-semibold text-muted-foreground ring-1 ring-border'>{getValue<string>()}</span>,
       },
       {
         accessorKey: 'description',
         header: 'Description',
-        cell: ({ getValue }) => <span className='block max-w-64 truncate text-xs text-zinc-500'>{getValue<string>() || '—'}</span>,
+        cell: ({ getValue }) => <span className='block max-w-64 truncate text-xs text-muted-foreground'>{getValue<string>() || '—'}</span>,
       },
       {
         accessorKey: 'nodeCount',
@@ -128,7 +128,7 @@ export function AdminTemplatesPage() {
       {
         accessorKey: 'updatedAt',
         header: 'Updated',
-        cell: ({ getValue }) => <span className='whitespace-nowrap text-zinc-400'>{formatDateTime(getValue<number | null>())}</span>,
+        cell: ({ getValue }) => <span className='whitespace-nowrap text-muted-foreground'>{formatDateTime(getValue<number | null>())}</span>,
         sortDescFirst: true,
       },
       {
@@ -138,11 +138,11 @@ export function AdminTemplatesPage() {
         enableGlobalFilter: false,
         cell: ({ row }) => (
           <div className='flex items-center gap-1'>
-            <Link href={`/admin/templates/${row.original.id}/edit`} className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-zinc-400 transition hover:bg-white/6 hover:text-sky-200' title='Edit template'>
+            <Link href={`/admin/templates/${row.original.id}/edit`} className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition hover:bg-accent hover:text-sky-700 dark:hover:text-sky-200' title='Edit template'>
               <Pencil size={13} />
               Edit
             </Link>
-            <Button variant='ghost' size='xs' onClick={() => setDeleting(row.original)} className='text-zinc-500 hover:text-rose-200'>
+            <Button variant='ghost' size='xs' onClick={() => setDeleting(row.original)} className='text-muted-foreground hover:text-rose-600 dark:hover:text-rose-200'>
               <Trash2 size={13} />
               Delete
             </Button>
@@ -168,15 +168,15 @@ export function AdminTemplatesPage() {
   });
 
   return (
-    <div className='flex h-full flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
-      <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
+    <div className='flex h-full flex-col bg-background text-foreground'>
+      <header className='flex items-center justify-between border-b border-border px-6 py-4'>
         <div className='flex items-center gap-3'>
           <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
-            <LayoutTemplate size={18} className='text-sky-300' />
+            <LayoutTemplate size={18} className='text-sky-600 dark:text-sky-300' />
           </div>
           <div>
             <h1 className='text-base font-semibold'>Templates admin</h1>
-            <p className='text-xs text-zinc-500'>templates/{'{template_id}'} · shared library for every user</p>
+            <p className='text-xs text-muted-foreground'>templates/{'{template_id}'} · shared library for every user</p>
           </div>
         </div>
         <div className='flex items-center gap-2'>
@@ -193,7 +193,7 @@ export function AdminTemplatesPage() {
 
       <div className='flex items-center gap-3 px-6 py-3'>
         <Input value={globalFilter} onChange={(event) => setGlobalFilter(event.target.value)} placeholder='Search by name, category or id…' variant='toolbar' className='max-w-xs' />
-        <p className='text-xs text-zinc-500'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} template(s)` : status === 'error' ? 'Failed to load templates' : 'Loading templates…'}</p>
+        <p className='text-xs text-muted-foreground'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} template(s)` : status === 'error' ? 'Failed to load templates' : 'Loading templates…'}</p>
       </div>
 
       <DataTable
@@ -206,9 +206,9 @@ export function AdminTemplatesPage() {
       <DataTableFooter table={table} />
 
       <AlertDialog open={deleting !== null} onOpenChange={(open) => !open && setDeleting(null)}>
-        <AlertDialogContent className='border border-white/8 bg-zinc-950'>
+        <AlertDialogContent className='border border-border bg-popover'>
           <AlertDialogHeader>
-            <AlertDialogMedia className='bg-rose-400/10 text-rose-300'>
+            <AlertDialogMedia className='bg-rose-400/10 text-rose-600 dark:text-rose-300'>
               <Trash2 />
             </AlertDialogMedia>
             <AlertDialogTitle>Delete template?</AlertDialogTitle>

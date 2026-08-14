@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { UserMenu } from '@/components/auth/UserMenu';
@@ -25,8 +26,9 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
 
   if (editing) {
     return (
-      <input
+      <Input
         autoFocus
+        variant='toolbar'
         value={draft}
         maxLength={80}
         aria-label='Diagram name'
@@ -44,7 +46,7 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
             setEditing(false);
           }
         }}
-        className='w-56 rounded-md border border-sky-400/40 bg-zinc-900/80 px-1.5 py-0.5 text-xs text-zinc-100 outline-none focus-visible:ring-2 focus-visible:ring-sky-400/15'
+        className='h-6 w-40 border-sky-400/40 px-1.5 py-0.5 text-xs sm:w-56'
       />
     );
   }
@@ -57,7 +59,7 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
         setEditing(true);
       }}
       title='Rename diagram'
-      className='-mx-1 rounded px-1 text-xs text-zinc-400 transition hover:bg-white/6 hover:text-zinc-200'
+      className='-mx-1 max-w-40 truncate rounded px-1 text-xs text-muted-foreground transition hover:bg-accent hover:text-accent-foreground sm:max-w-none'
     >
       {name}
     </button>
@@ -242,9 +244,9 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
             onClick={() => setDiagramPublic(!currentDiagramPublic)}
             aria-pressed={currentDiagramPublic}
             title={currentDiagramPublic ? 'Public — anyone signed in can view via /diagrams/{id}/view' : 'Private — only you and administrators can view'}
-            className={currentDiagramPublic ? 'text-emerald-300 hover:text-emerald-200' : ''}
+            className={currentDiagramPublic ? 'text-emerald-700 hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-200' : ''}
           >
-            {currentDiagramPublic ? <Globe size={13} className='text-emerald-300' /> : <LockKeyhole size={13} />}
+            {currentDiagramPublic ? <Globe size={13} className='text-emerald-700 dark:text-emerald-300' /> : <LockKeyhole size={13} />}
             {currentDiagramPublic ? 'Public' : 'Private'}
           </Button>
           <SaveButton saving={savingDiagram} dirty={dirty} onSave={() => void handleSaveDiagram()} />

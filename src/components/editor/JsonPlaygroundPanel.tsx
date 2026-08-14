@@ -65,14 +65,14 @@ export function JsonPlaygroundPanel({ document }: { document: FlowDocumentJSON }
   };
 
   return (
-    <div className='rounded-xl bg-zinc-900/70 p-3'>
-      <span className='flex items-center gap-1.5 text-xs font-semibold text-zinc-200'>
-        <FlaskConical size={13} className='text-cyan-300' />
+    <div className='rounded-xl bg-card p-3'>
+      <span className='flex items-center gap-1.5 text-xs font-semibold text-foreground'>
+        <FlaskConical size={13} className='text-cyan-600 dark:text-cyan-300' />
         JSON Playground
       </span>
-      <p className='mt-2 text-[11px] leading-relaxed text-zinc-500'>
+      <p className='mt-2 text-[11px] leading-relaxed text-muted-foreground'>
         Paste a FlowDocumentJSON below and render it on the canvas — see the{' '}
-        <Link href='/guide' target='_blank' className='text-cyan-300 underline underline-offset-2 hover:text-cyan-200'>
+        <Link href='/guide' target='_blank' className='text-cyan-600 underline underline-offset-2 hover:text-cyan-500 dark:text-cyan-300 dark:hover:text-cyan-200'>
           authoring guide
         </Link>{' '}
         for the schema. Rendering replaces the current canvas — Save to keep it, or Reset to revert.
@@ -82,9 +82,9 @@ export function JsonPlaygroundPanel({ document }: { document: FlowDocumentJSON }
         onChange={(event) => setDraft(event.target.value)}
         placeholder='{ "nodes": [...], "edges": [...] }'
         spellCheck={false}
-        className='mt-3 h-56 w-full resize-y rounded-lg border border-white/10 bg-black/40 p-2 font-mono text-[11px] leading-relaxed text-zinc-200 outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/30'
+        className='mt-3 h-56 w-full resize-y rounded-lg border border-border bg-muted/40 p-2 font-mono text-[11px] leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/30'
       />
-      {error && <p className='mt-2 rounded-md bg-rose-500/10 px-2 py-1.5 text-[11px] leading-relaxed text-rose-300 ring-1 ring-rose-400/30'>{error}</p>}
+      {error && <p className='mt-2 rounded-md bg-rose-500/10 px-2 py-1.5 text-[11px] leading-relaxed text-rose-600 dark:text-rose-300 ring-1 ring-rose-400/30'>{error}</p>}
       <div className='mt-3 flex items-center gap-2'>
         <Button variant='accent' onClick={handleRender} disabled={!draft.trim()} className='flex-1 text-xs font-semibold'>
           <Play size={13} />

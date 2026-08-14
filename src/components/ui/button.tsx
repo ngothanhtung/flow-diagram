@@ -20,9 +20,11 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // App-wide cyan call-to-action (New diagram, Copy link, Sign in…).
         accent: "bg-cyan-300 text-zinc-950 hover:bg-cyan-200",
-        // App-wide frosted header/toolbar control (dark chrome surfaces).
+        // App-wide frosted header/toolbar control, floating over the
+        // canvas — --toolbar-bg/--toolbar-border are theme-tuned in
+        // globals.css rather than a hardcoded dark fill.
         toolbar:
-          "border-white/10 bg-black/25 text-xs font-semibold text-zinc-300 hover:bg-white/8 hover:text-zinc-100 aria-expanded:bg-white/8 data-popup-open:bg-white/8 data-popup-open:text-zinc-100 dark:bg-input/30 dark:hover:bg-input/50 dark:data-popup-open:bg-input/50",
+          "border-[var(--toolbar-border)] bg-[var(--toolbar-bg)] text-xs font-semibold text-muted-foreground hover:bg-accent hover:text-accent-foreground aria-expanded:bg-accent aria-expanded:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground",
       },
       size: {
         default:

@@ -100,7 +100,12 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
 
   return (
     <div
-      className='pointer-events-auto absolute left-1/2 bottom-4 z-20 flex -translate-x-1/2 items-center gap-0.5 rounded-lg bg-zinc-900/92 p-0.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48)] backdrop-blur-xl'
+      // The dock is a fixed-width row of ~10 controls; on a narrow phone
+      // viewport that's wider than the screen. `max-w` caps it to the
+      // viewport (minus a margin) and `overflow-x-auto` turns the excess
+      // into a horizontal scroll instead of clipping past the screen edge
+      // (it's still centered via the translate, just scrollable within).
+      className='pointer-events-auto absolute left-1/2 bottom-4 z-20 flex max-w-[calc(100vw-1rem)] -translate-x-1/2 items-center gap-0.5 overflow-x-auto rounded-lg bg-popover/92 p-0.5 text-muted-foreground ring-1 ring-border shadow-[0_14px_40px_rgba(0,0,0,.28)] backdrop-blur-xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
       role='toolbar'
       aria-label='Shape drawing tools'
     >
@@ -110,7 +115,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
       <DropdownMenu open={shapeMenuOpen} onOpenChange={setShapeMenuOpen}>
         <DropdownMenuTrigger
           render={<Button variant='ghost' />}
-          className='group h-7 gap-0.5 pl-2 pr-1 text-zinc-300 data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-100'
+          className='group h-7 gap-0.5 pl-2 pr-1 text-muted-foreground data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-700 dark:text-cyan-100'
           aria-label='Choose a shape to draw'
         >
           {/* The table, logo, group and text tools live in their own
@@ -119,8 +124,8 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           {activeShape === 'logo' ? <ImageIcon size={16} /> : <ShapeIcon shape={activeShape && activeShape !== 'table' && activeShape !== 'group' && activeShape !== 'text' ? activeShape : lastPicked} size={16} />}
           <ChevronDown size={10} className='opacity-70 transition group-data-popup-open:rotate-180' />
         </DropdownMenuTrigger>
-        <DropdownMenuContent align='center' sideOffset={10} className='w-[min(420px,90vw)] border-white/10 bg-zinc-950/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.68)] backdrop-blur-xl'>
-          <div className='mb-2 px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-zinc-500'>Shapes</div>
+        <DropdownMenuContent align='center' sideOffset={10} className='w-[min(420px,90vw)] border-border bg-popover/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.4)] backdrop-blur-xl'>
+          <div className='mb-2 px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground'>Shapes</div>
           <div className='grid grid-cols-6 gap-1.5'>
             {QUICK_SHAPES.map((shape) => {
               const isActive = activeShape === shape.id;
@@ -130,7 +135,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
                   variant='ghost'
                   onClick={() => choose(shape.id)}
                   aria-pressed={isActive}
-                  className={['h-12 w-12 ring-1', isActive ? 'bg-cyan-400/15 text-cyan-100 ring-cyan-400/40' : 'text-zinc-300 ring-white/8'].join(' ')}
+                  className={['h-12 w-12 ring-1', isActive ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-cyan-400/40' : 'text-muted-foreground ring-border'].join(' ')}
                   title={shape.label}
                   aria-label={shape.label}
                 >
@@ -155,7 +160,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
             size='icon-sm'
             onClick={() => (isActive ? onSelect(null) : choose(shape.id))}
             aria-pressed={isActive}
-            className={isActive ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}
+            className={isActive ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-1 ring-cyan-400/40' : 'text-muted-foreground'}
             title={shape.label}
             aria-label={shape.label}
           >
@@ -173,7 +178,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
         size='icon-sm'
         onClick={() => (activeShape === 'table' ? onSelect(null) : onSelect('table'))}
         aria-pressed={activeShape === 'table'}
-        className={activeShape === 'table' ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}
+        className={activeShape === 'table' ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-1 ring-cyan-400/40' : 'text-muted-foreground'}
         title='Database table'
         aria-label='Database table'
       >
@@ -189,7 +194,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
         size='icon-sm'
         onClick={() => (activeShape === 'logo' ? onSelect(null) : onSelect('logo'))}
         aria-pressed={activeShape === 'logo'}
-        className={activeShape === 'logo' ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}
+        className={activeShape === 'logo' ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-1 ring-cyan-400/40' : 'text-muted-foreground'}
         title='Logo block'
         aria-label='Logo block'
       >
@@ -205,7 +210,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
         size='icon-sm'
         onClick={() => (activeShape === 'group' ? onSelect(null) : onSelect('group'))}
         aria-pressed={activeShape === 'group'}
-        className={activeShape === 'group' ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}
+        className={activeShape === 'group' ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-1 ring-cyan-400/40' : 'text-muted-foreground'}
         title='Group frame'
         aria-label='Group frame'
       >
@@ -220,7 +225,7 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
         size='icon-sm'
         onClick={() => (activeShape === 'text' ? onSelect(null) : onSelect('text'))}
         aria-pressed={activeShape === 'text'}
-        className={activeShape === 'text' ? 'bg-cyan-400/15 text-cyan-100 ring-1 ring-cyan-400/40' : 'text-zinc-300'}
+        className={activeShape === 'text' ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-1 ring-cyan-400/40' : 'text-muted-foreground'}
         title='Text'
         aria-label='Text'
       >
@@ -245,5 +250,5 @@ function ShapeIcon({ shape, size = 18 }: { shape: NodeShape; size?: number }) {
 }
 
 function Divider() {
-  return <Separator orientation='vertical' className='self-stretch bg-white/10' />;
+  return <Separator orientation='vertical' className='self-stretch bg-border' />;
 }

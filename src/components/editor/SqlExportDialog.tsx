@@ -45,17 +45,17 @@ export function SqlExportDialog({ document, filename, open, onOpenChange }: { do
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className='max-w-3xl border-white/10 bg-zinc-950/95 text-zinc-100 backdrop-blur-xl'>
+      <DialogContent className='max-w-3xl border-border bg-popover/95 text-foreground backdrop-blur-xl'>
         <DialogHeader>
           <DialogTitle className='flex items-center gap-2 text-sm font-semibold'>
-            <Database size={14} className='text-sky-300' />
+            <Database size={14} className='text-sky-600 dark:text-sky-300' />
             Export SQL
           </DialogTitle>
-          <DialogDescription className='text-xs text-zinc-500'>
+          <DialogDescription className='text-xs text-muted-foreground'>
             {result ? `${result.tableCount} table(s), ${result.foreignKeyCount} foreign key(s). Data types are exactly what you typed, so this suits whichever database you had in mind.` : ''}
           </DialogDescription>
         </DialogHeader>
-        <pre className='max-h-[55vh] overflow-auto rounded-lg bg-black/40 p-4 font-mono text-[11px] leading-relaxed text-zinc-200 ring-1 ring-white/8'>{result?.sql ?? ''}</pre>
+        <pre className='max-h-[55vh] overflow-auto rounded-lg bg-muted/40 p-4 font-mono text-[11px] leading-relaxed text-foreground ring-1 ring-border'>{result?.sql ?? ''}</pre>
         <div className='flex justify-end gap-2'>
           <Button variant='toolbar' onClick={download} disabled={!result?.tableCount}>
             <Download size={13} />

@@ -31,7 +31,7 @@ export default function HelpPage() {
       backLabel='Back to diagrams'
       toc={TOC}
     >
-      <p className='max-w-2xl text-sm leading-relaxed text-zinc-400'>
+      <p className='max-w-2xl text-sm leading-relaxed text-muted-foreground'>
         X Flow Tool is a browser-based editor for animated flow diagrams — system architectures, business processes, CI/CD pipelines. This page walks through the day-to-day workflow. If you
         want the rules for authoring diagram JSON by hand (or with an AI), see the <Link href='/guide' className='text-sky-300 underline-offset-2 hover:underline'>diagram authoring guide</Link>{' '}
         instead.

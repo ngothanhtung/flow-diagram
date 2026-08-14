@@ -5,6 +5,7 @@
 // file contains only what makes that node kind different.
 
 import { AlignCenter, AlignLeft, AlignRight, Blend, Copy, RotateCcw, Square, Trash2, Ungroup, type LucideIcon } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -30,11 +31,21 @@ export interface InspectorPanelProps {
 }
 
 // Ten presets, one per hue: a themed foreground (text / icon / border)
-// paired with the deep background it reads well on. Deliberately one
-// shade each — three shades of ten hues was thirty swatches nobody
-// scanned, and any colour outside the set is now reachable through the
-// custom colour picker on every ColorField.
-export const COLOR_PRESETS = [
+// paired with the background it reads well on. Deliberately one shade
+// each — three shades of ten hues was thirty swatches nobody scanned,
+// and any colour outside the set is now reachable through the custom
+// colour picker on every ColorField.
+//
+// Two variants exist because a pairing tuned for one canvas background
+// is wrong on the other: a deep near-black background with a pale
+// foreground (right for a dark canvas) inverts to a pale background
+// with a deep foreground on a light one. `useColorPresets()` below
+// picks the variant matching the app's current theme. This only
+// changes what a *new* pick offers — a document's already-saved colours
+// are literal data and never get rewritten by a theme switch.
+type ColorPreset = { name: string; foreground: `#${string}`; background: `#${string}` };
+
+const DARK_COLOR_PRESETS = [
   { name: 'Red', foreground: '#fca5a5', background: '#2a0a0a' },
   { name: 'Orange', foreground: '#fdba74', background: '#2a1005' },
   { name: 'Amber', foreground: '#fde047', background: '#281c04' },
@@ -45,10 +56,31 @@ export const COLOR_PRESETS = [
   { name: 'Indigo', foreground: '#a5b4fc', background: '#12104a' },
   { name: 'Purple', foreground: '#d8b4fe', background: '#1e0437' },
   { name: 'Pink', foreground: '#f9a8d4', background: '#330515' },
-] as const satisfies ReadonlyArray<{ name: string; foreground: `#${string}`; background: `#${string}` }>;
+] as const satisfies ReadonlyArray<ColorPreset>;
 
-export const PRESET_FOREGROUNDS: `#${string}`[] = ['#ffffff', ...COLOR_PRESETS.map((preset) => preset.foreground)];
-export const PRESET_BACKGROUNDS: `#${string}`[] = COLOR_PRESETS.map((preset) => preset.background);
+const LIGHT_COLOR_PRESETS = [
+  { name: 'Red', foreground: '#b91c1c', background: '#fee2e2' },
+  { name: 'Orange', foreground: '#c2410c', background: '#ffedd5' },
+  { name: 'Amber', foreground: '#b45309', background: '#fef3c7' },
+  { name: 'Green', foreground: '#15803d', background: '#dcfce7' },
+  { name: 'Teal', foreground: '#0f766e', background: '#ccfbf1' },
+  { name: 'Cyan', foreground: '#0e7490', background: '#cffafe' },
+  { name: 'Blue', foreground: '#1d4ed8', background: '#dbeafe' },
+  { name: 'Indigo', foreground: '#4338ca', background: '#e0e7ff' },
+  { name: 'Purple', foreground: '#7e22ce', background: '#f3e8ff' },
+  { name: 'Pink', foreground: '#be185d', background: '#fce7f3' },
+] as const satisfies ReadonlyArray<ColorPreset>;
+
+/** The active theme's colour presets, for a freshly-picked colour. */
+export function useColorPresets() {
+  const { resolvedTheme } = useTheme();
+  const presets = resolvedTheme === 'light' ? LIGHT_COLOR_PRESETS : DARK_COLOR_PRESETS;
+  return {
+    presets,
+    foregrounds: ['#ffffff', ...presets.map((preset) => preset.foreground)] as `#${string}`[],
+    backgrounds: presets.map((preset) => preset.background) as `#${string}`[],
+  };
+}
 
 /**
  * Draft state for one text field on the node.
@@ -90,11 +122,11 @@ export function useNodeFieldDraft(node: FlowNode, field: 'title' | 'description'
 /** Panel shell: the card, the heading and the node id. */
 export function InspectorShell({ title, nodeId, children }: { title: string; nodeId: string; children: React.ReactNode }) {
   return (
-    <Card size='sm' className='gap-0 bg-zinc-900/70 py-3 pr-3 pl-1 ring-0'>
+    <Card size='sm' className='gap-0 bg-card py-3 pr-3 pl-1 ring-0'>
       <div className='flex items-center justify-between'>
         <h2 className='text-sm font-semibold'>{title}</h2>
       </div>
-      <p className='mt-1 mb-2 text-[10px] uppercase tracking-wider text-zinc-500'>{nodeId}</p>
+      <p className='mt-1 mb-2 text-[10px] uppercase tracking-wider text-muted-foreground'>{nodeId}</p>
       <hr />
       {children}
     </Card>
@@ -104,8 +136,8 @@ export function InspectorShell({ title, nodeId, children }: { title: string; nod
 export function SectionLabel({ children }: { children: string }) {
   return (
     <div className='mt-4 flex items-center gap-2'>
-      <span className='text-[10px] font-bold uppercase tracking-[0.16em] text-sky-300/80'>{children}</span>
-      <Separator className='flex-1 bg-white/8' />
+      <span className='text-[10px] font-bold uppercase tracking-[0.16em] text-sky-600/80 dark:text-sky-300/80'>{children}</span>
+      <Separator className='flex-1 bg-border' />
     </div>
   );
 }
@@ -118,7 +150,7 @@ export function GeometryFields({ node, onUpdate, width, height }: { node: FlowNo
   return (
     <>
       <SectionLabel>Geometry</SectionLabel>
-      <p className='mt-1 text-[10px] leading-relaxed text-zinc-500'>Drag one of the 4 corner handles, or enter an exact size below.</p>
+      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>Drag one of the 4 corner handles, or enter an exact size below.</p>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <NumberField label='X' value={Math.round(node.position.x)} onChange={(x) => onUpdate(node.id, { position: { ...node.position, x } })} />
         <NumberField label='Y' value={Math.round(node.position.y)} onChange={(y) => onUpdate(node.id, { position: { ...node.position, y } })} />
@@ -152,20 +184,20 @@ export function TypographyFields({
           if (nextValue) onUpdate(node.id, { fontFamily: nextValue as NodeFont });
         }}
       >
-        <SelectTrigger className='mt-1.5 h-auto w-full border-white/10 bg-white/5 px-2.5 py-2 text-left hover:bg-white/8 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'>
-          <span className='min-w-0 flex-1 truncate text-[11px] font-semibold text-zinc-200' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
+        <SelectTrigger className='mt-1.5 h-auto w-full border-border bg-muted/30 px-2.5 py-2 text-left hover:bg-accent focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'>
+          <span className='min-w-0 flex-1 truncate text-[11px] font-semibold text-foreground' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
             {NODE_FONT_OPTIONS.find((option) => option.value === fontFamily)?.character}
-            <span className='ml-1 font-normal text-zinc-500'>({NODE_FONT_OPTIONS.find((option) => option.value === fontFamily)?.label})</span>
+            <span className='ml-1 font-normal text-muted-foreground'>({NODE_FONT_OPTIONS.find((option) => option.value === fontFamily)?.label})</span>
           </span>
         </SelectTrigger>
-        <SelectContent className='border-white/10 bg-zinc-950 p-1.5'>
+        <SelectContent className='border-border bg-popover p-1.5'>
           <SelectGroup>
-            <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-zinc-600'>Typography</SelectLabel>
+            <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-muted-foreground'>Typography</SelectLabel>
             {NODE_FONT_OPTIONS.map((option) => (
               <SelectItem key={option.value} value={option.value} className='px-2.5 py-2 pr-8'>
                 <span className='truncate text-[11px] font-semibold' style={{ fontFamily: NODE_FONT_FAMILIES[option.value] }}>
                   {option.character}
-                  <span className='ml-1 font-normal text-zinc-500'>({option.label})</span>
+                  <span className='ml-1 font-normal text-muted-foreground'>({option.label})</span>
                 </span>
               </SelectItem>
             ))}
@@ -175,17 +207,17 @@ export function TypographyFields({
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <NumberField label='Font size' value={fontSize} min={10} max={28} onChange={(nextSize) => onUpdate(node.id, { fontSize: nextSize })} />
         <div>
-          <Label className='mb-1 block text-[9px] text-zinc-500'>Weight</Label>
+          <Label className='mb-1 block text-[9px] text-muted-foreground'>Weight</Label>
           <Select
             value={fontWeight}
             onValueChange={(nextValue) => {
               if (nextValue) onUpdate(node.id, { fontWeight: nextValue as FlowNode['fontWeight'] });
             }}
           >
-            <SelectTrigger className='w-full border-white/10 bg-white/5 text-[11px]'>
+            <SelectTrigger className='w-full border-border bg-muted/30 text-[11px]'>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className='border-white/10 bg-zinc-950'>
+            <SelectContent className='border-border bg-popover'>
               <SelectItem value='normal'>Normal</SelectItem>
               <SelectItem value='medium'>Medium</SelectItem>
               <SelectItem value='semibold'>Semibold</SelectItem>
@@ -242,11 +274,11 @@ export function GroupMembershipSection({ node, onUpdate, parentTitle }: { node: 
   return (
     <>
       <SectionLabel>Group</SectionLabel>
-      <p className='mt-1 text-[10px] leading-relaxed text-zinc-500'>
-        Inside <span className='text-zinc-300'>{parentTitle ?? 'a group'}</span>. Drag it out of the frame to leave, or:
+      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>
+        Inside <span className='text-muted-foreground'>{parentTitle ?? 'a group'}</span>. Drag it out of the frame to leave, or:
       </p>
       <div className='mt-2'>
-        <Button variant='outline' size='sm' onClick={() => onUpdate(node.id, { parentId: undefined })} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'>
+        <Button variant='outline' size='sm' onClick={() => onUpdate(node.id, { parentId: undefined })} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
           <Ungroup size={11} /> Remove from group
         </Button>
       </div>
@@ -260,7 +292,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
     <>
       <SectionLabel>Actions</SectionLabel>
       <div className='mt-1.5 grid grid-cols-3 gap-2'>
-        <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-200 hover:bg-white/10'>
+        <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-foreground hover:bg-accent'>
           <Copy size={12} /> Duplicate
         </Button>
         <Button
@@ -300,7 +332,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
               // node from its frame.
             })
           }
-          className='border-white/10 bg-white/5 px-2 text-[10px] text-zinc-300 hover:bg-white/10'
+          className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'
         >
           <RotateCcw size={11} /> Reset
         </Button>
@@ -317,7 +349,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
 export function NumberField({ label, value, min, max, step = 1, onChange }: { label: string; value: number; min?: number; max?: number; step?: number; onChange: (value: number) => void }) {
   return (
     <div>
-      <Label className='mb-1 block text-[9px] text-zinc-500'>{label}</Label>
+      <Label className='mb-1 block text-[9px] text-muted-foreground'>{label}</Label>
       <Input
         type='number'
         value={value}
@@ -329,7 +361,7 @@ export function NumberField({ label, value, min, max, step = 1, onChange }: { la
             onChange(event.target.valueAsNumber);
           }
         }}
-        className='h-8 border-white/10 bg-white/5 font-mono text-[11px] text-zinc-200 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+        className='h-8 border-border bg-muted/30 font-mono text-[11px] text-foreground focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
     </div>
   );
@@ -338,9 +370,9 @@ export function NumberField({ label, value, min, max, step = 1, onChange }: { la
 export function RangeField({ label, value, min, max, suffix, onChange }: { label: string; value: number; min: number; max: number; suffix: string; onChange: (value: number) => void }) {
   return (
     <div className='mt-2'>
-      <span className='flex items-center justify-between text-[10px] text-zinc-500'>
+      <span className='flex items-center justify-between text-[10px] text-muted-foreground'>
         <span>{label}</span>
-        <span className='font-mono text-zinc-300'>
+        <span className='font-mono text-muted-foreground'>
           {value}
           {suffix}
         </span>
@@ -353,17 +385,17 @@ export function RangeField({ label, value, min, max, suffix, onChange }: { label
 export function SelectField<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: readonly T[]; onChange: (value: T) => void }) {
   return (
     <div>
-      <Label className='mb-1 block text-[9px] text-zinc-500'>{label}</Label>
+      <Label className='mb-1 block text-[9px] text-muted-foreground'>{label}</Label>
       <Select
         value={value}
         onValueChange={(nextValue) => {
           if (nextValue) onChange(nextValue as T);
         }}
       >
-        <SelectTrigger className='w-full border-white/10 bg-white/5 text-[11px] capitalize'>
+        <SelectTrigger className='w-full border-border bg-muted/30 text-[11px] capitalize'>
           <SelectValue />
         </SelectTrigger>
-        <SelectContent className='border-white/10 bg-zinc-950'>
+        <SelectContent className='border-border bg-popover'>
           {options.map((option) => (
             <SelectItem key={option} value={option} className='capitalize'>
               {option}
@@ -378,7 +410,7 @@ export function SelectField<T extends string>({ label, value, options, onChange 
 export function SegmentedButtons<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: { value: T; label: string; Icon: LucideIcon }[]; onChange: (value: T) => void }) {
   return (
     <div className='mt-2 grid grid-cols-[70px_1fr] items-center gap-2'>
-      <span className='text-[10px] text-zinc-500'>{label}</span>
+      <span className='text-[10px] text-muted-foreground'>{label}</span>
       <ToggleGroup
         value={[value]}
         onValueChange={(nextValue) => {
@@ -391,7 +423,7 @@ export function SegmentedButtons<T extends string>({ label, value, options, onCh
         className='w-full'
       >
         {options.map(({ value: option, label: optionLabel, Icon }) => (
-          <ToggleGroupItem key={option} value={option} title={optionLabel} className={['h-7 flex-1 border-white/10 bg-white/5 p-0', value === option ? 'border-sky-400/60 bg-sky-500/20 text-sky-100' : 'text-zinc-500 hover:text-zinc-200'].join(' ')}>
+          <ToggleGroupItem key={option} value={option} title={optionLabel} className={['h-7 flex-1 border-border bg-muted/30 p-0', value === option ? 'border-sky-400/60 bg-sky-500/20 text-sky-700 dark:text-sky-100' : 'text-muted-foreground hover:text-foreground'].join(' ')}>
             <Icon size={13} />
           </ToggleGroupItem>
         ))}
@@ -446,8 +478,8 @@ export function ColorField({ label, value, presets, onChange }: { label: string;
   };
 
   return (
-    <div className='rounded-lg border border-white/10 bg-white/5 p-2'>
-      <Label className='block text-[10px] text-zinc-500'>{label}</Label>
+    <div className='rounded-lg border border-border bg-muted/30 p-2'>
+      <Label className='block text-[10px] text-muted-foreground'>{label}</Label>
       <div className='mt-1 flex items-center gap-1.5'>
         <input
           type='color'
@@ -455,7 +487,7 @@ export function ColorField({ label, value, presets, onChange }: { label: string;
           title='Pick any colour'
           value={toSwatchHex(value)}
           onChange={(event) => onChange(event.target.value as `#${string}`)}
-          className='size-7 shrink-0 cursor-pointer rounded border border-white/20 bg-transparent p-0'
+          className='size-7 shrink-0 cursor-pointer rounded border border-border bg-transparent p-0'
         />
         <Input
           value={draft}
@@ -465,7 +497,7 @@ export function ColorField({ label, value, presets, onChange }: { label: string;
             if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
           }}
           aria-label={`${label} — hex value`}
-          className='h-7 border-white/10 bg-zinc-800/80 px-1.5 font-mono text-[10px] uppercase text-zinc-300 focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+          className='h-7 border-border bg-muted/30 px-1.5 font-mono text-[10px] uppercase text-muted-foreground focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
         />
       </div>
       <div className='mt-1.5 flex flex-wrap gap-1'>
@@ -476,7 +508,7 @@ export function ColorField({ label, value, presets, onChange }: { label: string;
             onClick={() => onChange(preset)}
             title={preset}
             aria-label={preset}
-            className={cn('size-4 rounded-full border transition hover:scale-115', preset.toLowerCase() === value.toLowerCase() ? 'border-2 border-sky-300' : 'border-white/20')}
+            className={cn('size-4 rounded-full border transition hover:scale-115', preset.toLowerCase() === value.toLowerCase() ? 'border-2 border-sky-300' : 'border-border')}
             style={{ background: preset }}
           />
         ))}

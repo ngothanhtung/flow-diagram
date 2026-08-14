@@ -18,8 +18,6 @@ import {
   GroupMembershipSection,
   InspectorShell,
   NumberField,
-  PRESET_BACKGROUNDS,
-  PRESET_FOREGROUNDS,
   RangeField,
   SectionLabel,
   SegmentedButtons,
@@ -27,6 +25,7 @@ import {
   ShapeThumb,
   TextAlignField,
   TypographyFields,
+  useColorPresets,
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
@@ -40,6 +39,7 @@ import { NodeEffectField } from './NodeEffectField';
  */
 export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null }: InspectorPanelProps) {
   const style = resolveNodeStyle(node);
+  const { foregrounds, backgrounds } = useColorPresets();
   const title = useNodeFieldDraft(node, 'title', onUpdate);
   const description = useNodeFieldDraft(node, 'description', onUpdate);
   const isLogo = node.type === 'logo';
@@ -48,7 +48,7 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
 
   return (
     <InspectorShell title='Block Inspector' nodeId={node.id}>
-      <Label htmlFor='node-title' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400'>
+      <Label htmlFor='node-title' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-muted-foreground'>
         Title
       </Label>
       <Input
@@ -59,10 +59,10 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         onKeyDown={(event) => {
           if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
         }}
-        className='mt-1 border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+        className='mt-1 border-border bg-muted/30 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
 
-      <Label htmlFor='node-subtitle' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400'>
+      <Label htmlFor='node-subtitle' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-muted-foreground'>
         Sub title
       </Label>
       <Textarea
@@ -71,7 +71,7 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         onChange={(event) => description.setValue(event.target.value)}
         onBlur={description.commit}
         rows={2}
-        className='mt-1 min-h-14 resize-none border-white/10 bg-zinc-800/80 text-xs focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+        className='mt-1 min-h-14 resize-none border-border bg-muted/30 text-xs focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
 
       <GeometryFields node={node} onUpdate={onUpdate} width={style.width} height={style.height} />
@@ -80,25 +80,25 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
       <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
 
       {/* --- Shape ------------------------------------------------- */}
-      <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>Shape</label>
+      <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground'>Shape</label>
       <Select
         value={currentShape}
         onValueChange={(nextValue) => {
           if (nextValue) onUpdate(node.id, { shape: nextValue as NodeShape });
         }}
       >
-        <SelectTrigger className='mt-1.5 h-auto w-full gap-2.5 border-white/10 bg-zinc-800 px-3 py-2.5 text-left hover:bg-zinc-700/80 focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15'>
-          <span className='grid size-7 shrink-0 place-items-center rounded-md bg-black/20 text-violet-200'>
+        <SelectTrigger className='mt-1.5 h-auto w-full gap-2.5 border-border bg-muted/40 px-3 py-2.5 text-left hover:bg-muted/60 focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15'>
+          <span className='grid size-7 shrink-0 place-items-center rounded-md bg-violet-500/10 text-violet-700 dark:text-violet-200'>
             <ShapeThumb shape={currentShape} fill={style.background} stroke={style.foreground} />
           </span>
           <span className='min-w-0 flex-1'>
             <span className='block text-xs font-semibold'>{SHAPES[currentShape].label}</span>
           </span>
         </SelectTrigger>
-        <SelectContent className='max-h-72 min-w-72.5 border-violet-400/25 bg-zinc-950 p-1.5'>
+        <SelectContent className='max-h-72 min-w-72.5 border-violet-400/25 bg-popover p-1.5'>
           {(Object.keys(SHAPES) as NodeShape[]).map((shapeKey) => (
             <SelectItem key={shapeKey} value={shapeKey} className='gap-2.5 px-2.5 py-2 pr-9'>
-              <span className='grid size-7 shrink-0 place-items-center rounded-md bg-black/25 text-violet-200'>
+              <span className='grid size-7 shrink-0 place-items-center rounded-md bg-violet-500/10 text-violet-700 dark:text-violet-200'>
                 <ShapeThumb shape={shapeKey} fill={style.background} stroke={style.foreground} />
               </span>
               <span className='min-w-0 flex-1'>
@@ -115,8 +115,8 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
           so there is no separate step to reach a custom colour. */}
       <SectionLabel>Color</SectionLabel>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
-        <ColorField label='Text / icon · Border' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
-        <ColorField label='Background' value={style.background} presets={PRESET_BACKGROUNDS} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
+        <ColorField label='Text / icon · Border' value={style.foreground} presets={foregrounds} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
+        <ColorField label='Background' value={style.background} presets={backgrounds} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
         <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />
       </div>
       <div className='mt-2 grid grid-cols-2 gap-2'>
@@ -127,7 +127,7 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
 
       {/* --- Icon / Logo ------------------------------------------ */}
-      <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-zinc-400'>{isLogo ? 'Logo' : 'Icon'}</label>
+      <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground'>{isLogo ? 'Logo' : 'Icon'}</label>
       <div className='mt-1.5'>
         {isLogo ? (
           <LogoPicker

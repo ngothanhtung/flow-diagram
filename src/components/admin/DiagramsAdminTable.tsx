@@ -46,24 +46,24 @@ export function AdminDiagramsPage() {
         header: 'Diagram',
         cell: ({ row }) => (
           <div className='min-w-0'>
-            <p className='truncate font-medium text-zinc-100'>{row.original.name}</p>
-            <p className='truncate font-mono text-[10px] text-zinc-500'>{row.original.id}</p>
+            <p className='truncate font-medium text-foreground'>{row.original.name}</p>
+            <p className='truncate font-mono text-[10px] text-muted-foreground'>{row.original.id}</p>
           </div>
         ),
       },
       {
         accessorKey: 'ownerUid',
         header: 'Owner UID',
-        cell: ({ getValue }) => <span className='font-mono text-[11px] text-zinc-400'>{getValue<string>().slice(0, 10)}…</span>,
+        cell: ({ getValue }) => <span className='font-mono text-[11px] text-muted-foreground'>{getValue<string>().slice(0, 10)}…</span>,
       },
       {
         accessorKey: 'public',
         header: 'Visibility',
         cell: ({ getValue }) =>
           getValue<boolean>() ? (
-            <span className='whitespace-nowrap rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-200 ring-1 ring-emerald-400/30'>Public</span>
+            <span className='whitespace-nowrap rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-200 ring-1 ring-emerald-400/30'>Public</span>
           ) : (
-            <span className='whitespace-nowrap rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-semibold text-zinc-500 ring-1 ring-white/10'>Private</span>
+            <span className='whitespace-nowrap rounded-full bg-accent px-2 py-0.5 text-[10px] font-semibold text-muted-foreground ring-1 ring-border'>Private</span>
           ),
       },
       {
@@ -79,13 +79,13 @@ export function AdminDiagramsPage() {
       {
         accessorKey: 'updatedAt',
         header: 'Updated',
-        cell: ({ getValue }) => <span className='whitespace-nowrap text-zinc-400'>{formatDateTime(getValue<number | null>())}</span>,
+        cell: ({ getValue }) => <span className='whitespace-nowrap text-muted-foreground'>{formatDateTime(getValue<number | null>())}</span>,
         sortDescFirst: true,
       },
       {
         accessorKey: 'createdAt',
         header: 'Created',
-        cell: ({ getValue }) => <span className='whitespace-nowrap text-zinc-500'>{formatDateTime(getValue<number | null>())}</span>,
+        cell: ({ getValue }) => <span className='whitespace-nowrap text-muted-foreground'>{formatDateTime(getValue<number | null>())}</span>,
         sortDescFirst: true,
       },
       {
@@ -95,11 +95,11 @@ export function AdminDiagramsPage() {
         enableGlobalFilter: false,
         cell: ({ row }) => (
           <div className='flex items-center gap-1'>
-            <Button variant='ghost' size='xs' onClick={() => setViewing(row.original)} className='text-zinc-400 hover:text-sky-200'>
+            <Button variant='ghost' size='xs' onClick={() => setViewing(row.original)} className='text-muted-foreground hover:text-sky-700 dark:hover:text-sky-200'>
               <Eye size={13} />
               View
             </Button>
-            <Link href={`/diagrams/${row.original.id}/view`} target='_blank' className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-zinc-400 transition hover:bg-white/6 hover:text-sky-200' title='Open read-only viewer'>
+            <Link href={`/diagrams/${row.original.id}/view`} target='_blank' className='inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition hover:bg-accent hover:text-sky-700 dark:hover:text-sky-200' title='Open read-only viewer'>
               <ExternalLink size={13} />
               Open
             </Link>
@@ -125,15 +125,15 @@ export function AdminDiagramsPage() {
   });
 
   return (
-    <div className='flex h-full flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
-      <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
+    <div className='flex h-full flex-col bg-background text-foreground'>
+      <header className='flex items-center justify-between border-b border-border px-6 py-4'>
         <div className='flex items-center gap-3'>
           <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
-            <Database size={18} className='text-sky-300' />
+            <Database size={18} className='text-sky-600 dark:text-sky-300' />
           </div>
           <div>
             <h1 className='text-base font-semibold'>Diagrams admin</h1>
-            <p className='text-xs text-zinc-500'>
+            <p className='text-xs text-muted-foreground'>
               users/{'{uid}'}/diagrams/{'{diagram_id}'} · read-only
             </p>
           </div>
@@ -148,7 +148,7 @@ export function AdminDiagramsPage() {
 
       <div className='flex items-center gap-3 px-6 py-3'>
         <Input value={globalFilter} onChange={(event) => setGlobalFilter(event.target.value)} placeholder='Search by name, id or owner…' variant='toolbar' className='max-w-xs' />
-        <p className='text-xs text-zinc-500'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} diagram(s)` : status === 'error' ? 'Failed to load diagrams' : 'Loading diagrams…'}</p>
+        <p className='text-xs text-muted-foreground'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} diagram(s)` : status === 'error' ? 'Failed to load diagrams' : 'Loading diagrams…'}</p>
       </div>
 
       <DataTable
@@ -161,17 +161,17 @@ export function AdminDiagramsPage() {
       <DataTableFooter table={table} />
 
       <Dialog open={viewing !== null} onOpenChange={(open) => !open && setViewing(null)}>
-        <DialogContent className='max-w-3xl border-white/10 bg-zinc-950/95 text-zinc-100 backdrop-blur-xl'>
+        <DialogContent className='max-w-3xl border-border bg-popover/95 text-foreground backdrop-blur-xl'>
           <DialogHeader>
             <DialogTitle className='flex items-center gap-2 text-sm font-semibold'>
-              <Braces size={14} className='text-sky-300' />
+              <Braces size={14} className='text-sky-600 dark:text-sky-300' />
               {viewing?.name}
             </DialogTitle>
-            <DialogDescription className='font-mono text-[11px] text-zinc-500'>
+            <DialogDescription className='font-mono text-[11px] text-muted-foreground'>
               users/{viewing?.ownerUid}/diagrams/{viewing?.id}
             </DialogDescription>
           </DialogHeader>
-          <pre className='max-h-[60vh] overflow-auto rounded-lg bg-black/40 p-4 font-mono text-[11px] leading-relaxed text-zinc-300 ring-1 ring-white/8'>{viewing ? JSON.stringify(viewing.document, null, 2) : ''}</pre>
+          <pre className='max-h-[60vh] overflow-auto rounded-lg bg-muted/40 p-4 font-mono text-[11px] leading-relaxed text-foreground ring-1 ring-border'>{viewing ? JSON.stringify(viewing.document, null, 2) : ''}</pre>
         </DialogContent>
       </Dialog>
     </div>

@@ -9,11 +9,11 @@ import {
   GeometryFields,
   GroupMembershipSection,
   InspectorShell,
-  PRESET_FOREGROUNDS,
   RangeField,
   SectionLabel,
   TextAlignField,
   TypographyFields,
+  useColorPresets,
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
@@ -30,10 +30,11 @@ import { NodeEffectField } from './NodeEffectField';
 export function TextInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null }: InspectorPanelProps) {
   const style = resolveNodeStyle(node);
   const text = useNodeFieldDraft(node, 'title', onUpdate);
+  const { foregrounds } = useColorPresets();
 
   return (
     <InspectorShell title='Text Inspector' nodeId={node.id}>
-      <Label htmlFor='node-title' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-zinc-400'>
+      <Label htmlFor='node-title' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-muted-foreground'>
         Text
       </Label>
       {/* The whole content is the title, so this is multi-line: Enter
@@ -45,7 +46,7 @@ export function TextInspector({ node, onUpdate, onDuplicate, onDelete, parentTit
         onChange={(event) => text.setValue(event.target.value)}
         onBlur={text.commit}
         rows={4}
-        className='mt-1 min-h-20 resize-none border-white/10 bg-zinc-800/80 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+        className='mt-1 min-h-20 resize-none border-border bg-muted/30 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
 
       <GeometryFields node={node} onUpdate={onUpdate} width={style.width} height={style.height} />
@@ -53,7 +54,7 @@ export function TextInspector({ node, onUpdate, onDuplicate, onDelete, parentTit
       <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
 
       <SectionLabel>Colour</SectionLabel>
-      <ColorField label='Text colour' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color })} />
+      <ColorField label='Text colour' value={style.foreground} presets={foregrounds} onChange={(color) => onUpdate(node.id, { color })} />
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
 
       <SectionLabel>Alignment</SectionLabel>

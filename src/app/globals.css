@@ -437,6 +437,13 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Frosted-glass chrome floating over the canvas (header controls, the
+     shape dock, the canvas's own corner docks) — a deliberately distinct
+     surface from --card/--popover, tuned per theme against whichever
+     canvas background is active. */
+  --toolbar-bg: oklch(1 0 0 / 70%);
+  --toolbar-border: oklch(0 0 0 / 8%);
 }
 
 .dark {
@@ -471,6 +478,9 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --toolbar-bg: oklch(0 0 0 / 25%);
+  --toolbar-border: oklch(1 0 0 / 10%);
 }
 
 @layer base {
