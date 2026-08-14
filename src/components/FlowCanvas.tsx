@@ -109,12 +109,12 @@ const PATH_SAMPLES = 160;
 // the `sm` tier (h-7), with the dock's small uppercase label styling.
 // The shape dock sits on the same tier so all three docks line up.
 const DOCK_BUTTON = 'h-7 gap-1.5 px-2.5 text-[9px] font-bold uppercase tracking-[0.14em]';
-const DOCK_ICON_BUTTON = 'h-7 w-7 text-zinc-300 hover:text-cyan-200 disabled:opacity-30';
+const DOCK_ICON_BUTTON = 'h-7 w-7 text-muted-foreground hover:text-cyan-700 dark:hover:text-cyan-200 disabled:opacity-30';
 
 function DockDivider() {
   // Full-height rule between button groups, matching the flush dividers
   // the dock had when they were `border-l` on each button.
-  return <Separator orientation='vertical' className='self-stretch bg-white/10' />;
+  return <Separator orientation='vertical' className='self-stretch bg-border' />;
 }
 
 /** Parameter along the drawn path (0…1) closest to a data-space point. */
@@ -717,7 +717,7 @@ export function FlowCanvas({
     <div
       ref={containerRef}
       data-flowgram-canvas
-      className='relative h-full w-full overflow-hidden bg-zinc-950'
+      className='relative h-full w-full overflow-hidden bg-background'
       onWheel={handleWheel}
       onPointerDown={(e) => {
         // Clicking the canvas background clears the selection. We
@@ -731,9 +731,13 @@ export function FlowCanvas({
     >
       {gridVisible && (
         <div
-          className='pointer-events-none absolute inset-0 opacity-[0.07]'
+          // `currentColor` (from `text-foreground`) rather than a literal
+          // white — the line needs to read as a faint mark against
+          // whichever canvas background the active theme paints, not just
+          // a dark one.
+          className='pointer-events-none absolute inset-0 text-foreground opacity-[0.07]'
           style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)',
             backgroundSize: `${Math.max(12, gridSize * viewTransform.scale)}px ${Math.max(12, gridSize * viewTransform.scale)}px`,
             backgroundPosition: `${viewTransform.x}px ${viewTransform.y}px`,
           }}
@@ -743,7 +747,7 @@ export function FlowCanvas({
       {/* Info + zoom + Fit live in the bottom-left corner; the shape dock
           owns the bottom centre and the grid controls the right corner. */}
       <div
-        className='absolute bottom-4 left-4 z-20 flex items-center overflow-hidden rounded-lg bg-zinc-900/92 p-0.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48)] backdrop-blur-xl'
+        className='absolute bottom-4 left-4 z-20 flex items-center overflow-hidden rounded-lg bg-popover/92 p-0.5 text-muted-foreground ring-1 ring-border shadow-[0_14px_40px_rgba(0,0,0,.28)] backdrop-blur-xl'
         role='group'
         aria-label='Canvas view controls'
       >
@@ -751,7 +755,7 @@ export function FlowCanvas({
           variant='ghost'
           onClick={onToggleInfo}
           aria-pressed={infoOpen}
-          className={[DOCK_BUTTON, infoOpen ? 'text-cyan-200' : 'text-zinc-500'].join(' ')}
+          className={[DOCK_BUTTON, infoOpen ? 'text-cyan-700 dark:text-cyan-200' : 'text-muted-foreground'].join(' ')}
           aria-label={`${infoOpen ? 'Hide' : 'Show'} document info`}
           title={`${infoOpen ? 'Hide' : 'Show'} document info`}
         >
@@ -768,14 +772,14 @@ export function FlowCanvas({
           <Plus size={14} />
         </Button>
         <DockDivider />
-        <Button variant='ghost' onClick={() => setViewOverride(null)} className={[DOCK_BUTTON, 'text-zinc-500 hover:text-cyan-200'].join(' ')} aria-label='Fit diagram to view' title='Fit diagram to view'>
+        <Button variant='ghost' onClick={() => setViewOverride(null)} className={[DOCK_BUTTON, 'text-muted-foreground hover:text-cyan-700 dark:hover:text-cyan-200'].join(' ')} aria-label='Fit diagram to view' title='Fit diagram to view'>
           <Maximize2 size={12} /> Fit
         </Button>
       </div>
 
       {!readOnly && (
         <div
-          className='absolute right-4 bottom-4 z-20 flex items-center overflow-hidden rounded-lg bg-zinc-900/92 p-0.5 text-zinc-300 ring-1 ring-white/12 shadow-[0_14px_40px_rgba(0,0,0,.48)] backdrop-blur-xl'
+          className='absolute right-4 bottom-4 z-20 flex items-center overflow-hidden rounded-lg bg-popover/92 p-0.5 text-muted-foreground ring-1 ring-border shadow-[0_14px_40px_rgba(0,0,0,.28)] backdrop-blur-xl'
           role='group'
           aria-label='Canvas grid controls'
         >
@@ -783,7 +787,7 @@ export function FlowCanvas({
             variant='ghost'
             onClick={() => setSnapEnabled((enabled) => !enabled)}
             aria-pressed={snapEnabled}
-            className={[DOCK_BUTTON, snapEnabled ? 'text-cyan-200' : 'text-zinc-500'].join(' ')}
+            className={[DOCK_BUTTON, snapEnabled ? 'text-cyan-700 dark:text-cyan-200' : 'text-muted-foreground'].join(' ')}
             aria-label={`${snapEnabled ? 'Disable' : 'Enable'} snap to grid`}
             title={`Snap to ${gridSize}px grid: ${snapEnabled ? 'on' : 'off'}`}
           >
@@ -794,7 +798,7 @@ export function FlowCanvas({
             variant='ghost'
             onClick={() => setGridVisible((visible) => !visible)}
             aria-pressed={gridVisible}
-            className={[DOCK_BUTTON, gridVisible ? 'text-cyan-200' : 'text-zinc-500'].join(' ')}
+            className={[DOCK_BUTTON, gridVisible ? 'text-cyan-700 dark:text-cyan-200' : 'text-muted-foreground'].join(' ')}
             aria-label={`${gridVisible ? 'Hide' : 'Show'} grid`}
             title={`${gridVisible ? 'Hide' : 'Show'} grid`}
           >
@@ -813,13 +817,13 @@ export function FlowCanvas({
                 chevron, none of which the ghost dock buttons beside it have. */}
             <SelectTrigger
               size='sm'
-              className='inline-flex h-7 items-center gap-1 rounded-md border-0 bg-transparent px-2 py-0 text-[9px] font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:bg-muted/50 hover:text-cyan-200 dark:bg-transparent dark:hover:bg-muted/50 [&_svg]:size-3'
+              className='inline-flex h-7 items-center gap-1 rounded-md border-0 bg-transparent px-2 py-0 text-[9px] font-bold uppercase tracking-[0.14em] text-muted-foreground transition hover:bg-muted/50 hover:text-cyan-700 dark:hover:text-cyan-200 dark:bg-transparent dark:hover:bg-muted/50 [&_svg]:size-3'
               aria-label='Grid size'
               title='Grid size'
             >
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className='border-white/10 bg-zinc-950'>
+            <SelectContent className='border-border bg-popover'>
               {GRID_SIZE_OPTIONS.map((size) => (
                 <SelectItem key={size} value={String(size)}>
                   {size}px

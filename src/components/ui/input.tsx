@@ -11,7 +11,7 @@ const inputVariants = cva(
       variant: {
         default: "border-input bg-transparent",
         // Matches the app's frosted toolbar controls (Button `toolbar`).
-        toolbar: "border-white/10 bg-black/25",
+        toolbar: "border-[var(--toolbar-border)] bg-[var(--toolbar-bg)]",
       },
     },
     defaultVariants: {
