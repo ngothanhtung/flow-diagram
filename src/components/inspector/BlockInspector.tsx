@@ -13,6 +13,7 @@ import { COLORS, SHAPES, resolveNodeStyle, type NodeShape } from '@/lib/node-sty
 import {
   ActionsSection,
   ColorField,
+  ColorPresetRow,
   FillField,
   GeometryFields,
   GroupMembershipSection,
@@ -25,7 +26,6 @@ import {
   ShapeThumb,
   TextAlignField,
   TypographyFields,
-  useColorPresets,
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
@@ -39,7 +39,6 @@ import { NodeEffectField } from './NodeEffectField';
  */
 export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null }: InspectorPanelProps) {
   const style = resolveNodeStyle(node);
-  const { foregrounds, backgrounds } = useColorPresets();
   const title = useNodeFieldDraft(node, 'title', onUpdate);
   const description = useNodeFieldDraft(node, 'description', onUpdate);
   const isLogo = node.type === 'logo';
@@ -110,13 +109,14 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
       </Select>
 
       {/* --- Color ------------------------------------------------- */}
-      {/* Each field is a full colour picker on its own — a preset row for
-          quick picks, plus a native picker and hex box for anything else —
-          so there is no separate step to reach a custom colour. */}
+      {/* One shared preset row sets the foreground/background pair at
+          once; each field below is otherwise a plain custom picker
+          (native swatch + hex). */}
       <SectionLabel>Color</SectionLabel>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
-        <ColorField label='Text / icon · Border' value={style.foreground} presets={foregrounds} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
-        <ColorField label='Background' value={style.background} presets={backgrounds} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
+        <ColorPresetRow onPick={(preset) => onUpdate(node.id, { color: preset.foreground, borderColor: preset.foreground, backgroundColor: preset.background })} />
+        <ColorField label='Text / icon · Border' value={style.foreground} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
+        <ColorField label='Background' value={style.background} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
         <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />
       </div>
       <div className='mt-2 grid grid-cols-2 gap-2'>
@@ -196,8 +196,12 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
 
       <GroupMembershipSection node={node} onUpdate={onUpdate} parentTitle={parentTitle} />
 
-      <SectionLabel>{node.table ? 'Columns' : 'Database table'}</SectionLabel>
-      <TableColumnsEditor node={node} onUpdate={onUpdate} />
+      {node.table && (
+        <>
+          <SectionLabel>Columns</SectionLabel>
+          <TableColumnsEditor node={node} onUpdate={onUpdate} />
+        </>
+      )}
 
       <ActionsSection node={node} onUpdate={onUpdate} onDuplicate={onDuplicate} onDelete={onDelete} />
     </InspectorShell>

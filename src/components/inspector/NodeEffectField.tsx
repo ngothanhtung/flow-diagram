@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from '@/components/node-effect-layer';
 import type { FlowNode, NodeEffect } from '@/lib/flowchart-types';
 import { nodeOutline } from '@/lib/node-style';
-import { ColorField, RangeField, SectionLabel, useColorPresets, type InspectorPanelProps } from './fields';
+import { ColorField, RangeField, SectionLabel, type InspectorPanelProps } from './fields';
 
 interface EffectOption {
   value: NodeEffect;
@@ -53,7 +53,6 @@ const ALL_EFFECTS = [NONE_EFFECT, ...MOTION_EFFECTS, ...DECORATION_EFFECTS];
  */
 export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; foreground: `#${string}` }) {
   const [draft, setDraft] = useState<NodeEffect | null>(null);
-  const { foregrounds } = useColorPresets();
   const effect = node.effect ?? 'none';
   const selected = ALL_EFFECTS.find((item) => item.value === effect) ?? NONE_EFFECT;
   const SelectedIcon = selected.Icon;
@@ -114,7 +113,7 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
                   <RangeField label='Speed' value={Math.round(knobs.speed * 100)} min={25} max={300} suffix='%' onChange={(value) => onUpdate(node.id, { effectSpeed: value / 100 })} />
                   <RangeField label='Intensity' value={Math.round(knobs.intensity * 100)} min={25} max={300} suffix='%' onChange={(value) => onUpdate(node.id, { effectIntensity: value / 100 })} />
                   <div className='pt-2'>
-                    <ColorField label='Effect colour' value={node.effectColor ?? foreground} presets={foregrounds} onChange={(effectColor) => onUpdate(node.id, { effectColor })} />
+                    <ColorField label='Effect colour' value={node.effectColor ?? foreground} onChange={(effectColor) => onUpdate(node.id, { effectColor })} />
                   </div>
                   <p className='pt-2 text-[10px] leading-relaxed text-muted-foreground'>Speed and intensity mean the same thing for every effect: how fast the cycle runs, and how far it travels or how bright it burns.</p>
                 </div>

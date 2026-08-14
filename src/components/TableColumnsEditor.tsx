@@ -9,7 +9,7 @@
 // on every add/remove/reorder — and the store already handles rapid
 // updates fine everywhere else in the editor.
 
-import { ArrowDown, ArrowUp, Plus, Table2, Trash2, X } from 'lucide-react';
+import { ArrowDown, ArrowUp, Plus, Trash2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -44,23 +44,7 @@ export function starterColumns(): TableColumn[] {
 
 export function TableColumnsEditor({ node, onUpdate }: { node: FlowNode; onUpdate: (id: string, patch: Partial<Omit<FlowNode, 'id'>>) => void }) {
   const table = node.table;
-
-  // Not a table yet — offer to make it one.
-  if (!table) {
-    return (
-      <Button
-        variant='outline'
-        size='sm'
-        onClick={() => {
-          const columns = starterColumns();
-          onUpdate(node.id, { table: { columns }, icon: null, height: tableCardHeight(columns.length), width: Math.max(node.width ?? 0, 236) });
-        }}
-        className='mt-1.5 w-full border-border bg-muted/30 text-[10px] text-foreground hover:bg-accent'
-      >
-        <Table2 size={12} /> Convert to database table
-      </Button>
-    );
-  }
+  if (!table) return null;
 
   const columns = table.columns ?? [];
 

@@ -175,6 +175,7 @@ export function FlowNodeCard({
   const style = resolveNodeStyle(node);
   const isGroup = node.type === 'group';
   const isText = node.type === 'text';
+  const hasGroupTitle = isGroup && !!node.title?.trim();
   const Icon = useResolvedIcon(style.icon);
   const logoSlug = style.icon?.startsWith('logo:') ? style.icon.slice('logo:'.length) : null;
   const hasIcon = Boolean(Icon || logoSlug);
@@ -469,13 +470,16 @@ export function FlowNodeCard({
           </g>
         )}
 
-        {/* A group frame is a container, so it is deliberately NOT a card:
-          the body is a translucent wash that lets the blocks and lines
-          inside show through, and — crucially — it is click-through.
-          Edges paint before nodes, so a frame that swallowed pointer
-          events across its whole box would make every line inside it
-          unselectable. The border and the title bar are the grabbable
-          parts, which is also how the user drags the frame. */}
+        {/* A group frame paints a translucent wash rather than a solid
+          card body, but it now drags the same way a block does: the wash
+          itself takes pointer events, so grabbing anywhere inside the
+          frame (not just the border or title bar) moves it. That trades
+          away click-through to edges/nodes directly under the wash — a
+          deliberate choice to match block behaviour — so an edge that
+          passes through a frame with nothing else on top of it is only
+          reachable outside the frame's bounds. The title bar itself only
+          paints when there's a title to show — an empty strip is just
+          visual noise on an untitled frame. */}
         {isGroup ? (
           <>
             <defs>
@@ -483,12 +487,14 @@ export function FlowNodeCard({
                 <path d={outline.d} transform={outline.transform} />
               </clipPath>
             </defs>
-            <path d={outline.d} transform={outline.transform} fill={background} fillOpacity={0.4} fillRule='evenodd' stroke='none' pointerEvents='none' />
+            <path d={outline.d} transform={outline.transform} fill={background} fillOpacity={0.4} fillRule='evenodd' stroke='none' pointerEvents='all' />
             {fill === 'sheen' && <path d={outline.d} transform={outline.transform} fill={`url(#${gradientId})`} fillRule='evenodd' stroke='none' pointerEvents='none' />}
-            <g clipPath={`url(#${clipId})`}>
-              <rect x={-width / 2} y={-height / 2} width={width} height={GROUP_HEADER_HEIGHT} fill={borderColor} fillOpacity={0.18} pointerEvents='all' />
-              <line x1={-width / 2} y1={-height / 2 + GROUP_HEADER_HEIGHT} x2={width / 2} y2={-height / 2 + GROUP_HEADER_HEIGHT} stroke={borderColor} strokeOpacity={0.35} strokeWidth={1} pointerEvents='none' />
-            </g>
+            {hasGroupTitle && (
+              <g clipPath={`url(#${clipId})`}>
+                <rect x={-width / 2} y={-height / 2} width={width} height={GROUP_HEADER_HEIGHT} fill={borderColor} fillOpacity={0.18} pointerEvents='all' />
+                <line x1={-width / 2} y1={-height / 2 + GROUP_HEADER_HEIGHT} x2={width / 2} y2={-height / 2 + GROUP_HEADER_HEIGHT} stroke={borderColor} strokeOpacity={0.35} strokeWidth={1} pointerEvents='none' />
+              </g>
+            )}
             <path
               d={outline.d}
               transform={outline.transform}
@@ -499,19 +505,21 @@ export function FlowNodeCard({
               strokeLinejoin='round'
               pointerEvents='stroke'
             />
-            <foreignObject x={-width / 2} y={-height / 2} width={width} height={GROUP_HEADER_HEIGHT} pointerEvents='none'>
-              <div
-                className='flex h-full w-full select-none items-center truncate px-3'
-                style={{
-                  color: foreground,
-                  fontFamily: NODE_FONT_FAMILIES[fontFamily],
-                  fontSize: Math.min(fontSize, 14),
-                  fontWeight: FONT_WEIGHT[fontWeight],
-                }}
-              >
-                {node.title}
-              </div>
-            </foreignObject>
+            {hasGroupTitle && (
+              <foreignObject x={-width / 2} y={-height / 2} width={width} height={GROUP_HEADER_HEIGHT} pointerEvents='none'>
+                <div
+                  className='flex h-full w-full select-none items-center truncate px-3'
+                  style={{
+                    color: foreground,
+                    fontFamily: NODE_FONT_FAMILIES[fontFamily],
+                    fontSize: Math.min(fontSize, 14),
+                    fontWeight: FONT_WEIGHT[fontWeight],
+                  }}
+                >
+                  {node.title}
+                </div>
+              </foreignObject>
+            )}
           </>
         ) : isText ? (
           /* Free text: just words on the canvas. There is no silhouette,
@@ -764,11 +772,11 @@ export function FlowNodeCard({
         {/* Every node exposes a bidirectional port on all four sides.
           The selected source and target sides are stored on the edge.
           Ports are editor-only — hidden entirely in read-only mode.
-          Frames and text objects have none: both are scenery rather than
-          steps in the flow (the replay skips them too), and a frame's top
-          port would sit exactly on the title bar the user drags it by. */}
+          Text objects have none: a caption is scenery rather than a step
+          in the flow (the replay skips it too). Frames get the same four
+          ports as any other block, so a diagram can point an edge at the
+          group as a whole. */}
         {!readOnly &&
-          !isGroup &&
           !isText &&
           CONNECTION_SIDES.map((side) => {
             const anchor = portAnchors[side];

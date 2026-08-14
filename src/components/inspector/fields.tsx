@@ -15,7 +15,6 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { Separator } from '@/components/ui/separator';
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { cn } from '@/lib/utils';
 import type { FlowNode, NodeFont } from '@/lib/flowchart-types';
 import { SHAPES, nodeSizeLimits, type NodeShape } from '@/lib/node-style';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
@@ -30,56 +29,113 @@ export interface InspectorPanelProps {
   parentTitle?: string | null;
 }
 
-// Ten presets, one per hue: a themed foreground (text / icon / border)
-// paired with the background it reads well on. Deliberately one shade
-// each — three shades of ten hues was thirty swatches nobody scanned,
-// and any colour outside the set is now reachable through the custom
-// colour picker on every ColorField.
+// 36 presets: three shades of each of the 12 Ant Design hues
+// (https://ant.design/docs/spec/colors — Dust Red, Volcano, Sunset Orange,
+// Calendula Gold, Sunrise Yellow, Lime, Polar Green, Cyan, Daybreak Blue,
+// Geek Blue, Purple, Magenta), each a themed foreground (text / icon /
+// border) paired with the background it reads well on. Deliberately three
+// shades each, not antd's full 10-step ramp — 120 swatches is nobody
+// scanning a picker — and any colour outside the set is still reachable
+// through the custom colour picker on every ColorField.
 //
-// Two variants exist because a pairing tuned for one canvas background
-// is wrong on the other: a deep near-black background with a pale
-// foreground (right for a dark canvas) inverts to a pale background
-// with a deep foreground on a light one. `useColorPresets()` below
-// picks the variant matching the app's current theme. This only
-// changes what a *new* pick offers — a document's already-saved colours
-// are literal data and never get rewritten by a theme switch.
+// Two theme variants exist because a pairing tuned for one canvas
+// background is wrong on the other, and within each variant the "base",
+// "deep" and "light" shade of a hue are pulled from different rungs of
+// that hue's antd 10-step ramp:
+//   dark base:  fg step-3 (pale tint)     / bg step-10 (near-black)
+//   dark deep:  fg step-4 (soft pastel)   / bg step-9  (deep, one rung lighter)
+//   dark light: fg step-2 (paler tint)    / bg step-8  (softer than base/deep)
+//   light base:  fg step-7 (deep)         / bg step-1 (palest tint)
+//   light deep:  fg step-9 (near-black)   / bg step-3 (stronger tint)
+//   light light: fg step-5 (softer)       / bg step-2 (soft tint)
+// `useColorPresets()` below picks the variant matching the app's current
+// theme. This only changes what a *new* pick offers — a document's
+// already-saved colours are literal data and never get rewritten by a
+// theme switch.
 type ColorPreset = { name: string; foreground: `#${string}`; background: `#${string}` };
 
 const DARK_COLOR_PRESETS = [
-  { name: 'Red', foreground: '#fca5a5', background: '#2a0a0a' },
-  { name: 'Orange', foreground: '#fdba74', background: '#2a1005' },
-  { name: 'Amber', foreground: '#fde047', background: '#281c04' },
-  { name: 'Green', foreground: '#86efac', background: '#052e16' },
-  { name: 'Teal', foreground: '#5eead4', background: '#042f2e' },
-  { name: 'Cyan', foreground: '#67e8f9', background: '#083344' },
-  { name: 'Blue', foreground: '#93c5fd', background: '#0a1f4c' },
-  { name: 'Indigo', foreground: '#a5b4fc', background: '#12104a' },
-  { name: 'Purple', foreground: '#d8b4fe', background: '#1e0437' },
-  { name: 'Pink', foreground: '#f9a8d4', background: '#330515' },
+  { name: 'Red', foreground: '#ffa39e', background: '#5c0011' },
+  { name: 'Volcano', foreground: '#ffbb96', background: '#610b00' },
+  { name: 'Orange', foreground: '#ffd591', background: '#612500' },
+  { name: 'Gold', foreground: '#ffe58f', background: '#613400' },
+  { name: 'Yellow', foreground: '#fffb8f', background: '#614700' },
+  { name: 'Lime', foreground: '#eaff8f', background: '#254000' },
+  { name: 'Green', foreground: '#b7eb8f', background: '#092b00' },
+  { name: 'Cyan', foreground: '#87e8de', background: '#002329' },
+  { name: 'Blue', foreground: '#91caff', background: '#001d66' },
+  { name: 'Geekblue', foreground: '#adc6ff', background: '#030852' },
+  { name: 'Purple', foreground: '#d3adf7', background: '#120338' },
+  { name: 'Magenta', foreground: '#ffadd2', background: '#520339' },
+  { name: 'Red · Deep', foreground: '#ff7875', background: '#820014' },
+  { name: 'Volcano · Deep', foreground: '#ff9c6e', background: '#871400' },
+  { name: 'Orange · Deep', foreground: '#ffc069', background: '#873800' },
+  { name: 'Gold · Deep', foreground: '#ffd666', background: '#874d00' },
+  { name: 'Yellow · Deep', foreground: '#fff566', background: '#876800' },
+  { name: 'Lime · Deep', foreground: '#d3f261', background: '#3f6600' },
+  { name: 'Green · Deep', foreground: '#95de64', background: '#135200' },
+  { name: 'Cyan · Deep', foreground: '#5cdbd3', background: '#00474f' },
+  { name: 'Blue · Deep', foreground: '#69b1ff', background: '#002c8c' },
+  { name: 'Geekblue · Deep', foreground: '#85a5ff', background: '#061178' },
+  { name: 'Purple · Deep', foreground: '#b37feb', background: '#22075e' },
+  { name: 'Magenta · Deep', foreground: '#ff85c0', background: '#780650' },
+  { name: 'Red · Light', foreground: '#ffccc7', background: '#a8071a' },
+  { name: 'Volcano · Light', foreground: '#ffd8bf', background: '#ad2102' },
+  { name: 'Orange · Light', foreground: '#ffe7ba', background: '#ad4e00' },
+  { name: 'Gold · Light', foreground: '#fff1b8', background: '#ad6800' },
+  { name: 'Yellow · Light', foreground: '#ffffb8', background: '#ad8b00' },
+  { name: 'Lime · Light', foreground: '#f4ffb8', background: '#5b8c00' },
+  { name: 'Green · Light', foreground: '#d9f7be', background: '#237804' },
+  { name: 'Cyan · Light', foreground: '#b5f5ec', background: '#006d75' },
+  { name: 'Blue · Light', foreground: '#bae0ff', background: '#003eb3' },
+  { name: 'Geekblue · Light', foreground: '#d6e4ff', background: '#10239e' },
+  { name: 'Purple · Light', foreground: '#efdbff', background: '#391085' },
+  { name: 'Magenta · Light', foreground: '#ffd6e7', background: '#9e1068' },
 ] as const satisfies ReadonlyArray<ColorPreset>;
 
 const LIGHT_COLOR_PRESETS = [
-  { name: 'Red', foreground: '#b91c1c', background: '#fee2e2' },
-  { name: 'Orange', foreground: '#c2410c', background: '#ffedd5' },
-  { name: 'Amber', foreground: '#b45309', background: '#fef3c7' },
-  { name: 'Green', foreground: '#15803d', background: '#dcfce7' },
-  { name: 'Teal', foreground: '#0f766e', background: '#ccfbf1' },
-  { name: 'Cyan', foreground: '#0e7490', background: '#cffafe' },
-  { name: 'Blue', foreground: '#1d4ed8', background: '#dbeafe' },
-  { name: 'Indigo', foreground: '#4338ca', background: '#e0e7ff' },
-  { name: 'Purple', foreground: '#7e22ce', background: '#f3e8ff' },
-  { name: 'Pink', foreground: '#be185d', background: '#fce7f3' },
+  { name: 'Red', foreground: '#cf1322', background: '#fff1f0' },
+  { name: 'Volcano', foreground: '#d4380d', background: '#fff2e8' },
+  { name: 'Orange', foreground: '#d46b08', background: '#fff7e6' },
+  { name: 'Gold', foreground: '#d48806', background: '#fffbe6' },
+  { name: 'Yellow', foreground: '#d4b106', background: '#feffe6' },
+  { name: 'Lime', foreground: '#7cb305', background: '#fcffe6' },
+  { name: 'Green', foreground: '#389e0d', background: '#f6ffed' },
+  { name: 'Cyan', foreground: '#08979c', background: '#e6fffb' },
+  { name: 'Blue', foreground: '#0958d9', background: '#e6f4ff' },
+  { name: 'Geekblue', foreground: '#1d39c4', background: '#f0f5ff' },
+  { name: 'Purple', foreground: '#531dab', background: '#f9f0ff' },
+  { name: 'Magenta', foreground: '#c41d7f', background: '#fff0f6' },
+  { name: 'Red · Deep', foreground: '#820014', background: '#ffa39e' },
+  { name: 'Volcano · Deep', foreground: '#871400', background: '#ffbb96' },
+  { name: 'Orange · Deep', foreground: '#873800', background: '#ffd591' },
+  { name: 'Gold · Deep', foreground: '#874d00', background: '#ffe58f' },
+  { name: 'Yellow · Deep', foreground: '#876800', background: '#fffb8f' },
+  { name: 'Lime · Deep', foreground: '#3f6600', background: '#eaff8f' },
+  { name: 'Green · Deep', foreground: '#135200', background: '#b7eb8f' },
+  { name: 'Cyan · Deep', foreground: '#00474f', background: '#87e8de' },
+  { name: 'Blue · Deep', foreground: '#002c8c', background: '#91caff' },
+  { name: 'Geekblue · Deep', foreground: '#061178', background: '#adc6ff' },
+  { name: 'Purple · Deep', foreground: '#22075e', background: '#d3adf7' },
+  { name: 'Magenta · Deep', foreground: '#780650', background: '#ffadd2' },
+  { name: 'Red · Light', foreground: '#ff4d4f', background: '#ffccc7' },
+  { name: 'Volcano · Light', foreground: '#ff7a45', background: '#ffd8bf' },
+  { name: 'Orange · Light', foreground: '#ffa940', background: '#ffe7ba' },
+  { name: 'Gold · Light', foreground: '#ffc53d', background: '#fff1b8' },
+  { name: 'Yellow · Light', foreground: '#ffec3d', background: '#ffffb8' },
+  { name: 'Lime · Light', foreground: '#bae637', background: '#f4ffb8' },
+  { name: 'Green · Light', foreground: '#73d13d', background: '#d9f7be' },
+  { name: 'Cyan · Light', foreground: '#36cfc9', background: '#b5f5ec' },
+  { name: 'Blue · Light', foreground: '#4096ff', background: '#bae0ff' },
+  { name: 'Geekblue · Light', foreground: '#597ef7', background: '#d6e4ff' },
+  { name: 'Purple · Light', foreground: '#9254de', background: '#efdbff' },
+  { name: 'Magenta · Light', foreground: '#f759ab', background: '#ffd6e7' },
 ] as const satisfies ReadonlyArray<ColorPreset>;
 
 /** The active theme's colour presets, for a freshly-picked colour. */
 export function useColorPresets() {
   const { resolvedTheme } = useTheme();
-  const presets = resolvedTheme === 'light' ? LIGHT_COLOR_PRESETS : DARK_COLOR_PRESETS;
-  return {
-    presets,
-    foregrounds: ['#ffffff', ...presets.map((preset) => preset.foreground)] as `#${string}`[],
-    backgrounds: presets.map((preset) => preset.background) as `#${string}`[],
-  };
+  return { presets: resolvedTheme === 'light' ? LIGHT_COLOR_PRESETS : DARK_COLOR_PRESETS };
 }
 
 /**
@@ -455,12 +511,14 @@ function parseHex(raw: string): `#${string}` | null {
 }
 
 /**
- * A colour: the ten presets for speed, plus a native colour picker and a
- * hex field so any value at all is reachable. The hex box keeps a local
- * draft so a half-typed value never reaches the document, and reverts if
- * what was typed isn't a colour.
+ * A colour: a native colour picker and a hex field so any value is
+ * reachable directly. The hex box keeps a local draft so a half-typed
+ * value never reaches the document, and reverts if what was typed isn't
+ * a colour. Quick presets live one level up, in `ColorPresetRow` — a
+ * single shared row that sets a whole pair (foreground + background) at
+ * once, rather than a duplicated row of unpaired swatches per field.
  */
-export function ColorField({ label, value, presets, onChange }: { label: string; value: `#${string}`; presets: `#${string}`[]; onChange: (value: `#${string}`) => void }) {
+export function ColorField({ label, value, onChange }: { label: string; value: `#${string}`; onChange: (value: `#${string}`) => void }) {
   const [draft, setDraft] = useState<string>(value);
   const [syncedValue, setSyncedValue] = useState(value);
   if (syncedValue !== value) {
@@ -500,19 +558,58 @@ export function ColorField({ label, value, presets, onChange }: { label: string;
           className='h-7 border-border bg-muted/30 px-1.5 font-mono text-[10px] uppercase text-muted-foreground focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
         />
       </div>
-      <div className='mt-1.5 flex flex-wrap gap-1'>
-        {presets.map((preset) => (
-          <button
-            key={preset}
-            type='button'
-            onClick={() => onChange(preset)}
-            title={preset}
-            aria-label={preset}
-            className={cn('size-4 rounded-full border transition hover:scale-115', preset.toLowerCase() === value.toLowerCase() ? 'border-2 border-sky-300' : 'border-border')}
-            style={{ background: preset }}
-          />
-        ))}
-      </div>
+    </div>
+  );
+}
+
+/**
+ * One shared row of paired presets: each swatch is a themed
+ * foreground/background pair, so picking a hue sets both a `ColorField`
+ * pair (Text/icon · Border and Background) in a single click instead of
+ * scanning two separate palettes for a pair that actually reads well
+ * together. Sits once above the pair it drives, not duplicated per field.
+ */
+export function ColorPresetRow({ onPick }: { onPick: (preset: { foreground: `#${string}`; background: `#${string}` }) => void }) {
+  const { presets } = useColorPresets();
+  return (
+    <div className='col-span-2 grid grid-cols-12 gap-2'>
+      {presets.map((preset) => (
+        <button
+          key={preset.name}
+          type='button'
+          onClick={() => onPick(preset)}
+          title={preset.name}
+          aria-label={preset.name}
+          className='size-5 shrink-0 rounded-full transition hover:scale-115'
+          style={{ background: preset.background, border: `2px solid ${preset.foreground}` }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/**
+ * The same 36-swatch Ant Design set as `ColorPresetRow` (base + Deep +
+ * Light shade of all 12 hues), but as flat, single-colour swatches — for a
+ * field with nothing to pair a colour against (a line has no fill behind
+ * it the way a block has a background). Any shade outside the set is
+ * still reachable through the accompanying `ColorField`.
+ */
+export function HuePresetRow({ value, onPick }: { value: `#${string}`; onPick: (hex: `#${string}`) => void }) {
+  const { presets } = useColorPresets();
+  return (
+    <div className='grid grid-cols-12 gap-1.5'>
+      {presets.map((preset) => (
+        <button
+          key={preset.name}
+          type='button'
+          onClick={() => onPick(preset.foreground)}
+          title={preset.name}
+          aria-label={preset.name}
+          className={`size-5 shrink-0 rounded-full border transition hover:scale-115 ${preset.foreground.toLowerCase() === value.toLowerCase() ? 'border-2 border-sky-300' : 'border-border'}`}
+          style={{ background: preset.foreground }}
+        />
+      ))}
     </div>
   );
 }

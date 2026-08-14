@@ -255,12 +255,6 @@ export type EdgeMarker =
   | 'crow-zero-one'
   | 'crow-zero-many';
 
-/**
- * Real silhouettes that can ride a connector instead of the plain dash
- * segment a travelling effect normally draws (see `edge-object-shapes`).
- */
-export type EdgeObjectShape = 'arrow' | 'chevron' | 'plane' | 'bolt' | 'envelope' | 'box' | 'coin' | 'dot' | 'ring' | 'square' | 'diamond' | 'star';
-
 export type EdgeDirection = 'forward' | 'reverse' | 'both';
 export type EdgeRouting = 'straight' | 'smooth-step' | 'orthogonal' | 'curved';
 /** Where the label pill sits along the line. */
@@ -323,11 +317,12 @@ export interface FlowEdge {
    *  automatic: spacing-based, so longer lines carry more objects.
    *  Pattern effects (flow, dash, wave…) tile the line and ignore it. */
   effectCount?: number;
-  /** Renders the travelling objects as a real silhouette (arrow,
-   *  envelope, coin…) riding the route instead of the effect's plain
+  /** Renders the travelling objects as a picked `NodeIcon` (`lucide:Home`,
+   *  `tabler:IconHome`…) riding the route instead of the effect's plain
    *  dash segment. Unset keeps the classic dash objects. Only the
-   *  travelling-object effects honour it. */
-  effectShape?: EdgeObjectShape;
+   *  travelling-object effects honour it. Always renders at a fixed 16px
+   *  — there is no size knob for this. */
+  effectShape?: NodeIcon;
   /** Mark density for the pattern effects (flow, dash, wave…), 0.5×–2×.
    *  Higher = more, smaller marks per length; 1 (default) keeps the
    *  classic pattern. Travelling-object effects ignore it (use

@@ -9,7 +9,6 @@ import {
   BatteryCharging,
   Bug,
   CircleDot,
-  Diamond,
   Gauge,
   GitCompareArrows,
   Hash,
@@ -23,7 +22,6 @@ import {
   Shapes,
   Sparkles,
   Trash2,
-  Triangle,
   Truck,
   Undo2,
   Waves,
@@ -34,8 +32,9 @@ import {
 import * as React from 'react';
 import { useState } from 'react';
 import { EdgeEffectLayer, PATTERN_DASHES, TRAVEL_VELOCITY } from './edge-effect-layer';
-import { EDGE_OBJECT_SHAPE_OPTIONS, EdgeObjectShapeSwatch } from './edge-object-shapes';
 import { EdgeMarkerSymbol } from './edge-marker';
+import { IconPicker } from './IconPicker';
+import { ColorField, HuePresetRow } from './inspector/fields';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -44,7 +43,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeObjectShape, EdgeRouting, FlowEdge, NodeFont, TableColumn } from '@/lib/flowchart-types';
+import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeRouting, FlowEdge, NodeFont, NodeIcon, TableColumn } from '@/lib/flowchart-types';
 import { EDGE_LABEL_FONT_SIZE_MAX, EDGE_LABEL_FONT_SIZE_MIN, EDGE_LABEL_PRESETS, EDGE_LABEL_SHAPES, findEdgeLabelPreset, resolveEdgeLabelStyle, type EdgeLabelPreset } from '@/lib/edge-label-style';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
@@ -110,18 +109,6 @@ const LABEL_POSITION_OPTIONS: Array<{ value: EdgeLabelPosition; label: string }>
   { value: 'bottom', label: 'Bottom' },
 ];
 
-const LINE_COLORS: Array<{ value: `#${string}`; label: string }> = [
-  { value: '#f4f4f5', label: 'White' },
-  { value: '#38bdf8', label: 'Sky' },
-  { value: '#22d3ee', label: 'Cyan' },
-  { value: '#6366f1', label: 'Indigo' },
-  { value: '#8b5cf6', label: 'Violet' },
-  { value: '#f43f5e', label: 'Rose' },
-  { value: '#f59e0b', label: 'Amber' },
-  { value: '#10b981', label: 'Emerald' },
-  { value: '#71717a', label: 'Zinc' },
-];
-
 const MARKERS: Array<{ value: EdgeMarker; label: string }> = [
   { value: 'none', label: 'None' },
   { value: 'arrow', label: 'Arrow' },
@@ -146,7 +133,6 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
   const [draftEffect, setDraftEffect] = useState<EdgeEffect | null>(null);
   const effect = edge.effect ?? 'flow';
   const direction = edge.direction ?? 'forward';
-  const isDialogOpen = draftEffect !== null;
   const color = edge.color ?? fallbackColor;
   const width = edge.width ?? 2.5;
   const speed = edge.animationSpeed ?? 1;
@@ -460,40 +446,13 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                     <div className='mt-4'>
                       <span className='flex items-center justify-between text-[10px] text-muted-foreground'>
                         <span className='inline-flex items-center gap-1'>
-                          <Shapes size={11} /> Object shape
+                          <Shapes size={11} /> Object icon
                         </span>
-                        <span className='text-[8px] uppercase tracking-wider text-muted-foreground'>{edge.effectShape ? EDGE_OBJECT_SHAPE_OPTIONS.find((option) => option.value === edge.effectShape)?.label : 'Dash · default'}</span>
                       </span>
-                      <div className='mt-1.5 flex flex-wrap gap-1.5'>
-                        <Button
-                          variant='outline'
-                          size='icon-sm'
-                          onClick={() => onUpdate(edge.id, { effectShape: undefined })}
-                          aria-pressed={!edge.effectShape}
-                          title='Dash (default)'
-                          aria-label='Dash (default)'
-                          className={['h-8 w-10 border-border bg-muted/40 p-0', !edge.effectShape ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-700 dark:text-cyan-100' : 'text-muted-foreground hover:text-foreground'].join(' ')}
-                        >
-                          <svg width={22} height={10} viewBox='-11 -5 22 10' aria-hidden='true'>
-                            <line x1={-8} y1={0} x2={8} y2={0} stroke='currentColor' strokeWidth={3.4} strokeLinecap='round' />
-                          </svg>
-                        </Button>
-                        {EDGE_OBJECT_SHAPE_OPTIONS.map((option) => (
-                          <Button
-                            key={option.value}
-                            variant='outline'
-                            size='icon-sm'
-                            onClick={() => onUpdate(edge.id, { effectShape: option.value as EdgeObjectShape })}
-                            aria-pressed={edge.effectShape === option.value}
-                            title={option.label}
-                            aria-label={option.label}
-                            className={['h-8 w-10 border-border bg-muted/40 p-0', edge.effectShape === option.value ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-700 dark:text-cyan-100' : 'text-muted-foreground hover:text-foreground'].join(' ')}
-                          >
-                            <EdgeObjectShapeSwatch shape={option.value} size={18} />
-                          </Button>
-                        ))}
+                      <div className='mt-1.5'>
+                        <IconPicker value={edge.effectShape ?? null} onChange={(icon) => onUpdate(edge.id, { effectShape: icon ?? undefined })} />
                       </div>
-                      <span className='mt-1 block text-[9px] leading-relaxed text-muted-foreground'>Real silhouettes ride the route instead of plain dashes. Arrows and chevrons turn to follow the line; the rest stay upright.</span>
+                      <span className='mt-1 block text-[9px] leading-relaxed text-muted-foreground'>Rides the route instead of the effect&apos;s dash objects, fixed at 16px. Leave unset for the plain dash effect.</span>
                     </div>
                   )}
 
@@ -764,32 +723,13 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
           <p className='mt-1.5 rounded-lg bg-cyan-500/8 px-2.5 py-2 text-[10px] text-cyan-200/70 ring-1 ring-cyan-400/15'>Two-way runs simultaneously from A → B and B → A.</p>
         )}
 
-        <div className='mt-4 grid grid-cols-2 gap-2'>
-          <div>
-            <Label className='mb-1 block text-[9px] text-muted-foreground'>Line color</Label>
-            <Select
-              value={LINE_COLORS.some((item) => item.value === color) ? color : undefined}
-              onValueChange={(nextValue) => {
-                if (nextValue) onUpdate(edge.id, { color: nextValue as `#${string}` });
-              }}
-            >
-              <SelectTrigger className='h-auto w-full gap-2 border-border bg-muted/30 px-2 py-1.5 text-left hover:bg-accent focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
-                <span className='size-4 shrink-0 rounded-full ring-1 ring-border' style={{ background: color }} />
-                <span className='min-w-0 flex-1 truncate font-mono text-[9px] uppercase text-muted-foreground'>{LINE_COLORS.find((item) => item.value === color)?.label ?? color}</span>
-              </SelectTrigger>
-              <SelectContent className='border-cyan-400/25 bg-popover p-1.5'>
-                <SelectGroup>
-                  <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-muted-foreground'>Line color</SelectLabel>
-                  {LINE_COLORS.map((item) => (
-                    <SelectItem key={item.value} value={item.value} className='gap-2 px-2 py-1.5 pr-8'>
-                      <span className='size-4 shrink-0 rounded-full ring-1 ring-border' style={{ background: item.value }} />
-                      <span className='min-w-0 flex-1 text-[11px] font-semibold'>{item.label}</span>
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
+        <div className='mt-4'>
+          <Label className='mb-1 block text-[9px] text-muted-foreground'>Line color</Label>
+          <HuePresetRow value={color} onPick={(hex) => onUpdate(edge.id, { color: hex })} />
+        </div>
+
+        <div className='mt-3 grid grid-cols-2 gap-2'>
+          <ColorField label='Custom' value={color} onChange={(hex) => onUpdate(edge.id, { color: hex })} />
           <div>
             <Label htmlFor='edge-width' className='mb-1 block text-[9px] text-muted-foreground'>
               Width
@@ -1005,7 +945,7 @@ function EffectPreviewLarge({
   glow?: number;
   glowColor?: string;
   phase?: number;
-  shape?: EdgeObjectShape;
+  shape?: NodeIcon;
 }) {
   return (
     <svg viewBox='0 0 400 180' className='h-auto w-full max-w-96' style={{ color }}>
