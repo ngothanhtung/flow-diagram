@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { EditorCanvas } from '@/components/editor/EditorCanvas';
 import { EditorInfoPanels, InspectorSidebar } from '@/components/editor/InspectorSidebar';
 import { PlaybackControls } from '@/components/editor/PlaybackControls';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { useEditorStore } from '@/lib/editor-store';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { useExecutionPlayback } from '@/lib/use-execution-playback';
@@ -71,6 +72,7 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
             <BookOpen size={13} />
             <span className='hidden sm:inline'>Help</span>
           </Button>
+          <ThemeToggle variant='toolbar' size='icon-lg' />
           {headerEnd}
         </div>
       </header>

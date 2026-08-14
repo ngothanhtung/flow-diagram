@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Boxes } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export const metadata: Metadata = {
   title: 'Diagram authoring guide — X Flow Tool',
@@ -79,9 +80,12 @@ export default function GuidePage() {
             <p className='text-xs text-zinc-500'>Rules for producing a valid FlowDocumentJSON — for humans and AI agents alike</p>
           </div>
         </div>
-        <Link href='/' className='inline-flex h-8 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10'>
-          Back to diagrams
-        </Link>
+        <div className='flex items-center gap-2'>
+          <Link href='/' className='inline-flex h-8 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10'>
+            Back to diagrams
+          </Link>
+          <ThemeToggle variant='toolbar' size='icon' />
+        </div>
       </header>
 
       <div className='mx-auto flex max-w-5xl gap-10 px-6 py-10'>

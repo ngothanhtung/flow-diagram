@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { AppSidebar } from '@/components/app-sidebar';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { isAdminUser } from '@/lib/firebase/roles';
@@ -56,8 +57,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     <SidebarProvider className='h-svh text-zinc-100'>
       <AppSidebar user={user} />
       <SidebarInset className='h-full min-h-0 bg-zinc-950'>
-        <div className='flex h-9 shrink-0 items-center gap-2 border-b border-white/5 px-3'>
+        <div className='flex h-9 shrink-0 items-center justify-between gap-2 border-b border-white/5 px-3'>
           <SidebarTrigger className='text-zinc-400 hover:bg-white/8 hover:text-zinc-100' />
+          <ThemeToggle size='icon-sm' />
         </div>
         <div className='min-h-0 flex-1'>{children}</div>
       </SidebarInset>

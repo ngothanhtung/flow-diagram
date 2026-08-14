@@ -17,6 +17,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { ShareDialog } from '@/components/diagrams/ShareDialog';
+import { ThemeToggle } from '@/components/theme-toggle';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { createDiagram, deleteDiagram, listDiagrams, type StoredDiagram } from '@/lib/firebase/diagrams';
 import { listTemplates, type StoredTemplate } from '@/lib/firebase/templates';
@@ -336,6 +337,7 @@ export function DiagramsHome() {
             <BookOpen size={13} />
             Guide
           </Button>
+          <ThemeToggle variant='toolbar' size='icon' />
           <UserMenu user={user} />
         </div>
       </header>

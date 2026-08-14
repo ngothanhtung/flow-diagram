@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { BookOpen } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 /** Shared layout primitives for the /help and /help/vi user-guide pages,
  *  matching the visual system of /guide. */
@@ -93,6 +94,7 @@ export function HelpShell({
           <Link href='/' className={HEADER_LINK}>
             {backLabel}
           </Link>
+          <ThemeToggle variant='toolbar' size='icon' />
         </div>
       </header>
 

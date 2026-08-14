@@ -3,6 +3,7 @@
 import { FirebaseError } from 'firebase/app';
 import { Boxes, CircuitBoard, LoaderCircle, LockKeyhole, Mail, Sparkles } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -68,6 +69,9 @@ export function LoginForm() {
   return (
     <main className="relative grid min-h-screen overflow-hidden bg-[#07090d] text-zinc-100 lg:grid-cols-[1.15fr_.85fr]">
       <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(34,211,238,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,.07)_1px,transparent_1px)] [background-size:48px_48px]" />
+      <div className="absolute top-4 right-4 z-10">
+        <ThemeToggle variant="outline" size="icon" />
+      </div>
       <section className="relative hidden min-h-screen overflow-hidden border-r border-cyan-300/10 p-12 lg:flex lg:flex-col lg:justify-between">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(6,182,212,.16),transparent_32%),radial-gradient(circle_at_72%_70%,rgba(16,185,129,.11),transparent_28%)]" />
         <div className="relative flex items-center gap-3">

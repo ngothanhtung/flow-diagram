@@ -9,6 +9,7 @@ import { useAuth } from '@/components/auth/AuthProvider';
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { JsonInspector } from '@/components/JsonInspector';
 import { RunControls } from '@/components/editor/PlaybackControls';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';
 import { findPublicDiagramById, listAllDiagrams, loadDiagram, toViewerRow, type AdminDiagramRow } from '@/lib/firebase/diagrams';
@@ -131,6 +132,7 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
             onToggleRepeat={run.toggleRepeat}
             onReplay={run.replay}
           />
+          <ThemeToggle variant='toolbar' size='icon-lg' />
         </div>
       </header>
 
