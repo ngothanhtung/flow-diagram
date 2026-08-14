@@ -13,12 +13,11 @@ import {
   GroupMembershipSection,
   InspectorShell,
   NumberField,
-  PRESET_BACKGROUNDS,
-  PRESET_FOREGROUNDS,
   RangeField,
   SectionLabel,
   SelectField,
   TypographyFields,
+  useColorPresets,
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
@@ -43,6 +42,7 @@ interface GroupInspectorProps extends InspectorPanelProps {
 export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null, memberCount, onUngroup, onFitGroup }: GroupInspectorProps) {
   const style = resolveNodeStyle(node);
   const title = useNodeFieldDraft(node, 'title', onUpdate);
+  const { foregrounds, backgrounds } = useColorPresets();
 
   return (
     <InspectorShell title='Group Inspector' nodeId={node.id}>
@@ -81,8 +81,8 @@ export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
 
       <SectionLabel>Colour</SectionLabel>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
-        <ColorField label='Title · Border' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
-        <ColorField label='Wash' value={style.background} presets={PRESET_BACKGROUNDS} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
+        <ColorField label='Title · Border' value={style.foreground} presets={foregrounds} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
+        <ColorField label='Wash' value={style.background} presets={backgrounds} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
         <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />
         <SelectField label='Border style' value={style.borderStyle} options={['solid', 'dashed', 'dotted']} onChange={(borderStyle) => onUpdate(node.id, { borderStyle })} />
       </div>

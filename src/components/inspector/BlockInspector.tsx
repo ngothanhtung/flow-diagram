@@ -18,8 +18,6 @@ import {
   GroupMembershipSection,
   InspectorShell,
   NumberField,
-  PRESET_BACKGROUNDS,
-  PRESET_FOREGROUNDS,
   RangeField,
   SectionLabel,
   SegmentedButtons,
@@ -27,6 +25,7 @@ import {
   ShapeThumb,
   TextAlignField,
   TypographyFields,
+  useColorPresets,
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
@@ -40,6 +39,7 @@ import { NodeEffectField } from './NodeEffectField';
  */
 export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null }: InspectorPanelProps) {
   const style = resolveNodeStyle(node);
+  const { foregrounds, backgrounds } = useColorPresets();
   const title = useNodeFieldDraft(node, 'title', onUpdate);
   const description = useNodeFieldDraft(node, 'description', onUpdate);
   const isLogo = node.type === 'logo';
@@ -115,8 +115,8 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
           so there is no separate step to reach a custom colour. */}
       <SectionLabel>Color</SectionLabel>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
-        <ColorField label='Text / icon · Border' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
-        <ColorField label='Background' value={style.background} presets={PRESET_BACKGROUNDS} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
+        <ColorField label='Text / icon · Border' value={style.foreground} presets={foregrounds} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
+        <ColorField label='Background' value={style.background} presets={backgrounds} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
         <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />
       </div>
       <div className='mt-2 grid grid-cols-2 gap-2'>

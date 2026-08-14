@@ -5,6 +5,7 @@
 // file contains only what makes that node kind different.
 
 import { AlignCenter, AlignLeft, AlignRight, Blend, Copy, RotateCcw, Square, Trash2, Ungroup, type LucideIcon } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -30,11 +31,21 @@ export interface InspectorPanelProps {
 }
 
 // Ten presets, one per hue: a themed foreground (text / icon / border)
-// paired with the deep background it reads well on. Deliberately one
-// shade each — three shades of ten hues was thirty swatches nobody
-// scanned, and any colour outside the set is now reachable through the
-// custom colour picker on every ColorField.
-export const COLOR_PRESETS = [
+// paired with the background it reads well on. Deliberately one shade
+// each — three shades of ten hues was thirty swatches nobody scanned,
+// and any colour outside the set is now reachable through the custom
+// colour picker on every ColorField.
+//
+// Two variants exist because a pairing tuned for one canvas background
+// is wrong on the other: a deep near-black background with a pale
+// foreground (right for a dark canvas) inverts to a pale background
+// with a deep foreground on a light one. `useColorPresets()` below
+// picks the variant matching the app's current theme. This only
+// changes what a *new* pick offers — a document's already-saved colours
+// are literal data and never get rewritten by a theme switch.
+type ColorPreset = { name: string; foreground: `#${string}`; background: `#${string}` };
+
+const DARK_COLOR_PRESETS = [
   { name: 'Red', foreground: '#fca5a5', background: '#2a0a0a' },
   { name: 'Orange', foreground: '#fdba74', background: '#2a1005' },
   { name: 'Amber', foreground: '#fde047', background: '#281c04' },
@@ -45,10 +56,31 @@ export const COLOR_PRESETS = [
   { name: 'Indigo', foreground: '#a5b4fc', background: '#12104a' },
   { name: 'Purple', foreground: '#d8b4fe', background: '#1e0437' },
   { name: 'Pink', foreground: '#f9a8d4', background: '#330515' },
-] as const satisfies ReadonlyArray<{ name: string; foreground: `#${string}`; background: `#${string}` }>;
+] as const satisfies ReadonlyArray<ColorPreset>;
 
-export const PRESET_FOREGROUNDS: `#${string}`[] = ['#ffffff', ...COLOR_PRESETS.map((preset) => preset.foreground)];
-export const PRESET_BACKGROUNDS: `#${string}`[] = COLOR_PRESETS.map((preset) => preset.background);
+const LIGHT_COLOR_PRESETS = [
+  { name: 'Red', foreground: '#b91c1c', background: '#fee2e2' },
+  { name: 'Orange', foreground: '#c2410c', background: '#ffedd5' },
+  { name: 'Amber', foreground: '#b45309', background: '#fef3c7' },
+  { name: 'Green', foreground: '#15803d', background: '#dcfce7' },
+  { name: 'Teal', foreground: '#0f766e', background: '#ccfbf1' },
+  { name: 'Cyan', foreground: '#0e7490', background: '#cffafe' },
+  { name: 'Blue', foreground: '#1d4ed8', background: '#dbeafe' },
+  { name: 'Indigo', foreground: '#4338ca', background: '#e0e7ff' },
+  { name: 'Purple', foreground: '#7e22ce', background: '#f3e8ff' },
+  { name: 'Pink', foreground: '#be185d', background: '#fce7f3' },
+] as const satisfies ReadonlyArray<ColorPreset>;
+
+/** The active theme's colour presets, for a freshly-picked colour. */
+export function useColorPresets() {
+  const { resolvedTheme } = useTheme();
+  const presets = resolvedTheme === 'light' ? LIGHT_COLOR_PRESETS : DARK_COLOR_PRESETS;
+  return {
+    presets,
+    foregrounds: ['#ffffff', ...presets.map((preset) => preset.foreground)] as `#${string}`[],
+    backgrounds: presets.map((preset) => preset.background) as `#${string}`[],
+  };
+}
 
 /**
  * Draft state for one text field on the node.

@@ -9,11 +9,11 @@ import {
   GeometryFields,
   GroupMembershipSection,
   InspectorShell,
-  PRESET_FOREGROUNDS,
   RangeField,
   SectionLabel,
   TextAlignField,
   TypographyFields,
+  useColorPresets,
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
@@ -30,6 +30,7 @@ import { NodeEffectField } from './NodeEffectField';
 export function TextInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null }: InspectorPanelProps) {
   const style = resolveNodeStyle(node);
   const text = useNodeFieldDraft(node, 'title', onUpdate);
+  const { foregrounds } = useColorPresets();
 
   return (
     <InspectorShell title='Text Inspector' nodeId={node.id}>
@@ -53,7 +54,7 @@ export function TextInspector({ node, onUpdate, onDuplicate, onDelete, parentTit
       <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
 
       <SectionLabel>Colour</SectionLabel>
-      <ColorField label='Text colour' value={style.foreground} presets={PRESET_FOREGROUNDS} onChange={(color) => onUpdate(node.id, { color })} />
+      <ColorField label='Text colour' value={style.foreground} presets={foregrounds} onChange={(color) => onUpdate(node.id, { color })} />
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
 
       <SectionLabel>Alignment</SectionLabel>
