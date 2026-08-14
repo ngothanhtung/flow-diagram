@@ -31,9 +31,9 @@ export function SortHeaderButton<TData>({ header }: { header: Header<TData, unkn
   const column = header.column;
   const sorted = column.getIsSorted();
   return (
-    <button type='button' onClick={column.getToggleSortingHandler()} className='inline-flex items-center gap-1 uppercase tracking-wider transition hover:text-zinc-100'>
+    <button type='button' onClick={column.getToggleSortingHandler()} className='inline-flex items-center gap-1 uppercase tracking-wider transition hover:text-foreground'>
       {flexRender(column.columnDef.header, header.getContext())}
-      {sorted === 'asc' ? <ArrowUp size={12} className='text-sky-300' /> : sorted === 'desc' ? <ArrowDown size={12} className='text-sky-300' /> : <ArrowUpDown size={12} className='text-zinc-600' />}
+      {sorted === 'asc' ? <ArrowUp size={12} className='text-sky-600 dark:text-sky-300' /> : sorted === 'desc' ? <ArrowDown size={12} className='text-sky-600 dark:text-sky-300' /> : <ArrowUpDown size={12} className='text-muted-foreground' />}
     </button>
   );
 }
@@ -61,7 +61,7 @@ export function DataTable<TData>({ table, narrowColumns, rightAlignedColumns, em
                 <th
                   key={header.id}
                   className={[
-                    'border-b border-white/8 bg-zinc-950/95 px-3 py-2.5 text-[10px] font-bold text-zinc-400 backdrop-blur-xl',
+                    'border-b border-border bg-background/95 px-3 py-2.5 text-[10px] font-bold text-muted-foreground backdrop-blur-xl',
                     narrowColumns.has(header.column.id) ? 'w-px whitespace-nowrap' : '',
                     rightAlignedColumns.has(header.column.id) ? 'text-right' : '',
                   ].join(' ')}
@@ -75,18 +75,18 @@ export function DataTable<TData>({ table, narrowColumns, rightAlignedColumns, em
         <tbody>
           {table.getRowModel().rows.length === 0 ? (
             <tr>
-              <td colSpan={columnCount} className='px-3 py-16 text-center text-sm text-zinc-500'>
+              <td colSpan={columnCount} className='px-3 py-16 text-center text-sm text-muted-foreground'>
                 {emptyMessage}
               </td>
             </tr>
           ) : (
             table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className='group transition hover:bg-white/4'>
+              <tr key={row.id} className='group transition hover:bg-accent/40'>
                 {row.getVisibleCells().map((cell) => (
                   <td
                     key={cell.id}
                     className={[
-                      'border-b border-white/5 px-3 py-2.5',
+                      'border-b border-border px-3 py-2.5',
                       narrowColumns.has(cell.column.id) ? 'w-px whitespace-nowrap' : '',
                       rightAlignedColumns.has(cell.column.id) ? 'text-right' : '',
                     ].join(' ')}
@@ -108,7 +108,7 @@ const PAGE_SIZES = [10, 25, 50, 100];
 /** Pagination footer: page indicator, prev/next, page-size picker. */
 export function DataTableFooter<TData>({ table }: { table: TanstackTable<TData> }) {
   return (
-    <footer className='flex items-center justify-between border-t border-white/5 px-6 py-3 text-xs text-zinc-400'>
+    <footer className='flex items-center justify-between border-t border-border px-6 py-3 text-xs text-muted-foreground'>
       <span>
         Page {table.getState().pagination.pageIndex + 1} of {Math.max(1, table.getPageCount())}
       </span>
@@ -122,10 +122,10 @@ export function DataTableFooter<TData>({ table }: { table: TanstackTable<TData> 
           <ChevronRight size={13} />
         </Button>
         <Select value={String(table.getState().pagination.pageSize)} onValueChange={(value) => table.setPageSize(Number(value))}>
-          <SelectTrigger size='sm' className='border-white/10 bg-black/40 text-xs text-zinc-300' aria-label='Rows per page'>
+          <SelectTrigger size='sm' className='border-border bg-muted/40 text-xs text-muted-foreground' aria-label='Rows per page'>
             <SelectValue />
           </SelectTrigger>
-          <SelectContent className='border-white/10 bg-zinc-950'>
+          <SelectContent className='border-border bg-popover'>
             {PAGE_SIZES.map((size) => (
               <SelectItem key={size} value={String(size)}>
                 {size} / page

@@ -10,23 +10,23 @@ export const metadata: Metadata = {
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section id={id} className='scroll-mt-20 border-t border-white/5 py-8 first:border-t-0 first:pt-0'>
-      <h2 className='text-lg font-semibold text-zinc-100'>{title}</h2>
-      <div className='mt-3 space-y-4 text-sm leading-relaxed text-zinc-400'>{children}</div>
+    <section id={id} className='scroll-mt-20 border-t border-border py-8 first:border-t-0 first:pt-0'>
+      <h2 className='text-lg font-semibold text-foreground'>{title}</h2>
+      <div className='mt-3 space-y-4 text-sm leading-relaxed text-muted-foreground'>{children}</div>
     </section>
   );
 }
 
 function Code({ children }: { children: string }) {
-  return <pre className='overflow-x-auto rounded-lg bg-black/40 p-3 font-mono text-[11px] leading-relaxed text-cyan-100 ring-1 ring-white/10'>{children}</pre>;
+  return <pre className='overflow-x-auto rounded-lg bg-muted/40 p-3 font-mono text-[11px] leading-relaxed text-cyan-700 dark:text-cyan-100 ring-1 ring-border'>{children}</pre>;
 }
 
 function Table({ head, rows }: { head: string[]; rows: string[][] }) {
   return (
-    <div className='overflow-x-auto rounded-lg ring-1 ring-white/10'>
+    <div className='overflow-x-auto rounded-lg ring-1 ring-border'>
       <table className='w-full border-collapse text-xs'>
         <thead>
-          <tr className='bg-white/5 text-left text-zinc-300'>
+          <tr className='bg-accent text-left text-foreground'>
             {head.map((h) => (
               <th key={h} className='px-3 py-2 font-semibold'>
                 {h}
@@ -36,9 +36,9 @@ function Table({ head, rows }: { head: string[]; rows: string[][] }) {
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className='border-t border-white/5'>
+            <tr key={i} className='border-t border-border'>
               {row.map((cell, j) => (
-                <td key={j} className={['px-3 py-2 align-top', j === 0 ? 'font-mono text-cyan-200' : 'text-zinc-400'].join(' ')}>
+                <td key={j} className={['px-3 py-2 align-top', j === 0 ? 'font-mono text-cyan-700 dark:text-cyan-200' : 'text-muted-foreground'].join(' ')}>
                   {cell}
                 </td>
               ))}
@@ -51,7 +51,7 @@ function Table({ head, rows }: { head: string[]; rows: string[][] }) {
 }
 
 function Pill({ children }: { children: string }) {
-  return <code className='rounded bg-white/8 px-1.5 py-0.5 font-mono text-[11px] text-zinc-200'>{children}</code>;
+  return <code className='rounded bg-muted px-1.5 py-0.5 font-mono text-[11px] text-foreground'>{children}</code>;
 }
 
 const TOC = [
@@ -69,19 +69,19 @@ const TOC = [
 
 export default function GuidePage() {
   return (
-    <div className='min-h-screen bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
-      <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
+    <div className='min-h-screen bg-background text-foreground'>
+      <header className='flex items-center justify-between border-b border-border px-6 py-4'>
         <div className='flex items-center gap-3'>
           <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
             <Boxes size={18} className='text-sky-300' />
           </div>
           <div>
             <h1 className='text-base font-semibold'>Diagram authoring guide</h1>
-            <p className='text-xs text-zinc-500'>Rules for producing a valid FlowDocumentJSON — for humans and AI agents alike</p>
+            <p className='text-xs text-muted-foreground'>Rules for producing a valid FlowDocumentJSON — for humans and AI agents alike</p>
           </div>
         </div>
         <div className='flex items-center gap-2'>
-          <Link href='/' className='inline-flex h-8 items-center gap-1.5 rounded-md bg-white/5 px-3 text-xs font-semibold text-zinc-200 ring-1 ring-white/10 transition hover:bg-white/10'>
+          <Link href='/' className='inline-flex h-8 items-center gap-1.5 rounded-md bg-accent px-3 text-xs font-semibold text-foreground ring-1 ring-border transition hover:bg-accent'>
             Back to diagrams
           </Link>
           <ThemeToggle variant='toolbar' size='icon' />
@@ -91,14 +91,14 @@ export default function GuidePage() {
       <div className='mx-auto flex max-w-5xl gap-10 px-6 py-10'>
         <nav className='sticky top-10 hidden h-fit w-48 shrink-0 flex-col gap-1 text-xs md:flex'>
           {TOC.map(([id, label]) => (
-            <a key={id} href={`#${id}`} className='rounded-md px-2 py-1.5 text-zinc-500 transition hover:bg-white/5 hover:text-zinc-200'>
+            <a key={id} href={`#${id}`} className='rounded-md px-2 py-1.5 text-muted-foreground transition hover:bg-accent hover:text-foreground'>
               {label}
             </a>
           ))}
         </nav>
 
         <main className='min-w-0 flex-1'>
-          <p className='max-w-2xl text-sm leading-relaxed text-zinc-400'>
+          <p className='max-w-2xl text-sm leading-relaxed text-muted-foreground'>
             A diagram in this app is one JSON value, <Pill>FlowDocumentJSON</Pill> (defined in <Pill>src/lib/flowchart-types.ts</Pill>). This page is the single source of truth for what makes a
             diagram <em>valid</em> and what makes it <em>read well</em> — follow it when generating or editing a diagram document, whether by hand or by an AI assistant such as Claude Code.
           </p>
@@ -163,7 +163,7 @@ export default function GuidePage() {
               never fight over the same look.
             </p>
             <p>
-              <strong className='text-zinc-300'>Effects are opt-in.</strong> Omit <Pill>effect</Pill> (or set <Pill>&quot;none&quot;</Pill>) and the node is completely static — no motion, no halo,
+              <strong className='text-foreground'>Effects are opt-in.</strong> Omit <Pill>effect</Pill> (or set <Pill>&quot;none&quot;</Pill>) and the node is completely static — no motion, no halo,
               nothing painted. That is the default for every kind of node, exactly as <Pill>effect: &quot;none&quot;</Pill> is for a line. Pick one when the node genuinely needs attention, not as
               decoration on every block.
             </p>
@@ -285,7 +285,7 @@ export default function GuidePage() {
 { "id": "queue", "type": "process", "title": "Queue",
   "position": { "x": 420, "y": 250 }, "parentId": "svc" }`}</Code>
             <p>
-              <strong className='text-zinc-300'>Positions stay absolute.</strong> A member&apos;s <Pill>position</Pill> is a canvas coordinate, never an offset from its frame — moving a frame
+              <strong className='text-foreground'>Positions stay absolute.</strong> A member&apos;s <Pill>position</Pill> is a canvas coordinate, never an offset from its frame — moving a frame
               rewrites every descendant&apos;s position by the same delta. So when you author by hand, place a frame so its box actually encloses the members you gave it; nothing recomputes that
               for you.
             </p>

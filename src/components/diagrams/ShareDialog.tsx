@@ -33,13 +33,13 @@ export function ShareDialog({ diagramId, isPublic, open, onOpenChange }: { diagr
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className='border-white/10 bg-zinc-950/95 text-zinc-100 backdrop-blur-xl'>
+      <DialogContent className='border-border bg-popover/95 text-foreground backdrop-blur-xl'>
         <DialogHeader>
           <DialogTitle className='flex items-center gap-2 text-sm font-semibold'>
-            <Share2 size={14} className='text-sky-300' />
+            <Share2 size={14} className='text-sky-600 dark:text-sky-300' />
             Share diagram
           </DialogTitle>
-          <DialogDescription className='text-xs text-zinc-500'>Anyone with this link opens a read-only viewer — it does not grant edit access.</DialogDescription>
+          <DialogDescription className='text-xs text-muted-foreground'>Anyone with this link opens a read-only viewer — it does not grant edit access.</DialogDescription>
         </DialogHeader>
         <div className='flex items-center gap-2'>
           <Input readOnly value={url} onFocus={(event) => event.target.select()} variant='toolbar' className='font-mono text-xs' />
@@ -48,7 +48,7 @@ export function ShareDialog({ diagramId, isPublic, open, onOpenChange }: { diagr
             {copied ? 'Copied' : 'Copy'}
           </Button>
         </div>
-        <p className={['flex items-center gap-1.5 text-[11px]', isPublic ? 'text-emerald-300' : 'text-amber-300'].join(' ')}>
+        <p className={['flex items-center gap-1.5 text-[11px]', isPublic ? 'text-emerald-700 dark:text-emerald-300' : 'text-amber-700 dark:text-amber-300'].join(' ')}>
           {isPublic ? <Globe size={12} /> : <LockKeyhole size={12} />}
           {isPublic ? 'This diagram is public — the link works for anyone signed in.' : 'This diagram is private — only you and administrators can open the link. Make it public first to share it.'}
         </p>

@@ -58,11 +58,11 @@ function RowActionsMenu({ diagram, onDelete, onShare }: { diagram: DiagramRow; o
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger render={<Button variant='ghost' size='icon-xs' className='text-zinc-500 hover:text-zinc-200' />}>
+      <PopoverTrigger render={<Button variant='ghost' size='icon-xs' className='text-muted-foreground hover:text-foreground' />}>
         <Ellipsis size={14} />
         <span className='sr-only'>Actions</span>
       </PopoverTrigger>
-      <PopoverContent align='end' className='w-40 border-white/8 bg-zinc-950/95 p-1 backdrop-blur-xl'>
+      <PopoverContent align='end' className='w-40 border-border bg-popover/95 p-1 backdrop-blur-xl'>
         <Command className='bg-transparent p-0'>
           <CommandList className='max-h-none overflow-visible'>
             <CommandGroup>
@@ -96,7 +96,7 @@ function RowActionsMenu({ diagram, onDelete, onShare }: { diagram: DiagramRow; o
                 Share
               </CommandItem>
               <CommandItem
-                className='text-rose-300 data-selected:bg-rose-500/10 data-selected:text-rose-100'
+                className='text-rose-600 dark:text-rose-300 data-selected:bg-rose-500/10 data-selected:text-rose-700 dark:data-selected:text-rose-100'
                 onSelect={() => {
                   setOpen(false);
                   onDelete();
@@ -206,15 +206,15 @@ export function DiagramsHome() {
         header: '#',
         enableSorting: false,
         enableGlobalFilter: false,
-        cell: ({ row }) => <span className='tabular-nums text-zinc-500'>{row.index + 1}</span>,
+        cell: ({ row }) => <span className='tabular-nums text-muted-foreground'>{row.index + 1}</span>,
       },
       {
         accessorKey: 'name',
         header: 'Diagram',
         cell: ({ row }) => (
           <Link href={`/diagrams/${row.original.id}/edit`} className='block min-w-0 transition hover:opacity-80' title='Open in editor'>
-            <p className='truncate font-medium text-zinc-100'>{row.original.name}</p>
-            <p className='truncate font-mono text-[10px] text-zinc-500'>{row.original.id}</p>
+            <p className='truncate font-medium text-foreground'>{row.original.name}</p>
+            <p className='truncate font-mono text-[10px] text-muted-foreground'>{row.original.id}</p>
           </Link>
         ),
       },
@@ -223,12 +223,12 @@ export function DiagramsHome() {
         header: 'Visibility',
         cell: ({ getValue }) =>
           getValue<boolean>() ? (
-            <span className='inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-200 ring-1 ring-emerald-400/30'>
+            <span className='inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-emerald-400/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-200 ring-1 ring-emerald-400/30'>
               <Globe size={10} />
               Public
             </span>
           ) : (
-            <span className='inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-semibold text-zinc-500 ring-1 ring-white/10'>
+            <span className='inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-accent px-2 py-0.5 text-[10px] font-semibold text-muted-foreground ring-1 ring-border'>
               <LockKeyhole size={10} />
               Private
             </span>
@@ -247,13 +247,13 @@ export function DiagramsHome() {
       {
         accessorKey: 'updatedAt',
         header: 'Updated',
-        cell: ({ getValue }) => <span className='whitespace-nowrap text-zinc-400'>{formatDateTime(getValue<number | null>())}</span>,
+        cell: ({ getValue }) => <span className='whitespace-nowrap text-muted-foreground'>{formatDateTime(getValue<number | null>())}</span>,
         sortDescFirst: true,
       },
       {
         accessorKey: 'createdAt',
         header: 'Created',
-        cell: ({ getValue }) => <span className='whitespace-nowrap text-zinc-500'>{formatDateTime(getValue<number | null>())}</span>,
+        cell: ({ getValue }) => <span className='whitespace-nowrap text-muted-foreground'>{formatDateTime(getValue<number | null>())}</span>,
         sortDescFirst: true,
       },
       {
@@ -285,15 +285,15 @@ export function DiagramsHome() {
   if (!user) return <LoginForm />;
 
   return (
-    <div className='flex h-screen flex-col bg-linear-to-br from-zinc-950 via-zinc-900 to-zinc-950 text-zinc-100'>
-      <header className='flex items-center justify-between border-b border-white/5 px-6 py-4'>
+    <div className='flex h-screen flex-col bg-background text-foreground'>
+      <header className='flex items-center justify-between border-b border-border px-6 py-4'>
         <div className='flex items-center gap-3'>
           <div className='grid h-9 w-9 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
-            <Boxes size={18} className='text-sky-300' />
+            <Boxes size={18} className='text-sky-600 dark:text-sky-300' />
           </div>
           <div>
             <h1 className='text-base font-semibold'>X Flow Tool</h1>
-            <p className='text-xs text-zinc-500'>Your diagrams · click one to open the editor</p>
+            <p className='text-xs text-muted-foreground'>Your diagrams · click one to open the editor</p>
           </div>
         </div>
         <div className='flex items-center gap-2'>
@@ -302,19 +302,19 @@ export function DiagramsHome() {
               <LayoutTemplate size={13} />
               New from template
             </DropdownMenuTrigger>
-            <DropdownMenuContent align='end' className='w-80 border-white/8 bg-zinc-950/95 p-1.5 backdrop-blur-xl'>
+            <DropdownMenuContent align='end' className='w-80 border-border bg-popover/95 p-1.5 backdrop-blur-xl'>
               <DropdownMenuGroup>
                 <DropdownMenuLabel className='px-2 py-1.5'>Templates</DropdownMenuLabel>
               </DropdownMenuGroup>
-              <DropdownMenuSeparator className='bg-white/8' />
-              {templateItems.length === 0 && <p className='px-2 py-4 text-center text-xs text-zinc-500'>No templates are available in Firestore.</p>}
+              <DropdownMenuSeparator className='bg-border' />
+              {templateItems.length === 0 && <p className='px-2 py-4 text-center text-xs text-muted-foreground'>No templates are available in Firestore.</p>}
               {templateItems.map((template) => (
                 <DropdownMenuItem key={template.id} onClick={() => void handleCreate(template.document, template.name)} className='flex-col items-start gap-0.5 px-2 py-2'>
-                  <span className='flex w-full items-center justify-between gap-2 text-xs font-semibold text-zinc-100'>
+                  <span className='flex w-full items-center justify-between gap-2 text-xs font-semibold text-foreground'>
                     {template.name}
-                    <span className='shrink-0 font-mono text-[9px] font-normal text-zinc-600'>{template.nodeCount} blocks</span>
+                    <span className='shrink-0 font-mono text-[9px] font-normal text-muted-foreground'>{template.nodeCount} blocks</span>
                   </span>
-                  <span className='block truncate text-[10px] font-normal text-zinc-500'>
+                  <span className='block truncate text-[10px] font-normal text-muted-foreground'>
                     {template.category} · {template.description}
                   </span>
                 </DropdownMenuItem>
@@ -344,7 +344,7 @@ export function DiagramsHome() {
 
       <div className='flex items-center gap-3 px-6 py-3'>
         <Input value={globalFilter} onChange={(event) => setGlobalFilter(event.target.value)} placeholder='Search by name or id…' variant='toolbar' className='max-w-xs' />
-        <p className='text-xs text-zinc-500'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} diagram(s)` : status === 'error' ? 'Failed to load diagrams' : 'Loading diagrams…'}</p>
+        <p className='text-xs text-muted-foreground'>{status === 'ready' ? `${table.getFilteredRowModel().rows.length} diagram(s)` : status === 'error' ? 'Failed to load diagrams' : 'Loading diagrams…'}</p>
       </div>
 
       <DataTable
@@ -357,9 +357,9 @@ export function DiagramsHome() {
       <DataTableFooter table={table} />
 
       <AlertDialog open={deleting !== null} onOpenChange={(open) => !open && setDeleting(null)}>
-        <AlertDialogContent className='border border-white/8 bg-zinc-950'>
+        <AlertDialogContent className='border border-border bg-popover'>
           <AlertDialogHeader>
-            <AlertDialogMedia className='bg-rose-400/10 text-rose-300'>
+            <AlertDialogMedia className='bg-rose-400/10 text-rose-600 dark:text-rose-300'>
               <Trash2 />
             </AlertDialogMedia>
             <AlertDialogTitle>Delete diagram?</AlertDialogTitle>

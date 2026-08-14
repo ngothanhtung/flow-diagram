@@ -48,12 +48,12 @@ export function NavUser({ user }: { user: User }) {
           <DropdownMenuContent className='w-64' side={isMobile ? 'bottom' : 'right'} align='end' sideOffset={4}>
             <DropdownMenuGroup>
               <DropdownMenuLabel className='flex items-center gap-2 px-1 py-1.5'>
-                <span className='grid size-8 place-items-center rounded-lg bg-white/5'>
-                  <UserRoundIcon className='size-4 text-cyan-300' />
+                <span className='grid size-8 place-items-center rounded-lg bg-accent'>
+                  <UserRoundIcon className='size-4 text-cyan-600 dark:text-cyan-300' />
                 </span>
                 <span className='min-w-0'>
-                  <span className='block truncate text-xs text-zinc-200'>{user.displayName || 'X Flow Tool user'}</span>
-                  <span className='block truncate text-[10px] font-normal text-zinc-500'>{user.email}</span>
+                  <span className='block truncate text-xs text-foreground'>{user.displayName || 'X Flow Tool user'}</span>
+                  <span className='block truncate text-[10px] font-normal text-muted-foreground'>{user.email}</span>
                 </span>
               </DropdownMenuLabel>
             </DropdownMenuGroup>

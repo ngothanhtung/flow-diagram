@@ -17,13 +17,13 @@ export function AppSidebar({ user, ...props }: { user: User } & React.ComponentP
   const pathname = usePathname();
 
   return (
-    <Sidebar collapsible='icon' className='border-white/5 bg-zinc-950' {...props}>
+    <Sidebar collapsible='icon' {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size='lg' render={<Link href='/' />}>
               <div className='grid size-8 shrink-0 place-items-center rounded-lg bg-sky-500/15 ring-1 ring-sky-400/40'>
-                <Boxes size={16} className='text-sky-300' />
+                <Boxes size={16} className='text-sky-600 dark:text-sky-300' />
               </div>
               <div className='grid flex-1 text-left text-sm leading-tight'>
                 <span className='truncate font-medium'>X Flow Tool</span>
