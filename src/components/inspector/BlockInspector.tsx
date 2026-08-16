@@ -2,14 +2,12 @@
 
 import { AlignHorizontalJustifyCenter, AlignHorizontalJustifyEnd, AlignHorizontalJustifyStart, PanelLeft, PanelRight, PanelTop } from 'lucide-react';
 import { IconPicker } from '@/components/IconPicker';
-import { LogoPicker } from '@/components/LogoPicker';
 import { TableColumnsEditor } from '@/components/TableColumnsEditor';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { resolveClosestLogoColor } from '@/lib/logo-color';
-import { COLORS, SHAPES, resolveNodeStyle, type NodeShape } from '@/lib/node-style';
+import { SHAPES, resolveNodeStyle, type NodeShape } from '@/lib/node-style';
 import {
   ActionsSection,
   ColorField,
@@ -33,15 +31,20 @@ import { NodeEffectField } from './NodeEffectField';
 
 /**
  * Inspector for an ordinary block — every node that paints a body:
- * process/start/decision/output cards, logo blocks and database tables.
- * Text objects and group frames have their own panels, because most of
- * what lives here describes a box those two don't have.
+ * process/start/decision/output cards and database tables (and any
+ * `type: 'logo'` node a diagram still carries from before that block
+ * type was removed). Text objects, group frames and free icon/logo
+ * objects have their own panels, because most of what lives here
+ * describes a box those don't have.
  */
 export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null }: InspectorPanelProps) {
   const style = resolveNodeStyle(node);
   const title = useNodeFieldDraft(node, 'title', onUpdate);
   const description = useNodeFieldDraft(node, 'description', onUpdate);
-  const isLogo = node.type === 'logo';
+  // The ceiling loosens only for a diagram saved before the dedicated
+  // logo block was removed, so an already-oversized icon doesn't get
+  // silently clamped down the moment someone reopens the inspector.
+  const legacyLogoIconCeiling = node.type === 'logo' ? 256 : 48;
   const currentShape: NodeShape = style.shape;
   const currentIcon = style.icon;
 
@@ -126,49 +129,21 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
       <FillField node={node} onUpdate={onUpdate} fill={style.fill} />
       <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
 
-      {/* --- Icon / Logo ------------------------------------------ */}
-      <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground'>{isLogo ? 'Logo' : 'Icon'}</label>
+      {/* --- Icon --------------------------------------------------- */}
+      {/* A brand logo is no longer a distinct block type — pick one
+          through the free-standing icon/logo object instead. This picker
+          only ever offers Lucide/Tabler icons; a `logo:` value only shows
+          up here on a diagram saved before that removal, where it still
+          resolves fine (`IconPicker`'s trigger renders the brand mark),
+          it just can't be re-picked from this dialog. */}
+      <label className='mt-3 block text-[11px] font-semibold uppercase tracking-wider text-muted-foreground'>Icon</label>
       <div className='mt-1.5'>
-        {isLogo ? (
-          <LogoPicker
-            value={currentIcon}
-            onChange={(icon, name) => {
-              const updateColor = async () => {
-                const slug = icon?.startsWith('logo:') ? icon.slice('logo:'.length) : null;
-                if (!slug) return;
-                try {
-                  const nearest = await resolveClosestLogoColor(slug);
-                  if (nearest) {
-                    const spec = COLORS[nearest];
-                    onUpdate(node.id, {
-                      color: spec.foreground,
-                      backgroundColor: spec.background,
-                      borderColor: spec.foreground,
-                    });
-                  }
-                } catch {
-                  // Ignore colour extraction failures; the logo still applies.
-                }
-              };
-
-              onUpdate(node.id, { icon });
-              if (name && name !== node.title) {
-                title.setValue(name);
-                onUpdate(node.id, { title: name });
-              }
-              void updateColor();
-            }}
-          />
-        ) : (
-          <IconPicker value={currentIcon} onChange={(icon) => onUpdate(node.id, { icon })} />
-        )}
+        <IconPicker value={currentIcon} onChange={(icon) => onUpdate(node.id, { icon })} />
       </div>
-      {(isLogo || (currentIcon !== null && !String(currentIcon).startsWith('logo:'))) && (
-        <RangeField label={isLogo ? 'Logo size' : 'Icon size'} value={style.iconSize} min={12} max={isLogo ? 256 : 48} suffix='px' onChange={(iconSize) => onUpdate(node.id, { iconSize })} />
-      )}
+      {currentIcon !== null && <RangeField label='Icon size' value={style.iconSize} min={12} max={legacyLogoIconCeiling} suffix='px' onChange={(iconSize) => onUpdate(node.id, { iconSize })} />}
 
       <SectionLabel>Alignment</SectionLabel>
-      {currentIcon !== null && !isLogo && (
+      {currentIcon !== null && (
         <SegmentedButtons
           label='Icon'
           value={style.iconPosition}

@@ -675,44 +675,17 @@ export function FlowNodeCard({
             ordinary cards paint no background inside the foreignObject,
             and clipping them would crop text out of narrow silhouettes
             like a diamond, where overflow is intended. */}
-        {(node.table || node.type === 'logo') && (
+        {node.table && (
           <defs>
             <clipPath id={clipId}>
               <path d={outline.d} transform={outline.transform} />
             </clipPath>
           </defs>
         )}
-        <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none' clipPath={node.table || node.type === 'logo' ? `url(#${clipId})` : undefined}>
+        <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none' clipPath={node.table ? `url(#${clipId})` : undefined}>
           {node.table ? (
             <div className='h-full w-full' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
               <TableCardBody title={node.title} table={node.table} foreground={foreground} fontSize={fontSize} />
-            </div>
-          ) : node.type === 'logo' ? (
-            <div
-              className='flex h-full w-full select-none flex-col items-center justify-center'
-              style={{
-                color: foreground,
-                fontFamily: NODE_FONT_FAMILIES[fontFamily],
-                gap: 8,
-                padding: cardPadding,
-              }}
-            >
-              {logoSlug ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={`/logos/${logoSlug}.svg`}
-                  alt=''
-                  className='object-contain'
-                  style={{ width: iconSize, height: iconSize }}
-                />
-              ) : (
-                <span className='text-[11px] opacity-50'>Choose a logo</span>
-              )}
-              {node.title && (
-                <div className='max-w-full truncate leading-tight tracking-tight' style={{ fontSize, fontWeight: FONT_WEIGHT[fontWeight], textAlign: 'center' }}>
-                  {node.title}
-                </div>
-              )}
             </div>
           ) : (
           <div

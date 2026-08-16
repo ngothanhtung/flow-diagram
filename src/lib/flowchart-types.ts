@@ -2,6 +2,15 @@
 // Mirrors a subset of Flowgram's FlowDocumentJSON so the visual editor and
 // the persisted document stay compatible with @flowgram.ai/editor.
 
+/**
+ * `'logo'` is a legacy value only — the dedicated logo block was removed
+ * once the free-standing `'icon'` object (pick either a Lucide/Tabler
+ * icon or a brand logo, positioned independently of any card) covered
+ * the same need without a second node kind. It stays in the union purely
+ * so a diagram saved before the removal keeps resolving a default shape
+ * and rendering — see `DEFAULT_BY_TYPE` in `node-style.ts`. Nothing
+ * creates one any more.
+ */
 export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group' | 'text' | 'icon';
 
 /** Visual shape of the node's body. Optional — defaults are derived
@@ -187,16 +196,16 @@ export interface FlowNode {
 /**
  * What the canvas draw tool is armed with. Every shape can be drawn, plus
  * `'table'`, which produces a database-table node (a `rounded` card
- * carrying a `TableSpec`) rather than a new silhouette, `'logo'`, which
- * drops a dedicated logo block whose selected brand mark is rendered
- * large and centred, `'group'`, which draws a container frame other
- * blocks can be dropped into, `'text'`, which drops a free-standing
- * piece of text with no box around it, and `'icon'`, which drops a
- * free-standing icon or brand logo with no box or card around it either
- * — the graphic counterpart to `'text'`, positioned and resized
- * independently of any block.
+ * carrying a `TableSpec`) rather than a new silhouette, `'group'`, which
+ * draws a container frame other blocks can be dropped into, `'text'`,
+ * which drops a free-standing piece of text with no box around it, and
+ * `'icon'`, which drops a free-standing icon or brand logo with no box or
+ * card around it either — the graphic counterpart to `'text'`,
+ * positioned and resized independently of any block. There is no
+ * `'logo'` draw tool any more — `'icon'` covers the same need with the
+ * user choosing icon vs. logo at pick time rather than a separate tool.
  */
-export type DrawTool = NodeShape | 'table' | 'logo' | 'group' | 'text' | 'icon';
+export type DrawTool = NodeShape | 'table' | 'group' | 'text' | 'icon';
 
 /** A reusable semantic block from the left-hand model palette. */
 export interface NodePreset {

@@ -493,7 +493,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   onShapeCreate: (tool, position, width, height) => {
     const { doc } = get();
     const id = `n${doc.nodes.length + 1}-${Date.now().toString(36)}`;
-    const paint = tool === 'logo' ? DEFAULT_NODE_PAINT.logo : DEFAULT_NODE_PAINT.process;
+    const paint = DEFAULT_NODE_PAINT.process;
     // The table tool draws a rounded card carrying a starter TableSpec.
     // Its height comes from the column count rather than the drag, so a
     // new table is never born with rows clipped off.
@@ -523,46 +523,6 @@ export const useEditorStore = create<EditorState>((set, get) => ({
               // Plain fill by default; the sheen gradient is opt-in.
               fill: 'flat',
               table: { columns },
-            },
-          ],
-        },
-      });
-      return id;
-    }
-    // The logo tool drops a dedicated brand-mark block. It starts with no
-    // selected logo so the user picks one in the inspector; the block is
-    // sized from the drag rectangle but clamped to logo-friendly bounds.
-    if (tool === 'logo') {
-      const w = Math.max(120, Math.min(320, width));
-      const h = Math.max(120, Math.min(240, height));
-      set({
-        doc: {
-          ...doc,
-          nodes: [
-            ...doc.nodes,
-            {
-              id,
-              type: 'logo',
-              title: 'Logo',
-              description: 'Brand / service',
-              position,
-              sortOrder: Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1)) + 1,
-              shape: 'rounded',
-              width: w,
-              height: h,
-              icon: null,
-              iconSize: 64,
-              fontSize: 12,
-              fontWeight: 'medium',
-              textAlign: 'center',
-              blockAlign: 'center',
-              color: paint.color,
-              backgroundColor: paint.backgroundColor,
-              borderColor: paint.color,
-              borderWidth: 1.5,
-              shadow: 'none',
-              // Plain fill by default; the sheen gradient is opt-in.
-              fill: 'flat',
             },
           ],
         },
