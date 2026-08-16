@@ -1,6 +1,7 @@
 'use client';
 
 import { create } from 'zustand';
+import { convertDocumentColorTheme } from './color-theme-convert';
 import { loadEditorSession } from './editor-session';
 import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
@@ -102,6 +103,11 @@ interface EditorState {
 
   // Settings (persisted inside doc.settings)
   applySettings: (patch: DiagramSettings) => void;
+
+  /** Flips every node/group/edge's literal colours between a dark-canvas
+   *  and light-canvas palette (see `color-theme-convert.ts`). The same
+   *  action undoes itself, so there is no direction to pick. */
+  convertColorTheme: () => void;
 
   // Playback
   replay: () => void;
@@ -233,6 +239,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     set((state) => ({
       doc: { ...state.doc, settings: { ...state.doc.settings, ...patch } },
     })),
+
+  convertColorTheme: () => set((state) => ({ doc: convertDocumentColorTheme(state.doc) })),
 
   replay: () => set((state) => ({ runStep: 0, runPhase: 'node', seed: state.seed + 1 })),
 

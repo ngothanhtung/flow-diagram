@@ -10,7 +10,7 @@ import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { UserMenu } from '@/components/auth/UserMenu';
 import { ShareDialog } from '@/components/diagrams/ShareDialog';
-import { EditorFileMenu, EditorStatusScreen, FileMenuItem, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
+import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, FileMenuItem, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { EditorShell } from '@/components/editor/EditorShell';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
@@ -106,6 +106,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const templateItems = useTemplateLibrary();
 
   const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
+  const [convertThemeConfirmOpen, setConvertThemeConfirmOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [templatesDialogOpen, setTemplatesDialogOpen] = useState(false);
   const [sqlOpen, setSqlOpen] = useState(false);
@@ -223,6 +224,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
           openHref='/'
           onExport={() => downloadDocumentJson(doc, currentDiagramName.trim() || 'diagram')}
           onExportSql={() => setSqlOpen(true)}
+          onConvertColorTheme={() => setConvertThemeConfirmOpen(true)}
           onReset={() => setResetConfirmOpen(true)}
           afterOpen={
             <FileMenuItem icon={savingAs ? <LoaderCircle size={14} className='animate-spin' /> : <Copy size={14} />} disabled={savingAs} onClick={() => void handleSaveAs()}>
@@ -262,6 +264,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       inspectorLabel='Editor inspector'
     >
       <ResetCanvasDialog open={resetConfirmOpen} onOpenChange={setResetConfirmOpen} />
+      <ConvertColorThemeDialog open={convertThemeConfirmOpen} onOpenChange={setConvertThemeConfirmOpen} />
       <ShareDialog diagramId={diagramId} isPublic={currentDiagramPublic} open={shareOpen} onOpenChange={setShareOpen} />
       <TemplatePickerDialog open={templatesDialogOpen} onOpenChange={setTemplatesDialogOpen} items={templateItems} />
       <SqlExportDialog document={doc} filename={currentDiagramName.trim() || 'diagram'} open={sqlOpen} onOpenChange={setSqlOpen} />
