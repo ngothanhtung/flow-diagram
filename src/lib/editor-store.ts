@@ -28,6 +28,7 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
   logo: { color: '#f4f4f5', backgroundColor: '#27272a' },
   group: { color: '#c4b5fd', backgroundColor: '#1e1b4b' },
   text: { color: '#e4e4e7', backgroundColor: '#00000000' },
+  icon: { color: '#e4e4e7', backgroundColor: '#00000000' },
 };
 
 /**
@@ -37,10 +38,11 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
  */
 export function computeOrderedGroups(nodes: FlowNode[]): FlowNode[][] {
   const resolved = nodes
-    // Frames and text objects are scenery, not steps: a container or a
-    // caption flashing as its own step would interrupt the run of the
-    // blocks it describes. They stay fully visible for the whole replay.
-    .filter((node) => node.type !== 'group' && node.type !== 'text')
+    // Frames, text objects and free icon/logo objects are scenery, not
+    // steps: a container, a caption or a placed graphic flashing as its
+    // own step would interrupt the run of the blocks it describes. They
+    // stay fully visible for the whole replay.
+    .filter((node) => node.type !== 'group' && node.type !== 'text' && node.type !== 'icon')
     .map((node, index) => ({
       node,
       order: node.sortOrder && node.sortOrder > 0 ? node.sortOrder : index + 1,
@@ -648,6 +650,33 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       });
       return id;
     }
+    // Free icon/logo: a single glyph or brand mark on the canvas, with no
+    // card around it — the graphic counterpart to the text tool above.
+    // No title (nothing renders it) and no default icon: the inspector
+    // picks one afterwards, same as the logo block.
+    if (tool === 'icon') {
+      const limits = nodeSizeLimits({ type: 'icon' });
+      set({
+        doc: {
+          ...doc,
+          nodes: [
+            ...doc.nodes,
+            {
+              id,
+              type: 'icon',
+              title: '',
+              position,
+              width: Math.max(limits.minWidth, Math.min(limits.maxWidth, width)),
+              height: Math.max(limits.minHeight, Math.min(limits.maxHeight, height)),
+              icon: null,
+              iconSize: 64,
+              color: DEFAULT_NODE_PAINT.icon.color,
+            },
+          ],
+        },
+      });
+      return id;
+    }
     const shape = tool;
     // `position` is the centre of the new shape, matching the rest
     // of the editor's coordinate convention. Width/height are clamped
@@ -732,6 +761,8 @@ function defaultTitleFor(type: NodeType): string {
       return 'Group';
     case 'text':
       return 'Text';
+    case 'icon':
+      return 'Icon';
   }
 }
 
