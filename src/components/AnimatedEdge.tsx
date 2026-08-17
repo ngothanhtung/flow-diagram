@@ -34,12 +34,20 @@ interface AnimatedEdgeProps {
   /** Keep motion but remove expensive blur layers on dense diagrams. */
   performanceMode?: boolean;
   executionState?: ExecutionState;
+  /** Static run mode: render this line as if `effect: 'none'` — a plain
+   *  connector, not a frozen mid-effect one. A paused travelling-object
+   *  mark (a short dash the same colour as the line) reads as barely
+   *  distinguishable from the line itself once it stops moving, so
+   *  freezing it (the node-effect approach) just looks broken here
+   *  rather than intentional; hiding it reads as the plain reference
+   *  diagram `static` is meant to show. */
+  flattenEffect?: boolean;
 }
 
-export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, onLabelPointerDown, onDoubleClick, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal' }: AnimatedEdgeProps) {
+export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, onLabelPointerDown, onDoubleClick, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal', flattenEffect = false }: AnimatedEdgeProps) {
   const geometry = buildEdgeGeometry(edge, from, to);
   const { d, start, end, startAngle, angle, length } = geometry;
-  const effect = edge.effect ?? 'flow';
+  const effect = flattenEffect ? 'none' : (edge.effect ?? 'flow');
   const direction = edge.direction ?? 'forward';
   const lineWidth = Math.max(1, Math.min(6, edge.width ?? 2.5));
   const effectSize = Math.max(0.5, Math.min(3, edge.effectSize ?? 1));
