@@ -2,6 +2,7 @@
 
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { fitTextNodeSize } from '@/lib/fit-to-content';
 import { resolveNodeStyle } from '@/lib/node-style';
 import {
   ActionsSection,
@@ -47,7 +48,15 @@ export function TextInspector({ node, onUpdate, onDuplicate, onDelete, parentTit
         className='mt-1 min-h-20 resize-none border-border bg-muted/30 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
 
-      <GeometryFields node={node} onUpdate={onUpdate} width={style.width} height={style.height} />
+      <GeometryFields
+        node={node}
+        onUpdate={onUpdate}
+        width={style.width}
+        height={style.height}
+        // The draft holds whatever's been typed since the last blur, so
+        // fitting reads that instead of the possibly-stale committed title.
+        onFitToContent={() => onUpdate(node.id, fitTextNodeSize({ ...node, title: text.value }))}
+      />
 
       <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
 

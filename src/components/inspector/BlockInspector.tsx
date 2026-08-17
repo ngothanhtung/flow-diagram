@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { fitBlockNodeSize } from '@/lib/fit-to-content';
 import { SHAPES, resolveNodeStyle, type NodeShape } from '@/lib/node-style';
 import {
   ActionsSection,
@@ -76,7 +77,15 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         className='mt-1 min-h-14 resize-none border-border bg-muted/30 text-xs focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
 
-      <GeometryFields node={node} onUpdate={onUpdate} width={style.width} height={style.height} />
+      <GeometryFields
+        node={node}
+        onUpdate={onUpdate}
+        width={style.width}
+        height={style.height}
+        // A table's height already tracks its column count on every edit
+        // (`TableColumnsEditor`) — icon+title fitting doesn't apply to it.
+        onFitToContent={node.table ? undefined : () => onUpdate(node.id, fitBlockNodeSize({ ...node, title: title.value, description: description.value }))}
+      />
       <NumberField label='Sort order · 0 = auto' value={node.sortOrder ?? 0} min={0} step={1} onChange={(sortOrder) => onUpdate(node.id, { sortOrder: sortOrder > 0 ? sortOrder : undefined })} />
 
       <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />

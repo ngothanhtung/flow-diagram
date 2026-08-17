@@ -21,3 +21,13 @@ export const NODE_FONT_FAMILIES: Record<NodeFont, string> = {
   'roboto-slab': 'var(--font-roboto-slab), serif',
   merriweather: 'var(--font-merriweather), serif',
 };
+
+/** Numeric CSS `font-weight` for each named weight — shared by
+ *  `FlowNodeCard`'s render and `fit-to-content.ts`'s offscreen
+ *  measurement, so the two never drift apart. */
+export const NODE_FONT_WEIGHTS: Record<'normal' | 'medium' | 'semibold' | 'bold', number> = {
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+};

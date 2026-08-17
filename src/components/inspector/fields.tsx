@@ -4,7 +4,7 @@
 // group). Anything used by more than one panel lives here, so a panel
 // file contains only what makes that node kind different.
 
-import { AlignCenter, AlignLeft, AlignRight, Blend, Copy, RotateCcw, Square, Trash2, Ungroup, type LucideIcon } from 'lucide-react';
+import { AlignCenter, AlignLeft, AlignRight, Blend, Copy, RotateCcw, Shrink, Square, Trash2, Ungroup, type LucideIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -198,15 +198,27 @@ export function SectionLabel({ children }: { children: string }) {
   );
 }
 
-/** Position + size, clamped to whatever this node kind allows. */
-export function GeometryFields({ node, onUpdate, width, height }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; width: number; height: number }) {
+/**
+ * Position + size, clamped to whatever this node kind allows. `onFitToContent`
+ * is only passed by panels whose node paints its own text/glyph (block, text,
+ * icon) — a group frame fits to its *members* instead, via its own "Fit to
+ * contents" action in `GroupInspector`, so it never sets this.
+ */
+export function GeometryFields({ node, onUpdate, width, height, onFitToContent }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; width: number; height: number; onFitToContent?: () => void }) {
   // Same limits the renderer clamps to, so typing an exact size can
   // reach what dragging a corner can.
   const limits = nodeSizeLimits(node);
   return (
     <>
       <SectionLabel>Geometry</SectionLabel>
-      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>Drag one of the 4 corner handles, or enter an exact size below.</p>
+      <div className='mt-1 flex items-start justify-between gap-2'>
+        <p className='text-[10px] leading-relaxed text-muted-foreground'>Drag one of the 4 corner handles, or enter an exact size below.</p>
+        {onFitToContent && (
+          <Button variant='outline' size='sm' onClick={onFitToContent} className='h-6 shrink-0 border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
+            <Shrink size={11} /> Fit
+          </Button>
+        )}
+      </div>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <NumberField label='X' value={Math.round(node.position.x)} onChange={(x) => onUpdate(node.id, { position: { ...node.position, x } })} />
         <NumberField label='Y' value={Math.round(node.position.y)} onChange={(y) => onUpdate(node.id, { position: { ...node.position, y } })} />

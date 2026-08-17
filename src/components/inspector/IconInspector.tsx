@@ -4,6 +4,7 @@ import { Image as ImageIcon, Shapes } from 'lucide-react';
 import { useState } from 'react';
 import { IconPicker } from '@/components/IconPicker';
 import { LogoPicker } from '@/components/LogoPicker';
+import { fitIconNodeSize } from '@/lib/fit-to-content';
 import { resolveNodeStyle } from '@/lib/node-style';
 import {
   ActionsSection,
@@ -38,7 +39,7 @@ export function IconInspector({ node, onUpdate, onDuplicate, onDelete, parentTit
 
   return (
     <InspectorShell title='Icon Inspector' nodeId={node.id}>
-      <GeometryFields node={node} onUpdate={onUpdate} width={style.width} height={style.height} />
+      <GeometryFields node={node} onUpdate={onUpdate} width={style.width} height={style.height} onFitToContent={() => onUpdate(node.id, fitIconNodeSize(node))} />
 
       <SectionLabel>{isLogo ? 'Logo' : 'Icon'}</SectionLabel>
       <SegmentedButtons
