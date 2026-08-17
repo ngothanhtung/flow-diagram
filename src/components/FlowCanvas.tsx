@@ -52,8 +52,11 @@ interface FlowCanvasProps {
   runningEdgeIds?: string[] | null;
   nodeExecutionStates?: Record<string, ExecutionState>;
   edgeExecutionStates?: Record<string, ExecutionState>;
-  /** Static run mode: freeze every node's own motion/decoration effect.
-   *  Edge animation is paused separately, via `runningEdgeIds`. */
+  /** Static run mode: freeze every node's own motion/decoration effect,
+   *  and render every edge as if `effect: 'none'` (see `AnimatedEdge`'s
+   *  `flattenEffect`) — a frozen travelling-object mark reads as barely
+   *  different from the plain line once it stops moving, so edges get
+   *  hidden rather than paused. */
   effectsPaused?: boolean;
   selectedNodeId: string | null;
   onSelectNode: (id: string | null) => void;
@@ -879,6 +882,7 @@ export function FlowCanvas({
                 effectColor={edge.effectColor}
                 performanceMode={performanceMode}
                 executionState={edgeExecutionStates?.[edge.id] ?? 'normal'}
+                flattenEffect={effectsPaused}
               />
             );
           })}
