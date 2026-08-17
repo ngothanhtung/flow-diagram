@@ -3,7 +3,7 @@
 import { createElement, useEffect, useRef } from 'react';
 import { screenToData } from '@/lib/coords';
 import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
-import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
+import { NODE_FONT_FAMILIES, NODE_FONT_WEIGHTS } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
 import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
 import { GROUP_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
@@ -71,13 +71,6 @@ const RESIZE_HANDLES: Array<{
 ];
 
 const CONNECTION_SIDES: ConnectionSide[] = ['top', 'right', 'bottom', 'left'];
-
-const FONT_WEIGHT: Record<string, number> = {
-  normal: 400,
-  medium: 500,
-  semibold: 600,
-  bold: 700,
-};
 
 function ShapeDecoration({ shape, color }: { shape: NodeShape; color: string }) {
   const common = {
@@ -514,7 +507,7 @@ export function FlowNodeCard({
                     color: foreground,
                     fontFamily: NODE_FONT_FAMILIES[fontFamily],
                     fontSize: Math.min(fontSize, 14),
-                    fontWeight: FONT_WEIGHT[fontWeight],
+                    fontWeight: NODE_FONT_WEIGHTS[fontWeight],
                   }}
                 >
                   {node.title}
@@ -560,7 +553,7 @@ export function FlowNodeCard({
                   className='max-h-full w-full overflow-hidden break-words'
                   style={{
                     fontSize,
-                    fontWeight: FONT_WEIGHT[fontWeight],
+                    fontWeight: NODE_FONT_WEIGHTS[fontWeight],
                     textAlign,
                     lineHeight: 1.35,
                     // Newlines the user typed in the inspector are part of
@@ -745,7 +738,7 @@ export function FlowNodeCard({
                 maxWidth: '100%',
               }}
             >
-              <div className='leading-tight tracking-tight' style={{ fontSize, fontWeight: FONT_WEIGHT[fontWeight] }}>
+              <div className='leading-tight tracking-tight' style={{ fontSize, fontWeight: NODE_FONT_WEIGHTS[fontWeight] }}>
                 {node.title}
               </div>
               {node.description && (
