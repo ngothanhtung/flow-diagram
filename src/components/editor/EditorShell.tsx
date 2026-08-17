@@ -62,8 +62,15 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
             <h1 className='hidden text-base font-semibold md:block'>X Flow Tool</h1>
             {subtitle}
           </div>
-          {fileMenu}
-          {actions}
+          {/* File menu and actions (Save, Public/Private…) wrap as one
+              group rather than as loose siblings of the branding — on a
+              narrow viewport that keeps them together on their own line
+              instead of splitting mid-group (e.g. File + Public on one
+              row, Save stranded alone on the next). */}
+          <div className='flex flex-wrap items-center gap-2 sm:gap-3'>
+            {fileMenu}
+            {actions}
+          </div>
         </div>
 
         <div className='flex flex-wrap items-center justify-end gap-2'>

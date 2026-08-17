@@ -1,6 +1,7 @@
 'use client';
 
 import { create } from 'zustand';
+import { convertDocumentColorTheme } from './color-theme-convert';
 import { loadEditorSession } from './editor-session';
 import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
@@ -27,6 +28,7 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
   logo: { color: '#f4f4f5', backgroundColor: '#27272a' },
   group: { color: '#c4b5fd', backgroundColor: '#1e1b4b' },
   text: { color: '#e4e4e7', backgroundColor: '#00000000' },
+  icon: { color: '#e4e4e7', backgroundColor: '#00000000' },
 };
 
 /**
@@ -36,10 +38,11 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
  */
 export function computeOrderedGroups(nodes: FlowNode[]): FlowNode[][] {
   const resolved = nodes
-    // Frames and text objects are scenery, not steps: a container or a
-    // caption flashing as its own step would interrupt the run of the
-    // blocks it describes. They stay fully visible for the whole replay.
-    .filter((node) => node.type !== 'group' && node.type !== 'text')
+    // Frames, text objects and free icon/logo objects are scenery, not
+    // steps: a container, a caption or a placed graphic flashing as its
+    // own step would interrupt the run of the blocks it describes. They
+    // stay fully visible for the whole replay.
+    .filter((node) => node.type !== 'group' && node.type !== 'text' && node.type !== 'icon')
     .map((node, index) => ({
       node,
       order: node.sortOrder && node.sortOrder > 0 ? node.sortOrder : index + 1,
@@ -102,6 +105,11 @@ interface EditorState {
 
   // Settings (persisted inside doc.settings)
   applySettings: (patch: DiagramSettings) => void;
+
+  /** Flips every node/group/edge's literal colours between a dark-canvas
+   *  and light-canvas palette (see `color-theme-convert.ts`). The same
+   *  action undoes itself, so there is no direction to pick. */
+  convertColorTheme: () => void;
 
   // Playback
   replay: () => void;
@@ -233,6 +241,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     set((state) => ({
       doc: { ...state.doc, settings: { ...state.doc.settings, ...patch } },
     })),
+
+  convertColorTheme: () => set((state) => ({ doc: convertDocumentColorTheme(state.doc) })),
 
   replay: () => set((state) => ({ runStep: 0, runPhase: 'node', seed: state.seed + 1 })),
 
@@ -483,7 +493,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   onShapeCreate: (tool, position, width, height) => {
     const { doc } = get();
     const id = `n${doc.nodes.length + 1}-${Date.now().toString(36)}`;
-    const paint = tool === 'logo' ? DEFAULT_NODE_PAINT.logo : DEFAULT_NODE_PAINT.process;
+    const paint = DEFAULT_NODE_PAINT.process;
     // The table tool draws a rounded card carrying a starter TableSpec.
     // Its height comes from the column count rather than the drag, so a
     // new table is never born with rows clipped off.
@@ -513,46 +523,6 @@ export const useEditorStore = create<EditorState>((set, get) => ({
               // Plain fill by default; the sheen gradient is opt-in.
               fill: 'flat',
               table: { columns },
-            },
-          ],
-        },
-      });
-      return id;
-    }
-    // The logo tool drops a dedicated brand-mark block. It starts with no
-    // selected logo so the user picks one in the inspector; the block is
-    // sized from the drag rectangle but clamped to logo-friendly bounds.
-    if (tool === 'logo') {
-      const w = Math.max(120, Math.min(320, width));
-      const h = Math.max(120, Math.min(240, height));
-      set({
-        doc: {
-          ...doc,
-          nodes: [
-            ...doc.nodes,
-            {
-              id,
-              type: 'logo',
-              title: 'Logo',
-              description: 'Brand / service',
-              position,
-              sortOrder: Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1)) + 1,
-              shape: 'rounded',
-              width: w,
-              height: h,
-              icon: null,
-              iconSize: 64,
-              fontSize: 12,
-              fontWeight: 'medium',
-              textAlign: 'center',
-              blockAlign: 'center',
-              color: paint.color,
-              backgroundColor: paint.backgroundColor,
-              borderColor: paint.color,
-              borderWidth: 1.5,
-              shadow: 'none',
-              // Plain fill by default; the sheen gradient is opt-in.
-              fill: 'flat',
             },
           ],
         },
@@ -634,6 +604,33 @@ export const useEditorStore = create<EditorState>((set, get) => ({
               textAlign: 'left',
               borderWidth: 0,
               shadow: 'none',
+            },
+          ],
+        },
+      });
+      return id;
+    }
+    // Free icon/logo: a single glyph or brand mark on the canvas, with no
+    // card around it — the graphic counterpart to the text tool above.
+    // No title (nothing renders it) and no default icon: the inspector
+    // picks one afterwards, same as the logo block.
+    if (tool === 'icon') {
+      const limits = nodeSizeLimits({ type: 'icon' });
+      set({
+        doc: {
+          ...doc,
+          nodes: [
+            ...doc.nodes,
+            {
+              id,
+              type: 'icon',
+              title: '',
+              position,
+              width: Math.max(limits.minWidth, Math.min(limits.maxWidth, width)),
+              height: Math.max(limits.minHeight, Math.min(limits.maxHeight, height)),
+              icon: null,
+              iconSize: 64,
+              color: DEFAULT_NODE_PAINT.icon.color,
             },
           ],
         },
@@ -724,6 +721,8 @@ function defaultTitleFor(type: NodeType): string {
       return 'Group';
     case 'text':
       return 'Text';
+    case 'icon':
+      return 'Icon';
   }
 }
 

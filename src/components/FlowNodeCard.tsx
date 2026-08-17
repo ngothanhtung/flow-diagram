@@ -175,6 +175,7 @@ export function FlowNodeCard({
   const style = resolveNodeStyle(node);
   const isGroup = node.type === 'group';
   const isText = node.type === 'text';
+  const isIconObject = node.type === 'icon';
   const hasGroupTitle = isGroup && !!node.title?.trim();
   const Icon = useResolvedIcon(style.icon);
   const logoSlug = style.icon?.startsWith('logo:') ? style.icon.slice('logo:'.length) : null;
@@ -572,6 +573,46 @@ export function FlowNodeCard({
               </div>
             </foreignObject>
           </>
+        ) : isIconObject ? (
+          /* Free icon/logo: just the glyph on the canvas, the graphic
+             counterpart to free text above — no card body, border or
+             ports. Same invisible hit rect + hover outline pattern as
+             text, since there's nothing painted to click otherwise. The
+             glyph itself renders at `iconSize`, independent of the box,
+             exactly like the dedicated logo block. */
+          <>
+            <rect x={-width / 2} y={-height / 2} width={width} height={height} fill='transparent' pointerEvents='all' />
+            {!isSelected && (
+              <rect
+                x={-width / 2}
+                y={-height / 2}
+                width={width}
+                height={height}
+                fill='none'
+                stroke={foreground}
+                strokeOpacity={0.35}
+                strokeWidth={1}
+                strokeDasharray='3 3'
+                vectorEffect='non-scaling-stroke'
+                pointerEvents='none'
+                className='opacity-0 transition-opacity duration-150 group-hover/node:opacity-100'
+              />
+            )}
+            <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none'>
+              <div className='flex h-full w-full select-none items-center justify-center' style={{ color: foreground }}>
+                {hasIcon ? (
+                  logoSlug ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={`/logos/${logoSlug}.svg`} alt='' className='object-contain' style={{ width: iconSize, height: iconSize }} />
+                  ) : (
+                    createElement(Icon!, { size: iconSize })
+                  )
+                ) : (
+                  <span className='text-[11px] opacity-50'>Choose an icon</span>
+                )}
+              </div>
+            </foreignObject>
+          </>
         ) : (
           <>
         {/* Body — single <path> with per-shape `d`. The fill and stroke
@@ -634,44 +675,17 @@ export function FlowNodeCard({
             ordinary cards paint no background inside the foreignObject,
             and clipping them would crop text out of narrow silhouettes
             like a diamond, where overflow is intended. */}
-        {(node.table || node.type === 'logo') && (
+        {node.table && (
           <defs>
             <clipPath id={clipId}>
               <path d={outline.d} transform={outline.transform} />
             </clipPath>
           </defs>
         )}
-        <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none' clipPath={node.table || node.type === 'logo' ? `url(#${clipId})` : undefined}>
+        <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none' clipPath={node.table ? `url(#${clipId})` : undefined}>
           {node.table ? (
             <div className='h-full w-full' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
               <TableCardBody title={node.title} table={node.table} foreground={foreground} fontSize={fontSize} />
-            </div>
-          ) : node.type === 'logo' ? (
-            <div
-              className='flex h-full w-full select-none flex-col items-center justify-center'
-              style={{
-                color: foreground,
-                fontFamily: NODE_FONT_FAMILIES[fontFamily],
-                gap: 8,
-                padding: cardPadding,
-              }}
-            >
-              {logoSlug ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={`/logos/${logoSlug}.svg`}
-                  alt=''
-                  className='object-contain'
-                  style={{ width: iconSize, height: iconSize }}
-                />
-              ) : (
-                <span className='text-[11px] opacity-50'>Choose a logo</span>
-              )}
-              {node.title && (
-                <div className='max-w-full truncate leading-tight tracking-tight' style={{ fontSize, fontWeight: FONT_WEIGHT[fontWeight], textAlign: 'center' }}>
-                  {node.title}
-                </div>
-              )}
             </div>
           ) : (
           <div
@@ -772,12 +786,14 @@ export function FlowNodeCard({
         {/* Every node exposes a bidirectional port on all four sides.
           The selected source and target sides are stored on the edge.
           Ports are editor-only — hidden entirely in read-only mode.
-          Text objects have none: a caption is scenery rather than a step
-          in the flow (the replay skips it too). Frames get the same four
-          ports as any other block, so a diagram can point an edge at the
-          group as a whole. */}
+          Text objects and free icon/logo objects have none: a caption or
+          a placed graphic is scenery rather than a step in the flow (the
+          replay skips both too). Frames get the same four ports as any
+          other block, so a diagram can point an edge at the group as a
+          whole. */}
         {!readOnly &&
           !isText &&
+          !isIconObject &&
           CONNECTION_SIDES.map((side) => {
             const anchor = portAnchors[side];
             const canReceive = !!linkTargetFromId && linkTargetFromId !== node.id;
@@ -836,12 +852,13 @@ export function FlowNodeCard({
           })}
 
         {/* Painted last so a halo, ring or sheen sits above the body and
-            its contents. Text has no silhouette to decorate — every
-            decoration effect traces `outline.d`, which for a text node is
-            just its bounding rectangle, so rendering one here would draw
-            exactly the border a text object is defined not to have. Motion
-            (the `<g style={motionStyle}>` wrapper above) still applies. */}
-        {!isText && (
+            its contents. Text and free icon objects have no silhouette to
+            decorate — every decoration effect traces `outline.d`, which
+            for these is just its bounding rectangle, so rendering one
+            here would draw exactly the border they're defined not to
+            have. Motion (the `<g style={motionStyle}>` wrapper above)
+            still applies. */}
+        {!isText && !isIconObject && (
           <NodeEffectLayer
             d={outline.d}
             transform={outline.transform}

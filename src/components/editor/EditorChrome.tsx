@@ -1,6 +1,6 @@
 'use client';
 
-import { Database, FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, RotateCcw, Save } from 'lucide-react';
+import { Contrast, Database, FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, RotateCcw, Save } from 'lucide-react';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -56,6 +56,7 @@ export function EditorFileMenu({
   openHref,
   onExport,
   onExportSql,
+  onConvertColorTheme,
   onReset,
   afterOpen,
   afterExport,
@@ -68,6 +69,9 @@ export function EditorFileMenu({
   /** Opens the SQL export dialog — every surface that can hold table
    *  nodes wires this, so the command sits next to Export to JSON. */
   onExportSql?: () => void;
+  /** Opens the confirmation for flipping every node/edge colour between
+   *  a dark-canvas and light-canvas palette. */
+  onConvertColorTheme: () => void;
   onReset: () => void;
   afterOpen?: ReactNode;
   afterExport?: ReactNode;
@@ -95,6 +99,9 @@ export function EditorFileMenu({
       )}
       {afterExport}
       <FileMenuSeparator />
+      <FileMenuItem icon={<Contrast size={14} />} onClick={onConvertColorTheme}>
+        Convert dark ↔ light
+      </FileMenuItem>
       <FileMenuItem icon={<RotateCcw size={14} />} tone='danger' onClick={onReset}>
         Reset
       </FileMenuItem>
@@ -150,6 +157,38 @@ export function ResetCanvasDialog({ open, onOpenChange }: { open: boolean; onOpe
             }}
           >
             Reset
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+
+/** Confirmation for "Convert dark ↔ light". Flips every node, group and
+ *  edge's literal colour to the opposite palette (`convertColorTheme` in
+ *  the store) — running it again flips them back, so this isn't gated as
+ *  destructively as Reset, but it does touch every object at once. */
+export function ConvertColorThemeDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
+  const convertColorTheme = useEditorStore((state) => state.convertColorTheme);
+  return (
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
+      <AlertDialogContent className='border border-border bg-popover'>
+        <AlertDialogHeader>
+          <AlertDialogMedia className='bg-sky-400/10 text-sky-600 dark:text-sky-300'>
+            <Contrast />
+          </AlertDialogMedia>
+          <AlertDialogTitle>Convert colours to the opposite theme?</AlertDialogTitle>
+          <AlertDialogDescription>Every block, group and line&apos;s own colour (background, border, text, effects) is flipped between a dark-canvas and light-canvas palette. Running this again converts them back.</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            onClick={() => {
+              convertColorTheme();
+              onOpenChange(false);
+            }}
+          >
+            Convert
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -4,7 +4,7 @@ import { LayoutTemplate } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
-import { EditorFileMenu, EditorStatusScreen, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
+import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { EditorShell } from '@/components/editor/EditorShell';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
@@ -32,6 +32,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
   const [savedSignature, setSavedSignature] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
+  const [convertThemeConfirmOpen, setConvertThemeConfirmOpen] = useState(false);
   const [templatesDialogOpen, setTemplatesDialogOpen] = useState(false);
   const [sqlOpen, setSqlOpen] = useState(false);
   const [creating, setCreating] = useState(false);
@@ -128,6 +129,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
           openHref='/admin/templates'
           onExport={() => downloadDocumentJson(doc, meta.name.trim() || 'template')}
           onExportSql={() => setSqlOpen(true)}
+          onConvertColorTheme={() => setConvertThemeConfirmOpen(true)}
           onReset={() => setResetConfirmOpen(true)}
         />
       }
@@ -148,6 +150,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
       inspectorLabel='Template inspector'
     >
       <ResetCanvasDialog open={resetConfirmOpen} onOpenChange={setResetConfirmOpen} />
+      <ConvertColorThemeDialog open={convertThemeConfirmOpen} onOpenChange={setConvertThemeConfirmOpen} />
       <TemplatePickerDialog open={templatesDialogOpen} onOpenChange={setTemplatesDialogOpen} items={templateItems} />
       <SqlExportDialog document={doc} filename={meta.name.trim() || 'template'} open={sqlOpen} onOpenChange={setSqlOpen} />
     </EditorShell>

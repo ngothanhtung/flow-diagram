@@ -1075,10 +1075,10 @@ function ReconnectPreview({ fixed, pointer, color, scale }: { fixed: { x: number
  * with the SVG <ellipse> primitive.
  */
 function DrawPreview({ shape, start, current }: { shape: DrawTool; start: { x: number; y: number }; current: { x: number; y: number } }) {
-  // The table, logo and group tools all preview as the rounded box they
-  // create; the text tool previews as a plain rectangle, matching the
-  // box the text will be laid out in.
-  const previewShape: NodeShape = shape === 'table' || shape === 'logo' || shape === 'group' ? 'rounded' : shape === 'text' ? 'rectangle' : shape;
+  // The table and group tools preview as the rounded box they create; the
+  // text and icon tools preview as a plain rectangle, matching the box
+  // the content will be laid out / sized within.
+  const previewShape: NodeShape = shape === 'table' || shape === 'group' ? 'rounded' : shape === 'text' || shape === 'icon' ? 'rectangle' : shape;
   const minX = Math.min(start.x, current.x);
   const minY = Math.min(start.y, current.y);
   const maxX = Math.max(start.x, current.x);

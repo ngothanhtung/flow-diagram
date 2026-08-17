@@ -31,6 +31,7 @@ import {
   CircleX,
   MessageCircle,
   Type,
+  Sticker,
   type LucideIcon,
 } from 'lucide-react';
 import {
@@ -123,6 +124,17 @@ export const TEXT_MAX_HEIGHT = 1200;
 /** Inset between the text and its box, so a selected label isn't cramped. */
 export const TEXT_PADDING = 6;
 
+// --- Free icon / logo ------------------------------------------------------
+// The graphic counterpart to free text: a single glyph or brand mark on
+// the canvas, no silhouette, no fill, no ports. Its box is only the drag
+// handle / click target — the glyph itself renders at `iconSize` (see
+// `resolveNodeStyle`), same as the dedicated `logo` block.
+
+export const ICON_OBJECT_MIN_SIZE = 24;
+export const ICON_OBJECT_DEFAULT_WIDTH = 96;
+export const ICON_OBJECT_DEFAULT_HEIGHT = 96;
+export const ICON_OBJECT_MAX_SIZE = 480;
+
 export interface NodeSizeLimits {
   minWidth: number;
   minHeight: number;
@@ -144,6 +156,9 @@ export function nodeSizeLimits(node: Pick<FlowNode, 'type' | 'table'>): NodeSize
   }
   if (node.type === 'text') {
     return { minWidth: TEXT_MIN_SIZE, minHeight: TEXT_MIN_SIZE, maxWidth: TEXT_MAX_WIDTH, maxHeight: TEXT_MAX_HEIGHT, defaultWidth: TEXT_DEFAULT_WIDTH, defaultHeight: TEXT_DEFAULT_HEIGHT };
+  }
+  if (node.type === 'icon') {
+    return { minWidth: ICON_OBJECT_MIN_SIZE, minHeight: ICON_OBJECT_MIN_SIZE, maxWidth: ICON_OBJECT_MAX_SIZE, maxHeight: ICON_OBJECT_MAX_SIZE, defaultWidth: ICON_OBJECT_DEFAULT_WIDTH, defaultHeight: ICON_OBJECT_DEFAULT_HEIGHT };
   }
   if (node.table) {
     return { minWidth: 72, minHeight: 72, maxWidth: TABLE_MAX_WIDTH, maxHeight: TABLE_MAX_HEIGHT, defaultWidth: TABLE_DEFAULT_WIDTH, defaultHeight: 112 };
@@ -759,6 +774,9 @@ const DEFAULT_BY_TYPE: Record<NodeType, { shape: NodeShape; color: NodeColor; ic
   logo: { shape: 'rounded', color: 'blue', icon: null },
   group: { shape: 'rounded', color: 'violet', icon: null },
   text: { shape: 'rectangle', color: 'sky', icon: null },
+  // Shape is unused (an icon object paints no silhouette) beyond giving
+  // the selection ring / active halo a rectangle to trace, same as text.
+  icon: { shape: 'rectangle', color: 'sky', icon: null },
 };
 
 // Type-level icons that the picker can fall back to when a node carries
@@ -772,6 +790,7 @@ const TYPE_DEFAULT_ICON: Record<NodeType, LucideIcon> = {
   logo: Image,
   group: Boxes,
   text: Type,
+  icon: Sticker,
 };
 
 // --- Resolver -------------------------------------------------------------
@@ -840,7 +859,10 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     // did before the field existed. New nodes are stamped 'flat'.
     fill: node.fill ?? 'sheen',
     shadow: node.shadow ?? 'none',
-    iconSize: Math.max(12, Math.min(node.type === 'logo' ? 256 : 48, node.iconSize ?? (node.type === 'logo' ? 64 : 20))),
+    // A free icon/logo object gets the same large ceiling as the dedicated
+    // logo block — it's meant to be the graphic itself, not a small icon
+    // inside a card.
+    iconSize: Math.max(12, Math.min(node.type === 'logo' || node.type === 'icon' ? 256 : 48, node.iconSize ?? (node.type === 'logo' || node.type === 'icon' ? 64 : 20))),
     iconPosition: node.iconPosition ?? 'top',
     blockAlign: node.blockAlign ?? 'center',
     fontFamily: node.fontFamily ?? 'geist-mono',

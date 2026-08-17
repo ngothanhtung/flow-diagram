@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card';
 import type { FlowNode } from '@/lib/flowchart-types';
 import { BlockInspector } from './BlockInspector';
 import { GroupInspector } from './GroupInspector';
+import { IconInspector } from './IconInspector';
 import { TextInspector } from './TextInspector';
 
 interface NodeInspectorProps {
@@ -23,10 +24,11 @@ interface NodeInspectorProps {
 /**
  * Picks the inspector panel for the selected node.
  *
- * The three kinds paint genuinely different things — a block has a body,
- * a text object has only words, a frame has a wash and a title bar — so
- * each gets its own panel rather than one panel full of guards. Anything
- * two of them share lives in `./fields`.
+ * The four kinds paint genuinely different things — a block has a body,
+ * a text object has only words, a frame has a wash and a title bar, a
+ * free icon/logo object has only a glyph — so each gets its own panel
+ * rather than one panel full of guards. Anything two of them share lives
+ * in `./fields`.
  */
 export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCount = 0, parentTitle = null, onUngroup, onFitGroup }: NodeInspectorProps) {
   if (!node) {
@@ -45,6 +47,9 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
   }
   if (node.type === 'text') {
     return <TextInspector {...shared} />;
+  }
+  if (node.type === 'icon') {
+    return <IconInspector {...shared} />;
   }
   return <BlockInspector {...shared} />;
 }

@@ -59,11 +59,12 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
   const preview = draft ?? effect;
   const knobs = resolveEffectKnobs(node.effectSpeed, node.effectIntensity);
   // Every decoration effect traces the node's outline — a halo, a ring, a
-  // dashed border. Free text has no outline to trace (it paints no body
-  // at all), so decoration would draw exactly the border a text object is
-  // defined not to have. Only motion — the words themselves moving — makes
-  // sense on it.
-  const isText = node.type === 'text';
+  // dashed border. Free text and free icon/logo objects have no outline
+  // to trace (neither paints a body at all), so decoration would draw
+  // exactly the border they're defined not to have. Only motion — the
+  // content itself moving — makes sense on them.
+  const isText = node.type === 'text' || node.type === 'icon';
+  const motionSubject = node.type === 'text' ? 'text' : node.type === 'icon' ? 'icon' : 'block';
 
   return (
     <>
@@ -97,7 +98,7 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
           <div className='grid min-h-0 flex-1 grid-cols-8 overflow-hidden'>
             <div className='col-span-5 space-y-5 overflow-y-auto pr-4 pb-6 pl-8'>
               <EffectGroup title='Off' options={[NONE_EFFECT]} draft={draft} onPick={setDraft} />
-              <EffectGroup title={isText ? 'Motion · the text itself moves' : 'Motion · the block itself moves'} options={MOTION_EFFECTS} draft={draft} onPick={setDraft} />
+              <EffectGroup title={`Motion · the ${motionSubject} itself moves`} options={MOTION_EFFECTS} draft={draft} onPick={setDraft} />
               {!isText && <EffectGroup title='Decoration · an extra layer is painted' options={DECORATION_EFFECTS} draft={draft} onPick={setDraft} />}
             </div>
 

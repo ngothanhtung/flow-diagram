@@ -16,7 +16,7 @@
 // the same shape again (or pressing Esc) deselects.
 
 import { useEffect, useState } from 'react';
-import { ChevronDown, Group, Image as ImageIcon, Table2, Type } from 'lucide-react';
+import { ChevronDown, Group, Sticker, Table2, Type } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
@@ -118,10 +118,10 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           className='group h-7 gap-0.5 pl-2 pr-1 text-muted-foreground data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-700 dark:text-cyan-100'
           aria-label='Choose a shape to draw'
         >
-          {/* The table, logo, group and text tools live in their own
+          {/* The table, group, text and icon tools live in their own
               buttons, so the shape trigger keeps showing the last picked
               silhouette while one of those special tools is armed. */}
-          {activeShape === 'logo' ? <ImageIcon size={16} /> : <ShapeIcon shape={activeShape && activeShape !== 'table' && activeShape !== 'group' && activeShape !== 'text' ? activeShape : lastPicked} size={16} />}
+          <ShapeIcon shape={activeShape && activeShape !== 'table' && activeShape !== 'group' && activeShape !== 'text' && activeShape !== 'icon' ? activeShape : lastPicked} size={16} />
           <ChevronDown size={10} className='opacity-70 transition group-data-popup-open:rotate-180' />
         </DropdownMenuTrigger>
         <DropdownMenuContent align='center' sideOffset={10} className='w-[min(420px,90vw)] border-border bg-popover/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.4)] backdrop-blur-xl'>
@@ -187,22 +187,6 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
 
       <Divider />
 
-      {/* Logo block — drops a dedicated brand-mark node rather than
-          attaching a logo to the small icon slot. */}
-      <Button
-        variant='ghost'
-        size='icon-sm'
-        onClick={() => (activeShape === 'logo' ? onSelect(null) : onSelect('logo'))}
-        aria-pressed={activeShape === 'logo'}
-        className={activeShape === 'logo' ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-1 ring-cyan-400/40' : 'text-muted-foreground'}
-        title='Logo block'
-        aria-label='Logo block'
-      >
-        <ImageIcon size={16} />
-      </Button>
-
-      <Divider />
-
       {/* Group frame — a container blocks are dropped into. Drawing one
           over existing blocks adopts them straight away. */}
       <Button
@@ -230,6 +214,23 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
         aria-label='Text'
       >
         <Type size={16} />
+      </Button>
+
+      <Divider />
+
+      {/* Free icon/logo — the graphic counterpart to Text: a single glyph
+          or brand mark on the canvas, positioned and resized on its own,
+          with no card or block around it. */}
+      <Button
+        variant='ghost'
+        size='icon-sm'
+        onClick={() => (activeShape === 'icon' ? onSelect(null) : onSelect('icon'))}
+        aria-pressed={activeShape === 'icon'}
+        className={activeShape === 'icon' ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-1 ring-cyan-400/40' : 'text-muted-foreground'}
+        title='Icon / logo'
+        aria-label='Icon / logo'
+      >
+        <Sticker size={16} />
       </Button>
     </div>
   );
