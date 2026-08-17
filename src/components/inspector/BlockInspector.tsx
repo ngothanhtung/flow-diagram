@@ -86,7 +86,11 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         // (`TableColumnsEditor`) — icon+title fitting doesn't apply to it.
         onFitToContent={node.table ? undefined : () => onUpdate(node.id, fitBlockNodeSize({ ...node, title: title.value, description: description.value }))}
       />
-      <NumberField label='Sort order · 0 = auto' value={node.sortOrder ?? 0} min={0} step={1} onChange={(sortOrder) => onUpdate(node.id, { sortOrder: sortOrder > 0 ? sortOrder : undefined })} />
+      <SectionLabel>Sort order</SectionLabel>
+      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>0 = automatic (document order). Nodes sharing a number animate together as one replay step.</p>
+      <div className='mt-1.5'>
+        <NumberField label='Order' value={node.sortOrder ?? 0} min={0} step={1} onChange={(sortOrder) => onUpdate(node.id, { sortOrder: sortOrder > 0 ? sortOrder : undefined })} />
+      </div>
 
       <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
 
