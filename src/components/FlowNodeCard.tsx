@@ -625,6 +625,7 @@ export function FlowNodeCard({
           strokeWidth={borderWidth}
           strokeDasharray={dashArray}
           strokeLinecap={borderStyle === 'dotted' ? 'round' : undefined}
+          vectorEffect='non-scaling-stroke'
           pointerEvents='all'
         />
 

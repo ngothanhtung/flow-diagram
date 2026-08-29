@@ -852,7 +852,7 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     width: Math.max(limits.minWidth, Math.min(limits.maxWidth, node.width ?? limits.defaultWidth)),
     height: Math.max(limits.minHeight, Math.min(limits.maxHeight, node.height ?? limits.defaultHeight)),
     rotation: node.rotation ?? 0,
-    borderWidth: Math.max(0, Math.min(8, node.borderWidth ?? 1.5)),
+    borderWidth: Math.max(0, Math.min(8, node.borderWidth ?? 2)),
     borderStyle: node.borderStyle ?? 'solid',
     opacity: Math.max(0.2, Math.min(1, node.opacity ?? 1)),
     // Unset = the gradient, so every saved diagram renders exactly as it
