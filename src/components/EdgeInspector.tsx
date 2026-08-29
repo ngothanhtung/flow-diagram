@@ -33,7 +33,7 @@ import { useState } from 'react';
 import { EdgeEffectLayer, PATTERN_DASHES, TRAVEL_VELOCITY } from './edge-effect-layer';
 import { EdgeMarkerSymbol } from './edge-marker';
 import { IconPicker } from './IconPicker';
-import { ColorField, HuePresetRow } from './inspector/fields';
+import { ColorField, HuePresetRow, NumberField, SectionLabel } from './inspector/fields';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -44,6 +44,7 @@ import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeRouting, FlowEdge, NodeFont, NodeIcon, TableColumn } from '@/lib/flowchart-types';
 import { EDGE_LABEL_FONT_SIZE_MAX, EDGE_LABEL_FONT_SIZE_MIN, EDGE_LABEL_PRESETS, EDGE_LABEL_SHAPES, findEdgeLabelPreset, resolveEdgeLabelStyle, type EdgeLabelPreset } from '@/lib/edge-label-style';
+import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 interface EdgeInspectorProps {
@@ -312,6 +313,18 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
             </div>
           </div>
         )}
+
+        <SectionLabel>Sort order</SectionLabel>
+        <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>0 = automatic (right before the later-ordered block it connects). Lines and blocks share one number line — set a number to give this line its own point in the replay sequence, anywhere relative to the blocks.</p>
+        <div className='mt-1.5 grid grid-cols-2 gap-2'>
+          <NumberField label='Order' value={edge.sortOrder ?? 0} min={0} step={1} onChange={(sortOrder) => onUpdate(edge.id, { sortOrder: sortOrder > 0 ? sortOrder : undefined })} />
+          <NumberField label='Duration (ms)' value={edge.duration ?? EDGE_DRAW_DURATION_MS} min={0} step={50} onChange={(duration) => onUpdate(edge.id, { duration })} />
+        </div>
+        <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>How long this line takes to draw before the replay advances. Defaults to {EDGE_DRAW_DURATION_MS}ms.</p>
+        <div className='mt-1.5'>
+          <NumberField label='Delay after (ms)' value={edge.delay ?? DEFAULT_STEP_DELAY_MS} min={0} step={100} onChange={(delay) => onUpdate(edge.id, { delay })} />
+        </div>
+        <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>Extra pause after the line finishes drawing, before the replay moves on. Defaults to {DEFAULT_STEP_DELAY_MS}ms.</p>
 
         <MarkerPicker label='Line start' value={edge.startMarker ?? 'none'} onChange={(startMarker) => onUpdate(edge.id, { startMarker })} />
         <MarkerPicker label='Line end' value={edge.endMarker ?? 'none'} onChange={(endMarker) => onUpdate(edge.id, { endMarker })} />

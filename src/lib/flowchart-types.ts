@@ -142,6 +142,12 @@ export interface FlowNode {
   rotation?: number;
   /** Execution sequence. Undefined/0 falls back to document order. */
   sortOrder?: number;
+  /** How long (ms) this block stays highlighted as the active replay step
+   *  before advancing. Unset = `NODE_FADE_DURATION_MS`. */
+  duration?: number;
+  /** Extra pause (ms) after `duration` finishes, before the run cursor
+   *  advances. Unset = `DEFAULT_STEP_DELAY_MS`. */
+  delay?: number;
   shape?: NodeShape;
   /** Foreground colour for text, icon, outline, ports and outgoing edges. */
   color?: NodePaint;
@@ -310,6 +316,16 @@ export interface FlowEdge {
    *  other connector. */
   fromColumn?: string;
   toColumn?: string;
+  /** Explicit position in the replay timeline, sharing the same number
+   *  line as a node's `sortOrder` — see `computeRunTimeline`. Unset =
+   *  auto: the later of its two connected nodes' resolved order. */
+  sortOrder?: number;
+  /** How long (ms) this line takes to draw as the active replay step
+   *  before advancing. Unset = `EDGE_DRAW_DURATION_MS`. */
+  duration?: number;
+  /** Extra pause (ms) after `duration` finishes, before the run cursor
+   *  advances. Unset = `DEFAULT_STEP_DELAY_MS`. */
+  delay?: number;
   color?: `#${string}`;
   /** Foreground colour for the animated objects travelling the line.
    *  Undefined falls back to `color` so the objects inherit the line

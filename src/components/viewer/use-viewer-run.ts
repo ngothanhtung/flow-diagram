@@ -1,12 +1,9 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { computeOrderedGroups, type RunPhase } from '@/lib/editor-store';
-import { EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
+import { computeRunTimeline, resolveStepDelay, resolveStepDuration } from '@/lib/editor-store';
 import type { ExecutionState, FlowDocumentJSON, RunMode } from '@/lib/flowchart-types';
 
-const NODE_PHASE_MS = NODE_FADE_DURATION_MS;
-const LINE_PHASE_MS = EDGE_DRAW_DURATION_MS;
 const REPEAT_PAUSE_MS = 800;
 
 export interface ViewerRun {
@@ -24,29 +21,27 @@ export interface ViewerRun {
 /**
  * Local playback state machine for the read-only viewer. Mirrors the
  * editor's sequential / concurrent / manual timing (editor-store cursor
- * + page auto-timer) but keeps everything in component state — mode and
- * repeat are initialised from the saved diagram settings and never
+ * + page auto-timer, and the same unified block/line timeline — see
+ * `computeRunTimeline`) but keeps everything in component state — mode
+ * and repeat are initialised from the saved diagram settings and never
  * written back, since the viewer must not mutate the document.
  */
 export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
   const [runMode, setRunModeState] = useState<RunMode>(document.settings?.runMode ?? 'sequential');
   const [repeatEnabled, setRepeatEnabled] = useState(document.settings?.repeatEnabled ?? false);
   const [seed, setSeed] = useState(0);
-  const [cursor, setCursor] = useState<{ step: number; phase: RunPhase }>({ step: 0, phase: 'node' });
+  const [step, setStep] = useState(0);
 
-  const orderedGroups = useMemo(() => computeOrderedGroups(document.nodes), [document.nodes]);
-  const groupIndexByNodeId = useMemo(() => new Map(orderedGroups.flatMap((group, groupIndex) => group.map((node) => [node.id, groupIndex] as const))), [orderedGroups]);
+  const timeline = useMemo(() => computeRunTimeline(document.nodes, document.edges), [document.nodes, document.edges]);
+  const nodeStepIndex = useMemo(() => new Map(timeline.flatMap((entry, index) => (entry.type === 'node' ? entry.nodes.map((node) => [node.id, index] as const) : []))), [timeline]);
+  const edgeStepIndex = useMemo(() => new Map(timeline.flatMap((entry, index) => (entry.type === 'edge' ? entry.edges.map((edge) => [edge.id, index] as const) : []))), [timeline]);
 
   const nodeExecutionStates = useMemo(() => {
     // Both fall back to 'normal' for every node — concurrent because
     // everything really is running, static because nothing is.
     if (runMode === 'concurrent' || runMode === 'static') return undefined;
-    return Object.fromEntries(
-      orderedGroups.flatMap((group, groupIndex) =>
-        group.map((node) => [node.id, groupIndex < cursor.step || (groupIndex === cursor.step && cursor.phase === 'line') ? 'completed' : groupIndex === cursor.step && cursor.phase === 'node' ? 'active' : 'pending']),
-      ),
-    ) as Record<string, ExecutionState>;
-  }, [orderedGroups, runMode, cursor]);
+    return Object.fromEntries([...nodeStepIndex].map(([id, index]) => [id, index < step ? 'completed' : index === step ? 'active' : 'pending'])) as Record<string, ExecutionState>;
+  }, [nodeStepIndex, runMode, step]);
 
   const edgeExecutionStates = useMemo(() => {
     if (runMode === 'concurrent') {
@@ -59,16 +54,12 @@ export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
     }
     return Object.fromEntries(
       document.edges.map((edge) => {
-        const fromOrder = groupIndexByNodeId.get(edge.from) ?? Number.MAX_SAFE_INTEGER;
-        const toOrder = groupIndexByNodeId.get(edge.to) ?? Number.MAX_SAFE_INTEGER;
-        const edgeStep = Math.max(fromOrder, toOrder);
-        const reachedCurrentNode = cursor.step > 0 && edgeStep === cursor.step;
-        const drawingNextLine = cursor.phase === 'line' && edgeStep === cursor.step + 1;
-        const state: ExecutionState = edgeStep < cursor.step ? 'completed' : reachedCurrentNode || drawingNextLine ? 'active' : 'pending';
+        const index = edgeStepIndex.get(edge.id) ?? -1;
+        const state: ExecutionState = index < 0 ? 'pending' : index < step ? 'completed' : index === step ? 'active' : 'pending';
         return [edge.id, state];
       }),
     ) as Record<string, ExecutionState>;
-  }, [document.edges, groupIndexByNodeId, runMode, cursor]);
+  }, [document.edges, edgeStepIndex, runMode, step]);
 
   const runningEdgeIds = useMemo(
     () => (runMode === 'concurrent' ? null : runMode === 'static' ? [] : document.edges.filter((edge) => edgeExecutionStates?.[edge.id] === 'active').map((edge) => edge.id)),
@@ -76,7 +67,7 @@ export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
   );
 
   const replay = useCallback(() => {
-    setCursor({ step: 0, phase: 'node' });
+    setStep(0);
     setSeed((value) => value + 1);
   }, []);
 
@@ -92,26 +83,22 @@ export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
     setRepeatEnabled((value) => !value);
   }, []);
 
-  // Same node/line cursor advance as editor-store.advanceStep.
+  // Same timeline cursor advance as editor-store.advanceStep.
   const advanceStep = useCallback(() => {
-    setCursor(({ step, phase }) => {
-      const reachedLastNode = step >= orderedGroups.length - 1 && phase === 'node';
-      if (reachedLastNode) return { step: 0, phase: 'node' };
-      if (phase === 'node') return { step, phase: 'line' };
-      return { step: step + 1, phase: 'node' };
-    });
-  }, [orderedGroups.length]);
+    setStep((current) => (current >= timeline.length - 1 ? 0 : current + 1));
+  }, [timeline.length]);
 
   // Sequential auto-timer, identical to the editor page's effect.
   useEffect(() => {
-    if (runMode !== 'sequential' || orderedGroups.length === 0) return;
+    if (runMode !== 'sequential' || timeline.length === 0) return;
 
-    const reachedLastNode = cursor.step >= orderedGroups.length - 1 && cursor.phase === 'node';
-    if (reachedLastNode && !repeatEnabled) return;
+    const reachedLast = step >= timeline.length - 1;
+    if (reachedLast && !repeatEnabled) return;
 
-    const timer = window.setTimeout(advanceStep, reachedLastNode ? NODE_PHASE_MS + REPEAT_PAUSE_MS : cursor.phase === 'line' ? LINE_PHASE_MS : NODE_PHASE_MS);
+    const wait = resolveStepDuration(timeline[step]) + resolveStepDelay(timeline[step]) + (reachedLast ? REPEAT_PAUSE_MS : 0);
+    const timer = window.setTimeout(advanceStep, wait);
     return () => window.clearTimeout(timer);
-  }, [advanceStep, cursor, orderedGroups.length, repeatEnabled, runMode, seed]);
+  }, [advanceStep, repeatEnabled, runMode, seed, step, timeline]);
 
   return {
     runMode,

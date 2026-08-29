@@ -3,13 +3,12 @@
 import { create } from 'zustand';
 import { convertDocumentColorTheme } from './color-theme-convert';
 import { loadEditorSession } from './editor-session';
+import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from './execution-timing';
 import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
 import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, tableCardHeight } from './node-style';
 import { childrenOf, descendantIds, findDropTarget, groupGeometryFor } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
-
-export type RunPhase = 'node' | 'line';
 
 /** Snapshot of the Firestore template currently on the canvas — feeds
  *  the info panel and the Reset action. */
@@ -33,15 +32,14 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
 
 /**
  * Nodes sharing the same resolved sort order animate together as one
- * step — order only expresses "before/after", not "one by one".
- * Shared by the store (advanceStep) and the view (execution states).
+ * step — order only expresses "before/after", not "one by one". Frames,
+ * text objects and free icon/logo objects are scenery, not steps: a
+ * container, a caption or a placed graphic flashing as its own step
+ * would interrupt the run of the blocks it describes, so they're
+ * filtered out and stay fully visible for the whole replay.
  */
 export function computeOrderedGroups(nodes: FlowNode[]): FlowNode[][] {
   const resolved = nodes
-    // Frames, text objects and free icon/logo objects are scenery, not
-    // steps: a container, a caption or a placed graphic flashing as its
-    // own step would interrupt the run of the blocks it describes. They
-    // stay fully visible for the whole replay.
     .filter((node) => node.type !== 'group' && node.type !== 'text' && node.type !== 'icon')
     .map((node, index) => ({
       node,
@@ -63,6 +61,83 @@ export function computeOrderedGroups(nodes: FlowNode[]): FlowNode[][] {
   return groups;
 }
 
+export type RunTimelineStep = { type: 'node'; nodes: FlowNode[] } | { type: 'edge'; edges: FlowEdge[] };
+
+/**
+ * Blocks and lines share one replay sequence. A line's own `sortOrder`
+ * (unset = auto: the later of its two connected nodes' order) sits on
+ * the same number line as a node's, so the two interleave freely instead
+ * of a line being pinned to one of the gaps between node steps.
+ *
+ * Entries sharing the same order *and* kind collapse into one step, same
+ * "animate together" rule `computeOrderedGroups` uses for nodes. A node
+ * and a line tied at the same order stay two separate, consecutive
+ * steps — the line finishes drawing, then the block lights up — which
+ * reproduces the historic node/line phase alternation for the common
+ * case (an untouched line's auto order equals its target node's).
+ */
+export function computeRunTimeline(nodes: FlowNode[], edges: FlowEdge[]): RunTimelineStep[] {
+  const eligibleNodes = nodes.filter((node) => node.type !== 'group' && node.type !== 'text' && node.type !== 'icon');
+  const nodeOrder = new Map<string, number>();
+  eligibleNodes.forEach((node, index) => nodeOrder.set(node.id, node.sortOrder && node.sortOrder > 0 ? node.sortOrder : index + 1));
+
+  interface Entry {
+    kind: 'node' | 'edge';
+    order: number;
+    index: number;
+    node?: FlowNode;
+    edge?: FlowEdge;
+  }
+  const entries: Entry[] = [
+    ...eligibleNodes.map((node, index): Entry => ({ kind: 'node', order: nodeOrder.get(node.id)!, index, node })),
+    ...edges.map((edge, index): Entry => {
+      // A line whose endpoint isn't a step-bearing node (e.g. attached to
+      // a frame) has nothing to derive an order from — it runs last.
+      const order = edge.sortOrder && edge.sortOrder > 0 ? edge.sortOrder : Math.max(nodeOrder.get(edge.from) ?? Number.POSITIVE_INFINITY, nodeOrder.get(edge.to) ?? Number.POSITIVE_INFINITY);
+      return { kind: 'edge', order, index, edge };
+    }),
+  ];
+  // Edge before node at an equal order — see the doc comment above.
+  entries.sort((a, b) => a.order - b.order || (a.kind === b.kind ? a.index - b.index : a.kind === 'edge' ? -1 : 1));
+
+  const steps: RunTimelineStep[] = [];
+  let last: { order: number; kind: 'node' | 'edge' } | null = null;
+  for (const entry of entries) {
+    const current = steps.at(-1);
+    if (last && last.order === entry.order && last.kind === entry.kind && current) {
+      if (entry.kind === 'node' && current.type === 'node') current.nodes.push(entry.node!);
+      else if (entry.kind === 'edge' && current.type === 'edge') current.edges.push(entry.edge!);
+    } else {
+      steps.push(entry.kind === 'node' ? { type: 'node', nodes: [entry.node!] } : { type: 'edge', edges: [entry.edge!] });
+      last = { order: entry.order, kind: entry.kind };
+    }
+  }
+  return steps;
+}
+
+/**
+ * How long a timeline step stays the active one before the run cursor
+ * advances — the max of its members' own `duration` (unset falls back
+ * to the same defaults the CSS transition itself uses in
+ * `FlowNodeCard`/`AnimatedEdge`, so the timer and the visible
+ * fade/draw-in never fall out of sync). Max, not first, so a step with
+ * several blocks/lines sharing one order never cuts off whichever one
+ * takes longest.
+ */
+export function resolveStepDuration(step: RunTimelineStep | undefined): number {
+  if (!step) return NODE_FADE_DURATION_MS;
+  return step.type === 'node' ? Math.max(...step.nodes.map((node) => node.duration ?? NODE_FADE_DURATION_MS)) : Math.max(...step.edges.map((edge) => edge.duration ?? EDGE_DRAW_DURATION_MS));
+}
+
+/**
+ * Extra pause after a step's `resolveStepDuration` animation finishes,
+ * before the run cursor advances — same max-of-the-group rule.
+ */
+export function resolveStepDelay(step: RunTimelineStep | undefined): number {
+  if (!step) return DEFAULT_STEP_DELAY_MS;
+  return step.type === 'node' ? Math.max(...step.nodes.map((node) => node.delay ?? DEFAULT_STEP_DELAY_MS)) : Math.max(...step.edges.map((edge) => edge.delay ?? DEFAULT_STEP_DELAY_MS));
+}
+
 interface EditorState {
   /** Guard so session hydration happens exactly once per page load. */
   hydrated: boolean;
@@ -78,10 +153,9 @@ interface EditorState {
   savedSignature: string | null;
   savingDiagram: boolean;
 
-  // Playback cursor
+  // Playback cursor — an index into `computeRunTimeline(doc)`.
   seed: number;
   runStep: number;
-  runPhase: RunPhase;
 
   // Selection + interaction
   selectedNodeId: string | null;
@@ -155,7 +229,6 @@ export const useEditorStore = create<EditorState>((set, get) => ({
 
   seed: 0,
   runStep: 0,
-  runPhase: 'node',
 
   selectedNodeId: null,
   selectedEdgeId: null,
@@ -229,7 +302,6 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     set((state) => ({
       seed: state.seed + 1,
       runStep: 0,
-      runPhase: 'node',
       selectedNodeId: null,
       selectedEdgeId: null,
       draggingNodeId: null,
@@ -244,23 +316,15 @@ export const useEditorStore = create<EditorState>((set, get) => ({
 
   convertColorTheme: () => set((state) => ({ doc: convertDocumentColorTheme(state.doc) })),
 
-  replay: () => set((state) => ({ runStep: 0, runPhase: 'node', seed: state.seed + 1 })),
+  replay: () => set((state) => ({ runStep: 0, seed: state.seed + 1 })),
 
   // Shared by the sequential auto-timer and the manual mode's "Next"
-  // button — both just move the same node/line cursor forward by one tick.
+  // button — both just move the same timeline cursor forward by one step.
   advanceStep: () => {
-    const { runStep, runPhase, doc } = get();
-    const groupCount = computeOrderedGroups(doc.nodes).length;
-    const reachedLastNode = runStep >= groupCount - 1 && runPhase === 'node';
-    if (reachedLastNode) {
-      set({ runStep: 0, runPhase: 'node' });
-      return;
-    }
-    if (runPhase === 'node') {
-      set({ runPhase: 'line' });
-    } else {
-      set((state) => ({ runStep: state.runStep + 1, runPhase: 'node' }));
-    }
+    const { runStep, doc } = get();
+    const stepCount = computeRunTimeline(doc.nodes, doc.edges).length;
+    const reachedLast = runStep >= stepCount - 1;
+    set(reachedLast ? { runStep: 0 } : (state) => ({ runStep: state.runStep + 1 }));
   },
 
   selectNode: (id) => set({ selectedNodeId: id, selectedEdgeId: id ? null : get().selectedEdgeId }),

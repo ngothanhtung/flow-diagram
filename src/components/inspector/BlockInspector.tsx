@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { DEFAULT_STEP_DELAY_MS, NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { fitBlockNodeSize } from '@/lib/fit-to-content';
 import { SHAPES, resolveNodeStyle, type NodeShape } from '@/lib/node-style';
 import {
@@ -87,10 +88,16 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         onFitToContent={node.table ? undefined : () => onUpdate(node.id, fitBlockNodeSize({ ...node, title: title.value, description: description.value }))}
       />
       <SectionLabel>Sort order</SectionLabel>
-      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>0 = automatic (document order). Nodes sharing a number animate together as one replay step.</p>
-      <div className='mt-1.5'>
+      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>0 = automatic (document order). Nodes sharing a number animate together as one replay step. Lines share this same number line — see a line&apos;s own Order field.</p>
+      <div className='mt-1.5 grid grid-cols-2 gap-2'>
         <NumberField label='Order' value={node.sortOrder ?? 0} min={0} step={1} onChange={(sortOrder) => onUpdate(node.id, { sortOrder: sortOrder > 0 ? sortOrder : undefined })} />
+        <NumberField label='Duration (ms)' value={node.duration ?? NODE_FADE_DURATION_MS} min={0} step={50} onChange={(duration) => onUpdate(node.id, { duration })} />
       </div>
+      <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>How long this block stays highlighted before the replay advances. Defaults to {NODE_FADE_DURATION_MS}ms.</p>
+      <div className='mt-1.5'>
+        <NumberField label='Delay after (ms)' value={node.delay ?? DEFAULT_STEP_DELAY_MS} min={0} step={100} onChange={(delay) => onUpdate(node.id, { delay })} />
+      </div>
+      <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>Extra pause after the block lights up, before the replay moves on. Defaults to {DEFAULT_STEP_DELAY_MS}ms.</p>
 
       <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
 

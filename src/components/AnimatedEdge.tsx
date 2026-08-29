@@ -61,7 +61,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   const lowPower = executionState === 'pending';
   const isDrawing = executionState === 'active';
   const showEffect = executionState === 'normal' || executionState === 'active';
-  const drawDuration = `${EDGE_DRAW_DURATION_MS}ms`;
+  const drawDuration = `${edge.duration ?? EDGE_DRAW_DURATION_MS}ms`;
   const drawStyle = isDrawing
     ? ({
         '--edge-draw-duration': drawDuration,

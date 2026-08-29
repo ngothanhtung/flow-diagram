@@ -398,7 +398,7 @@ export function FlowNodeCard({
           {
             color: foreground,
             '--node-opacity': opacity,
-            '--node-fade-duration': `${NODE_FADE_DURATION_MS}ms`,
+            '--node-fade-duration': `${node.duration ?? NODE_FADE_DURATION_MS}ms`,
           } as React.CSSProperties
         }
         onPointerDown={handlePointerDown}
