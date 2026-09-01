@@ -204,8 +204,13 @@ export interface FlowNode {
  * positioned and resized independently of any block. There is no
  * `'logo'` draw tool any more — `'icon'` covers the same need with the
  * user choosing icon vs. logo at pick time rather than a separate tool.
+ *
+ * `'lane'` is not a node kind of its own: it draws a `group` frame
+ * pre-styled as a swimlane (numbered header, dashed hairline, barely
+ * there wash), because a lane *is* a container — only its look and its
+ * "add the next one" affordance differ.
  */
-export type DrawTool = NodeShape | 'table' | 'group' | 'text' | 'icon';
+export type DrawTool = NodeShape | 'table' | 'group' | 'text' | 'icon' | 'lane';
 
 /** A reusable semantic block from the left-hand model palette. */
 export interface NodePreset {

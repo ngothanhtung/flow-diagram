@@ -515,6 +515,12 @@ export function FlowNodeCard({
                     fontFamily: NODE_FONT_FAMILIES[fontFamily],
                     fontSize: Math.min(fontSize, 14),
                     fontWeight: NODE_FONT_WEIGHTS[fontWeight],
+                    // Bands label from the left, columns tend to centre, so
+                    // the frame's own alignment decides. Read off the raw
+                    // field, not the resolved one: unset resolves to
+                    // 'center' everywhere else, and every frame saved
+                    // before this header was left-aligned.
+                    justifyContent: node.textAlign === 'center' ? 'center' : node.textAlign === 'right' ? 'flex-end' : 'flex-start',
                   }}
                 >
                   {node.title}

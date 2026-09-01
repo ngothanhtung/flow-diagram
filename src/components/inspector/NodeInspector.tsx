@@ -19,6 +19,7 @@ interface NodeInspectorProps {
   parentTitle?: string | null;
   onUngroup?: (id: string) => void;
   onFitGroup?: (id: string) => void;
+  onAddLane?: (id: string) => void;
 }
 
 /**
@@ -30,7 +31,7 @@ interface NodeInspectorProps {
  * rather than one panel full of guards. Anything two of them share lives
  * in `./fields`.
  */
-export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCount = 0, parentTitle = null, onUngroup, onFitGroup }: NodeInspectorProps) {
+export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCount = 0, parentTitle = null, onUngroup, onFitGroup, onAddLane }: NodeInspectorProps) {
   if (!node) {
     return (
       <Card size='sm' className='gap-0 bg-card py-3 pr-3 pl-1 ring-0'>
@@ -43,7 +44,7 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
   const shared = { node, onUpdate, onDuplicate, onDelete, parentTitle };
 
   if (node.type === 'group') {
-    return <GroupInspector {...shared} memberCount={memberCount} onUngroup={onUngroup} onFitGroup={onFitGroup} />;
+    return <GroupInspector {...shared} memberCount={memberCount} onUngroup={onUngroup} onFitGroup={onFitGroup} onAddLane={onAddLane} />;
   }
   if (node.type === 'text') {
     return <TextInspector {...shared} />;

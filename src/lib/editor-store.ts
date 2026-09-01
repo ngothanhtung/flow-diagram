@@ -103,6 +103,18 @@ function selectedNodesOf(nodes: FlowNode[], selectedIds: string[]): FlowNode[] {
   return nodes.filter((node) => wanted.has(node.id));
 }
 
+/** Leading number of a `01 / Sources`-style lane title, if it has one. */
+const LANE_NUMBER = /^\s*(\d+)\s*\/\s*(.*)$/;
+
+/** Breathing room between tiled lanes. */
+const LANE_GAP = 24;
+
+/** One past the highest lane number already on the canvas. */
+function nextLaneNumber(nodes: FlowNode[]): number {
+  const used = nodes.filter((node) => node.type === 'group').map((node) => Number(LANE_NUMBER.exec(node.title ?? '')?.[1] ?? 0));
+  return Math.max(0, ...used) + 1;
+}
+
 interface EditorState {
   /** Guard so session hydration happens exactly once per page load. */
   hydrated: boolean;
@@ -183,6 +195,9 @@ interface EditorState {
   ungroupNode: (id: string) => void;
   /** Resize a frame so it wraps its members with even padding. */
   fitGroupToContents: (id: string) => void;
+  /** Clone a frame alongside itself as the next lane — same size, one
+   *  gap over, title number incremented. Returns the new node's id. */
+  addLaneAfter: (id: string) => string | null;
   onNodeUpdate: (id: string, patch: Partial<Omit<FlowNode, 'id'>>) => void;
   onNodeDuplicate: (id: string) => string | null;
   onNodeDelete: (id: string) => void;
@@ -426,6 +441,32 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       };
     }),
 
+  addLaneAfter: (id) => {
+    const { doc } = get();
+    const source = doc.nodes.find((node) => node.id === id);
+    if (!source || source.type !== 'group') return null;
+    const { width, height } = resolveNodeStyle(source);
+    // Which way the lane runs is read off its own shape: a tall frame is
+    // a column and tiles to the right, a wide one is a band and tiles
+    // downwards. That matches how both reference layouts are built, and
+    // needs no extra field on the node.
+    const isColumn = height >= width;
+    const gap = LANE_GAP;
+    const position = isColumn ? { x: source.position.x + width + gap, y: source.position.y } : { x: source.position.x, y: source.position.y + height + gap };
+    const laneId = `n${doc.nodes.length + 1}-${Date.now().toString(36)}`;
+    const numbered = LANE_NUMBER.exec(source.title ?? '');
+    const title = numbered ? `${String(nextLaneNumber(doc.nodes)).padStart(2, '0')} / ${numbered[2]}` : (source.title ?? '');
+    set({
+      doc: {
+        ...doc,
+        // Only the frame is cloned, never its members: the next lane is
+        // an empty slot to fill, not a copy of this one's contents.
+        nodes: [...doc.nodes, { ...source, id: laneId, title, position, parentId: source.parentId }],
+      },
+    });
+    return laneId;
+  },
+
   onNodeUpdate: (id, patch) =>
     set((state) => ({
       doc: {
@@ -663,6 +704,47 @@ export const useEditorStore = create<EditorState>((set, get) => ({
               borderStyle: 'dashed',
               shadow: 'none',
               // Plain fill by default; the sheen gradient is opt-in.
+              fill: 'flat',
+            },
+          ],
+        },
+      });
+      return id;
+    }
+    // A swimlane is a group frame wearing the look every layered
+    // architecture / pipeline diagram uses for its bands and columns: a
+    // numbered header, a dashed hairline and a wash barely there. The
+    // greys are deliberately neutral so a lane reads the same on a light
+    // or dark canvas, the way diagram content has to.
+    if (tool === 'lane') {
+      const laneWidth = Math.max(GROUP_MIN_SIZE, Math.min(GROUP_MAX_WIDTH, width));
+      const laneHeight = Math.max(GROUP_MIN_SIZE, Math.min(GROUP_MAX_HEIGHT, height));
+      set({
+        doc: {
+          ...doc,
+          nodes: [
+            ...doc.nodes,
+            {
+              id,
+              type: 'group',
+              title: `${String(nextLaneNumber(doc.nodes)).padStart(2, '0')} / Lane`,
+              position,
+              shape: 'rounded',
+              width: laneWidth,
+              height: laneHeight,
+              fontSize: 12,
+              fontWeight: 'medium',
+              // Drawn tall it's a column and centres its label; drawn wide
+              // it's a band and labels from the left — the two shapes the
+              // reference layouts actually use.
+              textAlign: laneHeight >= laneWidth ? 'center' : 'left',
+              icon: null,
+              color: '#94a3b8',
+              backgroundColor: '#8080801f',
+              borderColor: '#94a3b8',
+              borderWidth: 1.5,
+              borderStyle: 'dashed',
+              shadow: 'none',
               fill: 'flat',
             },
           ],
