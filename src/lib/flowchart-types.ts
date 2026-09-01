@@ -11,7 +11,7 @@
  * and rendering — see `DEFAULT_BY_TYPE` in `node-style.ts`. Nothing
  * creates one any more.
  */
-export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group' | 'text' | 'icon';
+export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group' | 'text' | 'icon' | 'legend';
 
 /** Visual shape of the node's body. Optional — defaults are derived
  *  from `type` so older documents render unchanged. */
@@ -129,6 +129,29 @@ export interface TableSpec {
   schema?: string;
 }
 
+/** One row of a legend: a sample plus what it means. */
+export interface LegendItem {
+  id: string;
+  /** `swatch` is a filled chip (a node colour role); `line` is a short
+   *  rule with an arrow head (an edge style). */
+  kind: 'swatch' | 'line';
+  label: string;
+  color: `#${string}`;
+  /** Line samples only — matches the edge style it stands for. */
+  dashed?: boolean;
+}
+
+/**
+ * Turns a node into the legend every reference diagram carries: rows of
+ * sample + label naming the colour and line vocabulary the diagram uses.
+ * It paints no card of its own, like text and free icon objects.
+ */
+export interface LegendSpec {
+  items: LegendItem[];
+  /** Laid out in a row (the usual footer legend) or stacked. */
+  orientation?: 'horizontal' | 'vertical';
+}
+
 export interface FlowNode {
   id: string;
   type: NodeType;
@@ -182,6 +205,8 @@ export interface FlowNode {
   effectIntensity?: number;
   /** Present on database tables — renders the card as an ERD table. */
   table?: TableSpec;
+  /** Present on `type: 'legend'` nodes — the rows it lists. */
+  legend?: LegendSpec;
   /**
    * Id of the group frame (`type: 'group'`) this node sits inside.
    * Membership is stored on the child, never as a list on the parent, so
@@ -210,7 +235,7 @@ export interface FlowNode {
  * there wash), because a lane *is* a container — only its look and its
  * "add the next one" affordance differ.
  */
-export type DrawTool = NodeShape | 'table' | 'group' | 'text' | 'icon' | 'lane';
+export type DrawTool = NodeShape | 'table' | 'group' | 'text' | 'icon' | 'lane' | 'legend';
 
 /** A reusable semantic block from the left-hand model palette. */
 export interface NodePreset {

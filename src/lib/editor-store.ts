@@ -32,6 +32,7 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
   group: { color: '#c4b5fd', backgroundColor: '#1e1b4b' },
   text: { color: '#e4e4e7', backgroundColor: '#00000000' },
   icon: { color: '#e4e4e7', backgroundColor: '#00000000' },
+  legend: { color: '#94a3b8', backgroundColor: '#00000000' },
 };
 
 /**
@@ -41,11 +42,11 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
  */
 export function computeOrderedGroups(nodes: FlowNode[]): FlowNode[][] {
   const resolved = nodes
-    // Frames, text objects and free icon/logo objects are scenery, not
-    // steps: a container, a caption or a placed graphic flashing as its
-    // own step would interrupt the run of the blocks it describes. They
-    // stay fully visible for the whole replay.
-    .filter((node) => node.type !== 'group' && node.type !== 'text' && node.type !== 'icon')
+    // Frames, text, free icon/logo objects and the legend are scenery,
+    // not steps: a container, a caption, a placed graphic or the key
+    // itself flashing as its own step would interrupt the run of the
+    // blocks it describes. They stay fully visible for the whole replay.
+    .filter((node) => node.type !== 'group' && node.type !== 'text' && node.type !== 'icon' && node.type !== 'legend')
     .map((node, index) => ({
       node,
       order: node.sortOrder && node.sortOrder > 0 ? node.sortOrder : index + 1,
@@ -784,6 +785,40 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       });
       return id;
     }
+    // The legend: the key naming the diagram's colour and line
+    // vocabulary. Starts with one row of each kind so the shape of the
+    // thing is obvious before the inspector is opened.
+    if (tool === 'legend') {
+      const limits = nodeSizeLimits({ type: 'legend' });
+      set({
+        doc: {
+          ...doc,
+          nodes: [
+            ...doc.nodes,
+            {
+              id,
+              type: 'legend',
+              title: '',
+              position,
+              width: Math.max(limits.minWidth, Math.min(limits.maxWidth, width)),
+              height: Math.max(limits.minHeight, Math.min(limits.maxHeight, height)),
+              icon: null,
+              color: DEFAULT_NODE_PAINT.legend.color,
+              fontSize: 12,
+              legend: {
+                orientation: 'horizontal',
+                items: [
+                  { id: `l${Date.now().toString(36)}a`, kind: 'line', label: 'primary flow', color: '#0e9070' },
+                  { id: `l${Date.now().toString(36)}b`, kind: 'line', label: 'async', color: '#6b4fd0', dashed: true },
+                  { id: `l${Date.now().toString(36)}c`, kind: 'swatch', label: 'data store', color: '#c084fc' },
+                ],
+              },
+            },
+          ],
+        },
+      });
+      return id;
+    }
     // Free icon/logo: a single glyph or brand mark on the canvas, with no
     // card around it — the graphic counterpart to the text tool above.
     // No title (nothing renders it) and no default icon: the inspector
@@ -979,6 +1014,8 @@ function defaultTitleFor(type: NodeType): string {
       return 'Text';
     case 'icon':
       return 'Icon';
+    case 'legend':
+      return 'Legend';
   }
 }
 

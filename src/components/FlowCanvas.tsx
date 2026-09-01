@@ -1176,9 +1176,9 @@ function ReconnectPreview({ fixed, pointer, color, scale }: { fixed: { x: number
  */
 function DrawPreview({ shape, start, current }: { shape: DrawTool; start: { x: number; y: number }; current: { x: number; y: number } }) {
   // The table, group and lane tools preview as the rounded box they
-  // create; the text and icon tools preview as a plain rectangle,
-  // matching the box the content will be laid out / sized within.
-  const previewShape: NodeShape = shape === 'table' || shape === 'group' || shape === 'lane' ? 'rounded' : shape === 'text' || shape === 'icon' ? 'rectangle' : shape;
+  // create; the text, icon and legend tools preview as a plain
+  // rectangle, matching the box their content is laid out within.
+  const previewShape: NodeShape = shape === 'table' || shape === 'group' || shape === 'lane' ? 'rounded' : shape === 'text' || shape === 'icon' || shape === 'legend' ? 'rectangle' : shape;
   const minX = Math.min(start.x, current.x);
   const minY = Math.min(start.y, current.y);
   const maxX = Math.max(start.x, current.x);

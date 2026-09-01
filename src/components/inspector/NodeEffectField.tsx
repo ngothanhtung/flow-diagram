@@ -59,12 +59,12 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
   const preview = draft ?? effect;
   const knobs = resolveEffectKnobs(node.effectSpeed, node.effectIntensity);
   // Every decoration effect traces the node's outline — a halo, a ring, a
-  // dashed border. Free text and free icon/logo objects have no outline
-  // to trace (neither paints a body at all), so decoration would draw
-  // exactly the border they're defined not to have. Only motion — the
-  // content itself moving — makes sense on them.
-  const isText = node.type === 'text' || node.type === 'icon';
-  const motionSubject = node.type === 'text' ? 'text' : node.type === 'icon' ? 'icon' : 'block';
+  // dashed border. Free text, free icon/logo objects and the legend have
+  // no outline to trace (none of them paints a body), so decoration would
+  // draw exactly the border they're defined not to have. Only motion —
+  // the content itself moving — makes sense on them.
+  const isText = node.type === 'text' || node.type === 'icon' || node.type === 'legend';
+  const motionSubject = node.type === 'text' ? 'text' : node.type === 'icon' ? 'icon' : node.type === 'legend' ? 'legend' : 'block';
 
   return (
     <>

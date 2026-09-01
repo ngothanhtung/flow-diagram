@@ -5,6 +5,7 @@ import type { FlowNode } from '@/lib/flowchart-types';
 import { BlockInspector } from './BlockInspector';
 import { GroupInspector } from './GroupInspector';
 import { IconInspector } from './IconInspector';
+import { LegendInspector } from './LegendInspector';
 import { TextInspector } from './TextInspector';
 
 interface NodeInspectorProps {
@@ -25,9 +26,10 @@ interface NodeInspectorProps {
 /**
  * Picks the inspector panel for the selected node.
  *
- * The four kinds paint genuinely different things — a block has a body,
+ * The five kinds paint genuinely different things — a block has a body,
  * a text object has only words, a frame has a wash and a title bar, a
- * free icon/logo object has only a glyph — so each gets its own panel
+ * free icon/logo object has only a glyph, a legend has rows of samples —
+ * so each gets its own panel
  * rather than one panel full of guards. Anything two of them share lives
  * in `./fields`.
  */
@@ -51,6 +53,9 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
   }
   if (node.type === 'icon') {
     return <IconInspector {...shared} />;
+  }
+  if (node.type === 'legend') {
+    return <LegendInspector {...shared} />;
   }
   return <BlockInspector {...shared} />;
 }
