@@ -32,6 +32,7 @@ import {
   MessageCircle,
   Type,
   Sticker,
+  List,
   type LucideIcon,
 } from 'lucide-react';
 import {
@@ -130,6 +131,19 @@ export const TEXT_PADDING = 6;
 // handle / click target — the glyph itself renders at `iconSize` (see
 // `resolveNodeStyle`), same as the dedicated `logo` block.
 
+// --- Legend ---------------------------------------------------------------
+// The footer legend every reference diagram carries: a wide, short strip
+// laid out in a row, or a narrow stack when turned vertical.
+
+export const LEGEND_MIN_WIDTH = 120;
+export const LEGEND_MIN_HEIGHT = 28;
+export const LEGEND_DEFAULT_WIDTH = 560;
+export const LEGEND_DEFAULT_HEIGHT = 44;
+export const LEGEND_MAX_WIDTH = 1600;
+export const LEGEND_MAX_HEIGHT = 900;
+/** Inset between the rows and the box, matching the text object's. */
+export const LEGEND_PADDING = 6;
+
 export const ICON_OBJECT_MIN_SIZE = 24;
 export const ICON_OBJECT_DEFAULT_WIDTH = 96;
 export const ICON_OBJECT_DEFAULT_HEIGHT = 96;
@@ -156,6 +170,9 @@ export function nodeSizeLimits(node: Pick<FlowNode, 'type' | 'table'>): NodeSize
   }
   if (node.type === 'text') {
     return { minWidth: TEXT_MIN_SIZE, minHeight: TEXT_MIN_SIZE, maxWidth: TEXT_MAX_WIDTH, maxHeight: TEXT_MAX_HEIGHT, defaultWidth: TEXT_DEFAULT_WIDTH, defaultHeight: TEXT_DEFAULT_HEIGHT };
+  }
+  if (node.type === 'legend') {
+    return { minWidth: LEGEND_MIN_WIDTH, minHeight: LEGEND_MIN_HEIGHT, maxWidth: LEGEND_MAX_WIDTH, maxHeight: LEGEND_MAX_HEIGHT, defaultWidth: LEGEND_DEFAULT_WIDTH, defaultHeight: LEGEND_DEFAULT_HEIGHT };
   }
   if (node.type === 'icon') {
     return { minWidth: ICON_OBJECT_MIN_SIZE, minHeight: ICON_OBJECT_MIN_SIZE, maxWidth: ICON_OBJECT_MAX_SIZE, maxHeight: ICON_OBJECT_MAX_SIZE, defaultWidth: ICON_OBJECT_DEFAULT_WIDTH, defaultHeight: ICON_OBJECT_DEFAULT_HEIGHT };
@@ -777,6 +794,7 @@ const DEFAULT_BY_TYPE: Record<NodeType, { shape: NodeShape; color: NodeColor; ic
   // Shape is unused (an icon object paints no silhouette) beyond giving
   // the selection ring / active halo a rectangle to trace, same as text.
   icon: { shape: 'rectangle', color: 'sky', icon: null },
+  legend: { shape: 'rectangle', color: 'sky', icon: null },
 };
 
 // Type-level icons that the picker can fall back to when a node carries
@@ -791,6 +809,7 @@ const TYPE_DEFAULT_ICON: Record<NodeType, LucideIcon> = {
   group: Boxes,
   text: Type,
   icon: Sticker,
+  legend: List,
 };
 
 // --- Resolver -------------------------------------------------------------

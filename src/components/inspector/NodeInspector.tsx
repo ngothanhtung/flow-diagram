@@ -5,6 +5,7 @@ import type { FlowNode } from '@/lib/flowchart-types';
 import { BlockInspector } from './BlockInspector';
 import { GroupInspector } from './GroupInspector';
 import { IconInspector } from './IconInspector';
+import { LegendInspector } from './LegendInspector';
 import { TextInspector } from './TextInspector';
 
 interface NodeInspectorProps {
@@ -19,18 +20,20 @@ interface NodeInspectorProps {
   parentTitle?: string | null;
   onUngroup?: (id: string) => void;
   onFitGroup?: (id: string) => void;
+  onAddLane?: (id: string) => void;
 }
 
 /**
  * Picks the inspector panel for the selected node.
  *
- * The four kinds paint genuinely different things — a block has a body,
+ * The five kinds paint genuinely different things — a block has a body,
  * a text object has only words, a frame has a wash and a title bar, a
- * free icon/logo object has only a glyph — so each gets its own panel
+ * free icon/logo object has only a glyph, a legend has rows of samples —
+ * so each gets its own panel
  * rather than one panel full of guards. Anything two of them share lives
  * in `./fields`.
  */
-export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCount = 0, parentTitle = null, onUngroup, onFitGroup }: NodeInspectorProps) {
+export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCount = 0, parentTitle = null, onUngroup, onFitGroup, onAddLane }: NodeInspectorProps) {
   if (!node) {
     return (
       <Card size='sm' className='gap-0 bg-card py-3 pr-3 pl-1 ring-0'>
@@ -43,13 +46,16 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
   const shared = { node, onUpdate, onDuplicate, onDelete, parentTitle };
 
   if (node.type === 'group') {
-    return <GroupInspector {...shared} memberCount={memberCount} onUngroup={onUngroup} onFitGroup={onFitGroup} />;
+    return <GroupInspector {...shared} memberCount={memberCount} onUngroup={onUngroup} onFitGroup={onFitGroup} onAddLane={onAddLane} />;
   }
   if (node.type === 'text') {
     return <TextInspector {...shared} />;
   }
   if (node.type === 'icon') {
     return <IconInspector {...shared} />;
+  }
+  if (node.type === 'legend') {
+    return <LegendInspector {...shared} />;
   }
   return <BlockInspector {...shared} />;
 }

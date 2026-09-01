@@ -22,7 +22,7 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
   const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
   const infoOpen = useEditorStore((state) => state.infoOpen);
-  const { selectNode, selectEdge, toggleInfo, onNodeUpdate, onNodeDuplicate, onNodeDelete, onEdgeUpdate, onEdgeDelete, ungroupNode, fitGroupToContents } = useEditorStore();
+  const { selectNode, selectEdge, toggleInfo, onNodeUpdate, onNodeDuplicate, onNodeDelete, onEdgeUpdate, onEdgeDelete, ungroupNode, fitGroupToContents, addLaneAfter } = useEditorStore();
 
   const selectedNode = document.nodes.find((node) => node.id === selectedNodeId) ?? null;
   const selectedEdge = document.edges.find((edge) => edge.id === selectedEdgeId) ?? null;
@@ -56,6 +56,10 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
                 parentTitle={selectedNode.parentId ? (document.nodes.find((node) => node.id === selectedNode.parentId)?.title ?? null) : null}
                 onUngroup={ungroupNode}
                 onFitGroup={fitGroupToContents}
+                onAddLane={(id) => {
+                  const laneId = addLaneAfter(id);
+                  if (laneId) selectNode(laneId);
+                }}
                 onUpdate={onNodeUpdate}
                 onDuplicate={(id) => {
                   const duplicateId = onNodeDuplicate(id);

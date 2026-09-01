@@ -1,6 +1,6 @@
 'use client';
 
-import { Shrink, Ungroup } from 'lucide-react';
+import { Columns3, Shrink, Ungroup } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -28,6 +28,7 @@ interface GroupInspectorProps extends InspectorPanelProps {
   memberCount: number;
   onUngroup?: (id: string) => void;
   onFitGroup?: (id: string) => void;
+  onAddLane?: (id: string) => void;
 }
 
 /**
@@ -39,7 +40,7 @@ interface GroupInspectorProps extends InspectorPanelProps {
  * adds instead is the membership block: how many blocks the frame holds,
  * and the two operations that only make sense on a container.
  */
-export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null, memberCount, onUngroup, onFitGroup }: GroupInspectorProps) {
+export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null, memberCount, onUngroup, onFitGroup, onAddLane }: GroupInspectorProps) {
   const style = resolveNodeStyle(node);
   const title = useNodeFieldDraft(node, 'title', onUpdate);
 
@@ -71,6 +72,12 @@ export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         </Button>
         <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onUngroup?.(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
           <Ungroup size={11} /> Ungroup
+        </Button>
+        {/* Tiles an empty copy of this frame alongside itself — to the
+            right when it's a column, below when it's a band. Building a
+            row of lanes is the one thing you always do more than once. */}
+        <Button variant='outline' size='sm' onClick={() => onAddLane?.(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
+          <Columns3 size={11} /> Add lane
         </Button>
       </div>
 

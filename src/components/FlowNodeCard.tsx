@@ -6,7 +6,7 @@ import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES, NODE_FONT_WEIGHTS } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
 import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
-import { GROUP_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
+import { GROUP_HEADER_HEIGHT, LEGEND_PADDING, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from './node-effect-layer';
 import { TableCardBody } from './TableCardBody';
 import type { ViewTransform } from '@/lib/view-transform';
@@ -21,6 +21,10 @@ interface FlowNodeCardProps {
   executionState?: ExecutionState;
   isActive?: boolean;
   isSelected?: boolean;
+  /** Corner resize handles. Off while several nodes are selected: with a
+   *  multi-selection there is no single box those handles would resize,
+   *  and they'd sit on top of the neighbours' rings. */
+  showResizeHandles?: boolean;
   /** Viewer mode: no dragging, no ports — the node renders inert. */
   readOnly?: boolean;
   /**
@@ -34,7 +38,9 @@ interface FlowNodeCardProps {
    * (in screen pixels) into the chart's logical coordinate system.
    */
   viewTransform: ViewTransform;
-  onSelect: (id: string) => void;
+  /** `additive` is a shift-click: add to / remove from the selection
+   *  instead of replacing it. */
+  onSelect: (id: string, additive: boolean) => void;
   onMove: (id: string, position: { x: number; y: number }) => void;
   onResize: (
     id: string,
@@ -153,6 +159,7 @@ export function FlowNodeCard({
   executionState = 'normal',
   isActive = false,
   isSelected = false,
+  showResizeHandles = true,
   readOnly = false,
   linkTargetFromId = null,
   viewTransform,
@@ -169,6 +176,9 @@ export function FlowNodeCard({
   const isGroup = node.type === 'group';
   const isText = node.type === 'text';
   const isIconObject = node.type === 'icon';
+  const isLegend = node.type === 'legend';
+  const legendItems = node.legend?.items ?? [];
+  const legendOrientation = node.legend?.orientation ?? 'horizontal';
   const hasGroupTitle = isGroup && !!node.title?.trim();
   const Icon = useResolvedIcon(style.icon);
   const logoSlug = style.icon?.startsWith('logo:') ? style.icon.slice('logo:'.length) : null;
@@ -377,7 +387,7 @@ export function FlowNodeCard({
     }
     // If the user didn't actually move, treat it as a click to select.
     if (!drag.moved) {
-      onSelect(node.id);
+      onSelect(node.id, e.shiftKey);
     }
     handlersRef.current.onDragEnd(node.id);
     dragRef.current = null;
@@ -508,6 +518,12 @@ export function FlowNodeCard({
                     fontFamily: NODE_FONT_FAMILIES[fontFamily],
                     fontSize: Math.min(fontSize, 14),
                     fontWeight: NODE_FONT_WEIGHTS[fontWeight],
+                    // Bands label from the left, columns tend to centre, so
+                    // the frame's own alignment decides. Read off the raw
+                    // field, not the resolved one: unset resolves to
+                    // 'center' everywhere else, and every frame saved
+                    // before this header was left-aligned.
+                    justifyContent: node.textAlign === 'center' ? 'center' : node.textAlign === 'right' ? 'flex-end' : 'flex-start',
                   }}
                 >
                   {node.title}
@@ -602,6 +618,84 @@ export function FlowNodeCard({
                   )
                 ) : (
                   <span className='text-[11px] opacity-50'>Choose an icon</span>
+                )}
+              </div>
+            </foreignObject>
+          </>
+        ) : isLegend ? (
+          /* The legend: rows of sample + label naming the diagram's own
+             colour and line vocabulary. Paints no card, on the same
+             invisible-hit-rect pattern as text and free icons — in the
+             reference diagrams it sits bare under the drawing, not in a
+             box of its own. */
+          <>
+            <rect x={-width / 2} y={-height / 2} width={width} height={height} fill='transparent' pointerEvents='all' />
+            {!isSelected && (
+              <rect
+                x={-width / 2}
+                y={-height / 2}
+                width={width}
+                height={height}
+                fill='none'
+                stroke={foreground}
+                strokeOpacity={0.35}
+                strokeWidth={1}
+                strokeDasharray='3 3'
+                vectorEffect='non-scaling-stroke'
+                pointerEvents='none'
+                className='opacity-0 transition-opacity duration-150 group-hover/node:opacity-100'
+              />
+            )}
+            <foreignObject x={-width / 2} y={-height / 2} width={width} height={height} pointerEvents='none'>
+              <div
+                className='flex h-full w-full select-none flex-wrap content-center items-center'
+                style={{
+                  color: foreground,
+                  fontFamily: NODE_FONT_FAMILIES[fontFamily],
+                  fontSize,
+                  fontWeight: NODE_FONT_WEIGHTS[fontWeight],
+                  padding: LEGEND_PADDING,
+                  gap: legendItems.length > 0 ? `${Math.round(fontSize * 0.6)}px ${Math.round(fontSize * 1.4)}px` : 0,
+                  flexDirection: legendOrientation === 'vertical' ? 'column' : 'row',
+                  alignItems: legendOrientation === 'vertical' ? 'flex-start' : 'center',
+                  justifyContent: node.textAlign === 'center' ? 'center' : node.textAlign === 'right' ? 'flex-end' : 'flex-start',
+                }}
+              >
+                {legendItems.length === 0 ? (
+                  <span className='opacity-50'>Add legend rows in the inspector</span>
+                ) : (
+                  legendItems.map((item) => (
+                    <span key={item.id} className='flex shrink-0 items-center' style={{ gap: Math.round(fontSize * 0.55) }}>
+                      {item.kind === 'swatch' ? (
+                        <span
+                          style={{
+                            width: fontSize * 1.35,
+                            height: fontSize * 0.95,
+                            borderRadius: 4,
+                            background: `${item.color}2e`,
+                            border: `1.5px solid ${item.color}`,
+                          }}
+                        />
+                      ) : (
+                        // A rule plus an arrow head — the same reading as
+                        // the line it stands for, dash and all.
+                        <svg width={fontSize * 2.4} height={fontSize} viewBox={`0 0 ${fontSize * 2.4} ${fontSize}`} aria-hidden='true' style={{ overflow: 'visible' }}>
+                          <line
+                            x1={0}
+                            y1={fontSize / 2}
+                            x2={fontSize * 1.75}
+                            y2={fontSize / 2}
+                            stroke={item.color}
+                            strokeWidth={2}
+                            strokeLinecap='round'
+                            strokeDasharray={item.dashed ? '4 3' : undefined}
+                          />
+                          <path d={`M ${fontSize * 1.6} ${fontSize / 2 - 3.4} L ${fontSize * 2.3} ${fontSize / 2} L ${fontSize * 1.6} ${fontSize / 2 + 3.4} Z`} fill={item.color} />
+                        </svg>
+                      )}
+                      <span className='whitespace-nowrap'>{item.label}</span>
+                    </span>
+                  ))
                 )}
               </div>
             </foreignObject>
@@ -755,8 +849,10 @@ export function FlowNodeCard({
         )}
 
         {/* Four corner resize handles. Their radius is corrected
-          for canvas zoom so the hit target stays usable on large charts. */}
+          for canvas zoom so the hit target stays usable on large charts.
+          A multi-selection shows rings only — see `showResizeHandles`. */}
         {isSelected &&
+          showResizeHandles &&
           RESIZE_HANDLES.map((handle) => (
             <circle
               key={handle.direction}
@@ -780,14 +876,15 @@ export function FlowNodeCard({
         {/* Every node exposes a bidirectional port on all four sides.
           The selected source and target sides are stored on the edge.
           Ports are editor-only — hidden entirely in read-only mode.
-          Text objects and free icon/logo objects have none: a caption or
-          a placed graphic is scenery rather than a step in the flow (the
-          replay skips both too). Frames get the same four ports as any
-          other block, so a diagram can point an edge at the group as a
-          whole. */}
+          Text, free icon/logo objects and the legend have none: a
+          caption, a placed graphic or the key is scenery rather than a
+          step in the flow (the replay skips them too). Frames get the
+          same four ports as any other block, so a diagram can point an
+          edge at the group as a whole. */}
         {!readOnly &&
           !isText &&
           !isIconObject &&
+          !isLegend &&
           CONNECTION_SIDES.map((side) => {
             const anchor = portAnchors[side];
             const canReceive = !!linkTargetFromId && linkTargetFromId !== node.id;
@@ -846,13 +943,13 @@ export function FlowNodeCard({
           })}
 
         {/* Painted last so a halo, ring or sheen sits above the body and
-            its contents. Text and free icon objects have no silhouette to
-            decorate — every decoration effect traces `outline.d`, which
-            for these is just its bounding rectangle, so rendering one
-            here would draw exactly the border they're defined not to
-            have. Motion (the `<g style={motionStyle}>` wrapper above)
-            still applies. */}
-        {!isText && !isIconObject && (
+            its contents. Text, free icon objects and the legend have no
+            silhouette to decorate — every decoration effect traces
+            `outline.d`, which for these is just its bounding rectangle,
+            so rendering one here would draw exactly the border they're
+            defined not to have. Motion (the `<g style={motionStyle}>`
+            wrapper above) still applies. */}
+        {!isText && !isIconObject && !isLegend && (
           <NodeEffectLayer
             d={outline.d}
             transform={outline.transform}
