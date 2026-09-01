@@ -2,9 +2,10 @@
 
 import { create } from 'zustand';
 import { convertDocumentColorTheme } from './color-theme-convert';
+import { clearStyleOverrides, edgeStylesOf, resolveEdgeStyle } from './edge-style';
 import { loadEditorSession } from './editor-session';
 import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from './execution-timing';
-import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
+import type { ConnectionSide, DiagramSettings, DrawTool, EdgeStyleClass, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
 import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
 import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, nodeBounds } from './node-tree';
@@ -286,6 +287,14 @@ interface EditorState {
   onEdgeDelete: (id: string) => void;
   onEdgeUpdate: (id: string, patch: Partial<Omit<FlowEdge, 'id' | 'from' | 'to'>>) => void;
   onEdgeReconnect: (id: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
+
+  // The document's named line vocabulary (`settings.edgeStyles`).
+  /** Add a class, or replace the one with the same id. */
+  upsertEdgeStyle: (style: EdgeStyleClass) => void;
+  /** Delete a class, baking its look onto the lines that used it. */
+  removeEdgeStyle: (styleId: string) => void;
+  /** Point a line at a class, or detach it (`null`). */
+  assignEdgeStyle: (edgeId: string, styleId: string | null) => void;
 
   // Layout actions over the current multi-selection. Each is a no-op
   // below its minimum selection size, so the UI can stay mounted.
@@ -980,6 +989,51 @@ export const useEditorStore = create<EditorState>((set, get) => ({
         edges: state.doc.edges.map((edge) => (edge.id !== id ? edge : endpoint === 'from' ? { ...edge, from: nodeId, fromSide: side } : { ...edge, to: nodeId, toSide: side })),
       },
     })),
+
+  upsertEdgeStyle: (style) =>
+    set((state) => {
+      const styles = edgeStylesOf(state.doc.settings);
+      const existing = styles.findIndex((item) => item.id === style.id);
+      const next = existing === -1 ? [...styles, style] : styles.map((item, index) => (index === existing ? style : item));
+      return { doc: { ...state.doc, settings: { ...state.doc.settings, edgeStyles: next } } };
+    }),
+
+  // Deleting a class must not silently restyle the diagram: every line
+  // that followed it keeps exactly the look it had, now as its own
+  // fields. Only the *shared* vocabulary entry goes away.
+  removeEdgeStyle: (styleId) =>
+    set((state) => {
+      const styles = edgeStylesOf(state.doc.settings);
+      const style = styles.find((item) => item.id === styleId);
+      if (!style) return {};
+      return {
+        doc: {
+          ...state.doc,
+          edges: state.doc.edges.map((edge) => (edge.styleRef !== styleId ? edge : { ...resolveEdgeStyle(edge, styles), styleRef: undefined })),
+          settings: { ...state.doc.settings, edgeStyles: styles.filter((item) => item.id !== styleId) },
+        },
+      };
+    }),
+
+  // Assigning clears the line's own values for the fields the class
+  // defines — otherwise picking a class would appear to do nothing on a
+  // line that already carries an explicit colour. Detaching does the
+  // reverse and bakes the class's look on, so the line doesn't jump.
+  assignEdgeStyle: (edgeId, styleId) =>
+    set((state) => {
+      const styles = edgeStylesOf(state.doc.settings);
+      return {
+        doc: {
+          ...state.doc,
+          edges: state.doc.edges.map((edge) => {
+            if (edge.id !== edgeId) return edge;
+            if (styleId === null) return { ...resolveEdgeStyle(edge, styles), styleRef: undefined };
+            const style = styles.find((item) => item.id === styleId);
+            return { ...edge, ...clearStyleOverrides(style ?? null), styleRef: styleId };
+          }),
+        },
+      };
+    }),
 
   // Align against the selection's own bounding box rather than a fixed
   // canvas edge — the reference is whatever the user actually picked, so

@@ -110,10 +110,15 @@ export default function GuidePage() {
             <Code>{`{
   "nodes": FlowNode[],
   "edges": FlowEdge[],
-  "settings"?: { "runMode"?: "sequential" | "concurrent" | "manual" | "static", "repeatEnabled"?: boolean }
+  "settings"?: {
+    "runMode"?: "sequential" | "concurrent" | "manual" | "static",
+    "repeatEnabled"?: boolean,
+    "edgeStyles"?: EdgeStyleClass[]
+  }
 }`}</Code>
             <p>
-              <Pill>settings</Pill> is optional and only affects the play bar (the replay animation) — omit it unless you specifically want to control the default run mode.
+              <Pill>settings.runMode</Pill> and <Pill>settings.repeatEnabled</Pill> only affect the play bar (the replay animation) — omit them unless you specifically want to control the default run
+              mode. <Pill>settings.edgeStyles</Pill> is the document&apos;s named line vocabulary — see §3.
             </p>
           </Section>
 
@@ -207,8 +212,28 @@ export default function GuidePage() {
                 ['effectDensity', '0.5 – 2', 'Mark density for the pattern effects (flow, heartbeat, rail…): higher = more, smaller marks at the same apparent speed. Travelling-object effects ignore it — use effectCount there.'],
                 ['glowIntensity', '0 – 3', 'Strength of the neon halo around the moving objects. Omit for no halo at all — the editor puts 1 on newly drawn lines, so a glow is always a deliberate choice.'],
                 ['glowColor', '#hex · auto', 'Halo colour. Omit for white (the classic neon look); \u2018auto\u2019 follows the travelling object\u2019s own colour.'],
+                ['lineStyle', 'solid · dashed · dotted', 'Stroke pattern of the line itself, independent of the animated effect. Unlike an effect\u2019s moving marks it stays put whether or not the diagram is playing, which is what lets \u201cdashed = async\u201d be a rule the reader can rely on.'],
+                ['styleRef', 'string', 'Id of a class in settings.edgeStyles. The class supplies every field it defines that the edge doesn\u2019t set itself — see below.'],
               ]}
             />
+
+            <h3 className='mt-6 mb-2 text-sm font-semibold text-foreground'>Named line styles</h3>
+            <p>
+              What makes a large diagram readable is not the individual lines but how <em>few kinds</em> of line it has. Declare each kind once in <Pill>settings.edgeStyles</Pill> and point lines at
+              it with <Pill>styleRef</Pill> instead of repeating colour, width and markers on every edge — then one edit restyles them all, and a legend node can list exactly the kinds in use.
+            </p>
+            <Code>{`"settings": { "edgeStyles": [
+  { "id": "primary", "name": "Primary flow", "color": "#38bdf8", "width": 2.5, "endMarker": "arrow", "effect": "flow" },
+  { "id": "async", "name": "Async / event", "color": "#a78bfa", "lineStyle": "dashed", "endMarker": "arrow", "effect": "dots" }
+]}
+
+// then, on each edge:
+{ "id": "e1", "from": "api", "to": "queue", "styleRef": "async" }`}</Code>
+            <p>
+              A class may carry any of <Pill>color</Pill>, <Pill>width</Pill>, <Pill>lineStyle</Pill>, <Pill>startMarker</Pill>, <Pill>endMarker</Pill>, <Pill>routing</Pill>, <Pill>direction</Pill>,{' '}
+              <Pill>effect</Pill> and the effect knobs, plus a required <Pill>id</Pill> and <Pill>name</Pill>. An edge&apos;s own field always wins over its class, so a single line can still deviate
+              — but if you find yourself overriding the same field on many lines, that&apos;s a missing class, not a set of exceptions. Aim for four or five kinds in total.
+            </p>
           </Section>
 
           <Section id='execution' title='4. Execution order (the play bar)'>

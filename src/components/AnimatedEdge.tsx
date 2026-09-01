@@ -3,6 +3,7 @@
 import type { EdgeMarker, ExecutionState, FlowEdge, FlowNode } from '@/lib/flowchart-types';
 import { EDGE_DRAW_DURATION_MS } from '@/lib/execution-timing';
 import { edgeLabelBox, resolveEdgeLabelStyle } from '@/lib/edge-label-style';
+import { edgeLineCap, edgeLineDash } from '@/lib/edge-style';
 import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
 import { buildEdgeGeometry, pointAlongEdgeGeometry } from './edge-geometry';
 import { EdgeEffectLayer } from './edge-effect-layer';
@@ -60,6 +61,11 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   const endMarker = edge.endMarker ?? 'none';
   const lowPower = executionState === 'pending';
   const isDrawing = executionState === 'active';
+  // The draw-in animation owns `stroke-dasharray` for its duration (see
+  // `.edge-power-draw` in globals.css), so the stroke pattern only goes
+  // on once the line has finished drawing itself in.
+  const lineDash = isDrawing ? undefined : edgeLineDash(edge.lineStyle, lineWidth);
+  const lineCap = edgeLineCap(edge.lineStyle);
   const showEffect = executionState === 'normal' || executionState === 'active';
   const drawDuration = `${edge.duration ?? EDGE_DRAW_DURATION_MS}ms`;
   const drawStyle = isDrawing
@@ -121,7 +127,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
           style={drawStyle}
         />
       )}
-      <path d={d} pathLength={isDrawing ? 1 : undefined} stroke='currentColor' strokeWidth={selected ? lineWidth + 2 : lineWidth} strokeOpacity={selected ? 0.82 : 0.52} fill='none' className={isDrawing ? 'edge-power-draw' : undefined} style={drawStyle} />
+      <path d={d} pathLength={isDrawing ? 1 : undefined} stroke='currentColor' strokeWidth={selected ? lineWidth + 2 : lineWidth} strokeOpacity={selected ? 0.82 : 0.52} strokeDasharray={lineDash} strokeLinecap={lineCap} fill='none' className={isDrawing ? 'edge-power-draw' : undefined} style={drawStyle} />
 
       <g opacity={showEffect ? 1 : 0} className={isDrawing ? 'edge-after-draw' : undefined} style={effectColor ? { ...drawStyle, color: effectColor } : drawStyle}>
         <EdgeEffectLayer

@@ -4,6 +4,7 @@ import { Grid2x2, Info, Magnet, Maximize2, Minus, Plus } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPoint, NodeShape } from '@/lib/flowchart-types';
 import { screenToData } from '@/lib/coords';
+import { resolveDocumentStyles } from '@/lib/edge-style';
 import { resolveNodeStyle, SHAPES } from '@/lib/node-style';
 import { nodeBounds, sortByTreeDepth } from '@/lib/node-tree';
 import type { ViewTransform } from '@/lib/view-transform';
@@ -143,7 +144,7 @@ function nearestPathT(geometry: ReturnType<typeof buildEdgeGeometry>, point: { x
 }
 
 export function FlowCanvas({
-  document,
+  document: rawDocument,
   activeNodeIds = [],
   runningEdgeIds = null,
   nodeExecutionStates,
@@ -174,6 +175,13 @@ export function FlowCanvas({
   onToggleInfo,
   readOnly = false,
 }: FlowCanvasProps) {
+  // Named line styles are merged in once, here, rather than at each of
+  // the dozen places downstream that read an edge's colour, width,
+  // markers or routing. Everything below this line — paint, geometry,
+  // hit-testing, the viewer — therefore sees a plain `FlowEdge` and
+  // needs no knowledge of the palette at all. Writes are unaffected:
+  // they go out by id and land on the store's raw document.
+  const document = useMemo(() => resolveDocumentStyles(rawDocument), [rawDocument]);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const svgRef = useRef<SVGSVGElement | null>(null);
   const [containerSize, setContainerSize] = useState<{
