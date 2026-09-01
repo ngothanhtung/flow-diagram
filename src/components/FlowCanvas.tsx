@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPoint, NodeShape } from '@/lib/flowchart-types';
 import { screenToData } from '@/lib/coords';
 import { resolveNodeStyle, SHAPES } from '@/lib/node-style';
-import { sortByTreeDepth } from '@/lib/node-tree';
+import { nodeBounds, sortByTreeDepth } from '@/lib/node-tree';
 import type { ViewTransform } from '@/lib/view-transform';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -59,7 +59,13 @@ interface FlowCanvasProps {
    *  hidden rather than paused. */
   effectsPaused?: boolean;
   selectedNodeId: string | null;
+  /** Every selected node — one entry in the ordinary case. */
+  selectedNodeIds?: string[];
   onSelectNode: (id: string | null) => void;
+  /** Shift-click on a node. */
+  onToggleNodeSelection?: (id: string) => void;
+  /** Shift-drag on empty canvas finished: everything the box touched. */
+  onSelectNodes?: (ids: string[]) => void;
   onNodeMove: (id: string, position: { x: number; y: number }) => void;
   onNodeResize: (
     id: string,
@@ -144,7 +150,10 @@ export function FlowCanvas({
   edgeExecutionStates,
   effectsPaused = false,
   selectedNodeId,
+  selectedNodeIds,
   onSelectNode,
+  onToggleNodeSelection,
+  onSelectNodes,
   onNodeMove,
   onNodeResize,
   onNodeDragStart,
@@ -192,6 +201,16 @@ export function FlowCanvas({
   // negative dimensions.
   const [drawStart, setDrawStart] = useState<{ x: number; y: number } | null>(null);
   const [drawCurrent, setDrawCurrent] = useState<{ x: number; y: number } | null>(null);
+
+  // Shift-drag on empty canvas draws a selection box instead of panning.
+  // Shift is what keeps it out of the way of the plain-drag pan the
+  // canvas has always had.
+  const [marquee, setMarquee] = useState<{ start: { x: number; y: number }; current: { x: number; y: number } } | null>(null);
+  // Mirrored so the release handler can read the final box without doing
+  // the selection inside a state updater — updaters run during render,
+  // and updating the store from there trips React's setState-in-render
+  // guard.
+  const marqueeRef = useRef<{ start: { x: number; y: number }; current: { x: number; y: number } } | null>(null);
 
   // Track the container's pixel size so the viewBox can be set to
   // match. Without this, a container smaller than the data extent
@@ -309,6 +328,17 @@ export function FlowCanvas({
         return;
       }
 
+      // Shift-drag selects instead of panning. Checked after the draw
+      // tool so an armed shape still wins — that gesture is explicit.
+      if (event.shiftKey && isEmptyCanvas && !readOnly && onSelectNodes && svgRef.current) {
+        event.preventDefault();
+        event.stopPropagation();
+        const point = screenToData(svgRef.current, event.clientX, event.clientY, viewTransform);
+        marqueeRef.current = { start: point, current: point };
+        setMarquee(marqueeRef.current);
+        return;
+      }
+
       event.preventDefault();
       event.stopPropagation();
       suppressCanvasClickRef.current = false;
@@ -327,7 +357,7 @@ export function FlowCanvas({
         /* Pointer capture is unavailable in some test environments. */
       }
     },
-    [activeShape, bendDrag, link, reconnect, snapPoint, viewTransform],
+    [activeShape, bendDrag, link, onSelectNodes, readOnly, reconnect, snapPoint, viewTransform],
   );
 
   const handlePanPointerMove = useCallback((event: React.PointerEvent<SVGSVGElement>) => {
@@ -498,6 +528,9 @@ export function FlowCanvas({
   }, [containerSize, document.edges, nodesById, performanceMode, selectedEdgeId, viewTransform, visibleNodeIds]);
   const active = useMemo(() => new Set(activeNodeIds), [activeNodeIds]);
   const runningEdges = useMemo(() => (runningEdgeIds === null ? null : new Set(runningEdgeIds)), [runningEdgeIds]);
+  // Falls back to the single selection so the read-only viewer and any
+  // caller that never passes the array still highlight the right node.
+  const selectedSet = useMemo(() => new Set(selectedNodeIds ?? (selectedNodeId ? [selectedNodeId] : [])), [selectedNodeId, selectedNodeIds]);
   const selectedEdgeRoute = useMemo(() => {
     const edge = document.edges.find((item) => item.id === selectedEdgeId);
     if (!edge) return null;
@@ -651,6 +684,53 @@ export function FlowCanvas({
     window.addEventListener('pointermove', onMove);
     return () => window.removeEventListener('pointermove', onMove);
   }, [drawStart, snapPoint, viewTransform]);
+
+  // The selection box follows the pointer at the window level too, and
+  // settles on release: every node whose box overlaps the drawn one is
+  // selected. Overlap rather than full containment — a box the user has
+  // to drag *around* whole nodes is fiddly on a zoomed-out canvas.
+  useEffect(() => {
+    if (marquee === null) return;
+    const onMove = (e: PointerEvent) => {
+      if (!svgRef.current || !marqueeRef.current) return;
+      const point = screenToData(svgRef.current, e.clientX, e.clientY, viewTransform);
+      marqueeRef.current = { ...marqueeRef.current, current: point };
+      setMarquee(marqueeRef.current);
+    };
+    const onUp = () => {
+      const box = marqueeRef.current;
+      marqueeRef.current = null;
+      setMarquee(null);
+      if (!box) return;
+      const left = Math.min(box.start.x, box.current.x);
+      const right = Math.max(box.start.x, box.current.x);
+      const top = Math.min(box.start.y, box.current.y);
+      const bottom = Math.max(box.start.y, box.current.y);
+      // A click without a drag clears the selection instead of selecting
+      // the whole canvas from a zero-size box.
+      const dragged = right - left >= 4 || bottom - top >= 4;
+      const hits = dragged
+        ? document.nodes
+            .filter((node) => {
+              const bounds = nodeBounds(node);
+              return bounds.right >= left && bounds.left <= right && bounds.bottom >= top && bounds.top <= bottom;
+            })
+            .map((node) => node.id)
+        : [];
+      onSelectNodes?.(hits);
+      // The pointerup is followed by a click on the SVG background,
+      // which would otherwise clear what was just selected.
+      suppressCanvasClickRef.current = true;
+    };
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
+    return () => {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+    };
+  }, [document, marquee, onSelectNodes, viewTransform]);
 
   // Pointerup anywhere on the window finalises the draw. If the user
   // barely moved we fall back to a default-sized shape so a single
@@ -920,11 +1000,12 @@ export function FlowCanvas({
                 effectsPaused={effectsPaused}
                 isActive={active.has(node.id)}
                 executionState={nodeExecutionStates?.[node.id] ?? 'normal'}
-                isSelected={selectedNodeId === node.id}
+                isSelected={selectedSet.has(node.id)}
+                showResizeHandles={selectedSet.size <= 1}
                 readOnly={readOnly}
                 linkTargetFromId={reconnect?.fixedNodeId ?? link?.fromId ?? linkingFromId}
                 viewTransform={viewTransform}
-                onSelect={onSelectNode}
+                onSelect={(id, additive) => (additive && onToggleNodeSelection ? onToggleNodeSelection(id) : onSelectNode(id))}
                 onMove={handleNodeMove}
                 onResize={handleNodeResize}
                 onDragStart={onNodeDragStart}
@@ -1012,6 +1093,21 @@ export function FlowCanvas({
             scaled to the drag rectangle, with a cyan dashed stroke
             and a translucent fill — Figma's draw affordance. */}
           {activeShape && drawStart && drawCurrent && <DrawPreview shape={activeShape} start={drawStart} current={drawCurrent} />}
+
+          {marquee && (
+            <rect
+              x={Math.min(marquee.start.x, marquee.current.x)}
+              y={Math.min(marquee.start.y, marquee.current.y)}
+              width={Math.abs(marquee.current.x - marquee.start.x)}
+              height={Math.abs(marquee.current.y - marquee.start.y)}
+              fill='rgba(56, 189, 248, 0.10)'
+              stroke='#38bdf8'
+              strokeWidth={1}
+              strokeDasharray='4 3'
+              vectorEffect='non-scaling-stroke'
+              pointerEvents='none'
+            />
+          )}
         </g>
       </svg>
     </div>

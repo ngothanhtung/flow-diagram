@@ -5,11 +5,14 @@ import { convertDocumentColorTheme } from './color-theme-convert';
 import { loadEditorSession } from './editor-session';
 import type { ConnectionSide, DiagramSettings, DrawTool, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
-import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, tableCardHeight } from './node-style';
-import { childrenOf, descendantIds, findDropTarget, groupGeometryFor } from './node-tree';
+import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
+import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, nodeBounds } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
 
 export type RunPhase = 'node' | 'line';
+
+/** Which edge of the selection's bounding box the nodes line up against. */
+export type AlignEdge = 'left' | 'center-x' | 'right' | 'top' | 'center-y' | 'bottom';
 
 /** Snapshot of the Firestore template currently on the canvas — feeds
  *  the info panel and the Reset action. */
@@ -63,6 +66,43 @@ export function computeOrderedGroups(nodes: FlowNode[]): FlowNode[][] {
   return groups;
 }
 
+/**
+ * Moves a batch of nodes to explicit positions, carrying each moved
+ * frame's subtree by the same delta — the rule a drag already follows
+ * (`onNodeMove`), applied to every layout action at once so aligning a
+ * frame never leaves its members behind. A node named in `moves` keeps
+ * its explicit position even if an enclosing frame also moved.
+ */
+function applyNodeMoves(nodes: FlowNode[], moves: Map<string, { x: number; y: number }>): FlowNode[] {
+  if (moves.size === 0) return nodes;
+  const byId = new Map(nodes.map((node) => [node.id, node]));
+  const deltas = new Map<string, { dx: number; dy: number }>();
+  for (const [id, position] of moves) {
+    const node = byId.get(id);
+    if (!node) continue;
+    const dx = position.x - node.position.x;
+    const dy = position.y - node.position.y;
+    if (dx === 0 && dy === 0) continue;
+    deltas.set(id, { dx, dy });
+    if (node.type === 'group') {
+      for (const descendant of descendantIds(nodes, id)) {
+        if (!moves.has(descendant)) deltas.set(descendant, { dx, dy });
+      }
+    }
+  }
+  if (deltas.size === 0) return nodes;
+  return nodes.map((node) => {
+    const delta = deltas.get(node.id);
+    return delta ? { ...node, position: { x: node.position.x + delta.dx, y: node.position.y + delta.dy } } : node;
+  });
+}
+
+/** The selected nodes, in document order. */
+function selectedNodesOf(nodes: FlowNode[], selectedIds: string[]): FlowNode[] {
+  const wanted = new Set(selectedIds);
+  return nodes.filter((node) => wanted.has(node.id));
+}
+
 interface EditorState {
   /** Guard so session hydration happens exactly once per page load. */
   hydrated: boolean;
@@ -84,7 +124,13 @@ interface EditorState {
   runPhase: RunPhase;
 
   // Selection + interaction
+  /** The node the inspector edits — the last one clicked. Always also
+   *  present in `selectedNodeIds` while something is selected. */
   selectedNodeId: string | null;
+  /** Every node in the current selection. One entry is the ordinary case;
+   *  shift-click and marquee build the rest. Layout actions (align,
+   *  distribute, match size) and multi-node drags read this. */
+  selectedNodeIds: string[];
   selectedEdgeId: string | null;
   draggingNodeId: string | null;
   linkingFromId: string | null;
@@ -117,6 +163,11 @@ interface EditorState {
 
   // Selection + interaction
   selectNode: (id: string | null) => void;
+  /** Shift-click: add the node to the selection, or drop it if it's
+   *  already in. The node added last becomes the inspector's subject. */
+  toggleNodeSelection: (id: string) => void;
+  /** Marquee: replace the whole selection at once. */
+  selectNodes: (ids: string[]) => void;
   selectEdge: (id: string | null) => void;
   setDraggingNodeId: (id: string | null) => void;
   setLinkingFromId: (id: string | null) => void;
@@ -141,6 +192,15 @@ interface EditorState {
   onEdgeDelete: (id: string) => void;
   onEdgeUpdate: (id: string, patch: Partial<Omit<FlowEdge, 'id' | 'from' | 'to'>>) => void;
   onEdgeReconnect: (id: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
+
+  // Layout actions over the current multi-selection. Each is a no-op
+  // below its minimum selection size, so the UI can stay mounted.
+  /** Line every selected node up against the selection's own bounding box. */
+  alignSelectedNodes: (edge: AlignEdge) => void;
+  /** Even the *gaps* between selected nodes along one axis (needs 3+). */
+  distributeSelectedNodes: (axis: 'x' | 'y') => void;
+  /** Resize every selected node to match the last-clicked one. */
+  matchSelectedNodeSize: (dimension: 'width' | 'height' | 'both') => void;
 }
 
 export const useEditorStore = create<EditorState>((set, get) => ({
@@ -158,6 +218,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   runPhase: 'node',
 
   selectedNodeId: null,
+  selectedNodeIds: [],
   selectedEdgeId: null,
   draggingNodeId: null,
   linkingFromId: null,
@@ -231,6 +292,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       runStep: 0,
       runPhase: 'node',
       selectedNodeId: null,
+      selectedNodeIds: [],
       selectedEdgeId: null,
       draggingNodeId: null,
       linkingFromId: null,
@@ -263,8 +325,25 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     }
   },
 
-  selectNode: (id) => set({ selectedNodeId: id, selectedEdgeId: id ? null : get().selectedEdgeId }),
-  selectEdge: (id) => set({ selectedEdgeId: id, selectedNodeId: id ? null : get().selectedNodeId }),
+  selectNode: (id) => set({ selectedNodeId: id, selectedNodeIds: id ? [id] : [], selectedEdgeId: id ? null : get().selectedEdgeId }),
+
+  toggleNodeSelection: (id) =>
+    set((state) => {
+      const isSelected = state.selectedNodeIds.includes(id);
+      const nextIds = isSelected ? state.selectedNodeIds.filter((selectedId) => selectedId !== id) : [...state.selectedNodeIds, id];
+      return {
+        selectedNodeIds: nextIds,
+        // The inspector follows the last node still in the selection, so
+        // shift-clicking one off hands the panel back to another member
+        // rather than blanking it.
+        selectedNodeId: nextIds.at(-1) ?? null,
+        selectedEdgeId: nextIds.length > 0 ? null : state.selectedEdgeId,
+      };
+    }),
+
+  selectNodes: (ids) => set((state) => ({ selectedNodeIds: ids, selectedNodeId: ids.at(-1) ?? null, selectedEdgeId: ids.length > 0 ? null : state.selectedEdgeId })),
+
+  selectEdge: (id) => set({ selectedEdgeId: id, selectedNodeId: id ? null : get().selectedNodeId, selectedNodeIds: id ? [] : get().selectedNodeIds }),
   setDraggingNodeId: (id) => set({ draggingNodeId: id }),
   setLinkingFromId: (id) => set({ linkingFromId: id }),
   setActiveShape: (shape) => set({ activeShape: shape }),
@@ -273,20 +352,33 @@ export const useEditorStore = create<EditorState>((set, get) => ({
 
   // Moving a group carries its members: positions stay absolute, so the
   // whole subtree shifts by the same delta and nothing else in the app
-  // has to know the nodes were related.
+  // has to know the nodes were related. Dragging one node of a
+  // multi-selection carries the rest of the selection the same way, so
+  // what moves is what the user can see is selected.
   onNodeMove: (id, position) =>
     set((state) => {
       const moved = state.doc.nodes.find((node) => node.id === id);
       if (!moved) return {};
       const dx = position.x - moved.position.x;
       const dy = position.y - moved.position.y;
-      const followers = moved.type === 'group' && (dx !== 0 || dy !== 0) ? descendantIds(state.doc.nodes, id) : null;
+      const followers = new Set<string>();
+      if (dx !== 0 || dy !== 0) {
+        const roots = state.selectedNodeIds.includes(id) ? state.selectedNodeIds : [id];
+        for (const rootId of roots) {
+          if (rootId !== id) followers.add(rootId);
+          const root = rootId === id ? moved : state.doc.nodes.find((node) => node.id === rootId);
+          if (root?.type === 'group') {
+            for (const descendant of descendantIds(state.doc.nodes, rootId)) followers.add(descendant);
+          }
+        }
+        followers.delete(id);
+      }
       return {
         doc: {
           ...state.doc,
           nodes: state.doc.nodes.map((node) => {
             if (node.id === id) return { ...node, position };
-            if (followers?.has(node.id)) return { ...node, position: { x: node.position.x + dx, y: node.position.y + dy } };
+            if (followers.has(node.id)) return { ...node, position: { x: node.position.x + dx, y: node.position.y + dy } };
             return node;
           }),
         },
@@ -703,6 +795,88 @@ export const useEditorStore = create<EditorState>((set, get) => ({
         edges: state.doc.edges.map((edge) => (edge.id !== id ? edge : endpoint === 'from' ? { ...edge, from: nodeId, fromSide: side } : { ...edge, to: nodeId, toSide: side })),
       },
     })),
+
+  // Align against the selection's own bounding box rather than a fixed
+  // canvas edge — the reference is whatever the user actually picked, so
+  // the outermost nodes stay put and everything else comes to them.
+  alignSelectedNodes: (edge) =>
+    set((state) => {
+      const selected = selectedNodesOf(state.doc.nodes, state.selectedNodeIds);
+      if (selected.length < 2) return {};
+      const frame = boundsOfNodes(selected);
+      if (!frame) return {};
+      const moves = new Map<string, { x: number; y: number }>();
+      for (const node of selected) {
+        const bounds = nodeBounds(node);
+        const halfWidth = (bounds.right - bounds.left) / 2;
+        const halfHeight = (bounds.bottom - bounds.top) / 2;
+        const position = { ...node.position };
+        if (edge === 'left') position.x = frame.left + halfWidth;
+        else if (edge === 'center-x') position.x = (frame.left + frame.right) / 2;
+        else if (edge === 'right') position.x = frame.right - halfWidth;
+        else if (edge === 'top') position.y = frame.top + halfHeight;
+        else if (edge === 'center-y') position.y = (frame.top + frame.bottom) / 2;
+        else position.y = frame.bottom - halfHeight;
+        moves.set(node.id, position);
+      }
+      return { doc: { ...state.doc, nodes: applyNodeMoves(state.doc.nodes, moves) } };
+    }),
+
+  // Even *gaps*, not even centres: with mixed node sizes, equal centre
+  // spacing leaves visibly uneven whitespace, which is the thing the
+  // user is actually trying to fix.
+  distributeSelectedNodes: (axis) =>
+    set((state) => {
+      const selected = selectedNodesOf(state.doc.nodes, state.selectedNodeIds);
+      if (selected.length < 3) return {};
+      const measured = selected
+        .map((node) => {
+          const bounds = nodeBounds(node);
+          return {
+            node,
+            start: axis === 'x' ? bounds.left : bounds.top,
+            size: axis === 'x' ? bounds.right - bounds.left : bounds.bottom - bounds.top,
+          };
+        })
+        .sort((a, b) => a.start - b.start);
+      const first = measured[0];
+      const last = measured[measured.length - 1];
+      const span = last.start + last.size - first.start;
+      const occupied = measured.reduce((total, item) => total + item.size, 0);
+      const gap = (span - occupied) / (measured.length - 1);
+      const moves = new Map<string, { x: number; y: number }>();
+      let cursor = first.start;
+      for (const item of measured) {
+        const centre = cursor + item.size / 2;
+        moves.set(item.node.id, axis === 'x' ? { x: centre, y: item.node.position.y } : { x: item.node.position.x, y: centre });
+        cursor += item.size + gap;
+      }
+      return { doc: { ...state.doc, nodes: applyNodeMoves(state.doc.nodes, moves) } };
+    }),
+
+  // The last-clicked node is the reference, the convention every design
+  // tool uses. Each target still clamps to its own kind's limits, so
+  // matching a card against a table can't push it past what it may be.
+  matchSelectedNodeSize: (dimension) =>
+    set((state) => {
+      const selected = selectedNodesOf(state.doc.nodes, state.selectedNodeIds);
+      if (selected.length < 2) return {};
+      const reference = selected.find((node) => node.id === state.selectedNodeId) ?? selected[selected.length - 1];
+      const referenceStyle = resolveNodeStyle(reference);
+      return {
+        doc: {
+          ...state.doc,
+          nodes: state.doc.nodes.map((node) => {
+            if (node.id === reference.id || !state.selectedNodeIds.includes(node.id)) return node;
+            const limits = nodeSizeLimits(node);
+            const patch: Partial<FlowNode> = {};
+            if (dimension !== 'height') patch.width = Math.max(limits.minWidth, Math.min(limits.maxWidth, referenceStyle.width));
+            if (dimension !== 'width') patch.height = Math.max(limits.minHeight, Math.min(limits.maxHeight, referenceStyle.height));
+            return { ...node, ...patch };
+          }),
+        },
+      };
+    }),
 }));
 
 function defaultTitleFor(type: NodeType): string {

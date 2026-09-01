@@ -2,6 +2,7 @@
 
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { ShapeToolbar } from '@/components/ShapeToolbar';
+import { SelectionToolbar } from '@/components/editor/SelectionToolbar';
 import { useEditorStore } from '@/lib/editor-store';
 import type { ExecutionState, FlowDocumentJSON } from '@/lib/flowchart-types';
 
@@ -23,13 +24,14 @@ interface EditorCanvasProps {
 export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExecutionStates, edgeExecutionStates, effectsPaused }: EditorCanvasProps) {
   const seed = useEditorStore((state) => state.seed);
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
+  const selectedNodeIds = useEditorStore((state) => state.selectedNodeIds);
   const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
   const draggingNodeId = useEditorStore((state) => state.draggingNodeId);
   const linkingFromId = useEditorStore((state) => state.linkingFromId);
   const activeShape = useEditorStore((state) => state.activeShape);
   const infoOpen = useEditorStore((state) => state.infoOpen);
 
-  const { selectNode, selectEdge, setDraggingNodeId, setLinkingFromId, setActiveShape, toggleInfo, onNodeMove, onNodeDrop, onNodeUpdate, onConnect, onShapeCreate, onEdgeUpdate, onEdgeReconnect } = useEditorStore();
+  const { selectNode, toggleNodeSelection, selectNodes, selectEdge, setDraggingNodeId, setLinkingFromId, setActiveShape, toggleInfo, onNodeMove, onNodeDrop, onNodeUpdate, onConnect, onShapeCreate, onEdgeUpdate, onEdgeReconnect } = useEditorStore();
 
   return (
     <section className='relative h-full min-h-0 overflow-hidden bg-background'>
@@ -44,7 +46,10 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
         edgeExecutionStates={edgeExecutionStates}
         effectsPaused={effectsPaused}
         selectedNodeId={selectedNodeId}
+        selectedNodeIds={selectedNodeIds}
         onSelectNode={selectNode}
+        onToggleNodeSelection={toggleNodeSelection}
+        onSelectNodes={selectNodes}
         onNodeMove={onNodeMove}
         onNodeResize={onNodeUpdate}
         onNodeDragStart={(id) => setDraggingNodeId(id)}
@@ -81,6 +86,7 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
         }}
       />
       <ShapeToolbar activeShape={activeShape} onSelect={setActiveShape} />
+      <SelectionToolbar />
     </section>
   );
 }

@@ -21,6 +21,10 @@ interface FlowNodeCardProps {
   executionState?: ExecutionState;
   isActive?: boolean;
   isSelected?: boolean;
+  /** Corner resize handles. Off while several nodes are selected: with a
+   *  multi-selection there is no single box those handles would resize,
+   *  and they'd sit on top of the neighbours' rings. */
+  showResizeHandles?: boolean;
   /** Viewer mode: no dragging, no ports — the node renders inert. */
   readOnly?: boolean;
   /**
@@ -34,7 +38,9 @@ interface FlowNodeCardProps {
    * (in screen pixels) into the chart's logical coordinate system.
    */
   viewTransform: ViewTransform;
-  onSelect: (id: string) => void;
+  /** `additive` is a shift-click: add to / remove from the selection
+   *  instead of replacing it. */
+  onSelect: (id: string, additive: boolean) => void;
   onMove: (id: string, position: { x: number; y: number }) => void;
   onResize: (
     id: string,
@@ -153,6 +159,7 @@ export function FlowNodeCard({
   executionState = 'normal',
   isActive = false,
   isSelected = false,
+  showResizeHandles = true,
   readOnly = false,
   linkTargetFromId = null,
   viewTransform,
@@ -377,7 +384,7 @@ export function FlowNodeCard({
     }
     // If the user didn't actually move, treat it as a click to select.
     if (!drag.moved) {
-      onSelect(node.id);
+      onSelect(node.id, e.shiftKey);
     }
     handlersRef.current.onDragEnd(node.id);
     dragRef.current = null;
@@ -754,8 +761,10 @@ export function FlowNodeCard({
         )}
 
         {/* Four corner resize handles. Their radius is corrected
-          for canvas zoom so the hit target stays usable on large charts. */}
+          for canvas zoom so the hit target stays usable on large charts.
+          A multi-selection shows rings only — see `showResizeHandles`. */}
         {isSelected &&
+          showResizeHandles &&
           RESIZE_HANDLES.map((handle) => (
             <circle
               key={handle.direction}
