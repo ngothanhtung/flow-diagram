@@ -7,7 +7,7 @@ import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES, NODE_FONT_WEIGHTS } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
 import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
-import { GROUP_HEADER_HEIGHT, LEGEND_PADDING, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
+import { FRAGMENT_TAB_HEIGHT, GROUP_HEADER_HEIGHT, LEGEND_PADDING, LIFELINE_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from './node-effect-layer';
 import { TableCardBody } from './TableCardBody';
 import type { ViewTransform } from '@/lib/view-transform';
@@ -184,11 +184,20 @@ export function FlowNodeCard({
   // this component renderable on its own.
   const legendItems = (node.legend?.items ?? []).map((item) => resolveLegendItem(item, []));
   const legendOrientation = node.legend?.orientation ?? 'horizontal';
-  const hasGroupTitle = isGroup && !!node.title?.trim();
+  const isFragment = isGroup && node.frameStyle === 'fragment';
+  const isLifeline = node.type === 'lifeline';
+  const isActivation = node.type === 'activation';
+  // A fragment labels itself in a corner tab, not the full-width bar.
+  const hasGroupTitle = isGroup && !isFragment && !!node.title?.trim();
+  const fragmentTitle = isFragment ? (node.title?.trim() ?? '') : '';
   const Icon = useResolvedIcon(style.icon);
   const logoSlug = style.icon?.startsWith('logo:') ? style.icon.slice('logo:'.length) : null;
   const hasIcon = Boolean(Icon || logoSlug);
   const { shapeSpec, foreground, background, borderColor, width, height, rotation, borderWidth, borderStyle, opacity, fill, shadow, iconSize, iconPosition, blockAlign, fontSize, fontFamily, fontWeight, textAlign, portSize } = style;
+  // The tab is sized from the text it holds — a UML fragment's operator
+  // is one short word ("alt", "loop", "Fallback"), so measuring by
+  // character count is close enough and costs nothing.
+  const fragmentTabWidth = Math.max(34, Math.min(width - 8, fragmentTitle.length * Math.min(fontSize, 12) * 0.66 + 22));
   const clusterAlign = blockAlign === 'left' ? 'flex-start' : blockAlign === 'right' ? 'flex-end' : 'center';
   // Horizontal padding runs wider than vertical so text never crowds the
   // rounded corners or the side ports.
@@ -514,6 +523,35 @@ export function FlowNodeCard({
               strokeLinejoin='round'
               pointerEvents='stroke'
             />
+            {isFragment && fragmentTitle && (
+              /* UML's fragment tab: a box in the top-left corner with
+                 its bottom-right corner notched off. It labels the band
+                 without a full-width bar, which on a sequence diagram
+                 would cut across every lifeline running behind it. */
+              <>
+                <path
+                  d={`M ${-width / 2} ${-height / 2} L ${-width / 2 + fragmentTabWidth} ${-height / 2} L ${-width / 2 + fragmentTabWidth} ${-height / 2 + FRAGMENT_TAB_HEIGHT - 7} L ${-width / 2 + fragmentTabWidth - 9} ${-height / 2 + FRAGMENT_TAB_HEIGHT} L ${-width / 2} ${-height / 2 + FRAGMENT_TAB_HEIGHT} Z`}
+                  // The band's own wash is deliberately barely-there, so
+                  // reusing it here leaves the tab invisible. Tinting with
+                  // the border colour is what the panel title bar above
+                  // already does, and it reads on either canvas.
+                  fill={borderColor}
+                  fillOpacity={0.2}
+                  stroke={borderColor}
+                  strokeWidth={borderWidth}
+                  strokeLinejoin='round'
+                  pointerEvents='all'
+                />
+                <foreignObject x={-width / 2} y={-height / 2} width={fragmentTabWidth} height={FRAGMENT_TAB_HEIGHT} pointerEvents='none'>
+                  <div
+                    className='flex h-full w-full select-none items-center truncate px-2'
+                    style={{ color: foreground, fontFamily: NODE_FONT_FAMILIES[fontFamily], fontSize: Math.min(fontSize, 12), fontWeight: NODE_FONT_WEIGHTS[fontWeight] }}
+                  >
+                    {fragmentTitle}
+                  </div>
+                </foreignObject>
+              </>
+            )}
             {hasGroupTitle && (
               <foreignObject x={-width / 2} y={-height / 2} width={width} height={GROUP_HEADER_HEIGHT} pointerEvents='none'>
                 <div
@@ -627,6 +665,65 @@ export function FlowNodeCard({
               </div>
             </foreignObject>
           </>
+        ) : isLifeline ? (
+          /* A sequence diagram participant: a header card at the top and
+             a dashed line hanging below it for the rest of the node's
+             height. The node's `height` is that whole span, so dragging
+             the bottom handle sets how far down the participant lives —
+             the only thing anyone wants to change about one. */
+          <>
+            <line
+              x1={0}
+              y1={-height / 2 + LIFELINE_HEADER_HEIGHT}
+              x2={0}
+              y2={height / 2}
+              stroke={borderColor}
+              strokeWidth={1.5}
+              strokeOpacity={0.55}
+              strokeDasharray='6 6'
+              pointerEvents='none'
+            />
+            <rect
+              x={-width / 2}
+              y={-height / 2}
+              width={width}
+              height={LIFELINE_HEADER_HEIGHT}
+              rx={8}
+              fill={background}
+              stroke={borderColor}
+              strokeWidth={borderWidth}
+              pointerEvents='all'
+            />
+            {/* The line runs the full height, but only the header is a
+                grab handle you can miss — a 1.5px dashed rule is far too
+                thin to hit, so it gets its own wide invisible band. */}
+            <rect x={-8} y={-height / 2 + LIFELINE_HEADER_HEIGHT} width={16} height={Math.max(0, height - LIFELINE_HEADER_HEIGHT)} fill='transparent' pointerEvents='all' />
+            <foreignObject x={-width / 2} y={-height / 2} width={width} height={LIFELINE_HEADER_HEIGHT} pointerEvents='none'>
+              <div
+                className='flex h-full w-full select-none items-center gap-1.5 truncate px-2.5'
+                style={{
+                  color: foreground,
+                  fontFamily: NODE_FONT_FAMILIES[fontFamily],
+                  fontSize: Math.min(fontSize, 14),
+                  fontWeight: NODE_FONT_WEIGHTS[fontWeight],
+                  justifyContent: textAlign === 'left' ? 'flex-start' : textAlign === 'right' ? 'flex-end' : 'center',
+                }}
+              >
+                {logoSlug ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={`/logos/${logoSlug}.svg`} alt='' width={16} height={16} className='shrink-0' />
+                ) : Icon ? (
+                  createElement(Icon, { size: 16, className: 'shrink-0' })
+                ) : null}
+                <span className='truncate'>{node.title}</span>
+              </div>
+            </foreignObject>
+          </>
+        ) : isActivation ? (
+          /* An activation bar: the stretch of time a participant is busy.
+             Its x comes from its lifeline (see the store's `onNodeMove`),
+             so only its y and height are the user's to set. */
+          <rect x={-width / 2} y={-height / 2} width={width} height={height} rx={2} fill={background} stroke={borderColor} strokeWidth={borderWidth} pointerEvents='all' />
         ) : isLegend ? (
           /* The legend: rows of sample + label naming the diagram's own
              colour and line vocabulary. Paints no card, on the same
@@ -881,15 +978,19 @@ export function FlowNodeCard({
         {/* Every node exposes a bidirectional port on all four sides.
           The selected source and target sides are stored on the edge.
           Ports are editor-only — hidden entirely in read-only mode.
-          Text, free icon/logo objects and the legend have none: a
-          caption, a placed graphic or the key is scenery rather than a
-          step in the flow (the replay skips them too). Frames get the
-          same four ports as any other block, so a diagram can point an
-          edge at the group as a whole. */}
+          Text, free icon/logo objects, the legend and activation bars
+          have none: a caption, a placed graphic, the key or a stretch of
+          busy time is scenery rather than a step in the flow (the replay
+          skips them too). A message attaches to the lifeline, never to a
+          bar sitting on it. Frames get the same four ports as any other
+          block, so a diagram can point an edge at the group as a whole,
+          and so do lifelines — their left/right ports land mid-span on
+          the dashed line, which is where you reach for a message. */}
         {!readOnly &&
           !isText &&
           !isIconObject &&
           !isLegend &&
+          !isActivation &&
           CONNECTION_SIDES.map((side) => {
             const anchor = portAnchors[side];
             const canReceive = !!linkTargetFromId && linkTargetFromId !== node.id;
@@ -953,8 +1054,12 @@ export function FlowNodeCard({
             `outline.d`, which for these is just its bounding rectangle,
             so rendering one here would draw exactly the border they're
             defined not to have. Motion (the `<g style={motionStyle}>`
-            wrapper above) still applies. */}
-        {!isText && !isIconObject && !isLegend && (
+            wrapper above) still applies. A lifeline is excluded for the
+            same reason with a different cause: its outline spans the
+            whole node, header plus dashed line, while the only thing it
+            paints is the header — so a halo would ring several hundred
+            pixels of empty column. */}
+        {!isText && !isIconObject && !isLegend && !isLifeline && (
           <NodeEffectLayer
             d={outline.d}
             transform={outline.transform}

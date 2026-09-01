@@ -7,7 +7,7 @@ import { loadEditorSession } from './editor-session';
 import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from './execution-timing';
 import type { ConnectionSide, DiagramSettings, DrawTool, EdgeStyleClass, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
-import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
+import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, LIFELINE_HEADER_HEIGHT, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
 import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, nodeBounds } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
 
@@ -33,23 +33,35 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
   text: { color: '#e4e4e7', backgroundColor: '#00000000' },
   icon: { color: '#e4e4e7', backgroundColor: '#00000000' },
   legend: { color: '#94a3b8', backgroundColor: '#00000000' },
+  lifeline: { color: '#bae6fd', backgroundColor: '#172554' },
+  activation: { color: '#bae6fd', backgroundColor: '#1e3a8a' },
 };
 
 /**
+ * Node kinds that are scenery rather than steps. A container, a caption,
+ * a placed graphic, the key itself, or a sequence diagram's lifelines
+ * and activation bars flashing as their own step would interrupt the run
+ * of the blocks they describe — they stay fully visible for the whole
+ * replay instead. In a sequence diagram this is exactly right: the
+ * *messages* are the steps, and messages are edges.
+ *
+ * One list, because the two functions below both need it and they used
+ * to spell it out as separate `!==` chains that could drift apart.
+ */
+const SCENERY_NODE_TYPES = new Set<NodeType>(['group', 'text', 'icon', 'legend', 'lifeline', 'activation']);
+
+/** True when the node is scenery — see `SCENERY_NODE_TYPES`. */
+export function isSceneryNode(node: FlowNode): boolean {
+  return SCENERY_NODE_TYPES.has(node.type);
+}
+
+/**
  * Nodes sharing the same resolved sort order animate together as one
- * step — order only expresses "before/after", not "one by one". Frames,
- * text objects and free icon/logo objects are scenery, not steps: a
- * container, a caption or a placed graphic flashing as its own step
- * would interrupt the run of the blocks it describes, so they're
- * filtered out and stay fully visible for the whole replay.
+ * step — order only expresses "before/after", not "one by one".
  */
 export function computeOrderedGroups(nodes: FlowNode[]): FlowNode[][] {
   const resolved = nodes
-    // Frames, text, free icon/logo objects and the legend are scenery,
-    // not steps: a container, a caption, a placed graphic or the key
-    // itself flashing as its own step would interrupt the run of the
-    // blocks it describes. They stay fully visible for the whole replay.
-    .filter((node) => node.type !== 'group' && node.type !== 'text' && node.type !== 'icon' && node.type !== 'legend')
+    .filter((node) => !isSceneryNode(node))
     .map((node, index) => ({
       node,
       order: node.sortOrder && node.sortOrder > 0 ? node.sortOrder : index + 1,
@@ -86,7 +98,7 @@ export type RunTimelineStep = { type: 'node'; nodes: FlowNode[] } | { type: 'edg
  * case (an untouched line's auto order equals its target node's).
  */
 export function computeRunTimeline(nodes: FlowNode[], edges: FlowEdge[]): RunTimelineStep[] {
-  const eligibleNodes = nodes.filter((node) => node.type !== 'group' && node.type !== 'text' && node.type !== 'icon' && node.type !== 'legend');
+  const eligibleNodes = nodes.filter((node) => !isSceneryNode(node));
   const nodeOrder = new Map<string, number>();
   eligibleNodes.forEach((node, index) => nodeOrder.set(node.id, node.sortOrder && node.sortOrder > 0 ? node.sortOrder : index + 1));
 
@@ -176,6 +188,26 @@ function applyNodeMoves(nodes: FlowNode[], moves: Map<string, { x: number; y: nu
     const delta = deltas.get(node.id);
     return delta ? { ...node, position: { x: node.position.x + delta.dx, y: node.position.y + delta.dy } } : node;
   });
+}
+
+/**
+ * Where the next message on this lifeline should sit: below every
+ * message already drawn, so messages stack down the page in the order
+ * they were added — which is the order a sequence diagram reads in.
+ */
+function nextMessageY(doc: FlowDocumentJSON, lifeline: FlowNode): number {
+  const style = resolveNodeStyle(lifeline);
+  const first = lifeline.position.y - style.height / 2 + LIFELINE_HEADER_HEIGHT + 40;
+  const used = doc.edges.filter((edge) => edge.routing === 'message' && edge.messageY !== undefined).map((edge) => edge.messageY!);
+  return used.length === 0 ? first : Math.max(first, Math.max(...used) + MESSAGE_ROW_GAP);
+}
+
+/** Vertical spacing between consecutive messages. */
+const MESSAGE_ROW_GAP = 48;
+
+/** The lifeline an activation bar belongs to, if it still exists. */
+function lifelineOf(nodes: FlowNode[], bar: FlowNode): FlowNode | undefined {
+  return bar.lifelineId ? nodes.find((node) => node.id === bar.lifelineId && node.type === 'lifeline') : undefined;
 }
 
 /** The selected nodes, in document order. */
@@ -295,6 +327,13 @@ interface EditorState {
   removeEdgeStyle: (styleId: string) => void;
   /** Point a line at a class, or detach it (`null`). */
   assignEdgeStyle: (edgeId: string, styleId: string | null) => void;
+
+  // Sequence diagram.
+  /** Drop an activation bar onto a lifeline's centre line. Returns its id. */
+  addActivation: (lifelineId: string, atY?: number) => string | null;
+  /** Add a message a lifeline sends to itself — the canvas can't draw
+   *  one by dragging, since a link needs two different nodes. */
+  addSelfMessage: (lifelineId: string) => string | null;
 
   // Layout actions over the current multi-selection. Each is a no-op
   // below its minimum selection size, so the UI can stay mounted.
@@ -452,8 +491,13 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     set((state) => {
       const moved = state.doc.nodes.find((node) => node.id === id);
       if (!moved) return {};
-      const dx = position.x - moved.position.x;
-      const dy = position.y - moved.position.y;
+      // An activation bar rides its lifeline's centre line: only its y
+      // is the user's to choose. Clamping here rather than in the drag
+      // handler keeps every caller (drag, arrow keys, the inspector's
+      // X field) honest about the same rule.
+      const target = moved.type === 'activation' ? { x: lifelineOf(state.doc.nodes, moved)?.position.x ?? position.x, y: position.y } : position;
+      const dx = target.x - moved.position.x;
+      const dy = target.y - moved.position.y;
       const followers = new Set<string>();
       if (dx !== 0 || dy !== 0) {
         const roots = state.selectedNodeIds.includes(id) ? state.selectedNodeIds : [id];
@@ -463,6 +507,14 @@ export const useEditorStore = create<EditorState>((set, get) => ({
           if (root?.type === 'group') {
             for (const descendant of descendantIds(state.doc.nodes, rootId)) followers.add(descendant);
           }
+          // A lifeline carries its activation bars — they're pinned to
+          // its centre line, so leaving them behind would break the
+          // invariant the branch above enforces.
+          if (root?.type === 'lifeline') {
+            for (const bar of state.doc.nodes) {
+              if (bar.lifelineId === rootId) followers.add(bar.id);
+            }
+          }
         }
         followers.delete(id);
       }
@@ -470,7 +522,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
         doc: {
           ...state.doc,
           nodes: state.doc.nodes.map((node) => {
-            if (node.id === id) return { ...node, position };
+            if (node.id === id) return { ...node, position: target };
             if (followers.has(node.id)) return { ...node, position: { x: node.position.x + dx, y: node.position.y + dy } };
             return node;
           }),
@@ -604,6 +656,9 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       const target = state.doc.nodes.find((node) => node.id === id);
       const doomed = new Set<string>([id]);
       if (target?.type === 'group') for (const descendant of descendantIds(state.doc.nodes, id)) doomed.add(descendant);
+      // A bar has no meaning without its lifeline — and nowhere to sit,
+      // since its x comes from one.
+      if (target?.type === 'lifeline') for (const bar of state.doc.nodes) if (bar.lifelineId === id) doomed.add(bar.id);
       return {
         doc: {
           ...state.doc,
@@ -619,9 +674,15 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     // Dedupe the same pair of ports while still allowing parallel lines
     // between two nodes when they use different sides.
     if (doc.edges.some((edge) => edge.from === fromId && edge.to === toId && (edge.fromSide ?? 'right') === (fromSide ?? 'right') && (edge.toSide ?? 'left') === (toSide ?? 'left'))) return;
+    const fromNode = doc.nodes.find((node) => node.id === fromId);
+    const toNode = doc.nodes.find((node) => node.id === toId);
     // A line between two database tables is an ERD relationship, and a
     // schema diagram reads better still: no travelling objects, no halo.
-    const isRelationship = Boolean(doc.nodes.find((node) => node.id === fromId)?.table && doc.nodes.find((node) => node.id === toId)?.table);
+    const isRelationship = Boolean(fromNode?.table && toNode?.table);
+    // A line between two lifelines is a sequence message: it has to run
+    // dead horizontal at its own y, so it gets `routing: 'message'`
+    // rather than a route derived from where the two ports happen to be.
+    const isMessage = fromNode?.type === 'lifeline' && toNode?.type === 'lifeline';
     set({
       doc: {
         ...doc,
@@ -633,19 +694,24 @@ export const useEditorStore = create<EditorState>((set, get) => ({
             to: toId,
             fromSide,
             toSide,
-            effect: isRelationship ? 'none' : 'comet',
+            effect: isRelationship || isMessage ? 'none' : 'comet',
             direction: 'forward',
-            routing: 'smooth-step',
+            routing: isMessage ? 'message' : 'smooth-step',
+            // Messages stack down the page in the order they're drawn,
+            // which is the order a sequence diagram reads in.
+            messageY: isMessage && fromNode ? nextMessageY(doc, fromNode) : undefined,
             // Both ends start bare — an arrowhead is an explicit choice
             // in the line inspector, not something a new line inherits.
+            // A message is the exception: an unarrowed message doesn't
+            // say which way the call goes, which is its entire content.
             startMarker: 'none',
-            endMarker: 'none',
+            endMarker: isMessage ? 'arrow' : 'none',
             animationSpeed: 1,
             effectSize: 1.5,
             // Glow is off unless a line asks for it, so a freshly drawn
             // line carries the halo explicitly rather than relying on a
             // default that dense-diagram mode would strip away.
-            glowIntensity: isRelationship ? undefined : 1,
+            glowIntensity: isRelationship || isMessage ? undefined : 1,
             width: 2,
           },
         ],
@@ -782,6 +848,84 @@ export const useEditorStore = create<EditorState>((set, get) => ({
               borderStyle: 'dashed',
               shadow: 'none',
               // Plain fill by default; the sheen gradient is opt-in.
+              fill: 'flat',
+            },
+          ],
+        },
+      });
+      return id;
+    }
+    // A sequence diagram's participant: a header card with a long
+    // dashed line hanging below it. `height` is the whole span, so
+    // dragging the bottom handle is "how far down does this participant
+    // live" — see LIFELINE_HEADER_HEIGHT.
+    if (tool === 'lifeline') {
+      const limits = nodeSizeLimits({ type: 'lifeline' });
+      set({
+        doc: {
+          ...doc,
+          nodes: [
+            ...doc.nodes,
+            {
+              id,
+              type: 'lifeline',
+              title: `Participant ${doc.nodes.filter((node) => node.type === 'lifeline').length + 1}`,
+              position,
+              // A click with no drag gets the full default height: a
+              // stubby lifeline is never what anyone wanted.
+              width: Math.max(limits.minWidth, Math.min(limits.maxWidth, width < 60 ? limits.defaultWidth : width)),
+              height: Math.max(limits.minHeight, Math.min(limits.maxHeight, height < 100 ? limits.defaultHeight : height)),
+              fontSize: 12,
+              fontWeight: 'semibold',
+              textAlign: 'center',
+              icon: 'lucide:User',
+              iconPosition: 'left',
+              color: DEFAULT_NODE_PAINT.lifeline.color,
+              backgroundColor: DEFAULT_NODE_PAINT.lifeline.backgroundColor,
+              borderColor: DEFAULT_NODE_PAINT.lifeline.color,
+              borderWidth: 2,
+              shadow: 'none',
+              fill: 'flat',
+            },
+          ],
+        },
+      });
+      return id;
+    }
+    // A fragment band (alt / opt / loop / Fallback) is a group frame
+    // with `frameStyle: 'fragment'` — the same "a lane is a group"
+    // precedent. Only the look differs: a corner tab instead of a
+    // full-width title bar, and a solid hairline instead of a wash.
+    if (tool === 'fragment') {
+      const frameWidth = Math.max(GROUP_MIN_SIZE, Math.min(GROUP_MAX_WIDTH, width));
+      const frameHeight = Math.max(GROUP_MIN_SIZE, Math.min(GROUP_MAX_HEIGHT, height));
+      set({
+        doc: {
+          ...doc,
+          nodes: [
+            ...doc.nodes,
+            {
+              id,
+              type: 'group',
+              frameStyle: 'fragment',
+              title: 'alt',
+              position,
+              shape: 'rectangle',
+              width: frameWidth,
+              height: frameHeight,
+              fontSize: 11,
+              fontWeight: 'semibold',
+              textAlign: 'left',
+              icon: null,
+              // Neutral grey, like the lane: a fragment band frames
+              // content of every colour and must not compete with it,
+              // on a light or a dark canvas.
+              color: '#94a3b8',
+              backgroundColor: '#80808014',
+              borderColor: '#94a3b8',
+              borderWidth: 1.5,
+              borderStyle: 'solid',
+              shadow: 'none',
               fill: 'flat',
             },
           ],
@@ -1035,6 +1179,64 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       };
     }),
 
+  addActivation: (lifelineId, atY) => {
+    const { doc } = get();
+    const lifeline = doc.nodes.find((node) => node.id === lifelineId && node.type === 'lifeline');
+    if (!lifeline) return null;
+    const id = `n${Date.now().toString(36)}${Math.floor(Math.random() * 1e4).toString(36)}`;
+    const style = resolveNodeStyle(lifeline);
+    const limits = nodeSizeLimits({ type: 'activation' });
+    const lifelineTop = lifeline.position.y - style.height / 2;
+    // Bars stack down the lifeline: a new one starts below the lowest
+    // one already there, so clicking "Add activation" repeatedly builds
+    // a column rather than piling everything on one spot.
+    const existing = doc.nodes.filter((node) => node.lifelineId === lifelineId);
+    const lowest = existing.length === 0 ? lifelineTop + LIFELINE_HEADER_HEIGHT + 8 : Math.max(...existing.map((bar) => bar.position.y + resolveNodeStyle(bar).height / 2)) + 16;
+    const top = atY ?? lowest;
+    set({
+      doc: {
+        ...doc,
+        nodes: [
+          ...doc.nodes,
+          {
+            id,
+            type: 'activation',
+            lifelineId,
+            title: '',
+            position: { x: lifeline.position.x, y: top + limits.defaultHeight / 2 },
+            width: limits.defaultWidth,
+            height: limits.defaultHeight,
+            icon: null,
+            color: style.foreground,
+            backgroundColor: DEFAULT_NODE_PAINT.activation.backgroundColor,
+            borderColor: style.foreground,
+            borderWidth: 1.5,
+            shadow: 'none',
+            fill: 'flat',
+          },
+        ],
+      },
+    });
+    return id;
+  },
+
+  // A self-message can't be drawn by dragging: `finishLink` requires two
+  // different nodes, and rightly so for every other kind of line. This
+  // is the affordance that lets a lifeline call itself.
+  addSelfMessage: (lifelineId) => {
+    const { doc } = get();
+    const lifeline = doc.nodes.find((node) => node.id === lifelineId && node.type === 'lifeline');
+    if (!lifeline) return null;
+    const id = `e${Date.now().toString(36)}${Math.floor(Math.random() * 1e4).toString(36)}`;
+    set({
+      doc: {
+        ...doc,
+        edges: [...doc.edges, { id, from: lifelineId, to: lifelineId, routing: 'message', messageY: nextMessageY(doc, lifeline), label: 'self', endMarker: 'arrow', effect: 'none', glowIntensity: 1 }],
+      },
+    });
+    return id;
+  },
+
   // Align against the selection's own bounding box rather than a fixed
   // canvas edge — the reference is whatever the user actually picked, so
   // the outermost nodes stay put and everything else comes to them.
@@ -1138,6 +1340,10 @@ function defaultTitleFor(type: NodeType): string {
       return 'Icon';
     case 'legend':
       return 'Legend';
+    case 'lifeline':
+      return 'Participant';
+    case 'activation':
+      return 'Activation';
   }
 }
 

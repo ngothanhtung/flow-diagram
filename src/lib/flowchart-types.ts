@@ -11,7 +11,7 @@
  * and rendering — see `DEFAULT_BY_TYPE` in `node-style.ts`. Nothing
  * creates one any more.
  */
-export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group' | 'text' | 'icon' | 'legend';
+export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group' | 'text' | 'icon' | 'legend' | 'lifeline' | 'activation';
 
 /** Visual shape of the node's body. Optional — defaults are derived
  *  from `type` so older documents render unchanged. */
@@ -226,6 +226,24 @@ export interface FlowNode {
   /** Present on `type: 'legend'` nodes — the rows it lists. */
   legend?: LegendSpec;
   /**
+   * Group frames only. `'panel'` (unset) is the ordinary container with
+   * a full-width title bar; `'fragment'` is the sequence diagram's
+   * alt/opt/loop band, which swaps that bar for a small corner tab and
+   * draws a solid hairline instead of a wash. Same "a lane is a group"
+   * precedent — only the look differs, so it isn't a new node kind.
+   */
+  frameStyle?: 'panel' | 'fragment';
+  /**
+   * `type: 'activation'` only — the lifeline this bar sits on. Its x is
+   * slaved to that lifeline's centre line, so only its y and height are
+   * really free.
+   *
+   * Deliberately *not* `parentId`: that field means "member of a group
+   * frame", and `onNodeDrop` clears it whenever the node isn't inside
+   * one. A bar would lose its lifeline the first time it was dragged.
+   */
+  lifelineId?: string;
+  /**
    * Id of the group frame (`type: 'group'`) this node sits inside.
    * Membership is stored on the child, never as a list on the parent, so
    * there is exactly one place to keep in sync. Positions stay absolute
@@ -251,9 +269,15 @@ export interface FlowNode {
  * `'lane'` is not a node kind of its own: it draws a `group` frame
  * pre-styled as a swimlane (numbered header, dashed hairline, barely
  * there wash), because a lane *is* a container — only its look and its
- * "add the next one" affordance differ.
+ * "add the next one" affordance differ. `'fragment'` follows the same
+ * precedent for the sequence diagram's alt/opt/loop band: a `group`
+ * with `frameStyle: 'fragment'`, which swaps the full-width title bar
+ * for a corner tab.
+ *
+ * `'lifeline'` *is* its own node kind — a header card plus the long
+ * dashed line below it is not a container and not a card.
  */
-export type DrawTool = NodeShape | 'table' | 'group' | 'text' | 'icon' | 'lane' | 'legend';
+export type DrawTool = NodeShape | 'table' | 'group' | 'text' | 'icon' | 'lane' | 'legend' | 'lifeline' | 'fragment';
 
 /** A reusable semantic block from the left-hand model palette. */
 export interface NodePreset {
@@ -310,7 +334,14 @@ export type EdgeMarker =
   | 'crow-zero-many';
 
 export type EdgeDirection = 'forward' | 'reverse' | 'both';
-export type EdgeRouting = 'straight' | 'smooth-step' | 'orthogonal' | 'curved';
+/**
+ * `'message'` is the sequence diagram's route and the only one that
+ * isn't derived purely from its two endpoints: it runs dead horizontal
+ * at the edge's own `messageY`, between the two lifelines' centre lines,
+ * because in a sequence diagram *when* a message happens is the whole
+ * point and a lifeline spans the entire height of the drawing.
+ */
+export type EdgeRouting = 'straight' | 'smooth-step' | 'orthogonal' | 'curved' | 'message';
 /**
  * Stroke pattern of the line itself, independent of the animated effect
  * layer riding on top of it. Unset = `'solid'`, which is how every line
@@ -359,6 +390,19 @@ export interface FlowEdge {
   routing?: EdgeRouting;
   /** User-positioned intermediate points for orthogonal/smooth routes. */
   bendPoints?: FlowPoint[];
+  /**
+   * `routing: 'message'` only — the canvas y the message runs at, in
+   * absolute canvas coordinates, set by dragging the line up and down.
+   * Unset falls back to a point derived from the two lifelines, so a
+   * hand-written document still renders something sensible.
+   */
+  messageY?: number;
+  /**
+   * `routing: 'message'` only — a message a lifeline sends to itself
+   * renders as a loop out and back rather than a zero-length line; this
+   * is how tall that loop is. Unset = `SELF_MESSAGE_DROP`.
+   */
+  selfMessageDrop?: number;
   /** Independently configurable symbols at both ends of the line. */
   startMarker?: EdgeMarker;
   endMarker?: EdgeMarker;

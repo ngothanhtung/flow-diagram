@@ -81,6 +81,8 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
                 key={selectedEdge.id}
                 edge={selectedEdge}
                 styles={edgeStylesOf(document.settings)}
+                sourceNode={edgeSource}
+                targetNode={document.nodes.find((node) => node.id === selectedEdge.to)}
                 sourceTitle={edgeSource?.title ?? selectedEdge.from}
                 targetTitle={document.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
                 fallbackColor={edgeSource ? resolveNodeStyle(edgeSource).foreground : '#67e8f9'}

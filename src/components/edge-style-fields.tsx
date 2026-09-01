@@ -45,6 +45,7 @@ export const ROUTING_OPTIONS: Array<{ value: EdgeRouting; label: string }> = [
   { value: 'smooth-step', label: 'Smooth step' },
   { value: 'orthogonal', label: 'Orthogonal' },
   { value: 'curved', label: 'Bezier curve' },
+  { value: 'message', label: 'Sequence message' },
 ];
 
 export const LINE_STYLE_OPTIONS: Array<{ value: EdgeLineStyle; label: string }> = [

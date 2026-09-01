@@ -1,6 +1,6 @@
 'use client';
 
-import { Columns3, Shrink, Ungroup } from 'lucide-react';
+import { Columns3, Shrink, Square, SquareDashedBottomCode, Ungroup } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -16,6 +16,7 @@ import {
   NumberField,
   RangeField,
   SectionLabel,
+  SegmentedButtons,
   SelectField,
   TypographyFields,
   useNodeFieldDraft,
@@ -59,6 +60,21 @@ export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         }}
         className='mt-1 border-border bg-muted/30 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
+
+      <SectionLabel>Frame style</SectionLabel>
+      <SegmentedButtons
+        label='Kind'
+        value={node.frameStyle ?? 'panel'}
+        options={[
+          { value: 'panel', label: 'Panel', Icon: Square },
+          { value: 'fragment', label: 'Fragment', Icon: SquareDashedBottomCode },
+        ]}
+        onChange={(frameStyle) => onUpdate(node.id, { frameStyle })}
+      />
+      <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>
+        A panel labels itself in a full-width title bar. A fragment uses a small corner tab instead — the sequence diagram&apos;s alt / opt / loop band, where a full-width bar would cut across every
+        lifeline running behind it.
+      </p>
 
       <SectionLabel>Contents</SectionLabel>
       <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>
