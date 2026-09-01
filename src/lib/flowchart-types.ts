@@ -136,9 +136,21 @@ export interface LegendItem {
    *  rule with an arrow head (an edge style). */
   kind: 'swatch' | 'line';
   label: string;
-  color: `#${string}`;
-  /** Line samples only — matches the edge style it stands for. */
+  /** Unset on a row following a class — see `styleRef`. */
+  color?: `#${string}`;
+  /** Line samples only. Superseded by `lineStyle`; kept so rows written
+   *  before that field render unchanged. */
   dashed?: boolean;
+  /** Line samples only — the stroke pattern of the line it stands for. */
+  lineStyle?: EdgeLineStyle;
+  /**
+   * Id of the `EdgeStyleClass` this row describes. A row generated from
+   * the diagram carries only this, so it keeps naming the class
+   * correctly as the class is edited; anything the row sets itself
+   * (label, colour, stroke) overrides the class, exactly as it does on a
+   * line.
+   */
+  styleRef?: string;
 }
 
 /**
@@ -299,6 +311,16 @@ export type EdgeMarker =
 
 export type EdgeDirection = 'forward' | 'reverse' | 'both';
 export type EdgeRouting = 'straight' | 'smooth-step' | 'orthogonal' | 'curved';
+/**
+ * Stroke pattern of the line itself, independent of the animated effect
+ * layer riding on top of it. Unset = `'solid'`, which is how every line
+ * drawn before this field existed rendered.
+ *
+ * This is what makes "dashed means async" a vocabulary a reader can
+ * actually rely on: a dash that stays put whether or not the diagram is
+ * playing, unlike an effect's moving marks.
+ */
+export type EdgeLineStyle = 'solid' | 'dashed' | 'dotted';
 /** Where the label pill sits along the line. */
 export type EdgeLabelPosition = 'center' | 'left' | 'right' | 'top' | 'bottom';
 /** Silhouette drawn behind the label text. */
@@ -362,6 +384,16 @@ export interface FlowEdge {
    *  colour by default. */
   effectColor?: `#${string}`;
   width?: number;
+  /** Stroke pattern of the line itself. Unset = solid. */
+  lineStyle?: EdgeLineStyle;
+  /**
+   * Id of the named style class in `DiagramSettings.edgeStyles` this
+   * line follows. The class supplies every field it defines that the
+   * line doesn't set itself — see `resolveEdgeStyle`. Pointing at a
+   * class that no longer exists is harmless: the line just falls back
+   * to its own fields.
+   */
+  styleRef?: string;
   /** Scale multiplier for animated packets/pulses, independent of line width. */
   effectSize?: number;
   /** Number of objects travelling the line at once (1–8) for the
@@ -401,12 +433,45 @@ export interface FlowEdge {
  */
 export type RunMode = 'sequential' | 'concurrent' | 'manual' | 'static';
 
+/**
+ * The line properties a named style class can carry — exactly the fields
+ * that make up a diagram's line vocabulary, and nothing else. Written as
+ * a `Pick` of `FlowEdge` on purpose: a class and the line it styles can
+ * never drift apart in type, and `resolveEdgeStyle` can merge one onto
+ * the other field for field.
+ *
+ * Deliberately excluded: anything about *this particular* line — its
+ * endpoints, label text, bend points, replay order. A class says what
+ * kind of relationship a line represents, not where it goes.
+ */
+export type EdgeStyleProps = Pick<
+  FlowEdge,
+  'color' | 'width' | 'lineStyle' | 'startMarker' | 'endMarker' | 'routing' | 'direction' | 'effect' | 'effectColor' | 'effectSize' | 'effectCount' | 'effectDensity' | 'effectShape' | 'animationSpeed' | 'glowIntensity' | 'glowColor'
+>;
+
+/**
+ * A named line style — "primary flow", "async event", "policy" — stored
+ * once per document and referenced by `FlowEdge.styleRef`. What keeps a
+ * large diagram legible is not pretty colours but a small vocabulary of
+ * line kinds used consistently; a class is that vocabulary made editable
+ * in one place.
+ */
+export interface EdgeStyleClass extends EdgeStyleProps {
+  /** Stable key referenced by `FlowEdge.styleRef`. */
+  id: string;
+  /** What this kind of line means — also the legend row's label. */
+  name: string;
+}
+
 /** Editor settings persisted with the diagram. */
 export interface DiagramSettings {
   /** Execution mode for the play bar. Defaults to "sequential". */
   runMode?: RunMode;
   /** Whether the sequential run automatically replays. */
   repeatEnabled?: boolean;
+  /** The document's named line vocabulary. Unset = no classes defined;
+   *  every line carries its own styling, as before this existed. */
+  edgeStyles?: EdgeStyleClass[];
 }
 
 export interface FlowDocumentJSON {

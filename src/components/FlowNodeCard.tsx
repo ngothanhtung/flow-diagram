@@ -2,6 +2,7 @@
 
 import { createElement, useEffect, useRef } from 'react';
 import { screenToData } from '@/lib/coords';
+import { edgeLineCap, edgeLineDash, resolveLegendItem } from '@/lib/edge-style';
 import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES, NODE_FONT_WEIGHTS } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
@@ -177,7 +178,11 @@ export function FlowNodeCard({
   const isText = node.type === 'text';
   const isIconObject = node.type === 'icon';
   const isLegend = node.type === 'legend';
-  const legendItems = node.legend?.items ?? [];
+  // Already resolved against the document's line-style palette by
+  // `resolveDocumentStyles` upstream in `FlowCanvas`; `resolveLegendItem`
+  // here is the fallback that fills a bare row's defaults in, and keeps
+  // this component renderable on its own.
+  const legendItems = (node.legend?.items ?? []).map((item) => resolveLegendItem(item, []));
   const legendOrientation = node.legend?.orientation ?? 'horizontal';
   const hasGroupTitle = isGroup && !!node.title?.trim();
   const Icon = useResolvedIcon(style.icon);
@@ -687,8 +692,8 @@ export function FlowNodeCard({
                             y2={fontSize / 2}
                             stroke={item.color}
                             strokeWidth={2}
-                            strokeLinecap='round'
-                            strokeDasharray={item.dashed ? '4 3' : undefined}
+                            strokeLinecap={edgeLineCap(item.lineStyle)}
+                            strokeDasharray={edgeLineDash(item.lineStyle, 2)}
                           />
                           <path d={`M ${fontSize * 1.6} ${fontSize / 2 - 3.4} L ${fontSize * 2.3} ${fontSize / 2} L ${fontSize * 1.6} ${fontSize / 2 + 3.4} Z`} fill={item.color} />
                         </svg>

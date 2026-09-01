@@ -1,37 +1,10 @@
 'use client';
 
-import {
-  Activity,
-  ArrowLeft,
-  ArrowLeftRight,
-  ArrowRight,
-  Ban,
-  BatteryCharging,
-  Bug,
-  CircleDot,
-  Gauge,
-  GitCompareArrows,
-  Hash,
-  HeartPulse,
-  Lightbulb,
-  Palette,
-  Rabbit,
-  Radio,
-  ScanLine,
-  Shapes,
-  Sparkles,
-  Trash2,
-  Truck,
-  Undo2,
-  Waves,
-  X,
-  Zap,
-  type LucideIcon,
-} from 'lucide-react';
+import { ArrowLeft, ArrowLeftRight, ArrowRight, CircleDot, Gauge, Hash, Palette, Shapes, SlidersHorizontal, Sparkles, Trash2, Undo2, X } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
 import { EdgeEffectLayer, PATTERN_DASHES, TRAVEL_VELOCITY } from './edge-effect-layer';
-import { EdgeMarkerSymbol } from './edge-marker';
+import { EDGE_EFFECTS as EFFECTS, EdgeStyleSample, LINE_STYLE_OPTIONS, MarkerPicker, ROUTING_OPTIONS } from './edge-style-fields';
 import { IconPicker } from './IconPicker';
 import { ColorField, HuePresetRow, NumberField, SectionLabel } from './inspector/fields';
 import { Button } from '@/components/ui/button';
@@ -42,13 +15,16 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeMarker, EdgeRouting, FlowEdge, NodeFont, NodeIcon, TableColumn } from '@/lib/flowchart-types';
+import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeLineStyle, EdgeRouting, EdgeStyleClass, FlowEdge, NodeFont, NodeIcon, TableColumn } from '@/lib/flowchart-types';
+import { clearStyleOverrides, edgeStyleOf, edgeStyleOverrides, resolveEdgeStyle, type EdgeStyleField } from '@/lib/edge-style';
 import { EDGE_LABEL_FONT_SIZE_MAX, EDGE_LABEL_FONT_SIZE_MIN, EDGE_LABEL_PRESETS, EDGE_LABEL_SHAPES, findEdgeLabelPreset, resolveEdgeLabelStyle, type EdgeLabelPreset } from '@/lib/edge-label-style';
 import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 interface EdgeInspectorProps {
   edge: FlowEdge;
+  /** The document's named line vocabulary (`settings.edgeStyles`). */
+  styles: EdgeStyleClass[];
   sourceTitle: string;
   targetTitle: string;
   fallbackColor: `#${string}`;
@@ -57,43 +33,13 @@ interface EdgeInspectorProps {
   sourceColumns?: TableColumn[];
   targetColumns?: TableColumn[];
   onUpdate: (id: string, patch: Partial<Omit<FlowEdge, 'id' | 'from' | 'to'>>) => void;
+  /** Point this line at a style class, or detach it (`null`). */
+  onAssignStyle: (id: string, styleId: string | null) => void;
+  /** Open the document-wide style palette. */
+  onManageStyles: () => void;
   onDelete: (id: string) => void;
   onClose: () => void;
 }
-
-const EFFECTS: {
-  value: EdgeEffect;
-  label: string;
-  description: string;
-  Icon: LucideIcon;
-}[] = [
-  { value: 'none', label: 'None', description: 'No animation — a static line', Icon: Ban },
-  { value: 'flow', label: 'Flow', description: 'Continuous data stream', Icon: Waves },
-  { value: 'pulse', label: 'Signal', description: 'Single traveling pulse', Icon: Activity },
-  { value: 'glow', label: 'Beam', description: 'Traveling energy beam', Icon: Sparkles },
-  { value: 'comet', label: 'Comet', description: 'Fast particle traffic', Icon: Zap },
-  { value: 'dots', label: 'Dots', description: 'Evenly spaced moving dots', Icon: CircleDot },
-  { value: 'scanner', label: 'Scanner', description: 'Focused scanning packet', Icon: ScanLine },
-  { value: 'bidirectional', label: 'Two-way', description: 'Traffic in both directions', Icon: GitCompareArrows },
-  { value: 'laser', label: 'Laser', description: 'Long luminous energy sweep', Icon: Zap },
-  { value: 'meteor', label: 'Meteor', description: 'Single high-energy moving point', Icon: Sparkles },
-  { value: 'heartbeat', label: 'Heartbeat', description: 'P-QRS-T waveform, like a real EKG', Icon: HeartPulse },
-  { value: 'rail', label: 'Rail', description: 'Framed transport channel', Icon: Radio },
-  { value: 'fade', label: 'Energy Fade', description: 'Long fading data envelope', Icon: Waves },
-  { value: 'convoy', label: 'Convoy', description: 'Grouped batches with open road between', Icon: Truck },
-  { value: 'chase', label: 'Chase', description: 'A pursuer laps the lead object', Icon: Rabbit },
-  { value: 'charging', label: 'Charging', description: 'Line fills end-to-end, then resets', Icon: BatteryCharging },
-  { value: 'morse', label: 'Morse', description: 'Dot-dash telegraph signal (SOS)', Icon: Radio },
-  { value: 'ants', label: 'Ant Trail', description: 'Slow trail of tiny marching dots', Icon: Bug },
-  { value: 'blink', label: 'Blink', description: 'Stationary checkpoints pulsing in place', Icon: Lightbulb },
-];
-
-const ROUTING_OPTIONS: Array<{ value: EdgeRouting; label: string }> = [
-  { value: 'straight', label: 'Straight' },
-  { value: 'smooth-step', label: 'Smooth step' },
-  { value: 'orthogonal', label: 'Orthogonal' },
-  { value: 'curved', label: 'Bezier curve' },
-];
 
 const LABEL_POSITION_OPTIONS: Array<{ value: EdgeLabelPosition; label: string }> = [
   { value: 'center', label: 'Center' },
@@ -103,40 +49,53 @@ const LABEL_POSITION_OPTIONS: Array<{ value: EdgeLabelPosition; label: string }>
   { value: 'bottom', label: 'Bottom' },
 ];
 
-const MARKERS: Array<{ value: EdgeMarker; label: string }> = [
-  { value: 'none', label: 'None' },
-  { value: 'arrow', label: 'Arrow' },
-  { value: 'open-arrow', label: 'Open arrow' },
-  { value: 'triangle', label: 'Triangle' },
-  { value: 'circle', label: 'Circle' },
-  { value: 'diamond', label: 'Diamond' },
-  { value: 'tee', label: 'Tee' },
-  { value: 'cross', label: 'Cross' },
-  { value: 'circle-cross', label: 'Circle cross' },
-  { value: 'arrow-both', label: 'Both ways' },
-  { value: 'arrow-bar', label: 'Arrow bar' },
-  { value: 'bar', label: 'Bar' },
-  { value: 'crow-one', label: 'ERD · one' },
-  { value: 'crow-many', label: 'ERD · many' },
-  { value: 'crow-one-many', label: 'ERD · one or many' },
-  { value: 'crow-zero-one', label: 'ERD · zero or one' },
-  { value: 'crow-zero-many', label: 'ERD · zero or many' },
-];
-export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, sourceColumns, targetColumns, onUpdate, onDelete, onClose }: EdgeInspectorProps) {
+/** Base UI's Select has no value for "nothing picked", so the detach
+ *  option carries a sentinel the handler maps back to `null`. */
+const NO_STYLE = '__none__';
+
+/** Human names for the fields a class owns, for the override notice. */
+const STYLE_FIELD_LABELS: Record<EdgeStyleField, string> = {
+  color: 'colour',
+  width: 'width',
+  lineStyle: 'stroke pattern',
+  startMarker: 'start marker',
+  endMarker: 'end marker',
+  routing: 'routing',
+  direction: 'direction',
+  effect: 'animation',
+  effectColor: 'effect colour',
+  effectSize: 'object size',
+  effectCount: 'object count',
+  effectDensity: 'mark density',
+  effectShape: 'object icon',
+  animationSpeed: 'speed',
+  glowIntensity: 'glow',
+  glowColor: 'glow colour',
+};
+
+export function EdgeInspector({ edge, styles, sourceTitle, targetTitle, fallbackColor, sourceColumns, targetColumns, onUpdate, onAssignStyle, onManageStyles, onDelete, onClose }: EdgeInspectorProps) {
   const [label, setLabel] = useState(edge.label ?? '');
   const [draftEffect, setDraftEffect] = useState<EdgeEffect | null>(null);
-  const effect = edge.effect ?? 'flow';
-  const direction = edge.direction ?? 'forward';
-  const color = edge.color ?? fallbackColor;
-  const width = edge.width ?? 2.5;
-  const speed = edge.animationSpeed ?? 1;
+  // Every control below shows what the line actually *paints*, which for
+  // a line following a style class means the class's value wherever the
+  // line doesn't set its own. Writes still go to the line's own fields —
+  // editing a control here is a deliberate per-line override, and
+  // `overrides` is what lets the panel say so.
+  const styleClass = edgeStyleOf(edge, styles);
+  const painted = resolveEdgeStyle(edge, styles);
+  const overrides = styleClass ? edgeStyleOverrides(edge, styleClass) : [];
+  const effect = painted.effect ?? 'flow';
+  const direction = painted.direction ?? 'forward';
+  const color = painted.color ?? fallbackColor;
+  const width = painted.width ?? 2.5;
+  const speed = painted.animationSpeed ?? 1;
   const formattedSpeed = speed.toFixed(2).replace(/0+$/, '').replace(/\.$/, '');
-  const effectSize = edge.effectSize ?? 1;
-  const effectCount = edge.effectCount;
-  const effectDensity = edge.effectDensity ?? 1;
+  const effectSize = painted.effectSize ?? 1;
+  const effectCount = painted.effectCount;
+  const effectDensity = painted.effectDensity ?? 1;
   // Glow is opt-in: unset means no halo (new lines are created with 1).
-  const glowIntensity = edge.glowIntensity ?? 0;
-  const glowColor = edge.glowColor;
+  const glowIntensity = painted.glowIntensity ?? 0;
+  const glowColor = painted.glowColor;
   // Object count only applies to travelling-object effects; pattern
   // effects (flow, heartbeat…) get a density slider instead, and the
   // remaining effects (charging) have neither knob.
@@ -326,13 +285,82 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
         </div>
         <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>Extra pause after the line finishes drawing, before the replay moves on. Defaults to {DEFAULT_STEP_DELAY_MS}ms.</p>
 
-        <MarkerPicker label='Line start' value={edge.startMarker ?? 'none'} onChange={(startMarker) => onUpdate(edge.id, { startMarker })} />
-        <MarkerPicker label='Line end' value={edge.endMarker ?? 'none'} onChange={(endMarker) => onUpdate(edge.id, { endMarker })} />
+        <SectionLabel>Line style</SectionLabel>
+        <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>A named kind of line, shared across the diagram. Everything from here down follows the style unless this line overrides it.</p>
+        <div className='mt-1.5 flex gap-1.5'>
+          <Select
+            value={edge.styleRef ?? NO_STYLE}
+            onValueChange={(next) => {
+              if (next) onAssignStyle(edge.id, next === NO_STYLE ? null : next);
+            }}
+          >
+            <SelectTrigger className='h-9 min-w-0 flex-1 border-border bg-muted/30 px-3 text-left hover:bg-accent focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
+              <span className='flex min-w-0 flex-1 items-center gap-2'>
+                {styleClass && <EdgeStyleSample color={styleClass.color ?? color} width={styleClass.width} lineStyle={styleClass.lineStyle} endMarker={styleClass.endMarker} length={34} />}
+                <span className='truncate text-[11px] font-semibold text-foreground'>{styleClass?.name ?? 'No style'}</span>
+              </span>
+            </SelectTrigger>
+            <SelectContent className='max-h-72 border-cyan-400/25 bg-popover p-1.5'>
+              <SelectGroup>
+                <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-muted-foreground'>Line style</SelectLabel>
+                <SelectItem value={NO_STYLE} className='px-2.5 py-2 pr-9 text-[11px] font-semibold'>
+                  No style
+                </SelectItem>
+                {styles.map((style) => (
+                  <SelectItem key={style.id} value={style.id} className='gap-2.5 px-2.5 py-2 pr-9'>
+                    <EdgeStyleSample color={style.color ?? '#94a3b8'} width={style.width} lineStyle={style.lineStyle} endMarker={style.endMarker} length={44} />
+                    <span className='min-w-0 flex-1 truncate text-[11px] font-semibold'>{style.name}</span>
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+          <Button variant='outline' size='sm' onClick={onManageStyles} title='Manage the document&apos;s line styles' className='h-9 shrink-0 border-border bg-muted/30 px-2.5 text-[10px] text-muted-foreground hover:bg-accent'>
+            <SlidersHorizontal size={13} /> Manage
+          </Button>
+        </div>
+        {styleClass && overrides.length > 0 && (
+          <div className='mt-2 flex items-center justify-between gap-2 rounded-lg bg-amber-400/10 px-2.5 py-2 ring-1 ring-amber-400/25'>
+            <span className='min-w-0 text-[9px] leading-relaxed text-amber-800 dark:text-amber-200'>
+              This line overrides {overrides.length} of the style&apos;s settings: {overrides.map((field) => STYLE_FIELD_LABELS[field]).join(', ')}.
+            </span>
+            <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, clearStyleOverrides(styleClass))} className='shrink-0 text-amber-800 hover:bg-amber-400/15 dark:text-amber-200'>
+              <Undo2 /> Reset
+            </Button>
+          </div>
+        )}
+
+        <Label className='mt-3 mb-1 block text-[9px] text-muted-foreground'>Stroke pattern</Label>
+        <ToggleGroup
+          value={[painted.lineStyle ?? 'solid']}
+          onValueChange={(next) => {
+            const picked = next.at(-1);
+            if (picked) onUpdate(edge.id, { lineStyle: picked as EdgeLineStyle });
+          }}
+          variant='outline'
+          size='sm'
+          spacing={1}
+          className='grid w-full grid-cols-3 rounded-xl bg-muted/40 p-1.5 ring-1 ring-border'
+        >
+          {LINE_STYLE_OPTIONS.map((option) => (
+            <ToggleGroupItem
+              key={option.value}
+              value={option.value}
+              aria-pressed={(painted.lineStyle ?? 'solid') === option.value}
+              className={['h-9 w-full border-border bg-transparent text-[10px] font-semibold', (painted.lineStyle ?? 'solid') === option.value ? 'border-cyan-400/60 bg-cyan-500/20 text-cyan-700 dark:text-cyan-100' : 'text-muted-foreground hover:bg-accent hover:text-foreground'].join(' ')}
+            >
+              {option.label}
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
+
+        <MarkerPicker label='Line start' value={painted.startMarker ?? 'none'} onChange={(startMarker) => onUpdate(edge.id, { startMarker })} />
+        <MarkerPicker label='Line end' value={painted.endMarker ?? 'none'} onChange={(endMarker) => onUpdate(edge.id, { endMarker })} />
 
         <div className='mt-3'>
           <p className='text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>Routing</p>
           <Select
-            value={edge.routing ?? 'smooth-step'}
+            value={painted.routing ?? 'smooth-step'}
             onValueChange={(nextValue) => {
               if (nextValue) {
                 onUpdate(edge.id, {
@@ -343,7 +371,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
             }}
           >
             <SelectTrigger className='mt-1.5 h-9 w-full border-border bg-muted/30 px-3 text-left hover:bg-accent focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15'>
-              <span className='flex-1 truncate text-[11px] font-semibold text-foreground'>{ROUTING_OPTIONS.find((option) => option.value === (edge.routing ?? 'smooth-step'))?.label}</span>
+              <span className='flex-1 truncate text-[11px] font-semibold text-foreground'>{ROUTING_OPTIONS.find((option) => option.value === (painted.routing ?? 'smooth-step'))?.label}</span>
             </SelectTrigger>
             <SelectContent className='border-violet-400/25 bg-popover p-1.5'>
               <SelectGroup>
@@ -356,7 +384,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
               </SelectGroup>
             </SelectContent>
           </Select>
-          {(edge.routing ?? 'smooth-step') === 'orthogonal' || (edge.routing ?? 'smooth-step') === 'smooth-step' ? (
+          {(painted.routing ?? 'smooth-step') === 'orthogonal' || (painted.routing ?? 'smooth-step') === 'smooth-step' ? (
             <div className='mt-2 flex items-center justify-between rounded-lg bg-muted/30 px-2.5 py-2 ring-1 ring-border'>
               <span className='text-[9px] text-muted-foreground'>{edge.bendPoints?.length ? `${edge.bendPoints.length} custom bend points` : 'Automatic bend points'}</span>
               <Button variant='ghost' size='xs' disabled={!edge.bendPoints?.length} onClick={() => onUpdate(edge.id, { bendPoints: undefined })} className='text-muted-foreground hover:bg-accent hover:text-cyan-700 dark:text-cyan-100'>
@@ -427,7 +455,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                     effect={previewEffect}
                     direction={direction}
                     color={color}
-                    effectColor={edge.effectColor}
+                    effectColor={painted.effectColor}
                     width={width}
                     effectSize={effectSize}
                     speed={speed}
@@ -435,7 +463,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                     density={effectDensity}
                     glow={glowIntensity}
                     glowColor={glowColor}
-                    shape={edge.effectShape}
+                    shape={painted.effectShape}
                   />
                 </div>
 
@@ -453,7 +481,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                         </span>
                       </span>
                       <div className='mt-1.5'>
-                        <IconPicker value={edge.effectShape ?? null} onChange={(icon) => onUpdate(edge.id, { effectShape: icon ?? undefined })} />
+                        <IconPicker value={painted.effectShape ?? null} onChange={(icon) => onUpdate(edge.id, { effectShape: icon ?? undefined })} />
                       </div>
                       <span className='mt-1 block text-[9px] leading-relaxed text-muted-foreground'>Rides the route instead of the effect&apos;s dash objects, fixed at 16px. Leave unset for the plain dash effect.</span>
                     </div>
@@ -464,7 +492,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                       <span className='inline-flex items-center gap-1'>
                         <Palette size={11} /> Effect object color
                       </span>
-                      {edge.effectColor ? (
+                      {painted.effectColor ? (
                         <Button variant='ghost' size='xs' onClick={() => onUpdate(edge.id, { effectColor: undefined })} className='text-muted-foreground hover:bg-accent hover:text-cyan-700 dark:text-cyan-100'>
                           <Undo2 /> Use line color
                         </Button>
@@ -475,7 +503,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                     <span className='mt-1.5 flex items-center gap-2'>
                       <Input
                         type='color'
-                        value={edge.effectColor ?? color}
+                        value={painted.effectColor ?? color}
                         onChange={(event) =>
                           onUpdate(edge.id, {
                             effectColor: event.target.value as `#${string}`,
@@ -483,7 +511,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                         }
                         className='h-7 w-8 cursor-pointer border-border bg-transparent p-0.5'
                       />
-                      <span className='font-mono text-[9px] uppercase text-muted-foreground'>{edge.effectColor ?? color}</span>
+                      <span className='font-mono text-[9px] uppercase text-muted-foreground'>{painted.effectColor ?? color}</span>
                     </span>
                     <span className='mt-1 block text-[9px] leading-relaxed text-muted-foreground'>Colour of the moving objects. Leave on auto to match the line.</span>
                   </div>
@@ -626,7 +654,7 @@ export function EdgeInspector({ edge, sourceTitle, targetTitle, fallbackColor, s
                         <span className='mt-1.5 flex items-center gap-2'>
                           <Input
                             type='color'
-                            value={glowColor && glowColor !== 'auto' ? glowColor : (edge.effectColor ?? color)}
+                            value={glowColor && glowColor !== 'auto' ? glowColor : (painted.effectColor ?? color)}
                             onChange={(event) => onUpdate(edge.id, { glowColor: event.target.value as `#${string}` })}
                             className='h-7 w-8 cursor-pointer border-border bg-transparent p-0.5'
                           />
@@ -829,58 +857,6 @@ function ColumnPicker({ label, columns, value, onChange }: { label: string; colu
         </SelectContent>
       </Select>
     </div>
-  );
-}
-
-function MarkerPicker({ label, value, onChange }: { label: string; value: EdgeMarker; onChange: (marker: EdgeMarker) => void }) {
-  const selected = MARKERS.find((m) => m.value === value) ?? MARKERS[0];
-  return (
-    <div className='mt-3'>
-      <Label className='text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>{label}</Label>
-      <Select
-        value={value}
-        onValueChange={(nextValue) => {
-          if (nextValue) onChange(nextValue as EdgeMarker);
-        }}
-      >
-        <SelectTrigger className='mt-1.5 h-auto w-full gap-2.5 border-border bg-muted/40 px-3 py-2.5 text-left hover:bg-muted/60 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
-          <span className='grid h-7 w-9 shrink-0 place-items-center rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-200'>
-            <MarkerSwatch marker={value} />
-          </span>
-          <span className='min-w-0 flex-1'>
-            <span className='block text-xs font-semibold'>{selected.label}</span>
-          </span>
-        </SelectTrigger>
-        <SelectContent className='max-h-72 min-w-65 border-cyan-400/25 bg-popover p-1.5'>
-          <SelectGroup>
-            <SelectLabel className='px-2 py-1.5 text-[9px] uppercase tracking-[0.16em] text-muted-foreground'>{label}</SelectLabel>
-            {MARKERS.map((marker) => (
-              <SelectItem key={marker.value} value={marker.value} className='gap-2.5 px-2.5 py-2 pr-9'>
-                <span className='grid h-7 w-9 shrink-0 place-items-center rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-200'>
-                  <MarkerSwatch marker={marker.value} />
-                </span>
-                <span className='min-w-0 flex-1'>
-                  <span className='block text-[11px] font-semibold'>{marker.label}</span>
-                </span>
-              </SelectItem>
-            ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-    </div>
-  );
-}
-
-/**
- * A short line stub feeding into the marker, so the swatch reads as
- * "what the end of a real line looks like" instead of an isolated glyph.
- */
-function MarkerSwatch({ marker }: { marker: EdgeMarker }) {
-  return (
-    <svg width={28} height={20} viewBox='-30 -12 34 24' className='text-cyan-200'>
-      <line x1={-28} y1={0} x2={0} y2={0} stroke='currentColor' strokeWidth={1.5} strokeOpacity={0.7} />
-      <EdgeMarkerSymbol marker={marker} />
-    </svg>
   );
 }
 

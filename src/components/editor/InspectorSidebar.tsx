@@ -1,13 +1,15 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { EdgeInspector } from '@/components/EdgeInspector';
 import { JsonInspector } from '@/components/JsonInspector';
 import { JsonPlaygroundPanel } from '@/components/editor/JsonPlaygroundPanel';
 import { NodeInspector } from '@/components/inspector/NodeInspector';
 import { Drawer, DrawerContent } from '@/components/ui/drawer';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { EdgeStylePaletteDialog } from '@/components/editor/EdgeStylePaletteDialog';
 import { useEditorStore } from '@/lib/editor-store';
+import { edgeStylesOf } from '@/lib/edge-style';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { resolveNodeStyle } from '@/lib/node-style';
 
@@ -22,7 +24,8 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
   const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
   const infoOpen = useEditorStore((state) => state.infoOpen);
-  const { selectNode, selectEdge, toggleInfo, onNodeUpdate, onNodeDuplicate, onNodeDelete, onEdgeUpdate, onEdgeDelete, ungroupNode, fitGroupToContents, addLaneAfter } = useEditorStore();
+  const { selectNode, selectEdge, toggleInfo, onNodeUpdate, onNodeDuplicate, onNodeDelete, onEdgeUpdate, onEdgeDelete, assignEdgeStyle, ungroupNode, fitGroupToContents, addLaneAfter } = useEditorStore();
+  const [stylePaletteOpen, setStylePaletteOpen] = useState(false);
 
   const selectedNode = document.nodes.find((node) => node.id === selectedNodeId) ?? null;
   const selectedEdge = document.edges.find((edge) => edge.id === selectedEdgeId) ?? null;
@@ -77,12 +80,15 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
               <EdgeInspector
                 key={selectedEdge.id}
                 edge={selectedEdge}
+                styles={edgeStylesOf(document.settings)}
                 sourceTitle={edgeSource?.title ?? selectedEdge.from}
                 targetTitle={document.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
                 fallbackColor={edgeSource ? resolveNodeStyle(edgeSource).foreground : '#67e8f9'}
                 sourceColumns={edgeSource?.table?.columns}
                 targetColumns={document.nodes.find((node) => node.id === selectedEdge.to)?.table?.columns}
                 onUpdate={onEdgeUpdate}
+                onAssignStyle={assignEdgeStyle}
+                onManageStyles={() => setStylePaletteOpen(true)}
                 onDelete={(id) => {
                   onEdgeDelete(id);
                   selectEdge(null);
@@ -95,6 +101,11 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
           </div>
         </ScrollArea>
       </DrawerContent>
+
+      {/* Mounted from the sidebar rather than inside `EdgeInspector` so
+          the palette survives the line being deselected while it's open
+          — the inspector unmounts the moment the selection clears. */}
+      <EdgeStylePaletteDialog open={stylePaletteOpen} onOpenChange={setStylePaletteOpen} />
     </Drawer>
   );
 }
