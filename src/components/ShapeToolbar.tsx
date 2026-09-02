@@ -16,11 +16,11 @@
 // the same shape again (or pressing Esc) deselects.
 
 import { useEffect, useState } from 'react';
-import { ChevronDown, Columns3, Group, List, Sticker, Table2, Type } from 'lucide-react';
+import { ChevronDown, Columns3, Group, List, SquareDashedBottomCode, Sticker, Table2, Type, UserSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
-import { SHAPES, type NodeShape } from '@/lib/node-style';
+import { isShapeTool, SHAPES, type NodeShape } from '@/lib/node-style';
 import type { DrawTool } from '@/lib/flowchart-types';
 
 // Every shape exposed in the dock. We intentionally show only the
@@ -118,10 +118,11 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
           className='group h-7 gap-0.5 pl-2 pr-1 text-muted-foreground data-popup-open:bg-cyan-400/12 data-popup-open:text-cyan-700 dark:text-cyan-100'
           aria-label='Choose a shape to draw'
         >
-          {/* The table, lane, group, text, icon and legend tools live in their own
-              buttons, so the shape trigger keeps showing the last picked
-              silhouette while one of those special tools is armed. */}
-          <ShapeIcon shape={activeShape && activeShape !== 'table' && activeShape !== 'group' && activeShape !== 'text' && activeShape !== 'icon' && activeShape !== 'lane' && activeShape !== 'legend' ? activeShape : lastPicked} size={16} />
+          {/* Every non-shape tool (table, lane, fragment, text, icon,
+              legend, lifeline) has its own button, so the shape trigger
+              keeps showing the last picked silhouette while one of them
+              is armed. */}
+          <ShapeIcon shape={activeShape && isShapeTool(activeShape) ? activeShape : lastPicked} size={16} />
           <ChevronDown size={10} className='opacity-70 transition group-data-popup-open:rotate-180' />
         </DropdownMenuTrigger>
         <DropdownMenuContent align='center' sideOffset={10} className='w-[min(420px,90vw)] border-border bg-popover/98 p-3 shadow-[0_22px_70px_rgba(0,0,0,.4)] backdrop-blur-xl'>
@@ -264,6 +265,34 @@ export function ShapeToolbar({ activeShape, onSelect }: ShapeToolbarProps) {
         aria-label='Legend'
       >
         <List size={16} />
+      </Button>
+
+      <Divider />
+
+      {/* Sequence diagram: a participant's lifeline, and the alt/opt/loop
+          band that frames a stretch of the exchange. */}
+      <Button
+        variant='ghost'
+        size='icon-sm'
+        onClick={() => (activeShape === 'lifeline' ? onSelect(null) : onSelect('lifeline'))}
+        aria-pressed={activeShape === 'lifeline'}
+        className={activeShape === 'lifeline' ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-1 ring-cyan-400/40' : 'text-muted-foreground'}
+        title='Lifeline (sequence participant)'
+        aria-label='Lifeline'
+      >
+        <UserSquare size={16} />
+      </Button>
+
+      <Button
+        variant='ghost'
+        size='icon-sm'
+        onClick={() => (activeShape === 'fragment' ? onSelect(null) : onSelect('fragment'))}
+        aria-pressed={activeShape === 'fragment'}
+        className={activeShape === 'fragment' ? 'bg-cyan-400/15 text-cyan-700 dark:text-cyan-100 ring-1 ring-cyan-400/40' : 'text-muted-foreground'}
+        title='Fragment band (alt / opt / loop)'
+        aria-label='Fragment band'
+      >
+        <SquareDashedBottomCode size={16} />
       </Button>
     </div>
   );

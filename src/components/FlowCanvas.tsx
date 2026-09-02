@@ -2,10 +2,10 @@
 
 import { Grid2x2, Info, Magnet, Maximize2, Minus, Plus } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPoint, NodeShape } from '@/lib/flowchart-types';
+import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPoint } from '@/lib/flowchart-types';
 import { screenToData } from '@/lib/coords';
 import { resolveDocumentStyles } from '@/lib/edge-style';
-import { resolveNodeStyle, SHAPES } from '@/lib/node-style';
+import { drawToolPreviewShape, resolveNodeStyle, SHAPES } from '@/lib/node-style';
 import { nodeBounds, sortByTreeDepth } from '@/lib/node-tree';
 import type { ViewTransform } from '@/lib/view-transform';
 import { Button } from '@/components/ui/button';
@@ -92,7 +92,7 @@ interface FlowCanvasProps {
   selectedEdgeId: string | null;
   onSelectEdge: (id: string | null) => void;
   onEdgeReconnect: (edgeId: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
-  onEdgeUpdate: (edgeId: string, patch: { bendPoints?: FlowPoint[]; labelOffset?: number }) => void;
+  onEdgeUpdate: (edgeId: string, patch: { bendPoints?: FlowPoint[]; labelOffset?: number; messageY?: number }) => void;
   /** Shape currently armed by the dock. When set, the canvas draws. */
   activeShape: DrawTool | null;
   /** Called when the user finishes drawing a shape on the canvas. */
@@ -201,6 +201,7 @@ export function FlowCanvas({
   const [bendDrag, setBendDrag] = useState<BendDragState | null>(null);
   /** Id of the edge whose label is being slid along the line. */
   const [labelDrag, setLabelDrag] = useState<string | null>(null);
+  const [messageDrag, setMessageDrag] = useState<string | null>(null);
 
   // Figma-style draw gesture. `drawStart` is captured on the first
   // pointerdown when a shape is armed; `drawCurrent` follows the
@@ -408,6 +409,10 @@ export function FlowCanvas({
   );
 
   const nodesById = useMemo(() => new Map(document.nodes.map((n) => [n.id, n])), [document]);
+
+  const handleMessagePointerDown = useCallback((edgeId: string) => {
+    setMessageDrag(edgeId);
+  }, []);
 
   const handleLabelPointerDown = useCallback((edgeId: string) => {
     setLabelDrag(edgeId);
@@ -654,6 +659,29 @@ export function FlowCanvas({
       window.removeEventListener('pointercancel', onUp);
     };
   }, [document.edges, labelDrag, nodesById, onEdgeUpdate, viewTransform]);
+
+  // A message only moves vertically: which two lifelines it runs between
+  // fixes its x, and *when* it happens is the y — the one coordinate a
+  // sequence diagram lets you choose. Snapping applies, so a column of
+  // messages lines up without hand-nudging.
+  useEffect(() => {
+    if (!messageDrag) return;
+    const onMove = (event: PointerEvent) => {
+      if (!svgRef.current) return;
+      const pointer = screenToData(svgRef.current, event.clientX, event.clientY, viewTransform);
+      const y = snapEnabled ? Math.round(pointer.y / gridSize) * gridSize : pointer.y;
+      onEdgeUpdate(messageDrag, { messageY: y });
+    };
+    const onUp = () => setMessageDrag(null);
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
+    return () => {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+    };
+  }, [gridSize, messageDrag, onEdgeUpdate, snapEnabled, viewTransform]);
 
   // Bend handles update the persisted waypoint on every move so the line,
   // markers and animated effects remain locked to the pointer.
@@ -960,11 +988,12 @@ export function FlowCanvas({
                 edge={edge}
                 from={from}
                 to={to}
-                paused={isDragging || link !== null || reconnect !== null || bendDrag !== null || labelDrag !== null || (runningEdges !== null && !runningEdges.has(edge.id))}
+                paused={isDragging || link !== null || reconnect !== null || bendDrag !== null || labelDrag !== null || messageDrag !== null || (runningEdges !== null && !runningEdges.has(edge.id))}
                 interactive={!readOnly}
                 selected={selectedEdgeId === edge.id}
                 onClick={readOnly ? undefined : (id) => onSelectEdge(id)}
                 onLabelPointerDown={readOnly ? undefined : handleLabelPointerDown}
+                onLinePointerDown={readOnly || edge.routing !== 'message' ? undefined : handleMessagePointerDown}
                 onDoubleClick={readOnly ? undefined : handleEdgeDoubleClick}
                 color={edgeColor}
                 effectColor={edge.effectColor}
@@ -1183,10 +1212,7 @@ function ReconnectPreview({ fixed, pointer, color, scale }: { fixed: { x: number
  * with the SVG <ellipse> primitive.
  */
 function DrawPreview({ shape, start, current }: { shape: DrawTool; start: { x: number; y: number }; current: { x: number; y: number } }) {
-  // The table, group and lane tools preview as the rounded box they
-  // create; the text, icon and legend tools preview as a plain
-  // rectangle, matching the box their content is laid out within.
-  const previewShape: NodeShape = shape === 'table' || shape === 'group' || shape === 'lane' ? 'rounded' : shape === 'text' || shape === 'icon' || shape === 'legend' ? 'rectangle' : shape;
+  const previewShape = drawToolPreviewShape(shape);
   const minX = Math.min(start.x, current.x);
   const minY = Math.min(start.y, current.y);
   const maxX = Math.max(start.x, current.x);

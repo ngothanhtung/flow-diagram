@@ -2,8 +2,10 @@
 
 import { Card } from '@/components/ui/card';
 import type { FlowNode } from '@/lib/flowchart-types';
+import { ActivationInspector } from './ActivationInspector';
 import { BlockInspector } from './BlockInspector';
 import { GroupInspector } from './GroupInspector';
+import { LifelineInspector } from './LifelineInspector';
 import { IconInspector } from './IconInspector';
 import { LegendInspector } from './LegendInspector';
 import { TextInspector } from './TextInspector';
@@ -26,12 +28,13 @@ interface NodeInspectorProps {
 /**
  * Picks the inspector panel for the selected node.
  *
- * The five kinds paint genuinely different things — a block has a body,
- * a text object has only words, a frame has a wash and a title bar, a
- * free icon/logo object has only a glyph, a legend has rows of samples —
- * so each gets its own panel
- * rather than one panel full of guards. Anything two of them share lives
- * in `./fields`.
+ * The kinds paint genuinely different things — a block has a body, a
+ * text object has only words, a frame has a wash and a title bar, a free
+ * icon/logo object has only a glyph, a legend has rows of samples, a
+ * lifeline has a header card over a dashed line, an activation bar is a
+ * span of time pinned to one — so each gets its own panel rather than
+ * one panel full of guards. Anything two of them share lives in
+ * `./fields`.
  */
 export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCount = 0, parentTitle = null, onUngroup, onFitGroup, onAddLane }: NodeInspectorProps) {
   if (!node) {
@@ -56,6 +59,12 @@ export function NodeInspector({ node, onUpdate, onDuplicate, onDelete, memberCou
   }
   if (node.type === 'legend') {
     return <LegendInspector {...shared} />;
+  }
+  if (node.type === 'lifeline') {
+    return <LifelineInspector {...shared} />;
+  }
+  if (node.type === 'activation') {
+    return <ActivationInspector {...shared} />;
   }
   return <BlockInspector {...shared} />;
 }

@@ -23,6 +23,10 @@ interface AnimatedEdgeProps {
   onLabelPointerDown?: (edgeId: string, event: React.PointerEvent<SVGGElement>) => void;
   /** Double-click on the line body — the canvas turns it into a bend point. */
   onDoubleClick?: (edgeId: string, event: React.MouseEvent<SVGPathElement>) => void;
+  /** Drag on the line body itself. Only wired for sequence messages,
+   *  whose y is the one coordinate the user gets to choose; on every
+   *  other route the body's drag gesture belongs to panning. */
+  onLinePointerDown?: (edgeId: string, event: React.PointerEvent<SVGPathElement>) => void;
   selected?: boolean;
   /** Tailwind text-colour class (e.g. "text-sky-300") used for the
    *  line + arrowhead via `currentColor`. Falls back to text-sky-300. */
@@ -45,7 +49,7 @@ interface AnimatedEdgeProps {
   flattenEffect?: boolean;
 }
 
-export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, onLabelPointerDown, onDoubleClick, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal', flattenEffect = false }: AnimatedEdgeProps) {
+export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, onLabelPointerDown, onDoubleClick, onLinePointerDown, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal', flattenEffect = false }: AnimatedEdgeProps) {
   const geometry = buildEdgeGeometry(edge, from, to);
   const { d, start, end, startAngle, angle, length } = geometry;
   const effect = flattenEffect ? 'none' : (edge.effect ?? 'flow');
@@ -161,11 +165,20 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
           stroke='transparent'
           strokeWidth={16}
           fill='none'
-          className='cursor-pointer'
+          className={onLinePointerDown ? 'cursor-ns-resize' : 'cursor-pointer'}
+          style={onLinePointerDown ? { touchAction: 'none' } : undefined}
           onClick={(e) => {
             e.stopPropagation();
             onClick?.(edge.id);
           }}
+          onPointerDown={
+            onLinePointerDown
+              ? (e) => {
+                  e.stopPropagation();
+                  onLinePointerDown(edge.id, e);
+                }
+              : undefined
+          }
           onDoubleClick={onDoubleClick ? (e) => onDoubleClick(edge.id, e) : undefined}
         />
       )}

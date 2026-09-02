@@ -33,6 +33,7 @@ import {
   Type,
   Sticker,
   List,
+  Square,
   type LucideIcon,
 } from 'lucide-react';
 import {
@@ -58,7 +59,7 @@ import {
   IconWorld,
 } from '@tabler/icons-react';
 import type { ComponentType } from 'react';
-import type { ConnectionSide, FlowNode, NodeColor, NodeIcon, NodeShape, NodeType } from './flowchart-types';
+import type { ConnectionSide, DrawTool, FlowNode, NodeColor, NodeIcon, NodeShape, NodeType } from './flowchart-types';
 
 export type { NodeColor, NodeIcon, NodeShape } from './flowchart-types';
 
@@ -144,10 +145,68 @@ export const LEGEND_MAX_HEIGHT = 900;
 /** Inset between the rows and the box, matching the text object's. */
 export const LEGEND_PADDING = 6;
 
+// --- Sequence diagram -----------------------------------------------------
+// A lifeline is a header card with a long dashed line hanging below it,
+// and the node's `height` is the *whole* span — header plus line — so
+// dragging the bottom handle is "how far down does this participant
+// live", which is the only thing anyone wants to change about it.
+
+/** Height of the header card at the top of a lifeline. The rest of the
+ *  node's height is the dashed line below it. */
+export const LIFELINE_HEADER_HEIGHT = 52;
+export const LIFELINE_MIN_WIDTH = 80;
+export const LIFELINE_MAX_WIDTH = 320;
+/** Enough for the header plus a visible stub of line. */
+export const LIFELINE_MIN_HEIGHT = LIFELINE_HEADER_HEIGHT + 40;
+export const LIFELINE_MAX_HEIGHT = 4000;
+export const LIFELINE_DEFAULT_WIDTH = 150;
+export const LIFELINE_DEFAULT_HEIGHT = 420;
+
+/** Width of an activation bar, and so also how far a message's
+ *  endpoints are inset from the lifeline's centre line — an arrow has
+ *  to land on the bar's edge, not vanish under it. */
+/** Height of a fragment band's corner tab. */
+export const FRAGMENT_TAB_HEIGHT = 20;
+
+export const ACTIVATION_WIDTH = 14;
+export const ACTIVATION_MIN_HEIGHT = 16;
+export const ACTIVATION_MAX_HEIGHT = 3000;
+export const ACTIVATION_DEFAULT_HEIGHT = 90;
+export const ACTIVATION_MIN_WIDTH = 8;
+export const ACTIVATION_MAX_WIDTH = 40;
+
 export const ICON_OBJECT_MIN_SIZE = 24;
 export const ICON_OBJECT_DEFAULT_WIDTH = 96;
 export const ICON_OBJECT_DEFAULT_HEIGHT = 96;
 export const ICON_OBJECT_MAX_SIZE = 480;
+
+/**
+ * The draw tools that are *not* a plain silhouette — each builds a
+ * particular kind of node (a table, a frame, a caption, a lifeline…)
+ * rather than a card wearing the picked shape.
+ *
+ * One list, because three separate places used to spell it out as a
+ * chain of `!==` comparisons and every new tool had to be added to all
+ * of them or something silently misbehaved.
+ */
+const SPECIAL_DRAW_TOOLS = new Set<DrawTool>(['table', 'group', 'lane', 'fragment', 'text', 'icon', 'legend', 'lifeline']);
+
+/** True when the tool draws an ordinary card wearing this silhouette. */
+export function isShapeTool(tool: DrawTool): tool is NodeShape {
+  return !SPECIAL_DRAW_TOOLS.has(tool);
+}
+
+/**
+ * The silhouette to preview while dragging a tool out. The box-shaped
+ * tools preview as the rounded card they create; the ones that paint no
+ * body preview as a plain rectangle, matching the box their content is
+ * laid out within.
+ */
+export function drawToolPreviewShape(tool: DrawTool): NodeShape {
+  if (tool === 'table' || tool === 'group' || tool === 'lane' || tool === 'fragment' || tool === 'lifeline') return 'rounded';
+  if (tool === 'text' || tool === 'icon' || tool === 'legend') return 'rectangle';
+  return tool;
+}
 
 export interface NodeSizeLimits {
   minWidth: number;
@@ -176,6 +235,12 @@ export function nodeSizeLimits(node: Pick<FlowNode, 'type' | 'table'>): NodeSize
   }
   if (node.type === 'icon') {
     return { minWidth: ICON_OBJECT_MIN_SIZE, minHeight: ICON_OBJECT_MIN_SIZE, maxWidth: ICON_OBJECT_MAX_SIZE, maxHeight: ICON_OBJECT_MAX_SIZE, defaultWidth: ICON_OBJECT_DEFAULT_WIDTH, defaultHeight: ICON_OBJECT_DEFAULT_HEIGHT };
+  }
+  if (node.type === 'lifeline') {
+    return { minWidth: LIFELINE_MIN_WIDTH, minHeight: LIFELINE_MIN_HEIGHT, maxWidth: LIFELINE_MAX_WIDTH, maxHeight: LIFELINE_MAX_HEIGHT, defaultWidth: LIFELINE_DEFAULT_WIDTH, defaultHeight: LIFELINE_DEFAULT_HEIGHT };
+  }
+  if (node.type === 'activation') {
+    return { minWidth: ACTIVATION_MIN_WIDTH, minHeight: ACTIVATION_MIN_HEIGHT, maxWidth: ACTIVATION_MAX_WIDTH, maxHeight: ACTIVATION_MAX_HEIGHT, defaultWidth: ACTIVATION_WIDTH, defaultHeight: ACTIVATION_DEFAULT_HEIGHT };
   }
   if (node.table) {
     return { minWidth: 72, minHeight: 72, maxWidth: TABLE_MAX_WIDTH, maxHeight: TABLE_MAX_HEIGHT, defaultWidth: TABLE_DEFAULT_WIDTH, defaultHeight: 112 };
@@ -795,6 +860,10 @@ const DEFAULT_BY_TYPE: Record<NodeType, { shape: NodeShape; color: NodeColor; ic
   // the selection ring / active halo a rectangle to trace, same as text.
   icon: { shape: 'rectangle', color: 'sky', icon: null },
   legend: { shape: 'rectangle', color: 'sky', icon: null },
+  // A lifeline paints its own header card; the shape only gives the
+  // selection ring and the drag box something to trace.
+  lifeline: { shape: 'rounded', color: 'sky', icon: null },
+  activation: { shape: 'rectangle', color: 'sky', icon: null },
 };
 
 // Type-level icons that the picker can fall back to when a node carries
@@ -810,6 +879,8 @@ const TYPE_DEFAULT_ICON: Record<NodeType, LucideIcon> = {
   text: Type,
   icon: Sticker,
   legend: List,
+  lifeline: User,
+  activation: Square,
 };
 
 // --- Resolver -------------------------------------------------------------
