@@ -61,11 +61,26 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   const endMarker = edge.endMarker ?? 'none';
   const lowPower = executionState === 'pending';
   const isDrawing = executionState === 'active';
-  // The draw-in animation owns `stroke-dasharray` for its duration (see
-  // `.edge-power-draw` in globals.css), so the stroke pattern only goes
-  // on once the line has finished drawing itself in.
-  const lineDash = isDrawing ? undefined : edgeLineDash(edge.lineStyle, lineWidth);
+  const lineDash = edgeLineDash(edge.lineStyle, lineWidth);
   const lineCap = edgeLineCap(edge.lineStyle);
+  // The draw-in reveal is a `stroke-dasharray` trick (`.edge-power-draw` in
+  // globals.css) — the same attribute a dashed/dotted line needs for its own
+  // pattern, so the two cannot share one path. Putting the reveal on a mask
+  // instead lets the line underneath keep its pattern the whole way through.
+  // Dropping the pattern for the draw's duration is what made "Stroke
+  // pattern" look dead outside `static`: every other mode marks at least one
+  // edge 'active', and `concurrent` marks *every* edge 'active' for the whole
+  // run, so there was no "after the draw" for the pattern to come back in.
+  // A solid line needs none of this and keeps the cheap single path.
+  const maskedDraw = isDrawing && lineDash !== undefined;
+  const drawnPathLength = isDrawing && !maskedDraw ? 1 : undefined;
+  const drawClass = isDrawing && !maskedDraw ? 'edge-power-draw' : undefined;
+  const drawMaskId = `edge-draw-${edge.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
+  const drawMask = maskedDraw ? `url(#${drawMaskId})` : undefined;
+  // No point on a route can sit further from an endpoint than the route's own
+  // arc length, so this box is guaranteed to hold the whole path — bends,
+  // curve bulges and all — without asking the DOM for a bounding box.
+  const maskPad = length + lineWidth + 8;
   const showEffect = executionState === 'normal' || executionState === 'active';
   const drawDuration = `${edge.duration ?? EDGE_DRAW_DURATION_MS}ms`;
   const drawStyle = isDrawing
@@ -113,21 +128,36 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   // gap so the arrow doesn't overlap the port dot.
   return (
     <g className={tone} opacity={lowPower ? 0.42 : executionState === 'completed' ? 0.72 : 1} style={{ color: lowPower && !selected ? '#52525b' : color }}>
+      {maskedDraw && (
+        <defs>
+          <mask
+            id={drawMaskId}
+            maskUnits='userSpaceOnUse'
+            x={Math.min(start.x, end.x) - maskPad}
+            y={Math.min(start.y, end.y) - maskPad}
+            width={Math.abs(end.x - start.x) + maskPad * 2}
+            height={Math.abs(end.y - start.y) + maskPad * 2}
+          >
+            <path d={d} pathLength={1} stroke='#fff' strokeWidth={lineWidth + 14} fill='none' className='edge-power-draw' style={drawStyle} />
+          </mask>
+        </defs>
+      )}
       {selected && (
         <path
           d={d}
-          pathLength={isDrawing ? 1 : undefined}
+          pathLength={drawnPathLength}
           stroke='currentColor'
           strokeWidth={lineWidth + 6}
           strokeOpacity={0.12}
           strokeLinecap='round'
           fill='none'
           pointerEvents='none'
-          className={isDrawing ? 'edge-power-draw' : undefined}
+          className={drawClass}
+          mask={drawMask}
           style={drawStyle}
         />
       )}
-      <path d={d} pathLength={isDrawing ? 1 : undefined} stroke='currentColor' strokeWidth={selected ? lineWidth + 2 : lineWidth} strokeOpacity={selected ? 0.82 : 0.52} strokeDasharray={lineDash} strokeLinecap={lineCap} fill='none' className={isDrawing ? 'edge-power-draw' : undefined} style={drawStyle} />
+      <path d={d} pathLength={drawnPathLength} stroke='currentColor' strokeWidth={selected ? lineWidth + 2 : lineWidth} strokeOpacity={selected ? 0.82 : 0.52} strokeDasharray={lineDash} strokeLinecap={lineCap} fill='none' className={drawClass} mask={drawMask} style={drawStyle} />
 
       <g opacity={showEffect ? 1 : 0} className={isDrawing ? 'edge-after-draw' : undefined} style={effectColor ? { ...drawStyle, color: effectColor } : drawStyle}>
         <EdgeEffectLayer
