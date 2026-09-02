@@ -6,7 +6,7 @@ import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPo
 import { screenToData } from '@/lib/coords';
 import { resolveDocumentStyles } from '@/lib/edge-style';
 import { endpointsOfLine, lineGeometryFromEndpoints } from '@/lib/line-geometry';
-import { drawToolPreviewShape, resolveNodeStyle, SHAPES } from '@/lib/node-style';
+import { drawToolPreviewShape, nodeSizeLimits, resolveNodeStyle, SHAPES } from '@/lib/node-style';
 import { nodeBounds, sortByTreeDepth } from '@/lib/node-tree';
 import type { ViewTransform } from '@/lib/view-transform';
 import { Button } from '@/components/ui/button';
@@ -425,14 +425,36 @@ export function FlowCanvas({
     setIsPanning(false);
   }, []);
 
+  const nodesById = useMemo(() => new Map(document.nodes.map((n) => [n.id, n])), [document]);
+
+  /**
+   * Snap on a drag lands the node's **top-left corner** on the grid, not
+   * its centre. A node's `position` is its centre, and snapping that put
+   * every edge half a size away from any grid line — a 190×86 block sat
+   * centred on a crossing with its outline touching nothing, which reads
+   * as "snap is off" however exactly the centre matched. The corner is
+   * what the user sees against the drawn grid, so it is what has to land
+   * on it (`handleNodeResize` already snaps edges for the same reason).
+   *
+   * The trade-off is deliberate: centre snapping kept the top/bottom
+   * ports of *differently sized* nodes in one column, corner snapping
+   * keeps their outlines on the grid instead. Same-sized nodes — the
+   * normal case, since a diagram reuses one card size — stay in lockstep
+   * either way, because they share the same half-size offset.
+   */
   const handleNodeMove = useCallback(
     (id: string, position: { x: number; y: number }) => {
-      onNodeMove(id, snapPoint(position));
+      const node = snapEnabled ? nodesById.get(id) : undefined;
+      if (!node) {
+        onNodeMove(id, snapPoint(position));
+        return;
+      }
+      const { width, height } = resolveNodeStyle(node);
+      const corner = snapPoint({ x: position.x - width / 2, y: position.y - height / 2 });
+      onNodeMove(id, { x: corner.x + width / 2, y: corner.y + height / 2 });
     },
-    [onNodeMove, snapPoint],
+    [nodesById, onNodeMove, snapEnabled, snapPoint],
   );
-
-  const nodesById = useMemo(() => new Map(document.nodes.map((n) => [n.id, n])), [document]);
 
   // A free line's endpoints are not corners of a box the user is
   // resizing — each moves on its own, anywhere, and the box is just what
@@ -517,14 +539,24 @@ export function FlowCanvas({
       const newTop = geometry.position.y - geometry.height / 2;
       const newBottom = geometry.position.y + geometry.height / 2;
       // The anchored corner is whichever old edge did not move.
-      const left = newLeft === oldLeft ? oldLeft : snapPoint({ x: newLeft, y: 0 }).x;
+      const leftAnchored = newLeft === oldLeft;
+      const topAnchored = newTop === oldTop;
+      const left = leftAnchored ? oldLeft : snapPoint({ x: newLeft, y: 0 }).x;
       const right = newRight === oldRight ? oldRight : snapPoint({ x: newRight, y: 0 }).x;
-      const top = newTop === oldTop ? oldTop : snapPoint({ x: 0, y: newTop }).y;
+      const top = topAnchored ? oldTop : snapPoint({ x: 0, y: newTop }).y;
       const bottom = newBottom === oldBottom ? oldBottom : snapPoint({ x: 0, y: newBottom }).y;
-      const width = Math.max(72, right - left);
-      const height = Math.max(72, bottom - top);
+      // `nodeSizeLimits` is the single source for min/max per node kind —
+      // a local floor here used to force every kind to 72, which both
+      // overrode the size a text object or free line is allowed to be and
+      // silently pushed the *anchored* edge to make room.
+      const limits = nodeSizeLimits(node);
+      const width = Math.min(limits.maxWidth, Math.max(limits.minWidth, right - left));
+      const height = Math.min(limits.maxHeight, Math.max(limits.minHeight, bottom - top));
+      // Whichever edge the user is not dragging stays exactly where it is.
+      const finalLeft = leftAnchored ? left : right - width;
+      const finalTop = topAnchored ? top : bottom - height;
       onNodeResize(id, {
-        position: { x: left + width / 2, y: top + height / 2 },
+        position: { x: finalLeft + width / 2, y: finalTop + height / 2 },
         width,
         height,
       });
