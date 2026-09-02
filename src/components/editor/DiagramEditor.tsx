@@ -13,6 +13,8 @@ import { ShareDialog } from '@/components/diagrams/ShareDialog';
 import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, FileMenuItem, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { EditorShell } from '@/components/editor/EditorShell';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
+import { MermaidImportDialog } from '@/components/editor/MermaidImportDialog';
+import { StarterPickerDialog } from '@/components/editor/StarterPickerDialog';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
 import { useEditorStore } from '@/lib/editor-store';
 import { createDiagram, loadDiagram, saveDiagram } from '@/lib/firebase/diagrams';
@@ -101,7 +103,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const currentDiagramPublic = useEditorStore((state) => state.currentDiagramPublic);
   const savedSignature = useEditorStore((state) => state.savedSignature);
   const savingDiagram = useEditorStore((state) => state.savingDiagram);
-  const { renameDiagram, setDiagramPublic, markDiagramSaved, loadStoredDiagram, setSavingDiagram } = useEditorStore();
+  const { renameDiagram, setDiagramPublic, markDiagramSaved, loadStoredDiagram, setSavingDiagram, autoLayout } = useEditorStore();
 
   const templateItems = useTemplateLibrary();
 
@@ -109,6 +111,8 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const [convertThemeConfirmOpen, setConvertThemeConfirmOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [templatesDialogOpen, setTemplatesDialogOpen] = useState(false);
+  const [starterOpen, setStarterOpen] = useState(false);
+  const [mermaidOpen, setMermaidOpen] = useState(false);
   const [sqlOpen, setSqlOpen] = useState(false);
   const [savingAs, setSavingAs] = useState(false);
 
@@ -221,6 +225,9 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
         <EditorFileMenu
           onNew={() => void handleNewDiagram()}
           onNewFromTemplate={() => setTemplatesDialogOpen(true)}
+          onStartFrom={() => setStarterOpen(true)}
+          onImportMermaid={() => setMermaidOpen(true)}
+          onAutoLayout={() => autoLayout('TB')}
           openHref='/'
           onExport={() => downloadDocumentJson(doc, currentDiagramName.trim() || 'diagram')}
           onExportSql={() => setSqlOpen(true)}
@@ -267,6 +274,8 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       <ConvertColorThemeDialog open={convertThemeConfirmOpen} onOpenChange={setConvertThemeConfirmOpen} />
       <ShareDialog diagramId={diagramId} isPublic={currentDiagramPublic} open={shareOpen} onOpenChange={setShareOpen} />
       <TemplatePickerDialog open={templatesDialogOpen} onOpenChange={setTemplatesDialogOpen} items={templateItems} />
+      <StarterPickerDialog open={starterOpen} onOpenChange={setStarterOpen} />
+      <MermaidImportDialog open={mermaidOpen} onOpenChange={setMermaidOpen} />
       <SqlExportDialog document={doc} filename={currentDiagramName.trim() || 'diagram'} open={sqlOpen} onOpenChange={setSqlOpen} />
     </EditorShell>
   );

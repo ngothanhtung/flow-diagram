@@ -59,6 +59,7 @@ const TOC = [
   ['nodes', 'Node rules'],
   ['edges', 'Edge rules'],
   ['sequence', 'Sequence diagrams'],
+  ['import', 'Mermaid import & layout'],
   ['execution', 'Execution order'],
   ['tables', 'Database tables'],
   ['groups', 'Groups (nested blocks)'],
@@ -208,7 +209,7 @@ export default function GuidePage() {
                 ['routing', 'straight · smooth-step · orthogonal · curved · message', 'Optional — the canvas picks a sane default. `orthogonal` reads best for dense system diagrams; `message` is the sequence diagram\u2019s route (see \u00a76).'],
                 ['direction', 'forward · reverse · both', 'Defaults to forward. `both` animates the effect in both directions without changing logical from/to.'],
                 ['startMarker / endMarker', 'none · arrow · open-arrow · triangle · circle · diamond · tee · cross · circle-cross · arrow-both · arrow-bar · bar', 'Arrowheads at each end, independently configurable.'],
-                ['width / effectSize / animationSpeed', 'number', 'Line width, animated-object scale multiplier, and playback speed (0.25×–3×). Keep these consistent across a diagram — see §9.'],
+                ['width / effectSize / animationSpeed', 'number', 'Line width, animated-object scale multiplier, and playback speed (0.25×–3×). Keep these consistent across a diagram — see §10.'],
                 ['effectCount', '1 – 8', 'Exact number of objects travelling the line for the travelling-object effects (pulse, comet, dots, laser…). Omit for automatic spacing (longer lines carry more objects). Pattern effects (flow, heartbeat, rail…) tile the line and ignore it.'],
                 ['effectDensity', '0.5 – 2', 'Mark density for the pattern effects (flow, heartbeat, rail…): higher = more, smaller marks at the same apparent speed. Travelling-object effects ignore it — use effectCount there.'],
                 ['glowIntensity', '0 – 3', 'Strength of the neon halo around the moving objects. Omit for no halo at all — the editor puts 1 on newly drawn lines, so a glow is always a deliberate choice.'],
@@ -269,7 +270,43 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='execution' title='5. Execution order (the play bar)'>
+          <Section id='import' title='5. Mermaid import and auto-layout'>
+            <p>
+              <strong>File → Import from mermaid</strong> turns a pasted mermaid diagram into a document. It understands <Pill>flowchart</Pill> / <Pill>graph</Pill>, <Pill>sequenceDiagram</Pill> and{' '}
+              <Pill>erDiagram</Pill> — the three kinds this editor draws. Everything it produces is an ordinary <Pill>FlowDocumentJSON</Pill>, fully editable afterwards; there is no lasting link back
+              to the mermaid source.
+            </p>
+            <Table
+              head={['mermaid', 'becomes', 'notes']}
+              rows={[
+                ['A[Label] / A(Label) / A{Label}', 'rounded / pill / diamond block', 'Also [(…)] database, [[…]] predefined process, [/…/] parallelogram, ((…)) start circle, {{…}} hexagon, >…] chevron.'],
+                ['-->  ---  -.->  ==>', 'arrow / plain / dashed / thick line', 'Dashes become `lineStyle: "dashed"` and thick becomes `width: 4` — a different kind of line, not an animated effect.'],
+                ['-->|text|  and  -- text -->', 'line label', 'Both spellings are read.'],
+                ['subgraph id [Title] … end', 'group frame', 'Nodes mentioned inside become members and the frame is sized around them.'],
+                ['participant A as Label', 'lifeline', 'Spread across the canvas in declaration order.'],
+                ['A->>B: text / A-->>B: text', 'message / dashed reply', 'Stacked down the page in source order, which is what `messageY` encodes.'],
+                ['activate A … deactivate A', 'activation bar', 'The bar spans from the message where it opened to the one where it closed.'],
+                ['alt / opt / loop … end', 'fragment band', 'The guard becomes the tab label: "alt [cache miss]".'],
+                ['USERS ||--o{ ORDERS : places', 'table relationship', 'Crow-foot markers on both ends; `..` becomes a dashed (non-identifying) line.'],
+                ['USERS { uuid id PK }', 'table columns', 'PK / FK / UK flags are read; the type comes first, as in mermaid.'],
+              ]}
+            />
+            <p>
+              The importer is deliberately lenient: anything it can&apos;t read becomes a <em>note</em> shown beside the preview rather than an error, so a mostly-understood paste still lands on the
+              canvas. Styling directives (<Pill>classDef</Pill>, <Pill>style</Pill>, <Pill>linkStyle</Pill>) are always skipped — set colours in the inspector, or with a named line style (§3).
+            </p>
+            <p>
+              <strong>File → Tidy layout</strong> ranks the whole diagram: every block sits below (or right of) all of its inputs, ranks are ordered to reduce crossings, and the result is centred as a
+              spine. With two or more blocks selected the canvas toolbar carries the same command scoped to just those, keeping them where they already are on the canvas. Frames, captions, the legend,
+              lifelines and activation bars are never moved — they are scenery, and a bar in particular must stay on its lifeline&apos;s centre line.
+            </p>
+            <p>
+              <strong>File → Start from a diagram</strong> drops in a small, complete example of each of the three kinds. These ship with the app, unlike <em>New from template</em>, which reads the
+              shared template library an administrator curates.
+            </p>
+          </Section>
+
+          <Section id='execution' title='6. Execution order (the play bar)'>
             <p>
               The play bar animates nodes/edges in steps driven by <Pill>sortOrder</Pill> on each node (defaults to document order when omitted or 0). Nodes that share the same{' '}
               <Pill>sortOrder</Pill> animate <em>simultaneously</em>, as one step — use this deliberately to show parallel branches (e.g. two services processed in tandem) rather than assigning every
@@ -283,7 +320,7 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='tables' title='6. Database tables (ERD)'>
+          <Section id='tables' title='7. Database tables (ERD)'>
             <p>
               A node with a <Pill>table</Pill> field renders as a database table — a name header plus one row per column — instead of the icon + title card. Everything else about the node
               (shape, colours, ports, dragging) is unchanged, so ERD tables and flow blocks live in the same document.
@@ -325,7 +362,7 @@ export default function GuidePage() {
   "routing": "orthogonal", "startMarker": "crow-one", "endMarker": "crow-many" }`}</Code>
           </Section>
 
-          <Section id='groups' title='7. Groups (blocks nested inside a block)'>
+          <Section id='groups' title='8. Groups (blocks nested inside a block)'>
             <p>
               A container is a node with <Pill>type: &quot;group&quot;</Pill>; a block joins it by pointing at it with <Pill>parentId</Pill>. Membership is stored on the child only — a frame never
               lists what it holds — so there is one field to keep consistent, and frames may be nested to any depth.
@@ -358,7 +395,7 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='text' title='8. Free text'>
+          <Section id='text' title='9. Free text'>
             <p>
               A node with <Pill>type: &quot;text&quot;</Pill> is words on the canvas: no silhouette, no fill, no border, no ports. Its whole content is <Pill>title</Pill>, and newlines in that
               string are preserved, so a caption is a single node rather than a stack of them. <Pill>description</Pill> is not rendered — put everything in the title.
@@ -383,7 +420,7 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='style' title='9. Visual conventions (so a diagram reads as one system, not a shape showcase)'>
+          <Section id='style' title='10. Visual conventions (so a diagram reads as one system, not a shape showcase)'>
             <p>
               Templates in the shared Firestore library should keep almost everything consistent except position, title, description, and theme color. Follow the same discipline:
             </p>
@@ -411,7 +448,7 @@ export default function GuidePage() {
             </ul>
           </Section>
 
-          <Section id='example' title='10. Worked example'>
+          <Section id='example' title='11. Worked example'>
             <p>A minimal three-node flow, following every rule above:</p>
             <Code>{`{
   "nodes": [
@@ -441,7 +478,7 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='checklist' title='11. Checklist before shipping a diagram'>
+          <Section id='checklist' title='12. Checklist before shipping a diagram'>
             <ul className='list-disc space-y-1.5 pl-5'>
               <li>Every node id is unique; every edge&apos;s <Pill>from</Pill>/<Pill>to</Pill> matches a real node id.</li>
               <li>One shape family, one small color palette, mapped to meaning (layer/domain/status) — not decoration.</li>

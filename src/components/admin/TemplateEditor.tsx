@@ -7,6 +7,8 @@ import { toast } from 'sonner';
 import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { EditorShell } from '@/components/editor/EditorShell';
+import { MermaidImportDialog } from '@/components/editor/MermaidImportDialog';
+import { StarterPickerDialog } from '@/components/editor/StarterPickerDialog';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
 import { Input } from '@/components/ui/input';
 import { useEditorStore } from '@/lib/editor-store';
@@ -34,12 +36,15 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
   const [resetConfirmOpen, setResetConfirmOpen] = useState(false);
   const [convertThemeConfirmOpen, setConvertThemeConfirmOpen] = useState(false);
   const [templatesDialogOpen, setTemplatesDialogOpen] = useState(false);
+  const [starterOpen, setStarterOpen] = useState(false);
+  const [mermaidOpen, setMermaidOpen] = useState(false);
   const [sqlOpen, setSqlOpen] = useState(false);
   const [creating, setCreating] = useState(false);
 
   // The canvas itself lives in the shared editor store.
   const doc = useEditorStore((state) => state.doc);
   const loadRemoteTemplate = useEditorStore((state) => state.loadRemoteTemplate);
+  const autoLayout = useEditorStore((state) => state.autoLayout);
   const templateItems = useTemplateLibrary();
 
   // Load the template into the editor store so the canvas becomes fully
@@ -126,6 +131,9 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
           onNew={() => void handleNewTemplate()}
           newDisabled={creating}
           onNewFromTemplate={() => setTemplatesDialogOpen(true)}
+          onStartFrom={() => setStarterOpen(true)}
+          onImportMermaid={() => setMermaidOpen(true)}
+          onAutoLayout={() => autoLayout('TB')}
           openHref='/admin/templates'
           onExport={() => downloadDocumentJson(doc, meta.name.trim() || 'template')}
           onExportSql={() => setSqlOpen(true)}
@@ -152,6 +160,8 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
       <ResetCanvasDialog open={resetConfirmOpen} onOpenChange={setResetConfirmOpen} />
       <ConvertColorThemeDialog open={convertThemeConfirmOpen} onOpenChange={setConvertThemeConfirmOpen} />
       <TemplatePickerDialog open={templatesDialogOpen} onOpenChange={setTemplatesDialogOpen} items={templateItems} />
+      <StarterPickerDialog open={starterOpen} onOpenChange={setStarterOpen} />
+      <MermaidImportDialog open={mermaidOpen} onOpenChange={setMermaidOpen} />
       <SqlExportDialog document={doc} filename={meta.name.trim() || 'template'} open={sqlOpen} onOpenChange={setSqlOpen} />
     </EditorShell>
   );
