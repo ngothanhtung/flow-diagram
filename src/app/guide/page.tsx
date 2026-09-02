@@ -390,12 +390,20 @@ export default function GuidePage() {
             </p>
             <Code>{`{ "id": "div1", "type": "line",
   "position": { "x": 400, "y": 260 }, "width": 220, "height": 0,
+  "lineStart": "nw",
   "color": "#7dd3fc", "borderWidth": 2, "borderStyle": "dashed",
   "endMarker": "arrow" }`}</Code>
             <p>
-              <Pill>position</Pill>/<Pill>width</Pill>/<Pill>height</Pill> describe a bounding box exactly like every other node, and the line itself runs corner to corner along one of its two
-              diagonals — <Pill>lineFlip: false</Pill> (or omitted) draws top-left to bottom-right, <Pill>lineFlip: true</Pill> draws top-right to bottom-left. A perfectly horizontal or vertical
-              line is the degenerate case: give it <Pill>height: 0</Pill> or <Pill>width: 0</Pill>.
+              In the editor you reshape a line by <strong>dragging either endpoint</strong> — each moves anywhere on its own, snapping to the grid like everything else — so it is never boxed in the
+              way a block is. In the JSON, though, it is still <em>placed</em> by the same <Pill>position</Pill>/<Pill>width</Pill>/<Pill>height</Pill> box every other node has, which is what lets it
+              sit inside a group and travel with it. <Pill>lineStart</Pill> is what turns that box back into a segment: the corner the <em>start</em> endpoint sits on (<Pill>nw</Pill>, <Pill>ne</Pill>,{' '}
+              <Pill>se</Pill> or <Pill>sw</Pill>), with the end endpoint always on the opposite corner. A perfectly horizontal or vertical line is the degenerate case: give it <Pill>height: 0</Pill> or{' '}
+              <Pill>width: 0</Pill>.
+            </p>
+            <p>
+              Pick the corner by which end should carry which arrowhead, not just by the direction the line leans: <Pill>&quot;nw&quot;</Pill> starts top-left and ends bottom-right,{' '}
+              <Pill>&quot;se&quot;</Pill> draws the same segment the other way round, so the two markers trade places. Omitting it falls back to the legacy <Pill>lineFlip</Pill> boolean (
+              <Pill>false</Pill> = <Pill>nw</Pill>, <Pill>true</Pill> = <Pill>ne</Pill>) so older documents still render — don&apos;t write that field in new ones.
             </p>
             <p>
               <Pill>color</Pill> is the stroke colour, <Pill>borderWidth</Pill> the stroke width, and <Pill>borderStyle</Pill> (<Pill>solid | dashed | dotted</Pill>) its pattern — the same fields a

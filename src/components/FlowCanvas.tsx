@@ -2,9 +2,10 @@
 
 import { Grid2x2, Info, Magnet, Maximize2, Minus, Plus } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPoint } from '@/lib/flowchart-types';
+import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPoint, LineCorner } from '@/lib/flowchart-types';
 import { screenToData } from '@/lib/coords';
 import { resolveDocumentStyles } from '@/lib/edge-style';
+import { endpointsOfLine, lineGeometryFromEndpoints } from '@/lib/line-geometry';
 import { drawToolPreviewShape, resolveNodeStyle, SHAPES } from '@/lib/node-style';
 import { nodeBounds, sortByTreeDepth } from '@/lib/node-tree';
 import type { ViewTransform } from '@/lib/view-transform';
@@ -74,6 +75,9 @@ interface FlowCanvasProps {
       position: { x: number; y: number };
       width: number;
       height: number;
+      /** `type: 'line'` only — which corner the start endpoint moved to
+       *  (see `FlowNode.lineStart`). */
+      lineStart?: LineCorner;
     },
   ) => void;
   onNodeDragStart: (id: string) => void;
@@ -95,8 +99,11 @@ interface FlowCanvasProps {
   onEdgeUpdate: (edgeId: string, patch: { bendPoints?: FlowPoint[]; labelOffset?: number }) => void;
   /** Shape currently armed by the dock. When set, the canvas draws. */
   activeShape: DrawTool | null;
-  /** Called when the user finishes drawing a shape on the canvas. */
-  onShapeDrawn: (tool: DrawTool, position: { x: number; y: number }, width: number, height: number, flipped?: boolean) => void;
+  /** Called when the user finishes drawing a shape on the canvas.
+   *  `lineStart` is meaningful only for the `line` tool — the corner the
+   *  drag actually started from, so the drawn line runs the way it was
+   *  dragged and its start end is the end the user began at. */
+  onShapeDrawn: (tool: DrawTool, position: { x: number; y: number }, width: number, height: number, lineStart?: LineCorner) => void;
   /** Whether the document info sidebar is open — toggled from the dock. */
   infoOpen: boolean;
   onToggleInfo: () => void;
@@ -112,6 +119,9 @@ const ZOOM_BUTTON_FACTOR = 1.2;
 /** Grid spacings (in data units) offered by the dock picker. */
 const GRID_SIZE_OPTIONS = [10, 20, 40, 80] as const;
 const DEFAULT_GRID_SIZE = 40;
+
+/** Length of the line a bare click (no drag) with the line tool draws. */
+const LINE_CLICK_LENGTH = 160;
 /** Resolution of the pointer→path projection (label sliding, bend insertion). */
 const PATH_SAMPLES = 160;
 
@@ -423,6 +433,24 @@ export function FlowCanvas({
   );
 
   const nodesById = useMemo(() => new Map(document.nodes.map((n) => [n.id, n])), [document]);
+
+  // A free line's endpoints are not corners of a box the user is
+  // resizing — each moves on its own, anywhere, and the box is just what
+  // falls out of where the two ends ended up. Snap still applies (to the
+  // dragged end itself, which is what the user is aiming), so a line
+  // lands on the grid exactly like everything else.
+  const handleLineEndpointMove = useCallback(
+    (id: string, endpoint: 'start' | 'end', point: { x: number; y: number }) => {
+      const node = nodesById.get(id);
+      if (!node) return;
+      const style = resolveNodeStyle(node);
+      const current = endpointsOfLine(node, style.width, style.height);
+      const moved = snapPoint(point);
+      const next = endpoint === 'start' ? { start: moved, end: current.end } : { start: current.start, end: moved };
+      onNodeResize(id, lineGeometryFromEndpoints(next.start, next.end));
+    },
+    [nodesById, onNodeResize, snapPoint],
+  );
 
   const handleLabelPointerDown = useCallback((edgeId: string) => {
     setLabelDrag(edgeId);
@@ -768,18 +796,23 @@ export function FlowCanvas({
       const maxX = Math.max(start.x, end.x);
       const maxY = Math.max(start.y, end.y);
       const dragged = Math.hypot(maxX - minX, maxY - minY) >= 4;
-      const width = dragged ? Math.max(40, maxX - minX) : 190;
-      const height = dragged ? Math.max(40, maxY - minY) : 86;
-      // Which diagonal the drag actually followed — top-left/bottom-right
-      // vs. top-right/bottom-left — only matters to the `line` tool
-      // (`FlowNode.lineFlip`); every other tool ignores it.
-      const flipped = (end.x - start.x) * (end.y - start.y) < 0;
       // The pointerup that ends the draw is followed by a click on the
       // SVG background, which would clear the selection `onShapeDrawn`
       // just made — so the freshly drawn block would never open in the
       // inspector. Suppress that one click, the same way panning does.
       suppressCanvasClickRef.current = true;
-      onShapeDrawn(activeShape, { x: (minX + maxX) / 2, y: (minY + maxY) / 2 }, width, height, flipped);
+      if (activeShape === 'line') {
+        // A line is the one tool whose drag is not a box: it runs from
+        // exactly where the pointer went down to exactly where it came
+        // up (so a dead-horizontal drag stays dead horizontal, with no
+        // minimum thickness forced on it), and the end it started at
+        // stays its start end. An undragged click gets a default-length
+        // horizontal line rather than a dot.
+        const line = dragged ? lineGeometryFromEndpoints(start, end) : lineGeometryFromEndpoints(start, { x: start.x + LINE_CLICK_LENGTH, y: start.y });
+        onShapeDrawn(activeShape, line.position, line.width, line.height, line.lineStart);
+      } else {
+        onShapeDrawn(activeShape, { x: (minX + maxX) / 2, y: (minY + maxY) / 2 }, dragged ? Math.max(40, maxX - minX) : 190, dragged ? Math.max(40, maxY - minY) : 86);
+      }
       setDrawStart(null);
       setDrawCurrent(null);
     };
@@ -1035,6 +1068,7 @@ export function FlowCanvas({
                 onSelect={(id, additive) => (additive && onToggleNodeSelection ? onToggleNodeSelection(id) : onSelectNode(id))}
                 onMove={handleNodeMove}
                 onResize={handleNodeResize}
+                onLineEndpointMove={handleLineEndpointMove}
                 onDragStart={onNodeDragStart}
                 onDragEnd={onNodeDragEnd}
                 onPortPointerDown={handlePortPointerDown}

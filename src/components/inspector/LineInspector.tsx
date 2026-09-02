@@ -1,49 +1,58 @@
 'use client';
 
-import { ArrowDownLeft, ArrowDownRight } from 'lucide-react';
+import { ArrowLeftRight } from 'lucide-react';
 import { MarkerPicker } from '@/components/edge-style-fields';
+import { endpointsOfLine, lineGeometryFromEndpoints, type Point } from '@/lib/line-geometry';
 import { resolveNodeStyle } from '@/lib/node-style';
 import {
   ActionsSection,
   ColorField,
-  GeometryFields,
   GroupMembershipSection,
   InspectorShell,
   NumberField,
   RangeField,
   SectionLabel,
-  SegmentedButtons,
   SelectField,
   type InspectorPanelProps,
 } from './fields';
+import { Button } from '@/components/ui/button';
 import { NodeEffectField } from './NodeEffectField';
 
 /**
  * Inspector for a free line (`type: 'line'`) — a straight stroke with
- * optional end markers, drawn in a width×height box like any other free
- * object. `lineFlip` picks which diagonal of that box the visible stroke
- * follows, so this is the one geometry-adjacent control the box model
- * needs beyond the shared `GeometryFields`. No shape/fill/shadow (a line
- * has no body to paint) and no Sort order (the replay skips it, like text
- * and free icons).
+ * optional end markers.
+ *
+ * It shows the **two endpoints**, not the shared `GeometryFields` X/Y/W/H:
+ * a free line is a segment, and its bounding box is a storage detail
+ * (see `lib/line-geometry.ts`) rather than something the user positions.
+ * Typing a coordinate here goes through the same conversion dragging an
+ * endpoint handle on the canvas does, so the two can't disagree.
+ *
+ * No shape/fill/shadow (a line has no body to paint) and no Sort order
+ * (the replay skips it, like text and free icons).
  */
 export function LineInspector({ node, onUpdate, onDuplicate, onDelete, parentTitle = null }: InspectorPanelProps) {
   const style = resolveNodeStyle(node);
+  const { start, end } = endpointsOfLine(node, style.width, style.height);
+
+  const setEndpoints = (nextStart: Point, nextEnd: Point) => onUpdate(node.id, lineGeometryFromEndpoints(nextStart, nextEnd));
 
   return (
     <InspectorShell title='Line Inspector' nodeId={node.id}>
-      <GeometryFields node={node} onUpdate={onUpdate} width={style.width} height={style.height} />
-
-      <SectionLabel>Direction</SectionLabel>
-      <SegmentedButtons
-        label='Diagonal'
-        value={node.lineFlip ? 'flipped' : 'normal'}
-        options={[
-          { value: 'normal', label: 'Top-left to bottom-right', Icon: ArrowDownRight },
-          { value: 'flipped', label: 'Top-right to bottom-left', Icon: ArrowDownLeft },
-        ]}
-        onChange={(next) => onUpdate(node.id, { lineFlip: next === 'flipped' })}
-      />
+      <SectionLabel>Endpoints</SectionLabel>
+      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>Each end moves on its own — drag its handle on the canvas, or set an exact point here. The start end is the one the start marker sits on.</p>
+      <div className='mt-1.5 grid grid-cols-2 gap-2'>
+        <NumberField label='Start X' value={Math.round(start.x)} onChange={(x) => setEndpoints({ ...start, x }, end)} />
+        <NumberField label='Start Y' value={Math.round(start.y)} onChange={(y) => setEndpoints({ ...start, y }, end)} />
+        <NumberField label='End X' value={Math.round(end.x)} onChange={(x) => setEndpoints(start, { ...end, x })} />
+        <NumberField label='End Y' value={Math.round(end.y)} onChange={(y) => setEndpoints(start, { ...end, y })} />
+      </div>
+      {/* Swapping is not the same as re-drawing the line the other way:
+          the segment stays exactly where it is and only which end counts
+          as the start changes, so the two markers trade places. */}
+      <Button variant='outline' size='sm' onClick={() => setEndpoints(end, start)} className='mt-2 border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
+        <ArrowLeftRight size={11} /> Swap ends
+      </Button>
 
       <SectionLabel>Stroke</SectionLabel>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>

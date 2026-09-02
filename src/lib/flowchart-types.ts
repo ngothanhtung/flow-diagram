@@ -13,6 +13,11 @@
  */
 export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group' | 'text' | 'icon' | 'line';
 
+/** A corner of a node's bounding box, named the compass way round.
+ *  `type: 'line'` uses it to say where its start endpoint sits — see
+ *  `FlowNode.lineStart`. */
+export type LineCorner = 'nw' | 'ne' | 'se' | 'sw';
+
 /** Visual shape of the node's body. Optional — defaults are derived
  *  from `type` so older documents render unchanged. */
 export type NodeShape =
@@ -189,12 +194,26 @@ export interface FlowNode {
   /** Present on database tables — renders the card as an ERD table. */
   table?: TableSpec;
   /**
-   * `type: 'line'` only — which diagonal of the node's `width` ×
-   * `height` box the free line follows: unset/false runs top-left to
-   * bottom-right, `true` runs top-right to bottom-left. A line drawn in
-   * any direction is fully described by its bounding box plus this one
-   * extra bit, so it reuses every box-shaped node's existing geometry,
-   * drag, resize and snap handling rather than needing its own.
+   * `type: 'line'` only — which corner of the node's `width` × `height`
+   * box the line's **start** endpoint sits on; the end endpoint is
+   * always the opposite corner. Any segment in any direction is fully
+   * described by its bounding box plus this one corner, so a free line
+   * reuses every box-shaped node's existing placement, group membership
+   * and snap handling rather than carrying a second absolute point that
+   * every mover would have to keep in sync.
+   *
+   * Four values rather than two because which end is the *start* is not
+   * cosmetic: it decides which endpoint wears `startMarker` and which
+   * wears `endMarker`, so dragging one endpoint past the other must not
+   * silently swap the arrowheads. Unset falls back to the legacy
+   * `lineFlip` reading below.
+   */
+  lineStart?: LineCorner;
+  /**
+   * Legacy predecessor of `lineStart`, kept so documents saved before
+   * that field render unchanged: false/unset means the start endpoint is
+   * the top-left corner, `true` the top-right one. Never written any
+   * more — read it through `lineCornerOf` in `lib/line-geometry.ts`.
    */
   lineFlip?: boolean;
   /** `type: 'line'` only — arrowhead markers at each end, same

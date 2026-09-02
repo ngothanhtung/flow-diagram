@@ -137,14 +137,14 @@ export const ICON_OBJECT_DEFAULT_HEIGHT = 96;
 export const ICON_OBJECT_MAX_SIZE = 480;
 
 // --- Free line --------------------------------------------------------------
-// A free-standing line or arrow, not attached to any node. It reuses the
-// same width/height/position box every other node has — `lineFlip`
-// (FlowNode) is the one extra bit that says which diagonal of the box the
-// visible line follows, so a line in *any* direction is just a box plus a
-// flag, and gets drag/resize/snap for free. Zero is a real width or
-// height here (a perfectly horizontal or vertical line), unlike every
-// other node kind, which is why the floor is 0 rather than a card's usual
-// two-digit minimum.
+// A free-standing line or arrow, not attached to any node. It is *placed*
+// by the same width/height/position box every other node has — with
+// `FlowNode.lineStart` naming the corner its start endpoint sits on (see
+// `lib/line-geometry.ts`) — so it inherits dragging, group membership and
+// snapping, while the user reshapes it by its two endpoints rather than
+// by that box. Zero is a real width or height here (a perfectly
+// horizontal or vertical line), unlike every other node kind, which is
+// why the floor is 0 rather than a card's usual two-digit minimum.
 
 export const LINE_DEFAULT_WIDTH = 160;
 export const LINE_DEFAULT_HEIGHT = 0;

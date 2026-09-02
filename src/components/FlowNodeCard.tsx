@@ -6,6 +6,7 @@ import { edgeLineCap, edgeLineDash } from '@/lib/edge-style';
 import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES, NODE_FONT_WEIGHTS } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
+import { localEndpointsOfLine } from '@/lib/line-geometry';
 import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
 import { GROUP_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from './node-effect-layer';
@@ -52,6 +53,14 @@ interface FlowNodeCardProps {
       height: number;
     },
   ) => void;
+  /**
+   * `type: 'line'` only — one endpoint was dragged to this canvas point.
+   * The two ends move independently and unboxed, so this reports the
+   * dragged end's raw position and lets the canvas snap it and work out
+   * the resulting box, rather than going through the corner-resize path
+   * every other node uses.
+   */
+  onLineEndpointMove: (id: string, endpoint: 'start' | 'end', point: { x: number; y: number }) => void;
   onDragStart: (id: string) => void;
   /** Drag finished. The id lets the canvas resolve what the node was
    *  dropped on — that is how group membership is assigned. */
@@ -77,6 +86,9 @@ const RESIZE_HANDLES: Array<{
   { direction: 'se', x: 1, y: 1, cursor: 'nwse-resize' },
   { direction: 'sw', x: -1, y: 1, cursor: 'nesw-resize' },
 ];
+
+/** The two handles a free line gets instead of the four corner ones. */
+const LINE_ENDPOINTS = ['start', 'end'] as const;
 
 const CONNECTION_SIDES: ConnectionSide[] = ['top', 'right', 'bottom', 'left'];
 
@@ -168,6 +180,7 @@ export function FlowNodeCard({
   onSelect,
   onMove,
   onResize,
+  onLineEndpointMove,
   onDragStart,
   onDragEnd,
   onPortPointerDown,
@@ -203,6 +216,11 @@ export function FlowNodeCard({
   // border at any node size.
   const selectionRingPad = 6 / Math.max(viewTransform.scale, 0.35);
   const selectionOutline = nodeOutline(style.shape, width + selectionRingPad * 2, height + selectionRingPad * 2);
+  // A free line's two endpoints, in this group's local coords. Resolved
+  // once here because the stroke, the hit band, the arrowheads and the
+  // endpoint handles all have to agree on exactly the same two points.
+  const { start: lineStart, end: lineEnd } = localEndpointsOfLine(node, width, height);
+  const lineAngleDeg = (Math.atan2(lineEnd.y - lineStart.y, lineEnd.x - lineStart.x) * 180) / Math.PI;
   const portAnchors = Object.fromEntries(
     CONNECTION_SIDES.map((side) => [
       side,
@@ -250,12 +268,55 @@ export function FlowNodeCard({
     target: SVGCircleElement;
   } | null>(null);
 
+  const endpointRef = useRef<{ pointerId: number; endpoint: 'start' | 'end' } | null>(null);
+
   // Use refs to read the latest callbacks without re-attaching listeners.
   // Captured at drag start to avoid stale-closure bugs.
-  const handlersRef = useRef({ onMove, onResize, onDragStart, onDragEnd });
+  const handlersRef = useRef({ onMove, onResize, onLineEndpointMove, onDragStart, onDragEnd });
   useEffect(() => {
-    handlersRef.current = { onMove, onResize, onDragStart, onDragEnd };
-  }, [onMove, onResize, onDragStart, onDragEnd]);
+    handlersRef.current = { onMove, onResize, onLineEndpointMove, onDragStart, onDragEnd };
+  }, [onMove, onResize, onLineEndpointMove, onDragStart, onDragEnd]);
+
+  // A free line's endpoints move on their own, with no opposite corner
+  // anchored and no minimum box to respect — the whole point of the
+  // object is that neither end is boxed in. So the handle just reports
+  // where the pointer is and the canvas (which owns snapping) decides
+  // the rest.
+  const handleEndpointPointerDown = (endpoint: 'start' | 'end', e: React.PointerEvent<SVGCircleElement>) => {
+    if (e.button !== 0) return;
+    e.stopPropagation();
+    endpointRef.current = { pointerId: e.pointerId, endpoint };
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      /* harmless in non-browser test environments */
+    }
+    handlersRef.current.onDragStart(node.id);
+  };
+
+  const handleEndpointPointerMove = (e: React.PointerEvent<SVGCircleElement>) => {
+    const drag = endpointRef.current;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+    e.stopPropagation();
+    const svg = e.currentTarget.ownerSVGElement;
+    if (!svg) return;
+    handlersRef.current.onLineEndpointMove(node.id, drag.endpoint, screenToData(svg, e.clientX, e.clientY, viewTransform));
+  };
+
+  const handleEndpointPointerUp = (e: React.PointerEvent<SVGCircleElement>) => {
+    const drag = endpointRef.current;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+    e.stopPropagation();
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      /* harmless */
+    }
+    endpointRef.current = null;
+    // Moving an endpoint moves the box's centre too, so it settles group
+    // membership on the same rule a drag does.
+    handlersRef.current.onDragEnd(node.id);
+  };
 
   const handleResizePointerDown = (direction: ResizeDirection, e: React.PointerEvent<SVGCircleElement>) => {
     if (e.button !== 0) return;
@@ -467,8 +528,11 @@ export function FlowNodeCard({
 
         {/* Selection ring: a constant-pixel outset from the real
           silhouette (see `selectionOutline` above), not a scaled copy
-          of it. */}
-        {isSelected && (
+          of it. A free line is deliberately excluded — it is a segment,
+          not a box, and ringing its bounding box would draw exactly the
+          frame the object is defined not to have; it highlights its own
+          stroke instead (see the line branch below). */}
+        {isSelected && !isLine && (
           <g transform={selectionOutline.transform} pointerEvents='none'>
             <path
               d={selectionOutline.d}
@@ -635,28 +699,40 @@ export function FlowNodeCard({
           </>
         ) : isLine ? (
           /* A free-standing line or arrow, not attached to any node.
-             `lineFlip` says which diagonal of the width×height box the
-             visible stroke follows — unset runs top-left to
-             bottom-right, `true` runs top-right to bottom-left — so a
-             line in any direction reuses the ordinary box drag/resize/
-             snap machinery unchanged rather than needing its own. The
-             hit target is a thick invisible copy of that exact
-             diagonal, not the bounding box: a near-flat line's box can
-             be only a few pixels tall, far too thin to grab on its
-             own. */
+             `lineStart` says which corner of the width×height box the
+             start endpoint sits on (the end takes the opposite corner),
+             so a segment in any direction reuses the ordinary box
+             placement, group membership and snap handling rather than
+             needing its own. The hit target is a thick invisible copy of
+             the segment itself, not the bounding box: a near-flat line's
+             box can be only a few pixels tall, far too thin to grab.
+             Selection is shown on the stroke — a free line is not a box
+             and must not wear a box's dashed ring — and the two endpoint
+             handles below move each end freely. */
           (() => {
-            const start = node.lineFlip ? { x: width / 2, y: -height / 2 } : { x: -width / 2, y: -height / 2 };
-            const end = node.lineFlip ? { x: -width / 2, y: height / 2 } : { x: width / 2, y: height / 2 };
-            const angleDeg = (Math.atan2(end.y - start.y, end.x - start.x) * 180) / Math.PI;
             const strokeWidth = Math.max(1, borderWidth);
             return (
               <>
-                <line x1={start.x} y1={start.y} x2={end.x} y2={end.y} stroke='transparent' strokeWidth={16} vectorEffect='non-scaling-stroke' pointerEvents='all' />
+                <line x1={lineStart.x} y1={lineStart.y} x2={lineEnd.x} y2={lineEnd.y} stroke='transparent' strokeWidth={16} vectorEffect='non-scaling-stroke' pointerEvents='all' />
+                {isSelected && (
+                  <line
+                    x1={lineStart.x}
+                    y1={lineStart.y}
+                    x2={lineEnd.x}
+                    y2={lineEnd.y}
+                    stroke={foreground}
+                    strokeWidth={strokeWidth + 6}
+                    strokeOpacity={0.22}
+                    strokeLinecap='round'
+                    vectorEffect='non-scaling-stroke'
+                    pointerEvents='none'
+                  />
+                )}
                 <line
-                  x1={start.x}
-                  y1={start.y}
-                  x2={end.x}
-                  y2={end.y}
+                  x1={lineStart.x}
+                  y1={lineStart.y}
+                  x2={lineEnd.x}
+                  y2={lineEnd.y}
                   stroke={foreground}
                   strokeWidth={strokeWidth}
                   strokeDasharray={edgeLineDash(borderStyle, strokeWidth)}
@@ -665,12 +741,12 @@ export function FlowNodeCard({
                   pointerEvents='none'
                 />
                 {node.startMarker && node.startMarker !== 'none' && (
-                  <g transform={`translate(${start.x} ${start.y}) rotate(${angleDeg + 180})`} pointerEvents='none'>
+                  <g transform={`translate(${lineStart.x} ${lineStart.y}) rotate(${lineAngleDeg + 180})`} pointerEvents='none'>
                     <EdgeMarkerSymbol marker={node.startMarker} />
                   </g>
                 )}
                 {node.endMarker && node.endMarker !== 'none' && (
-                  <g transform={`translate(${end.x} ${end.y}) rotate(${angleDeg})`} pointerEvents='none'>
+                  <g transform={`translate(${lineEnd.x} ${lineEnd.y}) rotate(${lineAngleDeg})`} pointerEvents='none'>
                     <EdgeMarkerSymbol marker={node.endMarker} />
                   </g>
                 )}
@@ -825,11 +901,41 @@ export function FlowNodeCard({
           </>
         )}
 
+        {/* A free line gets two endpoint handles instead of four corner
+          ones: its ends are what you actually reshape, and each moves on
+          its own rather than resizing a shared box. Dragging one clean
+          past the other is fine — `lineGeometryFromEndpoints` keeps each
+          end's identity, so the arrowheads stay where they were put. */}
+        {isSelected &&
+          showResizeHandles &&
+          isLine &&
+          !readOnly &&
+          LINE_ENDPOINTS.map((endpoint) => (
+            <circle
+              key={endpoint}
+              cx={endpoint === 'start' ? lineStart.x : lineEnd.x}
+              cy={endpoint === 'start' ? lineStart.y : lineEnd.y}
+              r={6 / Math.max(viewTransform.scale, 0.35)}
+              fill='#e0f2fe'
+              stroke='#0284c7'
+              strokeWidth={1.5}
+              vectorEffect='non-scaling-stroke'
+              pointerEvents='all'
+              style={{ cursor: 'move' }}
+              aria-label={`Move line ${endpoint}`}
+              onPointerDown={(e) => handleEndpointPointerDown(endpoint, e)}
+              onPointerMove={handleEndpointPointerMove}
+              onPointerUp={handleEndpointPointerUp}
+              onPointerCancel={handleEndpointPointerUp}
+            />
+          ))}
+
         {/* Four corner resize handles. Their radius is corrected
           for canvas zoom so the hit target stays usable on large charts.
           A multi-selection shows rings only — see `showResizeHandles`. */}
         {isSelected &&
           showResizeHandles &&
+          !isLine &&
           RESIZE_HANDLES.map((handle) => (
             <circle
               key={handle.direction}

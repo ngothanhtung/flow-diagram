@@ -6,7 +6,7 @@ import { convertDocumentColorTheme } from './color-theme-convert';
 import { clearStyleOverrides, edgeStylesOf, resolveEdgeStyle } from './edge-style';
 import { loadEditorSession } from './editor-session';
 import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from './execution-timing';
-import type { ConnectionSide, DiagramSettings, DrawTool, EdgeStyleClass, FlowDocumentJSON, FlowEdge, FlowNode, NodePreset, NodeType } from './flowchart-types';
+import type { ConnectionSide, DiagramSettings, DrawTool, EdgeStyleClass, FlowDocumentJSON, FlowEdge, FlowNode, LineCorner, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
 import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
 import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, nodeBounds } from './node-tree';
@@ -277,9 +277,9 @@ interface EditorState {
   onNodeDelete: (id: string) => void;
   onConnect: (fromId: string, toId: string, fromSide?: ConnectionSide, toSide?: ConnectionSide) => void;
   onNodeCreate: (preset: NodePreset, position: { x: number; y: number }) => string;
-  /** `flipped` is only meaningful for the `line` tool — which diagonal of
-   *  the width×height box the drawn line follows (see `FlowNode.lineFlip`). */
-  onShapeCreate: (tool: DrawTool, position: { x: number; y: number }, width: number, height: number, flipped?: boolean) => string;
+  /** `lineStart` is only meaningful for the `line` tool — which corner of
+   *  the width×height box the drawn line starts at (`FlowNode.lineStart`). */
+  onShapeCreate: (tool: DrawTool, position: { x: number; y: number }, width: number, height: number, lineStart?: LineCorner) => string;
   onEdgeDelete: (id: string) => void;
   onEdgeUpdate: (id: string, patch: Partial<Omit<FlowEdge, 'id' | 'from' | 'to'>>) => void;
   onEdgeReconnect: (id: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
@@ -678,7 +678,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
    * title and icon so it reads as a real card straight away; the
    * inspector edits all three afterwards.
    */
-  onShapeCreate: (tool, position, width, height, flipped) => {
+  onShapeCreate: (tool, position, width, height, lineStart) => {
     const { doc } = get();
     const id = `n${doc.nodes.length + 1}-${Date.now().toString(36)}`;
     const paint = DEFAULT_NODE_PAINT.process;
@@ -825,11 +825,11 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       });
       return id;
     }
-    // Free line: a straight stroke in a width×height box, not attached to
-    // any node. `flipped` is which diagonal the drag actually followed —
-    // top-left/bottom-right when false, top-right/bottom-left when true —
-    // so the drawn line matches the gesture instead of always defaulting
-    // to one direction.
+    // Free line: a straight stroke placed by a width×height box, not
+    // attached to any node. `lineStart` is the corner the drag actually
+    // began at, so the drawn line runs the way it was dragged and its
+    // start end is the end the user started from — which is the end the
+    // start marker will sit on.
     if (tool === 'line') {
       const limits = nodeSizeLimits({ type: 'line' });
       set({
@@ -844,7 +844,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
               position,
               width: Math.max(limits.minWidth, Math.min(limits.maxWidth, width)),
               height: Math.max(limits.minHeight, Math.min(limits.maxHeight, height)),
-              lineFlip: flipped || undefined,
+              lineStart,
               icon: null,
               color: DEFAULT_NODE_PAINT.line.color,
               borderWidth: 2,
