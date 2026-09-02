@@ -13,10 +13,10 @@ import type { FlowDocumentJSON } from './flowchart-types';
  * all.
  *
  * Each one is written as the mermaid the importer already parses, so
- * there is exactly one description of "a small sequence diagram" in the
- * codebase rather than a hand-built `FlowDocumentJSON` beside it that
- * would drift. It also means every starter doubles as a worked example
- * of what the importer accepts.
+ * there is exactly one description of it in the codebase rather than a
+ * hand-built `FlowDocumentJSON` beside it that would drift. It also
+ * means every starter doubles as a worked example of what the importer
+ * accepts.
  */
 export interface StarterDiagram {
   id: string;
@@ -44,24 +44,6 @@ export const STARTER_DIAGRAMS: StarterDiagram[] = [
       CHECK
       HANDLE
     end`,
-  },
-  {
-    id: 'sequence',
-    name: 'Service call sequence',
-    description: 'Three participants exchanging messages, with an activation bar and an alt band.',
-    source: `sequenceDiagram
-    participant U as User
-    participant A as API
-    participant D as Database
-    U->>A: POST /orders
-    activate A
-    A->>D: INSERT order
-    D-->>A: order id
-    alt payment declined
-      A-->>U: 402 Payment Required
-    end
-    A-->>U: 201 Created
-    deactivate A`,
   },
   {
     id: 'er',

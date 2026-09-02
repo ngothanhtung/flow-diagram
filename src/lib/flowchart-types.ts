@@ -11,7 +11,7 @@
  * and rendering — see `DEFAULT_BY_TYPE` in `node-style.ts`. Nothing
  * creates one any more.
  */
-export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group' | 'text' | 'icon' | 'legend' | 'lifeline' | 'activation';
+export type NodeType = 'start' | 'process' | 'decision' | 'output' | 'logo' | 'group' | 'text' | 'icon' | 'line';
 
 /** Visual shape of the node's body. Optional — defaults are derived
  *  from `type` so older documents render unchanged. */
@@ -129,41 +129,6 @@ export interface TableSpec {
   schema?: string;
 }
 
-/** One row of a legend: a sample plus what it means. */
-export interface LegendItem {
-  id: string;
-  /** `swatch` is a filled chip (a node colour role); `line` is a short
-   *  rule with an arrow head (an edge style). */
-  kind: 'swatch' | 'line';
-  label: string;
-  /** Unset on a row following a class — see `styleRef`. */
-  color?: `#${string}`;
-  /** Line samples only. Superseded by `lineStyle`; kept so rows written
-   *  before that field render unchanged. */
-  dashed?: boolean;
-  /** Line samples only — the stroke pattern of the line it stands for. */
-  lineStyle?: EdgeLineStyle;
-  /**
-   * Id of the `EdgeStyleClass` this row describes. A row generated from
-   * the diagram carries only this, so it keeps naming the class
-   * correctly as the class is edited; anything the row sets itself
-   * (label, colour, stroke) overrides the class, exactly as it does on a
-   * line.
-   */
-  styleRef?: string;
-}
-
-/**
- * Turns a node into the legend every reference diagram carries: rows of
- * sample + label naming the colour and line vocabulary the diagram uses.
- * It paints no card of its own, like text and free icon objects.
- */
-export interface LegendSpec {
-  items: LegendItem[];
-  /** Laid out in a row (the usual footer legend) or stacked. */
-  orientation?: 'horizontal' | 'vertical';
-}
-
 export interface FlowNode {
   id: string;
   type: NodeType;
@@ -223,26 +188,19 @@ export interface FlowNode {
   effectIntensity?: number;
   /** Present on database tables — renders the card as an ERD table. */
   table?: TableSpec;
-  /** Present on `type: 'legend'` nodes — the rows it lists. */
-  legend?: LegendSpec;
   /**
-   * Group frames only. `'panel'` (unset) is the ordinary container with
-   * a full-width title bar; `'fragment'` is the sequence diagram's
-   * alt/opt/loop band, which swaps that bar for a small corner tab and
-   * draws a solid hairline instead of a wash. Same "a lane is a group"
-   * precedent — only the look differs, so it isn't a new node kind.
+   * `type: 'line'` only — which diagonal of the node's `width` ×
+   * `height` box the free line follows: unset/false runs top-left to
+   * bottom-right, `true` runs top-right to bottom-left. A line drawn in
+   * any direction is fully described by its bounding box plus this one
+   * extra bit, so it reuses every box-shaped node's existing geometry,
+   * drag, resize and snap handling rather than needing its own.
    */
-  frameStyle?: 'panel' | 'fragment';
-  /**
-   * `type: 'activation'` only — the lifeline this bar sits on. Its x is
-   * slaved to that lifeline's centre line, so only its y and height are
-   * really free.
-   *
-   * Deliberately *not* `parentId`: that field means "member of a group
-   * frame", and `onNodeDrop` clears it whenever the node isn't inside
-   * one. A bar would lose its lifeline the first time it was dragged.
-   */
-  lifelineId?: string;
+  lineFlip?: boolean;
+  /** `type: 'line'` only — arrowhead markers at each end, same
+   *  vocabulary as `FlowEdge.startMarker`/`endMarker`. Unset = none. */
+  startMarker?: EdgeMarker;
+  endMarker?: EdgeMarker;
   /**
    * Id of the group frame (`type: 'group'`) this node sits inside.
    * Membership is stored on the child, never as a list on the parent, so
@@ -259,25 +217,16 @@ export interface FlowNode {
  * `'table'`, which produces a database-table node (a `rounded` card
  * carrying a `TableSpec`) rather than a new silhouette, `'group'`, which
  * draws a container frame other blocks can be dropped into, `'text'`,
- * which drops a free-standing piece of text with no box around it, and
+ * which drops a free-standing piece of text with no box around it,
  * `'icon'`, which drops a free-standing icon or brand logo with no box or
  * card around it either — the graphic counterpart to `'text'`,
- * positioned and resized independently of any block. There is no
- * `'logo'` draw tool any more — `'icon'` covers the same need with the
- * user choosing icon vs. logo at pick time rather than a separate tool.
- *
- * `'lane'` is not a node kind of its own: it draws a `group` frame
- * pre-styled as a swimlane (numbered header, dashed hairline, barely
- * there wash), because a lane *is* a container — only its look and its
- * "add the next one" affordance differ. `'fragment'` follows the same
- * precedent for the sequence diagram's alt/opt/loop band: a `group`
- * with `frameStyle: 'fragment'`, which swaps the full-width title bar
- * for a corner tab.
- *
- * `'lifeline'` *is* its own node kind — a header card plus the long
- * dashed line below it is not a container and not a card.
+ * positioned and resized independently of any block — and `'line'`,
+ * which drags out a free-standing line or arrow not attached to any
+ * node, in any direction. There is no `'logo'` draw tool any more —
+ * `'icon'` covers the same need with the user choosing icon vs. logo at
+ * pick time rather than a separate tool.
  */
-export type DrawTool = NodeShape | 'table' | 'group' | 'text' | 'icon' | 'lane' | 'legend' | 'lifeline' | 'fragment';
+export type DrawTool = NodeShape | 'table' | 'group' | 'text' | 'icon' | 'line';
 
 /** A reusable semantic block from the left-hand model palette. */
 export interface NodePreset {
@@ -334,14 +283,7 @@ export type EdgeMarker =
   | 'crow-zero-many';
 
 export type EdgeDirection = 'forward' | 'reverse' | 'both';
-/**
- * `'message'` is the sequence diagram's route and the only one that
- * isn't derived purely from its two endpoints: it runs dead horizontal
- * at the edge's own `messageY`, between the two lifelines' centre lines,
- * because in a sequence diagram *when* a message happens is the whole
- * point and a lifeline spans the entire height of the drawing.
- */
-export type EdgeRouting = 'straight' | 'smooth-step' | 'orthogonal' | 'curved' | 'message';
+export type EdgeRouting = 'straight' | 'smooth-step' | 'orthogonal' | 'curved';
 /**
  * Stroke pattern of the line itself, independent of the animated effect
  * layer riding on top of it. Unset = `'solid'`, which is how every line
@@ -390,19 +332,6 @@ export interface FlowEdge {
   routing?: EdgeRouting;
   /** User-positioned intermediate points for orthogonal/smooth routes. */
   bendPoints?: FlowPoint[];
-  /**
-   * `routing: 'message'` only — the canvas y the message runs at, in
-   * absolute canvas coordinates, set by dragging the line up and down.
-   * Unset falls back to a point derived from the two lifelines, so a
-   * hand-written document still renders something sensible.
-   */
-  messageY?: number;
-  /**
-   * `routing: 'message'` only — a message a lifeline sends to itself
-   * renders as a loop out and back rather than a zero-length line; this
-   * is how tall that loop is. Unset = `SELF_MESSAGE_DROP`.
-   */
-  selfMessageDrop?: number;
   /** Independently configurable symbols at both ends of the line. */
   startMarker?: EdgeMarker;
   endMarker?: EdgeMarker;
@@ -503,7 +432,7 @@ export type EdgeStyleProps = Pick<
 export interface EdgeStyleClass extends EdgeStyleProps {
   /** Stable key referenced by `FlowEdge.styleRef`. */
   id: string;
-  /** What this kind of line means — also the legend row's label. */
+  /** What this kind of line means. */
   name: string;
 }
 

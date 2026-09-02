@@ -76,8 +76,8 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
         onEdgeUpdate={onEdgeUpdate}
         onSelectEdge={selectEdge}
         activeShape={activeShape}
-        onShapeDrawn={(shape, position, width, height) => {
-          const newId = onShapeCreate(shape, position, width, height);
+        onShapeDrawn={(shape, position, width, height, flipped) => {
+          const newId = onShapeCreate(shape, position, width, height, flipped);
           if (newId) selectNode(newId);
           // Figma-style: the tool disarms after each draw so a single
           // click doesn't accidentally produce a flood of shapes. The

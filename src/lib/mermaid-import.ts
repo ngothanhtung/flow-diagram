@@ -1,6 +1,6 @@
 import { layoutDocument, type LayoutDirection } from './auto-layout';
 import type { EdgeMarker, FlowDocumentJSON, FlowEdge, FlowNode, NodeShape, NodeType, TableColumn } from './flowchart-types';
-import { ACTIVATION_DEFAULT_HEIGHT, ACTIVATION_WIDTH, LIFELINE_DEFAULT_HEIGHT, LIFELINE_HEADER_HEIGHT, tableCardHeight } from './node-style';
+import { tableCardHeight } from './node-style';
 
 /**
  * Mermaid → `FlowDocumentJSON`.
@@ -19,7 +19,7 @@ import { ACTIVATION_DEFAULT_HEIGHT, ACTIVATION_WIDTH, LIFELINE_DEFAULT_HEIGHT, L
 export interface MermaidImportResult {
   document: FlowDocumentJSON;
   /** What kind of diagram the header declared. */
-  kind: 'flowchart' | 'sequence' | 'er';
+  kind: 'flowchart' | 'er';
   /** Lines that parsed but lost something, or didn't parse at all. */
   warnings: string[];
 }
@@ -29,20 +29,16 @@ export class MermaidImportError extends Error {}
 /**
  * Palette used for imported nodes, cycled so a diagram isn't monotone.
  * These are diagram *content*, so they never follow the app theme and
- * every value has to read on a light and a dark canvas alike.
- *
+ * every value has to read on a light and a dark canvas alike —
  * `color`/`backgroundColor` are the pale-on-deep pair a filled card
- * wears. `ink` is the mid-tone the same hue uses for anything drawn
- * *directly on the canvas* with no fill behind it — a lifeline's dashed
- * line, an activation bar. The pale value would all but vanish there on
- * a light canvas, which is the whole reason this third value exists.
+ * wears.
  */
-const IMPORT_PAINT: Array<{ color: `#${string}`; backgroundColor: `#${string}`; ink: `#${string}` }> = [
-  { color: '#c7d2fe', backgroundColor: '#1e293b', ink: '#6366f1' },
-  { color: '#bae6fd', backgroundColor: '#172554', ink: '#0284c7' },
-  { color: '#a7f3d0', backgroundColor: '#052e2b', ink: '#059669' },
-  { color: '#fde68a', backgroundColor: '#422006', ink: '#d97706' },
-  { color: '#e9d5ff', backgroundColor: '#2e1065', ink: '#9333ea' },
+const IMPORT_PAINT: Array<{ color: `#${string}`; backgroundColor: `#${string}` }> = [
+  { color: '#c7d2fe', backgroundColor: '#1e293b' },
+  { color: '#bae6fd', backgroundColor: '#172554' },
+  { color: '#a7f3d0', backgroundColor: '#052e2b' },
+  { color: '#fde68a', backgroundColor: '#422006' },
+  { color: '#e9d5ff', backgroundColor: '#2e1065' },
 ];
 
 /**
@@ -64,10 +60,9 @@ export function importMermaid(source: string): MermaidImportResult {
   if (lines.length === 0) throw new MermaidImportError('Nothing to import — paste a mermaid diagram first.');
 
   const header = lines[0].toLowerCase();
-  if (header.startsWith('sequencediagram')) return importSequence(lines.slice(1));
   if (header.startsWith('erdiagram')) return importEr(lines.slice(1));
   if (header.startsWith('flowchart') || header.startsWith('graph')) return importFlowchart(lines, header);
-  throw new MermaidImportError(`Unsupported diagram type: "${lines[0]}". This importer understands flowchart / graph, sequenceDiagram and erDiagram.`);
+  throw new MermaidImportError(`Unsupported diagram type: "${lines[0]}". This importer understands flowchart / graph and erDiagram.`);
 }
 
 // --- Flowchart -------------------------------------------------------------
@@ -352,205 +347,6 @@ function readFlowPart(line: string, from: number): { part: FlowPart; next: numbe
 }
 
 // --- Sequence diagram ------------------------------------------------------
-
-/** Vertical spacing between consecutive messages, matching the store's. */
-const MESSAGE_GAP = 48;
-const LIFELINE_GAP = 260;
-
-function importSequence(lines: string[]): MermaidImportResult {
-  const warnings: string[] = [];
-  const nodes: FlowNode[] = [];
-  const edges: FlowEdge[] = [];
-  const lifelines = new Map<string, FlowNode>();
-  const top = 120;
-  let messageY = top + LIFELINE_HEADER_HEIGHT + 60;
-  // Where the last message actually landed. `messageY` has already moved
-  // on to the next slot by the time `end` is read, so closing a band on
-  // it would swallow the message that follows the band.
-  let lastMessageY = messageY;
-  // `activate X` opens a bar; the matching `deactivate` closes it at
-  // whatever y the run of messages has reached.
-  const open = new Map<string, { node: FlowNode; startY: number }>();
-  // alt / opt / loop bands, closed by `end`.
-  const bands: Array<{ label: string; startY: number }> = [];
-  const fragments: Array<{ label: string; startY: number; endY: number }> = [];
-
-  const ensureLifeline = (name: string, label?: string) => {
-    const existing = lifelines.get(name);
-    if (existing) {
-      if (label) existing.title = label;
-      return existing;
-    }
-    const paint = IMPORT_PAINT[lifelines.size % IMPORT_PAINT.length];
-    const node: FlowNode = {
-      id: name,
-      type: 'lifeline',
-      title: label ?? name,
-      position: { x: 200 + lifelines.size * LIFELINE_GAP, y: top },
-      width: 160,
-      height: LIFELINE_DEFAULT_HEIGHT,
-      icon: 'lucide:User',
-      iconPosition: 'left',
-      color: paint.color,
-      backgroundColor: paint.backgroundColor,
-      // The border is also the long dashed line below the header, which
-      // sits on bare canvas — hence the ink rather than `color`.
-      borderColor: paint.ink,
-      borderWidth: 2,
-      shadow: 'none',
-      fill: 'flat',
-      fontSize: 12,
-      fontWeight: 'semibold',
-      textAlign: 'center',
-    };
-    lifelines.set(name, node);
-    nodes.push(node);
-    return node;
-  };
-
-  for (const raw of lines) {
-    const line = raw.trim();
-
-    const participant = /^(participant|actor)\s+(.+)$/i.exec(line);
-    if (participant) {
-      const spec = participant[2];
-      const aliased = /^(\S+)\s+as\s+(.+)$/i.exec(spec);
-      ensureLifeline(aliased ? aliased[1] : spec, aliased ? aliased[2] : undefined);
-      continue;
-    }
-
-    const activate = /^(activate|deactivate)\s+(\S+)$/i.exec(line);
-    if (activate) {
-      const lifeline = ensureLifeline(activate[2]);
-      if (activate[1].toLowerCase() === 'activate') {
-        const bar: FlowNode = {
-          id: `act-${nodes.length + 1}`,
-          type: 'activation',
-          lifelineId: lifeline.id,
-          title: '',
-          position: { x: lifeline.position.x, y: messageY },
-          width: ACTIVATION_WIDTH,
-          height: ACTIVATION_DEFAULT_HEIGHT,
-          icon: null,
-          color: lifeline.borderColor as `#${string}`,
-          backgroundColor: lifeline.borderColor as `#${string}`,
-          borderColor: lifeline.borderColor as `#${string}`,
-          borderWidth: 1.5,
-          shadow: 'none',
-          fill: 'flat',
-        };
-        nodes.push(bar);
-        open.set(lifeline.id, { node: bar, startY: messageY });
-      } else {
-        const pending = open.get(lifeline.id);
-        if (!pending) warnings.push(`"deactivate ${activate[2]}" with no matching activate.`);
-        else {
-          const height = Math.max(24, messageY - pending.startY + 16);
-          pending.node.height = height;
-          pending.node.position = { x: pending.node.position.x, y: pending.startY + height / 2 - 8 };
-          open.delete(lifeline.id);
-        }
-      }
-      continue;
-    }
-
-    const band = /^(alt|opt|loop|par|critical)\b\s*(.*)$/i.exec(line);
-    if (band) {
-      bands.push({ label: `${band[1].toLowerCase()}${band[2] ? ` [${band[2].trim()}]` : ''}`, startY: messageY - 28 });
-      continue;
-    }
-    if (/^(else|and)\b/i.test(line)) {
-      // A branch inside an open band — mermaid's `else` splits the band.
-      // The importer keeps one band and notes the branch, rather than
-      // inventing a nested frame the user then has to untangle.
-      warnings.push(`Branch "${truncate(line)}" kept as part of its enclosing band.`);
-      continue;
-    }
-    if (/^end$/i.test(line)) {
-      const band2 = bands.pop();
-      if (band2) fragments.push({ ...band2, endY: lastMessageY + 20 });
-      continue;
-    }
-    if (/^(autonumber|title|note\b)/i.test(line)) {
-      warnings.push(`Not supported, skipped: "${truncate(line)}"`);
-      continue;
-    }
-
-    // `A->>B: text`, `A-->>B: text` (dashed reply), `A->B`, `A-)B` (async).
-    const message = /^([^\s:>-]+)\s*(-{1,2}>>?|-{1,2}\)|-{1,2}x)\s*([^\s:]+)\s*:\s*(.*)$/.exec(line);
-    if (message) {
-      const [, fromName, arrow, toName, text] = message;
-      const from = ensureLifeline(fromName);
-      const to = ensureLifeline(toName);
-      edges.push({
-        id: `m${edges.length + 1}`,
-        from: from.id,
-        to: to.id,
-        routing: 'message',
-        messageY,
-        label: text.trim() || undefined,
-        // `-->` is mermaid's dotted reply arrow, which is the same
-        // "this is a return, not a call" convention `lineStyle` carries.
-        lineStyle: arrow.startsWith('--') ? 'dashed' : undefined,
-        endMarker: arrow.endsWith('x') ? 'cross' : 'arrow',
-        startMarker: 'none',
-        effect: 'none',
-        color: LINE_INK,
-        sortOrder: edges.length + 1,
-        width: 2,
-      });
-      lastMessageY = messageY;
-      messageY += MESSAGE_GAP;
-      continue;
-    }
-
-    warnings.push(`Could not parse: "${truncate(line)}"`);
-  }
-
-  for (const [id, pending] of open) {
-    warnings.push(`"activate ${id}" was never deactivated — its bar ends at the last message.`);
-    const height = Math.max(24, messageY - pending.startY);
-    pending.node.height = height;
-    pending.node.position = { x: pending.node.position.x, y: pending.startY + height / 2 - 8 };
-  }
-  for (const band of bands) warnings.push(`Band "${band.label}" was never closed with "end".`);
-
-  // Every lifeline runs to just past the last message.
-  const bottom = messageY + 40;
-  for (const lifeline of lifelines.values()) {
-    lifeline.height = Math.max(LIFELINE_HEADER_HEIGHT + 80, bottom - (top - LIFELINE_HEADER_HEIGHT / 2));
-    lifeline.position = { x: lifeline.position.x, y: top - LIFELINE_HEADER_HEIGHT / 2 + lifeline.height / 2 };
-  }
-
-  const xs = [...lifelines.values()].map((node) => node.position.x);
-  for (const fragment of fragments) {
-    const left = Math.min(...xs) - 90;
-    const right = Math.max(...xs) + 90;
-    nodes.push({
-      id: `frag-${nodes.length + 1}`,
-      type: 'group',
-      frameStyle: 'fragment',
-      title: fragment.label,
-      position: { x: (left + right) / 2, y: (fragment.startY + fragment.endY) / 2 },
-      width: right - left,
-      height: Math.max(60, fragment.endY - fragment.startY),
-      shape: 'rectangle',
-      icon: null,
-      color: '#94a3b8',
-      backgroundColor: '#80808014',
-      borderColor: '#94a3b8',
-      borderWidth: 1.5,
-      shadow: 'none',
-      fill: 'flat',
-      fontSize: 11,
-      fontWeight: 'semibold',
-      textAlign: 'left',
-    });
-  }
-
-  if (lifelines.size === 0) throw new MermaidImportError('No participants or messages found in the sequence diagram.');
-  return { document: { nodes, edges, settings: { runMode: 'sequential' } }, kind: 'sequence', warnings };
-}
 
 // --- ER diagram ------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-import type { DiagramSettings, EdgeLineStyle, EdgeStyleClass, EdgeStyleProps, FlowDocumentJSON, FlowEdge, LegendItem } from './flowchart-types';
+import type { DiagramSettings, EdgeLineStyle, EdgeStyleClass, EdgeStyleProps, FlowDocumentJSON, FlowEdge } from './flowchart-types';
 
 /**
  * Named line styles: the document's line vocabulary.
@@ -75,30 +75,10 @@ export function resolveEdgeStyle(edge: FlowEdge, styles: EdgeStyleClass[]): Flow
   return count === 0 ? edge : { ...edge, ...inherited };
 }
 
-/** The default a legend row falls back to when neither it nor its class
- *  names a colour. */
-const LEGEND_FALLBACK_COLOR = '#94a3b8';
-
 /**
- * A legend row with its class resolved: concrete colour, stroke pattern
- * and label, whatever mix of own fields and `styleRef` produced them.
- * Same precedence as everywhere else — the row's own value wins.
- */
-export function resolveLegendItem(item: LegendItem, styles: EdgeStyleClass[]): LegendItem & { color: `#${string}`; lineStyle: EdgeLineStyle } {
-  const style = item.styleRef ? styles.find((candidate) => candidate.id === item.styleRef) : undefined;
-  return {
-    ...item,
-    color: item.color ?? style?.color ?? LEGEND_FALLBACK_COLOR,
-    lineStyle: item.lineStyle ?? style?.lineStyle ?? (item.dashed ? 'dashed' : 'solid'),
-    label: item.label || style?.name || '',
-  };
-}
-
-/**
- * The document ready to paint: every line and every legend row resolved
- * against the palette. Returns the document itself when no class is in
- * use, which is both the common case and what lets the canvas memoize
- * on identity.
+ * The document ready to paint: every line resolved against the palette.
+ * Returns the document itself when no class is in use, which is both the
+ * common case and what lets the canvas memoize on identity.
  */
 export function resolveDocumentStyles(doc: FlowDocumentJSON): FlowDocumentJSON {
   const styles = edgeStylesOf(doc.settings);
@@ -109,32 +89,7 @@ export function resolveDocumentStyles(doc: FlowDocumentJSON): FlowDocumentJSON {
     if (resolved !== edge) changed = true;
     return resolved;
   });
-  const nodes = doc.nodes.map((node) => {
-    if (!node.legend?.items.some((item) => item.styleRef)) return node;
-    changed = true;
-    return { ...node, legend: { ...node.legend, items: node.legend.items.map((item) => resolveLegendItem(item, styles)) } };
-  });
-  return changed ? { ...doc, edges, nodes } : doc;
-}
-
-/**
- * The classes at least one line actually follows, in palette order —
- * what a generated legend lists. A class nobody uses is vocabulary the
- * reader never meets, so putting it in the key would mislead.
- */
-export function usedEdgeStyles(doc: FlowDocumentJSON): EdgeStyleClass[] {
-  const used = new Set(doc.edges.map((edge) => edge.styleRef).filter((ref): ref is string => Boolean(ref)));
-  return edgeStylesOf(doc.settings).filter((style) => used.has(style.id));
-}
-
-/**
- * Legend rows for the line vocabulary the document is actually using.
- * Each row carries nothing but its `styleRef`, so it keeps naming the
- * class correctly as the class is renamed or recoloured — generating is
- * a one-time action, staying in sync is not.
- */
-export function buildLegendItemsFromDocument(doc: FlowDocumentJSON): LegendItem[] {
-  return usedEdgeStyles(doc).map((style) => ({ id: `legend-${style.id}`, kind: 'line' as const, label: '', styleRef: style.id }));
+  return changed ? { ...doc, edges } : doc;
 }
 
 /**

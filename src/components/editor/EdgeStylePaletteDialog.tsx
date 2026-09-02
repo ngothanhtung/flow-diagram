@@ -46,7 +46,7 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
       <DialogContent className='flex h-[86vh] max-h-200 w-[92vw] max-w-4xl sm:max-w-4xl flex-col gap-0 overflow-hidden border-cyan-400/25 bg-popover p-0 ring-1 ring-cyan-400/25'>
         <DialogHeader className='shrink-0 px-8 pt-6 pb-4'>
           <DialogTitle className='text-base font-semibold text-foreground'>Line styles</DialogTitle>
-          <p className='mt-1 text-[11px] leading-relaxed text-muted-foreground'>Name the kinds of line this diagram uses, then point lines at them. Editing a style here restyles every line following it, and the legend can list exactly the ones in use.</p>
+          <p className='mt-1 text-[11px] leading-relaxed text-muted-foreground'>Name the kinds of line this diagram uses, then point lines at them. Editing a style here restyles every line following it.</p>
         </DialogHeader>
 
         {styles.length === 0 ? (
@@ -118,7 +118,7 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
                   placeholder='what this kind of line means'
                   className='mt-1.5 border-border bg-muted/30 text-xs focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'
                 />
-                <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>This is the label a generated legend row carries, so write it as the reader should read it.</p>
+                <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>Shown wherever this style is picked, so write it as the reader should read it.</p>
 
                 <Label className='mt-4 mb-1 block text-[9px] text-muted-foreground'>Colour</Label>
                 <HuePresetRow value={selected.color ?? '#94a3b8'} onPick={(color) => patch({ color })} />

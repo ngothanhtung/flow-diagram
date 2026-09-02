@@ -92,11 +92,11 @@ interface FlowCanvasProps {
   selectedEdgeId: string | null;
   onSelectEdge: (id: string | null) => void;
   onEdgeReconnect: (edgeId: string, endpoint: 'from' | 'to', nodeId: string, side: ConnectionSide) => void;
-  onEdgeUpdate: (edgeId: string, patch: { bendPoints?: FlowPoint[]; labelOffset?: number; messageY?: number }) => void;
+  onEdgeUpdate: (edgeId: string, patch: { bendPoints?: FlowPoint[]; labelOffset?: number }) => void;
   /** Shape currently armed by the dock. When set, the canvas draws. */
   activeShape: DrawTool | null;
   /** Called when the user finishes drawing a shape on the canvas. */
-  onShapeDrawn: (tool: DrawTool, position: { x: number; y: number }, width: number, height: number) => void;
+  onShapeDrawn: (tool: DrawTool, position: { x: number; y: number }, width: number, height: number, flipped?: boolean) => void;
   /** Whether the document info sidebar is open — toggled from the dock. */
   infoOpen: boolean;
   onToggleInfo: () => void;
@@ -201,7 +201,6 @@ export function FlowCanvas({
   const [bendDrag, setBendDrag] = useState<BendDragState | null>(null);
   /** Id of the edge whose label is being slid along the line. */
   const [labelDrag, setLabelDrag] = useState<string | null>(null);
-  const [messageDrag, setMessageDrag] = useState<string | null>(null);
 
   // Figma-style draw gesture. `drawStart` is captured on the first
   // pointerdown when a shape is armed; `drawCurrent` follows the
@@ -315,6 +314,21 @@ export function FlowCanvas({
     [snapEnabled, gridSize],
   );
 
+  // Screen-space pitch of the drawn grid dots. Below ~12px the dots blur
+  // into a smear, so previously this floored the pitch to 12px outright
+  // — which decoupled the *drawn* grid from the *snapped* one: at low
+  // zoom the visible dots no longer sat on the points `snapPoint` would
+  // actually land on, so "snap to grid" looked like it was snapping to
+  // the wrong grid. Doubling the pitch instead (showing every 2nd/4th/…
+  // line) keeps every visible dot an exact multiple of `gridSize`, so
+  // what's drawn is always a true subset of the real snap grid.
+  const gridCellPx = useMemo(() => {
+    const rawCell = gridSize * viewTransform.scale;
+    if (rawCell >= 12) return rawCell;
+    const doublings = Math.ceil(Math.log2(12 / rawCell));
+    return rawCell * 2 ** doublings;
+  }, [gridSize, viewTransform.scale]);
+
   const handlePanPointerDown = useCallback(
     (event: React.PointerEvent<SVGSVGElement>) => {
       const isMiddleButton = event.button === 1;
@@ -409,10 +423,6 @@ export function FlowCanvas({
   );
 
   const nodesById = useMemo(() => new Map(document.nodes.map((n) => [n.id, n])), [document]);
-
-  const handleMessagePointerDown = useCallback((edgeId: string) => {
-    setMessageDrag(edgeId);
-  }, []);
 
   const handleLabelPointerDown = useCallback((edgeId: string) => {
     setLabelDrag(edgeId);
@@ -660,29 +670,6 @@ export function FlowCanvas({
     };
   }, [document.edges, labelDrag, nodesById, onEdgeUpdate, viewTransform]);
 
-  // A message only moves vertically: which two lifelines it runs between
-  // fixes its x, and *when* it happens is the y — the one coordinate a
-  // sequence diagram lets you choose. Snapping applies, so a column of
-  // messages lines up without hand-nudging.
-  useEffect(() => {
-    if (!messageDrag) return;
-    const onMove = (event: PointerEvent) => {
-      if (!svgRef.current) return;
-      const pointer = screenToData(svgRef.current, event.clientX, event.clientY, viewTransform);
-      const y = snapEnabled ? Math.round(pointer.y / gridSize) * gridSize : pointer.y;
-      onEdgeUpdate(messageDrag, { messageY: y });
-    };
-    const onUp = () => setMessageDrag(null);
-    window.addEventListener('pointermove', onMove);
-    window.addEventListener('pointerup', onUp);
-    window.addEventListener('pointercancel', onUp);
-    return () => {
-      window.removeEventListener('pointermove', onMove);
-      window.removeEventListener('pointerup', onUp);
-      window.removeEventListener('pointercancel', onUp);
-    };
-  }, [gridSize, messageDrag, onEdgeUpdate, snapEnabled, viewTransform]);
-
   // Bend handles update the persisted waypoint on every move so the line,
   // markers and animated effects remain locked to the pointer.
   useEffect(() => {
@@ -783,12 +770,16 @@ export function FlowCanvas({
       const dragged = Math.hypot(maxX - minX, maxY - minY) >= 4;
       const width = dragged ? Math.max(40, maxX - minX) : 190;
       const height = dragged ? Math.max(40, maxY - minY) : 86;
+      // Which diagonal the drag actually followed — top-left/bottom-right
+      // vs. top-right/bottom-left — only matters to the `line` tool
+      // (`FlowNode.lineFlip`); every other tool ignores it.
+      const flipped = (end.x - start.x) * (end.y - start.y) < 0;
       // The pointerup that ends the draw is followed by a click on the
       // SVG background, which would clear the selection `onShapeDrawn`
       // just made — so the freshly drawn block would never open in the
       // inspector. Suppress that one click, the same way panning does.
       suppressCanvasClickRef.current = true;
-      onShapeDrawn(activeShape, { x: (minX + maxX) / 2, y: (minY + maxY) / 2 }, width, height);
+      onShapeDrawn(activeShape, { x: (minX + maxX) / 2, y: (minY + maxY) / 2 }, width, height, flipped);
       setDrawStart(null);
       setDrawCurrent(null);
     };
@@ -857,7 +848,7 @@ export function FlowCanvas({
           className='pointer-events-none absolute inset-0 text-foreground opacity-[0.07]'
           style={{
             backgroundImage: 'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)',
-            backgroundSize: `${Math.max(12, gridSize * viewTransform.scale)}px ${Math.max(12, gridSize * viewTransform.scale)}px`,
+            backgroundSize: `${gridCellPx}px ${gridCellPx}px`,
             backgroundPosition: `${viewTransform.x}px ${viewTransform.y}px`,
           }}
         />
@@ -988,12 +979,11 @@ export function FlowCanvas({
                 edge={edge}
                 from={from}
                 to={to}
-                paused={isDragging || link !== null || reconnect !== null || bendDrag !== null || labelDrag !== null || messageDrag !== null || (runningEdges !== null && !runningEdges.has(edge.id))}
+                paused={isDragging || link !== null || reconnect !== null || bendDrag !== null || labelDrag !== null || (runningEdges !== null && !runningEdges.has(edge.id))}
                 interactive={!readOnly}
                 selected={selectedEdgeId === edge.id}
                 onClick={readOnly ? undefined : (id) => onSelectEdge(id)}
                 onLabelPointerDown={readOnly ? undefined : handleLabelPointerDown}
-                onLinePointerDown={readOnly || edge.routing !== 'message' ? undefined : handleMessagePointerDown}
                 onDoubleClick={readOnly ? undefined : handleEdgeDoubleClick}
                 color={edgeColor}
                 effectColor={edge.effectColor}
@@ -1212,6 +1202,12 @@ function ReconnectPreview({ fixed, pointer, color, scale }: { fixed: { x: number
  * with the SVG <ellipse> primitive.
  */
 function DrawPreview({ shape, start, current }: { shape: DrawTool; start: { x: number; y: number }; current: { x: number; y: number } }) {
+  // The free-line tool previews the actual segment being dragged, not a
+  // box — every other tool's box preview would misrepresent what a line
+  // in an arbitrary direction is about to become.
+  if (shape === 'line') {
+    return <line x1={start.x} y1={start.y} x2={current.x} y2={current.y} stroke='#22d3ee' strokeWidth={2} strokeDasharray='8 6' pointerEvents='none' />;
+  }
   const previewShape = drawToolPreviewShape(shape);
   const minX = Math.min(start.x, current.x);
   const minY = Math.min(start.y, current.y);

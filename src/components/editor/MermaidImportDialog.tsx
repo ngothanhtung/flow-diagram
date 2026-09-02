@@ -11,7 +11,6 @@ import { STARTER_DIAGRAMS } from '@/lib/starter-diagrams';
 
 const KIND_LABEL: Record<MermaidImportResult['kind'], string> = {
   flowchart: 'Flowchart',
-  sequence: 'Sequence diagram',
   er: 'ER diagram',
 };
 
@@ -66,8 +65,8 @@ export function MermaidImportDialog({ open, onOpenChange }: { open: boolean; onO
         <DialogHeader className='shrink-0 px-8 pt-6 pb-4'>
           <DialogTitle className='text-base font-semibold text-foreground'>Import from mermaid</DialogTitle>
           <p className='mt-1 text-[11px] leading-relaxed text-muted-foreground'>
-            Paste a <code className='rounded bg-muted px-1 py-0.5 font-mono text-[10px]'>flowchart</code>, <code className='rounded bg-muted px-1 py-0.5 font-mono text-[10px]'>sequenceDiagram</code>{' '}
-            or <code className='rounded bg-muted px-1 py-0.5 font-mono text-[10px]'>erDiagram</code>. Blocks are laid out automatically; everything is editable afterwards.
+            Paste a <code className='rounded bg-muted px-1 py-0.5 font-mono text-[10px]'>flowchart</code> or <code className='rounded bg-muted px-1 py-0.5 font-mono text-[10px]'>erDiagram</code>. Blocks
+            are laid out automatically; everything is editable afterwards.
           </p>
         </DialogHeader>
 

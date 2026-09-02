@@ -2,7 +2,7 @@
 // "ghost" preview during link-drawing and the live animated edge
 // use the same curve — when a new edge snaps in, there's no jump.
 
-import { ACTIVATION_WIDTH, LIFELINE_DEFAULT_HEIGHT, LIFELINE_HEADER_HEIGHT, SHAPES, type ShapeSpec } from '@/lib/node-style';
+import { SHAPES, type ShapeSpec } from '@/lib/node-style';
 import { resolveNodeStyle } from '@/lib/node-style';
 import type { ConnectionSide, FlowEdge, FlowNode, NodeShape } from '@/lib/flowchart-types';
 
@@ -13,15 +13,6 @@ import type { ConnectionSide, FlowEdge, FlowNode, NodeShape } from '@/lib/flowch
  */
 export const NODE_RADIUS = 56;
 export const NODE_BOUNDING_RADIUS = NODE_RADIUS;
-
-/** How far a message's endpoints sit from a lifeline's centre line —
- *  the half-width of an activation bar, so the arrow lands on the bar's
- *  edge instead of underneath it. */
-export const ACTIVATION_INSET = ACTIVATION_WIDTH / 2;
-/** How far a self-message reaches out to the right before turning back. */
-export const SELF_MESSAGE_REACH = 46;
-/** Default vertical drop of a self-message loop. */
-export const SELF_MESSAGE_DROP = 34;
 
 /**
  * Where the in-port sits on a given shape, expressed as an offset
@@ -57,8 +48,6 @@ export function buildEdgeGeometry(edge: FlowEdge, from: FlowNode, to: FlowNode) 
   const bendPoints = edge.bendPoints?.filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
 
   switch (edge.routing ?? 'smooth-step') {
-    case 'message':
-      return buildMessagePath(edge, from, to);
     case 'straight':
       return buildStraightPath(from.position, fromAnchor, to.position, toAnchor);
     case 'smooth-step':
@@ -250,79 +239,6 @@ function buildCustomPolylinePath(fromCenter: Point, fromAnchor: Point, toCenter:
     length: polylineLength(points),
     points,
   };
-}
-
-/**
- * The sequence diagram's message route: a dead-horizontal line between
- * two lifelines' centre lines at the message's own `messageY`.
- *
- * Every other route derives *both* coordinates from its two endpoints.
- * A message can't: a lifeline is a single vertical line spanning the
- * whole drawing, so "which lifelines" fixes only x, and the y — when
- * the message happens — is the message's own property. That is the one
- * thing this route adds, and the reason it exists as a routing value
- * instead of falling out of the endpoints like the rest.
- *
- * Both ends are inset by half an activation bar so an arrow lands on
- * the bar's edge rather than disappearing underneath it. With no bar
- * there, the inset is a few pixels of clearance from the lifeline's
- * own stroke — which is what a hand-drawn one leaves anyway.
- */
-export function buildMessagePath(edge: FlowEdge, from: FlowNode, to: FlowNode) {
-  const y = resolveMessageY(edge, from, to);
-  const fromX = from.position.x;
-  const toX = to.position.x;
-
-  if (from.id === to.id || Math.abs(toX - fromX) < 1) {
-    // A message to itself: out to the right, down, and back. A
-    // zero-length line would be invisible, and the loop is how every
-    // sequence diagram draws a self-call.
-    const drop = Math.max(16, edge.selfMessageDrop ?? SELF_MESSAGE_DROP);
-    const start = { x: fromX + ACTIVATION_INSET, y };
-    const end = { x: fromX + ACTIVATION_INSET, y: y + drop };
-    const points = [start, { x: fromX + ACTIVATION_INSET + SELF_MESSAGE_REACH, y }, { x: fromX + ACTIVATION_INSET + SELF_MESSAGE_REACH, y: y + drop }, end];
-    const d = points.map((point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`).join(' ');
-    return {
-      d,
-      mid: { x: fromX + ACTIVATION_INSET + SELF_MESSAGE_REACH, y: y + drop / 2 },
-      midTangent: { x: 0, y: 1 },
-      start,
-      end,
-      // The loop leaves heading right and arrives heading left, so the
-      // two markers face outward along those directions.
-      startAngle: 0,
-      angle: 180,
-      length: SELF_MESSAGE_REACH * 2 + drop,
-      points,
-    };
-  }
-
-  const direction = toX > fromX ? 1 : -1;
-  const start = { x: fromX + ACTIVATION_INSET * direction, y };
-  const end = { x: toX - ACTIVATION_INSET * direction, y };
-  return {
-    d: `M ${start.x} ${start.y} L ${end.x} ${end.y}`,
-    mid: { x: (start.x + end.x) / 2, y },
-    midTangent: { x: direction, y: 0 },
-    start,
-    end,
-    startAngle: direction > 0 ? 180 : 0,
-    angle: direction > 0 ? 0 : 180,
-    length: Math.abs(end.x - start.x),
-    points: undefined as Point[] | undefined,
-  };
-}
-
-/**
- * Where a message sits vertically. Its own `messageY` wins; without one
- * it lands just under the taller lifeline's header, which is where the
- * first message in any sequence diagram goes — so a hand-written
- * document renders sensibly before anyone drags anything.
- */
-export function resolveMessageY(edge: Pick<FlowEdge, 'messageY'>, from: FlowNode, to: FlowNode): number {
-  if (edge.messageY !== undefined && Number.isFinite(edge.messageY)) return edge.messageY;
-  const headerBottom = (node: FlowNode) => node.position.y - (node.height ?? LIFELINE_DEFAULT_HEIGHT) / 2 + LIFELINE_HEADER_HEIGHT;
-  return Math.max(headerBottom(from), headerBottom(to)) + 32;
 }
 
 /** Direct point-to-point connector. */

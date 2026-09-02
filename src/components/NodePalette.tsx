@@ -110,8 +110,6 @@ function tintFor(type: NodeType): string {
     case 'group': return 'bg-violet-500/15 text-violet-300 ring-violet-400/40';
     case 'text': return 'bg-sky-500/15 text-sky-300 ring-sky-400/40';
     case 'icon': return 'bg-sky-500/15 text-sky-300 ring-sky-400/40';
-    case 'legend': return 'bg-sky-500/15 text-sky-300 ring-sky-400/40';
-    case 'lifeline': return 'bg-sky-500/15 text-sky-300 ring-sky-400/40';
-    case 'activation': return 'bg-sky-500/15 text-sky-300 ring-sky-400/40';
+    case 'line': return 'bg-sky-500/15 text-sky-300 ring-sky-400/40';
   }
 }

@@ -10,10 +10,9 @@ import { nodeSizeLimits, resolveNodeStyle } from './node-style';
  * app is for are directed and shallow, and a predictable grid the user
  * can then nudge beats an optimal-but-surprising arrangement.
  *
- * Only ordinary blocks are laid out. Frames, captions, the legend,
- * lifelines and activation bars are scenery — moving them would either
- * fight the user's composition or, for a bar, break the invariant that
- * it rides its lifeline's centre line.
+ * Only ordinary blocks are laid out. Frames, captions, free icons and
+ * free lines are scenery — moving them would fight the user's
+ * composition rather than help it.
  */
 
 export type LayoutDirection = 'TB' | 'LR';
@@ -34,7 +33,7 @@ export interface LayoutOptions {
 const DEFAULTS = { direction: 'TB' as LayoutDirection, rankGap: 110, nodeGap: 60, origin: { x: 240, y: 160 } };
 
 /** Node kinds auto-layout never moves — see the module comment. */
-const UNLAYOUTABLE = new Set(['group', 'text', 'icon', 'legend', 'lifeline', 'activation']);
+const UNLAYOUTABLE = new Set(['group', 'text', 'icon', 'line']);
 
 /** The new centre position for every node the layout moved. */
 export type LayoutResult = Map<string, { x: number; y: number }>;

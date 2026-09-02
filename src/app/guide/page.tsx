@@ -58,12 +58,12 @@ const TOC = [
   ['schema', 'Document schema'],
   ['nodes', 'Node rules'],
   ['edges', 'Edge rules'],
-  ['sequence', 'Sequence diagrams'],
   ['import', 'Mermaid import & layout'],
   ['execution', 'Execution order'],
   ['tables', 'Database tables'],
   ['groups', 'Groups (nested blocks)'],
   ['text', 'Free text'],
+  ['line', 'Free line'],
   ['style', 'Visual conventions'],
   ['example', 'Worked example'],
   ['checklist', 'Checklist'],
@@ -206,7 +206,7 @@ export default function GuidePage() {
                   'flow · pulse · glow · comet · dots · scanner · bidirectional · laser · meteor · heartbeat · rail · fade · convoy · chase · charging · morse · ants · blink',
                   'The animated overlay. Templates default to `flow` for routine links and reach for `comet`/`pulse`/`dots`/`scanner` to draw attention to a specific hop.',
                 ],
-                ['routing', 'straight · smooth-step · orthogonal · curved · message', 'Optional — the canvas picks a sane default. `orthogonal` reads best for dense system diagrams; `message` is the sequence diagram\u2019s route (see \u00a76).'],
+                ['routing', 'straight · smooth-step · orthogonal · curved', 'Optional — the canvas picks a sane default. `orthogonal` reads best for dense system diagrams.'],
                 ['direction', 'forward · reverse · both', 'Defaults to forward. `both` animates the effect in both directions without changing logical from/to.'],
                 ['startMarker / endMarker', 'none · arrow · open-arrow · triangle · circle · diamond · tee · cross · circle-cross · arrow-both · arrow-bar · bar', 'Arrowheads at each end, independently configurable.'],
                 ['width / effectSize / animationSpeed', 'number', 'Line width, animated-object scale multiplier, and playback speed (0.25×–3×). Keep these consistent across a diagram — see §10.'],
@@ -222,7 +222,7 @@ export default function GuidePage() {
             <h3 className='mt-6 mb-2 text-sm font-semibold text-foreground'>Named line styles</h3>
             <p>
               What makes a large diagram readable is not the individual lines but how <em>few kinds</em> of line it has. Declare each kind once in <Pill>settings.edgeStyles</Pill> and point lines at
-              it with <Pill>styleRef</Pill> instead of repeating colour, width and markers on every edge — then one edit restyles them all, and a legend node can list exactly the kinds in use.
+              it with <Pill>styleRef</Pill> instead of repeating colour, width and markers on every edge — then one edit restyles them all.
             </p>
             <Code>{`"settings": { "edgeStyles": [
   { "id": "primary", "name": "Primary flow", "color": "#38bdf8", "width": 2.5, "endMarker": "arrow", "effect": "flow" },
@@ -238,43 +238,10 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='sequence' title='4. Sequence diagrams'>
+          <Section id='import' title='4. Mermaid import and auto-layout'>
             <p>
-              A sequence diagram is built from the same document as everything else — three node kinds and one routing value, not a separate file format.
-            </p>
-            <Table
-              head={['piece', 'how', 'notes']}
-              rows={[
-                ['Participant', '{ "type": "lifeline" }', 'A header card with a long dashed line below it. Its `height` is the WHOLE span — header plus line — so it says how far down the page this participant lives. Give each one a distinct `position.x`; they all share a `position.y`.'],
-                ['Activation bar', '{ "type": "activation", "lifelineId": "api" }', 'The stretch of time a participant is busy. Its x is slaved to its lifeline\u2019s centre line, so only `position.y` and `height` matter — set anything you like for x and it will be corrected.'],
-                ['Message', '{ "routing": "message", "messageY": 240 }', 'A dead-horizontal line between two lifelines. `messageY` is an absolute canvas y and is the ONLY thing that says when the message happens — space consecutive messages ~48px apart. Omit it and it falls just under the taller lifeline\u2019s header.'],
-                ['Self message', 'from and to the same lifeline id', 'Renders as a loop out and back rather than a zero-length line. `selfMessageDrop` sets how tall the loop is.'],
-                ['Fragment band', '{ "type": "group", "frameStyle": "fragment" }', 'The alt / opt / loop band. A group frame that labels itself in a small corner tab instead of a full-width title bar, which on a sequence diagram would cut across every lifeline behind it. Put the operator and its guard in `title`: "alt [cache miss]".'],
-              ]}
-            />
-            <Code>{`{ "nodes": [
-  { "id": "user", "type": "lifeline", "title": "User", "position": { "x": 140, "y": 300 }, "height": 440 },
-  { "id": "api",  "type": "lifeline", "title": "API",  "position": { "x": 400, "y": 300 }, "height": 440 },
-  { "id": "bar",  "type": "activation", "lifelineId": "api", "title": "",
-    "position": { "x": 400, "y": 220 }, "height": 120 }
-], "edges": [
-  { "id": "m1", "from": "user", "to": "api", "routing": "message", "messageY": 180,
-    "label": "POST /order", "endMarker": "arrow", "effect": "none" },
-  { "id": "m2", "from": "api", "to": "user", "routing": "message", "messageY": 300,
-    "label": "201", "endMarker": "arrow", "lineStyle": "dashed", "effect": "none" }
-]}`}</Code>
-            <p>
-              Two conventions worth copying: a <em>reply</em> is a dashed line (<Pill>lineStyle: &quot;dashed&quot;</Pill>) while a call is solid, and messages carry <Pill>effect: &quot;none&quot;</Pill>
-              — a sequence diagram is read, not watched. Lifelines and activation bars are skipped by the play bar entirely, so in a sequence diagram the replay walks the <em>messages</em>, in{' '}
-              <Pill>sortOrder</Pill> order.
-            </p>
-          </Section>
-
-          <Section id='import' title='5. Mermaid import and auto-layout'>
-            <p>
-              <strong>File → Import from mermaid</strong> turns a pasted mermaid diagram into a document. It understands <Pill>flowchart</Pill> / <Pill>graph</Pill>, <Pill>sequenceDiagram</Pill> and{' '}
-              <Pill>erDiagram</Pill> — the three kinds this editor draws. Everything it produces is an ordinary <Pill>FlowDocumentJSON</Pill>, fully editable afterwards; there is no lasting link back
-              to the mermaid source.
+              <strong>File → Import from mermaid</strong> turns a pasted mermaid diagram into a document. It understands <Pill>flowchart</Pill> / <Pill>graph</Pill> and <Pill>erDiagram</Pill> — the
+              two kinds this editor draws. Everything it produces is an ordinary <Pill>FlowDocumentJSON</Pill>, fully editable afterwards; there is no lasting link back to the mermaid source.
             </p>
             <Table
               head={['mermaid', 'becomes', 'notes']}
@@ -283,10 +250,6 @@ export default function GuidePage() {
                 ['-->  ---  -.->  ==>', 'arrow / plain / dashed / thick line', 'Dashes become `lineStyle: "dashed"` and thick becomes `width: 4` — a different kind of line, not an animated effect.'],
                 ['-->|text|  and  -- text -->', 'line label', 'Both spellings are read.'],
                 ['subgraph id [Title] … end', 'group frame', 'Nodes mentioned inside become members and the frame is sized around them.'],
-                ['participant A as Label', 'lifeline', 'Spread across the canvas in declaration order.'],
-                ['A->>B: text / A-->>B: text', 'message / dashed reply', 'Stacked down the page in source order, which is what `messageY` encodes.'],
-                ['activate A … deactivate A', 'activation bar', 'The bar spans from the message where it opened to the one where it closed.'],
-                ['alt / opt / loop … end', 'fragment band', 'The guard becomes the tab label: "alt [cache miss]".'],
                 ['USERS ||--o{ ORDERS : places', 'table relationship', 'Crow-foot markers on both ends; `..` becomes a dashed (non-identifying) line.'],
                 ['USERS { uuid id PK }', 'table columns', 'PK / FK / UK flags are read; the type comes first, as in mermaid.'],
               ]}
@@ -297,16 +260,16 @@ export default function GuidePage() {
             </p>
             <p>
               <strong>File → Tidy layout</strong> ranks the whole diagram: every block sits below (or right of) all of its inputs, ranks are ordered to reduce crossings, and the result is centred as a
-              spine. With two or more blocks selected the canvas toolbar carries the same command scoped to just those, keeping them where they already are on the canvas. Frames, captions, the legend,
-              lifelines and activation bars are never moved — they are scenery, and a bar in particular must stay on its lifeline&apos;s centre line.
+              spine. With two or more blocks selected the canvas toolbar carries the same command scoped to just those, keeping them where they already are on the canvas. Frames, captions, free icons
+              and free lines are never moved — they are scenery.
             </p>
             <p>
-              <strong>File → Start from a diagram</strong> drops in a small, complete example of each of the three kinds. These ship with the app, unlike <em>New from template</em>, which reads the
+              <strong>File → Start from a diagram</strong> drops in a small, complete example of each of the two kinds. These ship with the app, unlike <em>New from template</em>, which reads the
               shared template library an administrator curates.
             </p>
           </Section>
 
-          <Section id='execution' title='6. Execution order (the play bar)'>
+          <Section id='execution' title='5. Execution order (the play bar)'>
             <p>
               The play bar animates nodes/edges in steps driven by <Pill>sortOrder</Pill> on each node (defaults to document order when omitted or 0). Nodes that share the same{' '}
               <Pill>sortOrder</Pill> animate <em>simultaneously</em>, as one step — use this deliberately to show parallel branches (e.g. two services processed in tandem) rather than assigning every
@@ -320,7 +283,7 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='tables' title='7. Database tables (ERD)'>
+          <Section id='tables' title='6. Database tables (ERD)'>
             <p>
               A node with a <Pill>table</Pill> field renders as a database table — a name header plus one row per column — instead of the icon + title card. Everything else about the node
               (shape, colours, ports, dragging) is unchanged, so ERD tables and flow blocks live in the same document.
@@ -362,7 +325,7 @@ export default function GuidePage() {
   "routing": "orthogonal", "startMarker": "crow-one", "endMarker": "crow-many" }`}</Code>
           </Section>
 
-          <Section id='groups' title='8. Groups (blocks nested inside a block)'>
+          <Section id='groups' title='7. Groups (blocks nested inside a block)'>
             <p>
               A container is a node with <Pill>type: &quot;group&quot;</Pill>; a block joins it by pointing at it with <Pill>parentId</Pill>. Membership is stored on the child only — a frame never
               lists what it holds — so there is one field to keep consistent, and frames may be nested to any depth.
@@ -395,7 +358,7 @@ export default function GuidePage() {
             </p>
           </Section>
 
-          <Section id='text' title='9. Free text'>
+          <Section id='text' title='8. Free text'>
             <p>
               A node with <Pill>type: &quot;text&quot;</Pill> is words on the canvas: no silhouette, no fill, no border, no ports. Its whole content is <Pill>title</Pill>, and newlines in that
               string are preserved, so a caption is a single node rather than a stack of them. <Pill>description</Pill> is not rendered — put everything in the title.
@@ -417,6 +380,27 @@ export default function GuidePage() {
               <Pill>effect</Pill> only accepts the motion family (<Pill>float</Pill>, <Pill>breathe</Pill>, <Pill>bounce</Pill>, <Pill>wobble</Pill>, <Pill>shake</Pill>, <Pill>blink</Pill>) on a
               text node — the words themselves move. The decoration family (<Pill>glow</Pill>, <Pill>pulse</Pill>, <Pill>ripple</Pill>, <Pill>trace</Pill>, <Pill>sheen</Pill>) traces a node&apos;s
               outline, and text has none, so setting one is a no-op: nothing renders.
+            </p>
+          </Section>
+
+          <Section id='line' title='9. Free line'>
+            <p>
+              A node with <Pill>type: &quot;line&quot;</Pill> is a straight stroke, not attached to any node — the free-standing counterpart to an edge. It has no ports, no silhouette and no fill;
+              like text and free icons it is scenery, skipped by the play bar and never moved by auto-layout.
+            </p>
+            <Code>{`{ "id": "div1", "type": "line",
+  "position": { "x": 400, "y": 260 }, "width": 220, "height": 0,
+  "color": "#7dd3fc", "borderWidth": 2, "borderStyle": "dashed",
+  "endMarker": "arrow" }`}</Code>
+            <p>
+              <Pill>position</Pill>/<Pill>width</Pill>/<Pill>height</Pill> describe a bounding box exactly like every other node, and the line itself runs corner to corner along one of its two
+              diagonals — <Pill>lineFlip: false</Pill> (or omitted) draws top-left to bottom-right, <Pill>lineFlip: true</Pill> draws top-right to bottom-left. A perfectly horizontal or vertical
+              line is the degenerate case: give it <Pill>height: 0</Pill> or <Pill>width: 0</Pill>.
+            </p>
+            <p>
+              <Pill>color</Pill> is the stroke colour, <Pill>borderWidth</Pill> the stroke width, and <Pill>borderStyle</Pill> (<Pill>solid | dashed | dotted</Pill>) its pattern — the same fields a
+              block&apos;s border uses, reused rather than inventing edge-only names. <Pill>startMarker</Pill>/<Pill>endMarker</Pill> take the same arrowhead vocabulary as an edge (
+              <Pill>arrow</Pill>, <Pill>triangle</Pill>, <Pill>diamond</Pill>, the crow&apos;s-foot set, …) and default to <Pill>&quot;none&quot;</Pill>.
             </p>
           </Section>
 

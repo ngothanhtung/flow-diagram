@@ -15,19 +15,14 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeLineStyle, EdgeRouting, EdgeStyleClass, FlowEdge, FlowNode, NodeFont, NodeIcon, TableColumn } from '@/lib/flowchart-types';
+import type { EdgeDirection, EdgeEffect, EdgeLabelPosition, EdgeLabelShape, EdgeLineStyle, EdgeRouting, EdgeStyleClass, FlowEdge, NodeFont, NodeIcon, TableColumn } from '@/lib/flowchart-types';
 import { clearStyleOverrides, edgeStyleOf, edgeStyleOverrides, resolveEdgeStyle, type EdgeStyleField } from '@/lib/edge-style';
-import { resolveMessageY, SELF_MESSAGE_DROP } from './edge-geometry';
 import { EDGE_LABEL_FONT_SIZE_MAX, EDGE_LABEL_FONT_SIZE_MIN, EDGE_LABEL_PRESETS, EDGE_LABEL_SHAPES, findEdgeLabelPreset, resolveEdgeLabelStyle, type EdgeLabelPreset } from '@/lib/edge-label-style';
 import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 interface EdgeInspectorProps {
   edge: FlowEdge;
-  /** The two nodes the line connects — a sequence message needs them to
-   *  resolve the y it falls back to when it carries none of its own. */
-  sourceNode?: FlowNode;
-  targetNode?: FlowNode;
   /** The document's named line vocabulary (`settings.edgeStyles`). */
   styles: EdgeStyleClass[];
   sourceTitle: string;
@@ -78,7 +73,7 @@ const STYLE_FIELD_LABELS: Record<EdgeStyleField, string> = {
   glowColor: 'glow colour',
 };
 
-export function EdgeInspector({ edge, styles, sourceNode, targetNode, sourceTitle, targetTitle, fallbackColor, sourceColumns, targetColumns, onUpdate, onAssignStyle, onManageStyles, onDelete, onClose }: EdgeInspectorProps) {
+export function EdgeInspector({ edge, styles, sourceTitle, targetTitle, fallbackColor, sourceColumns, targetColumns, onUpdate, onAssignStyle, onManageStyles, onDelete, onClose }: EdgeInspectorProps) {
   const [label, setLabel] = useState(edge.label ?? '');
   const [draftEffect, setDraftEffect] = useState<EdgeEffect | null>(null);
   // Every control below shows what the line actually *paints*, which for
@@ -101,13 +96,6 @@ export function EdgeInspector({ edge, styles, sourceNode, targetNode, sourceTitl
   // Glow is opt-in: unset means no halo (new lines are created with 1).
   const glowIntensity = painted.glowIntensity ?? 0;
   const glowColor = painted.glowColor;
-  // A message is the one route whose y is its own property rather than
-  // something derived from its endpoints, so it gets a control for it.
-  // Its fallback comes from the same resolver the canvas uses, so the
-  // number in the field is the y actually being drawn at.
-  const isMessage = (painted.routing ?? 'smooth-step') === 'message';
-  const isSelfMessage = isMessage && edge.from === edge.to;
-  const messageY = isMessage && sourceNode && targetNode ? resolveMessageY(edge, sourceNode, targetNode) : 0;
   // Object count only applies to travelling-object effects; pattern
   // effects (flow, heartbeat…) get a density slider instead, and the
   // remaining effects (charging) have neither knob.
@@ -296,19 +284,6 @@ export function EdgeInspector({ edge, styles, sourceNode, targetNode, sourceTitl
           <NumberField label='Delay after (ms)' value={edge.delay ?? DEFAULT_STEP_DELAY_MS} min={0} step={100} onChange={(delay) => onUpdate(edge.id, { delay })} />
         </div>
         <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>Extra pause after the line finishes drawing, before the replay moves on. Defaults to {DEFAULT_STEP_DELAY_MS}ms.</p>
-
-        {isMessage && (
-          <>
-            <SectionLabel>Message</SectionLabel>
-            <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>
-              A sequence message runs dead horizontal between its two lifelines. Which lifelines fixes its x; <em>when</em> it happens is this Y — drag the line itself up and down, or set it here.
-            </p>
-            <div className='mt-1.5 grid grid-cols-2 gap-2'>
-              <NumberField label='Y position' value={Math.round(messageY)} step={8} onChange={(nextY) => onUpdate(edge.id, { messageY: nextY })} />
-              {isSelfMessage && <NumberField label='Loop height' value={Math.round(edge.selfMessageDrop ?? SELF_MESSAGE_DROP)} min={16} step={4} onChange={(selfMessageDrop) => onUpdate(edge.id, { selfMessageDrop })} />}
-            </div>
-          </>
-        )}
 
         <SectionLabel>Line style</SectionLabel>
         <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>A named kind of line, shared across the diagram. Everything from here down follows the style unless this line overrides it.</p>
