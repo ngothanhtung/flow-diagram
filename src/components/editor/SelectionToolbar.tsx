@@ -9,6 +9,7 @@ import {
   AlignStartHorizontal,
   AlignStartVertical,
   AlignVerticalDistributeCenter,
+  Network,
   Scaling,
   type LucideIcon,
 } from 'lucide-react';
@@ -39,6 +40,7 @@ export function SelectionToolbar() {
   const alignSelectedNodes = useEditorStore((state) => state.alignSelectedNodes);
   const distributeSelectedNodes = useEditorStore((state) => state.distributeSelectedNodes);
   const matchSelectedNodeSize = useEditorStore((state) => state.matchSelectedNodeSize);
+  const autoLayout = useEditorStore((state) => state.autoLayout);
 
   const count = selectedNodeIds.length;
   if (count < 2) return null;
@@ -99,6 +101,25 @@ export function SelectionToolbar() {
         className='text-muted-foreground'
       >
         <Scaling size={16} />
+      </Button>
+
+      <Separator orientation='vertical' className='self-stretch bg-border' />
+
+      {/* Tidies just the selection — the lines between the selected
+          blocks decide the ranks, and the result is shifted back so the
+          block stays where the user left it on the canvas. */}
+      <Button variant='ghost' size='icon-sm' onClick={() => autoLayout('TB')} title='Tidy the selection into ranks, top to bottom' aria-label='Tidy the selection top to bottom' className='text-muted-foreground'>
+        <Network size={16} />
+      </Button>
+      <Button
+        variant='ghost'
+        size='icon-sm'
+        onClick={() => autoLayout('LR')}
+        title='Tidy the selection into ranks, left to right'
+        aria-label='Tidy the selection left to right'
+        className='text-muted-foreground'
+      >
+        <Network size={16} className='-rotate-90' />
       </Button>
     </div>
   );

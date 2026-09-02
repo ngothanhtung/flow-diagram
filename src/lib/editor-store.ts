@@ -1,6 +1,7 @@
 'use client';
 
 import { create } from 'zustand';
+import { layoutDocument, type LayoutDirection } from './auto-layout';
 import { convertDocumentColorTheme } from './color-theme-convert';
 import { clearStyleOverrides, edgeStylesOf, resolveEdgeStyle } from './edge-style';
 import { loadEditorSession } from './editor-session';
@@ -334,6 +335,11 @@ interface EditorState {
   /** Add a message a lifeline sends to itself — the canvas can't draw
    *  one by dragging, since a link needs two different nodes. */
   addSelfMessage: (lifelineId: string) => string | null;
+
+  /** Lay the diagram out in ranks. With 2+ nodes selected it tidies just
+   *  those, so one messy corner can be fixed without disturbing the rest.
+   *  Returns how many nodes moved. */
+  autoLayout: (direction: LayoutDirection) => number;
 
   // Layout actions over the current multi-selection. Each is a no-op
   // below its minimum selection size, so the UI can stay mounted.
@@ -1235,6 +1241,38 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       },
     });
     return id;
+  },
+
+  autoLayout: (direction) => {
+    const { doc, selectedNodeIds } = get();
+    // A selection of one is a click, not a request to tidy one node, so
+    // the whole-document layout is the more useful reading of it.
+    const only = selectedNodeIds.length >= 2 ? new Set(selectedNodeIds) : undefined;
+    const positions = layoutDocument(doc, { direction, only });
+    if (positions.size === 0) return 0;
+    // Laying out inside a selection keeps the block where the user left
+    // it: the layout's own origin would otherwise fling it across the
+    // canvas. Shift the whole result so its centre stays put.
+    let offset = { x: 0, y: 0 };
+    if (only) {
+      const before = boundsOfNodes(doc.nodes.filter((node) => positions.has(node.id)));
+      if (before) {
+        const centres = [...positions.values()];
+        const afterX = (Math.min(...centres.map((point) => point.x)) + Math.max(...centres.map((point) => point.x))) / 2;
+        const afterY = (Math.min(...centres.map((point) => point.y)) + Math.max(...centres.map((point) => point.y))) / 2;
+        offset = { x: (before.left + before.right) / 2 - afterX, y: (before.top + before.bottom) / 2 - afterY };
+      }
+    }
+    set({
+      doc: {
+        ...doc,
+        nodes: doc.nodes.map((node) => {
+          const position = positions.get(node.id);
+          return position ? { ...node, position: { x: position.x + offset.x, y: position.y + offset.y } } : node;
+        }),
+      },
+    });
+    return positions.size;
   },
 
   // Align against the selection's own bounding box rather than a fixed

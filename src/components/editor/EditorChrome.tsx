@@ -1,6 +1,6 @@
 'use client';
 
-import { Contrast, Database, FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, RotateCcw, Save } from 'lucide-react';
+import { Contrast, Database, FileCode2, FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, Network, RotateCcw, Save, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -53,6 +53,9 @@ export function EditorFileMenu({
   onNew,
   newDisabled,
   onNewFromTemplate,
+  onStartFrom,
+  onImportMermaid,
+  onAutoLayout,
   openHref,
   onExport,
   onExportSql,
@@ -64,6 +67,17 @@ export function EditorFileMenu({
   onNew: () => void;
   newDisabled?: boolean;
   onNewFromTemplate: () => void;
+  /** Opens the built-in starter picker. Distinct from the template
+   *  library: starters ship with the app, templates are the Firestore
+   *  collection an administrator curates. */
+  onStartFrom: () => void;
+  /** Opens the mermaid import dialog. */
+  onImportMermaid: () => void;
+  /** Re-ranks the whole diagram. The canvas toolbar carries the same
+   *  command scoped to a selection; this is the document-wide one, which
+   *  is why it sits with the other document-wide commands rather than on
+   *  a dock that is already full. */
+  onAutoLayout: () => void;
   openHref: string;
   onExport: () => void;
   /** Opens the SQL export dialog — every surface that can hold table
@@ -81,8 +95,14 @@ export function EditorFileMenu({
       <FileMenuItem icon={<FilePlus size={14} />} disabled={newDisabled} onClick={onNew}>
         New
       </FileMenuItem>
+      <FileMenuItem icon={<Sparkles size={14} />} onClick={onStartFrom}>
+        Start from a diagram
+      </FileMenuItem>
       <FileMenuItem icon={<LayoutTemplate size={14} />} onClick={onNewFromTemplate}>
         New from template
+      </FileMenuItem>
+      <FileMenuItem icon={<FileCode2 size={14} />} onClick={onImportMermaid}>
+        Import from mermaid
       </FileMenuItem>
       <FileMenuItem icon={<FolderOpen size={14} />} href={openHref}>
         Open
@@ -99,6 +119,9 @@ export function EditorFileMenu({
       )}
       {afterExport}
       <FileMenuSeparator />
+      <FileMenuItem icon={<Network size={14} />} onClick={onAutoLayout}>
+        Tidy layout
+      </FileMenuItem>
       <FileMenuItem icon={<Contrast size={14} />} onClick={onConvertColorTheme}>
         Convert dark ↔ light
       </FileMenuItem>
