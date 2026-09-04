@@ -1,6 +1,6 @@
 'use client';
 
-import { Contrast, Database, FileCode2, FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, Network, RotateCcw, Save, Sparkles } from 'lucide-react';
+import { Contrast, Database, FileCode2, FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, RotateCcw, Save, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Button, buttonVariants } from '@/components/ui/button';
@@ -55,7 +55,6 @@ export function EditorFileMenu({
   onNewFromTemplate,
   onStartFrom,
   onImportMermaid,
-  onAutoLayout,
   openHref,
   onExport,
   onExportSql,
@@ -73,11 +72,6 @@ export function EditorFileMenu({
   onStartFrom: () => void;
   /** Opens the mermaid import dialog. */
   onImportMermaid: () => void;
-  /** Re-ranks the whole diagram. The canvas toolbar carries the same
-   *  command scoped to a selection; this is the document-wide one, which
-   *  is why it sits with the other document-wide commands rather than on
-   *  a dock that is already full. */
-  onAutoLayout: () => void;
   openHref: string;
   onExport: () => void;
   /** Opens the SQL export dialog — every surface that can hold table
@@ -119,9 +113,6 @@ export function EditorFileMenu({
       )}
       {afterExport}
       <FileMenuSeparator />
-      <FileMenuItem icon={<Network size={14} />} onClick={onAutoLayout}>
-        Tidy layout
-      </FileMenuItem>
       <FileMenuItem icon={<Contrast size={14} />} onClick={onConvertColorTheme}>
         Convert dark ↔ light
       </FileMenuItem>

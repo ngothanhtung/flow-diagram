@@ -39,10 +39,30 @@ export function nodePortAnchor(node: FlowNode, side: ConnectionSide): { x: numbe
   };
 }
 
+/**
+ * Which sides two nodes face each other on, when the edge itself doesn't
+ * say. A fixed right→left pair — what this used to be — is right for a
+ * left-to-right diagram and wrong for every other arrangement: in a
+ * top-to-bottom flow it makes each line leave the source's right edge,
+ * double back around the source, and come in the target's left, which
+ * reads as tangled no matter how well the nodes are placed. Choosing the
+ * dominant axis between the two centres instead means the line leaves
+ * towards where it is going.
+ */
+function facingSides(from: FlowNode, to: FlowNode): { fromSide: ConnectionSide; toSide: ConnectionSide } {
+  const dx = to.position.x - from.position.x;
+  const dy = to.position.y - from.position.y;
+  if (Math.abs(dx) >= Math.abs(dy)) {
+    return dx >= 0 ? { fromSide: 'right', toSide: 'left' } : { fromSide: 'left', toSide: 'right' };
+  }
+  return dy >= 0 ? { fromSide: 'bottom', toSide: 'top' } : { fromSide: 'top', toSide: 'bottom' };
+}
+
 /** Build the route for an existing edge from its selected node ports. */
 export function buildEdgeGeometry(edge: FlowEdge, from: FlowNode, to: FlowNode) {
-  const fromSide = edge.fromSide ?? from.connectionPoints?.output ?? 'right';
-  const toSide = edge.toSide ?? to.connectionPoints?.input ?? 'left';
+  const facing = facingSides(from, to);
+  const fromSide = edge.fromSide ?? from.connectionPoints?.output ?? facing.fromSide;
+  const toSide = edge.toSide ?? to.connectionPoints?.input ?? facing.toSide;
   const fromAnchor = nodePortAnchor(from, fromSide);
   const toAnchor = nodePortAnchor(to, toSide);
   const bendPoints = edge.bendPoints?.filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));

@@ -103,7 +103,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const currentDiagramPublic = useEditorStore((state) => state.currentDiagramPublic);
   const savedSignature = useEditorStore((state) => state.savedSignature);
   const savingDiagram = useEditorStore((state) => state.savingDiagram);
-  const { renameDiagram, setDiagramPublic, markDiagramSaved, loadStoredDiagram, setSavingDiagram, autoLayout } = useEditorStore();
+  const { renameDiagram, setDiagramPublic, markDiagramSaved, loadStoredDiagram, setSavingDiagram } = useEditorStore();
 
   const templateItems = useTemplateLibrary();
 
@@ -227,7 +227,6 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
           onNewFromTemplate={() => setTemplatesDialogOpen(true)}
           onStartFrom={() => setStarterOpen(true)}
           onImportMermaid={() => setMermaidOpen(true)}
-          onAutoLayout={() => autoLayout('TB')}
           openHref='/'
           onExport={() => downloadDocumentJson(doc, currentDiagramName.trim() || 'diagram')}
           onExportSql={() => setSqlOpen(true)}

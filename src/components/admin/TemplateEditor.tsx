@@ -44,7 +44,6 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
   // The canvas itself lives in the shared editor store.
   const doc = useEditorStore((state) => state.doc);
   const loadRemoteTemplate = useEditorStore((state) => state.loadRemoteTemplate);
-  const autoLayout = useEditorStore((state) => state.autoLayout);
   const templateItems = useTemplateLibrary();
 
   // Load the template into the editor store so the canvas becomes fully
@@ -133,7 +132,6 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
           onNewFromTemplate={() => setTemplatesDialogOpen(true)}
           onStartFrom={() => setStarterOpen(true)}
           onImportMermaid={() => setMermaidOpen(true)}
-          onAutoLayout={() => autoLayout('TB')}
           openHref='/admin/templates'
           onExport={() => downloadDocumentJson(doc, meta.name.trim() || 'template')}
           onExportSql={() => setSqlOpen(true)}

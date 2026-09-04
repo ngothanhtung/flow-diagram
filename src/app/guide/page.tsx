@@ -259,9 +259,9 @@ export default function GuidePage() {
               canvas. Styling directives (<Pill>classDef</Pill>, <Pill>style</Pill>, <Pill>linkStyle</Pill>) are always skipped — set colours in the inspector, or with a named line style (§3).
             </p>
             <p>
-              <strong>File → Tidy layout</strong> ranks the whole diagram: every block sits below (or right of) all of its inputs, ranks are ordered to reduce crossings, and the result is centred as a
-              spine. With two or more blocks selected the canvas toolbar carries the same command scoped to just those, keeping them where they already are on the canvas. Frames, captions, free icons
-              and free lines are never moved — they are scenery.
+              A pasted diagram carries no coordinates, so the importer places the blocks itself: it ranks them so every block sits below (or right of) all of its inputs, orders each rank to reduce
+              crossings, and centres the result as a spine. That runs only on import — the editor has no command to re-run it, so once a document is on the canvas its positions are yours alone.
+              Align, distribute and match-size on the selection toolbar are the tools for tidying up afterwards.
             </p>
             <p>
               <strong>File → Start from a diagram</strong> drops in a small, complete example of each of the two kinds. These ship with the app, unlike <em>New from template</em>, which reads the
