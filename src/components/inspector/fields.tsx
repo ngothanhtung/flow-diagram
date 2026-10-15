@@ -414,20 +414,54 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
 
 // --- Primitive fields -----------------------------------------------------
 
+/** What a number field should write for the text typed so far: the
+ *  number when it is already in range, otherwise nothing yet. Writing an
+ *  out-of-range keystroke (the "2" of "210" under a 72 minimum) would get
+ *  clamped by the store and echoed back into the box mid-typing, so the
+ *  next keystrokes would land on the clamped value instead. */
+export function numberFieldLiveValue(text: string, min?: number, max?: number): number | null {
+  if (text.trim() === '') return null;
+  const parsed = Number(text);
+  if (!Number.isFinite(parsed)) return null;
+  if ((min !== undefined && parsed < min) || (max !== undefined && parsed > max)) return null;
+  return parsed;
+}
+
+/** What a number field commits on blur: the typed number clamped into
+ *  range, or nothing for an empty / unparseable box (it reverts). */
+export function numberFieldCommitValue(text: string, min?: number, max?: number): number | null {
+  if (text.trim() === '') return null;
+  const parsed = Number(text);
+  if (!Number.isFinite(parsed)) return null;
+  return Math.min(max ?? Infinity, Math.max(min ?? -Infinity, parsed));
+}
+
 export function NumberField({ label, value, min, max, step = 1, onChange }: { label: string; value: number; min?: number; max?: number; step?: number; onChange: (value: number) => void }) {
+  // While focused the box shows what the user is typing, not the stored
+  // value — see `numberFieldLiveValue` for why those can differ.
+  const [draft, setDraft] = useState<string | null>(null);
   return (
     <div>
       <Label className='mb-1 block text-[9px] text-muted-foreground'>{label}</Label>
       <Input
         type='number'
-        value={value}
+        value={draft ?? value}
         min={min}
         max={max}
         step={step}
+        onFocus={() => setDraft(String(value))}
         onChange={(event) => {
-          if (!Number.isNaN(event.target.valueAsNumber)) {
-            onChange(event.target.valueAsNumber);
-          }
+          setDraft(event.target.value);
+          const live = numberFieldLiveValue(event.target.value, min, max);
+          if (live !== null && live !== value) onChange(live);
+        }}
+        onBlur={() => {
+          const committed = draft === null ? null : numberFieldCommitValue(draft, min, max);
+          if (committed !== null && committed !== value) onChange(committed);
+          setDraft(null);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') event.currentTarget.blur();
         }}
         className='h-8 border-border bg-muted/30 font-mono text-[11px] text-foreground focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />

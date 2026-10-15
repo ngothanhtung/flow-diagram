@@ -120,5 +120,15 @@ describe('public-diagrams/{id}', () => {
       await seed(env(), { [MIRROR]: mirror() });
       await assertFails(deleteDoc(doc(env().unauthenticatedContext().firestore(), MIRROR)));
     });
+
+    // Saving a private diagram clears its mirror, which usually doesn't
+    // exist — that used to be denied and logged on every such save.
+    it('succeeds for a signed-in user when there is no mirror to delete', async () => {
+      await assertSucceeds(deleteDoc(doc(env().authenticatedContext(ALICE).firestore(), MIRROR)));
+    });
+
+    it('still fails unauthenticated when there is no mirror', async () => {
+      await assertFails(deleteDoc(doc(env().unauthenticatedContext().firestore(), MIRROR)));
+    });
   });
 });

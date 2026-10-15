@@ -65,7 +65,8 @@ export async function createDiagram(userId: string, name: string, document: Flow
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   });
-  await syncPublicMirror(userId, reference.id, name, document, isPublic);
+  // A brand-new diagram has no mirror to clear, so only a public one syncs.
+  if (isPublic) await syncPublicMirror(userId, reference.id, name, document, isPublic);
   return reference.id;
 }
 

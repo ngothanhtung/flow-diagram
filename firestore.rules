@@ -54,8 +54,10 @@ service cloud.firestore {
         && request.resource.data.public == true
         && exists(/databases/$(database)/documents/users/$(request.auth.uid)/diagrams/$(diagramId));
 
+      // `resource == null`: saving a private diagram clears a mirror that
+      // usually doesn't exist; deleting nothing must not be a denial.
       allow delete: if request.auth != null
-        && resource.data.ownerUid == request.auth.uid;
+        && (resource == null || resource.data.ownerUid == request.auth.uid);
     }
 
     // Cross-user collection-group reads: administrators only. Public
