@@ -20,7 +20,7 @@ Tracks delivery of [PRD v0.2](prd/v0.2.md) and [PRD v0.3](prd/v0.3.md). Each tas
 | T1 | Undo / redo | v0.2 §4.1 | T0 | ☑ |
 | T2 | Shortcuts and copy/paste | v0.2 §4.2 | T1 | ☑ |
 | T3 | Image export | v0.2 §4.3 | T0 | ☑ |
-| T4 | Password reset | v0.2 §4.4 | T0 | ☐ |
+| T4 | Password reset | v0.2 §4.4 | T0 | ☑ |
 | T5 | Access list + email verification | v0.2 §4.5 | T0 | ☐ |
 
 ### T0 — Test & emulator infrastructure

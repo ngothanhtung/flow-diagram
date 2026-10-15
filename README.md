@@ -47,6 +47,7 @@ The app supports **Google** and **Email/Password** sign-in:
 1. Go to **Build → Authentication → Sign-in method**.
 2. Enable the **Google** provider (pick a support email).
 3. Enable the **Email/Password** provider.
+4. Under **Authentication → Settings → User actions**, keep **Email enumeration protection** on (the default for projects created since September 2023). The *Forgot password?* form always shows the same message, but without this setting Firebase's own reply to a reset request still tells anyone watching the network whether an email is registered. Password reset emails use Firebase's default template and reset page.
 
 > Note: after deploying to Vercel, you must add the Vercel domain to **Authentication → Settings → Authorized domains** (see step 3.3), otherwise Google sign-in will be blocked.
 
@@ -119,7 +120,7 @@ npm run emulators       # terminal 1: Auth + Firestore emulators, UI at http://l
 npm run dev:emulator    # terminal 2: dev server at http://localhost:3000, wired to the emulators
 ```
 
-`dev:emulator` uses the placeholder config in `.env.emulator` (project `demo-x-flow-tool`) and ignores `.env.local`, so nothing reaches a real Firebase project — `demo-*` projects are emulator-only. Create accounts by signing up in the app or in the Emulator UI's **Authentication** tab; to make one an administrator, add `users-roles/{uid}` with `{ "roles": ["administrators"] }` in the **Firestore** tab. Data is saved to `.emulator-data/` when you stop the emulators with Ctrl+C and loaded again on the next start.
+`dev:emulator` uses the placeholder config in `.env.emulator` (project `demo-x-flow-tool`) and ignores `.env.local`, so nothing reaches a real Firebase project — `demo-*` projects are emulator-only. Create accounts by signing up in the app or in the Emulator UI's **Authentication** tab; to make one an administrator, add `users-roles/{uid}` with `{ "roles": ["administrators"] }` in the **Firestore** tab. Data is saved to `.emulator-data/` when you stop the emulators with Ctrl+C and loaded again on the next start. The Auth emulator sends no real email: a *Forgot password?* request prints the reset link in the emulators' terminal — replace `NEW_PASSWORD_HERE` at its end and open it. The emulator has no enumeration protection, so an unknown email gets an `EMAIL_NOT_FOUND` reply in the network tab (the form still shows the same message).
 
 Other useful commands:
 

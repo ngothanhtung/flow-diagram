@@ -345,6 +345,8 @@ Three places used to spell out "which tools aren't a plain silhouette" as a chai
 
 `src/lib/firebase/client.ts` initializes the app from `NEXT_PUBLIC_FIREBASE_*` env vars (see `.env.example`) and throws immediately if a required var is missing — there's no silent-degrade path. `auth.ts`, `diagrams.ts`, `templates.ts` and `roles.ts` are the only modules that talk to Firebase; everything else goes through them. `firestore.rules` is the source of truth for access and is deployed separately (`firebase deploy --only firestore:rules`) — a change to a collection's shape usually needs a matching rules change, plus a case in `tests/rules/`.
 
+**Password reset** (`auth/PasswordResetForm.tsx`, a view of `LoginForm`) must never reveal whether an email has an account: `lib/password-reset.ts` collapses every server answer — `auth/user-not-found`, `auth/invalid-email`, and `auth/too-many-requests` too, since Firebase maps the *per-account* `RESET_PASSWORD_EXCEED_LIMIT` onto that code — into one neutral confirmation; only `auth/network-request-failed` gets a retry message, and only an empty/malformed address is reported inline (before sending). The UI is half of it — the network reply is the other half, which is why the project needs Firebase's email enumeration protection on (README §1.2).
+
 When `NEXT_PUBLIC_FIREBASE_USE_EMULATOR === '1'`, `client.ts` connects Auth and Firestore to the local emulators (`127.0.0.1:9099` / `:8080`). The guard flag lives on `globalThis`, not in a module variable: an HMR re-run of the module gets the same cached app back, and connecting it a second time throws.
 
 ## Verifying UI work

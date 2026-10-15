@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -25,6 +26,13 @@ export function createAccountWithEmail(email: string, password: string) {
 
 export function signInWithEmail(email: string, password: string) {
   return signInWithEmailAndPassword(firebaseAuth, email, password);
+}
+
+// Firebase's default reset email and hosted reset page — no actionCodeSettings.
+// Callers must not surface the rejection reason to the user (it can reveal
+// whether the address has an account); see `lib/password-reset.ts`.
+export function sendPasswordReset(email: string) {
+  return sendPasswordResetEmail(firebaseAuth, email);
 }
 
 export function signOutUser() {

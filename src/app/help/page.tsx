@@ -44,6 +44,11 @@ export default function HelpPage() {
           can open or edit it unless you explicitly make it public.
         </p>
         <p>
+          Forgot your password? Click <strong>Forgot password?</strong> on the sign-in form, enter your email and press <strong>Send reset link</strong>. If the email has an account you&apos;ll
+          receive a link to choose a new password — for privacy the form shows the same message either way, so check your inbox (and spam folder). If you sign in with Google you don&apos;t
+          need a password at all — just use <strong>Continue with Google</strong>.
+        </p>
+        <p>
           After signing in you land on the <strong>diagrams list</strong>: a table of everything you own, with node/edge counts, visibility, and created/updated timestamps. From here you can:
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>

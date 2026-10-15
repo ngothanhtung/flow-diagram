@@ -44,6 +44,11 @@ export default function HelpViPage() {
           sửa được, trừ khi bạn chủ động đặt nó ở chế độ công khai.
         </p>
         <p>
+          Quên mật khẩu? Bấm <strong>Forgot password?</strong> trên form đăng nhập, nhập email rồi bấm <strong>Send reset link</strong>. Nếu email này có tài khoản, bạn sẽ nhận được thư kèm
+          đường link để đặt mật khẩu mới — vì lý do bảo mật, form luôn hiện cùng một thông báo dù email có tài khoản hay không, nên hãy kiểm tra hộp thư (cả thư mục spam). Nếu bạn đăng nhập
+          bằng Google thì không cần mật khẩu — chỉ cần bấm <strong>Continue with Google</strong>.
+        </p>
+        <p>
           Sau khi đăng nhập, bạn vào <strong>danh sách sơ đồ</strong>: bảng liệt kê mọi sơ đồ bạn sở hữu, kèm số khối/đường nối, trạng thái công khai, thời gian tạo và cập nhật. Tại đây bạn
           có thể:
         </p>
