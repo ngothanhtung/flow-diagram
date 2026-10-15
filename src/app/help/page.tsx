@@ -212,10 +212,16 @@ export default function HelpPage() {
             where you left off. This is a safety net, not cloud storage: click <strong>Save</strong> to persist for real.
           </li>
           <li>
+            <strong>Undo / Redo</strong> (the two arrow buttons next to the File menu) step back and forward through your changes to the diagram — moving, resizing, restyling, deleting,
+            grouping, picking a template or starter, importing, Reset. A whole drag, one slider drag or one edit of a field counts as a single step, and the last 100 steps are kept. Selecting,
+            panning and zooming, the run mode, the diagram name and Public/Private are not undo steps. Saving keeps the history; opening another diagram or reloading the page clears it.
+          </li>
+          <li>
             <strong>File → Save as</strong> duplicates the current document into a brand-new diagram (&quot;… copy&quot;) and opens it.
           </li>
           <li>
-            <strong>File → Reset</strong> throws away all unsaved changes and reverts the canvas to the last loaded state. It asks for confirmation — this cannot be undone.
+            <strong>File → Reset</strong> throws away all unsaved changes and reverts the canvas to the last loaded state. It asks for confirmation; if you change your mind afterwards,{' '}
+            <strong>Undo</strong> brings the changes back.
           </li>
         </ul>
       </Section>
@@ -258,6 +264,7 @@ export default function HelpPage() {
             ['Pan the canvas', 'Drag empty canvas (or middle-mouse drag anywhere)'],
             ['Zoom', 'Scroll, or the Zoom in / Zoom out / Fit buttons in the view dock'],
             ['Rename the diagram', 'Click its name in the header, type, press Enter'],
+            ['Undo / redo a change', 'Undo / Redo buttons next to the File menu'],
             ['Save to the cloud', 'Save button in the header (amber dot = unsaved changes)'],
             ['Play the animation', 'Replay — pick Sequential, Concurrent or Manual first'],
             ['Share read-only', 'Set the diagram to Public, then File → Share → Copy'],

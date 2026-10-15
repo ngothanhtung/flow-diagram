@@ -523,6 +523,20 @@ function parseHex(raw: string): `#${string}` | null {
 }
 
 /**
+ * What a colour field's hex box commits on blur: the typed colour, or
+ * `null` when there is nothing to write — unparseable text (the box
+ * reverts), or the colour the field already shows. The second case
+ * matters: the field shows the *resolved* colour, so committing it
+ * unchanged would bake a default the node never set into an explicit
+ * value — a document change (and an undo step) that looks like nothing.
+ */
+export function colorFieldCommit(draft: string, current: string): `#${string}` | null {
+  const parsed = parseHex(draft);
+  if (!parsed || parsed.toLowerCase() === current.toLowerCase()) return null;
+  return parsed;
+}
+
+/**
  * A colour: a native colour picker and a hex field so any value is
  * reachable directly. The hex box keeps a local draft so a half-typed
  * value never reaches the document, and reverts if what was typed isn't
@@ -542,8 +556,8 @@ export function ColorField({ label, value, onChange }: { label: string; value: `
   }
 
   const commit = () => {
-    const parsed = parseHex(draft);
-    if (parsed) onChange(parsed);
+    const next = colorFieldCommit(draft, value);
+    if (next) onChange(next);
     else setDraft(value);
   };
 

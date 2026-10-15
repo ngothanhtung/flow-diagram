@@ -213,10 +213,16 @@ export default function HelpViPage() {
             phục đúng chỗ bạn dừng. Đây chỉ là lưới an toàn, không phải lưu cloud: hãy bấm <strong>Save</strong> để lưu thật sự.
           </li>
           <li>
+            <strong>Undo / Redo</strong> (hai nút mũi tên cạnh menu File) lùi lại và làm lại các thay đổi trên sơ đồ — di chuyển, đổi kích thước, đổi kiểu, xoá, nhóm khối, chọn template hay
+            starter, import, Reset. Một lần kéo, một lần kéo thanh trượt hay một lần sửa một ô nhập tính là một bước; giữ tối đa 100 bước gần nhất. Chọn khối, kéo và thu phóng canvas, chế độ
+            chạy, tên sơ đồ và Public/Private không tạo bước undo. Bấm Save không xoá lịch sử; mở sơ đồ khác hoặc tải lại trang thì lịch sử bị xoá.
+          </li>
+          <li>
             <strong>File → Save as</strong> nhân bản tài liệu hiện tại thành một sơ đồ hoàn toàn mới (&quot;… copy&quot;) và mở nó.
           </li>
           <li>
-            <strong>File → Reset</strong> vứt bỏ mọi thay đổi chưa lưu và đưa canvas về trạng thái nạp gần nhất. Có hộp thoại xác nhận — thao tác này không hoàn tác được.
+            <strong>File → Reset</strong> vứt bỏ mọi thay đổi chưa lưu và đưa canvas về trạng thái nạp gần nhất. Có hộp thoại xác nhận; nếu đổi ý sau đó, bấm <strong>Undo</strong> để lấy lại
+            các thay đổi.
           </li>
         </ul>
       </Section>
@@ -259,6 +265,7 @@ export default function HelpViPage() {
             ['Di chuyển khung nhìn', 'Kéo vùng canvas trống (hoặc kéo bằng chuột giữa ở mọi nơi)'],
             ['Thu phóng', 'Lăn chuột, hoặc các nút Zoom in / Zoom out / Fit'],
             ['Đổi tên sơ đồ', 'Bấm vào tên trên header, gõ, nhấn Enter'],
+            ['Hoàn tác / làm lại', 'Nút Undo / Redo cạnh menu File'],
             ['Lưu lên cloud', 'Nút Save trên header (chấm vàng = còn thay đổi chưa lưu)'],
             ['Chạy hiệu ứng', 'Replay — chọn Sequential, Concurrent hoặc Manual trước'],
             ['Chia sẻ chỉ-đọc', 'Đặt sơ đồ Public, rồi File → Share → Copy'],

@@ -1,7 +1,8 @@
 'use client';
 
-import { create } from 'zustand';
+import { create, type StateCreator } from 'zustand';
 import { convertDocumentColorTheme } from './color-theme-convert';
+import { beginGesture, canRedo, canUndo, emptyHistory, endGesture, jsonEqual, recordChange, redo as redoHistory, undo as undoHistory, type DocHistory } from './doc-history';
 import { clearStyleOverrides, edgeStylesOf, resolveEdgeStyle } from './edge-style';
 import { loadEditorSession } from './editor-session';
 import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from './execution-timing';
@@ -192,6 +193,73 @@ function selectedNodesOf(nodes: FlowNode[], selectedIds: string[]): FlowNode[] {
   return nodes.filter((node) => wanted.has(node.id));
 }
 
+/**
+ * What one undo step restores: the document, plus the template/diagram it
+ * was loaded from — so undoing a template pick also puts back the Info
+ * panel and the Reset target, not just the canvas.
+ */
+export interface HistorySnapshot {
+  doc: FlowDocumentJSON;
+  loadedTemplate: LoadedTemplate | null;
+}
+
+/**
+ * Settings that live inside `doc.settings` (so they save with the
+ * diagram) but are presentation controls, not content: switching them is
+ * never an undo step, and undo/redo never switches back a choice the user
+ * made (see `restorePresentation`).
+ */
+const PRESENTATION_SETTINGS = ['runMode', 'repeatEnabled'] as const satisfies ReadonlyArray<keyof DiagramSettings>;
+
+function withoutPresentation(settings: DiagramSettings | undefined): DiagramSettings | undefined {
+  if (!settings) return undefined;
+  const rest: DiagramSettings = { ...settings };
+  for (const key of PRESENTATION_SETTINGS) delete rest[key];
+  return rest;
+}
+
+/** True when two documents differ in nothing but presentation settings. */
+export function sameDiagramContent(a: FlowDocumentJSON, b: FlowDocumentJSON): boolean {
+  if (a === b) return true;
+  const { settings: settingsA, ...restA } = a;
+  const { settings: settingsB, ...restB } = b;
+  if (!jsonEqual(restA, restB)) return false;
+  // An empty settings object and none at all are the same content.
+  const contentA = withoutPresentation(settingsA) ?? {};
+  const contentB = withoutPresentation(settingsB) ?? {};
+  return jsonEqual(contentA, contentB);
+}
+
+function sameSnapshot(a: HistorySnapshot, b: HistorySnapshot): boolean {
+  return a.loadedTemplate === b.loadedTemplate && sameDiagramContent(a.doc, b.doc);
+}
+
+/**
+ * The document to show after undo/redo moves from `from` (the side of the
+ * step being left) to `target`. Per presentation setting: if it is still
+ * what the step left it at, the step owns it and it travels with the step
+ * — a template brought its own run mode, so undoing the pick brings the
+ * diagram's back. If the user has switched it since, their choice stays.
+ *
+ * Returns `target` itself whenever nothing needs overriding, so undoing
+ * back to the saved document stringifies exactly as it was saved and
+ * `dirty` clears.
+ */
+function restorePresentation(target: FlowDocumentJSON, from: FlowDocumentJSON, current: FlowDocumentJSON): FlowDocumentJSON {
+  const kept = PRESENTATION_SETTINGS.filter((key) => current.settings?.[key] !== from.settings?.[key] && current.settings?.[key] !== target.settings?.[key]);
+  if (kept.length === 0) return target;
+  const settings: DiagramSettings = { ...target.settings };
+  for (const key of kept) {
+    const value = current.settings?.[key];
+    if (value === undefined) delete settings[key];
+    else (settings as Record<string, unknown>)[key] = value;
+  }
+  return { ...target, settings };
+}
+
+/** Hand-out for gesture ids; only identity matters. */
+let nextGestureId = 1;
+
 interface EditorState {
   /** Guard so session hydration happens exactly once per page load. */
   hydrated: boolean;
@@ -206,6 +274,13 @@ interface EditorState {
   currentDiagramPublic: boolean;
   savedSignature: string | null;
   savingDiagram: boolean;
+
+  /** Undo/redo stacks — see *Undo / redo* in CLAUDE.md. Never persisted. */
+  history: DocHistory<HistorySnapshot>;
+  /** Bumped on every undo/redo, so panels holding a local draft of a
+   *  field (the inspectors) remount on the restored values instead of
+   *  showing — and later re-committing — the undone text. */
+  historyRevision: number;
 
   // Playback cursor — an index into `computeRunTimeline(doc)`.
   seed: number;
@@ -233,7 +308,12 @@ interface EditorState {
   setDiagramPublic: (isPublic: boolean) => void;
   markDiagramSaved: (diagramId: string, name: string, savedDocument: FlowDocumentJSON) => void;
   loadStoredDiagram: (diagram: StoredDiagram) => void;
+  /** Replace the canvas with a template, starter, import or pasted JSON.
+   *  An ordinary undoable change. */
   loadRemoteTemplate: (template: LoadedTemplate) => void;
+  /** Open a library template for editing (the admin template editor).
+   *  Like opening a diagram: a new session, so history starts empty. */
+  openTemplate: (template: LoadedTemplate) => void;
   resetToTemplate: () => void;
   resetCanvasState: () => void;
 
@@ -291,6 +371,16 @@ interface EditorState {
   /** Point a line at a class, or detach it (`null`). */
   assignEdgeStyle: (edgeId: string, styleId: string | null) => void;
 
+  // Undo / redo
+  undo: () => void;
+  redo: () => void;
+  /** Open a gesture: every document change until the matching
+   *  `endHistoryGesture(id)` becomes one undo step (none if nothing
+   *  changed). Opening one closes whatever gesture was still open. */
+  beginHistoryGesture: () => number;
+  /** Close the gesture `id` (or whichever is open, without an id). */
+  endHistoryGesture: (id?: number) => void;
+
   // Layout actions over the current multi-selection. Each is a no-op
   // below its minimum selection size, so the UI can stay mounted.
   /** Line every selected node up against the selection's own bounding box. */
@@ -301,7 +391,72 @@ interface EditorState {
   matchSelectedNodeSize: (dimension: 'width' | 'height' | 'both') => void;
 }
 
-export const useEditorStore = create<EditorState>((set, get) => ({
+type EditorPatch = Partial<EditorState>;
+
+function snapshotOf(state: EditorState): HistorySnapshot {
+  return { doc: state.doc, loadedTemplate: state.loadedTemplate };
+}
+
+/**
+ * The one place undo history is recorded. Every store write — the
+ * actions below and any outside `useEditorStore.setState` — passes
+ * through here; a write that replaces `doc` (or `loadedTemplate`) is
+ * recorded as a step, or folded into the open gesture. A future content
+ * action therefore can't bypass history by forgetting to call anything:
+ * it has to opt *out*, visibly, by setting `history` in its own patch —
+ * which only the open/load/undo/redo/gesture actions do.
+ */
+function withRecordedHistory(state: EditorState, patch: EditorPatch): EditorPatch {
+  if ('history' in patch) return patch;
+  const docChanged = patch.doc !== undefined && patch.doc !== state.doc;
+  const templateChanged = 'loadedTemplate' in patch && patch.loadedTemplate !== state.loadedTemplate;
+  if (!docChanged && !templateChanged) return patch;
+  const after: HistorySnapshot = { doc: patch.doc ?? state.doc, loadedTemplate: 'loadedTemplate' in patch ? (patch.loadedTemplate ?? null) : state.loadedTemplate };
+  const history = recordChange(state.history, snapshotOf(state), after, sameSnapshot);
+  return history === state.history ? patch : { ...patch, history };
+}
+
+/** Undo/redo restore: the target snapshot, the user's run mode (see
+ *  `restorePresentation`), and a selection trimmed to what still exists. */
+function restoreSnapshot(state: EditorState, snapshot: HistorySnapshot, from: HistorySnapshot): EditorPatch {
+  const doc = restorePresentation(snapshot.doc, from.doc, state.doc);
+  const nodeIds = new Set(doc.nodes.map((node) => node.id));
+  const selectedNodeIds = state.selectedNodeIds.filter((id) => nodeIds.has(id));
+  return {
+    doc,
+    loadedTemplate: snapshot.loadedTemplate,
+    selectedNodeIds: selectedNodeIds.length === state.selectedNodeIds.length ? state.selectedNodeIds : selectedNodeIds,
+    selectedNodeId: state.selectedNodeId && nodeIds.has(state.selectedNodeId) ? state.selectedNodeId : (selectedNodeIds.at(-1) ?? null),
+    selectedEdgeId: state.selectedEdgeId && doc.edges.some((edge) => edge.id === state.selectedEdgeId) ? state.selectedEdgeId : null,
+    historyRevision: state.historyRevision + 1,
+  };
+}
+
+/** Can the Undo button act? (Selector, for components and shortcuts.) */
+export const selectCanUndo = (state: EditorState) => canUndo(state.history);
+/** Can the Redo button act? */
+export const selectCanRedo = (state: EditorState) => canRedo(state.history);
+
+type EditorSet = (partial: EditorPatch | ((state: EditorState) => EditorPatch)) => void;
+
+/**
+ * Store middleware that routes every write — the actions' `set` and any
+ * outside `useEditorStore.setState` — through `withRecordedHistory`.
+ */
+function recordingHistory(creator: (set: EditorSet, get: () => EditorState) => EditorState): StateCreator<EditorState> {
+  return (rawSetState, get, api) => {
+    const recordingSetState = (partial: EditorPatch | ((state: EditorState) => EditorPatch), replace?: boolean) => {
+      const state = get();
+      const patch = withRecordedHistory(state, typeof partial === 'function' ? partial(state) : partial);
+      if (replace) rawSetState(patch as EditorState, true);
+      else rawSetState(patch);
+    };
+    api.setState = recordingSetState as typeof api.setState;
+    return creator(recordingSetState, get);
+  };
+}
+
+export const useEditorStore = create<EditorState>()(recordingHistory((set, get) => ({
   hydrated: false,
   doc: { nodes: [], edges: [] },
   loadedTemplate: null,
@@ -310,6 +465,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   currentDiagramPublic: false,
   savedSignature: null,
   savingDiagram: false,
+  history: emptyHistory<HistorySnapshot>(),
+  historyRevision: 0,
 
   seed: 0,
   runStep: 0,
@@ -334,6 +491,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       currentDiagramName: session?.currentDiagramName ?? 'Untitled diagram',
       currentDiagramPublic: session?.currentDiagramPublic ?? false,
       savedSignature: session?.savedSignature ?? null,
+      // A page load starts a fresh history; it is never persisted.
+      history: emptyHistory<HistorySnapshot>(),
     });
   },
 
@@ -357,29 +516,49 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       savedSignature: JSON.stringify(diagram.document),
       // Snapshot so Reset restores the fetched document, not a template.
       loadedTemplate: { name: diagram.name, category: 'Saved diagram', description: '', document: diagram.document },
+      // Another diagram: its own, empty history.
+      history: emptyHistory<HistorySnapshot>(),
     });
     get().resetCanvasState();
   },
 
   // Template chosen from the shared Firestore library (`templates`
-  // collection).
+  // collection), a starter, a mermaid import or pasted JSON. Recorded as
+  // one undo step like any other change. `savedSignature` is left alone:
+  // it still describes what is in the cloud, so `dirty` reads true for
+  // the new content and false again if undo brings the saved one back.
   loadRemoteTemplate: (template) => {
     const hasDiagram = get().currentDiagramId !== null;
     set({
       doc: template.document,
       ...(hasDiagram ? {} : { currentDiagramName: template.name, currentDiagramPublic: false }),
-      savedSignature: null,
       loadedTemplate: template,
     });
     get().resetCanvasState();
   },
 
+  openTemplate: (template) => {
+    set({
+      doc: template.document,
+      // The canvas no longer holds a user diagram, so the diagram editor
+      // must not mistake it for one's restored session.
+      currentDiagramId: null,
+      currentDiagramName: template.name,
+      currentDiagramPublic: false,
+      savedSignature: null,
+      loadedTemplate: template,
+      history: emptyHistory<HistorySnapshot>(),
+    });
+    get().resetCanvasState();
+  },
+
   // Reset action: restore the fetched diagram or Firestore template that
-  // was originally loaded onto the canvas.
+  // was originally loaded onto the canvas. Undoable, and like a template
+  // pick it leaves `savedSignature` describing the cloud copy.
   resetToTemplate: () => {
     const loaded = get().loadedTemplate;
     if (!loaded) return;
-    set({ doc: loaded.document, savedSignature: null });
+    set({ doc: loaded.document });
     get().resetCanvasState();
   },
 
@@ -403,6 +582,33 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   convertColorTheme: () => set((state) => ({ doc: convertDocumentColorTheme(state.doc) })),
 
   replay: () => set((state) => ({ runStep: 0, seed: state.seed + 1 })),
+
+  undo: () => {
+    const state = get();
+    const { history, step } = undoHistory(state.history, snapshotOf(state), sameSnapshot);
+    if (step) set({ history, ...restoreSnapshot(state, step.before, step.after) });
+    else if (history !== state.history) set({ history });
+  },
+
+  redo: () => {
+    const state = get();
+    const { history, step } = redoHistory(state.history, snapshotOf(state), sameSnapshot);
+    if (step) set({ history, ...restoreSnapshot(state, step.after, step.before) });
+    else if (history !== state.history) set({ history });
+  },
+
+  beginHistoryGesture: () => {
+    const id = nextGestureId++;
+    const state = get();
+    set({ history: beginGesture(state.history, snapshotOf(state), id, sameSnapshot) });
+    return id;
+  },
+
+  endHistoryGesture: (id) => {
+    const state = get();
+    const history = endGesture(state.history, snapshotOf(state), sameSnapshot, id);
+    if (history !== state.history) set({ history });
+  },
 
   // Shared by the sequential auto-timer and the manual mode's "Next"
   // button — both just move the same timeline cursor forward by one step.
@@ -1041,7 +1247,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
         },
       };
     }),
-}));
+})));
 
 function defaultTitleFor(type: NodeType): string {
   switch (type) {

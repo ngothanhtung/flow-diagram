@@ -43,7 +43,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
 
   // The canvas itself lives in the shared editor store.
   const doc = useEditorStore((state) => state.doc);
-  const loadRemoteTemplate = useEditorStore((state) => state.loadRemoteTemplate);
+  const openTemplate = useEditorStore((state) => state.openTemplate);
   const templateItems = useTemplateLibrary();
 
   // Load the template into the editor store so the canvas becomes fully
@@ -60,7 +60,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
           return;
         }
         const document = template.document ?? { nodes: [], edges: [] };
-        loadRemoteTemplate({ name: template.name, category: template.category ?? '', description: template.description ?? '', document });
+        openTemplate({ name: template.name, category: template.category ?? '', description: template.description ?? '', document });
         const nextMeta = { name: template.name, category: template.category ?? '', description: template.description ?? '' };
         setMeta(nextMeta);
         setSavedSignature(JSON.stringify({ doc: document, meta: nextMeta }));
@@ -72,7 +72,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
     return () => {
       cancelled = true;
     };
-  }, [templateId, loadRemoteTemplate]);
+  }, [templateId, openTemplate]);
 
   // Name / category / description are saved with the document, so they
   // count towards the unsaved-changes dot too.

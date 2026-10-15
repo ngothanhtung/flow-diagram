@@ -1,6 +1,6 @@
 'use client';
 
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Redo2, Undo2 } from 'lucide-react';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
@@ -8,7 +8,7 @@ import { EditorCanvas } from '@/components/editor/EditorCanvas';
 import { EditorInfoPanels, InspectorSidebar } from '@/components/editor/InspectorSidebar';
 import { PlaybackControls } from '@/components/editor/PlaybackControls';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { useEditorStore } from '@/lib/editor-store';
+import { selectCanRedo, selectCanUndo, useEditorStore } from '@/lib/editor-store';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { useExecutionPlayback } from '@/lib/use-execution-playback';
 
@@ -69,6 +69,7 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
               row, Save stranded alone on the next). */}
           <div className='flex flex-wrap items-center gap-2 sm:gap-3'>
             {fileMenu}
+            <UndoRedoButtons />
             {actions}
           </div>
         </div>
@@ -103,6 +104,25 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
           {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
         </InspectorSidebar>
       </main>
+    </div>
+  );
+}
+
+/** Undo / Redo for the document — the same history in both editors.
+ *  Each button disables itself when its stack is empty. */
+function UndoRedoButtons() {
+  const canUndo = useEditorStore(selectCanUndo);
+  const canRedo = useEditorStore(selectCanRedo);
+  const undo = useEditorStore((state) => state.undo);
+  const redo = useEditorStore((state) => state.redo);
+  return (
+    <div className='flex items-center gap-1'>
+      <Button variant='toolbar' size='icon-lg' disabled={!canUndo} onClick={undo} title='Undo (⌘Z)' aria-label='Undo'>
+        <Undo2 size={14} />
+      </Button>
+      <Button variant='toolbar' size='icon-lg' disabled={!canRedo} onClick={redo} title='Redo (⇧⌘Z)' aria-label='Redo'>
+        <Redo2 size={14} />
+      </Button>
     </div>
   );
 }

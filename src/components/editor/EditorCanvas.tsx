@@ -3,6 +3,7 @@
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { ShapeToolbar } from '@/components/ShapeToolbar';
 import { SelectionToolbar } from '@/components/editor/SelectionToolbar';
+import { useHistoryGestureScope } from '@/components/editor/use-history-gesture-scope';
 import { useEditorStore } from '@/lib/editor-store';
 import type { ExecutionState, FlowDocumentJSON } from '@/lib/flowchart-types';
 
@@ -32,9 +33,13 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
   const infoOpen = useEditorStore((state) => state.infoOpen);
 
   const { selectNode, toggleNodeSelection, selectNodes, selectEdge, setDraggingNodeId, setLinkingFromId, setActiveShape, toggleInfo, onNodeMove, onNodeDrop, onNodeUpdate, onConnect, onShapeCreate, onEdgeUpdate, onEdgeReconnect } = useEditorStore();
+  // One press on the canvas is one undo step: a whole drag, resize,
+  // endpoint or bend-point drag (plus the drop that settles frame
+  // membership), however many positions it passed through.
+  const historyGestures = useHistoryGestureScope();
 
   return (
-    <section className='relative h-full min-h-0 overflow-hidden bg-background'>
+    <section {...historyGestures} className='relative h-full min-h-0 overflow-hidden bg-background'>
       <FlowCanvas
         key={seed}
         document={document}
