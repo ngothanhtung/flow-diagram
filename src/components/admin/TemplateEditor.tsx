@@ -138,6 +138,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
           onExportSql={() => setSqlOpen(true)}
           onConvertColorTheme={() => setConvertThemeConfirmOpen(true)}
           onReset={() => setResetConfirmOpen(true)}
+          imageName={meta.name.trim() || 'template'}
         />
       }
       actions={<SaveButton saving={saving} dirty={dirty} onSave={() => void handleSave()} />}

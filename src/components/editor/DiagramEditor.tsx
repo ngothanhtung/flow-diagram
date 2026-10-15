@@ -233,6 +233,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
           onExportSql={() => setSqlOpen(true)}
           onConvertColorTheme={() => setConvertThemeConfirmOpen(true)}
           onReset={() => setResetConfirmOpen(true)}
+          imageName={currentDiagramName.trim() || 'diagram'}
           afterOpen={
             <FileMenuItem icon={savingAs ? <LoaderCircle size={14} className='animate-spin' /> : <Copy size={14} />} disabled={savingAs} onClick={() => void handleSaveAs()}>
               Save as

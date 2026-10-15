@@ -248,6 +248,14 @@ export default function HelpViPage() {
           hoặc sửa tay.
         </p>
         <p>
+          <strong>File → Export image…</strong> tải sơ đồ về dưới dạng ảnh để chèn vào slide, tài liệu hay ticket: <Pill>PNG</Pill> ở kích thước gấp đôi sơ đồ (nét trên mọi màn
+          hình) hoặc <Pill>SVG</Pill> (file vector phóng to thoải mái, đã kèm sẵn font và logo). Ảnh được cắt sát sơ đồ, chừa một lề nhỏ — luôn chứa toàn bộ sơ đồ, kể cả phần đang
+          nằm ngoài khung nhìn — và không bao giờ có lưới. Khi đang chọn Element, có thêm lựa chọn <strong>Selection only</strong> (chỉ vùng chọn): các Element đó (kèm toàn bộ nội
+          dung nếu là Frame) và các Line nối giữa chúng. Nền theo màu canvas của theme đang dùng, hoặc <strong>Transparent</strong> (trong suốt). Ảnh luôn tĩnh như Run mode Static:
+          bỏ hiệu ứng và highlight Replay, giữ nguyên kiểu nét, marker, nhãn và Line style — nên xuất giữa lúc Replay đang chạy vẫn ra đúng ảnh đó. Tên file lấy theo tên sơ đồ.
+          Trang xem chỉ-đọc cũng xuất được qua nút <strong>Image</strong> trên header, không cần đăng nhập. Sơ đồ trống thì không có gì để xuất nên lệnh bị làm mờ.
+        </p>
+        <p>
           Nút <strong>Info</strong> trên cụm điều khiển canvas mở panel bên gồm phần tóm tắt tài liệu, khung JSON trực tiếp cập nhật theo từng chỉnh sửa, và JSON playground để dán một tài
           liệu vào canvas. Schema chi tiết từng trường được ghi trong <Link href='/guide' className='text-sky-300 underline-offset-2 hover:underline'>hướng dẫn viết JSON</Link>.
         </p>
@@ -322,6 +330,7 @@ export default function HelpViPage() {
             ['Sửa các cột', 'Chọn bảng — mục Columns nằm trong bảng thuộc tính'],
             ['Nối hai bảng', 'Nối chúng lại, rồi chọn cột ở mỗi đầu trong khối Relationship'],
             ['Lấy mã SQL', 'File → Export SQL → Copy hoặc Download .sql'],
+            ['Đưa sơ đồ vào slide hay tài liệu', 'File → Export image… (hoặc nút Image ở trang xem) → PNG hoặc SVG'],
           ]}
         />
       </Section>

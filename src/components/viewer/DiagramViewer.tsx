@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Boxes, FileQuestion } from 'lucide-react';
+import { Boxes, FileQuestion, ImageDown } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AuthLoadingScreen } from '@/components/auth/LoginForm';
@@ -9,6 +9,8 @@ import { useAuth } from '@/components/auth/AuthProvider';
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { JsonInspector } from '@/components/JsonInspector';
 import { RunControls } from '@/components/editor/PlaybackControls';
+import { ExportImageDialog } from '@/components/export/ExportImageDialog';
+import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';
@@ -103,7 +105,9 @@ export function DiagramViewer({ diagramId }: { diagramId: string }) {
 /** Ready state of the viewer — owns the local playback state machine. */
 function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
   const [infoOpen, setInfoOpen] = useState(false);
+  const [imageOpen, setImageOpen] = useState(false);
   const run = useViewerRun(diagram.document);
+  const empty = diagram.document.nodes.length === 0;
 
   const noop = () => undefined;
 
@@ -132,6 +136,13 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
             onToggleRepeat={run.toggleRepeat}
             onReplay={run.replay}
           />
+          {/* Works signed out: the export renders the already-loaded
+              document locally, it never reads Firestore. Icon-only below
+              `sm`, like the run controls beside it. */}
+          <Button variant='toolbar' size='lg' disabled={empty} onClick={() => setImageOpen(true)} title={empty ? 'Diagram is empty' : 'Download as PNG or SVG'} aria-label='Download image'>
+            <ImageDown size={13} />
+            <span className='hidden sm:inline'>Image</span>
+          </Button>
           <ThemeToggle variant='toolbar' size='icon-lg' />
         </div>
       </header>
@@ -194,6 +205,7 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
           </aside>
         )}
       </main>
+      <ExportImageDialog document={diagram.document} name={diagram.name} open={imageOpen} onOpenChange={setImageOpen} />
     </div>
   );
 }

@@ -17,7 +17,7 @@ const TOC = [
   ['run', 'Running the flow'],
   ['save', 'Saving your work'],
   ['share', 'Sharing a diagram'],
-  ['json', 'Export & JSON tools'],
+  ['json', 'Export, images & JSON tools'],
   ['shortcuts', 'Keyboard shortcuts & copy/paste'],
   ['reference', 'Quick reference'],
 ] as const;
@@ -241,10 +241,19 @@ export default function HelpPage() {
         </ul>
       </Section>
 
-      <Section id='json' title='10. Export & JSON tools'>
+      <Section id='json' title='10. Export, images & JSON tools'>
         <p>
           A diagram is a single JSON document under the hood. <strong>File → Export to JSON</strong> downloads it as a <Pill>.json</Pill> file — useful for backups, version control, or
           hand-editing.
+        </p>
+        <p>
+          <strong>File → Export image…</strong> downloads a picture for slides, documents and tickets: <Pill>PNG</Pill> at twice the diagram&apos;s size (sharp on any screen) or{' '}
+          <Pill>SVG</Pill> (a scalable vector file with its fonts and logos built in). The picture is cropped to the diagram with a small margin — it always contains the whole diagram,
+          including anything scrolled out of view — and never shows the grid. With Elements selected you can export <strong>Selection only</strong>: those Elements (with everything
+          inside a selected Frame) and the Lines between them. The background is your current theme&apos;s canvas colour, or <strong>Transparent</strong>. The image is always a still
+          picture, as Static run mode shows it: effects and the replay highlight are left out, while line patterns, markers, labels and line styles are kept — so exporting in the
+          middle of a replay gives the same image. The file is named after the diagram. The read-only viewer has the same export behind its <strong>Image</strong> button, no
+          sign-in needed. An empty diagram has nothing to export, so the command is greyed out.
         </p>
         <p>
           The <strong>Info</strong> toggle on the canvas dock opens a side panel with the document summary, a live JSON view that updates as you edit, and a JSON playground for applying a
@@ -322,6 +331,7 @@ export default function HelpPage() {
             ['Edit columns', 'Select the table — the Columns section is in the inspector'],
             ['Link two tables', 'Connect them, then pick a column at each end in the Relationship block'],
             ['Get the SQL', 'File → Export SQL → Copy or Download .sql'],
+            ['Put the diagram in a slide or document', 'File → Export image… (or Image in the viewer) → PNG or SVG'],
           ]}
         />
       </Section>

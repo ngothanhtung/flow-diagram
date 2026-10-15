@@ -5,7 +5,7 @@ import { EDGE_DRAW_DURATION_MS } from '@/lib/execution-timing';
 import { edgeLabelBox, resolveEdgeLabelStyle } from '@/lib/edge-label-style';
 import { edgeLineCap, edgeLineDash } from '@/lib/edge-style';
 import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
-import { buildEdgeGeometry, pointAlongEdgeGeometry } from './edge-geometry';
+import { buildEdgeGeometry, edgeLabelAnchor } from './edge-geometry';
 import { EdgeEffectLayer } from './edge-effect-layer';
 import { EdgeMarkerSymbol } from './edge-marker';
 
@@ -92,37 +92,9 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   const labelStyle = resolveEdgeLabelStyle(edge);
   const labelBox = edgeLabelBox(edge.label ?? '', labelStyle);
   const labelWidth = labelBox.width;
-  // Where the label pill anchors — sampled on the drawn path itself
-  // (not the endpoint chord, which diverges on bent routes). Which
-  // options travel along vs. across the line follows the local segment
-  // direction at the midpoint: on a horizontal segment left/right ride
-  // the quarter marks and top/bottom float clear; on a vertical segment
-  // the roles swap so the pill never sits on the stroke.
-  const labelPosition = edge.labelPosition ?? 'center';
-  const midSample = pointAlongEdgeGeometry(geometry, 0.5);
-  const horizontalAtMid = Math.abs(midSample.direction.x) >= Math.abs(midSample.direction.y);
-  const startSample = pointAlongEdgeGeometry(geometry, 0.25);
-  const endSample = pointAlongEdgeGeometry(geometry, 0.75);
-  const sideOffset = labelWidth / 2 + 10;
-  const labelAnchor = edge.labelOffset !== undefined
-    ? pointAlongEdgeGeometry(geometry, Math.max(0, Math.min(1, edge.labelOffset))).point
-    : labelPosition === 'left'
-      ? horizontalAtMid
-        ? startSample.point
-        : { x: midSample.point.x - sideOffset, y: midSample.point.y }
-      : labelPosition === 'right'
-        ? horizontalAtMid
-          ? endSample.point
-          : { x: midSample.point.x + sideOffset, y: midSample.point.y }
-        : labelPosition === 'top'
-          ? horizontalAtMid
-            ? { x: midSample.point.x, y: midSample.point.y - 26 }
-            : startSample.point
-          : labelPosition === 'bottom'
-            ? horizontalAtMid
-              ? { x: midSample.point.x, y: midSample.point.y + 26 }
-              : endSample.point
-            : midSample.point;
+  // Where the label pill anchors — shared with the image export's bounds
+  // so a label can never sit outside the exported picture.
+  const labelAnchor = edgeLabelAnchor(edge, geometry, labelWidth);
   // The arrowhead rides at the silhouette — its offset from the
   // destination's centre is the length of the in-anchor plus a small
   // gap so the arrow doesn't overlap the port dot.

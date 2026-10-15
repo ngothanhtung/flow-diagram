@@ -234,6 +234,41 @@ export function pointAlongEdgeGeometry(
   };
 }
 
+/**
+ * Where a line's label chip is centred. Sampled on the drawn path itself
+ * (not the endpoint chord, which diverges on bent routes). Which options
+ * travel along vs. across the line follows the local segment direction at
+ * the midpoint: on a horizontal segment left/right ride the quarter marks
+ * and top/bottom float clear; on a vertical segment the roles swap so the
+ * pill never sits on the stroke. Shared by `AnimatedEdge` and the image
+ * export's bounds, so the two can't disagree about where a label is.
+ */
+export function edgeLabelAnchor(
+  edge: Pick<FlowEdge, 'labelOffset' | 'labelPosition'>,
+  geometry: { start: Point; end: Point; midTangent?: Point; points?: Point[] },
+  labelWidth: number,
+): Point {
+  if (edge.labelOffset !== undefined) return pointAlongEdgeGeometry(geometry, Math.max(0, Math.min(1, edge.labelOffset))).point;
+  const labelPosition = edge.labelPosition ?? 'center';
+  const midSample = pointAlongEdgeGeometry(geometry, 0.5);
+  const horizontalAtMid = Math.abs(midSample.direction.x) >= Math.abs(midSample.direction.y);
+  const startSample = pointAlongEdgeGeometry(geometry, 0.25);
+  const endSample = pointAlongEdgeGeometry(geometry, 0.75);
+  const sideOffset = labelWidth / 2 + 10;
+  switch (labelPosition) {
+    case 'left':
+      return horizontalAtMid ? startSample.point : { x: midSample.point.x - sideOffset, y: midSample.point.y };
+    case 'right':
+      return horizontalAtMid ? endSample.point : { x: midSample.point.x + sideOffset, y: midSample.point.y };
+    case 'top':
+      return horizontalAtMid ? { x: midSample.point.x, y: midSample.point.y - 26 } : startSample.point;
+    case 'bottom':
+      return horizontalAtMid ? { x: midSample.point.x, y: midSample.point.y + 26 } : endSample.point;
+    default:
+      return midSample.point;
+  }
+}
+
 /** A persisted route whose intermediate points can be dragged on the canvas. */
 function buildCustomPolylinePath(fromCenter: Point, fromAnchor: Point, toCenter: Point, toAnchor: Point, bendPoints: Point[], rounded: boolean) {
   const start = {

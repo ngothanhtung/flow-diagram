@@ -1,8 +1,9 @@
 'use client';
 
-import { Contrast, Database, FileCode2, FileJson, FilePlus, FileQuestion, FolderOpen, LayoutTemplate, LoaderCircle, RotateCcw, Save, Sparkles } from 'lucide-react';
+import { Contrast, Database, FileCode2, FileJson, FilePlus, FileQuestion, FolderOpen, ImageDown, LayoutTemplate, LoaderCircle, RotateCcw, Save, Sparkles } from 'lucide-react';
 import Link from 'next/link';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
+import { ExportImageDialog } from '@/components/export/ExportImageDialog';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
@@ -47,8 +48,14 @@ export function FileMenuSeparator() {
 
 /**
  * The File menu every editing surface has: New, New from template, Open,
- * Export to JSON, Reset. `afterOpen` / `afterExport` let a surface slot
- * its own commands into the two places they belong.
+ * Export to JSON, Export image, Reset. `afterOpen` / `afterExport` let a
+ * surface slot its own commands into the two places they belong.
+ *
+ * Export image is wired here rather than by each surface: it needs only
+ * the store's document and selection plus a name, and owning its dialog
+ * here keeps it identical in the Diagram and Template editors. The dialog
+ * sits beside the menu, not inside it — the menu's content unmounts when
+ * it closes.
  */
 export function EditorFileMenu({
   onNew,
@@ -61,6 +68,7 @@ export function EditorFileMenu({
   onExportSql,
   onConvertColorTheme,
   onReset,
+  imageName,
   afterOpen,
   afterExport,
 }: {
@@ -82,10 +90,17 @@ export function EditorFileMenu({
    *  a dark-canvas and light-canvas palette. */
   onConvertColorTheme: () => void;
   onReset: () => void;
+  /** Diagram / Template name — the exported image's default filename. */
+  imageName: string;
   afterOpen?: ReactNode;
   afterExport?: ReactNode;
 }) {
+  const [imageOpen, setImageOpen] = useState(false);
+  const doc = useEditorStore((state) => state.doc);
+  const selectedNodeIds = useEditorStore((state) => state.selectedNodeIds);
+  const empty = doc.nodes.length === 0;
   return (
+    <>
     <FileMenu>
       <FileMenuItem icon={<FilePlus size={14} />} disabled={newDisabled} onClick={onNew}>
         New
@@ -112,6 +127,10 @@ export function EditorFileMenu({
           Export SQL
         </FileMenuItem>
       )}
+      <FileMenuItem icon={<ImageDown size={14} />} disabled={empty} onClick={() => setImageOpen(true)}>
+        Export image…
+        {empty && <span className='ml-auto text-[10px] text-muted-foreground'>Diagram is empty</span>}
+      </FileMenuItem>
       {afterExport}
       <FileMenuSeparator />
       <FileMenuItem icon={<Contrast size={14} />} onClick={onConvertColorTheme}>
@@ -121,6 +140,8 @@ export function EditorFileMenu({
         Reset
       </FileMenuItem>
     </FileMenu>
+    <ExportImageDialog document={doc} name={imageName} selectedNodeIds={selectedNodeIds} open={imageOpen} onOpenChange={setImageOpen} />
+    </>
   );
 }
 
