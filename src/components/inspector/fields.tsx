@@ -17,6 +17,7 @@ import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type { FlowNode, NodeFont } from '@/lib/flowchart-types';
 import { SHAPES, nodeSizeLimits, type NodeShape } from '@/lib/node-style';
+import { useShortcutLabel } from '@/lib/use-is-mac';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 /** Every panel takes the same handle on the document. */
@@ -356,11 +357,12 @@ export function GroupMembershipSection({ node, onUpdate, parentTitle }: { node: 
 
 /** Duplicate / Reset styling / Delete — identical on every panel. */
 export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; onDuplicate: (id: string) => void; onDelete: (id: string) => void }) {
+  const duplicateKeys = useShortcutLabel(['mod', 'D']);
   return (
     <>
       <SectionLabel>Actions</SectionLabel>
       <div className='mt-1.5 grid grid-cols-3 gap-2'>
-        <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-foreground hover:bg-accent'>
+        <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} title={`Duplicate (${duplicateKeys})`} className='border-border bg-muted/30 px-2 text-[10px] text-foreground hover:bg-accent'>
           <Copy size={12} /> Duplicate
         </Button>
         <Button
@@ -404,7 +406,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
         >
           <RotateCcw size={11} /> Reset
         </Button>
-        <Button variant='destructive' size='sm' onClick={() => onDelete(node.id)} className='px-2 text-[10px]'>
+        <Button variant='destructive' size='sm' onClick={() => onDelete(node.id)} title='Delete (Delete key)' className='px-2 text-[10px]'>
           <Trash2 size={12} /> Delete
         </Button>
       </div>

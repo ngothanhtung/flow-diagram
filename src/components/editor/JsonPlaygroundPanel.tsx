@@ -5,35 +5,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
+import { validateDocument } from '@/lib/document-validation';
 import { useEditorStore } from '@/lib/editor-store';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
-
-/**
- * Validates a pasted document with the same rules /guide documents:
- * unique non-empty node ids, required node fields, and edges that
- * reference nodes which actually exist. Returns an error message, or
- * null when the document is safe to render.
- */
-function validateDocument(parsed: unknown): string | null {
-  if (typeof parsed !== 'object' || parsed === null || !Array.isArray((parsed as { nodes?: unknown }).nodes) || !Array.isArray((parsed as { edges?: unknown }).edges)) {
-    return 'Document must be an object with "nodes" and "edges" arrays.';
-  }
-  const document = parsed as FlowDocumentJSON;
-  const nodeIds = new Set<string>();
-  for (const node of document.nodes) {
-    if (!node || typeof node.id !== 'string' || !node.id) return 'Every node needs a non-empty string "id".';
-    if (nodeIds.has(node.id)) return `Duplicate node id "${node.id}".`;
-    if (!node.type || !node.title || !node.position) return `Node "${node.id}" is missing "type", "title", or "position".`;
-    nodeIds.add(node.id);
-  }
-  for (const edge of document.edges) {
-    if (!edge || typeof edge.id !== 'string' || !edge.id) return 'Every edge needs a non-empty string "id".';
-    if (!nodeIds.has(edge.from) || !nodeIds.has(edge.to)) {
-      return `Edge "${edge.id}" references a node id that doesn't exist ("${edge.from}" → "${edge.to}").`;
-    }
-  }
-  return null;
-}
 
 /**
  * Paste a FlowDocumentJSON and render it on the canvas. Loading goes

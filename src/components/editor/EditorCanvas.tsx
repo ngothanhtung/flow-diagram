@@ -32,7 +32,7 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
   const activeShape = useEditorStore((state) => state.activeShape);
   const infoOpen = useEditorStore((state) => state.infoOpen);
 
-  const { selectNode, toggleNodeSelection, selectNodes, selectEdge, setDraggingNodeId, setLinkingFromId, setActiveShape, toggleInfo, onNodeMove, onNodeDrop, onNodeUpdate, onConnect, onShapeCreate, onEdgeUpdate, onEdgeReconnect } = useEditorStore();
+  const { selectNode, toggleNodeSelection, selectNodes, selectEdge, setDraggingNodeId, setLinkingFromId, setActiveShape, toggleInfo, onNodeMove, onNodeDrop, onNodeUpdate, onConnect, onShapeCreate, onEdgeUpdate, onEdgeReconnect, setCanvasGrid } = useEditorStore();
   // One press on the canvas is one undo step: a whole drag, resize,
   // endpoint or bend-point drag (plus the drop that settles frame
   // membership), however many positions it passed through.
@@ -81,6 +81,7 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
         onEdgeUpdate={onEdgeUpdate}
         onSelectEdge={selectEdge}
         activeShape={activeShape}
+        onGridChange={setCanvasGrid}
         onShapeDrawn={(shape, position, width, height, lineStart) => {
           const newId = onShapeCreate(shape, position, width, height, lineStart);
           if (newId) selectNode(newId);

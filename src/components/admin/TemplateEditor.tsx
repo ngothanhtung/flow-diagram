@@ -123,6 +123,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
   return (
     <EditorShell
       document={doc}
+      onSave={() => void handleSave()}
       icon={<LayoutTemplate size={18} className='text-sky-300' />}
       subtitle={<p className='text-xs text-muted-foreground'>{meta.name || 'Untitled template'}</p>}
       fileMenu={

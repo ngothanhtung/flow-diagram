@@ -111,6 +111,9 @@ interface FlowCanvasProps {
    *  editing affordance (drag, resize, link, bend, snap, grid picker)
    *  is disabled or hidden. */
   readOnly?: boolean;
+  /** Reports the snap toggle and grid size whenever they change, so the
+   *  editor's keyboard nudge can step by one grid cell. */
+  onGridChange?: (grid: { snapEnabled: boolean; gridSize: number }) => void;
 }
 
 const MIN_ZOOM_RATIO = 0.25;
@@ -184,6 +187,7 @@ export function FlowCanvas({
   infoOpen,
   onToggleInfo,
   readOnly = false,
+  onGridChange,
 }: FlowCanvasProps) {
   // Named line styles are merged in once, here, rather than at each of
   // the dozen places downstream that read an edge's colour, width,
@@ -202,6 +206,9 @@ export function FlowCanvas({
   const [snapEnabled, setSnapEnabled] = useState(true);
   const [gridVisible, setGridVisible] = useState(!readOnly);
   const [gridSize, setGridSize] = useState<number>(DEFAULT_GRID_SIZE);
+  useEffect(() => {
+    onGridChange?.({ snapEnabled, gridSize });
+  }, [onGridChange, snapEnabled, gridSize]);
   const [isPanning, setIsPanning] = useState(false);
   const panRef = useRef<PanState | null>(null);
   const suppressCanvasClickRef = useRef(false);

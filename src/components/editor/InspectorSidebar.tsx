@@ -57,7 +57,9 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
         disablePointerDismissal
         swipeDirection='right'
       >
-        <DrawerContent aria-label={ariaLabel}>
+        {/* Part of the editing surface, not a popup: keyboard shortcuts
+            work while focus is in here (outside its fields). */}
+        <DrawerContent aria-label={ariaLabel} data-shortcuts='all'>
           <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
             <div className='flex min-h-full flex-col gap-3 p-2'>
               {selectedNode && !selectedEdge && (

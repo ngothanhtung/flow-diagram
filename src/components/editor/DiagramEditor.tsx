@@ -219,6 +219,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     <EditorShell
       fullScreen
       document={doc}
+      onSave={() => void handleSaveDiagram()}
       icon={<Boxes size={18} className='text-sky-300' />}
       subtitle={<DiagramName name={currentDiagramName} onRename={renameDiagram} />}
       fileMenu={

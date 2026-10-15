@@ -348,3 +348,111 @@ describe('editor store undo / redo', () => {
     expect(store().doc.nodes).toHaveLength(7);
   });
 });
+
+describe('editor store selection actions (shortcuts and clipboard)', () => {
+  it('deleteSelection removes every selected element and the lines touching them as one step; undo restores all', () => {
+    const before = store().doc;
+    store().selectNodes(['m1', 'm2', 'loose']);
+    store().deleteSelection();
+    expect(store().doc.nodes.map((node) => node.id)).toEqual(['frame', 'm3', 'm4', 'm5']);
+    expect(store().doc.edges).toEqual([]);
+    expect(store().selectedNodeIds).toEqual([]);
+    expect(steps()).toBe(1);
+
+    store().undo();
+    expect(store().doc).toEqual(before);
+  });
+
+  it('deleteSelection of a frame takes its contents with it', () => {
+    store().selectNode('frame');
+    store().deleteSelection();
+    expect(store().doc.nodes.map((node) => node.id)).toEqual(['loose']);
+    expect(steps()).toBe(1);
+  });
+
+  it('deleteSelection with only a line selected deletes that line', () => {
+    store().selectEdge('e2');
+    store().deleteSelection();
+    expect(store().doc.edges.map((edge) => edge.id)).toEqual(['e1', 'e3']);
+    expect(store().doc.nodes).toHaveLength(7);
+    expect(store().selectedEdgeId).toBeNull();
+    expect(steps()).toBe(1);
+  });
+
+  it('deleteSelection with nothing selected records nothing', () => {
+    store().selectNode(null);
+    store().deleteSelection();
+    expect(steps()).toBe(0);
+  });
+
+  it('duplicateSelection copies the selection with its inner lines as one step and selects the copies', () => {
+    store().selectNodes(['m1', 'm2']);
+    const ids = store().duplicateSelection();
+    expect(ids).toHaveLength(2);
+    expect(store().selectedNodeIds).toEqual(ids);
+    expect(store().selectedNodeId).toBe(ids[1]);
+    const copiedLine = store().doc.edges.at(-1)!;
+    expect(copiedLine).toMatchObject({ from: ids[0], to: ids[1] });
+    expect(nodeById(ids[0]).position).toEqual({ x: 136, y: 236 });
+    // Still inside the frame its originals live in.
+    expect(nodeById(ids[0]).parentId).toBe('frame');
+    expect(steps()).toBe(1);
+
+    store().undo();
+    expect(store().doc.nodes).toHaveLength(7);
+    expect(store().selectedNodeIds).toEqual([]);
+  });
+
+  it('the inspector Duplicate (onNodeDuplicate) still copies a frame with its contents and names the copy', () => {
+    const id = store().onNodeDuplicate('frame')!;
+    expect(nodeById(id).title).toBe('FRAME copy');
+    expect(store().doc.nodes.filter((node) => node.parentId === id)).toHaveLength(5);
+    expect(store().doc.edges).toHaveLength(5);
+    expect(steps()).toBe(1);
+  });
+
+  it('selectAll selects every element and is not an undo step', () => {
+    store().selectAll();
+    expect(store().selectedNodeIds).toEqual(store().doc.nodes.map((node) => node.id));
+    expect(steps()).toBe(0);
+  });
+
+  it('nudgeSelection moves the selection (and a selected frame’s contents) by the delta', () => {
+    store().selectNodes(['frame', 'loose']);
+    store().nudgeSelection(10, -1);
+    expect(nodeById('frame').position).toEqual({ x: 410, y: 299 });
+    expect(nodeById('m3').position).toEqual({ x: 410, y: 199 });
+    expect(nodeById('loose').position).toEqual({ x: 410, y: 899 });
+    expect(steps()).toBe(1);
+  });
+
+  it('a held arrow key — many nudges inside one gesture — is one undo step', () => {
+    store().selectNode('loose');
+    const gesture = store().beginHistoryGesture();
+    for (let index = 0; index < 30; index += 1) store().nudgeSelection(1, 0);
+    store().endHistoryGesture(gesture);
+    expect(nodeById('loose').position).toEqual({ x: 430, y: 900 });
+    expect(steps()).toBe(1);
+    store().undo();
+    expect(nodeById('loose').position).toEqual({ x: 400, y: 900 });
+  });
+
+  it('nudge with nothing selected records nothing', () => {
+    store().selectNode(null);
+    store().nudgeSelection(1, 0);
+    expect(steps()).toBe(0);
+  });
+
+  it('pasteFragment adds the fragment as one step and selects what was pasted', () => {
+    openDiagram('other', { nodes: [block('x', 0, 0)], edges: [], settings: { runMode: 'manual' } });
+    const fragment = { nodes: [block('a', 10, 10), block('b', 200, 10)], edges: [line('ab', 'a', 'b'), line('ax', 'a', 'gone')], edgeStyles: [] };
+    const ids = store().pasteFragment(fragment);
+    expect(ids).toHaveLength(2);
+    expect(store().doc.nodes).toHaveLength(3);
+    expect(store().doc.edges).toHaveLength(1);
+    expect(store().selectedNodeIds).toEqual(ids);
+    expect(steps()).toBe(1);
+    store().undo();
+    expect(store().doc.nodes.map((node) => node.id)).toEqual(['x']);
+  });
+});

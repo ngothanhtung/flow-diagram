@@ -18,6 +18,7 @@ const TOC = [
   ['save', 'Saving your work'],
   ['share', 'Sharing a diagram'],
   ['json', 'Export & JSON tools'],
+  ['shortcuts', 'Keyboard shortcuts & copy/paste'],
   ['reference', 'Quick reference'],
 ] as const;
 
@@ -251,21 +252,70 @@ export default function HelpPage() {
         </p>
       </Section>
 
-      <Section id='reference' title='11. Quick reference'>
+      <Section id='shortcuts' title='11. Keyboard shortcuts & copy/paste'>
+        <p>
+          The editor (and the template editor) has the shortcuts you know from other drawing tools. Use <Kbd>⌘</Kbd> on macOS and <Kbd>Ctrl</Kbd> on Windows and Linux. Press{' '}
+          <Kbd>?</Kbd> on the canvas to see this list in the app — the tooltips on the Undo, Redo and Save buttons show the keys too.
+        </p>
+        <Table
+          head={['Keys', 'What it does']}
+          rows={[
+            ['Delete / Backspace', 'Delete everything selected — all selected Elements (a Frame with its contents), or the selected Line'],
+            ['⌘C / ⌘X / ⌘V', 'Copy / cut / paste the selection'],
+            ['⌘D', 'Duplicate the selection'],
+            ['⌘A', 'Select all Elements'],
+            ['⌘Z', 'Undo'],
+            ['⌘⇧Z (or Ctrl+Y on Windows/Linux)', 'Redo'],
+            ['⌘S', 'Save (in the template editor: save the template)'],
+            ['← ↑ → ↓', 'Nudge the selection 1 px'],
+            ['⇧ + arrow', 'Nudge 10 px — or exactly one grid cell when snap is on'],
+            ['Esc', 'Deselect, or put away the armed drawing tool'],
+            ['?', 'Show the keyboard shortcuts'],
+          ]}
+        />
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            While you are typing in a field — a title, the inspector, the JSON playground — keys keep their usual meaning there: <Kbd>Backspace</Kbd> deletes a character, not the Element,
+            and <Kbd>⌘Z</Kbd> undoes your typing. <Kbd>⌘S</Kbd> is the exception: it saves from anywhere, including what you just typed.
+          </li>
+          <li>
+            Holding an arrow key moves the selection continuously, and one <Kbd>⌘Z</Kbd> takes the whole move back. Delete, duplicate and paste are one undo step each, however many
+            Elements they touch.
+          </li>
+          <li>The read-only viewer has no shortcuts.</li>
+        </ul>
+        <p>
+          <strong>Copy and paste</strong> carry part of a diagram: the selected Elements (a Frame always brings everything inside it), the Lines whose <em>both</em> ends are in the selection
+          — a Line leading out of the selection is left behind — and the Line styles those Lines use. You can paste into the same diagram, into another diagram, in another tab, or into the
+          template editor. Pasted Elements get new ids and become the selection; pasted into the same diagram they land slightly down-right of the originals, and pasting again steps further
+          so copies never sit exactly on top of each other. A Line style the target diagram doesn&apos;t have is added to it, so the pasted Lines look exactly as they did; if the target already
+          has a different style with the same name, the pasted one is renamed (e.g. &quot;async (2)&quot;).
+        </p>
+        <p>
+          What you copy is plain Diagram JSON, so you can also go the other way: paste Diagram JSON written by hand or by an AI — a whole document or just{' '}
+          <Pill>{'{ "nodes": [...], "edges": [...] }'}</Pill> — straight onto the canvas, and it is <em>added</em> to what is already there (the JSON playground replaces the canvas
+          instead). Text that isn&apos;t valid Diagram JSON shows a short message and changes nothing.
+        </p>
+      </Section>
+
+      <Section id='reference' title='12. Quick reference'>
         <Table
           head={['Action', 'How']}
           rows={[
             ['Add a block', 'Pick a shape in the bottom dock, then click-drag on the canvas'],
             ['Cancel the armed shape tool', 'Esc, or click the active tool again'],
+            ['Select several Elements', 'Shift-click them, or Shift-drag a box on empty canvas; ⌘A selects all'],
             ['Connect two blocks', 'Drag from a port on one block onto another block'],
             ['Reroute a connector', 'Select it, then double-click the line to add a bend point; drag bend points; double-click a bend point to remove it'],
             ['Edit a block / connector', 'Click it — the inspector opens on the right'],
-            ['Duplicate or delete', 'Buttons at the top of the inspector'],
+            ['Duplicate or delete', '⌘D / Delete, or the buttons in the inspector'],
+            ['Copy part of a diagram elsewhere', 'Select, ⌘C, open the other diagram, ⌘V'],
             ['Pan the canvas', 'Drag empty canvas (or middle-mouse drag anywhere)'],
             ['Zoom', 'Scroll, or the Zoom in / Zoom out / Fit buttons in the view dock'],
             ['Rename the diagram', 'Click its name in the header, type, press Enter'],
-            ['Undo / redo a change', 'Undo / Redo buttons next to the File menu'],
-            ['Save to the cloud', 'Save button in the header (amber dot = unsaved changes)'],
+            ['Undo / redo a change', '⌘Z / ⌘⇧Z, or the Undo / Redo buttons next to the File menu'],
+            ['Save to the cloud', '⌘S, or the Save button in the header (amber dot = unsaved changes)'],
+            ['See every shortcut', 'Press ? on the canvas'],
             ['Play the animation', 'Replay — pick Sequential, Concurrent or Manual first'],
             ['Share read-only', 'Set the diagram to Public, then File → Share → Copy'],
             ['Draw a database table', 'Table button at the right of the shape dock, then click-drag'],

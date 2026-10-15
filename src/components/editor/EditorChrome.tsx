@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import { useEditorStore } from '@/lib/editor-store';
+import { useShortcutLabel } from '@/lib/use-is-mac';
 
 /** File menu shell. Items are passed as `<FileMenuItem>` children so each
  *  editor keeps its own commands while the chrome stays identical. */
@@ -125,8 +126,9 @@ export function EditorFileMenu({
 
 /** Save button with the amber unsaved-changes dot. */
 export function SaveButton({ saving, dirty, onSave }: { saving: boolean; dirty: boolean; onSave: () => void }) {
+  const keys = useShortcutLabel(['mod', 'S']);
   return (
-    <Button variant='toolbar' size='lg' disabled={saving} onClick={onSave} title='Save'>
+    <Button variant='toolbar' size='lg' disabled={saving} onClick={onSave} title={`Save (${keys})`}>
       {saving ? <LoaderCircle size={13} className='animate-spin' /> : <Save size={13} />}
       Save
       {dirty && <span className='size-1.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(180,83,9,.8)]' />}

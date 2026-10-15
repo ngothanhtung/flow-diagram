@@ -1,6 +1,7 @@
 'use client';
 
 import { create, type StateCreator } from 'zustand';
+import { buildFragment, insertFragment, type DiagramFragment, type InsertFragmentOptions } from './clipboard-fragment';
 import { convertDocumentColorTheme } from './color-theme-convert';
 import { beginGesture, canRedo, canUndo, emptyHistory, endGesture, jsonEqual, recordChange, redo as redoHistory, undo as undoHistory, type DocHistory } from './doc-history';
 import { clearStyleOverrides, edgeStylesOf, resolveEdgeStyle } from './edge-style';
@@ -9,7 +10,7 @@ import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } f
 import type { ConnectionSide, DiagramSettings, DrawTool, EdgeStyleClass, FlowDocumentJSON, FlowEdge, FlowNode, LineCorner, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
 import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
-import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, nodeBounds } from './node-tree';
+import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, isSceneryNode, nodeBounds } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
 
 /** Which edge of the selection's bounding box the nodes line up against. */
@@ -36,21 +37,9 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
   line: { color: '#7dd3fc', backgroundColor: '#00000000' },
 };
 
-/**
- * Node kinds that are scenery rather than steps. A container, a caption,
- * a placed graphic or a free line flashing as its own step would
- * interrupt the run of the blocks they describe — they stay fully
- * visible for the whole replay instead.
- *
- * One list, because the two functions below both need it and they used
- * to spell it out as separate `!==` chains that could drift apart.
- */
-const SCENERY_NODE_TYPES = new Set<NodeType>(['group', 'text', 'icon', 'line']);
-
-/** True when the node is scenery — see `SCENERY_NODE_TYPES`. */
-export function isSceneryNode(node: FlowNode): boolean {
-  return SCENERY_NODE_TYPES.has(node.type);
-}
+// `isSceneryNode` lives in node-tree.ts (pure, so the clipboard module can
+// use it too); re-exported here for the components that import it from the store.
+export { isSceneryNode };
 
 /**
  * Nodes sharing the same resolved sort order animate together as one
@@ -187,6 +176,28 @@ function applyNodeMoves(nodes: FlowNode[], moves: Map<string, { x: number; y: nu
   });
 }
 
+/**
+ * The document without `ids`, the full contents of any Frame among them,
+ * and every Line touching what was removed. Deleting a Frame deletes what
+ * it holds, matching how every other canvas tool treats a container;
+ * `Ungroup` first is the way to keep the members.
+ */
+function withoutNodes(doc: FlowDocumentJSON, ids: readonly string[]): FlowDocumentJSON {
+  const doomed = new Set<string>();
+  for (const id of ids) {
+    const target = doc.nodes.find((node) => node.id === id);
+    if (!target) continue;
+    doomed.add(id);
+    if (target.type === 'group') for (const descendant of descendantIds(doc.nodes, id)) doomed.add(descendant);
+  }
+  if (doomed.size === 0) return doc;
+  return {
+    ...doc,
+    nodes: doc.nodes.filter((node) => !doomed.has(node.id)),
+    edges: doc.edges.filter((edge) => !doomed.has(edge.from) && !doomed.has(edge.to)),
+  };
+}
+
 /** The selected nodes, in document order. */
 function selectedNodesOf(nodes: FlowNode[], selectedIds: string[]): FlowNode[] {
   const wanted = new Set(selectedIds);
@@ -299,6 +310,9 @@ interface EditorState {
   linkingFromId: string | null;
   activeShape: DrawTool | null;
   infoOpen: boolean;
+  /** The canvas's snap toggle and grid size, mirrored here by
+   *  `EditorCanvas` so keyboard nudging can step by one grid cell. */
+  canvasGrid: { snapEnabled: boolean; gridSize: number };
 
   // Lifecycle
   hydrate: (userId: string) => void;
@@ -342,6 +356,7 @@ interface EditorState {
   setActiveShape: (shape: DrawTool | null) => void;
   toggleInfo: () => void;
   setSavingDiagram: (saving: boolean) => void;
+  setCanvasGrid: (grid: { snapEnabled: boolean; gridSize: number }) => void;
 
   // Document mutations
   onNodeMove: (id: string, position: { x: number; y: number }) => void;
@@ -380,6 +395,23 @@ interface EditorState {
   beginHistoryGesture: () => number;
   /** Close the gesture `id` (or whichever is open, without an id). */
   endHistoryGesture: (id?: number) => void;
+
+  // Actions over the whole selection (keyboard shortcuts, clipboard).
+  // Each is one store write, so each is one undo step.
+  /** Delete every selected Element (Frames with their contents, plus the
+   *  Lines touching them) — or the selected Line when no Element is. */
+  deleteSelection: () => void;
+  /** Duplicate the selection as a copy offset down-right; the copy
+   *  becomes the selection. Returns the new ids. */
+  duplicateSelection: () => string[];
+  /** Select every Element on the canvas. */
+  selectAll: () => void;
+  /** Move every selected Element (and selected Frames' contents) by a
+   *  delta. Callers fold a held key into one step with a gesture. */
+  nudgeSelection: (dx: number, dy: number) => void;
+  /** Insert a clipboard fragment (see `clipboard-fragment.ts`); the
+   *  inserted Elements become the selection. Returns their ids. */
+  pasteFragment: (fragment: DiagramFragment, options?: InsertFragmentOptions) => string[];
 
   // Layout actions over the current multi-selection. Each is a no-op
   // below its minimum selection size, so the UI can stay mounted.
@@ -478,6 +510,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
   linkingFromId: null,
   activeShape: null,
   infoOpen: false,
+  // FlowCanvas's own defaults (snap on, DEFAULT_GRID_SIZE) until the canvas reports in.
+  canvasGrid: { snapEnabled: true, gridSize: 40 },
 
   // Restores the diagram that was open before the last refresh (including
   // unsaved edits) instead of always booting into the default template.
@@ -643,6 +677,10 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
   setActiveShape: (shape) => set({ activeShape: shape }),
   toggleInfo: () => set((state) => ({ infoOpen: !state.infoOpen })),
   setSavingDiagram: (saving) => set({ savingDiagram: saving }),
+  setCanvasGrid: (grid) => {
+    const current = get().canvasGrid;
+    if (current.snapEnabled !== grid.snapEnabled || current.gridSize !== grid.gridSize) set({ canvasGrid: grid });
+  },
 
   // Moving a group carries its members: positions stay absolute, so the
   // whole subtree shifts by the same delta and nothing else in the app
@@ -729,64 +767,20 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
     })),
 
   // Duplicating a group copies what it contains — a frame on its own
-  // would be an empty box, which is never what "duplicate" meant.
+  // would be an empty box, which is never what "duplicate" meant. Same
+  // fragment path as copy/paste (`clipboard-fragment.ts`): the copy
+  // brings the Lines wholly inside it and lands in whatever frame its
+  // offset position falls in.
   onNodeDuplicate: (id) => {
     const { doc } = get();
-    const source = doc.nodes.find((node) => node.id === id);
-    if (!source) return null;
-    const stamp = Date.now().toString(36);
-    const members = source.type === 'group' ? descendantIds(doc.nodes, id) : new Set<string>();
-    const nextSortOrder = Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1));
-    // Ids are minted for the whole subtree first so the copies can point
-    // at each other rather than back at the originals.
-    const idMap = new Map<string, string>([[id, `n${doc.nodes.length + 1}-${stamp}`]]);
-    let offset = 1;
-    for (const memberId of members) idMap.set(memberId, `n${doc.nodes.length + 1 + offset++}-${stamp}`);
-
-    const copies = doc.nodes
-      .filter((node) => idMap.has(node.id))
-      .map((node, index) => ({
-        ...node,
-        id: idMap.get(node.id)!,
-        title: node.id === id ? `${node.title} copy` : node.title,
-        sortOrder: nextSortOrder + index + 1,
-        position: { x: node.position.x + 36, y: node.position.y + 36 },
-        // The root copy keeps the original's parent (it lands beside it,
-        // inside the same frame); members follow their copied frame.
-        parentId: node.id === id ? node.parentId : idMap.get(node.parentId ?? '') ?? node.parentId,
-      }));
-
-    // Lines wholly inside the duplicated group are copied too, so a
-    // duplicated subsystem keeps its internal wiring.
-    const copiedEdges = doc.edges
-      .filter((edge) => idMap.has(edge.from) && idMap.has(edge.to))
-      .map((edge, index) => ({
-        ...edge,
-        id: `e${doc.edges.length + 1 + index}-${Date.now()}`,
-        from: idMap.get(edge.from)!,
-        to: idMap.get(edge.to)!,
-      }));
-
-    set({ doc: { ...doc, nodes: [...doc.nodes, ...copies], edges: [...doc.edges, ...copiedEdges] } });
-    return idMap.get(id)!;
+    const fragment = buildFragment(doc, [id]);
+    if (!fragment) return null;
+    const result = insertFragment(doc, fragment, { titleSuffix: ' copy' });
+    set({ doc: result.doc });
+    return result.idMap.get(id) ?? null;
   },
 
-  // Deleting a frame deletes what it holds, matching how every other
-  // canvas tool treats a container. `Ungroup` first is the way to keep
-  // the members.
-  onNodeDelete: (id) =>
-    set((state) => {
-      const target = state.doc.nodes.find((node) => node.id === id);
-      const doomed = new Set<string>([id]);
-      if (target?.type === 'group') for (const descendant of descendantIds(state.doc.nodes, id)) doomed.add(descendant);
-      return {
-        doc: {
-          ...state.doc,
-          nodes: state.doc.nodes.filter((node) => !doomed.has(node.id)),
-          edges: state.doc.edges.filter((edge) => !doomed.has(edge.from) && !doomed.has(edge.to)),
-        },
-      };
-    }),
+  onNodeDelete: (id) => set((state) => ({ doc: withoutNodes(state.doc, [id]) })),
 
   onConnect: (fromId, toId, fromSide, toSide) => {
     if (fromId === toId) return;
@@ -1165,6 +1159,44 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
         },
       };
     }),
+
+  deleteSelection: () =>
+    set((state) => {
+      if (state.selectedNodeIds.length > 0) {
+        return { doc: withoutNodes(state.doc, state.selectedNodeIds), selectedNodeIds: [], selectedNodeId: null };
+      }
+      if (state.selectedEdgeId) {
+        return { doc: { ...state.doc, edges: state.doc.edges.filter((edge) => edge.id !== state.selectedEdgeId) }, selectedEdgeId: null };
+      }
+      return {};
+    }),
+
+  duplicateSelection: () => {
+    const state = get();
+    const fragment = buildFragment(state.doc, state.selectedNodeIds);
+    if (!fragment) return [];
+    const result = insertFragment(state.doc, fragment);
+    set({ doc: result.doc, selectedNodeIds: result.nodeIds, selectedNodeId: result.nodeIds.at(-1) ?? null, selectedEdgeId: null });
+    return result.nodeIds;
+  },
+
+  selectAll: () => get().selectNodes(get().doc.nodes.map((node) => node.id)),
+
+  nudgeSelection: (dx, dy) =>
+    set((state) => {
+      if (dx === 0 && dy === 0) return {};
+      const moves = new Map<string, { x: number; y: number }>();
+      for (const node of selectedNodesOf(state.doc.nodes, state.selectedNodeIds)) moves.set(node.id, { x: node.position.x + dx, y: node.position.y + dy });
+      if (moves.size === 0) return {};
+      return { doc: { ...state.doc, nodes: applyNodeMoves(state.doc.nodes, moves) } };
+    }),
+
+  pasteFragment: (fragment, options) => {
+    const result = insertFragment(get().doc, fragment, options);
+    if (result.nodeIds.length === 0) return [];
+    set({ doc: result.doc, selectedNodeIds: result.nodeIds, selectedNodeId: result.nodeIds.at(-1) ?? null, selectedEdgeId: null });
+    return result.nodeIds;
+  },
 
   // Align against the selection's own bounding box rather than a fixed
   // canvas edge — the reference is whatever the user actually picked, so

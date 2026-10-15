@@ -10,7 +10,7 @@
 //      by a visited set, and the drop test refuses to nest a group inside
 //      its own descendant.
 
-import type { FlowNode } from './flowchart-types';
+import type { FlowNode, NodeType } from './flowchart-types';
 import { GROUP_HEADER_HEIGHT, GROUP_PADDING, resolveNodeStyle } from './node-style';
 
 export interface NodeBounds {
@@ -18,6 +18,23 @@ export interface NodeBounds {
   right: number;
   top: number;
   bottom: number;
+}
+
+/**
+ * Node kinds that are scenery rather than steps. A container, a caption,
+ * a placed graphic or a free line flashing as its own step would
+ * interrupt the run of the blocks they describe — they stay fully
+ * visible for the whole replay instead.
+ *
+ * One list, because the replay (`computeOrderedGroups`,
+ * `computeRunTimeline`) and the clipboard's sort-order rebasing all need
+ * it, and separate `!==` chains used to drift apart.
+ */
+const SCENERY_NODE_TYPES = new Set<NodeType>(['group', 'text', 'icon', 'line']);
+
+/** True when the node is scenery — see `SCENERY_NODE_TYPES`. */
+export function isSceneryNode(node: Pick<FlowNode, 'type'>): boolean {
+  return SCENERY_NODE_TYPES.has(node.type);
 }
 
 export function isGroupNode(node: FlowNode) {

@@ -18,6 +18,7 @@ const TOC = [
   ['save', 'Lưu công việc'],
   ['share', 'Chia sẻ sơ đồ'],
   ['json', 'Xuất file & công cụ JSON'],
+  ['shortcuts', 'Phím tắt & copy/paste'],
   ['reference', 'Tra cứu nhanh'],
 ] as const;
 
@@ -252,21 +253,69 @@ export default function HelpViPage() {
         </p>
       </Section>
 
-      <Section id='reference' title='11. Tra cứu nhanh'>
+      <Section id='shortcuts' title='11. Phím tắt & copy/paste'>
+        <p>
+          Trình soạn thảo (và trình soạn Template) có các phím tắt quen thuộc của những công cụ vẽ khác. Dùng <Kbd>⌘</Kbd> trên macOS và <Kbd>Ctrl</Kbd> trên Windows/Linux. Nhấn{' '}
+          <Kbd>?</Kbd> trên canvas để xem bảng phím tắt ngay trong app — tooltip của các nút Undo, Redo và Save cũng ghi phím tắt.
+        </p>
+        <Table
+          head={['Phím', 'Tác dụng']}
+          rows={[
+            ['Delete / Backspace', 'Xoá toàn bộ vùng chọn — mọi Element đang chọn (Frame xoá kèm nội dung), hoặc Line đang chọn'],
+            ['⌘C / ⌘X / ⌘V', 'Sao chép / cắt / dán vùng chọn'],
+            ['⌘D', 'Nhân bản vùng chọn'],
+            ['⌘A', 'Chọn tất cả Element'],
+            ['⌘Z', 'Undo'],
+            ['⌘⇧Z (hoặc Ctrl+Y trên Windows/Linux)', 'Redo'],
+            ['⌘S', 'Save (ở trình soạn Template: lưu Template)'],
+            ['← ↑ → ↓', 'Nhích vùng chọn 1 px'],
+            ['⇧ + mũi tên', 'Nhích 10 px — hoặc đúng một ô lưới khi bật snap'],
+            ['Esc', 'Bỏ chọn, hoặc huỷ công cụ vẽ đang bật'],
+            ['?', 'Mở bảng phím tắt'],
+          ]}
+        />
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            Khi đang gõ trong một ô nhập — tiêu đề, bảng thuộc tính, JSON playground — phím giữ nghĩa gốc của nó: <Kbd>Backspace</Kbd> xoá ký tự chứ không xoá Element, <Kbd>⌘Z</Kbd> hoàn
+            tác phần vừa gõ. Riêng <Kbd>⌘S</Kbd> lưu được từ mọi chỗ, kể cả nội dung vừa gõ.
+          </li>
+          <li>
+            Giữ phím mũi tên thì vùng chọn chạy liên tục, và chỉ một lần <Kbd>⌘Z</Kbd> là đưa về chỗ cũ. Xoá, nhân bản và dán đều là một bước undo, dù đụng tới bao nhiêu Element.
+          </li>
+          <li>Trang xem chỉ-đọc (Viewer) không có phím tắt nào.</li>
+        </ul>
+        <p>
+          <strong>Copy và paste</strong> mang theo một phần sơ đồ: các Element đang chọn (Frame luôn kèm toàn bộ nội dung bên trong), các Line có <em>cả hai</em> đầu nằm trong vùng chọn
+          — Line chỉ nối một đầu ra ngoài thì bị bỏ — và các Line style mà các Line đó dùng. Dán được vào chính sơ đồ đó, sang sơ đồ khác, sang tab khác, hoặc vào trình soạn Template. Element
+          được dán nhận id mới và trở thành vùng chọn; dán vào cùng sơ đồ thì lệch nhẹ xuống dưới-phải so với bản gốc, dán tiếp thì lệch tiếp nên các bản sao không bao giờ chồng khít lên
+          nhau. Line style mà sơ đồ đích chưa có sẽ được thêm vào, để Line được dán trông y hệt bản gốc; nếu sơ đồ đích đã có một style khác cùng tên, style được dán sẽ đổi tên (ví dụ
+          &quot;async (2)&quot;).
+        </p>
+        <p>
+          Thứ được copy là Diagram JSON thuần, nên chiều ngược lại cũng được: dán Diagram JSON viết tay hoặc do AI sinh ra — cả tài liệu hay chỉ{' '}
+          <Pill>{'{ "nodes": [...], "edges": [...] }'}</Pill> — thẳng lên canvas, và nó được <em>thêm</em> vào sơ đồ đang có (còn JSON playground thì thay thế cả canvas). Văn bản không
+          phải Diagram JSON hợp lệ chỉ hiện một thông báo ngắn và không thay đổi gì.
+        </p>
+      </Section>
+
+      <Section id='reference' title='12. Tra cứu nhanh'>
         <Table
           head={['Thao tác', 'Cách làm']}
           rows={[
             ['Thêm khối', 'Chọn hình ở thanh công cụ đáy canvas, rồi bấm-kéo trên canvas'],
             ['Huỷ công cụ vẽ đang chọn', 'Esc, hoặc bấm lại vào công cụ đang bật'],
+            ['Chọn nhiều Element', 'Shift-click từng cái, hoặc Shift-kéo một khung trên vùng canvas trống; ⌘A chọn tất cả'],
             ['Nối hai khối', 'Kéo từ cổng của khối này sang khối kia'],
             ['Uốn đường nối', 'Chọn đường, bấm đúp lên đường để thêm điểm uốn; kéo điểm uốn; bấm đúp vào điểm uốn để xoá'],
             ['Sửa khối / đường nối', 'Bấm vào nó — bảng thuộc tính mở bên phải'],
-            ['Nhân bản hoặc xoá', 'Các nút ở đầu bảng thuộc tính'],
+            ['Nhân bản hoặc xoá', '⌘D / Delete, hoặc các nút trong bảng thuộc tính'],
+            ['Chép một phần sơ đồ sang chỗ khác', 'Chọn, ⌘C, mở sơ đồ kia, ⌘V'],
             ['Di chuyển khung nhìn', 'Kéo vùng canvas trống (hoặc kéo bằng chuột giữa ở mọi nơi)'],
             ['Thu phóng', 'Lăn chuột, hoặc các nút Zoom in / Zoom out / Fit'],
             ['Đổi tên sơ đồ', 'Bấm vào tên trên header, gõ, nhấn Enter'],
-            ['Hoàn tác / làm lại', 'Nút Undo / Redo cạnh menu File'],
-            ['Lưu lên cloud', 'Nút Save trên header (chấm vàng = còn thay đổi chưa lưu)'],
+            ['Hoàn tác / làm lại', '⌘Z / ⌘⇧Z, hoặc nút Undo / Redo cạnh menu File'],
+            ['Lưu lên cloud', '⌘S, hoặc nút Save trên header (chấm vàng = còn thay đổi chưa lưu)'],
+            ['Xem mọi phím tắt', 'Nhấn ? trên canvas'],
             ['Chạy hiệu ứng', 'Replay — chọn Sequential, Concurrent hoặc Manual trước'],
             ['Chia sẻ chỉ-đọc', 'Đặt sơ đồ Public, rồi File → Share → Copy'],
             ['Vẽ một bảng CSDL', 'Nút Table bên phải thanh công cụ hình, rồi bấm-kéo'],
