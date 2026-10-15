@@ -108,6 +108,13 @@ export default function HelpPage() {
           and double-click a bend handle to remove it again.
         </p>
         <p>
+          <strong>Auto-layout:</strong> <strong>File → Auto-layout, top to bottom</strong> (or <strong>left to right</strong>) rearranges the whole diagram in one step: each block lands
+          below (or right of) what feeds it, straight chains line up, lines are re-routed and get new connection ports so none runs through a block, and each frame is arranged inside and
+          shrunk to fit. Select two or more elements (or one frame) first and the same command — also on the two layout buttons at the right of the selection toolbar — arranges only those,
+          in place. Text, icons and free lines never move, and neither does a frame that contains any of them. A message confirms the change; its <strong>Undo</strong> button, or{' '}
+          <Kbd>⌘Z</Kbd> / <Kbd>Ctrl+Z</Kbd>, puts everything back in one step.
+        </p>
+        <p>
           <strong>Navigate:</strong> drag empty canvas to pan (middle-mouse drag works anywhere), scroll to zoom, and use the view dock for <em>Zoom in / Zoom out / Fit diagram to view</em>.
           The grid controls next to it toggle snapping and grid size.
         </p>
@@ -356,6 +363,8 @@ export default function HelpPage() {
             ['Select several Elements', 'Shift-click them, or Shift-drag a box on empty canvas; ⌘A selects all'],
             ['Connect two blocks', 'Drag from a port on one block onto another block'],
             ['Reroute a connector', 'Select it, then double-click the line to add a bend point; drag bend points; double-click a bend point to remove it'],
+            ['Tidy up the whole diagram', 'File → Auto-layout, top to bottom / left to right (Undo in the message puts it back)'],
+            ['Tidy up just part of it', 'Select 2+ Elements (or a frame), then the layout buttons on the selection toolbar'],
             ['Edit a block / connector', 'Click it — the inspector opens on the right'],
             ['Duplicate or delete', '⌘D / Delete, or the buttons in the inspector'],
             ['Copy part of a diagram elsewhere', 'Select, ⌘C, open the other diagram, ⌘V'],

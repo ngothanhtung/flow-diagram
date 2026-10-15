@@ -110,6 +110,13 @@ export default function HelpViPage() {
           xoá nó.
         </p>
         <p>
+          <strong>Tự xếp (Auto-layout):</strong> <strong>File → Auto-layout, top to bottom</strong> (hoặc <strong>left to right</strong>) sắp xếp lại cả Diagram trong một bước: mỗi khối
+          nằm dưới (hoặc bên phải) khối dẫn vào nó, các chuỗi nối tiếp thẳng hàng, đường nối được vẽ lại và chọn lại cổng nối để không đường nào cắt ngang qua khối, còn mỗi Frame được xếp bên
+          trong rồi co lại vừa nội dung. Chọn trước từ hai phần tử trở lên (hoặc một Frame) thì cùng lệnh đó — cũng có ở hai nút xếp bên phải thanh công cụ vùng chọn — chỉ xếp các phần tử
+          đã chọn, ngay tại chỗ. Chữ, biểu tượng và đường tự do không bao giờ bị di chuyển, Frame chứa chúng cũng vậy. Một thông báo xác nhận thay đổi; nút <strong>Undo</strong> trên thông
+          báo, hoặc <Kbd>⌘Z</Kbd> / <Kbd>Ctrl+Z</Kbd>, đưa mọi thứ về như cũ trong một bước.
+        </p>
+        <p>
           <strong>Điều hướng:</strong> kéo vùng canvas trống để di chuyển khung nhìn (kéo bằng chuột giữa hoạt động ở mọi nơi), lăn chuột để thu phóng, và dùng cụm nút góc canvas để{' '}
           <em>Zoom in / Zoom out / Fit diagram to view</em>. Cụm điều khiển lưới bên cạnh dùng để bật/tắt bắt dính và chọn cỡ lưới.
         </p>
@@ -356,6 +363,8 @@ export default function HelpViPage() {
             ['Chọn nhiều Element', 'Shift-click từng cái, hoặc Shift-kéo một khung trên vùng canvas trống; ⌘A chọn tất cả'],
             ['Nối hai khối', 'Kéo từ cổng của khối này sang khối kia'],
             ['Uốn đường nối', 'Chọn đường, bấm đúp lên đường để thêm điểm uốn; kéo điểm uốn; bấm đúp vào điểm uốn để xoá'],
+            ['Xếp gọn cả Diagram', 'File → Auto-layout, top to bottom / left to right (nút Undo trên thông báo để hoàn tác)'],
+            ['Chỉ xếp một phần', 'Chọn từ 2 phần tử trở lên (hoặc một Frame), rồi bấm nút xếp trên thanh công cụ vùng chọn'],
             ['Sửa khối / đường nối', 'Bấm vào nó — bảng thuộc tính mở bên phải'],
             ['Nhân bản hoặc xoá', '⌘D / Delete, hoặc các nút trong bảng thuộc tính'],
             ['Chép một phần sơ đồ sang chỗ khác', 'Chọn, ⌘C, mở sơ đồ kia, ⌘V'],

@@ -1,6 +1,6 @@
 'use client';
 
-import { Contrast, Database, FileCode2, FileJson, FilePlus, FileQuestion, FolderOpen, ImageDown, LayoutTemplate, LoaderCircle, RotateCcw, Save, Sparkles } from 'lucide-react';
+import { Contrast, Database, FileCode2, FileJson, FilePlus, FileQuestion, FolderOpen, ImageDown, LayoutTemplate, LoaderCircle, Network, RotateCcw, Save, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
 import { ExportImageDialog } from '@/components/export/ExportImageDialog';
@@ -10,6 +10,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import { useEditorStore } from '@/lib/editor-store';
 import { useShortcutLabel } from '@/lib/use-is-mac';
+import { AUTO_LAYOUT_DIRECTIONS, useAutoLayoutCommand } from './use-auto-layout-command';
 
 /** File menu shell. Items are passed as `<FileMenuItem>` children so each
  *  editor keeps its own commands while the chrome stays identical. */
@@ -99,6 +100,7 @@ export function EditorFileMenu({
   const doc = useEditorStore((state) => state.doc);
   const selectedNodeIds = useEditorStore((state) => state.selectedNodeIds);
   const empty = doc.nodes.length === 0;
+  const autoLayout = useAutoLayoutCommand();
   return (
     <>
     <FileMenu>
@@ -133,6 +135,14 @@ export function EditorFileMenu({
       </FileMenuItem>
       {afterExport}
       <FileMenuSeparator />
+      {/* Whole Diagram, or the selection when there is one (2+ Elements
+          or a Frame) — the selection toolbar carries the same command. */}
+      {AUTO_LAYOUT_DIRECTIONS.map(({ direction, label }) => (
+        <FileMenuItem key={direction} icon={<Network size={14} className={direction === 'LR' ? '-rotate-90' : undefined} />} disabled={!autoLayout.available} onClick={() => autoLayout.run(direction)}>
+          Auto-layout, {label}
+          {autoLayout.scoped && <span className='ml-auto text-[10px] text-muted-foreground'>Selection</span>}
+        </FileMenuItem>
+      ))}
       <FileMenuItem icon={<Contrast size={14} />} onClick={onConvertColorTheme}>
         Convert dark ↔ light
       </FileMenuItem>

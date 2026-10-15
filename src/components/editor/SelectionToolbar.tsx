@@ -9,12 +9,14 @@ import {
   AlignStartHorizontal,
   AlignStartVertical,
   AlignVerticalDistributeCenter,
+  Network,
   Scaling,
   type LucideIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useEditorStore, type AlignEdge } from '@/lib/editor-store';
+import { useAutoLayoutCommand } from './use-auto-layout-command';
 
 const ALIGN_TOOLS: ReadonlyArray<{ edge: AlignEdge; label: string; Icon: LucideIcon }> = [
   { edge: 'left', label: 'Align left', Icon: AlignStartVertical },
@@ -39,6 +41,7 @@ export function SelectionToolbar() {
   const alignSelectedNodes = useEditorStore((state) => state.alignSelectedNodes);
   const distributeSelectedNodes = useEditorStore((state) => state.distributeSelectedNodes);
   const matchSelectedNodeSize = useEditorStore((state) => state.matchSelectedNodeSize);
+  const autoLayout = useAutoLayoutCommand();
 
   const count = selectedNodeIds.length;
   if (count < 2) return null;
@@ -99,6 +102,34 @@ export function SelectionToolbar() {
         className='text-muted-foreground'
       >
         <Scaling size={16} />
+      </Button>
+
+      <Separator orientation='vertical' className='self-stretch bg-border' />
+
+      {/* Auto-layout of just the selection: only these Elements move (a
+          selected Frame takes its contents), the result lands where the
+          selection was, and Lines to the rest re-pick their ports. */}
+      <Button
+        variant='ghost'
+        size='icon-sm'
+        disabled={!autoLayout.available}
+        onClick={() => autoLayout.run('TB')}
+        title='Auto-layout the selection, top to bottom'
+        aria-label='Auto-layout the selection, top to bottom'
+        className='text-muted-foreground'
+      >
+        <Network size={16} />
+      </Button>
+      <Button
+        variant='ghost'
+        size='icon-sm'
+        disabled={!autoLayout.available}
+        onClick={() => autoLayout.run('LR')}
+        title='Auto-layout the selection, left to right'
+        aria-label='Auto-layout the selection, left to right'
+        className='text-muted-foreground'
+      >
+        <Network size={16} className='-rotate-90' />
       </Button>
 
     </div>

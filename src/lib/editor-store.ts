@@ -2,6 +2,7 @@
 
 import { create, type StateCreator } from 'zustand';
 import { buildFragment, insertFragment, type DiagramFragment, type InsertFragmentOptions } from './clipboard-fragment';
+import { autoLayout as arrangeDocument, autoLayoutScope, type LayoutDirection } from './auto-layout';
 import { convertDocumentColorTheme } from './color-theme-convert';
 import { normalizeDocument } from './document-validation';
 import { beginGesture, canRedo, canUndo, emptyHistory, endGesture, jsonEqual, recordChange, redo as redoHistory, undo as undoHistory, type DocHistory } from './doc-history';
@@ -440,6 +441,12 @@ interface EditorState {
   distributeSelectedNodes: (axis: 'x' | 'y') => void;
   /** Resize every selected node to match the last-clicked one. */
   matchSelectedNodeSize: (dimension: 'width' | 'height' | 'both') => void;
+  /** Auto-layout (`auto-layout.ts`): the selection when it is 2+
+   *  Elements or one Frame, else the whole Diagram. One write, so one
+   *  undo step — ports and bends included. Returns the document it
+   *  produced (null when nothing changed), so a caller can tell later
+   *  whether that is still the latest step. */
+  autoLayout: (direction: LayoutDirection) => { document: FlowDocumentJSON | null; moved: number; scoped: boolean };
 }
 
 type EditorPatch = Partial<EditorState>;
@@ -1325,6 +1332,15 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
         },
       };
     }),
+
+  autoLayout: (direction) => {
+    const { doc, selectedNodeIds } = get();
+    const selection = autoLayoutScope(doc, selectedNodeIds);
+    const result = arrangeDocument(doc, { direction, selection });
+    if (jsonEqual(result.document, doc)) return { document: null, moved: 0, scoped: selection.length > 0 };
+    set({ doc: result.document });
+    return { document: result.document, moved: result.movedNodeIds.length, scoped: selection.length > 0 };
+  },
 })));
 
 function defaultTitleFor(type: NodeType): string {

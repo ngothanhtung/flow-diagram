@@ -1,0 +1,173 @@
+{
+  "nodes": [
+    {
+      "id": "USERS",
+      "type": "process",
+      "title": "USERS",
+      "position": {
+        "x": 358,
+        "y": 229
+      },
+      "width": 236,
+      "height": 138,
+      "shape": "rounded",
+      "icon": null,
+      "color": "#c7d2fe",
+      "backgroundColor": "#1e293b",
+      "borderColor": "#c7d2fe",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "table": {
+        "columns": [
+          {
+            "id": "c1",
+            "name": "id",
+            "dataType": "uuid",
+            "primaryKey": true
+          },
+          {
+            "id": "c2",
+            "name": "email",
+            "dataType": "string",
+            "unique": true
+          },
+          {
+            "id": "c3",
+            "name": "display_name",
+            "dataType": "string"
+          },
+          {
+            "id": "c4",
+            "name": "created_at",
+            "dataType": "timestamptz"
+          }
+        ]
+      },
+      "sortOrder": 1
+    },
+    {
+      "id": "ORDERS",
+      "type": "process",
+      "title": "ORDERS",
+      "position": {
+        "x": 704,
+        "y": 229
+      },
+      "width": 236,
+      "height": 138,
+      "shape": "rounded",
+      "icon": null,
+      "color": "#bae6fd",
+      "backgroundColor": "#172554",
+      "borderColor": "#bae6fd",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "table": {
+        "columns": [
+          {
+            "id": "c1",
+            "name": "id",
+            "dataType": "uuid",
+            "primaryKey": true
+          },
+          {
+            "id": "c2",
+            "name": "user_id",
+            "dataType": "uuid",
+            "foreignKey": true
+          },
+          {
+            "id": "c3",
+            "name": "status",
+            "dataType": "string"
+          },
+          {
+            "id": "c4",
+            "name": "total",
+            "dataType": "numeric"
+          }
+        ]
+      },
+      "sortOrder": 2
+    },
+    {
+      "id": "ORDER_ITEMS",
+      "type": "process",
+      "title": "ORDER_ITEMS",
+      "position": {
+        "x": 1050,
+        "y": 229
+      },
+      "width": 236,
+      "height": 138,
+      "shape": "rounded",
+      "icon": null,
+      "color": "#a7f3d0",
+      "backgroundColor": "#052e2b",
+      "borderColor": "#a7f3d0",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "table": {
+        "columns": [
+          {
+            "id": "c1",
+            "name": "id",
+            "dataType": "uuid",
+            "primaryKey": true
+          },
+          {
+            "id": "c2",
+            "name": "order_id",
+            "dataType": "uuid",
+            "foreignKey": true
+          },
+          {
+            "id": "c3",
+            "name": "sku",
+            "dataType": "string"
+          },
+          {
+            "id": "c4",
+            "name": "quantity",
+            "dataType": "int"
+          }
+        ]
+      },
+      "sortOrder": 3
+    }
+  ],
+  "edges": [
+    {
+      "id": "r1",
+      "from": "USERS",
+      "to": "ORDERS",
+      "routing": "orthogonal",
+      "effect": "none",
+      "startMarker": "crow-one",
+      "endMarker": "crow-zero-many",
+      "label": "places",
+      "color": "#64748b",
+      "width": 2,
+      "sortOrder": 1
+    },
+    {
+      "id": "r2",
+      "from": "ORDERS",
+      "to": "ORDER_ITEMS",
+      "routing": "orthogonal",
+      "effect": "none",
+      "startMarker": "crow-one",
+      "endMarker": "crow-one-many",
+      "label": "contains",
+      "color": "#64748b",
+      "width": 2,
+      "sortOrder": 2
+    }
+  ],
+  "settings": {
+    "runMode": "static"
+  }
+}
