@@ -7,14 +7,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev      # start the dev server at localhost:3000
-npm run build    # production build
-npm run start    # serve the production build
-npm run lint     # eslint (flat config: eslint-config-next core-web-vitals + typescript)
-npx tsc --noEmit -p .   # typecheck (no dedicated `typecheck` script exists)
+npm run dev            # start the dev server at localhost:3000 (real project from .env.local)
+npm run emulators      # Firebase Auth + Firestore emulators (demo-x-flow-tool), UI at localhost:4100
+npm run dev:emulator   # dev server wired to those emulators instead of the real project
+npm run build          # production build
+npm run start          # serve the production build
+npm run lint           # eslint (flat config: eslint-config-next core-web-vitals + typescript)
+npm test               # Vitest, pure logic: src/**/*.test.ts — no emulator needed
+npm run test:rules     # Vitest, Firestore rules: tests/rules/**/*.test.ts inside `firebase emulators:exec`
+npx tsc --noEmit -p .  # typecheck (no dedicated `typecheck` script exists)
 ```
 
-There is no test runner configured in this repo (no test script, no Jest/Vitest/Playwright). Don't assume one exists.
+The two Vitest suites are deliberately separate. `npm test` (`vitest.config.mts`) runs in a plain node environment and covers pure modules under `src/lib`; put a `*.test.ts` next to the module it tests. `npm run test:rules` (`vitest.rules.config.mts`) needs Java 21+ and `firebase-tools`; it starts a throwaway Firestore emulator, and each file loads `firestore.rules` **from disk** through `tests/rules/setup.ts` (`useRulesTestEnvironment`, `seed`), clears the emulator before every test and seeds an administrator. Those tests are the baseline for today's rules — any rules change must keep them green, or change them in the same commit on purpose. There is no component/DOM test runner (no jsdom, no Playwright suite) — UI is verified by hand (see *Verifying UI work*).
 
 `npm run build` needs the `NEXT_PUBLIC_FIREBASE_*` env vars set — `src/lib/firebase/client.ts` throws on a missing var, and pages are prerendered at build time. Placeholder values are enough for a build check.
 
@@ -300,8 +304,12 @@ Three places used to spell out "which tools aren't a plain silhouette" as a chai
 
 ### Firebase
 
-`src/lib/firebase/client.ts` initializes the app from `NEXT_PUBLIC_FIREBASE_*` env vars (see `.env.example`) and throws immediately if a required var is missing — there's no silent-degrade path. `auth.ts`, `diagrams.ts`, `templates.ts` and `roles.ts` are the only modules that talk to Firebase; everything else goes through them. `firestore.rules` is the source of truth for access and is deployed separately (`firebase deploy --only firestore:rules`) — a change to a collection's shape usually needs a matching rules change.
+`src/lib/firebase/client.ts` initializes the app from `NEXT_PUBLIC_FIREBASE_*` env vars (see `.env.example`) and throws immediately if a required var is missing — there's no silent-degrade path. `auth.ts`, `diagrams.ts`, `templates.ts` and `roles.ts` are the only modules that talk to Firebase; everything else goes through them. `firestore.rules` is the source of truth for access and is deployed separately (`firebase deploy --only firestore:rules`) — a change to a collection's shape usually needs a matching rules change, plus a case in `tests/rules/`.
+
+When `NEXT_PUBLIC_FIREBASE_USE_EMULATOR === '1'`, `client.ts` connects Auth and Firestore to the local emulators (`127.0.0.1:9099` / `:8080`). The guard flag lives on `globalThis`, not in a module variable: an HMR re-run of the module gets the same cached app back, and connecting it a second time throws.
 
 ## Verifying UI work
 
-There's no test runner, so visual changes are checked by hand: run `npm run dev` with placeholder Firebase env vars, add a temporary page under `src/app/` that renders the component with fixture data, drive it with Playwright (Chromium is available at `/opt/pw-browsers`) — screenshots plus `page.evaluate` to read computed styles, which is how several "looks fine, is actually dead" bugs were caught. **Delete the temporary page before committing**, then run `npx tsc --noEmit -p .`, `npm run lint`, and a production build.
+Logic and rules have Vitest suites (see *Commands*); visual changes are still checked by hand: run the dev server, add a temporary page under `src/app/` that renders the component with fixture data, drive it with Playwright (Chromium is available at `/opt/pw-browsers`) — screenshots plus `page.evaluate` to read computed styles, which is how several "looks fine, is actually dead" bugs were caught. **Delete the temporary page before committing**, then run `npx tsc --noEmit -p .`, `npm run lint`, `npm test`, `npm run test:rules`, and a production build.
+
+To drive the real app — sign in, save, share, admin pages — use the emulators rather than the real project: `npm run emulators` in one terminal, `npm run dev:emulator` in another. `dev:emulator` (`scripts/dev-emulator.mjs`) loads the committed `.env.emulator` into `process.env` before starting `next dev`; Next never lets a `.env` file override `process.env`, so those values win over `.env.local` and the session can only reach `demo-x-flow-tool`. A `demo-*` project id is emulator-only by Firebase's own rules — nothing in this workflow can touch production, which is why the id is hard-coded in both scripts and must stay `demo-*`. Create test accounts in the Emulator UI (Authentication tab, localhost:4100) or by signing up in the app; make one an administrator by adding `users-roles/{uid}` `{ roles: ['administrators'] }` in the Firestore tab. Emulator data is exported to `.emulator-data/` (gitignored) on a clean exit and re-imported on the next start, so stop it with Ctrl+C rather than killing it. Google sign-in goes through the Auth emulator's fake account picker.

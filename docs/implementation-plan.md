@@ -16,7 +16,7 @@ Tracks delivery of [PRD v0.2](prd/v0.2.md) and [PRD v0.3](prd/v0.3.md). Each tas
 
 | # | Task | PRD | Depends on | Status |
 | --- | --- | --- | --- | --- |
-| T0 | Test & emulator infrastructure | — | — | ☐ |
+| T0 | Test & emulator infrastructure | — | — | ☑ |
 | T1 | Undo / redo | v0.2 §4.1 | T0 | ☐ |
 | T2 | Shortcuts and copy/paste | v0.2 §4.2 | T1 | ☐ |
 | T3 | Image export | v0.2 §4.3 | T0 | ☐ |

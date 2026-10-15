@@ -4,9 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:emulator": "node scripts/dev-emulator.mjs",
+    "emulators": "firebase emulators:start --project demo-x-flow-tool --import=./.emulator-data --export-on-exit",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-x-flow-tool \"vitest run --config vitest.rules.config.mts\""
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -30,6 +34,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -38,6 +43,7 @@
     "eslint-config-next": "16.2.12",
     "shadcn": "^4.16.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.11"
   }
 }

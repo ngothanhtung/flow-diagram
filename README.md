@@ -24,10 +24,11 @@ A browser-based diagram editor with animated connectors — SaaS architecture di
 
 ## Requirements
 
-- Node.js 20+ and `npm`
+- Node.js 20.12+ and `npm`
 - A [Firebase](https://console.firebase.google.com) account (the free Spark plan is enough)
 - A [Vercel](https://vercel.com) account (for production deployment)
 - Firebase CLI (to deploy Firestore rules/indexes): `npm install -g firebase-tools`
+- Java 21+ (only for the local Firebase emulators and `npm run test:rules`)
 
 > The repo ships the logo library as committed static assets (`public/logos/`, ~106 MB across ~15K SVGs, plus a 2 MB `public/logos.json` index). Nothing generates them at build time, so expect a slow first clone and a large deployment upload.
 
@@ -111,12 +112,23 @@ Administrators also get the cross-user diagram overview (`/admin/diagrams`) and 
 
    Open [http://localhost:3000](http://localhost:3000), sign in with Google or Email/Password, and start drawing.
 
+### Run against the local Firebase emulators (no Firebase project needed)
+
+```bash
+npm run emulators       # terminal 1: Auth + Firestore emulators, UI at http://localhost:4100
+npm run dev:emulator    # terminal 2: dev server at http://localhost:3000, wired to the emulators
+```
+
+`dev:emulator` uses the placeholder config in `.env.emulator` (project `demo-x-flow-tool`) and ignores `.env.local`, so nothing reaches a real Firebase project — `demo-*` projects are emulator-only. Create accounts by signing up in the app or in the Emulator UI's **Authentication** tab; to make one an administrator, add `users-roles/{uid}` with `{ "roles": ["administrators"] }` in the **Firestore** tab. Data is saved to `.emulator-data/` when you stop the emulators with Ctrl+C and loaded again on the next start.
+
 Other useful commands:
 
 ```bash
 npm run build           # production build
 npm run start           # serve the production build
 npm run lint            # eslint
+npm test                # unit tests (Vitest)
+npm run test:rules      # Firestore rules tests (starts a throwaway emulator; needs Java)
 npx tsc --noEmit -p .   # TypeScript check
 ```
 
@@ -215,10 +227,11 @@ Trình soạn thảo sơ đồ chạy trên trình duyệt với hiệu ứng k�
 
 ## Yêu cầu
 
-- Node.js 20 trở lên và `npm`
+- Node.js 20.12 trở lên và `npm`
 - Một tài khoản [Firebase](https://console.firebase.google.com) (gói Spark miễn phí là đủ)
 - Một tài khoản [Vercel](https://vercel.com) (để triển khai production)
 - Firebase CLI (để deploy Firestore rules/indexes): `npm install -g firebase-tools`
+- Java 21 trở lên (chỉ cần cho Firebase emulator chạy local và `npm run test:rules`)
 
 > Repo commit sẵn thư viện logo dưới dạng file tĩnh (`public/logos/`, khoảng 106 MB cho ~15K file SVG, cộng file index `public/logos.json` 2 MB). Không có bước build nào sinh lại chúng, nên lần clone đầu sẽ lâu và dung lượng upload khi deploy khá lớn.
 
@@ -302,12 +315,23 @@ Administrator cũng được xem toàn bộ sơ đồ của mọi người (`/ad
 
    Mở [http://localhost:3000](http://localhost:3000), đăng nhập bằng Google hoặc Email/Password và bắt đầu vẽ sơ đồ.
 
+### Chạy với Firebase emulator local (không cần project Firebase)
+
+```bash
+npm run emulators       # terminal 1: emulator Auth + Firestore, giao diện tại http://localhost:4100
+npm run dev:emulator    # terminal 2: dev server tại http://localhost:3000, kết nối tới emulator
+```
+
+`dev:emulator` dùng cấu hình giả trong `.env.emulator` (project `demo-x-flow-tool`) và bỏ qua `.env.local`, nên không có gì chạm tới project Firebase thật — project `demo-*` chỉ tồn tại trong emulator. Tạo tài khoản bằng cách đăng ký trong app hoặc ở tab **Authentication** của Emulator UI; để cấp quyền administrator, thêm document `users-roles/{uid}` với `{ "roles": ["administrators"] }` ở tab **Firestore**. Dữ liệu được lưu vào `.emulator-data/` khi dừng emulator bằng Ctrl+C và được nạp lại ở lần chạy sau.
+
 Các lệnh hữu ích khác:
 
 ```bash
 npm run build           # build production
 npm run start           # chạy bản build production
 npm run lint            # eslint
+npm test                # unit test (Vitest)
+npm run test:rules      # test Firestore rules (tự chạy emulator tạm; cần Java)
 npx tsc --noEmit -p .   # kiểm tra TypeScript
 ```
 
