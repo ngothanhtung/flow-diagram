@@ -49,6 +49,14 @@ export default function HelpViPage() {
           bằng Google thì không cần mật khẩu — chỉ cần bấm <strong>Continue with Google</strong>.
         </p>
         <p>
+          Workspace của bạn có thể được giới hạn bằng <strong>Access list</strong> — các domain email của công ty cùng một số địa chỉ được chỉ định. Nếu email của bạn không có trong danh
+          sách, bạn sẽ thấy thông báo <em>&ldquo;This email isn&apos;t allowed to use X Flow Tool. Contact your administrator.&rdquo;</em> (email này không được phép dùng X Flow Tool) — hãy
+          nhờ quản trị viên thêm bạn vào, hoặc bấm <strong>Sign out</strong> rồi đăng nhập bằng tài khoản công ty. Khi có Access list, tài khoản email + mật khẩu còn phải{' '}
+          <strong>xác minh email</strong>: đăng ký xong bạn sẽ thấy màn hình <strong>Check your inbox</strong>. Mở link trong thư xác minh rồi bấm <strong>I&apos;ve verified</strong> (hoặc tải
+          lại trang) — không cần đăng xuất. Không thấy thư? Kiểm tra thư mục spam, rồi bấm <strong>Resend verification email</strong> để gửi lại. Tài khoản Google vốn đã được xác minh. Public
+          link vẫn mở được với mọi người, dù có Access list hay không.
+        </p>
+        <p>
           Sau khi đăng nhập, bạn vào <strong>danh sách sơ đồ</strong>: bảng liệt kê mọi sơ đồ bạn sở hữu, kèm số khối/đường nối, trạng thái công khai, thời gian tạo và cập nhật. Tại đây bạn
           có thể:
         </p>

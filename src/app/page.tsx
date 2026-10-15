@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AuthGate } from '@/components/auth/AuthGate';
 import { DiagramsHome } from '@/components/diagrams/DiagramsHome';
 
 export const metadata: Metadata = {
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <DiagramsHome />;
+  return (
+    <AuthGate>
+      <DiagramsHome />
+    </AuthGate>
+  );
 }

@@ -49,6 +49,13 @@ export default function HelpPage() {
           need a password at all — just use <strong>Continue with Google</strong>.
         </p>
         <p>
+          Your workspace may be limited to an <strong>Access list</strong> — your company&apos;s email domains plus a few named addresses. If your email isn&apos;t on it you&apos;ll see{' '}
+          <em>&ldquo;This email isn&apos;t allowed to use X Flow Tool. Contact your administrator.&rdquo;</em> — ask your administrator to add you, or press <strong>Sign out</strong> and use
+          your work account. When a list is in place, an email + password account must also <strong>verify its email</strong>: after signing up you&apos;ll see{' '}
+          <strong>Check your inbox</strong>. Open the link in the verification email, then press <strong>I&apos;ve verified</strong> (or reload the page) — no need to sign out. No email?
+          Check spam, then press <strong>Resend verification email</strong>. Google accounts are already verified. Public links open for anyone, list or not.
+        </p>
+        <p>
           After signing in you land on the <strong>diagrams list</strong>: a table of everything you own, with node/edge counts, visibility, and created/updated timestamps. From here you can:
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>

@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -33,6 +34,13 @@ export function signInWithEmail(email: string, password: string) {
 // whether the address has an account); see `lib/password-reset.ts`.
 export function sendPasswordReset(email: string) {
   return sendPasswordResetEmail(firebaseAuth, email);
+}
+
+// Firebase's default verification email and hosted action page — no
+// actionCodeSettings, matching the password reset above. The rules only see
+// the result once the ID token is refreshed (see `checkUserAccess`).
+export function sendVerificationEmail(user: User) {
+  return sendEmailVerification(user);
 }
 
 export function signOutUser() {

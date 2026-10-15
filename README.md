@@ -67,7 +67,7 @@ The app supports **Google** and **Email/Password** sign-in:
    firebase deploy --only firestore
    ```
 
-   These rules ensure each user can only read/write their own diagrams (`users/{uid}/diagrams/{id}`), support public diagrams via the `public-diagrams` collection, and gate administrator access via the `users-roles` collection.
+   These rules ensure each user can only read/write their own diagrams (`users/{uid}/diagrams/{id}`), support public diagrams via the `public-diagrams` collection, gate administrator access via the `users-roles` collection, and enforce the optional Access list in `config/access` (step 1.5).
 
 ### 1.4. (Optional) Grant administrator access
 
@@ -78,6 +78,34 @@ The admin page requires the `administrators` role. To grant it, create a Firesto
 - Content: `{ "roles": ["administrators"] }`
 
 Administrators also get the cross-user diagram overview (`/admin/diagrams`) and write access to the shared template library (`/admin/templates`).
+
+### 1.5. (Optional) Restricting who can sign in (Access list)
+
+By default anyone who can sign in with Google or Email/Password can use your deployment. To limit it to your company (plus a few named outsiders), create an **Access list** — a single Firestore document, edited by hand like the administrator role above:
+
+- Collection: `config`
+- Document ID: `access`
+- Content: two arrays of strings, `domains` and `emails`:
+
+  ```json
+  {
+    "domains": ["company.com", "company.vn"],
+    "emails": ["partner@gmail.com", "auditor@another.org"]
+  }
+  ```
+
+How it behaves:
+
+- **Missing document or both lists empty → open to everyone**, exactly as without it. Delete the document (or empty both lists) to switch the restriction off.
+- A user is allowed when their email's **domain** is in `domains` or the **whole address** is in `emails`. Matching ignores letter case and surrounding spaces; a leading `@` (`"@company.com"`) is fine. Domains match **exactly** — `company.com` does **not** admit `eu.company.com`; list each subdomain you want.
+- It applies to Google and Email/Password alike, and to **existing** accounts too — someone already signed up who isn't on the list is refused the same way as a new account. Changes take effect on their next page load; nobody needs to sign out.
+- **Email verification**: while the list is non-empty, an Email/Password account only counts once its email is verified (otherwise anyone could sign up as `anyone@company.com` without owning that mailbox). Signing up sends Firebase's default verification email and shows a *Check your inbox* screen with **Resend verification email** and **I've verified**. Google accounts are already verified. With an empty list nothing is asked.
+- Users who aren't allowed see *"This email isn't allowed to use X Flow Tool. Contact your administrator."* and a Sign out button — never a raw permission error. **Sign up** stays visible.
+- **Administrators** (`users-roles`, step 1.4) are **always allowed**, even with an email outside the list and unverified — so you can't lock yourself out of the admin pages.
+- **Public links keep working**: a Public diagram opens in the Viewer for anyone, even if its owner is outside the list.
+- If a field isn't a list (e.g. `"domains": "company.com"`), the list **fails closed**: everyone except administrators is refused until you fix it.
+
+The restriction is enforced by `firestore.rules`, not just hidden in the UI, so the rules in this repo must be deployed (`firebase deploy --only firestore:rules`) for it to take effect. Each request that touches user data reads `config/access` once, which Firebase bills as one extra document read.
 
 ## 2. Run locally
 
@@ -120,7 +148,7 @@ npm run emulators       # terminal 1: Auth + Firestore emulators, UI at http://l
 npm run dev:emulator    # terminal 2: dev server at http://localhost:3000, wired to the emulators
 ```
 
-`dev:emulator` uses the placeholder config in `.env.emulator` (project `demo-x-flow-tool`) and ignores `.env.local`, so nothing reaches a real Firebase project — `demo-*` projects are emulator-only. Create accounts by signing up in the app or in the Emulator UI's **Authentication** tab; to make one an administrator, add `users-roles/{uid}` with `{ "roles": ["administrators"] }` in the **Firestore** tab. Data is saved to `.emulator-data/` when you stop the emulators with Ctrl+C and loaded again on the next start. The Auth emulator sends no real email: a *Forgot password?* request prints the reset link in the emulators' terminal — replace `NEW_PASSWORD_HERE` at its end and open it. The emulator has no enumeration protection, so an unknown email gets an `EMAIL_NOT_FOUND` reply in the network tab (the form still shows the same message).
+`dev:emulator` uses the placeholder config in `.env.emulator` (project `demo-x-flow-tool`) and ignores `.env.local`, so nothing reaches a real Firebase project — `demo-*` projects are emulator-only. Create accounts by signing up in the app or in the Emulator UI's **Authentication** tab; to make one an administrator, add `users-roles/{uid}` with `{ "roles": ["administrators"] }` in the **Firestore** tab. Data is saved to `.emulator-data/` when you stop the emulators with Ctrl+C and loaded again on the next start. The Auth emulator sends no real email: a *Forgot password?* request prints the reset link in the emulators' terminal — replace `NEW_PASSWORD_HERE` at its end and open it. The emulator has no enumeration protection, so an unknown email gets an `EMAIL_NOT_FOUND` reply in the network tab (the form still shows the same message). Verification emails (Access list, step 1.5) work the same way: the link is printed in that terminal — open it, then press **I've verified**. To try the Access list, add `config/access` in the **Firestore** tab.
 
 Other useful commands:
 
@@ -192,6 +220,8 @@ A fresh Firestore has no templates, so **New from template** starts out empty �
 | **New from template** is empty | The `templates` collection has no documents yet — import one from `seed/templates/` (step 3.5). |
 | A shared `/view` link says "Diagram not found" | The diagram is still private. Toggle **Public** in the editor and save — that is what writes the `public-diagrams` mirror the viewer reads. |
 | The admin pages redirect away | No `users-roles/{uid}` document with `{ "roles": ["administrators"] }` (step 1.4). |
+| "This email isn't allowed to use X Flow Tool" | The email isn't on the Access list — add its domain or the address to `config/access` (step 1.5), then reload. Fix a field that isn't a list, which refuses everyone. |
+| Stuck on "Check your inbox" after clicking the link | Press **I've verified** (or reload). Check the link was for the address shown; **Resend** sends a fresh one. |
 
 ## Learn more
 
@@ -270,7 +300,7 @@ Trình soạn thảo sơ đồ chạy trên trình duyệt với hiệu ứng k�
    firebase deploy --only firestore
    ```
 
-   Rules này đảm bảo mỗi người dùng chỉ đọc/ghi được sơ đồ của chính mình (`users/{uid}/diagrams/{id}`), hỗ trợ sơ đồ public qua collection `public-diagrams`, và phân quyền administrator qua collection `users-roles`.
+   Rules này đảm bảo mỗi người dùng chỉ đọc/ghi được sơ đồ của chính mình (`users/{uid}/diagrams/{id}`), hỗ trợ sơ đồ public qua collection `public-diagrams`, phân quyền administrator qua collection `users-roles`, và thực thi Access list tuỳ chọn trong `config/access` (bước 1.5).
 
 ### 1.4. (Tuỳ chọn) Cấp quyền administrator
 
@@ -281,6 +311,34 @@ Trang quản trị yêu cầu người dùng có role `administrators`. Để c�
 - Nội dung: `{ "roles": ["administrators"] }`
 
 Administrator cũng được xem toàn bộ sơ đồ của mọi người (`/admin/diagrams`) và có quyền quản lý thư viện template dùng chung (`/admin/templates`).
+
+### 1.5. (Tuỳ chọn) Giới hạn người được đăng nhập (Access list)
+
+Mặc định, ai đăng nhập được bằng Google hoặc Email/Password đều dùng được deployment của bạn. Để chỉ cho người trong công ty (và vài người ngoài được chỉ định) dùng, hãy tạo **Access list** — một document Firestore, sửa tay giống cách cấp role administrator ở trên:
+
+- Collection: `config`
+- Document ID: `access`
+- Nội dung: hai mảng chuỗi `domains` và `emails`:
+
+  ```json
+  {
+    "domains": ["company.com", "company.vn"],
+    "emails": ["partner@gmail.com", "auditor@another.org"]
+  }
+  ```
+
+Cách hoạt động:
+
+- **Chưa có document hoặc cả hai danh sách rỗng → mở cho mọi người**, y như khi không cấu hình. Xoá document (hoặc làm rỗng cả hai danh sách) để tắt giới hạn.
+- Người dùng được phép khi **domain** email của họ nằm trong `domains` hoặc **nguyên địa chỉ** nằm trong `emails`. Không phân biệt chữ hoa/thường, bỏ qua khoảng trắng hai đầu; viết kèm `@` ở đầu (`"@company.com"`) cũng được. Domain so khớp **chính xác** — `company.com` **không** cho phép `eu.company.com`; cần subdomain nào thì liệt kê subdomain đó.
+- Áp dụng cho cả Google lẫn Email/Password, và cho cả **tài khoản đã có** — người đã đăng ký nhưng không thuộc danh sách bị chặn giống tài khoản mới. Thay đổi có hiệu lực ở lần tải trang kế tiếp, không ai phải đăng xuất.
+- **Xác minh email**: khi danh sách không rỗng, tài khoản Email/Password chỉ được tính khi email đã xác minh (nếu không, ai cũng đăng ký được `bat-ky@company.com` mà không sở hữu hộp thư đó). Đăng ký xong, Firebase gửi thư xác minh theo mẫu mặc định và app hiện màn hình *Check your inbox* có nút **Resend verification email** (gửi lại) và **I've verified** (tôi đã xác minh). Tài khoản Google vốn đã xác minh. Danh sách rỗng thì không đòi gì cả.
+- Người không được phép thấy thông báo *"This email isn't allowed to use X Flow Tool. Contact your administrator."* (Email này không được phép dùng X Flow Tool, liên hệ quản trị viên) cùng nút Sign out — không bao giờ là lỗi quyền truy cập chung chung. Nút **Sign up** vẫn hiện.
+- **Administrator** (`users-roles`, bước 1.4) **luôn được phép**, kể cả khi email nằm ngoài danh sách và chưa xác minh — nên bạn không thể tự khoá mình khỏi trang admin.
+- **Public link vẫn hoạt động**: sơ đồ Public vẫn mở được trong Viewer với bất kỳ ai, kể cả khi chủ sở hữu nằm ngoài danh sách.
+- Nếu một trường không phải là mảng (ví dụ `"domains": "company.com"`), danh sách **chặn hết**: mọi người trừ administrator bị từ chối cho đến khi bạn sửa lại.
+
+Giới hạn này được thực thi trong `firestore.rules`, không chỉ ẩn trên giao diện, nên phải deploy rules trong repo (`firebase deploy --only firestore:rules`) thì mới có hiệu lực. Mỗi request chạm tới dữ liệu người dùng đọc `config/access` một lần, Firebase tính là thêm một lượt đọc document.
 
 ## 2. Chạy local
 
@@ -323,7 +381,7 @@ npm run emulators       # terminal 1: emulator Auth + Firestore, giao diện t�
 npm run dev:emulator    # terminal 2: dev server tại http://localhost:3000, kết nối tới emulator
 ```
 
-`dev:emulator` dùng cấu hình giả trong `.env.emulator` (project `demo-x-flow-tool`) và bỏ qua `.env.local`, nên không có gì chạm tới project Firebase thật — project `demo-*` chỉ tồn tại trong emulator. Tạo tài khoản bằng cách đăng ký trong app hoặc ở tab **Authentication** của Emulator UI; để cấp quyền administrator, thêm document `users-roles/{uid}` với `{ "roles": ["administrators"] }` ở tab **Firestore**. Dữ liệu được lưu vào `.emulator-data/` khi dừng emulator bằng Ctrl+C và được nạp lại ở lần chạy sau.
+`dev:emulator` dùng cấu hình giả trong `.env.emulator` (project `demo-x-flow-tool`) và bỏ qua `.env.local`, nên không có gì chạm tới project Firebase thật — project `demo-*` chỉ tồn tại trong emulator. Tạo tài khoản bằng cách đăng ký trong app hoặc ở tab **Authentication** của Emulator UI; để cấp quyền administrator, thêm document `users-roles/{uid}` với `{ "roles": ["administrators"] }` ở tab **Firestore**. Dữ liệu được lưu vào `.emulator-data/` khi dừng emulator bằng Ctrl+C và được nạp lại ở lần chạy sau. Emulator Auth không gửi email thật: link xác minh email (Access list, bước 1.5) được in ra terminal của emulator — mở link đó rồi bấm **I've verified**. Để thử Access list, thêm `config/access` ở tab **Firestore**.
 
 Các lệnh hữu ích khác:
 
@@ -395,6 +453,8 @@ Firestore mới tinh chưa có template nào, nên mục **New from template** s
 | **New from template** trống trơn | Collection `templates` chưa có document nào — nạp một mẫu từ `seed/templates/` (bước 3.5). |
 | Link `/view` chia sẻ báo "Diagram not found" | Sơ đồ vẫn đang ở chế độ private. Bật **Public** trong editor rồi lưu — thao tác này mới ghi bản mirror `public-diagrams` mà trang xem đọc vào. |
 | Vào trang admin bị đá ra | Chưa có document `users-roles/{uid}` với `{ "roles": ["administrators"] }` (bước 1.4). |
+| "This email isn't allowed to use X Flow Tool" | Email không có trong Access list — thêm domain hoặc địa chỉ đó vào `config/access` (bước 1.5) rồi tải lại trang. Nếu có trường không phải mảng thì sửa lại, vì khi đó mọi người đều bị chặn. |
+| Kẹt ở màn hình "Check your inbox" dù đã bấm link | Bấm **I've verified** (hoặc tải lại trang). Kiểm tra link có đúng cho địa chỉ đang hiện không; **Resend** gửi link mới. |
 
 ## Tìm hiểu thêm
 

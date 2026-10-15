@@ -1,6 +1,7 @@
 'use client';
 
 import { FirebaseError } from 'firebase/app';
+import type { User } from 'firebase/auth';
 import { Boxes, CircuitBoard, LoaderCircle, LockKeyhole, Mail, Sparkles } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -8,7 +9,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { AccessDeniedView, VerifyEmailView } from '@/components/auth/AccessViews';
 import { PasswordResetForm } from '@/components/auth/PasswordResetForm';
+import type { AccessStatus } from '@/lib/access-list';
+import { sendVerificationIfRequired } from '@/lib/firebase/access';
 import {
   createAccountWithEmail,
   signInWithEmail,
@@ -16,14 +20,19 @@ import {
 } from '@/lib/firebase/auth';
 
 // Which screen the card shows. Each view owns its header copy here and its
-// body below; a new screen (e.g. a "check your inbox" step) is one more entry.
-type AuthView = 'login' | 'register' | 'reset';
+// body below. `denied` and `verify` are for a user who is signed in but not
+// let in by the Access list yet — `AuthGate` picks them, not the user.
+type AuthView = 'login' | 'register' | 'reset' | 'denied' | 'verify';
 
 const VIEW_COPY: Record<AuthView, { title: string; description: string }> = {
   login: { title: 'Sign in to workspace', description: 'Continue with your saved diagrams.' },
   register: { title: 'Create account', description: 'Each account gets its own diagram library.' },
   reset: { title: 'Reset password', description: "Enter the email you sign in with and we'll send you a link to choose a new password." },
+  denied: { title: 'Access not allowed', description: 'This workspace is limited to the people on its Access list.' },
+  verify: { title: 'Check your inbox', description: 'Verify your email address to start using X Flow Tool.' },
 };
+
+export type BlockedAccess = { user: User; status: Exclude<AccessStatus, 'allowed'> };
 
 function authErrorMessage(error: unknown) {
   if (!(error instanceof FirebaseError)) return 'Could not sign in. Please try again.';
@@ -39,8 +48,14 @@ function authErrorMessage(error: unknown) {
   return messages[error.code] ?? 'Firebase could not authenticate this account.';
 }
 
-export function LoginForm() {
-  const [mode, setMode] = useState<AuthView>('login');
+/**
+ * The sign-in card. Signed out, it is the login / sign-up / reset flow;
+ * given `blocked`, it is the Access list's refusal or "Check your inbox"
+ * screen for the signed-in `blocked.user`.
+ */
+export function LoginForm({ blocked }: { blocked?: BlockedAccess } = {}) {
+  const [chosenMode, setMode] = useState<AuthView>('login');
+  const mode: AuthView = blocked ? (blocked.status === 'not-allowed' ? 'denied' : 'verify') : chosenMode;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [pending, setPending] = useState<'email' | 'google' | null>(null);
@@ -52,7 +67,10 @@ export function LoginForm() {
     setPending('email');
     try {
       if (mode === 'register') {
-        await createAccountWithEmail(email.trim(), password);
+        const credential = await createAccountWithEmail(email.trim(), password);
+        // Not awaited: the gate's "Check your inbox" screen takes over as
+        // soon as the account exists, and offers Resend if this fails.
+        void sendVerificationIfRequired(credential.user);
       } else {
         await signInWithEmail(email.trim(), password);
       }
@@ -143,7 +161,11 @@ export function LoginForm() {
             </CardDescription>
           </CardHeader>
           <CardContent className="px-7 pt-6 pb-7">
-            {mode === 'reset' ? (
+            {blocked && mode === 'denied' ? (
+              <AccessDeniedView user={blocked.user} />
+            ) : blocked && mode === 'verify' ? (
+              <VerifyEmailView user={blocked.user} />
+            ) : mode === 'reset' ? (
               <PasswordResetForm email={email} onEmailChange={setEmail} onBack={() => { setMode('login'); setError(null); }} />
             ) : (
               <>

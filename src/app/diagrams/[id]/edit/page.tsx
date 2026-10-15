@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AuthGate } from '@/components/auth/AuthGate';
 import { DiagramEditor } from '@/components/editor/DiagramEditor';
 
 export const metadata: Metadata = {
@@ -10,5 +11,9 @@ export default async function DiagramEditRoute({ params }: { params: Promise<{ i
   const { id } = await params;
   // Keyed by id so switching diagrams through the URL remounts the
   // editor with a fresh load cycle.
-  return <DiagramEditor key={id} diagramId={id} />;
+  return (
+    <AuthGate>
+      <DiagramEditor key={id} diagramId={id} />
+    </AuthGate>
+  );
 }
