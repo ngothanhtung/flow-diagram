@@ -2,6 +2,7 @@
 // (rather than inside AnimatedEdge) so the canvas, the viewer and the
 // inspector preview all size and colour a label identically.
 
+import { EDGE_LABEL_SHAPES as EDGE_LABEL_SHAPE_VALUES, NODE_FONTS, finiteOr, memberOr } from './document-vocabulary';
 import type { EdgeLabelShape, FlowEdge, NodeFont } from './flowchart-types';
 
 /**
@@ -57,11 +58,11 @@ export interface ResolvedEdgeLabelStyle {
  *  fields existed: light chip, dark ink. */
 export function resolveEdgeLabelStyle(edge: FlowEdge): ResolvedEdgeLabelStyle {
   return {
-    shape: edge.labelShape ?? 'pill',
-    color: edge.labelColor ?? '#18181b',
-    background: edge.labelBackground ?? '#f4f4f5',
-    fontSize: Math.max(EDGE_LABEL_FONT_SIZE_MIN, Math.min(EDGE_LABEL_FONT_SIZE_MAX, edge.labelFontSize ?? 11)),
-    fontFamily: edge.labelFontFamily ?? 'geist-mono',
+    shape: memberOr<EdgeLabelShape>(EDGE_LABEL_SHAPE_VALUES, edge.labelShape, 'pill'),
+    color: typeof edge.labelColor === 'string' ? edge.labelColor : '#18181b',
+    background: typeof edge.labelBackground === 'string' ? edge.labelBackground : '#f4f4f5',
+    fontSize: Math.max(EDGE_LABEL_FONT_SIZE_MIN, Math.min(EDGE_LABEL_FONT_SIZE_MAX, finiteOr(edge.labelFontSize, 11))),
+    fontFamily: memberOr<NodeFont>(NODE_FONTS, edge.labelFontFamily, 'geist-mono'),
   };
 }
 

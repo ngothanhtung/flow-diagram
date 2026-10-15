@@ -4,7 +4,8 @@
 
 import { SHAPES, type ShapeSpec } from '@/lib/node-style';
 import { resolveNodeStyle } from '@/lib/node-style';
-import type { ConnectionSide, FlowEdge, FlowNode, NodeShape } from '@/lib/flowchart-types';
+import { CONNECTION_SIDES, EDGE_ROUTINGS, memberOr } from '@/lib/document-vocabulary';
+import type { ConnectionSide, EdgeRouting, FlowEdge, FlowNode, FlowPoint, NodeShape } from '@/lib/flowchart-types';
 
 /**
  * Half-width of the shape's bounding box. Kept as an alias for
@@ -27,7 +28,7 @@ export function portAnchor(shape: NodeShape, side: ConnectionSide): { x: number;
 /** Resolve a node's scaled and rotated anchor vector. */
 export function nodePortAnchor(node: FlowNode, side: ConnectionSide): { x: number; y: number } {
   const style = resolveNodeStyle(node);
-  const base = style.shapeSpec.anchors[side];
+  const base = style.shapeSpec.anchors[isSide(side) ? side : 'right'];
   const scaledX = base.x * (style.width / (NODE_RADIUS * 2));
   const scaledY = base.y * (style.height / (NODE_RADIUS * 2));
   const radians = (style.rotation * Math.PI) / 180;
@@ -58,16 +59,35 @@ function facingSides(from: FlowNode, to: FlowNode): { fromSide: ConnectionSide; 
   return dy >= 0 ? { fromSide: 'bottom', toSide: 'top' } : { fromSide: 'top', toSide: 'bottom' };
 }
 
-/** Build the route for an existing edge from its selected node ports. */
+function isSide(value: unknown): value is ConnectionSide {
+  return typeof value === 'string' && CONNECTION_SIDES.has(value);
+}
+
+/** The bend points that are actual points; anything else in the list (or
+ *  a `bendPoints` that isn't a list at all) is ignored. */
+function usableBendPoints(value: unknown): FlowPoint[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  return value.filter((point): point is FlowPoint => typeof point === 'object' && point !== null && Number.isFinite(point.x) && Number.isFinite(point.y));
+}
+
+/**
+ * Build the route for an existing edge from its selected node ports.
+ * A port side or routing outside the vocabulary reads as unset — the same
+ * fallback a line that never named one gets — rather than indexing the
+ * anchor table with it and crashing the canvas.
+ */
 export function buildEdgeGeometry(edge: FlowEdge, from: FlowNode, to: FlowNode) {
   const facing = facingSides(from, to);
-  const fromSide = edge.fromSide ?? from.connectionPoints?.output ?? facing.fromSide;
-  const toSide = edge.toSide ?? to.connectionPoints?.input ?? facing.toSide;
+  const connectionPoints = (node: FlowNode) => (typeof node.connectionPoints === 'object' && node.connectionPoints !== null ? node.connectionPoints : undefined);
+  const fromOutput = connectionPoints(from)?.output;
+  const toInput = connectionPoints(to)?.input;
+  const fromSide = isSide(edge.fromSide) ? edge.fromSide : isSide(fromOutput) ? fromOutput : facing.fromSide;
+  const toSide = isSide(edge.toSide) ? edge.toSide : isSide(toInput) ? toInput : facing.toSide;
   const fromAnchor = nodePortAnchor(from, fromSide);
   const toAnchor = nodePortAnchor(to, toSide);
-  const bendPoints = edge.bendPoints?.filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
+  const bendPoints = usableBendPoints(edge.bendPoints);
 
-  switch (edge.routing ?? 'smooth-step') {
+  switch (memberOr<EdgeRouting>(EDGE_ROUTINGS, edge.routing, 'smooth-step')) {
     case 'straight':
       return buildStraightPath(from.position, fromAnchor, to.position, toAnchor);
     case 'smooth-step':
@@ -248,7 +268,7 @@ export function edgeLabelAnchor(
   geometry: { start: Point; end: Point; midTangent?: Point; points?: Point[] },
   labelWidth: number,
 ): Point {
-  if (edge.labelOffset !== undefined) return pointAlongEdgeGeometry(geometry, Math.max(0, Math.min(1, edge.labelOffset))).point;
+  if (typeof edge.labelOffset === 'number' && Number.isFinite(edge.labelOffset)) return pointAlongEdgeGeometry(geometry, Math.max(0, Math.min(1, edge.labelOffset))).point;
   const labelPosition = edge.labelPosition ?? 'center';
   const midSample = pointAlongEdgeGeometry(geometry, 0.5);
   const horizontalAtMid = Math.abs(midSample.direction.x) >= Math.abs(midSample.direction.y);

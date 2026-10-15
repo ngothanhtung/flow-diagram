@@ -3,6 +3,7 @@
 import { create, type StateCreator } from 'zustand';
 import { buildFragment, insertFragment, type DiagramFragment, type InsertFragmentOptions } from './clipboard-fragment';
 import { convertDocumentColorTheme } from './color-theme-convert';
+import { normalizeDocument } from './document-validation';
 import { beginGesture, canRedo, canUndo, emptyHistory, endGesture, jsonEqual, recordChange, redo as redoHistory, undo as undoHistory, type DocHistory } from './doc-history';
 import { clearStyleOverrides, edgeStylesOf, resolveEdgeStyle } from './edge-style';
 import { loadEditorSession } from './editor-session';
@@ -40,6 +41,13 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
 // `isSceneryNode` lives in node-tree.ts (pure, so the clipboard module can
 // use it too); re-exported here for the components that import it from the store.
 export { isSceneryNode };
+
+/** The template with its document through `normalizeDocument` — the same
+ *  object back when the document was already clean. */
+function withNormalizedDocument(template: LoadedTemplate): LoadedTemplate {
+  const document = normalizeDocument(template.document).document;
+  return document === template.document ? template : { ...template, document };
+}
 
 /**
  * Nodes sharing the same resolved sort order animate together as one
@@ -520,7 +528,9 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
     const session = loadEditorSession(userId);
     set({
       hydrated: true,
-      doc: session?.doc ?? { nodes: [], edges: [] },
+      // Normalised like every other way in: a session autosaved from a
+      // document that crashed the canvas must not crash it again on reload.
+      doc: normalizeDocument(session?.doc ?? { nodes: [], edges: [] }).document,
       currentDiagramId: session?.currentDiagramId ?? null,
       currentDiagramName: session?.currentDiagramName ?? 'Untitled diagram',
       currentDiagramPublic: session?.currentDiagramPublic ?? false,
@@ -542,14 +552,15 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
     }),
 
   loadStoredDiagram: (diagram) => {
+    const document = normalizeDocument(diagram.document).document;
     set({
-      doc: diagram.document,
+      doc: document,
       currentDiagramId: diagram.id,
       currentDiagramName: diagram.name,
       currentDiagramPublic: diagram.public === true,
-      savedSignature: JSON.stringify(diagram.document),
+      savedSignature: JSON.stringify(document),
       // Snapshot so Reset restores the fetched document, not a template.
-      loadedTemplate: { name: diagram.name, category: 'Saved diagram', description: '', document: diagram.document },
+      loadedTemplate: { name: diagram.name, category: 'Saved diagram', description: '', document },
       // Another diagram: its own, empty history.
       history: emptyHistory<HistorySnapshot>(),
     });
@@ -561,7 +572,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
   // one undo step like any other change. `savedSignature` is left alone:
   // it still describes what is in the cloud, so `dirty` reads true for
   // the new content and false again if undo brings the saved one back.
-  loadRemoteTemplate: (template) => {
+  loadRemoteTemplate: (rawTemplate) => {
+    const template = withNormalizedDocument(rawTemplate);
     const hasDiagram = get().currentDiagramId !== null;
     set({
       doc: template.document,
@@ -571,7 +583,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
     get().resetCanvasState();
   },
 
-  openTemplate: (template) => {
+  openTemplate: (rawTemplate) => {
+    const template = withNormalizedDocument(rawTemplate);
     set({
       doc: template.document,
       // The canvas no longer holds a user diagram, so the diagram editor

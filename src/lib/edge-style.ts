@@ -39,9 +39,19 @@ export const STARTER_EDGE_STYLES: EdgeStyleClass[] = [
   { id: 'policy', name: 'Policy / control', color: '#fbbf24', width: 2, lineStyle: 'dotted', endMarker: 'open-arrow', effect: 'none' },
 ];
 
-/** The classes a document defines, or an empty list. */
+/** The classes a document defines, or an empty list. Anything in the
+ *  list that isn't a class (or a list that isn't one) is skipped, so a
+ *  malformed palette can't take the canvas down with it. */
 export function edgeStylesOf(settings: DiagramSettings | undefined): EdgeStyleClass[] {
-  return settings?.edgeStyles ?? [];
+  const styles = typeof settings === 'object' && settings !== null ? settings.edgeStyles : undefined;
+  if (!Array.isArray(styles)) return [];
+  const valid = styles.filter(isStyleClass);
+  // Same array back when nothing was skipped, so callers can memoize on it.
+  return valid.length === styles.length ? styles : valid;
+}
+
+function isStyleClass(value: unknown): value is EdgeStyleClass {
+  return typeof value === 'object' && value !== null && typeof (value as EdgeStyleClass).id === 'string';
 }
 
 /** The class a line follows, or null — including when `styleRef` points

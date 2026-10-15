@@ -2,12 +2,13 @@
 
 import { createElement, useEffect, useRef } from 'react';
 import { screenToData } from '@/lib/coords';
+import { EDGE_MARKERS, finiteOr, memberOr } from '@/lib/document-vocabulary';
 import { edgeLineCap, edgeLineDash } from '@/lib/edge-style';
 import { NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { NODE_FONT_FAMILIES, NODE_FONT_WEIGHTS } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
 import { localEndpointsOfLine } from '@/lib/line-geometry';
-import type { ConnectionSide, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
+import type { ConnectionSide, EdgeMarker, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
 import { GROUP_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from './node-effect-layer';
 import { TableCardBody } from './TableCardBody';
@@ -221,6 +222,10 @@ export function FlowNodeCard({
   // endpoint handles all have to agree on exactly the same two points.
   const { start: lineStart, end: lineEnd } = localEndpointsOfLine(node, width, height);
   const lineAngleDeg = (Math.atan2(lineEnd.y - lineStart.y, lineEnd.x - lineStart.x) * 180) / Math.PI;
+  // Read through the vocabulary: a stray number here would otherwise be
+  // rendered by React as text (`{NaN && …}` paints "NaN").
+  const lineStartMarker = memberOr<EdgeMarker>(EDGE_MARKERS, node.startMarker, 'none');
+  const lineEndMarker = memberOr<EdgeMarker>(EDGE_MARKERS, node.endMarker, 'none');
   const portAnchors = Object.fromEntries(
     CONNECTION_SIDES.map((side) => [
       side,
@@ -481,7 +486,7 @@ export function FlowNodeCard({
           {
             color: foreground,
             '--node-opacity': opacity,
-            '--node-fade-duration': `${node.duration ?? NODE_FADE_DURATION_MS}ms`,
+            '--node-fade-duration': `${finiteOr(node.duration, NODE_FADE_DURATION_MS)}ms`,
           } as React.CSSProperties
         }
         onPointerDown={handlePointerDown}
@@ -740,14 +745,14 @@ export function FlowNodeCard({
                   vectorEffect='non-scaling-stroke'
                   pointerEvents='none'
                 />
-                {node.startMarker && node.startMarker !== 'none' && (
+                {lineStartMarker !== 'none' && (
                   <g transform={`translate(${lineStart.x} ${lineStart.y}) rotate(${lineAngleDeg + 180})`} pointerEvents='none'>
-                    <EdgeMarkerSymbol marker={node.startMarker} />
+                    <EdgeMarkerSymbol marker={lineStartMarker} />
                   </g>
                 )}
-                {node.endMarker && node.endMarker !== 'none' && (
+                {lineEndMarker !== 'none' && (
                   <g transform={`translate(${lineEnd.x} ${lineEnd.y}) rotate(${lineAngleDeg})`} pointerEvents='none'>
-                    <EdgeMarkerSymbol marker={node.endMarker} />
+                    <EdgeMarkerSymbol marker={lineEndMarker} />
                   </g>
                 )}
               </>

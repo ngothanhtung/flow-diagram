@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { toast } from 'sonner';
 import { buildFragment, parseFragment, serializeFragment } from '@/lib/clipboard-fragment';
+import { summarizeFixes } from '@/lib/document-validation';
 import { useEditorStore } from '@/lib/editor-store';
 import { nudgeDistance, resolveShortcut } from '@/lib/shortcuts';
 import { detectMac } from '@/lib/use-is-mac';
@@ -87,7 +88,11 @@ function pasteText(text: string) {
   const before = useEditorStore.getState().doc.edges.length;
   const ids = useEditorStore.getState().pasteFragment(parsed.fragment);
   const lines = useEditorStore.getState().doc.edges.length - before;
-  toast.success(`Pasted ${ids.length} ${ids.length === 1 ? 'Element' : 'Elements'}${lines > 0 ? ` and ${lines} ${lines === 1 ? 'Line' : 'Lines'}` : ''}`);
+  const title = `Pasted ${ids.length} ${ids.length === 1 ? 'Element' : 'Elements'}${lines > 0 ? ` and ${lines} ${lines === 1 ? 'Line' : 'Lines'}` : ''}`;
+  // Values outside the Diagram JSON vocabulary were dropped on the way in;
+  // say which, or a hand-written paste silently loses part of what it said.
+  if (parsed.fixes.length > 0) toast.warning(title, { description: `Repaired ${parsed.fixes.length} invalid ${parsed.fixes.length === 1 ? 'value' : 'values'}: ${summarizeFixes(parsed.fixes)}` });
+  else toast.success(title);
 }
 
 export interface EditorShortcutOptions {

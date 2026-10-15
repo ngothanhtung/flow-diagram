@@ -1,3 +1,4 @@
+import { LINE_CORNERS } from './document-vocabulary';
 import type { FlowNode, LineCorner } from './flowchart-types';
 
 /**
@@ -42,9 +43,15 @@ export function oppositeCorner(corner: LineCorner): LineCorner {
  * Where the line's start endpoint sits, resolved. Reads `lineStart`,
  * falling back to the legacy `lineFlip` boolean so a document saved
  * before the corner field renders exactly as it did.
+ *
+ * A `lineStart` outside the four corners (hand-written JSON — `'top-left'`)
+ * takes the same fallback as an unset one. Returning it as-is is what used
+ * to crash the whole canvas: `FlowNodeCard` resolves endpoints for every
+ * node, and `CORNER_SIGNS['top-left']` is undefined.
  */
 export function lineCornerOf(node: Pick<FlowNode, 'lineStart' | 'lineFlip'>): LineCorner {
-  return node.lineStart ?? (node.lineFlip ? 'ne' : 'nw');
+  if (typeof node.lineStart === 'string' && LINE_CORNERS.has(node.lineStart)) return node.lineStart;
+  return node.lineFlip ? 'ne' : 'nw';
 }
 
 /** The two endpoints in node-local coords — the box centre is (0, 0). */

@@ -27,7 +27,7 @@
 // merges Line styles without duplicating or clobbering the target's own.
 
 import { EDGE_STYLE_FIELDS, edgeStylesOf } from './edge-style';
-import { validateDocument } from './document-validation';
+import { checkDocument } from './document-validation';
 import type { EdgeStyleClass, FlowDocumentJSON, FlowEdge, FlowNode } from './flowchart-types';
 import { descendantIds, findDropTarget, isSceneryNode } from './node-tree';
 
@@ -49,7 +49,9 @@ export interface DiagramFragment {
   edgeStyles: EdgeStyleClass[];
 }
 
-export type ParseFragmentResult = { ok: true; fragment: DiagramFragment } | { ok: false; error: string };
+/** `fixes` lists the values `normalizeDocument` had to repair (an unknown
+ *  `lineStart`, a non-numeric width…) — the paste goes ahead without them. */
+export type ParseFragmentResult = { ok: true; fragment: DiagramFragment; fixes: string[] } | { ok: false; error: string };
 
 /**
  * The fragment for a selection, or null when none of `nodeIds` exists.
@@ -115,15 +117,21 @@ export function parseFragment(text: string): ParseFragmentResult {
   if (parsed.kind === FRAGMENT_KIND && typeof parsed.version === 'number' && parsed.version > FRAGMENT_VERSION) {
     return { ok: false, error: 'This was copied from a newer version of X Flow Tool. Reload the page, then paste again.' };
   }
-  const problem = validateDocument(parsed, { lenientEdges: true });
-  if (problem) return { ok: false, error: `Not valid Diagram JSON: ${problem}` };
-  const document = parsed as unknown as FlowDocumentJSON & { edgeStyles?: unknown };
+  // Only the Line styles of `settings` matter to a paste. They're moved
+  // to `settings.edgeStyles` wherever they were written (a hand-written
+  // paste may put them top-level) so they are normalised like any palette,
+  // and the rest of `settings` — ignored anyway — isn't checked at all.
+  const edgeStyles = isRecord(parsed.settings) && Array.isArray(parsed.settings.edgeStyles) ? parsed.settings.edgeStyles : Array.isArray(parsed.edgeStyles) ? parsed.edgeStyles : [];
+  const checked = checkDocument({ nodes: parsed.nodes, edges: parsed.edges, settings: { edgeStyles } }, { lenientEdges: true });
+  if (!checked.ok) return { ok: false, error: `Not valid Diagram JSON: ${checked.error}` };
+  const { document, fixes } = checked;
   if (document.nodes.length === 0) return { ok: false, error: 'There are no Elements to paste.' };
 
-  const rawStyles = isRecord(parsed.settings) && Array.isArray(parsed.settings.edgeStyles) ? parsed.settings.edgeStyles : Array.isArray(document.edgeStyles) ? document.edgeStyles : [];
+  const rawStyles = edgeStylesOf(document.settings);
   const nodeIds = new Set(document.nodes.map((node) => node.id));
   return {
     ok: true,
+    fixes,
     fragment: {
       nodes: document.nodes,
       // A Line with an end outside the fragment can't be pasted: there is

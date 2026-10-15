@@ -71,7 +71,28 @@ describe('serializeFragment / parseFragment', () => {
     expect(raw.kind).toBe(FRAGMENT_KIND);
     expect(raw.version).toBe(FRAGMENT_VERSION);
     expect(raw.settings.edgeStyles).toEqual([ASYNC]);
-    expect(parseFragment(text)).toEqual({ ok: true, fragment });
+    expect(parseFragment(text)).toEqual({ ok: true, fragment, fixes: [] });
+  });
+
+  it('repairs values outside the vocabulary instead of refusing the paste, and lists them', () => {
+    const text = JSON.stringify({
+      nodes: [
+        { id: 'l', type: 'line', title: '', position: { x: 0, y: 0 }, width: 100, height: 40, lineStart: 'top-left' },
+        { id: 'b', type: 'process', title: 'B', position: { x: 200, y: 0 }, shape: 'blob' },
+      ],
+      edges: [],
+    });
+    const result = parseFragment(text);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.fragment.nodes[0].lineStart).toBe('nw');
+    expect(result.fragment.nodes[1]).not.toHaveProperty('shape');
+    expect(result.fixes).toHaveLength(2);
+  });
+
+  it('refuses an unknown element type with the valid ones', () => {
+    const result = parseFragment(JSON.stringify({ nodes: [{ id: 'x', type: 'database', title: 'X', position: { x: 0, y: 0 } }], edges: [] }));
+    expect(result).toEqual({ ok: false, error: expect.stringContaining('unknown type "database"') });
   });
 
   it('accepts a full saved document, ignoring settings other than line styles', () => {

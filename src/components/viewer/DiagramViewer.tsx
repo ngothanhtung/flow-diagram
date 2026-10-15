@@ -15,6 +15,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';
 import { findPublicDiagramById, listAllDiagrams, loadDiagram, toViewerRow, type AdminDiagramRow } from '@/lib/firebase/diagrams';
+import { normalizeDocument } from '@/lib/document-validation';
 import { isAdminUser } from '@/lib/firebase/roles';
 
 /**
@@ -55,7 +56,10 @@ export function DiagramViewer({ diagramId }: { diagramId: string }) {
       .then((result) => {
         if (cancelled) return;
         if (result) {
-          setDiagram(result);
+          // The Viewer doesn't go through the editor store, so it applies
+          // the same gate itself: a stored document with an out-of-range
+          // value renders with that value's default instead of crashing.
+          setDiagram({ ...result, document: normalizeDocument(result.document).document });
           setStatus('ready');
         } else {
           setStatus('not-found');

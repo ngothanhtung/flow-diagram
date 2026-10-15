@@ -12,6 +12,7 @@ import { StarterPickerDialog } from '@/components/editor/StarterPickerDialog';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
 import { Input } from '@/components/ui/input';
 import { useEditorStore } from '@/lib/editor-store';
+import { normalizeDocument } from '@/lib/document-validation';
 import { createTemplate, getTemplateById, saveTemplate } from '@/lib/firebase/templates';
 
 interface TemplateMeta {
@@ -59,7 +60,10 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
           setStatus('not-found');
           return;
         }
-        const document = template.document ?? { nodes: [], edges: [] };
+        // Normalised here as well as in the store, so the saved signature
+        // describes exactly what lands on the canvas — otherwise a repaired
+        // template would read as unsaved the moment it opened.
+        const document = normalizeDocument(template.document ?? { nodes: [], edges: [] }).document;
         openTemplate({ name: template.name, category: template.category ?? '', description: template.description ?? '', document });
         const nextMeta = { name: template.name, category: template.category ?? '', description: template.description ?? '' };
         setMeta(nextMeta);

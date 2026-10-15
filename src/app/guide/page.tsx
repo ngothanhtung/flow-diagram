@@ -109,6 +109,13 @@ export default function GuidePage() {
             <p>
               The whole document is exactly three top-level fields. Nothing else is read by the app — extra fields are silently ignored, so don&apos;t invent new ones.
             </p>
+            <p>
+              Pasting refuses a document only when it can&apos;t be drawn at all: no <Pill>nodes</Pill>/<Pill>edges</Pill> arrays, a node without a unique <Pill>id</Pill>, a{' '}
+              <Pill>type</Pill> from the list in §2, a string <Pill>title</Pill> and a numeric <Pill>position</Pill>, or (in the JSON Playground) an edge whose <Pill>from</Pill>/<Pill>to</Pill>{' '}
+              names no node. Any other value outside its field&apos;s vocabulary — a <Pill>lineStart</Pill> of <Pill>&quot;middle&quot;</Pill>, a <Pill>width</Pill> of{' '}
+              <Pill>&quot;wide&quot;</Pill>, a <Pill>parentId</Pill> that isn&apos;t a group — is dropped so its default applies, and listed under the playground (or in the paste toast) so you
+              can fix it at the source. Numeric strings (<Pill>&quot;120&quot;</Pill>) are read as numbers.
+            </p>
             <Code>{`{
   "nodes": FlowNode[],
   "edges": FlowEdge[],
@@ -152,8 +159,10 @@ export default function GuidePage() {
             </p>
             <p>
               <Pill>icon</Pill> accepts a short legacy name (<Pill>cog play flag bell mail database cloud code send sparkles</Pill>) or, for the full catalog,{' '}
-              <Pill>lucide:&lt;PascalCaseName&gt;</Pill> / <Pill>tabler:&lt;kebab-name&gt;</Pill> (e.g. <Pill>lucide:webhook</Pill>, <Pill>tabler:world</Pill>). Set it to <Pill>null</Pill> explicitly to
-              hide the icon — omitting the field uses the type default instead.
+              <Pill>lucide:&lt;Name&gt;</Pill> / <Pill>tabler:&lt;Name&gt;</Pill> with the icon&apos;s name as lucide.dev / tabler.io show it (e.g. <Pill>lucide:Network</Pill>,{' '}
+              <Pill>lucide:GitBranch</Pill>, <Pill>tabler:IconWorld</Pill>). Matching ignores case, hyphens and the library&apos;s own prefixes and suffixes, so <Pill>lucide:git-branch</Pill>,{' '}
+              <Pill>lucide:LucideNetwork</Pill>, <Pill>lucide:NetworkIcon</Pill> and <Pill>tabler:world</Pill> resolve too, as does a renamed icon&apos;s old name (<Pill>lucide:Home</Pill> →{' '}
+              <Pill>House</Pill>). Set it to <Pill>null</Pill> explicitly to hide the icon — omitting the field uses the type default instead.
             </p>
             <p>
               Sizing: <Pill>width</Pill>/<Pill>height</Pill> default to 112×112 and are clamped to 72–320 × 72–240. <Pill>connectionPoints</Pill> (<Pill>{`{ input, output }`}</Pill>, each{' '}
@@ -397,7 +406,7 @@ export default function GuidePage() {
               In the editor you reshape a line by <strong>dragging either endpoint</strong> — each moves anywhere on its own, snapping to the grid like everything else — so it is never boxed in the
               way a block is. In the JSON, though, it is still <em>placed</em> by the same <Pill>position</Pill>/<Pill>width</Pill>/<Pill>height</Pill> box every other node has, which is what lets it
               sit inside a group and travel with it. <Pill>lineStart</Pill> is what turns that box back into a segment: the corner the <em>start</em> endpoint sits on (<Pill>nw</Pill>, <Pill>ne</Pill>,{' '}
-              <Pill>se</Pill> or <Pill>sw</Pill>), with the end endpoint always on the opposite corner. A perfectly horizontal or vertical line is the degenerate case: give it <Pill>height: 0</Pill> or{' '}
+              <Pill>se</Pill> or <Pill>sw</Pill> — <Pill>top-left</Pill> and the other spelled-out names are read as these), with the end endpoint always on the opposite corner. A perfectly horizontal or vertical line is the degenerate case: give it <Pill>height: 0</Pill> or{' '}
               <Pill>width: 0</Pill>.
             </p>
             <p>

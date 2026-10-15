@@ -38,7 +38,7 @@ async function preloadIcons(doc: FlowDocumentJSON) {
   const libraries = new Set<'lucide' | 'tabler'>();
   for (const node of doc.nodes) {
     const icon = resolveNodeStyle(node).icon;
-    if (!icon || icon.startsWith('logo:') || LEGACY_ICONS[icon]) continue;
+    if (!icon || icon.startsWith('logo:') || Object.hasOwn(LEGACY_ICONS, icon)) continue;
     libraries.add(parseNodeIcon(icon).library);
   }
   await Promise.all([...libraries].map((library) => loadIconLibrary(library)));

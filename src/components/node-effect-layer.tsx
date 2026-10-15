@@ -17,6 +17,7 @@
 // Both read the same three knobs so "speed" and "intensity" mean the same
 // thing whichever effect is chosen.
 
+import { finiteOr } from '@/lib/document-vocabulary';
 import type { NodeEffect } from '@/lib/flowchart-types';
 
 /** Base cycle length per effect, in seconds, before `effectSpeed`. */
@@ -48,8 +49,8 @@ export function isDecorationEffect(effect: NodeEffect) {
 /** Speed and intensity, clamped once so every caller agrees on the range. */
 export function resolveEffectKnobs(speed: number | undefined, intensity: number | undefined) {
   return {
-    speed: Math.max(0.25, Math.min(3, speed ?? 1)),
-    intensity: Math.max(0.25, Math.min(3, intensity ?? 1)),
+    speed: Math.max(0.25, Math.min(3, finiteOr(speed, 1))),
+    intensity: Math.max(0.25, Math.min(3, finiteOr(intensity, 1))),
   };
 }
 
