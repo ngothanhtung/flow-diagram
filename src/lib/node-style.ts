@@ -58,6 +58,7 @@ import {
   IconWorld,
 } from '@tabler/icons-react';
 import type { ComponentType } from 'react';
+import { BLOCK_ALIGNS, BORDER_STYLES, FONT_WEIGHTS, ICON_POSITIONS, NODE_FILLS, NODE_FONTS, NODE_SHADOWS, finiteOr, memberOr } from './document-vocabulary';
 import type { ConnectionSide, DrawTool, FlowNode, NodeColor, NodeIcon, NodeShape, NodeType } from './flowchart-types';
 
 export type { NodeColor, NodeIcon, NodeShape } from './flowchart-types';
@@ -877,19 +878,43 @@ export interface ResolvedNodeStyle {
   bodyClass: string;
 }
 
+/** The type defaults a node falls back to; an unknown `type` reads as a
+ *  plain process block rather than crashing the lookup. */
+function typeDefaults(type: unknown) {
+  return typeof type === 'string' && Object.hasOwn(DEFAULT_BY_TYPE, type) ? DEFAULT_BY_TYPE[type as NodeType] : DEFAULT_BY_TYPE.process;
+}
+
+function isPaletteColor(value: unknown): value is NodeColor {
+  return typeof value === 'string' && Object.hasOwn(COLORS, value);
+}
+
+function isHex(value: unknown): value is `#${string}` {
+  return typeof value === 'string' && value.startsWith('#');
+}
+
+/**
+ * Every field read defensively: a document can arrive from hand- or
+ * AI-written JSON, and `normalizeDocument` is the gate that cleans it, but
+ * a value outside a field's vocabulary must still only *degrade* here —
+ * fall back to the default — never index a lookup table with it and throw
+ * mid-render.
+ */
 export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
-  const shape: NodeShape = node.shape ?? DEFAULT_BY_TYPE[node.type].shape;
-  const fallbackColor = DEFAULT_BY_TYPE[node.type].color;
-  const paletteColor = node.color && node.color in COLORS ? (node.color as NodeColor) : fallbackColor;
-  const color: NodeColor = paletteColor;
-  const icon: NodeIcon | null = node.icon === null ? null : (node.icon ?? DEFAULT_BY_TYPE[node.type].icon);
+  const defaults = typeDefaults(node.type);
+  const shape: NodeShape = typeof node.shape === 'string' && Object.hasOwn(SHAPES, node.shape) ? node.shape : defaults.shape;
+  const color: NodeColor = isPaletteColor(node.color) ? node.color : defaults.color;
+  const icon: NodeIcon | null = node.icon === null ? null : typeof node.icon === 'string' ? node.icon : defaults.icon;
   const shapeSpec = SHAPES[shape];
   const colorSpec = COLORS[color];
-  const foreground = node.color?.startsWith('#') ? (node.color as `#${string}`) : DEFAULT_FOREGROUND;
-  const background = node.backgroundColor ?? colorSpec.background;
-  const borderColor = node.borderColor?.startsWith('#') ? (node.borderColor as `#${string}`) : node.borderColor && node.borderColor in COLORS ? COLORS[node.borderColor as NodeColor].foreground : foreground;
+  const foreground = isHex(node.color) ? node.color : DEFAULT_FOREGROUND;
+  const background = typeof node.backgroundColor === 'string' ? node.backgroundColor : colorSpec.background;
+  const borderColor = isHex(node.borderColor) ? node.borderColor : isPaletteColor(node.borderColor) ? COLORS[node.borderColor].foreground : foreground;
   const bodyClass = `bg-linear-to-br ${colorSpec.gradient} ring-1 ring-${colorSpec.ring} text-${colorSpec.text}`;
   const limits = nodeSizeLimits(node);
+  // A free icon/logo object gets the same large ceiling as the dedicated
+  // logo block — it's meant to be the graphic itself, not a small icon
+  // inside a card.
+  const largeIcon = node.type === 'logo' || node.type === 'icon';
   return {
     shape,
     color,
@@ -902,28 +927,25 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
     // Limits are per node kind — a frame holds other blocks, a table
     // grows with its column list, a text object can be tiny — and they
     // all come from `nodeSizeLimits` so nothing drifts.
-    width: Math.max(limits.minWidth, Math.min(limits.maxWidth, node.width ?? limits.defaultWidth)),
-    height: Math.max(limits.minHeight, Math.min(limits.maxHeight, node.height ?? limits.defaultHeight)),
-    rotation: node.rotation ?? 0,
-    borderWidth: Math.max(0, Math.min(8, node.borderWidth ?? 2)),
-    borderStyle: node.borderStyle ?? 'solid',
-    opacity: Math.max(0.2, Math.min(1, node.opacity ?? 1)),
+    width: Math.max(limits.minWidth, Math.min(limits.maxWidth, finiteOr(node.width, limits.defaultWidth))),
+    height: Math.max(limits.minHeight, Math.min(limits.maxHeight, finiteOr(node.height, limits.defaultHeight))),
+    rotation: finiteOr(node.rotation, 0),
+    borderWidth: Math.max(0, Math.min(8, finiteOr(node.borderWidth, 2))),
+    borderStyle: memberOr(BORDER_STYLES, node.borderStyle, 'solid'),
+    opacity: Math.max(0.2, Math.min(1, finiteOr(node.opacity, 1))),
     // Unset = the gradient, so every saved diagram renders exactly as it
     // did before the field existed. New nodes are stamped 'flat'.
-    fill: node.fill ?? 'sheen',
-    shadow: node.shadow ?? 'none',
-    // A free icon/logo object gets the same large ceiling as the dedicated
-    // logo block — it's meant to be the graphic itself, not a small icon
-    // inside a card.
-    iconSize: Math.max(12, Math.min(node.type === 'logo' || node.type === 'icon' ? 256 : 48, node.iconSize ?? (node.type === 'logo' || node.type === 'icon' ? 64 : 20))),
-    iconPosition: node.iconPosition ?? 'top',
-    blockAlign: node.blockAlign ?? 'center',
-    fontFamily: node.fontFamily ?? 'geist-mono',
-    fontSize: Math.max(10, Math.min(28, node.fontSize ?? 14)),
-    fontWeight: node.fontWeight ?? 'semibold',
+    fill: memberOr(NODE_FILLS, node.fill, 'sheen'),
+    shadow: memberOr(NODE_SHADOWS, node.shadow, 'none'),
+    iconSize: Math.max(12, Math.min(largeIcon ? 256 : 48, finiteOr(node.iconSize, largeIcon ? 64 : 20))),
+    iconPosition: memberOr(ICON_POSITIONS, node.iconPosition, 'top'),
+    blockAlign: memberOr(BLOCK_ALIGNS, node.blockAlign, 'center'),
+    fontFamily: memberOr(NODE_FONTS, node.fontFamily, 'geist-mono'),
+    fontSize: Math.max(10, Math.min(28, finiteOr(node.fontSize, 14))),
+    fontWeight: memberOr(FONT_WEIGHTS, node.fontWeight, 'semibold'),
     // `justify` existed briefly and may sit in a saved document.
     textAlign: node.textAlign === 'left' || node.textAlign === 'right' ? node.textAlign : 'center',
-    portSize: Math.max(4, Math.min(14, node.portSize ?? 9)),
+    portSize: Math.max(4, Math.min(14, finiteOr(node.portSize, 9))),
     bodyClass,
   };
 }
@@ -931,5 +953,5 @@ export function resolveNodeStyle(node: FlowNode): ResolvedNodeStyle {
 /** The four icons that map to `NodeType` when a node carries no
  *  explicit icon — used for the type buttons in the palette / legend. */
 export function iconForType(type: NodeType): LucideIcon {
-  return TYPE_DEFAULT_ICON[type];
+  return Object.hasOwn(TYPE_DEFAULT_ICON, type) ? TYPE_DEFAULT_ICON[type] : TYPE_DEFAULT_ICON.process;
 }

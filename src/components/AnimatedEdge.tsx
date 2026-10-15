@@ -1,11 +1,12 @@
 'use client';
 
-import type { EdgeMarker, ExecutionState, FlowEdge, FlowNode } from '@/lib/flowchart-types';
+import { EDGE_DIRECTIONS, EDGE_EFFECTS, EDGE_MARKERS, finiteOr, memberOr } from '@/lib/document-vocabulary';
+import type { EdgeDirection, EdgeEffect, EdgeMarker, ExecutionState, FlowEdge, FlowNode } from '@/lib/flowchart-types';
 import { EDGE_DRAW_DURATION_MS } from '@/lib/execution-timing';
 import { edgeLabelBox, resolveEdgeLabelStyle } from '@/lib/edge-label-style';
 import { edgeLineCap, edgeLineDash } from '@/lib/edge-style';
 import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
-import { buildEdgeGeometry, pointAlongEdgeGeometry } from './edge-geometry';
+import { buildEdgeGeometry, edgeLabelAnchor } from './edge-geometry';
 import { EdgeEffectLayer } from './edge-effect-layer';
 import { EdgeMarkerSymbol } from './edge-marker';
 
@@ -45,20 +46,25 @@ interface AnimatedEdgeProps {
   flattenEffect?: boolean;
 }
 
-export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, onLabelPointerDown, onDoubleClick, selected = false, tone = 'text-sky-300', color, effectColor, performanceMode = false, executionState = 'normal', flattenEffect = false }: AnimatedEdgeProps) {
+export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, onLabelPointerDown, onDoubleClick, selected = false, tone = 'text-sky-300', color, effectColor: rawEffectColor, performanceMode = false, executionState = 'normal', flattenEffect = false }: AnimatedEdgeProps) {
   const geometry = buildEdgeGeometry(edge, from, to);
   const { d, start, end, startAngle, angle, length } = geometry;
-  const effect = flattenEffect ? 'none' : (edge.effect ?? 'flow');
-  const direction = edge.direction ?? 'forward';
-  const lineWidth = Math.max(1, Math.min(6, edge.width ?? 2.5));
-  const effectSize = Math.max(0.5, Math.min(3, edge.effectSize ?? 1));
-  const effectCount = edge.effectCount !== undefined ? Math.max(1, Math.min(8, Math.round(edge.effectCount))) : undefined;
-  const effectDensity = edge.effectDensity !== undefined ? Math.max(0.5, Math.min(2, edge.effectDensity)) : undefined;
-  const glowIntensity = edge.glowIntensity !== undefined ? Math.max(0, Math.min(3, edge.glowIntensity)) : undefined;
-  const glowColor = edge.glowColor;
-  const speed = Math.max(0.25, Math.min(3, edge.animationSpeed ?? 1));
-  const startMarker = edge.startMarker ?? 'none';
-  const endMarker = edge.endMarker ?? 'none';
+  // Every optional field is read through its vocabulary, like
+  // `resolveNodeStyle` does for nodes: an out-of-range value falls back to
+  // the default rather than reaching a lookup table (`PATTERN_DASHES[…]`).
+  const effect = flattenEffect ? 'none' : memberOr<EdgeEffect>(EDGE_EFFECTS, edge.effect, 'flow');
+  const direction = memberOr<EdgeDirection>(EDGE_DIRECTIONS, edge.direction, 'forward');
+  const lineWidth = Math.max(1, Math.min(6, finiteOr(edge.width, 2.5)));
+  const effectSize = Math.max(0.5, Math.min(3, finiteOr(edge.effectSize, 1)));
+  const effectCount = isFiniteNumber(edge.effectCount) ? Math.max(1, Math.min(8, Math.round(edge.effectCount))) : undefined;
+  const effectDensity = isFiniteNumber(edge.effectDensity) ? Math.max(0.5, Math.min(2, edge.effectDensity)) : undefined;
+  const glowIntensity = isFiniteNumber(edge.glowIntensity) ? Math.max(0, Math.min(3, edge.glowIntensity)) : undefined;
+  const glowColor = typeof edge.glowColor === 'string' ? edge.glowColor : undefined;
+  const speed = Math.max(0.25, Math.min(3, finiteOr(edge.animationSpeed, 1)));
+  const startMarker = memberOr<EdgeMarker>(EDGE_MARKERS, edge.startMarker, 'none');
+  const endMarker = memberOr<EdgeMarker>(EDGE_MARKERS, edge.endMarker, 'none');
+  const effectShape = typeof edge.effectShape === 'string' ? edge.effectShape : undefined;
+  const effectColor = typeof rawEffectColor === 'string' ? rawEffectColor : undefined;
   const lowPower = executionState === 'pending';
   const isDrawing = executionState === 'active';
   const lineDash = edgeLineDash(edge.lineStyle, lineWidth);
@@ -82,7 +88,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   // curve bulges and all — without asking the DOM for a bounding box.
   const maskPad = length + lineWidth + 8;
   const showEffect = executionState === 'normal' || executionState === 'active';
-  const drawDuration = `${edge.duration ?? EDGE_DRAW_DURATION_MS}ms`;
+  const drawDuration = `${finiteOr(edge.duration, EDGE_DRAW_DURATION_MS)}ms`;
   const drawStyle = isDrawing
     ? ({
         '--edge-draw-duration': drawDuration,
@@ -92,37 +98,9 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   const labelStyle = resolveEdgeLabelStyle(edge);
   const labelBox = edgeLabelBox(edge.label ?? '', labelStyle);
   const labelWidth = labelBox.width;
-  // Where the label pill anchors — sampled on the drawn path itself
-  // (not the endpoint chord, which diverges on bent routes). Which
-  // options travel along vs. across the line follows the local segment
-  // direction at the midpoint: on a horizontal segment left/right ride
-  // the quarter marks and top/bottom float clear; on a vertical segment
-  // the roles swap so the pill never sits on the stroke.
-  const labelPosition = edge.labelPosition ?? 'center';
-  const midSample = pointAlongEdgeGeometry(geometry, 0.5);
-  const horizontalAtMid = Math.abs(midSample.direction.x) >= Math.abs(midSample.direction.y);
-  const startSample = pointAlongEdgeGeometry(geometry, 0.25);
-  const endSample = pointAlongEdgeGeometry(geometry, 0.75);
-  const sideOffset = labelWidth / 2 + 10;
-  const labelAnchor = edge.labelOffset !== undefined
-    ? pointAlongEdgeGeometry(geometry, Math.max(0, Math.min(1, edge.labelOffset))).point
-    : labelPosition === 'left'
-      ? horizontalAtMid
-        ? startSample.point
-        : { x: midSample.point.x - sideOffset, y: midSample.point.y }
-      : labelPosition === 'right'
-        ? horizontalAtMid
-          ? endSample.point
-          : { x: midSample.point.x + sideOffset, y: midSample.point.y }
-        : labelPosition === 'top'
-          ? horizontalAtMid
-            ? { x: midSample.point.x, y: midSample.point.y - 26 }
-            : startSample.point
-          : labelPosition === 'bottom'
-            ? horizontalAtMid
-              ? { x: midSample.point.x, y: midSample.point.y + 26 }
-              : endSample.point
-            : midSample.point;
+  // Where the label pill anchors — shared with the image export's bounds
+  // so a label can never sit outside the exported picture.
+  const labelAnchor = edgeLabelAnchor(edge, geometry, labelWidth);
   // The arrowhead rides at the silhouette — its offset from the
   // destination's centre is the length of the in-anchor plus a small
   // gap so the arrow doesn't overlap the port dot.
@@ -172,7 +150,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
           density={effectDensity}
           glow={glowIntensity}
           glowColor={glowColor}
-          shape={edge.effectShape}
+          shape={effectShape}
           paused={paused}
           performanceMode={performanceMode || lowPower}
           isDrawing={isDrawing}
@@ -240,6 +218,10 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
 
     </g>
   );
+}
+
+function isFiniteNumber(value: unknown): value is number {
+  return typeof value === 'number' && Number.isFinite(value);
 }
 
 function EdgeMarkerShape({ marker, x, y, angle }: { marker: EdgeMarker; x: number; y: number; angle: number }) {

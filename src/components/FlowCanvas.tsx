@@ -4,6 +4,7 @@ import { Grid2x2, Info, Magnet, Maximize2, Minus, Plus } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ConnectionSide, DrawTool, ExecutionState, FlowDocumentJSON, FlowPoint, LineCorner } from '@/lib/flowchart-types';
 import { screenToData } from '@/lib/coords';
+import { finiteOr } from '@/lib/document-vocabulary';
 import { resolveDocumentStyles } from '@/lib/edge-style';
 import { endpointsOfLine, lineGeometryFromEndpoints } from '@/lib/line-geometry';
 import { drawToolPreviewShape, nodeSizeLimits, resolveNodeStyle, SHAPES } from '@/lib/node-style';
@@ -111,6 +112,9 @@ interface FlowCanvasProps {
    *  editing affordance (drag, resize, link, bend, snap, grid picker)
    *  is disabled or hidden. */
   readOnly?: boolean;
+  /** Reports the snap toggle and grid size whenever they change, so the
+   *  editor's keyboard nudge can step by one grid cell. */
+  onGridChange?: (grid: { snapEnabled: boolean; gridSize: number }) => void;
 }
 
 const MIN_ZOOM_RATIO = 0.25;
@@ -184,6 +188,7 @@ export function FlowCanvas({
   infoOpen,
   onToggleInfo,
   readOnly = false,
+  onGridChange,
 }: FlowCanvasProps) {
   // Named line styles are merged in once, here, rather than at each of
   // the dozen places downstream that read an edge's colour, width,
@@ -202,6 +207,9 @@ export function FlowCanvas({
   const [snapEnabled, setSnapEnabled] = useState(true);
   const [gridVisible, setGridVisible] = useState(!readOnly);
   const [gridSize, setGridSize] = useState<number>(DEFAULT_GRID_SIZE);
+  useEffect(() => {
+    onGridChange?.({ snapEnabled, gridSize });
+  }, [onGridChange, snapEnabled, gridSize]);
   const [isPanning, setIsPanning] = useState(false);
   const panRef = useRef<PanState | null>(null);
   const suppressCanvasClickRef = useRef(false);
@@ -625,7 +633,7 @@ export function FlowCanvas({
       from,
       to,
       geometry: buildEdgeGeometry(edge, from, to),
-      color: edge.color ?? resolveNodeStyle(from).foreground,
+      color: typeof edge.color === 'string' ? edge.color : resolveNodeStyle(from).foreground,
     };
   }, [document.edges, nodesById, selectedEdgeId]);
 
@@ -1037,7 +1045,7 @@ export function FlowCanvas({
             const from = nodesById.get(edge.from);
             const to = nodesById.get(edge.to);
             if (!from || !to) return null;
-            const edgeColor = edge.color ?? resolveNodeStyle(from).foreground;
+            const edgeColor = typeof edge.color === 'string' ? edge.color : resolveNodeStyle(from).foreground;
             return (
               <AnimatedEdge
                 key={edge.id}
@@ -1317,10 +1325,13 @@ function computeDataViewBox(doc: FlowDocumentJSON) {
     return { x: 0, y: 0, width: 800, height: 480 };
   }
   const PAD = 120;
-  const minX = Math.min(...doc.nodes.map((node) => node.position.x - Math.max(node.width ?? 112, node.height ?? 112) / 2)) - PAD;
-  const minY = Math.min(...doc.nodes.map((node) => node.position.y - Math.max(node.width ?? 112, node.height ?? 112) / 2)) - PAD;
-  const maxX = Math.max(...doc.nodes.map((node) => node.position.x + Math.max(node.width ?? 112, node.height ?? 112) / 2)) + PAD;
-  const maxY = Math.max(...doc.nodes.map((node) => node.position.y + Math.max(node.width ?? 112, node.height ?? 112) / 2)) + PAD;
+  // A non-numeric width/height must not reach this sum: a single NaN here
+  // makes the whole view transform NaN and the canvas paints nothing.
+  const reach = (node: FlowDocumentJSON['nodes'][number]) => Math.max(finiteOr(node.width, 112), finiteOr(node.height, 112)) / 2;
+  const minX = Math.min(...doc.nodes.map((node) => node.position.x - reach(node))) - PAD;
+  const minY = Math.min(...doc.nodes.map((node) => node.position.y - reach(node))) - PAD;
+  const maxX = Math.max(...doc.nodes.map((node) => node.position.x + reach(node))) + PAD;
+  const maxY = Math.max(...doc.nodes.map((node) => node.position.y + reach(node))) + PAD;
   return {
     x: minX,
     y: minY,

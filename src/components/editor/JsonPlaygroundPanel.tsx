@@ -5,35 +5,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
+import { checkDocument } from '@/lib/document-validation';
 import { useEditorStore } from '@/lib/editor-store';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
-
-/**
- * Validates a pasted document with the same rules /guide documents:
- * unique non-empty node ids, required node fields, and edges that
- * reference nodes which actually exist. Returns an error message, or
- * null when the document is safe to render.
- */
-function validateDocument(parsed: unknown): string | null {
-  if (typeof parsed !== 'object' || parsed === null || !Array.isArray((parsed as { nodes?: unknown }).nodes) || !Array.isArray((parsed as { edges?: unknown }).edges)) {
-    return 'Document must be an object with "nodes" and "edges" arrays.';
-  }
-  const document = parsed as FlowDocumentJSON;
-  const nodeIds = new Set<string>();
-  for (const node of document.nodes) {
-    if (!node || typeof node.id !== 'string' || !node.id) return 'Every node needs a non-empty string "id".';
-    if (nodeIds.has(node.id)) return `Duplicate node id "${node.id}".`;
-    if (!node.type || !node.title || !node.position) return `Node "${node.id}" is missing "type", "title", or "position".`;
-    nodeIds.add(node.id);
-  }
-  for (const edge of document.edges) {
-    if (!edge || typeof edge.id !== 'string' || !edge.id) return 'Every edge needs a non-empty string "id".';
-    if (!nodeIds.has(edge.from) || !nodeIds.has(edge.to)) {
-      return `Edge "${edge.id}" references a node id that doesn't exist ("${edge.from}" → "${edge.to}").`;
-    }
-  }
-  return null;
-}
 
 /**
  * Paste a FlowDocumentJSON and render it on the canvas. Loading goes
@@ -44,6 +18,9 @@ export function JsonPlaygroundPanel({ document }: { document: FlowDocumentJSON }
   const loadRemoteTemplate = useEditorStore((state) => state.loadRemoteTemplate);
   const [draft, setDraft] = useState('');
   const [error, setError] = useState<string | null>(null);
+  // What `normalizeDocument` repaired on the last render — shown in full
+  // under the editor so the author can fix the JSON at its source.
+  const [fixes, setFixes] = useState<string[]>([]);
 
   const handleRender = () => {
     let parsed: unknown;
@@ -51,17 +28,22 @@ export function JsonPlaygroundPanel({ document }: { document: FlowDocumentJSON }
       parsed = JSON.parse(draft);
     } catch (err) {
       setError(`Invalid JSON: ${(err as Error).message}`);
+      setFixes([]);
       return;
     }
-    const message = validateDocument(parsed);
-    if (message) {
-      setError(message);
+    const checked = checkDocument(parsed);
+    if (!checked.ok) {
+      setError(checked.error);
+      setFixes([]);
       return;
     }
-    const next = parsed as FlowDocumentJSON;
+    const next = checked.document;
     setError(null);
+    setFixes(checked.fixes);
     loadRemoteTemplate({ name: 'Pasted JSON', category: 'Playground', description: 'Rendered from the JSON playground panel.', document: next });
-    toast.success('Rendered pasted JSON', { description: `${next.nodes.length} nodes, ${next.edges.length} edges` });
+    const summary = `${next.nodes.length} nodes, ${next.edges.length} edges`;
+    if (checked.fixes.length > 0) toast.warning('Rendered pasted JSON with repairs', { description: `${summary}. Repaired ${checked.fixes.length} invalid ${checked.fixes.length === 1 ? 'value' : 'values'} — see the list under the editor.` });
+    else toast.success('Rendered pasted JSON', { description: summary });
   };
 
   return (
@@ -85,6 +67,18 @@ export function JsonPlaygroundPanel({ document }: { document: FlowDocumentJSON }
         className='mt-3 h-56 w-full resize-y rounded-lg border border-border bg-muted/40 p-2 font-mono text-[11px] leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/30'
       />
       {error && <p className='mt-2 rounded-md bg-rose-500/10 px-2 py-1.5 text-[11px] leading-relaxed text-rose-600 dark:text-rose-300 ring-1 ring-rose-400/30'>{error}</p>}
+      {fixes.length > 0 && (
+        <div className='mt-2 rounded-md bg-amber-500/10 px-2 py-1.5 text-[11px] leading-relaxed text-amber-700 ring-1 ring-amber-400/30 dark:text-amber-200'>
+          <p className='font-semibold'>
+            Rendered with {fixes.length} {fixes.length === 1 ? 'repair' : 'repairs'} — these values were outside the Diagram JSON vocabulary:
+          </p>
+          <ul className='mt-1 max-h-32 list-disc space-y-0.5 overflow-y-auto pl-4'>
+            {fixes.map((fix, index) => (
+              <li key={index}>{fix}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className='mt-3 flex items-center gap-2'>
         <Button variant='accent' onClick={handleRender} disabled={!draft.trim()} className='flex-1 text-xs font-semibold'>
           <Play size={13} />
@@ -95,6 +89,7 @@ export function JsonPlaygroundPanel({ document }: { document: FlowDocumentJSON }
           onClick={() => {
             setDraft(JSON.stringify(document, null, 2));
             setError(null);
+            setFixes([]);
           }}
           title='Fill with the current canvas document'
         >

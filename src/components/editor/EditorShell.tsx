@@ -1,16 +1,19 @@
 'use client';
 
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Redo2, Undo2 } from 'lucide-react';
 import Link from 'next/link';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import { EditorCanvas } from '@/components/editor/EditorCanvas';
 import { EditorInfoPanels, InspectorSidebar } from '@/components/editor/InspectorSidebar';
 import { PlaybackControls } from '@/components/editor/PlaybackControls';
+import { ShortcutsDialog } from '@/components/editor/ShortcutsDialog';
+import { useEditorShortcuts } from '@/components/editor/use-editor-shortcuts';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { useEditorStore } from '@/lib/editor-store';
+import { selectCanRedo, selectCanUndo, useEditorStore } from '@/lib/editor-store';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { useExecutionPlayback } from '@/lib/use-execution-playback';
+import { useShortcutLabel } from '@/lib/use-is-mac';
 
 export interface EditorInfo {
   category: string;
@@ -41,6 +44,8 @@ interface EditorShellProps {
   fullScreen?: boolean;
   /** Dialogs owned by the surface (share, template picker, reset…). */
   children?: ReactNode;
+  /** What ⌘S does — the surface's own Save (diagram or template). */
+  onSave?: () => void;
 }
 
 /**
@@ -49,9 +54,12 @@ interface EditorShellProps {
  * what genuinely differs — branding, its File menu, its action buttons,
  * its persistence dialogs.
  */
-export function EditorShell({ document, icon, subtitle, fileMenu, actions, headerEnd, subBar, info, inspectorLabel, fullScreen = false, children }: EditorShellProps) {
+export function EditorShell({ document, icon, subtitle, fileMenu, actions, headerEnd, subBar, info, inspectorLabel, fullScreen = false, children, onSave }: EditorShellProps) {
   const infoOpen = useEditorStore((state) => state.infoOpen);
   const playback = useExecutionPlayback(document);
+  const [shortcutsOpen, setShortcutsOpen] = useState(false);
+  // The one keyboard handler for both editors (the Viewer has none).
+  useEditorShortcuts({ onSave, onShowShortcuts: () => setShortcutsOpen(true) });
 
   return (
     <div className={['flex flex-col bg-background text-foreground', fullScreen ? 'h-screen' : 'h-full'].join(' ')}>
@@ -69,13 +77,14 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
               row, Save stranded alone on the next). */}
           <div className='flex flex-wrap items-center gap-2 sm:gap-3'>
             {fileMenu}
+            <UndoRedoButtons />
             {actions}
           </div>
         </div>
 
         <div className='flex flex-wrap items-center justify-end gap-2'>
           <PlaybackControls runMode={playback.runMode} repeatEnabled={playback.repeatEnabled} stepCount={playback.orderedGroups.length} />
-          <Button variant='toolbar' size='lg' nativeButton={false} render={<Link href='/help' title='User guide' />}>
+          <Button variant='toolbar' size='lg' nativeButton={false} render={<Link href='/help' title='User guide — press ? for keyboard shortcuts' />}>
             <BookOpen size={13} />
             <span className='hidden sm:inline'>Help</span>
           </Button>
@@ -86,6 +95,7 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
 
       {subBar}
       {children}
+      <ShortcutsDialog open={shortcutsOpen} onOpenChange={setShortcutsOpen} />
 
       {/* The inspector is a drawer floating over the canvas, so the canvas
           always owns the full width. */}
@@ -103,6 +113,27 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
           {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
         </InspectorSidebar>
       </main>
+    </div>
+  );
+}
+
+/** Undo / Redo for the document — the same history in both editors.
+ *  Each button disables itself when its stack is empty. */
+function UndoRedoButtons() {
+  const canUndo = useEditorStore(selectCanUndo);
+  const canRedo = useEditorStore(selectCanRedo);
+  const undo = useEditorStore((state) => state.undo);
+  const redo = useEditorStore((state) => state.redo);
+  const undoKeys = useShortcutLabel(['mod', 'Z']);
+  const redoKeys = useShortcutLabel(['shift', 'mod', 'Z']);
+  return (
+    <div className='flex items-center gap-1'>
+      <Button variant='toolbar' size='icon-lg' disabled={!canUndo} onClick={undo} title={`Undo (${undoKeys})`} aria-label='Undo'>
+        <Undo2 size={14} />
+      </Button>
+      <Button variant='toolbar' size='icon-lg' disabled={!canRedo} onClick={redo} title={`Redo (${redoKeys})`} aria-label='Redo'>
+        <Redo2 size={14} />
+      </Button>
     </div>
   );
 }

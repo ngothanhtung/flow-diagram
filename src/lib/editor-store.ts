@@ -1,14 +1,17 @@
 'use client';
 
-import { create } from 'zustand';
+import { create, type StateCreator } from 'zustand';
+import { buildFragment, insertFragment, type DiagramFragment, type InsertFragmentOptions } from './clipboard-fragment';
 import { convertDocumentColorTheme } from './color-theme-convert';
+import { normalizeDocument } from './document-validation';
+import { beginGesture, canRedo, canUndo, emptyHistory, endGesture, jsonEqual, recordChange, redo as redoHistory, undo as undoHistory, type DocHistory } from './doc-history';
 import { clearStyleOverrides, edgeStylesOf, resolveEdgeStyle } from './edge-style';
 import { loadEditorSession } from './editor-session';
 import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from './execution-timing';
 import type { ConnectionSide, DiagramSettings, DrawTool, EdgeStyleClass, FlowDocumentJSON, FlowEdge, FlowNode, LineCorner, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
 import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
-import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, nodeBounds } from './node-tree';
+import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, isSceneryNode, nodeBounds } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
 
 /** Which edge of the selection's bounding box the nodes line up against. */
@@ -35,20 +38,15 @@ const DEFAULT_NODE_PAINT: Record<NodeType, { color: `#${string}`; backgroundColo
   line: { color: '#7dd3fc', backgroundColor: '#00000000' },
 };
 
-/**
- * Node kinds that are scenery rather than steps. A container, a caption,
- * a placed graphic or a free line flashing as its own step would
- * interrupt the run of the blocks they describe — they stay fully
- * visible for the whole replay instead.
- *
- * One list, because the two functions below both need it and they used
- * to spell it out as separate `!==` chains that could drift apart.
- */
-const SCENERY_NODE_TYPES = new Set<NodeType>(['group', 'text', 'icon', 'line']);
+// `isSceneryNode` lives in node-tree.ts (pure, so the clipboard module can
+// use it too); re-exported here for the components that import it from the store.
+export { isSceneryNode };
 
-/** True when the node is scenery — see `SCENERY_NODE_TYPES`. */
-export function isSceneryNode(node: FlowNode): boolean {
-  return SCENERY_NODE_TYPES.has(node.type);
+/** The template with its document through `normalizeDocument` — the same
+ *  object back when the document was already clean. */
+function withNormalizedDocument(template: LoadedTemplate): LoadedTemplate {
+  const document = normalizeDocument(template.document).document;
+  return document === template.document ? template : { ...template, document };
 }
 
 /**
@@ -186,11 +184,100 @@ function applyNodeMoves(nodes: FlowNode[], moves: Map<string, { x: number; y: nu
   });
 }
 
+/**
+ * The document without `ids`, the full contents of any Frame among them,
+ * and every Line touching what was removed. Deleting a Frame deletes what
+ * it holds, matching how every other canvas tool treats a container;
+ * `Ungroup` first is the way to keep the members.
+ */
+function withoutNodes(doc: FlowDocumentJSON, ids: readonly string[]): FlowDocumentJSON {
+  const doomed = new Set<string>();
+  for (const id of ids) {
+    const target = doc.nodes.find((node) => node.id === id);
+    if (!target) continue;
+    doomed.add(id);
+    if (target.type === 'group') for (const descendant of descendantIds(doc.nodes, id)) doomed.add(descendant);
+  }
+  if (doomed.size === 0) return doc;
+  return {
+    ...doc,
+    nodes: doc.nodes.filter((node) => !doomed.has(node.id)),
+    edges: doc.edges.filter((edge) => !doomed.has(edge.from) && !doomed.has(edge.to)),
+  };
+}
+
 /** The selected nodes, in document order. */
 function selectedNodesOf(nodes: FlowNode[], selectedIds: string[]): FlowNode[] {
   const wanted = new Set(selectedIds);
   return nodes.filter((node) => wanted.has(node.id));
 }
+
+/**
+ * What one undo step restores: the document, plus the template/diagram it
+ * was loaded from — so undoing a template pick also puts back the Info
+ * panel and the Reset target, not just the canvas.
+ */
+export interface HistorySnapshot {
+  doc: FlowDocumentJSON;
+  loadedTemplate: LoadedTemplate | null;
+}
+
+/**
+ * Settings that live inside `doc.settings` (so they save with the
+ * diagram) but are presentation controls, not content: switching them is
+ * never an undo step, and undo/redo never switches back a choice the user
+ * made (see `restorePresentation`).
+ */
+const PRESENTATION_SETTINGS = ['runMode', 'repeatEnabled'] as const satisfies ReadonlyArray<keyof DiagramSettings>;
+
+function withoutPresentation(settings: DiagramSettings | undefined): DiagramSettings | undefined {
+  if (!settings) return undefined;
+  const rest: DiagramSettings = { ...settings };
+  for (const key of PRESENTATION_SETTINGS) delete rest[key];
+  return rest;
+}
+
+/** True when two documents differ in nothing but presentation settings. */
+export function sameDiagramContent(a: FlowDocumentJSON, b: FlowDocumentJSON): boolean {
+  if (a === b) return true;
+  const { settings: settingsA, ...restA } = a;
+  const { settings: settingsB, ...restB } = b;
+  if (!jsonEqual(restA, restB)) return false;
+  // An empty settings object and none at all are the same content.
+  const contentA = withoutPresentation(settingsA) ?? {};
+  const contentB = withoutPresentation(settingsB) ?? {};
+  return jsonEqual(contentA, contentB);
+}
+
+function sameSnapshot(a: HistorySnapshot, b: HistorySnapshot): boolean {
+  return a.loadedTemplate === b.loadedTemplate && sameDiagramContent(a.doc, b.doc);
+}
+
+/**
+ * The document to show after undo/redo moves from `from` (the side of the
+ * step being left) to `target`. Per presentation setting: if it is still
+ * what the step left it at, the step owns it and it travels with the step
+ * — a template brought its own run mode, so undoing the pick brings the
+ * diagram's back. If the user has switched it since, their choice stays.
+ *
+ * Returns `target` itself whenever nothing needs overriding, so undoing
+ * back to the saved document stringifies exactly as it was saved and
+ * `dirty` clears.
+ */
+function restorePresentation(target: FlowDocumentJSON, from: FlowDocumentJSON, current: FlowDocumentJSON): FlowDocumentJSON {
+  const kept = PRESENTATION_SETTINGS.filter((key) => current.settings?.[key] !== from.settings?.[key] && current.settings?.[key] !== target.settings?.[key]);
+  if (kept.length === 0) return target;
+  const settings: DiagramSettings = { ...target.settings };
+  for (const key of kept) {
+    const value = current.settings?.[key];
+    if (value === undefined) delete settings[key];
+    else (settings as Record<string, unknown>)[key] = value;
+  }
+  return { ...target, settings };
+}
+
+/** Hand-out for gesture ids; only identity matters. */
+let nextGestureId = 1;
 
 interface EditorState {
   /** Guard so session hydration happens exactly once per page load. */
@@ -206,6 +293,13 @@ interface EditorState {
   currentDiagramPublic: boolean;
   savedSignature: string | null;
   savingDiagram: boolean;
+
+  /** Undo/redo stacks — see *Undo / redo* in CLAUDE.md. Never persisted. */
+  history: DocHistory<HistorySnapshot>;
+  /** Bumped on every undo/redo, so panels holding a local draft of a
+   *  field (the inspectors) remount on the restored values instead of
+   *  showing — and later re-committing — the undone text. */
+  historyRevision: number;
 
   // Playback cursor — an index into `computeRunTimeline(doc)`.
   seed: number;
@@ -224,6 +318,9 @@ interface EditorState {
   linkingFromId: string | null;
   activeShape: DrawTool | null;
   infoOpen: boolean;
+  /** The canvas's snap toggle and grid size, mirrored here by
+   *  `EditorCanvas` so keyboard nudging can step by one grid cell. */
+  canvasGrid: { snapEnabled: boolean; gridSize: number };
 
   // Lifecycle
   hydrate: (userId: string) => void;
@@ -233,7 +330,12 @@ interface EditorState {
   setDiagramPublic: (isPublic: boolean) => void;
   markDiagramSaved: (diagramId: string, name: string, savedDocument: FlowDocumentJSON) => void;
   loadStoredDiagram: (diagram: StoredDiagram) => void;
+  /** Replace the canvas with a template, starter, import or pasted JSON.
+   *  An ordinary undoable change. */
   loadRemoteTemplate: (template: LoadedTemplate) => void;
+  /** Open a library template for editing (the admin template editor).
+   *  Like opening a diagram: a new session, so history starts empty. */
+  openTemplate: (template: LoadedTemplate) => void;
   resetToTemplate: () => void;
   resetCanvasState: () => void;
 
@@ -262,6 +364,7 @@ interface EditorState {
   setActiveShape: (shape: DrawTool | null) => void;
   toggleInfo: () => void;
   setSavingDiagram: (saving: boolean) => void;
+  setCanvasGrid: (grid: { snapEnabled: boolean; gridSize: number }) => void;
 
   // Document mutations
   onNodeMove: (id: string, position: { x: number; y: number }) => void;
@@ -291,6 +394,33 @@ interface EditorState {
   /** Point a line at a class, or detach it (`null`). */
   assignEdgeStyle: (edgeId: string, styleId: string | null) => void;
 
+  // Undo / redo
+  undo: () => void;
+  redo: () => void;
+  /** Open a gesture: every document change until the matching
+   *  `endHistoryGesture(id)` becomes one undo step (none if nothing
+   *  changed). Opening one closes whatever gesture was still open. */
+  beginHistoryGesture: () => number;
+  /** Close the gesture `id` (or whichever is open, without an id). */
+  endHistoryGesture: (id?: number) => void;
+
+  // Actions over the whole selection (keyboard shortcuts, clipboard).
+  // Each is one store write, so each is one undo step.
+  /** Delete every selected Element (Frames with their contents, plus the
+   *  Lines touching them) — or the selected Line when no Element is. */
+  deleteSelection: () => void;
+  /** Duplicate the selection as a copy offset down-right; the copy
+   *  becomes the selection. Returns the new ids. */
+  duplicateSelection: () => string[];
+  /** Select every Element on the canvas. */
+  selectAll: () => void;
+  /** Move every selected Element (and selected Frames' contents) by a
+   *  delta. Callers fold a held key into one step with a gesture. */
+  nudgeSelection: (dx: number, dy: number) => void;
+  /** Insert a clipboard fragment (see `clipboard-fragment.ts`); the
+   *  inserted Elements become the selection. Returns their ids. */
+  pasteFragment: (fragment: DiagramFragment, options?: InsertFragmentOptions) => string[];
+
   // Layout actions over the current multi-selection. Each is a no-op
   // below its minimum selection size, so the UI can stay mounted.
   /** Line every selected node up against the selection's own bounding box. */
@@ -301,7 +431,72 @@ interface EditorState {
   matchSelectedNodeSize: (dimension: 'width' | 'height' | 'both') => void;
 }
 
-export const useEditorStore = create<EditorState>((set, get) => ({
+type EditorPatch = Partial<EditorState>;
+
+function snapshotOf(state: EditorState): HistorySnapshot {
+  return { doc: state.doc, loadedTemplate: state.loadedTemplate };
+}
+
+/**
+ * The one place undo history is recorded. Every store write — the
+ * actions below and any outside `useEditorStore.setState` — passes
+ * through here; a write that replaces `doc` (or `loadedTemplate`) is
+ * recorded as a step, or folded into the open gesture. A future content
+ * action therefore can't bypass history by forgetting to call anything:
+ * it has to opt *out*, visibly, by setting `history` in its own patch —
+ * which only the open/load/undo/redo/gesture actions do.
+ */
+function withRecordedHistory(state: EditorState, patch: EditorPatch): EditorPatch {
+  if ('history' in patch) return patch;
+  const docChanged = patch.doc !== undefined && patch.doc !== state.doc;
+  const templateChanged = 'loadedTemplate' in patch && patch.loadedTemplate !== state.loadedTemplate;
+  if (!docChanged && !templateChanged) return patch;
+  const after: HistorySnapshot = { doc: patch.doc ?? state.doc, loadedTemplate: 'loadedTemplate' in patch ? (patch.loadedTemplate ?? null) : state.loadedTemplate };
+  const history = recordChange(state.history, snapshotOf(state), after, sameSnapshot);
+  return history === state.history ? patch : { ...patch, history };
+}
+
+/** Undo/redo restore: the target snapshot, the user's run mode (see
+ *  `restorePresentation`), and a selection trimmed to what still exists. */
+function restoreSnapshot(state: EditorState, snapshot: HistorySnapshot, from: HistorySnapshot): EditorPatch {
+  const doc = restorePresentation(snapshot.doc, from.doc, state.doc);
+  const nodeIds = new Set(doc.nodes.map((node) => node.id));
+  const selectedNodeIds = state.selectedNodeIds.filter((id) => nodeIds.has(id));
+  return {
+    doc,
+    loadedTemplate: snapshot.loadedTemplate,
+    selectedNodeIds: selectedNodeIds.length === state.selectedNodeIds.length ? state.selectedNodeIds : selectedNodeIds,
+    selectedNodeId: state.selectedNodeId && nodeIds.has(state.selectedNodeId) ? state.selectedNodeId : (selectedNodeIds.at(-1) ?? null),
+    selectedEdgeId: state.selectedEdgeId && doc.edges.some((edge) => edge.id === state.selectedEdgeId) ? state.selectedEdgeId : null,
+    historyRevision: state.historyRevision + 1,
+  };
+}
+
+/** Can the Undo button act? (Selector, for components and shortcuts.) */
+export const selectCanUndo = (state: EditorState) => canUndo(state.history);
+/** Can the Redo button act? */
+export const selectCanRedo = (state: EditorState) => canRedo(state.history);
+
+type EditorSet = (partial: EditorPatch | ((state: EditorState) => EditorPatch)) => void;
+
+/**
+ * Store middleware that routes every write — the actions' `set` and any
+ * outside `useEditorStore.setState` — through `withRecordedHistory`.
+ */
+function recordingHistory(creator: (set: EditorSet, get: () => EditorState) => EditorState): StateCreator<EditorState> {
+  return (rawSetState, get, api) => {
+    const recordingSetState = (partial: EditorPatch | ((state: EditorState) => EditorPatch), replace?: boolean) => {
+      const state = get();
+      const patch = withRecordedHistory(state, typeof partial === 'function' ? partial(state) : partial);
+      if (replace) rawSetState(patch as EditorState, true);
+      else rawSetState(patch);
+    };
+    api.setState = recordingSetState as typeof api.setState;
+    return creator(recordingSetState, get);
+  };
+}
+
+export const useEditorStore = create<EditorState>()(recordingHistory((set, get) => ({
   hydrated: false,
   doc: { nodes: [], edges: [] },
   loadedTemplate: null,
@@ -310,6 +505,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   currentDiagramPublic: false,
   savedSignature: null,
   savingDiagram: false,
+  history: emptyHistory<HistorySnapshot>(),
+  historyRevision: 0,
 
   seed: 0,
   runStep: 0,
@@ -321,6 +518,8 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   linkingFromId: null,
   activeShape: null,
   infoOpen: false,
+  // FlowCanvas's own defaults (snap on, DEFAULT_GRID_SIZE) until the canvas reports in.
+  canvasGrid: { snapEnabled: true, gridSize: 40 },
 
   // Restores the diagram that was open before the last refresh (including
   // unsaved edits) instead of always booting into the default template.
@@ -329,11 +528,15 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     const session = loadEditorSession(userId);
     set({
       hydrated: true,
-      doc: session?.doc ?? { nodes: [], edges: [] },
+      // Normalised like every other way in: a session autosaved from a
+      // document that crashed the canvas must not crash it again on reload.
+      doc: normalizeDocument(session?.doc ?? { nodes: [], edges: [] }).document,
       currentDiagramId: session?.currentDiagramId ?? null,
       currentDiagramName: session?.currentDiagramName ?? 'Untitled diagram',
       currentDiagramPublic: session?.currentDiagramPublic ?? false,
       savedSignature: session?.savedSignature ?? null,
+      // A page load starts a fresh history; it is never persisted.
+      history: emptyHistory<HistorySnapshot>(),
     });
   },
 
@@ -349,37 +552,60 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     }),
 
   loadStoredDiagram: (diagram) => {
+    const document = normalizeDocument(diagram.document).document;
     set({
-      doc: diagram.document,
+      doc: document,
       currentDiagramId: diagram.id,
       currentDiagramName: diagram.name,
       currentDiagramPublic: diagram.public === true,
-      savedSignature: JSON.stringify(diagram.document),
+      savedSignature: JSON.stringify(document),
       // Snapshot so Reset restores the fetched document, not a template.
-      loadedTemplate: { name: diagram.name, category: 'Saved diagram', description: '', document: diagram.document },
+      loadedTemplate: { name: diagram.name, category: 'Saved diagram', description: '', document },
+      // Another diagram: its own, empty history.
+      history: emptyHistory<HistorySnapshot>(),
     });
     get().resetCanvasState();
   },
 
   // Template chosen from the shared Firestore library (`templates`
-  // collection).
-  loadRemoteTemplate: (template) => {
+  // collection), a starter, a mermaid import or pasted JSON. Recorded as
+  // one undo step like any other change. `savedSignature` is left alone:
+  // it still describes what is in the cloud, so `dirty` reads true for
+  // the new content and false again if undo brings the saved one back.
+  loadRemoteTemplate: (rawTemplate) => {
+    const template = withNormalizedDocument(rawTemplate);
     const hasDiagram = get().currentDiagramId !== null;
     set({
       doc: template.document,
       ...(hasDiagram ? {} : { currentDiagramName: template.name, currentDiagramPublic: false }),
-      savedSignature: null,
       loadedTemplate: template,
     });
     get().resetCanvasState();
   },
 
+  openTemplate: (rawTemplate) => {
+    const template = withNormalizedDocument(rawTemplate);
+    set({
+      doc: template.document,
+      // The canvas no longer holds a user diagram, so the diagram editor
+      // must not mistake it for one's restored session.
+      currentDiagramId: null,
+      currentDiagramName: template.name,
+      currentDiagramPublic: false,
+      savedSignature: null,
+      loadedTemplate: template,
+      history: emptyHistory<HistorySnapshot>(),
+    });
+    get().resetCanvasState();
+  },
+
   // Reset action: restore the fetched diagram or Firestore template that
-  // was originally loaded onto the canvas.
+  // was originally loaded onto the canvas. Undoable, and like a template
+  // pick it leaves `savedSignature` describing the cloud copy.
   resetToTemplate: () => {
     const loaded = get().loadedTemplate;
     if (!loaded) return;
-    set({ doc: loaded.document, savedSignature: null });
+    set({ doc: loaded.document });
     get().resetCanvasState();
   },
 
@@ -403,6 +629,33 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   convertColorTheme: () => set((state) => ({ doc: convertDocumentColorTheme(state.doc) })),
 
   replay: () => set((state) => ({ runStep: 0, seed: state.seed + 1 })),
+
+  undo: () => {
+    const state = get();
+    const { history, step } = undoHistory(state.history, snapshotOf(state), sameSnapshot);
+    if (step) set({ history, ...restoreSnapshot(state, step.before, step.after) });
+    else if (history !== state.history) set({ history });
+  },
+
+  redo: () => {
+    const state = get();
+    const { history, step } = redoHistory(state.history, snapshotOf(state), sameSnapshot);
+    if (step) set({ history, ...restoreSnapshot(state, step.after, step.before) });
+    else if (history !== state.history) set({ history });
+  },
+
+  beginHistoryGesture: () => {
+    const id = nextGestureId++;
+    const state = get();
+    set({ history: beginGesture(state.history, snapshotOf(state), id, sameSnapshot) });
+    return id;
+  },
+
+  endHistoryGesture: (id) => {
+    const state = get();
+    const history = endGesture(state.history, snapshotOf(state), sameSnapshot, id);
+    if (history !== state.history) set({ history });
+  },
 
   // Shared by the sequential auto-timer and the manual mode's "Next"
   // button — both just move the same timeline cursor forward by one step.
@@ -437,6 +690,10 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   setActiveShape: (shape) => set({ activeShape: shape }),
   toggleInfo: () => set((state) => ({ infoOpen: !state.infoOpen })),
   setSavingDiagram: (saving) => set({ savingDiagram: saving }),
+  setCanvasGrid: (grid) => {
+    const current = get().canvasGrid;
+    if (current.snapEnabled !== grid.snapEnabled || current.gridSize !== grid.gridSize) set({ canvasGrid: grid });
+  },
 
   // Moving a group carries its members: positions stay absolute, so the
   // whole subtree shifts by the same delta and nothing else in the app
@@ -523,64 +780,20 @@ export const useEditorStore = create<EditorState>((set, get) => ({
     })),
 
   // Duplicating a group copies what it contains — a frame on its own
-  // would be an empty box, which is never what "duplicate" meant.
+  // would be an empty box, which is never what "duplicate" meant. Same
+  // fragment path as copy/paste (`clipboard-fragment.ts`): the copy
+  // brings the Lines wholly inside it and lands in whatever frame its
+  // offset position falls in.
   onNodeDuplicate: (id) => {
     const { doc } = get();
-    const source = doc.nodes.find((node) => node.id === id);
-    if (!source) return null;
-    const stamp = Date.now().toString(36);
-    const members = source.type === 'group' ? descendantIds(doc.nodes, id) : new Set<string>();
-    const nextSortOrder = Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1));
-    // Ids are minted for the whole subtree first so the copies can point
-    // at each other rather than back at the originals.
-    const idMap = new Map<string, string>([[id, `n${doc.nodes.length + 1}-${stamp}`]]);
-    let offset = 1;
-    for (const memberId of members) idMap.set(memberId, `n${doc.nodes.length + 1 + offset++}-${stamp}`);
-
-    const copies = doc.nodes
-      .filter((node) => idMap.has(node.id))
-      .map((node, index) => ({
-        ...node,
-        id: idMap.get(node.id)!,
-        title: node.id === id ? `${node.title} copy` : node.title,
-        sortOrder: nextSortOrder + index + 1,
-        position: { x: node.position.x + 36, y: node.position.y + 36 },
-        // The root copy keeps the original's parent (it lands beside it,
-        // inside the same frame); members follow their copied frame.
-        parentId: node.id === id ? node.parentId : idMap.get(node.parentId ?? '') ?? node.parentId,
-      }));
-
-    // Lines wholly inside the duplicated group are copied too, so a
-    // duplicated subsystem keeps its internal wiring.
-    const copiedEdges = doc.edges
-      .filter((edge) => idMap.has(edge.from) && idMap.has(edge.to))
-      .map((edge, index) => ({
-        ...edge,
-        id: `e${doc.edges.length + 1 + index}-${Date.now()}`,
-        from: idMap.get(edge.from)!,
-        to: idMap.get(edge.to)!,
-      }));
-
-    set({ doc: { ...doc, nodes: [...doc.nodes, ...copies], edges: [...doc.edges, ...copiedEdges] } });
-    return idMap.get(id)!;
+    const fragment = buildFragment(doc, [id]);
+    if (!fragment) return null;
+    const result = insertFragment(doc, fragment, { titleSuffix: ' copy' });
+    set({ doc: result.doc });
+    return result.idMap.get(id) ?? null;
   },
 
-  // Deleting a frame deletes what it holds, matching how every other
-  // canvas tool treats a container. `Ungroup` first is the way to keep
-  // the members.
-  onNodeDelete: (id) =>
-    set((state) => {
-      const target = state.doc.nodes.find((node) => node.id === id);
-      const doomed = new Set<string>([id]);
-      if (target?.type === 'group') for (const descendant of descendantIds(state.doc.nodes, id)) doomed.add(descendant);
-      return {
-        doc: {
-          ...state.doc,
-          nodes: state.doc.nodes.filter((node) => !doomed.has(node.id)),
-          edges: state.doc.edges.filter((edge) => !doomed.has(edge.from) && !doomed.has(edge.to)),
-        },
-      };
-    }),
+  onNodeDelete: (id) => set((state) => ({ doc: withoutNodes(state.doc, [id]) })),
 
   onConnect: (fromId, toId, fromSide, toSide) => {
     if (fromId === toId) return;
@@ -960,6 +1173,44 @@ export const useEditorStore = create<EditorState>((set, get) => ({
       };
     }),
 
+  deleteSelection: () =>
+    set((state) => {
+      if (state.selectedNodeIds.length > 0) {
+        return { doc: withoutNodes(state.doc, state.selectedNodeIds), selectedNodeIds: [], selectedNodeId: null };
+      }
+      if (state.selectedEdgeId) {
+        return { doc: { ...state.doc, edges: state.doc.edges.filter((edge) => edge.id !== state.selectedEdgeId) }, selectedEdgeId: null };
+      }
+      return {};
+    }),
+
+  duplicateSelection: () => {
+    const state = get();
+    const fragment = buildFragment(state.doc, state.selectedNodeIds);
+    if (!fragment) return [];
+    const result = insertFragment(state.doc, fragment);
+    set({ doc: result.doc, selectedNodeIds: result.nodeIds, selectedNodeId: result.nodeIds.at(-1) ?? null, selectedEdgeId: null });
+    return result.nodeIds;
+  },
+
+  selectAll: () => get().selectNodes(get().doc.nodes.map((node) => node.id)),
+
+  nudgeSelection: (dx, dy) =>
+    set((state) => {
+      if (dx === 0 && dy === 0) return {};
+      const moves = new Map<string, { x: number; y: number }>();
+      for (const node of selectedNodesOf(state.doc.nodes, state.selectedNodeIds)) moves.set(node.id, { x: node.position.x + dx, y: node.position.y + dy });
+      if (moves.size === 0) return {};
+      return { doc: { ...state.doc, nodes: applyNodeMoves(state.doc.nodes, moves) } };
+    }),
+
+  pasteFragment: (fragment, options) => {
+    const result = insertFragment(get().doc, fragment, options);
+    if (result.nodeIds.length === 0) return [];
+    set({ doc: result.doc, selectedNodeIds: result.nodeIds, selectedNodeId: result.nodeIds.at(-1) ?? null, selectedEdgeId: null });
+    return result.nodeIds;
+  },
+
   // Align against the selection's own bounding box rather than a fixed
   // canvas edge — the reference is whatever the user actually picked, so
   // the outermost nodes stay put and everything else comes to them.
@@ -1041,7 +1292,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
         },
       };
     }),
-}));
+})));
 
 function defaultTitleFor(type: NodeType): string {
   switch (type) {

@@ -12,6 +12,7 @@ import { StarterPickerDialog } from '@/components/editor/StarterPickerDialog';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
 import { Input } from '@/components/ui/input';
 import { useEditorStore } from '@/lib/editor-store';
+import { normalizeDocument } from '@/lib/document-validation';
 import { createTemplate, getTemplateById, saveTemplate } from '@/lib/firebase/templates';
 
 interface TemplateMeta {
@@ -43,7 +44,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
 
   // The canvas itself lives in the shared editor store.
   const doc = useEditorStore((state) => state.doc);
-  const loadRemoteTemplate = useEditorStore((state) => state.loadRemoteTemplate);
+  const openTemplate = useEditorStore((state) => state.openTemplate);
   const templateItems = useTemplateLibrary();
 
   // Load the template into the editor store so the canvas becomes fully
@@ -59,8 +60,11 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
           setStatus('not-found');
           return;
         }
-        const document = template.document ?? { nodes: [], edges: [] };
-        loadRemoteTemplate({ name: template.name, category: template.category ?? '', description: template.description ?? '', document });
+        // Normalised here as well as in the store, so the saved signature
+        // describes exactly what lands on the canvas — otherwise a repaired
+        // template would read as unsaved the moment it opened.
+        const document = normalizeDocument(template.document ?? { nodes: [], edges: [] }).document;
+        openTemplate({ name: template.name, category: template.category ?? '', description: template.description ?? '', document });
         const nextMeta = { name: template.name, category: template.category ?? '', description: template.description ?? '' };
         setMeta(nextMeta);
         setSavedSignature(JSON.stringify({ doc: document, meta: nextMeta }));
@@ -72,7 +76,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
     return () => {
       cancelled = true;
     };
-  }, [templateId, loadRemoteTemplate]);
+  }, [templateId, openTemplate]);
 
   // Name / category / description are saved with the document, so they
   // count towards the unsaved-changes dot too.
@@ -123,6 +127,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
   return (
     <EditorShell
       document={doc}
+      onSave={() => void handleSave()}
       icon={<LayoutTemplate size={18} className='text-sky-300' />}
       subtitle={<p className='text-xs text-muted-foreground'>{meta.name || 'Untitled template'}</p>}
       fileMenu={
@@ -137,6 +142,7 @@ export function TemplateEditor({ templateId }: { templateId: string }) {
           onExportSql={() => setSqlOpen(true)}
           onConvertColorTheme={() => setConvertThemeConfirmOpen(true)}
           onReset={() => setResetConfirmOpen(true)}
+          imageName={meta.name.trim() || 'template'}
         />
       }
       actions={<SaveButton saving={saving} dirty={dirty} onSave={() => void handleSave()} />}

@@ -17,7 +17,8 @@ const TOC = [
   ['run', 'Running the flow'],
   ['save', 'Saving your work'],
   ['share', 'Sharing a diagram'],
-  ['json', 'Export & JSON tools'],
+  ['json', 'Export, images & JSON tools'],
+  ['shortcuts', 'Keyboard shortcuts & copy/paste'],
   ['reference', 'Quick reference'],
 ] as const;
 
@@ -41,6 +42,18 @@ export default function HelpPage() {
         <p>
           Sign in with your <strong>Google account</strong> or an <strong>email + password</strong>. Every diagram you create belongs to your account and is stored in the cloud — no one else
           can open or edit it unless you explicitly make it public.
+        </p>
+        <p>
+          Forgot your password? Click <strong>Forgot password?</strong> on the sign-in form, enter your email and press <strong>Send reset link</strong>. If the email has an account you&apos;ll
+          receive a link to choose a new password — for privacy the form shows the same message either way, so check your inbox (and spam folder). If you sign in with Google you don&apos;t
+          need a password at all — just use <strong>Continue with Google</strong>.
+        </p>
+        <p>
+          Your workspace may be limited to an <strong>Access list</strong> — your company&apos;s email domains plus a few named addresses. If your email isn&apos;t on it you&apos;ll see{' '}
+          <em>&ldquo;This email isn&apos;t allowed to use X Flow Tool. Contact your administrator.&rdquo;</em> — ask your administrator to add you, or press <strong>Sign out</strong> and use
+          your work account. When a list is in place, an email + password account must also <strong>verify its email</strong>: after signing up you&apos;ll see{' '}
+          <strong>Check your inbox</strong>. Open the link in the verification email, then press <strong>I&apos;ve verified</strong> (or reload the page) — no need to sign out. No email?
+          Check spam, then press <strong>Resend verification email</strong>. Google accounts are already verified. Public links open for anyone, list or not.
         </p>
         <p>
           After signing in you land on the <strong>diagrams list</strong>: a table of everything you own, with node/edge counts, visibility, and created/updated timestamps. From here you can:
@@ -212,10 +225,16 @@ export default function HelpPage() {
             where you left off. This is a safety net, not cloud storage: click <strong>Save</strong> to persist for real.
           </li>
           <li>
+            <strong>Undo / Redo</strong> (the two arrow buttons next to the File menu) step back and forward through your changes to the diagram — moving, resizing, restyling, deleting,
+            grouping, picking a template or starter, importing, Reset. A whole drag, one slider drag or one edit of a field counts as a single step, and the last 100 steps are kept. Selecting,
+            panning and zooming, the run mode, the diagram name and Public/Private are not undo steps. Saving keeps the history; opening another diagram or reloading the page clears it.
+          </li>
+          <li>
             <strong>File → Save as</strong> duplicates the current document into a brand-new diagram (&quot;… copy&quot;) and opens it.
           </li>
           <li>
-            <strong>File → Reset</strong> throws away all unsaved changes and reverts the canvas to the last loaded state. It asks for confirmation — this cannot be undone.
+            <strong>File → Reset</strong> throws away all unsaved changes and reverts the canvas to the last loaded state. It asks for confirmation; if you change your mind afterwards,{' '}
+            <strong>Undo</strong> brings the changes back.
           </li>
         </ul>
       </Section>
@@ -234,10 +253,19 @@ export default function HelpPage() {
         </ul>
       </Section>
 
-      <Section id='json' title='10. Export & JSON tools'>
+      <Section id='json' title='10. Export, images & JSON tools'>
         <p>
           A diagram is a single JSON document under the hood. <strong>File → Export to JSON</strong> downloads it as a <Pill>.json</Pill> file — useful for backups, version control, or
           hand-editing.
+        </p>
+        <p>
+          <strong>File → Export image…</strong> downloads a picture for slides, documents and tickets: <Pill>PNG</Pill> at twice the diagram&apos;s size (sharp on any screen) or{' '}
+          <Pill>SVG</Pill> (a scalable vector file with its fonts and logos built in). The picture is cropped to the diagram with a small margin — it always contains the whole diagram,
+          including anything scrolled out of view — and never shows the grid. With Elements selected you can export <strong>Selection only</strong>: those Elements (with everything
+          inside a selected Frame) and the Lines between them. The background is your current theme&apos;s canvas colour, or <strong>Transparent</strong>. The image is always a still
+          picture, as Static run mode shows it: effects and the replay highlight are left out, while line patterns, markers, labels and line styles are kept — so exporting in the
+          middle of a replay gives the same image. The file is named after the diagram. The read-only viewer has the same export behind its <strong>Image</strong> button, no
+          sign-in needed. An empty diagram has nothing to export, so the command is greyed out.
         </p>
         <p>
           The <strong>Info</strong> toggle on the canvas dock opens a side panel with the document summary, a live JSON view that updates as you edit, and a JSON playground for applying a
@@ -245,26 +273,77 @@ export default function HelpPage() {
         </p>
       </Section>
 
-      <Section id='reference' title='11. Quick reference'>
+      <Section id='shortcuts' title='11. Keyboard shortcuts & copy/paste'>
+        <p>
+          The editor (and the template editor) has the shortcuts you know from other drawing tools. Use <Kbd>⌘</Kbd> on macOS and <Kbd>Ctrl</Kbd> on Windows and Linux. Press{' '}
+          <Kbd>?</Kbd> on the canvas to see this list in the app — the tooltips on the Undo, Redo and Save buttons show the keys too.
+        </p>
+        <Table
+          head={['Keys', 'What it does']}
+          rows={[
+            ['Delete / Backspace', 'Delete everything selected — all selected Elements (a Frame with its contents), or the selected Line'],
+            ['⌘C / ⌘X / ⌘V', 'Copy / cut / paste the selection'],
+            ['⌘D', 'Duplicate the selection'],
+            ['⌘A', 'Select all Elements'],
+            ['⌘Z', 'Undo'],
+            ['⌘⇧Z (or Ctrl+Y on Windows/Linux)', 'Redo'],
+            ['⌘S', 'Save (in the template editor: save the template)'],
+            ['← ↑ → ↓', 'Nudge the selection 1 px'],
+            ['⇧ + arrow', 'Nudge 10 px — or exactly one grid cell when snap is on'],
+            ['Esc', 'Deselect, or put away the armed drawing tool'],
+            ['?', 'Show the keyboard shortcuts'],
+          ]}
+        />
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            While you are typing in a field — a title, the inspector, the JSON playground — keys keep their usual meaning there: <Kbd>Backspace</Kbd> deletes a character, not the Element,
+            and <Kbd>⌘Z</Kbd> undoes your typing. <Kbd>⌘S</Kbd> is the exception: it saves from anywhere, including what you just typed.
+          </li>
+          <li>
+            Holding an arrow key moves the selection continuously, and one <Kbd>⌘Z</Kbd> takes the whole move back. Delete, duplicate and paste are one undo step each, however many
+            Elements they touch.
+          </li>
+          <li>The read-only viewer has no shortcuts.</li>
+        </ul>
+        <p>
+          <strong>Copy and paste</strong> carry part of a diagram: the selected Elements (a Frame always brings everything inside it), the Lines whose <em>both</em> ends are in the selection
+          — a Line leading out of the selection is left behind — and the Line styles those Lines use. You can paste into the same diagram, into another diagram, in another tab, or into the
+          template editor. Pasted Elements get new ids and become the selection; pasted into the same diagram they land slightly down-right of the originals, and pasting again steps further
+          so copies never sit exactly on top of each other. A Line style the target diagram doesn&apos;t have is added to it, so the pasted Lines look exactly as they did; if the target already
+          has a different style with the same name, the pasted one is renamed (e.g. &quot;async (2)&quot;).
+        </p>
+        <p>
+          What you copy is plain Diagram JSON, so you can also go the other way: paste Diagram JSON written by hand or by an AI — a whole document or just{' '}
+          <Pill>{'{ "nodes": [...], "edges": [...] }'}</Pill> — straight onto the canvas, and it is <em>added</em> to what is already there (the JSON playground replaces the canvas
+          instead). Text that isn&apos;t valid Diagram JSON shows a short message and changes nothing.
+        </p>
+      </Section>
+
+      <Section id='reference' title='12. Quick reference'>
         <Table
           head={['Action', 'How']}
           rows={[
             ['Add a block', 'Pick a shape in the bottom dock, then click-drag on the canvas'],
             ['Cancel the armed shape tool', 'Esc, or click the active tool again'],
+            ['Select several Elements', 'Shift-click them, or Shift-drag a box on empty canvas; ⌘A selects all'],
             ['Connect two blocks', 'Drag from a port on one block onto another block'],
             ['Reroute a connector', 'Select it, then double-click the line to add a bend point; drag bend points; double-click a bend point to remove it'],
             ['Edit a block / connector', 'Click it — the inspector opens on the right'],
-            ['Duplicate or delete', 'Buttons at the top of the inspector'],
+            ['Duplicate or delete', '⌘D / Delete, or the buttons in the inspector'],
+            ['Copy part of a diagram elsewhere', 'Select, ⌘C, open the other diagram, ⌘V'],
             ['Pan the canvas', 'Drag empty canvas (or middle-mouse drag anywhere)'],
             ['Zoom', 'Scroll, or the Zoom in / Zoom out / Fit buttons in the view dock'],
             ['Rename the diagram', 'Click its name in the header, type, press Enter'],
-            ['Save to the cloud', 'Save button in the header (amber dot = unsaved changes)'],
+            ['Undo / redo a change', '⌘Z / ⌘⇧Z, or the Undo / Redo buttons next to the File menu'],
+            ['Save to the cloud', '⌘S, or the Save button in the header (amber dot = unsaved changes)'],
+            ['See every shortcut', 'Press ? on the canvas'],
             ['Play the animation', 'Replay — pick Sequential, Concurrent or Manual first'],
             ['Share read-only', 'Set the diagram to Public, then File → Share → Copy'],
             ['Draw a database table', 'Table button at the right of the shape dock, then click-drag'],
             ['Edit columns', 'Select the table — the Columns section is in the inspector'],
             ['Link two tables', 'Connect them, then pick a column at each end in the Relationship block'],
             ['Get the SQL', 'File → Export SQL → Copy or Download .sql'],
+            ['Put the diagram in a slide or document', 'File → Export image… (or Image in the viewer) → PNG or SVG'],
           ]}
         />
       </Section>

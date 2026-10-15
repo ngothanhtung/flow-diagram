@@ -1,8 +1,8 @@
 'use client';
 
 import { getApp, getApps, initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { connectAuthEmulator, getAuth } from 'firebase/auth';
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -32,3 +32,18 @@ if (missingConfig.length > 0) {
 export const firebaseApp = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
 export const firebaseAuth = getAuth(firebaseApp);
 export const firestore = getFirestore(firebaseApp);
+
+// `npm run dev:emulator` sets this (see `.env.emulator`) together with a
+// `demo-*` project id, so a local session never reaches the real project.
+// Both connect calls throw if repeated after the instance has been used,
+// and an HMR re-run of this module gets the same cached app back, so the
+// guard lives on `globalThis` rather than in a module-level variable.
+const emulatorFlag = '__flowgramFirebaseEmulatorConnected';
+if (process.env.NEXT_PUBLIC_FIREBASE_USE_EMULATOR === '1') {
+  const scope = globalThis as typeof globalThis & { [emulatorFlag]?: boolean };
+  if (!scope[emulatorFlag]) {
+    scope[emulatorFlag] = true;
+    connectAuthEmulator(firebaseAuth, 'http://127.0.0.1:9099', { disableWarnings: true });
+    connectFirestoreEmulator(firestore, '127.0.0.1', 8080);
+  }
+}

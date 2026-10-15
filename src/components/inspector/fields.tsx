@@ -17,6 +17,7 @@ import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type { FlowNode, NodeFont } from '@/lib/flowchart-types';
 import { SHAPES, nodeSizeLimits, type NodeShape } from '@/lib/node-style';
+import { useShortcutLabel } from '@/lib/use-is-mac';
 import { NODE_FONT_FAMILIES, NODE_FONT_OPTIONS } from '@/lib/node-fonts';
 
 /** Every panel takes the same handle on the document. */
@@ -356,11 +357,12 @@ export function GroupMembershipSection({ node, onUpdate, parentTitle }: { node: 
 
 /** Duplicate / Reset styling / Delete — identical on every panel. */
 export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; onDuplicate: (id: string) => void; onDelete: (id: string) => void }) {
+  const duplicateKeys = useShortcutLabel(['mod', 'D']);
   return (
     <>
       <SectionLabel>Actions</SectionLabel>
       <div className='mt-1.5 grid grid-cols-3 gap-2'>
-        <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-foreground hover:bg-accent'>
+        <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} title={`Duplicate (${duplicateKeys})`} className='border-border bg-muted/30 px-2 text-[10px] text-foreground hover:bg-accent'>
           <Copy size={12} /> Duplicate
         </Button>
         <Button
@@ -404,7 +406,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
         >
           <RotateCcw size={11} /> Reset
         </Button>
-        <Button variant='destructive' size='sm' onClick={() => onDelete(node.id)} className='px-2 text-[10px]'>
+        <Button variant='destructive' size='sm' onClick={() => onDelete(node.id)} title='Delete (Delete key)' className='px-2 text-[10px]'>
           <Trash2 size={12} /> Delete
         </Button>
       </div>
@@ -414,20 +416,54 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
 
 // --- Primitive fields -----------------------------------------------------
 
+/** What a number field should write for the text typed so far: the
+ *  number when it is already in range, otherwise nothing yet. Writing an
+ *  out-of-range keystroke (the "2" of "210" under a 72 minimum) would get
+ *  clamped by the store and echoed back into the box mid-typing, so the
+ *  next keystrokes would land on the clamped value instead. */
+export function numberFieldLiveValue(text: string, min?: number, max?: number): number | null {
+  if (text.trim() === '') return null;
+  const parsed = Number(text);
+  if (!Number.isFinite(parsed)) return null;
+  if ((min !== undefined && parsed < min) || (max !== undefined && parsed > max)) return null;
+  return parsed;
+}
+
+/** What a number field commits on blur: the typed number clamped into
+ *  range, or nothing for an empty / unparseable box (it reverts). */
+export function numberFieldCommitValue(text: string, min?: number, max?: number): number | null {
+  if (text.trim() === '') return null;
+  const parsed = Number(text);
+  if (!Number.isFinite(parsed)) return null;
+  return Math.min(max ?? Infinity, Math.max(min ?? -Infinity, parsed));
+}
+
 export function NumberField({ label, value, min, max, step = 1, onChange }: { label: string; value: number; min?: number; max?: number; step?: number; onChange: (value: number) => void }) {
+  // While focused the box shows what the user is typing, not the stored
+  // value — see `numberFieldLiveValue` for why those can differ.
+  const [draft, setDraft] = useState<string | null>(null);
   return (
     <div>
       <Label className='mb-1 block text-[9px] text-muted-foreground'>{label}</Label>
       <Input
         type='number'
-        value={value}
+        value={draft ?? value}
         min={min}
         max={max}
         step={step}
+        onFocus={() => setDraft(String(value))}
         onChange={(event) => {
-          if (!Number.isNaN(event.target.valueAsNumber)) {
-            onChange(event.target.valueAsNumber);
-          }
+          setDraft(event.target.value);
+          const live = numberFieldLiveValue(event.target.value, min, max);
+          if (live !== null && live !== value) onChange(live);
+        }}
+        onBlur={() => {
+          const committed = draft === null ? null : numberFieldCommitValue(draft, min, max);
+          if (committed !== null && committed !== value) onChange(committed);
+          setDraft(null);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') event.currentTarget.blur();
         }}
         className='h-8 border-border bg-muted/30 font-mono text-[11px] text-foreground focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
       />
@@ -523,6 +559,20 @@ function parseHex(raw: string): `#${string}` | null {
 }
 
 /**
+ * What a colour field's hex box commits on blur: the typed colour, or
+ * `null` when there is nothing to write — unparseable text (the box
+ * reverts), or the colour the field already shows. The second case
+ * matters: the field shows the *resolved* colour, so committing it
+ * unchanged would bake a default the node never set into an explicit
+ * value — a document change (and an undo step) that looks like nothing.
+ */
+export function colorFieldCommit(draft: string, current: string): `#${string}` | null {
+  const parsed = parseHex(draft);
+  if (!parsed || parsed.toLowerCase() === current.toLowerCase()) return null;
+  return parsed;
+}
+
+/**
  * A colour: a native colour picker and a hex field so any value is
  * reachable directly. The hex box keeps a local draft so a half-typed
  * value never reaches the document, and reverts if what was typed isn't
@@ -542,8 +592,8 @@ export function ColorField({ label, value, onChange }: { label: string; value: `
   }
 
   const commit = () => {
-    const parsed = parseHex(draft);
-    if (parsed) onChange(parsed);
+    const next = colorFieldCommit(draft, value);
+    if (next) onChange(next);
     else setDraft(value);
   };
 

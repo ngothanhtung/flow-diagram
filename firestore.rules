@@ -10,7 +10,62 @@ service cloud.firestore {
       return get(/databases/$(database)/documents/users-roles/$(request.auth.uid)).data.get('roles', []).hasAny(['administrators']);
     }
 
+    // ---- Access list ---------------------------------------------------
+    // Who may use this deployment: config/access { domains: [], emails: [] },
+    // edited by hand in the Firestore console. The same decision is made on
+    // the client by src/lib/access-list.ts (`accessDecision`) so a refused
+    // user sees a clear screen; every step below mirrors a step there, and
+    // src/lib/access-list.cases.ts is run against both (src/lib/access-list
+    // .test.ts and tests/rules/access-list.test.ts). Change them together.
+    //
+    //   administrator                                  -> allowed
+    //   a field present but not a list (malformed)     -> denied (fails closed)
+    //   list missing / empty / only blank entries      -> allowed
+    //   email listed (exact domain or exception email)
+    //     and token email_verified                     -> allowed
+    //   anything else                                  -> denied
+    //
+    // Cost: hasAccess() reads config/access (billed as a document read per
+    // request evaluation), plus users-roles/{uid} only when the list says no.
+    function hasAccess() {
+      return request.auth != null && (accessListAdmits() || isAdministrator());
+    }
+
+    // Entries of one list, normalised the way access-list.ts `entries()`
+    // does: lower-case, trimmed, no leading '@', comma-separated entries
+    // split apart. Rules have no map/filter over a list, hence the
+    // join -> lower -> split round trip. join() turns a number, boolean or
+    // null entry into text (never a real domain), and fails on a map or
+    // timestamp entry — that list then matches nothing; the client mirrors
+    // both (`joinLikeRules`).
+    function accessEntries(list) {
+      return list.join(',').lower().trim().replace('^@', '').split('\\s*,\\s*@?');
+    }
+
+    function accessListAdmits() {
+      let config = get(/databases/$(database)/documents/config/access);
+      let domains = config == null ? [] : config.data.get('domains', []);
+      let emails = config == null ? [] : config.data.get('emails', []);
+      let email = request.auth.token.get('email', '').lower();
+      let parts = email.split('@');
+      return domains is list && emails is list
+        && (domains.concat(emails).join(',').matches('[\\s,@]*')
+          || (request.auth.token.get('email_verified', false) == true
+            && email.matches('.*@[^@]+')
+            && (accessEntries(emails).hasAny([email])
+              || accessEntries(domains).hasAny([parts[parts.size() - 1]]))));
+    }
+
+    // The Access list itself: readable by anyone signed in (the client
+    // explains a refusal from it, and a refused user must be able to read
+    // it), writable by nobody from the client — edit it in the console.
+    match /config/access {
+      allow get: if request.auth != null;
+    }
+
     // Users may read their own role document (the admin page gates on it).
+    // Not gated by the Access list: the client needs it to know a user is an
+    // administrator, who is allowed even when off the list.
     match /users-roles/{userId} {
       allow read: if request.auth != null && request.auth.uid == userId;
     }
@@ -23,10 +78,13 @@ service cloud.firestore {
 
     match /users/{userId}/diagrams/{diagramId} {
       // Owner has full control; read access additionally covers
-      // administrators and public diagrams (viewer route).
-      allow create, update, delete: if request.auth != null
+      // administrators and public diagrams. All of it requires the caller
+      // to pass the Access list — including the public branch: the Viewer
+      // reads public diagrams from the public-diagrams mirror (open to
+      // everyone), so gating the source path costs a refused user nothing.
+      allow create, update, delete: if hasAccess()
         && request.auth.uid == userId;
-      allow read: if request.auth != null
+      allow read: if hasAccess()
         && (request.auth.uid == userId || isAdministrator() || isPublicDiagram());
     }
 
@@ -36,38 +94,45 @@ service cloud.firestore {
     // and no collection-group query / isAdministrator() call in the
     // path (see DiagramViewer + findPublicDiagramById).
     match /public-diagrams/{diagramId} {
+      // Open to everyone, Access list or not: a Public link keeps working
+      // even when its Owner is off the list.
       allow read: if true;
 
       // Only the confirmed owner of the source diagram may create or
       // update its mirror, and only while the mirror itself claims
       // public: true — the exists() check is the only real ownership
       // proof available without Cloud Functions (ids are addDoc
-      // auto-ids, not derivable from uid).
-      allow create: if request.auth != null
+      // auto-ids, not derivable from uid). Writing a mirror is writing
+      // user data, so it needs the Access list too.
+      allow create: if hasAccess()
         && request.resource.data.ownerUid == request.auth.uid
         && request.resource.data.public == true
         && exists(/databases/$(database)/documents/users/$(request.auth.uid)/diagrams/$(diagramId));
 
-      allow update: if request.auth != null
+      allow update: if hasAccess()
         && resource.data.ownerUid == request.auth.uid
         && request.resource.data.ownerUid == request.auth.uid
         && request.resource.data.public == true
         && exists(/databases/$(database)/documents/users/$(request.auth.uid)/diagrams/$(diagramId));
 
-      allow delete: if request.auth != null
-        && resource.data.ownerUid == request.auth.uid;
+      // `resource == null`: saving a private diagram clears a mirror that
+      // usually doesn't exist; deleting nothing must not be a denial.
+      allow delete: if hasAccess()
+        && (resource == null || resource.data.ownerUid == request.auth.uid);
     }
 
-    // Cross-user collection-group reads: administrators only. Public
-    // diagram access goes through the public-diagrams mirror above.
+    // Cross-user collection-group reads: administrators only (always
+    // allowed by the Access list, so no hasAccess() here). Public diagram
+    // access goes through the public-diagrams mirror above.
     match /{path=**}/diagrams/{diagramId} {
       allow get, list: if isAdministrator();
     }
 
-    // Shared template library. Every signed-in user can read templates
-    // (the editor loads them); only administrators manage them.
+    // Shared template library. Every signed-in user who passes the Access
+    // list can read templates (the editor loads them); only administrators
+    // manage them.
     match /templates/{templateId} {
-      allow read: if request.auth != null;
+      allow read: if hasAccess();
       allow create, update, delete: if request.auth != null && isAdministrator();
     }
 

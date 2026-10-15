@@ -18,6 +18,7 @@ const TOC = [
   ['save', 'Lưu công việc'],
   ['share', 'Chia sẻ sơ đồ'],
   ['json', 'Xuất file & công cụ JSON'],
+  ['shortcuts', 'Phím tắt & copy/paste'],
   ['reference', 'Tra cứu nhanh'],
 ] as const;
 
@@ -41,6 +42,19 @@ export default function HelpViPage() {
         <p>
           Đăng nhập bằng <strong>tài khoản Google</strong> hoặc <strong>email + mật khẩu</strong>. Mỗi sơ đồ bạn tạo thuộc về tài khoản của bạn và được lưu trên cloud — không ai khác mở hay
           sửa được, trừ khi bạn chủ động đặt nó ở chế độ công khai.
+        </p>
+        <p>
+          Quên mật khẩu? Bấm <strong>Forgot password?</strong> trên form đăng nhập, nhập email rồi bấm <strong>Send reset link</strong>. Nếu email này có tài khoản, bạn sẽ nhận được thư kèm
+          đường link để đặt mật khẩu mới — vì lý do bảo mật, form luôn hiện cùng một thông báo dù email có tài khoản hay không, nên hãy kiểm tra hộp thư (cả thư mục spam). Nếu bạn đăng nhập
+          bằng Google thì không cần mật khẩu — chỉ cần bấm <strong>Continue with Google</strong>.
+        </p>
+        <p>
+          Workspace của bạn có thể được giới hạn bằng <strong>Access list</strong> — các domain email của công ty cùng một số địa chỉ được chỉ định. Nếu email của bạn không có trong danh
+          sách, bạn sẽ thấy thông báo <em>&ldquo;This email isn&apos;t allowed to use X Flow Tool. Contact your administrator.&rdquo;</em> (email này không được phép dùng X Flow Tool) — hãy
+          nhờ quản trị viên thêm bạn vào, hoặc bấm <strong>Sign out</strong> rồi đăng nhập bằng tài khoản công ty. Khi có Access list, tài khoản email + mật khẩu còn phải{' '}
+          <strong>xác minh email</strong>: đăng ký xong bạn sẽ thấy màn hình <strong>Check your inbox</strong>. Mở link trong thư xác minh rồi bấm <strong>I&apos;ve verified</strong> (hoặc tải
+          lại trang) — không cần đăng xuất. Không thấy thư? Kiểm tra thư mục spam, rồi bấm <strong>Resend verification email</strong> để gửi lại. Tài khoản Google vốn đã được xác minh. Public
+          link vẫn mở được với mọi người, dù có Access list hay không.
         </p>
         <p>
           Sau khi đăng nhập, bạn vào <strong>danh sách sơ đồ</strong>: bảng liệt kê mọi sơ đồ bạn sở hữu, kèm số khối/đường nối, trạng thái công khai, thời gian tạo và cập nhật. Tại đây bạn
@@ -213,10 +227,16 @@ export default function HelpViPage() {
             phục đúng chỗ bạn dừng. Đây chỉ là lưới an toàn, không phải lưu cloud: hãy bấm <strong>Save</strong> để lưu thật sự.
           </li>
           <li>
+            <strong>Undo / Redo</strong> (hai nút mũi tên cạnh menu File) lùi lại và làm lại các thay đổi trên sơ đồ — di chuyển, đổi kích thước, đổi kiểu, xoá, nhóm khối, chọn template hay
+            starter, import, Reset. Một lần kéo, một lần kéo thanh trượt hay một lần sửa một ô nhập tính là một bước; giữ tối đa 100 bước gần nhất. Chọn khối, kéo và thu phóng canvas, chế độ
+            chạy, tên sơ đồ và Public/Private không tạo bước undo. Bấm Save không xoá lịch sử; mở sơ đồ khác hoặc tải lại trang thì lịch sử bị xoá.
+          </li>
+          <li>
             <strong>File → Save as</strong> nhân bản tài liệu hiện tại thành một sơ đồ hoàn toàn mới (&quot;… copy&quot;) và mở nó.
           </li>
           <li>
-            <strong>File → Reset</strong> vứt bỏ mọi thay đổi chưa lưu và đưa canvas về trạng thái nạp gần nhất. Có hộp thoại xác nhận — thao tác này không hoàn tác được.
+            <strong>File → Reset</strong> vứt bỏ mọi thay đổi chưa lưu và đưa canvas về trạng thái nạp gần nhất. Có hộp thoại xác nhận; nếu đổi ý sau đó, bấm <strong>Undo</strong> để lấy lại
+            các thay đổi.
           </li>
         </ul>
       </Section>
@@ -241,31 +261,89 @@ export default function HelpViPage() {
           hoặc sửa tay.
         </p>
         <p>
+          <strong>File → Export image…</strong> tải sơ đồ về dưới dạng ảnh để chèn vào slide, tài liệu hay ticket: <Pill>PNG</Pill> ở kích thước gấp đôi sơ đồ (nét trên mọi màn
+          hình) hoặc <Pill>SVG</Pill> (file vector phóng to thoải mái, đã kèm sẵn font và logo). Ảnh được cắt sát sơ đồ, chừa một lề nhỏ — luôn chứa toàn bộ sơ đồ, kể cả phần đang
+          nằm ngoài khung nhìn — và không bao giờ có lưới. Khi đang chọn Element, có thêm lựa chọn <strong>Selection only</strong> (chỉ vùng chọn): các Element đó (kèm toàn bộ nội
+          dung nếu là Frame) và các Line nối giữa chúng. Nền theo màu canvas của theme đang dùng, hoặc <strong>Transparent</strong> (trong suốt). Ảnh luôn tĩnh như Run mode Static:
+          bỏ hiệu ứng và highlight Replay, giữ nguyên kiểu nét, marker, nhãn và Line style — nên xuất giữa lúc Replay đang chạy vẫn ra đúng ảnh đó. Tên file lấy theo tên sơ đồ.
+          Trang xem chỉ-đọc cũng xuất được qua nút <strong>Image</strong> trên header, không cần đăng nhập. Sơ đồ trống thì không có gì để xuất nên lệnh bị làm mờ.
+        </p>
+        <p>
           Nút <strong>Info</strong> trên cụm điều khiển canvas mở panel bên gồm phần tóm tắt tài liệu, khung JSON trực tiếp cập nhật theo từng chỉnh sửa, và JSON playground để dán một tài
           liệu vào canvas. Schema chi tiết từng trường được ghi trong <Link href='/guide' className='text-sky-300 underline-offset-2 hover:underline'>hướng dẫn viết JSON</Link>.
         </p>
       </Section>
 
-      <Section id='reference' title='11. Tra cứu nhanh'>
+      <Section id='shortcuts' title='11. Phím tắt & copy/paste'>
+        <p>
+          Trình soạn thảo (và trình soạn Template) có các phím tắt quen thuộc của những công cụ vẽ khác. Dùng <Kbd>⌘</Kbd> trên macOS và <Kbd>Ctrl</Kbd> trên Windows/Linux. Nhấn{' '}
+          <Kbd>?</Kbd> trên canvas để xem bảng phím tắt ngay trong app — tooltip của các nút Undo, Redo và Save cũng ghi phím tắt.
+        </p>
+        <Table
+          head={['Phím', 'Tác dụng']}
+          rows={[
+            ['Delete / Backspace', 'Xoá toàn bộ vùng chọn — mọi Element đang chọn (Frame xoá kèm nội dung), hoặc Line đang chọn'],
+            ['⌘C / ⌘X / ⌘V', 'Sao chép / cắt / dán vùng chọn'],
+            ['⌘D', 'Nhân bản vùng chọn'],
+            ['⌘A', 'Chọn tất cả Element'],
+            ['⌘Z', 'Undo'],
+            ['⌘⇧Z (hoặc Ctrl+Y trên Windows/Linux)', 'Redo'],
+            ['⌘S', 'Save (ở trình soạn Template: lưu Template)'],
+            ['← ↑ → ↓', 'Nhích vùng chọn 1 px'],
+            ['⇧ + mũi tên', 'Nhích 10 px — hoặc đúng một ô lưới khi bật snap'],
+            ['Esc', 'Bỏ chọn, hoặc huỷ công cụ vẽ đang bật'],
+            ['?', 'Mở bảng phím tắt'],
+          ]}
+        />
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            Khi đang gõ trong một ô nhập — tiêu đề, bảng thuộc tính, JSON playground — phím giữ nghĩa gốc của nó: <Kbd>Backspace</Kbd> xoá ký tự chứ không xoá Element, <Kbd>⌘Z</Kbd> hoàn
+            tác phần vừa gõ. Riêng <Kbd>⌘S</Kbd> lưu được từ mọi chỗ, kể cả nội dung vừa gõ.
+          </li>
+          <li>
+            Giữ phím mũi tên thì vùng chọn chạy liên tục, và chỉ một lần <Kbd>⌘Z</Kbd> là đưa về chỗ cũ. Xoá, nhân bản và dán đều là một bước undo, dù đụng tới bao nhiêu Element.
+          </li>
+          <li>Trang xem chỉ-đọc (Viewer) không có phím tắt nào.</li>
+        </ul>
+        <p>
+          <strong>Copy và paste</strong> mang theo một phần sơ đồ: các Element đang chọn (Frame luôn kèm toàn bộ nội dung bên trong), các Line có <em>cả hai</em> đầu nằm trong vùng chọn
+          — Line chỉ nối một đầu ra ngoài thì bị bỏ — và các Line style mà các Line đó dùng. Dán được vào chính sơ đồ đó, sang sơ đồ khác, sang tab khác, hoặc vào trình soạn Template. Element
+          được dán nhận id mới và trở thành vùng chọn; dán vào cùng sơ đồ thì lệch nhẹ xuống dưới-phải so với bản gốc, dán tiếp thì lệch tiếp nên các bản sao không bao giờ chồng khít lên
+          nhau. Line style mà sơ đồ đích chưa có sẽ được thêm vào, để Line được dán trông y hệt bản gốc; nếu sơ đồ đích đã có một style khác cùng tên, style được dán sẽ đổi tên (ví dụ
+          &quot;async (2)&quot;).
+        </p>
+        <p>
+          Thứ được copy là Diagram JSON thuần, nên chiều ngược lại cũng được: dán Diagram JSON viết tay hoặc do AI sinh ra — cả tài liệu hay chỉ{' '}
+          <Pill>{'{ "nodes": [...], "edges": [...] }'}</Pill> — thẳng lên canvas, và nó được <em>thêm</em> vào sơ đồ đang có (còn JSON playground thì thay thế cả canvas). Văn bản không
+          phải Diagram JSON hợp lệ chỉ hiện một thông báo ngắn và không thay đổi gì.
+        </p>
+      </Section>
+
+      <Section id='reference' title='12. Tra cứu nhanh'>
         <Table
           head={['Thao tác', 'Cách làm']}
           rows={[
             ['Thêm khối', 'Chọn hình ở thanh công cụ đáy canvas, rồi bấm-kéo trên canvas'],
             ['Huỷ công cụ vẽ đang chọn', 'Esc, hoặc bấm lại vào công cụ đang bật'],
+            ['Chọn nhiều Element', 'Shift-click từng cái, hoặc Shift-kéo một khung trên vùng canvas trống; ⌘A chọn tất cả'],
             ['Nối hai khối', 'Kéo từ cổng của khối này sang khối kia'],
             ['Uốn đường nối', 'Chọn đường, bấm đúp lên đường để thêm điểm uốn; kéo điểm uốn; bấm đúp vào điểm uốn để xoá'],
             ['Sửa khối / đường nối', 'Bấm vào nó — bảng thuộc tính mở bên phải'],
-            ['Nhân bản hoặc xoá', 'Các nút ở đầu bảng thuộc tính'],
+            ['Nhân bản hoặc xoá', '⌘D / Delete, hoặc các nút trong bảng thuộc tính'],
+            ['Chép một phần sơ đồ sang chỗ khác', 'Chọn, ⌘C, mở sơ đồ kia, ⌘V'],
             ['Di chuyển khung nhìn', 'Kéo vùng canvas trống (hoặc kéo bằng chuột giữa ở mọi nơi)'],
             ['Thu phóng', 'Lăn chuột, hoặc các nút Zoom in / Zoom out / Fit'],
             ['Đổi tên sơ đồ', 'Bấm vào tên trên header, gõ, nhấn Enter'],
-            ['Lưu lên cloud', 'Nút Save trên header (chấm vàng = còn thay đổi chưa lưu)'],
+            ['Hoàn tác / làm lại', '⌘Z / ⌘⇧Z, hoặc nút Undo / Redo cạnh menu File'],
+            ['Lưu lên cloud', '⌘S, hoặc nút Save trên header (chấm vàng = còn thay đổi chưa lưu)'],
+            ['Xem mọi phím tắt', 'Nhấn ? trên canvas'],
             ['Chạy hiệu ứng', 'Replay — chọn Sequential, Concurrent hoặc Manual trước'],
             ['Chia sẻ chỉ-đọc', 'Đặt sơ đồ Public, rồi File → Share → Copy'],
             ['Vẽ một bảng CSDL', 'Nút Table bên phải thanh công cụ hình, rồi bấm-kéo'],
             ['Sửa các cột', 'Chọn bảng — mục Columns nằm trong bảng thuộc tính'],
             ['Nối hai bảng', 'Nối chúng lại, rồi chọn cột ở mỗi đầu trong khối Relationship'],
             ['Lấy mã SQL', 'File → Export SQL → Copy hoặc Download .sql'],
+            ['Đưa sơ đồ vào slide hay tài liệu', 'File → Export image… (hoặc nút Image ở trang xem) → PNG hoặc SVG'],
           ]}
         />
       </Section>

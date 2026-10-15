@@ -756,7 +756,7 @@ export function EdgeInspector({ edge, styles, sourceTitle, targetTitle, fallback
           </div>
         </div>
 
-        <Button variant='destructive' onClick={() => onDelete(edge.id)} className='mt-4 w-full'>
+        <Button variant='destructive' onClick={() => onDelete(edge.id)} title='Delete line (Delete key)' className='mt-4 w-full'>
           <Trash2 size={12} /> Delete line
         </Button>
       </CardContent>

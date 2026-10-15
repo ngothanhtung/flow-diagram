@@ -15,6 +15,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
+  canonicalNodeIcon,
   getIconLibrarySnapshot,
   loadIconLibrary,
   parseNodeIcon,
@@ -68,6 +69,10 @@ export function IconPicker({ value, onChange, className }: IconPickerProps) {
   }, [open]);
 
   const activeSnapshot = useIconSnapshot(tab, open);
+  // A document may hold an alias (`lucide:LucideNetwork`, which this
+  // picker itself stored before picks were canonical); compare the
+  // canonical spelling so that icon still shows as the selected one.
+  const activeValue = value ? canonicalNodeIcon(value, tab, activeSnapshot) : null;
 
   const iconNames = useMemo(() => {
     if (!activeSnapshot) return [];
@@ -184,7 +189,7 @@ export function IconPicker({ value, onChange, className }: IconPickerProps) {
                     .slice(virtualRow.index * COLUMNS, virtualRow.index * COLUMNS + COLUMNS)
                     .map((name) => {
                       const Icon = activeSnapshot.components[name];
-                      const isActive = value === `${tab}:${name}`;
+                      const isActive = activeValue === `${tab}:${name}`;
                       return (
                         <Button
                           key={name}

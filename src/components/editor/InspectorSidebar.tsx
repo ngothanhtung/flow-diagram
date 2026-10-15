@@ -8,6 +8,7 @@ import { NodeInspector } from '@/components/inspector/NodeInspector';
 import { Drawer, DrawerContent } from '@/components/ui/drawer';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { EdgeStylePaletteDialog } from '@/components/editor/EdgeStylePaletteDialog';
+import { useHistoryGestureScope } from '@/components/editor/use-history-gesture-scope';
 import { useEditorStore } from '@/lib/editor-store';
 import { edgeStylesOf } from '@/lib/edge-style';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
@@ -26,83 +27,94 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
   const infoOpen = useEditorStore((state) => state.infoOpen);
   const { selectNode, selectEdge, toggleInfo, onNodeUpdate, onNodeDuplicate, onNodeDelete, onEdgeUpdate, onEdgeDelete, assignEdgeStyle, ungroupNode, fitGroupToContents } = useEditorStore();
   const [stylePaletteOpen, setStylePaletteOpen] = useState(false);
+  // Undo/redo remount the panels (see `historyRevision`), so a panel's
+  // local draft of a field never outlives the value it was a draft of.
+  const historyRevision = useEditorStore((state) => state.historyRevision);
+  // A slider drag, a colour-picker session or a stretch of typing in one
+  // field is one undo step — for every control in the drawer and in the
+  // dialogs it opens, present and future, without each field opting in.
+  const historyGestures = useHistoryGestureScope();
 
   const selectedNode = document.nodes.find((node) => node.id === selectedNodeId) ?? null;
   const selectedEdge = document.edges.find((edge) => edge.id === selectedEdgeId) ?? null;
   const edgeSource = selectedEdge ? document.nodes.find((node) => node.id === selectedEdge.from) : undefined;
 
   return (
-    <Drawer
-      open={selectedNode !== null || selectedEdge !== null || infoOpen}
-      // Escape and the swipe gesture dismiss the whole inspector; clearing
-      // both selections and Info is what actually drives `open` back to false.
-      onOpenChange={(next) => {
-        if (next) return;
-        selectNode(null);
-        selectEdge(null);
-        if (infoOpen) toggleInfo();
-      }}
-      modal={false}
-      // Without this, every click on the canvas (selecting the next node)
-      // counts as an outside press and races the new selection.
-      disablePointerDismissal
-      swipeDirection='right'
-    >
-      <DrawerContent aria-label={ariaLabel}>
-        <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
-          <div className='flex min-h-full flex-col gap-3 p-2'>
-            {selectedNode && !selectedEdge && (
-              <NodeInspector
-                key={selectedNode.id}
-                node={selectedNode}
-                memberCount={document.nodes.filter((node) => node.parentId === selectedNode.id).length}
-                parentTitle={selectedNode.parentId ? (document.nodes.find((node) => node.id === selectedNode.parentId)?.title ?? null) : null}
-                onUngroup={ungroupNode}
-                onFitGroup={fitGroupToContents}
-                onUpdate={onNodeUpdate}
-                onDuplicate={(id) => {
-                  const duplicateId = onNodeDuplicate(id);
-                  if (duplicateId) selectNode(duplicateId);
-                }}
-                onDelete={(id) => {
-                  onNodeDelete(id);
-                  selectNode(null);
-                }}
-                onClose={() => selectNode(null)}
-              />
-            )}
+    <div {...historyGestures} className='contents'>
+      <Drawer
+        open={selectedNode !== null || selectedEdge !== null || infoOpen}
+        // Escape and the swipe gesture dismiss the whole inspector; clearing
+        // both selections and Info is what actually drives `open` back to false.
+        onOpenChange={(next) => {
+          if (next) return;
+          selectNode(null);
+          selectEdge(null);
+          if (infoOpen) toggleInfo();
+        }}
+        modal={false}
+        // Without this, every click on the canvas (selecting the next node)
+        // counts as an outside press and races the new selection.
+        disablePointerDismissal
+        swipeDirection='right'
+      >
+        {/* Part of the editing surface, not a popup: keyboard shortcuts
+            work while focus is in here (outside its fields). */}
+        <DrawerContent aria-label={ariaLabel} data-shortcuts='all'>
+          <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
+            <div className='flex min-h-full flex-col gap-3 p-2'>
+              {selectedNode && !selectedEdge && (
+                <NodeInspector
+                  key={`${selectedNode.id}:${historyRevision}`}
+                  node={selectedNode}
+                  memberCount={document.nodes.filter((node) => node.parentId === selectedNode.id).length}
+                  parentTitle={selectedNode.parentId ? (document.nodes.find((node) => node.id === selectedNode.parentId)?.title ?? null) : null}
+                  onUngroup={ungroupNode}
+                  onFitGroup={fitGroupToContents}
+                  onUpdate={onNodeUpdate}
+                  onDuplicate={(id) => {
+                    const duplicateId = onNodeDuplicate(id);
+                    if (duplicateId) selectNode(duplicateId);
+                  }}
+                  onDelete={(id) => {
+                    onNodeDelete(id);
+                    selectNode(null);
+                  }}
+                  onClose={() => selectNode(null)}
+                />
+              )}
 
-            {selectedEdge && (
-              <EdgeInspector
-                key={selectedEdge.id}
-                edge={selectedEdge}
-                styles={edgeStylesOf(document.settings)}
-                sourceTitle={edgeSource?.title ?? selectedEdge.from}
-                targetTitle={document.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
-                fallbackColor={edgeSource ? resolveNodeStyle(edgeSource).foreground : '#67e8f9'}
-                sourceColumns={edgeSource?.table?.columns}
-                targetColumns={document.nodes.find((node) => node.id === selectedEdge.to)?.table?.columns}
-                onUpdate={onEdgeUpdate}
-                onAssignStyle={assignEdgeStyle}
-                onManageStyles={() => setStylePaletteOpen(true)}
-                onDelete={(id) => {
-                  onEdgeDelete(id);
-                  selectEdge(null);
-                }}
-                onClose={() => selectEdge(null)}
-              />
-            )}
+              {selectedEdge && (
+                <EdgeInspector
+                  key={`${selectedEdge.id}:${historyRevision}`}
+                  edge={selectedEdge}
+                  styles={edgeStylesOf(document.settings)}
+                  sourceTitle={edgeSource?.title ?? selectedEdge.from}
+                  targetTitle={document.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
+                  fallbackColor={edgeSource ? resolveNodeStyle(edgeSource).foreground : '#67e8f9'}
+                  sourceColumns={edgeSource?.table?.columns}
+                  targetColumns={document.nodes.find((node) => node.id === selectedEdge.to)?.table?.columns}
+                  onUpdate={onEdgeUpdate}
+                  onAssignStyle={assignEdgeStyle}
+                  onManageStyles={() => setStylePaletteOpen(true)}
+                  onDelete={(id) => {
+                    onEdgeDelete(id);
+                    selectEdge(null);
+                  }}
+                  onClose={() => selectEdge(null)}
+                />
+              )}
 
-            {children}
-          </div>
-        </ScrollArea>
-      </DrawerContent>
+              {children}
+            </div>
+          </ScrollArea>
+        </DrawerContent>
 
-      {/* Mounted from the sidebar rather than inside `EdgeInspector` so
-          the palette survives the line being deselected while it's open
-          — the inspector unmounts the moment the selection clears. */}
-      <EdgeStylePaletteDialog open={stylePaletteOpen} onOpenChange={setStylePaletteOpen} />
-    </Drawer>
+        {/* Mounted from the sidebar rather than inside `EdgeInspector` so
+            the palette survives the line being deselected while it's open
+            — the inspector unmounts the moment the selection clears. */}
+        <EdgeStylePaletteDialog open={stylePaletteOpen} onOpenChange={setStylePaletteOpen} />
+      </Drawer>
+    </div>
   );
 }
 

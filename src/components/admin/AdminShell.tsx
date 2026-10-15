@@ -1,40 +1,35 @@
 'use client';
 
 import { ShieldOff } from 'lucide-react';
-import { useEffect, useState } from 'react';
 import { AppSidebar } from '@/components/app-sidebar';
-import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
+import { AuthGate } from '@/components/auth/AuthGate';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import { isAdminUser } from '@/lib/firebase/roles';
 
 /**
- * Gate + chrome shared by every `/admin/*` page: blocks on auth, then on
- * the `administrators` role (`users-roles/{uid}`), then renders the
- * `sidebar-07`-style shell (`AppSidebar` + `SidebarInset`) around the
- * page content. Denied/loading users never see the sidebar.
+ * Gate + chrome shared by every `/admin/*` page: `AuthGate` blocks on
+ * sign-in and the Access list (an administrator always passes it), then the
+ * `administrators` role (`users-roles/{uid}`, read once by `AuthProvider`)
+ * decides between the refusal below and the `sidebar-07`-style shell
+ * (`AppSidebar` + `SidebarInset`) around the page content. Denied/loading
+ * users never see the sidebar.
  */
 export function AdminShell({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useAuth();
-  const [roleStatus, setRoleStatus] = useState<'checking' | 'denied' | 'admin'>('checking');
+  return (
+    <AuthGate>
+      <AdminArea>{children}</AdminArea>
+    </AuthGate>
+  );
+}
 
-  useEffect(() => {
-    if (!user) return;
-    let cancelled = false;
-    void isAdminUser(user.uid).then((allowed) => {
-      if (!cancelled) setRoleStatus(allowed ? 'admin' : 'denied');
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [user]);
+function AdminArea({ children }: { children: React.ReactNode }) {
+  const { user, access } = useAuth();
+  // AuthGate only mounts this for a signed-in user.
+  if (!user) return null;
 
-  if (loading || roleStatus === 'checking') return <AuthLoadingScreen />;
-  if (!user) return <LoginForm />;
-
-  if (roleStatus === 'denied') {
+  if (!access.isAdmin) {
     return (
       <div className='grid h-screen place-items-center bg-background text-foreground'>
         <div className='flex max-w-sm flex-col items-center gap-4 rounded-xl bg-card px-8 py-10 text-center'>

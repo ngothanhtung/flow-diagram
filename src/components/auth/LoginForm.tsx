@@ -1,6 +1,7 @@
 'use client';
 
 import { FirebaseError } from 'firebase/app';
+import type { User } from 'firebase/auth';
 import { Boxes, CircuitBoard, LoaderCircle, LockKeyhole, Mail, Sparkles } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -8,13 +9,30 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { AccessDeniedView, VerifyEmailView } from '@/components/auth/AccessViews';
+import { PasswordResetForm } from '@/components/auth/PasswordResetForm';
+import type { AccessStatus } from '@/lib/access-list';
+import { sendVerificationIfRequired } from '@/lib/firebase/access';
 import {
   createAccountWithEmail,
   signInWithEmail,
   signInWithGoogle,
 } from '@/lib/firebase/auth';
 
-type AuthMode = 'login' | 'register';
+// Which screen the card shows. Each view owns its header copy here and its
+// body below. `denied` and `verify` are for a user who is signed in but not
+// let in by the Access list yet — `AuthGate` picks them, not the user.
+type AuthView = 'login' | 'register' | 'reset' | 'denied' | 'verify';
+
+const VIEW_COPY: Record<AuthView, { title: string; description: string }> = {
+  login: { title: 'Sign in to workspace', description: 'Continue with your saved diagrams.' },
+  register: { title: 'Create account', description: 'Each account gets its own diagram library.' },
+  reset: { title: 'Reset password', description: "Enter the email you sign in with and we'll send you a link to choose a new password." },
+  denied: { title: 'Access not allowed', description: 'This workspace is limited to the people on its Access list.' },
+  verify: { title: 'Check your inbox', description: 'Verify your email address to start using X Flow Tool.' },
+};
+
+export type BlockedAccess = { user: User; status: Exclude<AccessStatus, 'allowed'> };
 
 function authErrorMessage(error: unknown) {
   if (!(error instanceof FirebaseError)) return 'Could not sign in. Please try again.';
@@ -30,8 +48,14 @@ function authErrorMessage(error: unknown) {
   return messages[error.code] ?? 'Firebase could not authenticate this account.';
 }
 
-export function LoginForm() {
-  const [mode, setMode] = useState<AuthMode>('login');
+/**
+ * The sign-in card. Signed out, it is the login / sign-up / reset flow;
+ * given `blocked`, it is the Access list's refusal or "Check your inbox"
+ * screen for the signed-in `blocked.user`.
+ */
+export function LoginForm({ blocked }: { blocked?: BlockedAccess } = {}) {
+  const [chosenMode, setMode] = useState<AuthView>('login');
+  const mode: AuthView = blocked ? (blocked.status === 'not-allowed' ? 'denied' : 'verify') : chosenMode;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [pending, setPending] = useState<'email' | 'google' | null>(null);
@@ -43,7 +67,10 @@ export function LoginForm() {
     setPending('email');
     try {
       if (mode === 'register') {
-        await createAccountWithEmail(email.trim(), password);
+        const credential = await createAccountWithEmail(email.trim(), password);
+        // Not awaited: the gate's "Check your inbox" screen takes over as
+        // soon as the account exists, and offers Resend if this fails.
+        void sendVerificationIfRequired(credential.user);
       } else {
         await signInWithEmail(email.trim(), password);
       }
@@ -127,56 +154,71 @@ export function LoginForm() {
               </span>
             </div>
             <CardTitle className="font-mono text-2xl font-semibold tracking-tight">
-              {mode === 'login' ? 'Sign in to workspace' : 'Create account'}
+              {VIEW_COPY[mode].title}
             </CardTitle>
             <CardDescription className="mt-1 text-muted-foreground">
-              {mode === 'login'
-                ? 'Continue with your saved diagrams.'
-                : 'Each account gets its own diagram library.'}
+              {VIEW_COPY[mode].description}
             </CardDescription>
           </CardHeader>
           <CardContent className="px-7 pt-6 pb-7">
-            <form onSubmit={submitEmail} className="space-y-4">
-              <div className="space-y-1.5">
-                <Label htmlFor="auth-email" className="text-[10px] uppercase tracking-[.14em] text-muted-foreground">Email</Label>
-                <div className="relative">
-                  <Mail className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
-                  <Input id="auth-email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" required placeholder="you@company.com" className="h-11 border-border bg-muted/20 pl-10" />
-                </div>
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="auth-password" className="text-[10px] uppercase tracking-[.14em] text-muted-foreground">Password</Label>
-                <div className="relative">
-                  <LockKeyhole className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
-                  <Input id="auth-password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete={mode === 'login' ? 'current-password' : 'new-password'} minLength={6} required placeholder="At least 6 characters" className="h-11 border-border bg-muted/20 pl-10" />
-                </div>
-              </div>
-              {error && (
-                <div role="alert" className="rounded-lg border border-rose-400/20 bg-rose-400/8 px-3 py-2.5 text-xs leading-5 text-rose-700 dark:text-rose-200">
-                  {error}
-                </div>
-              )}
-              <Button variant="accent" type="submit" disabled={pending !== null} className="h-11 w-full">
-                {pending === 'email' && <LoaderCircle className="animate-spin" />}
-                {mode === 'login' ? 'Sign in' : 'Create account'}
-              </Button>
-            </form>
+            {blocked && mode === 'denied' ? (
+              <AccessDeniedView user={blocked.user} />
+            ) : blocked && mode === 'verify' ? (
+              <VerifyEmailView user={blocked.user} />
+            ) : mode === 'reset' ? (
+              <PasswordResetForm email={email} onEmailChange={setEmail} onBack={() => { setMode('login'); setError(null); }} />
+            ) : (
+              <>
+                <form onSubmit={submitEmail} className="space-y-4">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="auth-email" className="text-[10px] uppercase tracking-[.14em] text-muted-foreground">Email</Label>
+                    <div className="relative">
+                      <Mail className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input id="auth-email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" required placeholder="you@company.com" className="h-11 border-border bg-muted/20 pl-10" />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <Label htmlFor="auth-password" className="text-[10px] uppercase tracking-[.14em] text-muted-foreground">Password</Label>
+                      {mode === 'login' && (
+                        <button type="button" onClick={() => { setMode('reset'); setError(null); }} className="text-xs font-semibold text-cyan-600 hover:text-cyan-500 dark:text-cyan-300 dark:hover:text-cyan-200">
+                          Forgot password?
+                        </button>
+                      )}
+                    </div>
+                    <div className="relative">
+                      <LockKeyhole className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input id="auth-password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} autoComplete={mode === 'login' ? 'current-password' : 'new-password'} minLength={6} required placeholder="At least 6 characters" className="h-11 border-border bg-muted/20 pl-10" />
+                    </div>
+                  </div>
+                  {error && (
+                    <div role="alert" className="rounded-lg border border-rose-400/20 bg-rose-400/8 px-3 py-2.5 text-xs leading-5 text-rose-700 dark:text-rose-200">
+                      {error}
+                    </div>
+                  )}
+                  <Button variant="accent" type="submit" disabled={pending !== null} className="h-11 w-full">
+                    {pending === 'email' && <LoaderCircle className="animate-spin" />}
+                    {mode === 'login' ? 'Sign in' : 'Create account'}
+                  </Button>
+                </form>
 
-            <div className="my-5 flex items-center gap-3 text-[9px] uppercase tracking-[.18em] text-muted-foreground">
-              <span className="h-px flex-1 bg-border" /> or <span className="h-px flex-1 bg-border" />
-            </div>
+                <div className="my-5 flex items-center gap-3 text-[9px] uppercase tracking-[.18em] text-muted-foreground">
+                  <span className="h-px flex-1 bg-border" /> or <span className="h-px flex-1 bg-border" />
+                </div>
 
-            <Button type="button" variant="outline" disabled={pending !== null} onClick={submitGoogle} className="h-11 w-full border-border bg-muted/20">
-              {pending === 'google' ? <LoaderCircle className="animate-spin" /> : <span className="font-bold text-cyan-700 dark:text-cyan-300">G</span>}
-              Continue with Google
-            </Button>
+                <Button type="button" variant="outline" disabled={pending !== null} onClick={submitGoogle} className="h-11 w-full border-border bg-muted/20">
+                  {pending === 'google' ? <LoaderCircle className="animate-spin" /> : <span className="font-bold text-cyan-700 dark:text-cyan-300">G</span>}
+                  Continue with Google
+                </Button>
 
-            <p className="mt-6 text-center text-xs text-muted-foreground">
-              {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}{' '}
-              <button type="button" onClick={() => { setMode((value) => value === 'login' ? 'register' : 'login'); setError(null); }} className="font-semibold text-cyan-600 hover:text-cyan-500 dark:text-cyan-300 dark:hover:text-cyan-200">
-                {mode === 'login' ? 'Sign up' : 'Sign in'}
-              </button>
-            </p>
+                <p className="mt-6 text-center text-xs text-muted-foreground">
+                  {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}{' '}
+                  <button type="button" onClick={() => { setMode((value) => value === 'login' ? 'register' : 'login'); setError(null); }} className="font-semibold text-cyan-600 hover:text-cyan-500 dark:text-cyan-300 dark:hover:text-cyan-200">
+                    {mode === 'login' ? 'Sign up' : 'Sign in'}
+                  </button>
+                </p>
+              </>
+            )}
           </CardContent>
         </Card>
       </section>

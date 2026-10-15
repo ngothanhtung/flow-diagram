@@ -202,8 +202,10 @@ P0 + P1 được đặc tả chi tiết trong [PRD v0.2](prd/v0.2.md); P2 trong 
 
 | Vấn đề | Ghi chú |
 | --- | --- |
-| Không có test tự động | Không có test runner; UI được kiểm thủ công. |
+| Test tự động mới phủ logic và rules | Từ v0.2 có Vitest (logic thuần) và rules test trên emulator; UI vẫn kiểm bằng trình duyệt. |
 | README lỗi thời | Vẫn liệt kê Effect đã xoá (`wave`, marching ants) và "real object silhouettes" (đã thay bằng icon). |
 | Tên sản phẩm không nhất quán | `flowgram-tools` (package, README, key lưu cục bộ) vs **X Flow Tool** (UI) vs `x-flow-tool` (repo). |
 | ~106 MB logo nằm trong repo | ~15.000 SVG; clone chậm, deploy nặng. |
 | Nhãn UI lệch thuật ngữ | "Execution mode" / "Execution order" nên là **Run mode** / **Step**; nhãn "Line style" đang dùng cho cả Line style và Stroke pattern; "Objects on line" nên là **Effect mark**; "Group" nên là **Frame**. |
+| Đổi Run mode làm Diagram "chưa lưu" | Run mode lưu trong Diagram nhưng không undo được, nên chấm "chưa lưu" không tự tắt khi đổi lại. |
+| Diagram mới tự căn khung nhìn | Cho tới lần bấm canvas đầu tiên, khung nhìn tự căn lại sau mỗi lần sửa, làm hình vừa vẽ nhảy chỗ. |
