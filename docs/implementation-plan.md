@@ -67,7 +67,7 @@ Tracks delivery of [PRD v0.2](prd/v0.2.md) and [PRD v0.3](prd/v0.3.md). Each tas
 | # | Task | PRD | Depends on | Status |
 | --- | --- | --- | --- | --- |
 | T6 | Versions | v0.3 §4.1 | v0.2 | ☑ |
-| T7 | Share for Collaborators | v0.3 §4.2, [ADR 0001](adr/0001-sharing-via-access-index.md) | T6 | ☐ |
+| T7 | Share for Collaborators | v0.3 §4.2, [ADR 0001](adr/0001-sharing-via-access-index.md) | T6 | ◐ built; awaiting checkpoint sign-off |
 | T8 | Auto-layout | v0.3 §4.3 | v0.2 (undo) | ◐ built; awaiting owner visual sign-off on real Diagrams |
 
 ### T6 — Versions
@@ -77,7 +77,7 @@ Tracks delivery of [PRD v0.2](prd/v0.2.md) and [PRD v0.3](prd/v0.3.md). Each tas
 - Rules: Versions follow the Diagram's owner-only rule (T7 adds Collaborators); deleting a Diagram deletes its Versions.
 
 ### T7 — Share for Collaborators (ADR 0001)
-- `diagram-access/{id}`: `ownerUid`, `collaborators: { [email]: 'edit' | 'view' }`, `collaboratorEmails: string[]` for querying.
+- `diagram-access/{ownerUid}_{id}` (uid-prefixed, see the ADR's *As built*): `ownerUid`, `collaborators: { [email]: 'edit' | 'view' }`, `collaboratorEmails: string[]` for querying.
 - Editor resolves the owner through the index; no index = current user owns it (old links unchanged).
 - Rules: Collaborator branches on Diagram + Versions; index writable by Owner only; invitee must satisfy the Access list.
 - Save conflict: Save runs in a transaction comparing a revision counter to the one loaded; mismatch → conflict dialog (overwrite / save as new / load latest).

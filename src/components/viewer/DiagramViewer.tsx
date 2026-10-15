@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Boxes, FileQuestion, ImageDown } from 'lucide-react';
+import { Boxes, Eye, FileQuestion, ImageDown, Pencil } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AuthLoadingScreen } from '@/components/auth/LoginForm';
@@ -14,15 +14,18 @@ import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';
-import { findPublicDiagramById, listAllDiagrams, loadDiagram, toViewerRow, type AdminDiagramRow } from '@/lib/firebase/diagrams';
+import { findPublicDiagramById, listAllDiagrams, openDiagram, toViewerRow, type AdminDiagramRow } from '@/lib/firebase/diagrams';
+import { ACCESS_LEVEL_LABELS, routeForRole, type DiagramRole } from '@/lib/sharing';
 import { normalizeDocument } from '@/lib/document-validation';
 import { isAdminUser } from '@/lib/firebase/roles';
 
 /**
  * Read-only viewer for a single diagram (`/diagrams/{id}/view`).
  * Access policy: the diagram opens when it is flagged `public` (no
- * login required — that's what makes it a share link), when the
- * viewer owns it, or when the viewer is an administrator — anything
+ * login required — that's what makes it a Public link), when the
+ * viewer owns it, when it is shared with them (Can view or Can edit —
+ * read from the Owner's path through the access index, so a private
+ * Diagram works too), or when the viewer is an administrator — anything
  * else resolves to "not found". Every editing tool is hidden; only
  * pan, zoom, fit, the info panel and the read-only play bar
  * (mode / repeat / replay) remain.
@@ -30,31 +33,36 @@ import { isAdminUser } from '@/lib/firebase/roles';
 export function DiagramViewer({ diagramId }: { diagramId: string }) {
   const { user, loading } = useAuth();
   const [diagram, setDiagram] = useState<AdminDiagramRow | null>(null);
+  const [role, setRole] = useState<DiagramRole | null>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'not-found' | 'error'>('loading');
 
   useEffect(() => {
     if (loading) return;
     let cancelled = false;
 
-    // Resolution order: owner (direct path read) → administrator
-    // (full collection-group list) → public flag (flat mirror read,
-    // works without a signed-in user).
-    const resolve = async (): Promise<AdminDiagramRow | null> => {
+    // Resolution order: owner (direct path read) → Collaborator (access
+    // index, then the Owner's path) → administrator (full collection-group
+    // list) → public flag (flat mirror read, works without a signed-in
+    // user).
+    const resolve = async (): Promise<{ row: AdminDiagramRow; role: DiagramRole | null } | null> => {
       if (user) {
-        const own = await loadDiagram(user.uid, diagramId).catch(() => null);
-        if (own) return toViewerRow(own.id, user.uid, own);
+        const opening = await openDiagram({ uid: user.uid, email: user.email, emailVerified: user.emailVerified }, diagramId).catch(() => null);
+        if (opening?.role) return { row: toViewerRow(opening.diagram.id, opening.ownerUid, opening.diagram), role: opening.role };
         if (await isAdminUser(user.uid)) {
           const all = await listAllDiagrams();
           const found = all.find((item) => item.id === diagramId);
-          if (found) return found;
+          if (found) return { row: found, role: null };
         }
       }
-      return findPublicDiagramById(diagramId);
+      const publicRow = await findPublicDiagramById(diagramId);
+      return publicRow ? { row: publicRow, role: null } : null;
     };
 
     resolve()
-      .then((result) => {
+      .then((resolved) => {
         if (cancelled) return;
+        const result = resolved?.row;
+        if (resolved) setRole(resolved.role);
         if (result) {
           // The Viewer doesn't go through the editor store, so it applies
           // the same gate itself: a stored document with an out-of-range
@@ -103,11 +111,13 @@ export function DiagramViewer({ diagramId }: { diagramId: string }) {
     );
   }
 
-  return <ViewerReady diagram={diagram} />;
+  return <ViewerReady diagram={diagram} role={role} />;
 }
 
-/** Ready state of the viewer — owns the local playback state machine. */
-function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
+/** Ready state of the viewer — owns the local playback state machine.
+ *  `role` is the signed-in user's on this Diagram, when they have one
+ *  (null for a Public link or an administrator). */
+function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: DiagramRole | null }) {
   const [infoOpen, setInfoOpen] = useState(false);
   const [imageOpen, setImageOpen] = useState(false);
   const run = useViewerRun(diagram.document);
@@ -131,6 +141,22 @@ function ViewerReady({ diagram }: { diagram: AdminDiagramRow }) {
         </div>
 
         <div className='flex flex-wrap items-center justify-end gap-2'>
+          {role === 'view' && (
+            <span
+              className='inline-flex h-9 items-center gap-1.5 rounded-md bg-accent px-2.5 text-xs font-semibold text-muted-foreground ring-1 ring-border'
+              title='Shared with you — Can view: replay and export, no editing or history'
+              data-testid='viewer-role'
+            >
+              <Eye size={13} />
+              <span className='hidden sm:inline'>{ACCESS_LEVEL_LABELS.view}</span>
+            </span>
+          )}
+          {(role === 'owner' || role === 'edit') && (
+            <Button variant='toolbar' size='lg' nativeButton={false} render={<Link href={routeForRole(role, diagram.id)} />} title='Open in the editor'>
+              <Pencil size={13} />
+              <span className='hidden sm:inline'>Edit</span>
+            </Button>
+          )}
           <RunControls
             runMode={run.runMode}
             repeatEnabled={run.repeatEnabled}

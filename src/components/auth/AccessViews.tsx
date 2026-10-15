@@ -153,3 +153,81 @@ export function VerifyEmailView({ user }: { user: User }) {
     </div>
   );
 }
+
+/**
+ * "Shared with me" for a signed-in account whose email isn't verified
+ * (an Email/Password sign-up on a deployment with an open Access list —
+ * with a list, `AuthGate` already stops them at `VerifyEmailView`).
+ * Sharing is keyed by email, so the rules only honour an invite for a
+ * verified one; this says so instead of showing an empty list.
+ * "I've verified" is the same reload + forced token refresh as the gate's
+ * (`recheckAccess`), so the next query carries the verified claim.
+ */
+export function SharedVerifyNotice({ user, onVerified }: { user: User; onVerified: () => void }) {
+  const { recheckAccess } = useAuth();
+  const [pending, setPending] = useState<'check' | 'send' | null>(null);
+  const [notice, setNotice] = useState<Notice | null>(null);
+  const inFlight = useRef(false);
+
+  const run = async (kind: 'check' | 'send', action: () => Promise<Notice | null>) => {
+    if (inFlight.current) return;
+    inFlight.current = true;
+    setPending(kind);
+    setNotice(null);
+    try {
+      setNotice(await action());
+    } finally {
+      inFlight.current = false;
+      setPending(null);
+    }
+  };
+
+  const check = () => run('check', async () => {
+    try {
+      await recheckAccess();
+      if (user.emailVerified) {
+        onVerified();
+        return null;
+      }
+      return { kind: 'error', message: "Your email isn't verified yet. Open the link in the verification email, then try again." };
+    } catch {
+      return { kind: 'error', message: "Couldn't check right now. Check your connection and try again." };
+    }
+  });
+
+  const send = () => run('send', async () => {
+    try {
+      await sendVerificationEmail(user);
+      return { kind: 'info', message: `Sent. Check ${user.email ?? 'your inbox'} — and the spam folder.` };
+    } catch (error) {
+      return { kind: 'error', message: resendErrorMessage(error) };
+    }
+  });
+
+  return (
+    <div className="mx-auto max-w-md space-y-3 py-6" data-testid="shared-verify-notice">
+      <div className={INFO_ALERT}>
+        <MailCheck className="mt-0.5 size-4 shrink-0 text-cyan-700 dark:text-cyan-300" />
+        <span>
+          <span className="font-semibold">Verify your email to see Diagrams shared with you.</span> People share by email address, so it has to be proven yours first. Open the
+          verification link sent to <span className="font-semibold [overflow-wrap:anywhere]">{user.email}</span>, then press <span className="font-semibold">I&apos;ve verified</span>.
+        </span>
+      </div>
+      {notice && (
+        <div role={notice.kind === 'error' ? 'alert' : 'status'} className={notice.kind === 'error' ? ERROR_ALERT : INFO_ALERT}>
+          {notice.message}
+        </div>
+      )}
+      <div className="flex flex-wrap gap-2">
+        <Button variant="accent" type="button" disabled={pending !== null} onClick={check}>
+          {pending === 'check' ? <LoaderCircle className="animate-spin" /> : <RefreshCw />}
+          I&apos;ve verified
+        </Button>
+        <Button type="button" variant="outline" disabled={pending !== null} onClick={send} className="border-border bg-muted/20">
+          {pending === 'send' ? <LoaderCircle className="animate-spin" /> : <Send />}
+          Send verification email
+        </Button>
+      </div>
+    </div>
+  );
+}

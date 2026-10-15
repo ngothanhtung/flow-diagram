@@ -40,8 +40,8 @@ export default function HelpViPage() {
 
       <Section id='start' title='1. Bắt đầu'>
         <p>
-          Đăng nhập bằng <strong>tài khoản Google</strong> hoặc <strong>email + mật khẩu</strong>. Mỗi sơ đồ bạn tạo thuộc về tài khoản của bạn và được lưu trên cloud — không ai khác mở hay
-          sửa được, trừ khi bạn chủ động đặt nó ở chế độ công khai.
+          Đăng nhập bằng <strong>tài khoản Google</strong> hoặc <strong>email + mật khẩu</strong>. Mỗi sơ đồ bạn tạo thuộc về tài khoản của bạn (bạn là <strong>Owner</strong>) và được lưu trên
+          cloud — không ai khác mở được, trừ khi bạn Share cho họ hoặc bật Public link.
         </p>
         <p>
           Quên mật khẩu? Bấm <strong>Forgot password?</strong> trên form đăng nhập, nhập email rồi bấm <strong>Send reset link</strong>. Nếu email này có tài khoản, bạn sẽ nhận được thư kèm
@@ -57,15 +57,16 @@ export default function HelpViPage() {
           link vẫn mở được với mọi người, dù có Access list hay không.
         </p>
         <p>
-          Sau khi đăng nhập, bạn vào <strong>danh sách sơ đồ</strong>: bảng liệt kê mọi sơ đồ bạn sở hữu, kèm số khối/đường nối, trạng thái công khai, thời gian tạo và cập nhật. Tại đây bạn
-          có thể:
+          Sau khi đăng nhập, bạn vào <strong>danh sách sơ đồ</strong>. Thẻ <strong>My diagrams</strong> liệt kê mọi sơ đồ bạn sở hữu, kèm số khối/đường nối, trạng thái công khai (huy
+          hiệu hình người kèm con số cho biết đang Share với bao nhiêu người), thời gian lưu và tạo; thẻ <strong>Shared with me</strong> liệt kê sơ đồ người khác Share cho bạn (xem{' '}
+          <a href='#share' className='underline'>Chia sẻ</a>). Tại đây bạn có thể:
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>Bấm vào tên một sơ đồ để mở nó trong trình soạn thảo.</li>
           <li>Tìm kiếm theo tên hoặc id, sắp xếp theo bất kỳ cột nào, và phân trang khi danh sách dài.</li>
           <li>
-            Dùng menu <Pill>⋯</Pill> ở cuối mỗi dòng để <strong>Edit</strong> (sửa), <strong>View</strong> (mở trang xem chỉ-đọc trong tab mới), <strong>Share</strong> (chia sẻ — chỉ với sơ đồ
-            công khai) và <strong>Delete</strong> (xoá).
+            Dùng menu <Pill>⋯</Pill> ở cuối mỗi dòng để <strong>Edit</strong> (sửa), <strong>View</strong> (mở trang xem chỉ-đọc trong tab mới), <strong>Share</strong> (mời người khác hoặc
+            bật Public link) và <strong>Delete</strong> (xoá).
           </li>
         </ul>
       </Section>
@@ -236,7 +237,7 @@ export default function HelpViPage() {
           <li>
             <strong>Undo / Redo</strong> (hai nút mũi tên cạnh menu File) lùi lại và làm lại các thay đổi trên sơ đồ — di chuyển, đổi kích thước, đổi kiểu, xoá, nhóm khối, chọn template hay
             starter, import, Reset. Một lần kéo, một lần kéo thanh trượt hay một lần sửa một ô nhập tính là một bước; giữ tối đa 100 bước gần nhất. Chọn khối, kéo và thu phóng canvas, chế độ
-            chạy, tên sơ đồ và Public/Private không tạo bước undo. Bấm Save không xoá lịch sử; mở sơ đồ khác hoặc tải lại trang thì lịch sử bị xoá.
+            chạy, tên sơ đồ và Public link không tạo bước undo. Bấm Save không xoá lịch sử; mở sơ đồ khác hoặc tải lại trang thì lịch sử bị xoá.
           </li>
           <li>
             <strong>File → Save as</strong> nhân bản tài liệu hiện tại thành một sơ đồ hoàn toàn mới (&quot;… copy&quot;) và mở nó.
@@ -277,16 +278,80 @@ export default function HelpViPage() {
       </Section>
 
       <Section id='share' title='9. Chia sẻ sơ đồ'>
-        <p>Sơ đồ mặc định ở chế độ <strong>riêng tư (Private)</strong> — chỉ bạn (và quản trị viên) mở được. Để chia sẻ:</p>
+        <p>
+          Sơ đồ mặc định ở chế độ <strong>riêng tư</strong> — chỉ bạn (và quản trị viên) mở được. Mở <strong>Share</strong> — nút trên header trình soạn thảo, <strong>File → Share</strong>,
+          hoặc menu <Pill>⋯</Pill> ở danh sách sơ đồ — để cho người khác vào. Chỉ Owner thấy hộp thoại này. Mọi thay đổi trong đó có hiệu lực <strong>ngay lập tức</strong>; không cần Save.
+        </p>
+        <h3 className='pt-2 text-sm font-semibold text-foreground'>Collaborator</h3>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
-            Trên header trình soạn thảo, bấm nút chuyển <strong>Private / Public</strong> để đặt sơ đồ công khai, rồi lưu.
+            Nhập email đồng nghiệp, chọn <strong>Can edit</strong> (được sửa) hoặc <strong>Can view</strong> (chỉ xem), rồi bấm <strong>Invite</strong>. Email nằm ngoài Access list của
+            workspace bị chặn ngay, kèm lời giải thích.
           </li>
           <li>
-            Mở <strong>File → Share</strong> (hoặc lệnh <strong>Share</strong> trong menu dòng ở danh sách sơ đồ) và sao chép liên kết. Liên kết mở <strong>trang xem chỉ-đọc</strong> — người
-            xem theo dõi được hiệu ứng nhưng không bao giờ sửa được; đặt công khai không cấp quyền sửa cho bất kỳ ai.
+            <strong>Không có email nào được gửi.</strong> Bạn tự báo cho họ — họ sẽ thấy sơ đồ trong mục <strong>Shared with me</strong> ở danh sách sơ đồ, hoặc bạn sao chép link hiện
+            trong hộp thoại. Người chưa mở sơ đồ lần nào được đánh dấu <strong>Pending</strong> (đang chờ — có thể họ chưa có tài khoản: lời mời tự có hiệu lực khi họ đăng ký bằng đúng email
+            đó và xác minh nó).
           </li>
-          <li>Chuyển về <strong>Private</strong> bất cứ lúc nào để thu hồi liên kết.</li>
+          <li>Đổi Access level của một người, hoặc gỡ họ bằng nút ×, bất cứ lúc nào — có hiệu lực ngay.</li>
+        </ul>
+        <Table
+          head={['', 'Owner', 'Can edit', 'Can view']}
+          rows={[
+            ['Xem, Replay, xuất ảnh', '✓', '✓', '✓'],
+            ['Sửa và Save', '✓', '✓', '—'],
+            ['Lịch sử Version, khôi phục, đặt tên', '✓', '✓', '—'],
+            ['Save as (bản sao của riêng mình)', '✓', '✓', '—'],
+            ['Bật / tắt Public link', '✓', '—', '—'],
+            ['Share, đổi Access level, gỡ người', '✓', '—', '—'],
+            ['Xoá sơ đồ', '✓', '—', '—'],
+          ]}
+        />
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            <strong>Can edit</strong> mở trình soạn thảo (header hiện <strong>Can edit</strong> và Owner là ai); <strong>Can view</strong> mở trang xem chỉ-đọc, kể cả khi đi từ link{' '}
+            <Pill>/edit</Pill>.
+          </li>
+          <li>
+            Sơ đồ được Share theo email, nên tài khoản email + mật khẩu phải <strong>xác minh email</strong> trước khi mục Shared with me hiện gì — thẻ đó sẽ nói rõ và có nút{' '}
+            <strong>Send verification email</strong> (gửi thư xác minh) và <strong>I&apos;ve verified</strong> (tôi đã xác minh).
+          </li>
+          <li>
+            Xoá một sơ đồ đang Share sẽ hỏi lại trước (&quot;This Diagram is shared with 2 people&quot; — đang Share với 2 người); xoá xong, sơ đồ biến mất khỏi Shared with me của mọi người.
+          </li>
+        </ul>
+        <h3 className='pt-2 text-sm font-semibold text-foreground'>Khi hai người cùng Save</h3>
+        <p>
+          Không có cộng tác thời gian thực. Nếu người khác đã Save sơ đồ kể từ lúc bạn mở (hoặc lần Save gần nhất của bạn), lần <strong>Save</strong> của bạn sẽ dừng lại, cho biết ai đã lưu
+          và lúc nào (Save conflict), với ba lựa chọn:
+        </p>
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            <strong>Overwrite</strong> (ghi đè) — bản của bạn thành bản chính. Bản của họ không mất: vẫn còn trong <strong>History</strong>.
+          </li>
+          <li>
+            <strong>Save as new Diagram</strong> (lưu thành sơ đồ mới) — sơ đồ gốc giữ bản của họ; bản của bạn thành một sơ đồ mới của riêng bạn.
+          </li>
+          <li>
+            <strong>Load latest</strong> (tải bản mới nhất) — bản của họ thay canvas của bạn. Bấm <strong>Undo</strong> để lấy lại thay đổi của bạn nếu đổi ý.
+          </li>
+        </ul>
+        <p>
+          Nếu không ai khác Save, Save diễn ra bình thường. Nếu Owner gỡ bạn khi bạn đang có thay đổi chưa lưu, Save sẽ báo{' '}
+          <em>&ldquo;You no longer have permission to edit this Diagram&rdquo;</em> (bạn không còn quyền sửa sơ đồ này) và chỉ cho <strong>Save as new Diagram</strong>, để công sức của bạn
+          được giữ thành bản sao riêng.
+        </p>
+        <h3 className='pt-2 text-sm font-semibold text-foreground'>Public link</h3>
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            Bật <strong>Public link</strong> ở cuối hộp thoại Share rồi sao chép link. Link mở <strong>trang xem chỉ-đọc</strong> cho bất kỳ ai có nó, đăng nhập hay không — không bao giờ
+            cấp quyền sửa.
+          </li>
+          <li>
+            Public link hiện <strong>bản đã lưu gần nhất</strong>: được công bố ngay khi bạn bật, và cập nhật mỗi lần bạn hoặc Collaborator Can edit Save. Thay đổi chưa lưu trên canvas của
+            bạn không hiện ra cho tới khi bạn Save.
+          </li>
+          <li>Tắt bất cứ lúc nào — link ngừng hoạt động ngay.</li>
         </ul>
       </Section>
 
@@ -376,7 +441,8 @@ export default function HelpViPage() {
             ['Quay lại một lần lưu trước', 'History trên header → Preview, Restore (rồi Save), hoặc Save as a new diagram'],
             ['Xem mọi phím tắt', 'Nhấn ? trên canvas'],
             ['Chạy hiệu ứng', 'Replay — chọn Sequential, Concurrent hoặc Manual trước'],
-            ['Chia sẻ chỉ-đọc', 'Đặt sơ đồ Public, rồi File → Share → Copy'],
+            ['Cho đồng nghiệp sửa hoặc xem', 'Share → nhập email → Can edit / Can view → Invite (không gửi email — tự báo cho họ)'],
+            ['Chia sẻ chỉ-đọc cho mọi người', 'Share → bật Public link → Copy'],
             ['Vẽ một bảng CSDL', 'Nút Table bên phải thanh công cụ hình, rồi bấm-kéo'],
             ['Sửa các cột', 'Chọn bảng — mục Columns nằm trong bảng thuộc tính'],
             ['Nối hai bảng', 'Nối chúng lại, rồi chọn cột ở mỗi đầu trong khối Relationship'],

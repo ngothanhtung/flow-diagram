@@ -11,6 +11,7 @@ import { loadEditorSession } from './editor-session';
 import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from './execution-timing';
 import type { ConnectionSide, DiagramSettings, DrawTool, EdgeStyleClass, FlowDocumentJSON, FlowEdge, FlowNode, LineCorner, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
+import { revisionOf, type DiagramRole } from './sharing';
 import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
 import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, isSceneryNode, nodeBounds } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
@@ -278,6 +279,14 @@ function restorePresentation(target: FlowDocumentJSON, from: FlowDocumentJSON, c
   return { ...target, settings };
 }
 
+/** Whose Diagram the editor has open, and as what (see Share). */
+export interface DiagramOwnership {
+  ownerUid: string;
+  ownerEmail: string | null;
+  /** Only `owner` and `edit` ever reach the editor — `view` goes to the Viewer. */
+  role: DiagramRole;
+}
+
 /** Hand-out for gesture ids; only identity matters. */
 let nextGestureId = 1;
 
@@ -299,6 +308,17 @@ interface EditorState {
    *  saved before Versions existed — only the time is known then. */
   lastSavedAt: number | null;
   lastSavedBy: VersionActor | null;
+  /** Share (PRD v0.3 §4.2): whose uid path the open Diagram lives under —
+   *  null until a Diagram is opened, the signed-in user for their own —
+   *  and what the signed-in user may do with it. Saves, Versions and the
+   *  history all go through `currentDiagramOwnerUid`, never the caller's
+   *  uid, so a Collaborator writes the Owner's Diagram. */
+  currentDiagramOwnerUid: string | null;
+  currentOwnerEmail: string | null;
+  currentRole: DiagramRole;
+  /** The Diagram's `revision` as this editor loaded or last saved it — the
+   *  base a Save compares against to detect a Save conflict. */
+  currentRevision: number;
   savingDiagram: boolean;
 
   /** Undo/redo stacks — see *Undo / redo* in CLAUDE.md. Never persisted. */
@@ -335,8 +355,14 @@ interface EditorState {
   // Diagram meta
   renameDiagram: (name: string) => void;
   setDiagramPublic: (isPublic: boolean) => void;
-  markDiagramSaved: (diagramId: string, name: string, savedDocument: FlowDocumentJSON, savedBy?: VersionActor | null, savedAt?: number | null) => void;
-  loadStoredDiagram: (diagram: StoredDiagram) => void;
+  markDiagramSaved: (diagramId: string, name: string, savedDocument: FlowDocumentJSON, savedBy?: VersionActor | null, savedAt?: number | null, revision?: number) => void;
+  /** Open a Diagram from Firestore. `ownership` says whose it is and what
+   *  the signed-in user may do; omitted = their own (owner). */
+  loadStoredDiagram: (diagram: StoredDiagram, ownership?: DiagramOwnership) => void;
+  /** Save conflict → "Load latest": the server's copy replaces the canvas
+   *  as **one undo step** (undo brings the user's own edits back, unsaved),
+   *  and becomes the new saved baseline (signature, revision, last saved). */
+  loadLatestSaved: (diagram: StoredDiagram) => void;
   /** Put a Version's document on the canvas as an *unsaved* change — one
    *  ordinary undo step. `savedSignature` keeps describing the cloud copy,
    *  so the canvas reads dirty until the next Save (which writes a new
@@ -524,6 +550,10 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
   savedSignature: null,
   lastSavedAt: null,
   lastSavedBy: null,
+  currentDiagramOwnerUid: null,
+  currentOwnerEmail: null,
+  currentRole: 'owner',
+  currentRevision: 0,
   savingDiagram: false,
   history: emptyHistory<HistorySnapshot>(),
   historyRevision: 0,
@@ -557,6 +587,12 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
       savedSignature: session?.savedSignature ?? null,
       lastSavedAt: session?.lastSavedAt ?? null,
       lastSavedBy: session?.lastSavedBy ?? null,
+      // Sessions from before Share have none of these: the Diagram was the
+      // user's own, and its revision counts as 0 like the Diagram's does.
+      currentDiagramOwnerUid: session?.currentDiagramOwnerUid ?? (session?.currentDiagramId ? userId : null),
+      currentOwnerEmail: session?.currentOwnerEmail ?? null,
+      currentRole: session?.currentRole === 'edit' ? 'edit' : 'owner',
+      currentRevision: session?.currentRevision ?? 0,
       // A page load starts a fresh history; it is never persisted.
       history: emptyHistory<HistorySnapshot>(),
     });
@@ -566,16 +602,17 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
 
   setDiagramPublic: (isPublic) => set({ currentDiagramPublic: isPublic }),
 
-  markDiagramSaved: (diagramId, name, savedDocument, savedBy = null, savedAt = null) =>
-    set({
+  markDiagramSaved: (diagramId, name, savedDocument, savedBy = null, savedAt = null, revision) =>
+    set((state) => ({
       currentDiagramId: diagramId,
       currentDiagramName: name,
       savedSignature: JSON.stringify(savedDocument),
       lastSavedBy: savedBy,
       lastSavedAt: savedAt,
-    }),
+      currentRevision: revision ?? state.currentRevision,
+    })),
 
-  loadStoredDiagram: (diagram) => {
+  loadStoredDiagram: (diagram, ownership) => {
     const document = normalizeDocument(diagram.document).document;
     set({
       doc: document,
@@ -585,6 +622,10 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
       savedSignature: JSON.stringify(document),
       lastSavedAt: diagram.updatedAt?.toMillis() ?? null,
       lastSavedBy: diagram.lastSavedBy ?? null,
+      currentDiagramOwnerUid: ownership?.ownerUid ?? null,
+      currentOwnerEmail: ownership?.ownerEmail ?? null,
+      currentRole: ownership?.role ?? 'owner',
+      currentRevision: revisionOf(diagram),
       // Snapshot so Reset restores the fetched document, not a template.
       loadedTemplate: { name: diagram.name, category: 'Saved diagram', description: '', document },
       // Another diagram: its own, empty history.
@@ -600,6 +641,24 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
   // template, the Version brings its own run mode, and undo hands back the
   // previous one unless the user has switched it since (see
   // `restorePresentation`).
+  // Not `loadStoredDiagram`: that opens a Diagram (fresh history); this is
+  // an edit — the patch carries no `history`, so the middleware records it
+  // and ⌘Z hands the user's own version back, unsaved. Name and the
+  // baseline follow the server; `loadedTemplate` (Reset target) stays.
+  loadLatestSaved: (diagram) => {
+    const document = normalizeDocument(diagram.document).document;
+    set({
+      doc: document,
+      currentDiagramName: diagram.name,
+      currentDiagramPublic: diagram.public === true,
+      savedSignature: JSON.stringify(document),
+      lastSavedAt: diagram.updatedAt?.toMillis() ?? null,
+      lastSavedBy: diagram.lastSavedBy ?? null,
+      currentRevision: revisionOf(diagram),
+    });
+    get().resetCanvasState();
+  },
+
   restoreVersion: (rawDocument) => {
     set({ doc: normalizeDocument(rawDocument).document });
     get().resetCanvasState();
@@ -633,6 +692,10 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
       savedSignature: null,
       lastSavedAt: null,
       lastSavedBy: null,
+      currentDiagramOwnerUid: null,
+      currentOwnerEmail: null,
+      currentRole: 'owner',
+      currentRevision: 0,
       loadedTemplate: template,
       history: emptyHistory<HistorySnapshot>(),
     });

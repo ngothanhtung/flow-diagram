@@ -1,6 +1,7 @@
 'use client';
 
-import { Boxes, Copy, Globe, History, LoaderCircle, LockKeyhole, Share2 } from 'lucide-react';
+import { FirebaseError } from 'firebase/app';
+import { Boxes, Copy, Globe, History, LoaderCircle, LockKeyhole, Share2, Users } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
@@ -10,6 +11,7 @@ import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { UserMenu } from '@/components/auth/UserMenu';
 import { ShareDialog } from '@/components/diagrams/ShareDialog';
+import { SaveConflictDialog, type BlockedSave } from '@/components/editor/SaveConflictDialog';
 import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, FileMenuItem, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { EditorShell } from '@/components/editor/EditorShell';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
@@ -19,11 +21,20 @@ import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/Te
 import { VersionHistorySheet } from '@/components/editor/VersionHistory';
 import { formatDateTime } from '@/components/data-table';
 import { sameDiagramContent, useEditorStore } from '@/lib/editor-store';
-import { createDiagram, loadDiagram, saveDiagram } from '@/lib/firebase/diagrams';
+import { createDiagram, loadDiagram, openDiagram, saveDiagram } from '@/lib/firebase/diagrams';
+import { ACCESS_LEVEL_LABELS, permissionsOf, routeForRole } from '@/lib/sharing';
 import type { StoredVersion } from '@/lib/firebase/versions';
 import { saveEditorSession } from '@/lib/editor-session';
 import { normalizeDocument } from '@/lib/document-validation';
 import { actorOf, savedByLabel, versionLabel } from '@/lib/version-history';
+
+const STATUS_TITLES = {
+  loading: 'Loading diagram…',
+  redirecting: 'Opening the Viewer…',
+  'not-found': 'Diagram not found',
+  unverified: 'Diagram not found',
+  error: 'Could not load diagram',
+} as const;
 
 /** Inline editor for the diagram name in the header. Click to edit,
  *  Enter or blur commits, Escape cancels. */
@@ -88,17 +99,40 @@ function LastSavedNote({ currentUid }: { currentUid: string }) {
   );
 }
 
+/** "Can edit · shared by …" in place of the Owner's Share button. */
+function CollaboratorBadge({ ownerEmail }: { ownerEmail: string | null }) {
+  return (
+    <span
+      className='inline-flex h-9 items-center gap-1.5 rounded-md bg-violet-500/10 px-2.5 text-xs font-semibold text-violet-700 ring-1 ring-violet-400/30 dark:text-violet-200'
+      title={`${ACCESS_LEVEL_LABELS.edit} — shared with you${ownerEmail ? ` by ${ownerEmail}` : ''}. Only the Owner can Share, make it Public or delete it.`}
+      data-testid='collaborator-badge'
+    >
+      <Users size={13} />
+      <span className='hidden sm:inline'>{ACCESS_LEVEL_LABELS.edit}</span>
+      {ownerEmail && <span className='hidden max-w-40 truncate font-normal text-muted-foreground xl:inline'>· {ownerEmail}</span>}
+    </span>
+  );
+}
+
+function isPermissionDenied(error: unknown) {
+  return error instanceof FirebaseError && error.code === 'permission-denied';
+}
+
 /**
- * Full editor for one diagram at `/diagrams/{id}/edit`. The document is
- * fetched from `users/{uid}/diagrams/{id}` — only the owner can open it
- * here (the read goes through their own uid path). If a session with
- * the same diagram id is restored first, its unsaved edits are kept.
+ * Full editor for one diagram at `/diagrams/{id}/edit`. The id resolves
+ * through `openDiagram` (ADR 0001): the signed-in user's own Diagram if
+ * they have one with that id — every link from before Share — else a
+ * Diagram shared with them, read from its Owner's path. A Can view
+ * Collaborator is sent to the Viewer. If a session with the same diagram
+ * id is restored first, its unsaved edits are kept (and so are its owner,
+ * role and base revision).
  */
 export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  const [status, setStatus] = useState<'loading' | 'not-found' | 'error'>('loading');
+  const [status, setStatus] = useState<'loading' | 'not-found' | 'unverified' | 'redirecting' | 'error'>('loading');
+  const [blockedSave, setBlockedSave] = useState<BlockedSave | null>(null);
 
   // All global editor state lives in the zustand store. Hydrate from the
   // localStorage session exactly once. This has to run in a layout effect
@@ -124,6 +158,10 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const savedSignature = useEditorStore((state) => state.savedSignature);
   const lastSavedAt = useEditorStore((state) => state.lastSavedAt);
   const lastSavedBy = useEditorStore((state) => state.lastSavedBy);
+  const currentDiagramOwnerUid = useEditorStore((state) => state.currentDiagramOwnerUid);
+  const currentOwnerEmail = useEditorStore((state) => state.currentOwnerEmail);
+  const currentRole = useEditorStore((state) => state.currentRole);
+  const currentRevision = useEditorStore((state) => state.currentRevision);
   const savingDiagram = useEditorStore((state) => state.savingDiagram);
   const { renameDiagram, setDiagramPublic, markDiagramSaved, loadStoredDiagram, setSavingDiagram } = useEditorStore();
 
@@ -146,57 +184,128 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     const state = useEditorStore.getState();
     if (state.hydrated && state.currentDiagramId === diagramId) return;
     let cancelled = false;
-    loadDiagram(user.uid, diagramId)
-      .then((diagram) => {
+    openDiagram({ uid: user.uid, email: user.email, emailVerified: user.emailVerified }, diagramId)
+      .then((opening) => {
         if (cancelled) return;
-        if (!diagram) {
-          setStatus('not-found');
+        if (opening.role === null) {
+          setStatus(opening.reason);
           return;
         }
-        loadStoredDiagram(diagram);
+        if (opening.role === 'view') {
+          setStatus('redirecting');
+          router.replace(routeForRole('view', diagramId));
+          return;
+        }
+        loadStoredDiagram(opening.diagram, { ownerUid: opening.ownerUid, ownerEmail: opening.ownerEmail, role: opening.role });
       })
-      .catch(() => {
+      .catch((error: unknown) => {
+        console.error('Could not open diagram', error);
         if (!cancelled) setStatus('error');
       });
     return () => {
       cancelled = true;
     };
-  }, [diagramId, user, loadStoredDiagram]);
+  }, [diagramId, user, loadStoredDiagram, router]);
+
+  const ownerUid = currentDiagramOwnerUid ?? user?.uid ?? '';
+  const permissions = permissionsOf(currentRole);
 
   const documentSignature = useMemo(() => JSON.stringify(doc), [doc]);
   const dirty = savedSignature !== documentSignature;
 
   useEffect(() => {
     if (!user) return;
-    saveEditorSession(user.uid, { doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature, lastSavedAt, lastSavedBy });
-  }, [doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature, lastSavedAt, lastSavedBy, user]);
+    saveEditorSession(user.uid, {
+      doc,
+      currentDiagramId,
+      currentDiagramName,
+      currentDiagramPublic,
+      savedSignature,
+      lastSavedAt,
+      lastSavedBy,
+      currentDiagramOwnerUid,
+      currentOwnerEmail,
+      currentRole,
+      currentRevision,
+    });
+  }, [doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature, lastSavedAt, lastSavedBy, currentDiagramOwnerUid, currentOwnerEmail, currentRole, currentRevision, user]);
   const currentTemplate = loadedTemplate ?? {
     category: 'Saved diagram',
     name: currentDiagramName,
     description: '',
   };
 
-  const handleSaveDiagram = useCallback(async () => {
-    if (!user) return;
-    const nextName = currentDiagramName.trim();
-    if (!nextName) {
-      toast.error('Please name the diagram');
-      return;
-    }
-    setSavingDiagram(true);
+  // Save, through the Save conflict check (`saveDiagram` runs it in a
+  // transaction). `baseRevision` overrides the loaded one for Overwrite:
+  // the base becomes the revision the conflict dialog showed, so a third
+  // Save landing meanwhile raises a fresh conflict instead of being
+  // silently overwritten too.
+  const handleSaveDiagram = useCallback(
+    async (baseRevision?: number) => {
+      if (!user) return;
+      const nextName = currentDiagramName.trim();
+      if (!nextName) {
+        toast.error('Please name the diagram');
+        return;
+      }
+      setSavingDiagram(true);
+      try {
+        const actor = actorOf(user);
+        const result = await saveDiagram({
+          ownerUid,
+          diagramId,
+          name: nextName,
+          document: doc,
+          actor,
+          baseRevision: baseRevision ?? currentRevision,
+          asOwner: currentRole === 'owner',
+        });
+        if (result.status === 'conflict') {
+          setBlockedSave({ kind: 'conflict', revision: result.revision, lastSavedBy: result.lastSavedBy, lastSavedAt: result.lastSavedAt });
+          return;
+        }
+        if (result.status === 'missing') {
+          setBlockedSave({ kind: 'missing' });
+          return;
+        }
+        markDiagramSaved(diagramId, nextName, doc, actor, Date.now(), result.revision);
+        // The Share dialog (maybe in another tab) owns `public`; follow it.
+        setDiagramPublic(result.isPublic);
+        toast.success('Diagram saved', { description: nextName });
+      } catch (error) {
+        if (currentRole !== 'owner' && isPermissionDenied(error)) {
+          setBlockedSave({ kind: 'revoked' });
+          return;
+        }
+        console.error('Could not save diagram', error);
+        toast.error('Could not save diagram', { description: 'Check your connection and try again.' });
+      } finally {
+        setSavingDiagram(false);
+      }
+    },
+    [user, ownerUid, diagramId, currentDiagramName, currentRevision, currentRole, doc, markDiagramSaved, setDiagramPublic, setSavingDiagram],
+  );
+
+  // Save conflict → Load latest: the server's copy replaces the canvas as
+  // one undo step (`loadLatestSaved`), so ⌘Z brings the user's edits back.
+  const handleLoadLatest = useCallback(async () => {
     try {
-      const actor = actorOf(user);
-      await saveDiagram(user.uid, diagramId, nextName, doc, currentDiagramPublic, actor);
-      markDiagramSaved(diagramId, nextName, doc, actor, Date.now());
-      toast.success('Diagram saved', { description: nextName });
-    } catch {
-      toast.error('Could not save diagram', {
-        description: 'You need to be signed in with write access for this UID.',
-      });
-    } finally {
-      setSavingDiagram(false);
+      const latest = await loadDiagram(ownerUid, diagramId);
+      if (!latest) {
+        setBlockedSave({ kind: 'missing' });
+        return;
+      }
+      useEditorStore.getState().loadLatestSaved(latest);
+      toast.success('Loaded the latest saved version', { description: 'Undo brings your changes back.' });
+    } catch (error) {
+      if (currentRole !== 'owner' && isPermissionDenied(error)) {
+        setBlockedSave({ kind: 'revoked' });
+        return;
+      }
+      console.error('Could not load the latest version', error);
+      toast.error('Could not load the latest version', { description: 'Check your connection and try again.' });
     }
-  }, [user, diagramId, currentDiagramName, currentDiagramPublic, doc, markDiagramSaved, setSavingDiagram]);
+  }, [ownerUid, diagramId, currentRole]);
 
   const handleNewDiagram = useCallback(async () => {
     if (!user) return;
@@ -265,9 +374,19 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     return (
       <EditorStatusScreen
         fullScreen
-        loading={status === 'loading'}
-        title={status === 'loading' ? 'Loading diagram…' : status === 'not-found' ? 'Diagram not found' : 'Could not load diagram'}
-        description={status === 'loading' ? `Opening ${diagramId}.` : status === 'not-found' ? 'You do not have a diagram with this id. Only the owner can edit a diagram.' : 'Check your connection and try again.'}
+        loading={status === 'loading' || status === 'redirecting'}
+        title={STATUS_TITLES[status]}
+        description={
+          status === 'loading'
+            ? `Opening ${diagramId}.`
+            : status === 'redirecting'
+              ? 'You can view this Diagram, but not edit it. Opening the Viewer…'
+              : status === 'not-found'
+                ? 'No Diagram of yours has this id, and none with it has been shared with you.'
+                : status === 'unverified'
+                  ? 'No Diagram of yours has this id. If it was shared with you, verify your email first — sharing only works with a verified email. See “Shared with me” on your Diagrams list.'
+                  : 'Check your connection and try again.'
+        }
         backHref='/'
         backLabel='Back to diagrams'
       />
@@ -304,25 +423,34 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
             </FileMenuItem>
           }
           afterExport={
-            <FileMenuItem icon={<Share2 size={14} />} tone='accent' disabled={!currentDiagramPublic} onClick={() => setShareOpen(true)}>
-              Share
-            </FileMenuItem>
+            permissions.share ? (
+              <FileMenuItem icon={<Share2 size={14} />} tone='accent' onClick={() => setShareOpen(true)}>
+                Share
+              </FileMenuItem>
+            ) : undefined
           }
         />
       }
       actions={
         <>
-          <Button
-            variant='toolbar'
-            size='lg'
-            onClick={() => setDiagramPublic(!currentDiagramPublic)}
-            aria-pressed={currentDiagramPublic}
-            title={currentDiagramPublic ? 'Public — anyone signed in can view via /diagrams/{id}/view' : 'Private — only you and administrators can view'}
-            className={currentDiagramPublic ? 'text-emerald-700 hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-200' : ''}
-          >
-            {currentDiagramPublic ? <Globe size={13} className='text-emerald-700 dark:text-emerald-300' /> : <LockKeyhole size={13} />}
-            {currentDiagramPublic ? 'Public' : 'Private'}
-          </Button>
+          {/* Owner: Share (Collaborators + Public link), showing whether the
+              Public link is on. Collaborators get a badge instead — Share
+              and Public are the Owner's (PRD §4.2 table). */}
+          {permissions.share ? (
+            <Button
+              variant='toolbar'
+              size='lg'
+              onClick={() => setShareOpen(true)}
+              title={currentDiagramPublic ? 'Share — the Public link is on' : 'Share — invite Collaborators or turn on the Public link'}
+              className={currentDiagramPublic ? 'text-emerald-700 hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-200' : ''}
+            >
+              {currentDiagramPublic ? <Globe size={13} className='text-emerald-700 dark:text-emerald-300' /> : <LockKeyhole size={13} />}
+              Share
+              <span className='hidden font-normal text-muted-foreground md:inline'>· {currentDiagramPublic ? 'Public' : 'Private'}</span>
+            </Button>
+          ) : (
+            <CollaboratorBadge ownerEmail={currentOwnerEmail} />
+          )}
           <Button variant='toolbar' size='lg' onClick={() => setHistoryOpen(true)} title='Version history — every Save, newest first' aria-label='Version history'>
             <History size={13} />
             <span className='hidden sm:inline'>History</span>
@@ -341,16 +469,35 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     >
       <ResetCanvasDialog open={resetConfirmOpen} onOpenChange={setResetConfirmOpen} />
       <ConvertColorThemeDialog open={convertThemeConfirmOpen} onOpenChange={setConvertThemeConfirmOpen} />
-      <ShareDialog diagramId={diagramId} isPublic={currentDiagramPublic} open={shareOpen} onOpenChange={setShareOpen} />
+      {permissions.share && (
+        <ShareDialog
+          open={shareOpen}
+          onOpenChange={setShareOpen}
+          diagramId={diagramId}
+          owner={{ uid: user.uid, email: user.email }}
+          isPublic={currentDiagramPublic}
+          onPublicChange={setDiagramPublic}
+          unsavedChanges={dirty}
+        />
+      )}
+      <SaveConflictDialog
+        blocked={blockedSave}
+        currentUid={user.uid}
+        onClose={() => setBlockedSave(null)}
+        onOverwrite={(revision) => handleSaveDiagram(revision)}
+        onSaveAsNew={handleSaveAs}
+        onLoadLatest={handleLoadLatest}
+      />
       <TemplatePickerDialog open={templatesDialogOpen} onOpenChange={setTemplatesDialogOpen} items={templateItems} />
       <StarterPickerDialog open={starterOpen} onOpenChange={setStarterOpen} />
       <MermaidImportDialog open={mermaidOpen} onOpenChange={setMermaidOpen} />
       <SqlExportDialog document={doc} filename={currentDiagramName.trim() || 'diagram'} open={sqlOpen} onOpenChange={setSqlOpen} />
-      {/* Owner = the signed-in user until Share (T7) resolves it through the access index. */}
+      {/* History lives under the Owner's path — a Can edit Collaborator
+          reads (and names) the Owner's Versions. */}
       <VersionHistorySheet
         open={historyOpen}
         onOpenChange={setHistoryOpen}
-        ownerUid={user.uid}
+        ownerUid={ownerUid}
         diagramId={diagramId}
         currentUid={user.uid}
         onRestore={handleRestoreVersion}

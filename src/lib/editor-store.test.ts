@@ -551,3 +551,63 @@ describe('editor store — restoring a Version (PRD v0.3 §4.1)', () => {
     expect(store().lastSavedAt).toBe(42);
   });
 });
+
+describe('editor store — Share and Save conflicts (PRD v0.3 §4.2)', () => {
+  const at = (millis: number) => ({ toMillis: () => millis }) as unknown as import('firebase/firestore').Timestamp;
+  const theirs = () => {
+    const document = fixture();
+    document.nodes = document.nodes.map((node) => (node.id === 'loose' ? { ...node, title: 'Saved by A' } : node));
+    return document;
+  };
+
+  it('opening someone else\'s Diagram records the Owner, the role and the revision it was loaded at', () => {
+    store().loadStoredDiagram({ id: 'd2', name: 'Shared', document: fixture(), public: false, createdAt: null, updatedAt: null, revision: 7 }, { ownerUid: 'alice', ownerEmail: 'alice@company.com', role: 'edit' });
+    expect(store().currentDiagramOwnerUid).toBe('alice');
+    expect(store().currentOwnerEmail).toBe('alice@company.com');
+    expect(store().currentRole).toBe('edit');
+    expect(store().currentRevision).toBe(7);
+  });
+
+  it('a Diagram from before Share opens as the user\'s own at revision 0', () => {
+    expect(store().currentRole).toBe('owner');
+    expect(store().currentDiagramOwnerUid).toBeNull();
+    expect(store().currentRevision).toBe(0);
+  });
+
+  it('a Save moves the base revision on; a Save without one keeps it', () => {
+    store().markDiagramSaved('d1', 'Diagram d1', store().doc, null, 1, 4);
+    expect(store().currentRevision).toBe(4);
+    store().markDiagramSaved('d1', 'Diagram d1', store().doc, null, 2);
+    expect(store().currentRevision).toBe(4);
+  });
+
+  it('Load latest replaces the canvas as one undo step and becomes the saved baseline', () => {
+    store().onNodeUpdate('loose', { title: 'My unsaved edit' });
+    const stepsBefore = steps();
+    store().loadLatestSaved({ id: 'd1', name: 'Renamed by A', document: theirs(), public: true, createdAt: null, updatedAt: at(99), lastSavedBy: { uid: 'a', email: 'a@company.com', displayName: 'A' }, revision: 5 });
+
+    expect(nodeById('loose').title).toBe('Saved by A');
+    expect(dirty()).toBe(false);
+    expect(store().currentRevision).toBe(5);
+    expect(store().currentDiagramName).toBe('Renamed by A');
+    expect(store().currentDiagramPublic).toBe(true);
+    expect(store().lastSavedBy?.uid).toBe('a');
+    expect(store().lastSavedAt).toBe(99);
+    expect(steps()).toBe(stepsBefore + 1);
+
+    // ⌘Z: my edits come back, unsaved — saving them now is a deliberate
+    // overwrite of the latest revision, not a conflict.
+    store().undo();
+    expect(nodeById('loose').title).toBe('My unsaved edit');
+    expect(dirty()).toBe(true);
+    expect(store().currentRevision).toBe(5);
+  });
+
+  it('opening a template clears the ownership', () => {
+    store().loadStoredDiagram({ id: 'd2', name: 'Shared', document: fixture(), public: false, createdAt: null, updatedAt: null, revision: 2 }, { ownerUid: 'alice', ownerEmail: null, role: 'edit' });
+    store().openTemplate({ name: 'T', category: 'C', description: '', document: fixture() });
+    expect(store().currentDiagramOwnerUid).toBeNull();
+    expect(store().currentRole).toBe('owner');
+    expect(store().currentRevision).toBe(0);
+  });
+});

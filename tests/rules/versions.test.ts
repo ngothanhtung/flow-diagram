@@ -4,8 +4,8 @@ import { describe, it } from 'vitest';
 import { ADMIN, ALICE, BOB, seed, useRulesTestEnvironment } from './setup';
 
 // PRD v0.3 §4.1 — Versions: users/{owner}/diagrams/{id}/versions/{vid}.
-// Readable/creatable/nameable by the Owner (T7 adds Can edit
-// Collaborators), immutable except for `name`, deletable by the Owner
+// Readable/creatable/nameable by the Owner (Can edit Collaborators: see
+// sharing.test.ts), immutable except for `name`, deletable by the Owner
 // (pruning, Diagram delete), all behind the Access list.
 
 const ALICE_EMAIL = 'alice@company.com';
@@ -41,11 +41,14 @@ describe('users/{uid}/diagrams/{id}/versions/{vid}', () => {
   }
 
   describe('owner', () => {
+    // Since Share, a Save also moves the Diagram's `revision` on by one
+    // (sharing.test.ts covers the conflict side); the client writes both in
+    // a transaction, which the rules see exactly like this batch.
     it('saves: the Diagram and its new Version in one batch', async () => {
       await seedHistory();
       const db = alice();
       const batch = writeBatch(db);
-      batch.set(doc(db, DIAGRAM), { name: 'Flow', document: flow, public: false, updatedAt: serverTimestamp(), lastSavedBy: actor(ALICE, ALICE_EMAIL, 'Alice') }, { merge: true });
+      batch.set(doc(db, DIAGRAM), { name: 'Flow', document: flow, updatedAt: serverTimestamp(), lastSavedBy: actor(ALICE, ALICE_EMAIL, 'Alice'), revision: 1 }, { merge: true });
       batch.set(doc(collection(db, VERSIONS)), newVersion());
       await assertSucceeds(batch.commit());
     });
@@ -131,7 +134,7 @@ describe('users/{uid}/diagrams/{id}/versions/{vid}', () => {
     });
   });
 
-  describe('another signed-in user (what a Can view Collaborator is to these rules until T7)', () => {
+  describe('another signed-in user, not a Collaborator', () => {
     it('cannot read or list the history — even of a Public diagram', async () => {
       await seedHistory({ [DIAGRAM]: { name: 'Flow', document: flow, public: true } });
       // The Diagram itself is readable through `public`; its history is not.

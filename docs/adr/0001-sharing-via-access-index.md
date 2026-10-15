@@ -28,3 +28,12 @@ Keying Collaborators by email (not uid) is what makes invitations to someone wit
 - Every rule on `users/{uid}/diagrams/**` (Diagram, Versions) gains a Collaborator branch that reads the index; the index itself is writable only by the Owner.
 - The index and the Diagram are two documents, so creating/deleting a shared Diagram must write both; a missing index degrades safely to owner-only.
 - Transferring ownership later means moving a Diagram between uid paths — still possible, but not free. v0.3 does not offer it.
+
+### As built (T7)
+
+- **The index is keyed `diagram-access/{ownerUid}_{diagramId}`, not `{diagramId}`.** Diagram ids are client-chosen and every Public link exposes one, so with the bare id anyone could create their own Diagram under that id and claim the index slot first; the real Owner could then never Share it. The uid prefix makes the slot unclaimable, and lets the rules find the index from the Diagram's path. A bare `/diagrams/{id}/…` link is resolved by the user's own path first, then by a query (`diagramId ==` + `collaboratorEmails array-contains`), which needs one composite index (`firestore.indexes.json`).
+- **A Collaborator match requires a verified email even when the Access list is open** — the verification the ADR relies on is enforced in the rules (`hasVerifiedEmail()`), not left to the Access list.
+- **"Shared with me" is one query plus one read per shared Diagram.** Its name and last-saved time are read from the Diagram rather than copied into the index: the index is the Owner's to write, so a Collaborator's Save couldn't keep a copy current.
+- **Creating a Diagram writes no index** (absence = owner-only); deleting one deletes the index before the Diagram itself, so a half-done delete never leaves Collaborators pointing at nothing.
+- **Concurrent Saves are detected with a `revision` counter** on the Diagram, compared inside the Save's transaction and required to step by exactly one by the rules — real-time collaboration stays out of scope.
+
