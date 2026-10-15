@@ -81,7 +81,7 @@ Tracks delivery of [PRD v0.2](prd/v0.2.md) and [PRD v0.3](prd/v0.3.md). Each tas
 - Editor resolves the owner through the index; no index = current user owns it (old links unchanged).
 - Rules: Collaborator branches on Diagram + Versions; index writable by Owner only; invitee must satisfy the Access list.
 - Save conflict: Save runs in a transaction comparing a revision counter to the one loaded; mismatch → conflict dialog (overwrite / save as new / load latest).
-- Share dialog (Collaborators + Public link), "Shared with me" on the Diagrams list, Can view opens in the Viewer, revoke handling on Save, delete warning with Collaborator count.
+- Share dialog (Collaborators + Public link) — toggling Public there takes effect immediately (today it only publishes on the next Save, with no unsaved cue: found in the v0.2 smoke test), "Shared with me" on the Diagrams list, Can view opens in the Viewer, revoke handling on Save, delete warning with Collaborator count.
 - Rules tests for the whole Access level table.
 
 ### T8 — Auto-layout
