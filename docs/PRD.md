@@ -13,7 +13,7 @@ Tài liệu này mô tả X Flow Tool **như nó đang tồn tại trong code**,
 
 ## 1. Tổng quan
 
-X Flow Tool là trình soạn Diagram chạy trên trình duyệt, chuyên cho sơ đồ kiến trúc hệ thống (SaaS), quy trình nghiệp vụ (CRM/HRM, CI/CD) và sơ đồ cơ sở dữ liệu (ERD). Khác biệt so với công cụ vẽ sơ đồ thông thường: các **Line có Effect động** cho thấy dữ liệu chạy theo hướng nào, và **Replay** đi qua Diagram theo từng Step để trình bày. Diagram được lưu trên cloud theo tài khoản, có thể Share ở chế độ chỉ đọc, và có thư viện Template dùng chung do Administrator quản lý.
+X Flow Tool là trình soạn Diagram chạy trên trình duyệt, chuyên cho sơ đồ kiến trúc hệ thống (SaaS), quy trình nghiệp vụ (CRM/HRM, CI/CD) và sơ đồ cơ sở dữ liệu (ERD). Khác biệt so với công cụ vẽ sơ đồ thông thường: các **Line có Effect động** cho thấy dữ liệu chạy theo hướng nào, và **Replay** đi qua Diagram theo từng Step để trình bày. Diagram được lưu trên cloud theo tài khoản, có thể mở công khai ở chế độ chỉ đọc qua Public link, và có thư viện Template dùng chung do Administrator quản lý.
 
 Mô hình triển khai: công cụ nội bộ của công ty, đồng thời đủ hướng dẫn (README) để bất kỳ ai tự dựng trên Firebase + Vercel của riêng mình.
 
@@ -57,7 +57,7 @@ AI agent không phải persona riêng mà là **kênh tạo nội dung** cho Ng�
 ### 5.2 Danh sách Diagram (`/`)
 
 - Bảng Diagram của chính người dùng: tìm theo tên hoặc id, sắp xếp, phân trang, số Element/Line, ngày tạo/cập nhật, cờ Public.
-- Tạo mới, mở, xoá (có xác nhận), Share (chỉ khi Diagram là Public).
+- Tạo mới, mở, xoá (có xác nhận), copy Public link (chỉ khi Diagram là Public).
 
 ### 5.3 Editor (`/diagrams/{id}/edit`)
 
@@ -96,7 +96,7 @@ AI agent không phải persona riêng mà là **kênh tạo nội dung** cho Ng�
 
 **Tiện ích File menu**
 - New, Start from a diagram (Starter), New from template, Import from mermaid, Open, Save as.
-- Export to JSON, Export SQL, Share.
+- Export to JSON, Export SQL, Share (hiện tại: lấy Public link).
 - Convert dark ↔ light: đảo toàn bộ màu của Diagram giữa bảng màu nền tối và nền sáng.
 - Reset: bỏ thay đổi chưa lưu (có xác nhận).
 
@@ -123,7 +123,7 @@ AI agent không phải persona riêng mà là **kênh tạo nội dung** cho Ng�
 - **Export SQL**: `CREATE TABLE`, `CREATE INDEX`, `ALTER TABLE … ADD FOREIGN KEY`. Phía khoá ngoại được suy ra từ cờ cột, không phụ thuộc chiều vẽ Line. Kiểu dữ liệu là text tự do — hợp với mọi dialect.
 - Chỉ xuất, không nhập SQL.
 
-### 5.7 Share và Viewer
+### 5.7 Public link và Viewer
 
 - Bật cờ **Public** cho Diagram → nhận link `/diagrams/{id}/view`.
 - Viewer: chỉ đọc, không cần đăng nhập, có đầy đủ Replay.
@@ -185,7 +185,7 @@ Sản phẩm chưa có analytics, nên chưa có số liệu thực. Đề xuấ
 
 ## 9. Roadmap đề xuất
 
-P0 + P1 được đặc tả chi tiết trong [PRD v0.2](prd/v0.2.md).
+P0 + P1 được đặc tả chi tiết trong [PRD v0.2](prd/v0.2.md); P2 trong [PRD v0.3](prd/v0.3.md).
 
 | Ưu tiên | Hạng mục | Lý do |
 | --- | --- | --- |
@@ -195,7 +195,7 @@ P0 + P1 được đặc tả chi tiết trong [PRD v0.2](prd/v0.2.md).
 | **P1** | Quên mật khẩu | Người dùng Email/Password mất mật khẩu là mất tài khoản. |
 | **P1** | Giới hạn đăng ký (theo domain hoặc allowlist) | Đăng ký đang mở, mâu thuẫn với định vị công cụ nội bộ. |
 | **P2** | Lịch sử phiên bản | Save ghi đè; không quay lại được bản trước. |
-| **P2** | Chia sẻ quyền sửa | Hiện chỉ Share chỉ đọc; một Diagram chỉ có một người sửa. |
+| **P2** | Share cho Collaborator (quyền sửa) | Hiện chỉ có Public link chỉ đọc; một Diagram chỉ có một người sửa. |
 | **P2** | Tự xếp bố cục (auto-layout) | Đã có rồi bị gỡ vì kết quả trông lộn xộn; chỉ đưa lại khi thuật toán sắp xếp được cải thiện. Hiện chỉ dùng nội bộ khi nhập Mermaid. |
 
 ## Phụ lục A — Known issues

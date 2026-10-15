@@ -13,11 +13,12 @@ The single-file text form of a Diagram, used for export, paste-in and hand- or A
 _Avoid_: FlowDocumentJSON (in product writing), document file
 
 **Public diagram**:
-A Diagram its owner has opened to anyone holding the link, read-only.
+A Diagram its Owner has opened, read-only, to anyone holding its Public link.
 _Avoid_: Published diagram, mirror
 
-**Share**:
-Handing out the read-only link to a Public diagram.
+**Public link**:
+The read-only link to a Public diagram; works without signing in.
+_Avoid_: Share link
 
 **Viewer**:
 The read-only screen a Public diagram opens in; no sign-in required.
@@ -35,6 +36,36 @@ _Avoid_: Sample, example, built-in template
 **Access list**:
 The email domains and individual addresses allowed to sign in to a deployment; empty means anyone may.
 _Avoid_: Whitelist, allowlist, domain restriction
+
+## Ownership and versions
+
+**Owner**:
+The one person a Diagram belongs to; only they may delete it, make it public or Share it.
+_Avoid_: Author, creator
+
+**Share**:
+Granting specific people access to a Diagram by inviting them by email.
+_Avoid_: Publish (that is making a Diagram public)
+
+**Collaborator**:
+A person a Diagram has been Shared with.
+_Avoid_: Editor (that is the editing screen), member, guest
+
+**Access level**:
+What a Collaborator may do with a Diagram — *Can edit* or *Can view*.
+_Avoid_: Role (reserved for Administrator), permission
+
+**Version**:
+A Diagram's content as it stood at one Save.
+_Avoid_: Revision, snapshot, history entry
+
+**Named version**:
+A Version someone has given a name; it is never removed automatically.
+_Avoid_: Checkpoint, tag, milestone
+
+**Save conflict**:
+Saving a Diagram that someone else has saved since you opened it.
+_Avoid_: Merge conflict, collision
 
 ## Elements
 
