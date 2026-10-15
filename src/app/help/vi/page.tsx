@@ -239,6 +239,34 @@ export default function HelpViPage() {
             các thay đổi.
           </li>
         </ul>
+        <h3 id='versions' className='scroll-mt-20 pt-2 text-sm font-semibold text-foreground'>Lịch sử phiên bản</h3>
+        <p>
+          Mỗi lần <strong>Save</strong> còn giữ lại một <strong>phiên bản (version)</strong> — sơ đồ đúng như lúc đó, kèm ai lưu và lưu lúc nào. Không bản đã lưu nào bị ghi đè mất vĩnh viễn.
+          Mở danh sách bằng nút <strong>History</strong> trên header trình soạn thảo (mới nhất ở trên cùng).
+        </p>
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            <strong>Preview</strong> mở phiên bản ở chế độ chỉ đọc, có thanh chạy riêng để Replay. Sơ đồ bạn đang sửa không bị đổi.
+          </li>
+          <li>
+            <strong>Restore</strong> đưa phiên bản đó lên canvas dưới dạng <strong>thay đổi chưa lưu</strong> (chấm vàng). <strong>Undo</strong> (⌘Z) đưa bạn về ngay nội dung trước đó;{' '}
+            <strong>Save</strong> biến nó thành bản chính và tạo thêm một phiên bản mới — phiên bản vừa khôi phục vẫn còn trong danh sách.
+          </li>
+          <li>
+            <strong>Name</strong> — đặt tên cho phiên bản (ví dụ &quot;Đã gửi khách&quot;) để sau này tìm lại; có thể <strong>Rename</strong> hoặc bỏ tên bất cứ lúc nào. Phiên bản có tên được
+            làm nổi bật và <strong>không bao giờ tự bị xoá</strong>.
+          </li>
+          <li>
+            <strong>Save as a new diagram</strong> (biểu tượng sao chép trên mỗi dòng, hoặc nút trong Preview) chép phiên bản đó thành một sơ đồ mới của bạn; sơ đồ gốc giữ nguyên. Bấm{' '}
+            <strong>Open</strong> trên thông báo để mở nó.
+          </li>
+          <li>
+            Giữ <strong>50 phiên bản chưa đặt tên gần nhất</strong>; bản chưa đặt tên cũ hơn tự bị xoá khi bạn lưu. Xoá sơ đồ sẽ xoá toàn bộ lịch sử của nó.
+          </li>
+          <li>
+            Header hiển thị <strong>Last saved by … at …</strong> (lưu lần cuối bởi ai, lúc nào); danh sách sơ đồ hiển thị tương tự ở cột <strong>Last saved</strong>.
+          </li>
+        </ul>
       </Section>
 
       <Section id='share' title='9. Chia sẻ sơ đồ'>
@@ -336,6 +364,7 @@ export default function HelpViPage() {
             ['Đổi tên sơ đồ', 'Bấm vào tên trên header, gõ, nhấn Enter'],
             ['Hoàn tác / làm lại', '⌘Z / ⌘⇧Z, hoặc nút Undo / Redo cạnh menu File'],
             ['Lưu lên cloud', '⌘S, hoặc nút Save trên header (chấm vàng = còn thay đổi chưa lưu)'],
+            ['Quay lại một lần lưu trước', 'History trên header → Preview, Restore (rồi Save), hoặc Save as a new diagram'],
             ['Xem mọi phím tắt', 'Nhấn ? trên canvas'],
             ['Chạy hiệu ứng', 'Replay — chọn Sequential, Concurrent hoặc Manual trước'],
             ['Chia sẻ chỉ-đọc', 'Đặt sơ đồ Public, rồi File → Share → Copy'],

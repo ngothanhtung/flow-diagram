@@ -21,6 +21,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { createDiagram, deleteDiagram, listDiagrams, type StoredDiagram } from '@/lib/firebase/diagrams';
 import { listTemplates, type StoredTemplate } from '@/lib/firebase/templates';
+import { actorOf, savedByLabel, type VersionActor } from '@/lib/version-history';
 
 /** Columns that should shrink to their content instead of stretching. */
 const NARROW_COLUMNS = new Set(['no', 'public', 'nodeCount', 'edgeCount', 'updatedAt', 'createdAt', 'actions']);
@@ -36,6 +37,8 @@ interface DiagramRow {
   edgeCount: number;
   createdAt: number | null;
   updatedAt: number | null;
+  /** Who performed the last Save; absent before Versions existed. */
+  lastSavedBy: VersionActor | null;
 }
 
 function toDiagramRow(diagram: StoredDiagram): DiagramRow {
@@ -48,6 +51,7 @@ function toDiagramRow(diagram: StoredDiagram): DiagramRow {
     edgeCount: document.edges?.length ?? 0,
     createdAt: diagram.createdAt ? diagram.createdAt.toMillis() : null,
     updatedAt: diagram.updatedAt ? diagram.updatedAt.toMillis() : null,
+    lastSavedBy: diagram.lastSavedBy ?? null,
   };
 }
 
@@ -129,6 +133,7 @@ export function DiagramsHome() {
   const [deleting, setDeleting] = useState<DiagramRow | null>(null);
   const [sharing, setSharing] = useState<DiagramRow | null>(null);
   const [remoteTemplates, setRemoteTemplates] = useState<StoredTemplate[]>([]);
+  const currentUid = user?.uid ?? null;
 
   useEffect(() => {
     if (!user) return;
@@ -176,7 +181,7 @@ export function DiagramsHome() {
     if (!user) return;
     setBusy(true);
     try {
-      const id = await createDiagram(user.uid, name, document, false);
+      const id = await createDiagram(user.uid, name, document, false, actorOf(user));
       router.push(`/diagrams/${id}/edit`);
     } catch {
       toast.error('Could not create diagram', { description: 'Check sign-in and Firestore rules.' });
@@ -245,9 +250,16 @@ export function DiagramsHome() {
         cell: ({ getValue }) => <span className='tabular-nums'>{formatNumber(getValue<number>())}</span>,
       },
       {
+        // "Last saved by … at …": the time is `updatedAt`, the person is
+        // `lastSavedBy` (a Collaborator once Share lands, so not always you).
         accessorKey: 'updatedAt',
-        header: 'Updated',
-        cell: ({ getValue }) => <span className='whitespace-nowrap text-muted-foreground'>{formatDateTime(getValue<number | null>())}</span>,
+        header: 'Last saved',
+        cell: ({ row, getValue }) => (
+          <div className='whitespace-nowrap'>
+            <p className='text-muted-foreground'>{formatDateTime(getValue<number | null>())}</p>
+            {row.original.lastSavedBy && <p className='text-[10px] text-muted-foreground'>by {savedByLabel(row.original.lastSavedBy, currentUid)}</p>}
+          </div>
+        ),
         sortDescFirst: true,
       },
       {
@@ -264,7 +276,7 @@ export function DiagramsHome() {
         cell: ({ row }) => <RowActionsMenu diagram={row.original} onDelete={() => setDeleting(row.original)} onShare={() => setSharing(row.original)} />,
       },
     ],
-    [],
+    [currentUid],
   );
 
   const table = useReactTable({
@@ -363,7 +375,7 @@ export function DiagramsHome() {
               <Trash2 />
             </AlertDialogMedia>
             <AlertDialogTitle>Delete diagram?</AlertDialogTitle>
-            <AlertDialogDescription>“{deleting?.name}” will be permanently deleted. This action cannot be undone.</AlertDialogDescription>
+            <AlertDialogDescription>“{deleting?.name}” and its whole version history will be permanently deleted. This action cannot be undone.</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>

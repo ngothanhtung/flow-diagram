@@ -1,8 +1,10 @@
 'use client';
 
-import { addDoc, collection, collectionGroup, deleteDoc, doc, getDoc, getDocs, orderBy, query, serverTimestamp, setDoc, type Timestamp } from 'firebase/firestore';
+import { collection, collectionGroup, deleteDoc, doc, getDoc, getDocs, orderBy, query, serverTimestamp, setDoc, writeBatch, type Timestamp } from 'firebase/firestore';
 import type { FlowDocumentJSON } from '../flowchart-types';
+import { hasVersionableContent, type VersionActor } from '../version-history';
 import { firestore } from './client';
+import { deleteAllVersions, newVersionData, pruneVersions, versionsCollection } from './versions';
 
 export interface StoredDiagram {
   id: string;
@@ -12,6 +14,9 @@ export interface StoredDiagram {
   public?: boolean;
   createdAt: Timestamp | null;
   updatedAt: Timestamp | null;
+  /** Who performed the last Save (or the create). Absent on diagrams
+   *  last saved before Versions existed. `updatedAt` is the "when". */
+  lastSavedBy?: VersionActor;
 }
 
 function diagramsCollection(userId: string) {
@@ -57,32 +62,59 @@ async function syncPublicMirror(userId: string, diagramId: string, name: string,
   }
 }
 
-export async function createDiagram(userId: string, name: string, document: FlowDocumentJSON, isPublic = false) {
-  const reference = await addDoc(diagramsCollection(userId), {
+/**
+ * Creates a diagram owned by `userId` — and, when it has content, its
+ * first Version in the same batch. Every write of content to a diagram
+ * (create or Save) produces a Version, so "the newest Version is what is
+ * saved" holds from the start: a Save-as copy, a diagram from a template
+ * or one copied from an old Version opens with a history, and Restore /
+ * Save conflicts never meet saved content that exists nowhere in its
+ * history. A blank "New diagram" is the exception (`hasVersionableContent`):
+ * an empty canvas has nothing to restore.
+ */
+export async function createDiagram(userId: string, name: string, document: FlowDocumentJSON, isPublic: boolean, actor: VersionActor) {
+  const reference = doc(diagramsCollection(userId));
+  const clean = cleanDocument(document);
+  const batch = writeBatch(firestore);
+  batch.set(reference, {
     name,
-    document: cleanDocument(document),
+    document: clean,
     public: isPublic,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
+    lastSavedBy: actor,
   });
+  if (hasVersionableContent(clean)) batch.set(doc(versionsCollection(userId, reference.id)), newVersionData(clean, actor));
+  await batch.commit();
   // A brand-new diagram has no mirror to clear, so only a public one syncs.
   if (isPublic) await syncPublicMirror(userId, reference.id, name, document, isPublic);
   return reference.id;
 }
 
-export async function saveDiagram(userId: string, diagramId: string, name: string, document: FlowDocumentJSON, isPublic = false) {
+/**
+ * Save: the diagram and a new Version, atomically (one batch — a Save
+ * never lands without its Version). Then, best-effort and in this order,
+ * the public mirror and Version retention; neither can fail the Save.
+ */
+export async function saveDiagram(userId: string, diagramId: string, name: string, document: FlowDocumentJSON, isPublic: boolean, actor: VersionActor) {
   if (!diagramId) throw new Error('A diagram id is required.');
-  await setDoc(
+  const clean = cleanDocument(document);
+  const batch = writeBatch(firestore);
+  batch.set(
     doc(diagramsCollection(userId), diagramId),
     {
       name,
-      document: cleanDocument(document),
+      document: clean,
       public: isPublic,
       updatedAt: serverTimestamp(),
+      lastSavedBy: actor,
     },
     { merge: true },
   );
+  batch.set(doc(versionsCollection(userId, diagramId)), newVersionData(clean, actor));
+  await batch.commit();
   await syncPublicMirror(userId, diagramId, name, document, isPublic);
+  await pruneVersions(userId, diagramId);
 }
 
 export async function loadDiagram(userId: string, diagramId: string) {
@@ -96,7 +128,11 @@ export async function listDiagrams(userId: string) {
   return snapshot.docs.map((item) => ({ id: item.id, ...item.data() }) as StoredDiagram);
 }
 
+/** Deletes a diagram, every one of its Versions (first — Firestore does
+ *  not cascade, and a failure part-way must leave the diagram in place to
+ *  retry rather than orphaned Versions), then its public mirror. */
 export async function deleteDiagram(userId: string, diagramId: string) {
+  await deleteAllVersions(userId, diagramId);
   await deleteDoc(doc(diagramsCollection(userId), diagramId));
   await deleteDoc(publicDiagramDoc(diagramId)).catch(() => undefined);
 }

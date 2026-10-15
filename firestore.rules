@@ -86,6 +86,55 @@ service cloud.firestore {
         && request.auth.uid == userId;
       allow read: if hasAccess()
         && (request.auth.uid == userId || isAdministrator() || isPublicDiagram());
+
+      // ---- Versions (PRD v0.3 §4.1) ------------------------------------
+      // One document per Save: { document, savedAt, savedBy, name }.
+      // Written in the same batch as the Save, never edited afterwards
+      // except for its `name` (Named version), deleted by the Owner when
+      // pruning (50 newest unnamed are kept) or deleting the Diagram.
+      // Unlike the Diagram, a Version is never readable through the
+      // `public` flag: a Public link shows the current Diagram only.
+      match /versions/{versionId} {
+        // Administrators: read-only, like the Diagram itself.
+        allow read: if canEditVersions(userId, diagramId) || isAdministrator();
+        allow create: if canEditVersions(userId, diagramId) && isNewVersion();
+        allow update: if canEditVersions(userId, diagramId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name'])
+          && isVersionName(request.resource.data.name);
+        allow delete: if hasAccess() && request.auth.uid == userId;
+      }
+    }
+
+    // Who may see a Diagram's history, Save (which writes a Version) and
+    // name Versions. Today: the Owner. T7 (Share) adds the one branch
+    // `|| isCollaborator(userId, diagramId, 'edit')` here, and a delete
+    // branch limited to unnamed Versions so a Collaborator's Save can
+    // prune; a Can view Collaborator gets neither.
+    function canEditVersions(userId, diagramId) {
+      return hasAccess() && request.auth.uid == userId;
+    }
+
+    // A new Version: exactly these four fields, stamped with the server
+    // time, attributed to the caller (uid and the token's email — a
+    // display name can't be checked, but nobody can claim another
+    // account), and unnamed (naming is an update).
+    function isNewVersion() {
+      let version = request.resource.data;
+      return version.keys().hasOnly(['document', 'savedAt', 'savedBy', 'name'])
+        && version.keys().hasAll(['document', 'savedAt', 'savedBy', 'name'])
+        && version.document is map
+        && version.savedAt == request.time
+        && version.name == null
+        && version.savedBy is map
+        && version.savedBy.keys().hasOnly(['uid', 'email', 'displayName'])
+        && version.savedBy.uid == request.auth.uid
+        && version.savedBy.get('email', null) == request.auth.token.get('email', null)
+        && (version.savedBy.get('displayName', null) == null || version.savedBy.displayName is string);
+    }
+
+    // `null` unnames; a name is 1–80 characters (src/lib/version-history.ts).
+    function isVersionName(name) {
+      return name == null || (name is string && name.size() > 0 && name.size() <= 80);
     }
 
     // Flat mirror of any diagram flagged `public: true`, keyed by the

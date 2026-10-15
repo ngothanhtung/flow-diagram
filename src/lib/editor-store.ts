@@ -13,6 +13,7 @@ import type { StoredDiagram } from './firebase/diagrams';
 import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
 import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, isSceneryNode, nodeBounds } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
+import type { VersionActor } from './version-history';
 
 /** Which edge of the selection's bounding box the nodes line up against. */
 export type AlignEdge = 'left' | 'center-x' | 'right' | 'top' | 'center-y' | 'bottom';
@@ -292,6 +293,11 @@ interface EditorState {
   /** Viewer visibility persisted on the diagram doc (`public` field). */
   currentDiagramPublic: boolean;
   savedSignature: string | null;
+  /** "Last saved by … at …" for the open diagram: who performed its last
+   *  Save and when (epoch millis). `lastSavedBy` is null for a diagram
+   *  saved before Versions existed — only the time is known then. */
+  lastSavedAt: number | null;
+  lastSavedBy: VersionActor | null;
   savingDiagram: boolean;
 
   /** Undo/redo stacks — see *Undo / redo* in CLAUDE.md. Never persisted. */
@@ -328,8 +334,13 @@ interface EditorState {
   // Diagram meta
   renameDiagram: (name: string) => void;
   setDiagramPublic: (isPublic: boolean) => void;
-  markDiagramSaved: (diagramId: string, name: string, savedDocument: FlowDocumentJSON) => void;
+  markDiagramSaved: (diagramId: string, name: string, savedDocument: FlowDocumentJSON, savedBy?: VersionActor | null, savedAt?: number | null) => void;
   loadStoredDiagram: (diagram: StoredDiagram) => void;
+  /** Put a Version's document on the canvas as an *unsaved* change — one
+   *  ordinary undo step. `savedSignature` keeps describing the cloud copy,
+   *  so the canvas reads dirty until the next Save (which writes a new
+   *  Version; the restored one stays in the history). */
+  restoreVersion: (document: FlowDocumentJSON) => void;
   /** Replace the canvas with a template, starter, import or pasted JSON.
    *  An ordinary undoable change. */
   loadRemoteTemplate: (template: LoadedTemplate) => void;
@@ -504,6 +515,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
   currentDiagramName: 'Untitled diagram',
   currentDiagramPublic: false,
   savedSignature: null,
+  lastSavedAt: null,
+  lastSavedBy: null,
   savingDiagram: false,
   history: emptyHistory<HistorySnapshot>(),
   historyRevision: 0,
@@ -535,6 +548,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
       currentDiagramName: session?.currentDiagramName ?? 'Untitled diagram',
       currentDiagramPublic: session?.currentDiagramPublic ?? false,
       savedSignature: session?.savedSignature ?? null,
+      lastSavedAt: session?.lastSavedAt ?? null,
+      lastSavedBy: session?.lastSavedBy ?? null,
       // A page load starts a fresh history; it is never persisted.
       history: emptyHistory<HistorySnapshot>(),
     });
@@ -544,11 +559,13 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
 
   setDiagramPublic: (isPublic) => set({ currentDiagramPublic: isPublic }),
 
-  markDiagramSaved: (diagramId, name, savedDocument) =>
+  markDiagramSaved: (diagramId, name, savedDocument, savedBy = null, savedAt = null) =>
     set({
       currentDiagramId: diagramId,
       currentDiagramName: name,
       savedSignature: JSON.stringify(savedDocument),
+      lastSavedBy: savedBy,
+      lastSavedAt: savedAt,
     }),
 
   loadStoredDiagram: (diagram) => {
@@ -559,11 +576,25 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
       currentDiagramName: diagram.name,
       currentDiagramPublic: diagram.public === true,
       savedSignature: JSON.stringify(document),
+      lastSavedAt: diagram.updatedAt?.toMillis() ?? null,
+      lastSavedBy: diagram.lastSavedBy ?? null,
       // Snapshot so Reset restores the fetched document, not a template.
       loadedTemplate: { name: diagram.name, category: 'Saved diagram', description: '', document },
       // Another diagram: its own, empty history.
       history: emptyHistory<HistorySnapshot>(),
     });
+    get().resetCanvasState();
+  },
+
+  // A whole-document replacement like a template pick, with two
+  // differences: `loadedTemplate` stays (Reset and the Info panel keep
+  // pointing at the diagram as it was opened — a Version is not a new
+  // starting point), and the name/visibility are never touched. Like a
+  // template, the Version brings its own run mode, and undo hands back the
+  // previous one unless the user has switched it since (see
+  // `restorePresentation`).
+  restoreVersion: (rawDocument) => {
+    set({ doc: normalizeDocument(rawDocument).document });
     get().resetCanvasState();
   },
 
@@ -593,6 +624,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
       currentDiagramName: template.name,
       currentDiagramPublic: false,
       savedSignature: null,
+      lastSavedAt: null,
+      lastSavedBy: null,
       loadedTemplate: template,
       history: emptyHistory<HistorySnapshot>(),
     });

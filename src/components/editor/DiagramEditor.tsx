@@ -1,6 +1,6 @@
 'use client';
 
-import { Boxes, Copy, Globe, LoaderCircle, LockKeyhole, Share2 } from 'lucide-react';
+import { Boxes, Copy, Globe, History, LoaderCircle, LockKeyhole, Share2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
@@ -16,9 +16,14 @@ import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { MermaidImportDialog } from '@/components/editor/MermaidImportDialog';
 import { StarterPickerDialog } from '@/components/editor/StarterPickerDialog';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
-import { useEditorStore } from '@/lib/editor-store';
+import { VersionHistorySheet } from '@/components/editor/VersionHistory';
+import { formatDateTime } from '@/components/data-table';
+import { sameDiagramContent, useEditorStore } from '@/lib/editor-store';
 import { createDiagram, loadDiagram, saveDiagram } from '@/lib/firebase/diagrams';
+import type { StoredVersion } from '@/lib/firebase/versions';
 import { saveEditorSession } from '@/lib/editor-session';
+import { normalizeDocument } from '@/lib/document-validation';
+import { actorOf, savedByLabel, versionLabel } from '@/lib/version-history';
 
 /** Inline editor for the diagram name in the header. Click to edit,
  *  Enter or blur commits, Escape cancels. */
@@ -68,6 +73,21 @@ function DiagramName({ name, onRename }: { name: string; onRename: (name: string
   );
 }
 
+/** "Last saved by … at …" beside the diagram name — who performed the
+ *  last Save (a Collaborator, once Share lands) and when. Hidden on narrow
+ *  headers, where the name alone has to fit. */
+function LastSavedNote({ currentUid }: { currentUid: string }) {
+  const lastSavedAt = useEditorStore((state) => state.lastSavedAt);
+  const lastSavedBy = useEditorStore((state) => state.lastSavedBy);
+  if (lastSavedAt === null) return null;
+  const when = formatDateTime(lastSavedAt);
+  return (
+    <span className='hidden truncate text-[11px] text-muted-foreground lg:inline' data-testid='last-saved'>
+      {lastSavedBy ? `Last saved by ${savedByLabel(lastSavedBy, currentUid)} at ${when}` : `Last saved at ${when}`}
+    </span>
+  );
+}
+
 /**
  * Full editor for one diagram at `/diagrams/{id}/edit`. The document is
  * fetched from `users/{uid}/diagrams/{id}` — only the owner can open it
@@ -102,6 +122,8 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const currentDiagramName = useEditorStore((state) => state.currentDiagramName);
   const currentDiagramPublic = useEditorStore((state) => state.currentDiagramPublic);
   const savedSignature = useEditorStore((state) => state.savedSignature);
+  const lastSavedAt = useEditorStore((state) => state.lastSavedAt);
+  const lastSavedBy = useEditorStore((state) => state.lastSavedBy);
   const savingDiagram = useEditorStore((state) => state.savingDiagram);
   const { renameDiagram, setDiagramPublic, markDiagramSaved, loadStoredDiagram, setSavingDiagram } = useEditorStore();
 
@@ -115,6 +137,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const [mermaidOpen, setMermaidOpen] = useState(false);
   const [sqlOpen, setSqlOpen] = useState(false);
   const [savingAs, setSavingAs] = useState(false);
+  const [historyOpen, setHistoryOpen] = useState(false);
 
   // Load the route's diagram into the store — unless the session already
   // restored this exact diagram, in which case unsaved edits are kept.
@@ -145,8 +168,8 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
 
   useEffect(() => {
     if (!user) return;
-    saveEditorSession(user.uid, { doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature });
-  }, [doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature, user]);
+    saveEditorSession(user.uid, { doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature, lastSavedAt, lastSavedBy });
+  }, [doc, currentDiagramId, currentDiagramName, currentDiagramPublic, savedSignature, lastSavedAt, lastSavedBy, user]);
   const currentTemplate = loadedTemplate ?? {
     category: 'Saved diagram',
     name: currentDiagramName,
@@ -162,8 +185,9 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     }
     setSavingDiagram(true);
     try {
-      await saveDiagram(user.uid, diagramId, nextName, doc, currentDiagramPublic);
-      markDiagramSaved(diagramId, nextName, doc);
+      const actor = actorOf(user);
+      await saveDiagram(user.uid, diagramId, nextName, doc, currentDiagramPublic, actor);
+      markDiagramSaved(diagramId, nextName, doc, actor, Date.now());
       toast.success('Diagram saved', { description: nextName });
     } catch {
       toast.error('Could not save diagram', {
@@ -177,7 +201,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const handleNewDiagram = useCallback(async () => {
     if (!user) return;
     try {
-      const id = await createDiagram(user.uid, 'Untitled diagram', { nodes: [], edges: [] }, false);
+      const id = await createDiagram(user.uid, 'Untitled diagram', { nodes: [], edges: [] }, false, actorOf(user));
       router.push(`/diagrams/${id}/edit`);
     } catch {
       toast.error('Could not create diagram', { description: 'Check sign-in and Firestore rules.' });
@@ -189,7 +213,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
     const nextName = `${currentDiagramName.trim() || 'Untitled diagram'} copy`;
     setSavingAs(true);
     try {
-      const id = await createDiagram(user.uid, nextName, doc, false);
+      const id = await createDiagram(user.uid, nextName, doc, false, actorOf(user));
       toast.success('Saved as a new diagram', { description: nextName });
       router.push(`/diagrams/${id}/edit`);
     } catch {
@@ -198,6 +222,41 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       setSavingAs(false);
     }
   }, [user, currentDiagramName, doc, router]);
+
+  // Restore: the Version's document becomes an unsaved change on the
+  // canvas — one undo step (the store's `restoreVersion`). Nothing is
+  // written; the next Save makes it the main copy and a new Version.
+  const handleRestoreVersion = useCallback((version: StoredVersion) => {
+    setHistoryOpen(false);
+    const label = versionLabel(version);
+    if (sameDiagramContent(useEditorStore.getState().doc, normalizeDocument(version.document).document)) {
+      toast('Already on the canvas', { description: `${label} matches what you are editing.` });
+      return;
+    }
+    useEditorStore.getState().restoreVersion(version.document);
+    toast.success('Version restored — not saved yet', { description: `${label}. Save to keep it, or Undo to go back.` });
+  }, []);
+
+  // A copy owned by whoever does it (with its own first Version); the
+  // open diagram is untouched. Offered rather than opened, so unsaved
+  // work here isn't swapped out from under the user.
+  const handleVersionSaveAsNew = useCallback(
+    async (version: StoredVersion) => {
+      if (!user) return;
+      const name = `${currentDiagramName.trim() || 'Untitled diagram'} (${versionLabel(version)})`;
+      try {
+        const id = await createDiagram(user.uid, name, version.document, false, actorOf(user));
+        toast.success('Saved as a new diagram', {
+          description: name,
+          action: { label: 'Open', onClick: () => router.push(`/diagrams/${id}/edit`) },
+        });
+      } catch (error) {
+        console.error('Could not save version as a new diagram', error);
+        toast.error('Could not save as a new diagram', { description: 'Check sign-in and Firestore rules.' });
+      }
+    },
+    [user, currentDiagramName, router],
+  );
 
   if (loading) return <AuthLoadingScreen />;
   if (!user) return <LoginForm />;
@@ -221,7 +280,12 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       document={doc}
       onSave={() => void handleSaveDiagram()}
       icon={<Boxes size={18} className='text-sky-300' />}
-      subtitle={<DiagramName name={currentDiagramName} onRename={renameDiagram} />}
+      subtitle={
+        <div className='flex min-w-0 items-baseline gap-2'>
+          <DiagramName name={currentDiagramName} onRename={renameDiagram} />
+          <LastSavedNote currentUid={user.uid} />
+        </div>
+      }
       fileMenu={
         <EditorFileMenu
           onNew={() => void handleNewDiagram()}
@@ -259,6 +323,10 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
             {currentDiagramPublic ? <Globe size={13} className='text-emerald-700 dark:text-emerald-300' /> : <LockKeyhole size={13} />}
             {currentDiagramPublic ? 'Public' : 'Private'}
           </Button>
+          <Button variant='toolbar' size='lg' onClick={() => setHistoryOpen(true)} title='Version history — every Save, newest first' aria-label='Version history'>
+            <History size={13} />
+            <span className='hidden sm:inline'>History</span>
+          </Button>
           <SaveButton saving={savingDiagram} dirty={dirty} onSave={() => void handleSaveDiagram()} />
         </>
       }
@@ -278,6 +346,16 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       <StarterPickerDialog open={starterOpen} onOpenChange={setStarterOpen} />
       <MermaidImportDialog open={mermaidOpen} onOpenChange={setMermaidOpen} />
       <SqlExportDialog document={doc} filename={currentDiagramName.trim() || 'diagram'} open={sqlOpen} onOpenChange={setSqlOpen} />
+      {/* Owner = the signed-in user until Share (T7) resolves it through the access index. */}
+      <VersionHistorySheet
+        open={historyOpen}
+        onOpenChange={setHistoryOpen}
+        ownerUid={user.uid}
+        diagramId={diagramId}
+        currentUid={user.uid}
+        onRestore={handleRestoreVersion}
+        onSaveAsNew={handleVersionSaveAsNew}
+      />
     </EditorShell>
   );
 }

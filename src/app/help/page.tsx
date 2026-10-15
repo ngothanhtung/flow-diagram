@@ -237,6 +237,34 @@ export default function HelpPage() {
             <strong>Undo</strong> brings the changes back.
           </li>
         </ul>
+        <h3 id='versions' className='scroll-mt-20 pt-2 text-sm font-semibold text-foreground'>Version history</h3>
+        <p>
+          Every <strong>Save</strong> also keeps a <strong>version</strong> — the diagram exactly as it was at that moment, with who saved it and when. Nothing you have saved is overwritten for good.
+          Open the list with <strong>History</strong> in the editor header (newest first).
+        </p>
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            <strong>Preview</strong> opens a version read-only, with its own play bar so you can Replay it. The diagram you are editing does not change.
+          </li>
+          <li>
+            <strong>Restore</strong> puts that version on the canvas as an <strong>unsaved change</strong> (amber dot). <strong>Undo</strong> (⌘Z) takes you straight back to what you had;{' '}
+            <strong>Save</strong> makes it the main copy and adds a new version — the one you restored stays in the list.
+          </li>
+          <li>
+            <strong>Name</strong> a version (e.g. &quot;Sent to client&quot;) to find it again later; <strong>Rename</strong> or remove the name at any time. Named versions are highlighted and
+            are <strong>never removed automatically</strong>.
+          </li>
+          <li>
+            <strong>Save as a new diagram</strong> (the copy icon on a row, or the button in Preview) copies that version into a new diagram of your own; the original is untouched. Use{' '}
+            <strong>Open</strong> on the confirmation to go to it.
+          </li>
+          <li>
+            The <strong>50 most recent unnamed versions</strong> are kept; older unnamed ones are removed when you save. Deleting a diagram deletes its whole history.
+          </li>
+          <li>
+            The header shows <strong>Last saved by … at …</strong>, and the diagrams list shows the same in its <strong>Last saved</strong> column.
+          </li>
+        </ul>
       </Section>
 
       <Section id='share' title='9. Sharing a diagram'>
@@ -336,6 +364,7 @@ export default function HelpPage() {
             ['Rename the diagram', 'Click its name in the header, type, press Enter'],
             ['Undo / redo a change', '⌘Z / ⌘⇧Z, or the Undo / Redo buttons next to the File menu'],
             ['Save to the cloud', '⌘S, or the Save button in the header (amber dot = unsaved changes)'],
+            ['Go back to an earlier save', 'History in the header → Preview, Restore (then Save), or Save as a new diagram'],
             ['See every shortcut', 'Press ? on the canvas'],
             ['Play the animation', 'Replay — pick Sequential, Concurrent or Manual first'],
             ['Share read-only', 'Set the diagram to Public, then File → Share → Copy'],

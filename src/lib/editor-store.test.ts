@@ -456,3 +456,98 @@ describe('editor store selection actions (shortcuts and clipboard)', () => {
     expect(store().doc.nodes.map((node) => node.id)).toEqual(['x']);
   });
 });
+
+describe('editor store — restoring a Version (PRD v0.3 §4.1)', () => {
+  /** What an older Save looked like: the fixture with one block renamed and no edge styles. */
+  function olderVersion(): FlowDocumentJSON {
+    const document = fixture();
+    return {
+      ...document,
+      nodes: document.nodes.map((node) => (node.id === 'loose' ? { ...node, title: 'Yesterday' } : node)),
+      settings: { runMode: 'manual' },
+    };
+  }
+
+  it('puts the Version on the canvas as an unsaved change, in exactly one undo step', () => {
+    expect(dirty()).toBe(false);
+    store().restoreVersion(olderVersion());
+    expect(nodeById('loose').title).toBe('Yesterday');
+    expect(dirty()).toBe(true);
+    expect(steps()).toBe(1);
+
+    // One ⌘Z → the content from before the restore, clean again.
+    store().undo();
+    expect(nodeById('loose').title).toBe('LOOSE');
+    expect(dirty()).toBe(false);
+    expect(canUndo()).toBe(false);
+
+    store().redo();
+    expect(nodeById('loose').title).toBe('Yesterday');
+  });
+
+  it('undo brings back unsaved work that the restore replaced', () => {
+    store().onNodeUpdate('loose', { title: 'Unsaved edit' });
+    store().restoreVersion(olderVersion());
+    expect(steps()).toBe(2);
+    store().undo();
+    expect(nodeById('loose').title).toBe('Unsaved edit');
+    expect(dirty()).toBe(true);
+  });
+
+  it('keeps the diagram identity, the saved signature and the Reset target', () => {
+    const before = store();
+    store().restoreVersion(olderVersion());
+    expect(store().currentDiagramId).toBe(before.currentDiagramId);
+    expect(store().currentDiagramName).toBe(before.currentDiagramName);
+    expect(store().savedSignature).toBe(before.savedSignature);
+    expect(store().loadedTemplate).toBe(before.loadedTemplate);
+  });
+
+  it('a Save after restoring marks that content saved; the restore stays undoable', () => {
+    store().restoreVersion(olderVersion());
+    store().markDiagramSaved('d1', 'Diagram d1', store().doc, { uid: 'u', email: null, displayName: null }, 123);
+    expect(dirty()).toBe(false);
+    expect(store().lastSavedBy?.uid).toBe('u');
+    expect(store().lastSavedAt).toBe(123);
+    store().undo();
+    expect(dirty()).toBe(true);
+  });
+
+  it('brings the Version\'s run mode, and undo hands back the previous one (T1 rules)', () => {
+    store().restoreVersion(olderVersion());
+    expect(store().doc.settings?.runMode).toBe('manual');
+    store().undo();
+    expect(store().doc.settings?.runMode).toBe('sequential');
+
+    // A run mode the user picks after the restore survives undoing it.
+    store().redo();
+    store().applySettings({ runMode: 'static' });
+    store().undo();
+    expect(store().doc.settings?.runMode).toBe('static');
+  });
+
+  it('normalises the Version on the way in, like every other document', () => {
+    const broken = { nodes: [{ ...block('n', 0, 0), lineStart: 'top-left' }], edges: [] } as unknown as FlowDocumentJSON;
+    store().restoreVersion(broken);
+    // Repaired (the crash value from the v0.2 report), not passed through.
+    expect(store().doc.nodes[0].lineStart).not.toBe('top-left');
+  });
+
+  it('resets the run cursor and the selection', () => {
+    store().selectNode('loose');
+    store().advanceStep();
+    store().restoreVersion(olderVersion());
+    expect(store().runStep).toBe(0);
+    expect(store().selectedNodeIds).toEqual([]);
+  });
+
+  it('opening a diagram reads who last saved it; a pre-Versions diagram has only the time', () => {
+    const at = { toMillis: () => 42 } as unknown as import('firebase/firestore').Timestamp;
+    store().loadStoredDiagram({ id: 'x', name: 'X', document: fixture(), public: false, createdAt: null, updatedAt: at, lastSavedBy: { uid: 'b', email: 'b@x.io', displayName: 'Bob' } });
+    expect(store().lastSavedAt).toBe(42);
+    expect(store().lastSavedBy?.displayName).toBe('Bob');
+    store().loadStoredDiagram({ id: 'y', name: 'Y', document: fixture(), public: false, createdAt: null, updatedAt: at });
+    expect(store().lastSavedBy).toBeNull();
+    expect(store().lastSavedAt).toBe(42);
+  });
+});
