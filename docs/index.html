@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>X Flow Tool — Diagrams that move</title>
+  <meta name="description" content="X Flow Tool is a browser-based editor for animated diagrams: SaaS architectures, business processes and database schemas — with step-by-step Replay and diagrams generated from text." />
+  <meta name="theme-color" content="#05070d" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
+      --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
+      --color-ink: #05070d;
+      --color-panel: #0b1020;
+    }
+    @layer components {
+      .card { @apply rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.05]; }
+      .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-200; }
+      .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition bg-cyan-400 text-slate-950 shadow-[0_0_40px_-8px_rgba(34,211,238,0.8)] hover:bg-cyan-300; }
+      .btn-ghost { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition border border-white/15 bg-white/5 text-white hover:border-white/30 hover:bg-white/10; }
+      .section-title { @apply text-3xl font-bold tracking-tight text-white sm:text-4xl; }
+      .section-lead { @apply mt-4 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg; }
+      .eyebrow { @apply font-mono text-xs uppercase tracking-[0.25em] text-cyan-300; }
+    }
+  </style>
+
+  <style>
+    body { background: #05070d; }
+    [data-animate] { opacity: 0; }
+    [data-animate].animate__animated { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      [data-animate] { opacity: 1 !important; }
+      .fx, .draw { animation: none !important; }
+    }
+
+    /* ---- Demo diagram: the same ideas as the app's Line Effects ---- */
+    .edge-base { fill: none; stroke: #334155; stroke-width: 2; }
+    .edge-base.async { stroke-dasharray: 6 6; }
+    .fx { fill: none; stroke-linecap: round; }
+    .fx-comet  { stroke: #67e8f9; stroke-width: 4; stroke-dasharray: 26 520; animation: dash 2.2s linear infinite; filter: url(#glow); }
+    .fx-dots   { stroke: #a5b4fc; stroke-width: 4; stroke-dasharray: 0.1 16; animation: dash 1.6s linear infinite; }
+    .fx-ants   { stroke: #34d399; stroke-width: 2.5; stroke-dasharray: 8 8; animation: dash-short 0.8s linear infinite; }
+    .fx-convoy { stroke: #fbbf24; stroke-width: 4; stroke-dasharray: 10 8 10 8 10 300; animation: dash 2.6s linear infinite; filter: url(#glow); }
+    @keyframes dash { from { stroke-dashoffset: 546; } to { stroke-dashoffset: 0; } }
+    @keyframes dash-short { from { stroke-dashoffset: 16; } to { stroke-dashoffset: 0; } }
+
+    .node rect, .node ellipse, .node path.body { transition: stroke 0.35s, filter 0.35s, opacity 0.35s; }
+    .node text { font-family: 'Geist Mono', monospace; font-size: 13px; fill: #e2e8f0; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+    .node .sub { font-size: 10px; fill: #94a3b8; }
+    .node.dim { opacity: 0.38; }
+    .node.lit rect, .node.lit ellipse, .node.lit path.body { stroke: #67e8f9; filter: url(#glow); }
+
+    #demo[data-mode="static"] .fx { display: none; }
+    #demo[data-mode="sequential"] .edge.idle .fx { display: none; }
+    .edge.drawing .edge-base { stroke: #67e8f9; stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 0.7s ease-out forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+
+    .typing::after { content: '▋'; margin-left: 2px; color: #67e8f9; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .grid-bg {
+      background-image: linear-gradient(rgba(148,163,184,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+  </style>
+</head>
+
+<body class="font-sans text-slate-200 antialiased selection:bg-cyan-400/30">
+
+  <!-- ============ NAV ============ -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-ink/70 backdrop-blur-md">
+    <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+      <a href="#top" class="flex items-center gap-2.5 font-semibold text-white">
+        <span class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 text-slate-950"><i data-lucide="workflow" class="h-4.5 w-4.5"></i></span>
+        X Flow Tool
+      </a>
+      <div class="hidden items-center gap-7 text-sm text-slate-400 md:flex">
+        <a href="#demo-section" class="hover:text-white" data-i18n="nav.demo">Live demo</a>
+        <a href="#features" class="hover:text-white" data-i18n="nav.features">Features</a>
+        <a href="#text" class="hover:text-white" data-i18n="nav.text">From text</a>
+        <a href="#self-host" class="hover:text-white" data-i18n="nav.selfhost">Self-host</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="flex rounded-lg border border-white/10 bg-white/5 p-0.5 font-mono text-xs" role="group" aria-label="Language">
+          <button type="button" data-lang="en" class="lang-btn rounded-md px-2.5 py-1.5">EN</button>
+          <button type="button" data-lang="vi" class="lang-btn rounded-md px-2.5 py-1.5">VI</button>
+        </div>
+        <a href="https://github.com/ngothanhtung/flow-diagram" class="hidden rounded-lg border border-white/10 bg-white/5 p-2 text-slate-300 hover:text-white sm:inline-flex" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" class="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-16">
+    <canvas id="hero-canvas" class="absolute inset-0 -z-10 h-full w-full" aria-hidden="true"></canvas>
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_0%,#05070d_75%)]"></div>
+
+    <div class="mx-auto max-w-6xl px-5 py-24 text-center">
+      <span class="chip animate__animated animate__fadeInDown"><i data-lucide="sparkles" class="h-3.5 w-3.5"></i><span data-i18n="hero.badge">v0.3 — Versions, Share &amp; Auto-layout</span></span>
+      <h1 class="animate__animated animate__fadeInUp mx-auto mt-6 max-w-4xl text-5xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-7xl">
+        <span data-i18n="hero.title1">Diagrams that</span>
+        <span class="bg-gradient-to-r from-cyan-300 via-sky-400 to-indigo-400 bg-clip-text text-transparent" data-i18n="hero.title2">move.</span>
+      </h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-400" data-i18n="hero.lead">
+        Draw SaaS architectures, business processes and database schemas whose lines show how data actually flows — then present them step by step, or start from a Mermaid snippet or JSON written by an AI.
+      </p>
+      <div class="animate__animated animate__fadeInUp animate__delay-1s mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="#demo-section" class="btn-primary"><i data-lucide="play" class="h-4 w-4"></i><span data-i18n="hero.cta1">See it move</span></a>
+        <a href="#self-host" class="btn-ghost"><i data-lucide="server" class="h-4 w-4"></i><span data-i18n="hero.cta2">Self-host in minutes</span></a>
+      </div>
+      <div class="animate__animated animate__fadeIn animate__delay-2s mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 font-mono text-xs text-slate-500">
+        <span><span class="text-cyan-300">18</span> <span data-i18n="hero.stat1">line effects</span></span>
+        <span><span class="text-cyan-300">35</span> <span data-i18n="hero.stat2">block shapes</span></span>
+        <span><span class="text-cyan-300">~15k</span> <span data-i18n="hero.stat3">brand logos</span></span>
+        <span><span class="text-cyan-300">4</span> <span data-i18n="hero.stat4">run modes</span></span>
+      </div>
+    </div>
+    <a href="#problem" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 hover:text-white" aria-label="Scroll"><i data-lucide="chevrons-down" class="h-6 w-6 animate-bounce"></i></a>
+  </section>
+
+  <!-- ============ PROBLEM ============ -->
+  <section id="problem" class="relative border-t border-white/5 py-24">
+    <div class="mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-2 md:items-center">
+      <div data-animate="fadeInLeft">
+        <p class="eyebrow" data-i18n="problem.eyebrow">The problem</p>
+        <h2 class="section-title mt-3" data-i18n="problem.title">Static diagrams can't show what happens next.</h2>
+        <p class="section-lead" data-i18n="problem.lead">A box-and-arrow picture doesn't say which way data moves or in what order — so the presenter narrates it, and every new diagram starts from a blank canvas.</p>
+      </div>
+      <div class="grid gap-4" data-animate="fadeInRight">
+        <div class="card flex gap-4"><i data-lucide="activity" class="mt-1 h-5 w-5 shrink-0 text-cyan-300"></i><div><h3 class="font-semibold text-white" data-i18n="problem.p1t">Lines that move</h3><p class="mt-1 text-sm text-slate-400" data-i18n="problem.p1d">Animated Line Effects show direction, rhythm and kind of flow — sync, async, policy — at a glance.</p></div></div>
+        <div class="card flex gap-4"><i data-lucide="presentation" class="mt-1 h-5 w-5 shrink-0 text-cyan-300"></i><div><h3 class="font-semibold text-white" data-i18n="problem.p2t">Replay, step by step</h3><p class="mt-1 text-sm text-slate-400" data-i18n="problem.p2d">The audience watches the system run in order, without anyone pointing at the screen.</p></div></div>
+        <div class="card flex gap-4"><i data-lucide="bot" class="mt-1 h-5 w-5 shrink-0 text-cyan-300"></i><div><h3 class="font-semibold text-white" data-i18n="problem.p3t">Start from text or AI</h3><p class="mt-1 text-sm text-slate-400" data-i18n="problem.p3d">Templates, Starters, Mermaid or Diagram JSON written by an AI — never a blank page.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIVE DEMO ============ -->
+  <section id="demo-section" class="relative border-t border-white/5 py-24">
+    <div class="mx-auto max-w-6xl px-5">
+      <div class="text-center" data-animate="fadeInUp">
+        <p class="eyebrow" data-i18n="demo.eyebrow">Live demo</p>
+        <h2 class="section-title mt-3" data-i18n="demo.title">Pick a Run mode and watch.</h2>
+        <p class="section-lead mx-auto" data-i18n="demo.lead">This is a hand-built imitation of the editor's canvas: comet, dots, ants and convoy effects, an async dashed Line, and a Replay that lights Elements up Step by Step.</p>
+      </div>
+
+      <div class="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-panel shadow-[0_30px_120px_-40px_rgba(34,211,238,0.35)]" data-animate="zoomIn">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
+          <div class="flex items-center gap-2">
+            <span class="h-3 w-3 rounded-full bg-rose-400/80"></span><span class="h-3 w-3 rounded-full bg-amber-300/80"></span><span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
+            <span class="ml-3 font-mono text-xs text-slate-500">order-flow · <span data-i18n="demo.saved">saved</span></span>
+          </div>
+          <div class="flex rounded-lg border border-white/10 bg-white/5 p-0.5 text-xs" role="group" aria-label="Run mode">
+            <button type="button" data-mode="sequential" class="mode-btn flex items-center gap-1.5 rounded-md px-3 py-1.5"><i data-lucide="list-ordered" class="h-3.5 w-3.5"></i><span data-i18n="demo.seq">Sequential</span></button>
+            <button type="button" data-mode="concurrent" class="mode-btn flex items-center gap-1.5 rounded-md px-3 py-1.5"><i data-lucide="zap" class="h-3.5 w-3.5"></i><span data-i18n="demo.con">Concurrent</span></button>
+            <button type="button" data-mode="static" class="mode-btn flex items-center gap-1.5 rounded-md px-3 py-1.5"><i data-lucide="pause" class="h-3.5 w-3.5"></i><span data-i18n="demo.sta">Static</span></button>
+          </div>
+        </div>
+
+        <div class="grid-bg relative">
+          <svg id="demo" data-mode="sequential" viewBox="0 0 980 420" class="block h-auto w-full" role="img" aria-label="Animated order-processing diagram">
+            <defs>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.2" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+              <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#64748b" /></marker>
+              <linearGradient id="card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e293b" /><stop offset="1" stop-color="#0f172a" /></linearGradient>
+            </defs>
+
+            <!-- Lines: data-to = step index that lights when the line has drawn -->
+            <g class="edge" data-step="2"><path id="e1" class="edge-base" marker-end="url(#arrow)" d="M150 210 H 222" /><path class="fx fx-comet" d="M150 210 H 222" /></g>
+            <g class="edge" data-step="3"><path class="edge-base" marker-end="url(#arrow)" d="M352 196 C 400 196, 400 110, 452 110" /><path class="fx fx-dots" d="M352 196 C 400 196, 400 110, 452 110" /></g>
+            <g class="edge" data-step="3"><path class="edge-base" marker-end="url(#arrow)" d="M352 224 C 400 224, 400 250, 452 250" /><path class="fx fx-comet" d="M352 224 C 400 224, 400 250, 452 250" /></g>
+            <g class="edge" data-step="4"><path class="edge-base" marker-end="url(#arrow)" d="M582 240 C 630 240, 630 170, 672 170" /><path class="fx fx-ants" d="M582 240 C 630 240, 630 170, 672 170" /></g>
+            <g class="edge" data-step="4"><path class="edge-base async" marker-end="url(#arrow)" d="M582 262 C 630 262, 630 330, 672 330" /><path class="fx fx-dots" d="M582 262 C 630 262, 630 330, 672 330" /></g>
+            <g class="edge" data-step="5"><path class="edge-base" marker-end="url(#arrow)" d="M802 330 H 852" /><path class="fx fx-convoy" d="M802 330 H 852" /></g>
+
+            <!-- Elements -->
+            <g class="node" data-step="1"><rect class="body" x="30" y="184" width="120" height="52" rx="26" fill="#3b2a12" stroke="#f59e0b" stroke-width="1.5" /><text x="90" y="210" data-i18n-svg="demo.n.users">Users</text></g>
+            <g class="node" data-step="2"><rect class="body" x="222" y="182" width="130" height="56" rx="12" fill="url(#card)" stroke="#475569" stroke-width="1.5" /><text x="287" y="204">API Gateway</text><text class="sub" x="287" y="222">REST · JWT</text></g>
+            <g class="node" data-step="3"><rect class="body" x="452" y="82" width="130" height="56" rx="12" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5" /><text x="517" y="104">Auth</text><text class="sub" x="517" y="122">OIDC</text></g>
+            <g class="node" data-step="3"><rect class="body" x="452" y="222" width="130" height="56" rx="12" fill="url(#card)" stroke="#475569" stroke-width="1.5" /><text x="517" y="244" data-i18n-svg="demo.n.orders">Orders</text><text class="sub" x="517" y="262">service</text></g>
+            <g class="node" data-step="4"><path class="body" d="M672 150 a65 12 0 0 1 130 0 v40 a65 12 0 0 1 -130 0 z" fill="#052e2b" stroke="#10b981" stroke-width="1.5" /><ellipse cx="737" cy="150" rx="65" ry="12" fill="none" stroke="#10b981" stroke-width="1.2" opacity="0.7" /><text x="737" y="178">Postgres</text></g>
+            <g class="node" data-step="4"><rect class="body" x="672" y="304" width="130" height="52" rx="8" fill="#2a1a05" stroke="#f59e0b" stroke-width="1.5" /><text x="737" y="330" data-i18n-svg="demo.n.queue">Job queue</text></g>
+            <g class="node" data-step="5"><rect class="body" x="852" y="304" width="110" height="52" rx="12" fill="url(#card)" stroke="#475569" stroke-width="1.5" /><text x="907" y="324">Worker</text><text class="sub" x="907" y="342" data-i18n-svg="demo.n.email">→ email</text></g>
+
+            <text x="617" y="350" font-family="Geist Mono, monospace" font-size="10" fill="#94a3b8" text-anchor="middle">async</text>
+          </svg>
+          <div class="pointer-events-none absolute bottom-3 left-4 font-mono text-[11px] text-slate-500"><span data-i18n="demo.step">Step</span> <span id="step-label">1</span>/5</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section id="features" class="relative border-t border-white/5 py-24">
+    <div class="mx-auto max-w-6xl px-5">
+      <div data-animate="fadeInUp">
+        <p class="eyebrow" data-i18n="features.eyebrow">Features</p>
+        <h2 class="section-title mt-3" data-i18n="features.title">Everything a living diagram needs.</h2>
+        <p class="section-lead" data-i18n="features.lead">From the first Block to a shared, versioned Diagram your whole team maintains.</p>
+      </div>
+      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" id="feature-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ FROM TEXT ============ -->
+  <section id="text" class="relative border-t border-white/5 py-24">
+    <div class="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:items-center">
+      <div data-animate="fadeInLeft">
+        <p class="eyebrow" data-i18n="text.eyebrow">From text to diagram</p>
+        <h2 class="section-title mt-3" data-i18n="text.title">Paste Mermaid. Or ask an AI for JSON.</h2>
+        <p class="section-lead" data-i18n="text.lead">The importer understands flowcharts and ER diagrams and lays them out for you. The whole Diagram is one JSON document with a reference written for AI — paste a fragment and it's added to the canvas.</p>
+        <ul class="mt-6 space-y-3 text-sm text-slate-300">
+          <li class="flex gap-3"><i data-lucide="check" class="h-4 w-4 shrink-0 text-emerald-400"></i><span data-i18n="text.b1">Lines the importer doesn't understand become warnings — never an error.</span></li>
+          <li class="flex gap-3"><i data-lucide="check" class="h-4 w-4 shrink-0 text-emerald-400"></i><span data-i18n="text.b2">Invalid JSON is repaired field by field and can never crash the canvas.</span></li>
+          <li class="flex gap-3"><i data-lucide="check" class="h-4 w-4 shrink-0 text-emerald-400"></i><span data-i18n="text.b3">Auto-layout keeps Lines out of Elements and chains in straight lines.</span></li>
+        </ul>
+      </div>
+      <div class="grid gap-4" data-animate="fadeInRight">
+        <div class="overflow-hidden rounded-2xl border border-white/10 bg-[#0a0f1c]">
+          <div class="flex items-center gap-2 border-b border-white/10 px-4 py-2.5 font-mono text-xs text-slate-500"><i data-lucide="file-code" class="h-3.5 w-3.5"></i> mermaid</div>
+          <pre class="overflow-x-auto p-5 font-mono text-[13px] leading-6 text-slate-300"><code id="mermaid-code" class="typing"></code></pre>
+        </div>
+        <div class="flex justify-center text-cyan-300"><i data-lucide="arrow-down" class="h-5 w-5"></i></div>
+        <div class="grid-bg rounded-2xl border border-white/10 bg-panel p-4">
+          <svg id="mini" viewBox="0 0 520 150" class="h-auto w-full opacity-0 transition-opacity duration-700" aria-hidden="true">
+            <g fill="none" stroke="#475569" stroke-width="1.6"><path d="M98 75 H 140" /><path d="M250 64 C 280 64, 280 30, 310 30" /><path d="M250 86 C 280 86, 280 120, 310 120" /><path d="M420 120 H 440" /></g>
+            <g fill="none" stroke="#67e8f9" stroke-width="3" stroke-linecap="round" stroke-dasharray="14 400" class="fx" style="animation: dash 2s linear infinite"><path d="M98 75 H 140" /><path d="M250 86 C 280 86, 280 120, 310 120" /></g>
+            <g font-family="Geist Mono, monospace" font-size="12" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">
+              <rect x="10" y="55" width="88" height="40" rx="20" fill="#3b2a12" stroke="#f59e0b" /><text x="54" y="75">Users</text>
+              <rect x="140" y="52" width="110" height="46" rx="10" fill="#1e293b" stroke="#64748b" /><text x="195" y="75">API Gateway</text>
+              <rect x="310" y="10" width="110" height="40" rx="10" fill="#1e1b4b" stroke="#6366f1" /><text x="365" y="30">Auth</text>
+              <rect x="310" y="100" width="110" height="40" rx="10" fill="#1e293b" stroke="#64748b" /><text x="365" y="120">Orders</text>
+              <path d="M440 108 a35 7 0 0 1 70 0 v24 a35 7 0 0 1 -70 0 z" fill="#052e2b" stroke="#10b981" /><text x="475" y="124">DB</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHO ============ -->
+  <section class="relative border-t border-white/5 py-24">
+    <div class="mx-auto max-w-6xl px-5">
+      <div class="text-center" data-animate="fadeInUp">
+        <p class="eyebrow" data-i18n="who.eyebrow">Who it's for</p>
+        <h2 class="section-title mt-3" data-i18n="who.title">Built for the people in the room.</h2>
+      </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        <div class="card" data-animate="fadeInUp"><i data-lucide="pen-tool" class="h-6 w-6 text-cyan-300"></i><h3 class="mt-4 text-lg font-semibold text-white" data-i18n="who.a.t">Diagram authors</h3><p class="mt-2 text-sm leading-relaxed text-slate-400" data-i18n="who.a.d">Developers, BAs and solution architects drawing architectures, flows and ERDs — presenting with Replay and exporting SQL.</p></div>
+        <div class="card" data-animate="fadeInUp" data-delay="150"><i data-lucide="eye" class="h-6 w-6 text-cyan-300"></i><h3 class="mt-4 text-lg font-semibold text-white" data-i18n="who.b.t">Viewers</h3><p class="mt-2 text-sm leading-relaxed text-slate-400" data-i18n="who.b.d">Customers and stakeholders open a Public link: read-only, Replay included, no account and nothing to install.</p></div>
+        <div class="card" data-animate="fadeInUp" data-delay="300"><i data-lucide="shield-check" class="h-6 w-6 text-cyan-300"></i><h3 class="mt-4 text-lg font-semibold text-white" data-i18n="who.c.t">Administrators</h3><p class="mt-2 text-sm leading-relaxed text-slate-400" data-i18n="who.c.d">Curate the shared Template library and decide who may sign in with an Access list.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SELF-HOST ============ -->
+  <section id="self-host" class="relative border-t border-white/5 py-24">
+    <div class="mx-auto max-w-6xl px-5">
+      <div data-animate="fadeInUp">
+        <p class="eyebrow" data-i18n="host.eyebrow">Self-host</p>
+        <h2 class="section-title mt-3" data-i18n="host.title">Your own instance on free tiers.</h2>
+        <p class="section-lead" data-i18n="host.lead">Firebase's free Spark plan plus Vercel is all it takes — no server code, no Cloud Functions. Security lives in Firestore rules shipped with the repo.</p>
+      </div>
+      <ol class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <li class="card" data-animate="fadeInUp"><span class="font-mono text-xs text-cyan-300">01</span><h3 class="mt-2 font-semibold text-white" data-i18n="host.s1">Create a Firebase project</h3><p class="mt-2 text-sm text-slate-400" data-i18n="host.s1d">Enable Google and Email/Password sign-in and Cloud Firestore.</p></li>
+        <li class="card" data-animate="fadeInUp" data-delay="100"><span class="font-mono text-xs text-cyan-300">02</span><h3 class="mt-2 font-semibold text-white" data-i18n="host.s2">Deploy the rules</h3><pre class="mt-3 overflow-x-auto rounded-lg bg-black/40 p-3 font-mono text-xs text-slate-300">firebase deploy --only firestore</pre></li>
+        <li class="card" data-animate="fadeInUp" data-delay="200"><span class="font-mono text-xs text-cyan-300">03</span><h3 class="mt-2 font-semibold text-white" data-i18n="host.s3">Import into Vercel</h3><p class="mt-2 text-sm text-slate-400" data-i18n="host.s3d">Add the NEXT_PUBLIC_FIREBASE_* variables and deploy.</p></li>
+        <li class="card" data-animate="fadeInUp" data-delay="300"><span class="font-mono text-xs text-cyan-300">04</span><h3 class="mt-2 font-semibold text-white" data-i18n="host.s4">Optional: lock it down</h3><p class="mt-2 text-sm text-slate-400" data-i18n="host.s4d">Add an Access list of allowed email domains and grant administrators.</p></li>
+      </ol>
+      <div class="mt-10 flex flex-col gap-3 sm:flex-row" data-animate="fadeInUp">
+        <a href="https://github.com/ngothanhtung/flow-diagram#readme" class="btn-primary"><i data-lucide="book-open" class="h-4 w-4"></i><span data-i18n="host.cta1">Read the setup guide</span></a>
+        <a href="https://github.com/ngothanhtung/flow-diagram" class="btn-ghost"><i data-lucide="git-branch" class="h-4 w-4"></i><span data-i18n="host.cta2">View the source</span></a>
+      </div>
+      <p class="mt-6 font-mono text-xs text-slate-500" data-i18n="host.local">Just want to try it? npm run emulators + npm run dev:emulator runs everything locally, no Firebase project needed.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm text-slate-500 sm:flex-row">
+      <div class="flex items-center gap-2"><i data-lucide="workflow" class="h-4 w-4 text-cyan-300"></i> X Flow Tool</div>
+      <p data-i18n="footer.tag">Next.js 16 · React 19 · Firebase · Tailwind CSS</p>
+    </div>
+  </footer>
+
+  <!-- ============ I18N + UI ============ -->
+  <script>
+    const FEATURES = [
+      ['route', 'f.lines'], ['sparkles', 'f.effects'], ['palette', 'f.styles'],
+      ['play', 'f.replay'], ['file-code', 'f.text'], ['database', 'f.erd'],
+      ['undo-2', 'f.undo'], ['image', 'f.export'], ['history', 'f.versions'],
+      ['users', 'f.share'], ['network', 'f.layout'], ['shield-check', 'f.access'],
+      ['layout-template', 'f.templates'], ['shapes', 'f.logos'], ['moon-star', 'f.theme'],
+    ];
+
+    const I18N = {
+      en: {
+        'meta.title': 'X Flow Tool — Diagrams that move',
+        'nav.demo': 'Live demo', 'nav.features': 'Features', 'nav.text': 'From text', 'nav.selfhost': 'Self-host',
+        'hero.badge': 'v0.3 — Versions, Share &amp; Auto-layout',
+        'hero.title1': 'Diagrams that', 'hero.title2': 'move.',
+        'hero.lead': 'Draw SaaS architectures, business processes and database schemas whose lines show how data actually flows — then present them step by step, or start from a Mermaid snippet or JSON written by an AI.',
+        'hero.cta1': 'See it move', 'hero.cta2': 'Self-host in minutes',
+        'hero.stat1': 'line effects', 'hero.stat2': 'block shapes', 'hero.stat3': 'brand logos', 'hero.stat4': 'run modes',
+        'problem.eyebrow': 'The problem', 'problem.title': 'Static diagrams can’t show what happens next.',
+        'problem.lead': 'A box-and-arrow picture doesn’t say which way data moves or in what order — so the presenter narrates it, and every new diagram starts from a blank canvas.',
+        'problem.p1t': 'Lines that move', 'problem.p1d': 'Animated Line Effects show direction, rhythm and kind of flow — sync, async, policy — at a glance.',
+        'problem.p2t': 'Replay, step by step', 'problem.p2d': 'The audience watches the system run in order, without anyone pointing at the screen.',
+        'problem.p3t': 'Start from text or AI', 'problem.p3d': 'Templates, Starters, Mermaid or Diagram JSON written by an AI — never a blank page.',
+        'demo.eyebrow': 'Live demo', 'demo.title': 'Pick a Run mode and watch.',
+        'demo.lead': 'A hand-built imitation of the editor’s canvas: comet, dots, ants and convoy effects, an async dashed Line, and a Replay that lights Elements up Step by Step.',
+        'demo.saved': 'saved', 'demo.seq': 'Sequential', 'demo.con': 'Concurrent', 'demo.sta': 'Static', 'demo.step': 'Step',
+        'demo.n.users': 'Users', 'demo.n.orders': 'Orders', 'demo.n.queue': 'Job queue', 'demo.n.email': '→ email',
+        'features.eyebrow': 'Features', 'features.title': 'Everything a living diagram needs.',
+        'features.lead': 'From the first Block to a shared, versioned Diagram your whole team maintains.',
+        'f.lines.t': 'Lines &amp; routing', 'f.lines.d': 'Port-to-port Lines with straight, smooth-step, orthogonal or curved routing, 16 markers incl. crow’s foot, labels and dashed/dotted strokes.',
+        'f.effects.t': '18 Line Effects', 'f.effects.d': 'Comet, dots, laser, convoy, heartbeat, morse… with glow, speed, colour, direction — or any icon riding the line.',
+        'f.styles.t': 'Line styles', 'f.styles.d': 'A named vocabulary — primary, async, policy — defined once. Change the style, every Line following it changes.',
+        'f.replay.t': 'Replay', 'f.replay.d': 'Elements light up Step by Step: sequential, concurrent, manual (click Next) or fully static for screenshots.',
+        'f.text.t': 'Mermaid &amp; JSON', 'f.text.d': 'Import flowcharts and ER diagrams from Mermaid, or paste Diagram JSON an AI wrote — /guide is written for it.',
+        'f.erd.t': 'ERD + SQL export', 'f.erd.d': 'Tables with typed columns, PK/FK, indexes and crow’s-foot relationships. Export CREATE TABLE and FOREIGN KEY DDL.',
+        'f.undo.t': 'Undo, shortcuts, copy/paste', 'f.undo.d': '100-step undo for every change, ⌘-shortcuts, nudge with arrows, and copy/paste between Diagrams and tabs.',
+        'f.export.t': 'Image export', 'f.export.d': 'PNG at 2× or a self-contained SVG — whole Diagram or selection, themed or transparent background.',
+        'f.versions.t': 'Version history', 'f.versions.d': 'Every Save is a Version: preview it with Replay, restore it, name it, or save it as a new Diagram.',
+        'f.share.t': 'Share &amp; collaborate', 'f.share.d': 'Invite by email as Can edit or Can view. Save conflicts are caught, never silently overwritten.',
+        'f.layout.t': 'Auto-layout', 'f.layout.d': 'One command, top-to-bottom or left-to-right: no Line through an Element, straight chains, Frames respected.',
+        'f.access.t': 'Access list', 'f.access.d': 'Restrict sign-in to your email domains, with verification — enforced by Firestore rules, not just the UI.',
+        'f.templates.t': 'Templates &amp; Starters', 'f.templates.d': 'A shared library curated by administrators, plus Starters shipped with the app.',
+        'f.logos.t': '~15,000 brand logos', 'f.logos.d': 'Search company marks next to the full Lucide and Tabler icon sets, on Blocks or as free Icons.',
+        'f.theme.t': 'Light &amp; dark, EN &amp; VI', 'f.theme.d': 'Both themes everywhere, a responsive Viewer and a bilingual user guide.',
+        'text.eyebrow': 'From text to diagram', 'text.title': 'Paste Mermaid. Or ask an AI for JSON.',
+        'text.lead': 'The importer understands flowcharts and ER diagrams and lays them out for you. The whole Diagram is one JSON document with a reference written for AI — paste a fragment and it’s added to the canvas.',
+        'text.b1': 'Lines the importer doesn’t understand become warnings — never an error.',
+        'text.b2': 'Invalid JSON is repaired field by field and can never crash the canvas.',
+        'text.b3': 'Auto-layout keeps Lines out of Elements and chains in straight lines.',
+        'who.eyebrow': 'Who it’s for', 'who.title': 'Built for the people in the room.',
+        'who.a.t': 'Diagram authors', 'who.a.d': 'Developers, BAs and solution architects drawing architectures, flows and ERDs — presenting with Replay and exporting SQL.',
+        'who.b.t': 'Viewers', 'who.b.d': 'Customers and stakeholders open a Public link: read-only, Replay included, no account and nothing to install.',
+        'who.c.t': 'Administrators', 'who.c.d': 'Curate the shared Template library and decide who may sign in with an Access list.',
+        'host.eyebrow': 'Self-host', 'host.title': 'Your own instance on free tiers.',
+        'host.lead': 'Firebase’s free Spark plan plus Vercel is all it takes — no server code, no Cloud Functions. Security lives in the Firestore rules shipped with the repo.',
+        'host.s1': 'Create a Firebase project', 'host.s1d': 'Enable Google and Email/Password sign-in and Cloud Firestore.',
+        'host.s2': 'Deploy the rules', 'host.s3': 'Import into Vercel', 'host.s3d': 'Add the NEXT_PUBLIC_FIREBASE_* variables and deploy.',
+        'host.s4': 'Optional: lock it down', 'host.s4d': 'Add an Access list of allowed email domains and grant administrators.',
+        'host.cta1': 'Read the setup guide', 'host.cta2': 'View the source',
+        'host.local': 'Just want to try it? npm run emulators + npm run dev:emulator runs everything locally — no Firebase project needed.',
+        'footer.tag': 'Next.js 16 · React 19 · Firebase · Tailwind CSS',
+      },
+      vi: {
+        'meta.title': 'X Flow Tool — Sơ đồ biết chuyển động',
+        'nav.demo': 'Demo', 'nav.features': 'Tính năng', 'nav.text': 'Từ văn bản', 'nav.selfhost': 'Tự triển khai',
+        'hero.badge': 'v0.3 — Version, Share &amp; Auto-layout',
+        'hero.title1': 'Sơ đồ biết', 'hero.title2': 'chuyển động.',
+        'hero.lead': 'Vẽ sơ đồ kiến trúc SaaS, quy trình nghiệp vụ và cơ sở dữ liệu với những đường nối cho thấy dữ liệu thực sự chạy ra sao — rồi trình bày từng bước, hoặc bắt đầu từ một đoạn Mermaid hay JSON do AI viết.',
+        'hero.cta1': 'Xem nó chạy', 'hero.cta2': 'Tự triển khai trong vài phút',
+        'hero.stat1': 'hiệu ứng Line', 'hero.stat2': 'hình Block', 'hero.stat3': 'logo thương hiệu', 'hero.stat4': 'Run mode',
+        'problem.eyebrow': 'Vấn đề', 'problem.title': 'Sơ đồ tĩnh không cho thấy điều gì xảy ra tiếp theo.',
+        'problem.lead': 'Một bức hình hộp và mũi tên không nói được dữ liệu chạy theo hướng nào, thứ tự ra sao — người trình bày phải giải thích bằng lời, và sơ đồ nào cũng bắt đầu từ trang trắng.',
+        'problem.p1t': 'Line biết chuyển động', 'problem.p1d': 'Effect động cho thấy hướng, nhịp và loại luồng — đồng bộ, bất đồng bộ, chính sách — chỉ trong một cái nhìn.',
+        'problem.p2t': 'Replay từng bước', 'problem.p2d': 'Người xem thấy hệ thống "chạy" theo thứ tự, không cần ai chỉ tay lên màn hình.',
+        'problem.p3t': 'Bắt đầu từ văn bản hoặc AI', 'problem.p3d': 'Template, Starter, Mermaid hay Diagram JSON do AI viết — không bao giờ là trang trắng.',
+        'demo.eyebrow': 'Demo trực tiếp', 'demo.title': 'Chọn Run mode và xem.',
+        'demo.lead': 'Bản mô phỏng canvas của editor: hiệu ứng comet, dots, ants, convoy, một Line bất đồng bộ nét đứt, và Replay làm các Element sáng lên theo từng Step.',
+        'demo.saved': 'đã lưu', 'demo.seq': 'Tuần tự', 'demo.con': 'Đồng thời', 'demo.sta': 'Tĩnh', 'demo.step': 'Step',
+        'demo.n.users': 'Người dùng', 'demo.n.orders': 'Đơn hàng', 'demo.n.queue': 'Hàng đợi', 'demo.n.email': '→ email',
+        'features.eyebrow': 'Tính năng', 'features.title': 'Mọi thứ một sơ đồ "sống" cần có.',
+        'features.lead': 'Từ Block đầu tiên đến một Diagram có lịch sử Version, được cả nhóm cùng duy trì.',
+        'f.lines.t': 'Line &amp; đi dây', 'f.lines.d': 'Line nối cổng–cổng với kiểu straight, smooth-step, orthogonal hoặc curved, 16 đầu mút gồm crow’s foot, nhãn và nét đứt/chấm.',
+        'f.effects.t': '18 Effect cho Line', 'f.effects.d': 'Comet, dots, laser, convoy, heartbeat, morse… kèm glow, tốc độ, màu, chiều chạy — hoặc icon bất kỳ chạy dọc Line.',
+        'f.styles.t': 'Line style', 'f.styles.d': 'Bộ từ vựng có tên — primary, async, policy — định nghĩa một lần. Sửa style, mọi Line theo nó đổi theo.',
+        'f.replay.t': 'Replay', 'f.replay.d': 'Element sáng lên theo từng Step: tuần tự, đồng thời, thủ công (bấm Next) hoặc tĩnh hoàn toàn để chụp ảnh.',
+        'f.text.t': 'Mermaid &amp; JSON', 'f.text.d': 'Nhập flowchart và ER diagram từ Mermaid, hoặc dán Diagram JSON do AI viết — /guide được viết cho AI.',
+        'f.erd.t': 'ERD + xuất SQL', 'f.erd.d': 'Table có cột kiểu dữ liệu, PK/FK, index và quan hệ crow’s foot. Xuất DDL CREATE TABLE và FOREIGN KEY.',
+        'f.undo.t': 'Undo, phím tắt, copy/paste', 'f.undo.d': 'Undo 100 bước cho mọi thay đổi, phím tắt ⌘, nhích bằng mũi tên, copy/paste giữa các Diagram và tab.',
+        'f.export.t': 'Xuất ảnh', 'f.export.d': 'PNG độ phân giải 2× hoặc SVG tự chứa — cả Diagram hoặc vùng chọn, nền theo theme hoặc trong suốt.',
+        'f.versions.t': 'Lịch sử Version', 'f.versions.d': 'Mỗi lần Save là một Version: xem lại với Replay, khôi phục, đặt tên hoặc lưu thành Diagram mới.',
+        'f.share.t': 'Share &amp; làm việc nhóm', 'f.share.d': 'Mời theo email với quyền Can edit hoặc Can view. Save conflict luôn được phát hiện, không bao giờ âm thầm ghi đè.',
+        'f.layout.t': 'Auto-layout', 'f.layout.d': 'Một lệnh, trên xuống hoặc trái sang phải: không Line nào cắt qua Element, chuỗi thẳng hàng, tôn trọng Frame.',
+        'f.access.t': 'Access list', 'f.access.d': 'Giới hạn đăng nhập theo domain email, có xác minh — thực thi bằng Firestore rules, không chỉ trên giao diện.',
+        'f.templates.t': 'Template &amp; Starter', 'f.templates.d': 'Thư viện dùng chung do administrator quản lý, cùng các Starter đi kèm app.',
+        'f.logos.t': '~15.000 logo thương hiệu', 'f.logos.d': 'Tìm logo công ty bên cạnh toàn bộ icon Lucide và Tabler, dùng trên Block hoặc như Icon tự do.',
+        'f.theme.t': 'Sáng &amp; tối, Anh &amp; Việt', 'f.theme.d': 'Hai theme ở mọi màn hình, Viewer responsive và hướng dẫn sử dụng song ngữ.',
+        'text.eyebrow': 'Từ văn bản thành sơ đồ', 'text.title': 'Dán Mermaid. Hoặc nhờ AI viết JSON.',
+        'text.lead': 'Bộ nhập hiểu flowchart và ER diagram, tự xếp bố cục giúp bạn. Cả Diagram là một tài liệu JSON có đặc tả viết cho AI — dán một mảnh là nó được thêm vào canvas.',
+        'text.b1': 'Dòng nào bộ nhập không hiểu sẽ thành cảnh báo — không bao giờ thành lỗi.',
+        'text.b2': 'JSON sai được sửa từng trường và không bao giờ làm sập canvas.',
+        'text.b3': 'Auto-layout giữ Line tránh xa Element và các chuỗi thẳng hàng.',
+        'who.eyebrow': 'Dành cho ai', 'who.title': 'Làm cho những người trong phòng họp.',
+        'who.a.t': 'Người soạn Diagram', 'who.a.d': 'Dev, BA, solution architect vẽ kiến trúc, quy trình, ERD — thuyết trình bằng Replay và xuất SQL.',
+        'who.b.t': 'Người xem', 'who.b.d': 'Khách hàng, stakeholder mở Public link: chỉ đọc, có Replay, không cần tài khoản, không phải cài gì.',
+        'who.c.t': 'Administrator', 'who.c.d': 'Quản lý thư viện Template dùng chung và quyết định ai được đăng nhập bằng Access list.',
+        'host.eyebrow': 'Tự triển khai', 'host.title': 'Bản của riêng bạn, trên gói miễn phí.',
+        'host.lead': 'Chỉ cần Firebase gói Spark miễn phí và Vercel — không có code server, không Cloud Functions. Bảo mật nằm trong Firestore rules đi kèm repo.',
+        'host.s1': 'Tạo project Firebase', 'host.s1d': 'Bật đăng nhập Google, Email/Password và Cloud Firestore.',
+        'host.s2': 'Deploy rules', 'host.s3': 'Import vào Vercel', 'host.s3d': 'Khai báo các biến NEXT_PUBLIC_FIREBASE_* rồi deploy.',
+        'host.s4': 'Tuỳ chọn: giới hạn truy cập', 'host.s4d': 'Thêm Access list các domain email được phép và cấp quyền administrator.',
+        'host.cta1': 'Đọc hướng dẫn cài đặt', 'host.cta2': 'Xem mã nguồn',
+        'host.local': 'Chỉ muốn thử? npm run emulators + npm run dev:emulator chạy toàn bộ trên máy — không cần project Firebase.',
+        'footer.tag': 'Next.js 16 · React 19 · Firebase · Tailwind CSS',
+      },
+    };
+
+    function renderFeatures() {
+      const grid = document.getElementById('feature-grid');
+      grid.innerHTML = FEATURES.map(([icon, key], i) => `
+        <div class="card" data-animate="fadeInUp" data-delay="${(i % 3) * 120}">
+          <span class="grid h-10 w-10 place-items-center rounded-xl border border-cyan-400/25 bg-cyan-400/10 text-cyan-300"><i data-lucide="${icon}" class="h-5 w-5"></i></span>
+          <h3 class="mt-4 font-semibold text-white" data-i18n="${key}.t"></h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-400" data-i18n="${key}.d"></p>
+        </div>`).join('');
+    }
+
+    function setLang(lang) {
+      const dict = I18N[lang] ?? I18N.en;
+      document.documentElement.lang = lang;
+      document.title = dict['meta.title'];
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const value = dict[el.dataset.i18n];
+        if (value !== undefined) el.innerHTML = value;
+      });
+      document.querySelectorAll('[data-i18n-svg]').forEach((el) => {
+        const value = dict[el.dataset.i18nSvg];
+        if (value !== undefined) el.textContent = value;
+      });
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.dataset.lang === lang;
+        btn.classList.toggle('bg-cyan-400', active);
+        btn.classList.toggle('text-slate-950', active);
+        btn.classList.toggle('text-slate-400', !active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+      try { localStorage.setItem('xft-lang', lang); } catch {}
+    }
+
+    function initialLang() {
+      const fromUrl = new URLSearchParams(location.search).get('lang');
+      if (fromUrl && I18N[fromUrl]) return fromUrl;
+      try { const saved = localStorage.getItem('xft-lang'); if (saved && I18N[saved]) return saved; } catch {}
+      return (navigator.language || '').toLowerCase().startsWith('vi') ? 'vi' : 'en';
+    }
+
+    // Scroll reveals with animate.css
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function initReveals() {
+      const items = document.querySelectorAll('[data-animate]');
+      if (reducedMotion || !('IntersectionObserver' in window)) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          el.style.animationDelay = `${el.dataset.delay || 0}ms`;
+          el.classList.add('animate__animated', `animate__${el.dataset.animate}`);
+          io.unobserve(el);
+        });
+      }, { threshold: 0.15 });
+      items.forEach((el) => io.observe(el));
+    }
+
+    // Live demo: a tiny Replay over the SVG
+    function initDemo() {
+      const svg = document.getElementById('demo');
+      const nodes = [...svg.querySelectorAll('.node')];
+      const edges = [...svg.querySelectorAll('.edge')];
+      const label = document.getElementById('step-label');
+      let step = 0, timer = null;
+
+      const paint = () => {
+        const mode = svg.dataset.mode;
+        nodes.forEach((n) => {
+          const s = Number(n.dataset.step);
+          n.classList.toggle('lit', mode === 'sequential' ? s === step : mode === 'concurrent');
+          n.classList.toggle('dim', mode === 'sequential' && s > step);
+        });
+        edges.forEach((e) => {
+          const s = Number(e.dataset.step);
+          const reached = mode !== 'sequential' || s <= step;
+          e.classList.toggle('idle', !reached);
+          e.classList.toggle('drawing', mode === 'sequential' && s === step);
+          e.style.opacity = reached ? '1' : '0.25';
+        });
+        label.textContent = mode === 'sequential' ? step : '—';
+      };
+
+      const tick = () => { step = step >= 5 ? 1 : step + 1; paint(); };
+      const setMode = (mode) => {
+        svg.dataset.mode = mode;
+        clearInterval(timer);
+        document.querySelectorAll('.mode-btn').forEach((b) => {
+          const active = b.dataset.mode === mode;
+          b.classList.toggle('bg-cyan-400', active);
+          b.classList.toggle('text-slate-950', active);
+          b.classList.toggle('text-slate-400', !active);
+          b.setAttribute('aria-pressed', String(active));
+        });
+        if (mode === 'sequential' && !reducedMotion) { step = 1; paint(); timer = setInterval(tick, 1400); }
+        else { step = 5; paint(); }
+      };
+      document.querySelectorAll('.mode-btn').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
+      setMode(reducedMotion ? 'static' : 'sequential');
+    }
+
+    // Mermaid typewriter, revealed when the section scrolls in
+    function initTyping() {
+      const code = `flowchart LR\n  U([Users]) --> G[API Gateway]\n  G --> A[Auth]\n  G -- order --> O[Orders]\n  O --> D[(DB)]`;
+      const el = document.getElementById('mermaid-code');
+      const mini = document.getElementById('mini');
+      const finish = () => { el.textContent = code; el.classList.remove('typing'); mini.classList.remove('opacity-0'); };
+      if (reducedMotion || !('IntersectionObserver' in window)) return finish();
+      const io = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        let i = 0;
+        const t = setInterval(() => {
+          el.textContent = code.slice(0, ++i);
+          if (i >= code.length) { clearInterval(t); setTimeout(finish, 250); }
+        }, 28);
+      }, { threshold: 0.4 });
+      io.observe(el);
+    }
+
+    renderFeatures();
+    setLang(initialLang());
+    document.querySelectorAll('.lang-btn').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+    if (window.lucide) lucide.createIcons();
+    initReveals();
+    initDemo();
+    initTyping();
+  </script>
+
+  <!-- ============ HERO: three.js network ============ -->
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+
+    const canvas = document.getElementById('hero-canvas');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
+    camera.position.set(0, 0, 16);
+
+    // Nodes: a loose cloud, like Elements on a canvas
+    const COUNT = 90;
+    const points = [];
+    for (let i = 0; i < COUNT; i++) {
+      const r = 6 + Math.random() * 4;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      points.push(new THREE.Vector3(r * Math.sin(phi) * Math.cos(theta) * 1.5, r * Math.sin(phi) * Math.sin(theta) * 0.8, r * Math.cos(phi)));
+    }
+    const group = new THREE.Group();
+    scene.add(group);
+
+    const nodeGeo = new THREE.BufferGeometry().setFromPoints(points);
+    const nodeMat = new THREE.PointsMaterial({ color: 0x67e8f9, size: 0.16, transparent: true, opacity: 0.9 });
+    group.add(new THREE.Points(nodeGeo, nodeMat));
+
+    // Edges: each node to its 2 nearest neighbours, like Lines
+    const edges = [];
+    points.forEach((p, i) => {
+      points.map((q, j) => [j, p.distanceToSquared(q)]).filter(([j]) => j !== i)
+        .sort((a, b) => a[1] - b[1]).slice(0, 2)
+        .forEach(([j]) => { if (!edges.some(([a, b]) => (a === j && b === i))) edges.push([i, j]); });
+    });
+    const linePositions = new Float32Array(edges.length * 6);
+    edges.forEach(([a, b], k) => { points[a].toArray(linePositions, k * 6); points[b].toArray(linePositions, k * 6 + 3); });
+    const lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+    group.add(new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.18 })));
+
+    // Pulses: Effect marks travelling along Lines
+    const PULSES = 36;
+    const pulseData = Array.from({ length: PULSES }, () => ({ edge: Math.floor(Math.random() * edges.length), t: Math.random(), speed: 0.25 + Math.random() * 0.5 }));
+    const pulsePositions = new Float32Array(PULSES * 3);
+    const pulseGeo = new THREE.BufferGeometry();
+    pulseGeo.setAttribute('position', new THREE.BufferAttribute(pulsePositions, 3));
+    const sprite = (() => {
+      const c = document.createElement('canvas'); c.width = c.height = 64;
+      const g = c.getContext('2d'); const grd = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+      grd.addColorStop(0, 'rgba(255,255,255,1)'); grd.addColorStop(0.25, 'rgba(103,232,249,0.9)'); grd.addColorStop(1, 'rgba(103,232,249,0)');
+      g.fillStyle = grd; g.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c);
+    })();
+    const pulseMat = new THREE.PointsMaterial({ size: 0.7, map: sprite, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, color: 0xa5f3fc });
+    group.add(new THREE.Points(pulseGeo, pulseMat));
+
+    const tmp = new THREE.Vector3();
+    const updatePulses = (dt) => {
+      pulseData.forEach((p, i) => {
+        p.t += p.speed * dt;
+        if (p.t > 1) { p.t = 0; p.edge = Math.floor(Math.random() * edges.length); }
+        const [a, b] = edges[p.edge];
+        tmp.lerpVectors(points[a], points[b], p.t).toArray(pulsePositions, i * 3);
+      });
+      pulseGeo.attributes.position.needsUpdate = true;
+    };
+
+    const mouse = { x: 0, y: 0 };
+    addEventListener('pointermove', (e) => { mouse.x = e.clientX / innerWidth - 0.5; mouse.y = e.clientY / innerHeight - 0.5; });
+
+    const resize = () => {
+      const { clientWidth: w, clientHeight: h } = canvas;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+    };
+    addEventListener('resize', resize); resize();
+
+    let visible = true;
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(canvas);
+
+    const clock = new THREE.Clock();
+    const frame = () => {
+      const dt = Math.min(clock.getDelta(), 0.05);
+      if (visible) {
+        group.rotation.y += dt * 0.06;
+        group.rotation.x += (mouse.y * 0.3 - group.rotation.x) * 0.03;
+        camera.position.x += (mouse.x * 2 - camera.position.x) * 0.03;
+        camera.lookAt(0, 0, 0);
+        updatePulses(dt);
+        renderer.render(scene, camera);
+      }
+      requestAnimationFrame(frame);
+    };
+    if (reduced) { updatePulses(0); renderer.render(scene, camera); } else frame();
+  </script>
+</body>
+</html>

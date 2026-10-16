@@ -1,26 +1,68 @@
-# Flowgram Tools
+# X Flow Tool
 
-**English** | [Tiếng Việt](#flowgram-tools-tiếng-việt)
+**English** | [Tiếng Việt](#x-flow-tool-tiếng-việt) · [Product page](docs/index.html)
 
-A browser-based diagram editor with animated connectors — SaaS architecture diagrams, CRM/HRM flows and ER diagrams — built on [Next.js 16](https://nextjs.org) (App Router) + React 19. Diagrams are saved to Cloud Firestore per authenticated user (Firebase Authentication), can be shared read-only, and a shared template library is managed by administrators.
+**Diagrams that move.** X Flow Tool is a browser-based editor for animated diagrams — SaaS architectures, business processes (CRM/HRM, CI/CD) and database schemas. Lines show *how* data flows, the Replay walks the audience through it step by step, and a whole diagram can start from a Template, a Starter, a Mermaid snippet or JSON written by an AI.
+
+Static diagramming tools don't show which way data moves or in what order, so the presenter has to narrate it — and every diagram starts from a blank canvas. X Flow Tool fixes both: animated Lines, a step-by-step Replay, and diagrams generated from text.
+
+## Who it's for
+
+- **Diagram authors** — developers, BAs, solution architects drawing architectures, flows and ERDs, presenting them with Replay and exporting SQL.
+- **Viewers** — customers and stakeholders who open a Public link: read-only, no account, no install.
+- **Administrators** — curate the shared Template library and decide who may sign in.
 
 ## Features
 
-- **Flow diagrams** — 30+ block silhouettes, editable ports and routing (straight, smooth-step, orthogonal, curved), free positioning with pan/zoom.
-- **Animated connectors** — 20+ line effects (comet, dots, wave, marching ants, morse…), configurable object count, real object silhouettes riding the line, glow, phase offset and speed. `none` turns the animation off.
-- **Database diagrams (ERD)** — a block can carry a column list (data type, PK/FK, unique, index, nullable, default) and render as a table. Relationships use crow's foot cardinality, and the schema exports as `CREATE TABLE` / `CREATE INDEX` / `ALTER TABLE … ADD FOREIGN KEY` SQL DDL.
-- **Replay animation** — walk the diagram step by step (sequential, concurrent or manual) to present a flow.
-- **Brand logos** — ~15,000 company marks bundled as static SVGs, searchable from the icon picker.
-- **Sharing** — flag a diagram public to get a read-only `/diagrams/{id}/view` link that works without signing in.
-- **Template library** — administrators publish reusable starting documents to a shared Firestore collection.
-- **JSON in / out** — export or paste a whole `FlowDocumentJSON` document, which is what makes AI-authored diagrams practical.
+**Draw**
+- **35 Block shapes**, Frames that group and nest other Elements, free Text, Icons/brand logos and Free lines — one canvas, pan/zoom, snap to grid.
+- **Lines** port to port with four routings (straight, smooth-step, orthogonal, curved), 16 end markers including crow's foot, labels, and solid/dashed/dotted Stroke patterns that also hold in screenshots.
+- **Multi-select** (shift-click or shift-drag), then align, distribute or match size; **Auto-layout** top-to-bottom or left-to-right, on the selection or the whole Diagram.
+- **~15,000 brand logos** plus the full Lucide and Tabler icon sets.
 
-### In-app documentation
+**Animate and present**
+- **18 Line Effects** — comet, dots, laser, meteor, convoy, chase, flow, heartbeat, rail, ants, morse… — with glow, speed, colour, direction and any icon riding the line.
+- **Line styles**: a named vocabulary (primary, async, policy…) defined once per Diagram; change the style and every Line following it changes.
+- **Block Effects** (float, breathe, glow, ripple, trace, sheen…), off by default.
+- **Replay**: Elements light up Step by Step in four Run modes — sequential, concurrent, manual (click Next) or static.
 
-| Page | For |
+**Start from text or AI**
+- **Diagram JSON** — the whole Diagram is one JSON document with an authoring reference at `/guide` written for AI and developers. Paste it into the JSON Playground, or paste a fragment straight onto the canvas.
+- **Import from Mermaid** (`flowchart`/`graph`, `erDiagram`), laid out automatically; lines it doesn't understand become warnings, never errors.
+- **Starters** shipped with the app and a **Template library** curated by administrators.
+
+**Database diagrams (ERD)**
+- A Table is a Block with columns (type, PK/FK, unique, index, nullable, default); relationships use crow's foot cardinality.
+- **Export SQL**: `CREATE TABLE`, `CREATE INDEX`, `ALTER TABLE … ADD FOREIGN KEY`.
+
+**Edit comfortably**
+- **Undo / redo** for every change (100 steps), including picking a Template over unsaved work.
+- **Keyboard shortcuts** (Delete, ⌘C/⌘X/⌘V, ⌘D, ⌘A, ⌘Z, ⌘S, arrow-key nudge, `?` for the cheat sheet) and **copy/paste between Diagrams and tabs**.
+- **Export image**: PNG (2×) or self-contained SVG, whole Diagram or selection, theme or transparent background.
+
+**Save, share and collaborate**
+- Local autosave plus cloud save to Firestore; **Version history** on every Save — preview, restore, name a Version, or save it as a new Diagram.
+- **Share** with Collaborators by email as *Can edit* or *Can view*; "Shared with me" on the Diagrams list; **Save conflict** detection when two people save the same Diagram.
+- **Public link**: a read-only Viewer anyone can open without signing in, with Replay and image download.
+
+**Accounts and access**
+- Google and Email/Password sign-in, **password reset**, administrator role.
+- Optional **Access list** (allowed email domains and addresses) with email verification, enforced by Firestore security rules.
+- Light and dark theme; bilingual user guide (EN/VI).
+
+### Documentation
+
+| Where | For |
 | --- | --- |
-| `/help` · `/help/vi` | End-user guide, bilingual EN/VI |
-| `/guide` | `FlowDocumentJSON` authoring reference, aimed at AI/developers writing documents by hand |
+| [`docs/index.html`](docs/index.html) | Product page (EN/VI) — open it in a browser |
+| `/help` · `/help/vi` | In-app user guide, bilingual EN/VI |
+| `/guide` | Diagram JSON authoring reference, aimed at AI/developers |
+| [`docs/PRD.md`](docs/PRD.md), [`docs/prd/`](docs/prd) | Product requirements (as-built, v0.2, v0.3) |
+| [`GLOSSARY.md`](GLOSSARY.md) | Product vocabulary |
+
+### Tech stack
+
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · shadcn/ui on Base UI · zustand · Firebase Authentication + Cloud Firestore · Vitest + Firebase emulators · deployed on Vercel.
 
 ## Requirements
 
@@ -203,7 +245,7 @@ Skipping this step makes Google sign-in fail with `auth/unauthorized-domain` on 
 - Open the production URL, sign in with Google and Email/Password.
 - Create a diagram, click **Save**, reload the page and confirm the diagram loads back from Firestore.
 - In Firebase Console → Firestore, verify a document exists at `users/{uid}/diagrams/{id}`.
-- Flag a diagram **Public**, open its `/diagrams/{id}/view` link in a private window and confirm it renders without signing in (it is served from the `public-diagrams` mirror).
+- Open **Share**, turn **Public** on for a diagram, open its `/diagrams/{id}/view` link in a private window and confirm it renders without signing in (it is served from the `public-diagrams` mirror).
 
 ### 3.5. Seed the template library
 
@@ -218,7 +260,7 @@ A fresh Firestore has no templates, so **New from template** starts out empty �
 | `Missing or insufficient permissions` when saving/loading diagrams | Firestore rules not deployed — run `firebase deploy --only firestore` (step 1.3). |
 | Changed an env var on Vercel but nothing happens | `NEXT_PUBLIC_*` variables are inlined at build time — **Redeploy**. |
 | **New from template** is empty | The `templates` collection has no documents yet — import one from `seed/templates/` (step 3.5). |
-| A shared `/view` link says "Diagram not found" | The diagram is still private. Toggle **Public** in the editor and save — that is what writes the `public-diagrams` mirror the viewer reads. |
+| A shared `/view` link says "Diagram not found" | The diagram is private (or was deleted). Open **Share** and turn **Public** on — it takes effect immediately and publishes the last saved version. |
 | The admin pages redirect away | No `users-roles/{uid}` document with `{ "roles": ["administrators"] }` (step 1.4). |
 | "This email isn't allowed to use X Flow Tool" | The email isn't on the Access list — add its domain or the address to `config/access` (step 1.5), then reload. Fix a field that isn't a list, which refuses everyone. |
 | Stuck on "Check your inbox" after clicking the link | Press **I've verified** (or reload). Check the link was for the address shown; **Resend** sends a fresh one. |
@@ -232,29 +274,71 @@ A fresh Firestore has no templates, so **New from template** starts out empty �
 
 ---
 
-# Flowgram Tools (Tiếng Việt)
+# X Flow Tool (Tiếng Việt)
 
-[English](#flowgram-tools) | **Tiếng Việt**
+[English](#x-flow-tool) | **Tiếng Việt** · [Trang giới thiệu](docs/index.html)
 
-Trình soạn thảo sơ đồ chạy trên trình duyệt với hiệu ứng kết nối động — sơ đồ kiến trúc SaaS, luồng CRM/HRM và sơ đồ cơ sở dữ liệu (ERD) — xây dựng trên [Next.js 16](https://nextjs.org) (App Router) + React 19. Sơ đồ được lưu vào Cloud Firestore theo từng người dùng đã đăng nhập (Firebase Authentication), có thể chia sẻ ở chế độ chỉ-đọc, và thư viện template dùng chung do administrator quản lý.
+**Sơ đồ biết chuyển động.** X Flow Tool là trình soạn sơ đồ động chạy trên trình duyệt — sơ đồ kiến trúc SaaS, quy trình nghiệp vụ (CRM/HRM, CI/CD) và sơ đồ cơ sở dữ liệu. Line cho thấy dữ liệu chạy *thế nào*, Replay dẫn người xem đi qua từng bước, và cả Diagram có thể bắt đầu từ Template, Starter, một đoạn Mermaid hay JSON do AI viết.
+
+Công cụ vẽ sơ đồ tĩnh không cho thấy dữ liệu chạy theo hướng nào, theo thứ tự nào — người trình bày phải giải thích bằng lời, và sơ đồ nào cũng phải vẽ từ trang trắng. X Flow Tool giải quyết cả hai: Line động, Replay theo từng bước, và tạo sơ đồ từ văn bản.
+
+## Dành cho ai
+
+- **Người soạn Diagram** — dev, BA, solution architect vẽ kiến trúc, quy trình, ERD; thuyết trình bằng Replay; xuất SQL.
+- **Người xem** — khách hàng, stakeholder mở Public link: chỉ đọc, không cần tài khoản, không cần cài đặt.
+- **Administrator** — quản lý thư viện Template dùng chung và quyết định ai được đăng nhập.
 
 ## Tính năng
 
-- **Sơ đồ luồng** — hơn 30 kiểu khối, cổng nối và kiểu đi dây tuỳ chỉnh (straight, smooth-step, orthogonal, curved), tự do bố cục với pan/zoom.
-- **Hiệu ứng đường nối** — hơn 20 hiệu ứng (comet, dots, wave, marching ants, morse…), cấu hình được số lượng object chạy trên line, hình dáng object thật, độ phát sáng (glow), lệch pha và tốc độ. Chọn `none` để tắt hiệu ứng.
-- **Sơ đồ cơ sở dữ liệu (ERD)** — một khối có thể mang danh sách cột (kiểu dữ liệu, PK/FK, unique, index, nullable, default) và hiển thị dạng bảng. Quan hệ dùng ký hiệu chân quạ (crow's foot), và xuất được SQL DDL `CREATE TABLE` / `CREATE INDEX` / `ALTER TABLE … ADD FOREIGN KEY`.
-- **Chạy mô phỏng (replay)** — chạy sơ đồ theo từng bước (sequential, concurrent hoặc manual) để trình bày một luồng nghiệp vụ.
-- **Logo thương hiệu** — khoảng 15.000 logo công ty đóng gói sẵn dạng SVG tĩnh, tìm kiếm ngay trong trình chọn icon.
-- **Chia sẻ** — bật chế độ public để có link chỉ-đọc `/diagrams/{id}/view`, người xem không cần đăng nhập.
-- **Thư viện template** — administrator đăng các tài liệu mẫu dùng chung lên collection Firestore.
-- **Xuất / nhập JSON** — xuất hoặc dán trực tiếp cả tài liệu `FlowDocumentJSON`, nhờ đó có thể nhờ AI sinh sơ đồ.
+**Vẽ**
+- **35 hình Block**, Frame để nhóm và lồng Element, Text tự do, Icon/logo thương hiệu và Free line — trên một canvas, pan/zoom, snap theo lưới.
+- **Line** nối cổng–cổng với 4 kiểu đi dây (straight, smooth-step, orthogonal, curved), 16 kiểu đầu mút gồm crow's foot, nhãn, và Stroke pattern liền/đứt/chấm giữ nguyên cả khi chụp ảnh.
+- **Chọn nhiều** (shift-click hoặc shift-kéo) rồi căn lề, giãn đều, đồng bộ kích thước; **Auto-layout** trên xuống hoặc trái sang phải, cho vùng chọn hoặc cả Diagram.
+- **~15.000 logo thương hiệu** cùng toàn bộ bộ icon Lucide và Tabler.
 
-### Tài liệu ngay trong ứng dụng
+**Hoạt ảnh và trình bày**
+- **18 Effect cho Line** — comet, dots, laser, meteor, convoy, chase, flow, heartbeat, rail, ants, morse… — kèm glow, tốc độ, màu, chiều chạy và icon bất kỳ chạy dọc Line.
+- **Line style**: bộ "từ vựng" Line có tên (primary, async, policy…) định nghĩa một lần cho mỗi Diagram; sửa style là mọi Line theo nó đổi theo.
+- **Effect cho Block** (float, breathe, glow, ripple, trace, sheen…), mặc định tắt.
+- **Replay**: Element sáng lên theo từng Step với 4 Run mode — sequential, concurrent, manual (bấm Next) hoặc static.
 
-| Trang | Dành cho |
+**Bắt đầu từ văn bản hoặc AI**
+- **Diagram JSON** — cả Diagram là một tài liệu JSON, có tài liệu đặc tả `/guide` viết cho AI và lập trình viên. Dán vào JSON Playground, hoặc dán một mảnh thẳng lên canvas.
+- **Import from Mermaid** (`flowchart`/`graph`, `erDiagram`), tự xếp bố cục; dòng không hiểu được thành cảnh báo, không bao giờ thành lỗi.
+- **Starter** đi kèm app và **thư viện Template** do administrator quản lý.
+
+**Sơ đồ cơ sở dữ liệu (ERD)**
+- Table là Block mang danh sách cột (kiểu dữ liệu, PK/FK, unique, index, nullable, default); quan hệ dùng ký hiệu crow's foot.
+- **Export SQL**: `CREATE TABLE`, `CREATE INDEX`, `ALTER TABLE … ADD FOREIGN KEY`.
+
+**Soạn thảo thoải mái**
+- **Undo / redo** cho mọi thay đổi (100 bước), kể cả khi lỡ chọn Template đè lên bài chưa lưu.
+- **Phím tắt** (Delete, ⌘C/⌘X/⌘V, ⌘D, ⌘A, ⌘Z, ⌘S, mũi tên để nhích, `?` mở bảng phím tắt) và **copy/paste giữa các Diagram, các tab**.
+- **Xuất ảnh**: PNG (2×) hoặc SVG tự chứa, cả Diagram hoặc vùng chọn, nền theo theme hoặc trong suốt.
+
+**Lưu, chia sẻ và làm việc nhóm**
+- Tự lưu cục bộ và lưu lên Firestore; **lịch sử Version** sau mỗi lần Save — xem trước, khôi phục, đặt tên, hoặc lưu thành Diagram mới.
+- **Share** cho Collaborator theo email với quyền *Can edit* hoặc *Can view*; mục "Shared with me" trên danh sách; **phát hiện Save conflict** khi hai người cùng lưu một Diagram.
+- **Public link**: Viewer chỉ đọc, ai cũng mở được mà không cần đăng nhập, có Replay và tải ảnh.
+
+**Tài khoản và quyền truy cập**
+- Đăng nhập Google và Email/Password, **quên mật khẩu**, vai trò administrator.
+- **Access list** tuỳ chọn (domain và địa chỉ email được phép) kèm xác minh email, thực thi bằng Firestore security rules.
+- Theme sáng/tối; hướng dẫn sử dụng song ngữ Anh/Việt.
+
+### Tài liệu
+
+| Ở đâu | Dành cho |
 | --- | --- |
-| `/help` · `/help/vi` | Hướng dẫn sử dụng, song ngữ Anh/Việt |
-| `/guide` | Tài liệu tham chiếu cấu trúc `FlowDocumentJSON`, dành cho AI/lập trình viên tự viết tài liệu |
+| [`docs/index.html`](docs/index.html) | Trang giới thiệu sản phẩm (EN/VI) — mở bằng trình duyệt |
+| `/help` · `/help/vi` | Hướng dẫn sử dụng trong app, song ngữ Anh/Việt |
+| `/guide` | Đặc tả Diagram JSON, dành cho AI/lập trình viên |
+| [`docs/PRD.md`](docs/PRD.md), [`docs/prd/`](docs/prd) | Tài liệu yêu cầu sản phẩm (hiện trạng, v0.2, v0.3) |
+| [`GLOSSARY.md`](GLOSSARY.md) | Thuật ngữ sản phẩm |
+
+### Công nghệ
+
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · shadcn/ui trên Base UI · zustand · Firebase Authentication + Cloud Firestore · Vitest + Firebase emulator · triển khai trên Vercel.
 
 ## Yêu cầu
 
@@ -436,7 +520,7 @@ Nếu bỏ qua bước này, đăng nhập Google trên bản deploy sẽ báo l
 - Mở URL production, đăng nhập bằng Google và Email/Password.
 - Tạo một sơ đồ, bấm **Save**, tải lại trang và xác nhận sơ đồ được nạp lại từ Firestore.
 - Kiểm tra trong Firebase Console → Firestore thấy document tại `users/{uid}/diagrams/{id}`.
-- Bật **Public** cho một sơ đồ, mở link `/diagrams/{id}/view` ở cửa sổ ẩn danh và xác nhận xem được mà không cần đăng nhập (nội dung lấy từ bản mirror `public-diagrams`).
+- Mở **Share**, bật **Public** cho một sơ đồ, mở link `/diagrams/{id}/view` ở cửa sổ ẩn danh và xác nhận xem được mà không cần đăng nhập (nội dung lấy từ bản mirror `public-diagrams`).
 
 ### 3.5. Nạp thư viện template
 
@@ -451,7 +535,7 @@ Firestore mới tinh chưa có template nào, nên mục **New from template** s
 | `Missing or insufficient permissions` khi lưu/đọc sơ đồ | Chưa deploy Firestore rules — chạy `firebase deploy --only firestore` (bước 1.3). |
 | Đổi biến môi trường trên Vercel nhưng không thấy thay đổi | Biến `NEXT_PUBLIC_*` được nhúng lúc build — cần **Redeploy**. |
 | **New from template** trống trơn | Collection `templates` chưa có document nào — nạp một mẫu từ `seed/templates/` (bước 3.5). |
-| Link `/view` chia sẻ báo "Diagram not found" | Sơ đồ vẫn đang ở chế độ private. Bật **Public** trong editor rồi lưu — thao tác này mới ghi bản mirror `public-diagrams` mà trang xem đọc vào. |
+| Link `/view` chia sẻ báo "Diagram not found" | Sơ đồ đang private (hoặc đã bị xoá). Mở **Share** và bật **Public** — có hiệu lực ngay, công khai bản đã lưu gần nhất. |
 | Vào trang admin bị đá ra | Chưa có document `users-roles/{uid}` với `{ "roles": ["administrators"] }` (bước 1.4). |
 | "This email isn't allowed to use X Flow Tool" | Email không có trong Access list — thêm domain hoặc địa chỉ đó vào `config/access` (bước 1.5) rồi tải lại trang. Nếu có trường không phải mảng thì sửa lại, vì khi đó mọi người đều bị chặn. |
 | Kẹt ở màn hình "Check your inbox" dù đã bấm link | Bấm **I've verified** (hoặc tải lại trang). Kiểm tra link có đúng cho địa chỉ đang hiện không; **Resend** gửi link mới. |
