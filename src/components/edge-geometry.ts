@@ -50,7 +50,7 @@ export function nodePortAnchor(node: FlowNode, side: ConnectionSide): { x: numbe
  * dominant axis between the two centres instead means the line leaves
  * towards where it is going.
  */
-function facingSides(from: FlowNode, to: FlowNode): { fromSide: ConnectionSide; toSide: ConnectionSide } {
+export function facingSides(from: FlowNode, to: FlowNode): { fromSide: ConnectionSide; toSide: ConnectionSide } {
   const dx = to.position.x - from.position.x;
   const dy = to.position.y - from.position.y;
   if (Math.abs(dx) >= Math.abs(dy)) {

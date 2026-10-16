@@ -1,4 +1,21 @@
 {
-  "indexes": [],
+  "indexes": [
+    {
+      "collectionGroup": "versions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "name", "order": "ASCENDING" },
+        { "fieldPath": "savedAt", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "diagram-access",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "diagramId", "order": "ASCENDING" },
+        { "fieldPath": "collaboratorEmails", "arrayConfig": "CONTAINS" }
+      ]
+    }
+  ],
   "fieldOverrides": []
 }

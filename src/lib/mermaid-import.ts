@@ -1,4 +1,4 @@
-import { layoutDocument, type LayoutDirection } from './auto-layout';
+import { autoLayout, type LayoutDirection } from './auto-layout';
 import type { EdgeMarker, FlowDocumentJSON, FlowEdge, FlowNode, NodeShape, NodeType, TableColumn } from './flowchart-types';
 import { tableCardHeight } from './node-style';
 
@@ -253,9 +253,7 @@ function importFlowchart(lines: string[], header: string): MermaidImportResult {
     if (node) node.parentId = frameId;
   }
 
-  const document: FlowDocumentJSON = { nodes: [...nodes.values()], edges, settings: { runMode: 'sequential' } };
-  applyLayout(document, direction);
-  fitFramesToMembers(document);
+  const document = arrange({ nodes: [...nodes.values()], edges, settings: { runMode: 'sequential' } }, direction);
   return { document, kind: 'flowchart', warnings };
 }
 
@@ -466,36 +464,19 @@ function importEr(lines: string[]): MermaidImportResult {
   }
 
   if (tables.size === 0) throw new MermaidImportError('No entities found in the ER diagram.');
-  const document: FlowDocumentJSON = { nodes: [...tables.values()], edges, settings: { runMode: 'static' } };
-  applyLayout(document, 'LR');
+  const document = arrange({ nodes: [...tables.values()], edges, settings: { runMode: 'static' } }, 'LR');
   return { document, kind: 'er', warnings };
 }
 
 // --- Shared ----------------------------------------------------------------
 
-function applyLayout(document: FlowDocumentJSON, direction: LayoutDirection) {
-  const positions = layoutDocument(document, { direction });
-  for (const node of document.nodes) {
-    const position = positions.get(node.id);
-    if (position) node.position = position;
-  }
-}
-
-/** Size each imported subgraph frame around the members it captured. */
-function fitFramesToMembers(document: FlowDocumentJSON) {
-  for (const frame of document.nodes) {
-    if (frame.type !== 'group') continue;
-    const members = document.nodes.filter((node) => node.parentId === frame.id);
-    if (members.length === 0) continue;
-    const left = Math.min(...members.map((node) => node.position.x - (node.width ?? 150) / 2));
-    const right = Math.max(...members.map((node) => node.position.x + (node.width ?? 150) / 2));
-    const topEdge = Math.min(...members.map((node) => node.position.y - (node.height ?? 84) / 2));
-    const bottom = Math.max(...members.map((node) => node.position.y + (node.height ?? 84) / 2));
-    const padding = 32;
-    frame.position = { x: (left + right) / 2, y: (topEdge + bottom) / 2 - 14 };
-    frame.width = right - left + padding * 2;
-    frame.height = bottom - topEdge + padding * 2 + 28;
-  }
+/**
+ * Place what was parsed. The same Auto-layout the editor's command runs,
+ * so an import, a Starter and "Auto-layout" on the same Diagram agree —
+ * Frames from subgraphs included, which it lays out and fits itself.
+ */
+function arrange(document: FlowDocumentJSON, direction: LayoutDirection): FlowDocumentJSON {
+  return autoLayout(document, { direction, origin: { x: 240, y: 160 } }).document;
 }
 
 function truncate(line: string): string {

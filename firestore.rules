@@ -76,16 +76,143 @@ service cloud.firestore {
       return resource.data.get('public', false) == true;
     }
 
+    // ---- Share (PRD v0.3 §4.2, ADR 0001) ------------------------------
+    // A Diagram stays at users/{ownerUid}/diagrams/{id}; who else may open
+    // it is the access index diagram-access/{ownerUid}_{id}:
+    //   { ownerUid, ownerEmail, diagramId,
+    //     collaborators: { <email>: 'edit' | 'view' },
+    //     collaboratorEmails: [<email>, …],   // same set, for array-contains
+    //     openedBy: { <email>: timestamp } }  // first seen; else "Pending"
+    // Emails are normalised (trimmed, lower-case) — compared against
+    // callerEmail(). No index document = nobody but the Owner, which is
+    // what every Diagram created before Share has.
+
+    function callerEmail() {
+      return request.auth.token.get('email', '').lower();
+    }
+
+    // Invitations are keyed by email, so an email only counts once it is
+    // proven: otherwise anyone could sign up with an invited address and
+    // take the access. Required whether or not the Access list is set.
+    function hasVerifiedEmail() {
+      return request.auth.token.get('email_verified', false) == true && callerEmail() != '';
+    }
+
+    // The caller is a Collaborator on users/{userId}/diagrams/{diagramId}
+    // with one of `levels`. The index is found from the Diagram's own path
+    // (uid prefix), and must name that same owner and Diagram.
+    function isCollaborator(userId, diagramId, levels) {
+      return hasVerifiedEmail()
+        && isListedAt(get(/databases/$(database)/documents/diagram-access/$(userId + '_' + diagramId)), userId, diagramId, levels);
+    }
+
+    function isListedAt(access, userId, diagramId, levels) {
+      return access != null
+        && access.data.ownerUid == userId
+        && access.data.diagramId == diagramId
+        && access.data.collaborators.get(callerEmail(), null) in levels;
+    }
+
     match /users/{userId}/diagrams/{diagramId} {
       // Owner has full control; read access additionally covers
-      // administrators and public diagrams. All of it requires the caller
-      // to pass the Access list — including the public branch: the Viewer
-      // reads public diagrams from the public-diagrams mirror (open to
-      // everyone), so gating the source path costs a refused user nothing.
-      allow create, update, delete: if hasAccess()
-        && request.auth.uid == userId;
-      allow read: if hasAccess()
-        && (request.auth.uid == userId || isAdministrator() || isPublicDiagram());
+      // administrators, public diagrams and Collaborators (`get` only — a
+      // Collaborator opens one Diagram by id, never lists an owner's). All
+      // of it requires the caller to pass the Access list — including the
+      // public branch: the Viewer reads public diagrams from the
+      // public-diagrams mirror (open to everyone), so gating the source
+      // path costs a refused user nothing.
+      allow get: if hasAccess()
+        && (request.auth.uid == userId || isPublicDiagram()
+          || isCollaborator(userId, diagramId, ['edit', 'view']) || isAdministrator());
+      allow list: if hasAccess()
+        && (request.auth.uid == userId || isPublicDiagram() || isAdministrator());
+
+      // A new Diagram starts at revision 0 (or none: pre-Share clients).
+      allow create: if hasAccess() && request.auth.uid == userId
+        && request.resource.data.get('revision', 0) == 0;
+      allow delete: if hasAccess() && request.auth.uid == userId;
+
+      // The Owner may change anything, but a Save — any write that moves
+      // `document`, `revision` or `lastSavedBy` — must be an attributed
+      // Save. A Can edit Collaborator may only Save: content fields only,
+      // never `public`, `createdAt` or anything else.
+      allow update: if hasAccess()
+        && ((request.auth.uid == userId
+              && (!changedKeys().hasAny(['document', 'revision', 'lastSavedBy']) || isAttributedSave()))
+          || (isCollaborator(userId, diagramId, ['edit'])
+              && changedKeys().hasOnly(['name', 'document', 'updatedAt', 'lastSavedBy', 'revision'])
+              && isAttributedSave()));
+
+      // ---- Versions (PRD v0.3 §4.1) ------------------------------------
+      // One document per Save: { document, savedAt, savedBy, name }.
+      // Written in the same transaction as the Save, never edited
+      // afterwards except for its `name` (Named version), deleted by the
+      // Owner when pruning or deleting the Diagram, and by a Can edit
+      // Collaborator when pruning (unnamed only).
+      // Unlike the Diagram, a Version is never readable through the
+      // `public` flag: a Public link shows the current Diagram only — and
+      // never by a Can view Collaborator.
+      match /versions/{versionId} {
+        // Administrators: read-only, like the Diagram itself.
+        allow read: if canEditVersions(userId, diagramId) || isAdministrator();
+        allow create: if canEditVersions(userId, diagramId) && isNewVersion();
+        allow update: if canEditVersions(userId, diagramId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name'])
+          && isVersionName(request.resource.data.name);
+        allow delete: if hasAccess()
+          && (request.auth.uid == userId
+            || (resource.data.name == null && isCollaborator(userId, diagramId, ['edit'])));
+      }
+    }
+
+    function changedKeys() {
+      return request.resource.data.diff(resource.data).affectedKeys();
+    }
+
+    // A Save: the revision counter moves on by exactly one (a Diagram
+    // saved before Share has none and counts as 0), stamped with the
+    // server time and attributed to the caller — so no Save can claim
+    // someone else, and two Saves from the same revision can't both land
+    // (the second is the Save conflict the client shows).
+    function isAttributedSave() {
+      let saved = request.resource.data;
+      return saved.get('revision', null) == resource.data.get('revision', 0) + 1
+        && saved.get('updatedAt', null) == request.time
+        && saved.get('lastSavedBy', null) is map
+        && saved.lastSavedBy.keys().hasOnly(['uid', 'email', 'displayName'])
+        && saved.lastSavedBy.get('uid', null) == request.auth.uid
+        && saved.lastSavedBy.get('email', null) == request.auth.token.get('email', null)
+        && (saved.lastSavedBy.get('displayName', null) == null || saved.lastSavedBy.displayName is string);
+    }
+
+    // Who may see a Diagram's history, Save (which writes a Version) and
+    // name Versions: the Owner and Can edit Collaborators. A Can view
+    // Collaborator gets none of it (PRD §4.1 table).
+    function canEditVersions(userId, diagramId) {
+      return hasAccess() && (request.auth.uid == userId || isCollaborator(userId, diagramId, ['edit']));
+    }
+
+    // A new Version: exactly these four fields, stamped with the server
+    // time, attributed to the caller (uid and the token's email — a
+    // display name can't be checked, but nobody can claim another
+    // account), and unnamed (naming is an update).
+    function isNewVersion() {
+      let version = request.resource.data;
+      return version.keys().hasOnly(['document', 'savedAt', 'savedBy', 'name'])
+        && version.keys().hasAll(['document', 'savedAt', 'savedBy', 'name'])
+        && version.document is map
+        && version.savedAt == request.time
+        && version.name == null
+        && version.savedBy is map
+        && version.savedBy.keys().hasOnly(['uid', 'email', 'displayName'])
+        && version.savedBy.uid == request.auth.uid
+        && version.savedBy.get('email', null) == request.auth.token.get('email', null)
+        && (version.savedBy.get('displayName', null) == null || version.savedBy.displayName is string);
+    }
+
+    // `null` unnames; a name is 1–80 characters (src/lib/version-history.ts).
+    function isVersionName(name) {
+      return name == null || (name is string && name.size() > 0 && name.size() <= 80);
     }
 
     // Flat mirror of any diagram flagged `public: true`, keyed by the
@@ -109,16 +236,88 @@ service cloud.firestore {
         && request.resource.data.public == true
         && exists(/databases/$(database)/documents/users/$(request.auth.uid)/diagrams/$(diagramId));
 
+      // Update: the Owner (as for create), or a Can edit Collaborator
+      // refreshing it after their Save — content fields only, the mirror
+      // keeps its owner. Turning Public on or off (create / delete) stays
+      // the Owner's.
       allow update: if hasAccess()
-        && resource.data.ownerUid == request.auth.uid
-        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerUid == resource.data.ownerUid
         && request.resource.data.public == true
-        && exists(/databases/$(database)/documents/users/$(request.auth.uid)/diagrams/$(diagramId));
+        && ((resource.data.ownerUid == request.auth.uid
+              && exists(/databases/$(database)/documents/users/$(request.auth.uid)/diagrams/$(diagramId)))
+          || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'document', 'updatedAt'])
+              && isCollaborator(resource.data.ownerUid, diagramId, ['edit'])));
 
       // `resource == null`: saving a private diagram clears a mirror that
       // usually doesn't exist; deleting nothing must not be a denial.
       allow delete: if hasAccess()
         && (resource == null || resource.data.ownerUid == request.auth.uid);
+    }
+
+    // ---- The access index (see Share above) ---------------------------
+    match /diagram-access/{accessId} {
+      // The Owner reads their own (and may probe for one that doesn't
+      // exist yet — `resource == null` reveals nothing but absence); a
+      // listed Collaborator with a verified email reads the one they are on.
+      allow get: if hasAccess()
+        && (resource == null || resource.data.ownerUid == request.auth.uid || isListedCollaborator(resource.data));
+      // Queries: the Owner's own (`ownerUid ==`, for the Diagrams list's
+      // shared marker) and "Shared with me" (`collaboratorEmails
+      // array-contains` the caller's own verified email — any other
+      // email is refused, so nobody can enumerate someone else's shares).
+      allow list: if hasAccess()
+        && (resource.data.ownerUid == request.auth.uid || isListedCollaborator(resource.data));
+
+      // Only the Owner writes the Collaborator list, for a Diagram they
+      // own, in the shape the client writes.
+      allow create: if hasAccess() && isOwnerAccessWrite(accessId);
+      // The Owner again — or a listed Collaborator stamping their own
+      // first-open mark and nothing else.
+      allow update: if hasAccess()
+        && ((resource.data.ownerUid == request.auth.uid && isOwnerAccessWrite(accessId))
+          || isOpenedMark());
+      allow delete: if hasAccess()
+        && (resource == null || resource.data.ownerUid == request.auth.uid);
+    }
+
+    function isListedCollaborator(data) {
+      return hasVerifiedEmail() && data.get('collaboratorEmails', []).hasAny([callerEmail()]);
+    }
+
+    function isOwnerAccessWrite(accessId) {
+      let data = request.resource.data;
+      let opened = data.get('openedBy', {});
+      return data.keys().hasOnly(['ownerUid', 'ownerEmail', 'diagramId', 'collaborators', 'collaboratorEmails', 'openedBy', 'updatedAt'])
+        && data.ownerUid == request.auth.uid
+        && data.ownerEmail == callerEmail()
+        && data.diagramId is string
+        && accessId == request.auth.uid + '_' + data.diagramId
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid)/diagrams/$(data.diagramId))
+        && data.collaborators is map
+        && data.collaboratorEmails is list
+        && data.collaboratorEmails.size() <= 50
+        // The list is exactly the map's keys, no duplicates…
+        && data.collaborators.size() == data.collaboratorEmails.size()
+        && data.collaborators.keys().toSet() == data.collaboratorEmails.toSet()
+        // …every level is a real one…
+        && data.collaborators.values().hasOnly(['edit', 'view'])
+        // …every email is normalised (lower-case, no blanks)…
+        && data.collaboratorEmails.join(',') == data.collaboratorEmails.join(',').lower()
+        && !data.collaboratorEmails.join(',').matches('.*\\s.*')
+        // …the Owner isn't a Collaborator of their own Diagram…
+        && !data.collaboratorEmails.hasAny([callerEmail()])
+        // …and first-open marks belong to people on the list.
+        && opened is map
+        && data.collaboratorEmails.hasAll(opened.keys());
+    }
+
+    function isOpenedMark() {
+      let opened = request.resource.data.get('openedBy', {});
+      return isListedCollaborator(resource.data)
+        && changedKeys().hasOnly(['openedBy'])
+        && opened is map
+        && opened.diff(resource.data.get('openedBy', {})).affectedKeys().hasOnly([callerEmail()])
+        && opened[callerEmail()] == request.time;
     }
 
     // Cross-user collection-group reads: administrators only (always

@@ -1,4 +1,6 @@
 import type { FlowDocumentJSON } from './flowchart-types';
+import type { DiagramRole } from './sharing';
+import type { VersionActor } from './version-history';
 
 /**
  * Snapshot of "what's currently open" in the editor — enough to restore the
@@ -12,6 +14,18 @@ export interface EditorSession {
   /** Visibility of the open diagram — restored so re-saving keeps it. */
   currentDiagramPublic?: boolean;
   savedSignature: string | null;
+  /** "Last saved by … at …" — kept so a restored session can show it
+   *  without the Firestore fetch it skips. Absent in older sessions. */
+  lastSavedAt?: number | null;
+  lastSavedBy?: VersionActor | null;
+  /** Share: whose Diagram it is, the user's role on it, and the revision
+   *  the unsaved edits are based on — so a restored session saves to the
+   *  right path and still detects a Save conflict. Absent in sessions from
+   *  before Share (their Diagram was the user's own, base revision 0). */
+  currentDiagramOwnerUid?: string | null;
+  currentOwnerEmail?: string | null;
+  currentRole?: DiagramRole;
+  currentRevision?: number;
 }
 
 function storageKey(userId: string) {

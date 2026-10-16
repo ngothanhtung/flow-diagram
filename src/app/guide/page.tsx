@@ -268,9 +268,11 @@ export default function GuidePage() {
               canvas. Styling directives (<Pill>classDef</Pill>, <Pill>style</Pill>, <Pill>linkStyle</Pill>) are always skipped — set colours in the inspector, or with a named line style (§3).
             </p>
             <p>
-              A pasted diagram carries no coordinates, so the importer places the blocks itself: it ranks them so every block sits below (or right of) all of its inputs, orders each rank to reduce
-              crossings, and centres the result as a spine. That runs only on import — the editor has no command to re-run it, so once a document is on the canvas its positions are yours alone.
-              Align, distribute and match-size on the selection toolbar are the tools for tidying up afterwards.
+              A pasted diagram carries no coordinates, so the importer places the blocks with the same <strong>Auto-layout</strong> the editor offers (<strong>File → Auto-layout</strong>, or the
+              two layout buttons on the selection toolbar): blocks are ranked so each sits below (or right of) its inputs, 1-in/1-out chains are exactly straight, a line spanning several ranks gets
+              its own lane, and subgraph frames are laid out inside and fitted around their members. Lines get their ports re-picked (<Pill>fromSide</Pill>/<Pill>toSide</Pill>) and, only
+              where the default route would cross something, <Pill>bendPoints</Pill>. Text, icons and free lines are never moved. In a document you write by hand, positions are still
+              required — run Auto-layout afterwards if you&apos;d rather not work them out.
             </p>
             <p>
               <strong>File → Start from a diagram</strong> drops in a small, complete example of each of the two kinds. These ship with the app, unlike <em>New from template</em>, which reads the

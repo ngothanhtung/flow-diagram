@@ -1,0 +1,273 @@
+{
+  "nodes": [
+    {
+      "id": "IN",
+      "type": "start",
+      "title": "Request",
+      "position": {
+        "x": 420,
+        "y": 202
+      },
+      "width": 150,
+      "height": 84,
+      "shape": "circle",
+      "sortOrder": 1,
+      "icon": null,
+      "color": "#c7d2fe",
+      "backgroundColor": "#1e293b",
+      "borderColor": "#c7d2fe",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "fontSize": 13,
+      "textAlign": "center"
+    },
+    {
+      "id": "AUTH",
+      "type": "process",
+      "title": "Authenticate",
+      "position": {
+        "x": 420,
+        "y": 396
+      },
+      "width": 150,
+      "height": 84,
+      "shape": "rounded",
+      "sortOrder": 2,
+      "icon": null,
+      "color": "#bae6fd",
+      "backgroundColor": "#172554",
+      "borderColor": "#bae6fd",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "fontSize": 13,
+      "textAlign": "center",
+      "parentId": "core"
+    },
+    {
+      "id": "CHECK",
+      "type": "decision",
+      "title": "Valid token?",
+      "position": {
+        "x": 420,
+        "y": 590
+      },
+      "width": 150,
+      "height": 84,
+      "shape": "diamond",
+      "sortOrder": 3,
+      "icon": null,
+      "color": "#a7f3d0",
+      "backgroundColor": "#052e2b",
+      "borderColor": "#a7f3d0",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "fontSize": 13,
+      "textAlign": "center",
+      "parentId": "core"
+    },
+    {
+      "id": "HANDLE",
+      "type": "process",
+      "title": "Handle request",
+      "position": {
+        "x": 315,
+        "y": 784
+      },
+      "width": 150,
+      "height": 84,
+      "shape": "rounded",
+      "sortOrder": 4,
+      "icon": null,
+      "color": "#fde68a",
+      "backgroundColor": "#422006",
+      "borderColor": "#fde68a",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "fontSize": 13,
+      "textAlign": "center",
+      "parentId": "core"
+    },
+    {
+      "id": "DENY",
+      "type": "process",
+      "title": "401 Unauthorized",
+      "position": {
+        "x": 525,
+        "y": 784
+      },
+      "width": 150,
+      "height": 84,
+      "shape": "parallelogram",
+      "sortOrder": 5,
+      "icon": null,
+      "color": "#e9d5ff",
+      "backgroundColor": "#2e1065",
+      "borderColor": "#e9d5ff",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "fontSize": 13,
+      "textAlign": "center"
+    },
+    {
+      "id": "STORE",
+      "type": "process",
+      "title": "Write to database",
+      "position": {
+        "x": 420,
+        "y": 978
+      },
+      "width": 150,
+      "height": 84,
+      "shape": "database",
+      "sortOrder": 6,
+      "icon": null,
+      "color": "#c7d2fe",
+      "backgroundColor": "#1e293b",
+      "borderColor": "#c7d2fe",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "fontSize": 13,
+      "textAlign": "center"
+    },
+    {
+      "id": "DONE",
+      "type": "start",
+      "title": "Response",
+      "position": {
+        "x": 420,
+        "y": 1172
+      },
+      "width": 150,
+      "height": 84,
+      "shape": "circle",
+      "sortOrder": 7,
+      "icon": null,
+      "color": "#bae6fd",
+      "backgroundColor": "#172554",
+      "borderColor": "#bae6fd",
+      "borderWidth": 2,
+      "shadow": "none",
+      "fill": "flat",
+      "fontSize": 13,
+      "textAlign": "center"
+    },
+    {
+      "id": "core",
+      "type": "group",
+      "title": "Core service",
+      "position": {
+        "x": 367.5,
+        "y": 576
+      },
+      "width": 319,
+      "height": 564,
+      "shape": "rounded",
+      "icon": null,
+      "color": "#c4b5fd",
+      "backgroundColor": "#1e1b4b",
+      "borderColor": "#c4b5fd",
+      "borderWidth": 2,
+      "borderStyle": "dashed",
+      "shadow": "none",
+      "fill": "flat",
+      "fontSize": 13
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "IN",
+      "to": "AUTH",
+      "routing": "smooth-step",
+      "effect": "none",
+      "endMarker": "arrow",
+      "startMarker": "none",
+      "color": "#64748b",
+      "width": 2,
+      "sortOrder": 1
+    },
+    {
+      "id": "e2",
+      "from": "AUTH",
+      "to": "CHECK",
+      "routing": "smooth-step",
+      "effect": "none",
+      "endMarker": "arrow",
+      "startMarker": "none",
+      "color": "#64748b",
+      "width": 2,
+      "sortOrder": 2
+    },
+    {
+      "id": "e3",
+      "from": "CHECK",
+      "to": "HANDLE",
+      "label": "yes",
+      "routing": "smooth-step",
+      "effect": "none",
+      "endMarker": "arrow",
+      "startMarker": "none",
+      "color": "#64748b",
+      "width": 2,
+      "sortOrder": 3
+    },
+    {
+      "id": "e4",
+      "from": "CHECK",
+      "to": "DENY",
+      "label": "no",
+      "routing": "smooth-step",
+      "effect": "none",
+      "endMarker": "arrow",
+      "startMarker": "none",
+      "color": "#64748b",
+      "width": 2,
+      "sortOrder": 4
+    },
+    {
+      "id": "e5",
+      "from": "HANDLE",
+      "to": "STORE",
+      "routing": "smooth-step",
+      "effect": "none",
+      "endMarker": "arrow",
+      "startMarker": "none",
+      "color": "#64748b",
+      "width": 2,
+      "sortOrder": 5
+    },
+    {
+      "id": "e6",
+      "from": "STORE",
+      "to": "DONE",
+      "routing": "smooth-step",
+      "effect": "none",
+      "endMarker": "arrow",
+      "startMarker": "none",
+      "color": "#64748b",
+      "width": 2,
+      "sortOrder": 6
+    },
+    {
+      "id": "e7",
+      "from": "DENY",
+      "to": "DONE",
+      "routing": "smooth-step",
+      "effect": "none",
+      "endMarker": "arrow",
+      "startMarker": "none",
+      "color": "#64748b",
+      "width": 2,
+      "sortOrder": 7
+    }
+  ],
+  "settings": {
+    "runMode": "sequential"
+  }
+}

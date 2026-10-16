@@ -40,8 +40,8 @@ export default function HelpPage() {
 
       <Section id='start' title='1. Getting started'>
         <p>
-          Sign in with your <strong>Google account</strong> or an <strong>email + password</strong>. Every diagram you create belongs to your account and is stored in the cloud — no one else
-          can open or edit it unless you explicitly make it public.
+          Sign in with your <strong>Google account</strong> or an <strong>email + password</strong>. Every diagram you create belongs to your account (you are its <strong>Owner</strong>) and is
+          stored in the cloud — no one else can open it unless you Share it with them or turn on its Public link.
         </p>
         <p>
           Forgot your password? Click <strong>Forgot password?</strong> on the sign-in form, enter your email and press <strong>Send reset link</strong>. If the email has an account you&apos;ll
@@ -56,14 +56,16 @@ export default function HelpPage() {
           Check spam, then press <strong>Resend verification email</strong>. Google accounts are already verified. Public links open for anyone, list or not.
         </p>
         <p>
-          After signing in you land on the <strong>diagrams list</strong>: a table of everything you own, with node/edge counts, visibility, and created/updated timestamps. From here you can:
+          After signing in you land on the <strong>diagrams list</strong>. <strong>My diagrams</strong> is a table of everything you own, with node/edge counts, visibility (a people badge with a number shows
+          how many people it is shared with), and saved/created timestamps; <strong>Shared with me</strong> lists diagrams other people shared with you (see{' '}
+          <a href='#share' className='underline'>Sharing</a>). From here you can:
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>Click a diagram&apos;s name to open it in the editor.</li>
           <li>Search the list by name or id, sort any column, and page through large collections.</li>
           <li>
-            Use the <Pill>⋯</Pill> menu at the end of each row for <strong>Edit</strong>, <strong>View</strong> (read-only viewer in a new tab), <strong>Share</strong> (public diagrams only)
-            and <strong>Delete</strong>.
+            Use the <Pill>⋯</Pill> menu at the end of each row for <strong>Edit</strong>, <strong>View</strong> (read-only viewer in a new tab), <strong>Share</strong> (invite people or turn
+            on the Public link) and <strong>Delete</strong>.
           </li>
         </ul>
       </Section>
@@ -106,6 +108,13 @@ export default function HelpPage() {
         <p>
           <strong>Shape a connector&apos;s path:</strong> double-click anywhere on a selected line to drop a <em>bend point</em> there, drag bend points to route the line around other blocks,
           and double-click a bend handle to remove it again.
+        </p>
+        <p>
+          <strong>Auto-layout:</strong> <strong>File → Auto-layout, top to bottom</strong> (or <strong>left to right</strong>) rearranges the whole diagram in one step: each block lands
+          below (or right of) what feeds it, straight chains line up, lines are re-routed and get new connection ports so none runs through a block, and each frame is arranged inside and
+          shrunk to fit. Select two or more elements (or one frame) first and the same command — also on the two layout buttons at the right of the selection toolbar — arranges only those,
+          in place. Text, icons and free lines never move, and neither does a frame that contains any of them. A message confirms the change; its <strong>Undo</strong> button, or{' '}
+          <Kbd>⌘Z</Kbd> / <Kbd>Ctrl+Z</Kbd>, puts everything back in one step.
         </p>
         <p>
           <strong>Navigate:</strong> drag empty canvas to pan (middle-mouse drag works anywhere), scroll to zoom, and use the view dock for <em>Zoom in / Zoom out / Fit diagram to view</em>.
@@ -227,7 +236,7 @@ export default function HelpPage() {
           <li>
             <strong>Undo / Redo</strong> (the two arrow buttons next to the File menu) step back and forward through your changes to the diagram — moving, resizing, restyling, deleting,
             grouping, picking a template or starter, importing, Reset. A whole drag, one slider drag or one edit of a field counts as a single step, and the last 100 steps are kept. Selecting,
-            panning and zooming, the run mode, the diagram name and Public/Private are not undo steps. Saving keeps the history; opening another diagram or reloading the page clears it.
+            panning and zooming, the run mode, the diagram name and the Public link are not undo steps. Saving keeps the history; opening another diagram or reloading the page clears it.
           </li>
           <li>
             <strong>File → Save as</strong> duplicates the current document into a brand-new diagram (&quot;… copy&quot;) and opens it.
@@ -237,19 +246,112 @@ export default function HelpPage() {
             <strong>Undo</strong> brings the changes back.
           </li>
         </ul>
+        <h3 id='versions' className='scroll-mt-20 pt-2 text-sm font-semibold text-foreground'>Version history</h3>
+        <p>
+          Every <strong>Save</strong> also keeps a <strong>version</strong> — the diagram exactly as it was at that moment, with who saved it and when. Nothing you have saved is overwritten for good.
+          Open the list with <strong>History</strong> in the editor header (newest first).
+        </p>
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            <strong>Preview</strong> opens a version read-only, with its own play bar so you can Replay it. The diagram you are editing does not change.
+          </li>
+          <li>
+            <strong>Restore</strong> puts that version on the canvas as an <strong>unsaved change</strong> (amber dot). <strong>Undo</strong> (⌘Z) takes you straight back to what you had;{' '}
+            <strong>Save</strong> makes it the main copy and adds a new version — the one you restored stays in the list.
+          </li>
+          <li>
+            <strong>Name</strong> a version (e.g. &quot;Sent to client&quot;) to find it again later; <strong>Rename</strong> or remove the name at any time. Named versions are highlighted and
+            are <strong>never removed automatically</strong>.
+          </li>
+          <li>
+            <strong>Save as a new diagram</strong> (the copy icon on a row, or the button in Preview) copies that version into a new diagram of your own; the original is untouched. Use{' '}
+            <strong>Open</strong> on the confirmation to go to it.
+          </li>
+          <li>
+            The <strong>50 most recent unnamed versions</strong> are kept; older unnamed ones are removed when you save. Deleting a diagram deletes its whole history.
+          </li>
+          <li>
+            The header shows <strong>Last saved by … at …</strong>, and the diagrams list shows the same in its <strong>Last saved</strong> column.
+          </li>
+        </ul>
       </Section>
 
       <Section id='share' title='9. Sharing a diagram'>
-        <p>Diagrams are <strong>private</strong> by default — only you (and administrators) can open them. To share one:</p>
+        <p>
+          Diagrams are <strong>private</strong> by default — only you (and administrators) can open them. Open <strong>Share</strong> — the button in the editor header, <strong>File → Share</strong>,
+          or the <Pill>⋯</Pill> menu on the diagrams list — to let other people in. Only the Owner sees it. Every change in this dialog applies <strong>immediately</strong>; there is nothing
+          to save.
+        </p>
+        <h3 className='pt-2 text-sm font-semibold text-foreground'>Collaborators</h3>
         <ul className='list-disc space-y-1.5 pl-5'>
           <li>
-            In the editor header, click the <strong>Private / Public</strong> toggle to make the diagram public, then save.
+            Type a colleague&apos;s email, pick <strong>Can edit</strong> or <strong>Can view</strong>, and press <strong>Invite</strong>. An address outside your workspace&apos;s Access list is
+            refused straight away with an explanation.
           </li>
           <li>
-            Open <strong>File → Share</strong> (or the <strong>Share</strong> row action on the diagrams list) and copy the link. The link opens a <strong>read-only viewer</strong> — visitors
-            can watch the animation but never edit, and making a diagram public never grants edit access to anyone.
+            <strong>No email is sent.</strong> Tell them yourself — they find the diagram under <strong>Shared with me</strong>{' '}
+            on their diagrams list, or you can copy the link shown in the
+            dialog. Someone who hasn&apos;t opened it yet is marked <strong>Pending</strong> (perhaps they have no account yet: the invite starts working as soon as they sign up with that email
+            and verify it).
           </li>
-          <li>Flip the toggle back to <strong>Private</strong> at any time to revoke the link.</li>
+          <li>Change someone&apos;s access level, or remove them with ×, at any time — it takes effect at once.</li>
+        </ul>
+        <Table
+          head={['', 'Owner', 'Can edit', 'Can view']}
+          rows={[
+            ['View it, Replay it, export an image', '✓', '✓', '✓'],
+            ['Edit and Save', '✓', '✓', '—'],
+            ['Version history, Restore, name versions', '✓', '✓', '—'],
+            ['Save as (a copy of your own)', '✓', '✓', '—'],
+            ['Turn the Public link on or off', '✓', '—', '—'],
+            ['Share, change access, remove people', '✓', '—', '—'],
+            ['Delete the diagram', '✓', '—', '—'],
+          ]}
+        />
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            <strong>Can edit</strong> opens the editor (the header shows <strong>Can edit</strong> and who owns it); <strong>Can view</strong> opens the read-only viewer, even from an{' '}
+            <Pill>/edit</Pill> link.
+          </li>
+          <li>
+            Shared diagrams are matched by email, so an email + password account must <strong>verify its email</strong> before anything appears under Shared with me — the tab says so and
+            offers <strong>Send verification email</strong> and <strong>I&apos;ve verified</strong>.
+          </li>
+          <li>
+            Deleting a shared diagram asks first (&quot;This Diagram is shared with 2 people&quot;); afterwards it disappears from everyone&apos;s Shared with me.
+          </li>
+        </ul>
+        <h3 className='pt-2 text-sm font-semibold text-foreground'>When two people save</h3>
+        <p>
+          There is no live co-editing. If someone else saved the diagram since you opened it (or since your last save), your <strong>Save</strong> stops and tells you who saved and when, with
+          three choices:
+        </p>
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            <strong>Overwrite</strong> — your version becomes the main copy. Theirs is not lost: it stays in <strong>History</strong>.
+          </li>
+          <li>
+            <strong>Save as new Diagram</strong> — the original keeps their version; yours becomes a new diagram of your own.
+          </li>
+          <li>
+            <strong>Load latest</strong> — their version replaces your canvas. <strong>Undo</strong> brings your changes back if you change your mind.
+          </li>
+        </ul>
+        <p>
+          If nobody else saved, Save just saves. If the Owner removes you while you have unsaved changes, Save tells you{' '}
+          <em>&ldquo;You no longer have permission to edit this Diagram&rdquo;</em> and offers <strong>Save as new Diagram</strong>, so your work is kept as your own copy.
+        </p>
+        <h3 className='pt-2 text-sm font-semibold text-foreground'>Public link</h3>
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            Switch <strong>Public link</strong> on at the bottom of the Share dialog and copy the link. It opens a <strong>read-only viewer</strong> for anyone who has it, signed in or not —
+            it never grants edit access.
+          </li>
+          <li>
+            The Public link shows the <strong>last saved version</strong>: it is published the moment you switch it on, and refreshed every time you or a Can edit collaborator saves. Unsaved
+            changes on your canvas are not shown until you Save.
+          </li>
+          <li>Switch it off at any time — the link stops working immediately.</li>
         </ul>
       </Section>
 
@@ -328,6 +430,8 @@ export default function HelpPage() {
             ['Select several Elements', 'Shift-click them, or Shift-drag a box on empty canvas; ⌘A selects all'],
             ['Connect two blocks', 'Drag from a port on one block onto another block'],
             ['Reroute a connector', 'Select it, then double-click the line to add a bend point; drag bend points; double-click a bend point to remove it'],
+            ['Tidy up the whole diagram', 'File → Auto-layout, top to bottom / left to right (Undo in the message puts it back)'],
+            ['Tidy up just part of it', 'Select 2+ Elements (or a frame), then the layout buttons on the selection toolbar'],
             ['Edit a block / connector', 'Click it — the inspector opens on the right'],
             ['Duplicate or delete', '⌘D / Delete, or the buttons in the inspector'],
             ['Copy part of a diagram elsewhere', 'Select, ⌘C, open the other diagram, ⌘V'],
@@ -336,9 +440,11 @@ export default function HelpPage() {
             ['Rename the diagram', 'Click its name in the header, type, press Enter'],
             ['Undo / redo a change', '⌘Z / ⌘⇧Z, or the Undo / Redo buttons next to the File menu'],
             ['Save to the cloud', '⌘S, or the Save button in the header (amber dot = unsaved changes)'],
+            ['Go back to an earlier save', 'History in the header → Preview, Restore (then Save), or Save as a new diagram'],
             ['See every shortcut', 'Press ? on the canvas'],
             ['Play the animation', 'Replay — pick Sequential, Concurrent or Manual first'],
-            ['Share read-only', 'Set the diagram to Public, then File → Share → Copy'],
+            ['Let a colleague edit or view', 'Share → type their email → Can edit / Can view → Invite (no email is sent — tell them)'],
+            ['Share read-only with anyone', 'Share → switch on Public link → Copy'],
             ['Draw a database table', 'Table button at the right of the shape dock, then click-drag'],
             ['Edit columns', 'Select the table — the Columns section is in the inspector'],
             ['Link two tables', 'Connect them, then pick a column at each end in the Relationship block'],
