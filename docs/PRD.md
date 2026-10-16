@@ -210,6 +210,5 @@ P0 + P1 được đặc tả chi tiết trong [PRD v0.2](prd/v0.2.md); P2 trong 
 | Đổi Run mode làm Diagram "chưa lưu" | Run mode lưu trong Diagram nhưng không undo được, nên chấm "chưa lưu" không tự tắt khi đổi lại. |
 | Diagram mới tự căn khung nhìn | Cho tới lần bấm canvas đầu tiên, khung nhìn tự căn lại sau mỗi lần sửa, làm hình vừa vẽ nhảy chỗ. |
 | Collaborator Can edit xoá được Version chưa đặt tên | Cách Save của họ dọn Version cũ (rules không đếm tới 50). Named version luôn an toàn. |
-| Không kiểm lại quyền khi khôi phục phiên cục bộ | Collaborator bị gỡ vẫn thấy bản lưu cục bộ cho tới khi Save. |
 | Không mời được Administrator ngoài Access list | Client không đọc được vai trò của người khác nên kiểm Access list chặn trước. |
 | `/help` mất dấu cách sau chữ in đậm | ~10 chỗ, khi phần chữ sau có HTML entity. |

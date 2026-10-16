@@ -133,10 +133,9 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
             <Boxes size={18} className='text-sky-300' />
           </div>
           <div className='min-w-0'>
+            {/* Name only: the Viewer is open to signed-out visitors, so it
+                never shows who owns the Diagram (no uid, no email). */}
             <h1 className='truncate text-base font-semibold'>{diagram.name}</h1>
-            <p className='hidden truncate font-mono text-[10px] text-muted-foreground sm:block'>
-              {diagram.id} · owner {diagram.ownerUid.slice(0, 10)}
-            </p>
           </div>
         </div>
 

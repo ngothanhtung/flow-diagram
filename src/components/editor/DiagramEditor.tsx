@@ -1,7 +1,7 @@
 'use client';
 
 import { FirebaseError } from 'firebase/app';
-import { Boxes, Copy, Globe, History, LoaderCircle, LockKeyhole, Share2, Users } from 'lucide-react';
+import { Boxes, CloudOff, Copy, Download, Globe, History, LoaderCircle, LockKeyhole, Share2, Users, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
@@ -20,13 +20,14 @@ import { StarterPickerDialog } from '@/components/editor/StarterPickerDialog';
 import { TemplatePickerDialog, useTemplateLibrary } from '@/components/editor/TemplatePickerDialog';
 import { VersionHistorySheet } from '@/components/editor/VersionHistory';
 import { formatDateTime } from '@/components/data-table';
-import { sameDiagramContent, useEditorStore } from '@/lib/editor-store';
+import { sameDiagramContent, selectCanUndo, useEditorStore } from '@/lib/editor-store';
 import { createDiagram, loadDiagram, openDiagram, saveDiagram } from '@/lib/firebase/diagrams';
-import { ACCESS_LEVEL_LABELS, permissionsOf, routeForRole } from '@/lib/sharing';
+import { ACCESS_LEVEL_LABELS, permissionsOf, revisionOf, routeForRole } from '@/lib/sharing';
+import { LOCAL_COPY_FALLBACK_MS, localCopyOf, restoreDecision, type LocalCopy, type ServerCheck } from '@/lib/session-restore';
 import type { StoredVersion } from '@/lib/firebase/versions';
 import { saveEditorSession } from '@/lib/editor-session';
 import { normalizeDocument } from '@/lib/document-validation';
-import { actorOf, savedByLabel, versionLabel } from '@/lib/version-history';
+import { actorOf, savedByLabel, versionLabel, type VersionActor } from '@/lib/version-history';
 
 const STATUS_TITLES = {
   loading: 'Loading diagram…',
@@ -118,21 +119,94 @@ function isPermissionDenied(error: unknown) {
   return error instanceof FirebaseError && error.code === 'permission-denied';
 }
 
+/** `dirty` exactly as the header's Save dot reads it. */
+function isDirty(state: { doc: unknown; savedSignature: string | null }) {
+  return JSON.stringify(state.doc) !== state.savedSignature;
+}
+
+/** A Save someone made after the revision the open copy is based on. */
+interface NewerSave {
+  revision: number;
+  lastSavedBy: VersionActor | null;
+  lastSavedAt: number | null;
+}
+
+/** Strip under the header: someone saved this Diagram after the revision
+ *  the restored (unsaved) copy is based on. Non-modal — editing goes on.
+ *  Load latest is the Save conflict dialog's (one undo step); Keep mine
+ *  just dismisses it, and the next Save still meets the conflict check. */
+function NewerSaveBanner({ newer, currentUid, onLoadLatest, onKeepMine }: { newer: NewerSave; currentUid: string; onLoadLatest: () => Promise<void>; onKeepMine: () => void }) {
+  const [busy, setBusy] = useState(false);
+  const who = savedByLabel(newer.lastSavedBy, currentUid);
+  const when = newer.lastSavedAt ? formatDateTime(newer.lastSavedAt) : null;
+  return (
+    <div role='status' className='flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-border bg-amber-400/10 px-3 py-2 sm:px-6' data-testid='newer-save-banner'>
+      <Download size={14} className='shrink-0 text-amber-700 dark:text-amber-300' />
+      <p className='min-w-0 flex-1 text-xs text-foreground'>
+        <span className='font-semibold'>{who === 'You' ? 'You (in another tab or device)' : who}</span> saved a newer version of this Diagram
+        {when ? (
+          <>
+            {' '}
+            at <span className='font-semibold'>{when}</span>
+          </>
+        ) : null}
+        . <span className='text-muted-foreground'>Your unsaved changes are still here.</span>
+      </p>
+      <div className='flex items-center gap-2'>
+        <Button
+          size='sm'
+          variant='outline'
+          disabled={busy}
+          onClick={() => {
+            setBusy(true);
+            void onLoadLatest().finally(() => setBusy(false));
+          }}
+          title='Replace the canvas with the latest saved version. Undo brings your changes back.'
+        >
+          {busy ? <LoaderCircle size={13} className='animate-spin' /> : <Download size={13} />}
+          Load latest
+        </Button>
+        <Button size='sm' variant='ghost' disabled={busy} onClick={onKeepMine} title='Keep editing your copy. Saving it will ask before replacing theirs.'>
+          Keep mine
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+/** Strip under the header: the server couldn't be reached on open, so
+ *  the canvas is the copy kept in this browser. Never blocks editing. */
+function LocalCopyNote({ onDismiss }: { onDismiss: () => void }) {
+  return (
+    <div role='status' className='flex items-center gap-2 border-b border-border bg-muted/60 px-3 py-1.5 text-[11px] text-muted-foreground sm:px-6' data-testid='local-copy-note'>
+      <CloudOff size={13} className='shrink-0' />
+      <span className='min-w-0 flex-1'>Couldn’t reach the server — showing your last local copy of this Diagram.</span>
+      <button type='button' onClick={onDismiss} className='grid size-5 place-items-center rounded transition hover:bg-accent hover:text-accent-foreground' aria-label='Dismiss'>
+        <X size={12} />
+      </button>
+    </div>
+  );
+}
+
 /**
  * Full editor for one diagram at `/diagrams/{id}/edit`. The id resolves
  * through `openDiagram` (ADR 0001): the signed-in user's own Diagram if
  * they have one with that id — every link from before Share — else a
  * Diagram shared with them, read from its Owner's path. A Can view
- * Collaborator is sent to the Viewer. If a session with the same diagram
- * id is restored first, its unsaved edits are kept (and so are its owner,
- * role and base revision).
+ * Collaborator is sent to the Viewer. A copy of the same Diagram already
+ * in the editor (the restored session) is replaced by the server's latest
+ * when it has no unsaved changes; with unsaved changes it is kept (with its
+ * owner, role and base revision) and only compared against the server —
+ * see `lib/session-restore.ts`.
  */
 export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  const [status, setStatus] = useState<'loading' | 'not-found' | 'unverified' | 'redirecting' | 'error'>('loading');
+  const [status, setStatus] = useState<'loading' | 'ready' | 'not-found' | 'unverified' | 'redirecting' | 'error'>('loading');
   const [blockedSave, setBlockedSave] = useState<BlockedSave | null>(null);
+  const [newerSave, setNewerSave] = useState<NewerSave | null>(null);
+  const [localCopyNote, setLocalCopyNote] = useState(false);
 
   // All global editor state lives in the zustand store. Hydrate from the
   // localStorage session exactly once. This has to run in a layout effect
@@ -150,9 +224,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const loadedTemplate = useEditorStore((state) => state.loadedTemplate);
   const hydrated = useEditorStore((state) => state.hydrated);
   const currentDiagramId = useEditorStore((state) => state.currentDiagramId);
-  // A session that already restored this exact diagram (unsaved edits
-  // included) is ready as soon as the store hydrates — no Firestore fetch.
-  const effectiveStatus = hydrated && currentDiagramId === diagramId ? 'ready' : status;
+  const canUndo = useEditorStore(selectCanUndo);
   const currentDiagramName = useEditorStore((state) => state.currentDiagramName);
   const currentDiagramPublic = useEditorStore((state) => state.currentDiagramPublic);
   const savedSignature = useEditorStore((state) => state.savedSignature);
@@ -177,26 +249,74 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   const [savingAs, setSavingAs] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
 
-  // Load the route's diagram into the store — unless the session already
-  // restored this exact diagram, in which case unsaved edits are kept.
+  // Load the route's diagram into the store. A copy the editor already
+  // holds (the restored session, or this page load's store) is decided by
+  // `restoreDecision`: without local work the server's latest replaces it —
+  // the loading screen stays up until the server answers, so stale content
+  // never flashes — and with local work it stays on the canvas while the
+  // server is only compared against it (banner / blocked dialog).
   useEffect(() => {
     if (!user) return;
-    const state = useEditorStore.getState();
-    if (state.hydrated && state.currentDiagramId === diagramId) return;
+    const before = useEditorStore.getState();
+    const copy = localCopyOf({ holdsDiagram: before.hydrated && before.currentDiagramId === diagramId, dirty: isDirty(before), canUndo: selectCanUndo(before) });
     let cancelled = false;
+    let answered = false;
+    // A clean copy is shown anyway if the server is slow to answer
+    // (offline); its answer is still applied when it lands.
+    const fallback =
+      copy === 'clean'
+        ? setTimeout(() => {
+            if (cancelled || answered) return;
+            setStatus('ready');
+            setLocalCopyNote(true);
+          }, LOCAL_COPY_FALLBACK_MS)
+        : undefined;
+
     openDiagram({ uid: user.uid, email: user.email, emailVerified: user.emailVerified }, diagramId)
-      .then((opening) => {
+      .then((opening): { check: ServerCheck; opening: typeof opening } => ({
+        check: opening.role === null ? { kind: 'gone', reason: opening.reason } : { kind: 'opened', role: opening.role, revision: revisionOf(opening.diagram) },
+        opening,
+      }))
+      .catch((error: unknown): { check: ServerCheck; opening: null } => {
+        if (copy === 'none') console.error('Could not open diagram', error);
+        else console.warn('Could not check the server copy of this diagram', error);
+        return { check: isPermissionDenied(error) ? { kind: 'denied' } : { kind: 'unreachable' }, opening: null };
+      })
+      .then(({ check, opening }) => {
+        answered = true;
+        clearTimeout(fallback);
         if (cancelled) return;
-        if (opening.role === null) {
-          setStatus(opening.reason);
-          return;
+        // Judged against the store *now*: after the fallback the user may
+        // have started editing the local copy, which must then be kept.
+        const now = useEditorStore.getState();
+        const current: LocalCopy = copy === 'none' ? 'none' : localCopyOf({ holdsDiagram: now.currentDiagramId === diagramId, dirty: isDirty(now), canUndo: selectCanUndo(now) });
+        const decision = restoreDecision({ copy: current, role: now.currentRole, revision: now.currentRevision }, check);
+        switch (decision.action) {
+          case 'load-latest':
+            if (opening?.role) loadStoredDiagram(opening.diagram, { ownerUid: opening.ownerUid, ownerEmail: opening.ownerEmail, role: opening.role });
+            setLocalCopyNote(false);
+            setStatus('ready');
+            return;
+          case 'redirect-view':
+            setStatus('redirecting');
+            router.replace(routeForRole('view', diagramId));
+            return;
+          case 'status':
+            setStatus(decision.status);
+            return;
+          case 'offer-latest':
+            if (opening?.role) setNewerSave({ revision: revisionOf(opening.diagram), lastSavedBy: opening.diagram.lastSavedBy ?? null, lastSavedAt: opening.diagram.updatedAt?.toMillis() ?? null });
+            break;
+          case 'blocked':
+            setBlockedSave({ kind: decision.kind });
+            break;
+          case 'local-copy':
+            setLocalCopyNote(true);
+            break;
+          case 'keep':
+            break;
         }
-        if (opening.role === 'view') {
-          setStatus('redirecting');
-          router.replace(routeForRole('view', diagramId));
-          return;
-        }
-        loadStoredDiagram(opening.diagram, { ownerUid: opening.ownerUid, ownerEmail: opening.ownerEmail, role: opening.role });
+        setStatus('ready');
       })
       .catch((error: unknown) => {
         console.error('Could not open diagram', error);
@@ -204,6 +324,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       });
     return () => {
       cancelled = true;
+      clearTimeout(fallback);
     };
   }, [diagramId, user, loadStoredDiagram, router]);
 
@@ -212,6 +333,11 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
 
   const documentSignature = useMemo(() => JSON.stringify(doc), [doc]);
   const dirty = savedSignature !== documentSignature;
+  // A copy with local work (the restored session's unsaved edits) is on
+  // the canvas as soon as the store hydrates, while the server is asked in
+  // the background; any other copy waits for the server (see the effect).
+  const keepsLocalWork = hydrated && currentDiagramId === diagramId && localCopyOf({ holdsDiagram: true, dirty, canUndo }) === 'unsaved';
+  const effectiveStatus = status === 'loading' && keepsLocalWork ? 'ready' : status;
 
   useEffect(() => {
     if (!user) return;
@@ -269,6 +395,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
           return;
         }
         markDiagramSaved(diagramId, nextName, doc, actor, Date.now(), result.revision);
+        setLocalCopyNote(false);
         // The Share dialog (maybe in another tab) owns `public`; follow it.
         setDiagramPublic(result.isPublic);
         toast.success('Diagram saved', { description: nextName });
@@ -371,6 +498,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
   if (!user) return <LoginForm />;
 
   if (effectiveStatus !== 'ready') {
+    const status = effectiveStatus;
     return (
       <EditorStatusScreen
         fullScreen
@@ -398,6 +526,15 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       fullScreen
       document={doc}
       onSave={() => void handleSaveDiagram()}
+      subBar={
+        // Hidden once the editor's base revision catches up — Load latest,
+        // or a Save that went through (Overwrite) — not just on Keep mine.
+        newerSave && newerSave.revision > currentRevision ? (
+          <NewerSaveBanner newer={newerSave} currentUid={user.uid} onLoadLatest={handleLoadLatest} onKeepMine={() => setNewerSave(null)} />
+        ) : localCopyNote ? (
+          <LocalCopyNote onDismiss={() => setLocalCopyNote(false)} />
+        ) : undefined
+      }
       icon={<Boxes size={18} className='text-sky-300' />}
       subtitle={
         <div className='flex min-w-0 items-baseline gap-2'>
