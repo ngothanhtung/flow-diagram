@@ -67,8 +67,8 @@ Tracks delivery of [PRD v0.2](prd/v0.2.md) and [PRD v0.3](prd/v0.3.md). Each tas
 | # | Task | PRD | Depends on | Status |
 | --- | --- | --- | --- | --- |
 | T6 | Versions | v0.3 §4.1 | v0.2 | ☑ |
-| T7 | Share for Collaborators | v0.3 §4.2, [ADR 0001](adr/0001-sharing-via-access-index.md) | T6 | ◐ built; awaiting checkpoint sign-off |
-| T8 | Auto-layout | v0.3 §4.3 | v0.2 (undo) | ◐ built; awaiting owner visual sign-off on real Diagrams |
+| T7 | Share for Collaborators | v0.3 §4.2, [ADR 0001](adr/0001-sharing-via-access-index.md) | T6 | ☑ |
+| T8 | Auto-layout | v0.3 §4.3 | v0.2 (undo) | ☑ signed off on the reference set; owner's real Diagrams to be reviewed after release |
 
 ### T6 — Versions
 - Each Save also writes `users/{owner}/diagrams/{id}/versions/{versionId}` (`document`, `savedBy`, `savedAt`, optional `name`), then prunes unnamed Versions beyond 50 (client-side; no server).
