@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import { useEditorStore } from '@/lib/editor-store';
+import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { useShortcutLabel } from '@/lib/use-is-mac';
 import { AUTO_LAYOUT_DIRECTIONS, useAutoLayoutCommand } from './use-auto-layout-command';
 
@@ -70,18 +71,20 @@ export function EditorFileMenu({
   onConvertColorTheme,
   onReset,
   imageName,
+  imageDocument,
+  exportLabel = 'Export to JSON',
   afterOpen,
   afterExport,
 }: {
   onNew: () => void;
   newDisabled?: boolean;
-  onNewFromTemplate: () => void;
+  onNewFromTemplate?: () => void;
   /** Opens the built-in starter picker. Distinct from the template
    *  library: starters ship with the app, templates are the Firestore
    *  collection an administrator curates. */
-  onStartFrom: () => void;
+  onStartFrom?: () => void;
   /** Opens the mermaid import dialog. */
-  onImportMermaid: () => void;
+  onImportMermaid?: () => void;
   openHref: string;
   onExport: () => void;
   /** Opens the SQL export dialog — every surface that can hold table
@@ -90,16 +93,21 @@ export function EditorFileMenu({
   /** Opens the confirmation for flipping every node/edge colour between
    *  a dark-canvas and light-canvas palette. */
   onConvertColorTheme: () => void;
-  onReset: () => void;
+  onReset?: () => void;
   /** Diagram / Template name — the exported image's default filename. */
   imageName: string;
+  /** Document the image export draws instead of the store's (a lesson's
+   *  derived view). Selection scope still reads the store. */
+  imageDocument?: FlowDocumentJSON;
+  /** Label of the JSON export item. */
+  exportLabel?: string;
   afterOpen?: ReactNode;
   afterExport?: ReactNode;
 }) {
   const [imageOpen, setImageOpen] = useState(false);
   const doc = useEditorStore((state) => state.doc);
   const selectedNodeIds = useEditorStore((state) => state.selectedNodeIds);
-  const empty = doc.nodes.length === 0;
+  const empty = (imageDocument ?? doc).nodes.length === 0;
   const autoLayout = useAutoLayoutCommand();
   return (
     <>
@@ -107,22 +115,28 @@ export function EditorFileMenu({
       <FileMenuItem icon={<FilePlus size={14} />} disabled={newDisabled} onClick={onNew}>
         New
       </FileMenuItem>
-      <FileMenuItem icon={<Sparkles size={14} />} onClick={onStartFrom}>
-        Start from a diagram
-      </FileMenuItem>
-      <FileMenuItem icon={<LayoutTemplate size={14} />} onClick={onNewFromTemplate}>
-        New from template
-      </FileMenuItem>
-      <FileMenuItem icon={<FileCode2 size={14} />} onClick={onImportMermaid}>
-        Import from mermaid
-      </FileMenuItem>
+      {onStartFrom && (
+        <FileMenuItem icon={<Sparkles size={14} />} onClick={onStartFrom}>
+          Start from a diagram
+        </FileMenuItem>
+      )}
+      {onNewFromTemplate && (
+        <FileMenuItem icon={<LayoutTemplate size={14} />} onClick={onNewFromTemplate}>
+          New from template
+        </FileMenuItem>
+      )}
+      {onImportMermaid && (
+        <FileMenuItem icon={<FileCode2 size={14} />} onClick={onImportMermaid}>
+          Import from mermaid
+        </FileMenuItem>
+      )}
       <FileMenuItem icon={<FolderOpen size={14} />} href={openHref}>
         Open
       </FileMenuItem>
       {afterOpen}
       <FileMenuSeparator />
       <FileMenuItem icon={<FileJson size={14} />} onClick={onExport}>
-        Export to JSON
+        {exportLabel}
       </FileMenuItem>
       {onExportSql && (
         <FileMenuItem icon={<Database size={14} />} onClick={onExportSql}>
@@ -146,11 +160,13 @@ export function EditorFileMenu({
       <FileMenuItem icon={<Contrast size={14} />} onClick={onConvertColorTheme}>
         Convert dark ↔ light
       </FileMenuItem>
-      <FileMenuItem icon={<RotateCcw size={14} />} tone='danger' onClick={onReset}>
-        Reset
-      </FileMenuItem>
+      {onReset && (
+        <FileMenuItem icon={<RotateCcw size={14} />} tone='danger' onClick={onReset}>
+          Reset
+        </FileMenuItem>
+      )}
     </FileMenu>
-    <ExportImageDialog document={doc} name={imageName} selectedNodeIds={selectedNodeIds} open={imageOpen} onOpenChange={setImageOpen} />
+    <ExportImageDialog document={imageDocument ?? doc} name={imageName} selectedNodeIds={selectedNodeIds} open={imageOpen} onOpenChange={setImageOpen} />
     </>
   );
 }

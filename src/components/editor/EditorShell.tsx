@@ -12,6 +12,7 @@ import { useEditorShortcuts } from '@/components/editor/use-editor-shortcuts';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { selectCanRedo, selectCanUndo, useEditorStore } from '@/lib/editor-store';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
+import type { ElementLook } from '@/lib/lesson/lesson-types';
 import { useExecutionPlayback } from '@/lib/use-execution-playback';
 import { useShortcutLabel } from '@/lib/use-is-mac';
 
@@ -21,6 +22,17 @@ export interface EditorInfo {
   description: string;
   /** One-line note under the summary, specific to this surface. */
   note: string;
+}
+
+/** Lesson mode: the canvas shows a derived document with per-element looks,
+ *  every Line animates continuously (no Replay), and a side panel plus a
+ *  footer frame it. The Inspector still edits the raw Diagram (`document`). */
+export interface EditorLessonSurface {
+  canvasDocument: FlowDocumentJSON;
+  looks: Record<string, ElementLook>;
+  hints: Record<string, string>;
+  leftPanel: ReactNode;
+  footer: ReactNode;
 }
 
 interface EditorShellProps {
@@ -46,6 +58,8 @@ interface EditorShellProps {
   children?: ReactNode;
   /** What ⌘S does — the surface's own Save (diagram or template). */
   onSave?: () => void;
+  /** Lesson mode (see `EditorLessonSurface`); absent in the Diagram and Template editors. */
+  lesson?: EditorLessonSurface;
 }
 
 /**
@@ -54,7 +68,7 @@ interface EditorShellProps {
  * what genuinely differs — branding, its File menu, its action buttons,
  * its persistence dialogs.
  */
-export function EditorShell({ document, icon, subtitle, fileMenu, actions, headerEnd, subBar, info, inspectorLabel, fullScreen = false, children, onSave }: EditorShellProps) {
+export function EditorShell({ document, icon, subtitle, fileMenu, actions, headerEnd, subBar, info, inspectorLabel, fullScreen = false, children, onSave, lesson }: EditorShellProps) {
   const infoOpen = useEditorStore((state) => state.infoOpen);
   const playback = useExecutionPlayback(document);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
@@ -83,7 +97,7 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
         </div>
 
         <div className='flex flex-wrap items-center justify-end gap-2'>
-          <PlaybackControls runMode={playback.runMode} repeatEnabled={playback.repeatEnabled} stepCount={playback.orderedGroups.length} />
+          {!lesson && <PlaybackControls runMode={playback.runMode} repeatEnabled={playback.repeatEnabled} stepCount={playback.orderedGroups.length} />}
           <Button variant='toolbar' size='lg' nativeButton={false} render={<Link href='/help' title='User guide — press ? for keyboard shortcuts' />}>
             <BookOpen size={13} />
             <span className='hidden sm:inline'>Help</span>
@@ -99,20 +113,39 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
 
       {/* The inspector is a drawer floating over the canvas, so the canvas
           always owns the full width. */}
-      <main className='min-h-0 flex-1 overflow-hidden'>
-        <EditorCanvas
-          document={document}
-          activeNodeIds={playback.active}
-          runningEdgeIds={playback.runningEdgeIds}
-          nodeExecutionStates={playback.nodeExecutionStates}
-          edgeExecutionStates={playback.edgeExecutionStates}
-          effectsPaused={playback.runMode === 'static'}
-        />
+      <main className={lesson ? 'flex min-h-0 flex-1 overflow-hidden' : 'min-h-0 flex-1 overflow-hidden'}>
+        {lesson && <aside className='w-80 shrink-0 border-r border-border overflow-y-auto'>{lesson.leftPanel}</aside>}
+        {/* In lesson mode the canvas column is its own positioning context so
+            the inspector drawer floats over it, not over the left panel. */}
+        <div className={lesson ? 'relative min-h-0 min-w-0 flex-1' : 'contents'}>
+          {lesson ? (
+            <EditorCanvas
+              document={lesson.canvasDocument}
+              activeNodeIds={[]}
+              runningEdgeIds={null}
+              nodeExecutionStates={undefined}
+              edgeExecutionStates={{}}
+              effectsPaused={false}
+              elementLooks={lesson.looks}
+              elementHints={lesson.hints}
+            />
+          ) : (
+            <EditorCanvas
+              document={document}
+              activeNodeIds={playback.active}
+              runningEdgeIds={playback.runningEdgeIds}
+              nodeExecutionStates={playback.nodeExecutionStates}
+              edgeExecutionStates={playback.edgeExecutionStates}
+              effectsPaused={playback.runMode === 'static'}
+            />
+          )}
 
-        <InspectorSidebar document={document} ariaLabel={inspectorLabel}>
-          {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
-        </InspectorSidebar>
+          <InspectorSidebar document={document} ariaLabel={inspectorLabel}>
+            {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
+          </InspectorSidebar>
+        </div>
       </main>
+      {lesson?.footer}
     </div>
   );
 }
