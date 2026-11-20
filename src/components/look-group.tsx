@@ -10,7 +10,12 @@ import { LOOK_TRANSITION, lookStyle } from '@/lib/lesson/lesson-step-view';
 export function LookGroup({ look, hint, children }: { look?: ElementLook; hint?: string; children: ReactNode }) {
   if (look === undefined && !hint) return <>{children}</>;
   return (
-    <g style={{ ...lookStyle(look ?? 'normal'), transition: LOOK_TRANSITION }}>
+    <g
+      style={{ ...lookStyle(look ?? 'normal'), transition: LOOK_TRANSITION }}
+      // Body shapes set their own pointer-events attribute, which beats the
+      // wrapper's inherited `none`; a stylesheet rule beats the attribute.
+      className={look === 'gone' ? '[&_*]:pointer-events-none' : undefined}
+    >
       {hint && <title>{hint}</title>}
       {children}
     </g>
