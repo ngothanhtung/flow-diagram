@@ -11,6 +11,8 @@ import { loadEditorSession } from './editor-session';
 import { DEFAULT_STEP_DELAY_MS, EDGE_DRAW_DURATION_MS, NODE_FADE_DURATION_MS } from './execution-timing';
 import type { ConnectionSide, DiagramSettings, DrawTool, EdgeStyleClass, FlowDocumentJSON, FlowEdge, FlowNode, LineCorner, NodePreset, NodeType } from './flowchart-types';
 import type { StoredDiagram } from './firebase/diagrams';
+import { pruneMissingElements, stampNewElements } from './lesson/lesson-edit';
+import { contentOf, toLessonDocument, type LessonContent, type LessonDocumentJSON } from './lesson/lesson-types';
 import { revisionOf, type DiagramRole } from './sharing';
 import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
 import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, isSceneryNode, nodeBounds } from './node-tree';
@@ -218,11 +220,15 @@ function selectedNodesOf(nodes: FlowNode[], selectedIds: string[]): FlowNode[] {
 /**
  * What one undo step restores: the document, plus the template/diagram it
  * was loaded from — so undoing a template pick also puts back the Info
- * panel and the Reset target, not just the canvas.
+ * panel and the Reset target, not just the canvas — plus the Lesson around
+ * the document, so undoing a delete brings an Element back together with
+ * its presence and per-step overrides. `lesson` is null outside the
+ * Lesson editor, which leaves every Diagram step exactly as it was.
  */
 export interface HistorySnapshot {
   doc: FlowDocumentJSON;
   loadedTemplate: LoadedTemplate | null;
+  lesson: LessonContent | null;
 }
 
 /**
@@ -253,7 +259,7 @@ export function sameDiagramContent(a: FlowDocumentJSON, b: FlowDocumentJSON): bo
 }
 
 function sameSnapshot(a: HistorySnapshot, b: HistorySnapshot): boolean {
-  return a.loadedTemplate === b.loadedTemplate && sameDiagramContent(a.doc, b.doc);
+  return a.loadedTemplate === b.loadedTemplate && jsonEqual(a.lesson, b.lesson) && sameDiagramContent(a.doc, b.doc);
 }
 
 /**
@@ -320,6 +326,15 @@ interface EditorState {
    *  base a Save compares against to detect a Save conflict. */
   currentRevision: number;
   savingDiagram: boolean;
+
+  /** The Lesson being edited around `doc` (its steps, presence and
+   *  overrides; the Diagram itself stays in `doc`). Null = not editing a
+   *  Lesson — the Diagram and Template editors never see anything else. */
+  lesson: LessonContent | null;
+  /** The Lesson step the Lesson editor is showing. Like the selection it is
+   *  outside `doc` and never an undo step; undo only moves it back to the
+   *  first step when the one shown no longer exists. */
+  lessonStepId: string | null;
 
   /** Undo/redo stacks — see *Undo / redo* in CLAUDE.md. Never persisted. */
   history: DocHistory<HistorySnapshot>;
@@ -473,12 +488,67 @@ interface EditorState {
    *  produced (null when nothing changed), so a caller can tell later
    *  whether that is still the latest step. */
   autoLayout: (direction: LayoutDirection) => { document: FlowDocumentJSON | null; moved: number; scoped: boolean };
+
+  // Lessons. While `lesson` is set, every write that changes `doc` also
+  // stamps and prunes the Lesson (see `withLessonBookkeeping`).
+  /** Open a Lesson (already through `normalizeLessonDocument`): a new
+   *  session like opening a Diagram — fresh history, no Diagram behind
+   *  the canvas, shown from its first step. */
+  openLesson: (document: LessonDocumentJSON) => void;
+  /** Import: the Diagram and the Lesson replaced together as one undo step,
+   *  shown from the first step. */
+  replaceLesson: (document: LessonDocumentJSON) => void;
+  /** Apply a pure Lesson edit (`lesson-edit.ts`) as an ordinary undo step.
+   *  A no-op outside a Lesson. */
+  editLesson: (recipe: (content: LessonContent) => LessonContent) => void;
+  /** Show another Lesson step in the editor. Not an undo step. */
+  setLessonStep: (stepId: string) => void;
+  /** Leave the Lesson editor: drops the Lesson, empties the canvas and the
+   *  history, and un-hydrates so the Diagram editor restores its own
+   *  session next instead of inheriting the Lesson's Diagram. */
+  closeLesson: () => void;
 }
 
 type EditorPatch = Partial<EditorState>;
 
 function snapshotOf(state: EditorState): HistorySnapshot {
-  return { doc: state.doc, loadedTemplate: state.loadedTemplate };
+  return { doc: state.doc, loadedTemplate: state.loadedTemplate, lesson: state.lesson };
+}
+
+/** The whole Lesson document being edited, or null outside a Lesson. */
+export function lessonDocumentOf(state: Pick<EditorState, 'doc' | 'lesson'>): LessonDocumentJSON | null {
+  return state.lesson ? toLessonDocument(state.doc, state.lesson) : null;
+}
+
+/** `stepId` when `lesson` still has it, else the first step (null outside a Lesson). */
+function existingStepId(lesson: LessonContent | null, stepId: string | null): string | null {
+  if (!lesson) return null;
+  return lesson.steps.some((step) => step.id === stepId) ? stepId : (lesson.steps[0]?.id ?? null);
+}
+
+/**
+ * Keeps the Lesson in step with the Diagram it annotates, centrally, the
+ * way `withRecordedHistory` keeps the history: every write that replaces
+ * `doc` while a Lesson is open has the Lesson follow along —
+ *   - an Element that is new in the patch's `doc` appears from the step
+ *     being shown (`stampNewElements`; nothing is stamped on the first
+ *     step, where "from the start" is already the default), and
+ *   - an Element that is gone loses its presence and per-step overrides
+ *     (`pruneMissingElements`), so the Lesson never points at nothing.
+ * Drawing, ⌘V, ⌘D, Duplicate and connecting a Line are therefore covered
+ * without any of those actions knowing Lessons exist. Runs *before*
+ * `withRecordedHistory`, so the stamped Lesson lands in the same undo
+ * step as the change that caused it.
+ *
+ * A patch that sets `history` (open/load/undo/redo/gesture) or `lesson`
+ * (Lesson actions, which bring a Lesson that already matches their
+ * document) is left alone — bookkeeping it would, say, re-stamp an undo.
+ */
+function withLessonBookkeeping(state: EditorState, patch: EditorPatch): EditorPatch {
+  if (state.lesson === null || 'history' in patch || 'lesson' in patch) return patch;
+  if (patch.doc === undefined || patch.doc === state.doc) return patch;
+  const lesson = pruneMissingElements(stampNewElements(state.lesson, state.doc, patch.doc, state.lessonStepId), patch.doc);
+  return lesson === state.lesson ? patch : { ...patch, lesson };
 }
 
 /**
@@ -494,14 +564,20 @@ function withRecordedHistory(state: EditorState, patch: EditorPatch): EditorPatc
   if ('history' in patch) return patch;
   const docChanged = patch.doc !== undefined && patch.doc !== state.doc;
   const templateChanged = 'loadedTemplate' in patch && patch.loadedTemplate !== state.loadedTemplate;
-  if (!docChanged && !templateChanged) return patch;
-  const after: HistorySnapshot = { doc: patch.doc ?? state.doc, loadedTemplate: 'loadedTemplate' in patch ? (patch.loadedTemplate ?? null) : state.loadedTemplate };
+  const lessonChanged = 'lesson' in patch && patch.lesson !== state.lesson;
+  if (!docChanged && !templateChanged && !lessonChanged) return patch;
+  const after: HistorySnapshot = {
+    doc: patch.doc ?? state.doc,
+    loadedTemplate: 'loadedTemplate' in patch ? (patch.loadedTemplate ?? null) : state.loadedTemplate,
+    lesson: 'lesson' in patch ? (patch.lesson ?? null) : state.lesson,
+  };
   const history = recordChange(state.history, snapshotOf(state), after, sameSnapshot);
   return history === state.history ? patch : { ...patch, history };
 }
 
 /** Undo/redo restore: the target snapshot, the user's run mode (see
- *  `restorePresentation`), and a selection trimmed to what still exists. */
+ *  `restorePresentation`), and a selection — and Lesson step — trimmed to
+ *  what still exists. */
 function restoreSnapshot(state: EditorState, snapshot: HistorySnapshot, from: HistorySnapshot): EditorPatch {
   const doc = restorePresentation(snapshot.doc, from.doc, state.doc);
   const nodeIds = new Set(doc.nodes.map((node) => node.id));
@@ -509,6 +585,8 @@ function restoreSnapshot(state: EditorState, snapshot: HistorySnapshot, from: Hi
   return {
     doc,
     loadedTemplate: snapshot.loadedTemplate,
+    lesson: snapshot.lesson,
+    lessonStepId: existingStepId(snapshot.lesson, state.lessonStepId),
     selectedNodeIds: selectedNodeIds.length === state.selectedNodeIds.length ? state.selectedNodeIds : selectedNodeIds,
     selectedNodeId: state.selectedNodeId && nodeIds.has(state.selectedNodeId) ? state.selectedNodeId : (selectedNodeIds.at(-1) ?? null),
     selectedEdgeId: state.selectedEdgeId && doc.edges.some((edge) => edge.id === state.selectedEdgeId) ? state.selectedEdgeId : null,
@@ -525,13 +603,14 @@ type EditorSet = (partial: EditorPatch | ((state: EditorState) => EditorPatch)) 
 
 /**
  * Store middleware that routes every write — the actions' `set` and any
- * outside `useEditorStore.setState` — through `withRecordedHistory`.
+ * outside `useEditorStore.setState` — through `withLessonBookkeeping`, then
+ * `withRecordedHistory`.
  */
 function recordingHistory(creator: (set: EditorSet, get: () => EditorState) => EditorState): StateCreator<EditorState> {
   return (rawSetState, get, api) => {
     const recordingSetState = (partial: EditorPatch | ((state: EditorState) => EditorPatch), replace?: boolean) => {
       const state = get();
-      const patch = withRecordedHistory(state, typeof partial === 'function' ? partial(state) : partial);
+      const patch = withRecordedHistory(state, withLessonBookkeeping(state, typeof partial === 'function' ? partial(state) : partial));
       if (replace) rawSetState(patch as EditorState, true);
       else rawSetState(patch);
     };
@@ -555,6 +634,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
   currentRole: 'owner',
   currentRevision: 0,
   savingDiagram: false,
+  lesson: null,
+  lessonStepId: null,
   history: emptyHistory<HistorySnapshot>(),
   historyRevision: 0,
 
@@ -593,6 +674,9 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
       currentOwnerEmail: session?.currentOwnerEmail ?? null,
       currentRole: session?.currentRole === 'edit' ? 'edit' : 'owner',
       currentRevision: session?.currentRevision ?? 0,
+      // The session is always a Diagram's; a Lesson never reaches it.
+      lesson: null,
+      lessonStepId: null,
       // A page load starts a fresh history; it is never persisted.
       history: emptyHistory<HistorySnapshot>(),
     });
@@ -628,6 +712,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
       currentRevision: revisionOf(diagram),
       // Snapshot so Reset restores the fetched document, not a template.
       loadedTemplate: { name: diagram.name, category: 'Saved diagram', description: '', document },
+      lesson: null,
+      lessonStepId: null,
       // Another diagram: its own, empty history.
       history: emptyHistory<HistorySnapshot>(),
     });
@@ -697,6 +783,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
       currentRole: 'owner',
       currentRevision: 0,
       loadedTemplate: template,
+      lesson: null,
+      lessonStepId: null,
       history: emptyHistory<HistorySnapshot>(),
     });
     get().resetCanvasState();
@@ -1403,6 +1491,67 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
     if (jsonEqual(result.document, doc)) return { document: null, moved: 0, scoped: selection.length > 0 };
     set({ doc: result.document });
     return { document: result.document, moved: result.movedNodeIds.length, scoped: selection.length > 0 };
+  },
+
+  // Opening a Lesson is opening, not an edit (fresh history, like
+  // `openTemplate`), and the canvas no longer holds a user Diagram — so
+  // nothing Diagram-specific may linger for the shell to show or save to.
+  // The Lesson editor keeps its own name, visibility and saved signature.
+  openLesson: (document) => {
+    const lesson = contentOf(document);
+    set({
+      doc: document.diagram,
+      lesson,
+      lessonStepId: existingStepId(lesson, null),
+      currentDiagramId: null,
+      savedSignature: null,
+      lastSavedAt: null,
+      lastSavedBy: null,
+      currentDiagramOwnerUid: null,
+      currentOwnerEmail: null,
+      currentRole: 'owner',
+      currentRevision: 0,
+      loadedTemplate: null,
+      history: emptyHistory<HistorySnapshot>(),
+    });
+    get().resetCanvasState();
+  },
+
+  // An Import is an edit: the patch carries `lesson`, so bookkeeping leaves
+  // the imported Lesson exactly as given, and no `history`, so the
+  // middleware records Diagram + Lesson as one step.
+  replaceLesson: (document) => {
+    const lesson = contentOf(document);
+    set({ doc: document.diagram, lesson, lessonStepId: existingStepId(lesson, null) });
+    get().resetCanvasState();
+  },
+
+  editLesson: (recipe) => {
+    const { lesson, lessonStepId } = get();
+    if (!lesson) return;
+    const next = recipe(lesson);
+    if (next === lesson) return;
+    // Deleting the step being shown hands the editor to the first step.
+    set({ lesson: next, lessonStepId: existingStepId(next, lessonStepId) });
+  },
+
+  setLessonStep: (stepId) => set({ lessonStepId: stepId }),
+
+  // `hydrated: false` is what makes the Diagram editor, mounted next in the
+  // same SPA session, restore its own localStorage session; the emptied
+  // `doc` and null `currentDiagramId` keep it from ever mistaking — or
+  // autosaving — the Lesson's Diagram for one of its own before then.
+  closeLesson: () => {
+    set({
+      hydrated: false,
+      doc: { nodes: [], edges: [] },
+      lesson: null,
+      lessonStepId: null,
+      loadedTemplate: null,
+      currentDiagramId: null,
+      history: emptyHistory<HistorySnapshot>(),
+    });
+    get().resetCanvasState();
   },
 })));
 
