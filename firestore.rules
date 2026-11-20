@@ -335,6 +335,35 @@ service cloud.firestore {
       allow create, update, delete: if request.auth != null && isAdministrator();
     }
 
+    // Lessons: a Diagram plus Narration, stored per user like Diagrams but
+    // never shared. The Owner reads and writes; administrators may read
+    // (support), not edit. Not a Diagram, so none of the Share rules apply.
+    match /users/{userId}/lessons/{lessonId} {
+      allow get, list: if hasAccess() && (request.auth.uid == userId || isAdministrator());
+      allow create, update, delete: if hasAccess() && request.auth.uid == userId;
+    }
+
+    // Flat mirror of a Lesson flagged `public: true`, keyed by the same doc
+    // id as its `users/{uid}/lessons/{id}` source, read with a single get()
+    // by anonymous viewers. No list: a link is the only way in. As with
+    // public-diagrams, the exists() check is the ownership proof (ids are
+    // auto-ids, not derivable from uid).
+    match /public-lessons/{lessonId} {
+      allow get: if true;
+      allow list: if false;
+      allow create: if hasAccess()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.public == true
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid)/lessons/$(lessonId));
+      allow update: if hasAccess()
+        && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.public == true
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid)/lessons/$(lessonId));
+      // `resource == null`: clearing a mirror that doesn't exist is not a denial.
+      allow delete: if hasAccess() && (resource == null || resource.data.ownerUid == request.auth.uid);
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
