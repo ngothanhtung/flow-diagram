@@ -60,6 +60,12 @@ describe('editor store lesson branch', () => {
     expect(store().loadedTemplate).toBeNull();
   });
 
+  it('openLesson clears hydrated, so a Diagram editor mounted later restores its own session', () => {
+    useEditorStore.setState({ hydrated: true });
+    store().openLesson(lessonDocument());
+    expect(store().hydrated).toBe(false);
+  });
+
   it('drawing on a later step stamps presence from that step', () => {
     store().openLesson(lessonDocument());
     store().setLessonStep('s2');
@@ -194,6 +200,31 @@ describe('editor store lesson branch', () => {
     store().setLessonStep('s2');
     store().undo();
     expect(store().lessonStepId).toBe('s2');
+  });
+
+  it('setLessonStep ignores an id that is not a step of the open lesson', () => {
+    store().openLesson(lessonDocument());
+    store().setLessonStep('s2');
+    store().setLessonStep('nope');
+    expect(store().lessonStepId).toBe('s2');
+  });
+
+  it('setLessonStep does nothing outside a lesson', () => {
+    store().setLessonStep('s1');
+    expect(store().lessonStepId).toBeNull();
+  });
+
+  it('bookkeeping stamps with an existing step even if lessonStepId went stale', () => {
+    store().openLesson(lessonDocument());
+    // A stale id slipped in from outside the actions: it is never stamped.
+    useEditorStore.setState({ lessonStepId: 'gone' });
+    const id = store().onShapeCreate('rounded', { x: 100, y: 400 }, 120, 60);
+    // Falls back to the first step, where "from the start" needs no stamp.
+    expect(store().lesson!.presence[id]).toBeUndefined();
+
+    store().setLessonStep('s2');
+    const later = store().onShapeCreate('rounded', { x: 700, y: 400 }, 120, 60);
+    expect(store().lesson!.presence[later]).toEqual({ from: 's2' });
   });
 
   it('lessonDocumentOf is null outside a lesson and the whole document inside one', () => {

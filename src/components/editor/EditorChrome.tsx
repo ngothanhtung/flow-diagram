@@ -183,13 +183,14 @@ export function SaveButton({ saving, dirty, onSave }: { saving: boolean; dirty: 
   );
 }
 
-/** Download the current document as a `.json` file. */
-export function downloadDocumentJson(document: object, filename: string) {
+/** Download the current document as a `.json` file (`extension` names
+ *  another JSON flavour, e.g. `.lesson.json`). */
+export function downloadDocumentJson(document: object, filename: string, extension = '.json') {
   const blob = new Blob([JSON.stringify(document, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const anchor = globalThis.document.createElement('a');
   anchor.href = url;
-  anchor.download = `${filename.replace(/[^a-z0-9-_]+/gi, '-')}.json`;
+  anchor.download = `${filename.replace(/[^a-z0-9-_]+/gi, '-')}${extension}`;
   anchor.click();
   URL.revokeObjectURL(url);
 }

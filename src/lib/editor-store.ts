@@ -501,7 +501,8 @@ interface EditorState {
   /** Apply a pure Lesson edit (`lesson-edit.ts`) as an ordinary undo step.
    *  A no-op outside a Lesson. */
   editLesson: (recipe: (content: LessonContent) => LessonContent) => void;
-  /** Show another Lesson step in the editor. Not an undo step. */
+  /** Show another Lesson step in the editor. Not an undo step; an id
+   *  that is not a step of the open Lesson is ignored. */
   setLessonStep: (stepId: string) => void;
   /** Leave the Lesson editor: drops the Lesson, empties the canvas and the
    *  history, and un-hydrates so the Diagram editor restores its own
@@ -547,7 +548,9 @@ function existingStepId(lesson: LessonContent | null, stepId: string | null): st
 function withLessonBookkeeping(state: EditorState, patch: EditorPatch): EditorPatch {
   if (state.lesson === null || 'history' in patch || 'lesson' in patch) return patch;
   if (patch.doc === undefined || patch.doc === state.doc) return patch;
-  const lesson = pruneMissingElements(stampNewElements(state.lesson, state.doc, patch.doc, state.lessonStepId), patch.doc);
+  // Stamped with a step the Lesson has — never an id it doesn't know.
+  const stepId = existingStepId(state.lesson, state.lessonStepId);
+  const lesson = pruneMissingElements(stampNewElements(state.lesson, state.doc, patch.doc, stepId), patch.doc);
   return lesson === state.lesson ? patch : { ...patch, lesson };
 }
 
@@ -1500,6 +1503,9 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
   openLesson: (document) => {
     const lesson = contentOf(document);
     set({
+      // Like `closeLesson`: a Diagram editor mounted later always restores
+      // its own session, even if this Lesson was never closed.
+      hydrated: false,
       doc: document.diagram,
       lesson,
       lessonStepId: existingStepId(lesson, null),
@@ -1535,7 +1541,11 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
     set({ lesson: next, lessonStepId: existingStepId(next, lessonStepId) });
   },
 
-  setLessonStep: (stepId) => set({ lessonStepId: stepId }),
+  // Only a step of the open Lesson can be shown; anything else is ignored.
+  setLessonStep: (stepId) => {
+    if (!get().lesson?.steps.some((step) => step.id === stepId)) return;
+    set({ lessonStepId: stepId });
+  },
 
   // `hydrated: false` is what makes the Diagram editor, mounted next in the
   // same SPA session, restore its own localStorage session; the emptied

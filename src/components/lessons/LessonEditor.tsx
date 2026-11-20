@@ -1,0 +1,379 @@
+'use client';
+
+import { Check, Copy, Globe, GraduationCap, LoaderCircle, LockKeyhole, TriangleAlert } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { toast } from 'sonner';
+import { useAuth } from '@/components/auth/AuthProvider';
+import { AuthLoadingScreen } from '@/components/auth/LoginForm';
+import { UserMenu } from '@/components/auth/UserMenu';
+import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
+import { EditorShell } from '@/components/editor/EditorShell';
+import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
+import { LessonStepBar } from '@/components/lessons/LessonStepBar';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { lessonDocumentOf, useEditorStore } from '@/lib/editor-store';
+import { createLesson, loadLesson, saveLesson, setLessonPublic } from '@/lib/firebase/lessons';
+import { normalizeLessonDocument } from '@/lib/lesson/lesson-normalize';
+import { lessonRestoreChoice, loadLessonSession, saveLessonSession } from '@/lib/lesson/lesson-session';
+import { resolveStepView, stepExportDocument } from '@/lib/lesson/lesson-step-view';
+import { emptyLessonDocument, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
+
+type Status = 'loading' | 'ready' | 'not-found' | 'invalid' | 'error';
+
+const STATUS_COPY: Record<Exclude<Status, 'ready'>, [string, string]> = {
+  loading: ['Loading lesson…', 'Opening the lesson.'],
+  'not-found': ['Lesson not found', 'No lesson of yours has this id.'],
+  invalid: ["This lesson can't be opened", 'Its content is damaged and could not be repaired.'],
+  error: ['Could not load lesson', 'Check your connection and try again.'],
+};
+
+/** Inline editor for the lesson name in the header. Click to edit,
+ *  Enter or blur commits, Escape cancels. */
+function LessonName({ name, onRename }: { name: string; onRename: (name: string) => void }) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(name);
+
+  if (editing) {
+    return (
+      <Input
+        autoFocus
+        variant='toolbar'
+        value={draft}
+        maxLength={80}
+        aria-label='Lesson name'
+        onChange={(event) => setDraft(event.target.value)}
+        onFocus={(event) => event.target.select()}
+        onBlur={() => {
+          setEditing(false);
+          const next = draft.trim();
+          if (next && next !== name) onRename(next);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
+          if (event.key === 'Escape') {
+            setDraft(name);
+            setEditing(false);
+          }
+        }}
+        className='h-6 w-40 border-sky-400/40 px-1.5 py-0.5 text-xs sm:w-56'
+      />
+    );
+  }
+
+  return (
+    <button
+      type='button'
+      onClick={() => {
+        setDraft(name);
+        setEditing(true);
+      }}
+      title='Rename lesson'
+      className='-mx-1 max-w-40 truncate rounded px-1 text-xs text-muted-foreground transition hover:bg-accent hover:text-accent-foreground sm:max-w-none'
+    >
+      {name}
+    </button>
+  );
+}
+
+/** Header control for the lesson's Public link: the switch applies at
+ *  once (`setLessonPublic`), and publishes what is saved, not the canvas. */
+function LessonPublicControl({ uid, lessonId, isPublic, dirty, onChange }: { uid: string; lessonId: string; isPublic: boolean; dirty: boolean; onChange: (isPublic: boolean) => void }) {
+  const [pending, setPending] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const toggle = async () => {
+    const next = !isPublic;
+    setPending(true);
+    try {
+      await setLessonPublic(uid, lessonId, next);
+      onChange(next);
+      toast.success(next ? 'Public link is on' : 'Public link is off', {
+        description: next ? 'It shows the last saved version.' : 'The Public link no longer opens this lesson.',
+      });
+    } catch (error) {
+      console.error('Could not change the Public link', error);
+      toast.error(next ? 'Could not turn the Public link on' : 'Could not turn the Public link off', { description: 'Check your connection and try again.' });
+    } finally {
+      setPending(false);
+    }
+  };
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(`${window.location.origin}/lessons/${lessonId}/view`);
+      setCopied(true);
+      toast.success('Public link copied');
+    } catch {
+      toast.error('Could not copy the link');
+    }
+  };
+
+  return (
+    <Popover onOpenChange={(open) => !open && setCopied(false)}>
+      <PopoverTrigger
+        render={<Button variant='toolbar' size='lg' />}
+        title={isPublic ? 'The Public link is on' : 'Turn on the Public link'}
+        className={isPublic ? 'text-emerald-700 hover:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-200' : ''}
+      >
+        {isPublic ? <Globe size={13} className='text-emerald-700 dark:text-emerald-300' /> : <LockKeyhole size={13} />}
+        {isPublic ? 'Public' : 'Private'}
+      </PopoverTrigger>
+      <PopoverContent align='start' className='w-80 border border-border bg-popover p-4'>
+        <div className='flex items-start justify-between gap-3'>
+          <div className='min-w-0'>
+            <h3 className='flex items-center gap-1.5 text-xs font-semibold text-foreground'>
+              {isPublic ? <Globe size={13} className='text-emerald-700 dark:text-emerald-300' /> : <LockKeyhole size={13} className='text-muted-foreground' />}
+              Public link
+            </h3>
+            <p className='mt-1 text-[11px] leading-5 text-muted-foreground'>{isPublic ? 'On — anyone with the link can view this lesson, without signing in.' : 'Off — only you can open this lesson.'}</p>
+          </div>
+          <button
+            type='button'
+            role='switch'
+            aria-checked={isPublic}
+            aria-label='Public link'
+            disabled={pending}
+            onClick={() => void toggle()}
+            className={[
+              'relative mt-0.5 inline-flex h-5 w-9 shrink-0 items-center rounded-full ring-1 transition outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-60',
+              isPublic ? 'bg-emerald-500 ring-emerald-500/60' : 'bg-muted ring-border',
+            ].join(' ')}
+          >
+            <span className={['inline-block size-4 rounded-full bg-background shadow transition-transform', isPublic ? 'translate-x-4.5' : 'translate-x-0.5'].join(' ')} />
+            {pending && <LoaderCircle size={10} className='absolute inset-0 m-auto animate-spin text-foreground' />}
+          </button>
+        </div>
+        <p className='text-[11px] leading-5 text-muted-foreground' data-testid='public-note'>
+          The Public link shows the last saved version.
+          {isPublic && dirty && <span className='font-semibold text-amber-700 dark:text-amber-300'> You have unsaved changes — Save to publish them.</span>}
+        </p>
+        {isPublic && (
+          <Button variant='accent' size='sm' className='h-8 self-start' onClick={() => void copyLink()}>
+            {copied ? <Check size={13} /> : <Copy size={13} />}
+            {copied ? 'Copied' : 'Copy link'}
+          </Button>
+        )}
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+/**
+ * The Lesson editor at `/lessons/{id}/edit`: the Diagram editor's shell
+ * around a Lesson — the canvas shows the selected Lesson step, the bottom
+ * bar picks and arranges Lesson steps. Opens the local session copy when
+ * it is this Lesson with unsaved changes, else the server's (both through
+ * `normalizeLessonDocument`). Its own localStorage session
+ * (`lesson-session.ts`) never touches the Diagram editor's; leaving calls
+ * `closeLesson()`, so a Diagram editor mounted next restores its own.
+ */
+export function LessonEditor({ lessonId }: { lessonId: string }) {
+  const { user } = useAuth();
+  const uid = user?.uid ?? null;
+  const router = useRouter();
+
+  const [status, setStatus] = useState<Status>('loading');
+  const [name, setName] = useState('Untitled lesson');
+  const [isPublic, setIsPublic] = useState(false);
+  const [savedSignature, setSavedSignature] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [confirmNewOpen, setConfirmNewOpen] = useState(false);
+  const [convertThemeOpen, setConvertThemeOpen] = useState(false);
+  const [sqlOpen, setSqlOpen] = useState(false);
+
+  // Open the route's Lesson. A layout effect, like the Diagram editor's
+  // hydrate: the store write happens before paint, never during render.
+  useLayoutEffect(() => {
+    if (!uid) return;
+    let cancelled = false;
+    const open = (document: LessonDocumentJSON, opened: { name: string; isPublic: boolean; savedSignature?: string | null }) => {
+      const store = useEditorStore.getState();
+      store.openLesson(document);
+      setName(opened.name);
+      setIsPublic(opened.isPublic);
+      // A fresh open is clean: the signature is the document exactly as the
+      // store rebuilds it, so key order can't make it read dirty.
+      setSavedSignature(opened.savedSignature !== undefined ? opened.savedSignature : JSON.stringify(lessonDocumentOf(useEditorStore.getState())));
+      setStatus('ready');
+    };
+
+    const session = loadLessonSession(uid);
+    if (session && lessonRestoreChoice(session, lessonId) === 'local') {
+      const result = normalizeLessonDocument(session.document);
+      if (result.ok) {
+        open(result.lesson, session);
+        return () => {
+          cancelled = true;
+        };
+      }
+      console.warn('Ignoring a damaged local copy of this lesson', result.error);
+    }
+
+    loadLesson(uid, lessonId)
+      .then((stored) => {
+        if (cancelled) return;
+        if (!stored) return setStatus('not-found');
+        const result = normalizeLessonDocument(stored.document);
+        if (!result.ok) return setStatus('invalid');
+        open(result.lesson, { name: stored.name || 'Untitled lesson', isPublic: stored.public === true });
+      })
+      .catch((error: unknown) => {
+        console.error('Could not open lesson', error);
+        if (!cancelled) setStatus('error');
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [uid, lessonId]);
+
+  // Leaving the Lesson editor drops the Lesson from the shared store.
+  useEffect(() => () => useEditorStore.getState().closeLesson(), []);
+
+  const doc = useEditorStore((state) => state.doc);
+  const lesson = useEditorStore((state) => state.lesson);
+  const lessonStepId = useEditorStore((state) => state.lessonStepId);
+
+  const lessonDocument = useMemo(() => lessonDocumentOf({ doc, lesson }), [doc, lesson]);
+  const signature = useMemo(() => (lessonDocument ? JSON.stringify(lessonDocument) : null), [lessonDocument]);
+  const dirty = signature !== savedSignature;
+  const view = useMemo(() => (lesson ? resolveStepView(doc, lesson, lessonStepId ?? '', 'editor') : null), [doc, lesson, lessonStepId]);
+  const imageDocument = useMemo(() => (view ? stepExportDocument(view) : undefined), [view]);
+
+  // Local autosave of everything a refresh needs, on every change.
+  useEffect(() => {
+    if (!uid || status !== 'ready' || !lessonDocument) return;
+    saveLessonSession(uid, { lessonId, name, isPublic, savedSignature, document: lessonDocument });
+  }, [uid, status, lessonId, name, isPublic, savedSignature, lessonDocument]);
+
+  useEffect(() => {
+    if (!dirty || status !== 'ready') return;
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [dirty, status]);
+
+  const handleSave = useCallback(async () => {
+    if (!uid || saving) return;
+    const document = lessonDocumentOf(useEditorStore.getState());
+    if (!document) return;
+    const nextName = name.trim();
+    if (!nextName) {
+      toast.error('Please name the lesson');
+      return;
+    }
+    setSaving(true);
+    try {
+      await saveLesson(uid, lessonId, nextName, document, isPublic);
+      setSavedSignature(JSON.stringify(document));
+      toast.success('Lesson saved', { description: nextName });
+    } catch (error) {
+      console.error('Could not save lesson', error);
+      toast.error('Could not save lesson', { description: 'Check your connection and try again.' });
+    } finally {
+      setSaving(false);
+    }
+  }, [uid, saving, name, lessonId, isPublic]);
+
+  const createAndOpen = useCallback(async () => {
+    if (!uid) return;
+    setCreating(true);
+    try {
+      const id = await createLesson(uid, 'Untitled lesson', emptyLessonDocument());
+      router.push(`/lessons/${id}/edit`);
+    } catch (error) {
+      console.error('Could not create lesson', error);
+      toast.error('Could not create lesson', { description: 'Check your connection and try again.' });
+    } finally {
+      setCreating(false);
+    }
+  }, [uid, router]);
+
+  if (!user) return <AuthLoadingScreen />;
+
+  if (status !== 'ready' || !lesson || !view || !lessonDocument) {
+    const [title, description] = STATUS_COPY[status === 'ready' ? 'loading' : status];
+    return <EditorStatusScreen fullScreen loading={status === 'loading' || status === 'ready'} title={title} description={description} backHref='/lessons' backLabel='Back to lessons' />;
+  }
+
+  const fileName = name.trim() || 'lesson';
+
+  return (
+    <EditorShell
+      fullScreen
+      document={doc}
+      onSave={() => void handleSave()}
+      icon={<GraduationCap size={18} className='text-sky-300' />}
+      subtitle={<LessonName name={name} onRename={setName} />}
+      fileMenu={
+        <EditorFileMenu
+          onNew={() => (dirty ? setConfirmNewOpen(true) : void createAndOpen())}
+          newDisabled={creating}
+          openHref='/lessons'
+          onExport={() => downloadDocumentJson(lessonDocument, fileName, '.lesson.json')}
+          exportLabel='Export lesson to JSON'
+          onExportSql={() => setSqlOpen(true)}
+          onConvertColorTheme={() => setConvertThemeOpen(true)}
+          imageName={fileName}
+          imageDocument={imageDocument}
+        />
+      }
+      actions={
+        <>
+          <LessonPublicControl uid={user.uid} lessonId={lessonId} isPublic={isPublic} dirty={dirty} onChange={setIsPublic} />
+          <SaveButton saving={saving} dirty={dirty} onSave={() => void handleSave()} />
+        </>
+      }
+      headerEnd={<UserMenu user={user} />}
+      info={{
+        category: 'Lesson',
+        title: lesson.meta.title || name,
+        description: lesson.meta.summary,
+        note: 'The canvas shows the selected lesson step. Elements outside it are faded; hover one to see when it appears.',
+      }}
+      inspectorLabel='Lesson inspector'
+      lesson={{
+        canvasDocument: view.document,
+        looks: view.looks,
+        hints: view.hints,
+        // Task 11 puts the Narration panel here.
+        leftPanel: <div className='p-4 text-xs text-muted-foreground'>Narration for the selected lesson step.</div>,
+        footer: <LessonStepBar />,
+      }}
+    >
+      <ConvertColorThemeDialog open={convertThemeOpen} onOpenChange={setConvertThemeOpen} />
+      <SqlExportDialog document={doc} filename={fileName} open={sqlOpen} onOpenChange={setSqlOpen} />
+      <AlertDialog open={confirmNewOpen} onOpenChange={setConfirmNewOpen}>
+        <AlertDialogContent className='border border-border bg-popover'>
+          <AlertDialogHeader>
+            <AlertDialogMedia className='bg-amber-400/10 text-amber-700 dark:text-amber-300'>
+              <TriangleAlert />
+            </AlertDialogMedia>
+            <AlertDialogTitle>Leave unsaved changes?</AlertDialogTitle>
+            <AlertDialogDescription>This lesson has changes that are not saved. A new lesson replaces it here, and those changes will be lost.</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              variant='destructive'
+              onClick={() => {
+                // Base UI action buttons don't auto-close with a custom onClick.
+                setConfirmNewOpen(false);
+                void createAndOpen();
+              }}
+            >
+              New lesson
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </EditorShell>
+  );
+}
