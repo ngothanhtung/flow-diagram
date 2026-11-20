@@ -11,6 +11,8 @@ import { localEndpointsOfLine } from '@/lib/line-geometry';
 import type { ConnectionSide, EdgeMarker, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
 import { GROUP_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from './node-effect-layer';
+import type { ElementLook } from '@/lib/lesson/lesson-types';
+import { LookGroup } from './look-group';
 import { TableCardBody } from './TableCardBody';
 import type { ViewTransform } from '@/lib/view-transform';
 import { NODE_BOUNDING_RADIUS } from './edge-geometry';
@@ -69,6 +71,10 @@ interface FlowNodeCardProps {
   onPortPointerDown: (nodeId: string, side: ConnectionSide, e: React.PointerEvent<SVGElement>) => void;
   onPortPointerUp: (nodeId: string, side: ConnectionSide, e: React.PointerEvent<SVGElement>) => void;
   registerSvgRef: (el: SVGGElement | null) => void;
+  /** Lesson look: opacity + fade, and a cyan outline for `emphasis`. */
+  look?: ElementLook;
+  /** Hover hint, rendered as an SVG `<title>`. */
+  hint?: string;
 }
 
 const PORT_HIT_R = 18;
@@ -187,6 +193,8 @@ export function FlowNodeCard({
   onPortPointerDown,
   onPortPointerUp,
   registerSvgRef,
+  look,
+  hint,
 }: FlowNodeCardProps) {
   const style = resolveNodeStyle(node);
   const isGroup = node.type === 'group';
@@ -472,10 +480,11 @@ export function FlowNodeCard({
   };
 
   return (
-    // Outer <g> only carries the hover group and cursor; the inner <g>
-    // applies the position translate. There is deliberately no entry
-    // animation here — `effect: 'none'` has to mean the node never moves,
-    // and a spring-in ran on every mount and every canvas re-seed.
+    <LookGroup look={look} hint={hint}>
+    {/* Outer <g> only carries the hover group and cursor; the inner <g>
+        applies the position translate. There is deliberately no entry
+        animation here — `effect: 'none'` has to mean the node never moves,
+        and a spring-in ran on every mount and every canvas re-seed. */}
     <g className='group/node cursor-grab active:cursor-grabbing'>
       <g
         ref={registerSvgRef}
@@ -1053,8 +1062,22 @@ export function FlowNodeCard({
             paused={effectsPaused}
           />
         )}
+        {look === 'emphasis' && (
+          <g transform={outline.transform} pointerEvents='none'>
+            <path
+              d={outline.d}
+              className='fill-none'
+              stroke='#22d3ee'
+              strokeWidth={2.5}
+              strokeLinejoin='round'
+              vectorEffect='non-scaling-stroke'
+              style={{ filter: 'drop-shadow(0 0 6px rgba(34, 211, 238, 0.6))' }}
+            />
+          </g>
+        )}
         </g>
       </g>
     </g>
+    </LookGroup>
   );
 }

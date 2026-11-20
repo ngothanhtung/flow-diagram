@@ -5,6 +5,7 @@ import { ShapeToolbar } from '@/components/ShapeToolbar';
 import { SelectionToolbar } from '@/components/editor/SelectionToolbar';
 import { useHistoryGestureScope } from '@/components/editor/use-history-gesture-scope';
 import { useEditorStore } from '@/lib/editor-store';
+import type { ElementLook } from '@/lib/lesson/lesson-types';
 import type { ExecutionState, FlowDocumentJSON } from '@/lib/flowchart-types';
 
 interface EditorCanvasProps {
@@ -14,6 +15,9 @@ interface EditorCanvasProps {
   nodeExecutionStates: Record<string, ExecutionState> | undefined;
   edgeExecutionStates: Record<string, ExecutionState>;
   effectsPaused: boolean;
+  /** Lesson looks / hover hints by element id, passed straight to `FlowCanvas`. */
+  elementLooks?: Record<string, ElementLook>;
+  elementHints?: Record<string, string>;
 }
 
 /**
@@ -22,7 +26,7 @@ interface EditorCanvasProps {
  * ~40 props `FlowCanvas` needs, so a change to canvas behaviour lands in
  * both places at once.
  */
-export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExecutionStates, edgeExecutionStates, effectsPaused }: EditorCanvasProps) {
+export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExecutionStates, edgeExecutionStates, effectsPaused, elementLooks, elementHints }: EditorCanvasProps) {
   const seed = useEditorStore((state) => state.seed);
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
   const selectedNodeIds = useEditorStore((state) => state.selectedNodeIds);
@@ -50,6 +54,8 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
         nodeExecutionStates={nodeExecutionStates}
         edgeExecutionStates={edgeExecutionStates}
         effectsPaused={effectsPaused}
+        elementLooks={elementLooks}
+        elementHints={elementHints}
         selectedNodeId={selectedNodeId}
         selectedNodeIds={selectedNodeIds}
         onSelectNode={selectNode}

@@ -9,6 +9,8 @@ import { NODE_FONT_FAMILIES } from '@/lib/node-fonts';
 import { buildEdgeGeometry, edgeLabelAnchor } from './edge-geometry';
 import { EdgeEffectLayer } from './edge-effect-layer';
 import { EdgeMarkerSymbol } from './edge-marker';
+import type { ElementLook } from '@/lib/lesson/lesson-types';
+import { LookGroup } from './look-group';
 
 interface AnimatedEdgeProps {
   edge: FlowEdge;
@@ -44,9 +46,13 @@ interface AnimatedEdgeProps {
    *  rather than intentional; hiding it reads as the plain reference
    *  diagram `static` is meant to show. */
   flattenEffect?: boolean;
+  /** Lesson look: opacity + fade. Edges draw nothing extra for `emphasis`. */
+  look?: ElementLook;
+  /** Hover hint, rendered as an SVG `<title>`. */
+  hint?: string;
 }
 
-export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, onLabelPointerDown, onDoubleClick, selected = false, tone = 'text-sky-300', color, effectColor: rawEffectColor, performanceMode = false, executionState = 'normal', flattenEffect = false }: AnimatedEdgeProps) {
+export function AnimatedEdge({ edge, from, to, paused = false, interactive = false, onClick, onLabelPointerDown, onDoubleClick, selected = false, tone = 'text-sky-300', color, effectColor: rawEffectColor, performanceMode = false, executionState = 'normal', flattenEffect = false, look, hint }: AnimatedEdgeProps) {
   const geometry = buildEdgeGeometry(edge, from, to);
   const { d, start, end, startAngle, angle, length } = geometry;
   // Every optional field is read through its vocabulary, like
@@ -105,6 +111,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
   // destination's centre is the length of the in-anchor plus a small
   // gap so the arrow doesn't overlap the port dot.
   return (
+    <LookGroup look={look} hint={hint}>
     <g className={tone} opacity={lowPower ? 0.42 : executionState === 'completed' ? 0.72 : 1} style={{ color: lowPower && !selected ? '#52525b' : color }}>
       {maskedDraw && (
         <defs>
@@ -217,6 +224,7 @@ export function AnimatedEdge({ edge, from, to, paused = false, interactive = fal
       )}
 
     </g>
+    </LookGroup>
   );
 }
 

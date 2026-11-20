@@ -16,6 +16,7 @@ import { Separator } from '@/components/ui/separator';
 import { AnimatedEdge } from './AnimatedEdge';
 import { FlowNodeCard } from './FlowNodeCard';
 import { GhostEdge } from './GhostEdge';
+import type { ElementLook } from '@/lib/lesson/lesson-types';
 import { buildEdgeGeometry, nodePortAnchor, pointAlongEdgeGeometry } from './edge-geometry';
 
 interface LinkState {
@@ -115,6 +116,13 @@ interface FlowCanvasProps {
   /** Reports the snap toggle and grid size whenever they change, so the
    *  editor's keyboard nudge can step by one grid cell. */
   onGridChange?: (grid: { snapEnabled: boolean; gridSize: number }) => void;
+  /** Lesson looks by node/edge id. Elements absent from the map render
+   *  `normal`; `gone` elements stay mounted so they can fade. */
+  elementLooks?: Record<string, ElementLook>;
+  /** Hover hints by node/edge id. */
+  elementHints?: Record<string, string>;
+  /** Each change after mount re-fits the view, like the Fit button. */
+  fitSignal?: number;
 }
 
 const MIN_ZOOM_RATIO = 0.25;
@@ -189,6 +197,9 @@ export function FlowCanvas({
   onToggleInfo,
   readOnly = false,
   onGridChange,
+  elementLooks,
+  elementHints,
+  fitSignal,
 }: FlowCanvasProps) {
   // Named line styles are merged in once, here, rather than at each of
   // the dozen places downstream that read an edge's colour, width,
@@ -204,6 +215,12 @@ export function FlowCanvas({
     height: number;
   } | null>(null);
   const [viewOverride, setViewOverride] = useState<ViewTransform | null>(null);
+  const lastFitSignal = useRef(fitSignal);
+  useEffect(() => {
+    if (lastFitSignal.current === fitSignal) return;
+    lastFitSignal.current = fitSignal;
+    setViewOverride(null);
+  }, [fitSignal]);
   const [snapEnabled, setSnapEnabled] = useState(true);
   const [gridVisible, setGridVisible] = useState(!readOnly);
   const [gridSize, setGridSize] = useState<number>(DEFAULT_GRID_SIZE);
@@ -1063,6 +1080,8 @@ export function FlowCanvas({
                 performanceMode={performanceMode}
                 executionState={edgeExecutionStates?.[edge.id] ?? 'normal'}
                 flattenEffect={effectsPaused}
+                look={elementLooks ? (elementLooks[edge.id] ?? 'normal') : undefined}
+                hint={elementHints?.[edge.id]}
               />
             );
           })}
@@ -1113,6 +1132,8 @@ export function FlowCanvas({
                 onDragEnd={onNodeDragEnd}
                 onPortPointerDown={handlePortPointerDown}
                 onPortPointerUp={handlePortPointerUp}
+                look={elementLooks ? (elementLooks[node.id] ?? 'normal') : undefined}
+                hint={elementHints?.[node.id]}
                 registerSvgRef={() => {
                   // We rely on the parent SVG ref for coord conversion;
                   // individual node refs aren't needed at the canvas level.
