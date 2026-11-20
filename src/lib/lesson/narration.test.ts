@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseNarration } from './narration';
+import { parseChangeLine, parseNarration } from './narration';
 
 describe('parseNarration', () => {
   it('splits paragraphs on blank lines', () => {
@@ -29,5 +29,17 @@ describe('parseNarration', () => {
     const [p] = parseNarration(src);
     expect(p.every((i) => i.kind === 'text')).toBe(true);
     expect(p.map((i) => i.text).join('')).toBe(src);
+  });
+});
+
+describe('parseChangeLine', () => {
+  it.each([
+    ['+ a', { sign: '+', text: 'a' }],
+    ['  ~b', { sign: '~', text: 'b' }],
+    ['- x y', { sign: '-', text: 'x y' }],
+    ['plain', { sign: null, text: 'plain' }],
+    ['', { sign: null, text: '' }],
+  ])('%j', (line, expected) => {
+    expect(parseChangeLine(line)).toEqual(expected);
   });
 });

@@ -62,18 +62,18 @@ describe('normalizeLessonDocument', () => {
     expect(result.fixes.length).toBeGreaterThan(0);
   });
 
-  it('drops references to missing elements and steps', () => {
+  it('drops references to missing elements and steps, and non-text change lines', () => {
     const result = ok(
       lessonWith(
         { presence: { ghost: { from: 's1' }, a: { from: 'nope' } }, meta: { title: 'T', summary: '', metrics: [], goals: [{ text: 'g', step: 'nope' }] } },
-        { overrides: { ghost: { title: 'x' } }, changes: ['ghost', 'a'] },
+        { overrides: { ghost: { title: 'x' } }, changes: ['+ a line', 7] },
       ),
     );
     const { lesson } = result;
     expect(lesson.presence.ghost).toBeUndefined();
     expect(lesson.presence.a).toBeUndefined();
     expect(lesson.steps[0].overrides.ghost).toBeUndefined();
-    expect(lesson.steps[0].changes).toEqual(['a']);
+    expect(lesson.steps[0].changes).toEqual(['+ a line']);
     expect(lesson.meta.goals).toEqual([]);
   });
 

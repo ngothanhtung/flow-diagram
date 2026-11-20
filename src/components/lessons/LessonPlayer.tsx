@@ -6,6 +6,7 @@ import { FlowCanvas } from '@/components/FlowCanvas';
 import { NarrationText } from '@/components/lessons/NarrationText';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
+import { parseChangeLine } from '@/lib/lesson/narration';
 import { resolveStepView } from '@/lib/lesson/lesson-step-view';
 import { CALLOUT_KINDS, LESSON_CHAPTERS, contentOf, type CalloutKind, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
 
@@ -24,6 +25,8 @@ const CALLOUT_STYLE: Record<CalloutKind, { icon: ReactNode; box: string }> = {
   tip: { icon: <Lightbulb size={14} />, box: 'bg-emerald-500/10 text-emerald-800 ring-emerald-500/30 dark:text-emerald-200' },
   warning: { icon: <AlertTriangle size={14} />, box: 'bg-amber-500/10 text-amber-800 ring-amber-500/30 dark:text-amber-200' },
 };
+
+const CHANGE_TONE = { '+': 'text-emerald-600 dark:text-emerald-400', '~': 'text-amber-600 dark:text-amber-400', '-': 'text-red-600 dark:text-red-400' } as const;
 
 const noop = () => undefined;
 
@@ -61,7 +64,6 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
   );
 
   const view = useMemo(() => resolveStepView(lesson.diagram, content, step?.id ?? '', 'viewer'), [lesson.diagram, content, step?.id]);
-  const previous = useMemo(() => (index > 0 ? resolveStepView(lesson.diagram, content, steps[index - 1].id, 'viewer') : null), [lesson.diagram, content, steps, index]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -69,6 +71,7 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
       if (event.key === 'ArrowLeft') { goTo(index - 1); event.preventDefault(); }
       else if (event.key === 'ArrowRight') { goTo(index + 1); event.preventDefault(); }
       else if (event.key === ' ') {
+        if (event.repeat) { event.preventDefault(); return; }
         // A focused button keeps its own Space meaning.
         if (event.target instanceof HTMLElement && ['BUTTON', 'A'].includes(event.target.tagName)) return;
         setPaused((p) => !p);
@@ -79,20 +82,6 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [goTo, index, onClose]);
-
-  const labelOf = (id: string): string => {
-    const node = lesson.diagram.nodes.find((n) => n.id === id);
-    if (node) return view.document.nodes.find((n) => n.id === id)?.title || node.title || id;
-    const edge = lesson.diagram.edges.find((e) => e.id === id);
-    return (edge && (view.document.edges.find((e2) => e2.id === id)?.label || edge.label)) || id;
-  };
-  const changeSign = (id: string): { sign: string; tone: string } => {
-    const now = view.visibleIds.has(id);
-    const before = previous ? previous.visibleIds.has(id) : now;
-    if (now && !before) return { sign: '+', tone: 'text-emerald-600 dark:text-emerald-400' };
-    if (!now && before) return { sign: '-', tone: 'text-red-600 dark:text-red-400' };
-    return { sign: '~', tone: 'text-amber-600 dark:text-amber-400' };
-  };
 
   const { meta } = lesson;
   const chapter = step?.chapter ? LESSON_CHAPTERS[step.chapter] : null;
@@ -174,12 +163,12 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
                 )}
                 {step.changes.length > 0 && (
                   <ul className='space-y-1 text-xs'>
-                    {step.changes.map((id) => {
-                      const { sign, tone } = changeSign(id);
+                    {step.changes.map((line, i) => {
+                      const { sign, text } = parseChangeLine(line);
                       return (
-                        <li key={id} className='flex gap-2'>
-                          <span className={`w-3 shrink-0 text-center font-mono font-bold ${tone}`}>{sign}</span>
-                          <span>{labelOf(id)}</span>
+                        <li key={i} className='flex gap-2'>
+                          <span className={`w-3 shrink-0 text-center font-mono font-bold ${sign ? CHANGE_TONE[sign] : 'text-muted-foreground'}`}>{sign ?? '•'}</span>
+                          <NarrationText source={text} inline />
                         </li>
                       );
                     })}

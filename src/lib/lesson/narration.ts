@@ -44,3 +44,11 @@ export function parseNarration(source: string): NarrationParagraph[] {
     .filter((p) => p.trim() !== '')
     .map((p) => parseInline(p.trim()));
 }
+
+/** One "what changed" line: its leading `+` / `~` / `-` sign (if any) and the rest. */
+export function parseChangeLine(line: string): { sign: '+' | '~' | '-' | null; text: string } {
+  const trimmed = line.trimStart();
+  const first = trimmed[0];
+  if (first === '+' || first === '~' || first === '-') return { sign: first, text: trimmed.slice(1).trimStart() };
+  return { sign: null, text: line };
+}

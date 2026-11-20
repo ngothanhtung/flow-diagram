@@ -186,8 +186,9 @@ function normalizeStep(
   if (!Array.isArray(raw.changes)) fixes.push(`${label}: changes ${preview(raw.changes)} is not a list — ignored.`);
   const changes: string[] = [];
   for (const entry of Array.isArray(raw.changes) ? raw.changes : []) {
-    if (typeof entry === 'string' && context.elementIds.has(entry)) changes.push(entry);
-    else fixes.push(`${label}: change ${preview(entry)} is not an Element of this diagram — dropped.`);
+    // Author-written lines ("+ added", "~ changed", "- removed"), not Element ids.
+    if (typeof entry === 'string') changes.push(entry);
+    else fixes.push(`${label}: change ${preview(entry)} is not text — dropped.`);
   }
   step.changes = changes;
 
