@@ -1,0 +1,139 @@
+import { describe, expect, it } from 'vitest';
+import { normalizeLessonDocument } from './lesson-normalize';
+import { emptyLessonDocument } from './lesson-types';
+
+const block = (id: string) => ({ id, type: 'process', title: id, position: { x: 0, y: 0 } });
+const edge = (id: string, from: string, to: string) => ({ id, from, to });
+
+/** A lesson over nodes a, b and edge e, built from raw JSON so tests can break it. */
+function lessonWith(patch: Record<string, unknown> = {}, step: Record<string, unknown> = {}) {
+  const base = emptyLessonDocument('T') as unknown as Record<string, unknown>;
+  const steps = base.steps as Record<string, unknown>[];
+  return {
+    ...base,
+    diagram: { nodes: [block('a'), block('b')], edges: [edge('e', 'a', 'b')] },
+    steps: [{ ...steps[0], ...step }],
+    ...patch,
+  };
+}
+
+function ok(input: unknown) {
+  const result = normalizeLessonDocument(input);
+  if (!result.ok) throw new Error(result.error);
+  return result;
+}
+
+describe('normalizeLessonDocument', () => {
+  it('accepts a clean lesson unchanged', () => {
+    const input = emptyLessonDocument('A');
+    const result = ok(input);
+    expect(result.fixes).toEqual([]);
+    expect(result.lesson).toEqual(input);
+    expect(result.lesson).toBe(input);
+  });
+
+  it('refuses non-objects', () => {
+    for (const input of [null, 42, []]) expect(normalizeLessonDocument(input).ok).toBe(false);
+  });
+
+  it('refuses a diagram that cannot be drawn', () => {
+    expect(normalizeLessonDocument({ format: 'x-flow-lesson', version: 1, diagram: { nodes: 'x', edges: [] }, steps: [] }).ok).toBe(false);
+  });
+
+  it('imports a plain Diagram JSON as a one-step lesson', () => {
+    const result = ok({ nodes: [block('a')], edges: [] });
+    expect(result.lesson.steps).toHaveLength(1);
+    expect(result.lesson.presence).toEqual({});
+    expect(result.lesson.diagram.nodes[0].id).toBe('a');
+    expect(result.fixes).toContain('Imported a Diagram as a one-step lesson.');
+  });
+
+  it('creates a step when there are none', () => {
+    const result = ok(lessonWith({ steps: [] }));
+    expect(result.lesson.steps).toHaveLength(1);
+    expect(result.fixes.length).toBeGreaterThan(0);
+  });
+
+  it('assigns missing and duplicate step ids', () => {
+    const base = emptyLessonDocument('A').steps[0];
+    const result = ok(lessonWith({ steps: [{ ...base, id: 's1' }, { ...base, id: 's1' }, { ...base, id: undefined }] }));
+    const ids = result.lesson.steps.map((step) => step.id);
+    expect(new Set(ids).size).toBe(3);
+    expect(result.fixes.length).toBeGreaterThan(0);
+  });
+
+  it('drops references to missing elements and steps', () => {
+    const result = ok(
+      lessonWith(
+        { presence: { ghost: { from: 's1' }, a: { from: 'nope' } }, meta: { title: 'T', summary: '', metrics: [], goals: [{ text: 'g', step: 'nope' }] } },
+        { overrides: { ghost: { title: 'x' } }, changes: ['ghost', 'a'] },
+      ),
+    );
+    const { lesson } = result;
+    expect(lesson.presence.ghost).toBeUndefined();
+    expect(lesson.presence.a).toBeUndefined();
+    expect(lesson.steps[0].overrides.ghost).toBeUndefined();
+    expect(lesson.steps[0].changes).toEqual(['a']);
+    expect(lesson.meta.goals).toEqual([]);
+  });
+
+  it('drops a presence reference to a missing step but keeps the valid end', () => {
+    const { lesson } = ok(lessonWith({ presence: { a: { from: 'nope', until: 's1' } } }));
+    expect(lesson.presence.a).toEqual({ until: 's1' });
+  });
+
+  it('drops out-of-vocabulary values', () => {
+    const { lesson, fixes } = ok(
+      lessonWith(
+        { meta: { title: 'T', summary: '', level: 'expert', metrics: [], goals: [] } },
+        { chapter: 'boss', callout: { kind: 'shout', text: 'x' }, overrides: { a: { effect: 'laser', title: 't' } } },
+      ),
+    );
+    expect(lesson.meta.level).toBeUndefined();
+    expect(lesson.steps[0].chapter).toBeUndefined();
+    expect(lesson.steps[0].callout).toBeUndefined();
+    expect(lesson.steps[0].overrides.a).toEqual({ title: 't' });
+    expect(fixes.length).toBeGreaterThan(0);
+  });
+
+  it("accepts 'warn' as the warning callout", () => {
+    const { lesson } = ok(lessonWith({}, { callout: { kind: 'warn', text: 'x' } }));
+    expect(lesson.steps[0].callout?.kind).toBe('warning');
+  });
+
+  it('coerces metric values to strings and drops unknown metric ids', () => {
+    const { lesson } = ok(lessonWith({ meta: { title: 'T', summary: '', metrics: [{ id: 'trips', label: 'Trips' }], goals: [] } }, { metrics: { trips: 3, other: 'x' } }));
+    expect(lesson.steps[0].metrics).toEqual({ trips: '3' });
+  });
+
+  it('keeps only override fields valid for the element kind', () => {
+    const { lesson } = ok(lessonWith({}, { overrides: { a: { label: 'x', title: 't' }, e: { title: 't', label: 'l' } } }));
+    expect(lesson.steps[0].overrides.a).toEqual({ title: 't' });
+    expect(lesson.steps[0].overrides.e).toEqual({ label: 'l' });
+  });
+
+  it('repairs non-string text and bad minutes', () => {
+    const { lesson } = ok(lessonWith({ meta: { title: 5, summary: null, minutes: -3, metrics: [], goals: [] } }, { body: 7 }));
+    expect(lesson.meta.title).toBe('');
+    expect(lesson.meta.summary).toBe('');
+    expect(lesson.meta.minutes).toBeUndefined();
+    expect(lesson.steps[0].body).toBe('');
+  });
+
+  it('does not treat prototype names as ids or vocabulary', () => {
+    const { lesson } = ok(lessonWith({}, { chapter: 'constructor', metrics: { constructor: 'x' }, overrides: { constructor: { title: 'x' } } }));
+    expect(lesson.steps[0].chapter).toBeUndefined();
+    expect(lesson.steps[0].metrics).toEqual({});
+    expect(Object.keys(lesson.steps[0].overrides)).toEqual([]);
+  });
+
+  it('fills in missing lists instead of returning the input as clean', () => {
+    const input = { format: 'x-flow-lesson', version: 1, diagram: { nodes: [], edges: [] }, steps: [{ id: 's1' }] };
+    const result = ok(input);
+    expect(result.fixes.length).toBeGreaterThan(0);
+    const [step] = result.lesson.steps;
+    expect([step.changes, step.metrics, step.overrides, step.short, step.title, step.body]).toEqual([[], {}, {}, '', '', '']);
+    expect(result.lesson.meta.metrics).toEqual([]);
+    expect(result.lesson.presence).toEqual({});
+  });
+});
