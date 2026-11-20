@@ -7,13 +7,12 @@ import { toast } from 'sonner';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { AuthLoadingScreen } from '@/components/auth/LoginForm';
 import { UserMenu } from '@/components/auth/UserMenu';
-import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
+import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, InlineNameField, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { EditorShell } from '@/components/editor/EditorShell';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { LessonStepBar } from '@/components/lessons/LessonStepBar';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { lessonDocumentOf, useEditorStore } from '@/lib/editor-store';
 import { createLesson, loadLesson, saveLesson, setLessonPublic } from '@/lib/firebase/lessons';
@@ -30,54 +29,6 @@ const STATUS_COPY: Record<Exclude<Status, 'ready'>, [string, string]> = {
   invalid: ["This lesson can't be opened", 'Its content is damaged and could not be repaired.'],
   error: ['Could not load lesson', 'Check your connection and try again.'],
 };
-
-/** Inline editor for the lesson name in the header. Click to edit,
- *  Enter or blur commits, Escape cancels. */
-function LessonName({ name, onRename }: { name: string; onRename: (name: string) => void }) {
-  const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState(name);
-
-  if (editing) {
-    return (
-      <Input
-        autoFocus
-        variant='toolbar'
-        value={draft}
-        maxLength={80}
-        aria-label='Lesson name'
-        onChange={(event) => setDraft(event.target.value)}
-        onFocus={(event) => event.target.select()}
-        onBlur={() => {
-          setEditing(false);
-          const next = draft.trim();
-          if (next && next !== name) onRename(next);
-        }}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
-          if (event.key === 'Escape') {
-            setDraft(name);
-            setEditing(false);
-          }
-        }}
-        className='h-6 w-40 border-sky-400/40 px-1.5 py-0.5 text-xs sm:w-56'
-      />
-    );
-  }
-
-  return (
-    <button
-      type='button'
-      onClick={() => {
-        setDraft(name);
-        setEditing(true);
-      }}
-      title='Rename lesson'
-      className='-mx-1 max-w-40 truncate rounded px-1 text-xs text-muted-foreground transition hover:bg-accent hover:text-accent-foreground sm:max-w-none'
-    >
-      {name}
-    </button>
-  );
-}
 
 /** Header control for the lesson's Public link: the switch applies at
  *  once (`setLessonPublic`), and publishes what is saved, not the canvas. */
@@ -231,8 +182,13 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
     };
   }, [uid, lessonId]);
 
-  // Leaving the Lesson editor drops the Lesson from the shared store.
-  useEffect(() => () => useEditorStore.getState().closeLesson(), []);
+  // Leaving the Lesson editor drops the Lesson from the shared store. A
+  // layout-effect cleanup, not a passive one: a removed component's layout
+  // cleanups run before the next tree's layout effects, so the Diagram
+  // editor's hydrate (or the next Lesson's open) always comes after this
+  // close, never before it. Strict Mode's simulated unmount closes too, and
+  // the open effect above (declared first) reopens on its re-run.
+  useLayoutEffect(() => () => useEditorStore.getState().closeLesson(), []);
 
   const doc = useEditorStore((state) => state.doc);
   const lesson = useEditorStore((state) => state.lesson);
@@ -311,7 +267,7 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
       document={doc}
       onSave={() => void handleSave()}
       icon={<GraduationCap size={18} className='text-sky-300' />}
-      subtitle={<LessonName name={name} onRename={setName} />}
+      subtitle={<InlineNameField name={name} onRename={setName} label='Lesson name' title='Rename lesson' />}
       fileMenu={
         <EditorFileMenu
           onNew={() => (dirty ? setConfirmNewOpen(true) : void createAndOpen())}

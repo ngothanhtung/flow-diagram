@@ -6,13 +6,12 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { UserMenu } from '@/components/auth/UserMenu';
 import { ShareDialog } from '@/components/diagrams/ShareDialog';
 import { SaveConflictDialog, type BlockedSave } from '@/components/editor/SaveConflictDialog';
-import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, FileMenuItem, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
+import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, FileMenuItem, InlineNameField, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { EditorShell } from '@/components/editor/EditorShell';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { MermaidImportDialog } from '@/components/editor/MermaidImportDialog';
@@ -36,54 +35,6 @@ const STATUS_TITLES = {
   unverified: 'Diagram not found',
   error: 'Could not load diagram',
 } as const;
-
-/** Inline editor for the diagram name in the header. Click to edit,
- *  Enter or blur commits, Escape cancels. */
-function DiagramName({ name, onRename }: { name: string; onRename: (name: string) => void }) {
-  const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState(name);
-
-  if (editing) {
-    return (
-      <Input
-        autoFocus
-        variant='toolbar'
-        value={draft}
-        maxLength={80}
-        aria-label='Diagram name'
-        onChange={(event) => setDraft(event.target.value)}
-        onFocus={(event) => event.target.select()}
-        onBlur={() => {
-          setEditing(false);
-          const next = draft.trim();
-          if (next && next !== name) onRename(next);
-        }}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
-          if (event.key === 'Escape') {
-            setDraft(name);
-            setEditing(false);
-          }
-        }}
-        className='h-6 w-40 border-sky-400/40 px-1.5 py-0.5 text-xs sm:w-56'
-      />
-    );
-  }
-
-  return (
-    <button
-      type='button'
-      onClick={() => {
-        setDraft(name);
-        setEditing(true);
-      }}
-      title='Rename diagram'
-      className='-mx-1 max-w-40 truncate rounded px-1 text-xs text-muted-foreground transition hover:bg-accent hover:text-accent-foreground sm:max-w-none'
-    >
-      {name}
-    </button>
-  );
-}
 
 /** "Last saved by … at …" beside the diagram name — who performed the
  *  last Save (a Collaborator, once Share lands) and when. Hidden on narrow
@@ -538,7 +489,7 @@ export function DiagramEditor({ diagramId }: { diagramId: string }) {
       icon={<Boxes size={18} className='text-sky-300' />}
       subtitle={
         <div className='flex min-w-0 items-baseline gap-2'>
-          <DiagramName name={currentDiagramName} onRename={renameDiagram} />
+          <InlineNameField name={currentDiagramName} onRename={renameDiagram} label='Diagram name' title='Rename diagram' />
           <LastSavedNote currentUid={user.uid} />
         </div>
       }

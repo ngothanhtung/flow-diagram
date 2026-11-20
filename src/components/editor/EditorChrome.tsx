@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
 import { ExportImageDialog } from '@/components/export/ExportImageDialog';
 import { Button, buttonVariants } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
@@ -168,6 +169,55 @@ export function EditorFileMenu({
     </FileMenu>
     <ExportImageDialog document={imageDocument ?? doc} name={imageName} selectedNodeIds={selectedNodeIds} open={imageOpen} onOpenChange={setImageOpen} />
     </>
+  );
+}
+
+/** Inline editor for the document name in an editor header (a Diagram,
+ *  a Lesson). Click to edit, Enter or blur commits, Escape cancels.
+ *  `label` names the input, `title` the button that opens it. */
+export function InlineNameField({ name, onRename, label, title }: { name: string; onRename: (name: string) => void; label: string; title: string }) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(name);
+
+  if (editing) {
+    return (
+      <Input
+        autoFocus
+        variant='toolbar'
+        value={draft}
+        maxLength={80}
+        aria-label={label}
+        onChange={(event) => setDraft(event.target.value)}
+        onFocus={(event) => event.target.select()}
+        onBlur={() => {
+          setEditing(false);
+          const next = draft.trim();
+          if (next && next !== name) onRename(next);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
+          if (event.key === 'Escape') {
+            setDraft(name);
+            setEditing(false);
+          }
+        }}
+        className='h-6 w-40 border-sky-400/40 px-1.5 py-0.5 text-xs sm:w-56'
+      />
+    );
+  }
+
+  return (
+    <button
+      type='button'
+      onClick={() => {
+        setDraft(name);
+        setEditing(true);
+      }}
+      title={title}
+      className='-mx-1 max-w-40 truncate rounded px-1 text-xs text-muted-foreground transition hover:bg-accent hover:text-accent-foreground sm:max-w-none'
+    >
+      {name}
+    </button>
   );
 }
 
