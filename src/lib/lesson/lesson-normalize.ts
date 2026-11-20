@@ -11,7 +11,7 @@ import { EDGE_EFFECTS, NODE_EFFECTS } from '../document-vocabulary';
 import { normalizeDocument, validateDocument } from '../document-validation';
 import type { FlowDocumentJSON } from '../flowchart-types';
 import { CALLOUT_KINDS, LESSON_CHAPTERS, LESSON_LEVELS, emptyStep, newStepId } from './lesson-types';
-import type { CalloutKind, ElementOverride, ElementPresence, LessonChapter, LessonDocumentJSON, LessonMeta, LessonMetric, LessonStep } from './lesson-types';
+import type { CalloutKind, ElementOverride, ElementPresence, LessonDocumentJSON, LessonMeta, LessonMetric, LessonStep } from './lesson-types';
 
 export type NormalizeLessonResult = { ok: true; lesson: LessonDocumentJSON; fixes: string[] } | { ok: false; error: string };
 
@@ -29,7 +29,7 @@ function preview(value: unknown): string {
   }
 }
 
-/** Text that is shown: a string as is, a finite number as its digits, else ''. */
+/** A string as is; anything else (a number included) reads as '' and is reported. */
 function textOf(value: unknown, label: string, fixes: string[]): string {
   if (typeof value === 'string') return value;
   fixes.push(`${label}: ${preview(value)} is not text — read as ''.`);
@@ -64,7 +64,8 @@ function normalizeMeta(raw: unknown, stepIds: ReadonlySet<string>, fixes: string
   if (!Array.isArray(source.metrics)) fixes.push(`Lesson metrics ${preview(source.metrics)} is not a list — ignored.`);
   (Array.isArray(source.metrics) ? source.metrics : []).forEach((entry: unknown, index) => {
     if (!isRecord(entry) || typeof entry.id !== 'string' || !entry.id || seen.has(entry.id)) {
-      fixes.push(`Metric ${index + 1} has no usable id — dropped.`);
+      const duplicate = isRecord(entry) && typeof entry.id === 'string' && seen.has(entry.id);
+      fixes.push(`Metric ${index + 1} ${duplicate ? `has duplicate id "${(entry as { id: string }).id}"` : 'has no usable id'} — dropped.`);
       return;
     }
     seen.add(entry.id);
@@ -158,7 +159,7 @@ function normalizeStep(
   context: { nodeIds: ReadonlySet<string>; elementIds: ReadonlySet<string>; metricIds: ReadonlySet<string> },
   fixes: string[],
 ): LessonStep {
-  const label = `Step "${id}"`;
+  const label = `Lesson step "${id}"`;
   const step: Record<string, unknown> = { ...raw, id };
   step.short = textOf(raw.short, `${label} short`, fixes);
   step.title = textOf(raw.title, `${label} title`, fixes);
@@ -167,8 +168,6 @@ function normalizeStep(
   if (raw.chapter !== undefined && !(typeof raw.chapter === 'string' && Object.hasOwn(LESSON_CHAPTERS, raw.chapter))) {
     fixes.push(`${label}: ignored chapter ${preview(raw.chapter)} — expected one of ${Object.keys(LESSON_CHAPTERS).join(', ')}.`);
     delete step.chapter;
-  } else if (raw.chapter !== undefined) {
-    step.chapter = raw.chapter as LessonChapter;
   }
 
   if (raw.callout !== undefined) {
@@ -260,11 +259,11 @@ export function normalizeLessonDocument(input: unknown): NormalizeLessonResult {
   // Steps: ids first, since goals and presence point at them.
   let rawSteps: unknown[] = [];
   if (Array.isArray(input.steps)) rawSteps = input.steps;
-  else if (input.steps !== undefined) fixes.push(`"steps" ${preview(input.steps)} is not a list — started with one step.`);
+  else if (input.steps !== undefined) fixes.push(`"steps" ${preview(input.steps)} is not a list of Lesson steps — started with one step.`);
   const kept: Record<string, unknown>[] = [];
   rawSteps.forEach((raw, index) => {
     if (isRecord(raw)) kept.push(raw);
-    else fixes.push(`Step ${index + 1} ${preview(raw)} is not an object — dropped.`);
+    else fixes.push(`Lesson step ${index + 1} ${preview(raw)} is not an object — dropped.`);
   });
   const usedIds = new Set<string>();
   const ids: (string | null)[] = kept.map((raw) => {
@@ -284,19 +283,18 @@ export function normalizeLessonDocument(input: unknown): NormalizeLessonResult {
     const fresh = newStepId([...usedIds, ...kept.map((other) => other.id).filter((other): other is string => typeof other === 'string')]);
     usedIds.add(fresh);
     stepIds.set(index, fresh);
-    fixes.push(`Step ${index + 1} ${typeof raw.id === 'string' && raw.id ? `repeats id "${raw.id}"` : 'has no id'} — given id "${fresh}".`);
+    fixes.push(`Lesson step ${index + 1} ${typeof raw.id === 'string' && raw.id ? `repeats id "${raw.id}"` : 'has no id'} — given id "${fresh}".`);
   });
-  if (kept.length === 0) {
-    fixes.push('The lesson has no steps — created one.');
-    kept.push({});
-    stepIds.set(0, 's1');
+  const created = kept.length === 0;
+  if (created) {
+    fixes.push('The lesson has no Lesson steps — created one.');
     usedIds.add('s1');
   }
 
   const meta = normalizeMeta(input.meta, usedIds, fixes);
   const metricIds = new Set(meta.metrics.map((metric) => metric.id));
   const presence = normalizePresence(input.presence, elementIds, usedIds, fixes);
-  const steps = kept.map((raw, index) => normalizeStep(raw, stepIds.get(index) as string, { nodeIds, elementIds, metricIds }, fixes));
+  const steps = created ? [emptyStep('s1')] : kept.map((raw, index) => normalizeStep(raw, stepIds.get(index) as string, { nodeIds, elementIds, metricIds }, fixes));
 
   if (input.format !== 'x-flow-lesson') fixes.push('Set format "x-flow-lesson".');
   if (input.version !== 1) fixes.push(`Read version ${preview(input.version)} as 1.`);

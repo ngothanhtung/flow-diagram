@@ -88,7 +88,7 @@ export const CALLOUT_KINDS: readonly CalloutKind[] = ['insight', 'tip', 'warning
 export const LESSON_LEVELS: readonly LessonLevel[] = ['beginner', 'intermediate', 'advanced'];
 
 export function emptyStep(id: string): LessonStep {
-  return { id, short: 'Step', title: '', body: '', changes: [], metrics: {}, overrides: {} };
+  return { id, short: 'Untitled', title: '', body: '', changes: [], metrics: {}, overrides: {} };
 }
 
 export function emptyLessonDocument(title?: string): LessonDocumentJSON {

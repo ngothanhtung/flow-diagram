@@ -136,4 +136,27 @@ describe('normalizeLessonDocument', () => {
     expect(result.lesson.meta.metrics).toEqual([]);
     expect(result.lesson.presence).toEqual({});
   });
+
+  it('returns a populated, fully valid lesson as the same object with no fixes', () => {
+    const lesson = {
+      format: 'x-flow-lesson',
+      version: 1,
+      diagram: { nodes: [block('a'), block('b')], edges: [edge('e', 'a', 'b')] },
+      meta: { title: 'T', summary: 'S', minutes: 5, level: 'beginner', metrics: [{ id: 'trips', label: 'Trips' }], goals: [{ text: 'g', step: 's2' }] },
+      presence: { a: { from: 's1', until: 's2' }, e: { from: 's2' } },
+      steps: [
+        { id: 's1', short: 'One', title: 'First', chapter: 'setup', body: 'b', callout: { kind: 'tip', text: 't' }, changes: ['a'], metrics: { trips: '1' }, overrides: { a: { title: 'A', effect: 'glow', emphasis: true } } },
+        { id: 's2', short: 'Two', title: 'Second', chapter: 'recap', body: 'b', callout: { kind: 'warning', text: 'w' }, changes: ['b', 'e'], metrics: { trips: '2' }, overrides: { e: { label: 'L', effect: 'comet', visible: false } } },
+      ],
+    };
+    const result = ok(lesson);
+    expect(result.fixes).toEqual([]);
+    expect(result.lesson).toBe(lesson);
+  });
+
+  it('creates an untitled step with a single fix when there are none', () => {
+    const result = ok(lessonWith({ steps: [] }));
+    expect(result.fixes.filter((fix) => fix.includes('no Lesson steps'))).toHaveLength(1);
+    expect(result.lesson.steps).toEqual([{ id: 's1', short: 'Untitled', title: '', body: '', changes: [], metrics: {}, overrides: {} }]);
+  });
 });
