@@ -1,16 +1,18 @@
 'use client';
 
-import { Check, Copy, Globe, GraduationCap, Info, LoaderCircle, LockKeyhole, TriangleAlert } from 'lucide-react';
+import { Check, Copy, FileUp, Globe, GraduationCap, Info, LoaderCircle, LockKeyhole, Play, TriangleAlert } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { AuthLoadingScreen } from '@/components/auth/LoginForm';
 import { UserMenu } from '@/components/auth/UserMenu';
-import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, InlineNameField, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
+import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, FileMenuItem, InlineNameField, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { EditorShell } from '@/components/editor/EditorShell';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
+import { LessonImportDialog } from '@/components/lessons/LessonImportDialog';
 import { LessonInfoDialog } from '@/components/lessons/LessonInfoDialog';
+import { LessonPlayer } from '@/components/lessons/LessonPlayer';
 import { LessonSidePanel } from '@/components/lessons/LessonSidePanel';
 import { LessonStepBar } from '@/components/lessons/LessonStepBar';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
@@ -139,6 +141,8 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
   const [convertThemeOpen, setConvertThemeOpen] = useState(false);
   const [sqlOpen, setSqlOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
+  const [importOpen, setImportOpen] = useState(false);
+  const [previewOpen, setPreviewOpen] = useState(false);
 
   // Open the route's Lesson. A layout effect, like the Diagram editor's
   // hydrate: the store write happens before paint, never during render.
@@ -241,6 +245,8 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
     }
   }, [uid, saving, name, lessonId, isPublic]);
 
+  const focusOnMount = useCallback((node: HTMLDivElement | null) => node?.focus(), []);
+
   const createAndOpen = useCallback(async () => {
     if (!uid) return;
     setCreating(true);
@@ -282,6 +288,11 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
           onConvertColorTheme={() => setConvertThemeOpen(true)}
           imageName={fileName}
           imageDocument={imageDocument}
+          afterOpen={
+            <FileMenuItem icon={<FileUp size={14} />} onClick={() => setImportOpen(true)}>
+              Import JSON…
+            </FileMenuItem>
+          }
         />
       }
       actions={
@@ -289,6 +300,10 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
           <Button variant='toolbar' size='lg' onClick={() => setInfoOpen(true)} title='Title, summary, metrics and goals'>
             <Info size={13} />
             Lesson info
+          </Button>
+          <Button variant='toolbar' size='lg' onClick={() => setPreviewOpen(true)} title='Play this lesson as a learner sees it'>
+            <Play size={13} />
+            Preview
           </Button>
           <LessonPublicControl uid={user.uid} lessonId={lessonId} isPublic={isPublic} dirty={dirty} onChange={setIsPublic} />
           <SaveButton saving={saving} dirty={dirty} onSave={() => void handleSave()} />
@@ -310,6 +325,17 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
         footer: <LessonStepBar />,
       }}
     >
+      <LessonImportDialog open={importOpen} onOpenChange={setImportOpen} />
+      {/* A modal dialog: the editor's shortcuts stay inert underneath
+          (`contextOf` sees an open [role=dialog][aria-modal=true]). Mounted
+          only while open, so the player's visited set starts fresh. Focus moves
+          in on open: a focused editor button (the File menu trigger…)
+          would otherwise keep the arrow keys for itself. */}
+      {previewOpen && (
+        <div ref={focusOnMount} tabIndex={-1} role='dialog' aria-modal='true' aria-label='Lesson preview' className='fixed inset-0 z-50 bg-background outline-none'>
+          <LessonPlayer lesson={lessonDocument} initialStepId={lessonStepId ?? undefined} onClose={() => setPreviewOpen(false)} />
+        </div>
+      )}
       <LessonInfoDialog open={infoOpen} onOpenChange={setInfoOpen} />
       <ConvertColorThemeDialog open={convertThemeOpen} onOpenChange={setConvertThemeOpen} />
       <SqlExportDialog document={doc} filename={fileName} open={sqlOpen} onOpenChange={setSqlOpen} />
