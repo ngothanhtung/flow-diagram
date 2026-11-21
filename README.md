@@ -26,6 +26,9 @@ Static diagramming tools don't show which way data moves or in what order, so th
 - **Block Effects** (float, breathe, glow, ripple, trace, sheen…), off by default.
 - **Replay**: Elements light up Step by Step in four Run modes — sequential, concurrent, manual (click Next) or static.
 
+**Teach with Lessons**
+- **Lessons**: a Diagram plus Lesson steps with Narration — Elements appear and disappear step by step, with per-step overrides, a Preview, and a Public link viewer. Format reference for AI and developers at `/guide/lessons`.
+
 **Start from text or AI**
 - **Diagram JSON** — the whole Diagram is one JSON document with an authoring reference at `/guide` written for AI and developers. Paste it into the JSON Playground, or paste a fragment straight onto the canvas.
 - **Import from Mermaid** (`flowchart`/`graph`, `erDiagram`), laid out automatically; lines it doesn't understand become warnings, never errors.
@@ -301,6 +304,9 @@ Công cụ vẽ sơ đồ tĩnh không cho thấy dữ liệu chạy theo hướ
 - **Line style**: bộ "từ vựng" Line có tên (primary, async, policy…) định nghĩa một lần cho mỗi Diagram; sửa style là mọi Line theo nó đổi theo.
 - **Effect cho Block** (float, breathe, glow, ripple, trace, sheen…), mặc định tắt.
 - **Replay**: Element sáng lên theo từng Step với 4 Run mode — sequential, concurrent, manual (bấm Next) hoặc static.
+
+**Dạy bằng Lesson**
+- **Lesson (bài học)**: một Diagram cộng các bước bài học (Lesson step) kèm lời giảng (Narration) — Element hiện/ẩn theo từng bước, ghi đè theo bước, có Preview và trang xem qua Public link. Tài liệu định dạng cho AI và lập trình viên ở `/guide/lessons`.
 
 **Bắt đầu từ văn bản hoặc AI**
 - **Diagram JSON** — cả Diagram là một tài liệu JSON, có tài liệu đặc tả `/guide` viết cho AI và lập trình viên. Dán vào JSON Playground, hoặc dán một mảnh thẳng lên canvas.

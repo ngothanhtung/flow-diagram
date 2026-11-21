@@ -19,6 +19,7 @@ const TOC = [
   ['share', 'Chia sẻ sơ đồ'],
   ['json', 'Xuất file & công cụ JSON'],
   ['shortcuts', 'Phím tắt & copy/paste'],
+  ['lessons', 'Bài học'],
   ['reference', 'Tra cứu nhanh'],
 ] as const;
 
@@ -419,7 +420,46 @@ export default function HelpViPage() {
         </p>
       </Section>
 
-      <Section id='reference' title='12. Tra cứu nhanh'>
+      <Section id='lessons' title='12. Bài học (Lesson)'>
+        <p>
+          Một <strong>Lesson</strong> (bài học) dạy bằng một Diagram, từng <strong>bước bài học</strong> (Lesson step) một: mỗi bước bài học hiện một phần của hình và có <strong>Narration</strong> (lời giảng)
+          riêng gồm tiêu đề, đoạn văn, callout, danh sách thay đổi, chỉ số. Mở mục <strong>Lessons</strong> ở sidebar để tạo, mở, xoá và công khai bài của bạn. Bước bài học không phải <Pill>Step</Pill>{' '}
+          của Replay — Lesson không dùng Replay; các Effect cứ chạy liên tục.
+        </p>
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            <strong>Tạo:</strong> bấm <strong>New lesson</strong>. Bài mới có sẵn một bước bài học trống và hình trống. Điền tiêu đề, tóm tắt, thời lượng, cấp độ, chỉ số và mục tiêu trong{' '}
+            <strong>Lesson info</strong>. Muốn bắt đầu từ hình hay bài có sẵn, dùng <strong>File → Import JSON…</strong> (Diagram JSON thường sẽ thành bài một bước); định dạng nằm trong{' '}
+            <Link href='/guide/lessons' className='text-sky-300 underline-offset-2 hover:underline'>hướng dẫn viết Lesson JSON</Link>.
+          </li>
+          <li>
+            <strong>Thêm bước bài học:</strong> bấm <strong>Add lesson step</strong> trên thanh bước ở đáy. Bấm một chip để xem bước đó; kéo chip để đổi thứ tự; nhân bản hoặc xoá trong menu của chip.
+            Viết <strong>Narration</strong> ở panel bên trái.
+          </li>
+          <li>
+            <strong>Ghi theo bước:</strong> mọi bước bài học dùng chung một hình. Khi đang ở bước bài học 4, thứ gì bạn vẽ, dán hay nhân bản sẽ <em>xuất hiện từ bước 4</em> (ở bước 1 thì có mặt ở mọi bước).
+            Element không thuộc bước đang xem vẫn nằm trên canvas, mờ đi và có dấu &quot;from step 4&quot; / &quot;until step 3&quot;, nên bạn vẫn chọn và sửa được.
+          </li>
+          <li>
+            <strong>Remove from this lesson step:</strong> trong panel <strong>This lesson step</strong>, lệnh này làm Element và Line đang chọn biến mất từ bước đó trở đi mà không xoá khỏi hình.{' '}
+            <Kbd>Delete</Kbd> vẫn xoá thật, khỏi mọi bước bài học.
+          </li>
+          <li>
+            <strong>Ghi đè theo bước:</strong> cũng trong panel đó, bạn đổi riêng cho bước này được tiêu đề Element, nhãn Line, Effect, hiện/ẩn và nhấn mạnh (trường hợp hiếm &quot;ẩn rồi hiện lại&quot; cũng ở đây).
+            Element mới vào ở một bước bài học được tự động nhấn mạnh ở trang xem.
+          </li>
+          <li>
+            <strong>Preview</strong> trình chiếu bài đang soạn, đã Save hay chưa, phủ lên trình soạn và bắt đầu từ bước bài học hiện tại; <Kbd>Esc</Kbd> để quay lại. Trong đó <Kbd>←</Kbd> <Kbd>→</Kbd> đổi bước,{' '}
+            <Kbd>Space</Kbd> dừng/chạy Effect, <Kbd>0</Kbd> vừa khung.
+          </li>
+          <li>
+            <strong>Public link:</strong> nút <strong>Private / Public</strong> trên header bật link ngay và sao chép nó. Ai cũng mở được mà không cần đăng nhập; link hiện bản <em>đã Save</em> gần nhất nên hãy
+            bấm <strong>Save</strong> trước. Undo/Redo phủ mọi thứ trong bài — hình, bước bài học, Narration.
+          </li>
+        </ul>
+      </Section>
+
+      <Section id='reference' title='13. Tra cứu nhanh'>
         <Table
           head={['Thao tác', 'Cách làm']}
           rows={[

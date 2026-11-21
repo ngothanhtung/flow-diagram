@@ -132,3 +132,17 @@ _Avoid_: Execution order, stage
 **Run mode**:
 How the Replay advances — sequential (timed), concurrent (all at once), manual (user clicks Next) or static (everything still).
 _Avoid_: Execution mode
+
+## Lessons
+
+**Lesson**:
+A sequence of Lesson steps with Narration, built on one Diagram and viewable through a Public link.
+_Avoid_: Course, tutorial, presentation
+
+**Lesson step**:
+One step of a Lesson: what shows on the drawing plus that step's Narration. Not the same as a **Step** of the Replay.
+_Avoid_: Slide, scene, Step (without "Lesson")
+
+**Narration**:
+The explanatory text of one Lesson step: title, paragraphs, callout, changes and metrics.
+_Avoid_: Notes, description

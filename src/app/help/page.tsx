@@ -19,6 +19,7 @@ const TOC = [
   ['share', 'Sharing a diagram'],
   ['json', 'Export, images & JSON tools'],
   ['shortcuts', 'Keyboard shortcuts & copy/paste'],
+  ['lessons', 'Lessons'],
   ['reference', 'Quick reference'],
 ] as const;
 
@@ -421,7 +422,46 @@ export default function HelpPage() {
         </p>
       </Section>
 
-      <Section id='reference' title='12. Quick reference'>
+      <Section id='lessons' title='12. Lessons'>
+        <p>
+          A <strong>Lesson</strong> teaches with a Diagram, one <strong>Lesson step</strong> at a time: each Lesson step shows part of the drawing and carries its own{' '}
+          <strong>Narration</strong> (title, text, callout, changes, metrics). Open <strong>Lessons</strong> from the sidebar to create, open, delete and publish yours. A Lesson step is not a{' '}
+          <Pill>Step</Pill> of the Replay — Lessons don&apos;t use Replay; Effects simply keep running.
+        </p>
+        <ul className='list-disc space-y-1.5 pl-5'>
+          <li>
+            <strong>Create:</strong> press <strong>New lesson</strong>. It starts with one empty Lesson step and an empty drawing. Fill in the title, summary, minutes, level, metrics and goals
+            under <strong>Lesson info</strong>. To start from an existing drawing or lesson, use <strong>File → Import JSON…</strong> (a plain Diagram JSON becomes a one-step Lesson); the
+            format is in the <Link href='/guide/lessons' className='text-sky-300 underline-offset-2 hover:underline'>Lesson authoring guide</Link>.
+          </li>
+          <li>
+            <strong>Add Lesson steps:</strong> press <strong>Add lesson step</strong> on the step bar at the bottom. Click a chip to show that Lesson step; drag chips to reorder; duplicate or
+            remove from the chip&apos;s menu. Write the <strong>Narration</strong> in the left panel.
+          </li>
+          <li>
+            <strong>Record per step:</strong> there is one drawing shared by all Lesson steps. While you are on Lesson step 4, anything you draw, paste or duplicate <em>appears from step 4</em>{' '}
+            (on step 1 it is simply always there). Elements that don&apos;t belong to the step you are viewing stay on the canvas, faded and marked &quot;from step 4&quot; / &quot;until step 3&quot;, so you can still select them.
+          </li>
+          <li>
+            <strong>Remove from this lesson step:</strong> in the <strong>This lesson step</strong> panel it makes the selected Elements and Lines vanish from here on, without deleting them from the
+            drawing. <Kbd>Delete</Kbd> still deletes for real, from every Lesson step.
+          </li>
+          <li>
+            <strong>Overrides per step:</strong> in the same panel you can change, for this Lesson step only, an Element&apos;s title, a Line&apos;s label, Effects, visibility and emphasis (the
+            rare &quot;hide, then show again&quot; also lives here). Elements arriving at a Lesson step are emphasised automatically in the viewer.
+          </li>
+          <li>
+            <strong>Preview</strong> plays the lesson you are editing, saved or not, over the editor, starting at the current Lesson step; <Kbd>Esc</Kbd> returns. In it, <Kbd>←</Kbd> <Kbd>→</Kbd> change
+            Lesson step, <Kbd>Space</Kbd> pauses Effects and <Kbd>0</Kbd> fits the view.
+          </li>
+          <li>
+            <strong>Public link:</strong> the <strong>Private / Public</strong> control in the header turns the link on at once and copies it. Anyone can open it without signing in; it shows the last
+            <em> saved</em> version, so press <strong>Save</strong> first. Undo/Redo covers everything in a Lesson — drawing, Lesson steps, Narration.
+          </li>
+        </ul>
+      </Section>
+
+      <Section id='reference' title='13. Quick reference'>
         <Table
           head={['Action', 'How']}
           rows={[
