@@ -87,7 +87,6 @@ function ThisStepSection({ step, content, elementId, kind, keyPrefix }: { step: 
     return state.doc.edges.find((e) => e.id === elementId)?.label ?? '';
   });
   const nodeType = useEditorStore((state) => (kind === 'node' ? state.doc.nodes.find((n) => n.id === elementId)?.type : undefined));
-  const selectedNodeIds = useEditorStore((state) => state.selectedNodeIds);
 
   const override = step.overrides[elementId] ?? {};
   const presence = Object.hasOwn(content.presence, elementId) ? content.presence[elementId] : {};
@@ -95,11 +94,13 @@ function ThisStepSection({ step, content, elementId, kind, keyPrefix }: { step: 
   const fromIndex = Math.max(0, presence.from ? order.indexOf(presence.from) : 0);
   const untilIndex = presence.until ? order.indexOf(presence.until) : -1;
   const stepOptions: SelectOption[] = content.steps.map((s, i) => ({ value: s.id, label: `Lesson step ${i + 1} — ${s.short || 'Untitled'}` }));
-  const untilOptions: SelectOption[] = [{ value: END, label: 'End' }, ...stepOptions.slice(1)];
-  const appears = `Appears: lesson step ${fromIndex + 1} → ${untilIndex > 0 ? untilIndex : 'end'}`;
+  // `until` is exclusive. Until lesson step 1 (what "Remove from this lesson
+  // step" writes on step 1) or anything at or before `from` means never shown.
+  const untilOptions: SelectOption[] = [{ value: END, label: 'End' }, ...stepOptions];
+  const appears =
+    untilIndex >= 0 && untilIndex <= fromIndex ? 'Appears: never (removed before it appears)' : `Appears: lesson step ${fromIndex + 1} → ${untilIndex >= 0 ? untilIndex : 'end'}`;
 
   const setOver = (patch: Parameters<typeof setOverride>[3]) => edit((c) => setOverride(c, step.id, elementId, patch));
-  const removeIds = kind === 'node' ? selectedNodeIds : [elementId];
   const k = (name: string) => `${keyPrefix}:${elementId}:${name}`;
   const effectValue = override.effect ?? SAME;
 
@@ -113,12 +114,12 @@ function ThisStepSection({ step, content, elementId, kind, keyPrefix }: { step: 
         <LabeledSelect label='From' value={content.steps[fromIndex].id} options={stepOptions} onChange={(value) => edit((c) => setPresence(c, elementId, { ...(Object.hasOwn(c.presence, elementId) ? c.presence[elementId] : {}), from: value === c.steps[0].id ? undefined : value }))} />
         <LabeledSelect
           label='Until'
-          value={untilIndex > 0 ? presence.until! : END}
+          value={untilIndex >= 0 ? presence.until! : END}
           options={untilOptions}
           onChange={(value) => edit((c) => setPresence(c, elementId, { ...(Object.hasOwn(c.presence, elementId) ? c.presence[elementId] : {}), until: value === END ? undefined : value }))}
         />
       </div>
-      <Button type='button' variant='outline' size='sm' className='mt-2 w-full text-[11px]' onClick={() => edit((c) => removeFromStep(c, removeIds, step.id))}>
+      <Button type='button' variant='outline' size='sm' className='mt-2 w-full text-[11px]' onClick={() => edit((c) => removeFromStep(c, [elementId], step.id))}>
         Remove from this lesson step
       </Button>
       <SwitchRow label='Hidden in this lesson step' checked={override.visible === false} onChange={(on) => setOver({ visible: on ? false : undefined })} />
@@ -140,10 +141,25 @@ function ThisStepSection({ step, content, elementId, kind, keyPrefix }: { step: 
   );
 }
 
+/** With several Elements selected: one command for all of them (one undo step). */
+function SelectionStepSection({ step, elementIds }: { step: LessonStep; elementIds: string[] }) {
+  const edit = useEditorStore((state) => state.editLesson);
+  return (
+    <>
+      <PanelHeading>This lesson step</PanelHeading>
+      <p className='text-[11px] text-muted-foreground'>{elementIds.length} Elements selected.</p>
+      <Button type='button' variant='outline' size='sm' className='mt-2 w-full text-[11px]' onClick={() => edit((c) => removeFromStep(c, elementIds, step.id))}>
+        Remove {elementIds.length} selected from this lesson step
+      </Button>
+    </>
+  );
+}
+
 /**
  * The Lesson editor's left panel: the Narration of the current Lesson step,
  * then, when exactly one Element is selected, how that Element behaves in
- * this Lesson step. Text fields write on every change; the gesture scope
+ * this Lesson step (with several selected, only Remove from this lesson
+ * step, applied to all of them). Text fields write on every change; the gesture scope
  * folds a stretch of typing into one undo step, and fields are keyed by
  * `historyRevision` and the Lesson step so undo, redo and switching steps
  * always show the stored text.
@@ -160,12 +176,14 @@ export function LessonSidePanel() {
   const step = lesson.steps.find((s) => s.id === lessonStepId) ?? lesson.steps[0];
   const keyPrefix = `${step.id}:${historyRevision}`;
 
-  const selected = selectedEdgeId ? { id: selectedEdgeId, kind: 'edge' as const } : selectedNodeIds.length === 1 ? { id: selectedNodeIds[0], kind: 'node' as const } : null;
+  const selectedIds = selectedEdgeId ? [...selectedNodeIds, selectedEdgeId] : selectedNodeIds;
+  const selected = selectedIds.length !== 1 ? null : selectedEdgeId ? { id: selectedEdgeId, kind: 'edge' as const } : { id: selectedNodeIds[0], kind: 'node' as const };
 
   return (
     <div {...historyGestures} className='p-3'>
       <NarrationSection step={step} content={lesson} keyPrefix={keyPrefix} />
       {selected && <ThisStepSection step={step} content={lesson} elementId={selected.id} kind={selected.kind} keyPrefix={keyPrefix} />}
+      {selectedIds.length > 1 && <SelectionStepSection step={step} elementIds={selectedIds} />}
     </div>
   );
 }

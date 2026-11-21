@@ -9,7 +9,9 @@
 // Public on and its `public-lessons/{id}` mirror, so a re-run overwrites
 // rather than duplicates. Firestore writes go through the emulator's REST
 // API as `Bearer owner`, which bypasses the rules. The Vietnamese copies
-// are named "<title> (VI)" so both sets can be told apart in the list.
+// are titled "<title> (VI)" so both sets can be told apart in the list; the
+// suffix goes into `meta.title` too, since that is the Lesson's one name
+// (the stored `name` is always a copy of it).
 
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
@@ -92,10 +94,11 @@ let order = 0;
 for (const lang of languages) {
   const files = readdirSync(path.join(dir, lang)).filter((file) => file.endsWith('.lesson.json')).sort();
   for (const file of files) {
-    const document = JSON.parse(readFileSync(path.join(dir, lang, file), 'utf8')) as { meta?: { title?: string } };
+    const source = JSON.parse(readFileSync(path.join(dir, lang, file), 'utf8')) as { meta?: { title?: string } };
     const id = `tutorial-${lang}-${file.replace(/\.lesson\.json$/, '')}`;
-    const title = document.meta?.title || id;
+    const title = source.meta?.title || id;
     const name = lang === 'vi' ? `${title} (VI)` : title;
+    const document = { ...source, meta: { ...source.meta, title: name } };
     const updatedAt = new Date(now - order * 1000);
     order += 1;
     await writeDoc(`users/${uid}/lessons/${id}`, { name, document, public: true, createdAt: updatedAt, updatedAt });

@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { parseChangeLine } from '@/lib/lesson/narration';
 import { resolveStepView } from '@/lib/lesson/lesson-step-view';
-import { CALLOUT_KINDS, LESSON_CHAPTERS, contentOf, type CalloutKind, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
+import { CALLOUT_KINDS, LESSON_CHAPTERS, contentOf, lessonNameOf, stepMetricValue, type CalloutKind, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
 
 const CHAPTER_TONE = {
   sand: 'bg-amber-700/10 text-amber-800 ring-amber-700/30 dark:bg-amber-200/10 dark:text-amber-200 dark:ring-amber-200/30',
@@ -88,10 +88,10 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
   const callout = step?.callout && CALLOUT_KINDS.includes(step.callout.kind) ? step.callout : null;
 
   return (
-    <div className='flex h-screen flex-col bg-background text-foreground'>
+    <div className='flex h-dvh flex-col bg-background text-foreground'>
       <header className='flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-border px-3 py-3 sm:px-6'>
         <div className='flex min-w-0 items-baseline gap-3'>
-          <h1 className='truncate text-base font-semibold'>{meta.title}</h1>
+          <h1 className='truncate text-base font-semibold'>{lessonNameOf(lesson)}</h1>
           {meta.minutes !== undefined && <span className='shrink-0 text-xs text-muted-foreground'>{meta.minutes} min</span>}
           {meta.level && <span className='shrink-0 text-xs capitalize text-muted-foreground'>{meta.level}</span>}
         </div>
@@ -158,7 +158,9 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
                 {callout && (
                   <div className={`flex gap-2 rounded-lg px-3 py-2 text-sm ring-1 ${CALLOUT_STYLE[callout.kind].box}`}>
                     <span className='mt-0.5 shrink-0'>{CALLOUT_STYLE[callout.kind].icon}</span>
-                    <NarrationText source={callout.text} inline />
+                    <div className='min-w-0'>
+                      <NarrationText source={callout.text} />
+                    </div>
                   </div>
                 )}
                 {step.changes.length > 0 && (
@@ -179,7 +181,7 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
                     {meta.metrics.map((m) => (
                       <div key={m.id} className='rounded-lg bg-card px-3 py-2 ring-1 ring-border'>
                         <dt className='text-[10px] uppercase tracking-wider text-muted-foreground'>{m.label}</dt>
-                        <dd className='text-sm font-semibold'>{step.metrics[m.id] || '—'}</dd>
+                        <dd className='text-sm font-semibold'>{stepMetricValue(step, m.id) || '—'}</dd>
                       </div>
                     ))}
                   </dl>

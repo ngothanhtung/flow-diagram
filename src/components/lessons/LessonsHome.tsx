@@ -14,7 +14,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { createLesson, deleteLesson, listLessons, setLessonPublic, type StoredLesson } from '@/lib/firebase/lessons';
-import { emptyLessonDocument } from '@/lib/lesson/lesson-types';
+import { emptyLessonDocument, lessonNameOf } from '@/lib/lesson/lesson-types';
 
 const NARROW_COLUMNS = new Set(['stepCount', 'public', 'updatedAt', 'actions']);
 const RIGHT_ALIGNED_COLUMNS = new Set(['stepCount', 'actions']);
@@ -27,12 +27,18 @@ interface LessonRow {
   updatedAt: number | null;
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
 function toLessonRow(lesson: StoredLesson): LessonRow {
   // listLessons returns raw Firestore data: never trust the shape.
   const steps: unknown = lesson.document?.steps;
   return {
     id: lesson.id,
-    name: typeof lesson.name === 'string' && lesson.name ? lesson.name : '(untitled)',
+    // The Lesson's one name is its meta.title (what the editor and viewer
+    // show); the stored `name` is its copy as of the last Save.
+    name: isRecord(lesson.document) && isRecord(lesson.document.meta) ? lessonNameOf(lesson.document) : typeof lesson.name === 'string' && lesson.name ? lesson.name : 'Untitled lesson',
     public: lesson.public === true,
     stepCount: Array.isArray(steps) ? steps.length : 0,
     updatedAt: lesson.updatedAt ? lesson.updatedAt.toMillis() : null,
@@ -86,7 +92,7 @@ export function LessonsHome() {
     if (!user) return;
     setBusy(true);
     try {
-      const id = await createLesson(user.uid, 'Untitled lesson', emptyLessonDocument());
+      const id = await createLesson(user.uid, emptyLessonDocument());
       router.push(`/lessons/${id}/edit`);
     } catch {
       toast.error('Could not create lesson', { description: 'Check sign-in and Firestore rules.' });

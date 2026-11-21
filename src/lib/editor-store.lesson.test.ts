@@ -180,6 +180,14 @@ describe('editor store lesson branch', () => {
     expect(canUndo()).toBe(false);
   });
 
+  it('replaceLesson bumps historyRevision so narration drafts remount on the imported text', () => {
+    store().openLesson(lessonDocument());
+    const before = store().historyRevision;
+    // Same step id as the open Lesson: only the revision can tell the fields apart.
+    store().replaceLesson(lessonDocument(diagram(), { ...content(), steps: [{ ...emptyStep('s1'), title: 'Imported' }] }));
+    expect(store().historyRevision).toBe(before + 1);
+  });
+
   it('undo past a removed step keeps lessonStepId on an existing step', () => {
     store().openLesson(lessonDocument());
     store().setLessonStep('s2');

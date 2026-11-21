@@ -1,7 +1,7 @@
 'use client';
 
-import { collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, serverTimestamp, writeBatch, type Timestamp } from 'firebase/firestore';
-import { emptyLessonDocument, type LessonDocumentJSON } from '../lesson/lesson-types';
+import { collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, runTransaction, serverTimestamp, writeBatch, type Timestamp } from 'firebase/firestore';
+import { emptyLessonDocument, lessonNameOf, type LessonDocumentJSON } from '../lesson/lesson-types';
 import { firestore } from './client';
 
 export interface StoredLesson {
@@ -37,10 +37,10 @@ function mirrorData(ownerUid: string, name: string, document: LessonDocumentJSON
   return { ownerUid, name, document, public: true, updatedAt: serverTimestamp() };
 }
 
-export async function createLesson(userId: string, name: string, document: LessonDocumentJSON): Promise<string> {
+export async function createLesson(userId: string, document: LessonDocumentJSON): Promise<string> {
   const reference = doc(lessonsCollection(userId));
   await writeBatch(firestore)
-    .set(reference, { name, document: cleanDocument(document), public: false, createdAt: serverTimestamp(), updatedAt: serverTimestamp() })
+    .set(reference, { name: lessonNameOf(document), document: cleanDocument(document), public: false, createdAt: serverTimestamp(), updatedAt: serverTimestamp() })
     .commit();
   return reference.id;
 }
@@ -56,17 +56,29 @@ export async function listLessons(userId: string): Promise<StoredLesson[]> {
   return snapshot.docs.map((entry) => ({ id: entry.id, ...entry.data() }) as StoredLesson);
 }
 
+export type SaveLessonResult = { status: 'saved'; isPublic: boolean } | { status: 'missing' };
+
 /**
- * Saves a Lesson. One batch writes the Lesson and, when it is public, its
- * mirror, so the public copy never lags a successful Save. `public` is not
- * written here: `setLessonPublic` owns it.
+ * Saves a Lesson (name = its `meta.title`). One transaction reads the stored
+ * Lesson, writes it and, only when the *stored* flag is Public, its mirror —
+ * so the public copy never lags a successful Save, and a Save can never
+ * re-publish a Lesson whose Public link was turned off elsewhere (the list,
+ * another tab) while this editor still thought it was on. Returns the
+ * server's flag for the editor to show. `public` is not written here:
+ * `setLessonPublic` owns it. A Lesson deleted meanwhile → `missing`.
  */
-export async function saveLesson(userId: string, lessonId: string, name: string, document: LessonDocumentJSON, isPublic: boolean): Promise<void> {
+export async function saveLesson(userId: string, lessonId: string, document: LessonDocumentJSON): Promise<SaveLessonResult> {
   const clean = cleanDocument(document);
-  const batch = writeBatch(firestore);
-  batch.update(doc(lessonsCollection(userId), lessonId), { name, document: clean, updatedAt: serverTimestamp() });
-  if (isPublic) batch.set(publicLessonDoc(lessonId), mirrorData(userId, name, clean));
-  await batch.commit();
+  const name = lessonNameOf(document);
+  const reference = doc(lessonsCollection(userId), lessonId);
+  return runTransaction(firestore, async (transaction) => {
+    const snapshot = await transaction.get(reference);
+    if (!snapshot.exists()) return { status: 'missing' } as const;
+    const isPublic = snapshot.data().public === true;
+    transaction.update(reference, { name, document: clean, updatedAt: serverTimestamp() });
+    if (isPublic) transaction.set(publicLessonDoc(lessonId), mirrorData(userId, name, clean));
+    return { status: 'saved', isPublic } as const;
+  });
 }
 
 /**

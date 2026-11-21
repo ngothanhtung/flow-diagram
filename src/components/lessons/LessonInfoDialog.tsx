@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Input } from '@/components/ui/input';
 import { useEditorStore } from '@/lib/editor-store';
 import { updateMeta } from '@/lib/lesson/lesson-edit';
-import { LESSON_LEVELS, type LessonContent, type LessonLevel } from '@/lib/lesson/lesson-types';
+import { LESSON_LEVELS, RESERVED_METRIC_IDS, type LessonContent, type LessonLevel } from '@/lib/lesson/lesson-types';
 
 const NO_LEVEL = '__none';
 const LEVEL_OPTIONS: SelectOption[] = [{ value: NO_LEVEL, label: 'Not set' }, ...LESSON_LEVELS.map((level) => ({ value: level, label: level.charAt(0).toUpperCase() + level.slice(1) }))];
@@ -34,12 +34,12 @@ function nextMetricId(existing: readonly string[]): string {
   return `metric${n}`;
 }
 
-/** A metric id commits on blur: an id that is empty or taken is not applied. */
+/** A metric id commits on blur: an id that is empty, taken or reserved is not applied. */
 function MetricIdField({ id, taken, onCommit }: { id: string; taken: (id: string) => boolean; onCommit: (id: string) => void }) {
   const [draft, setDraft] = useState(id);
   const commit = () => {
     const next = draft.trim();
-    if (next && next !== id && !taken(next)) onCommit(next);
+    if (next && next !== id && !taken(next) && !RESERVED_METRIC_IDS.has(next)) onCommit(next);
     else setDraft(id);
   };
   return (

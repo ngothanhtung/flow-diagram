@@ -102,6 +102,23 @@ export function toLessonDocument(diagram: FlowDocumentJSON, content: LessonConte
   return { format: 'x-flow-lesson', version: 1, diagram, meta: content.meta, presence: content.presence, steps: content.steps };
 }
 
+/** Ids a metric may not take: as a plain-object key they read inherited
+ *  values (`metrics.constructor` is a function, `metrics.__proto__` an object). */
+export const RESERVED_METRIC_IDS: ReadonlySet<string> = new Set(['__proto__', 'constructor', 'prototype']);
+
+/** A Lesson step's own value for a metric, '' when it has none. */
+export function stepMetricValue(step: LessonStep, metricId: string): string {
+  return Object.hasOwn(step.metrics, metricId) && typeof step.metrics[metricId] === 'string' ? step.metrics[metricId] : '';
+}
+
+/** A Lesson's one name: its `meta.title`, or "Untitled lesson" when blank.
+ *  The header, Lesson info, the stored `name` (list) and the viewer all
+ *  read it, so they can never disagree. Tolerates a raw stored document. */
+export function lessonNameOf(document: Pick<LessonDocumentJSON, 'meta'> | null | undefined): string {
+  const title: unknown = document?.meta?.title;
+  return (typeof title === 'string' && title.trim()) || 'Untitled lesson';
+}
+
 export function contentOf(lesson: LessonDocumentJSON): LessonContent {
   return { meta: lesson.meta, presence: lesson.presence, steps: lesson.steps };
 }

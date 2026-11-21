@@ -101,6 +101,20 @@ describe('normalizeLessonDocument', () => {
     expect(lesson.steps[0].callout?.kind).toBe('warning');
   });
 
+  it('drops metrics with a reserved id (__proto__, constructor, prototype)', () => {
+    // JSON.parse keeps "__proto__" as an own key, which is how it arrives from Import.
+    const raw = JSON.parse(
+      JSON.stringify(lessonWith({ meta: { title: 'T', summary: '', metrics: [{ id: 'trips', label: 'Trips' }], goals: [] } }, { metrics: { trips: '1' } })).replace(
+        '[{"id":"trips","label":"Trips"}]',
+        '[{"id":"__proto__","label":"P"},{"id":"constructor","label":"C"},{"id":"prototype","label":"Q"},{"id":"trips","label":"Trips"}]',
+      ).replace('{"trips":"1"}', '{"__proto__":"x","constructor":"y","trips":"1"}'),
+    );
+    const { lesson, fixes } = ok(raw);
+    expect(lesson.meta.metrics.map((m) => m.id)).toEqual(['trips']);
+    expect(Object.keys(lesson.steps[0].metrics)).toEqual(['trips']);
+    expect(fixes).toEqual(expect.arrayContaining([expect.stringContaining('reserved id "__proto__"'), expect.stringContaining('reserved id "constructor"'), expect.stringContaining('reserved id "prototype"')]));
+  });
+
   it('coerces metric values to strings and drops unknown metric ids', () => {
     const { lesson } = ok(lessonWith({ meta: { title: 'T', summary: '', metrics: [{ id: 'trips', label: 'Trips' }], goals: [] } }, { metrics: { trips: 3, other: 'x' } }));
     expect(lesson.steps[0].metrics).toEqual({ trips: '3' });

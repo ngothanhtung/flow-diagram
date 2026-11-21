@@ -10,7 +10,7 @@
 import { EDGE_EFFECTS, NODE_EFFECTS } from '../document-vocabulary';
 import { normalizeDocument, validateDocument } from '../document-validation';
 import type { FlowDocumentJSON } from '../flowchart-types';
-import { CALLOUT_KINDS, LESSON_CHAPTERS, LESSON_LEVELS, emptyStep, newStepId } from './lesson-types';
+import { CALLOUT_KINDS, LESSON_CHAPTERS, LESSON_LEVELS, RESERVED_METRIC_IDS, emptyStep, newStepId } from './lesson-types';
 import type { CalloutKind, ElementOverride, ElementPresence, LessonDocumentJSON, LessonMeta, LessonMetric, LessonStep } from './lesson-types';
 
 export type NormalizeLessonResult = { ok: true; lesson: LessonDocumentJSON; fixes: string[] } | { ok: false; error: string };
@@ -66,6 +66,10 @@ function normalizeMeta(raw: unknown, stepIds: ReadonlySet<string>, fixes: string
     if (!isRecord(entry) || typeof entry.id !== 'string' || !entry.id || seen.has(entry.id)) {
       const duplicate = isRecord(entry) && typeof entry.id === 'string' && seen.has(entry.id);
       fixes.push(`Metric ${index + 1} ${duplicate ? `has duplicate id "${(entry as { id: string }).id}"` : 'has no usable id'} — dropped.`);
+      return;
+    }
+    if (RESERVED_METRIC_IDS.has(entry.id)) {
+      fixes.push(`Metric ${index + 1} has the reserved id "${entry.id}" — dropped.`);
       return;
     }
     seen.add(entry.id);

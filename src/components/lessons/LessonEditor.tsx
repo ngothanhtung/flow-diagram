@@ -20,12 +20,20 @@ import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { lessonDocumentOf, useEditorStore } from '@/lib/editor-store';
 import { createLesson, loadLesson, saveLesson, setLessonPublic } from '@/lib/firebase/lessons';
+import { updateMeta } from '@/lib/lesson/lesson-edit';
 import { normalizeLessonDocument } from '@/lib/lesson/lesson-normalize';
 import { lessonRestoreChoice, loadLessonSession, saveLessonSession } from '@/lib/lesson/lesson-session';
 import { resolveStepView, stepExportDocument } from '@/lib/lesson/lesson-step-view';
-import { emptyLessonDocument, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
+import { emptyLessonDocument, lessonNameOf, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
 
 type Status = 'loading' | 'ready' | 'not-found' | 'invalid' | 'error';
+
+/** Save failures that the connection message would misdescribe. */
+const SAVE_ERROR_COPY: Record<string, string> = {
+  'not-found': 'This lesson no longer exists.',
+  'invalid-argument': "This lesson can't be saved: it contains an invalid id or is too large.",
+  'permission-denied': "You don't have permission to save this lesson.",
+};
 
 const STATUS_COPY: Record<Exclude<Status, 'ready'>, [string, string]> = {
   loading: ['Loading lesson…', 'Opening the lesson.'],
@@ -122,7 +130,9 @@ function LessonPublicControl({ uid, lessonId, isPublic, dirty, onChange }: { uid
  * around a Lesson — the canvas shows the selected Lesson step, the bottom
  * bar picks and arranges Lesson steps. Opens the local session copy when
  * it is this Lesson with unsaved changes, else the server's (both through
- * `normalizeLessonDocument`). Its own localStorage session
+ * `normalizeLessonDocument`); either way the Public flag comes from the
+ * server, and Save re-reads it (`saveLesson`). The name in the header is
+ * the Lesson's `meta.title` (a rename is an undoable edit). Its own localStorage session
  * (`lesson-session.ts`) never touches the Diagram editor's; leaving calls
  * `closeLesson()`, so a Diagram editor mounted next restores its own.
  */
@@ -132,7 +142,6 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
   const router = useRouter();
 
   const [status, setStatus] = useState<Status>('loading');
-  const [name, setName] = useState('Untitled lesson');
   const [isPublic, setIsPublic] = useState(false);
   const [savedSignature, setSavedSignature] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -149,10 +158,9 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
   useLayoutEffect(() => {
     if (!uid) return;
     let cancelled = false;
-    const open = (document: LessonDocumentJSON, opened: { name: string; isPublic: boolean; savedSignature?: string | null }) => {
+    const open = (document: LessonDocumentJSON, opened: { isPublic: boolean; savedSignature?: string | null }) => {
       const store = useEditorStore.getState();
       store.openLesson(document);
-      setName(opened.name);
       setIsPublic(opened.isPublic);
       // A fresh open is clean: the signature is the document exactly as the
       // store rebuilds it, so key order can't make it read dirty.
@@ -161,28 +169,37 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
     };
 
     const session = loadLessonSession(uid);
+    let local: LessonDocumentJSON | null = null;
     if (session && lessonRestoreChoice(session, lessonId) === 'local') {
       const result = normalizeLessonDocument(session.document);
-      if (result.ok) {
-        open(result.lesson, session);
-        return () => {
-          cancelled = true;
-        };
-      }
-      console.warn('Ignoring a damaged local copy of this lesson', result.error);
+      if (result.ok) local = result.lesson;
+      else console.warn('Ignoring a damaged local copy of this lesson', result.error);
     }
 
+    // The server is read on both paths. A local copy with unsaved changes
+    // keeps its content, but its Public flag and the Lesson's existence come
+    // from the server: the flag may have been turned off in the list since.
     loadLesson(uid, lessonId)
       .then((stored) => {
         if (cancelled) return;
+        if (local && session) {
+          if (!stored) {
+            toast.error('This lesson no longer exists', { description: 'Showing your unsaved local copy. Export it to JSON to keep your changes.', duration: Infinity });
+            return open(local, { isPublic: false, savedSignature: session.savedSignature });
+          }
+          return open(local, { isPublic: stored.public === true, savedSignature: session.savedSignature });
+        }
         if (!stored) return setStatus('not-found');
         const result = normalizeLessonDocument(stored.document);
         if (!result.ok) return setStatus('invalid');
-        open(result.lesson, { name: stored.name || 'Untitled lesson', isPublic: stored.public === true });
+        open(result.lesson, { isPublic: stored.public === true });
       })
       .catch((error: unknown) => {
         console.error('Could not open lesson', error);
-        if (!cancelled) setStatus('error');
+        if (cancelled) return;
+        // Unreachable: the local copy still opens (Save re-reads the server flag).
+        if (local && session) open(local, { isPublic: session.isPublic, savedSignature: session.savedSignature });
+        else setStatus('error');
       });
     return () => {
       cancelled = true;
@@ -210,8 +227,8 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
   // Local autosave of everything a refresh needs, on every change.
   useEffect(() => {
     if (!uid || status !== 'ready' || !lessonDocument) return;
-    saveLessonSession(uid, { lessonId, name, isPublic, savedSignature, document: lessonDocument });
-  }, [uid, status, lessonId, name, isPublic, savedSignature, lessonDocument]);
+    saveLessonSession(uid, { lessonId, name: lessonNameOf(lessonDocument), isPublic, savedSignature, document: lessonDocument });
+  }, [uid, status, lessonId, isPublic, savedSignature, lessonDocument]);
 
   useEffect(() => {
     if (!dirty || status !== 'ready') return;
@@ -227,23 +244,24 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
     if (!uid || saving) return;
     const document = lessonDocumentOf(useEditorStore.getState());
     if (!document) return;
-    const nextName = name.trim();
-    if (!nextName) {
-      toast.error('Please name the lesson');
-      return;
-    }
     setSaving(true);
     try {
-      await saveLesson(uid, lessonId, nextName, document, isPublic);
+      const result = await saveLesson(uid, lessonId, document);
+      if (result.status === 'missing') {
+        toast.error('Could not save lesson', { description: SAVE_ERROR_COPY['not-found'] });
+        return;
+      }
       setSavedSignature(JSON.stringify(document));
-      toast.success('Lesson saved', { description: nextName });
+      setIsPublic(result.isPublic);
+      toast.success('Lesson saved', { description: lessonNameOf(document) });
     } catch (error) {
       console.error('Could not save lesson', error);
-      toast.error('Could not save lesson', { description: 'Check your connection and try again.' });
+      const code = (error as { code?: unknown } | null)?.code;
+      toast.error('Could not save lesson', { description: (typeof code === 'string' && Object.hasOwn(SAVE_ERROR_COPY, code) && SAVE_ERROR_COPY[code]) || 'Check your connection and try again.' });
     } finally {
       setSaving(false);
     }
-  }, [uid, saving, name, lessonId, isPublic]);
+  }, [uid, saving, lessonId]);
 
   const focusOnMount = useCallback((node: HTMLDivElement | null) => node?.focus(), []);
 
@@ -251,7 +269,7 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
     if (!uid) return;
     setCreating(true);
     try {
-      const id = await createLesson(uid, 'Untitled lesson', emptyLessonDocument());
+      const id = await createLesson(uid, emptyLessonDocument());
       router.push(`/lessons/${id}/edit`);
     } catch (error) {
       console.error('Could not create lesson', error);
@@ -268,7 +286,8 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
     return <EditorStatusScreen fullScreen loading={status === 'loading' || status === 'ready'} title={title} description={description} backHref='/lessons' backLabel='Back to lessons' />;
   }
 
-  const fileName = name.trim() || 'lesson';
+  const name = lessonNameOf(lessonDocument);
+  const fileName = name;
 
   return (
     <EditorShell
@@ -276,7 +295,7 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
       document={doc}
       onSave={() => void handleSave()}
       icon={<GraduationCap size={18} className='text-sky-300' />}
-      subtitle={<InlineNameField name={name} onRename={setName} label='Lesson name' title='Rename lesson' />}
+      subtitle={<InlineNameField name={name} onRename={(title) => useEditorStore.getState().editLesson((c) => updateMeta(c, { title }))} label='Lesson name' title='Rename lesson' />}
       fileMenu={
         <EditorFileMenu
           onNew={() => (dirty ? setConfirmNewOpen(true) : void createAndOpen())}
@@ -312,7 +331,7 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
       headerEnd={<UserMenu user={user} />}
       info={{
         category: 'Lesson',
-        title: lesson.meta.title || name,
+        title: name,
         description: lesson.meta.summary,
         note: 'The canvas shows the selected lesson step. Elements outside it are faded; hover one to see when it appears.',
       }}

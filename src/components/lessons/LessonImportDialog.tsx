@@ -13,7 +13,8 @@ import { normalizeLessonDocument } from '@/lib/lesson/lesson-normalize';
 /**
  * Paste (or pick a file of) lesson JSON and replace the open Lesson with
  * it — one Undo step (`replaceLesson`). A plain Diagram JSON is accepted
- * too and becomes a one-step Lesson. Errors stay in the dialog and change
+ * too and becomes a one-step Lesson. The imported `meta.title` becomes the
+ * Lesson's name (kept from the open Lesson when it has none). Errors stay in the dialog and change
  * nothing; repairs are reported in a warning toast.
  */
 export function LessonImportDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
@@ -40,7 +41,11 @@ export function LessonImportDialog({ open, onOpenChange }: { open: boolean; onOp
       setError(result.error);
       return;
     }
-    replaceLesson(result.lesson);
+    // The title is the Lesson's name. A source without one (a plain Diagram
+    // JSON) keeps the open Lesson's, so Import never blanks the name.
+    const current = useEditorStore.getState().lesson?.meta.title ?? '';
+    const lesson = result.lesson.meta.title.trim() || !current ? result.lesson : { ...result.lesson, meta: { ...result.lesson.meta, title: current } };
+    replaceLesson(lesson);
     reset();
     onOpenChange(false);
     if (result.fixes.length > 0) {

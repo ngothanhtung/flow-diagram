@@ -338,7 +338,7 @@ interface EditorState {
 
   /** Undo/redo stacks — see *Undo / redo* in CLAUDE.md. Never persisted. */
   history: DocHistory<HistorySnapshot>;
-  /** Bumped on every undo/redo, so panels holding a local draft of a
+  /** Bumped on every undo/redo (and a Lesson Import), so panels holding a local draft of a
    *  field (the inspectors) remount on the restored values instead of
    *  showing — and later re-committing — the undone text. */
   historyRevision: number;
@@ -1528,7 +1528,9 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
   // middleware records Diagram + Lesson as one step.
   replaceLesson: (document) => {
     const lesson = contentOf(document);
-    set({ doc: document.diagram, lesson, lessonStepId: existingStepId(lesson, null) });
+    // historyRevision: the narration fields hold drafts keyed by it, and an
+    // import often reuses the open Lesson's step ids ('s1').
+    set((state) => ({ doc: document.diagram, lesson, lessonStepId: existingStepId(lesson, null), historyRevision: state.historyRevision + 1 }));
     get().resetCanvasState();
   },
 
