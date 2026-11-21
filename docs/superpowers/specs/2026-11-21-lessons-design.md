@@ -237,3 +237,23 @@ Hàm chuẩn hoá bài học thuần (Vitest), theo tinh thần `normalizeDocume
 - **Narration**: Phần lời giảng của một Lesson step (tiêu đề, đoạn văn, callout, thay đổi, chỉ số). _Tránh_: notes, description.
 
 Giao diện bài học dùng tiếng Anh như phần còn lại của app **[quyết định của người viết]**; nội dung bài viết bằng ngôn ngữ người soạn chọn (font hiện có đã hỗ trợ tiếng Việt).
+
+---
+
+## 10. Bổ sung (2026-11-21): chuyển 40 bài của system-design-tutorials sang
+
+Chủ sản phẩm yêu cầu sau khi duyệt: chuyển **toàn bộ** bài học của `../system-design-tutorials` thành Lesson của X Flow Tool (trước đây nằm ở "ngoài phạm vi"). Bài vẫn trình bày theo phong cách 2D.
+
+**Nguồn:** `system-design-tutorials/backend/data/lessons/*.json` (40 bài; mỗi bước có `scene` riêng: `entities`, `links`, `flows`), bản dịch `translations/<id>.json` (bảng tra chuỗi EN → VI), nhãn chỉ số trong `frontend/src/engine/metrics.ts` (`METRIC_DEFS`, có hàm định dạng giá trị).
+
+**Kết quả:**
+- 80 file `seed/lessons/en/<id>.lesson.json` và `seed/lessons/vi/<id>.lesson.json` (mỗi bài một bản tiếng Anh và một bản tiếng Việt), commit vào repo; ai cũng Import được qua UI.
+- Một script nạp toàn bộ vào **emulator** cho tài khoản thử `admin@claudecode.ai` (quyền administrator), bật Public để xem được ngay. Mật khẩu truyền qua biến môi trường, không ghi vào repo. Không ghi vào Firebase thật (rules bài học chưa deploy ở đó).
+
+**Cách chuyển (quyết định của người viết):**
+- Mặt phẳng isometric (x, y) chiếu thành mặt bằng 2D: `position = (x·S, y·S)` với một hệ số S chung, để bố cục giữ nguyên tương quan.
+- Thực thể → Element: `block` → Block bo góc (màu và icon theo `color`/`glyph`), `db` → hình `database`, `queue` → hình `queue`, `device` → Block có icon điện thoại/laptop, `crowd` → Icon `users` kèm nhãn, `zone` → Frame, `panel` → Block hình `note` (tiêu đề + các dòng), `ring` → hình tròn, `ghost` → Block nét đứt mờ. Các chi tiết `sub`/`tags`/`pills`/`cpu`/`heat` gộp vào phụ đề.
+- Mỗi thực thể ở các bước khác nhau có thể khác nhau (nhãn, màu, vị trí, tag). Bộ chuyển nhóm các bước có cùng "chữ ký hiển thị" thành một **biến thể** (một Element riêng), và dùng `presence` (cộng ghi đè `visible` nếu không liền mạch) để biến thể đó chỉ hiện ở đúng các bước của nó. Line làm tương tự; Line nối vào biến thể đang hiện ở bước đó.
+- Luồng (`flows`) → Effect của Line. Hiệu ứng nền là luồng phổ biến nhất; bước nào khác hoặc không có luồng thì dùng ghi đè `effect` theo bước (kể cả `none`). Màu và kiểu theo `kind` (req, write, msg, heavy, fail/kill/poison, ping, slow, push…), `bounce` → chạy hai chiều.
+- Lời giảng: HTML trong `body` → markup Narration (`<span class="term">` → `[[…]]`, `<b>` → `**…**`, `<em>` → `*…*`, `<code>` → `` `…` ``; thẻ khác bỏ, entity giải mã). Callout `warn` → `warning`. Chỉ số: nhãn từ `METRIC_DEFS`, giá trị qua hàm định dạng của nó thành chuỗi. Mục tiêu: chỉ số bước → id bước.
+- Mọi file đầu ra phải qua `normalizeLessonDocument` **không có fix nào**.
