@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, Copy, Globe, GraduationCap, LoaderCircle, LockKeyhole, TriangleAlert } from 'lucide-react';
+import { Check, Copy, Globe, GraduationCap, Info, LoaderCircle, LockKeyhole, TriangleAlert } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
@@ -10,6 +10,8 @@ import { UserMenu } from '@/components/auth/UserMenu';
 import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, InlineNameField, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { EditorShell } from '@/components/editor/EditorShell';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
+import { LessonInfoDialog } from '@/components/lessons/LessonInfoDialog';
+import { LessonSidePanel } from '@/components/lessons/LessonSidePanel';
 import { LessonStepBar } from '@/components/lessons/LessonStepBar';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
@@ -136,6 +138,7 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
   const [confirmNewOpen, setConfirmNewOpen] = useState(false);
   const [convertThemeOpen, setConvertThemeOpen] = useState(false);
   const [sqlOpen, setSqlOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
 
   // Open the route's Lesson. A layout effect, like the Diagram editor's
   // hydrate: the store write happens before paint, never during render.
@@ -283,6 +286,10 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
       }
       actions={
         <>
+          <Button variant='toolbar' size='lg' onClick={() => setInfoOpen(true)} title='Title, summary, metrics and goals'>
+            <Info size={13} />
+            Lesson info
+          </Button>
           <LessonPublicControl uid={user.uid} lessonId={lessonId} isPublic={isPublic} dirty={dirty} onChange={setIsPublic} />
           <SaveButton saving={saving} dirty={dirty} onSave={() => void handleSave()} />
         </>
@@ -299,11 +306,11 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
         canvasDocument: view.document,
         looks: view.looks,
         hints: view.hints,
-        // Task 11 puts the Narration panel here.
-        leftPanel: <div className='p-4 text-xs text-muted-foreground'>Narration for the selected lesson step.</div>,
+        leftPanel: <LessonSidePanel />,
         footer: <LessonStepBar />,
       }}
     >
+      <LessonInfoDialog open={infoOpen} onOpenChange={setInfoOpen} />
       <ConvertColorThemeDialog open={convertThemeOpen} onOpenChange={setConvertThemeOpen} />
       <SqlExportDialog document={doc} filename={fileName} open={sqlOpen} onOpenChange={setSqlOpen} />
       <AlertDialog open={confirmNewOpen} onOpenChange={setConfirmNewOpen}>
