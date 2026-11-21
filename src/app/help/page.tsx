@@ -425,7 +425,7 @@ export default function HelpPage() {
       <Section id='lessons' title='12. Lessons'>
         <p>
           A <strong>Lesson</strong> teaches with a Diagram, one <strong>Lesson step</strong> at a time: each Lesson step shows part of the drawing and carries its own{' '}
-          <strong>Narration</strong> (title, text, callout, changes, metrics). Open <strong>Lessons</strong> from the sidebar to create, open, delete and publish yours. A Lesson step is not a{' '}
+          <strong>Narration</strong> (title, text, callout, changes, metrics). Click <strong>Lessons</strong> in the header of the Diagrams list to create, open, delete and publish yours. A Lesson step is not a{' '}
           <Pill>Step</Pill> of the Replay — Lessons don&apos;t use Replay; Effects simply keep running.
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>
@@ -439,8 +439,8 @@ export default function HelpPage() {
             remove from the chip&apos;s menu. Write the <strong>Narration</strong> in the left panel.
           </li>
           <li>
-            <strong>Record per step:</strong> there is one drawing shared by all Lesson steps. While you are on Lesson step 4, anything you draw, paste or duplicate <em>appears from step 4</em>{' '}
-            (on step 1 it is simply always there). Elements that don&apos;t belong to the step you are viewing stay on the canvas, faded and marked &quot;from step 4&quot; / &quot;until step 3&quot;, so you can still select them.
+            <strong>Record per step:</strong> there is one drawing shared by all Lesson steps. While you are on Lesson step 4, anything you draw, paste or duplicate <em>appears from Lesson step 4</em>{' '}
+            (on Lesson step 1 it is simply always there). Elements that don&apos;t belong to the Lesson step you are viewing stay on the canvas, faded and marked <Pill>From lesson step 4</Pill>, <Pill>Until lesson step 3</Pill> or <Pill>Hidden in this lesson step</Pill>, so you can still select them.
           </li>
           <li>
             <strong>Remove from this lesson step:</strong> in the <strong>This lesson step</strong> panel it makes the selected Elements and Lines vanish from here on, without deleting them from the

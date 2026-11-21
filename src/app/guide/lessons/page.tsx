@@ -189,7 +189,7 @@ export default function LessonGuidePage() {
                 If reordering puts <Pill>until</Pill> before <Pill>from</Pill>, the Element is present nowhere — the editor warns but does not repair it.
               </li>
               <li>
-                In the viewer, Elements arriving at a Lesson step fade in and are emphasised with a &quot;new&quot; mark; Elements leaving fade out.
+                In the viewer, Elements arriving at a Lesson step fade in and are emphasised with an outline; Elements leaving fade out.
               </li>
             </ul>
           </Section>

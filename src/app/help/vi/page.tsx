@@ -423,7 +423,7 @@ export default function HelpViPage() {
       <Section id='lessons' title='12. Bài học (Lesson)'>
         <p>
           Một <strong>Lesson</strong> (bài học) dạy bằng một Diagram, từng <strong>bước bài học</strong> (Lesson step) một: mỗi bước bài học hiện một phần của hình và có <strong>Narration</strong> (lời giảng)
-          riêng gồm tiêu đề, đoạn văn, callout, danh sách thay đổi, chỉ số. Mở mục <strong>Lessons</strong> ở sidebar để tạo, mở, xoá và công khai bài của bạn. Bước bài học không phải <Pill>Step</Pill>{' '}
+          riêng gồm tiêu đề, đoạn văn, callout, danh sách thay đổi, chỉ số. Bấm nút <strong>Lessons</strong> trên header của danh sách Diagram để tạo, mở, xoá và công khai bài của bạn. Bước bài học không phải <Pill>Step</Pill>{' '}
           của Replay — Lesson không dùng Replay; các Effect cứ chạy liên tục.
         </p>
         <ul className='list-disc space-y-1.5 pl-5'>
@@ -437,8 +437,8 @@ export default function HelpViPage() {
             Viết <strong>Narration</strong> ở panel bên trái.
           </li>
           <li>
-            <strong>Ghi theo bước:</strong> mọi bước bài học dùng chung một hình. Khi đang ở bước bài học 4, thứ gì bạn vẽ, dán hay nhân bản sẽ <em>xuất hiện từ bước 4</em> (ở bước 1 thì có mặt ở mọi bước).
-            Element không thuộc bước đang xem vẫn nằm trên canvas, mờ đi và có dấu &quot;from step 4&quot; / &quot;until step 3&quot;, nên bạn vẫn chọn và sửa được.
+            <strong>Ghi theo bước:</strong> mọi bước bài học dùng chung một hình. Khi đang ở bước bài học 4, thứ gì bạn vẽ, dán hay nhân bản sẽ <em>xuất hiện từ bước bài học 4</em> (ở bước bài học 1 thì có mặt ở mọi bước).
+            Element không thuộc bước bài học đang xem vẫn nằm trên canvas, mờ đi và có dấu <Pill>From lesson step 4</Pill>, <Pill>Until lesson step 3</Pill> hoặc <Pill>Hidden in this lesson step</Pill>, nên bạn vẫn chọn và sửa được.
           </li>
           <li>
             <strong>Remove from this lesson step:</strong> trong panel <strong>This lesson step</strong>, lệnh này làm Element và Line đang chọn biến mất từ bước đó trở đi mà không xoá khỏi hình.{' '}
