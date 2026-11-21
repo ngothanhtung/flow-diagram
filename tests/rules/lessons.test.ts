@@ -40,6 +40,14 @@ describe('users/{uid}/lessons/{id}', () => {
       await assertSucceeds(getDoc(doc(db, LESSON)));
       await assertFails(updateDoc(doc(db, LESSON), { name: 'Edited' }));
     });
+
+    it("cannot create or delete another user's lesson", async () => {
+      await seed(env(), { [LESSON]: lesson });
+      const db = env().authenticatedContext(ADMIN).firestore();
+      await assertFails(setDoc(doc(db, `${LESSONS}/by-admin`), lesson));
+      await assertFails(setDoc(doc(db, LESSON), { ...lesson, name: 'Overwritten' }));
+      await assertFails(deleteDoc(doc(db, LESSON)));
+    });
   });
 
   describe('unauthenticated', () => {
