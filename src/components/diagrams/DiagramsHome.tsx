@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type SortingState } from '@tanstack/react-table';
-import { BookOpen, Boxes, Ellipsis, Eye, ExternalLink, Globe, LayoutTemplate, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Share2, Trash2, Users } from 'lucide-react';
+import { BookOpen, Boxes, GraduationCap, Ellipsis, Eye, ExternalLink, Globe, LayoutTemplate, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Share2, Trash2, Users } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -399,6 +399,10 @@ export function DiagramsHome() {
           <Button variant='toolbar' onClick={() => void refresh(user.uid)}>
             <RefreshCw size={13} className={status === 'loading' ? 'animate-spin' : undefined} />
             Refresh
+          </Button>
+          <Button variant='toolbar' nativeButton={false} render={<Link href='/lessons' title='Your lessons' />}>
+            <GraduationCap size={13} />
+            Lessons
           </Button>
           <Button variant='toolbar' nativeButton={false} render={<Link href='/help' title='User guide' />}>
             <BookOpen size={13} />
