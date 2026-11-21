@@ -15,7 +15,14 @@ const END = '__end';
 
 const CHAPTER_OPTIONS: SelectOption[] = [{ value: NONE, label: 'None' }, ...(Object.entries(LESSON_CHAPTERS) as [LessonChapter, { label: string }][]).map(([value, { label }]) => ({ value, label }))];
 const CALLOUT_OPTIONS: SelectOption[] = [{ value: NONE, label: 'None' }, ...CALLOUT_KINDS.map((kind) => ({ value: kind, label: kind.charAt(0).toUpperCase() + kind.slice(1) }))];
-const NODE_EFFECT_OPTIONS: SelectOption[] = [{ value: SAME, label: 'Same as diagram' }, ...[...NODE_EFFECTS].map((value) => ({ value, label: value.charAt(0).toUpperCase() + value.slice(1) }))];
+// Text, icon and line objects only get the motion family: decoration effects
+// trace an outline they don't have (same rule as `NodeEffectField`).
+const MOTION_EFFECTS: ReadonlySet<string> = new Set(['none', 'float', 'breathe', 'bounce', 'wobble', 'shake', 'blink']);
+const effectOption = (value: string): SelectOption => ({ value, label: value.charAt(0).toUpperCase() + value.slice(1) });
+function nodeEffectOptions(nodeType: string | undefined): SelectOption[] {
+  const motionOnly = nodeType === 'text' || nodeType === 'icon' || nodeType === 'line';
+  return [{ value: SAME, label: 'Same as diagram' }, ...[...NODE_EFFECTS].filter((value) => !motionOnly || MOTION_EFFECTS.has(value)).map(effectOption)];
+}
 const EDGE_EFFECT_SELECT: SelectOption[] = [{ value: SAME, label: 'Same as diagram' }, ...EDGE_EFFECT_OPTIONS.map(({ value, label }) => ({ value, label }))];
 
 const BODY_HINT = '**bold** *italic* `code` [[term]] — blank line = new paragraph';
@@ -60,7 +67,7 @@ function NarrationSection({ step, content, keyPrefix }: { step: LessonStep; cont
           <TextField
             key={k(`metric:${metric.id}`)}
             label={metric.label || metric.id}
-            value={step.metrics[metric.id] ?? ''}
+            value={Object.hasOwn(step.metrics, metric.id) ? step.metrics[metric.id] : ''}
             onChange={(value) => {
               const { [metric.id]: _old, ...rest } = step.metrics;
               void _old;
@@ -79,10 +86,11 @@ function ThisStepSection({ step, content, elementId, kind, keyPrefix }: { step: 
     if (kind === 'node') return state.doc.nodes.find((n) => n.id === elementId)?.title ?? '';
     return state.doc.edges.find((e) => e.id === elementId)?.label ?? '';
   });
+  const nodeType = useEditorStore((state) => (kind === 'node' ? state.doc.nodes.find((n) => n.id === elementId)?.type : undefined));
   const selectedNodeIds = useEditorStore((state) => state.selectedNodeIds);
 
   const override = step.overrides[elementId] ?? {};
-  const presence = content.presence[elementId] ?? {};
+  const presence = Object.hasOwn(content.presence, elementId) ? content.presence[elementId] : {};
   const order = content.steps.map((s) => s.id);
   const fromIndex = Math.max(0, presence.from ? order.indexOf(presence.from) : 0);
   const untilIndex = presence.until ? order.indexOf(presence.until) : -1;
@@ -102,12 +110,12 @@ function ThisStepSection({ step, content, elementId, kind, keyPrefix }: { step: 
         {appears}
       </p>
       <div className='mt-2 grid grid-cols-2 gap-2'>
-        <LabeledSelect label='From' value={content.steps[fromIndex].id} options={stepOptions} onChange={(value) => edit((c) => setPresence(c, elementId, { ...presence, from: value === c.steps[0].id ? undefined : value }))} />
+        <LabeledSelect label='From' value={content.steps[fromIndex].id} options={stepOptions} onChange={(value) => edit((c) => setPresence(c, elementId, { ...(Object.hasOwn(c.presence, elementId) ? c.presence[elementId] : {}), from: value === c.steps[0].id ? undefined : value }))} />
         <LabeledSelect
           label='Until'
           value={untilIndex > 0 ? presence.until! : END}
           options={untilOptions}
-          onChange={(value) => edit((c) => setPresence(c, elementId, { ...presence, until: value === END ? undefined : value }))}
+          onChange={(value) => edit((c) => setPresence(c, elementId, { ...(Object.hasOwn(c.presence, elementId) ? c.presence[elementId] : {}), until: value === END ? undefined : value }))}
         />
       </div>
       <Button type='button' variant='outline' size='sm' className='mt-2 w-full text-[11px]' onClick={() => edit((c) => removeFromStep(c, removeIds, step.id))}>
@@ -124,7 +132,7 @@ function ThisStepSection({ step, content, elementId, kind, keyPrefix }: { step: 
         <LabeledSelect
           label='Effect in this lesson step'
           value={effectValue}
-          options={kind === 'node' ? NODE_EFFECT_OPTIONS : EDGE_EFFECT_SELECT}
+          options={kind === 'node' ? nodeEffectOptions(nodeType) : EDGE_EFFECT_SELECT}
           onChange={(value) => setOver({ effect: value === SAME ? undefined : (value as NonNullable<typeof override.effect>) })}
         />
       </div>

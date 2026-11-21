@@ -21,7 +21,7 @@ function renameMetric(content: LessonContent, index: number, id: string): Lesson
   if (!old || old.id === id) return content;
   const metrics = content.meta.metrics.map((m, i) => (i === index ? { ...m, id } : m));
   const steps = content.steps.map((step) => {
-    if (!(old.id in step.metrics)) return step;
+    if (!Object.hasOwn(step.metrics, old.id)) return step;
     const { [old.id]: value, ...rest } = step.metrics;
     return { ...step, metrics: { ...rest, [id]: value } };
   });
@@ -92,7 +92,7 @@ function InfoForm() {
       <PanelHeading>Metrics</PanelHeading>
       <p className='text-[9px] leading-relaxed text-muted-foreground'>Each metric gets a box in the Narration of every lesson step.</p>
       {meta.metrics.map((metric, index) => (
-        <div key={`${index}:${metric.id}:${rev}`} className='flex items-center gap-2'>
+        <div key={`${index}:${meta.metrics.length}:${metric.id}:${rev}`} className='flex items-center gap-2'>
           <MetricIdField id={metric.id} taken={(id) => meta.metrics.some((m) => m.id === id)} onCommit={(id) => edit((c) => renameMetric(c, index, id))} />
           <DraftInput
             aria-label='Metric label'
@@ -129,7 +129,7 @@ function InfoForm() {
       <PanelHeading>Goals</PanelHeading>
       <p className='text-[9px] leading-relaxed text-muted-foreground'>What the learner should be able to do, and the lesson step that delivers it.</p>
       {meta.goals.map((goal, index) => (
-        <div key={`${index}:${rev}`} className='flex items-center gap-2'>
+        <div key={`${index}:${meta.goals.length}:${rev}`} className='flex items-center gap-2'>
           <DraftInput
             aria-label='Goal'
             value={goal.text}
