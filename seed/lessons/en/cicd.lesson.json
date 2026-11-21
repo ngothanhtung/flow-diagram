@@ -1,0 +1,2265 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "gz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 72,
+          "y": 295
+        },
+        "width": 252,
+        "height": 562,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "bz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 72,
+          "y": -295
+        },
+        "width": 252,
+        "height": 562,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "pz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 448,
+        "height": 216,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "pz-label",
+        "type": "text",
+        "title": "CI PIPELINE",
+        "position": {
+          "x": -164,
+          "y": -411
+        },
+        "width": 100,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "pz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1017,
+          "y": -505
+        },
+        "width": 346,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "EXPAND, THEN CONTRACT\n1  add full_name, write both columns\n2  backfill old rows\n3  read from full_name\n→ 4  drop name — once nothing uses it\n⚠ never rename in one step",
+        "position": {
+          "x": 1017,
+          "y": -505
+        },
+        "width": 322,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1026,
+          "y": -514
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "BEFORE → AFTER\ndeploys          1 a week   →  20 a day\ncommit → prod    2 weeks    →  2 hours\ndeploys failing  30%        →  3%\n→ restore        4 hours    →  1 minute",
+        "position": {
+          "x": 1026,
+          "y": -514
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "dev",
+        "type": "process",
+        "title": "developer",
+        "description": "build on my laptop",
+        "position": {
+          "x": -756,
+          "y": -324
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dev-2",
+        "type": "process",
+        "title": "developer",
+        "description": "⚠ which change was it?",
+        "position": {
+          "x": -756,
+          "y": -324
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dev-3",
+        "type": "process",
+        "title": "developer",
+        "position": {
+          "x": -756,
+          "y": -324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv",
+        "type": "process",
+        "title": "Production",
+        "description": "CPU 40%",
+        "position": {
+          "x": 72,
+          "y": 0
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-2",
+        "type": "process",
+        "title": "Production",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 72,
+          "y": 0
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "users",
+        "position": {
+          "x": 684,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "users · site down",
+        "position": {
+          "x": 684,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "repo",
+        "type": "process",
+        "title": "Git",
+        "description": "main",
+        "position": {
+          "x": -432,
+          "y": -324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:GitBranch",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "build",
+        "type": "process",
+        "title": "Build",
+        "description": "✓ clean machine",
+        "position": {
+          "x": -108,
+          "y": -324
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Hammer",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "build-2",
+        "type": "process",
+        "title": "Build",
+        "position": {
+          "x": -108,
+          "y": -324
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Hammer",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "test",
+        "type": "process",
+        "title": "Test",
+        "position": {
+          "x": 108,
+          "y": -324
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:FlaskConical",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "reg",
+        "type": "process",
+        "title": "artifacts",
+        "description": "checkout:3f9c2a1",
+        "position": {
+          "x": 360,
+          "y": -324
+        },
+        "width": 204,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-2",
+        "type": "process",
+        "title": "artifacts",
+        "position": {
+          "x": 360,
+          "y": -324
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "stg",
+        "type": "process",
+        "title": "Staging",
+        "description": "✓ smoke tests ✓",
+        "position": {
+          "x": 360,
+          "y": 72
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:FlaskConical",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "prod",
+        "type": "process",
+        "title": "Production",
+        "description": "CPU 40%",
+        "position": {
+          "x": 360,
+          "y": 468
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "traffic → green",
+        "position": {
+          "x": 360,
+          "y": 0
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-2",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "5% → v42",
+        "position": {
+          "x": 360,
+          "y": 0
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-3",
+        "type": "process",
+        "title": "Load Balancer",
+        "position": {
+          "x": 360,
+          "y": 0
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s0",
+        "type": "process",
+        "title": "v41",
+        "description": "blue · standby",
+        "position": {
+          "x": 72,
+          "y": -432
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "bz"
+      },
+      {
+        "id": "s0-2",
+        "type": "process",
+        "title": "v41",
+        "position": {
+          "x": 72,
+          "y": -432
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s0-3",
+        "type": "process",
+        "title": "v41",
+        "description": "⚠ no column “name”",
+        "position": {
+          "x": 72,
+          "y": -432
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s0-4",
+        "type": "process",
+        "title": "v42",
+        "position": {
+          "x": 72,
+          "y": -432
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1",
+        "type": "process",
+        "title": "v41",
+        "position": {
+          "x": 72,
+          "y": -144
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "bz"
+      },
+      {
+        "id": "s1-2",
+        "type": "process",
+        "title": "v41",
+        "position": {
+          "x": 72,
+          "y": -144
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-3",
+        "type": "process",
+        "title": "v41",
+        "position": {
+          "x": 72,
+          "y": -144
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-4",
+        "type": "process",
+        "title": "v42",
+        "position": {
+          "x": 72,
+          "y": -144
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2",
+        "type": "process",
+        "title": "v42",
+        "position": {
+          "x": 72,
+          "y": 144
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-2",
+        "type": "process",
+        "title": "v41",
+        "position": {
+          "x": 72,
+          "y": 144
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-3",
+        "type": "process",
+        "title": "v41",
+        "position": {
+          "x": 72,
+          "y": 144
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s3",
+        "type": "process",
+        "title": "v42",
+        "description": "✓ green · live",
+        "position": {
+          "x": 72,
+          "y": 432
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "gz"
+      },
+      {
+        "id": "s3-2",
+        "type": "process",
+        "title": "v42",
+        "description": "✓ canary · errors 0.1%",
+        "position": {
+          "x": 72,
+          "y": 432
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s3-3",
+        "type": "process",
+        "title": "v42",
+        "position": {
+          "x": 72,
+          "y": 432
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "users table",
+        "description": "name → full_name",
+        "position": {
+          "x": -288,
+          "y": 0
+        },
+        "width": 200,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "flags",
+        "type": "process",
+        "title": "Flags",
+        "description": "new_checkout: staff + 1%",
+        "position": {
+          "x": -288,
+          "y": 0
+        },
+        "width": 176,
+        "height": 78,
+        "shape": "rounded",
+        "icon": "lucide:ToggleRight",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ds",
+        "from": "dev",
+        "to": "srv",
+        "label": "copy over SSH",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ds-2",
+        "from": "dev-2",
+        "to": "srv-2",
+        "label": "copy over SSH",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "none"
+      },
+      {
+        "id": "us",
+        "from": "users",
+        "to": "srv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "us-2",
+        "from": "users-2",
+        "to": "srv-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 4
+      },
+      {
+        "id": "dr",
+        "from": "dev-3",
+        "to": "repo",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rb",
+        "from": "repo",
+        "to": "build",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rb-2",
+        "from": "repo",
+        "to": "build-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bt",
+        "from": "build",
+        "to": "test",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bt-2",
+        "from": "build-2",
+        "to": "test",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "tr",
+        "from": "test",
+        "to": "reg",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "tr-2",
+        "from": "test",
+        "to": "reg-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rs",
+        "from": "reg-2",
+        "to": "stg",
+        "label": "deploy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "sp",
+        "from": "stg",
+        "to": "prod",
+        "label": "promote · 1 click",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.5,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ul",
+        "from": "users",
+        "to": "lb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ul-2",
+        "from": "users",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ul-3",
+        "from": "users",
+        "to": "lb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l0",
+        "from": "lb",
+        "to": "s0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": -432
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "l0-2",
+        "from": "lb-2",
+        "to": "s0-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": -432
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l0-3",
+        "from": "lb-3",
+        "to": "s0-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": -432
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l0-4",
+        "from": "lb-3",
+        "to": "s0-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": -432
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l1",
+        "from": "lb",
+        "to": "s1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": -144
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "l1-2",
+        "from": "lb-2",
+        "to": "s1-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": -144
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l1-3",
+        "from": "lb-3",
+        "to": "s1-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": -144
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l1-4",
+        "from": "lb-3",
+        "to": "s1-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": -144
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l2",
+        "from": "lb",
+        "to": "s2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": 144
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l2-2",
+        "from": "lb-2",
+        "to": "s2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": 144
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l2-3",
+        "from": "lb-3",
+        "to": "s2-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": 144
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l2-4",
+        "from": "lb-3",
+        "to": "s2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": 144
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l3",
+        "from": "lb",
+        "to": "s3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": 432
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l3-2",
+        "from": "lb-2",
+        "to": "s3-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": 432
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "l3-3",
+        "from": "lb-3",
+        "to": "s3-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 252,
+            "y": 0
+          },
+          {
+            "x": 252,
+            "y": 432
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "d1",
+        "from": "s1-3",
+        "to": "db",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -108,
+            "y": -144
+          },
+          {
+            "x": -108,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "d3",
+        "from": "s3-3",
+        "to": "db",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -108,
+            "y": 432
+          },
+          {
+            "x": -108,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "f0",
+        "from": "flags",
+        "to": "s0-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -108,
+            "y": 0
+          },
+          {
+            "x": -108,
+            "y": -432
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "f1",
+        "from": "flags",
+        "to": "s1-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -108,
+            "y": 0
+          },
+          {
+            "x": -108,
+            "y": -144
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "f2",
+        "from": "flags",
+        "to": "s2",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -108,
+            "y": 0
+          },
+          {
+            "x": -108,
+            "y": 144
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "f3",
+        "from": "flags",
+        "to": "s3-3",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -108,
+            "y": 0
+          },
+          {
+            "x": -108,
+            "y": 432
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      }
+    ]
+  },
+  "meta": {
+    "title": "CI/CD & Deployments",
+    "summary": "Getting every change to production quickly and safely — and back out again just as quickly.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "deploys",
+        "label": "Deploys / day"
+      },
+      {
+        "id": "leadTime",
+        "label": "Commit → production"
+      },
+      {
+        "id": "failRate",
+        "label": "Deploys that fail"
+      },
+      {
+        "id": "restore",
+        "label": "Time to restore"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Continuous integration on every push",
+        "step": "s3"
+      },
+      {
+        "text": "Build once, promote one artifact",
+        "step": "s4"
+      },
+      {
+        "text": "Blue-green and canary releases",
+        "step": "s7"
+      },
+      {
+        "text": "Migrations that don’t break the old version",
+        "step": "s8"
+      },
+      {
+        "text": "Feature flags and measuring delivery",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "dev": {
+      "until": "s2"
+    },
+    "dev-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dev-3": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "srv": {
+      "until": "s2"
+    },
+    "srv-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "users-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "repo": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "pz": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "build": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "build-2": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "test": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "reg": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "reg-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "stg": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "prod": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "lb": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "lb-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "lb-3": {
+      "from": "s8"
+    },
+    "s0": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "s0-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s0-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s0-4": {
+      "from": "s9"
+    },
+    "s1": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "s1-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s1-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s1-4": {
+      "from": "s9"
+    },
+    "s2": {
+      "from": "s6"
+    },
+    "s2-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s2-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "s3-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s3-3": {
+      "from": "s8"
+    },
+    "bz": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gz": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "db": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "flags": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "pz-label": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "card-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-2-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ds": {
+      "until": "s2"
+    },
+    "ds-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "us": {
+      "until": "s2"
+    },
+    "us-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dr": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "rb": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "rb-2": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "bt": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "bt-2": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "tr": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "tr-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "rs": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sp": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ul": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ul-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ul-3": {
+      "from": "s8"
+    },
+    "l0": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "l0-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "l0-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "l0-4": {
+      "from": "s9"
+    },
+    "l1": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "l1-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "l1-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "l1-4": {
+      "from": "s9"
+    },
+    "l2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "l2-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "l2-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "l2-4": {
+      "from": "s9"
+    },
+    "l3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "l3-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "l3-3": {
+      "from": "s8"
+    },
+    "d1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "d3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f0": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f1": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f3": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "By hand",
+      "title": "Shipping by hand",
+      "chapter": "setup",
+      "body": "Once a week, on Friday evening, a developer builds the app on their laptop, copies it to the production server over SSH and restarts it. Everyone stays late in case something breaks.\n\nA week of everyone’s changes goes out at once — so when something does break, nobody is sure which change did it.",
+      "callout": {
+        "kind": "insight",
+        "text": "Big, rare releases feel safer and are the opposite: the more that changes at once, the harder it is to test, to find the cause, and to undo."
+      },
+      "changes": [],
+      "metrics": {
+        "deploys": "1 / week",
+        "leadTime": "2 weeks",
+        "failRate": "30%",
+        "restore": "4 h"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Friday",
+      "title": "“It works on my machine”",
+      "chapter": "problem",
+      "body": "This Friday the laptop had a newer library than the server, and the app won’t start. While the developer works out which of thirty changes to undo, the site is down.\n\nThere is no record of exactly what was running before, so even going back is guesswork. Four hours later, it’s up again.",
+      "callout": {
+        "kind": "warning",
+        "text": "Builds that depend on someone’s machine, and deploys nobody can repeat exactly, turn every release into an experiment."
+      },
+      "changes": [
+        "- New build fails to start",
+        "- Site down while someone guesses"
+      ],
+      "metrics": {
+        "deploys": "1 / week",
+        "leadTime": "2 weeks",
+        "failRate": "30%",
+        "restore": "4 h"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "CI",
+      "title": "Continuous integration",
+      "chapter": "solution",
+      "body": "Now every push to the shared repository starts a [[pipeline]] on a clean machine: build the code, run the tests (see *Testing*). Nothing depends on anyone’s laptop.\n\nThe team merges small changes into `main` several times a day. A red pipeline means “stop and fix this first”, so `main` always builds and passes. That habit is [[continuous integration]].",
+      "callout": {
+        "kind": "tip",
+        "text": "Keep the pipeline fast — ten minutes, not an hour. A slow pipeline makes people batch their changes again."
+      },
+      "changes": [
+        "+ Shared repository, small changes to main",
+        "+ Every push: build + test on a clean machine"
+      ],
+      "metrics": {
+        "deploys": "1 / week",
+        "leadTime": "1 week",
+        "failRate": "15%",
+        "restore": "4 h"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "One artifact",
+      "title": "Build once, promote the same artifact",
+      "chapter": "technique",
+      "body": "The last stage packages the result into an **immutable artifact** — usually a container image — tagged with the commit it came from, `checkout:3f9c2a1`, and stores it in a registry.\n\nThat exact image is what gets tested, deployed to staging and then to production. Only configuration (addresses, secrets) differs between environments. What you tested is what you ship.",
+      "callout": {
+        "kind": "tip",
+        "text": "Never rebuild for production: a rebuild can pull different dependencies and produce a different program from the one you tested."
+      },
+      "changes": [
+        "+ Package stage: one image per commit",
+        "+ Artifact registry"
+      ],
+      "metrics": {
+        "deploys": "1 / week",
+        "leadTime": "1 week",
+        "failRate": "10%",
+        "restore": "1 h"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "CD",
+      "title": "Continuous delivery",
+      "chapter": "solution",
+      "body": "Every image that passes is deployed to **staging** automatically — a small copy of production — where smoke tests check the main journeys. From there it can go to production at any time.\n\nWith [[continuous delivery]], production is one button press away. With continuous *deployment*, there is no button: every green change goes out by itself.",
+      "callout": {
+        "kind": "insight",
+        "text": "Deploying daily makes each deploy small: a few changes, easy to review, easy to blame, easy to undo."
+      },
+      "changes": [
+        "+ Auto-deploy to staging + smoke tests",
+        "+ One-click (or automatic) production deploy"
+      ],
+      "metrics": {
+        "deploys": "5 / day",
+        "leadTime": "1 day",
+        "failRate": "8%",
+        "restore": "30 min"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Blue-green",
+      "title": "Blue-green: switch, don’t replace",
+      "chapter": "technique",
+      "body": "How does a new version reach users without downtime? With [[blue-green]] deployment there are two identical production groups. Blue serves everyone on v41 while v42 starts on green and warms up.\n\nThen the load balancer switches all traffic to green at once. If anything looks wrong, switching back to blue takes seconds — it is still running, untouched.",
+      "callout": {
+        "kind": "tip",
+        "text": "The cost is double capacity during a release. Rolling deploys (see *Load Balancing*) are cheaper but slower to undo."
+      },
+      "changes": [
+        "+ Two production groups: blue (v41) and green (v42)",
+        "~ Load balancer switches all traffic to green"
+      ],
+      "metrics": {
+        "deploys": "5 / day",
+        "leadTime": "1 day",
+        "failRate": "8%",
+        "restore": "1 min"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Canary",
+      "title": "Canary: try it on a few users first",
+      "chapter": "technique",
+      "body": "A [[canary]] release sends a small slice of real traffic — here 5% — to the new version, and compares its error rate and latency with the old version’s (see *Observability*).\n\nIf v42 is worse, the pipeline rolls it back automatically and only a few users ever saw it. If it holds up, the slice grows: 25%, 50%, everyone.",
+      "callout": {
+        "kind": "insight",
+        "text": "Canaries are testing in production — the only environment with real users, real data and real traffic patterns."
+      },
+      "changes": [
+        "~ 5% of traffic → v42",
+        "+ Automatic comparison against v41",
+        "~ Grow to 25% → 100%, or roll back"
+      ],
+      "metrics": {
+        "deploys": "5 / day",
+        "leadTime": "1 day",
+        "failRate": "4%",
+        "restore": "1 min"
+      },
+      "overrides": {
+        "s2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Migrations",
+      "title": "Case: the migration that breaks the old version",
+      "chapter": "problem",
+      "body": "v42 renames a column: `name` becomes `full_name`. The migration runs, and v42 is happy — but during the rollout most servers are still on v41, which asks for `name` and gets an error.\n\nFix it with [[expand and contract]]: add `full_name` and write both; backfill old rows; switch reads to `full_name`; only when no running version uses `name`, drop it. Every step works with both versions.",
+      "callout": {
+        "kind": "warning",
+        "text": "During any deploy, old and new code run side by side against the same database. Every schema change must work with both."
+      },
+      "changes": [
+        "- Column renamed in one step",
+        "- v41 servers fail mid-rollout",
+        "+ Expand → migrate → contract, over several deploys"
+      ],
+      "metrics": {
+        "deploys": "5 / day",
+        "leadTime": "1 day",
+        "failRate": "4%",
+        "restore": "1 min"
+      },
+      "overrides": {
+        "s2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Flags",
+      "title": "Feature flags: deploy is not release",
+      "chapter": "technique",
+      "body": "The new checkout page is merged and deployed weeks before launch — switched off. A [[feature flag]] decides, per request, who sees it: first the team, then 1% of users, then everyone.\n\nTurning it off is a setting, not a deploy, so a problem is fixed in seconds. Deploying (moving code to servers) and releasing (showing it to users) become separate decisions.",
+      "callout": {
+        "kind": "tip",
+        "text": "Flags are debt too: remove each one once its feature is fully out, or the code fills with branches nobody dares delete."
+      },
+      "changes": [
+        "+ Flag service",
+        "~ New checkout: on for staff + 1% of users"
+      ],
+      "metrics": {
+        "deploys": "20 / day",
+        "leadTime": "2 h",
+        "failRate": "3%",
+        "restore": "1 min"
+      },
+      "overrides": {
+        "s2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Measure",
+      "title": "Measure the delivery itself",
+      "chapter": "insight",
+      "body": "Four numbers, known as the [[DORA metrics]], describe how well a team ships: how often it deploys, how long a change takes from commit to production, how many deploys cause a problem, and how quickly service is restored when one does.\n\nResearch across thousands of teams found the same thing this lesson shows: the teams that ship most often also break production least, because every change is small and every undo is fast.",
+      "callout": {
+        "kind": "insight",
+        "text": "Speed and safety are not a trade-off here. Small, frequent, reversible changes improve both."
+      },
+      "changes": [],
+      "metrics": {
+        "deploys": "20 / day",
+        "leadTime": "2 h",
+        "failRate": "3%",
+        "restore": "1 min"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s11",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• **CI**: small changes merged often; every push is built and tested on a clean machine.\n• **Build once**: one immutable artifact per commit, promoted unchanged to every environment.\n• **CD**: every green change can reach production at any time — by a click or automatically.\n• Release carefully: **blue-green** to switch back fast, **canaries** to limit the damage, **flags** to separate deploy from release.\n• Schema changes must work with **old and new code** at once: expand, then contract.",
+      "callout": {
+        "kind": "tip",
+        "text": "That completes Shipping. Next module: **Whole Systems** — starting with how high-level and low-level design fit together."
+      },
+      "changes": [],
+      "metrics": {
+        "deploys": "20 / day",
+        "leadTime": "2 h",
+        "failRate": "3%",
+        "restore": "1 min"
+      },
+      "overrides": {}
+    }
+  ]
+}

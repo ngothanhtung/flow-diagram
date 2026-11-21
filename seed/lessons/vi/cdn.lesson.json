@@ -1,0 +1,1693 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 896,
+          "y": -520
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "MỘT TRANG GỒM NHỮNG GÌ\nHTML (mỗi người)    30 KB\nảnh                1,6 MB\nscript + style     400 KB\n→ 98% số byte giống nhau với mọi người",
+        "position": {
+          "x": 896,
+          "y": -520
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "lon",
+        "type": "process",
+        "title": "London",
+        "position": {
+          "x": 0,
+          "y": -546
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lon-2",
+        "type": "process",
+        "title": "London · ×20",
+        "position": {
+          "x": 0,
+          "y": -546
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "syd",
+        "type": "process",
+        "title": "Sydney",
+        "position": {
+          "x": 546,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "syd-2",
+        "type": "process",
+        "title": "Sydney · ×20",
+        "position": {
+          "x": 546,
+          "y": 0
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 88%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-2",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 20%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-3",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 32%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-4",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · logo.png · mới · CPU 20%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-5",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · logo.3f9a.png · CPU 15%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-6",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 22%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-7",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 5%",
+        "position": {
+          "x": -234,
+          "y": 234
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-8",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 15%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el",
+        "type": "process",
+        "title": "Biên",
+        "description": "London",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-2",
+        "type": "process",
+        "title": "Biên",
+        "description": "London · nóng",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-3",
+        "type": "process",
+        "title": "Biên",
+        "description": "London · ⚠ logo.png · cũ",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-4",
+        "type": "process",
+        "title": "Biên",
+        "description": "London · logo.3f9a.png · 1 năm",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-5",
+        "type": "process",
+        "title": "Biên",
+        "description": "London · CPU 60%",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-6",
+        "type": "process",
+        "title": "Biên",
+        "description": "London · /cart → private · chuyển tiếp",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es",
+        "type": "process",
+        "title": "Biên",
+        "description": "Sydney",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-2",
+        "type": "process",
+        "title": "Biên",
+        "description": "Sydney · ⚠ nguội · đang nạp",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-3",
+        "type": "process",
+        "title": "Biên",
+        "description": "Sydney · ⚠ logo.png · cũ",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-4",
+        "type": "process",
+        "title": "Biên",
+        "description": "Sydney · logo.3f9a.png · 1 năm",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-5",
+        "type": "process",
+        "title": "Biên",
+        "description": "Sydney · CPU 60%",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-6",
+        "type": "process",
+        "title": "Biên",
+        "description": "Sydney · /cart → private · chuyển tiếp",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sh",
+        "type": "process",
+        "title": "Shield",
+        "description": "cache tầng giữa",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "lo",
+        "from": "lon",
+        "to": "origin",
+        "label": "≈ 75 ms mỗi lượt khứ hồi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 2
+      },
+      {
+        "id": "so",
+        "from": "syd",
+        "to": "origin",
+        "label": "≈ 200 ms mỗi lượt khứ hồi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 2
+      },
+      {
+        "id": "le",
+        "from": "lon",
+        "to": "el",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "le-2",
+        "from": "lon",
+        "to": "el-2",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "le-3",
+        "from": "lon",
+        "to": "el-3",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "le-4",
+        "from": "lon",
+        "to": "el-4",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "le-5",
+        "from": "lon-2",
+        "to": "el-5",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 6
+      },
+      {
+        "id": "le-6",
+        "from": "lon",
+        "to": "el-6",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo",
+        "from": "el",
+        "to": "origin-2",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-2",
+        "from": "el-2",
+        "to": "origin-3",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-3",
+        "from": "el-3",
+        "to": "origin-4",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-4",
+        "from": "el-4",
+        "to": "origin-5",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-5",
+        "from": "el-5",
+        "to": "origin-2",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 6
+      },
+      {
+        "id": "eo-6",
+        "from": "el-6",
+        "to": "origin-6",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-7",
+        "from": "el",
+        "to": "origin-8",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se",
+        "from": "syd",
+        "to": "es",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se-2",
+        "from": "syd",
+        "to": "es-2",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se-3",
+        "from": "syd",
+        "to": "es-3",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se-4",
+        "from": "syd",
+        "to": "es-4",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se-5",
+        "from": "syd-2",
+        "to": "es-5",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 6
+      },
+      {
+        "id": "se-6",
+        "from": "syd",
+        "to": "es-6",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso",
+        "from": "es",
+        "to": "origin-2",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-2",
+        "from": "es-2",
+        "to": "origin-3",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-3",
+        "from": "es-3",
+        "to": "origin-4",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-4",
+        "from": "es-4",
+        "to": "origin-5",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-5",
+        "from": "es-5",
+        "to": "origin-2",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 6
+      },
+      {
+        "id": "eso-6",
+        "from": "es-6",
+        "to": "origin-6",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-7",
+        "from": "es",
+        "to": "origin-8",
+        "label": "chỉ khi trượt",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "esh",
+        "from": "el",
+        "to": "sh",
+        "label": "trượt ở biên",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "ssh",
+        "from": "es",
+        "to": "sh",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "sho",
+        "from": "sh",
+        "to": "origin-7",
+        "label": "một lần mỗi tệp",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      }
+    ]
+  },
+  "meta": {
+    "title": "Phân phối nội dung",
+    "summary": "Sao chép những gì ai cũng tải về lên các server gần người dùng, và thôi đối đầu với tốc độ ánh sáng.",
+    "minutes": 10,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "lon",
+        "label": "Độ trễ ở London"
+      },
+      {
+        "id": "syd",
+        "label": "Độ trễ ở Sydney"
+      },
+      {
+        "id": "origin",
+        "label": "Tải ở origin"
+      },
+      {
+        "id": "hitRate",
+        "label": "Tỉ lệ trúng cache"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao người dùng ở xa lại chậm",
+        "step": "s1"
+      },
+      {
+        "text": "Cách server biên cache tệp tĩnh",
+        "step": "s3"
+      },
+      {
+        "text": "Cache nguội và tên tệp có phiên bản",
+        "step": "s6"
+      },
+      {
+        "text": "Cách CDN che chắn cho origin",
+        "step": "s7"
+      },
+      {
+        "text": "Trang riêng tư và origin shield",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "lon-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "syd-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "origin": {
+      "until": "s3"
+    },
+    "origin-2": {
+      "from": "s3",
+      "until": "s8"
+    },
+    "origin-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "origin-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "origin-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "origin-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "origin-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "origin-8": {
+      "from": "s10"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "el": {
+      "from": "s3"
+    },
+    "el-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "el-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "el-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "el-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "el-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "es": {
+      "from": "s3"
+    },
+    "es-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "es-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "es-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "es-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "es-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sh": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lo": {
+      "until": "s3"
+    },
+    "so": {
+      "until": "s3"
+    },
+    "le": {
+      "from": "s3"
+    },
+    "le-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "le-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "le-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "le-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "le-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "eo": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "eo-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "eo-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "eo-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "eo-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "eo-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "eo-7": {
+      "from": "s10"
+    },
+    "se": {
+      "from": "s3"
+    },
+    "se-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "se-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "se-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "se-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "se-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "eso": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "eso-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "eso-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "eso-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "eso-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "eso-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "eso-7": {
+      "from": "s10"
+    },
+    "esh": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ssh": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sho": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Ở xa",
+      "title": "Người dùng của bạn ở xa",
+      "chapter": "problem",
+      "body": "Server của bạn ở Virginia. Người dùng ở London chờ khoảng 75 ms mỗi lượt khứ hồi; ở Sydney khoảng 200 ms. Một trang cần nhiều lượt khứ hồi, nên Sydney chờ hơn một giây khá nhiều.\n\nTrong khi đó, mọi bức ảnh cho mọi người dùng trên thế giới đều do một origin đó phục vụ.",
+      "callout": {
+        "kind": "warning",
+        "text": "Bạn không thể tăng tốc ánh sáng. Cách duy nhất để cắt độ trễ do khoảng cách là phục vụ người dùng từ nơi gần hơn."
+      },
+      "changes": [],
+      "metrics": {
+        "lon": "80 ms",
+        "syd": "210 ms",
+        "origin": "9.000 yc/s",
+        "hitRate": "0%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Byte giống nhau",
+      "title": "Phần lớn byte giống nhau với mọi người",
+      "chapter": "insight",
+      "body": "Nhìn vào bên trong một lần tải trang. HTML là riêng từng người, nhưng ảnh, script, stylesheet và video thì **giống hệt** nhau với mọi người dùng.\n\nNhững tệp giống hệt và ít thay đổi là hoàn hảo để cache, ở bất cứ đâu, kể cả xa origin.",
+      "callout": {
+        "kind": "insight",
+        "text": "Tài nguyên tĩnh thường chiếm hơn 90% số byte của một trang."
+      },
+      "changes": [],
+      "metrics": {
+        "lon": "80 ms",
+        "syd": "210 ms",
+        "origin": "9.000 yc/s",
+        "hitRate": "0%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Biên",
+      "title": "Đặt bản sao ở biên",
+      "chapter": "solution",
+      "body": "Một [[CDN]] (mạng phân phối nội dung) chạy [[server biên]] ở hàng trăm thành phố. Trỏ tệp tĩnh của bạn vào đó, và mỗi người dùng được phục vụ bởi biên gần nhất.\n\nGiờ London nhận ảnh trong ~10 ms. Chỉ các lần trượt (hổ phách) mới phải đi tới tận Virginia.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các CDN phổ biến: Cloudflare, Fastly, Akamai, Amazon CloudFront. Bạn thuê biên của họ; bạn không vận hành chúng."
+      },
+      "changes": [
+        "+ Server biên ở London và Sydney",
+        "~ 90% yêu cầu được trả lời ở biên",
+        "~ Tải origin 9.000 → 900 yc/s"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "900 yc/s",
+        "hitRate": "90%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Biên nguội",
+      "title": "Những yêu cầu đầu tiên đều trượt",
+      "chapter": "technique",
+      "body": "Biên là cache kiểu [[pull-through]]: chúng bắt đầu trống rỗng. Yêu cầu đầu tiên cho một tệp bị trượt, biên lấy nó từ origin, giữ một bản và phục vụ mọi người sau đó.\n\nBiên London đã nóng; biên Sydney vừa khởi động và vẫn đang nạp, nên người dùng Sydney tạm thời phải trả giá cho quãng đường dài.",
+      "callout": {
+        "kind": "insight",
+        "text": "Đây chính là ý tưởng cache-aside của bài trước, trải rộng khắp hành tinh."
+      },
+      "changes": [
+        "~ Biên Sydney: nguội, đang nạp từ origin",
+        "~ Độ trễ Sydney 15 → 95 ms (tạm thời)"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "95 ms",
+        "origin": "2.400 yc/s",
+        "hitRate": "70%"
+      },
+      "overrides": {
+        "origin-2": {
+          "visible": false
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Tệp cũ",
+      "title": "Bạn phát hành logo mới. Chẳng ai thấy.",
+      "chapter": "problem",
+      "body": "Bạn thay `logo.png` trên origin. Nhưng các biên đã cache bản cũ với TTL một ngày, nên người dùng vẫn thấy logo cũ, người ở London, người ở Sydney, suốt nhiều giờ.\n\nBạn có thể purge các biên (CDN hiện đại làm việc đó trong vài giây), nhưng phải có người nhớ làm, mỗi lần, và không lệnh purge nào chạm tới những bản đã lưu trong trình duyệt của người dùng.",
+      "callout": {
+        "kind": "warning",
+        "text": "TTL dài là thứ làm CDN nhanh, và cũng là thứ khiến bản cập nhật chậm xuất hiện."
+      },
+      "changes": [
+        "~ Origin: logo.png mới",
+        "- Biên vẫn phục vụ bản cũ"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "900 yc/s",
+        "hitRate": "90%"
+      },
+      "overrides": {
+        "origin-2": {
+          "visible": false
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Phiên bản",
+      "title": "Đặt tên mới cho mỗi phiên bản",
+      "chapter": "solution",
+      "body": "Đưa dấu vân tay nội dung tệp vào tên: `logo.3f9a.png`. Logo mới có tên mới, nên không bao giờ bị nhầm với bản cũ.\n\nGiờ tệp có thể được cache tới **một năm**. HTML (TTL ngắn, hoặc không cache) chỉ việc trỏ tới tên mới nhất.",
+      "callout": {
+        "kind": "tip",
+        "text": "Công cụ build như Vite và webpack tự thêm các hash nội dung này cho bạn."
+      },
+      "changes": [
+        "~ logo.png → logo.3f9a.png",
+        "~ Thời gian cache 1 ngày → 1 năm",
+        "- Logo cũ"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "900 yc/s",
+        "hitRate": "96%"
+      },
+      "overrides": {
+        "origin-2": {
+          "visible": false
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Tăng vọt",
+      "title": "Đợt tăng vọt dồn vào biên, không phải bạn",
+      "chapter": "insight",
+      "body": "Một đợt ra mắt lan truyền và lưu lượng tăng vọt 20×. Gần như tất cả được trả lời bởi các biên rải khắp thế giới; origin hầu như không nhận ra.\n\nCùng năng lực phân tán đó giúp hấp thụ những cơn lũ lưu lượng độc hại (tấn công DDoS).",
+      "callout": {
+        "kind": "insight",
+        "text": "CDN cùng lúc là cache, mạng toàn cầu và lá chắn cho origin của bạn."
+      },
+      "changes": [
+        "~ Lưu lượng × 20",
+        "~ Tải origin vẫn ≈ 1.100 yc/s"
+      ],
+      "metrics": {
+        "lon": "14 ms",
+        "syd": "18 ms",
+        "origin": "1.100 yc/s",
+        "hitRate": "97%"
+      },
+      "overrides": {
+        "lon": {
+          "visible": false
+        },
+        "syd": {
+          "visible": false
+        },
+        "origin-2": {
+          "emphasis": true
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Riêng tư",
+      "title": "Tình huống: đừng bao giờ cache giỏ hàng của ai",
+      "chapter": "problem",
+      "body": "Một thay đổi cấu hình bảo CDN cache *mọi* trang trong 5 phút. Bob mở giỏ hàng; biên lưu lại. Alice mở giỏ của mình một giây sau, và biên trả cho cô **giỏ hàng của Bob**.\n\nNhững trang phụ thuộc vào việc ai đang hỏi phải được đánh dấu `Cache-Control: private` (hoặc `no-store`) để biên luôn chuyển chúng về origin.",
+      "callout": {
+        "kind": "warning",
+        "text": "Cache dữ liệu cá nhân ở chế độ công khai là một sự cố kinh điển, và rất công khai. Mặc định để riêng tư; chỉ cache nội dung công khai một cách có chủ đích."
+      },
+      "changes": [
+        "+ Trang giỏ hàng & tài khoản: Cache-Control: private",
+        "~ Trang cá nhân luôn đi về origin"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "1.400 yc/s",
+        "hitRate": "88%"
+      },
+      "overrides": {
+        "lon": {
+          "emphasis": true
+        },
+        "syd": {
+          "emphasis": true
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Shield",
+      "title": "Origin shield: thêm một tầng",
+      "chapter": "technique",
+      "body": "Một CDN thực có hàng trăm biên. Khi một tệp mới lan truyền, mỗi biên trượt một lần: hàng trăm yêu cầu cho cùng một tệp ập vào origin của bạn cùng lúc.\n\n[[Origin shield]] là một cache tầng giữa đặt trước origin. Biên trượt thì hỏi shield; chỉ shield hỏi origin, nên mỗi tệp chỉ được lấy một lần.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hầu hết CDN cung cấp shield như một tùy chọn. Chọn vị trí shield gần origin của bạn."
+      },
+      "changes": [
+        "+ Origin shield giữa biên và origin",
+        "~ Origin thấy một lần lấy cho mỗi tệp"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "120 yc/s",
+        "hitRate": "98%"
+      },
+      "overrides": {
+        "el": {
+          "emphasis": true
+        },
+        "es": {
+          "emphasis": true
+        },
+        "le": {
+          "emphasis": true
+        },
+        "se": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Tổng kết",
+      "title": "Tổng kết",
+      "chapter": "recap",
+      "body": "• Khoảng cách thêm độ trễ; **server biên** đưa nội dung tới gần người dùng.\n• CDN là **cache pull-through**: các lần trượt nạp chúng từ origin của bạn.\n• **Tên tệp có phiên bản** cho phép cache cả năm mà vẫn cập nhật tức thì.\n• Biên hấp thụ **đợt tăng vọt** và che chắn cho origin.\n• Đừng bao giờ cache công khai **trang cá nhân**; khi quy mô lớn, thêm **origin shield**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đến đây là hết phần Mở rộng. Mô-đun tiếp theo: **Dữ liệu & lưu trữ**, bắt đầu với SQL hay NoSQL."
+      },
+      "changes": [],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "900 yc/s",
+        "hitRate": "96%"
+      },
+      "overrides": {}
+    }
+  ]
+}

@@ -1,0 +1,1673 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 628,
+          "y": -351
+        },
+        "width": 338,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "AI ĐỌC GÌ\n1% sản phẩm hàng đầu  → 60% lượt đọc\n10% sản phẩm hàng đầu → 90% lượt đọc\n# cùng những dòng đó, đọc đi đọc lại",
+        "position": {
+          "x": 628,
+          "y": -351
+        },
+        "width": 314,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 628,
+          "y": -349
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "THỜI GIAN ĐỌC TRUNG BÌNH\ntrúng cache ≈ 1 ms\nCSDL        ≈ 20 ms\n80% trúng:  0,8×1 + 0,2×20  = 4,8 ms\n→ 95% trúng: 0,95×1 + 0,05×20 = 2 ms",
+        "position": {
+          "x": 628,
+          "y": -349
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 624,
+          "y": -349
+        },
+        "width": 330,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "LÂU NHẤT KHÔNG DÙNG\nproduct:42    dùng 1 giây trước\nproduct:7     dùng 4 giây trước\nproduct:913   dùng 2 phút trước\n⚠ loại product:5 · không dùng 3 giờ",
+        "position": {
+          "x": 624,
+          "y": -349
+        },
+        "width": 306,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 645,
+          "y": -349
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "BLOOM FILTER · 12 TRIỆU ID TRONG 15 MB\nproduct:99900017 có thật không?\n→ “chắc chắn không” → 404, không tra cứu\n“có lẽ có” → cache, rồi CSDL\n# không bao giờ sai khi nói “không”",
+        "position": {
+          "x": 645,
+          "y": -349
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 653,
+          "y": -340
+        },
+        "width": 388,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "LƯỢT ĐỌC CÓ THỂ DỪNG Ở ĐÂU\ncache trình duyệt   0 ms · mỗi người dùng\nbiên CDN            ~10 ms · mỗi thành phố\nbộ nhớ tiến trình   ~0 ms · mỗi server\ncache dùng chung    ~1 ms\ncơ sở dữ liệu       ~20 ms",
+        "position": {
+          "x": 653,
+          "y": -340
+        },
+        "width": 364,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "20.000 người dùng",
+        "position": {
+          "x": 0,
+          "y": -375
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "người dùng thấy $20",
+        "position": {
+          "x": 0,
+          "y": -375
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "người dùng thấy $25",
+        "position": {
+          "x": 0,
+          "y": -375
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-4",
+        "type": "process",
+        "title": "mọi người mở trang chủ",
+        "position": {
+          "x": 0,
+          "y": -375
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-5",
+        "type": "process",
+        "title": "người dùng thật + crawler đoán ID",
+        "position": {
+          "x": 0,
+          "y": -375
+        },
+        "width": 248,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "position": {
+          "x": 0,
+          "y": -75
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "CPU 92%",
+        "position": {
+          "x": 275,
+          "y": -75
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "CPU 25%",
+        "position": {
+          "x": 275,
+          "y": -75
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "CPU 8%",
+        "position": {
+          "x": 275,
+          "y": -75
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "giá: $25 · CPU 8%",
+        "position": {
+          "x": 275,
+          "y": -75
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "giá: $25 · CPU 9%",
+        "position": {
+          "x": 275,
+          "y": -75
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-6",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "CPU 12%",
+        "position": {
+          "x": 275,
+          "y": -75
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-7",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "⚠ 2.000 truy vấn giống hệt · CPU 100%",
+        "position": {
+          "x": 275,
+          "y": -75
+        },
+        "width": 224,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-8",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "CPU 9%",
+        "position": {
+          "x": 275,
+          "y": -75
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-9",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "tìm thấy 0 dòng · CPU 85%",
+        "position": {
+          "x": 275,
+          "y": -75
+        },
+        "width": 220,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache",
+        "type": "process",
+        "title": "Cache",
+        "description": "trong bộ nhớ",
+        "position": {
+          "x": -275,
+          "y": -75
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-2",
+        "type": "process",
+        "title": "Cache",
+        "description": "trong bộ nhớ · ⚠ giá: $20 · đã cũ",
+        "position": {
+          "x": -275,
+          "y": -75
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-3",
+        "type": "process",
+        "title": "Cache",
+        "description": "trong bộ nhớ · TTL 60 s · giá: $25",
+        "position": {
+          "x": -275,
+          "y": -75
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-4",
+        "type": "process",
+        "title": "Cache",
+        "description": "trong bộ nhớ · ⚠ bộ nhớ đầy",
+        "position": {
+          "x": -275,
+          "y": -75
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-5",
+        "type": "process",
+        "title": "Cache",
+        "description": "trong bộ nhớ · trang chủ · hết hạn",
+        "position": {
+          "x": -275,
+          "y": -75
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-6",
+        "type": "process",
+        "title": "Cache",
+        "description": "trong bộ nhớ · ✓ làm mới sớm · 1 lần lấy",
+        "position": {
+          "x": -275,
+          "y": -75
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-7",
+        "type": "process",
+        "title": "Cache",
+        "description": "trong bộ nhớ · ⚠ không có gì để cache",
+        "position": {
+          "x": -275,
+          "y": -75
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-8",
+        "type": "process",
+        "title": "Cache",
+        "description": "trong bộ nhớ · “không tìm thấy” · TTL 30 giây",
+        "position": {
+          "x": -275,
+          "y": -75
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "us",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-2",
+        "from": "users-2",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-3",
+        "from": "users-3",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-4",
+        "from": "users-4",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "us-5",
+        "from": "users-5",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd",
+        "from": "app",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-2",
+        "from": "app",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-3",
+        "from": "app",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-4",
+        "from": "app",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-5",
+        "from": "app",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-6",
+        "from": "app",
+        "to": "db-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-7",
+        "from": "app",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "sd-8",
+        "from": "app",
+        "to": "db-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-9",
+        "from": "app",
+        "to": "db-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc",
+        "from": "app",
+        "to": "cache",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-2",
+        "from": "app",
+        "to": "cache-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-3",
+        "from": "app",
+        "to": "cache-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-4",
+        "from": "app",
+        "to": "cache-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-5",
+        "from": "app",
+        "to": "cache-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "sc-6",
+        "from": "app",
+        "to": "cache-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-7",
+        "from": "app",
+        "to": "cache-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-8",
+        "from": "app",
+        "to": "cache-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      }
+    ]
+  },
+  "meta": {
+    "title": "Bộ nhớ đệm",
+    "summary": "Giữ những câu trả lời được hỏi nhiều nhất ở một nơi nhanh hơn cơ sở dữ liệu rất nhiều.",
+    "minutes": 14,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "p95",
+        "label": "Độ trễ p95"
+      },
+      {
+        "id": "hitRate",
+        "label": "Tỉ lệ trúng cache"
+      },
+      {
+        "id": "dbLoad",
+        "label": "CPU của CSDL"
+      },
+      {
+        "id": "fresh",
+        "label": "Dữ liệu hiển thị"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao những lượt đọc giống nhau làm quá tải cơ sở dữ liệu",
+        "step": "s2"
+      },
+      {
+        "text": "Mẫu cache-aside",
+        "step": "s3"
+      },
+      {
+        "text": "Vì sao tỉ lệ trúng quan trọng đến vậy",
+        "step": "s4"
+      },
+      {
+        "text": "Dữ liệu cũ, vô hiệu hóa và loại bỏ",
+        "step": "s7"
+      },
+      {
+        "text": "Dồn dập, khóa không tồn tại và các tầng cache",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "users": {
+      "until": "s5"
+    },
+    "users-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "users-3": {
+      "from": "s6"
+    },
+    "users-4": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "users-5": {
+      "from": "s10",
+      "until": "s12"
+    },
+    "db": {
+      "until": "s3"
+    },
+    "db-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-3": {
+      "from": "s4"
+    },
+    "db-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "db-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "db-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "db-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "db-8": {
+      "from": "s9",
+      "until": "s12"
+    },
+    "db-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "cache": {
+      "from": "s3"
+    },
+    "cache-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "cache-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "cache-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cache-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "cache-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cache-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cache-8": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-text": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-5-text": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "us": {
+      "until": "s5"
+    },
+    "us-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "us-3": {
+      "from": "s6"
+    },
+    "us-4": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "us-5": {
+      "from": "s10",
+      "until": "s12"
+    },
+    "sd": {
+      "until": "s3"
+    },
+    "sd-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sd-3": {
+      "from": "s4"
+    },
+    "sd-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sd-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sd-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sd-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sd-8": {
+      "from": "s9",
+      "until": "s12"
+    },
+    "sd-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "sc": {
+      "from": "s3"
+    },
+    "sc-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sc-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sc-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sc-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sc-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sc-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "sc-8": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "CSDL quá tải",
+      "title": "Mọi trang đều đánh vào cơ sở dữ liệu",
+      "chapter": "problem",
+      "body": "Cửa hàng của bạn đắt khách. Mỗi trang sản phẩm hỏi cơ sở dữ liệu cùng một kiểu thông tin (tên, giá, ảnh) và giờ nó đã bận 92%.\n\nCác lượt đọc xếp hàng và trang chậm tới gần nửa giây ở p95.",
+      "callout": {
+        "kind": "warning",
+        "text": "Cơ sở dữ liệu thường là phần khó mở rộng nhất, vì nó giữ dữ liệu. Hãy bảo vệ nó khỏi những việc không cần thiết."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "450 ms",
+        "hitRate": "0%",
+        "dbLoad": "92%",
+        "fresh": "mới"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Đọc giống nhau",
+      "title": "Vẫn mấy thứ đó, lặp đi lặp lại",
+      "chapter": "insight",
+      "body": "Hãy xem cái gì thực sự được đọc: một nhóm nhỏ sản phẩm phổ biến chiếm phần lớn lưu lượng. Cơ sở dữ liệu tính lại cùng những câu trả lời hàng nghìn lần mỗi phút.\n\nNhững câu trả lời được đọc thường xuyên và hiếm khi đổi là hoàn hảo để giữ ở nơi gần hơn, nhanh hơn.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hầu hết khối lượng công việc thực tế đều lệch như vậy: vài mục nóng và một đuôi dài những mục hiếm khi được đọc."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "450 ms",
+        "hitRate": "0%",
+        "dbLoad": "92%",
+        "fresh": "mới"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Thêm cache",
+      "title": "Đặt một cache phía trước",
+      "chapter": "solution",
+      "body": "Thêm một [[cache]] trong bộ nhớ (như Redis hay Memcached). Server kiểm tra nó trước: một lần **trúng** (hit) trả về trong khoảng một mili giây.\n\nKhi **trượt** (miss, màu hổ phách), server đọc cơ sở dữ liệu, rồi lưu một bản sao vào cache cho lần sau. Đây là mẫu [[cache-aside]].",
+      "callout": {
+        "kind": "tip",
+        "text": "Tra cache là lấy một khóa từ bộ nhớ: không lập kế hoạch truy vấn, không join, không đĩa. Nó thường trả lời nhanh hơn 10–100× so với truy vấn mà nó thay thế."
+      },
+      "changes": [
+        "+ Cache",
+        "~ 80% lượt đọc phục vụ từ bộ nhớ",
+        "~ CPU CSDL 92% → 25%"
+      ],
+      "metrics": {
+        "p95": "40 ms",
+        "hitRate": "80%",
+        "dbLoad": "25%",
+        "fresh": "mới"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Tỉ lệ trúng",
+      "title": "Tỉ lệ trúng là tất cả",
+      "chapter": "technique",
+      "body": "Phần lượt đọc được cache trả lời là [[tỉ lệ trúng]] (hit rate). Vì trượt chậm hơn nhiều, thay đổi nhỏ ở tỉ lệ trúng tạo khác biệt lớn.\n\nĐi từ 80% lên 95% trúng giảm thời gian đọc trung bình hơn một nửa và cắt ba phần tư tải của cơ sở dữ liệu.",
+      "callout": {
+        "kind": "tip",
+        "text": "Nâng tỉ lệ trúng bằng cách cache đúng thứ, cho cache đủ bộ nhớ và giữ các mục đủ lâu để được dùng lại."
+      },
+      "changes": [
+        "~ Tỉ lệ trúng 80% → 95%",
+        "~ CPU CSDL 25% → 8%"
+      ],
+      "metrics": {
+        "p95": "25 ms",
+        "hitRate": "95%",
+        "dbLoad": "8%",
+        "fresh": "mới"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Dữ liệu cũ",
+      "title": "Giá đã đổi. Cache thì không.",
+      "chapter": "problem",
+      "body": "Một quản trị viên đổi giá từ $20 lên $25. Cơ sở dữ liệu có giá mới, nhưng cache vẫn giữ bản cũ, và đó là thứ người dùng thấy.\n\nCache là bản sao thứ hai của sự thật. Giữ các bản sao đồng bộ là phần khó của caching.",
+      "callout": {
+        "kind": "warning",
+        "text": "“Trong khoa học máy tính chỉ có hai việc khó: vô hiệu hóa cache và đặt tên.” — Phil Karlton"
+      },
+      "changes": [
+        "~ CSDL: giá $20 → $25",
+        "- Cache vẫn ghi $20"
+      ],
+      "metrics": {
+        "p95": "25 ms",
+        "hitRate": "95%",
+        "dbLoad": "8%",
+        "fresh": "cũ"
+      },
+      "overrides": {
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Vô hiệu hóa",
+      "title": "Vô hiệu hóa khi ghi, hết hạn bằng TTL",
+      "chapter": "solution",
+      "body": "Khi dữ liệu đổi, server ghi vào cơ sở dữ liệu *và* xóa bản sao trong cache (vòng đỏ). Lượt đọc tiếp theo trượt và lấy giá trị mới.\n\nNhư một tấm lưới an toàn, mỗi mục còn có [[TTL]] (thời gian sống): dù một lần vô hiệu hóa bị bỏ sót, dữ liệu cũ vẫn biến mất trong vòng một phút.\n\nVì sao xóa thay vì ghi đè bản sao trong cache? Hai lần ghi chạy đua có thể để lại giá trị *cũ hơn* trong cache. Xóa luôn an toàn: lượt đọc sau sẽ nạp lại sự thật.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chọn TTL bằng câu hỏi: cũ đến mức nào thì chấp nhận được? Vài giây cho giá và tồn kho, vài giờ cho mô tả sản phẩm."
+      },
+      "changes": [
+        "+ Lệnh ghi xóa bản sao trong cache",
+        "+ TTL: 60 s",
+        "~ Người dùng thấy $25"
+      ],
+      "metrics": {
+        "p95": "26 ms",
+        "hitRate": "94%",
+        "dbLoad": "9%",
+        "fresh": "mới"
+      },
+      "overrides": {
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Loại bỏ",
+      "title": "Hết bộ nhớ",
+      "chapter": "tradeoff",
+      "body": "Cache không thể chứa mọi thứ: bộ nhớ đắt. Khi đầy, phải có thứ gì đó ra đi để nhường chỗ.\n\nQuy tắc thường dùng là [[LRU]]: loại mục *lâu nhất không được dùng* (least recently used). Mục nóng ở lại; đuôi dài luân chuyển.\n\nLựa chọn thay thế chính, [[LFU]], lại loại mục được dùng *ít thường xuyên* nhất: tốt hơn khi một loạt lượt đọc lẻ tẻ có thể đẩy văng những mục yêu thích thật sự.",
+      "callout": {
+        "kind": "insight",
+        "text": "Cache chỉ cần chứa tập nóng. 10% dữ liệu có thể dễ dàng phục vụ 90% lượt đọc."
+      },
+      "changes": [
+        "+ Cache đầy",
+        "~ Loại các mục lâu nhất không dùng",
+        "~ Tỉ lệ trúng 94% → 92%"
+      ],
+      "metrics": {
+        "p95": "30 ms",
+        "hitRate": "92%",
+        "dbLoad": "12%",
+        "fresh": "mới"
+      },
+      "overrides": {
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Dồn dập",
+      "title": "Tình huống: cache stampede",
+      "chapter": "problem",
+      "body": "Trang chủ là khóa nóng nhất trong cache: 2.000 lượt đọc mỗi giây. TTL của nó hết hạn. Ngay khoảnh khắc sau, mọi yêu cầu đó đều trượt và đi tới cơ sở dữ liệu để lấy cùng một câu trả lời.\n\nCơ sở dữ liệu, quen với tải 8%, bị một bức tường truy vấn giống hệt nhau ập tới và đứng hình. Đây là [[cache stampede]] (hay thundering herd).",
+      "callout": {
+        "kind": "warning",
+        "text": "Khóa càng phổ biến, việc nó hết hạn càng nguy hiểm."
+      },
+      "changes": [
+        "- Khóa nóng “trang chủ” hết hạn",
+        "+ 2.000 lần trượt cùng lúc",
+        "~ CPU CSDL 8% → 100%"
+      ],
+      "metrics": {
+        "p95": "1,4 s",
+        "hitRate": "40%",
+        "dbLoad": "100%",
+        "fresh": "mới"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Một lần lấy",
+      "title": "Để một yêu cầu nạp lại",
+      "chapter": "solution",
+      "body": "Sửa bằng [[request coalescing]]: lần trượt đầu tiên lấy một khóa ngắn và đọc từ cơ sở dữ liệu; mọi người khác chờ vài mili giây cho đúng kết quả đó.\n\nThêm hai thói quen: làm mới khóa nóng sớm một chút *trước* khi hết hạn, và thêm độ lệch ngẫu nhiên (jitter) vào TTL để nhiều khóa không hết hạn cùng lúc.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các thư viện gọi đây là “single-flight”. CDN cũng làm vậy ở biên (“request collapsing”)."
+      },
+      "changes": [
+        "+ Một lần lấy cho mỗi khóa hết hạn",
+        "+ Làm mới sớm + jitter cho TTL",
+        "~ CPU CSDL 100% → 9%"
+      ],
+      "metrics": {
+        "p95": "30 ms",
+        "hitRate": "97%",
+        "dbLoad": "9%",
+        "fresh": "mới"
+      },
+      "overrides": {
+        "us-4": {
+          "effect": "comet"
+        },
+        "users-3": {
+          "visible": false
+        },
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Khóa thiếu",
+      "title": "Tình huống: hỏi thứ không có",
+      "chapter": "problem",
+      "body": "Một crawler (hoặc kẻ tấn công) yêu cầu ID sản phẩm không tồn tại: `/product/99900017`, `…18`, `…19`. Mỗi cái trượt cache, đi tới cơ sở dữ liệu, không tìm thấy gì, và vì thế **chẳng để lại gì để cache**.\n\nMỗi yêu cầu như vậy đều chắc chắn trượt, dù lặp lại bao nhiêu lần. Cache không bảo vệ gì cả, và cơ sở dữ liệu bận tìm những dòng chưa từng tồn tại. Đây là [[cache penetration]].",
+      "callout": {
+        "kind": "warning",
+        "text": "Cache-aside chỉ nhớ câu trả lời. “Không có dòng đó” cũng là một câu trả lời: nếu quên lưu nó, bạn trả giá mỗi lần."
+      },
+      "changes": [
+        "+ Yêu cầu ID không tồn tại",
+        "~ Một nửa lượt đọc giờ bị trượt",
+        "~ CPU CSDL 9% → 85%"
+      ],
+      "metrics": {
+        "p95": "520 ms",
+        "hitRate": "50%",
+        "dbLoad": "85%",
+        "fresh": "mới"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "db-3": {
+          "visible": false
+        },
+        "db-8": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sd-8": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Bloom filter",
+      "title": "Nhớ cả câu “không”",
+      "chapter": "solution",
+      "body": "Cách sửa đầu tiên: [[cache phủ định]]. Lưu cả “không tìm thấy” vào cache, với TTL ngắn, để yêu cầu lặp lại cho cùng một ID không tồn tại dừng ở cache.\n\nNhưng crawler không bao giờ lặp lại. Vì thế, giữ một [[Bloom filter]] chứa mọi ID thật trong bộ nhớ server: một tập bit gọn trả lời “chắc chắn không có” hoặc “có lẽ có” trong vài micro giây. ID bất khả nhận 404 mà không chạm tới cache hay cơ sở dữ liệu.",
+      "callout": {
+        "kind": "tip",
+        "text": "Bloom filter không bao giờ nói “không” với khóa có tồn tại; thỉnh thoảng nó nói “có thể” với khóa không tồn tại. Tỉ lệ dương tính giả 1% chỉ tốn khoảng 10 bit mỗi khóa."
+      },
+      "changes": [
+        "+ Cache “không tìm thấy” · TTL 30 giây",
+        "+ Bloom filter của ID thật trên server",
+        "~ CPU CSDL 85% → 9%"
+      ],
+      "metrics": {
+        "p95": "28 ms",
+        "hitRate": "95%",
+        "dbLoad": "9%",
+        "fresh": "mới"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "db-3": {
+          "visible": false
+        },
+        "db-8": {
+          "emphasis": true
+        },
+        "cache": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sd-8": {
+          "emphasis": true
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Các tầng",
+      "title": "Cache ở khắp nơi",
+      "chapter": "insight",
+      "body": "Cache ta vừa dựng chỉ là một trong nhiều tầng. Một yêu cầu có thể được trả lời bởi cache của **trình duyệt**, **CDN**, cache **trong tiến trình** trên server, cache dùng chung như Redis, hoặc bộ nhớ riêng của cơ sở dữ liệu.\n\nCàng gần người dùng, lần trúng càng nhanh và rẻ, và càng khó vô hiệu hóa.",
+      "callout": {
+        "kind": "insight",
+        "text": "Phần lớn việc “làm cho nhanh” là quyết định cái gì được cache, ở đâu và trong bao lâu."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "25 ms",
+        "hitRate": "95%",
+        "dbLoad": "8%",
+        "fresh": "mới"
+      },
+      "overrides": {
+        "users-3": {
+          "emphasis": true
+        },
+        "db-3": {
+          "emphasis": true
+        },
+        "cache": {
+          "emphasis": true
+        },
+        "us-3": {
+          "emphasis": true
+        },
+        "sd-3": {
+          "emphasis": true
+        },
+        "sc": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Tổng kết",
+      "title": "Tổng kết",
+      "chapter": "recap",
+      "body": "• Cache những câu trả lời **được đọc thường xuyên và hiếm khi đổi**.\n• **Cache-aside**: kiểm tra cache, lùi về cơ sở dữ liệu, rồi nạp vào cache.\n• **Tỉ lệ trúng** quyết định cả tốc độ lẫn tải cơ sở dữ liệu.\n• Tính trước dữ liệu cũ: **vô hiệu hóa khi ghi**, thêm **TTL**, loại bỏ bằng **LRU**.\n• Bảo vệ khóa nóng khỏi **dồn dập**: một lần lấy, làm mới sớm, TTL có jitter.\n• Cache cả **“không tìm thấy”**, và lọc khóa bất khả bằng **Bloom filter**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Phân phối nội dung**: cache tệp trên các server rải khắp thế giới, gần người dùng của bạn."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "25 ms",
+        "hitRate": "95%",
+        "dbLoad": "8%",
+        "fresh": "mới"
+      },
+      "overrides": {}
+    }
+  ]
+}

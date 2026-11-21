@@ -1,0 +1,1630 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice",
+        "description": "✓ cart: 2 items",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice",
+        "description": "⚠ signed out · cart empty",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice",
+        "description": "signed token: Alice",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice",
+        "description": "⚠ avatar: broken image",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice",
+        "description": "✓ avatar ✓",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Load Balancer",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-2",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "round robin",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-3",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "sticky: Alice → A",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-4",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "sticky: Alice → B",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a",
+        "type": "process",
+        "title": "Server A",
+        "description": "session: Alice · cart 2",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-2",
+        "type": "process",
+        "title": "Server A",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-3",
+        "type": "process",
+        "title": "Server A",
+        "description": "stateless",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-4",
+        "type": "process",
+        "title": "Server A",
+        "description": "avatar.png on local disk",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b",
+        "type": "process",
+        "title": "Server B",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-2",
+        "type": "process",
+        "title": "Server B",
+        "description": "⚠ no session for Alice",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-3",
+        "type": "process",
+        "title": "Server B",
+        "description": "stateless",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-4",
+        "type": "process",
+        "title": "Server B",
+        "description": "⚠ avatar.png?",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c",
+        "type": "process",
+        "title": "Server C",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-2",
+        "type": "process",
+        "title": "Server C",
+        "description": "⚠ no session for Alice",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-3",
+        "type": "process",
+        "title": "Server C",
+        "description": "stateless",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-4",
+        "type": "process",
+        "title": "Server C",
+        "description": "⚠ avatar.png?",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "st",
+        "type": "process",
+        "title": "session store",
+        "description": "Alice · cart 2",
+        "position": {
+          "x": 0,
+          "y": 310
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "os",
+        "type": "process",
+        "title": "object storage",
+        "description": "avatar.png",
+        "position": {
+          "x": 0,
+          "y": 310
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ul",
+        "from": "alice",
+        "to": "lb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-2",
+        "from": "alice",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-3",
+        "from": "alice",
+        "to": "lb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-4",
+        "from": "alice-2",
+        "to": "lb-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-5",
+        "from": "alice-3",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-6",
+        "from": "alice-4",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-7",
+        "from": "alice-5",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la",
+        "from": "lb",
+        "to": "a",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la-2",
+        "from": "lb-2",
+        "to": "a",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la-3",
+        "from": "lb-3",
+        "to": "a",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la-4",
+        "from": "lb-4",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la-5",
+        "from": "lb-2",
+        "to": "a-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la-6",
+        "from": "lb-2",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la-7",
+        "from": "lb-2",
+        "to": "a-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lbb",
+        "from": "lb",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "lbb-2",
+        "from": "lb-2",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lbb-3",
+        "from": "lb-3",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "lbb-4",
+        "from": "lb-4",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lbb-5",
+        "from": "lb-2",
+        "to": "b-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lbb-6",
+        "from": "lb-2",
+        "to": "b-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lc",
+        "from": "lb",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "lc-2",
+        "from": "lb-2",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lc-3",
+        "from": "lb-3",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "lc-4",
+        "from": "lb-4",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "lc-5",
+        "from": "lb-2",
+        "to": "c-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lc-6",
+        "from": "lb-2",
+        "to": "c-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "as",
+        "from": "a-3",
+        "to": "st",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "as-2",
+        "from": "a-2",
+        "to": "st",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "none"
+      },
+      {
+        "id": "bs",
+        "from": "b-3",
+        "to": "st",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "cs",
+        "from": "c-3",
+        "to": "st",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ao",
+        "from": "a-3",
+        "to": "os",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "bo",
+        "from": "b-3",
+        "to": "os",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "co",
+        "from": "c-3",
+        "to": "os",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Stateless Services",
+    "summary": "Why the next request must work on any server — and where the state goes instead.",
+    "minutes": 10,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "ok",
+        "label": "Alice’s requests OK"
+      },
+      {
+        "id": "survive",
+        "label": "Survives losing a server"
+      },
+      {
+        "id": "scale",
+        "label": "Add servers any time"
+      },
+      {
+        "id": "extra",
+        "label": "Cost per request"
+      }
+    ],
+    "goals": [
+      {
+        "text": "What “state” is, and why it pins users to a server",
+        "step": "s2"
+      },
+      {
+        "text": "Sticky sessions — and how they break",
+        "step": "s4"
+      },
+      {
+        "text": "A shared session store makes servers interchangeable",
+        "step": "s6"
+      },
+      {
+        "text": "Carrying state in signed tokens",
+        "step": "s7"
+      },
+      {
+        "text": "Files belong in object storage",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "alice-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "alice-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "alice-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "alice-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "lb": {
+      "until": "s2"
+    },
+    "lb-2": {
+      "from": "s2"
+    },
+    "lb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lb-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a": {
+      "until": "s4"
+    },
+    "a-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "a-3": {
+      "from": "s5"
+    },
+    "a-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b": {
+      "until": "s4"
+    },
+    "b-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "b-3": {
+      "from": "s5"
+    },
+    "b-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "c": {
+      "until": "s5"
+    },
+    "c-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "c-3": {
+      "from": "s5"
+    },
+    "c-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "st": {
+      "from": "s5"
+    },
+    "os": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ul": {
+      "until": "s2"
+    },
+    "ul-2": {
+      "from": "s2"
+    },
+    "ul-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ul-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ul-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ul-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ul-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "la": {
+      "until": "s2"
+    },
+    "la-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "la-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "la-5": {
+      "from": "s5"
+    },
+    "la-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "la-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lbb": {
+      "until": "s2"
+    },
+    "lbb-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lbb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lbb-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lbb-5": {
+      "from": "s5"
+    },
+    "lbb-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lc": {
+      "until": "s2"
+    },
+    "lc-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lc-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lc-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lc-5": {
+      "from": "s5"
+    },
+    "lc-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "as": {
+      "from": "s5"
+    },
+    "as-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bs": {
+      "from": "s5"
+    },
+    "cs": {
+      "from": "s5"
+    },
+    "ao": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bo": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "co": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Logged in",
+      "title": "Alice logs in",
+      "chapter": "setup",
+      "body": "Alice signs in and adds two things to her cart. Her request happened to land on Server A, which keeps a [[session]] in its memory: who she is and what’s in her cart.\n\nHer browser holds a cookie with the session id, so later requests can find it again.",
+      "callout": {
+        "kind": "insight",
+        "text": "**State** is anything a server remembers between requests: logins, carts, half-finished uploads."
+      },
+      "changes": [],
+      "metrics": {
+        "ok": "1 / 1",
+        "extra": "+0 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Logged out",
+      "title": "Her next request lands elsewhere",
+      "chapter": "problem",
+      "body": "The load balancer is doing its job — round robin sends Alice’s next requests to B and then C. Neither has ever heard of her.\n\nTo Alice the app is broken: one page shows her cart, the next asks her to sign in again.",
+      "callout": {
+        "kind": "warning",
+        "text": "If a server keeps state in memory, every other server is useless for that user."
+      },
+      "changes": [
+        "~ Requests 2 and 3 go to B and C",
+        "- “Please sign in again”"
+      ],
+      "metrics": {
+        "ok": "1 / 3",
+        "survive": "no",
+        "scale": "no",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Sticky",
+      "title": "Fix 1: sticky sessions",
+      "chapter": "solution",
+      "body": "Tell the load balancer to remember where each user started — usually with a cookie — and keep sending them there. Alice always reaches A, so she stays signed in.\n\nQuick to switch on, and no code changes.",
+      "callout": {
+        "kind": "warning",
+        "text": "Sticky users can’t be moved. If many of them pile onto one server, it stays overloaded while others idle."
+      },
+      "changes": [
+        "~ LB pins Alice → Server A",
+        "~ All her requests succeed"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "no",
+        "scale": "limited",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "lb-2": {
+          "visible": false
+        },
+        "b": {
+          "emphasis": true
+        },
+        "b-2": {
+          "visible": false
+        },
+        "c": {
+          "emphasis": true
+        },
+        "ul-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "A dies",
+      "title": "…until Server A dies",
+      "chapter": "problem",
+      "body": "Server A crashes. The load balancer does the right thing and moves Alice to B — but her session died with A’s memory.\n\nShe’s signed out and her cart is empty. Every user pinned to A just had the same experience.",
+      "callout": {
+        "kind": "warning",
+        "text": "Sticky sessions turn every server into a small single point of failure for its users."
+      },
+      "changes": [
+        "- Server A down",
+        "- Alice’s session lost",
+        "~ Cart 2 items → empty"
+      ],
+      "metrics": {
+        "ok": "0 / 3",
+        "survive": "no",
+        "scale": "limited",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "lb-2": {
+          "visible": false
+        },
+        "b-2": {
+          "emphasis": true
+        },
+        "ul-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Shared store",
+      "title": "Fix 2: move the state out",
+      "chapter": "solution",
+      "body": "Keep sessions in a shared, fast [[session store]] (often Redis). Every server reads Alice’s session from it, so any server can handle any request.\n\nThe servers are now [[stateless]]: they remember nothing between requests. Round robin is back, and she stays signed in.",
+      "callout": {
+        "kind": "tip",
+        "text": "The cost: one extra hop of about a millisecond per request — cheap, for servers you can add, remove or lose freely."
+      },
+      "changes": [
+        "+ Session store",
+        "~ Servers keep nothing in memory",
+        "~ Round robin again"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "yes",
+        "scale": "yes",
+        "extra": "+1 ms"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "lb-2": {
+          "emphasis": true
+        },
+        "a-2": {
+          "visible": false
+        },
+        "ul-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Lose one",
+      "title": "Now losing a server is a non-event",
+      "chapter": "insight",
+      "body": "Server A dies again. The load balancer routes around it, B and C read the same session from the store, and Alice doesn’t notice.\n\nThis is what makes autoscaling possible: servers can be created and destroyed at any moment.",
+      "callout": {
+        "kind": "insight",
+        "text": "Stateless servers are cattle, not pets — any one of them can be replaced without anyone noticing."
+      },
+      "changes": [
+        "- Server A down",
+        "~ Alice still signed in, cart intact"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "yes",
+        "scale": "yes",
+        "extra": "+1 ms"
+      },
+      "overrides": {
+        "a-2": {
+          "emphasis": true
+        },
+        "a-3": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        },
+        "as": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Tokens",
+      "title": "Or: let the request carry it",
+      "chapter": "technique",
+      "body": "Another option is to put the state in the request itself: a signed [[token]] (such as a JWT) that says “this is Alice”. Any server can verify the signature without looking anything up.\n\nNo store and no extra hop — but a token can’t easily be cancelled before it expires, and it travels with every request, so keep it small.",
+      "callout": {
+        "kind": "tip",
+        "text": "Common split: tokens for identity, a shared store for anything big or that must change instantly (carts, revoked logins)."
+      },
+      "changes": [
+        "- Session store",
+        "+ Signed token in each request",
+        "~ Extra hop gone"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "yes",
+        "scale": "yes",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "a-3": {
+          "emphasis": true
+        },
+        "st": {
+          "visible": false
+        },
+        "ul-2": {
+          "visible": false
+        },
+        "la-5": {
+          "emphasis": true
+        },
+        "as": {
+          "visible": false
+        },
+        "bs": {
+          "visible": false
+        },
+        "cs": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Uploads",
+      "title": "Case: files on a local disk",
+      "chapter": "problem",
+      "body": "Alice uploads a new avatar. Server A saves `avatar.png` to its own disk and shows it — perfect.\n\nHer next page loads from Server B, which has no such file: a broken image. Files are state too.",
+      "callout": {
+        "kind": "warning",
+        "text": "Anything written to a server’s local disk — uploads, generated PDFs, temp files — disappears for every other server, and for good when the server is replaced."
+      },
+      "changes": [
+        "+ Avatar saved on Server A’s disk",
+        "- Broken image when served by B or C"
+      ],
+      "metrics": {
+        "ok": "1 / 3",
+        "survive": "no",
+        "scale": "no",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "a-3": {
+          "visible": false
+        },
+        "b-3": {
+          "visible": false
+        },
+        "c-3": {
+          "visible": false
+        },
+        "st": {
+          "visible": false
+        },
+        "ul-2": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        },
+        "lbb-5": {
+          "visible": false
+        },
+        "lc-5": {
+          "visible": false
+        },
+        "as": {
+          "visible": false
+        },
+        "bs": {
+          "visible": false
+        },
+        "cs": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Object store",
+      "title": "Put files in object storage",
+      "chapter": "solution",
+      "body": "Store files in shared [[object storage]] (Amazon S3, Google Cloud Storage, Azure Blob): effectively unlimited, durable, and reachable from every server.\n\nServer A writes the avatar there (dark square); B and C read the same file. Better still, browsers fetch images straight from storage through a CDN.",
+      "callout": {
+        "kind": "tip",
+        "text": "Rule of thumb: servers keep nothing that must outlive the request. Sessions → a store or token; files → object storage; data → the database."
+      },
+      "changes": [
+        "+ Object storage",
+        "~ Uploads written to storage, not local disk",
+        "~ Every server sees every file"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "yes",
+        "scale": "yes",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "a-3": {
+          "emphasis": true
+        },
+        "b-3": {
+          "emphasis": true
+        },
+        "c-3": {
+          "emphasis": true
+        },
+        "st": {
+          "visible": false
+        },
+        "ul-2": {
+          "visible": false
+        },
+        "la-5": {
+          "emphasis": true
+        },
+        "lbb-5": {
+          "emphasis": true
+        },
+        "lc-5": {
+          "emphasis": true
+        },
+        "as": {
+          "visible": false
+        },
+        "bs": {
+          "visible": false
+        },
+        "cs": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• State kept in a server’s memory **pins users** to that server.\n• **Sticky sessions** hide the problem until a server dies.\n• Move state to a **shared store**, or carry it in a **signed token**.\n• Files go to **object storage**, never a server’s local disk.\n• **Stateless** servers can be added, removed and lost freely.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Caching** — the database behind all these stateless servers is about to become the bottleneck."
+      },
+      "changes": [],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "yes",
+        "scale": "yes",
+        "extra": "+1 ms"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "st": {
+          "emphasis": true
+        },
+        "ul-2": {
+          "emphasis": true
+        },
+        "as": {
+          "emphasis": true
+        },
+        "bs": {
+          "emphasis": true
+        },
+        "cs": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

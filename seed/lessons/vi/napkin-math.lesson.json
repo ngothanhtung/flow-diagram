@@ -1,0 +1,1355 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "web",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -41,
+          "y": -267
+        },
+        "width": 1121,
+        "height": 365,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "web-label",
+        "type": "text",
+        "title": "TẦNG WEB · 10 SERVER",
+        "position": {
+          "x": -507,
+          "y": -429
+        },
+        "width": 169,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "web"
+      },
+      {
+        "id": "store",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 688,
+          "y": -273
+        },
+        "width": 526,
+        "height": 381,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "store-label",
+        "type": "text",
+        "title": "LƯU TRỮ",
+        "position": {
+          "x": 470,
+          "y": -443
+        },
+        "width": 70,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "store"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1267,
+          "y": -688
+        },
+        "width": 487,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "YÊU CẦU BÀI TOÁN\nPhotoShare: **10M** người dùng hoạt động mỗi ngày\nmỗi người gửi **~20** yêu cầu mỗi ngày\nhọ tải lên **1M** ảnh mỗi ngày, mỗi ảnh 2 MB\n# Một server có chịu nổi không? Cần bao nhiêu lưu trữ?",
+        "position": {
+          "x": 1267,
+          "y": -688
+        },
+        "width": 463,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1201,
+          "y": -690
+        },
+        "width": 355,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "YÊU CẦU MỖI GIÂY\n10M người × 20 = **200M** yêu cầu/ngày\n1 ngày = 86.400 s  (≈ 100k)\n→ 200M ÷ 86.400 ≈ 2.300 yc/s",
+        "position": {
+          "x": 1201,
+          "y": -690
+        },
+        "width": 331,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1151,
+          "y": -690
+        },
+        "width": 255,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "LƯU LƯỢNG ĐỈNH\nbuổi tối ~3 lần trung bình\n→ 2.300 × 3 ≈ 7.000 yc/s",
+        "position": {
+          "x": 1151,
+          "y": -690
+        },
+        "width": 231,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1192,
+          "y": -688
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "SERVER\n1 server ≈ 1.000 yc/s (kiểm thử tải)\n7.000 ÷ 1.000 = 7 server\n+ ~30% dư địa cho đột biến & sự cố\n→ 10 server",
+        "position": {
+          "x": 1192,
+          "y": -688
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1180,
+          "y": -688
+        },
+        "width": 313,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "LƯU TRỮ\n1M ảnh × 2 MB = **2 TB** mỗi ngày\n× 365 ngày ≈ **730 TB** mỗi năm\n× 3 bản sao ≈ 2,2 PB\n→ dự trù ~2 PB năm đầu",
+        "position": {
+          "x": 1180,
+          "y": -688
+        },
+        "width": 289,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1180,
+          "y": -688
+        },
+        "width": 313,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "BYTE MỖI GIÂY\nvào: 2 TB/ngày ÷ 100k s ≈ 20 MB/s\nra:  10M × 100 lượt xem × 200 KB\n     = 200 TB/ngày ≈ 2 GB/s\n→ ~16 Gbit/s → phục vụ từ CDN",
+        "position": {
+          "x": 1180,
+          "y": -688
+        },
+        "width": 289,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1180,
+          "y": -690
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-7-text",
+        "type": "text",
+        "title": "DỮ LIỆU NÓNG TRONG RAM\nhồ sơ: 10M × 2 KB      = 20 GB\nảnh mới: 1M × 1 KB     = 1 GB\n→ ~21 GB → một server cache 64 GB",
+        "position": {
+          "x": 1180,
+          "y": -690
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-7"
+      },
+      {
+        "id": "card-8",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1126,
+          "y": -688
+        },
+        "width": 206,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-8-text",
+        "type": "text",
+        "title": "CON SỐ TIỆN DỤNG\n1 ngày ≈ 100.000 s\n1M yc/ngày ≈ 12 yc/s\n1 KB × 1M = 1 GB\n1 MB × 1M = 1 TB",
+        "position": {
+          "x": 1126,
+          "y": -688
+        },
+        "width": 182,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-8"
+      },
+      {
+        "id": "card-9",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1168,
+          "y": -688
+        },
+        "width": 289,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-9-text",
+        "type": "text",
+        "title": "BẢN ƯỚC TÍNH\ntrung bình ≈ 2.300 yc/s\nđỉnh       ≈ 7.000 yc/s\nserver     = 10\nlưu trữ    ≈ 730 TB / năm (×3)",
+        "position": {
+          "x": 1168,
+          "y": -688
+        },
+        "width": 265,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-9"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "10M người dùng/ngày",
+        "position": {
+          "x": 0,
+          "y": -714
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s0",
+        "type": "process",
+        "title": "Một server?",
+        "description": "đủ không?",
+        "position": {
+          "x": 0,
+          "y": -255
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s0-2",
+        "type": "process",
+        "title": "Một server?",
+        "description": "CPU 80%",
+        "position": {
+          "x": 0,
+          "y": -255
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s0-3",
+        "type": "process",
+        "title": "Một server?",
+        "description": "CPU 100%",
+        "position": {
+          "x": 0,
+          "y": -255
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s0-4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -53,
+          "y": -326
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "s1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -486,
+          "y": -348
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "t0",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -462,
+          "y": -184
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "s2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -269,
+          "y": -326
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "t1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -246,
+          "y": -184
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "t2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -30,
+          "y": -184
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "s3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 163,
+          "y": -326
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "t3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 187,
+          "y": -184
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "s4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 379,
+          "y": -326
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "t4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 403,
+          "y": -184
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "web"
+      },
+      {
+        "id": "d00",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 596,
+          "y": -347
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "store"
+      },
+      {
+        "id": "d01",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 812,
+          "y": -347
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "store"
+      },
+      {
+        "id": "d10",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 619,
+          "y": -163
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "store"
+      },
+      {
+        "id": "d11",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 835,
+          "y": -163
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "store"
+      },
+      {
+        "id": "cdn",
+        "type": "process",
+        "title": "CDN",
+        "position": {
+          "x": 408,
+          "y": -714
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache",
+        "type": "process",
+        "title": "Cache",
+        "description": "~21 GB",
+        "position": {
+          "x": -679,
+          "y": -234
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "u",
+        "from": "users",
+        "to": "s0",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 3
+      },
+      {
+        "id": "u-2",
+        "from": "users",
+        "to": "s0-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 5
+      },
+      {
+        "id": "u-3",
+        "from": "users",
+        "to": "s0-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "uw",
+        "from": "users",
+        "to": "web",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "w",
+        "from": "web",
+        "to": "store",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "sc",
+        "from": "store",
+        "to": "cdn",
+        "label": "nạp cache",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "fromSide": "top",
+        "toSide": "right",
+        "effect": "meteor",
+        "effectColor": "#95de64",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 4
+      },
+      {
+        "id": "cu",
+        "from": "cdn",
+        "to": "users",
+        "label": "ảnh · ~16 Gbit/s",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "meteor",
+        "effectColor": "#95de64",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 4
+      },
+      {
+        "id": "wc",
+        "from": "web",
+        "to": "cache",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      }
+    ]
+  },
+  "meta": {
+    "title": "Tính nhẩm nhanh",
+    "summary": "Biến một ý tưởng sản phẩm thành số server và terabyte bằng những phép tính vừa một tờ khăn giấy.",
+    "minutes": 10,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "dau",
+        "label": "Người dùng/ngày"
+      },
+      {
+        "id": "avg",
+        "label": "TB yc/s"
+      },
+      {
+        "id": "peak",
+        "label": "Đỉnh yc/s"
+      },
+      {
+        "id": "servers",
+        "label": "Server"
+      },
+      {
+        "id": "storage",
+        "label": "Lưu trữ / năm"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Người dùng mỗi ngày → yêu cầu mỗi giây",
+        "step": "s2"
+      },
+      {
+        "text": "Định cỡ cho đỉnh, không cho trung bình",
+        "step": "s3"
+      },
+      {
+        "text": "Ước tính server và lưu trữ",
+        "step": "s5"
+      },
+      {
+        "text": "Ước tính băng thông và bộ nhớ",
+        "step": "s7"
+      },
+      {
+        "text": "Vài con số đáng thuộc lòng",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "s0": {
+      "until": "s2"
+    },
+    "s0-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "s0-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "s0-4": {
+      "from": "s4"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-9": {
+      "from": "s9"
+    },
+    "web": {
+      "from": "s4"
+    },
+    "s1": {
+      "from": "s4"
+    },
+    "t0": {
+      "from": "s4"
+    },
+    "s2": {
+      "from": "s4"
+    },
+    "t1": {
+      "from": "s4"
+    },
+    "t2": {
+      "from": "s4"
+    },
+    "s3": {
+      "from": "s4"
+    },
+    "t3": {
+      "from": "s4"
+    },
+    "s4": {
+      "from": "s4"
+    },
+    "t4": {
+      "from": "s4"
+    },
+    "store": {
+      "from": "s5"
+    },
+    "d00": {
+      "from": "s5"
+    },
+    "d01": {
+      "from": "s5"
+    },
+    "d10": {
+      "from": "s5"
+    },
+    "d11": {
+      "from": "s5"
+    },
+    "cdn": {
+      "from": "s6"
+    },
+    "cache": {
+      "from": "s7"
+    },
+    "web-label": {
+      "from": "s4"
+    },
+    "store-label": {
+      "from": "s5"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-5-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-6-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-7-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-8-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-9-text": {
+      "from": "s9"
+    },
+    "u": {
+      "until": "s2"
+    },
+    "u-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "u-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "uw": {
+      "from": "s4"
+    },
+    "w": {
+      "from": "s5"
+    },
+    "sc": {
+      "from": "s6"
+    },
+    "cu": {
+      "from": "s6"
+    },
+    "wc": {
+      "from": "s7"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Câu hỏi",
+      "title": "Một server có đủ không?",
+      "chapter": "problem",
+      "body": "Bạn đang thiết kế PhotoShare. Trước khi chọn bất kỳ công nghệ nào, bạn cần hình dung quy mô: một server, hay một trăm?\n\nBạn không cần con số chính xác, chỉ cần đúng **bậc độ lớn**. Tính nhẩm nhanh đưa bạn tới đó trong vài phút.",
+      "callout": {
+        "kind": "insight",
+        "text": "Người phỏng vấn lẫn kiến trúc sư đều bắt đầu ở đây: con số ước lượng trước, rồi mới thiết kế cho vừa."
+      },
+      "changes": [],
+      "metrics": {
+        "dau": "10M",
+        "avg": "?",
+        "peak": "?",
+        "servers": "?",
+        "storage": "?"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Yêu cầu / s",
+      "title": "Người dùng mỗi ngày → yêu cầu mỗi giây",
+      "chapter": "technique",
+      "body": "Bắt đầu từ điều bạn biết: người dùng và họ thao tác thường xuyên thế nào. 10M người × 20 yêu cầu = 200M yêu cầu mỗi ngày.\n\nMột ngày có 86.400 giây. Làm tròn thành **100.000**: tính nhẩm là để nhanh, không phải để chính xác.",
+      "callout": {
+        "kind": "tip",
+        "text": "Mẹo tiện: 1M yêu cầu mỗi ngày ≈ 12 yêu cầu mỗi giây."
+      },
+      "changes": [
+        "+ Tải trung bình ≈ 2.300 yc/s"
+      ],
+      "metrics": {
+        "dau": "10M",
+        "avg": "2.300",
+        "peak": "?",
+        "servers": "?",
+        "storage": "?"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Đỉnh",
+      "title": "Lên kế hoạch cho đỉnh, không cho trung bình",
+      "chapter": "insight",
+      "body": "Lưu lượng không phẳng: người ta lướt web vào buổi tối và quanh các sự kiện lớn. Đỉnh điển hình bằng 2–3 lần trung bình ngày.\n\nĐịnh cỡ cho 3 lần và server đơn độc rõ ràng bị quá tải.",
+      "callout": {
+        "kind": "warning",
+        "text": "Một hệ thống định cỡ theo tải trung bình sẽ sập đúng lúc đông người dùng nhất."
+      },
+      "changes": [
+        "+ Đỉnh ≈ 3 × trung bình ≈ 7.000 yc/s",
+        "~ Một server: quá tải"
+      ],
+      "metrics": {
+        "dau": "10M",
+        "avg": "2.300",
+        "peak": "7.000",
+        "servers": "?",
+        "storage": "?"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Server",
+      "title": "Bao nhiêu server?",
+      "chapter": "solution",
+      "body": "Một bài kiểm thử tải cho thấy một server xử lý khoảng **1.000 yc/s**. Đỉnh là 7.000, nên ta cần 7, cộng dư địa cho đột biến và cho trường hợp một server hỏng.\n\nLấy tròn **10**. Để ý rằng ta dùng một con số đo được, không phải đoán.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chia lưu lượng cho các server này là việc của bộ cân bằng tải: xem Mô-đun 02."
+      },
+      "changes": [
+        "+ Tầng web: 10 server",
+        "~ Mỗi server bận ~70% lúc đỉnh"
+      ],
+      "metrics": {
+        "dau": "10M",
+        "avg": "2.300",
+        "peak": "7.000",
+        "servers": "10",
+        "storage": "?"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Lưu trữ",
+      "title": "Cần bao nhiêu lưu trữ?",
+      "chapter": "technique",
+      "body": "Ảnh là phần lớn nhất: 1M lượt tải lên × 2 MB = **2 TB mỗi ngày**. Trong một năm là ~730 TB.\n\nDữ liệu thường được lưu ba bản để một ổ đĩa hỏng không làm mất gì, nên hãy dự trù khoảng **2 PB** năm đầu. Điều đó loại ngay ý “một server CSDL duy nhất”.",
+      "callout": {
+        "kind": "insight",
+        "text": "Lưu trữ tăng mỗi ngày và không bao giờ về không. Yêu cầu mỗi giây đến rồi đi; byte thì ở lại."
+      },
+      "changes": [
+        "+ Tầng lưu trữ",
+        "+ 2 TB/ngày → ~730 TB/năm",
+        "~ ×3 bản sao → ~2 PB"
+      ],
+      "metrics": {
+        "dau": "10M",
+        "avg": "2.300",
+        "peak": "7.000",
+        "servers": "10",
+        "storage": "730 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Băng thông",
+      "title": "Cần bao nhiêu mạng?",
+      "chapter": "technique",
+      "body": "Tải lên là phần nhỏ: 2 TB mỗi ngày chỉ khoảng 20 MB/s đi vào. Xem ảnh là phần lớn: nếu mỗi người xem 100 ảnh mỗi ngày dạng thumbnail 200 KB, sẽ có **200 TB mỗi ngày** đi ra.\n\n200 TB ÷ 100.000 s ≈ 2 GB/s: khoảng 16 Gbit/s trung bình, cao hơn lúc đỉnh. Đó là việc của CDN, không phải của mười web server.",
+      "callout": {
+        "kind": "insight",
+        "text": "Ứng dụng đa phương tiện nặng về đọc thường chạm trần băng thông trước CPU. Hãy ước tính byte đi ra, không chỉ số yêu cầu."
+      },
+      "changes": [
+        "+ CDN phục vụ ảnh",
+        "+ Lưu lượng ra ≈ 16 Gbit/s trung bình"
+      ],
+      "metrics": {
+        "dau": "10M",
+        "avg": "2.300",
+        "peak": "7.000",
+        "servers": "10",
+        "storage": "730 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "Kích thước cache",
+      "title": "Có vừa bộ nhớ không?",
+      "chapter": "technique",
+      "body": "Feed liên tục đọc metadata ảnh và hồ sơ người dùng. Một cache có giữ được phần nóng không? Hồ sơ: 10M × 2 KB = 20 GB. Ảnh mới hôm nay: 1M × 1 KB = 1 GB.\n\nKhoảng 21 GB: vừa trong bộ nhớ của một server cache (thêm một cái thứ hai để dự phòng). Không cần kiến trúc gì cầu kỳ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tính nhẩm nhanh thường bảo “cái này nhỏ hơn bạn nghĩ”. Điều đó cũng giá trị như tìm ra thứ gì đó lớn."
+      },
+      "changes": [
+        "+ Cache: ~21 GB dữ liệu nóng"
+      ],
+      "metrics": {
+        "dau": "10M",
+        "avg": "2.300",
+        "peak": "7.000",
+        "servers": "10",
+        "storage": "730 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s8",
+      "short": "Con số",
+      "title": "Những con số đáng thuộc lòng",
+      "chapter": "insight",
+      "body": "Một nắm con số giúp bạn ước tính được hầu hết mọi thứ. Hãy học bậc độ lớn, đừng học phần thập phân.\n\n• Đọc từ bộ nhớ — 100 ns\n• Đọc từ SSD — 100 µs\n• Khứ hồi, cùng trung tâm dữ liệu — 0,5 ms\n• Khứ hồi, vượt đại dương — 75–150 ms\n• Số giây trong một ngày — ~100.000",
+      "changes": [],
+      "metrics": {
+        "dau": "10M",
+        "avg": "2.300",
+        "peak": "7.000",
+        "servers": "10",
+        "storage": "730 TB"
+      },
+      "overrides": {
+        "sc": {
+          "effect": "none"
+        },
+        "cu": {
+          "effect": "none"
+        },
+        "wc": {
+          "effect": "none"
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Tổng kết",
+      "title": "Tổng kết",
+      "chapter": "recap",
+      "body": "• **Người dùng × thao tác ÷ 100k s** cho ra số yêu cầu trung bình mỗi giây.\n• Nhân **2–3 lần** cho đỉnh, và định cỡ theo đó.\n• **Số server** = đỉnh ÷ năng lực mỗi server, cộng dư địa.\n• **Lưu trữ** = mục/ngày × kích thước × 365 × số bản sao.\n• Hãy ước tính cả **byte đi ra** và **bộ nhớ**: chúng thường quyết định thiết kế.",
+      "callout": {
+        "kind": "tip",
+        "text": "Vậy là xong phần Nền tảng. Tiếp theo: **Dọc hay ngang**: phải làm gì khi các con số nói một máy là không đủ."
+      },
+      "changes": [],
+      "metrics": {
+        "dau": "10M",
+        "avg": "2.300",
+        "peak": "7.000",
+        "servers": "10",
+        "storage": "730 TB"
+      },
+      "overrides": {
+        "sc": {
+          "effect": "none"
+        },
+        "cu": {
+          "effect": "none"
+        },
+        "wc": {
+          "effect": "none"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1335 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 761,
+          "y": -660
+        },
+        "width": 289,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "CHECKOUT TIME\nsave the order          120 ms\n+ 4 calls × ~200 ms     800 ms\n→ ~920 ms before “thank you”",
+        "position": {
+          "x": 761,
+          "y": -660
+        },
+        "width": 265,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 802,
+          "y": -658
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "QUEUE VS TOPIC\nqueue → each message to ONE consumer\n        share out work\ntopic → each message to EVERY subscriber\n        broadcast what happened",
+        "position": {
+          "x": 802,
+          "y": -658
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 802,
+          "y": -658
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "EVENTS: THE FINE PRINT\nwho reacts to OrderPlaced? check 5 repos\nsubscribers act a little later\nduplicates & reordering happen\n→ idempotent subscribers + tracing",
+        "position": {
+          "x": 802,
+          "y": -658
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "shoppers",
+        "type": "process",
+        "title": "shoppers",
+        "position": {
+          "x": 0,
+          "y": -684
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order",
+        "type": "process",
+        "title": "Order Service",
+        "description": "waits for 4 calls",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-2",
+        "type": "process",
+        "title": "Order Service",
+        "description": "⚠ checkout failed",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-3",
+        "type": "process",
+        "title": "Order Service",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "em",
+        "type": "process",
+        "title": "Email",
+        "position": {
+          "x": -456,
+          "y": 304
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Mail",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "em-2",
+        "type": "process",
+        "title": "Email",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": -456,
+          "y": 304
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Mail",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "em-3",
+        "type": "process",
+        "title": "Email",
+        "description": "⚠ down · 4 events waiting",
+        "position": {
+          "x": -456,
+          "y": 304
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Mail",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv",
+        "type": "process",
+        "title": "Inventory",
+        "position": {
+          "x": -152,
+          "y": 304
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "an",
+        "type": "process",
+        "title": "Analytics",
+        "position": {
+          "x": 152,
+          "y": 304
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "an-2",
+        "type": "process",
+        "title": "Analytics",
+        "description": "rewound to 30 days ago",
+        "position": {
+          "x": 152,
+          "y": 304
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "loy",
+        "type": "process",
+        "title": "Loyalty",
+        "position": {
+          "x": 456,
+          "y": 304
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Gift",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bus",
+        "type": "process",
+        "title": "Event Bus",
+        "description": "topic: orders",
+        "position": {
+          "x": 0,
+          "y": -19
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Radio",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bus-2",
+        "type": "process",
+        "title": "Event Bus",
+        "description": "topic: orders · retains 30 days",
+        "position": {
+          "x": 0,
+          "y": -19
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Radio",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fr",
+        "type": "process",
+        "title": "Fraud Check",
+        "position": {
+          "x": 0,
+          "y": 608
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "wait",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮",
+        "position": {
+          "x": -456,
+          "y": 182
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb",
+        "type": "process",
+        "title": "orders + outbox",
+        "position": {
+          "x": -418,
+          "y": -342
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "uo",
+        "from": "shoppers",
+        "to": "order",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5,
+        "effectCount": 2
+      },
+      {
+        "id": "uo-2",
+        "from": "shoppers",
+        "to": "order-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5,
+        "effectCount": 2
+      },
+      {
+        "id": "uo-3",
+        "from": "shoppers",
+        "to": "order-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "dem",
+        "from": "order",
+        "to": "em",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dem-2",
+        "from": "order-2",
+        "to": "em-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dinv",
+        "from": "order",
+        "to": "inv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dinv-2",
+        "from": "order-2",
+        "to": "inv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dan",
+        "from": "order",
+        "to": "an",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dan-2",
+        "from": "order-2",
+        "to": "an",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dloy",
+        "from": "order",
+        "to": "loy",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dloy-2",
+        "from": "order-2",
+        "to": "loy",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ob",
+        "from": "order-3",
+        "to": "bus",
+        "label": "OrderPlaced",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ob-2",
+        "from": "odb",
+        "to": "bus",
+        "label": "relay",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.75,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ob-3",
+        "from": "order-3",
+        "to": "bus-2",
+        "label": "OrderPlaced",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bem",
+        "from": "bus",
+        "to": "em",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bem-2",
+        "from": "bus",
+        "to": "em-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "bem-3",
+        "from": "bus-2",
+        "to": "em",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "binv",
+        "from": "bus",
+        "to": "inv",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "binv-2",
+        "from": "bus-2",
+        "to": "inv",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ban",
+        "from": "bus",
+        "to": "an",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ban-2",
+        "from": "bus-2",
+        "to": "an-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bloy",
+        "from": "bus",
+        "to": "loy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bloy-2",
+        "from": "bus-2",
+        "to": "loy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bfr",
+        "from": "bus",
+        "to": "fr",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "od",
+        "from": "order-3",
+        "to": "odb",
+        "label": "one transaction",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Pub/Sub & Events",
+    "summary": "Announce that something happened, and let whoever cares react — without anyone waiting.",
+    "minutes": 10,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "checkout",
+        "label": "Checkout time"
+      },
+      {
+        "id": "knows",
+        "label": "Order service calls"
+      },
+      {
+        "id": "breaks",
+        "label": "Email outage breaks checkout"
+      },
+      {
+        "id": "subs",
+        "label": "Subscribers"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why direct calls couple services together",
+        "step": "s2"
+      },
+      {
+        "text": "Publishers, topics and subscribers",
+        "step": "s3"
+      },
+      {
+        "text": "Queues vs topics",
+        "step": "s4"
+      },
+      {
+        "text": "The costs of event-driven design",
+        "step": "s7"
+      },
+      {
+        "text": "The outbox pattern and replaying events",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "order": {
+      "until": "s2"
+    },
+    "order-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "order-3": {
+      "from": "s3"
+    },
+    "em-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "em-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "an-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bus": {
+      "from": "s3"
+    },
+    "bus-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "fr": {
+      "from": "s5"
+    },
+    "wait": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "odb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "uo": {
+      "until": "s2"
+    },
+    "uo-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "uo-3": {
+      "from": "s3"
+    },
+    "dem": {
+      "until": "s2"
+    },
+    "dem-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dinv": {
+      "until": "s2"
+    },
+    "dinv-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dan": {
+      "until": "s2"
+    },
+    "dan-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dloy": {
+      "until": "s2"
+    },
+    "dloy-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ob": {
+      "from": "s3"
+    },
+    "ob-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ob-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bem": {
+      "from": "s3"
+    },
+    "bem-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bem-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "binv": {
+      "from": "s3"
+    },
+    "binv-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ban": {
+      "from": "s3"
+    },
+    "ban-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bloy": {
+      "from": "s3"
+    },
+    "bloy-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bfr": {
+      "from": "s5"
+    },
+    "od": {
+      "from": "s8",
+      "until": "s9"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Call everyone",
+      "title": "Checkout calls everyone",
+      "chapter": "problem",
+      "body": "When an order is placed, four other things must happen: send a confirmation email, reserve stock, record analytics, add loyalty points.\n\nThe order service calls each of them in turn and waits for every answer, so the shopper waits for all four — almost a second.",
+      "callout": {
+        "kind": "warning",
+        "text": "Every new feature that cares about orders means changing, testing and redeploying the order service."
+      },
+      "changes": [],
+      "metrics": {
+        "checkout": "920 ms",
+        "knows": "4 services"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Email down",
+      "title": "Email is down, so nobody can buy",
+      "chapter": "problem",
+      "body": "The email provider has an outage. The order service’s call to it fails — and because checkout waits on every call, **checkout fails**.\n\nA confirmation email, which could easily have been sent ten minutes later, just stopped all sales.",
+      "callout": {
+        "kind": "warning",
+        "text": "With direct calls, availability multiplies: four services at 99.9% each give checkout about 99.6%."
+      },
+      "changes": [
+        "- Email service down",
+        "- Checkouts failing"
+      ],
+      "metrics": {
+        "checkout": "920 ms",
+        "knows": "4 services",
+        "breaks": "yes"
+      },
+      "overrides": {
+        "em": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Publish",
+      "title": "Publish an event instead",
+      "chapter": "solution",
+      "body": "The order service now saves the order and **publishes** one event — `OrderPlaced` — to a topic on an [[event bus]], then answers the shopper straight away.\n\nEmail, inventory, analytics and loyalty each **subscribe** to the topic, and every one of them receives its own copy of the event.",
+      "callout": {
+        "kind": "tip",
+        "text": "Common brokers: Kafka, Amazon SNS + SQS, Google Pub/Sub, RabbitMQ (fanout exchanges), Redis Streams."
+      },
+      "changes": [
+        "+ Event bus · topic “orders”",
+        "~ 4 direct calls → 1 published event",
+        "~ Checkout 920 → 140 ms"
+      ],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "no",
+        "subs": "4"
+      },
+      "overrides": {
+        "em": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Queue vs topic",
+      "title": "Queue or topic?",
+      "chapter": "insight",
+      "body": "In the last lesson, each job went to **one** worker — a queue shares out work. A topic does the opposite: each event goes to **every** subscriber — it spreads news.\n\nReal systems combine them: each subscribing service gets its own queue of events, shared by however many instances of that service are running.",
+      "callout": {
+        "kind": "insight",
+        "text": "Queue: “someone do this.” Topic: “this happened.”"
+      },
+      "changes": [],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "no",
+        "subs": "4"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "New subscriber",
+      "title": "New features just subscribe",
+      "chapter": "solution",
+      "body": "The risk team wants to check every order for fraud. They build a service that subscribes to `OrderPlaced` — and that’s it.\n\nThe order service didn’t change, wasn’t redeployed, and doesn’t even know fraud checking exists. This is [[loose coupling]].",
+      "callout": {
+        "kind": "tip",
+        "text": "Publishers don’t know their subscribers. Teams can add reactions to events without coordinating releases."
+      },
+      "changes": [
+        "+ Fraud check subscribes",
+        "~ Order service: no changes"
+      ],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "no",
+        "subs": "5"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Catch up",
+      "title": "A subscriber is down? It catches up",
+      "chapter": "insight",
+      "body": "Email is down again. This time checkout doesn’t notice: the event bus keeps email’s copies of the events in its subscription until it’s back.\n\nWhen email recovers, it works through the backlog and every confirmation goes out — a little late, but none lost.",
+      "callout": {
+        "kind": "insight",
+        "text": "Events are durable: a slow or broken subscriber delays only itself."
+      },
+      "changes": [
+        "- Email service down",
+        "+ Its events wait in its subscription",
+        "~ Checkout unaffected"
+      ],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "no",
+        "subs": "5"
+      },
+      "overrides": {
+        "em": {
+          "visible": false
+        },
+        "bem": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Trade-offs",
+      "title": "What events cost",
+      "chapter": "tradeoff",
+      "body": "Events decouple services, but the flow becomes harder to see: “what happens when an order is placed?” is now spread across five codebases.\n\nSubscribers act a little later (eventual consistency), events can arrive twice or out of order, and debugging needs good tracing.",
+      "callout": {
+        "kind": "tip",
+        "text": "Name events as facts in the past tense (OrderPlaced, PaymentFailed), and make every subscriber idempotent."
+      },
+      "changes": [],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "no",
+        "subs": "5"
+      },
+      "overrides": {
+        "em": {
+          "emphasis": true
+        },
+        "bem": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Outbox",
+      "title": "Case: saved, but never announced",
+      "chapter": "problem",
+      "body": "The order service saves the order to its database, then publishes `OrderPlaced`. One day it crashes between those two steps: the order exists, but no event was sent. No email, no stock reserved, no loyalty points.\n\nFix: the [[transactional outbox]]. Write the event into an `outbox` table in the *same* database transaction as the order; a relay then publishes everything in the outbox to the bus.",
+      "callout": {
+        "kind": "tip",
+        "text": "Either both the order and its event are saved, or neither is. The relay retries until the bus accepts it — so subscribers must handle duplicates. It can poll the table, or tail the database’s own log (**change data capture**, e.g. Debezium)."
+      },
+      "changes": [
+        "+ Orders DB with an outbox table",
+        "+ Relay publishes from the outbox",
+        "~ No more lost events after a crash"
+      ],
+      "metrics": {
+        "checkout": "145 ms",
+        "knows": "1 event bus",
+        "breaks": "no",
+        "subs": "5"
+      },
+      "overrides": {
+        "ob": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Replay",
+      "title": "Case: replaying history",
+      "chapter": "insight",
+      "body": "Analytics finds a bug that miscounted revenue for the last 30 days. With a classic queue, those events are gone once consumed.\n\nA log-based bus like Kafka **keeps** events for days or weeks. Analytics fixes its code, rewinds its position to 30 days ago, and reprocesses every event — other subscribers aren’t affected.",
+      "callout": {
+        "kind": "tip",
+        "text": "Retained events also let a brand-new subscriber build its data from history instead of starting empty."
+      },
+      "changes": [
+        "+ Bus retains 30 days of events",
+        "~ Analytics rewinds and reprocesses"
+      ],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "no",
+        "subs": "5"
+      },
+      "overrides": {
+        "an": {
+          "visible": false
+        },
+        "bus": {
+          "visible": false
+        },
+        "fr": {
+          "visible": false
+        },
+        "ob": {
+          "visible": false
+        },
+        "bem": {
+          "visible": false
+        },
+        "binv": {
+          "visible": false
+        },
+        "ban": {
+          "visible": false
+        },
+        "bloy": {
+          "visible": false
+        },
+        "bfr": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Direct calls make the caller **slow** and **fragile**, and couple every team to it.\n• **Publish** an event; every **subscriber** gets its own copy.\n• New features **just subscribe**; down subscribers **catch up** later.\n• Pay for it with eventual consistency, duplicates and harder tracing.\n• Use an **outbox** so saves and events never disagree; retained logs allow **replay**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Real-time Updates** — getting events all the way to a user’s screen."
+      },
+      "changes": [],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "no",
+        "subs": "5"
+      },
+      "overrides": {
+        "an": {
+          "emphasis": true
+        },
+        "bus": {
+          "emphasis": true
+        },
+        "fr": {
+          "emphasis": true
+        },
+        "ob": {
+          "emphasis": true
+        },
+        "bem": {
+          "emphasis": true
+        },
+        "binv": {
+          "emphasis": true
+        },
+        "ban": {
+          "emphasis": true
+        },
+        "bloy": {
+          "emphasis": true
+        },
+        "bfr": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

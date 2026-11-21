@@ -1,0 +1,1341 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 341,
+          "y": -334
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "ONE CALL, WITH BACKOFF\nattempt 1  █░░░░░░░░░░░  timeout\nretry 1    ██░░░░░░░░░░  +100 ms\nretry 2    █████░░░░░░░  +200 ms\nretry 3    ██████████░░  +400 ms ✓",
+        "position": {
+          "x": 341,
+          "y": -334
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 382,
+          "y": -334
+        },
+        "width": 404,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "IDEMPOTENCY-KEY: 7F3A\nattempt 1 → charge $40, store result as 7f3a\n⚠ response lost → order service retries\nattempt 2 → 7f3a seen: return stored result\n→ one charge, however many retries",
+        "position": {
+          "x": 382,
+          "y": -334
+        },
+        "width": 380,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "shoppers",
+        "type": "process",
+        "title": "shoppers",
+        "position": {
+          "x": 0,
+          "y": -360
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order",
+        "type": "process",
+        "title": "Order Service",
+        "description": "200 / 200 threads waiting · CPU 98%",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-2",
+        "type": "process",
+        "title": "Order Service",
+        "description": "fallback: payment pending · CPU 40%",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-3",
+        "type": "process",
+        "title": "Order Service",
+        "description": "CPU 40%",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-4",
+        "type": "process",
+        "title": "Order Service",
+        "description": "200 / 200 threads waiting · CPU 95%",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-5",
+        "type": "process",
+        "title": "Order Service",
+        "description": "CPU 45%",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-6",
+        "type": "process",
+        "title": "Order Service",
+        "description": "fallback: payment pending · CPU 25%",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-7",
+        "type": "process",
+        "title": "Order Service",
+        "description": "CPU 35%",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-8",
+        "type": "process",
+        "title": "Order Service",
+        "description": "deadline: 2 s · 1.4 s left · CPU 35%",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 216,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-9",
+        "type": "process",
+        "title": "Order Service",
+        "description": "payments pool 40 / 40 · others free · CPU 40%",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 216,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Payments",
+        "description": "answering in 30 s",
+        "position": {
+          "x": 0,
+          "y": 72
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Payments",
+        "description": "often slow",
+        "position": {
+          "x": 0,
+          "y": 72
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-3",
+        "type": "process",
+        "title": "Payments",
+        "description": "CPU 50%",
+        "position": {
+          "x": 0,
+          "y": 72
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-4",
+        "type": "process",
+        "title": "Payments",
+        "description": "⚠ 4× normal load · CPU 100%",
+        "position": {
+          "x": 0,
+          "y": 72
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-5",
+        "type": "process",
+        "title": "Payments",
+        "description": "recovering · CPU 62%",
+        "position": {
+          "x": 0,
+          "y": 72
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-6",
+        "type": "process",
+        "title": "Payments",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 0,
+          "y": 72
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-7",
+        "type": "process",
+        "title": "Payments",
+        "description": "✓ charged once · CPU 50%",
+        "position": {
+          "x": 0,
+          "y": 72
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-8",
+        "type": "process",
+        "title": "Payments",
+        "description": "budget: 1.4 s · CPU 45%",
+        "position": {
+          "x": 0,
+          "y": 72
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-9",
+        "type": "process",
+        "title": "Payments",
+        "description": "slow again",
+        "position": {
+          "x": 0,
+          "y": 72
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "br",
+        "type": "process",
+        "title": "OPEN · fails in 1 ms",
+        "position": {
+          "x": 0,
+          "y": -54
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Unplug",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "br-2",
+        "type": "process",
+        "title": "✓ CLOSED",
+        "position": {
+          "x": 0,
+          "y": -54
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Unplug",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "uo",
+        "from": "shoppers",
+        "to": "order",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-2",
+        "from": "shoppers",
+        "to": "order-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-3",
+        "from": "shoppers",
+        "to": "order-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-4",
+        "from": "shoppers",
+        "to": "order-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-5",
+        "from": "shoppers",
+        "to": "order-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-6",
+        "from": "shoppers",
+        "to": "order-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "op",
+        "from": "order",
+        "to": "pay",
+        "label": "no timeout",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-2",
+        "from": "order-2",
+        "to": "pay-2",
+        "label": "timeout 800 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "op-3",
+        "from": "order-3",
+        "to": "pay-3",
+        "label": "timeout 800 ms · 1 retry",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-4",
+        "from": "order-4",
+        "to": "pay-4",
+        "label": "3 retries, immediately",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-5",
+        "from": "order-5",
+        "to": "pay-5",
+        "label": "backoff + jitter",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-6",
+        "from": "order-9",
+        "to": "pay-9",
+        "label": "payments pool · 40 threads",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "ob",
+        "from": "order-6",
+        "to": "br",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ob-2",
+        "from": "order-7",
+        "to": "br-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ob-3",
+        "from": "order-8",
+        "to": "br-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "bp",
+        "from": "br",
+        "to": "pay-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "bp-2",
+        "from": "br-2",
+        "to": "pay-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "bp-3",
+        "from": "br-2",
+        "to": "pay-7",
+        "label": "Idempotency-Key: 7f3a",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "bp-4",
+        "from": "br-2",
+        "to": "pay-8",
+        "label": "deadline: 12:00:02.000",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      }
+    ]
+  },
+  "meta": {
+    "title": "Timeouts & Retries",
+    "summary": "Calling a struggling service safely: give up in time, retry carefully, and know when to stop.",
+    "minutes": 11,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "success",
+        "label": "Checkouts OK"
+      },
+      {
+        "id": "p99",
+        "label": "p99 latency"
+      },
+      {
+        "id": "payLoad",
+        "label": "Load on payments"
+      },
+      {
+        "id": "threads",
+        "label": "Order threads busy"
+      }
+    ],
+    "goals": [
+      {
+        "text": "How one slow service spreads failure",
+        "step": "s1"
+      },
+      {
+        "text": "Timeouts and fallbacks",
+        "step": "s2"
+      },
+      {
+        "text": "Retries, retry storms and backoff with jitter",
+        "step": "s5"
+      },
+      {
+        "text": "Circuit breakers and idempotency keys",
+        "step": "s8"
+      },
+      {
+        "text": "Deadlines and bulkheads",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "order": {
+      "until": "s2"
+    },
+    "order-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "order-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "order-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "order-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "order-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "order-7": {
+      "from": "s7"
+    },
+    "order-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "order-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "pay": {
+      "until": "s2"
+    },
+    "pay-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "pay-3": {
+      "from": "s3"
+    },
+    "pay-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "pay-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "pay-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "pay-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "pay-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "pay-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "br": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "br-2": {
+      "from": "s7"
+    },
+    "card-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "uo": {
+      "until": "s2"
+    },
+    "uo-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "uo-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "uo-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "uo-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "uo-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "op": {
+      "until": "s2"
+    },
+    "op-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "op-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "op-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "op-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "op-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ob": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ob-2": {
+      "from": "s7"
+    },
+    "ob-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bp": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bp-2": {
+      "from": "s7"
+    },
+    "bp-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bp-4": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Slow call",
+      "title": "One slow service takes down another",
+      "chapter": "problem",
+      "body": "The payment service starts answering in 30 seconds instead of 50 ms. The order service calls it and simply **waits** — with no limit.\n\nEach waiting call holds a thread. Within a minute all 200 are stuck, and the order service can’t even serve pages that don’t need payments. A slow dependency became a full outage.",
+      "callout": {
+        "kind": "warning",
+        "text": "This is a cascading failure: trouble spreads upstream through anything that waits without a limit."
+      },
+      "changes": [],
+      "metrics": {
+        "success": "40%",
+        "p99": "30.0 s",
+        "payLoad": "1×",
+        "threads": "200 / 200 busy"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Timeout",
+      "title": "Set a timeout, have a fallback",
+      "chapter": "solution",
+      "body": "Give every outgoing call a [[timeout]]: if payments hasn’t answered in 800 ms, give up and free the thread.\n\nThen degrade gracefully: accept the order as “payment pending” and charge it shortly after. The order service stays up for everything else.",
+      "callout": {
+        "kind": "tip",
+        "text": "Set timeouts from real latency: a bit above the dependency’s p99, and always shorter than your own caller’s timeout."
+      },
+      "changes": [
+        "+ 800 ms timeout on payment calls",
+        "+ Fallback: “payment pending”",
+        "~ Threads busy 200 → 35"
+      ],
+      "metrics": {
+        "success": "72%",
+        "p99": "820 ms",
+        "payLoad": "1×",
+        "threads": "35 / 200 busy"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Retry",
+      "title": "Retry the blips",
+      "chapter": "technique",
+      "body": "Many failures are momentary: a dropped packet, a server restarting, a brief hiccup. Trying again a moment later usually works.\n\nOne retry (amber) turns most of those failures into successes.",
+      "callout": {
+        "kind": "tip",
+        "text": "Only retry errors that might succeed next time — timeouts, 503s. Retrying a 400 Bad Request just fails again."
+      },
+      "changes": [
+        "+ One retry on timeouts and 503s",
+        "~ Checkouts OK 72% → 97%"
+      ],
+      "metrics": {
+        "success": "97%",
+        "p99": "950 ms",
+        "payLoad": "1.1×",
+        "threads": "38 / 200 busy"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Retry storm",
+      "title": "Retries become a storm",
+      "chapter": "problem",
+      "body": "Then payments gets genuinely overloaded. Every caller retries — three times, immediately. Each failed request becomes four, so the struggling service now gets **4×** its normal load.\n\nIt can never recover: the retries themselves keep it down. Your clients have turned into a denial-of-service attack.",
+      "callout": {
+        "kind": "warning",
+        "text": "Retries multiply across layers too: 3 retries at each of 3 layers is up to 64 calls for one click."
+      },
+      "changes": [
+        "~ Payments overloaded",
+        "~ 3 immediate retries per failure",
+        "~ Load on payments 1× → 4×"
+      ],
+      "metrics": {
+        "success": "18%",
+        "p99": "2.4 s",
+        "payLoad": "4×",
+        "threads": "200 / 200 busy"
+      },
+      "overrides": {
+        "pay-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Backoff",
+      "title": "Back off, with jitter",
+      "chapter": "solution",
+      "body": "Wait before retrying, and wait longer each time: 100 ms, then 200, then 400 — [[exponential backoff]]. Add randomness ([[jitter]]) so thousands of clients don’t retry in the same instant.\n\nCap the attempts, and cap the share of traffic that may be retries (a retry budget of ~10%). Payments gets room to recover.",
+      "callout": {
+        "kind": "tip",
+        "text": "Most cloud SDKs already do exponential backoff with jitter — check that it’s on, and that layers don’t stack their retries."
+      },
+      "changes": [
+        "~ Retries wait 100 → 200 → 400 ms (+ jitter)",
+        "+ Retry budget: 10%",
+        "~ Load on payments 4× → 1.2×"
+      ],
+      "metrics": {
+        "success": "96%",
+        "p99": "1.3 s",
+        "payLoad": "1.2×",
+        "threads": "45 / 200 busy"
+      },
+      "overrides": {
+        "pay-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Breaker",
+      "title": "Circuit breaker: stop calling for a while",
+      "chapter": "technique",
+      "body": "Payments goes fully down. Even with timeouts, every call wastes 800 ms finding that out. A [[circuit breaker]] watches the failures — past a threshold it **opens** and fails calls instantly, without trying.\n\nEvery 30 seconds it lets one trial call through (**half-open**, the green ping). If that succeeds, it closes again.",
+      "callout": {
+        "kind": "insight",
+        "text": "Like the breaker in your house: it trips to protect the rest of the system, and you reset it once the fault is fixed."
+      },
+      "changes": [
+        "- Payments down",
+        "+ Circuit breaker: OPEN",
+        "~ Failed calls take 1 ms, not 800 ms"
+      ],
+      "metrics": {
+        "success": "88%",
+        "p99": "25 ms",
+        "payLoad": "resting",
+        "threads": "6 / 200 busy"
+      },
+      "overrides": {
+        "pay-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Closed",
+      "title": "Half-open, then closed",
+      "chapter": "solution",
+      "body": "Payments recovers. The next trial call succeeds, so the breaker closes and traffic flows again — gradually, so the service isn’t flooded the moment it’s back.\n\nMeanwhile the “payment pending” orders are charged from a queue. No order was lost, and the rest of the site never went down.",
+      "callout": {
+        "kind": "tip",
+        "text": "Libraries such as resilience4j, Polly and service meshes like Envoy/Istio provide timeouts, retries and breakers out of the box."
+      },
+      "changes": [
+        "+ Payments recovered",
+        "~ Breaker HALF-OPEN → CLOSED",
+        "~ Pending orders charged"
+      ],
+      "metrics": {
+        "success": "99%",
+        "p99": "180 ms",
+        "payLoad": "1×",
+        "threads": "30 / 200 busy"
+      },
+      "overrides": {
+        "pay-3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Idempotency",
+      "title": "Retries must not charge twice",
+      "chapter": "technique",
+      "body": "A nasty case: payments charges the card, but the response is lost on the way back. The order service times out and retries — and the customer is charged **twice**.\n\nFix: send an [[idempotency key]] — a unique id per order — with every attempt. Payments remembers the result for each key and returns it again for duplicates instead of charging again.",
+      "callout": {
+        "kind": "insight",
+        "text": "Any operation that may be retried must be idempotent: doing it twice has the same effect as doing it once."
+      },
+      "changes": [
+        "+ Idempotency-Key on payment calls",
+        "~ Duplicate attempts return the stored result"
+      ],
+      "metrics": {
+        "success": "99%",
+        "p99": "180 ms",
+        "payLoad": "1×",
+        "threads": "30 / 200 busy"
+      },
+      "overrides": {
+        "ob-2": {
+          "effect": "ants"
+        },
+        "pay-3": {
+          "visible": false
+        },
+        "bp-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Deadlines",
+      "title": "Pass the deadline along",
+      "chapter": "technique",
+      "body": "The shopper’s browser gives up after 2 seconds. But if the order service has already spent 1.8 s, it’s pointless for payments to start a fresh 800 ms of work — nobody will see the answer.\n\nSo each request carries a [[deadline]]: “answer by 12:00:02.000”. Every service checks the time left and passes the remaining budget on; with none left, it stops immediately.",
+      "callout": {
+        "kind": "tip",
+        "text": "gRPC propagates deadlines automatically. Over HTTP, pass the remaining time in a header."
+      },
+      "changes": [
+        "+ Deadline carried with each request",
+        "~ No work started that can’t finish in time"
+      ],
+      "metrics": {
+        "success": "99%",
+        "p99": "180 ms",
+        "payLoad": "1×",
+        "threads": "28 / 200 busy"
+      },
+      "overrides": {
+        "order-7": {
+          "visible": false
+        },
+        "pay-3": {
+          "visible": false
+        },
+        "ob-2": {
+          "visible": false
+        },
+        "bp-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Bulkheads",
+      "title": "Bulkheads: separate pools",
+      "chapter": "technique",
+      "body": "Remember step 1, when slow payments used up all 200 threads? The order service can also protect itself by giving each dependency its own pool: say 40 threads for payments, 40 for inventory, the rest for everything else.\n\nNow when payments is slow, only its 40 threads fill up. Browsing, search and the cart keep working. Like the watertight compartments in a ship — the [[bulkhead]] pattern.",
+      "callout": {
+        "kind": "insight",
+        "text": "Timeouts limit how long one call can hurt you; bulkheads limit how many calls can."
+      },
+      "changes": [
+        "+ Separate pools per dependency",
+        "~ Slow payments fills only its 40 threads",
+        "~ Rest of the site unaffected"
+      ],
+      "metrics": {
+        "success": "92%",
+        "p99": "820 ms",
+        "payLoad": "1×",
+        "threads": "40 / 40 payments · rest free"
+      },
+      "overrides": {
+        "order-7": {
+          "visible": false
+        },
+        "pay-3": {
+          "visible": false
+        },
+        "br-2": {
+          "visible": false
+        },
+        "ob-2": {
+          "visible": false
+        },
+        "bp-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Every remote call needs a **timeout** and a **fallback**.\n• **Retry** transient errors — with **exponential backoff, jitter** and a cap.\n• A **circuit breaker** stops hammering a service that is down.\n• Retried operations must be **idempotent**.\n• Propagate **deadlines**; isolate dependencies with **bulkheads**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Observability** — how you’d find out payments was slow in the first place."
+      },
+      "changes": [],
+      "metrics": {
+        "success": "99%",
+        "p99": "180 ms",
+        "payLoad": "1×",
+        "threads": "30 / 200 busy"
+      },
+      "overrides": {
+        "order-7": {
+          "emphasis": true
+        },
+        "pay-3": {
+          "emphasis": true
+        },
+        "br-2": {
+          "emphasis": true
+        },
+        "ob-2": {
+          "emphasis": true
+        },
+        "bp-2": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1574 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "chart",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 857,
+          "y": -574
+        },
+        "width": 198,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-text",
+        "type": "text",
+        "title": "ĐỘ TRỄ THEO MỨC BẬN\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n          ▲ 70%",
+        "position": {
+          "x": 857,
+          "y": -574
+        },
+        "width": 174,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart"
+      },
+      {
+        "id": "chart-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 857,
+          "y": -574
+        },
+        "width": 198,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-2-text",
+        "type": "text",
+        "title": "ĐỘ TRỄ THEO MỨC BẬN\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n             ▲ 96%",
+        "position": {
+          "x": 857,
+          "y": -574
+        },
+        "width": 174,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-2"
+      },
+      {
+        "id": "chart-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 927,
+          "y": -572
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-3-text",
+        "type": "text",
+        "title": "PHÂN VỊ\nTB    180 ms   trông ổn\np50   160 ms   một nửa nhanh hơn\n⚠ p99   600 ms   1 trên 100 chậm hơn\n# trung bình che giấu 1% chậm",
+        "position": {
+          "x": 927,
+          "y": -572
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-3"
+      },
+      {
+        "id": "chart-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 857,
+          "y": -574
+        },
+        "width": 198,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-4-text",
+        "type": "text",
+        "title": "ĐỘ TRỄ THEO MỨC BẬN\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n     ▲ 35%",
+        "position": {
+          "x": 857,
+          "y": -574
+        },
+        "width": 174,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-4"
+      },
+      {
+        "id": "chart-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 915,
+          "y": -574
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-5-text",
+        "type": "text",
+        "title": "ĐỊNH LUẬT LITTLE\nđang xử lý = thông lượng × độ trễ\n350 yc/s × 0,12 s ≈ 42\n⚠ độ trễ 1 s → 350 đang xử lý",
+        "position": {
+          "x": 915,
+          "y": -574
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-5"
+      },
+      {
+        "id": "chart-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 911,
+          "y": -574
+        },
+        "width": 305,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-6-text",
+        "type": "text",
+        "title": "CHỜ SERVER CHẬM NHẤT\nmỗi server chậm 1% thời gian\n1 server:    1% trang chậm\n⚠ 100 server:  1 − 0,99¹⁰⁰ ≈ 63%",
+        "position": {
+          "x": 911,
+          "y": -574
+        },
+        "width": 281,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-6"
+      },
+      {
+        "id": "chart-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 915,
+          "y": -574
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-7-text",
+        "type": "text",
+        "title": "DÒNG MỖI GIÂY\n1 dòng mỗi INSERT       2.000 / s\n→ 100 dòng mỗi INSERT  50.000 / s\n⚠ mỗi dòng chờ ≤ 50 ms",
+        "position": {
+          "x": 915,
+          "y": -574
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-7"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "1.000 người dùng",
+        "position": {
+          "x": 0,
+          "y": -598
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "7.000 người dùng",
+        "position": {
+          "x": 0,
+          "y": -598
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "9.600 người dùng",
+        "position": {
+          "x": 0,
+          "y": -598
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-4",
+        "type": "process",
+        "title": "người dùng ở New York",
+        "position": {
+          "x": 0,
+          "y": -598
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-5",
+        "type": "process",
+        "title": "7.000 lượt tìm kiếm",
+        "position": {
+          "x": 0,
+          "y": -598
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-6",
+        "type": "process",
+        "title": "sự kiện từ ứng dụng",
+        "position": {
+          "x": 0,
+          "y": -598
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "CPU 10%",
+        "position": {
+          "x": 0,
+          "y": 6
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-2",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "CPU 70%",
+        "position": {
+          "x": 0,
+          "y": 6
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-3",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "CPU 96%",
+        "position": {
+          "x": 0,
+          "y": 6
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-4",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "CPU 35%",
+        "position": {
+          "x": 0,
+          "y": 6
+        },
+        "width": 230,
+        "height": 138,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-5",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "London · CPU 35%",
+        "position": {
+          "x": 0,
+          "y": 644
+        },
+        "width": 230,
+        "height": 138,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-6",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "≈ 42 đang xử lý · CPU 35%",
+        "position": {
+          "x": 0,
+          "y": 6
+        },
+        "width": 230,
+        "height": 138,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-7",
+        "type": "process",
+        "title": "Tìm kiếm",
+        "description": "fan-out · CPU 40%",
+        "position": {
+          "x": 0,
+          "y": 6
+        },
+        "width": 230,
+        "height": 138,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-8",
+        "type": "process",
+        "title": "Bộ ghi sự kiện",
+        "description": "lô: 100 dòng / 50 ms · CPU 35%",
+        "position": {
+          "x": 0,
+          "y": 6
+        },
+        "width": 230,
+        "height": 138,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q",
+        "type": "process",
+        "title": "▮ ▮",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q-2",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q-3",
+        "type": "process",
+        "title": "▮",
+        "position": {
+          "x": 0,
+          "y": -156
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix0",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -575,
+          "y": 552
+        },
+        "width": 176,
+        "height": 83,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -345,
+          "y": 552
+        },
+        "width": 176,
+        "height": 83,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -115,
+          "y": 552
+        },
+        "width": 176,
+        "height": 83,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 115,
+          "y": 552
+        },
+        "width": 176,
+        "height": 83,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix4",
+        "type": "process",
+        "title": "lần này chậm",
+        "position": {
+          "x": 345,
+          "y": 552
+        },
+        "width": 200,
+        "height": 83,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix5",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 575,
+          "y": 552
+        },
+        "width": 176,
+        "height": 83,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "CSDL",
+        "position": {
+          "x": 598,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "u",
+        "from": "users",
+        "to": "srv",
+        "label": "≈ 120 ms khứ hồi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.62,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 2
+      },
+      {
+        "id": "u-2",
+        "from": "users-2",
+        "to": "srv-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "u-3",
+        "from": "users-3",
+        "to": "srv-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 6
+      },
+      {
+        "id": "u-4",
+        "from": "users-2",
+        "to": "srv-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "u-5",
+        "from": "users-4",
+        "to": "srv-5",
+        "label": "+ 75 ms mỗi lượt khứ hồi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "u-6",
+        "from": "users-2",
+        "to": "srv-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "u-7",
+        "from": "users-5",
+        "to": "srv-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 2
+      },
+      {
+        "id": "u-8",
+        "from": "users-6",
+        "to": "srv-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "f0",
+        "from": "srv-7",
+        "to": "ix0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "f1",
+        "from": "srv-7",
+        "to": "ix1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "f2",
+        "from": "srv-7",
+        "to": "ix2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "f3",
+        "from": "srv-7",
+        "to": "ix3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "f4",
+        "from": "srv-7",
+        "to": "ix4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f5",
+        "from": "srv-7",
+        "to": "ix5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "w",
+        "from": "srv-8",
+        "to": "db",
+        "label": "INSERT 100 dòng",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Độ trễ & thông lượng",
+    "summary": "Hai câu hỏi về tốc độ, và vì sao server bận lại chậm đi trước khi đầy.",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "p50",
+        "label": "Độ trễ p50"
+      },
+      {
+        "id": "p99",
+        "label": "Độ trễ p99"
+      },
+      {
+        "id": "throughput",
+        "label": "Thông lượng"
+      },
+      {
+        "id": "util",
+        "label": "Mức sử dụng"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Phân biệt độ trễ và thông lượng",
+        "step": "s1"
+      },
+      {
+        "text": "Vì sao độ trễ bùng nổ khi gần 100% bận",
+        "step": "s3"
+      },
+      {
+        "text": "Đọc độ trễ p50 và p99",
+        "step": "s4"
+      },
+      {
+        "text": "Vì sao khoảng cách đặt ra mức sàn cho độ trễ",
+        "step": "s6"
+      },
+      {
+        "text": "Định luật Little, đuôi fan-out và gom lô",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "users": {
+      "until": "s2"
+    },
+    "users-2": {
+      "from": "s2"
+    },
+    "users-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "users-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "users-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "users-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "srv": {
+      "until": "s2"
+    },
+    "srv-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "srv-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "srv-4": {
+      "from": "s5"
+    },
+    "srv-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "srv-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "srv-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "srv-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "q-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "q-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "chart": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "chart-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "chart-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "chart-4": {
+      "from": "s5"
+    },
+    "chart-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "chart-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "chart-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ix0": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "db": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "chart-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "chart-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "chart-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "chart-4-text": {
+      "from": "s5"
+    },
+    "chart-5-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "chart-6-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "chart-7-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "u": {
+      "until": "s2"
+    },
+    "u-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "u-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "u-4": {
+      "from": "s5"
+    },
+    "u-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "u-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "u-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "u-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f0": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "w": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Hai con số",
+      "title": "Hai câu hỏi khác nhau",
+      "chapter": "setup",
+      "body": "[[Độ trễ]] (latency): *một* yêu cầu mất bao lâu, từ lúc rời người dùng đến khi câu trả lời quay về? Hãy xem một chấm đi rồi về.\n\n[[Thông lượng]] (throughput): hệ thống hoàn thành bao nhiêu yêu cầu *mỗi giây*? Hãy đếm các chấm.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hãy nghĩ tới đường cao tốc: độ trễ là chuyến đi của bạn mất bao lâu; thông lượng là bao nhiêu xe qua mỗi giờ. Thêm làn cho nhiều xe qua hơn, nhưng trên đường vắng chúng không giúp bạn tới sớm hơn."
+      },
+      "changes": [],
+      "metrics": {
+        "p50": "120 ms",
+        "p99": "180 ms",
+        "throughput": "50 yc/s",
+        "util": "10%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Bận hơn",
+      "title": "Nhiều người dùng hơn, cùng server",
+      "chapter": "problem",
+      "body": "Lưu lượng tăng 7 lần. Thông lượng tăng theo (server vẫn theo kịp) và giờ nó bận 70%: 350 trên khoảng 500 yc/s mà nó xử lý được.\n\nNhưng hãy nhìn hàng phía trước nó: thỉnh thoảng các yêu cầu phải **chờ đến lượt**. Chờ cũng là độ trễ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Mức sử dụng = phần thời gian server bận. Ở 70%, một yêu cầu mới thường gặp nó đang làm việc khác."
+      },
+      "changes": [
+        "~ Người dùng 1.000 → 7.000",
+        "~ Thông lượng 50 → 350 yc/s",
+        "+ Một hàng đợi ngắn hình thành"
+      ],
+      "metrics": {
+        "p50": "160 ms",
+        "p99": "600 ms",
+        "throughput": "350 yc/s",
+        "util": "70%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Gậy khúc côn cầu",
+      "title": "Cây gậy khúc côn cầu",
+      "chapter": "problem",
+      "body": "Lưu lượng tăng thêm một phần ba và server lên 96% bận. Thông lượng chỉ tăng tới 480 yc/s, sát trần 500 của nó, nhưng hàng đợi bùng nổ và độ trễ tăng **gấp bảy**.\n\nYêu cầu không đến cách đều nhau. Còn dư 30% thì một đợt dồn được hấp thụ nhanh; còn 4% thì mỗi đợt chồng lên sau những yêu cầu đang chờ, và hàng phải rất lâu mới vơi.",
+      "callout": {
+        "kind": "warning",
+        "text": "Độ trễ tăng chậm, rồi đột ngột. Hãy lên kế hoạch chạy khoảng 60–70% bận lúc cao điểm và giữ phần còn lại làm dư địa."
+      },
+      "changes": [
+        "~ Người dùng 7.000 → 9.600",
+        "~ Mức sử dụng 70% → 96%",
+        "~ Hàng đợi 2 → 6 đang chờ",
+        "~ Độ trễ p99 600 ms → 4,2 s",
+        "~ Thông lượng 350 → 480 yc/s"
+      ],
+      "metrics": {
+        "p50": "900 ms",
+        "p99": "4,2 s",
+        "throughput": "480 yc/s",
+        "util": "96%"
+      },
+      "overrides": {
+        "users-2": {
+          "visible": false
+        },
+        "srv-2": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "u-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Trung bình đánh lừa",
+      "title": "Trung bình che giấu nỗi đau",
+      "chapter": "insight",
+      "body": "Quay về 70% bận, phần lớn yêu cầu nhanh, nhưng vài cái bị kẹt sau việc chậm. *Trung bình* ở đây khoảng 180 ms, trông có vẻ ổn: nó hòa tan vài yêu cầu chậm.\n\nVì vậy ta đo [[phân vị]]: **p50** là thời gian mà một nửa yêu cầu nhanh hơn; **p99** là thời gian mà chỉ 1 trên 100 vượt quá.",
+      "callout": {
+        "kind": "warning",
+        "text": "Một trang gửi 30 yêu cầu sẽ dính p99 khoảng 1 trong 4 lần tải (1 − 0,99³⁰ ≈ 26%). Độ trễ đuôi mới là thứ người dùng thật sự cảm nhận."
+      },
+      "changes": [
+        "~ Trở lại 7.000 người dùng",
+        "+ Thỉnh thoảng có yêu cầu chậm (màu hổ phách)",
+        "~ Độ trễ p99 4,2 s → 600 ms"
+      ],
+      "metrics": {
+        "p50": "160 ms",
+        "p99": "600 ms",
+        "throughput": "350 yc/s",
+        "util": "70%"
+      },
+      "overrides": {
+        "u-2": {
+          "effect": "ants",
+          "emphasis": true
+        },
+        "users-2": {
+          "emphasis": true
+        },
+        "srv-2": {
+          "emphasis": true
+        },
+        "q": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Thêm năng lực",
+      "title": "Thêm năng lực, lấy lại độ trễ",
+      "chapter": "solution",
+      "body": "Nhân đôi số core của server và cùng 350 yc/s giờ chỉ còn 35% năng lực. Hàng đợi vơi đi, cả p50 lẫn p99 đều giảm.\n\nThông lượng không đổi: nhu cầu không đổi. Điều thay đổi là **còn bao nhiêu dư địa** để hấp thụ các đợt dồn.",
+      "callout": {
+        "kind": "tip",
+        "text": "Muốn giảm độ trễ khi tải cao, hãy giảm mức sử dụng: thêm năng lực, hoặc bớt việc cho mỗi yêu cầu."
+      },
+      "changes": [
+        "~ Server 4 → 8 core",
+        "~ Mức sử dụng 70% → 35%",
+        "- Hết hàng đợi",
+        "~ Độ trễ p99 600 → 190 ms"
+      ],
+      "metrics": {
+        "p50": "120 ms",
+        "p99": "190 ms",
+        "throughput": "350 yc/s",
+        "util": "35%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Khoảng cách",
+      "title": "Khoảng cách cũng là độ trễ",
+      "chapter": "insight",
+      "body": "Giờ hãy chuyển server sang bờ bên kia đại dương. Nó không chậm đi chút nào, vậy mà mỗi lượt khứ hồi lâu hơn: hãy xem các chấm di chuyển.\n\nÁnh sáng trong cáp quang đi khoảng 200 km mỗi mili giây. New York ↔ London ~5.600 km: ít nhất 56 ms mỗi lượt khứ hồi, thực tế gần 75 ms.",
+      "callout": {
+        "kind": "insight",
+        "text": "Không nâng cấp server nào thắng được vật lý. Muốn giảm độ trễ này, hãy đưa dữ liệu lại gần người dùng (cache, CDN, vùng)."
+      },
+      "changes": [
+        "~ Server dời đi: New York → London",
+        "+ ~75 ms mỗi lượt khứ hồi",
+        "~ Độ trễ p50 120 → 195 ms"
+      ],
+      "metrics": {
+        "p50": "195 ms",
+        "p99": "265 ms",
+        "throughput": "350 yc/s",
+        "util": "35%"
+      },
+      "overrides": {
+        "users-2": {
+          "visible": false
+        },
+        "srv-4": {
+          "visible": false
+        },
+        "chart-4": {
+          "visible": false
+        },
+        "chart-4-text": {
+          "visible": false
+        },
+        "u-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Đang xử lý",
+      "title": "Định luật Little: bao nhiêu đang xử lý",
+      "chapter": "insight",
+      "body": "Một quy tắc đơn giản nối các con số: [[yêu cầu đang xử lý = thông lượng × độ trễ]]. Ở 350 yc/s và 0,12 s mỗi yêu cầu, lúc nào cũng có khoảng 42 yêu cầu đang được xử lý.\n\nMỗi yêu cầu đang xử lý giữ một thread, một kết nối hoặc chút bộ nhớ. Nếu độ trễ tăng lên 1 s với cùng thông lượng thì có 350 yêu cầu đang xử lý, và các pool cỡ 50 cạn sạch.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hãy dùng nó để định cỡ thread pool, connection pool và số worker, và để hiểu vì sao các phụ thuộc chậm làm cạn chúng."
+      },
+      "changes": [
+        "+ Đang xử lý ≈ 42 yêu cầu"
+      ],
+      "metrics": {
+        "p50": "120 ms",
+        "p99": "190 ms",
+        "throughput": "350 yc/s",
+        "util": "35%"
+      },
+      "overrides": {
+        "users-2": {
+          "emphasis": true
+        },
+        "srv-4": {
+          "visible": false
+        },
+        "chart-4": {
+          "visible": false
+        },
+        "chart-4-text": {
+          "visible": false
+        },
+        "u-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Fan-out",
+      "title": "Một yêu cầu, nhiều server",
+      "chapter": "problem",
+      "body": "Một trang tìm kiếm hỏi song song **100** server chỉ mục và phải chờ server chậm nhất. Mỗi server nhanh 99% thời gian, nhưng với 100 server, một trang gần như luôn gặp ít nhất một server chậm.\n\n1 − 0,99¹⁰⁰ ≈ **63%** lượt tìm kiếm phải chờ p99 của ai đó. Một cái đuôi hiếm trên một server trở thành chuyện thường cho cả trang.",
+      "callout": {
+        "kind": "tip",
+        "text": "Sửa phần đuôi bằng yêu cầu dự phòng (hedged): nếu một server chưa trả lời tới mốc p95 của nó, gửi cùng yêu cầu tới một bản sao và lấy câu trả lời đến trước."
+      },
+      "changes": [
+        "+ 100 server chỉ mục (hiện 6)",
+        "~ Trang chờ server chậm nhất",
+        "~ p99 của một server → trang bình thường"
+      ],
+      "metrics": {
+        "p50": "380 ms",
+        "p99": "900 ms",
+        "throughput": "350 yc/s",
+        "util": "40%"
+      },
+      "overrides": {
+        "users-2": {
+          "visible": false
+        },
+        "srv-4": {
+          "visible": false
+        },
+        "chart-4": {
+          "visible": false
+        },
+        "chart-4-text": {
+          "visible": false
+        },
+        "u-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Gom lô",
+      "title": "Gom lô: thông lượng cao hơn, độ trễ nhích lên",
+      "chapter": "tradeoff",
+      "body": "Ghi sự kiện phân tích từng dòng một, CSDL đạt khoảng 2.000 lượt insert mỗi giây: gần như toàn bộ chi phí là phần tốn kém cố định của mỗi câu lệnh.\n\nGom chúng lại: thu sự kiện tối đa 50 ms rồi ghi 100 dòng trong một câu lệnh (các ô vuông lớn). Thông lượng nhảy 25 lần, còn mỗi sự kiện chờ lâu hơn tối đa 50 ms.",
+      "callout": {
+        "kind": "insight",
+        "text": "Gom lô đổi độ trễ lấy thông lượng. Tuyệt cho log, phân tích và nhập dữ liệu hàng loạt; sai với người dùng đang chờ sau một cú nhấp."
+      },
+      "changes": [
+        "+ Sự kiện gom lô: 100 dòng / 50 ms",
+        "~ 2.000 → 50.000 dòng/s",
+        "~ Mỗi sự kiện chờ ≤ 50 ms"
+      ],
+      "metrics": {
+        "p50": "140 ms",
+        "p99": "210 ms",
+        "throughput": "50.000 yc/s",
+        "util": "35%"
+      },
+      "overrides": {
+        "users-2": {
+          "visible": false
+        },
+        "srv-4": {
+          "visible": false
+        },
+        "chart-4": {
+          "visible": false
+        },
+        "chart-4-text": {
+          "visible": false
+        },
+        "u-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Tổng kết",
+      "title": "Tổng kết",
+      "chapter": "recap",
+      "body": "• **Độ trễ** là thời gian cho mỗi yêu cầu; **thông lượng** là số yêu cầu mỗi giây.\n• Độ trễ bùng nổ khi mức sử dụng gần 100%: hãy giữ **dư địa**.\n• Theo dõi **p99**, đừng nhìn trung bình: phần đuôi là thứ người dùng cảm nhận.\n• **Khoảng cách** thêm độ trễ mà không server nào gỡ được.\n• **Đang xử lý = thông lượng × độ trễ**; fan-out biến đuôi hiếm thành chuyện thường.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Tính nhẩm nhanh**: ước tính bạn cần bao nhiêu năng lực trước khi xây bất cứ thứ gì."
+      },
+      "changes": [],
+      "metrics": {
+        "p50": "120 ms",
+        "p99": "190 ms",
+        "throughput": "350 yc/s",
+        "util": "35%"
+      },
+      "overrides": {
+        "users-2": {
+          "emphasis": true
+        },
+        "srv-4": {
+          "emphasis": true
+        },
+        "chart-4": {
+          "emphasis": true
+        },
+        "chart-4-text": {
+          "emphasis": true
+        },
+        "u-4": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

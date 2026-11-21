@@ -1,0 +1,1673 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 568,
+          "y": -291
+        },
+        "width": 346,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "WHO READS WHAT\ntop 1% of products   → 60% of reads\ntop 10% of products  → 90% of reads\n# the same rows, read again and again",
+        "position": {
+          "x": 568,
+          "y": -291
+        },
+        "width": 322,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 560,
+          "y": -289
+        },
+        "width": 330,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "AVERAGE READ TIME\ncache hit  ≈ 1 ms\ndatabase   ≈ 20 ms\n80% hits:  0.8×1 + 0.2×20  = 4.8 ms\n→ 95% hits: 0.95×1 + 0.05×20 = 2 ms",
+        "position": {
+          "x": 560,
+          "y": -289
+        },
+        "width": 306,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 540,
+          "y": -289
+        },
+        "width": 289,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "LEAST RECENTLY USED\nproduct:42    used 1 s ago\nproduct:7     used 4 s ago\nproduct:913   used 2 min ago\n⚠ evict product:5 · unused 3 h",
+        "position": {
+          "x": 540,
+          "y": -289
+        },
+        "width": 265,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 568,
+          "y": -289
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "BLOOM FILTER · 12 M IDS IN 15 MB\nis product:99900017 real?\n→ “definitely not” → 404, no lookup\n“probably yes” → cache, then database\n# never wrong about a “no”",
+        "position": {
+          "x": 568,
+          "y": -289
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 573,
+          "y": -280
+        },
+        "width": 355,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "WHERE A READ CAN STOP\nbrowser cache       0 ms · per user\nCDN edge            ~10 ms · per city\nin-process memory   ~0 ms · per server\nshared cache        ~1 ms\ndatabase            ~20 ms",
+        "position": {
+          "x": 573,
+          "y": -280
+        },
+        "width": 331,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "20,000 users",
+        "position": {
+          "x": 0,
+          "y": -315
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "users see $20",
+        "position": {
+          "x": 0,
+          "y": -315
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "users see $25",
+        "position": {
+          "x": 0,
+          "y": -315
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-4",
+        "type": "process",
+        "title": "everyone opens the home page",
+        "position": {
+          "x": 0,
+          "y": -315
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-5",
+        "type": "process",
+        "title": "real users + a crawler guessing IDs",
+        "position": {
+          "x": 0,
+          "y": -315
+        },
+        "width": 272,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "App Server",
+        "position": {
+          "x": 0,
+          "y": -63
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "database",
+        "description": "CPU 92%",
+        "position": {
+          "x": 231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "database",
+        "description": "CPU 25%",
+        "position": {
+          "x": 231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "database",
+        "description": "CPU 8%",
+        "position": {
+          "x": 231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "database",
+        "description": "price: $25 · CPU 8%",
+        "position": {
+          "x": 231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "database",
+        "description": "price: $25 · CPU 9%",
+        "position": {
+          "x": 231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-6",
+        "type": "process",
+        "title": "database",
+        "description": "CPU 12%",
+        "position": {
+          "x": 231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-7",
+        "type": "process",
+        "title": "database",
+        "description": "⚠ 2,000 identical queries · CPU 100%",
+        "position": {
+          "x": 231,
+          "y": -63
+        },
+        "width": 184,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-8",
+        "type": "process",
+        "title": "database",
+        "description": "CPU 9%",
+        "position": {
+          "x": 231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-9",
+        "type": "process",
+        "title": "database",
+        "description": "0 rows found · CPU 85%",
+        "position": {
+          "x": 231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 122,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache",
+        "type": "process",
+        "title": "Cache",
+        "description": "in memory",
+        "position": {
+          "x": -231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-2",
+        "type": "process",
+        "title": "Cache",
+        "description": "in memory · ⚠ price: $20 · stale",
+        "position": {
+          "x": -231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-3",
+        "type": "process",
+        "title": "Cache",
+        "description": "in memory · TTL 60 s · price: $25",
+        "position": {
+          "x": -231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-4",
+        "type": "process",
+        "title": "Cache",
+        "description": "in memory · ⚠ memory full",
+        "position": {
+          "x": -231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-5",
+        "type": "process",
+        "title": "Cache",
+        "description": "in memory · home page · expired",
+        "position": {
+          "x": -231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-6",
+        "type": "process",
+        "title": "Cache",
+        "description": "in memory · ✓ refreshed early · 1 fetch",
+        "position": {
+          "x": -231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-7",
+        "type": "process",
+        "title": "Cache",
+        "description": "in memory · ⚠ nothing to cache",
+        "position": {
+          "x": -231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-8",
+        "type": "process",
+        "title": "Cache",
+        "description": "in memory · “not found” · TTL 30 s",
+        "position": {
+          "x": -231,
+          "y": -63
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "us",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-2",
+        "from": "users-2",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-3",
+        "from": "users-3",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-4",
+        "from": "users-4",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "us-5",
+        "from": "users-5",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd",
+        "from": "app",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-2",
+        "from": "app",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-3",
+        "from": "app",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-4",
+        "from": "app",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-5",
+        "from": "app",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-6",
+        "from": "app",
+        "to": "db-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-7",
+        "from": "app",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "sd-8",
+        "from": "app",
+        "to": "db-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-9",
+        "from": "app",
+        "to": "db-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc",
+        "from": "app",
+        "to": "cache",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-2",
+        "from": "app",
+        "to": "cache-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-3",
+        "from": "app",
+        "to": "cache-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-4",
+        "from": "app",
+        "to": "cache-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-5",
+        "from": "app",
+        "to": "cache-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "sc-6",
+        "from": "app",
+        "to": "cache-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-7",
+        "from": "app",
+        "to": "cache-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-8",
+        "from": "app",
+        "to": "cache-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      }
+    ]
+  },
+  "meta": {
+    "title": "Caching",
+    "summary": "Keep the answers people ask for most somewhere much faster than the database.",
+    "minutes": 14,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "p95",
+        "label": "p95 latency"
+      },
+      {
+        "id": "hitRate",
+        "label": "Cache hit rate"
+      },
+      {
+        "id": "dbLoad",
+        "label": "Database CPU"
+      },
+      {
+        "id": "fresh",
+        "label": "Data shown"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why the same reads overload a database",
+        "step": "s2"
+      },
+      {
+        "text": "The cache-aside pattern",
+        "step": "s3"
+      },
+      {
+        "text": "Why hit rate matters so much",
+        "step": "s4"
+      },
+      {
+        "text": "Stale data, invalidation and eviction",
+        "step": "s7"
+      },
+      {
+        "text": "Stampedes, missing keys and cache layers",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "users": {
+      "until": "s5"
+    },
+    "users-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "users-3": {
+      "from": "s6"
+    },
+    "users-4": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "users-5": {
+      "from": "s10",
+      "until": "s12"
+    },
+    "db": {
+      "until": "s3"
+    },
+    "db-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-3": {
+      "from": "s4"
+    },
+    "db-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "db-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "db-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "db-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "db-8": {
+      "from": "s9",
+      "until": "s12"
+    },
+    "db-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "cache": {
+      "from": "s3"
+    },
+    "cache-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "cache-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "cache-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cache-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "cache-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cache-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cache-8": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-text": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-5-text": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "us": {
+      "until": "s5"
+    },
+    "us-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "us-3": {
+      "from": "s6"
+    },
+    "us-4": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "us-5": {
+      "from": "s10",
+      "until": "s12"
+    },
+    "sd": {
+      "until": "s3"
+    },
+    "sd-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sd-3": {
+      "from": "s4"
+    },
+    "sd-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sd-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sd-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sd-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sd-8": {
+      "from": "s9",
+      "until": "s12"
+    },
+    "sd-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "sc": {
+      "from": "s3"
+    },
+    "sc-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sc-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sc-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sc-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sc-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sc-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "sc-8": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "DB melts",
+      "title": "Every page hits the database",
+      "chapter": "problem",
+      "body": "Your shop is popular. Every product page asks the database for the same kind of thing — name, price, photos — and it’s now 92% busy.\n\nReads queue up and pages slow to nearly half a second at p95.",
+      "callout": {
+        "kind": "warning",
+        "text": "Databases are usually the hardest part to scale, because they hold the data. Protect them from unnecessary work."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "450 ms",
+        "hitRate": "0%",
+        "dbLoad": "92%",
+        "fresh": "fresh"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Same reads",
+      "title": "The same few things, over and over",
+      "chapter": "insight",
+      "body": "Look at what’s actually being read: a small set of popular products accounts for most traffic. The database recomputes the same answers thousands of times a minute.\n\nAnswers that are read often and change rarely are perfect to keep somewhere closer and faster.",
+      "callout": {
+        "kind": "insight",
+        "text": "Most real workloads are skewed like this — a few hot items and a long tail of rarely-read ones."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "450 ms",
+        "hitRate": "0%",
+        "dbLoad": "92%",
+        "fresh": "fresh"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Add cache",
+      "title": "Put a cache in front",
+      "chapter": "solution",
+      "body": "Add an in-memory [[cache]] (such as Redis or Memcached). The server checks it first: a **hit** returns in about a millisecond.\n\nOn a **miss** (amber) the server reads the database, then saves a copy in the cache for next time. This is the [[cache-aside]] pattern.",
+      "callout": {
+        "kind": "tip",
+        "text": "A cache lookup is one key fetched from memory: no query planning, no joins, no disk. It typically answers 10–100× faster than the query it replaces."
+      },
+      "changes": [
+        "+ Cache",
+        "~ 80% of reads served from memory",
+        "~ Database CPU 92% → 25%"
+      ],
+      "metrics": {
+        "p95": "40 ms",
+        "hitRate": "80%",
+        "dbLoad": "25%",
+        "fresh": "fresh"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Hit rate",
+      "title": "Hit rate is everything",
+      "chapter": "technique",
+      "body": "The share of reads answered by the cache is the [[hit rate]]. Because misses are so much slower, small changes in hit rate matter a lot.\n\nGoing from 80% to 95% hits more than halves the average read time and cuts database load by three-quarters.",
+      "callout": {
+        "kind": "tip",
+        "text": "Raise hit rate by caching the right things, giving the cache enough memory, and keeping entries long enough to be reused."
+      },
+      "changes": [
+        "~ Hit rate 80% → 95%",
+        "~ Database CPU 25% → 8%"
+      ],
+      "metrics": {
+        "p95": "25 ms",
+        "hitRate": "95%",
+        "dbLoad": "8%",
+        "fresh": "fresh"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Stale",
+      "title": "The price changed. The cache didn’t.",
+      "chapter": "problem",
+      "body": "An admin updates a price from $20 to $25. The database has the new price — but the cache still holds the old copy, and that’s what users see.\n\nA cache is a second copy of the truth. Keeping copies in sync is the hard part of caching.",
+      "callout": {
+        "kind": "warning",
+        "text": "“There are only two hard things in computer science: cache invalidation and naming things.” — Phil Karlton"
+      },
+      "changes": [
+        "~ Database: price $20 → $25",
+        "- Cache still says $20"
+      ],
+      "metrics": {
+        "p95": "25 ms",
+        "hitRate": "95%",
+        "dbLoad": "8%",
+        "fresh": "stale"
+      },
+      "overrides": {
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Invalidate",
+      "title": "Invalidate on write, expire with a TTL",
+      "chapter": "solution",
+      "body": "When data changes, the server writes the database *and* deletes the cached copy (red rings). The next read misses and fetches the fresh value.\n\nAs a safety net, every entry also gets a [[TTL]] (time to live): even if an invalidation is missed, stale data disappears within a minute.\n\nWhy delete rather than overwrite the cached copy? Two writes racing each other can leave the *older* value in the cache. Deleting is always safe: the next read reloads the truth.",
+      "callout": {
+        "kind": "tip",
+        "text": "Pick the TTL by asking: how stale is acceptable? Seconds for prices and stock, hours for a product description."
+      },
+      "changes": [
+        "+ Writes delete the cached copy",
+        "+ TTL: 60 s",
+        "~ Users see $25"
+      ],
+      "metrics": {
+        "p95": "26 ms",
+        "hitRate": "94%",
+        "dbLoad": "9%",
+        "fresh": "fresh"
+      },
+      "overrides": {
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Eviction",
+      "title": "Memory runs out",
+      "chapter": "tradeoff",
+      "body": "The cache can’t hold everything — memory is expensive. When it’s full, something has to go to make room.\n\nThe usual rule is [[LRU]]: evict the entry that was *least recently used*. Hot items stay; the long tail cycles through.\n\nThe main alternative, [[LFU]], evicts the least *frequently* used entry instead — better when a burst of one-off reads would otherwise push out the real favourites.",
+      "callout": {
+        "kind": "insight",
+        "text": "A cache only needs to hold the hot set. 10% of the data can easily serve 90% of reads."
+      },
+      "changes": [
+        "+ Cache full",
+        "~ Least recently used entries evicted",
+        "~ Hit rate 94% → 92%"
+      ],
+      "metrics": {
+        "p95": "30 ms",
+        "hitRate": "92%",
+        "dbLoad": "12%",
+        "fresh": "fresh"
+      },
+      "overrides": {
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Stampede",
+      "title": "Case: the cache stampede",
+      "chapter": "problem",
+      "body": "The home page is the hottest key in the cache — 2,000 reads a second. Its TTL expires. In the next instant, every one of those requests misses and goes to the database for the same answer.\n\nThe database, used to 8% load, gets hit by a wall of identical queries and stalls. This is a [[cache stampede]] (or thundering herd).",
+      "callout": {
+        "kind": "warning",
+        "text": "The more popular a key, the more dangerous its expiry."
+      },
+      "changes": [
+        "- Hot key “home page” expires",
+        "+ 2,000 simultaneous misses",
+        "~ Database CPU 8% → 100%"
+      ],
+      "metrics": {
+        "p95": "1.4 s",
+        "hitRate": "40%",
+        "dbLoad": "100%",
+        "fresh": "fresh"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "One fetch",
+      "title": "Let one request refill it",
+      "chapter": "solution",
+      "body": "Fix it with [[request coalescing]]: the first miss takes a short lock and fetches from the database; everyone else waits a few milliseconds for that one result.\n\nAdd two more habits: refresh hot keys a little *before* they expire, and add random jitter to TTLs so many keys don’t expire at the same moment.",
+      "callout": {
+        "kind": "tip",
+        "text": "Libraries call this “single-flight”. CDNs do the same at the edge (“request collapsing”)."
+      },
+      "changes": [
+        "+ One fetch per expired key",
+        "+ Early refresh + TTL jitter",
+        "~ Database CPU 100% → 9%"
+      ],
+      "metrics": {
+        "p95": "30 ms",
+        "hitRate": "97%",
+        "dbLoad": "9%",
+        "fresh": "fresh"
+      },
+      "overrides": {
+        "us-4": {
+          "effect": "comet"
+        },
+        "users-3": {
+          "visible": false
+        },
+        "db-3": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Missing keys",
+      "title": "Case: asking for what isn’t there",
+      "chapter": "problem",
+      "body": "A crawler — or an attacker — requests product IDs that don’t exist: `/product/99900017`, `…18`, `…19`. Each one misses the cache, goes to the database, finds nothing, and so leaves **nothing to cache**.\n\nEvery such request is a guaranteed miss, however often it repeats. The cache gives no protection at all, and the database is busy searching for rows that were never there. This is [[cache penetration]].",
+      "callout": {
+        "kind": "warning",
+        "text": "Cache-aside only remembers answers. “No such row” is an answer too — if you forget to store it, you pay for it every time."
+      },
+      "changes": [
+        "+ Requests for IDs that don’t exist",
+        "~ Half of all reads now miss",
+        "~ Database CPU 9% → 85%"
+      ],
+      "metrics": {
+        "p95": "520 ms",
+        "hitRate": "50%",
+        "dbLoad": "85%",
+        "fresh": "fresh"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "db-3": {
+          "visible": false
+        },
+        "db-8": {
+          "visible": false
+        },
+        "cache": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sd-8": {
+          "visible": false
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Bloom filter",
+      "title": "Remember the “no” as well",
+      "chapter": "solution",
+      "body": "First fix: [[negative caching]]. Store “not found” in the cache too, with a short TTL, so a repeated request for the same missing ID stops at the cache.\n\nBut a crawler never repeats itself. For that, keep a [[Bloom filter]] of every real ID in the server’s memory: a compact bit set that answers “definitely not here” or “probably here” in microseconds. Impossible IDs get a 404 without touching the cache or the database.",
+      "callout": {
+        "kind": "tip",
+        "text": "A Bloom filter never says “no” to a key that exists; it occasionally says “maybe” to one that doesn’t. A 1% false-positive rate costs only about 10 bits per key."
+      },
+      "changes": [
+        "+ Cache “not found” · TTL 30 s",
+        "+ Bloom filter of real IDs on the server",
+        "~ Database CPU 85% → 9%"
+      ],
+      "metrics": {
+        "p95": "28 ms",
+        "hitRate": "95%",
+        "dbLoad": "9%",
+        "fresh": "fresh"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "db-3": {
+          "visible": false
+        },
+        "db-8": {
+          "emphasis": true
+        },
+        "cache": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "sd-8": {
+          "emphasis": true
+        },
+        "sc": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Layers",
+      "title": "Caches everywhere",
+      "chapter": "insight",
+      "body": "The cache we built is one layer of many. A request may be answered by the **browser** cache, the **CDN**, an **in-process** cache on the server, a shared cache like Redis, or the database’s own memory.\n\nThe closer to the user, the faster and cheaper the hit — and the harder it is to invalidate.",
+      "callout": {
+        "kind": "insight",
+        "text": "Most of “making it fast” is deciding what can be cached, where, and for how long."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "25 ms",
+        "hitRate": "95%",
+        "dbLoad": "8%",
+        "fresh": "fresh"
+      },
+      "overrides": {
+        "users-3": {
+          "emphasis": true
+        },
+        "db-3": {
+          "emphasis": true
+        },
+        "cache": {
+          "emphasis": true
+        },
+        "us-3": {
+          "emphasis": true
+        },
+        "sd-3": {
+          "emphasis": true
+        },
+        "sc": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Cache answers that are **read often and change rarely**.\n• **Cache-aside**: check the cache, fall back to the database, then fill the cache.\n• **Hit rate** drives both speed and database load.\n• Plan for staleness: **invalidate on write**, add a **TTL**, evict with **LRU**.\n• Protect hot keys from **stampedes**: one fetch, early refresh, jittered TTLs.\n• Cache **“not found”** too, and screen impossible keys with a **Bloom filter**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Content Delivery** — caching files on servers spread around the world, close to your users."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "25 ms",
+        "hitRate": "95%",
+        "dbLoad": "8%",
+        "fresh": "fresh"
+      },
+      "overrides": {}
+    }
+  ]
+}

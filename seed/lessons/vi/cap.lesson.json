@@ -1,0 +1,1547 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "usz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 182,
+          "y": 320
+        },
+        "width": 672,
+        "height": 288,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "usz-label",
+        "type": "text",
+        "title": "VÙNG MỸ",
+        "position": {
+          "x": -109,
+          "y": 197
+        },
+        "width": 70,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "usz"
+      },
+      {
+        "id": "euz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 184,
+          "y": -320
+        },
+        "width": 668,
+        "height": 288,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "euz-label",
+        "type": "text",
+        "title": "VÙNG EU",
+        "position": {
+          "x": -105,
+          "y": -443
+        },
+        "width": 70,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "euz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 751,
+          "y": -393
+        },
+        "width": 322,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "ĐỒNG HỒ CỦA AI?\nthực 12:00:03   Mỹ lưu “12 Elm St”\n# dấu 12:00:06: đồng hồ nhanh 3 s\nthực 12:00:05   EU lưu bản sửa\n# dấu 12:00:05\n⚠ đồng bộ giữ 12:00:06: địa chỉ cũ",
+        "position": {
+          "x": 751,
+          "y": -393
+        },
+        "width": 298,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 768,
+          "y": -393
+        },
+        "width": 355,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "KHI CÓ PHÂN VÙNG, HÃY CHỌN\nC: từ chối, không bao giờ sai\n    thanh toán, tồn kho, đặt chỗ\nA: trả lời, có thể đã cũ\n    lượt thích, giỏ hàng, bảng tin\n# không phân vùng: độ trễ vs nhất quán",
+        "position": {
+          "x": 768,
+          "y": -393
+        },
+        "width": 331,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 739,
+          "y": -404
+        },
+        "width": 297,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "N = 3, W = 2, R = 2\nghi → chờ 2 trên 3\nđọc → hỏi 2, lấy bản mới nhất\n→ W + R = 4 > 3: luôn giao nhau",
+        "position": {
+          "x": 739,
+          "y": -404
+        },
+        "width": 273,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 792,
+          "y": -404
+        },
+        "width": 404,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "CHỌN THEO TỪNG THAO TÁC\nthích       W = 1, R = 1 · nhanh, eventual\nthanh toán  W = 2, R = 2 · chậm hơn, an toàn\n→ cái giá của sai quyết định",
+        "position": {
+          "x": 792,
+          "y": -404
+        },
+        "width": 380,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 792,
+          "y": -393
+        },
+        "width": 404,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "MẠNH NHẤT → YẾU NHẤT\nlinearizable     ai cũng thấy cái mới nhất\nnhân quả         kết quả sau nguyên nhân\nread-your-writes bạn thấy của mình\nmonotonic        không bao giờ lùi thời gian\neventual         bản sao hội tụ… sau đó",
+        "position": {
+          "x": 792,
+          "y": -393
+        },
+        "width": 380,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "eu",
+        "type": "process",
+        "title": "ghế còn: 1",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "eu-2",
+        "type": "process",
+        "title": "ghế còn: 0 · bán cho Ana",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "eu-3",
+        "type": "process",
+        "title": "ghế còn: 0 · Ana",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "eu-4",
+        "type": "process",
+        "title": "12:00:05 · 5 Rue Cler: bản sửa",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 244,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "eu-5",
+        "type": "process",
+        "title": "ghế còn: 0",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "us",
+        "type": "process",
+        "title": "ghế còn: 1",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-2",
+        "type": "process",
+        "title": "ghế còn: 1",
+        "description": "⚠ không tới được EU",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 192,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-3",
+        "type": "process",
+        "title": "chỉ đọc · từ chối ghi",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-4",
+        "type": "process",
+        "title": "ghế còn: 0 · bán cho Ben",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-5",
+        "type": "process",
+        "title": "ghế còn: 0 · Ana",
+        "description": "đã hoàn tiền cho Ben",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 184,
+        "height": 130,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-6",
+        "type": "process",
+        "title": "12:00:06 · 12 Elm St: đồng hồ +3 s",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 252,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-7",
+        "type": "process",
+        "title": "ghế còn: 0",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "eus",
+        "type": "process",
+        "title": "người dùng EU",
+        "position": {
+          "x": 384,
+          "y": -320
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "uss",
+        "type": "process",
+        "title": "người dùng Mỹ",
+        "position": {
+          "x": 384,
+          "y": 320
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "uss-2",
+        "type": "process",
+        "title": "người dùng Mỹ: lỗi",
+        "position": {
+          "x": 384,
+          "y": 320
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "cl",
+        "type": "process",
+        "title": "client",
+        "position": {
+          "x": 0,
+          "y": -384
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q1",
+        "type": "process",
+        "title": "v2",
+        "position": {
+          "x": -224,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q2",
+        "type": "process",
+        "title": "v2",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q3",
+        "type": "process",
+        "title": "v1 · đã cũ",
+        "position": {
+          "x": 224,
+          "y": 0
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q3-2",
+        "type": "process",
+        "title": "v2",
+        "position": {
+          "x": 224,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ue",
+        "from": "eus",
+        "to": "eu",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ue-2",
+        "from": "eus",
+        "to": "eu-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ue-3",
+        "from": "eus",
+        "to": "eu-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ue-4",
+        "from": "eus",
+        "to": "eu-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ue-5",
+        "from": "eus",
+        "to": "eu-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu",
+        "from": "uss",
+        "to": "us",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-2",
+        "from": "uss",
+        "to": "us-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-3",
+        "from": "uss-2",
+        "to": "us-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-4",
+        "from": "uss",
+        "to": "us-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-5",
+        "from": "uss",
+        "to": "us-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-6",
+        "from": "uss",
+        "to": "us-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-7",
+        "from": "uss",
+        "to": "us-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rep",
+        "from": "eu",
+        "to": "us",
+        "label": "sao chép",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep-2",
+        "from": "eu",
+        "to": "us-2",
+        "label": "✕ phân vùng mạng",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "none"
+      },
+      {
+        "id": "rep-3",
+        "from": "eu",
+        "to": "us-3",
+        "label": "✕ phân vùng mạng",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "none"
+      },
+      {
+        "id": "rep-4",
+        "from": "eu-2",
+        "to": "us-4",
+        "label": "✕ phân vùng mạng",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "none"
+      },
+      {
+        "id": "rep-5",
+        "from": "eu-3",
+        "to": "us-5",
+        "label": "đang đuổi kịp",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "rep-6",
+        "from": "eu-4",
+        "to": "us-6",
+        "label": "đồng bộ · dấu thời gian lớn nhất thắng",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "rep-7",
+        "from": "eu-5",
+        "to": "us-7",
+        "label": "sao chép",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "c1",
+        "from": "cl",
+        "to": "q1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "c2",
+        "from": "cl",
+        "to": "q2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "c3",
+        "from": "cl",
+        "to": "q3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "c3-2",
+        "from": "cl",
+        "to": "q3-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "CAP & tính nhất quán",
+    "summary": "Khi mạng bị chia cắt, các bản sao dữ liệu phải chọn giữa đúng và liên lạc được.",
+    "minutes": 12,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "consistent",
+        "label": "Nhất quán"
+      },
+      {
+        "id": "available",
+        "label": "Sẵn sàng"
+      },
+      {
+        "id": "errors",
+        "label": "Lỗi"
+      },
+      {
+        "id": "conflicts",
+        "label": "Xung đột"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Phân vùng mạng là gì",
+        "step": "s2"
+      },
+      {
+        "text": "Chọn nhất quán hay sẵn sàng",
+        "step": "s4"
+      },
+      {
+        "text": "Nhất quán cuối cùng, xung đột và đồng hồ",
+        "step": "s5"
+      },
+      {
+        "text": "Quorum: W + R > N",
+        "step": "s8"
+      },
+      {
+        "text": "Tính nhất quán chọn theo từng thao tác",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "euz": {
+      "until": "s8"
+    },
+    "usz": {
+      "until": "s8"
+    },
+    "eu": {
+      "until": "s4"
+    },
+    "eu-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "eu-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "eu-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "eu-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "us": {
+      "until": "s2"
+    },
+    "us-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "us-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "us-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "us-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "us-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "us-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "eus": {
+      "until": "s8"
+    },
+    "uss": {
+      "until": "s8"
+    },
+    "uss-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cl": {
+      "from": "s8"
+    },
+    "q1": {
+      "from": "s8"
+    },
+    "q2": {
+      "from": "s8"
+    },
+    "q3": {
+      "from": "s8"
+    },
+    "q3-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "usz-label": {
+      "until": "s8"
+    },
+    "euz-label": {
+      "until": "s8"
+    },
+    "card-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-5-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ue": {
+      "until": "s4"
+    },
+    "ue-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ue-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ue-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ue-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "uu": {
+      "until": "s2"
+    },
+    "uu-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "uu-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "uu-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "uu-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "uu-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "uu-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "rep": {
+      "until": "s2"
+    },
+    "rep-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "rep-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "rep-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "rep-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "rep-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "rep-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "c1": {
+      "from": "s8"
+    },
+    "c2": {
+      "from": "s8"
+    },
+    "c3": {
+      "from": "s8"
+    },
+    "c3-2": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Hai vùng",
+      "title": "Bản sao ở hai vùng",
+      "chapter": "setup",
+      "body": "Một trang bán vé giữ một bản sao dữ liệu ở châu Âu và một ở Mỹ, để người dùng mỗi vùng được trả lời nhanh. Mỗi lượt ghi được sao chép sang phía bên kia.\n\nMột buổi hòa nhạc còn **1 ghế trống**, và cả hai bản sao đều đồng ý.",
+      "callout": {
+        "kind": "insight",
+        "text": "Sao chép qua các vùng mang lại tốc độ và khả năng sống sót, và mở ra câu hỏi mà bài này bàn tới."
+      },
+      "changes": [],
+      "metrics": {
+        "consistent": "có",
+        "available": "có",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Phân vùng",
+      "title": "Mạng bị chia cắt",
+      "chapter": "problem",
+      "body": "Một tuyến cáp biển bị đứt. Cả hai vùng vẫn khỏe và người dùng vẫn truy cập được, nhưng hai vùng không nói chuyện được *với nhau*. Đây là một [[phân vùng mạng]] (network partition).\n\nGiờ một người dùng Mỹ muốn mua ghế cuối cùng. Bản sao Mỹ không hỏi được châu Âu. Nó nên làm gì?",
+      "callout": {
+        "kind": "warning",
+        "text": "Phân vùng không hiếm: cáp, router, cấu hình sai và đường truyền quá tải đều gây ra chúng."
+      },
+      "changes": [
+        "- Liên kết giữa hai vùng bị đứt"
+      ],
+      "metrics": {
+        "consistent": "?",
+        "available": "?",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Chọn C",
+      "title": "Lựa chọn 1: giữ nhất quán",
+      "chapter": "technique",
+      "body": "Từ chối những gì không xác nhận được. Châu Âu giữ bản chính nên vẫn phục vụ; phía Mỹ từ chối lượt ghi, và cả lượt đọc có thể đã cũ, cho tới khi liên kết trở lại.\n\nKhông ai thấy dữ liệu sai. Nhưng người dùng Mỹ nhận lỗi suốt thời gian phân vùng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chọn nhất quán ở nơi câu trả lời sai tốn tiền: thanh toán, số dư ngân hàng, tồn kho, bán vé."
+      },
+      "changes": [
+        "~ Phía Mỹ từ chối yêu cầu",
+        "- Người dùng Mỹ thấy lỗi"
+      ],
+      "metrics": {
+        "consistent": "có",
+        "available": "một phần",
+        "errors": "50%",
+        "conflicts": "0"
+      },
+      "overrides": {
+        "uss": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Chọn A",
+      "title": "Lựa chọn 2: giữ sẵn sàng",
+      "chapter": "technique",
+      "body": "Trả lời bằng những gì đang có. Cả hai phía tiếp tục nhận lượt ghi. Ana ở Paris mua ghế cuối. Ben ở Boston mua ghế cuối.\n\nAi cũng nhận được câu trả lời, và hai bản sao giờ **bất đồng**. Khi liên kết trở lại, có hai lượt bán cho cùng một ghế.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chọn sẵn sàng ở nơi bất đồng ngắn ngủi không sao: lượt thích, lượt xem, giỏ hàng, bảng tin."
+      },
+      "changes": [
+        "~ Cả hai phía nhận lượt ghi",
+        "- Cùng một ghế bán hai lần"
+      ],
+      "metrics": {
+        "consistent": "không",
+        "available": "có",
+        "errors": "0%",
+        "conflicts": "1"
+      },
+      "overrides": {
+        "uss": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Hàn gắn",
+      "title": "Hàn gắn: nhất quán cuối cùng",
+      "chapter": "technique",
+      "body": "Cáp được sửa và các bản sao trao đổi những gì đã bỏ lỡ. Để yên, chúng sẽ hội tụ, gọi là [[nhất quán cuối cùng]] (eventual consistency), nhưng ai đó phải quyết định làm gì với xung đột.\n\nCác lựa chọn: **lượt ghi sau cùng thắng** (đơn giản, lặng lẽ bỏ một lượt bán), hoặc để ứng dụng gộp lại (giữ cả hai, hoàn tiền một bên, xin lỗi).",
+      "callout": {
+        "kind": "warning",
+        "text": "“Lượt ghi sau cùng thắng” là mặc định trong nhiều cơ sở dữ liệu. Nó âm thầm làm mất dữ liệu: hãy chắc rằng điều đó chấp nhận được."
+      },
+      "changes": [
+        "+ Liên kết khôi phục",
+        "~ Bản sao trao đổi các lượt ghi bị lỡ",
+        "~ Xung đột đã giải: hoàn tiền cho Ben"
+      ],
+      "metrics": {
+        "consistent": "có",
+        "available": "có",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Đồng hồ",
+      "title": "Tình huống: “sau cùng” theo đồng hồ của ai?",
+      "chapter": "problem",
+      "body": "Lượt ghi sau cùng thắng cần biết lượt ghi nào *thực sự* là sau cùng, và mỗi máy chủ đóng dấu lượt ghi bằng đồng hồ của mình. Đồng hồ bị trôi. Ở đây đồng hồ máy chủ Mỹ chạy nhanh 3 giây.\n\nMột khách hàng lưu địa chỉ giao hàng qua bản sao Mỹ, rồi sửa lại hai giây sau qua bản sao EU. Bản sửa mới hơn, nhưng dấu thời gian của nó lại **nhỏ hơn**, nên khi đồng bộ, lượt ghi sau cùng thắng giữ địa chỉ cũ và lặng lẽ vứt bản sửa đi.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đừng bao giờ xếp thứ tự sự kiện giữa các máy theo giờ đồng hồ. Dùng số phiên bản hoặc **đồng hồ logic** (dấu thời gian Lamport, vector phiên bản) đếm sự kiện thay vì đọc giờ, hoặc giữ cả hai phiên bản và để ứng dụng gộp."
+      },
+      "changes": [
+        "+ Đồng hồ Mỹ nhanh 3 s",
+        "- Lượt ghi mới hơn mang dấu thời gian cũ hơn",
+        "- Lượt ghi sau cùng thắng giữ sai địa chỉ"
+      ],
+      "metrics": {
+        "consistent": "có",
+        "available": "có",
+        "errors": "0%",
+        "conflicts": "1"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "CAP",
+      "title": "CAP thực sự nói gì",
+      "chapter": "insight",
+      "body": "[[Định lý CAP]]: khi xảy ra một **P**hân vùng mạng (partition), hệ thống có sao chép phải bỏ hoặc **C**, tính nhất quán (mọi lượt đọc thấy lượt ghi mới nhất, như thể chỉ có một bản), hoặc **A**, tính sẵn sàng (mọi yêu cầu tới một máy chủ còn chạy đều được trả lời).\n\nBạn không “chọn hai trong ba”: phân vùng chắc chắn sẽ xảy ra, nên lựa chọn thật sự là làm gì khi nó xảy ra.\n\n“Nhất quán” trong CAP là thứ dân cơ sở dữ liệu gọi là **linearizability** (khả tuyến tính). Nó không phải chữ C trong ACID, vốn nói về việc một giao dịch giữ nguyên các quy tắc của dữ liệu.",
+      "callout": {
+        "kind": "insight",
+        "text": "PACELC thêm nửa chuyện thường ngày: ngay cả khi không có phân vùng, giữ các bản sao đồng bộ cũng tốn độ trễ. Nhất quán không bao giờ miễn phí."
+      },
+      "changes": [],
+      "metrics": {
+        "consistent": "có",
+        "available": "có",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s8",
+      "short": "Quorum",
+      "title": "Quorum: tinh chỉnh sự đánh đổi",
+      "chapter": "technique",
+      "body": "Nhiều cơ sở dữ liệu cho bạn chọn theo từng yêu cầu. Với **N** = 3 bản sao, lượt ghi chờ **W** bản xác nhận và lượt đọc hỏi **R** bản, dùng câu trả lời mới nhất.\n\nNếu **W + R > N**, mọi lượt đọc đều giao với ít nhất một bản đã thấy lượt ghi mới nhất: ở đây W = 2 và R = 2, nên lượt đọc luôn chạm tới một `v2` dù một bản đã cũ.",
+      "callout": {
+        "kind": "tip",
+        "text": "W = 1, R = 1: nhanh và sẵn sàng, có thể cũ. W = 3: mọi bản phải trả lời, nhất quán nhưng mong manh. Cassandra, Riak và ScyllaDB cho chỉnh các núm này theo yêu cầu; DynamoDB đưa lựa chọn đơn giản hơn giữa đọc eventual và đọc strongly consistent."
+      },
+      "changes": [
+        "+ 3 bản sao (N = 3)",
+        "~ Lượt ghi chờ 2 (W = 2)",
+        "~ Lượt đọc hỏi 2 (R = 2)"
+      ],
+      "metrics": {
+        "consistent": "có",
+        "available": "có",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s9",
+      "short": "Theo thao tác",
+      "title": "Tình huống: một thanh toán và một lượt thích",
+      "chapter": "technique",
+      "body": "Một ứng dụng, hai lượt ghi rất khác nhau. Một **lượt thích** có thể do một bản xác nhận rồi lan ra sau (W = 1, R = 1): nhanh, luôn sẵn sàng, và chẳng ai bận tâm nếu con số lệch một chút.\n\nGhi nhận một **thanh toán** (hình vuông lớn) dùng đa số cho cả lượt ghi lẫn mọi lượt đọc (W = 2, R = 2): chậm hơn, và thất bại nếu hai bản không liên lạc được, còn hơn để ai đó đọc phải một trạng thái “chưa thanh toán” đã cũ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Bạn không chọn tính nhất quán một lần cho cả hệ thống. Hãy chọn theo từng thao tác, bằng cách hỏi một câu trả lời sai sẽ tốn bao nhiêu."
+      },
+      "changes": [
+        "+ Lượt thích: W = 1, R = 1",
+        "+ Thanh toán: W = 2, R = 2"
+      ],
+      "metrics": {
+        "consistent": "theo thao tác",
+        "available": "theo thao tác",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {
+        "c1": {
+          "effect": "comet"
+        },
+        "c2": {
+          "effect": "pulse"
+        },
+        "q3": {
+          "visible": false
+        },
+        "c3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Mô hình",
+      "title": "Nhất quán là một dải phổ",
+      "chapter": "insight",
+      "body": "“Nhất quán” không phải có hay không. Giữa mạnh nhất ([[linearizable]]: ai cũng thấy lượt ghi mới nhất) và eventual có những lời hứa hữu ích: **read-your-writes** (bạn luôn thấy thay đổi của chính mình), **monotonic reads** (thời gian không bao giờ lùi với bạn) và nhất quán **nhân quả** (câu trả lời không bao giờ hiện trước tin nhắn mà nó trả lời).\n\nLời hứa yếu hơn thì rẻ hơn và sẵn sàng hơn. Chọn cái yếu nhất mà người dùng không nhận ra.",
+      "callout": {
+        "kind": "insight",
+        "text": "Nhiều hệ “eventual” cung cấp read-your-writes theo phiên, đủ cho hầu hết ứng dụng."
+      },
+      "changes": [],
+      "metrics": {
+        "consistent": "theo thao tác",
+        "available": "có",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {
+        "q3": {
+          "emphasis": true
+        },
+        "c3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Một **phân vùng** tách các bản sao mà mỗi bản vẫn còn phục vụ được người dùng.\n• Khi đó, chọn **nhất quán** (từ chối) hoặc **sẵn sàng** (trả lời, có thể cũ).\n• Hệ thống sẵn sàng là **nhất quán cuối cùng** và phải giải xung đột, mà không tin vào đồng hồ treo tường.\n• **Quorum** (W + R > N) tinh chỉnh sự đánh đổi theo từng yêu cầu.\n• Chọn **mức nhất quán yếu nhất** mà mỗi thao tác chịu được.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Đồng thuận & leader**: cách một nhóm máy chủ thống nhất về một sự thật, kể cả khi vài máy không liên lạc được."
+      },
+      "changes": [],
+      "metrics": {
+        "consistent": "có",
+        "available": "có",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    }
+  ]
+}

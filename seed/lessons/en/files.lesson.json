@@ -1,0 +1,2297 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1228,
+          "y": -791
+        },
+        "width": 330,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "A PRESIGNED UPLOAD\nPUT https://bucket…/videos/7a1e.mp4\n  ?expires=900&signature=3b9f…\n→ one key · one upload · 15 minutes\n# the app never touches the bytes",
+        "position": {
+          "x": 1228,
+          "y": -791
+        },
+        "width": 306,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1236,
+          "y": -791
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "MULTIPART UPLOAD\nstart      → upload id + 200 URLs\npart 1…200  10 MB each, 4 at a time\n⚠ part 37 failed → send part 37 again\n→ complete  → videos/7a1e.mp4",
+        "position": {
+          "x": 1236,
+          "y": -791
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1257,
+          "y": -782
+        },
+        "width": 388,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "ONE VIDEO, FIVE QUALITIES\n1080p   5 Mbit/s\n 720p   3 Mbit/s\n→ 480p   1.5 Mbit/s   ← now: 2 Mbit/s link\n 360p   0.8 Mbit/s\n 240p   0.4 Mbit/s",
+        "position": {
+          "x": 1257,
+          "y": -782
+        },
+        "width": 364,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1294,
+          "y": -791
+        },
+        "width": 462,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "STORAGE CLASSES · PER TB-MONTH\nstandard            ≈ $23    hot, cheap to read\ninfrequent access   ≈ $12.50  pay per read\narchive             ≈ $1–4   slow or costly to read\n→ after a year: 730 TB → ≈ $6,300 / month",
+        "position": {
+          "x": 1294,
+          "y": -791
+        },
+        "width": 438,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "people sharing photos",
+        "position": {
+          "x": 0,
+          "y": -817
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "people uploading videos",
+        "position": {
+          "x": 0,
+          "y": -817
+        },
+        "width": 236,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "App Servers",
+        "position": {
+          "x": 0,
+          "y": -258
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "App Servers",
+        "description": "CPU 85%",
+        "position": {
+          "x": 0,
+          "y": -258
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "App Servers",
+        "description": "relaying 2 GB uploads · CPU 90%",
+        "position": {
+          "x": 0,
+          "y": -258
+        },
+        "width": 196,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-4",
+        "type": "process",
+        "title": "App Servers",
+        "description": "CPU 20%",
+        "position": {
+          "x": 0,
+          "y": -258
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "blob",
+        "type": "process",
+        "title": "database",
+        "description": "photos as BLOBs",
+        "position": {
+          "x": 0,
+          "y": 258
+        },
+        "width": 181,
+        "height": 109,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "blob-2",
+        "type": "process",
+        "title": "database",
+        "description": "⚠ +2 TB / day · CPU 95%",
+        "position": {
+          "x": 0,
+          "y": 258
+        },
+        "width": 181,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "metadata",
+        "description": "key · owner · size · type",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "metadata",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "metadata",
+        "description": "status: pending → uploaded",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "metadata",
+        "description": "✓ status: ready",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "metadata",
+        "description": "312 pending > 1 day",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj",
+        "type": "process",
+        "title": "Object Storage",
+        "description": "photos/9f2c.jpg",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj-2",
+        "type": "process",
+        "title": "Object Storage",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj-3",
+        "type": "process",
+        "title": "Object Storage",
+        "description": "parts 1–200 → one object",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj-4",
+        "type": "process",
+        "title": "Object Storage",
+        "description": "originals > 90 days → archive",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj-5",
+        "type": "process",
+        "title": "Object Storage",
+        "description": "public access blocked",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "jq",
+        "type": "process",
+        "title": "▮ ▮ ▮",
+        "position": {
+          "x": 671,
+          "y": 258
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers",
+        "type": "process",
+        "title": "Workers",
+        "description": "resize · strip GPS · transcode",
+        "position": {
+          "x": 903,
+          "y": 258
+        },
+        "width": 176,
+        "height": 99,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers-2",
+        "type": "process",
+        "title": "Workers",
+        "position": {
+          "x": 903,
+          "y": 258
+        },
+        "width": 176,
+        "height": 99,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdn",
+        "type": "process",
+        "title": "CDN",
+        "position": {
+          "x": 430,
+          "y": -344
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdn-2",
+        "type": "process",
+        "title": "CDN",
+        "description": "segments · 4 s each",
+        "position": {
+          "x": 430,
+          "y": -344
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sweep",
+        "type": "process",
+        "title": "Cleanup",
+        "description": "nightly",
+        "position": {
+          "x": -430,
+          "y": -258
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": "lucide:RefreshCw",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spy",
+        "type": "process",
+        "title": "anyone",
+        "position": {
+          "x": 860,
+          "y": -344
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-2",
+        "from": "users",
+        "to": "app-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "ua-3",
+        "from": "users-2",
+        "to": "app-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.5,
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "ua-4",
+        "from": "users-2",
+        "to": "app-4",
+        "label": "may I upload?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-5",
+        "from": "users-2",
+        "to": "app-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ua-6",
+        "from": "users",
+        "to": "app-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ab",
+        "from": "app",
+        "to": "blob",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "ab-2",
+        "from": "app-2",
+        "to": "blob-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "ad",
+        "from": "app",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ad-2",
+        "from": "app-3",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "ad-3",
+        "from": "app-4",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ad-4",
+        "from": "app-4",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-5",
+        "from": "app-4",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ad-6",
+        "from": "app",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ad-7",
+        "from": "app",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ao",
+        "from": "app",
+        "to": "obj",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 430,
+            "y": 0
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "ao-2",
+        "from": "app-3",
+        "to": "obj-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 430,
+            "y": 0
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.5,
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "uo",
+        "from": "users-2",
+        "to": "obj-2",
+        "label": "the bytes",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "uo-2",
+        "from": "users-2",
+        "to": "obj-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.8,
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "uo-3",
+        "from": "users",
+        "to": "obj-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "uo-4",
+        "from": "users",
+        "to": "obj-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "uo-5",
+        "from": "users",
+        "to": "obj-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "oa",
+        "from": "obj-2",
+        "to": "app-4",
+        "label": "upload complete",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "oa-2",
+        "from": "obj-3",
+        "to": "app-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "oa-3",
+        "from": "obj-2",
+        "to": "app-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "oa-4",
+        "from": "obj-2",
+        "to": "app",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "oa-5",
+        "from": "obj-4",
+        "to": "app",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "oa-6",
+        "from": "obj-5",
+        "to": "app",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "ow",
+        "from": "obj-2",
+        "to": "workers",
+        "label": "jobs",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.25,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ow-2",
+        "from": "obj-2",
+        "to": "workers-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ow-3",
+        "from": "obj-4",
+        "to": "workers-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ow-4",
+        "from": "obj-5",
+        "to": "workers-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "uc",
+        "from": "users",
+        "to": "cdn",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "uc-2",
+        "from": "users",
+        "to": "cdn-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "co",
+        "from": "cdn",
+        "to": "obj-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "co-2",
+        "from": "cdn-2",
+        "to": "obj-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "co-3",
+        "from": "cdn",
+        "to": "obj-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "co-4",
+        "from": "cdn",
+        "to": "obj-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "sd",
+        "from": "sweep",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "so",
+        "from": "sweep",
+        "to": "obj-2",
+        "label": "delete orphans",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.35,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -430,
+            "y": -86
+          },
+          {
+            "x": 430,
+            "y": -86
+          }
+        ],
+        "effect": "laser",
+        "effectColor": "#ff4d4f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "so-2",
+        "from": "spy",
+        "to": "obj-5",
+        "label": "GET /?list",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Files & Media",
+    "summary": "Photos and videos don’t belong in your database — where they go instead, and how they get there and back.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "dbGrowth",
+        "label": "Database grows"
+      },
+      {
+        "id": "appTraffic",
+        "label": "Through app servers"
+      },
+      {
+        "id": "imgLoad",
+        "label": "Photo load"
+      },
+      {
+        "id": "storeCost",
+        "label": "Storage / month"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Bytes in object storage, metadata in the database",
+        "step": "s3"
+      },
+      {
+        "text": "Direct uploads with presigned URLs; big files in parts",
+        "step": "s5"
+      },
+      {
+        "text": "Processing, CDN delivery and adaptive video",
+        "step": "s7"
+      },
+      {
+        "text": "Keeping metadata and files in step",
+        "step": "s10"
+      },
+      {
+        "text": "Storage classes, lifecycle and private buckets",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "users-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "app-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "app-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "app-4": {
+      "from": "s5",
+      "until": "s8"
+    },
+    "blob": {
+      "until": "s2"
+    },
+    "blob-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "db": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-2": {
+      "from": "s4"
+    },
+    "db-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "db-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "db-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "obj": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "obj-2": {
+      "from": "s4"
+    },
+    "obj-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "obj-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "obj-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "jq": {
+      "from": "s7"
+    },
+    "workers": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "workers-2": {
+      "from": "s8"
+    },
+    "cdn": {
+      "from": "s8"
+    },
+    "cdn-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sweep": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "spy": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-4-text": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ua-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ua-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ua-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ua-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ab": {
+      "until": "s2"
+    },
+    "ab-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ad": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ad-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ad-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ad-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ad-6": {
+      "from": "s8"
+    },
+    "ad-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ao": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ao-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "uo": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "uo-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "uo-3": {
+      "from": "s7"
+    },
+    "uo-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "uo-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "oa": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "oa-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "oa-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "oa-4": {
+      "from": "s8"
+    },
+    "oa-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "oa-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ow": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ow-2": {
+      "from": "s8"
+    },
+    "ow-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ow-4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "uc": {
+      "from": "s8"
+    },
+    "uc-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "co": {
+      "from": "s8"
+    },
+    "co-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "co-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "co-4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "sd": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "so": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "so-2": {
+      "from": "s12",
+      "until": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "BLOBs",
+      "title": "Photos in the database",
+      "chapter": "setup",
+      "body": "The PhotoShare app from *Napkin Math* started simply: an uploaded photo is saved as a [[BLOB]] — a binary column — right next to its caption, owner and date. One database, one backup, one place to look.\n\nFor the first few thousand users it works perfectly well.",
+      "callout": {
+        "kind": "insight",
+        "text": "A photo is a few megabytes; the facts about it — owner, size, caption, when — are a few hundred bytes. They are very different kinds of data."
+      },
+      "changes": [],
+      "metrics": {
+        "dbGrowth": "+2 GB / day",
+        "appTraffic": "every photo, both ways",
+        "imgLoad": "180 ms"
+      },
+      "overrides": {
+        "ua": {
+          "effect": "pulse"
+        }
+      }
+    },
+    {
+      "id": "s2",
+      "short": "It chokes",
+      "title": "Two terabytes a day",
+      "chapter": "problem",
+      "body": "Now a million photos a day arrive at 2 MB each: **2 TB a day**, 730 TB in a year. The database, its replicas and its backups all grow by that much. A restore takes days, and every new replica has to copy everything.\n\nEvery photo view also travels through the app servers and the database. Images push the useful rows out of the database’s memory, and queries for captions and likes slow down.",
+      "callout": {
+        "kind": "warning",
+        "text": "Databases are built to search and update small records. Shipping megabytes in and out is expensive work that only gets in the way."
+      },
+      "changes": [
+        "~ 1 M uploads a day × 2 MB",
+        "- Database, replicas and backups balloon",
+        "- Photo views crowd out everything else"
+      ],
+      "metrics": {
+        "dbGrowth": "+2 TB / day",
+        "appTraffic": "every photo, both ways",
+        "imgLoad": "450 ms"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Object storage",
+      "title": "Bytes in object storage, facts in the database",
+      "chapter": "solution",
+      "body": "Move the bytes to [[object storage]] — Amazon S3, Google Cloud Storage, Azure Blob Storage. It is a huge key → file store: `PUT` a file under a key like `photos/9f2c.jpg`, `GET` it back. No queries, no joins — and no practical size limit.\n\nIt copies every object across several data centres for you and costs far less per terabyte than database disks. The database keeps one small row per photo: its key, owner, size and type.",
+      "callout": {
+        "kind": "tip",
+        "text": "This split — metadata in a database, bytes in object storage — is how almost every product stores files, from profile pictures to multi-gigabyte videos."
+      },
+      "changes": [
+        "+ Object storage for the bytes",
+        "~ Database keeps one ~1 KB row per photo",
+        "~ Database growth 2 TB → 1 GB a day"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "every photo, both ways",
+        "imgLoad": "260 ms",
+        "storeCost": "$16,800"
+      },
+      "overrides": {
+        "ua": {
+          "effect": "pulse",
+          "emphasis": true
+        },
+        "app": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Through servers",
+      "title": "Case: a 2 GB video over a phone connection",
+      "chapter": "problem",
+      "body": "Uploads still flow *through* the app servers on their way to storage. A 2 GB video from a phone takes minutes, and the whole time it holds a server connection and memory open — just to pass bytes along.\n\nThe app servers end up sized for bandwidth rather than for the logic they actually run, and a burst of video uploads slows everyone’s page loads.",
+      "callout": {
+        "kind": "warning",
+        "text": "If your servers only relay bytes they don’t look at, they are an expensive middle-man."
+      },
+      "changes": [
+        "+ Video uploads, up to 2 GB",
+        "- Each upload holds an app server for minutes"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "2 TB / day relayed",
+        "imgLoad": "320 ms",
+        "storeCost": "$16,800"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "app": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Presigned",
+      "title": "Upload straight to storage",
+      "chapter": "solution",
+      "body": "Instead, the app hands out permission and gets out of the way. The phone asks “may I upload a 2 GB video?”; the app checks the user, writes a `pending` row, and replies with a [[presigned URL]]: a link signed with the app’s key that allows *one* upload, to *one* key, for the next 15 minutes.\n\nThe phone sends the bytes directly to object storage. When the upload finishes, storage sends an event and the app marks the row `uploaded`.",
+      "callout": {
+        "kind": "tip",
+        "text": "The signature can also pin the content type and a maximum size, so the URL can’t be reused to dump anything else into your bucket."
+      },
+      "changes": [
+        "+ App issues a presigned URL",
+        "+ Phone uploads directly to storage",
+        "+ Storage reports “upload complete”"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "small requests only",
+        "imgLoad": "260 ms",
+        "storeCost": "$16,800"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "app": {
+          "visible": false
+        },
+        "db-2": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "In parts",
+      "title": "Big files: upload in parts",
+      "chapter": "technique",
+      "body": "One 2 GB request over a phone network rarely makes it in one piece. A [[multipart upload]] splits the file into parts — say 10 MB each — sent in parallel, each with its own presigned URL.\n\nA part that fails is simply sent again; a dropped connection resumes from the last part that arrived. When every part is in, one final call stitches them into a single object.",
+      "callout": {
+        "kind": "tip",
+        "text": "Parallel parts are also faster: several connections fill a link better than one. Remove abandoned, half-finished uploads automatically, or you pay to store their parts."
+      },
+      "changes": [
+        "~ 2 GB → 200 parts of 10 MB",
+        "+ Failed parts retried on their own",
+        "+ Uploads resume after a dropped connection"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "small requests only",
+        "imgLoad": "260 ms",
+        "storeCost": "$16,800"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "app": {
+          "visible": false
+        },
+        "db-2": {
+          "emphasis": true
+        },
+        "obj-2": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Processing",
+      "title": "Make the versions people actually download",
+      "chapter": "technique",
+      "body": "An original is rarely what you show. Each “upload complete” event goes onto a queue (see *Message Queues*), and workers make what the app needs: thumbnails and two or three sizes of each photo, a scan for malware, and — before anything is shared — removal of the GPS location hidden in the photo’s metadata.\n\nVideos are transcoded into several resolutions. When a worker finishes, it saves the new files and marks the row `ready`; until then the app shows “processing…”.",
+      "callout": {
+        "kind": "warning",
+        "text": "Never trust an upload. Check the real file type, size and content in the workers, not just what the client claimed."
+      },
+      "changes": [
+        "+ Upload events → job queue → workers",
+        "+ Thumbnails, sizes, transcodes",
+        "+ Location data stripped, malware scan"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "small requests only",
+        "imgLoad": "120 ms",
+        "storeCost": "$16,800"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "app": {
+          "visible": false
+        },
+        "db-2": {
+          "visible": false
+        },
+        "obj-2": {
+          "emphasis": true
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "CDN",
+      "title": "Serve them from the edge",
+      "chapter": "solution",
+      "body": "Downloads far outnumber uploads, so they must not come through the app either. Photos are served by a **CDN** (see *Content Delivery*) with object storage as its origin: the first viewer in a city pulls a copy to the nearest edge, everyone after gets it from there.\n\nGive each version a key that changes when its content does — `photos/9f2c_w640.webp` — and it can be cached for a year without ever going stale.",
+      "callout": {
+        "kind": "tip",
+        "text": "For private photos, the app hands out short-lived signed CDN URLs — the same idea as presigned uploads, in the other direction."
+      },
+      "changes": [
+        "+ CDN in front of object storage",
+        "~ Views served from the nearest edge",
+        "~ Photo load 120 → 35 ms"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "small requests only",
+        "imgLoad": "35 ms",
+        "storeCost": "$16,800"
+      },
+      "overrides": {
+        "app": {
+          "emphasis": true
+        },
+        "db-2": {
+          "emphasis": true
+        },
+        "ua": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Video",
+      "title": "Video: let the player choose",
+      "chapter": "technique",
+      "body": "A video file is too big to download before playing, and viewers’ connections vary from second to second. So each video is cut into segments of a few seconds, encoded at several qualities — 240p up to 1080p — with a small playlist file listing them all.\n\nThe player fetches segment by segment from the CDN and picks the quality for the next one from how fast the last one arrived. A train enters a tunnel: the picture drops to 360p instead of freezing. This is [[adaptive bitrate streaming]] (HLS or DASH).",
+      "callout": {
+        "kind": "insight",
+        "text": "Small, separately cacheable segments are also what makes video work so well on CDNs: every popular segment ends up at every edge."
+      },
+      "changes": [
+        "+ Each video: 4-second segments × 5 qualities",
+        "+ Player switches quality segment by segment"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "small requests only",
+        "imgLoad": "35 ms",
+        "storeCost": "$16,800"
+      },
+      "overrides": {
+        "ua": {
+          "effect": "none"
+        },
+        "ad-6": {
+          "effect": "none"
+        },
+        "uo-3": {
+          "effect": "none"
+        },
+        "ow-2": {
+          "effect": "none"
+        },
+        "cdn": {
+          "visible": false
+        },
+        "uc": {
+          "visible": false
+        },
+        "co": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "In step",
+      "title": "Case: rows without files, files without rows",
+      "chapter": "problem",
+      "body": "Two stores can disagree. A phone gets its presigned URL and then loses signal: the row says `pending` for ever. A user deletes a photo: the row goes, but the files stay — still costing money, and still reachable by anyone who kept the link.\n\nFix it like any two-system update (see *Sagas*): every row has a **status**; storage events move it forward; deletes remove the row first and queue the file deletions; and a nightly **cleanup job** clears `pending` rows older than a day and files that no row points to.",
+      "callout": {
+        "kind": "tip",
+        "text": "Deleting user data is a legal duty in many places. Make sure deletion reaches every copy: sizes, transcodes, backups and the CDN."
+      },
+      "changes": [
+        "+ Status on every row: pending → uploaded → ready",
+        "+ Deletes: row first, then queued file deletes",
+        "+ Nightly cleanup of orphans"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "small requests only",
+        "imgLoad": "35 ms",
+        "storeCost": "$16,800"
+      },
+      "overrides": {
+        "db-2": {
+          "visible": false
+        },
+        "cdn": {
+          "emphasis": true
+        },
+        "ad-6": {
+          "visible": false
+        },
+        "uc": {
+          "emphasis": true
+        },
+        "co": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Lifecycle",
+      "title": "Old files can live somewhere cheaper",
+      "chapter": "tradeoff",
+      "body": "Most photos are looked at in their first few weeks and hardly ever again. Object stores sell **storage classes**: standard for hot data, “infrequent access” for less, and archive tiers that cost a fraction as much — but charge more, or take minutes to hours, to read.\n\nA [[lifecycle rule]] moves objects automatically: originals older than 90 days go to an archive tier, while the small sizes people still browse stay hot.",
+      "callout": {
+        "kind": "warning",
+        "text": "Cheap storage with expensive reads is a trap for data you still read often. Check how your files are actually accessed before archiving them."
+      },
+      "changes": [
+        "+ Lifecycle: originals → archive after 90 days",
+        "~ Storage bill after one year $16,800 → ≈ $6,300 / month"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "small requests only",
+        "imgLoad": "35 ms",
+        "storeCost": "≈ $6,300"
+      },
+      "overrides": {
+        "db-2": {
+          "emphasis": true
+        },
+        "obj-2": {
+          "visible": false
+        },
+        "ad-6": {
+          "emphasis": true
+        },
+        "uo-3": {
+          "visible": false
+        },
+        "oa-4": {
+          "visible": false
+        },
+        "ow-2": {
+          "visible": false
+        },
+        "co": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Public bucket",
+      "title": "Case: the bucket anyone can list",
+      "chapter": "problem",
+      "body": "A developer makes the bucket public “to get images showing”. Months later someone discovers they can **list** it — and download every photo ever uploaded, including private ones and the originals with their location data. Leaks like this are among the most common cloud breaches.\n\nKeep buckets private and block public access at the account level. Serve through the CDN with signed URLs, give each service a key that can touch only its own paths, and use unguessable object names as a last line, not the only one.",
+      "callout": {
+        "kind": "warning",
+        "text": "A random key is not access control. If a URL is all it takes to read a private file, that URL must expire."
+      },
+      "changes": [
+        "- Bucket listable by anyone",
+        "+ Public access blocked, CDN with signed URLs",
+        "+ Least-privilege keys per service"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "small requests only",
+        "imgLoad": "35 ms",
+        "storeCost": "≈ $6,300"
+      },
+      "overrides": {
+        "obj-2": {
+          "visible": false
+        },
+        "uo-3": {
+          "visible": false
+        },
+        "oa-4": {
+          "visible": false
+        },
+        "ow-2": {
+          "visible": false
+        },
+        "co": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• **Bytes** in object storage, **metadata** in the database — joined by the object’s key.\n• Clients upload **directly** with presigned URLs; big files go in **parts** that can be retried and resumed.\n• **Workers** make thumbnails, sizes and transcodes — and strip what shouldn’t be shared.\n• Serve through a **CDN** with versioned keys; stream video in **adaptive** segments.\n• Keep rows and files **in step**, move old files to **cheaper classes**, and keep buckets **private**.",
+      "callout": {
+        "kind": "tip",
+        "text": "That completes Data & Storage. Next module: **Communication** — how services talk to each other."
+      },
+      "changes": [],
+      "metrics": {
+        "dbGrowth": "+1 GB / day",
+        "appTraffic": "small requests only",
+        "imgLoad": "35 ms",
+        "storeCost": "≈ $6,300"
+      },
+      "overrides": {
+        "obj-2": {
+          "emphasis": true
+        },
+        "uo-3": {
+          "emphasis": true
+        },
+        "oa-4": {
+          "emphasis": true
+        },
+        "ow-2": {
+          "emphasis": true
+        },
+        "co": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1536 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "bbz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 498,
+          "y": -352
+        },
+        "width": 317,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "bbz-label",
+        "type": "text",
+        "title": "SCRIPT · RỖNG",
+        "position": {
+          "x": 408,
+          "y": -391
+        },
+        "width": 116,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "bbz"
+      },
+      {
+        "id": "ubz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -449,
+          "y": -351
+        },
+        "width": 411,
+        "height": 165,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "ubz-label",
+        "type": "text",
+        "title": "NGƯỜI DÙNG · 8 TOKEN",
+        "position": {
+          "x": -560,
+          "y": -413
+        },
+        "width": 169,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "ubz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 935,
+          "y": -618
+        },
+        "width": 413,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "GIỚI HẠN: 100 MỖI PHÚT\ncửa sổ cố định  đặt lại lúc :00\n⚠ 100 lúc 0:59 + 100 lúc 1:00 = 200 trong 2 s\ncửa sổ trượt    60 s gần nhất, liên tục\ntoken bucket    bùng ≤ 100, rồi nạp lại\n→ cho phép bùng, trung bình bị giới hạn",
+        "position": {
+          "x": 935,
+          "y": -618
+        },
+        "width": 389,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "người dùng thật",
+        "position": {
+          "x": -192,
+          "y": -640
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "Acme Corp · 10.000 người dùng",
+        "position": {
+          "x": -192,
+          "y": -640
+        },
+        "width": 248,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "ngày ra mắt · ×5",
+        "position": {
+          "x": -192,
+          "y": -640
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot",
+        "type": "process",
+        "title": "script mất kiểm soát",
+        "description": "5.000 req/s",
+        "position": {
+          "x": 256,
+          "y": -640
+        },
+        "width": 184,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-2",
+        "type": "process",
+        "title": "script mất kiểm soát",
+        "description": "✓ đang lùi · 10 req/s",
+        "position": {
+          "x": 256,
+          "y": -640
+        },
+        "width": 188,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-3",
+        "type": "process",
+        "title": "script mất kiểm soát",
+        "position": {
+          "x": 256,
+          "y": -640
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api",
+        "type": "process",
+        "title": "API",
+        "description": "⚠ chủ yếu phục vụ một client · CPU 99%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-2",
+        "type": "process",
+        "title": "API",
+        "description": "CPU 45%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-3",
+        "type": "process",
+        "title": "API",
+        "description": "CPU 42%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-4",
+        "type": "process",
+        "title": "API",
+        "description": "CPU 55%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-5",
+        "type": "process",
+        "title": "API",
+        "description": "CPU 82%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "Gateway",
+        "description": "bộ giới hạn tốc độ · giới hạn: 10 req/s mỗi client",
+        "position": {
+          "x": 0,
+          "y": -288
+        },
+        "width": 184,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-2",
+        "type": "process",
+        "title": "Gateway",
+        "description": "bộ giới hạn tốc độ",
+        "position": {
+          "x": -192,
+          "y": -288
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-3",
+        "type": "process",
+        "title": "Gateway",
+        "description": "bộ giới hạn tốc độ · tenant Acme: 2.000 req/s",
+        "position": {
+          "x": -192,
+          "y": -288
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-4",
+        "type": "process",
+        "title": "Gateway",
+        "description": "bộ giới hạn tốc độ · đang cắt việc chạy nền",
+        "position": {
+          "x": -192,
+          "y": -288
+        },
+        "width": 184,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ubt",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": -538,
+          "y": -333
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#9fd28f",
+        "backgroundColor": "#202a1d",
+        "borderColor": "#9fd28f",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "ubz"
+      },
+      {
+        "id": "gw2",
+        "type": "process",
+        "title": "Gateway",
+        "description": "bộ giới hạn tốc độ · giới hạn: 10 req/s mỗi client",
+        "position": {
+          "x": 256,
+          "y": -288
+        },
+        "width": 184,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw2-2",
+        "type": "process",
+        "title": "Gateway",
+        "description": "bộ giới hạn tốc độ · Retry-After: 30",
+        "position": {
+          "x": 256,
+          "y": -288
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw2-3",
+        "type": "process",
+        "title": "Gateway",
+        "description": "bộ giới hạn tốc độ",
+        "position": {
+          "x": 256,
+          "y": -288
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "redis",
+        "type": "process",
+        "title": "bộ đếm",
+        "position": {
+          "x": 32,
+          "y": -288
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "api",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ba",
+        "from": "bot",
+        "to": "api",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "ug",
+        "from": "users",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ug-2",
+        "from": "users",
+        "to": "gw-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ug-3",
+        "from": "users-2",
+        "to": "gw-3",
+        "label": "vượt hạn ngạch tenant → 429",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "ug-4",
+        "from": "users-3",
+        "to": "gw-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "bg",
+        "from": "bot",
+        "to": "gw",
+        "label": "429 Too Many Requests",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.82,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "bg-2",
+        "from": "bot",
+        "to": "gw2",
+        "label": "429 Too Many Requests",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "bg-3",
+        "from": "bot-2",
+        "to": "gw2-2",
+        "label": "trong giới hạn",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bg-4",
+        "from": "bot-3",
+        "to": "gw2",
+        "label": "trong giới hạn",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bg-5",
+        "from": "bot-3",
+        "to": "gw2-3",
+        "label": "trong giới hạn",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bg-6",
+        "from": "bot-2",
+        "to": "gw2",
+        "label": "trong giới hạn",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ga",
+        "from": "gw",
+        "to": "api-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ga-2",
+        "from": "gw-2",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ga-3",
+        "from": "gw-3",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "ga-4",
+        "from": "gw-4",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ga2",
+        "from": "gw2",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "ga2-2",
+        "from": "gw2-2",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ga2-3",
+        "from": "gw2",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ga2-4",
+        "from": "gw2-3",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "gr",
+        "from": "gw-2",
+        "to": "redis",
+        "label": "INCR",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "gr-2",
+        "from": "gw-3",
+        "to": "redis",
+        "label": "INCR",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "gr-3",
+        "from": "gw-4",
+        "to": "redis",
+        "label": "INCR",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "none"
+      },
+      {
+        "id": "g2r",
+        "from": "gw2",
+        "to": "redis",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "g2r-2",
+        "from": "gw2-2",
+        "to": "redis",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "g2r-3",
+        "from": "gw2-3",
+        "to": "redis",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ul2",
+        "from": "users-3",
+        "to": "gw-4",
+        "label": "chạy nền · bị bỏ trước",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.22,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.5
+      }
+    ]
+  },
+  "meta": {
+    "title": "Giới hạn tốc độ",
+    "summary": "Cho mỗi client một hạn mức công bằng, để một script mất kiểm soát không kéo sập tất cả.",
+    "minutes": 10,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "abuser",
+        "label": "Script mất kiểm soát"
+      },
+      {
+        "id": "served",
+        "label": "Người dùng thật được phục vụ"
+      },
+      {
+        "id": "apiCpu",
+        "label": "CPU của API"
+      },
+      {
+        "id": "limited",
+        "label": "Bị từ chối (429)"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao một client có thể làm mọi người “chết đói”",
+        "step": "s1"
+      },
+      {
+        "text": "Token bucket và các thuật toán giới hạn",
+        "step": "s3"
+      },
+      {
+        "text": "Giới hạn trên nhiều gateway",
+        "step": "s5"
+      },
+      {
+        "text": "429, lùi lại và hạn ngạch theo tenant",
+        "step": "s7"
+      },
+      {
+        "text": "Cắt bớt tải khi quá tải toàn cục",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "users-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "users-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bot": {
+      "until": "s6"
+    },
+    "bot-2": {
+      "from": "s6"
+    },
+    "bot-3": {
+      "from": "s7",
+      "until": "s9"
+    },
+    "api": {
+      "until": "s2"
+    },
+    "api-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "api-3": {
+      "from": "s5"
+    },
+    "api-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "api-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "gw": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "gw-2": {
+      "from": "s5"
+    },
+    "gw-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gw-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ubz": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "ubt": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "bbz": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "gw2": {
+      "from": "s5"
+    },
+    "gw2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gw2-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "redis": {
+      "from": "s5"
+    },
+    "bbz-label": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "ubz-label": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua": {
+      "until": "s2"
+    },
+    "ba": {
+      "until": "s2"
+    },
+    "ug": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "ug-2": {
+      "from": "s5"
+    },
+    "ug-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ug-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bg": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "bg-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bg-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bg-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bg-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bg-6": {
+      "from": "s9"
+    },
+    "ga": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "ga-2": {
+      "from": "s5"
+    },
+    "ga-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ga-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ga2": {
+      "from": "s5"
+    },
+    "ga2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ga2-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ga2-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "gr": {
+      "from": "s5"
+    },
+    "gr-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gr-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "g2r": {
+      "from": "s5"
+    },
+    "g2r-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "g2r-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ul2": {
+      "from": "s8",
+      "until": "s9"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Mất kiểm soát",
+      "title": "Một script, mọi người cùng khổ",
+      "chapter": "problem",
+      "body": "Script của một khách hàng có bug: nó gọi API của bạn trong một vòng lặp chặt, 5.000 yêu cầu mỗi giây. Máy chủ API dành gần hết thời gian cho nó.\n\nYêu cầu của người dùng thật phải xếp hàng sau cơn lũ và bị quá thời gian. Không ai tấn công bạn; một client chỉ đơn giản lấy nhiều hơn phần của mình.",
+      "callout": {
+        "kind": "warning",
+        "text": "Năng lực dùng chung cần một quy tắc công bằng. Không có nó, client ồn ào nhất sẽ thắng."
+      },
+      "changes": [],
+      "metrics": {
+        "abuser": "5.000 yc/s",
+        "served": "61%",
+        "apiCpu": "99%",
+        "limited": "0/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Giới hạn",
+      "title": "Bộ giới hạn tốc độ ở cửa trước",
+      "chapter": "solution",
+      "body": "Đặt một [[bộ giới hạn tốc độ]] (rate limiter) trong gateway đứng trước API. Mỗi client, nhận diện theo API key, id người dùng hoặc địa chỉ IP, được một hạn mức, chẳng hạn 10 yêu cầu mỗi giây.\n\nYêu cầu trong hạn mức được cho qua. Phần còn lại bị từ chối ngay với `429 Too Many Requests`, trước khi tốn bất cứ gì của API.",
+      "callout": {
+        "kind": "tip",
+        "text": "Từ chối sớm thì rẻ: gateway trả lời trong vài micro giây, và API không bao giờ thấy phần vượt mức."
+      },
+      "changes": [
+        "+ Gateway có bộ giới hạn tốc độ",
+        "~ Script bị giới hạn ở 10 req/s",
+        "~ CPU của API 99% → 45%"
+      ],
+      "metrics": {
+        "abuser": "5.000 yc/s",
+        "served": "99%",
+        "apiCpu": "45%",
+        "limited": "4.990/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Token bucket",
+      "title": "Cách nó đếm: token bucket",
+      "chapter": "technique",
+      "body": "Thuật toán phổ biến nhất là [[token bucket]] (thùng token). Mỗi client có một thùng chứa tối đa 10 token, được nạp lại 10 cái mỗi giây. Mỗi yêu cầu lấy một token; thùng rỗng nghĩa là 429.\n\nThùng của người dùng thật hầu như luôn đầy (các chấm xanh). Script làm rỗng thùng của nó ngay lập tức và thùng cứ thế rỗng.",
+      "callout": {
+        "kind": "insight",
+        "text": "Kích thước thùng cho phép các đợt bùng ngắn; tốc độ nạp lại giới hạn mức trung bình dài hạn. Hai con số, dễ giải thích."
+      },
+      "changes": [
+        "+ Mỗi client một thùng"
+      ],
+      "metrics": {
+        "abuser": "5.000 yc/s",
+        "served": "99%",
+        "apiCpu": "45%",
+        "limited": "4.990/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Thuật toán",
+      "title": "Cửa sổ hay thùng",
+      "chapter": "technique",
+      "body": "**Cửa sổ cố định** đơn giản hơn đếm yêu cầu theo từng phút trên đồng hồ và đặt lại vào giây :00. Dễ làm, nhưng một client có thể gửi hạn mức cả phút vào 12:00:59 rồi lại gửi vào 12:01:00: gấp đôi giới hạn trong hai giây.\n\n**Cửa sổ trượt** làm mượt mép đó; **token bucket** cho phép các đợt bùng có kiểm soát. Hầu hết API gateway dùng một trong hai cách sau.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cần dòng ra đều đặn (ví dụ tới API mong manh của đối tác)? Leaky bucket xếp hàng yêu cầu và thả chúng ra theo nhịp cố định."
+      },
+      "changes": [],
+      "metrics": {
+        "abuser": "5.000 yc/s",
+        "served": "99%",
+        "apiCpu": "45%",
+        "limited": "4.990/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Nhiều gateway",
+      "title": "Nhiều gateway, một hạn mức",
+      "chapter": "problem",
+      "body": "Một gateway là không đủ, nên bạn chạy nhiều cái sau bộ cân bằng tải. Nếu mỗi cái tự đếm riêng, một client rải trên 10 gateway sẽ được gấp 10 lần giới hạn.\n\nVì vậy các gateway giữ bộ đếm trong một kho chung, nhanh (thường là Redis): mỗi yêu cầu tăng nguyên tử bộ đếm và kiểm tra tổng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Kho chung thêm ~1 ms mỗi yêu cầu. Một số hệ thống đánh đổi chút độ chính xác lấy tốc độ bằng cách đồng bộ bộ đếm cục bộ mỗi giây."
+      },
+      "changes": [
+        "+ Gateway thứ hai",
+        "+ Kho bộ đếm dùng chung",
+        "- Thùng của mỗi client giờ nằm trong kho"
+      ],
+      "metrics": {
+        "abuser": "5.000 yc/s",
+        "served": "99%",
+        "apiCpu": "45%",
+        "limited": "4.990/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Lùi lại",
+      "title": "Hướng dẫn client cách cư xử",
+      "chapter": "technique",
+      "body": "Một phản hồi 429 tốt cho biết khi nào quay lại: header `Retry-After: 30`, cùng các header cho thấy giới hạn và phần còn lại. Client tử tế sẽ chậm lại và thử lại sau.\n\nChủ của script sửa vòng lặp. Giờ nó dùng đúng phần công bằng của mình, không hơn.",
+      "callout": {
+        "kind": "tip",
+        "text": "Công bố giới hạn trong tài liệu API, và cung cấp gói cao hơn cho khách hàng thực sự cần nhiều hơn."
+      },
+      "changes": [
+        "+ Header Retry-After và RateLimit",
+        "~ Script lùi về 10 req/s"
+      ],
+      "metrics": {
+        "abuser": "10 yc/s",
+        "served": "100%",
+        "apiCpu": "38%",
+        "limited": "0/s"
+      },
+      "overrides": {
+        "gw2": {
+          "visible": false
+        },
+        "ga2": {
+          "visible": false
+        },
+        "g2r": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Tenant",
+      "title": "Tình huống: 10.000 người dùng của một khách hàng",
+      "chapter": "problem",
+      "body": "Bạn bán API cho các công ty. Một khách hàng chạy việc nhập dữ liệu mỗi đêm với 10.000 người dùng tử tế, ai cũng dưới giới hạn cá nhân, nhưng cộng lại dùng 70% năng lực của bạn. Các khách hàng khác bị chậm mỗi đêm.\n\nGiới hạn theo người dùng không thấy được điều này. Thêm giới hạn theo **tenant** (tài khoản khách hàng), tính theo gói của họ, chồng lên giới hạn theo người dùng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Xếp lớp giới hạn: theo người dùng, theo tenant, theo endpoint (endpoint tốn kém có giới hạn thấp hơn), và một trần toàn cục."
+      },
+      "changes": [
+        "+ Hạn ngạch theo tenant (theo gói)",
+        "~ Đợt nhập lớn bị giới hạn theo phần của gói"
+      ],
+      "metrics": {
+        "served": "99%",
+        "apiCpu": "55%",
+        "limited": "1.200/s"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "bot-2": {
+          "visible": false
+        },
+        "api-3": {
+          "visible": false
+        },
+        "gw-2": {
+          "visible": false
+        },
+        "gw2": {
+          "emphasis": true
+        },
+        "ug-2": {
+          "visible": false
+        },
+        "ga-2": {
+          "visible": false
+        },
+        "ga2": {
+          "visible": false
+        },
+        "gr": {
+          "visible": false
+        },
+        "g2r": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Cắt tải",
+      "title": "Khi ai cũng tăng vọt: cắt bớt tải",
+      "chapter": "technique",
+      "body": "Giới hạn tốc độ ngăn một client độc chiếm năng lực. Nhưng vào ngày ra mắt *tất cả* cùng đến một lúc, và tổng vẫn vượt quá mức bạn phục vụ được.\n\nKhi đó [[cắt bớt tải]] (load shedding) quyết định bỏ gì: việc chạy nền như tải trước, gợi ý và analytics (màu hổ phách) bị từ chối trước, để đăng nhập và thanh toán vẫn hoạt động.",
+      "callout": {
+        "kind": "insight",
+        "text": "Cố ý làm hỏng một số yêu cầu tốt hơn là vô tình làm hỏng tất cả."
+      },
+      "changes": [
+        "~ Người dùng thật ×5",
+        "+ Yêu cầu ưu tiên thấp bị cắt tại gateway",
+        "~ Thanh toán vẫn 100%"
+      ],
+      "metrics": {
+        "served": "100%",
+        "apiCpu": "82%",
+        "limited": "cắt 2.000/s"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "bot-2": {
+          "visible": false
+        },
+        "api-3": {
+          "visible": false
+        },
+        "gw-2": {
+          "visible": false
+        },
+        "gw2": {
+          "visible": false
+        },
+        "ug-2": {
+          "visible": false
+        },
+        "ga-2": {
+          "visible": false
+        },
+        "ga2": {
+          "visible": false
+        },
+        "gr": {
+          "visible": false
+        },
+        "g2r": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Cho mỗi client một **hạn mức**; từ chối phần vượt sớm bằng **429**.\n• **Token bucket** cho phép đợt bùng ngắn và giới hạn tốc độ trung bình.\n• Với nhiều gateway, giữ bộ đếm trong một **kho chung**.\n• Xếp lớp giới hạn: theo **người dùng**, theo **tenant**, theo endpoint.\n• Khi quá tải toàn cục, **cắt** việc ưu tiên thấp trước.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Timeout & thử lại**: làm gì khi chính dịch vụ bạn gọi đang gặp sự cố."
+      },
+      "changes": [],
+      "metrics": {
+        "abuser": "10 yc/s",
+        "served": "100%",
+        "apiCpu": "38%",
+        "limited": "0/s"
+      },
+      "overrides": {
+        "ga2": {
+          "effect": "comet",
+          "emphasis": true
+        },
+        "users": {
+          "emphasis": true
+        },
+        "bot-2": {
+          "emphasis": true
+        },
+        "api-3": {
+          "emphasis": true
+        },
+        "gw-2": {
+          "emphasis": true
+        },
+        "gw2": {
+          "emphasis": true
+        },
+        "ug-2": {
+          "emphasis": true
+        },
+        "ga-2": {
+          "emphasis": true
+        },
+        "gr": {
+          "emphasis": true
+        },
+        "g2r": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

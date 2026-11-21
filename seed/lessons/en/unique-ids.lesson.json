@@ -1,0 +1,2310 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "idx",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -62,
+          "y": 270
+        },
+        "width": 1328,
+        "height": 135,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 843,
+          "y": -964
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "UUID V4\nf47ac10b-58cc-4372-a567-0e02b2c3d479\n122 random bits\n→ generate anywhere, ask nobody\n# 16 bytes instead of 8",
+        "position": {
+          "x": 843,
+          "y": -964
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 839,
+          "y": -966
+        },
+        "width": 330,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "WHERE DOES THE NEXT ROW GO?\ncounter id   → always the last page\n⚠ random id  → any page, every time\n# cold pages, page splits, bloat",
+        "position": {
+          "x": 839,
+          "y": -966
+        },
+        "width": 306,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 843,
+          "y": -964
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "UUID V7\n018f6b1c-3a40-7d2e-9b6f-5c1a2e4d7f90\n48 bits   milliseconds since 1970\n74 bits   random\n→ ordered by time, no coordination",
+        "position": {
+          "x": 843,
+          "y": -964
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 856,
+          "y": -964
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "ONE 64-BIT ID\n41 bits   milliseconds   ≈ 69 years\n10 bits   machine id     1,024 machines\n12 bits   sequence       4,096 per ms\n→ time | machine | sequence",
+        "position": {
+          "x": 856,
+          "y": -964
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 823,
+          "y": -964
+        },
+        "width": 297,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "SERVER 1’S GENERATOR\nlast id stamped   12:00:07.250\n⚠ clock now reads  12:00:05.250\n→ wait 2 s, then carry on\n# never reuse a timestamp",
+        "position": {
+          "x": 823,
+          "y": -964
+        },
+        "width": 273,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 806,
+          "y": -964
+        },
+        "width": 264,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "READING THE IDS\nMon 09:00   /orders/1004\nTue 09:00   /orders/1250\n⚠ ≈ 246 orders a day\n→ public id: ord_8fK2xQ9dLm",
+        "position": {
+          "x": 806,
+          "y": -964
+        },
+        "width": 240,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "s1",
+        "type": "process",
+        "title": "App Server 1",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-2",
+        "type": "process",
+        "title": "App Server 1",
+        "description": "block 1000–1999",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-3",
+        "type": "process",
+        "title": "App Server 1",
+        "description": "f47ac10b-58cc-…",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-4",
+        "type": "process",
+        "title": "App Server 1",
+        "description": "018f6b1c-3a40-7…",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-5",
+        "type": "process",
+        "title": "App Server 1",
+        "description": "machine 1",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-6",
+        "type": "process",
+        "title": "App Server 1",
+        "description": "clock −2 s · waiting",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dA",
+        "type": "process",
+        "title": "orders database",
+        "description": "next id: 1004",
+        "position": {
+          "x": -315,
+          "y": 270
+        },
+        "width": 180,
+        "height": 130,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dA-2",
+        "type": "process",
+        "title": "shard A",
+        "description": "⚠ order 1004 · Ana",
+        "position": {
+          "x": -315,
+          "y": 270
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dA-3",
+        "type": "process",
+        "title": "shard A",
+        "position": {
+          "x": -315,
+          "y": 270
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dB",
+        "type": "process",
+        "title": "shard B",
+        "description": "⚠ order 1004 · Ben",
+        "position": {
+          "x": 315,
+          "y": 270
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dB-2",
+        "type": "process",
+        "title": "shard B",
+        "position": {
+          "x": 315,
+          "y": 270
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2",
+        "type": "process",
+        "title": "App Server 2",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-2",
+        "type": "process",
+        "title": "App Server 2",
+        "description": "block 2000–2999",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-3",
+        "type": "process",
+        "title": "App Server 2",
+        "description": "9c1e6a2d-03b7-…",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-4",
+        "type": "process",
+        "title": "App Server 2",
+        "description": "018f6b1c-3a41-7…",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-5",
+        "type": "process",
+        "title": "App Server 2",
+        "description": "machine 2",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "tk",
+        "type": "process",
+        "title": "Ticket Server",
+        "description": "next id: 1005",
+        "position": {
+          "x": 0,
+          "y": -990
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "tk-2",
+        "type": "process",
+        "title": "Ticket Server",
+        "description": "next block: 3000",
+        "position": {
+          "x": 0,
+          "y": -990
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "p0",
+        "type": "process",
+        "title": "primary-key index · pages sorted by id →",
+        "position": {
+          "x": -590,
+          "y": 270
+        },
+        "width": 216,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -403,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p1-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -403,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -286,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -169,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p3-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -169,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -52,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p4-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -52,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p5",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 66,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p6",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 183,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p6-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 183,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p7",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 300,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p8",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 417,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p8-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 417,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p9",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 535,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p9-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 535,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "spy",
+        "type": "process",
+        "title": "competitor",
+        "position": {
+          "x": -315,
+          "y": -990
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "a1",
+        "from": "s1",
+        "to": "dA",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "a1-2",
+        "from": "s1",
+        "to": "dA-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "a1-3",
+        "from": "s1",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "a1-4",
+        "from": "s1-2",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "a1-5",
+        "from": "s1-3",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "a1-6",
+        "from": "s1-5",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "a1-7",
+        "from": "s1-6",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "b1",
+        "from": "s1",
+        "to": "dB",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "b1-2",
+        "from": "s1",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "b1-3",
+        "from": "s1-2",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "b1-4",
+        "from": "s1-3",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "b1-5",
+        "from": "s1-5",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "b1-6",
+        "from": "s1-6",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "a2",
+        "from": "s2",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "a2-2",
+        "from": "s2-2",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "a2-3",
+        "from": "s2-3",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "a2-4",
+        "from": "s2-5",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "b2",
+        "from": "s2",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "b2-2",
+        "from": "s2-2",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "b2-3",
+        "from": "s2-3",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "b2-4",
+        "from": "s2-5",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "t1",
+        "from": "s1",
+        "to": "tk",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "t1-2",
+        "from": "s1-2",
+        "to": "tk-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "t2",
+        "from": "s2",
+        "to": "tk",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "t2-2",
+        "from": "s2-2",
+        "to": "tk-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "r1",
+        "from": "s1-3",
+        "to": "p1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": -403,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r3",
+        "from": "s1-3",
+        "to": "p4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": -52,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r5",
+        "from": "s1-3",
+        "to": "p8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 417,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r5-2",
+        "from": "s1-4",
+        "to": "p9-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 535,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r2",
+        "from": "s2-3",
+        "to": "p3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -169,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r4",
+        "from": "s2-3",
+        "to": "p6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": 183,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r4-2",
+        "from": "s2-4",
+        "to": "p9-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": 535,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "sp",
+        "from": "spy",
+        "to": "s1-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Unique IDs at Scale",
+    "summary": "Giving every row a name nobody else will ever use — without one counter everyone has to queue for.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "collide",
+        "label": "Duplicate ids"
+      },
+      {
+        "id": "idSize",
+        "label": "Id size"
+      },
+      {
+        "id": "sortable",
+        "label": "Sorted by time"
+      },
+      {
+        "id": "idDep",
+        "label": "Depends on"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why database counters break under sharding",
+        "step": "s2"
+      },
+      {
+        "text": "Ticket servers and id blocks",
+        "step": "s4"
+      },
+      {
+        "text": "UUIDs — and what random keys do to an index",
+        "step": "s6"
+      },
+      {
+        "text": "Time-ordered ids: UUID v7 and Snowflake",
+        "step": "s8"
+      },
+      {
+        "text": "Clocks that step back, and what ids leak",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "s1": {
+      "until": "s4"
+    },
+    "s1-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "s1-3": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "s1-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s1-5": {
+      "from": "s8"
+    },
+    "s1-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dA": {
+      "until": "s2"
+    },
+    "dA-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dA-3": {
+      "from": "s3"
+    },
+    "dB": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dB-2": {
+      "from": "s3"
+    },
+    "s2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "s2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "s2-3": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "s2-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s2-5": {
+      "from": "s8"
+    },
+    "tk": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "tk-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "idx": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p0": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p1": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p1-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p2": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p3-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p4-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p5": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p6-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p7": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p8": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p8-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p9": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p9-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "spy": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-5-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-6-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "a1": {
+      "until": "s2"
+    },
+    "a1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "a1-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a1-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a1-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "a1-6": {
+      "from": "s8"
+    },
+    "a1-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "b1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "b1-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "b1-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "b1-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "b1-5": {
+      "from": "s8"
+    },
+    "b1-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a2-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "a2-4": {
+      "from": "s8"
+    },
+    "b2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "b2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "b2-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "b2-4": {
+      "from": "s8"
+    },
+    "t1": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "t1-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "t2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "t2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "r1": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r5-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "r2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r4-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sp": {
+      "from": "s10",
+      "until": "s11"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "One counter",
+      "title": "Every row needs a name",
+      "chapter": "setup",
+      "body": "Orders, users, payments: every row needs an identifier that is **unique** — for ever. Other tables point at it, URLs contain it, support staff read it out over the phone.\n\nWith one database this is free. An `AUTO_INCREMENT` (or `SERIAL`) column hands out 1001, 1002, 1003… and the database guarantees no number is ever used twice.",
+      "callout": {
+        "kind": "insight",
+        "text": "A counter gives you more than uniqueness: the ids are small, and sorting by id sorts by creation time. Watch which of those gifts each alternative keeps."
+      },
+      "changes": [],
+      "metrics": {
+        "collide": "no",
+        "idSize": "64 bits",
+        "sortable": "yes",
+        "idDep": "one database"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Shards collide",
+      "title": "Two shards, two counters",
+      "chapter": "problem",
+      "body": "The orders table gets sharded (see *Sharding*). Each shard is its own database with its own counter — and both of them have just handed out **1004**.\n\nTwo different orders now share an id. A link to `/orders/1004`, a cache entry, a refund: each could mean either one. And the day you merge or re-split shards, the rows collide.",
+      "callout": {
+        "kind": "warning",
+        "text": "Uniqueness has to hold across the *whole system*, not just inside one machine."
+      },
+      "changes": [
+        "+ Shard B, with its own counter",
+        "- Order 1004 now exists twice"
+      ],
+      "metrics": {
+        "collide": "yes",
+        "idSize": "64 bits",
+        "sortable": "yes",
+        "idDep": "each shard"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Ticket server",
+      "title": "Way 1 — one counter for everyone",
+      "chapter": "solution",
+      "body": "Move the counter out of the shards into a small service whose only job is to hand out the next number: a [[ticket server]]. Before each insert, an app server asks it for an id.\n\nUniqueness is back, and ids still sort by time. But every insert now costs an extra round trip — and if the ticket server is down, nobody can create anything.",
+      "callout": {
+        "kind": "tip",
+        "text": "Flickr ran two ticket servers for years — one handing out odd numbers, the other even — so that either could fail without stopping the site."
+      },
+      "changes": [
+        "+ Ticket server",
+        "~ Every insert asks it for an id first",
+        "- A new single point of failure"
+      ],
+      "metrics": {
+        "collide": "no",
+        "idSize": "64 bits",
+        "sortable": "yes",
+        "idDep": "ticket server · every insert"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Blocks",
+      "title": "Hand out blocks, not single numbers",
+      "chapter": "technique",
+      "body": "Ask less often. Each app server reserves a whole **block** — say 1,000 ids — in one call and hands them out from memory. That’s one round trip per thousand inserts, and the app keeps working for a while if the ticket server is down.\n\nThe price: ids no longer follow creation time across servers (Server 2’s 2001 may be older than Server 1’s 1500), and a server that crashes takes the rest of its block with it, leaving gaps.",
+      "callout": {
+        "kind": "insight",
+        "text": "Gaps are harmless. Never promise that ids are gap-free or strictly ordered — invoice numbers that legally must be gapless are a separate, deliberate counter."
+      },
+      "changes": [
+        "~ Servers reserve 1,000 ids per call",
+        "~ 1 round trip per 1,000 inserts",
+        "- Strict time order across servers"
+      ],
+      "metrics": {
+        "collide": "no",
+        "idSize": "64 bits",
+        "sortable": "roughly",
+        "idDep": "ticket server · rarely"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "UUIDs",
+      "title": "Way 2 — pick a number nobody else will",
+      "chapter": "solution",
+      "body": "Or drop the coordination altogether. A [[UUID]] (version 4) is 122 random bits. Any server, phone or script can make one, with nobody to ask.\n\nCan two collide? In principle. In practice you would have to generate a billion every second for about 86 years to reach a 50% chance of a single repeat.",
+      "callout": {
+        "kind": "tip",
+        "text": "The cost is size: 128 bits, twice a normal id — and that id is copied into every index and every table that points at the row."
+      },
+      "changes": [
+        "- Ticket server",
+        "+ Each server generates random 128-bit ids",
+        "~ No coordination at all"
+      ],
+      "metrics": {
+        "collide": "no",
+        "idSize": "128 bits",
+        "sortable": "no",
+        "idDep": "nothing"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Random hurts",
+      "title": "Case: random ids and the index",
+      "chapter": "problem",
+      "body": "The primary key lives in a B-tree, sorted by id (see *Indexes*). Counter ids always land on the **last** page, which stays in memory. Random ids land on a **random** page, every time.\n\nOnce the index is bigger than memory, most inserts must first fetch a cold page from disk, and pages split all over the tree. Insert throughput can drop several-fold, and the index ends up bloated with half-empty pages.",
+      "callout": {
+        "kind": "warning",
+        "text": "It bites hardest where the table itself is stored in primary-key order — MySQL’s InnoDB, SQL Server — but every B-tree feels it."
+      },
+      "changes": [
+        "+ Inside one shard: the primary-key index",
+        "- Inserts scatter across every page"
+      ],
+      "metrics": {
+        "collide": "no",
+        "idSize": "128 bits",
+        "sortable": "no",
+        "idDep": "nothing"
+      },
+      "overrides": {
+        "dA-3": {
+          "visible": false
+        },
+        "dB-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Time first",
+      "title": "Put the time in front",
+      "chapter": "solution",
+      "body": "Keep the randomness, but lead with a timestamp. [[UUID v7]] — and its cousin, ULID — starts with 48 bits of milliseconds, followed by random bits.\n\nNew ids are always larger than old ones, so inserts return to the right-hand edge of the index. They still need no coordination, and “sort by id” means “sort by creation time” again.",
+      "callout": {
+        "kind": "tip",
+        "text": "If you want UUIDs as primary keys, use version 7. Keep version 4 for tokens that must be impossible to guess."
+      },
+      "changes": [
+        "~ UUID v4 → UUID v7",
+        "~ Inserts append to the last page again"
+      ],
+      "metrics": {
+        "collide": "no",
+        "idSize": "128 bits",
+        "sortable": "yes",
+        "idDep": "a clock"
+      },
+      "overrides": {
+        "dA-3": {
+          "visible": false
+        },
+        "dB-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Snowflake",
+      "title": "Way 3 — Snowflake ids",
+      "chapter": "solution",
+      "body": "Twitter needed ids that fit in 64 bits, sort by time, and could be minted tens of thousands of times a second with no central counter. Its answer, [[Snowflake]], packs three fields into one number.\n\nA millisecond **timestamp**, the **machine id** of the generator, and a **sequence** that counts up within the millisecond. Two machines can never collide, because their machine ids differ; one machine never repeats, because of the sequence.",
+      "callout": {
+        "kind": "tip",
+        "text": "Each machine can mint 4,096 ids per millisecond. Discord, Instagram and many others use the same idea with slightly different bit splits."
+      },
+      "changes": [
+        "~ UUIDs → 64-bit Snowflake ids",
+        "+ Every server gets a machine id at startup"
+      ],
+      "metrics": {
+        "collide": "no",
+        "idSize": "64 bits",
+        "sortable": "yes",
+        "idDep": "machine id + clock"
+      },
+      "overrides": {
+        "dA-3": {
+          "emphasis": true
+        },
+        "dB-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Clock",
+      "title": "Case: the clock steps back",
+      "chapter": "problem",
+      "body": "Snowflake ids are unique only if a machine’s clock never repeats a millisecond. But clocks get corrected: time sync notices Server 1 is two seconds fast and sets it back. For two seconds it would stamp ids with times it has already used — duplicates.\n\nThe guard is simple. Remember the last timestamp you issued; if the clock now reads earlier, **wait** (or refuse to issue ids) until time has caught up.",
+      "callout": {
+        "kind": "warning",
+        "text": "The other way to break it: two machines with the same machine id. Assign them from one place — a config service, or bits of something already unique — never by hand."
+      },
+      "changes": [
+        "- Server 1’s clock set back 2 s",
+        "+ Generator waits until the clock passes its last stamp",
+        "~ No duplicates — that server pauses inserts for 2 s"
+      ],
+      "metrics": {
+        "collide": "no",
+        "idSize": "64 bits",
+        "sortable": "yes",
+        "idDep": "machine id + clock"
+      },
+      "overrides": {
+        "s1-5": {
+          "visible": false
+        },
+        "a1-6": {
+          "visible": false
+        },
+        "b1-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Leaks",
+      "title": "Case: what an id gives away",
+      "chapter": "tradeoff",
+      "body": "Ids end up in URLs, and people read them. A competitor places an order on Monday (**#1004**) and another on Tuesday (**#1250**) — and now knows you take about 246 orders a day.\n\nSequential ids are also easy to walk: change `/invoices/1004` to `/invoices/1005` and see what comes back. Time-based ids reveal exactly when each thing was created.",
+      "callout": {
+        "kind": "tip",
+        "text": "Two defences, and you need the second one regardless: show a separate random public id, and **check authorization on every request** (see *Authorization*). An unguessable id is not access control."
+      },
+      "changes": [
+        "+ A competitor reading ids out of URLs",
+        "~ Public ids → random; internal keys stay ordered"
+      ],
+      "metrics": {
+        "collide": "no",
+        "idSize": "64 bits",
+        "sortable": "yes",
+        "idDep": "machine id + clock"
+      },
+      "overrides": {
+        "s1-5": {
+          "emphasis": true
+        },
+        "a1-6": {
+          "emphasis": true
+        },
+        "b1-5": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Choosing",
+      "title": "Which id for which job",
+      "chapter": "tradeoff",
+      "body": "• **DB counter** — Size: 64 bits; Time-sorted: Yes; Needs: One database\n• **Ticket blocks** — Size: 64 bits; Time-sorted: Roughly; Needs: A ticket service\n• **UUID v4** — Size: 128 bits; Time-sorted: No; Needs: Nothing\n• **UUID v7** — Size: 128 bits; Time-sorted: Yes; Needs: A clock\n• **Snowflake** — Size: 64 bits; Time-sorted: Yes; Needs: Machine ids + clock\n\nOne database? Use its counter. Many writers and nothing shared? UUID v7. Compact numeric ids at very high volume? Snowflake.",
+      "callout": {
+        "kind": "insight",
+        "text": "There is no best id — only the properties your system needs: size, ordering, independence and secrecy."
+      },
+      "changes": [],
+      "metrics": {
+        "collide": "no",
+        "idSize": "64 bits",
+        "sortable": "yes",
+        "idDep": "machine id + clock"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• A per-database counter stops being unique the moment you **shard**.\n• A **ticket server** restores it; handing out **blocks** removes the round trip per insert.\n• **UUID v4** needs nobody, but scatters inserts across the index; **UUID v7** puts time first to fix that.\n• **Snowflake**: time + machine id + sequence in 64 bits — guard against clocks stepping back.\n• Ids **leak** volume and timing. Never treat them as access control.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **CAP & Consistency** — what copies of your data should do when the network between them breaks."
+      },
+      "changes": [],
+      "metrics": {
+        "collide": "no",
+        "idSize": "64 bits",
+        "sortable": "yes",
+        "idDep": "machine id + clock"
+      },
+      "overrides": {}
+    }
+  ]
+}

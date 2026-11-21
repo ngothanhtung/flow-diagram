@@ -1,0 +1,1693 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 547,
+          "y": -448
+        },
+        "width": 305,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "DASHBOARD · ĐỘ TRỄ P99\ngateway      ████████████  2,4 s\nđơn hàng     ████████████  2,3 s\nthanh toán   ███████████░  2,2 s\nkho          ░░░░░░░░░░░░  30 ms\nDB đơn hàng  ░░░░░░░░░░░░  8 ms",
+        "position": {
+          "x": 547,
+          "y": -448
+        },
+        "width": 281,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 609,
+          "y": -457
+        },
+        "width": 429,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "SLO THANH TOÁN\nSLI: lượt thanh toán nhanh hơn 1 s\nSLO: 99,9% trong 30 ngày\nngân sách lỗi: 0,1% được phép chậm\n⚠ giờ qua: 1,4% chậm = 14× ngân sách → gọi trực",
+        "position": {
+          "x": 609,
+          "y": -457
+        },
+        "width": 405,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 605,
+          "y": -448
+        },
+        "width": 421,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "LOG · LỌC THEO REQ=A91\n07.112 gateway  req=a91 POST /checkout\n07.118 orders   req=a91 reserve stock: ok\n07.121 payments req=a91 calling fraud-api\n09.243 payments req=a91 fraud-api ok (2122 ms)\n→ 2,1 s nằm trong một lần gọi",
+        "position": {
+          "x": 605,
+          "y": -448
+        },
+        "width": 397,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 592,
+          "y": -448
+        },
+        "width": 396,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "TRACE A91 · 2,4 S\ngateway                ████████████  2,4 s\n đơn hàng              ████████████  2,35 s\n  kho                  █░░░░░░░░░░░  30 ms\n  thanh toán           ████████████  2,2 s\n   API chống gian lận  ███████████░  2,1 s",
+        "position": {
+          "x": 592,
+          "y": -448
+        },
+        "width": 372,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 634,
+          "y": -448
+        },
+        "width": 479,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "TRACE B17 · 310 MS\ngateway                ████████████  310 ms\n đơn hàng              ████████████  300 ms\n  kho                  ██░░░░░░░░░░  30 ms\n  thanh toán           ███████████░  220 ms\n   API chống gian lận  ████░░░░░░░░  30 ms (từ cache)",
+        "position": {
+          "x": 634,
+          "y": -448
+        },
+        "width": 455,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 563,
+          "y": -448
+        },
+        "width": 338,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "LỖI THANH TOÁN · GIỜ QUA\n02:50             ░░░░░░░░░░░░  0,1%\n03:00             ░░░░░░░░░░░░  0,1%\n03:10 triển khai  ░░░░░░░░░░░░  0,2%\n03:12             ████████████  6%\n03:16 rollback    ░░░░░░░░░░░░  0,2%",
+        "position": {
+          "x": 563,
+          "y": -448
+        },
+        "width": 314,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 609,
+          "y": -448
+        },
+        "width": 429,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-7-text",
+        "type": "text",
+        "title": "POST-MORTEM · LỖI THANH TOÁN\nảnh hưởng: 6% lượt thanh toán thất bại, 4 phút\nnguyên nhân: timeout sai trong cấu hình kho\nphát hiện 1 phút · giảm thiểu 4 phút (rollback)\n→ hành động: triển khai canary cho cấu hình\n→ hành động: cảnh báo lỗi sau khi đổi cấu hình",
+        "position": {
+          "x": 609,
+          "y": -448
+        },
+        "width": 405,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-7"
+      },
+      {
+        "id": "shoppers",
+        "type": "process",
+        "title": "người mua",
+        "position": {
+          "x": 0,
+          "y": -483
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "Gateway",
+        "description": "?",
+        "position": {
+          "x": 0,
+          "y": -253
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-2",
+        "type": "process",
+        "title": "Gateway",
+        "description": "p99 2,4 s",
+        "position": {
+          "x": 0,
+          "y": -253
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-3",
+        "type": "process",
+        "title": "Gateway",
+        "description": "SLO đang bị đốt nhanh gấp 14 lần",
+        "position": {
+          "x": 0,
+          "y": -253
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-4",
+        "type": "process",
+        "title": "Gateway",
+        "description": "req=a91",
+        "position": {
+          "x": 0,
+          "y": -253
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-5",
+        "type": "process",
+        "title": "Gateway",
+        "position": {
+          "x": 0,
+          "y": -253
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-6",
+        "type": "process",
+        "title": "Gateway",
+        "description": "p99 310 ms",
+        "position": {
+          "x": 0,
+          "y": -253
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-7",
+        "type": "process",
+        "title": "Gateway",
+        "description": "lỗi 6%",
+        "position": {
+          "x": 0,
+          "y": -253
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "orders",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "?",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "orders-2",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "p99 2,3 s",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "orders-3",
+        "type": "process",
+        "title": "Đơn hàng",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv",
+        "type": "process",
+        "title": "Kho",
+        "description": "?",
+        "position": {
+          "x": -230,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv-2",
+        "type": "process",
+        "title": "Kho",
+        "description": "p99 30 ms",
+        "position": {
+          "x": -230,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv-3",
+        "type": "process",
+        "title": "Kho",
+        "position": {
+          "x": -230,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv-4",
+        "type": "process",
+        "title": "Kho",
+        "description": "⚠ thay đổi cấu hình 03:10",
+        "position": {
+          "x": -230,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "?",
+        "position": {
+          "x": 230,
+          "y": 0
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "p99 2,2 s",
+        "position": {
+          "x": 230,
+          "y": 0
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-3",
+        "type": "process",
+        "title": "Thanh toán",
+        "position": {
+          "x": 230,
+          "y": 0
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-4",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "✓ timeout 300 ms + cache",
+        "position": {
+          "x": 230,
+          "y": 0
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "DB đơn hàng",
+        "position": {
+          "x": 0,
+          "y": 253
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "DB đơn hàng",
+        "description": "p99 8 ms",
+        "position": {
+          "x": 0,
+          "y": 253
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fraud",
+        "type": "process",
+        "title": "API chống gian lận",
+        "description": "bên thứ ba",
+        "position": {
+          "x": 230,
+          "y": 253
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ug",
+        "from": "shoppers",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-2",
+        "from": "shoppers",
+        "to": "gw-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-3",
+        "from": "shoppers",
+        "to": "gw-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-4",
+        "from": "shoppers",
+        "to": "gw-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-5",
+        "from": "shoppers",
+        "to": "gw-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-6",
+        "from": "shoppers",
+        "to": "gw-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-7",
+        "from": "shoppers",
+        "to": "gw-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go",
+        "from": "gw",
+        "to": "orders",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-2",
+        "from": "gw-2",
+        "to": "orders-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-3",
+        "from": "gw-3",
+        "to": "orders-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-4",
+        "from": "gw-4",
+        "to": "orders-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-5",
+        "from": "gw-5",
+        "to": "orders-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-6",
+        "from": "gw-6",
+        "to": "orders-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-7",
+        "from": "gw-7",
+        "to": "orders-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "oi",
+        "from": "orders",
+        "to": "inv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "oi-2",
+        "from": "orders-2",
+        "to": "inv-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "oi-3",
+        "from": "orders-3",
+        "to": "inv-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "oi-4",
+        "from": "orders-3",
+        "to": "inv-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "op",
+        "from": "orders",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "op-2",
+        "from": "orders-2",
+        "to": "pay-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "op-3",
+        "from": "orders-3",
+        "to": "pay-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "op-4",
+        "from": "orders-3",
+        "to": "pay-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "od",
+        "from": "orders",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "od-2",
+        "from": "orders-2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "od-3",
+        "from": "orders-3",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "pf",
+        "from": "pay",
+        "to": "fraud",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pf-2",
+        "from": "pay-2",
+        "to": "fraud",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pf-3",
+        "from": "pay-3",
+        "to": "fraud",
+        "label": "2,1 s",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pf-4",
+        "from": "pay-4",
+        "to": "fraud",
+        "label": "timeout 300 ms · từ cache",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pf-5",
+        "from": "pay-3",
+        "to": "fraud",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Khả năng quan sát",
+    "summary": "Metric, log và trace: cách tìm ra nhanh cái gì sai, ở đâu và vì sao.",
+    "minutes": 11,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "detect",
+        "label": "Thời gian phát hiện"
+      },
+      {
+        "id": "locate",
+        "label": "Thời gian tìm nguyên nhân"
+      },
+      {
+        "id": "p99",
+        "label": "Độ trễ p99"
+      },
+      {
+        "id": "signals",
+        "label": "Tín hiệu"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao “nó chậm” lại khó gỡ lỗi",
+        "step": "s1"
+      },
+      {
+        "text": "Metric và dashboard (RED)",
+        "step": "s2"
+      },
+      {
+        "text": "Cảnh báo theo SLO, không theo CPU",
+        "step": "s3"
+      },
+      {
+        "text": "Log và trace phân tán",
+        "step": "s5"
+      },
+      {
+        "text": "Xử lý sự cố, và post-mortem",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "gw": {
+      "until": "s2"
+    },
+    "gw-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "gw-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "gw-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "gw-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "gw-6": {
+      "from": "s6"
+    },
+    "gw-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "orders": {
+      "until": "s2"
+    },
+    "orders-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "orders-3": {
+      "from": "s5"
+    },
+    "inv": {
+      "until": "s2"
+    },
+    "inv-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "inv-3": {
+      "from": "s5"
+    },
+    "inv-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pay": {
+      "until": "s2"
+    },
+    "pay-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "pay-3": {
+      "from": "s5"
+    },
+    "pay-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "db-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ug": {
+      "until": "s2"
+    },
+    "ug-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ug-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ug-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ug-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ug-6": {
+      "from": "s6"
+    },
+    "ug-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "go": {
+      "until": "s2"
+    },
+    "go-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "go-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "go-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "go-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "go-6": {
+      "from": "s6"
+    },
+    "go-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "oi": {
+      "until": "s2"
+    },
+    "oi-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "oi-3": {
+      "from": "s5"
+    },
+    "oi-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "op": {
+      "until": "s2"
+    },
+    "op-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "op-3": {
+      "from": "s5"
+    },
+    "op-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "od": {
+      "until": "s2"
+    },
+    "od-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "od-3": {
+      "from": "s5"
+    },
+    "pf": {
+      "until": "s2"
+    },
+    "pf-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "pf-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "pf-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "pf-5": {
+      "from": "s7"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Nó chậm",
+      "title": "“Thanh toán chậm.” Chậm ở đâu?",
+      "chapter": "problem",
+      "body": "Ticket hỗ trợ chất đống: thanh toán mất vài giây. Một lần thanh toán đi qua gateway, đơn hàng, kho, thanh toán, một cơ sở dữ liệu và một API chống gian lận của bên thứ ba.\n\nBạn thấy một yêu cầu đang chờ ở đâu đó trong sơ đồ này, nhưng nhóm thì không. CPU của mọi máy chủ trông đều ổn, và không ai biết nên bắt đầu từ đâu.",
+      "callout": {
+        "kind": "warning",
+        "text": "Nếu người dùng phát hiện sự cố trước bạn, bạn đang bay mù."
+      },
+      "changes": [],
+      "metrics": {
+        "detect": "2 giờ (ticket hỗ trợ)",
+        "p99": "2,4 s",
+        "signals": "không có"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Metric",
+      "title": "Metric: những con số theo thời gian",
+      "chapter": "technique",
+      "body": "Mỗi dịch vụ ghi lại vài con số về các yêu cầu nó xử lý (phương pháp [[RED]]: **R**ate, tức số yêu cầu/giây; **E**rrors, tỷ lệ lỗi; **D**uration, các phân vị độ trễ) rồi gửi về một kho chuỗi thời gian có dashboard.\n\nGiờ bức tranh đã rõ: kho và cơ sở dữ liệu đều nhanh; sự chậm nằm trên đường thanh toán.",
+      "callout": {
+        "kind": "tip",
+        "text": "Bộ công cụ phổ biến: Prometheus + Grafana, Datadog, CloudWatch. Đo p99, đừng chỉ đo trung bình. RED mô tả yêu cầu; với máy móc, hãy theo dõi **USE**: mức sử dụng, độ bão hòa, lỗi."
+      },
+      "changes": [
+        "+ Metric RED trên mọi dịch vụ",
+        "+ Dashboard: p99 theo từng dịch vụ"
+      ],
+      "metrics": {
+        "detect": "5 phút",
+        "locate": "đường thanh toán",
+        "p99": "2,4 s",
+        "signals": "metric"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Cảnh báo",
+      "title": "Cảnh báo theo những gì người dùng cảm nhận",
+      "chapter": "technique",
+      "body": "Đừng gọi ai dậy vì “CPU trên 80%”: nó kêu liên tục và thường chẳng có ý nghĩa gì. Hãy cảnh báo theo các **triệu chứng** mà người dùng cảm nhận.\n\nChọn một [[SLI]] (chẳng hạn tỷ lệ lượt thanh toán nhanh hơn 1 s), đặt mục tiêu [[SLO]] (99,9%), và cảnh báo khi bạn đang đốt phần [[ngân sách lỗi]] còn lại quá nhanh.",
+      "callout": {
+        "kind": "tip",
+        "text": "Ngân sách lỗi biến độ tin cậy thành một con số chung: khi còn, hãy ra mắt tính năng; khi hết, hãy sửa độ tin cậy trước."
+      },
+      "changes": [
+        "+ SLO: 99,9% lượt thanh toán dưới 1 s",
+        "+ Cảnh báo khi ngân sách lỗi bị đốt"
+      ],
+      "metrics": {
+        "detect": "2 phút",
+        "locate": "đường thanh toán",
+        "p99": "2,4 s",
+        "signals": "metric + cảnh báo"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Log",
+      "title": "Log: câu chuyện, từng dòng một",
+      "chapter": "technique",
+      "body": "Metric cho biết *ở đâu*; [[log]] cho biết *chuyện gì đã xảy ra*. Mỗi dịch vụ ghi các sự kiện có dấu thời gian, nhưng với hàng nghìn yêu cầu mỗi giây, các dòng của những yêu cầu khác nhau đan xen thành nhiễu.\n\nMẹo là: gán cho mỗi yêu cầu một id tại gateway, truyền nó đi tiếp và đưa nó vào mọi dòng log. Lọc theo một id, bạn có câu chuyện của một yêu cầu.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hãy ghi log dạng JSON có cấu trúc, không phải văn bản tự do, để bạn có thể lọc theo id yêu cầu, người dùng, dịch vụ hoặc trạng thái."
+      },
+      "changes": [
+        "+ Id yêu cầu trên mọi dòng log"
+      ],
+      "metrics": {
+        "detect": "2 phút",
+        "locate": "thanh toán → API chống gian lận?",
+        "p99": "2,4 s",
+        "signals": "metric + log"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Trace",
+      "title": "Trace: theo một yêu cầu đi khắp nơi",
+      "chapter": "solution",
+      "body": "Một [[trace phân tán]] ghi lại mỗi chặng của một yêu cầu thành một **span** có thời điểm bắt đầu và thời lượng, tất cả được nối với nhau bằng cùng một trace id. Vẽ dưới dạng thác nước, nó cho thấy chính xác thời gian đi đâu.\n\nTheo dõi yêu cầu màu tím: 2,1 trong 2,4 giây của nó là để chờ API chống gian lận của bên thứ ba.",
+      "callout": {
+        "kind": "insight",
+        "text": "Công cụ: OpenTelemetry để thu thập; Jaeger, Tempo, Honeycomb hoặc Datadog để khám phá. Gắn đo đạc một lần, dùng ở mọi nơi."
+      },
+      "changes": [
+        "+ Trace id được truyền qua các dịch vụ",
+        "~ Đã tìm ra nguyên nhân: API chống gian lận ≈ 88% thời gian"
+      ],
+      "metrics": {
+        "detect": "2 phút",
+        "locate": "5 phút",
+        "p99": "2,4 s",
+        "signals": "metric + log + trace"
+      },
+      "overrides": {
+        "db": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Đã sửa",
+      "title": "Sửa, rồi chứng minh",
+      "chapter": "solution",
+      "body": "Khi đã biết nguyên nhân, cách sửa rất nhanh: gọi API chống gian lận với timeout 300 ms, cache các điểm số gần đây, và xem xét lại những trường hợp chậm hiếm hoi sau đó.\n\nChính các dashboard ấy chứng minh cách sửa hiệu quả: p99 giảm từ 2,4 s xuống 310 ms, và cảnh báo SLO tắt. Tổng thời gian từ lúc báo động tới lúc tìm ra nguyên nhân: vài phút, không phải vài giờ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Metric cho biết có gì đó sai, trace cho thấy ở đâu, log giải thích vì sao. Bạn cần cả ba."
+      },
+      "changes": [
+        "+ Timeout 300 ms + cache cho kiểm tra gian lận",
+        "~ p99 thanh toán 2,4 s → 310 ms"
+      ],
+      "metrics": {
+        "detect": "2 phút",
+        "locate": "5 phút",
+        "p99": "310 ms",
+        "signals": "metric + log + trace"
+      },
+      "overrides": {
+        "pay-3": {
+          "visible": false
+        },
+        "op-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Sự cố",
+      "title": "Tình huống: 3 giờ sáng, lỗi tăng vọt",
+      "chapter": "problem",
+      "body": "Máy nhắn tin reo: lỗi thanh toán nhảy từ 0,1% lên 6% lúc 03:12. Trên dashboard, thủ phạm là kho. Nhật ký triển khai cho thấy một thay đổi cấu hình ở kho lúc 03:10.\n\nThực hành tốt là **giảm thiểu trước**: hoàn tác thay đổi và khôi phục dịch vụ, rồi mới điều tra nguyên nhân gốc, chứ không làm ngược lại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đặt các lần triển khai và thay đổi cấu hình lên dashboard làm điểm đánh dấu. “Cái gì đã thay đổi?” là câu hỏi đầu tiên trong hầu hết mọi sự cố."
+      },
+      "changes": [
+        "+ Thay đổi cấu hình kho lúc 03:10",
+        "- Lỗi thanh toán 0,1% → 6%",
+        "~ Đã rollback lúc 03:16"
+      ],
+      "metrics": {
+        "detect": "1 phút",
+        "locate": "4 phút",
+        "p99": "900 ms",
+        "signals": "metric + log + trace"
+      },
+      "overrides": {
+        "gw-6": {
+          "visible": false
+        },
+        "inv-3": {
+          "visible": false
+        },
+        "pay-3": {
+          "emphasis": true
+        },
+        "ug-6": {
+          "visible": false
+        },
+        "go-6": {
+          "visible": false
+        },
+        "oi-3": {
+          "visible": false
+        },
+        "op-3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Post-mortem",
+      "title": "Rút kinh nghiệm: post-mortem",
+      "chapter": "insight",
+      "body": "Sau sự cố, nhóm viết một bản [[post-mortem]]: dòng thời gian, mức ảnh hưởng, nguyên nhân gốc và các hành động ngăn nó lặp lại.\n\nNó **không đổ lỗi** (blameless): câu hỏi là hệ thống đã để lọt sai sót như thế nào, chứ không phải ai gây ra. Ở đây: thay đổi cấu hình giờ cũng đi qua cùng quy trình triển khai canary như mã.",
+      "callout": {
+        "kind": "insight",
+        "text": "Mỗi sự cố là dữ liệu huấn luyện đắt giá. Những nhóm viết post-mortem tốt ít lặp lại cùng một sai lầm hơn hẳn."
+      },
+      "changes": [
+        "+ Đã viết post-mortem",
+        "+ Hành động: triển khai canary cho cả cấu hình"
+      ],
+      "metrics": {
+        "detect": "1 phút",
+        "locate": "4 phút",
+        "p99": "310 ms",
+        "signals": "metric + log + trace"
+      },
+      "overrides": {
+        "gw-6": {
+          "emphasis": true
+        },
+        "inv-3": {
+          "emphasis": true
+        },
+        "ug-6": {
+          "emphasis": true
+        },
+        "go-6": {
+          "emphasis": true
+        },
+        "oi-3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• **Metric** (tốc độ, lỗi, thời lượng) cho thấy chỗ nào đang đau.\n• **Cảnh báo theo SLO** (điều người dùng cảm nhận), không theo CPU thô.\n• **Log** có id yêu cầu kể câu chuyện của một yêu cầu.\n• **Trace** theo một yêu cầu qua mọi dịch vụ.\n• Khi có sự cố, **giảm thiểu trước**; sau đó viết một bản **post-mortem không đổ lỗi**.\n\nHãy gắn đo đạc trước khi cần đến: lúc hệ thống sập là thời điểm sai để thêm log.",
+      "callout": {
+        "kind": "tip",
+        "text": "Vậy là xong Độ tin cậy. Module tiếp theo: **Kiến trúc**, bắt đầu với monolith và microservice."
+      },
+      "changes": [],
+      "metrics": {
+        "detect": "2 phút",
+        "locate": "5 phút",
+        "p99": "310 ms",
+        "signals": "metric + log + trace"
+      },
+      "overrides": {}
+    }
+  ]
+}

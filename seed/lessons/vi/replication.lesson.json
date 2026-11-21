@@ -1,0 +1,1884 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 620,
+          "y": -374
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "KHÔI PHỤC VỀ MỘT THỜI ĐIỂM\n03:00  khôi phục snapshot đêm qua\n       phát lại log ghi…\n→ 14:02  dừng ở đây: dữ liệu nguyên vẹn\n⚠ 14:03  migration hỏng",
+        "position": {
+          "x": 620,
+          "y": -374
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 620,
+          "y": -376
+        },
+        "width": 363,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "CÁC KIỂU SAO CHÉP\nmột leader     một người ghi · đơn giản\nnhiều leader   ghi theo vùng · xung đột\nkhông leader   ghi N, đọc R · quorum",
+        "position": {
+          "x": 620,
+          "y": -376
+        },
+        "width": 339,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "300.000 người dùng",
+        "position": {
+          "x": 0,
+          "y": -400
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "Alice thấy tên cũ",
+        "position": {
+          "x": 0,
+          "y": -400
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "Alice thấy tên mới",
+        "position": {
+          "x": 0,
+          "y": -400
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Máy chủ ứng dụng",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "CPU 90%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-2",
+        "type": "process",
+        "title": "leader",
+        "description": "CPU 90%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-3",
+        "type": "process",
+        "title": "leader",
+        "description": "CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-4",
+        "type": "process",
+        "title": "leader",
+        "description": "tên: Alice Kim · CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-5",
+        "type": "process",
+        "title": "leader",
+        "description": "tên: Alice Kim · CPU 32%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-6",
+        "type": "process",
+        "title": "leader",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1",
+        "type": "process",
+        "title": "follower",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-2",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 40%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-3",
+        "type": "process",
+        "title": "follower",
+        "description": "tên: Alice Lee · chậm 2 s · CPU 40%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 180,
+        "height": 139,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-4",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 50%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-5",
+        "type": "process",
+        "title": "leader",
+        "description": "✓ thăng cấp · CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-6",
+        "type": "process",
+        "title": "leader",
+        "description": "CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-7",
+        "type": "process",
+        "title": "leader",
+        "description": "⚠ email = NULL · 2 tr dòng · CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f2",
+        "type": "process",
+        "title": "follower",
+        "position": {
+          "x": 180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f2-2",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 40%",
+        "position": {
+          "x": 180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f2-3",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 50%",
+        "position": {
+          "x": 180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f2-4",
+        "type": "process",
+        "title": "follower",
+        "description": "⚠ đã chép lỗi · CPU 40%",
+        "position": {
+          "x": 180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f3",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 40%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f3-2",
+        "type": "process",
+        "title": "follower",
+        "description": "⚠ đã chép lỗi · CPU 40%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "an",
+        "type": "process",
+        "title": "bản sao phân tích",
+        "description": "báo cáo 20 phút",
+        "position": {
+          "x": 0,
+          "y": 380
+        },
+        "width": 188,
+        "height": 130,
+        "shape": "database",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "analysts",
+        "type": "process",
+        "title": "đội tài chính",
+        "position": {
+          "x": 260,
+          "y": 380
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bk",
+        "type": "process",
+        "title": "sao lưu",
+        "description": "✓ snapshot 03:00 + log ghi",
+        "position": {
+          "x": 0,
+          "y": 380
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Clock",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-2",
+        "from": "users-2",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ua-3",
+        "from": "users-3",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "al",
+        "from": "app",
+        "to": "ld",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "al-2",
+        "from": "app",
+        "to": "ld-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "al-3",
+        "from": "app",
+        "to": "ld-3",
+        "label": "ghi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "al-4",
+        "from": "app",
+        "to": "ld-4",
+        "label": "ghi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "al-5",
+        "from": "app",
+        "to": "ld-5",
+        "label": "ghi + lượt đọc của Alice",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-6",
+        "from": "app",
+        "to": "ld-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1",
+        "from": "ld-2",
+        "to": "f1",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1-2",
+        "from": "ld-3",
+        "to": "f1-2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1-3",
+        "from": "ld-4",
+        "to": "f1-3",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1-4",
+        "from": "ld-5",
+        "to": "f1-2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1-5",
+        "from": "ld-6",
+        "to": "f1-4",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "none"
+      },
+      {
+        "id": "r2",
+        "from": "ld-2",
+        "to": "f2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2-2",
+        "from": "ld-3",
+        "to": "f2-2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2-3",
+        "from": "ld-4",
+        "to": "f2-2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2-4",
+        "from": "ld-5",
+        "to": "f2-2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2-5",
+        "from": "ld-6",
+        "to": "f2-3",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "none"
+      },
+      {
+        "id": "a1",
+        "from": "app",
+        "to": "f1-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a1-2",
+        "from": "app",
+        "to": "f1-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "a1-3",
+        "from": "app",
+        "to": "f1-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "a2",
+        "from": "app",
+        "to": "f2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a2-2",
+        "from": "app",
+        "to": "f2-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "al2",
+        "from": "app",
+        "to": "f1-5",
+        "label": "ghi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "al2-2",
+        "from": "app",
+        "to": "f1-6",
+        "label": "ghi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "al2-3",
+        "from": "app",
+        "to": "f1-7",
+        "label": "ghi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1n",
+        "from": "f1-5",
+        "to": "f3",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1n-2",
+        "from": "f1-6",
+        "to": "f3",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1n-3",
+        "from": "f1-7",
+        "to": "f3-2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2n",
+        "from": "f1-5",
+        "to": "f2-2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2n-2",
+        "from": "f1-6",
+        "to": "f2-2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2n-3",
+        "from": "f1-7",
+        "to": "f2-4",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "a1n",
+        "from": "app",
+        "to": "f3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a1n-2",
+        "from": "app",
+        "to": "f3-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a2n",
+        "from": "app",
+        "to": "f2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a2n-2",
+        "from": "app",
+        "to": "f2-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "r3",
+        "from": "f1-6",
+        "to": "an",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.65,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep",
+        "from": "analysts",
+        "to": "an",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bkl",
+        "from": "f1-7",
+        "to": "bk",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Sao chép dữ liệu",
+    "summary": "Giữ các bản sao của cơ sở dữ liệu trên nhiều máy: để đọc được nhiều hơn và để sống sót.",
+    "minutes": 12,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "dbLoad",
+        "label": "CPU của CSDL"
+      },
+      {
+        "id": "reads",
+        "label": "Năng lực đọc"
+      },
+      {
+        "id": "lag",
+        "label": "Độ trễ bản sao"
+      },
+      {
+        "id": "writes",
+        "label": "Ghi"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Leader, follower và log sao chép",
+        "step": "s2"
+      },
+      {
+        "text": "Mở rộng lượt đọc bằng bản sao",
+        "step": "s3"
+      },
+      {
+        "text": "Độ trễ sao chép và đọc được chính thứ mình ghi",
+        "step": "s5"
+      },
+      {
+        "text": "Failover khi leader chết",
+        "step": "s7"
+      },
+      {
+        "text": "Bản sao phân tích, sao lưu và các kiểu sao chép",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "users-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "users-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ld": {
+      "until": "s2"
+    },
+    "ld-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ld-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ld-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ld-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ld-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f1-2": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "f1-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "f1-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f1-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f1-6": {
+      "from": "s8"
+    },
+    "f1-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f2-2": {
+      "from": "s3"
+    },
+    "f2-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f2-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f3": {
+      "from": "s7"
+    },
+    "f3-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "an": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "analysts": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bk": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-2-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ua-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "al": {
+      "until": "s2"
+    },
+    "al-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "al-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "al-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "al-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "al-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "r1-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "r1-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "r1-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "r1-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "r2-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "r2-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "r2-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "r2-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "a1": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "a1-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a1-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "a2": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "a2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "al2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "al2-2": {
+      "from": "s8"
+    },
+    "al2-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "r1n": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "r1n-2": {
+      "from": "s8"
+    },
+    "r1n-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "r2n": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "r2n-2": {
+      "from": "s8"
+    },
+    "r2n-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a1n": {
+      "from": "s7"
+    },
+    "a1n-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a2n": {
+      "from": "s7"
+    },
+    "a2n-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "r3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rep": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bkl": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Một CSDL",
+      "title": "Một cơ sở dữ liệu làm mọi việc",
+      "chapter": "problem",
+      "body": "Mọi lượt đọc và mọi lượt ghi đều đến một máy chủ cơ sở dữ liệu duy nhất. Nó bận 90%, và phần lớn là đọc: trang sản phẩm, hồ sơ, bảng tin.\n\nNó cũng là điểm lỗi duy nhất: nó chết thì mọi thứ chết theo.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hầu hết ứng dụng đọc nhiều hơn ghi rất nhiều: thường 10 hoặc 100 lượt đọc cho mỗi lượt ghi."
+      },
+      "changes": [],
+      "metrics": {
+        "dbLoad": "90%",
+        "reads": "1×",
+        "writes": "ổn"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Bản sao",
+      "title": "Giữ bản sao: leader và follower",
+      "chapter": "solution",
+      "body": "Thêm hai [[follower]] (bản sao). [[Leader]] vẫn nhận mọi lượt ghi, và truyền từng thay đổi tới các follower qua một log sao chép.\n\nMỗi follower phát lại các thay đổi và cuối cùng có cùng dữ liệu.",
+      "callout": {
+        "kind": "tip",
+        "text": "Còn gọi là primary/replica hay master/slave. Có sẵn trong PostgreSQL, MySQL, MongoDB và hầu hết các hệ khác."
+      },
+      "changes": [
+        "+ Hai follower",
+        "+ Luồng sao chép từ leader"
+      ],
+      "metrics": {
+        "dbLoad": "90%",
+        "reads": "1×",
+        "lag": "0 s",
+        "writes": "ổn"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Bản sao đọc",
+      "title": "Gửi lượt đọc tới follower",
+      "chapter": "solution",
+      "body": "Giờ ứng dụng gửi **lượt đọc** tới các follower và chỉ gửi **lượt ghi** tới leader. Năng lực đọc tăng gấp đôi (hai máy giờ chỉ làm việc đọc), và leader hạ nhiệt xuống 30%.\n\nCần đọc nhiều hơn? Thêm một follower nữa.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cách này tuyệt vời với ứng dụng đọc nhiều. Nó không giúp ứng dụng ghi nhiều: mọi lượt ghi vẫn đi qua một leader."
+      },
+      "changes": [
+        "~ Đọc → follower",
+        "~ Ghi → chỉ leader",
+        "~ CPU leader 90% → 30%"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ổn"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Độ trễ",
+      "title": "Bản sao bị tụt lại",
+      "chapter": "problem",
+      "body": "Sao chép thường là [[bất đồng bộ]]: leader xác nhận lượt ghi ngay và gửi nó tới follower một lát sau.\n\nAlice đổi tên, rồi tải lại hồ sơ. Lượt đọc rơi vào một follower chưa bắt kịp: cô thấy tên **cũ** và nghĩ việc lưu đã thất bại.",
+      "callout": {
+        "kind": "warning",
+        "text": "Độ trễ thường chỉ vài mili giây, nhưng khi tải nặng có thể lên tới vài giây hoặc vài phút."
+      },
+      "changes": [
+        "+ Alice ghi tên mới",
+        "- Follower vẫn giữ tên cũ"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "2 s",
+        "writes": "ổn"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "f1-2": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        },
+        "a1": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Đọc thứ mình ghi",
+      "title": "Đọc được chính thứ mình ghi",
+      "chapter": "technique",
+      "body": "Một cách sửa phổ biến: trong vài giây sau khi ai đó ghi, gửi lượt đọc *của người đó* tới leader. Mọi người khác vẫn dùng follower.\n\nLựa chọn còn lại là sao chép [[đồng bộ]]: leader chờ một follower xác nhận rồi mới nói “đã lưu”. Không có độ trễ, nhưng ghi chậm hơn, và bị treo nếu follower đó chết.",
+      "callout": {
+        "kind": "tip",
+        "text": "Với dữ liệu không thể để mất, cách bố trí phổ biến là một follower đồng bộ (cho an toàn) và phần còn lại bất đồng bộ (cho tốc độ). Nhiều hệ thống vẫn hoàn toàn bất đồng bộ và chấp nhận mất những lượt ghi cuối cùng khi sập."
+      },
+      "changes": [
+        "~ Lượt đọc của Alice → leader trong 5 s",
+        "~ Cô thấy tên mới"
+      ],
+      "metrics": {
+        "dbLoad": "32%",
+        "reads": "2×",
+        "lag": "2 s",
+        "writes": "ổn"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "f1-2": {
+          "emphasis": true
+        },
+        "ua": {
+          "visible": false
+        },
+        "a1": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Leader chết",
+      "title": "Leader chết",
+      "chapter": "problem",
+      "body": "Leader sập. Lượt đọc vẫn chạy (các follower vẫn có dữ liệu), nhưng giờ mọi lượt ghi đều lỗi. Không ai đăng ký, đăng bài hay thanh toán được.",
+      "callout": {
+        "kind": "warning",
+        "text": "Follower bảo vệ lượt đọc. Lượt ghi cần một leader mới."
+      },
+      "changes": [
+        "- Leader sập",
+        "- Ghi bị lỗi"
+      ],
+      "metrics": {
+        "dbLoad": "0%",
+        "reads": "2×",
+        "writes": "lỗi"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "f2-2": {
+          "visible": false
+        },
+        "ua": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Failover",
+      "title": "Failover: thăng cấp một follower",
+      "chapter": "solution",
+      "body": "[[Failover]]: follower cập nhật nhất được thăng lên leader, ứng dụng trỏ lượt ghi về đó, và follower còn lại sao chép từ nó. Một follower mới được thêm vào để khôi phục dự phòng.\n\nLượt ghi trở lại sau vài giây đến một phút. Những lượt ghi leader cũ chưa kịp gửi có thể bị mất: thêm một lý do để giữ một follower đồng bộ.\n\nPhần khó là *chắc chắn* leader đã chết. Nếu nó chỉ chậm hay bị cắt mạng, giờ bạn có hai leader cùng nhận ghi: [[split brain]]. Làm việc này an toàn cần một cuộc bỏ phiếu theo đa số: xem *Đồng thuận & leader*.",
+      "callout": {
+        "kind": "insight",
+        "text": "Cùng ý tưởng với bộ cân bằng tải dự phòng: một bản thay thế sẵn sàng tiếp quản. Cơ sở dữ liệu được quản lý tự động hóa việc này."
+      },
+      "changes": [
+        "- Leader cũ bị gỡ",
+        "~ Follower được thăng lên leader",
+        "+ Follower mới"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ổn"
+      },
+      "overrides": {
+        "f2-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Báo cáo",
+      "title": "Tình huống: báo cáo 20 phút",
+      "chapter": "problem",
+      "body": "Đội tài chính chạy báo cáo hằng tháng: một truy vấn 20 phút quét đơn hàng của nhiều năm. Họ trỏ nó vào một follower, và follower đó, vốn cũng phục vụ lượt đọc của ứng dụng, gần như đứng hình và tụt lại vài phút.\n\nCách sửa: một **bản sao phân tích** riêng mà ứng dụng không bao giờ đọc. Ở đó truy vấn nặng muốn chậm bao nhiêu cũng được.",
+      "callout": {
+        "kind": "tip",
+        "text": "Ở quy mô lớn hơn, sao chép dữ liệu sang một kho dữ liệu phân tích riêng (BigQuery, Snowflake, Redshift) được xây cho những lần quét khổng lồ."
+      },
+      "changes": [
+        "+ Bản sao phân tích, nằm ngoài nhóm đọc của ứng dụng",
+        "~ Báo cáo không còn làm chậm ứng dụng"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ổn"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s9",
+      "short": "Không phải sao lưu",
+      "title": "Tình huống: migration thiếu WHERE",
+      "chapter": "problem",
+      "body": "Một lần deploy chạy migration thiếu `WHERE`: `UPDATE users SET email = NULL`. Leader làm theo, và việc sao chép trung thành chép lỗi đó sang mọi follower trong một giây.\n\nBản sao bảo vệ bạn khi một *máy* hỏng, không phải khi ghi sai. Muốn vậy bạn cần [[sao lưu]]: một snapshot mỗi đêm cộng với log ghi được lưu trữ, cùng nhau có thể dựng lại cơ sở dữ liệu như nó từng ở bất kỳ thời điểm nào bạn chọn: [[khôi phục về một thời điểm]] (point-in-time recovery).",
+      "callout": {
+        "kind": "warning",
+        "text": "Bản sao lưu chưa từng được khôi phục là một niềm hy vọng, không phải bản sao lưu. Hãy diễn tập khôi phục, và biết một lần mất bao lâu."
+      },
+      "changes": [
+        "- Migration hỏng xóa trắng một cột",
+        "- Mọi bản sao chép theo thiệt hại",
+        "+ Snapshot mỗi đêm + kho lưu log ghi",
+        "~ Khôi phục về 14:02, một phút trước lỗi"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ổn"
+      },
+      "overrides": {
+        "f1-6": {
+          "visible": false
+        },
+        "f2-2": {
+          "visible": false
+        },
+        "f3": {
+          "visible": false
+        },
+        "al2-2": {
+          "visible": false
+        },
+        "r1n-2": {
+          "visible": false
+        },
+        "r2n-2": {
+          "visible": false
+        },
+        "a1n": {
+          "visible": false
+        },
+        "a2n": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Các kiểu",
+      "title": "Ba cách sao chép",
+      "chapter": "insight",
+      "body": "Mọi thứ đến giờ là **một leader**: một người ghi, nhiều người đọc. Nó đơn giản, và là cách hầu hết cơ sở dữ liệu SQL làm.\n\n**Nhiều leader** đặt một leader ở mỗi vùng để lượt ghi diễn ra tại chỗ, với cái giá là xung đột khi hai vùng sửa cùng một dòng. Các hệ **không leader** (Cassandra, Riak, ScyllaDB, những cơ sở dữ liệu “kiểu Dynamo”) ghi vào nhiều bản sao cùng lúc và đọc từ nhiều bản: chính là quorum trong bài về CAP.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hãy ưu tiên một leader cho tới khi bạn có lý do cụ thể (ghi toàn cầu, độ sẵn sàng cực cao) để gánh việc xử lý xung đột."
+      },
+      "changes": [],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ổn"
+      },
+      "overrides": {
+        "f1-6": {
+          "emphasis": true
+        },
+        "f2-2": {
+          "emphasis": true
+        },
+        "f3": {
+          "emphasis": true
+        },
+        "al2-2": {
+          "emphasis": true
+        },
+        "r1n-2": {
+          "emphasis": true
+        },
+        "r2n-2": {
+          "emphasis": true
+        },
+        "a1n": {
+          "emphasis": true
+        },
+        "a2n": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Một **leader** nhận lượt ghi và truyền chúng tới các **follower**.\n• Follower **mở rộng lượt đọc** và sống sót khi mất một máy.\n• Bản sao bất đồng bộ **bị trễ**: chuyển lượt đọc của người dùng về leader ngay sau khi họ ghi.\n• Khi leader chết, **failover** sang một follower.\n• Để **phân tích** nặng chạy trên bản sao riêng.\n• Bản sao **không phải sao lưu**: giữ snapshot và diễn tập khôi phục.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Sharding**, khi ngay cả leader cũng không theo kịp lượt ghi."
+      },
+      "changes": [],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ổn"
+      },
+      "overrides": {}
+    }
+  ]
+}

@@ -1,0 +1,2605 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "dc",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -9
+        },
+        "width": 452,
+        "height": 625,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "dc-label",
+        "type": "text",
+        "title": "MỘT TRUNG TÂM DỮ LIỆU · MẤT ĐIỆN",
+        "position": {
+          "x": -85,
+          "y": -301
+        },
+        "width": 261,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "dc"
+      },
+      {
+        "id": "zb-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 178,
+          "y": 112
+        },
+        "width": 304,
+        "height": 383,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "zb-2-label",
+        "type": "text",
+        "title": "REGION · MỸ",
+        "position": {
+          "x": 86,
+          "y": -59
+        },
+        "width": 100,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "zb-2"
+      },
+      {
+        "id": "zb",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 178,
+          "y": 101
+        },
+        "width": 304,
+        "height": 406,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "zb-label",
+        "type": "text",
+        "title": "ZONE B",
+        "position": {
+          "x": 67,
+          "y": -81
+        },
+        "width": 62,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "zb"
+      },
+      {
+        "id": "za-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -178,
+          "y": 112
+        },
+        "width": 304,
+        "height": 383,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "za-3-label",
+        "type": "text",
+        "title": "REGION · EU",
+        "position": {
+          "x": -270,
+          "y": -59
+        },
+        "width": 100,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "za-3"
+      },
+      {
+        "id": "za-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -178,
+          "y": 101
+        },
+        "width": 304,
+        "height": 405,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "za-2-label",
+        "type": "text",
+        "title": "ZONE A · NGOẠI TUYẾN",
+        "position": {
+          "x": -235,
+          "y": -81
+        },
+        "width": 169,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "za-2"
+      },
+      {
+        "id": "za",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -178,
+          "y": 97
+        },
+        "width": 304,
+        "height": 414,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "za-label",
+        "type": "text",
+        "title": "ZONE A",
+        "position": {
+          "x": -289,
+          "y": -89
+        },
+        "width": 62,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "za"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 547,
+          "y": -405
+        },
+        "width": 289,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "CÁC CHỮ 9\n99%     → ngừng 3,7 ngày / năm\n99,9%   → 8,8 giờ\n99,99%  → 53 phút\n99,999% → 5 phút\n⚠ nối tiếp: 0,999³ = 99,7%",
+        "position": {
+          "x": 547,
+          "y": -405
+        },
+        "width": 265,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 575,
+          "y": -405
+        },
+        "width": 346,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "LẦN FAILOVER NÀY\nphát hiện: lỡ 3 health check     10 s\nthăng cấp follower               20 s\nkết nối lại ứng dụng             30 s\n→ RTO ≈ 1 phút\n⚠ RPO ≈ mất 2 s ghi bất đồng bộ",
+        "position": {
+          "x": 575,
+          "y": -405
+        },
+        "width": 322,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "1 triệu người dùng",
+        "position": {
+          "x": 0,
+          "y": -440
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-2",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "⚠ điểm lỗi đơn",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-3",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "cặp chủ động–thụ động",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-4",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "lb-5",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "cấp region · trải qua các zone",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 228,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-6",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "1% → canary",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-7",
+        "type": "process",
+        "title": "DNS toàn cầu",
+        "description": "region khỏe gần nhất",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1",
+        "type": "process",
+        "title": "Ứng dụng",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1-2",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "⚠ điểm lỗi đơn",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1-3",
+        "type": "process",
+        "title": "Ứng dụng",
+        "position": {
+          "x": -110,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1-4",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": -110,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "a1-5",
+        "type": "process",
+        "title": "Ứng dụng",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1-6",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za-2"
+      },
+      {
+        "id": "a1-7",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "bị bài kiểm thử hỗn loạn giết",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za"
+      },
+      {
+        "id": "a1-8",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "v2.4 · đang sập",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za"
+      },
+      {
+        "id": "a1-9",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "v2.3 · 99%",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "position": {
+          "x": 0,
+          "y": 220
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "⚠ điểm lỗi đơn",
+        "position": {
+          "x": 0,
+          "y": 220
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "leader",
+        "position": {
+          "x": -110,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "leader",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": -110,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "leader",
+        "position": {
+          "x": -176,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za"
+      },
+      {
+        "id": "db-6",
+        "type": "process",
+        "title": "leader",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": -176,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za-2"
+      },
+      {
+        "id": "db-7",
+        "type": "process",
+        "title": "primary EU",
+        "position": {
+          "x": -176,
+          "y": 220
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za-3"
+      },
+      {
+        "id": "a2",
+        "type": "process",
+        "title": "Ứng dụng",
+        "position": {
+          "x": 110,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a2-2",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": 110,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "a2-3",
+        "type": "process",
+        "title": "Ứng dụng",
+        "position": {
+          "x": 176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a2-4",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "v2.4 · đang sập",
+        "position": {
+          "x": 176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb"
+      },
+      {
+        "id": "a2-5",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "v2.4 canary · 1%",
+        "position": {
+          "x": 176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb"
+      },
+      {
+        "id": "db2",
+        "type": "process",
+        "title": "follower",
+        "position": {
+          "x": 110,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db2-2",
+        "type": "process",
+        "title": "follower",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": 110,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "db2-3",
+        "type": "process",
+        "title": "follower",
+        "position": {
+          "x": 176,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb"
+      },
+      {
+        "id": "db2-4",
+        "type": "process",
+        "title": "leader",
+        "description": "✓ thăng cấp",
+        "position": {
+          "x": 176,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb"
+      },
+      {
+        "id": "db2-5",
+        "type": "process",
+        "title": "replica Mỹ",
+        "position": {
+          "x": 176,
+          "y": 220
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb-2"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ul",
+        "from": "users",
+        "to": "lb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ul-2",
+        "from": "users",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ul-3",
+        "from": "users",
+        "to": "lb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-4",
+        "from": "users",
+        "to": "lb-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-5",
+        "from": "users",
+        "to": "lb-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-6",
+        "from": "users",
+        "to": "lb-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-7",
+        "from": "users",
+        "to": "lb-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-8",
+        "from": "users",
+        "to": "lb-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la1",
+        "from": "lb",
+        "to": "a1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "la1-2",
+        "from": "lb-2",
+        "to": "a1-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "la1-3",
+        "from": "lb-3",
+        "to": "a1-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la1-4",
+        "from": "lb-4",
+        "to": "a1-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la1-5",
+        "from": "lb-5",
+        "to": "a1-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la1-6",
+        "from": "lb-5",
+        "to": "a1-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la1-7",
+        "from": "lb-5",
+        "to": "a1-7",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la1-8",
+        "from": "lb-5",
+        "to": "a1-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la1-9",
+        "from": "lb-6",
+        "to": "a1-9",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la1-10",
+        "from": "lb-7",
+        "to": "a1-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "adb",
+        "from": "a1",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "adb-2",
+        "from": "a1-2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "adb-3",
+        "from": "a1-3",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "adb-4",
+        "from": "a1-4",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "adb-5",
+        "from": "a1-5",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "adb-6",
+        "from": "a1-7",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "adb-7",
+        "from": "a1-8",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "adb-8",
+        "from": "a1-9",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "adb-9",
+        "from": "a1-5",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la2",
+        "from": "lb-3",
+        "to": "a2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la2-2",
+        "from": "lb-4",
+        "to": "a2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la2-3",
+        "from": "lb-5",
+        "to": "a2-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la2-4",
+        "from": "lb-5",
+        "to": "a2-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la2-5",
+        "from": "lb-6",
+        "to": "a2-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la2-6",
+        "from": "lb-7",
+        "to": "a2-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "a2db",
+        "from": "a2",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 110,
+            "y": 110
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "a2db-2",
+        "from": "a2-2",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 110,
+            "y": 110
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "a2db-3",
+        "from": "a2-3",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 176,
+            "y": 110
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "a2db-4",
+        "from": "a2-4",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 176,
+            "y": 110
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "a2db-5",
+        "from": "a2-5",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 176,
+            "y": 110
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "a2db-6",
+        "from": "a2-3",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 176,
+            "y": 110
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "rep",
+        "from": "db-3",
+        "to": "db2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep-2",
+        "from": "db-4",
+        "to": "db2-2",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "rep-3",
+        "from": "db-5",
+        "to": "db2-3",
+        "label": "sao chép giữa các zone",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep-4",
+        "from": "db-5",
+        "to": "db2-3",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep-5",
+        "from": "db-7",
+        "to": "db2-5",
+        "label": "giữa các region · trễ ~100 ms",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "a2d2",
+        "from": "a2-3",
+        "to": "db2-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      }
+    ]
+  },
+  "meta": {
+    "title": "Dự phòng & failover",
+    "summary": "Rồi mọi thứ cũng sẽ hỏng. Hãy thiết kế để không một sự cố đơn lẻ nào đánh sập được bạn.",
+    "minutes": 12,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "avail",
+        "label": "Độ sẵn sàng"
+      },
+      {
+        "id": "downtime",
+        "label": "Thời gian chết / năm"
+      },
+      {
+        "id": "spofs",
+        "label": "Điểm lỗi đơn"
+      },
+      {
+        "id": "survives",
+        "label": "Sống sót khi mất"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Đo độ sẵn sàng bằng số chữ 9",
+        "step": "s1"
+      },
+      {
+        "text": "Tìm và loại bỏ điểm lỗi đơn",
+        "step": "s3"
+      },
+      {
+        "text": "Rải bản sao qua các miền sự cố",
+        "step": "s5"
+      },
+      {
+        "text": "RTO, RPO và kiểm thử failover",
+        "step": "s7"
+      },
+      {
+        "text": "Triển khai lỗi, canary và region",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "lb": {
+      "until": "s2"
+    },
+    "lb-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lb-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lb-5": {
+      "from": "s5"
+    },
+    "lb-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "lb-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "a1": {
+      "until": "s2"
+    },
+    "a1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "a1-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a1-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a1-5": {
+      "from": "s5"
+    },
+    "a1-6": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "a1-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "a1-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a1-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "db": {
+      "until": "s2"
+    },
+    "db-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "db-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "db-5": {
+      "from": "s5"
+    },
+    "db-6": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "db-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "a2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a2-3": {
+      "from": "s5"
+    },
+    "a2-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a2-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "db2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "db2-3": {
+      "from": "s5"
+    },
+    "db2-4": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "db2-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dc": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "za": {
+      "from": "s5"
+    },
+    "za-2": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "za-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "zb": {
+      "from": "s5"
+    },
+    "zb-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dc-label": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "zb-2-label": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "zb-label": {
+      "from": "s5"
+    },
+    "za-3-label": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "za-2-label": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "za-label": {
+      "from": "s5"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ul": {
+      "until": "s2"
+    },
+    "ul-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ul-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ul-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ul-5": {
+      "from": "s5"
+    },
+    "ul-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ul-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ul-8": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "la1": {
+      "until": "s2"
+    },
+    "la1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "la1-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la1-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "la1-5": {
+      "from": "s5"
+    },
+    "la1-6": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "la1-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "la1-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "la1-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "la1-10": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "adb": {
+      "until": "s2"
+    },
+    "adb-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "adb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "adb-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "adb-5": {
+      "from": "s5"
+    },
+    "adb-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "adb-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "adb-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "adb-9": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "la2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "la2-3": {
+      "from": "s5"
+    },
+    "la2-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "la2-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "la2-6": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "a2db": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a2db-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a2db-3": {
+      "from": "s5"
+    },
+    "a2db-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a2db-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "a2db-6": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "rep": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "rep-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "rep-3": {
+      "from": "s5"
+    },
+    "rep-4": {
+      "from": "s8",
+      "until": "s11"
+    },
+    "rep-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "a2d2": {
+      "from": "s6",
+      "until": "s8"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Chữ 9",
+      "title": "Mỗi thứ một cái thì sẵn sàng đến đâu?",
+      "chapter": "setup",
+      "body": "Một stack đơn giản: một bộ cân bằng tải, một máy chủ ứng dụng và một cơ sở dữ liệu. Mỗi cái chạy được 99,9% thời gian, nghe rất ổn.\n\nNhưng một yêu cầu cần **cả ba** cùng hoạt động, nên độ sẵn sàng nhân với nhau: 0,999 × 0,999 × 0,999 ≈ **99,7%**. Tức khoảng 26 giờ ngừng hoạt động mỗi năm.",
+      "callout": {
+        "kind": "insight",
+        "text": "Độ sẵn sàng thường được nói bằng “số chữ 9”. Mỗi chữ 9 thêm vào giảm thời gian ngừng cho phép đi 10 lần."
+      },
+      "changes": [],
+      "metrics": {
+        "avail": "99,7%",
+        "downtime": "26 giờ",
+        "spofs": "3",
+        "survives": "không gì"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "SPOF",
+      "title": "Mỗi hộp là một điểm lỗi đơn",
+      "chapter": "problem",
+      "body": "[[Điểm lỗi đơn]] (single point of failure, SPOF) là bất cứ thứ gì chỉ riêng nó hỏng cũng đủ làm sập hệ thống. Ở đây, đó là mọi thành phần.\n\nMột ổ đĩa hỏng, một kernel panic, một lần triển khai hỏng: chỉ một trong số đó là một triệu người dùng thấy trang lỗi.",
+      "callout": {
+        "kind": "warning",
+        "text": "Phần cứng hỏng, phần mềm sập và con người mắc lỗi. Hãy giả định mọi thứ đó sẽ xảy ra; câu hỏi là cái gì vỡ khi nó xảy ra."
+      },
+      "changes": [
+        "+ Đã đánh dấu 3 điểm lỗi đơn"
+      ],
+      "metrics": {
+        "avail": "99,7%",
+        "downtime": "26 giờ",
+        "spofs": "3",
+        "survives": "không gì"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Mỗi thứ hai cái",
+      "title": "Dự phòng: mọi thứ đều có hai",
+      "chapter": "solution",
+      "body": "Thêm một bản dự phòng cho mỗi phần: bộ cân bằng tải chạy thành cặp chủ động–thụ động, hai máy chủ ứng dụng chia lưu lượng, và cơ sở dữ liệu có một follower sẵn sàng tiếp quản.\n\nGiờ *cả hai* bản sao phải hỏng cùng lúc mới có sự cố: 0,1% × 0,1% = 0,0001%. Mất một máy bất kỳ chẳng còn là chuyện gì.",
+      "callout": {
+        "kind": "tip",
+        "text": "Trên giấy, các phần song song nhân xác suất hỏng của chúng: hai bản sao 99,9% cho 99,9999%. Cặp thực tế kém hơn (failover tốn thời gian, và hai bản sao vẫn chung một tòa nhà, một mạng và các lần triển khai của bạn), nên ta tính dè dặt 99,95%."
+      },
+      "changes": [
+        "+ Cặp bộ cân bằng tải",
+        "+ Máy chủ ứng dụng thứ hai",
+        "+ Follower cơ sở dữ liệu",
+        "~ Điểm lỗi đơn 3 → 0"
+      ],
+      "metrics": {
+        "avail": "99,95%",
+        "downtime": "4 giờ",
+        "spofs": "0",
+        "survives": "một máy chủ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Một tòa nhà",
+      "title": "Những bản sao cùng hỏng",
+      "chapter": "problem",
+      "body": "Tất cả các bản sao đó nằm trong một trung tâm dữ liệu. Rồi một vụ mất điện (hoặc lụt, đứt cáp quang, hỏng hệ thống làm mát) làm sập cả tòa nhà, kéo theo mọi bản sao “dự phòng”.\n\nNhững sự cố đánh trúng nhiều thành phần cùng lúc là [[sự cố tương quan]]. Dự phòng chỉ có ích nếu các bản sao hỏng một cách *độc lập*.",
+      "callout": {
+        "kind": "warning",
+        "text": "Dùng chung nguồn điện, mạng, rack, phiên bản phần mềm, thậm chí cùng một lần đẩy cấu hình sai, đều có thể đánh sập mọi bản sao cùng lúc."
+      },
+      "changes": [
+        "+ Mọi thứ trong một trung tâm dữ liệu",
+        "- Mất điện trung tâm dữ liệu",
+        "- Mọi bản sao sập cùng lúc"
+      ],
+      "metrics": {
+        "avail": "99,95%",
+        "downtime": "+ sập 6 giờ",
+        "spofs": "1",
+        "survives": "một máy chủ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Zone",
+      "title": "Rải qua các availability zone",
+      "chapter": "solution",
+      "body": "Các region đám mây được chia thành nhiều [[availability zone]]: những trung tâm dữ liệu riêng biệt, cách nhau vài đến vài chục kilômét, có nguồn điện và mạng riêng, nối với nhau bằng đường truyền nhanh.\n\nĐặt một máy chủ ứng dụng và một bản sao cơ sở dữ liệu ở mỗi zone. Một thảm họa trên toàn zone giờ chỉ đánh sập một nửa.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cùng ý tưởng ở mọi quy mô: rải qua các rack, các zone và, với hệ thống quan trọng nhất, cả các region."
+      },
+      "changes": [
+        "- Một trung tâm dữ liệu",
+        "+ Zone A và zone B",
+        "~ Mỗi tầng một bản sao ở mỗi zone"
+      ],
+      "metrics": {
+        "avail": "99,99%",
+        "downtime": "53 phút",
+        "spofs": "0",
+        "survives": "một zone"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Zone sập",
+      "title": "Zone A tắt ngúm: failover",
+      "chapter": "solution",
+      "body": "Zone A mất điện. Health check thất bại, bộ cân bằng tải ngừng gửi lưu lượng tới đó, và follower ở zone B được thăng cấp thành leader.\n\nNgười dùng đang giữa chừng một yêu cầu có thể thấy lỗi và thử lại; trong vòng một phút mọi thứ chạy từ zone B.",
+      "callout": {
+        "kind": "insight",
+        "text": "Zone B phải có đủ năng lực dư để một mình gánh toàn bộ lưu lượng. Dự phòng mà bạn không đủ sức chạy trên đó thì không phải dự phòng."
+      },
+      "changes": [
+        "- Zone A ngoại tuyến",
+        "~ Lưu lượng → chỉ zone B",
+        "~ Follower được thăng cấp thành leader"
+      ],
+      "metrics": {
+        "avail": "99,99%",
+        "downtime": "53 phút",
+        "spofs": "0",
+        "survives": "một zone"
+      },
+      "overrides": {
+        "a1-5": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "db2-3": {
+          "visible": false
+        },
+        "za": {
+          "visible": false
+        },
+        "za-label": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "RTO & RPO",
+      "title": "Nhanh đến đâu, và mất bao nhiêu?",
+      "chapter": "technique",
+      "body": "Hai con số mô tả một lần failover. [[RTO]] (recovery time objective): bao lâu thì dịch vụ trở lại. [[RPO]] (recovery point objective): bạn chấp nhận mất bao nhiêu dữ liệu gần nhất.\n\nSao chép bất đồng bộ nghĩa là follower có thể chậm vài giây: những lần ghi đó mất. Sao chép đồng bộ đưa RPO về 0, đổi lại ghi chậm hơn.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hãy cùng phía kinh doanh quyết định RTO và RPO trước; chúng quyết định thiết kế (và hóa đơn)."
+      },
+      "changes": [],
+      "metrics": {
+        "avail": "99,99%",
+        "downtime": "53 phút",
+        "spofs": "0",
+        "survives": "một zone"
+      },
+      "overrides": {
+        "a1-5": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "db2-3": {
+          "visible": false
+        },
+        "za": {
+          "visible": false
+        },
+        "za-label": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Hỗn loạn",
+      "title": "Failover chưa kiểm thử thì không chạy",
+      "chapter": "insight",
+      "body": "Một đường failover không bao giờ chạy sẽ âm thầm mục ruỗng: cấu hình bị lệch, bản dự phòng quá nhỏ, script có lỗi chính tả. Bạn chỉ phát hiện khi sự cố thật xảy ra.\n\nVì vậy các nhóm *cố tình* làm hỏng mọi thứ, trên production, trong giờ làm việc: [[chaos engineering]]. Ở đây một bài kiểm thử giết một máy chủ ứng dụng và mọi người theo dõi hệ thống xoay xở.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chaos Monkey của Netflix giết máy chủ ngẫu nhiên mỗi ngày. Bắt đầu nhỏ hơn: một game day có kế hoạch, mỗi lần một sự cố."
+      },
+      "changes": [
+        "~ Zone A đã khôi phục",
+        "- Máy chủ ứng dụng bị giết có chủ đích",
+        "~ Lưu lượng tiếp tục ở máy kia"
+      ],
+      "metrics": {
+        "avail": "99,99%",
+        "downtime": "53 phút",
+        "spofs": "0",
+        "survives": "một zone"
+      },
+      "overrides": {
+        "a1-5": {
+          "visible": false
+        },
+        "db-5": {
+          "emphasis": true
+        },
+        "db2-3": {
+          "emphasis": true
+        },
+        "za": {
+          "emphasis": true
+        },
+        "za-label": {
+          "emphasis": true
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "a2db-3": {
+          "emphasis": true
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Triển khai lỗi",
+      "title": "Tình huống: bug có mặt khắp nơi cùng lúc",
+      "chapter": "problem",
+      "body": "Một bản phát hành mới có bug được đẩy tới mọi máy chủ ứng dụng ở cả hai zone cùng một lúc. Mọi bản sao sập trên cùng một yêu cầu: dự phòng vô ích khi mọi bản sao dùng chung một đoạn code hỏng.\n\nĐây là nguyên nhân phổ biến nhất của các sự cố thực tế: không phải phần cứng, mà là **thay đổi**, dù là code, cấu hình hay hạ tầng.",
+      "callout": {
+        "kind": "warning",
+        "text": "Bản sao giống hệt nhau hỏng giống hệt nhau. Một thay đổi tồi là sự cố tương quan mà bạn tự gây ra cho mình."
+      },
+      "changes": [
+        "+ Phát hành v2.4 lên mọi máy chủ cùng lúc",
+        "- Cả hai máy chủ ứng dụng sập"
+      ],
+      "metrics": {
+        "avail": "99,99%",
+        "downtime": "+ sập 40 phút",
+        "spofs": "0",
+        "survives": "một zone"
+      },
+      "overrides": {
+        "a1-5": {
+          "visible": false
+        },
+        "a2-3": {
+          "visible": false
+        },
+        "ul-5": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "la2-3": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Canary",
+      "title": "Phát hành canary",
+      "chapter": "solution",
+      "body": "Thay vào đó, hãy triển khai theo từng giai đoạn. Đầu tiên là một [[canary]]: một máy chủ, hoặc 1% lưu lượng, nhận v2.4. Theo dõi tỷ lệ lỗi và độ trễ của nó so với các máy khác một thời gian.\n\nNếu tệ hơn, rollback: chỉ 1% người dùng bị ảnh hưởng, trong thời gian ngắn. Nếu ổn, tiếp tục lên 10%, 50%, 100%. Nhiều nhóm cũng triển khai lần lượt từng zone.",
+      "callout": {
+        "kind": "tip",
+        "text": "Feature flag bổ sung cho việc này: phát hành code ở trạng thái tắt, rồi bật dần, và tắt ngay lập tức nếu cần."
+      },
+      "changes": [
+        "~ v2.4 chỉ trên một máy chủ",
+        "~ 1% lưu lượng",
+        "~ Tự động rollback khi có lỗi"
+      ],
+      "metrics": {
+        "avail": "99,99%",
+        "downtime": "53 phút",
+        "spofs": "0",
+        "survives": "một zone"
+      },
+      "overrides": {
+        "lb-5": {
+          "visible": false
+        },
+        "a1-5": {
+          "visible": false
+        },
+        "a2-3": {
+          "visible": false
+        },
+        "ul-5": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "la2-3": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Region",
+      "title": "Vượt ra ngoài zone: nhiều region",
+      "chapter": "technique",
+      "body": "Zone bảo vệ trước sự cố của một tòa nhà. Cả một **region** vẫn có thể sập (sự cố mạng khu vực hoặc control plane của đám mây), và nó ở xa người dùng trên các châu lục khác.\n\nChạy ở hai region với DNS toàn cầu hoặc cổng vào anycast cho phép người dùng đi tới region khỏe mạnh gần nhất. Phần khó là dữ liệu: các bản sao cách nhau một đại dương sao chép với độ trễ ~100 ms.",
+      "callout": {
+        "kind": "insight",
+        "text": "Đa region tốn kém và phức tạp. Hầu hết hệ thống được phục vụ tốt bằng nhiều zone trong một region cộng với sao lưu tốt."
+      },
+      "changes": [
+        "+ Region thứ hai",
+        "+ Cổng vào toàn cầu định tuyến tới region khỏe gần nhất",
+        "~ Sao chép giữa các region ≈ trễ 100 ms"
+      ],
+      "metrics": {
+        "avail": "99,995%",
+        "downtime": "26 phút",
+        "spofs": "0",
+        "survives": "một region"
+      },
+      "overrides": {
+        "lb-5": {
+          "visible": false
+        },
+        "a1-5": {
+          "emphasis": true
+        },
+        "db-5": {
+          "visible": false
+        },
+        "a2-3": {
+          "emphasis": true
+        },
+        "db2-3": {
+          "visible": false
+        },
+        "za": {
+          "visible": false
+        },
+        "zb": {
+          "visible": false
+        },
+        "zb-label": {
+          "visible": false
+        },
+        "za-label": {
+          "visible": false
+        },
+        "ul-5": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "la2-3": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Các thành phần nối tiếp **nhân** độ sẵn sàng của chúng.\n• Loại bỏ **điểm lỗi đơn** bằng các bản sao dự phòng.\n• Các bản sao phải hỏng **độc lập**: rải chúng qua nhiều zone.\n• Đặt **RTO/RPO**, và tập dượt failover để nó chạy khi cần.\n• Hầu hết sự cố đến từ **thay đổi**: triển khai bằng **canary**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Giới hạn tốc độ**: bảo vệ hệ thống khỏi quá nhiều lưu lượng sai loại."
+      },
+      "changes": [],
+      "metrics": {
+        "avail": "99,99%",
+        "downtime": "53 phút",
+        "spofs": "0",
+        "survives": "một zone"
+      },
+      "overrides": {
+        "lb-5": {
+          "emphasis": true
+        },
+        "db-5": {
+          "emphasis": true
+        },
+        "db2-3": {
+          "emphasis": true
+        },
+        "za": {
+          "emphasis": true
+        },
+        "zb": {
+          "emphasis": true
+        },
+        "zb-label": {
+          "emphasis": true
+        },
+        "za-label": {
+          "emphasis": true
+        },
+        "ul-5": {
+          "emphasis": true
+        },
+        "la1-5": {
+          "emphasis": true
+        },
+        "adb-5": {
+          "emphasis": true
+        },
+        "la2-3": {
+          "emphasis": true
+        },
+        "a2db-3": {
+          "emphasis": true
+        },
+        "rep-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2078 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1074,
+          "y": -499
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "MỖI NGƯỜI DÙNG ĐI ĐÂU?\nngười dùng 1001 → hash % 4 = 2 → C\nngười dùng 1002 → hash % 4 = 0 → A\nngười dùng 1003 → hash % 4 = 3 → D\n→ hàng xóm tản ra đều nhau",
+        "position": {
+          "x": 1074,
+          "y": -499
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1058,
+          "y": -501
+        },
+        "width": 289,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "CHIA NHỎ MỘT BỘ ĐẾM NÓNG\nghi: likes:42#rand(0..7) += 1\nđọc: tổng likes:42#0 … #7\n→ 8 khóa con trải trên 4 shard",
+        "position": {
+          "x": 1058,
+          "y": -501
+        },
+        "width": 265,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1062,
+          "y": -501
+        },
+        "width": 297,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "SCATTER–GATHER\nhỏi cả 4 shard top 10 của chúng\ngộp 40 kết quả, giữ top 10\n⚠ chậm như shard chậm nhất",
+        "position": {
+          "x": 1062,
+          "y": -501
+        },
+        "width": 273,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1107,
+          "y": -501
+        },
+        "width": 388,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "% 4 → % 5\nngười dùng 1001: % 4 = 2, % 5 = 1  → dời\nngười dùng 1002: % 4 = 0, % 5 = 0  → ở lại\n⚠ ~80% khóa đổi shard",
+        "position": {
+          "x": 1107,
+          "y": -501
+        },
+        "width": 364,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Ứng dụng",
+        "position": {
+          "x": 0,
+          "y": -516
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "định tuyến theo user_id",
+        "position": {
+          "x": 0,
+          "y": -516
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "hash(user_id) % 4",
+        "position": {
+          "x": 0,
+          "y": -516
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-4",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "likes:42 → #0…#7",
+        "position": {
+          "x": 0,
+          "y": -516
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-5",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "top 10 theo người theo dõi?",
+        "position": {
+          "x": 0,
+          "y": -516
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-6",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "hash(user_id) % 5",
+        "position": {
+          "x": 0,
+          "y": -516
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa",
+        "type": "process",
+        "title": "⚠ 20 TB · 40.000 lượt ghi/s",
+        "description": "CPU 98%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 245,
+        "height": 145,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-2",
+        "type": "process",
+        "title": "A · ids 1–25M",
+        "description": "CPU 50%",
+        "position": {
+          "x": -451,
+          "y": 0
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-3",
+        "type": "process",
+        "title": "A · ids 1–25M",
+        "description": "CPU 12%",
+        "position": {
+          "x": -451,
+          "y": 0
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-4",
+        "type": "process",
+        "title": "A · hash % 4 = 0",
+        "description": "CPU 50%",
+        "position": {
+          "x": -451,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-5",
+        "type": "process",
+        "title": "A · hash % 4 = 0",
+        "description": "CPU 20%",
+        "position": {
+          "x": -451,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-6",
+        "type": "process",
+        "title": "A · likes:42#0,#1",
+        "description": "CPU 50%",
+        "position": {
+          "x": -451,
+          "y": 0
+        },
+        "width": 220,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-7",
+        "type": "process",
+        "title": "A · đang dời",
+        "description": "CPU 50%",
+        "position": {
+          "x": -451,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb",
+        "type": "process",
+        "title": "B · ids 25–50M",
+        "description": "CPU 50%",
+        "position": {
+          "x": -150,
+          "y": 0
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-2",
+        "type": "process",
+        "title": "B · ids 25–50M",
+        "description": "CPU 14%",
+        "position": {
+          "x": -150,
+          "y": 0
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-3",
+        "type": "process",
+        "title": "B · hash % 4 = 1",
+        "description": "CPU 50%",
+        "position": {
+          "x": -150,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-4",
+        "type": "process",
+        "title": "B · hash % 4 = 1",
+        "description": "CPU 20%",
+        "position": {
+          "x": -150,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-5",
+        "type": "process",
+        "title": "B · likes:42#2,#3",
+        "description": "CPU 50%",
+        "position": {
+          "x": -150,
+          "y": 0
+        },
+        "width": 220,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-6",
+        "type": "process",
+        "title": "B · đang dời",
+        "description": "CPU 50%",
+        "position": {
+          "x": -150,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc",
+        "type": "process",
+        "title": "C · ids 50–75M",
+        "description": "CPU 50%",
+        "position": {
+          "x": 151,
+          "y": 0
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-2",
+        "type": "process",
+        "title": "C · ids 50–75M",
+        "description": "CPU 20%",
+        "position": {
+          "x": 151,
+          "y": 0
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-3",
+        "type": "process",
+        "title": "C · hash % 4 = 2",
+        "description": "CPU 50%",
+        "position": {
+          "x": 151,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-4",
+        "type": "process",
+        "title": "⚠ user 42 · ngôi sao pop · 70%",
+        "description": "CPU 98%",
+        "position": {
+          "x": 151,
+          "y": 0
+        },
+        "width": 248,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-5",
+        "type": "process",
+        "title": "C · likes:42#4,#5",
+        "description": "CPU 50%",
+        "position": {
+          "x": 151,
+          "y": 0
+        },
+        "width": 220,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-6",
+        "type": "process",
+        "title": "C · đang dời",
+        "description": "CPU 50%",
+        "position": {
+          "x": 151,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd",
+        "type": "process",
+        "title": "D · ids 75M+",
+        "description": "CPU 50%",
+        "position": {
+          "x": 452,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-2",
+        "type": "process",
+        "title": "⚠ D · ids 75M+ · mọi người dùng mới",
+        "description": "CPU 97%",
+        "position": {
+          "x": 452,
+          "y": 0
+        },
+        "width": 264,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-3",
+        "type": "process",
+        "title": "D · hash % 4 = 3",
+        "description": "CPU 50%",
+        "position": {
+          "x": 452,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-4",
+        "type": "process",
+        "title": "D · hash % 4 = 3",
+        "description": "CPU 20%",
+        "position": {
+          "x": 452,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-5",
+        "type": "process",
+        "title": "D · likes:42#6,#7",
+        "description": "CPU 50%",
+        "position": {
+          "x": 452,
+          "y": 0
+        },
+        "width": 220,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-6",
+        "type": "process",
+        "title": "D · đang dời",
+        "description": "CPU 50%",
+        "position": {
+          "x": 452,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "se",
+        "type": "process",
+        "title": "E · mới",
+        "description": "CPU 50%",
+        "position": {
+          "x": 753,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "wsa",
+        "from": "app",
+        "to": "sa",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-2",
+        "from": "app-2",
+        "to": "sa-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-3",
+        "from": "app-2",
+        "to": "sa-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-4",
+        "from": "app-3",
+        "to": "sa-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-5",
+        "from": "app-3",
+        "to": "sa-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-6",
+        "from": "app-4",
+        "to": "sa-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-7",
+        "from": "app-5",
+        "to": "sa-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wsa-8",
+        "from": "app-6",
+        "to": "sa-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "wsb",
+        "from": "app-2",
+        "to": "sb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-2",
+        "from": "app-2",
+        "to": "sb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-3",
+        "from": "app-3",
+        "to": "sb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-4",
+        "from": "app-3",
+        "to": "sb-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-5",
+        "from": "app-4",
+        "to": "sb-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-6",
+        "from": "app-5",
+        "to": "sb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wsb-7",
+        "from": "app-6",
+        "to": "sb-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "wsc",
+        "from": "app-2",
+        "to": "sc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-2",
+        "from": "app-2",
+        "to": "sc-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-3",
+        "from": "app-3",
+        "to": "sc-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-4",
+        "from": "app-3",
+        "to": "sc-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-5",
+        "from": "app-4",
+        "to": "sc-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-6",
+        "from": "app-5",
+        "to": "sc-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wsc-7",
+        "from": "app-6",
+        "to": "sc-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "wsd",
+        "from": "app-2",
+        "to": "sd",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-2",
+        "from": "app-2",
+        "to": "sd-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-3",
+        "from": "app-3",
+        "to": "sd-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-4",
+        "from": "app-3",
+        "to": "sd-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-5",
+        "from": "app-4",
+        "to": "sd-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-6",
+        "from": "app-5",
+        "to": "sd-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wsd-7",
+        "from": "app-6",
+        "to": "sd-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "wse",
+        "from": "app-6",
+        "to": "se",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "msa",
+        "from": "sa-7",
+        "to": "se",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -451,
+            "y": -138
+          },
+          {
+            "x": 753,
+            "y": -138
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "msb",
+        "from": "sb-6",
+        "to": "se",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -150,
+            "y": -138
+          },
+          {
+            "x": 753,
+            "y": -138
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "msc",
+        "from": "sc-6",
+        "to": "se",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 151,
+            "y": -138
+          },
+          {
+            "x": 753,
+            "y": -138
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "msd",
+        "from": "sd-6",
+        "to": "se",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 452,
+            "y": -138
+          },
+          {
+            "x": 753,
+            "y": -138
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Sharding",
+    "summary": "Khi dữ liệu hay lượt ghi vượt quá một máy, hãy chia chúng ra nhiều máy.",
+    "minutes": 11,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "shards",
+        "label": "Shard"
+      },
+      {
+        "id": "perShard",
+        "label": "Ghi mỗi shard"
+      },
+      {
+        "id": "hottest",
+        "label": "Shard bận nhất"
+      },
+      {
+        "id": "size",
+        "label": "Dữ liệu mỗi shard"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao bản sao không giúp gì cho lượt ghi",
+        "step": "s1"
+      },
+      {
+        "text": "Khóa shard: theo khoảng hay theo hash",
+        "step": "s4"
+      },
+      {
+        "text": "Khóa nóng: bài toán người nổi tiếng",
+        "step": "s5"
+      },
+      {
+        "text": "Cái giá của truy vấn xuyên shard",
+        "step": "s7"
+      },
+      {
+        "text": "Vì sao thêm shard lại đau đớn",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "app": {
+      "until": "s2"
+    },
+    "app-2": {
+      "from": "s2",
+      "until": "s4"
+    },
+    "app-3": {
+      "from": "s4"
+    },
+    "app-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "app-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "app-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sa": {
+      "until": "s2"
+    },
+    "sa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sa-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sa-4": {
+      "from": "s4"
+    },
+    "sa-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sa-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sa-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sb": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sb-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sb-3": {
+      "from": "s4"
+    },
+    "sb-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sb-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sb-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sc": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sc-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sc-3": {
+      "from": "s4"
+    },
+    "sc-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sc-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sc-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sd": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sd-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sd-3": {
+      "from": "s4"
+    },
+    "sd-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sd-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sd-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "se": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wsa": {
+      "until": "s2"
+    },
+    "wsa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wsa-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wsa-4": {
+      "from": "s4"
+    },
+    "wsa-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wsa-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wsa-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wsa-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wsb": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wsb-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wsb-3": {
+      "from": "s4"
+    },
+    "wsb-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wsb-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wsb-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wsb-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wsc": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wsc-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wsc-3": {
+      "from": "s4"
+    },
+    "wsc-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wsc-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wsc-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wsc-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wsd": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wsd-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wsd-3": {
+      "from": "s4"
+    },
+    "wsd-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wsd-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wsd-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wsd-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wse": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "msa": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "msb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "msc": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "msd": {
+      "from": "s8",
+      "until": "s9"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Quá lớn",
+      "title": "Quá lớn cho một máy",
+      "chapter": "problem",
+      "body": "Cơ sở dữ liệu người dùng đã lên tới 20 TB và nhận 40.000 lượt ghi mỗi giây. Follower sẽ giúp phần đọc, nhưng mọi lượt **ghi** vẫn phải đi qua một leader, và toàn bộ dữ liệu phải vừa trên ổ đĩa của nó.\n\nBạn đã ở trên máy lớn nhất rồi, và mỗi lần sao lưu, khôi phục hay tạo bản sao mới giờ mất gần trọn một ngày để chép.",
+      "callout": {
+        "kind": "warning",
+        "text": "Sao chép dữ liệu chép toàn bộ dữ liệu đi khắp nơi. Muốn mở rộng lượt ghi và dung lượng, chính dữ liệu phải được chia ra."
+      },
+      "changes": [],
+      "metrics": {
+        "shards": "1",
+        "perShard": "40.000/s",
+        "hottest": "100% lượt ghi",
+        "size": "20 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Chia theo khoảng",
+      "title": "Chia dữ liệu: sharding",
+      "chapter": "solution",
+      "body": "[[Sharding]] chia một cơ sở dữ liệu lớn thành nhiều cái nhỏ hơn, gọi là **shard**, mỗi cái giữ một phần dữ liệu và nhận một phần lượt ghi.\n\n[[Khóa shard]] quyết định mỗi dòng nằm ở đâu. Ở đây: theo khoảng id người dùng. Ứng dụng (hoặc một bộ định tuyến) tra khoảng và gửi mỗi truy vấn tới đúng shard.",
+      "callout": {
+        "kind": "tip",
+        "text": "Mỗi shard thường cũng được sao chép: shard mở rộng lượt ghi, còn follower trong một shard mở rộng lượt đọc và sống sót qua sự cố."
+      },
+      "changes": [
+        "+ 4 shard",
+        "~ Khóa shard: các khoảng user_id",
+        "~ 40.000 → 10.000 lượt ghi/s mỗi shard"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10.000/s",
+        "hottest": "25% lượt ghi",
+        "size": "5 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Điểm nóng",
+      "title": "Chia theo khoảng tạo ra điểm nóng",
+      "chapter": "problem",
+      "body": "Id người dùng tăng dần theo thời gian, nên mọi lượt đăng ký mới đều rơi vào khoảng cuối. Người dùng mới cũng là người năng động nhất: shard D gánh phần lớn lượt ghi trong khi A gần như ngồi không.\n\nChuyện tương tự xảy ra với ngày tháng hay tên theo thứ tự chữ cái: dữ liệu đến theo thứ tự sẽ dồn vào một shard.\n\nCác cơ sở dữ liệu phân vùng theo khoảng (Bigtable, HBase, CockroachDB) giảm nhẹ chuyện này bằng cách tự động chẻ đôi một khoảng bận rộn, nhưng những lượt ghi luôn rơi vào “cuối” thì vẫn cứ theo khoảng cuối cùng.",
+      "callout": {
+        "kind": "warning",
+        "text": "Khóa shard phải trải đều cả dữ liệu lẫn lưu lượng."
+      },
+      "changes": [
+        "~ Shard D: 78% lượt ghi",
+        "~ Shard A: 7%"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "lệch",
+        "hottest": "78% lượt ghi",
+        "size": "5 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Băm",
+      "title": "Băm khóa",
+      "chapter": "solution",
+      "body": "Thay vì chia khoảng, hãy đưa khóa qua một hàm băm và lấy phần dư: `shard = hash(user_id) % 4`.\n\nCác id liên tiếp tản ra các shard không liên quan, nên người dùng mới, cùng lưu lượng của họ, được trải đều.",
+      "callout": {
+        "kind": "tip",
+        "text": "Băm làm mất truy vấn theo khoảng (“mọi người dùng có id 1–1000” giờ chạm vào mọi shard). Thường là một sự đánh đổi đáng giá."
+      },
+      "changes": [
+        "~ Khóa shard: hash(user_id) % 4",
+        "~ Shard bận nhất 78% → 25%"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10.000/s",
+        "hottest": "25% lượt ghi",
+        "size": "5 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Người nổi tiếng",
+      "title": "Tình huống: người nổi tiếng",
+      "chapter": "problem",
+      "body": "Băm trải đều các *khóa*, không phải lưu lượng. Một ngôi sao nhạc pop có 50 triệu người theo dõi cũng nằm trên shard C như bao người khác, và mọi lượt xem hồ sơ, mọi lượt thích bài đăng của ngôi sao ấy đều đổ về đó.\n\nShard C đang chảy ra trong khi A, B và D vẫn ổn. Đây là một [[khóa nóng]], đôi khi được gọi là bài toán người nổi tiếng.",
+      "callout": {
+        "kind": "warning",
+        "text": "Không khóa shard nào giải quyết được một khóa duy nhất phổ biến hơn mức một máy chịu nổi."
+      },
+      "changes": [
+        "+ Một người dùng rất nổi tiếng trên shard C",
+        "~ Shard C: 70% lưu lượng"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "lệch",
+        "hottest": "70% lượt ghi",
+        "size": "5 TB"
+      },
+      "overrides": {
+        "sa-4": {
+          "visible": false
+        },
+        "sb-3": {
+          "visible": false
+        },
+        "sc-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "wsa-4": {
+          "visible": false
+        },
+        "wsb-3": {
+          "visible": false
+        },
+        "wsc-3": {
+          "visible": false
+        },
+        "wsd-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Chia khóa",
+      "title": "Đưa vào cache, hoặc chia nhỏ",
+      "chapter": "solution",
+      "body": "Với khóa nóng khi **đọc**, đặt nó vào cache (hoặc nhiều bản sao cache) trước shard: hầu hết lượt xem hồ sơ không bao giờ tới được shard.\n\nVới khóa nóng khi **ghi**, như bộ đếm lượt thích của ngôi sao, hãy chia nhỏ: ghi ngẫu nhiên vào `likes:42#0` … `likes:42#7`, trải ra các shard, rồi cộng lại khi đọc.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các hệ thống đối mặt chuyện này hằng ngày (mạng xã hội, bán vé) xử lý riêng những khóa nóng nhất: phát hiện tự động, xử lý có chủ đích."
+      },
+      "changes": [
+        "+ Lượt đọc nóng được phục vụ từ cache",
+        "+ likes:42 chia thành 8 khóa con",
+        "~ Shard bận nhất 70% → 27%"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10.000/s",
+        "hottest": "27% lượt ghi",
+        "size": "5 TB"
+      },
+      "overrides": {
+        "app-3": {
+          "visible": false
+        },
+        "sa-4": {
+          "visible": false
+        },
+        "sb-3": {
+          "visible": false
+        },
+        "sc-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "wsa-4": {
+          "visible": false
+        },
+        "wsb-3": {
+          "visible": false
+        },
+        "wsc-3": {
+          "visible": false
+        },
+        "wsd-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Xuyên shard",
+      "title": "Truy vấn trải qua mọi shard",
+      "chapter": "tradeoff",
+      "body": "Tra một người dùng thì nhanh: băm id, hỏi một shard. Nhưng “10 người dùng nhiều người theo dõi nhất” không gắn với khóa người dùng: ứng dụng phải hỏi **mọi** shard rồi gộp các câu trả lời.\n\nNhững truy vấn [[scatter–gather]] (rải ra rồi gom lại) này chậm như shard chậm nhất, và join xuyên shard rất khó.",
+      "callout": {
+        "kind": "warning",
+        "text": "Hãy chọn khóa shard khớp với các truy vấn quan trọng nhất: lý tưởng là chúng chỉ chạm vào một shard."
+      },
+      "changes": [
+        "+ Một truy vấn → cả 4 shard",
+        "~ Câu trả lời chờ shard chậm nhất"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10.000/s",
+        "hottest": "25% lượt ghi",
+        "size": "5 TB"
+      },
+      "overrides": {
+        "app-3": {
+          "visible": false
+        },
+        "sa-4": {
+          "emphasis": true
+        },
+        "sb-3": {
+          "emphasis": true
+        },
+        "sc-3": {
+          "emphasis": true
+        },
+        "sd-3": {
+          "emphasis": true
+        },
+        "wsa-4": {
+          "visible": false
+        },
+        "wsb-3": {
+          "visible": false
+        },
+        "wsc-3": {
+          "visible": false
+        },
+        "wsd-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Thêm shard",
+      "title": "Thêm một shard làm dời gần như mọi thứ",
+      "chapter": "problem",
+      "body": "Các shard đầy dần, nên bạn thêm cái thứ năm. Nhưng `hash % 4` thành `hash % 5`, và với khoảng **80%** người dùng, phần dư thay đổi.\n\nHàng terabyte phải di chuyển giữa các shard trong khi hệ thống vẫn phục vụ lưu lượng.",
+      "callout": {
+        "kind": "warning",
+        "text": "Với hash % N, đổi N là xáo trộn gần như mọi khóa. Bài tiếp theo sửa đúng chuyện này."
+      },
+      "changes": [
+        "+ Shard E",
+        "~ hash % 4 → hash % 5",
+        "- ~80% dòng phải di chuyển"
+      ],
+      "metrics": {
+        "shards": "5",
+        "perShard": "8.000/s",
+        "hottest": "20% lượt ghi",
+        "size": "4 TB"
+      },
+      "overrides": {
+        "app-3": {
+          "visible": false
+        },
+        "sa-4": {
+          "visible": false
+        },
+        "sb-3": {
+          "visible": false
+        },
+        "sc-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "wsa-4": {
+          "visible": false
+        },
+        "wsb-3": {
+          "visible": false
+        },
+        "wsc-3": {
+          "visible": false
+        },
+        "wsd-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• **Sharding** chia dữ liệu và lượt ghi ra nhiều máy.\n• **Khóa shard** quyết định dòng nằm ở đâu: nó phải trải đều tải.\n• **Khoảng** tạo ra điểm nóng; **hash** trải đều tải nhưng làm tản mát truy vấn theo khoảng.\n• Một **khóa nóng** duy nhất cần cache hoặc chia nhỏ.\n• Truy vấn không theo khóa shard đánh vào **mọi shard**; chia lại với % N làm dời phần lớn dữ liệu.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Consistent hashing**: thêm hoặc bớt một shard mà chỉ dời một phần nhỏ khóa."
+      },
+      "changes": [],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10.000/s",
+        "hottest": "25% lượt ghi",
+        "size": "5 TB"
+      },
+      "overrides": {
+        "app-3": {
+          "emphasis": true
+        },
+        "sa-4": {
+          "emphasis": true
+        },
+        "sb-3": {
+          "emphasis": true
+        },
+        "sc-3": {
+          "emphasis": true
+        },
+        "sd-3": {
+          "emphasis": true
+        },
+        "wsa-4": {
+          "emphasis": true
+        },
+        "wsb-3": {
+          "emphasis": true
+        },
+        "wsc-3": {
+          "emphasis": true
+        },
+        "wsd-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1574 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "chart",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 837,
+          "y": -548
+        },
+        "width": 206,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-text",
+        "type": "text",
+        "title": "LATENCY VS. HOW BUSY\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n          ▲ 70%",
+        "position": {
+          "x": 837,
+          "y": -548
+        },
+        "width": 182,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart"
+      },
+      {
+        "id": "chart-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 837,
+          "y": -548
+        },
+        "width": 206,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-2-text",
+        "type": "text",
+        "title": "LATENCY VS. HOW BUSY\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n             ▲ 96%",
+        "position": {
+          "x": 837,
+          "y": -548
+        },
+        "width": 182,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-2"
+      },
+      {
+        "id": "chart-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 899,
+          "y": -546
+        },
+        "width": 330,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-3-text",
+        "type": "text",
+        "title": "PERCENTILES\navg   180 ms   looks fine\np50   160 ms   half are faster\n⚠ p99   600 ms   1 in 100 is slower\n# the average hides the slow 1%",
+        "position": {
+          "x": 899,
+          "y": -546
+        },
+        "width": 306,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-3"
+      },
+      {
+        "id": "chart-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 837,
+          "y": -548
+        },
+        "width": 206,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-4-text",
+        "type": "text",
+        "title": "LATENCY VS. HOW BUSY\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n     ▲ 35%",
+        "position": {
+          "x": 837,
+          "y": -548
+        },
+        "width": 182,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-4"
+      },
+      {
+        "id": "chart-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 887,
+          "y": -548
+        },
+        "width": 305,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-5-text",
+        "type": "text",
+        "title": "LITTLE’S LAW\nin flight = throughput × latency\n350 req/s × 0.12 s ≈ 42\n⚠ latency 1 s → 350 in flight",
+        "position": {
+          "x": 887,
+          "y": -548
+        },
+        "width": 281,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-5"
+      },
+      {
+        "id": "chart-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 887,
+          "y": -548
+        },
+        "width": 305,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-6-text",
+        "type": "text",
+        "title": "WAITING FOR THE SLOWEST\neach server slow 1% of the time\n1 server:   1% of pages slow\n⚠ 100 servers: 1 − 0.99¹⁰⁰ ≈ 63%",
+        "position": {
+          "x": 887,
+          "y": -548
+        },
+        "width": 281,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-6"
+      },
+      {
+        "id": "chart-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 891,
+          "y": -548
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "chart-7-text",
+        "type": "text",
+        "title": "ROWS PER SECOND\n1 row per INSERT      2,000 / s\n→ 100 rows per INSERT  50,000 / s\n⚠ each row waits ≤ 50 ms",
+        "position": {
+          "x": 891,
+          "y": -548
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-7"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "1,000 users",
+        "position": {
+          "x": 0,
+          "y": -572
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "7,000 users",
+        "position": {
+          "x": 0,
+          "y": -572
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "9,600 users",
+        "position": {
+          "x": 0,
+          "y": -572
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-4",
+        "type": "process",
+        "title": "users in New York",
+        "position": {
+          "x": 0,
+          "y": -572
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-5",
+        "type": "process",
+        "title": "7,000 searches",
+        "position": {
+          "x": 0,
+          "y": -572
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-6",
+        "type": "process",
+        "title": "events from apps",
+        "position": {
+          "x": 0,
+          "y": -572
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv",
+        "type": "process",
+        "title": "App Server",
+        "description": "CPU 10%",
+        "position": {
+          "x": 0,
+          "y": 8
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-2",
+        "type": "process",
+        "title": "App Server",
+        "description": "CPU 70%",
+        "position": {
+          "x": 0,
+          "y": 8
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-3",
+        "type": "process",
+        "title": "App Server",
+        "description": "CPU 96%",
+        "position": {
+          "x": 0,
+          "y": 8
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-4",
+        "type": "process",
+        "title": "App Server",
+        "description": "CPU 35%",
+        "position": {
+          "x": 0,
+          "y": 8
+        },
+        "width": 220,
+        "height": 132,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-5",
+        "type": "process",
+        "title": "App Server",
+        "description": "London · CPU 35%",
+        "position": {
+          "x": 0,
+          "y": 616
+        },
+        "width": 220,
+        "height": 132,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-6",
+        "type": "process",
+        "title": "App Server",
+        "description": "≈ 42 in flight · CPU 35%",
+        "position": {
+          "x": 0,
+          "y": 8
+        },
+        "width": 220,
+        "height": 132,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-7",
+        "type": "process",
+        "title": "Search",
+        "description": "fan-out · CPU 40%",
+        "position": {
+          "x": 0,
+          "y": 8
+        },
+        "width": 220,
+        "height": 132,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-8",
+        "type": "process",
+        "title": "Event Writer",
+        "description": "batch: 100 rows / 50 ms · CPU 35%",
+        "position": {
+          "x": 0,
+          "y": 8
+        },
+        "width": 220,
+        "height": 132,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q",
+        "type": "process",
+        "title": "▮ ▮",
+        "position": {
+          "x": 0,
+          "y": -135
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q-2",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 0,
+          "y": -135
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q-3",
+        "type": "process",
+        "title": "▮",
+        "position": {
+          "x": 0,
+          "y": -150
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix0",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -552,
+          "y": 528
+        },
+        "width": 176,
+        "height": 80,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -336,
+          "y": 528
+        },
+        "width": 176,
+        "height": 80,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -120,
+          "y": 528
+        },
+        "width": 176,
+        "height": 80,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 97,
+          "y": 528
+        },
+        "width": 176,
+        "height": 80,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix4",
+        "type": "process",
+        "title": "slow this time",
+        "position": {
+          "x": 336,
+          "y": 528
+        },
+        "width": 220,
+        "height": 80,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ix5",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 574,
+          "y": 528
+        },
+        "width": 176,
+        "height": 80,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "database",
+        "position": {
+          "x": 572,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "u",
+        "from": "users",
+        "to": "srv",
+        "label": "≈ 120 ms round trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.62,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 2
+      },
+      {
+        "id": "u-2",
+        "from": "users-2",
+        "to": "srv-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "u-3",
+        "from": "users-3",
+        "to": "srv-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 6
+      },
+      {
+        "id": "u-4",
+        "from": "users-2",
+        "to": "srv-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "u-5",
+        "from": "users-4",
+        "to": "srv-5",
+        "label": "+ 75 ms each round trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "u-6",
+        "from": "users-2",
+        "to": "srv-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "u-7",
+        "from": "users-5",
+        "to": "srv-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 2
+      },
+      {
+        "id": "u-8",
+        "from": "users-6",
+        "to": "srv-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.85,
+        "effectCount": 5
+      },
+      {
+        "id": "f0",
+        "from": "srv-7",
+        "to": "ix0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "f1",
+        "from": "srv-7",
+        "to": "ix1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "f2",
+        "from": "srv-7",
+        "to": "ix2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "f3",
+        "from": "srv-7",
+        "to": "ix3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "f4",
+        "from": "srv-7",
+        "to": "ix4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f5",
+        "from": "srv-7",
+        "to": "ix5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "w",
+        "from": "srv-8",
+        "to": "db",
+        "label": "INSERT 100 rows",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Latency & Throughput",
+    "summary": "Two questions about speed — and why busy servers slow down before they’re full.",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "p50",
+        "label": "p50 latency"
+      },
+      {
+        "id": "p99",
+        "label": "p99 latency"
+      },
+      {
+        "id": "throughput",
+        "label": "Throughput"
+      },
+      {
+        "id": "util",
+        "label": "Utilization"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Tell latency and throughput apart",
+        "step": "s1"
+      },
+      {
+        "text": "Why latency explodes near 100% busy",
+        "step": "s3"
+      },
+      {
+        "text": "Read p50 vs p99 latency",
+        "step": "s4"
+      },
+      {
+        "text": "Why distance sets a latency floor",
+        "step": "s6"
+      },
+      {
+        "text": "Little’s Law, fan-out tails and batching",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "users": {
+      "until": "s2"
+    },
+    "users-2": {
+      "from": "s2"
+    },
+    "users-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "users-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "users-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "users-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "srv": {
+      "until": "s2"
+    },
+    "srv-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "srv-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "srv-4": {
+      "from": "s5"
+    },
+    "srv-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "srv-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "srv-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "srv-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "q-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "q-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "chart": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "chart-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "chart-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "chart-4": {
+      "from": "s5"
+    },
+    "chart-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "chart-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "chart-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ix0": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ix5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "db": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "chart-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "chart-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "chart-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "chart-4-text": {
+      "from": "s5"
+    },
+    "chart-5-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "chart-6-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "chart-7-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "u": {
+      "until": "s2"
+    },
+    "u-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "u-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "u-4": {
+      "from": "s5"
+    },
+    "u-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "u-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "u-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "u-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f0": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "f5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "w": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Two numbers",
+      "title": "Two different questions",
+      "chapter": "setup",
+      "body": "[[Latency]]: how long does *one* request take, from leaving the user to the answer coming back? Watch one dot go out and return.\n\n[[Throughput]]: how many requests does the system finish *per second*? Count the dots.",
+      "callout": {
+        "kind": "insight",
+        "text": "Think of a highway: latency is how long your drive takes; throughput is how many cars pass per hour. Extra lanes let more cars through, but on an empty road they don’t get you there any sooner."
+      },
+      "changes": [],
+      "metrics": {
+        "p50": "120 ms",
+        "p99": "180 ms",
+        "throughput": "50 req/s",
+        "util": "10%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Busier",
+      "title": "More users, same server",
+      "chapter": "problem",
+      "body": "Traffic grows 7×. Throughput climbs with it — the server is still keeping up — and it’s now 70% busy: 350 of the roughly 500 req/s it can handle.\n\nBut look at the line in front of it: requests occasionally have to **wait their turn**. Waiting is latency too.",
+      "callout": {
+        "kind": "tip",
+        "text": "Utilization = the fraction of time the server is busy. At 70%, a new request often finds it already working on something."
+      },
+      "changes": [
+        "~ Users 1,000 → 7,000",
+        "~ Throughput 50 → 350 req/s",
+        "+ A short queue forms"
+      ],
+      "metrics": {
+        "p50": "160 ms",
+        "p99": "600 ms",
+        "throughput": "350 req/s",
+        "util": "70%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Hockey stick",
+      "title": "The hockey stick",
+      "chapter": "problem",
+      "body": "Traffic grows by another third and the server hits 96% busy. Throughput only rises to 480 req/s — a whisker under its ceiling of 500 — but the queue explodes and latency goes up **sevenfold**.\n\nRequests don’t arrive evenly spaced. With 30% spare, a burst is absorbed quickly; with 4% spare, each burst piles up behind requests that are already waiting, and the line takes ages to clear.",
+      "callout": {
+        "kind": "warning",
+        "text": "Latency grows slowly, then suddenly. Plan to run around 60–70% busy at peak and keep the rest as headroom."
+      },
+      "changes": [
+        "~ Users 7,000 → 9,600",
+        "~ Utilization 70% → 96%",
+        "~ Queue 2 → 6 waiting",
+        "~ p99 latency 600 ms → 4.2 s",
+        "~ Throughput 350 → 480 req/s"
+      ],
+      "metrics": {
+        "p50": "900 ms",
+        "p99": "4.2 s",
+        "throughput": "480 req/s",
+        "util": "96%"
+      },
+      "overrides": {
+        "users-2": {
+          "visible": false
+        },
+        "srv-2": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "u-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Averages lie",
+      "title": "Averages hide the pain",
+      "chapter": "insight",
+      "body": "Back at 70% busy, most requests are quick — but a few get stuck behind slow work. The *average* here is about 180 ms, which looks healthy: it blends the slow few away.\n\nSo we measure [[percentiles]]: **p50** is the time half of requests beat; **p99** is the time only 1 in 100 exceeds.",
+      "callout": {
+        "kind": "warning",
+        "text": "A page that makes 30 requests hits the p99 on about 1 load in 4 (1 − 0.99³⁰ ≈ 26%). Tail latency is what users actually feel."
+      },
+      "changes": [
+        "~ Back to 7,000 users",
+        "+ Occasional slow requests (amber)",
+        "~ p99 latency 4.2 s → 600 ms"
+      ],
+      "metrics": {
+        "p50": "160 ms",
+        "p99": "600 ms",
+        "throughput": "350 req/s",
+        "util": "70%"
+      },
+      "overrides": {
+        "u-2": {
+          "effect": "ants",
+          "emphasis": true
+        },
+        "users-2": {
+          "emphasis": true
+        },
+        "srv-2": {
+          "emphasis": true
+        },
+        "q": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Add capacity",
+      "title": "Add capacity, buy back latency",
+      "chapter": "solution",
+      "body": "Double the server’s cores and the same 350 req/s is now only 35% of its capacity. The queue drains and both p50 and p99 fall.\n\nThroughput didn’t change — demand didn’t change. What changed is **how much headroom** there is to absorb bursts.",
+      "callout": {
+        "kind": "tip",
+        "text": "To lower latency under load, lower utilization: more capacity, or less work per request."
+      },
+      "changes": [
+        "~ Server 4 → 8 cores",
+        "~ Utilization 70% → 35%",
+        "- Queue gone",
+        "~ p99 latency 600 → 190 ms"
+      ],
+      "metrics": {
+        "p50": "120 ms",
+        "p99": "190 ms",
+        "throughput": "350 req/s",
+        "util": "35%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Distance",
+      "title": "Distance is latency too",
+      "chapter": "insight",
+      "body": "Now move the server across an ocean. Nothing about it got slower, yet every round trip takes longer — watch the dots travel.\n\nLight in fiber covers about 200 km per millisecond. New York ↔ London is ~5,600 km: at least 56 ms per round trip, closer to 75 ms in practice.",
+      "callout": {
+        "kind": "insight",
+        "text": "No server upgrade beats physics. To cut this latency, move the data closer to users (caches, CDNs, regions)."
+      },
+      "changes": [
+        "~ Server moved: New York → London",
+        "+ ~75 ms per round trip",
+        "~ p50 latency 120 → 195 ms"
+      ],
+      "metrics": {
+        "p50": "195 ms",
+        "p99": "265 ms",
+        "throughput": "350 req/s",
+        "util": "35%"
+      },
+      "overrides": {
+        "users-2": {
+          "visible": false
+        },
+        "srv-4": {
+          "visible": false
+        },
+        "chart-4": {
+          "visible": false
+        },
+        "chart-4-text": {
+          "visible": false
+        },
+        "u-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "In flight",
+      "title": "Little’s Law: how much is in flight",
+      "chapter": "insight",
+      "body": "A simple rule ties the numbers together: [[requests in flight = throughput × latency]]. At 350 req/s and 0.12 s each, about 42 requests are being worked on at any moment.\n\nEach in-flight request holds a thread, a connection or some memory. If latency rises to 1 s at the same throughput, 350 are in flight — and pools sized for 50 run dry.",
+      "callout": {
+        "kind": "tip",
+        "text": "Use it to size thread pools, connection pools and worker counts — and to see why slow dependencies exhaust them."
+      },
+      "changes": [
+        "+ In flight ≈ 42 requests"
+      ],
+      "metrics": {
+        "p50": "120 ms",
+        "p99": "190 ms",
+        "throughput": "350 req/s",
+        "util": "35%"
+      },
+      "overrides": {
+        "users-2": {
+          "emphasis": true
+        },
+        "srv-4": {
+          "visible": false
+        },
+        "chart-4": {
+          "visible": false
+        },
+        "chart-4-text": {
+          "visible": false
+        },
+        "u-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Fan-out",
+      "title": "One request, many servers",
+      "chapter": "problem",
+      "body": "A search page asks **100** index servers in parallel and must wait for the slowest. Each server is quick 99% of the time — but with 100 of them, a page usually hits at least one slow one.\n\n1 − 0.99¹⁰⁰ ≈ **63%** of searches wait on someone’s p99. A rare tail on one server becomes the common case for the whole page.",
+      "callout": {
+        "kind": "tip",
+        "text": "Fix the tail with hedged requests: if a server hasn’t answered by its p95, send the same request to a replica and take whichever answers first."
+      },
+      "changes": [
+        "+ 100 index servers (6 shown)",
+        "~ Page waits for the slowest",
+        "~ p99 of one server → typical page"
+      ],
+      "metrics": {
+        "p50": "380 ms",
+        "p99": "900 ms",
+        "throughput": "350 req/s",
+        "util": "40%"
+      },
+      "overrides": {
+        "users-2": {
+          "visible": false
+        },
+        "srv-4": {
+          "visible": false
+        },
+        "chart-4": {
+          "visible": false
+        },
+        "chart-4-text": {
+          "visible": false
+        },
+        "u-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Batching",
+      "title": "Batching: more throughput, a bit more latency",
+      "chapter": "tradeoff",
+      "body": "Writing analytics events one row at a time, the database manages about 2,000 inserts per second — most of the cost is per-statement overhead.\n\nGroup them: collect events for up to 50 ms and write 100 rows in one statement (the big squares). Throughput jumps 25×, while each event waits up to 50 ms longer.",
+      "callout": {
+        "kind": "insight",
+        "text": "Batching trades latency for throughput. Great for logs, analytics and bulk imports; wrong for a user waiting on a click."
+      },
+      "changes": [
+        "+ Events batched: 100 rows / 50 ms",
+        "~ 2,000 → 50,000 rows/s",
+        "~ Each event waits ≤ 50 ms"
+      ],
+      "metrics": {
+        "p50": "140 ms",
+        "p99": "210 ms",
+        "throughput": "50,000 req/s",
+        "util": "35%"
+      },
+      "overrides": {
+        "users-2": {
+          "visible": false
+        },
+        "srv-4": {
+          "visible": false
+        },
+        "chart-4": {
+          "visible": false
+        },
+        "chart-4-text": {
+          "visible": false
+        },
+        "u-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• **Latency** is time per request; **throughput** is requests per second.\n• Latency explodes as utilization nears 100% — keep **headroom**.\n• Watch **p99**, not the average: the tail is what users feel.\n• **Distance** adds latency no server can remove.\n• **In flight = throughput × latency**; fan-out turns rare tails into common ones.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Napkin Math** — estimating how much capacity you need before you build anything."
+      },
+      "changes": [],
+      "metrics": {
+        "p50": "120 ms",
+        "p99": "190 ms",
+        "throughput": "350 req/s",
+        "util": "35%"
+      },
+      "overrides": {
+        "users-2": {
+          "emphasis": true
+        },
+        "srv-4": {
+          "emphasis": true
+        },
+        "chart-4": {
+          "emphasis": true
+        },
+        "chart-4-text": {
+          "emphasis": true
+        },
+        "u-4": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

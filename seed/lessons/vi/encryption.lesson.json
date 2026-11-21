@@ -1,0 +1,2225 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 787,
+          "y": -436
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "BẮT TAY TLS\nmáy chủ đưa ra chứng chỉ\ntrình duyệt kiểm tra chữ ký CA\nhai bên thống nhất khóa phiên mới\n→ mọi thứ sau đó: mã hóa + chống giả mạo",
+        "position": {
+          "x": 787,
+          "y": -436
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 779,
+          "y": -436
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "KHÔNG BAO GIỜ HẾT HẠN BẤT NGỜ\n⚠ gia hạn thủ công, mỗi năm một lần\n→ ACME: tự gia hạn mỗi 60 ngày\n→ cảnh báo 30 ngày trước mọi hạn\n# kiểm tra mọi endpoint, không chỉ www",
+        "position": {
+          "x": 779,
+          "y": -436
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 787,
+          "y": -436
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "MÃ HÓA PHONG BÌ\ndữ liệu  —mã hóa bằng→  khóa dữ liệu\nkhóa dữ liệu —mã hóa bằng→ khóa chủ KMS\n→ trộm đĩa: không có khóa dùng được\n# xoay vòng khóa, kiểm toán mọi lần dùng",
+        "position": {
+          "x": 787,
+          "y": -436
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 783,
+          "y": -436
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "XOAY VÒNG KHÓA\nkhóa chủ mới v2 trong KMS\nbọc lại từng khóa dữ liệu: vài kilobyte\n→ dữ liệu không bao giờ bị mã hóa lại\n# lần ghi mới dùng khóa dữ liệu mới",
+        "position": {
+          "x": 783,
+          "y": -436
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice · Wi-Fi quán cà phê",
+        "description": "http:// · mật khẩu dạng rõ",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 216,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice · Wi-Fi quán cà phê",
+        "description": "https:// · đã mã hóa",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 216,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice · Wi-Fi quán cà phê",
+        "description": "⚠ “Kết nối của bạn không phải là kết nối riêng tư”",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 220,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice · Wi-Fi quán cà phê",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice",
+        "description": "mã hóa bằng khóa công khai của Bob",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "router",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -252
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Wifi",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "position": {
+          "x": 0,
+          "y": -63
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-2",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "chứng chỉ: shop.example",
+        "position": {
+          "x": 0,
+          "y": -63
+        },
+        "width": 228,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-3",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "chứng chỉ hết hạn 03:00",
+        "position": {
+          "x": 0,
+          "y": -63
+        },
+        "width": 228,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Ứng dụng",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "mTLS · chứng chỉ riêng",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "Khóa API trong mã nguồn",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-4",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "✓ không có bí mật trong mã",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-5",
+        "type": "process",
+        "title": "Ứng dụng",
+        "description": "✓ không bao giờ thấy số thẻ",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "DB khách hàng",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "DB khách hàng",
+        "description": "⚠ sao lưu trong bucket công khai",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 220,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "DB khách hàng",
+        "description": "đã mã hóa · AES-256",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 220,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "DB khách hàng",
+        "description": "khóa dữ liệu được bọc lại · v2",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 220,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "DB khách hàng",
+        "description": "thẻ: tok_4f2c",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mallory",
+        "type": "process",
+        "title": "Mallory · cùng Wi-Fi",
+        "description": "đọc: alice / hunter2",
+        "position": {
+          "x": -294,
+          "y": -63
+        },
+        "width": 188,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mallory-2",
+        "type": "process",
+        "title": "Mallory · cùng Wi-Fi",
+        "description": "thấy byte ngẫu nhiên",
+        "position": {
+          "x": -294,
+          "y": -63
+        },
+        "width": 188,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief",
+        "type": "process",
+        "title": "kẻ trộm",
+        "description": "đọc mọi khách hàng",
+        "position": {
+          "x": 273,
+          "y": 315
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief-2",
+        "type": "process",
+        "title": "kẻ trộm",
+        "description": "chỉ bản mã",
+        "position": {
+          "x": 273,
+          "y": 315
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief-3",
+        "type": "process",
+        "title": "kẻ trộm",
+        "description": "trộm token · vô dụng",
+        "position": {
+          "x": 273,
+          "y": 315
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kms",
+        "type": "process",
+        "title": "KMS",
+        "description": "dịch vụ khóa",
+        "position": {
+          "x": 0,
+          "y": 525
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Key",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "repo",
+        "type": "process",
+        "title": "Kho công khai",
+        "description": "⚠ sk_live_… trong lịch sử",
+        "position": {
+          "x": 273,
+          "y": 126
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "repo-2",
+        "type": "process",
+        "title": "Kho công khai",
+        "description": "✓ quét bí mật: sạch",
+        "position": {
+          "x": 273,
+          "y": 126
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot",
+        "type": "process",
+        "title": "bot quét",
+        "description": "tìm thấy khóa sau 4 phút",
+        "position": {
+          "x": 441,
+          "y": -105
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "vault",
+        "type": "process",
+        "title": "Trình quản lý bí mật",
+        "description": "xoay vòng mỗi 30 ngày",
+        "position": {
+          "x": -252,
+          "y": 126
+        },
+        "width": 188,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "vault-2",
+        "type": "process",
+        "title": "Trình quản lý bí mật",
+        "position": {
+          "x": -252,
+          "y": 126
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pp",
+        "type": "process",
+        "title": "Nhà cung cấp thanh toán",
+        "description": "giữ số thẻ thật",
+        "position": {
+          "x": -252,
+          "y": 315
+        },
+        "width": 204,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "chat",
+        "type": "process",
+        "title": "Máy chủ chat",
+        "description": "chỉ thấy bản mã",
+        "position": {
+          "x": 0,
+          "y": -126
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob",
+        "type": "process",
+        "title": "Bob",
+        "description": "giải mã bằng khóa riêng",
+        "position": {
+          "x": 273,
+          "y": -126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ar",
+        "from": "alice",
+        "to": "router",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-2",
+        "from": "alice-2",
+        "to": "router",
+        "label": "TLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-3",
+        "from": "alice-3",
+        "to": "router",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-4",
+        "from": "alice-4",
+        "to": "router",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-5",
+        "from": "alice-4",
+        "to": "router",
+        "label": "TLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rl",
+        "from": "router",
+        "to": "lb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rl-2",
+        "from": "router",
+        "to": "lb-2",
+        "label": "TLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rl-3",
+        "from": "router",
+        "to": "lb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la",
+        "from": "lb",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-2",
+        "from": "lb-2",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-3",
+        "from": "lb-3",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-4",
+        "from": "lb",
+        "to": "app-2",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-5",
+        "from": "lb",
+        "to": "app",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-6",
+        "from": "lb",
+        "to": "app-3",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-7",
+        "from": "lb",
+        "to": "app-4",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-8",
+        "from": "lb",
+        "to": "app-5",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad",
+        "from": "app",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-2",
+        "from": "app-2",
+        "to": "db",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-3",
+        "from": "app",
+        "to": "db-2",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-4",
+        "from": "app",
+        "to": "db-3",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-5",
+        "from": "app",
+        "to": "db-4",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-6",
+        "from": "app-3",
+        "to": "db",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-7",
+        "from": "app-4",
+        "to": "db",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-8",
+        "from": "app-5",
+        "to": "db-5",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-9",
+        "from": "app",
+        "to": "db",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "sn",
+        "from": "router",
+        "to": "mallory",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sn-2",
+        "from": "router",
+        "to": "mallory-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "st",
+        "from": "db-2",
+        "to": "thief",
+        "label": "sao lưu bị sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "st-2",
+        "from": "db-3",
+        "to": "thief-2",
+        "label": "sao lưu bị sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "st-3",
+        "from": "db-5",
+        "to": "thief-3",
+        "label": "sao lưu bị sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "dk",
+        "from": "db-3",
+        "to": "kms",
+        "label": "mở khóa dữ liệu",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "dk-2",
+        "from": "db-4",
+        "to": "kms",
+        "label": "bọc lại khóa dữ liệu",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "dk-3",
+        "from": "db",
+        "to": "kms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dk-4",
+        "from": "db-5",
+        "to": "kms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ap",
+        "from": "app-3",
+        "to": "repo",
+        "label": "git push",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ap-2",
+        "from": "app-4",
+        "to": "repo-2",
+        "label": "git push",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "rb",
+        "from": "repo",
+        "to": "bot",
+        "label": "bị thu thập",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "right",
+        "toSide": "bottom",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "av",
+        "from": "app-4",
+        "to": "vault",
+        "label": "lấy khi khởi động",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "av-2",
+        "from": "app",
+        "to": "vault-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "pt",
+        "from": "app-5",
+        "to": "pp",
+        "label": "thẻ → token",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -126,
+            "y": 126
+          },
+          {
+            "x": -126,
+            "y": 315
+          }
+        ],
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ac",
+        "from": "alice-5",
+        "to": "chat",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "cb",
+        "from": "chat",
+        "to": "bob",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Mã hóa & bí mật",
+    "summary": "Bảo vệ dữ liệu trên đường truyền, trên đĩa, cùng các khóa và mật khẩu mà dịch vụ của bạn dùng.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "inTransit",
+        "label": "Mã hóa khi truyền"
+      },
+      {
+        "id": "atRest",
+        "label": "Mã hóa khi lưu"
+      },
+      {
+        "id": "secrets",
+        "label": "Bí mật nằm ở"
+      }
+    ],
+    "goals": [
+      {
+        "text": "TLS, chứng chỉ và việc gia hạn",
+        "step": "s3"
+      },
+      {
+        "text": "Mã hóa bên trong trung tâm dữ liệu và khi lưu trữ",
+        "step": "s6"
+      },
+      {
+        "text": "Xoay vòng khóa",
+        "step": "s7"
+      },
+      {
+        "text": "Giữ bí mật ngoài mã nguồn",
+        "step": "s9"
+      },
+      {
+        "text": "Token hóa và mã hóa đầu cuối",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "alice": {
+      "until": "s2"
+    },
+    "alice-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "alice-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "alice-4": {
+      "from": "s4"
+    },
+    "alice-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lb-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "app-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "app-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "app-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "app-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "db-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "db-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "db-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "db-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "mallory": {
+      "until": "s2"
+    },
+    "mallory-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "thief": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "thief-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "thief-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "kms": {
+      "from": "s6"
+    },
+    "repo": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "repo-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bot": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "vault": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "vault-2": {
+      "from": "s12"
+    },
+    "pp": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "chat": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "bob": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-4-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ar": {
+      "until": "s2"
+    },
+    "ar-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ar-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ar-4": {
+      "from": "s4",
+      "until": "s11"
+    },
+    "ar-5": {
+      "from": "s12"
+    },
+    "rl-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "rl-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la": {
+      "until": "s2"
+    },
+    "la-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "la-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "la-5": {
+      "from": "s5"
+    },
+    "la-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "la-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "la-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ad": {
+      "until": "s4"
+    },
+    "ad-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ad-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ad-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ad-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ad-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ad-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ad-9": {
+      "from": "s12"
+    },
+    "sn": {
+      "until": "s2"
+    },
+    "sn-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "st": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "st-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "st-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dk": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dk-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dk-3": {
+      "from": "s8"
+    },
+    "dk-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ap": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ap-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "rb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "av": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "av-2": {
+      "from": "s12"
+    },
+    "pt": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ac": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cb": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Wi-Fi quán cà phê",
+      "title": "HTTP trần trên Wi-Fi quán cà phê",
+      "chapter": "problem",
+      "body": "Alice đăng nhập từ một quán cà phê. Trang web dùng `http://` trần, nên mật khẩu và cookie phiên của cô đi dưới dạng văn bản đọc được qua router Wi-Fi và hàng chục mạng phía sau.\n\nMallory, trên cùng Wi-Fi, ghi lại lưu lượng và đọc tất cả — thậm chí có thể sửa trang trên đường trả về.",
+      "callout": {
+        "kind": "warning",
+        "text": "Bất kỳ ai trên đường đi — Wi-Fi, nhà mạng, một router bị chiếm — đều có thể đọc và sửa lưu lượng không mã hóa."
+      },
+      "changes": [],
+      "metrics": {
+        "inTransit": "không",
+        "atRest": "không"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "TLS",
+      "title": "TLS: mã hóa đường truyền",
+      "chapter": "solution",
+      "body": "Với HTTPS, [[TLS]] mã hóa mọi thứ giữa trình duyệt của Alice và trang web. Trong lúc bắt tay, máy chủ đưa ra một **chứng chỉ** do một tổ chức cấp chứng chỉ mà trình duyệt tin tưởng ký, chứng minh nó thật sự là `shop.example`.\n\nMallory vẫn sao chép từng gói tin — nhưng chỉ thấy các byte trông như ngẫu nhiên, và không thể sửa chúng mà không bị phát hiện.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chứng chỉ miễn phí và tự động với Let’s Encrypt. Thêm HSTS để trình duyệt không bao giờ quay về http://."
+      },
+      "changes": [
+        "+ Chứng chỉ TLS trên bộ cân bằng tải",
+        "~ Mallory chỉ thấy bản mã"
+      ],
+      "metrics": {
+        "inTransit": "chỉ bên ngoài",
+        "atRest": "không"
+      },
+      "overrides": {
+        "lb": {
+          "visible": false
+        },
+        "rl": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Hết hạn",
+      "title": "Tình huống: chứng chỉ hết hạn lúc 3 giờ sáng",
+      "chapter": "problem",
+      "body": "Chứng chỉ có ngày hết hạn. Cái này được gia hạn thủ công mỗi năm một lần — bởi một người đã nghỉ việc. Lúc 03:00 nó hết hạn, mọi trình duyệt hiện cảnh báo bảo mật toàn trang, và phần lớn người dùng bỏ đi.\n\nMột sự cố do một ngày tháng. Cách sửa: tự động gia hạn bằng ACME (Let’s Encrypt, hoặc trình quản lý chứng chỉ của đám mây) và một cảnh báo 30 ngày trước khi bất kỳ chứng chỉ nào hết hạn.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chứng chỉ ngắn hạn (90 ngày hoặc ít hơn) buộc phải tự động hóa — và hạn chế thiệt hại nếu khóa riêng bị lộ."
+      },
+      "changes": [
+        "- Chứng chỉ hết hạn lúc 03:00",
+        "- Trình duyệt chặn trang web",
+        "~ Cách sửa: tự động gia hạn + cảnh báo hết hạn"
+      ],
+      "metrics": {
+        "inTransit": "chỉ bên ngoài",
+        "atRest": "không"
+      },
+      "overrides": {
+        "lb": {
+          "visible": false
+        },
+        "mallory-2": {
+          "visible": false
+        },
+        "rl": {
+          "visible": false
+        },
+        "sn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Cả bên trong",
+      "title": "Mã hóa cả bên trong trung tâm dữ liệu",
+      "chapter": "technique",
+      "body": "Bộ cân bằng tải **kết thúc** TLS — và theo truyền thống chuyển tiếp lưu lượng dạng rõ, vì tin mạng nội bộ. Nhưng khi đó một máy bị chiếm bên trong có thể đọc mọi thứ.\n\nHệ thống hiện đại cho rằng không mạng nào đáng tin (**zero trust**): các dịch vụ nói chuyện qua [[TLS hai chiều]], khi cả hai bên đều đưa ra chứng chỉ, nên mọi chặng đều được mã hóa và mọi bên gọi đều được nhận diện.",
+      "callout": {
+        "kind": "tip",
+        "text": "Service mesh có thể tự động thêm mTLS giữa mọi dịch vụ, với chứng chỉ ngắn hạn mà nó xoay vòng giúp bạn."
+      },
+      "changes": [
+        "~ LB → ứng dụng → DB qua TLS hai chiều",
+        "+ Mỗi dịch vụ có chứng chỉ riêng"
+      ],
+      "metrics": {
+        "inTransit": "có",
+        "atRest": "không"
+      },
+      "overrides": {
+        "lb": {
+          "emphasis": true
+        },
+        "app": {
+          "visible": false
+        },
+        "mallory-2": {
+          "emphasis": true
+        },
+        "rl": {
+          "emphasis": true
+        },
+        "sn-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Bản sao lưu bị đánh cắp",
+      "title": "Bản sao lưu bị đánh cắp",
+      "chapter": "problem",
+      "body": "Giờ mọi byte trên đường truyền đều an toàn. Rồi một bản sao lưu cơ sở dữ liệu bị bỏ trong một bucket lưu trữ vô tình để công khai, và có người sao chép nó.\n\nMã hóa khi truyền chẳng giúp gì ở đây: dữ liệu trên đĩa — tên, địa chỉ và lịch sử đơn hàng của mọi khách hàng — đều đọc được.",
+      "callout": {
+        "kind": "warning",
+        "text": "Đĩa bị mất, snapshot bị chia sẻ, bucket bị cấu hình sai. Dữ liệu khi lưu trữ cần cách bảo vệ riêng."
+      },
+      "changes": [
+        "- Bản sao lưu trong bucket công khai",
+        "- Bị sao chép và đọc được"
+      ],
+      "metrics": {
+        "inTransit": "có",
+        "atRest": "không"
+      },
+      "overrides": {
+        "app": {
+          "emphasis": true
+        },
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Khi lưu trữ",
+      "title": "Mã hóa khi lưu trữ, giữ khóa ở nơi khác",
+      "chapter": "solution",
+      "body": "Mã hóa đĩa, tệp cơ sở dữ liệu và bản sao lưu. Mấu chốt là khóa: nếu nó nằm cạnh dữ liệu, kẻ trộm lấy cả hai. Vì vậy khóa nằm trong một [[dịch vụ quản lý khóa]] (KMS) riêng, không bao giờ trao khóa chủ của nó ra ngoài.\n\nVới **mã hóa phong bì**, dữ liệu được mã hóa bằng một khóa dữ liệu, và chính khóa dữ liệu được KMS mã hóa. Mọi lần dùng khóa đều được ghi lại, và quyền truy cập có thể thu hồi.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cơ sở dữ liệu và lưu trữ trên đám mây mã hóa khi lưu trữ chỉ bằng một ô đánh dấu. Với các trường rất nhạy cảm, hãy mã hóa thêm trong ứng dụng."
+      },
+      "changes": [
+        "+ Dữ liệu và sao lưu được mã hóa (AES-256)",
+        "+ Khóa do KMS giữ",
+        "~ Bản sao bị đánh cắp không đọc được"
+      ],
+      "metrics": {
+        "inTransit": "có",
+        "atRest": "có"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Xoay vòng",
+      "title": "Xoay vòng khóa mà không mã hóa lại mọi thứ",
+      "chapter": "technique",
+      "body": "Khóa nên được thay định kỳ — và ngay lập tức nếu có khóa nào có thể đã lộ. Mã hóa lại hàng terabyte dữ liệu sẽ mất nhiều ngày.\n\nMã hóa phong bì khiến việc này rẻ: tạo một khóa chủ mới trong KMS và **bọc lại** từng khóa dữ liệu nhỏ bằng nó. Bản thân dữ liệu không bao giờ bị động đến, và các lần ghi mới đơn giản nhận khóa dữ liệu mới.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đa số KMS tự động xoay vòng khóa chủ mỗi năm và giữ các phiên bản cũ để mở các khóa dữ liệu cũ hơn."
+      },
+      "changes": [
+        "+ Khóa chủ v2 trong KMS",
+        "~ Khóa dữ liệu được bọc lại (KB, không phải TB)",
+        "~ Dữ liệu không bị động đến"
+      ],
+      "metrics": {
+        "inTransit": "có",
+        "atRest": "có"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Khóa bị lộ",
+      "title": "Tình huống: bí mật trong mã nguồn",
+      "chapter": "problem",
+      "body": "Một lập trình viên viết cứng khóa API của nhà cung cấp thanh toán vào mã nguồn để thử một thứ, và kho mã là công khai. Bot quét các kho công khai liên tục: khóa bị tìm thấy và sử dụng trong vài phút.\n\nXóa dòng đó chẳng ích gì — nó nằm mãi trong lịch sử git. Cách sửa duy nhất là **thu hồi** khóa và cấp khóa mới.",
+      "callout": {
+        "kind": "warning",
+        "text": "Bí mật trong mã sẽ lọt vào kho mã, bản build, log và máy tính xách tay. Hãy coi mọi bí mật đã chạm vào git là đã bị lộ."
+      },
+      "changes": [
+        "+ Khóa API được commit vào kho công khai",
+        "- Bot quét tìm thấy trong vài phút"
+      ],
+      "metrics": {
+        "inTransit": "có",
+        "atRest": "có",
+        "secrets": "mã nguồn"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "db": {
+          "emphasis": true
+        },
+        "la-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Vault",
+      "title": "Trình quản lý bí mật",
+      "chapter": "solution",
+      "body": "Giữ bí mật hoàn toàn ngoài mã nguồn. Ứng dụng lấy chúng khi khởi động từ một [[trình quản lý bí mật]] (HashiCorp Vault, AWS Secrets Manager), chứng minh danh tính của chính nó để chỉ nhận những bí mật nó cần.\n\nBí mật được xoay vòng định kỳ — hoặc cấp ngắn hạn theo yêu cầu — và trình quét trong CI chặn mọi commit trông giống một khóa.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đừng bao giờ ghi bí mật vào log, và giữ chúng khỏi thông báo lỗi và bản dump môi trường."
+      },
+      "changes": [
+        "+ Trình quản lý bí mật",
+        "~ Ứng dụng lấy bí mật khi khởi động",
+        "+ Xoay vòng tự động · quét bí mật trong CI"
+      ],
+      "metrics": {
+        "inTransit": "có",
+        "atRest": "có",
+        "secrets": "trình quản lý bí mật"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Token hóa",
+      "title": "Tình huống: số thẻ — hãy token hóa",
+      "chapter": "technique",
+      "body": "Số thẻ là dữ liệu quý giá nhất bạn có thể giữ, và mọi hệ thống lưu hay thậm chí chỉ nhìn thấy chúng đều phải tuân thủ quy định nghiêm ngặt (PCI DSS). Mã hóa chúng thì bạn vẫn đang giữ chúng.\n\nTốt hơn: đừng giữ. Trang thanh toán gửi thẻ đến nhà cung cấp thanh toán, nơi lưu thẻ và trả về một [[token]] như `tok_4f2c`. Cơ sở dữ liệu, log và phân tích của bạn chỉ thấy token — vô giá trị với kẻ trộm.",
+      "callout": {
+        "kind": "insight",
+        "text": "Dữ liệu nhạy cảm an toàn nhất là dữ liệu bạn không bao giờ lưu. Hãy hỏi liệu bạn có thật sự cần nó trước khi quyết định cách bảo vệ."
+      },
+      "changes": [
+        "+ Nhà cung cấp thanh toán giữ số thẻ thật",
+        "~ Cơ sở dữ liệu chỉ lưu token",
+        "- Số thẻ trong hệ thống của bạn"
+      ],
+      "metrics": {
+        "inTransit": "có",
+        "atRest": "có",
+        "secrets": "trình quản lý bí mật"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "db": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        },
+        "dk-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Đầu cuối",
+      "title": "Đầu cuối: ngay cả máy chủ cũng không đọc được",
+      "chapter": "technique",
+      "body": "Với tin nhắn riêng tư, bạn có thể đi xa hơn. Với [[mã hóa đầu cuối]], điện thoại của Alice mã hóa từng tin nhắn bằng khóa công khai của Bob; chỉ điện thoại của Bob giữ khóa riêng để giải mã.\n\nMáy chủ chat lưu và chuyển tiếp bản mã. Máy chủ bị xâm nhập — hay một yêu cầu giao nộp tin nhắn — cũng không để lộ gì đọc được.\n\nĐó là ý tưởng trong một dòng. Các giao thức thực tế dùng cặp khóa để thống nhất một khóa bí mật mới cho mỗi tin nhắn, nên một khóa bị đánh cắp về sau không mở được các cuộc trò chuyện cũ (**bảo mật chuyển tiếp**).",
+      "callout": {
+        "kind": "insight",
+        "text": "Cái giá: máy chủ không thể tìm kiếm, lọc hay sao lưu tin nhắn đọc được, và mất thiết bị có thể đồng nghĩa với mất lịch sử. Signal và WhatsApp dùng giao thức Signal."
+      },
+      "changes": [
+        "+ Tin nhắn được mã hóa trên thiết bị",
+        "~ Máy chủ chỉ chuyển tiếp bản mã"
+      ],
+      "metrics": {
+        "inTransit": "đầu cuối",
+        "atRest": "có",
+        "secrets": "trình quản lý bí mật"
+      },
+      "overrides": {
+        "alice-4": {
+          "visible": false
+        },
+        "router": {
+          "visible": false
+        },
+        "lb": {
+          "visible": false
+        },
+        "app": {
+          "visible": false
+        },
+        "db": {
+          "visible": false
+        },
+        "kms": {
+          "visible": false
+        },
+        "rl": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        },
+        "dk-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• **TLS** ở mọi nơi bên ngoài; **mTLS** giữa các dịch vụ bên trong.\n• Mã hóa **khi lưu trữ**, với khóa giữ riêng trong **KMS**.\n• Tự động hóa **gia hạn chứng chỉ**; xoay vòng khóa bằng cách **bọc lại** khóa dữ liệu.\n• Giữ bí mật trong **trình quản lý bí mật**, xoay vòng chúng, quét tìm rò rỉ.\n• **Token hóa** những gì bạn không muốn giữ chút nào, như số thẻ.\n• Mã hóa **đầu cuối** khi ngay cả máy chủ cũng không nên đọc dữ liệu.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đến đây là hết phần Bảo mật. Mô-đun tiếp theo: **Phát hành** — kiểm thử thay đổi và đưa chúng lên production an toàn."
+      },
+      "changes": [],
+      "metrics": {
+        "inTransit": "có",
+        "atRest": "có",
+        "secrets": "trình quản lý bí mật"
+      },
+      "overrides": {
+        "alice-4": {
+          "emphasis": true
+        },
+        "router": {
+          "emphasis": true
+        },
+        "lb": {
+          "emphasis": true
+        },
+        "app": {
+          "emphasis": true
+        },
+        "db": {
+          "emphasis": true
+        },
+        "kms": {
+          "emphasis": true
+        },
+        "rl": {
+          "emphasis": true
+        },
+        "la-5": {
+          "emphasis": true
+        },
+        "dk-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

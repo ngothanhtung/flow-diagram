@@ -1,0 +1,2605 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "dc",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -9
+        },
+        "width": 452,
+        "height": 625,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "dc-label",
+        "type": "text",
+        "title": "ONE DATA CENTER · POWER LOST",
+        "position": {
+          "x": -101,
+          "y": -301
+        },
+        "width": 230,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "dc"
+      },
+      {
+        "id": "zb-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 178,
+          "y": 112
+        },
+        "width": 304,
+        "height": 383,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "zb-2-label",
+        "type": "text",
+        "title": "REGION · US",
+        "position": {
+          "x": 86,
+          "y": -59
+        },
+        "width": 100,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "zb-2"
+      },
+      {
+        "id": "zb",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 178,
+          "y": 101
+        },
+        "width": 304,
+        "height": 406,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "zb-label",
+        "type": "text",
+        "title": "ZONE B",
+        "position": {
+          "x": 67,
+          "y": -81
+        },
+        "width": 62,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "zb"
+      },
+      {
+        "id": "za-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -178,
+          "y": 112
+        },
+        "width": 304,
+        "height": 383,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "za-3-label",
+        "type": "text",
+        "title": "REGION · EU",
+        "position": {
+          "x": -270,
+          "y": -59
+        },
+        "width": 100,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "za-3"
+      },
+      {
+        "id": "za-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -178,
+          "y": 101
+        },
+        "width": 304,
+        "height": 405,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "za-2-label",
+        "type": "text",
+        "title": "ZONE A · OFFLINE",
+        "position": {
+          "x": -250,
+          "y": -81
+        },
+        "width": 139,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "za-2"
+      },
+      {
+        "id": "za",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -178,
+          "y": 101
+        },
+        "width": 304,
+        "height": 406,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "za-label",
+        "type": "text",
+        "title": "ZONE A",
+        "position": {
+          "x": -289,
+          "y": -81
+        },
+        "width": 62,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "za"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 547,
+          "y": -405
+        },
+        "width": 289,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "THE NINES\n99%     → 3.7 days down / year\n99.9%   → 8.8 hours\n99.99%  → 53 minutes\n99.999% → 5 minutes\n⚠ in a chain: 0.999³ = 99.7%",
+        "position": {
+          "x": 547,
+          "y": -405
+        },
+        "width": 265,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 575,
+          "y": -405
+        },
+        "width": 346,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "THIS FAILOVER\ndetect: 3 missed health checks   10 s\npromote follower                 20 s\nreconnect apps                   30 s\n→ RTO ≈ 1 minute\n⚠ RPO ≈ 2 s of async writes lost",
+        "position": {
+          "x": 575,
+          "y": -405
+        },
+        "width": 322,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "1M users",
+        "position": {
+          "x": 0,
+          "y": -440
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Load Balancer",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-2",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "⚠ single point of failure",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-3",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "active–passive pair",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-4",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "lb-5",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "regional · spans zones",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-6",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "1% → canary",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-7",
+        "type": "process",
+        "title": "Global DNS",
+        "description": "nearest healthy region",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1",
+        "type": "process",
+        "title": "App",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1-2",
+        "type": "process",
+        "title": "App",
+        "description": "⚠ single point of failure",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1-3",
+        "type": "process",
+        "title": "App",
+        "position": {
+          "x": -110,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1-4",
+        "type": "process",
+        "title": "App",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": -110,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "a1-5",
+        "type": "process",
+        "title": "App",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1-6",
+        "type": "process",
+        "title": "App",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za-2"
+      },
+      {
+        "id": "a1-7",
+        "type": "process",
+        "title": "App",
+        "description": "killed by chaos test",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za"
+      },
+      {
+        "id": "a1-8",
+        "type": "process",
+        "title": "App",
+        "description": "v2.4 · crashing",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za"
+      },
+      {
+        "id": "a1-9",
+        "type": "process",
+        "title": "App",
+        "description": "v2.3 · 99%",
+        "position": {
+          "x": -176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "database",
+        "position": {
+          "x": 0,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "database",
+        "description": "⚠ single point of failure",
+        "position": {
+          "x": 0,
+          "y": 220
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "leader",
+        "position": {
+          "x": -110,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "leader",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": -110,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "leader",
+        "position": {
+          "x": -176,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za"
+      },
+      {
+        "id": "db-6",
+        "type": "process",
+        "title": "leader",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": -176,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za-2"
+      },
+      {
+        "id": "db-7",
+        "type": "process",
+        "title": "EU primary",
+        "position": {
+          "x": -176,
+          "y": 220
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "za-3"
+      },
+      {
+        "id": "a2",
+        "type": "process",
+        "title": "App",
+        "position": {
+          "x": 110,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a2-2",
+        "type": "process",
+        "title": "App",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 110,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "a2-3",
+        "type": "process",
+        "title": "App",
+        "position": {
+          "x": 176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a2-4",
+        "type": "process",
+        "title": "App",
+        "description": "v2.4 · crashing",
+        "position": {
+          "x": 176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb"
+      },
+      {
+        "id": "a2-5",
+        "type": "process",
+        "title": "App",
+        "description": "v2.4 canary · 1%",
+        "position": {
+          "x": 176,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb"
+      },
+      {
+        "id": "db2",
+        "type": "process",
+        "title": "follower",
+        "position": {
+          "x": 110,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db2-2",
+        "type": "process",
+        "title": "follower",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 110,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "dc"
+      },
+      {
+        "id": "db2-3",
+        "type": "process",
+        "title": "follower",
+        "position": {
+          "x": 176,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb"
+      },
+      {
+        "id": "db2-4",
+        "type": "process",
+        "title": "leader",
+        "description": "✓ promoted",
+        "position": {
+          "x": 176,
+          "y": 220
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb"
+      },
+      {
+        "id": "db2-5",
+        "type": "process",
+        "title": "US replica",
+        "position": {
+          "x": 176,
+          "y": 220
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "zb-2"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ul",
+        "from": "users",
+        "to": "lb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ul-2",
+        "from": "users",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ul-3",
+        "from": "users",
+        "to": "lb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-4",
+        "from": "users",
+        "to": "lb-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-5",
+        "from": "users",
+        "to": "lb-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-6",
+        "from": "users",
+        "to": "lb-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-7",
+        "from": "users",
+        "to": "lb-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ul-8",
+        "from": "users",
+        "to": "lb-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la1",
+        "from": "lb",
+        "to": "a1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "la1-2",
+        "from": "lb-2",
+        "to": "a1-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "la1-3",
+        "from": "lb-3",
+        "to": "a1-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la1-4",
+        "from": "lb-4",
+        "to": "a1-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la1-5",
+        "from": "lb-5",
+        "to": "a1-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la1-6",
+        "from": "lb-5",
+        "to": "a1-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la1-7",
+        "from": "lb-5",
+        "to": "a1-7",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la1-8",
+        "from": "lb-5",
+        "to": "a1-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la1-9",
+        "from": "lb-6",
+        "to": "a1-9",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la1-10",
+        "from": "lb-7",
+        "to": "a1-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "adb",
+        "from": "a1",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "adb-2",
+        "from": "a1-2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "adb-3",
+        "from": "a1-3",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "adb-4",
+        "from": "a1-4",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "adb-5",
+        "from": "a1-5",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "adb-6",
+        "from": "a1-7",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "adb-7",
+        "from": "a1-8",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "adb-8",
+        "from": "a1-9",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "adb-9",
+        "from": "a1-5",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la2",
+        "from": "lb-3",
+        "to": "a2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la2-2",
+        "from": "lb-4",
+        "to": "a2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la2-3",
+        "from": "lb-5",
+        "to": "a2-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la2-4",
+        "from": "lb-5",
+        "to": "a2-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la2-5",
+        "from": "lb-6",
+        "to": "a2-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "la2-6",
+        "from": "lb-7",
+        "to": "a2-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "a2db",
+        "from": "a2",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 110,
+            "y": 110
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "a2db-2",
+        "from": "a2-2",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 110,
+            "y": 110
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "a2db-3",
+        "from": "a2-3",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 176,
+            "y": 110
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "a2db-4",
+        "from": "a2-4",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 176,
+            "y": 110
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "a2db-5",
+        "from": "a2-5",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 176,
+            "y": 110
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "a2db-6",
+        "from": "a2-3",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 176,
+            "y": 110
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "rep",
+        "from": "db-3",
+        "to": "db2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep-2",
+        "from": "db-4",
+        "to": "db2-2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "rep-3",
+        "from": "db-5",
+        "to": "db2-3",
+        "label": "cross-zone replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep-4",
+        "from": "db-5",
+        "to": "db2-3",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep-5",
+        "from": "db-7",
+        "to": "db2-5",
+        "label": "cross-region · ~100 ms lag",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "a2d2",
+        "from": "a2-3",
+        "to": "db2-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      }
+    ]
+  },
+  "meta": {
+    "title": "Redundancy & Failover",
+    "summary": "Everything fails eventually. Design so that no single failure takes you down.",
+    "minutes": 12,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "avail",
+        "label": "Availability"
+      },
+      {
+        "id": "downtime",
+        "label": "Downtime / year"
+      },
+      {
+        "id": "spofs",
+        "label": "Single points of failure"
+      },
+      {
+        "id": "survives",
+        "label": "Survives losing"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Measure availability in nines",
+        "step": "s1"
+      },
+      {
+        "text": "Find and remove single points of failure",
+        "step": "s3"
+      },
+      {
+        "text": "Spread copies across failure domains",
+        "step": "s5"
+      },
+      {
+        "text": "RTO, RPO and testing failover",
+        "step": "s7"
+      },
+      {
+        "text": "Bad deploys, canaries and regions",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "lb": {
+      "until": "s2"
+    },
+    "lb-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lb-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lb-5": {
+      "from": "s5"
+    },
+    "lb-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "lb-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "a1": {
+      "until": "s2"
+    },
+    "a1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "a1-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a1-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a1-5": {
+      "from": "s5"
+    },
+    "a1-6": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "a1-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "a1-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a1-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "db": {
+      "until": "s2"
+    },
+    "db-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "db-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "db-5": {
+      "from": "s5"
+    },
+    "db-6": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "db-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "a2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a2-3": {
+      "from": "s5"
+    },
+    "a2-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a2-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "db2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "db2-3": {
+      "from": "s5"
+    },
+    "db2-4": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "db2-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dc": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "za": {
+      "from": "s5"
+    },
+    "za-2": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "za-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "zb": {
+      "from": "s5"
+    },
+    "zb-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dc-label": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "zb-2-label": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "zb-label": {
+      "from": "s5"
+    },
+    "za-3-label": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "za-2-label": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "za-label": {
+      "from": "s5"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ul": {
+      "until": "s2"
+    },
+    "ul-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ul-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ul-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ul-5": {
+      "from": "s5"
+    },
+    "ul-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ul-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ul-8": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "la1": {
+      "until": "s2"
+    },
+    "la1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "la1-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la1-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "la1-5": {
+      "from": "s5"
+    },
+    "la1-6": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "la1-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "la1-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "la1-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "la1-10": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "adb": {
+      "until": "s2"
+    },
+    "adb-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "adb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "adb-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "adb-5": {
+      "from": "s5"
+    },
+    "adb-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "adb-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "adb-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "adb-9": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "la2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "la2-3": {
+      "from": "s5"
+    },
+    "la2-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "la2-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "la2-6": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "a2db": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a2db-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a2db-3": {
+      "from": "s5"
+    },
+    "a2db-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a2db-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "a2db-6": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "rep": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "rep-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "rep-3": {
+      "from": "s5"
+    },
+    "rep-4": {
+      "from": "s8",
+      "until": "s11"
+    },
+    "rep-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "a2d2": {
+      "from": "s6",
+      "until": "s8"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Nines",
+      "title": "How available is one of everything?",
+      "chapter": "setup",
+      "body": "A simple stack: a load balancer, an app server and a database. Each one is up 99.9% of the time — that sounds great.\n\nBut a request needs **all three** working, so their availabilities multiply: 0.999 × 0.999 × 0.999 ≈ **99.7%**. That’s about 26 hours of downtime a year.",
+      "callout": {
+        "kind": "insight",
+        "text": "Availability is usually quoted in “nines”. Each extra nine cuts allowed downtime by 10×."
+      },
+      "changes": [],
+      "metrics": {
+        "avail": "99.7%",
+        "downtime": "26 h",
+        "spofs": "3",
+        "survives": "nothing"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "SPOFs",
+      "title": "Every box is a single point of failure",
+      "chapter": "problem",
+      "body": "A [[single point of failure]] (SPOF) is anything whose failure alone takes the system down. Here, that’s every component.\n\nA bad disk, a kernel panic, a botched deploy — any one of them and a million users see an error page.",
+      "callout": {
+        "kind": "warning",
+        "text": "Hardware fails, software crashes and people make mistakes. Assume each will happen — the question is what breaks when it does."
+      },
+      "changes": [
+        "+ 3 single points of failure marked"
+      ],
+      "metrics": {
+        "avail": "99.7%",
+        "downtime": "26 h",
+        "spofs": "3",
+        "survives": "nothing"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Two of each",
+      "title": "Redundancy: two of everything",
+      "chapter": "solution",
+      "body": "Add a spare for each part: the load balancer runs as an active–passive pair, two app servers share traffic, and the database has a follower ready to take over.\n\nNow *both* copies must fail at once for an outage — 0.1% × 0.1% = 0.0001%. Losing any single machine is a non-event.",
+      "callout": {
+        "kind": "tip",
+        "text": "On paper, parts in parallel multiply their failure chances: two 99.9% copies give 99.9999%. Real pairs do worse — failover takes time, and both copies still share a building, a network and your deploys — so we count a cautious 99.95%."
+      },
+      "changes": [
+        "+ Load balancer pair",
+        "+ Second app server",
+        "+ Database follower",
+        "~ Single points of failure 3 → 0"
+      ],
+      "metrics": {
+        "avail": "99.95%",
+        "downtime": "4 h",
+        "spofs": "0",
+        "survives": "a server"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "One building",
+      "title": "Copies that fail together",
+      "chapter": "problem",
+      "body": "All those copies sit in one data center. Then a power outage (or a flood, a fibre cut, a cooling failure) takes out the whole building — and every “redundant” copy with it.\n\nFailures that hit many components at once are [[correlated failures]]. Redundancy only helps if the copies fail *independently*.",
+      "callout": {
+        "kind": "warning",
+        "text": "Shared power, network, racks, software versions and even the same bad config push can all take out every copy together."
+      },
+      "changes": [
+        "+ Everything in one data center",
+        "- Data center power outage",
+        "- All copies down at once"
+      ],
+      "metrics": {
+        "avail": "99.95%",
+        "downtime": "+ 6 h outage",
+        "spofs": "1",
+        "survives": "a server"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Zones",
+      "title": "Spread across availability zones",
+      "chapter": "solution",
+      "body": "Cloud regions are split into [[availability zones]]: separate data centers, kilometres to tens of kilometres apart, with their own power and network, joined by fast links.\n\nPut one app server and one database copy in each zone. A zone-wide disaster now takes out only half.",
+      "callout": {
+        "kind": "tip",
+        "text": "Same idea at every scale: spread across racks, zones and — for the most critical systems — whole regions."
+      },
+      "changes": [
+        "- Single data center",
+        "+ Zone A and zone B",
+        "~ One copy of each tier per zone"
+      ],
+      "metrics": {
+        "avail": "99.99%",
+        "downtime": "53 min",
+        "spofs": "0",
+        "survives": "a zone"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Zone fails",
+      "title": "Zone A goes dark — failover",
+      "chapter": "solution",
+      "body": "Zone A loses power. Health checks fail, the load balancer stops sending traffic there, and the follower in zone B is promoted to leader.\n\nUsers in the middle of a request may see an error and retry; within a minute everything runs from zone B.",
+      "callout": {
+        "kind": "insight",
+        "text": "Zone B must have enough spare capacity to carry all the traffic alone. Redundancy you can’t afford to run on is not redundancy."
+      },
+      "changes": [
+        "- Zone A offline",
+        "~ Traffic → zone B only",
+        "~ Follower promoted to leader"
+      ],
+      "metrics": {
+        "avail": "99.99%",
+        "downtime": "53 min",
+        "spofs": "0",
+        "survives": "a zone"
+      },
+      "overrides": {
+        "a1-5": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "db2-3": {
+          "visible": false
+        },
+        "za": {
+          "visible": false
+        },
+        "za-label": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "RTO & RPO",
+      "title": "How fast, and how much lost?",
+      "chapter": "technique",
+      "body": "Two numbers describe a failover. [[RTO]] (recovery time objective): how long until service is back. [[RPO]] (recovery point objective): how much recent data you can afford to lose.\n\nAsync replication means the follower may be a few seconds behind — those writes are gone. Synchronous replication gets RPO to zero, at the cost of slower writes.",
+      "callout": {
+        "kind": "tip",
+        "text": "Decide RTO and RPO with the business first; they determine the design (and the bill)."
+      },
+      "changes": [],
+      "metrics": {
+        "avail": "99.99%",
+        "downtime": "53 min",
+        "spofs": "0",
+        "survives": "a zone"
+      },
+      "overrides": {
+        "a1-5": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "db2-3": {
+          "visible": false
+        },
+        "za": {
+          "visible": false
+        },
+        "za-label": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Chaos",
+      "title": "Untested failover doesn’t work",
+      "chapter": "insight",
+      "body": "A failover path that never runs quietly rots: a config drifts, a spare is too small, a script has a typo. You find out during the real outage.\n\nSo teams break things *on purpose*, in production, during working hours — [[chaos engineering]]. Here a test kills an app server and everyone watches the system cope.",
+      "callout": {
+        "kind": "tip",
+        "text": "Netflix’s Chaos Monkey randomly kills servers every day. Start smaller: a planned game day, one failure at a time."
+      },
+      "changes": [
+        "~ Zone A restored",
+        "- App server killed on purpose",
+        "~ Traffic continues on the other"
+      ],
+      "metrics": {
+        "avail": "99.99%",
+        "downtime": "53 min",
+        "spofs": "0",
+        "survives": "a zone"
+      },
+      "overrides": {
+        "a1-5": {
+          "visible": false
+        },
+        "db-5": {
+          "emphasis": true
+        },
+        "db2-3": {
+          "emphasis": true
+        },
+        "za": {
+          "emphasis": true
+        },
+        "za-label": {
+          "emphasis": true
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "a2db-3": {
+          "emphasis": true
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Bad deploy",
+      "title": "Case: the bug that’s everywhere at once",
+      "chapter": "problem",
+      "body": "A new release with a bug goes out to every app server in both zones at the same moment. Every copy crashes on the same request — redundancy doesn’t help when all the copies share the same broken code.\n\nThis is the most common cause of real outages: not hardware, but **changes** — code, config, or infrastructure.",
+      "callout": {
+        "kind": "warning",
+        "text": "Identical copies fail identically. A bad change is a correlated failure you inflict on yourself."
+      },
+      "changes": [
+        "+ Release v2.4 to all servers at once",
+        "- Both app servers crash"
+      ],
+      "metrics": {
+        "avail": "99.99%",
+        "downtime": "+ 40 min outage",
+        "spofs": "0",
+        "survives": "a zone"
+      },
+      "overrides": {
+        "a1-5": {
+          "visible": false
+        },
+        "a2-3": {
+          "visible": false
+        },
+        "ul-5": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "la2-3": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Canary",
+      "title": "Canary releases",
+      "chapter": "solution",
+      "body": "Roll out in stages instead. First a [[canary]]: one server, or 1% of traffic, gets v2.4. Watch its error rate and latency against the others for a while.\n\nIf it looks worse, roll back — only 1% of users were affected, briefly. If it looks good, continue to 10%, 50%, 100%. Many teams also deploy one zone at a time.",
+      "callout": {
+        "kind": "tip",
+        "text": "Feature flags complement this: ship code turned off, then turn it on gradually — and off instantly if needed."
+      },
+      "changes": [
+        "~ v2.4 on one server only",
+        "~ 1% of traffic",
+        "~ Automatic rollback on errors"
+      ],
+      "metrics": {
+        "avail": "99.99%",
+        "downtime": "53 min",
+        "spofs": "0",
+        "survives": "a zone"
+      },
+      "overrides": {
+        "lb-5": {
+          "visible": false
+        },
+        "a1-5": {
+          "visible": false
+        },
+        "a2-3": {
+          "visible": false
+        },
+        "ul-5": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "la2-3": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Regions",
+      "title": "Beyond zones: multiple regions",
+      "chapter": "technique",
+      "body": "Zones protect against a building failing. A whole **region** can still go down (a regional network or cloud control-plane outage), and it’s far from users on other continents.\n\nRunning in two regions with a global DNS or anycast front door lets users go to the nearest healthy region. The hard part is the data: copies across an ocean replicate with ~100 ms of lag.",
+      "callout": {
+        "kind": "insight",
+        "text": "Multi-region is expensive and complex. Most systems are well served by multiple zones in one region plus good backups."
+      },
+      "changes": [
+        "+ Second region",
+        "+ Global front door routes to the nearest healthy region",
+        "~ Cross-region replication ≈ 100 ms lag"
+      ],
+      "metrics": {
+        "avail": "99.995%",
+        "downtime": "26 min",
+        "spofs": "0",
+        "survives": "a region"
+      },
+      "overrides": {
+        "lb-5": {
+          "visible": false
+        },
+        "a1-5": {
+          "emphasis": true
+        },
+        "db-5": {
+          "visible": false
+        },
+        "a2-3": {
+          "emphasis": true
+        },
+        "db2-3": {
+          "visible": false
+        },
+        "za": {
+          "visible": false
+        },
+        "zb": {
+          "visible": false
+        },
+        "zb-label": {
+          "visible": false
+        },
+        "za-label": {
+          "visible": false
+        },
+        "ul-5": {
+          "visible": false
+        },
+        "la1-5": {
+          "visible": false
+        },
+        "adb-5": {
+          "visible": false
+        },
+        "la2-3": {
+          "visible": false
+        },
+        "a2db-3": {
+          "visible": false
+        },
+        "rep-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Components in a chain **multiply** their availability.\n• Remove **single points of failure** with redundant copies.\n• Copies must fail **independently**: spread them across zones.\n• Set **RTO/RPO**, and practise failover so it works when needed.\n• Most outages are **changes**: roll out with **canaries**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Rate Limiting** — protecting the system from too much of the wrong traffic."
+      },
+      "changes": [],
+      "metrics": {
+        "avail": "99.99%",
+        "downtime": "53 min",
+        "spofs": "0",
+        "survives": "a zone"
+      },
+      "overrides": {
+        "lb-5": {
+          "emphasis": true
+        },
+        "db-5": {
+          "emphasis": true
+        },
+        "db2-3": {
+          "emphasis": true
+        },
+        "za": {
+          "emphasis": true
+        },
+        "zb": {
+          "emphasis": true
+        },
+        "zb-label": {
+          "emphasis": true
+        },
+        "za-label": {
+          "emphasis": true
+        },
+        "ul-5": {
+          "emphasis": true
+        },
+        "la1-5": {
+          "emphasis": true
+        },
+        "adb-5": {
+          "emphasis": true
+        },
+        "la2-3": {
+          "emphasis": true
+        },
+        "a2db-3": {
+          "emphasis": true
+        },
+        "rep-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2407 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 979,
+          "y": -722
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "AI CHỌN INSTANCE?\nphía client  Đơn hàng lấy danh sách,\n             tự cân bằng\nphía server  Đơn hàng gọi “payments”,\n             proxy chọn hộ",
+        "position": {
+          "x": 979,
+          "y": -722
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "ord",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "config: 10.0.3.7, 10.0.3.8",
+        "position": {
+          "x": -408,
+          "y": -21
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-2",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "danh sách trong cache · 10 s",
+        "position": {
+          "x": -408,
+          "y": -21
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-3",
+        "type": "process",
+        "title": "Đơn hàng",
+        "position": {
+          "x": -408,
+          "y": -21
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-4",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "phân giải payments.internal",
+        "position": {
+          "x": -408,
+          "y": -21
+        },
+        "width": 204,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-5",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "danh sách trong cache · vẫn chạy",
+        "position": {
+          "x": -408,
+          "y": -21
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-6",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "retry · TLS · metric (Java)",
+        "position": {
+          "x": -408,
+          "y": -21
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pa",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.3.7",
+        "position": {
+          "x": 0,
+          "y": -306
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pa-2",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.3.7 · ⚠ đã bị thay",
+        "position": {
+          "x": 0,
+          "y": -306
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pb",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.3.8",
+        "position": {
+          "x": 0,
+          "y": -16
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.5.21 · ngồi không · không ai biết",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 188,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc-2",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.5.21",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc-3",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.5.21 · lỡ 3 heartbeat",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc-4",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.5.21 · vừa khởi động · còn lạnh",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 188,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc-5",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.5.21 · sẵn sàng ✓ · tăng 10% → 100%",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 192,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg",
+        "type": "process",
+        "title": "Registry",
+        "description": "payments → .3.8, .5.21",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-2",
+        "type": "process",
+        "title": "Registry",
+        "description": "payments → .3.8, .6.4",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-3",
+        "type": "process",
+        "title": "Registry",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-4",
+        "type": "process",
+        "title": "DNS",
+        "description": "TTL 10 s",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-5",
+        "type": "process",
+        "title": "Registry",
+        "description": "✓ leader · 2 trên 3 còn chạy",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-6",
+        "type": "process",
+        "title": "Control plane",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Settings",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pn",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.6.4 · ✓ mới · đã đăng ký",
+        "position": {
+          "x": 0,
+          "y": -327
+        },
+        "width": 188,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pn-2",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.6.4",
+        "position": {
+          "x": 0,
+          "y": -327
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pn-3",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "10.0.6.4 · retry · TLS · metric (Go)",
+        "position": {
+          "x": 0,
+          "y": -327
+        },
+        "width": 188,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg2",
+        "type": "process",
+        "title": "⚠ SẬP",
+        "position": {
+          "x": 646,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 408,
+          "y": -272
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "so",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -326,
+          "y": 102
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spn",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 82,
+          "y": -204
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 82,
+          "y": 98
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "clients",
+        "type": "process",
+        "title": "ứng dụng & trình duyệt",
+        "position": {
+          "x": -408,
+          "y": -748
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "API Gateway",
+        "description": "xác thực · giới hạn tốc độ · định tuyến",
+        "position": {
+          "x": -408,
+          "y": -374
+        },
+        "width": 196,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "opa",
+        "from": "ord",
+        "to": "pa",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": -306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opa-2",
+        "from": "ord",
+        "to": "pa-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": -306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb",
+        "from": "ord",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-2",
+        "from": "ord-2",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-3",
+        "from": "ord-3",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-4",
+        "from": "ord-4",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-5",
+        "from": "ord-5",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-6",
+        "from": "ord-6",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opc",
+        "from": "ord-2",
+        "to": "pc-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": 306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opc-2",
+        "from": "ord-4",
+        "to": "pc-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": 306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opc-3",
+        "from": "ord-4",
+        "to": "pc-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": 306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "hpb",
+        "from": "pb",
+        "to": "reg",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-2",
+        "from": "pb",
+        "to": "reg-2",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-3",
+        "from": "pb",
+        "to": "reg-3",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-4",
+        "from": "pb",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-5",
+        "from": "pb",
+        "to": "reg-5",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-6",
+        "from": "pb",
+        "to": "reg-6",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpc",
+        "from": "pc-2",
+        "to": "reg",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": 306
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpc-2",
+        "from": "pc-3",
+        "to": "reg-2",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": 306
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "hpc-3",
+        "from": "pc-4",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": 306
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpc-4",
+        "from": "pc-5",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": 306
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "lk",
+        "from": "ord-2",
+        "to": "reg",
+        "label": "thanh toán ở đâu?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-2",
+        "from": "ord-2",
+        "to": "reg-2",
+        "label": "thanh toán ở đâu?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-3",
+        "from": "ord-3",
+        "to": "reg-3",
+        "label": "thanh toán ở đâu?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-4",
+        "from": "ord-4",
+        "to": "reg-4",
+        "label": "payments.internal?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-5",
+        "from": "ord-5",
+        "to": "reg-5",
+        "label": "thanh toán ở đâu?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-6",
+        "from": "ord-6",
+        "to": "reg-4",
+        "label": "payments.internal?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "opn",
+        "from": "ord-2",
+        "to": "pn",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": -327
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opn-2",
+        "from": "ord-3",
+        "to": "pn-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": -327
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opn-3",
+        "from": "ord-4",
+        "to": "pn-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": -327
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opn-4",
+        "from": "ord-5",
+        "to": "pn-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": -327
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opn-5",
+        "from": "ord-6",
+        "to": "pn-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -21
+          },
+          {
+            "x": -204,
+            "y": -327
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "hpn",
+        "from": "pn",
+        "to": "reg-2",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -327
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-2",
+        "from": "pn-2",
+        "to": "reg-3",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -327
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-3",
+        "from": "pn-2",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -327
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-4",
+        "from": "pn-2",
+        "to": "reg-5",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -327
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-5",
+        "from": "pn-3",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -327
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-6",
+        "from": "pn-2",
+        "to": "reg-6",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -327
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "r2",
+        "from": "reg-5",
+        "to": "reg2",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "r3",
+        "from": "reg-5",
+        "to": "reg3",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "push",
+        "from": "reg-6",
+        "to": "ord-3",
+        "label": "cấu hình được đẩy tới sidecar",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.73,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 408,
+            "y": 442
+          },
+          {
+            "x": -408,
+            "y": 442
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cg",
+        "from": "clients",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "go",
+        "from": "gw",
+        "to": "ord-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      }
+    ]
+  },
+  "meta": {
+    "title": "Khám phá dịch vụ & gateway",
+    "summary": "Cách các dịch vụ tìm thấy nhau khi các instance đến rồi đi, và một cửa chính duy nhất cho mọi người bên ngoài.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "deadCalls",
+        "label": "Gọi tới instance chết"
+      },
+      {
+        "id": "instances",
+        "label": "Instance thanh toán"
+      },
+      {
+        "id": "lookup",
+        "label": "Đơn hàng tìm thanh toán thế nào"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao địa chỉ ghi cứng lại hỏng",
+        "step": "s2"
+      },
+      {
+        "text": "Registry, heartbeat và DNS",
+        "step": "s4"
+      },
+      {
+        "text": "Khám phá phía client hay phía server",
+        "step": "s5"
+      },
+      {
+        "text": "Sẵn sàng, slow start và draining",
+        "step": "s8"
+      },
+      {
+        "text": "Một registry không được phép sập",
+        "step": "s9"
+      },
+      {
+        "text": "Service mesh và API gateway",
+        "step": "s12"
+      }
+    ]
+  },
+  "presence": {
+    "ord": {
+      "until": "s3"
+    },
+    "ord-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "ord-3": {
+      "from": "s5"
+    },
+    "ord-4": {
+      "from": "s6",
+      "until": "s9"
+    },
+    "ord-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ord-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "pa": {
+      "until": "s2"
+    },
+    "pa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "pc": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "pc-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "pc-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "pc-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pc-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "reg": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "reg-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "reg-3": {
+      "from": "s5"
+    },
+    "reg-4": {
+      "from": "s6",
+      "until": "s11"
+    },
+    "reg-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "reg-6": {
+      "from": "s11",
+      "until": "s13"
+    },
+    "pn": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "pn-2": {
+      "from": "s5"
+    },
+    "pn-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "reg2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "reg3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "so": {
+      "from": "s11"
+    },
+    "spn": {
+      "from": "s11"
+    },
+    "spb": {
+      "from": "s11"
+    },
+    "clients": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "gw": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "opa": {
+      "until": "s2"
+    },
+    "opa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "opb": {
+      "until": "s3"
+    },
+    "opb-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "opb-3": {
+      "from": "s5"
+    },
+    "opb-4": {
+      "from": "s6",
+      "until": "s9"
+    },
+    "opb-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "opb-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "opc": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "opc-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "opc-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "hpb": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "hpb-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "hpb-3": {
+      "from": "s5"
+    },
+    "hpb-4": {
+      "from": "s6",
+      "until": "s11"
+    },
+    "hpb-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "hpb-6": {
+      "from": "s11",
+      "until": "s13"
+    },
+    "hpc": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "hpc-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "hpc-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "hpc-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lk": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lk-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lk-3": {
+      "from": "s5"
+    },
+    "lk-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "lk-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "lk-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "opn": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "opn-2": {
+      "from": "s5"
+    },
+    "opn-3": {
+      "from": "s6",
+      "until": "s9"
+    },
+    "opn-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "opn-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "hpn": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "hpn-2": {
+      "from": "s5"
+    },
+    "hpn-3": {
+      "from": "s6",
+      "until": "s9"
+    },
+    "hpn-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "hpn-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "hpn-6": {
+      "from": "s11",
+      "until": "s13"
+    },
+    "r2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "r3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "push": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cg": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "go": {
+      "from": "s12",
+      "until": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Cấu hình",
+      "title": "Đơn hàng gọi Thanh toán",
+      "chapter": "setup",
+      "body": "Với microservice, Đơn hàng cần gọi Thanh toán. Cách đơn giản nhất: ghi địa chỉ IP của các máy chủ thanh toán vào file cấu hình của Đơn hàng và chia lời gọi cho chúng.\n\nCách này chạy được, miễn là hai máy đó không bao giờ thay đổi.",
+      "callout": {
+        "kind": "insight",
+        "text": "Trong monolith câu hỏi này không tồn tại: “gọi thanh toán” là một lời gọi hàm trong cùng tiến trình."
+      },
+      "changes": [],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "IP ghi cứng"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Thay đổi",
+      "title": "Instance đến rồi đi",
+      "chapter": "problem",
+      "body": "Trên cloud, máy chủ là gia súc: autoscaler thêm và bớt chúng, các lần triển khai thay thế chúng, máy nào sập thì bị đổi. Instance 10.0.3.7 vừa bị thay bằng một instance mới ở 10.0.5.21.\n\nĐơn hàng vẫn giữ danh sách cũ. Một nửa lời gọi của nó đi tới một địa chỉ không ai trả lời, trong khi instance mới ngồi không.",
+      "callout": {
+        "kind": "warning",
+        "text": "Mọi địa chỉ ghi vào cấu hình đều sẽ lỗi thời. Trong hệ thống tự co giãn, việc này có thể xảy ra nhiều lần mỗi ngày."
+      },
+      "changes": [
+        "- 10.0.3.7 đã bị thay",
+        "+ Instance mới 10.0.5.21 (Đơn hàng không biết)",
+        "- 50% lời gọi thất bại"
+      ],
+      "metrics": {
+        "deadCalls": "50%",
+        "instances": "2",
+        "lookup": "IP ghi cứng"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Registry",
+      "title": "Một service registry",
+      "chapter": "solution",
+      "body": "Mỗi instance **đăng ký** mình với một [[service registry]] khi khởi động, rồi liên tục gửi heartbeat (các ping màu xanh). Đơn hàng hỏi registry “thanh toán ở đâu?” và nhận danh sách hiện tại.\n\nCác registry phổ biến: Consul, etcd, ZooKeeper, Eureka, và Kubernetes, vốn tự làm việc này cho mọi dịch vụ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đơn hàng cache danh sách vài giây thay vì hỏi mỗi lần gọi: registry không được trở thành nút thắt cổ chai."
+      },
+      "changes": [
+        "+ Service registry",
+        "+ Instance đăng ký + heartbeat",
+        "~ Đơn hàng tra địa chỉ của thanh toán"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "registry"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Lại thay đổi",
+      "title": "Instance tự vào và tự ra",
+      "chapter": "insight",
+      "body": "Giờ thay đổi không còn nguy hiểm. Một instance mới (10.0.6.4) khởi động, đăng ký và nhận lưu lượng trong vài giây. Instance 10.0.5.21 bị treo: nó lỡ ba heartbeat, và registry loại nó ra.\n\nKhông ai sửa file cấu hình nào.",
+      "callout": {
+        "kind": "insight",
+        "text": "Heartbeat biến câu hỏi “nó còn sống không?” thành dữ liệu mà registry có thể hành động: cùng ý tưởng với health check của bộ cân bằng tải."
+      },
+      "changes": [
+        "+ 10.0.6.4 đăng ký",
+        "- 10.0.5.21 lỡ 3 heartbeat → bị loại"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "registry"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Ai cân bằng",
+      "title": "Phía client hay phía server?",
+      "chapter": "technique",
+      "body": "**Khám phá phía client**: Đơn hàng tự lấy danh sách và chọn một instance (round robin, ít tải nhất). Không thêm chặng nào, nhưng client nào cũng cần logic đó.\n\n**Khám phá phía server**: Đơn hàng gọi một cái tên cố định, và một bộ cân bằng tải nội bộ (hoặc một Kubernetes Service) tra các instance rồi chuyển tiếp lời gọi. Client vẫn đơn giản.",
+      "callout": {
+        "kind": "tip",
+        "text": "Kubernetes cho mỗi dịch vụ một cái tên cố định và một IP ảo; hầu hết các nhóm chẳng bao giờ thấy registry."
+      },
+      "changes": [],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "registry"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "DNS",
+      "title": "Khám phá qua DNS",
+      "chapter": "technique",
+      "body": "Registry cũng có thể trả lời qua [[DNS]] thông thường: tra `payments.internal` trả về IP của các instance khỏe mạnh. Ngôn ngữ và công cụ nào cũng đã nói được DNS.\n\nVướng mắc là cache: client và thư viện có thể giữ câu trả lời suốt TTL (hoặc lâu hơn), vẫn gọi một instance đã biến mất. Hãy để TTL ngắn và retry khi lỗi kết nối.",
+      "callout": {
+        "kind": "warning",
+        "text": "Một số runtime mặc định cache câu trả lời DNS mãi mãi. Hãy kiểm tra runtime của bạn trước khi dựa vào khám phá qua DNS."
+      },
+      "changes": [
+        "~ Registry trả lời truy vấn DNS",
+        "~ payments.internal → IP khỏe mạnh · TTL 10 s"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "DNS"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Quá sớm",
+      "title": "Tình huống: lưu lượng tới trước khi sẵn sàng",
+      "chapter": "problem",
+      "body": "Một instance mới đăng ký ngay khi tiến trình khởi động, trước khi mở kết nối cơ sở dữ liệu hay làm nóng cache. Registry phát địa chỉ của nó ngay lập tức, nó nhận một phần lưu lượng đầy đủ, và trong 30 giây một phần ba số lời gọi thanh toán bị timeout.\n\n*Còn sống* không giống với *sẵn sàng*.",
+      "callout": {
+        "kind": "warning",
+        "text": "Khởi động lạnh tệ nhất ngay sau các lần triển khai và autoscaling, đúng lúc lưu lượng vốn đang dịch chuyển."
+      },
+      "changes": [
+        "+ Instance mới 10.0.5.21 · vẫn đang khởi động",
+        "- Nhận lưu lượng ngay lập tức",
+        "- Lời gọi tới nó bị timeout"
+      ],
+      "metrics": {
+        "deadCalls": "33%",
+        "instances": "3",
+        "lookup": "DNS"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Sẵn sàng",
+      "title": "Sẵn sàng, slow start và draining",
+      "chapter": "solution",
+      "body": "Tách hai kiểm tra: **liveness** (“tiến trình đang chạy”) và **readiness** (“nó có thể phục vụ yêu cầu ngay bây giờ”). Một instance chỉ được đưa vào danh sách khi qua kiểm tra readiness, và bộ cân bằng tăng dần phần của nó: [[slow start]].\n\nTắt máy là hình ảnh ngược lại: hủy đăng ký trước, chờ các yêu cầu đang xử lý xong (**draining**), rồi mới dừng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Kubernetes có sẵn những thứ này: readinessProbe, livenessProbe, và hook preStop cùng thời gian ân hạn cho draining."
+      },
+      "changes": [
+        "+ Kiểm tra readiness trước khi vào danh sách",
+        "+ Slow start: 10% → 100% trong một phút",
+        "+ Hủy đăng ký, xả hết, rồi dừng"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "3",
+        "lookup": "DNS"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Registry sập",
+      "title": "Nếu registry sập thì sao?",
+      "chapter": "insight",
+      "body": "Giờ mọi thứ phụ thuộc vào registry, nên nó không được là điểm lỗi duy nhất. Hai điều cứu bạn. Bên gọi **cache** danh sách cuối cùng đã biết, nên lưu lượng vẫn chảy ngay cả khi không liên lạc được registry; chỉ là một lúc sẽ không thấy thay đổi.\n\nVà registry chạy thành một **cụm** nhỏ 3 hoặc 5 node thống nhất bằng đa số phiếu (Raft hoặc Paxos). Mất một node, thậm chí hai trên năm, cũng không thay đổi gì.",
+      "callout": {
+        "kind": "insight",
+        "text": "etcd, Consul và ZooKeeper đều là cụm đồng thuận. Kích thước lẻ rất quan trọng: 3 node chịu được 1 lỗi, 5 node chịu được 2."
+      },
+      "changes": [
+        "+ Registry chạy trên 3 node",
+        "- Một node sập",
+        "~ Đa số (2 trên 3) vẫn trả lời"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "registry"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "reg-4": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "hpb-4": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Hệ thống ống",
+      "title": "Nhóm nào cũng tự xây lại cùng một hệ thống ống",
+      "chapter": "problem",
+      "body": "Khám phá dịch vụ mới chỉ là khởi đầu. Mỗi lời gọi giữa các dịch vụ còn cần timeout, retry, circuit breaker, mã hóa và metric.\n\nVới các dịch vụ viết bằng Java, Go, Python và Node, mỗi nhóm tự viết phiên bản riêng cho tất cả những thứ đó, với bug riêng và mặc định riêng.",
+      "callout": {
+        "kind": "warning",
+        "text": "Năm cách cài đặt logic retry nghĩa là năm hành vi khác nhau khi có sự cố."
+      },
+      "changes": [
+        "+ Mã retry/TLS/metric trong mọi dịch vụ"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "DNS"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "reg-4": {
+          "emphasis": true
+        },
+        "pn-2": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "hpb-4": {
+          "emphasis": true
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Mesh",
+      "title": "Service mesh: sidecar lo việc đó",
+      "chapter": "solution",
+      "body": "Một [[service mesh]] (Istio, Linkerd) chạy một proxy nhỏ, gọi là **sidecar**, cạnh mỗi dịch vụ. Mỗi dịch vụ chỉ nói chuyện với sidecar cục bộ của mình; các sidecar tìm instance, retry, áp timeout, mã hóa (mTLS) và báo cáo metric.\n\nMột **control plane** đẩy danh sách instance và chính sách hiện tại tới mọi sidecar. Hệ thống ống chỉ viết một lần, ở một chỗ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Mesh thêm độ trễ (thêm hai chặng cục bộ) và độ phức tạp vận hành thực sự. Đáng giá khi có nhiều dịch vụ; quá mức với vài dịch vụ."
+      },
+      "changes": [
+        "+ Proxy sidecar cạnh mỗi dịch vụ",
+        "~ Registry → control plane",
+        "- Mã hệ thống ống được gỡ khỏi các dịch vụ"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "sidecar của mesh"
+      },
+      "overrides": {
+        "ord-3": {
+          "emphasis": true
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "pn-2": {
+          "emphasis": true
+        },
+        "opb-3": {
+          "emphasis": true
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "emphasis": true
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Gateway",
+      "title": "Ở rìa: một API gateway",
+      "chapter": "technique",
+      "body": "Khám phá dịch vụ xử lý lời gọi *giữa* các dịch vụ. Với client bên ngoài, ứng dụng và trình duyệt, một [[API gateway]] là cửa chính duy nhất: nó xác thực yêu cầu, áp giới hạn tốc độ, kết thúc TLS và định tuyến mỗi đường dẫn tới đúng dịch vụ.\n\nClient không bao giờ biết bố cục bên trong của bạn, nên bạn có thể tách, gộp hay di chuyển dịch vụ tùy ý.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các client khác nhau thường có gateway riêng, gọi là backend-for-frontend (BFF), định hình phản hồi cho mobile hoặc web."
+      },
+      "changes": [
+        "+ API gateway đứng trước các dịch vụ",
+        "+ Client chỉ biết gateway"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "sidecar của mesh"
+      },
+      "overrides": {
+        "reg-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Địa chỉ ghi cứng sẽ lỗi thời khi instance đến rồi đi.\n• Một **registry** có heartbeat (hoặc **DNS**) giữ danh sách luôn mới.\n• Chỉ đưa instance vào danh sách khi nó **sẵn sàng**; hủy đăng ký và **draining** trước khi dừng.\n• Việc khám phá có thể nằm ở client, ở một proxy, hoặc ở **sidecar của mesh**.\n• Một **API gateway** là cửa chính duy nhất cho client bên ngoài.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Saga**: giữ dữ liệu nhất quán khi một hành động trải qua nhiều dịch vụ."
+      },
+      "changes": [],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "sidecar của mesh"
+      },
+      "overrides": {
+        "reg-3": {
+          "emphasis": true
+        },
+        "hpb-3": {
+          "emphasis": true
+        },
+        "lk-3": {
+          "emphasis": true
+        },
+        "hpn-2": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

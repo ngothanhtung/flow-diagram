@@ -1,0 +1,1693 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 525,
+          "y": -427
+        },
+        "width": 289,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "DASHBOARD · P99 LATENCY\ngateway    ████████████  2.4 s\norders     ████████████  2.3 s\npayments   ███████████░  2.2 s\ninventory  ░░░░░░░░░░░░  30 ms\norders DB  ░░░░░░░░░░░░  8 ms",
+        "position": {
+          "x": 525,
+          "y": -427
+        },
+        "width": 265,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 574,
+          "y": -436
+        },
+        "width": 388,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "CHECKOUT SLO\nSLI: checkouts faster than 1 s\nSLO: 99.9% over 30 days\nerror budget: 0.1% may be slow\n⚠ last hour: 1.4% slow = 14× budget → page",
+        "position": {
+          "x": 574,
+          "y": -436
+        },
+        "width": 364,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 591,
+          "y": -427
+        },
+        "width": 421,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "LOGS · FILTERED BY REQ=A91\n07.112 gateway  req=a91 POST /checkout\n07.118 orders   req=a91 reserve stock: ok\n07.121 payments req=a91 calling fraud-api\n09.243 payments req=a91 fraud-api ok (2122 ms)\n→ 2.1 s inside one call",
+        "position": {
+          "x": 591,
+          "y": -427
+        },
+        "width": 397,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 541,
+          "y": -427
+        },
+        "width": 322,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "TRACE A91 · 2.4 S\ngateway       ████████████  2.4 s\n orders       ████████████  2.35 s\n  inventory   █░░░░░░░░░░░  30 ms\n  payments    ████████████  2.2 s\n   fraud API  ███████████░  2.1 s",
+        "position": {
+          "x": 541,
+          "y": -427
+        },
+        "width": 298,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 574,
+          "y": -427
+        },
+        "width": 388,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "TRACE B17 · 310 MS\ngateway       ████████████  310 ms\n orders       ████████████  300 ms\n  inventory   ██░░░░░░░░░░  30 ms\n  payments    ███████████░  220 ms\n   fraud API  ████░░░░░░░░  30 ms (cached)",
+        "position": {
+          "x": 574,
+          "y": -427
+        },
+        "width": 364,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 541,
+          "y": -427
+        },
+        "width": 322,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "CHECKOUT ERRORS · LAST HOUR\n02:50           ░░░░░░░░░░░░  0.1%\n03:00           ░░░░░░░░░░░░  0.1%\n03:10 deploy    ░░░░░░░░░░░░  0.2%\n03:12           ████████████  6%\n03:16 rollback  ░░░░░░░░░░░░  0.2%",
+        "position": {
+          "x": 541,
+          "y": -427
+        },
+        "width": 298,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 566,
+          "y": -427
+        },
+        "width": 371,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-7-text",
+        "type": "text",
+        "title": "POST-MORTEM · CHECKOUT ERRORS\nimpact: 6% of checkouts failed, 4 min\ncause: bad timeout in inventory config\ndetect 1 min · mitigate 4 min (rollback)\n→ action: canary rollout for config\n→ action: alert on config-change errors",
+        "position": {
+          "x": 566,
+          "y": -427
+        },
+        "width": 347,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-7"
+      },
+      {
+        "id": "shoppers",
+        "type": "process",
+        "title": "shoppers",
+        "position": {
+          "x": 0,
+          "y": -462
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "Gateway",
+        "description": "?",
+        "position": {
+          "x": 0,
+          "y": -242
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-2",
+        "type": "process",
+        "title": "Gateway",
+        "description": "p99 2.4 s",
+        "position": {
+          "x": 0,
+          "y": -242
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-3",
+        "type": "process",
+        "title": "Gateway",
+        "description": "SLO burning 14× too fast",
+        "position": {
+          "x": 0,
+          "y": -242
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-4",
+        "type": "process",
+        "title": "Gateway",
+        "description": "req=a91",
+        "position": {
+          "x": 0,
+          "y": -242
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-5",
+        "type": "process",
+        "title": "Gateway",
+        "position": {
+          "x": 0,
+          "y": -242
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-6",
+        "type": "process",
+        "title": "Gateway",
+        "description": "p99 310 ms",
+        "position": {
+          "x": 0,
+          "y": -242
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-7",
+        "type": "process",
+        "title": "Gateway",
+        "description": "errors 6%",
+        "position": {
+          "x": 0,
+          "y": -242
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "orders",
+        "type": "process",
+        "title": "Orders",
+        "description": "?",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "orders-2",
+        "type": "process",
+        "title": "Orders",
+        "description": "p99 2.3 s",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "orders-3",
+        "type": "process",
+        "title": "Orders",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv",
+        "type": "process",
+        "title": "Inventory",
+        "description": "?",
+        "position": {
+          "x": -220,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv-2",
+        "type": "process",
+        "title": "Inventory",
+        "description": "p99 30 ms",
+        "position": {
+          "x": -220,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv-3",
+        "type": "process",
+        "title": "Inventory",
+        "position": {
+          "x": -220,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv-4",
+        "type": "process",
+        "title": "Inventory",
+        "description": "⚠ config change 03:10",
+        "position": {
+          "x": -220,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Payments",
+        "description": "?",
+        "position": {
+          "x": 220,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Payments",
+        "description": "p99 2.2 s",
+        "position": {
+          "x": 220,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-3",
+        "type": "process",
+        "title": "Payments",
+        "position": {
+          "x": 220,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-4",
+        "type": "process",
+        "title": "Payments",
+        "description": "✓ timeout 300 ms + cache",
+        "position": {
+          "x": 220,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "orders DB",
+        "position": {
+          "x": 0,
+          "y": 242
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "orders DB",
+        "description": "p99 8 ms",
+        "position": {
+          "x": 0,
+          "y": 242
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fraud",
+        "type": "process",
+        "title": "Fraud API",
+        "description": "third party",
+        "position": {
+          "x": 220,
+          "y": 242
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ug",
+        "from": "shoppers",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-2",
+        "from": "shoppers",
+        "to": "gw-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-3",
+        "from": "shoppers",
+        "to": "gw-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-4",
+        "from": "shoppers",
+        "to": "gw-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-5",
+        "from": "shoppers",
+        "to": "gw-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-6",
+        "from": "shoppers",
+        "to": "gw-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ug-7",
+        "from": "shoppers",
+        "to": "gw-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go",
+        "from": "gw",
+        "to": "orders",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-2",
+        "from": "gw-2",
+        "to": "orders-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-3",
+        "from": "gw-3",
+        "to": "orders-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-4",
+        "from": "gw-4",
+        "to": "orders-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-5",
+        "from": "gw-5",
+        "to": "orders-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-6",
+        "from": "gw-6",
+        "to": "orders-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "go-7",
+        "from": "gw-7",
+        "to": "orders-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "oi",
+        "from": "orders",
+        "to": "inv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "oi-2",
+        "from": "orders-2",
+        "to": "inv-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "oi-3",
+        "from": "orders-3",
+        "to": "inv-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "oi-4",
+        "from": "orders-3",
+        "to": "inv-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "op",
+        "from": "orders",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "op-2",
+        "from": "orders-2",
+        "to": "pay-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "op-3",
+        "from": "orders-3",
+        "to": "pay-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "op-4",
+        "from": "orders-3",
+        "to": "pay-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "od",
+        "from": "orders",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "od-2",
+        "from": "orders-2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "od-3",
+        "from": "orders-3",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "pf",
+        "from": "pay",
+        "to": "fraud",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pf-2",
+        "from": "pay-2",
+        "to": "fraud",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pf-3",
+        "from": "pay-3",
+        "to": "fraud",
+        "label": "2.1 s",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pf-4",
+        "from": "pay-4",
+        "to": "fraud",
+        "label": "timeout 300 ms · cached",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pf-5",
+        "from": "pay-3",
+        "to": "fraud",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Observability",
+    "summary": "Metrics, logs and traces: how to find out what’s wrong, where, and why — fast.",
+    "minutes": 11,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "detect",
+        "label": "Time to notice"
+      },
+      {
+        "id": "locate",
+        "label": "Time to find cause"
+      },
+      {
+        "id": "p99",
+        "label": "p99 latency"
+      },
+      {
+        "id": "signals",
+        "label": "Signals"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why “it’s slow” is hard to debug",
+        "step": "s1"
+      },
+      {
+        "text": "Metrics and dashboards (RED)",
+        "step": "s2"
+      },
+      {
+        "text": "Alerting on SLOs, not CPU",
+        "step": "s3"
+      },
+      {
+        "text": "Logs and distributed traces",
+        "step": "s5"
+      },
+      {
+        "text": "Handling an incident, and the post-mortem",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "gw": {
+      "until": "s2"
+    },
+    "gw-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "gw-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "gw-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "gw-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "gw-6": {
+      "from": "s6"
+    },
+    "gw-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "orders": {
+      "until": "s2"
+    },
+    "orders-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "orders-3": {
+      "from": "s5"
+    },
+    "inv": {
+      "until": "s2"
+    },
+    "inv-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "inv-3": {
+      "from": "s5"
+    },
+    "inv-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pay": {
+      "until": "s2"
+    },
+    "pay-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "pay-3": {
+      "from": "s5"
+    },
+    "pay-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "db-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ug": {
+      "until": "s2"
+    },
+    "ug-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ug-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ug-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ug-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ug-6": {
+      "from": "s6"
+    },
+    "ug-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "go": {
+      "until": "s2"
+    },
+    "go-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "go-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "go-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "go-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "go-6": {
+      "from": "s6"
+    },
+    "go-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "oi": {
+      "until": "s2"
+    },
+    "oi-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "oi-3": {
+      "from": "s5"
+    },
+    "oi-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "op": {
+      "until": "s2"
+    },
+    "op-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "op-3": {
+      "from": "s5"
+    },
+    "op-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "od": {
+      "until": "s2"
+    },
+    "od-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "od-3": {
+      "from": "s5"
+    },
+    "pf": {
+      "until": "s2"
+    },
+    "pf-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "pf-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "pf-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "pf-5": {
+      "from": "s7"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "It’s slow",
+      "title": "“Checkout is slow.” Where?",
+      "chapter": "problem",
+      "body": "Support tickets pile up: checkout takes several seconds. A checkout touches the gateway, orders, inventory, payments, a database and a third-party fraud API.\n\nYou can see a request waiting somewhere in this diagram — but the team can’t. Every server’s CPU looks fine, and nobody knows where to start.",
+      "callout": {
+        "kind": "warning",
+        "text": "If users find problems before you do, you are flying blind."
+      },
+      "changes": [],
+      "metrics": {
+        "detect": "2 h (support tickets)",
+        "p99": "2.4 s",
+        "signals": "none"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Metrics",
+      "title": "Metrics: numbers over time",
+      "chapter": "technique",
+      "body": "Every service records a few numbers about the requests it handles — the [[RED]] method: **R**ate (requests/s), **E**rrors (failed share) and **D**uration (latency percentiles) — and sends them to a time-series store with dashboards.\n\nNow the picture is clear: inventory and the database are fast; the slowness lives on the payments path.",
+      "callout": {
+        "kind": "tip",
+        "text": "Common stacks: Prometheus + Grafana, Datadog, CloudWatch. Measure p99, not just averages. RED describes requests; for machines, watch **USE**: utilization, saturation, errors."
+      },
+      "changes": [
+        "+ RED metrics on every service",
+        "+ Dashboard: p99 per service"
+      ],
+      "metrics": {
+        "detect": "5 min",
+        "locate": "payments path",
+        "p99": "2.4 s",
+        "signals": "metrics"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Alerts",
+      "title": "Alert on what users feel",
+      "chapter": "technique",
+      "body": "Don’t page people for “CPU above 80%” — it fires constantly and often means nothing. Alert on **symptoms** users feel.\n\nPick an [[SLI]] (say, the share of checkouts faster than 1 s), set an [[SLO]] target (99.9%), and alert when you’re burning through the remaining [[error budget]] too fast.",
+      "callout": {
+        "kind": "tip",
+        "text": "An error budget turns reliability into a shared number: while it lasts, ship features; when it’s gone, fix reliability first."
+      },
+      "changes": [
+        "+ SLO: 99.9% of checkouts under 1 s",
+        "+ Alert on error-budget burn"
+      ],
+      "metrics": {
+        "detect": "2 min",
+        "locate": "payments path",
+        "p99": "2.4 s",
+        "signals": "metrics + alerts"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Logs",
+      "title": "Logs: the story, line by line",
+      "chapter": "technique",
+      "body": "Metrics say *where*; [[logs]] say *what happened*. Each service writes timestamped events — but at thousands of requests a second, lines from different requests interleave into noise.\n\nThe trick: give every request an id at the gateway, pass it along, and include it in every log line. Filter by one id and you get one request’s story.",
+      "callout": {
+        "kind": "tip",
+        "text": "Log structured JSON, not free text — so you can filter by request id, user, service or status."
+      },
+      "changes": [
+        "+ Request id on every log line"
+      ],
+      "metrics": {
+        "detect": "2 min",
+        "locate": "payments → fraud API?",
+        "p99": "2.4 s",
+        "signals": "metrics + logs"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Traces",
+      "title": "Traces: follow one request everywhere",
+      "chapter": "solution",
+      "body": "A [[distributed trace]] records every hop of one request as a **span** with a start time and duration, all joined by the same trace id. Drawn as a waterfall, it shows exactly where the time goes.\n\nFollow the violet request: 2.1 of its 2.4 seconds are spent waiting for the third-party fraud API.",
+      "callout": {
+        "kind": "insight",
+        "text": "Tools: OpenTelemetry to collect, Jaeger, Tempo, Honeycomb or Datadog to explore. Instrument once, use everywhere."
+      },
+      "changes": [
+        "+ Trace id propagated across services",
+        "~ Cause found: fraud API ≈ 88% of the time"
+      ],
+      "metrics": {
+        "detect": "2 min",
+        "locate": "5 min",
+        "p99": "2.4 s",
+        "signals": "metrics + logs + traces"
+      },
+      "overrides": {
+        "db": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Fixed",
+      "title": "Fix it, then prove it",
+      "chapter": "solution",
+      "body": "With the cause known, the fix is quick: call the fraud API with a 300 ms timeout, cache recent scores, and review the rare slow cases afterwards.\n\nThe same dashboards prove it worked: p99 drops from 2.4 s to 310 ms, and the SLO alert clears. Total time from page to cause: minutes, not hours.",
+      "callout": {
+        "kind": "tip",
+        "text": "Metrics tell you something is wrong, traces show where, logs explain why. You need all three."
+      },
+      "changes": [
+        "+ 300 ms timeout + cache on fraud checks",
+        "~ Checkout p99 2.4 s → 310 ms"
+      ],
+      "metrics": {
+        "detect": "2 min",
+        "locate": "5 min",
+        "p99": "310 ms",
+        "signals": "metrics + logs + traces"
+      },
+      "overrides": {
+        "pay-3": {
+          "visible": false
+        },
+        "op-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Incident",
+      "title": "Case: 3 a.m. — errors spike",
+      "chapter": "problem",
+      "body": "The pager fires: checkout errors jumped from 0.1% to 6% at 03:12. Inventory is the culprit on the dashboard. The deploy log shows a config change to inventory at 03:10.\n\nGood practice is to **mitigate first**: roll the change back and restore service, and investigate the root cause afterwards — not the other way round.",
+      "callout": {
+        "kind": "tip",
+        "text": "Put deploys and config changes on your dashboards as markers. “What changed?” is the first question in almost every incident."
+      },
+      "changes": [
+        "+ Config change to inventory at 03:10",
+        "- Checkout errors 0.1% → 6%",
+        "~ Rolled back at 03:16"
+      ],
+      "metrics": {
+        "detect": "1 min",
+        "locate": "4 min",
+        "p99": "900 ms",
+        "signals": "metrics + logs + traces"
+      },
+      "overrides": {
+        "gw-6": {
+          "visible": false
+        },
+        "inv-3": {
+          "visible": false
+        },
+        "pay-3": {
+          "emphasis": true
+        },
+        "ug-6": {
+          "visible": false
+        },
+        "go-6": {
+          "visible": false
+        },
+        "oi-3": {
+          "visible": false
+        },
+        "op-3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Post-mortem",
+      "title": "Learn from it: the post-mortem",
+      "chapter": "insight",
+      "body": "After the incident, the team writes a [[post-mortem]]: a timeline, the impact, the root cause, and the actions that stop it happening again.\n\nIt’s **blameless** — the question is how the system let a mistake through, not who made it. Here: config changes now go through the same canary rollout as code.",
+      "callout": {
+        "kind": "insight",
+        "text": "Each incident is expensive training data. Teams that write good post-mortems make the same mistake much less often."
+      },
+      "changes": [
+        "+ Post-mortem written",
+        "+ Action: canary rollout for config too"
+      ],
+      "metrics": {
+        "detect": "1 min",
+        "locate": "4 min",
+        "p99": "310 ms",
+        "signals": "metrics + logs + traces"
+      },
+      "overrides": {
+        "gw-6": {
+          "emphasis": true
+        },
+        "inv-3": {
+          "emphasis": true
+        },
+        "ug-6": {
+          "emphasis": true
+        },
+        "go-6": {
+          "emphasis": true
+        },
+        "oi-3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• **Metrics** (rate, errors, duration) show where it hurts.\n• **Alert on SLOs** — what users feel — not on raw CPU.\n• **Logs** with a request id tell one request’s story.\n• **Traces** follow a request across every service.\n• In an incident, **mitigate first**; then write a **blameless post-mortem**.\n\nInstrument before you need it — the outage is the wrong time to add logging.",
+      "callout": {
+        "kind": "tip",
+        "text": "That completes Reliability. Next module: **Architecture** — starting with monoliths vs microservices."
+      },
+      "changes": [],
+      "metrics": {
+        "detect": "2 min",
+        "locate": "5 min",
+        "p99": "310 ms",
+        "signals": "metrics + logs + traces"
+      },
+      "overrides": {}
+    }
+  ]
+}

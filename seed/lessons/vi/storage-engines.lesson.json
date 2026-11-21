@@ -1,0 +1,3516 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "cz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -44
+        },
+        "width": 1314,
+        "height": 211,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "lz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 724,
+          "y": -242
+        },
+        "width": 612,
+        "height": 273,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "lz-label",
+        "type": "text",
+        "title": "TỆP LOG · CHỈ NỐI THÊM",
+        "position": {
+          "x": 520,
+          "y": -358
+        },
+        "width": 184,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "lz"
+      },
+      {
+        "id": "pz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -32,
+          "y": 396
+        },
+        "width": 1374,
+        "height": 194,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1354,
+          "y": -634
+        },
+        "width": 504,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "NÚM VẶN ĐỘ BỀN\nfsync mỗi commit     an toàn nhất · chậm nhất\n→ group commit        an toàn như nhau, fsync dùng chung\nfsync mỗi 100 ms     nhanh · có thể mất 100 ms\n⚠ không fsync         nhanh nhất · có thể mất vài phút",
+        "position": {
+          "x": 1354,
+          "y": -634
+        },
+        "width": 480,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Ứng dụng",
+        "position": {
+          "x": 0,
+          "y": -660
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "200.000 lượt ghi / s",
+        "position": {
+          "x": 0,
+          "y": -660
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "Truy vấn phân tích",
+        "position": {
+          "x": 0,
+          "y": -660
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem",
+        "type": "process",
+        "title": "Trang trong bộ nhớ",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 194,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-2",
+        "type": "process",
+        "title": "Trang trong bộ nhớ",
+        "description": "mất điện · mất 4 giây ghi",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 198,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-3",
+        "type": "process",
+        "title": "Trang trong bộ nhớ",
+        "description": "checkpoint: đang flush",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 198,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-4",
+        "type": "process",
+        "title": "Trang trong bộ nhớ",
+        "description": "⚠ đầy trang đã đổi · CPU 100%",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 198,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-5",
+        "type": "process",
+        "title": "Memtable",
+        "description": "đã sắp xếp · trong bộ nhớ",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 194,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-6",
+        "type": "process",
+        "title": "Memtable",
+        "description": "đã sắp xếp · trong bộ nhớ · GET user:42 · không ở đây",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 194,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "p0",
+        "type": "process",
+        "title": "tệp dữ liệu · trang 8 KB",
+        "position": {
+          "x": -601,
+          "y": 396
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p0-2",
+        "type": "process",
+        "title": "trang B-tree · cập nhật tại chỗ",
+        "position": {
+          "x": -601,
+          "y": 396
+        },
+        "width": 180,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p0-3",
+        "type": "process",
+        "title": "trang B-tree · cập nhật tại chỗ",
+        "position": {
+          "x": -601,
+          "y": 396
+        },
+        "width": 180,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p0-4",
+        "type": "process",
+        "title": "kho theo dòng · đọc mọi trang",
+        "position": {
+          "x": -601,
+          "y": 396
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -433,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p1-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -433,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -318,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p2-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -318,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -203,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p3-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -203,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -88,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p4-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -88,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p5",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 28,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p5-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 28,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p6",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 193,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p6-2",
+        "type": "process",
+        "title": "⚠ trang rách",
+        "position": {
+          "x": 193,
+          "y": 396
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p6-3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 193,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p7",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 359,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p7-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 359,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p8",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 474,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p8-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 474,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p9",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 589,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p9-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 589,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "wal",
+        "type": "process",
+        "title": "Log",
+        "description": "✓ fsync trước “đã lưu”",
+        "position": {
+          "x": 534,
+          "y": -220
+        },
+        "width": 176,
+        "height": 90,
+        "shape": "rounded",
+        "icon": "lucide:Scroll",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "wal-2",
+        "type": "process",
+        "title": "Log",
+        "description": "1 fsync cho 8 giao dịch",
+        "position": {
+          "x": 534,
+          "y": -220
+        },
+        "width": 176,
+        "height": 90,
+        "shape": "rounded",
+        "icon": "lucide:Scroll",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "wal-3",
+        "type": "process",
+        "title": "Log",
+        "description": "✓ bỏ các mục cũ",
+        "position": {
+          "x": 534,
+          "y": -220
+        },
+        "width": 176,
+        "height": 90,
+        "shape": "rounded",
+        "icon": "lucide:Scroll",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "wal-4",
+        "type": "process",
+        "title": "Log",
+        "position": {
+          "x": 534,
+          "y": -220
+        },
+        "width": 176,
+        "height": 90,
+        "shape": "rounded",
+        "icon": "lucide:Scroll",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-2",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-3",
+        "type": "process",
+        "title": "▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-4",
+        "type": "process",
+        "title": "▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-5",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-6",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "s0",
+        "type": "process",
+        "title": "tệp đã sắp xếp (SSTable) · cũ nhất",
+        "position": {
+          "x": -357,
+          "y": 396
+        },
+        "width": 208,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s0-2",
+        "type": "process",
+        "title": "không ở đây",
+        "position": {
+          "x": -357,
+          "y": 396
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -108,
+          "y": 396
+        },
+        "width": 154,
+        "height": 92,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s1-2",
+        "type": "process",
+        "title": "✓ có thể → tìm thấy",
+        "position": {
+          "x": -108,
+          "y": 396
+        },
+        "width": 208,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 125,
+          "y": 396
+        },
+        "width": 154,
+        "height": 92,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s2-2",
+        "type": "process",
+        "title": "không ở đây",
+        "position": {
+          "x": 125,
+          "y": 396
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s3",
+        "type": "process",
+        "title": "mới nhất",
+        "position": {
+          "x": 341,
+          "y": 396
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s3-2",
+        "type": "process",
+        "title": "không ở đây",
+        "position": {
+          "x": 341,
+          "y": 396
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "big",
+        "type": "process",
+        "title": "đã gộp · chỉ giá trị mới nhất",
+        "position": {
+          "x": -176,
+          "y": 396
+        },
+        "width": 229,
+        "height": 138,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "big-2",
+        "type": "process",
+        "title": "tệp đã sắp xếp · không bao giờ sửa",
+        "position": {
+          "x": -176,
+          "y": 396
+        },
+        "width": 229,
+        "height": 138,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "c0",
+        "type": "process",
+        "title": "id",
+        "description": "kho theo cột · mỗi cột một tệp",
+        "position": {
+          "x": -541,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c1",
+        "type": "process",
+        "title": "user",
+        "position": {
+          "x": -325,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c2",
+        "type": "process",
+        "title": "item",
+        "position": {
+          "x": -108,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c3",
+        "type": "process",
+        "title": "price",
+        "position": {
+          "x": 109,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c4",
+        "type": "process",
+        "title": "date",
+        "position": {
+          "x": 325,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c5",
+        "type": "process",
+        "title": "+35",
+        "position": {
+          "x": 541,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "scan-to",
+        "type": "text",
+        "title": "",
+        "position": {
+          "x": 484,
+          "y": 290
+        },
+        "width": 28,
+        "height": 28
+      }
+    ],
+    "edges": [
+      {
+        "id": "am",
+        "from": "app",
+        "to": "mem",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "am-2",
+        "from": "app",
+        "to": "mem-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "am-3",
+        "from": "app",
+        "to": "mem-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "am-4",
+        "from": "app-2",
+        "to": "mem-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "am-5",
+        "from": "app-2",
+        "to": "mem-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "am-6",
+        "from": "app",
+        "to": "mem-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "am-7",
+        "from": "app",
+        "to": "mem-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "f1",
+        "from": "mem",
+        "to": "p1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -433,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f1-2",
+        "from": "mem-2",
+        "to": "p1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -433,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "f1-3",
+        "from": "mem-3",
+        "to": "p1-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -433,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "f1-4",
+        "from": "mem",
+        "to": "p1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -433,
+            "y": 88
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f1-5",
+        "from": "mem-4",
+        "to": "p1-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -433,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f4",
+        "from": "mem",
+        "to": "p4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -88,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f4-2",
+        "from": "mem-2",
+        "to": "p4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -88,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "f4-3",
+        "from": "mem-3",
+        "to": "p4-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -88,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "f4-4",
+        "from": "mem",
+        "to": "p4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -88,
+            "y": 88
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f4-5",
+        "from": "mem-4",
+        "to": "p4-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -88,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f6",
+        "from": "mem",
+        "to": "p6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 193,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f6-2",
+        "from": "mem-2",
+        "to": "p6-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 193,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "f6-3",
+        "from": "mem-3",
+        "to": "p6-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 193,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "f6-4",
+        "from": "mem",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 193,
+            "y": 88
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f6-5",
+        "from": "mem-4",
+        "to": "p6-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 193,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f8",
+        "from": "mem",
+        "to": "p8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 474,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f8-2",
+        "from": "mem-2",
+        "to": "p8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 474,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "f8-3",
+        "from": "mem-3",
+        "to": "p8-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 474,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "f8-4",
+        "from": "mem",
+        "to": "p8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 474,
+            "y": 88
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f8-5",
+        "from": "mem-4",
+        "to": "p8-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 474,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "mw",
+        "from": "mem",
+        "to": "wal",
+        "label": "1 · nối",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "mw-2",
+        "from": "mem",
+        "to": "wal-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "mw-3",
+        "from": "mem-3",
+        "to": "wal-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "mw-4",
+        "from": "mem",
+        "to": "wal-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "mw-5",
+        "from": "mem-4",
+        "to": "wal-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "mw-6",
+        "from": "mem-5",
+        "to": "wal-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "mw-7",
+        "from": "mem-6",
+        "to": "wal-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f0",
+        "from": "mem-4",
+        "to": "p0-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -601,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f2",
+        "from": "mem-4",
+        "to": "p2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -318,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f3",
+        "from": "mem-4",
+        "to": "p3-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -203,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f5",
+        "from": "mem-4",
+        "to": "p5-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 28,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f7",
+        "from": "mem-4",
+        "to": "p7-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 359,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f9",
+        "from": "mem-4",
+        "to": "p9-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 589,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "n3",
+        "from": "mem-5",
+        "to": "s3",
+        "label": "flush: một lần ghi tuần tự",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 341,
+            "y": 88
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "n3-2",
+        "from": "mem-6",
+        "to": "s3-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 341,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "n3-3",
+        "from": "mem-5",
+        "to": "s3",
+        "label": "flush",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 341,
+            "y": 88
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "n0",
+        "from": "mem-6",
+        "to": "s0-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -357,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "n1",
+        "from": "mem-6",
+        "to": "s1-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -108,
+            "y": 88
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "n2",
+        "from": "mem-6",
+        "to": "s2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 125,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "col",
+        "from": "app-3",
+        "to": "c3",
+        "label": "đọc 1 trên 40 cột",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": -352
+          },
+          {
+            "x": 109,
+            "y": -352
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "scan",
+        "from": "app-3",
+        "to": "scan-to",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -660,
+            "y": -660
+          },
+          {
+            "x": -660,
+            "y": 290
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.25
+      }
+    ]
+  },
+  "meta": {
+    "title": "Storage engine",
+    "summary": "Cơ sở dữ liệu thực sự làm gì với lần ghi của bạn, và vì sao có loại được xây cho đọc, có loại cho ghi.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "crashSafe",
+        "label": "Sống sót khi sập"
+      },
+      {
+        "id": "wps",
+        "label": "Ghi / giây"
+      },
+      {
+        "id": "diskPattern",
+        "label": "Ghi đĩa"
+      },
+      {
+        "id": "lookupCost",
+        "label": "Lượt đọc mỗi lần tra"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao “đã lưu” cần write-ahead log",
+        "step": "s3"
+      },
+      {
+        "text": "fsync, group commit và checkpoint",
+        "step": "s5"
+      },
+      {
+        "text": "Engine B-tree đọc và ghi như thế nào",
+        "step": "s6"
+      },
+      {
+        "text": "LSM-tree: memtable, SSTable, Bloom filter, compaction",
+        "step": "s10"
+      },
+      {
+        "text": "Chọn lựa: B-tree hay LSM, dòng hay cột",
+        "step": "s12"
+      }
+    ]
+  },
+  "presence": {
+    "app-2": {
+      "from": "s7",
+      "until": "s9"
+    },
+    "app-3": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "mem": {
+      "until": "s7"
+    },
+    "mem-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "mem-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "mem-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "mem-5": {
+      "from": "s8"
+    },
+    "mem-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "p0": {
+      "until": "s6"
+    },
+    "p0-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p0-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p0-4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "p1": {
+      "until": "s7"
+    },
+    "p1-2": {
+      "from": "s5",
+      "until": "s13"
+    },
+    "p2": {
+      "until": "s7"
+    },
+    "p2-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "p3": {
+      "until": "s7"
+    },
+    "p3-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "p4": {
+      "until": "s7"
+    },
+    "p4-2": {
+      "from": "s5",
+      "until": "s13"
+    },
+    "p5": {
+      "until": "s7"
+    },
+    "p5-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "p6": {
+      "until": "s7"
+    },
+    "p6-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "p6-3": {
+      "from": "s5",
+      "until": "s13"
+    },
+    "p7": {
+      "until": "s7"
+    },
+    "p7-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "p8": {
+      "until": "s7"
+    },
+    "p8-2": {
+      "from": "s5",
+      "until": "s13"
+    },
+    "p9": {
+      "until": "s7"
+    },
+    "p9-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "lz": {
+      "from": "s3"
+    },
+    "wal": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wal-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "wal-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wal-4": {
+      "from": "s6"
+    },
+    "ent": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ent-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ent-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ent-4": {
+      "from": "s6"
+    },
+    "ent-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ent-6": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "s0": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s0-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "s1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s1-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "s2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s2-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "s3": {
+      "from": "s8"
+    },
+    "s3-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "big": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "big-2": {
+      "from": "s11"
+    },
+    "cz": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c0": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c1": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c2": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c3": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "scan-to": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "lz-label": {
+      "from": "s3"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "am": {
+      "until": "s7"
+    },
+    "am-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "am-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "am-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "am-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "am-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "am-7": {
+      "from": "s10"
+    },
+    "f1": {
+      "until": "s5"
+    },
+    "f1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f1-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "f1-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f1-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f4": {
+      "until": "s5"
+    },
+    "f4-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f4-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "f4-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f4-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f6": {
+      "until": "s5"
+    },
+    "f6-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f6-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "f6-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f6-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f8": {
+      "until": "s5"
+    },
+    "f8-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f8-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "f8-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f8-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "mw": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mw-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "mw-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "mw-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mw-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "mw-6": {
+      "from": "s8"
+    },
+    "mw-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f0": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f9": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "n3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "n3-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "n3-3": {
+      "from": "s10"
+    },
+    "n0": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "n1": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "n2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "col": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "scan": {
+      "from": "s12",
+      "until": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Hai nơi",
+      "title": "Bộ nhớ và đĩa",
+      "chapter": "setup",
+      "body": "Một server CSDL có hai nơi để giữ dữ liệu. **Bộ nhớ** thì nhanh (một thay đổi chỉ mất vài nano giây), nhưng mọi thứ trong đó biến mất khi tiến trình dừng. **Đĩa** sống sót qua sự cố hay mất điện, nhưng một lần ghi phải được xác nhận là thật sự nằm trên thiết bị (một `fsync`) chậm hơn hàng nghìn lần.\n\n[[Storage engine]] là phần của CSDL quyết định cái gì đi đâu, và khi nào. Mỗi thiết kế là một câu trả lời khác nhau cho cùng một câu hỏi: làm sao có được cùng lúc tốc độ của bộ nhớ và sự an toàn của đĩa?",
+      "callout": {
+        "kind": "insight",
+        "text": "Bảng được lưu thành các **trang** kích thước cố định, thường là 8 hoặc 16 KB, mỗi trang chứa hàng chục dòng. Engine giữ các trang dùng gần đây trong bộ nhớ và đọc phần còn lại từ đĩa khi cần."
+      },
+      "changes": [],
+      "metrics": {
+        "crashSafe": "?"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Sự cố",
+      "title": "Nhanh mà sai: bộ nhớ trước, đĩa lúc nào cũng được",
+      "chapter": "problem",
+      "body": "Engine đơn giản nhất: đổi trang trong bộ nhớ, trả lời “đã lưu”, và cứ vài giây lại chép các trang đã đổi xuống đĩa ở chế độ nền. Ghi nhanh như chớp.\n\nRồi mất điện. Mọi thứ thay đổi kể từ lần chép nền cuối cùng đều mất, kể cả những đơn hàng mà khách đã được báo là thành công. Tệ hơn, một trang đang ghi dở khi mất điện giờ là rác: một [[trang rách]] (torn page).",
+      "callout": {
+        "kind": "warning",
+        "text": "“Đã lưu” phải có nghĩa là “sống sót qua sự cố”. Đó là chữ D trong ACID: **tính bền vững**."
+      },
+      "changes": [
+        "+ Trả lời “đã lưu” ngay khi bộ nhớ được cập nhật",
+        "- Mất điện: vài giây ghi cuối cùng bị mất",
+        "- Một trang ghi dở bị hỏng"
+      ],
+      "metrics": {
+        "crashSafe": "không",
+        "wps": "500.000",
+        "diskPattern": "ngẫu nhiên · lúc nào cũng được"
+      },
+      "overrides": {
+        "mem": {
+          "visible": false
+        },
+        "p6": {
+          "visible": false
+        },
+        "am": {
+          "visible": false
+        },
+        "f1": {
+          "visible": false
+        },
+        "f4": {
+          "visible": false
+        },
+        "f6": {
+          "visible": false
+        },
+        "f8": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Log trước",
+      "title": "Ghi lại trước: write-ahead log",
+      "chapter": "solution",
+      "body": "Cách sửa hiển nhiên, đẩy mọi trang đã đổi xuống đĩa trước khi trả lời, thì an toàn nhưng chậm đến khổ sở: cả một trang 8 KB bị ghi lại ở vị trí ngẫu nhiên, chỉ để lưu một dòng 100 byte.\n\nThay vào đó, hãy mô tả thay đổi bằng vài byte và **nối** nó vào một tệp log, ép xuống đĩa trước khi trả lời. Đây là [[write-ahead log]] (WAL). Nối vào cuối một tệp duy nhất là việc nhanh nhất mà một ổ đĩa làm được. Bản thân các trang được đổi trong bộ nhớ và chép ra sau, thong thả.\n\nTốc độ hiển thị là của một SSD thông thường. Của bạn sẽ khác; tỉ lệ giữa các thiết kế thì không.",
+      "callout": {
+        "kind": "insight",
+        "text": "Sau sự cố, engine phát lại log và dựng lại đúng trạng thái nó đã hứa, sửa luôn các trang rách trên đường đi. Log là sự thật; các trang chỉ là bản tóm tắt tiện lợi của nó."
+      },
+      "changes": [
+        "+ Write-ahead log: nối, rồi fsync",
+        "~ “Đã lưu” chỉ khi mục log đã nằm trên đĩa",
+        "~ Trang dữ liệu được chép ra sau, ở chế độ nền"
+      ],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "5.000",
+        "diskPattern": "log tuần tự"
+      },
+      "overrides": {
+        "mem": {
+          "emphasis": true
+        },
+        "p6": {
+          "emphasis": true
+        },
+        "am": {
+          "emphasis": true
+        },
+        "f1": {
+          "emphasis": true
+        },
+        "f4": {
+          "emphasis": true
+        },
+        "f6": {
+          "emphasis": true
+        },
+        "f8": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Chắc đến đâu?",
+      "title": "Tình huống: “đã lưu” chắc chắn đến đâu?",
+      "chapter": "tradeoff",
+      "body": "Ép log xuống đĩa mất một phần nhỏ của mili giây trên SSD, và mặc định xảy ra một lần mỗi giao dịch. Ở mức hàng nghìn commit mỗi giây, chính bước đó trở thành giới hạn.\n\n[[Group commit]] giúp miễn phí: các giao dịch đến cùng một khoảnh khắc dùng chung một fsync. Xa hơn nữa là một núm vặn. Hầu hết CSDL có thể đồng bộ theo hẹn giờ (mỗi 100 ms, hoặc mỗi giây), nhân thông lượng lên nhiều lần, chấp nhận rằng sự cố sẽ làm mất những khoảnh khắc cuối của các lần ghi “đã lưu”.",
+      "callout": {
+        "kind": "warning",
+        "text": "Hãy biết núm của bạn đang ở đâu. Redis ở chế độ append-only mặc định đồng bộ mỗi giây một lần; PostgreSQL với `synchronous_commit = off` và MySQL với `innodb_flush_log_at_trx_commit = 2` đều có thể mất những khoảnh khắc cuối trước khi mất điện."
+      },
+      "changes": [
+        "+ Group commit: nhiều giao dịch, một fsync",
+        "~ Lượt ghi 5.000 → 40.000 mỗi giây",
+        "~ Tùy chọn: đồng bộ theo hẹn giờ, nhanh hơn, nhưng sự cố làm mất những khoảnh khắc cuối"
+      ],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "40.000",
+        "diskPattern": "log tuần tự"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Checkpoint",
+      "title": "Log không thể lớn mãi",
+      "chapter": "technique",
+      "body": "Nếu để mặc, log sẽ lớn không giới hạn, và hồi phục sau sự cố nghĩa là phát lại cả mấy ngày log. Vì vậy cứ vài phút engine lại tạo một [[checkpoint]]: chép mọi trang đã đổi vào tệp dữ liệu, ghi chú “mọi thứ tới đây đã an toàn trong các trang”, và bỏ phần log cũ hơn.\n\nKhi đó việc hồi phục chỉ phát lại log được ghi từ checkpoint gần nhất: từ vài giây tới vài phút công việc.",
+      "callout": {
+        "kind": "tip",
+        "text": "Checkpoint là một loạt ghi trang rải rác dồn dập. CSDL trải chúng ra theo thời gian; khi không theo kịp, bạn thấy nó thành những đợt độ trễ tăng vọt định kỳ."
+      },
+      "changes": [
+        "+ Checkpoint: chép trang đã đổi, cắt bớt log",
+        "~ Hồi phục chỉ phát lại log từ checkpoint"
+      ],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "40.000",
+        "diskPattern": "log + trang ngẫu nhiên"
+      },
+      "overrides": {
+        "mem": {
+          "visible": false
+        },
+        "p1": {
+          "visible": false
+        },
+        "p4": {
+          "visible": false
+        },
+        "p6": {
+          "visible": false
+        },
+        "p8": {
+          "visible": false
+        },
+        "am": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "B-tree",
+      "title": "Engine kinh điển: trang và B-tree, cập nhật tại chỗ",
+      "chapter": "insight",
+      "body": "Thứ ta vừa dựng chính là thiết kế bên trong PostgreSQL, MySQL (InnoDB), SQL Server và Oracle. Dữ liệu sống trong các trang kích thước cố định, được tìm qua **B-tree** (xem *Chỉ mục*); ở vài engine, chính bảng là một B-tree. Để đổi một dòng, engine tìm trang của nó và sửa trang đó *tại chỗ*, với log để an toàn.\n\nNó xuất sắc khi đọc. Dòng nào cũng chỉ cách ba hoặc bốn lần đọc trang, thường lấy thẳng từ bộ nhớ, và các khóa kề nhau nằm trên các trang kề nhau, nên quét theo khoảng rất rẻ.",
+      "callout": {
+        "kind": "insight",
+        "text": "Mỗi dòng một bản sao, ở một địa chỉ đã biết. Đó là điều làm việc đọc dễ đoán, và cũng là lý do mỗi lần ghi phải đi tìm địa chỉ đó."
+      },
+      "changes": [
+        "~ Đọc: 3–4 trang, phần lớn từ bộ nhớ",
+        "~ Ghi: tìm trang, sửa tại chỗ"
+      ],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "40.000",
+        "diskPattern": "log + trang ngẫu nhiên",
+        "lookupCost": "3–4 trang"
+      },
+      "overrides": {
+        "am": {
+          "effect": "comet",
+          "emphasis": true
+        },
+        "mem": {
+          "emphasis": true
+        },
+        "p1": {
+          "emphasis": true
+        },
+        "p1-2": {
+          "visible": false
+        },
+        "p4": {
+          "emphasis": true
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p6": {
+          "emphasis": true
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p8": {
+          "emphasis": true
+        },
+        "p8-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Vòi rồng",
+      "title": "Tình huống: vòi rồng lượt ghi",
+      "chapter": "problem",
+      "body": "Giờ khối lượng công việc đổi khác: số đo cảm biến, tin nhắn chat, sự kiện nhấp chuột, 200.000 lượt ghi nhỏ mỗi giây, mỗi lượt cho một khóa khác. Mỗi lượt rơi vào một trang khác. Bộ nhớ đầy trang đã đổi, và rốt cuộc mỗi trang phải được ghi lại vào đúng chỗ của nó trên đĩa: cả một trang, cho vài byte thay đổi.\n\nLog theo kịp dễ dàng, vì nó tuần tự. **Ghi trang rải rác** thì không. Checkpoint tụt lại, và thông lượng ghi bị giới hạn bởi tốc độ ghi ngẫu nhiên của đĩa.",
+      "callout": {
+        "kind": "warning",
+        "text": "Đây là **khuếch đại ghi** (write amplification): lưu 100 byte tốn một bản ghi log cộng một lần ghi trang 8 KB. Với khối lượng nặng về ghi, đĩa có thể rốt cuộc ghi gấp hàng chục lần số byte bạn thực sự lưu."
+      },
+      "changes": [
+        "~ Khối lượng: 200.000 lượt ghi nhỏ/s, khóa rải rác",
+        "- Mọi trang đều bẩn · checkpoint tụt lại",
+        "~ Thông lượng kẹt quanh 40.000 lượt ghi/s"
+      ],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "40.000 trên 200.000",
+        "diskPattern": "log + trang ngẫu nhiên",
+        "lookupCost": "3–4 trang"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "p1-2": {
+          "emphasis": true
+        },
+        "p4-2": {
+          "emphasis": true
+        },
+        "p6-3": {
+          "emphasis": true
+        },
+        "p8-2": {
+          "emphasis": true
+        },
+        "ent-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "LSM-tree",
+      "title": "Không bao giờ sửa tại chỗ: LSM-tree",
+      "chapter": "solution",
+      "body": "Một thiết kế khác bỏ ý tưởng mỗi dòng có một ngôi nhà. Một lần ghi đi vào log và vào một cấu trúc đã sắp xếp trong bộ nhớ, [[memtable]]. Thế là xong: không có trang nào cần tìm.\n\nKhi memtable đầy, nó được ghi xuống đĩa một lần như một tệp đã sắp xếp và bất biến, một [[SSTable]], rồi một memtable mới bắt đầu. Mọi lần ghi đĩa đều tuần tự. Đây là [[log-structured merge tree]] (LSM): thiết kế đứng sau Cassandra, HBase, ScyllaDB và RocksDB, engine mà nhiều CSDL khác nhúng vào.",
+      "callout": {
+        "kind": "tip",
+        "text": "Một lần cập nhật chỉ là một mục mới hơn cùng khóa; một lần xóa là một dấu gọi là **tombstone** (bia mộ). Không gì đã nằm trên đĩa bị sửa đổi."
+      },
+      "changes": [
+        "~ Trang trong bộ nhớ → memtable (đã sắp xếp)",
+        "+ Memtable đầy được flush thành một tệp đã sắp xếp",
+        "~ Mọi lần ghi đĩa đều tuần tự · 200.000 lượt ghi/s"
+      ],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "200.000",
+        "diskPattern": "toàn bộ tuần tự",
+        "lookupCost": "?"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "p1-2": {
+          "visible": false
+        },
+        "p2-2": {
+          "visible": false
+        },
+        "p3-2": {
+          "visible": false
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p5-2": {
+          "visible": false
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p7-2": {
+          "visible": false
+        },
+        "p8-2": {
+          "visible": false
+        },
+        "p9-2": {
+          "visible": false
+        },
+        "ent-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Tìm khóa",
+      "title": "Tình huống: khóa của tôi ở đâu?",
+      "chapter": "problem",
+      "body": "Giờ đọc mới là phần khó. Giá trị mới nhất của một khóa có thể ở memtable, hoặc ở bất kỳ SSTable nào. Kiểm tra từ mới đến cũ: một khóa được ghi lần cuối từ lâu, hoặc một khóa không hề tồn tại, sẽ tốn một lần tìm qua mọi tệp.\n\nHai mẹo cứu việc đọc. Mỗi SSTable mang một **Bloom filter** (xem *Bộ nhớ đệm*) trả lời “chắc chắn không có trong tệp này” mà không chạm tới đĩa, và một chỉ mục nhỏ cho biết mỗi khoảng khóa bắt đầu ở đâu. Một lần tra điển hình khi đó chỉ đọc từ một tệp.",
+      "callout": {
+        "kind": "insight",
+        "text": "B-tree trả giá lúc ghi để việc đọc đơn giản. LSM-tree giữ việc ghi đơn giản và trả giá lúc đọc. Mọi storage engine đều nằm đâu đó trên đường thẳng ấy."
+      },
+      "changes": [
+        "- Một lần tra có thể phải kiểm tra mọi SSTable",
+        "+ Một Bloom filter và một chỉ mục nhỏ cho mỗi tệp",
+        "~ Phần lớn lần tra chỉ đọc một tệp"
+      ],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "200.000",
+        "diskPattern": "toàn bộ tuần tự",
+        "lookupCost": "≈ 1 tệp"
+      },
+      "overrides": {
+        "app": {
+          "emphasis": true
+        },
+        "mem-5": {
+          "visible": false
+        },
+        "p1-2": {
+          "visible": false
+        },
+        "p2-2": {
+          "visible": false
+        },
+        "p3-2": {
+          "visible": false
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p5-2": {
+          "visible": false
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p7-2": {
+          "visible": false
+        },
+        "p8-2": {
+          "visible": false
+        },
+        "p9-2": {
+          "visible": false
+        },
+        "ent-4": {
+          "visible": false
+        },
+        "s3": {
+          "visible": false
+        },
+        "mw-6": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Compaction",
+      "title": "Compaction: dọn dẹp ở chế độ nền",
+      "chapter": "technique",
+      "body": "Tệp chất đống, và các tệp cũ đầy những giá trị đã bị ghi đè hoặc xóa từ lâu. Vì vậy một tiến trình nền liên tục **gộp** các SSTable: đọc vài tệp đã sắp xếp, ghi ra một tệp đã sắp xếp mới chỉ giữ giá trị mới nhất của mỗi khóa, rồi xóa các tệp đầu vào.\n\nĐây là [[compaction]]. Nó giới hạn số tệp mà một lần đọc phải xem xét, và trả lại dung lượng. Nó cũng là cái giá của thiết kế: mỗi byte bị ghi lại nhiều lần trong đời, và compaction tranh đĩa với lưu lượng thật.",
+      "callout": {
+        "kind": "warning",
+        "text": "Nếu lượt ghi vượt mặt compaction, tệp chất đống, đọc chậm đi và đĩa đầy. Theo dõi phần compaction tồn đọng là quy tắc đầu tiên khi vận hành một CSDL LSM."
+      },
+      "changes": [
+        "+ Compaction gộp ba tệp thành một",
+        "- Bỏ các giá trị bị ghi đè và tombstone",
+        "~ Ít tệp phải xem xét hơn ở mỗi lần đọc"
+      ],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "200.000",
+        "diskPattern": "toàn bộ tuần tự",
+        "lookupCost": "≈ 1 tệp"
+      },
+      "overrides": {
+        "mem-5": {
+          "emphasis": true
+        },
+        "p1-2": {
+          "visible": false
+        },
+        "p2-2": {
+          "visible": false
+        },
+        "p3-2": {
+          "visible": false
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p5-2": {
+          "visible": false
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p7-2": {
+          "visible": false
+        },
+        "p8-2": {
+          "visible": false
+        },
+        "p9-2": {
+          "visible": false
+        },
+        "ent-4": {
+          "emphasis": true
+        },
+        "s3": {
+          "emphasis": true
+        },
+        "mw-6": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Chọn lựa",
+      "title": "B-tree hay LSM?",
+      "chapter": "tradeoff",
+      "body": "• Ghi — B-tree: Cập nhật trang rải rác; LSM-tree: Nối thêm tuần tự\n• Đọc — B-tree: Vài trang, dễ đoán; LSM-tree: Nhiều tệp; filter giúp sức\n• Dung lượng — B-tree: Trang còn trống một phần; LSM-tree: Gọn, nén tốt\n• Chạy nền — B-tree: Checkpoint; LSM-tree: Compaction\n• Có trong — B-tree: PostgreSQL, MySQL; LSM-tree: Cassandra, RocksDB\n\nNặng về đọc, có truy vấn theo khoảng và giao dịch: B-tree. Nặng về ghi, khổng lồ và chủ yếu nối thêm: LSM-tree. Vài CSDL SQL mới hơn (CockroachDB, TiDB, MyRocks) đặt SQL lên trên một engine LSM.",
+      "callout": {
+        "kind": "insight",
+        "text": "Bạn hiếm khi chọn storage engine trực tiếp; bạn chọn một CSDL và thừa hưởng engine của nó. Biết engine nào nằm bên dưới giải thích phần lớn cách nó hành xử khi chịu tải."
+      },
+      "changes": [],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "200.000",
+        "diskPattern": "toàn bộ tuần tự",
+        "lookupCost": "≈ 1 tệp"
+      },
+      "overrides": {
+        "p1-2": {
+          "visible": false
+        },
+        "p2-2": {
+          "visible": false
+        },
+        "p3-2": {
+          "visible": false
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p5-2": {
+          "visible": false
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p7-2": {
+          "visible": false
+        },
+        "p8-2": {
+          "visible": false
+        },
+        "p9-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Cột",
+      "title": "Tình huống: dòng hay cột?",
+      "chapter": "insight",
+      "body": "Thêm một trục nữa. Cả hai engine tới giờ đều giữ mỗi **dòng** cùng nhau, lý tưởng khi bạn lấy hay đổi trọn bản ghi. Nhưng một nhà phân tích hỏi `SELECT SUM(price) FROM orders` trên hai tỉ dòng, và kho theo dòng phải đọc cả 40 cột của mọi dòng chỉ để cộng một cột.\n\n[[Kho theo cột]] giữ mỗi cột trong tệp riêng. Truy vấn chỉ đọc `price`, một phần bốn mươi dữ liệu, và vì các giá trị giống nhau nằm cạnh nhau, nó nén được nhiều lần. Đó là cách các kho dữ liệu như BigQuery, Snowflake, Redshift và ClickHouse quét hàng tỉ dòng trong vài giây.",
+      "callout": {
+        "kind": "tip",
+        "text": "Kho theo dòng phục vụ ứng dụng: rất nhiều lần đọc và ghi nhỏ. Kho theo cột phục vụ phân tích: vài lần quét khổng lồ. Đó là lý do dữ liệu được chép từ loại này sang loại kia: xem *Xử lý theo lô & luồng*."
+      },
+      "changes": [
+        "+ Truy vấn phân tích: SUM(price) trên 2 tỉ dòng",
+        "- Kho theo dòng: đọc mọi cột của mọi dòng",
+        "+ Kho theo cột: 1 trên 40 cột"
+      ],
+      "metrics": {
+        "crashSafe": "có",
+        "lookupCost": "quét: 1 trên 40 cột"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "mem-5": {
+          "visible": false
+        },
+        "p1-2": {
+          "emphasis": true
+        },
+        "p2-2": {
+          "emphasis": true
+        },
+        "p3-2": {
+          "emphasis": true
+        },
+        "p4-2": {
+          "emphasis": true
+        },
+        "p5-2": {
+          "emphasis": true
+        },
+        "p6-3": {
+          "emphasis": true
+        },
+        "p7-2": {
+          "emphasis": true
+        },
+        "p8-2": {
+          "emphasis": true
+        },
+        "p9-2": {
+          "emphasis": true
+        },
+        "lz": {
+          "visible": false
+        },
+        "wal-4": {
+          "visible": false
+        },
+        "ent-4": {
+          "visible": false
+        },
+        "s3": {
+          "visible": false
+        },
+        "big-2": {
+          "visible": false
+        },
+        "lz-label": {
+          "visible": false
+        },
+        "am-7": {
+          "visible": false
+        },
+        "mw-6": {
+          "visible": false
+        },
+        "n3-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Tổng kết",
+      "title": "Tổng kết",
+      "chapter": "recap",
+      "body": "• Bộ nhớ nhanh mà hay quên; đĩa bền mà chậm. Storage engine bắc cầu giữa hai thứ.\n• **Write-ahead log** làm cho “đã lưu” thành sự thật: nối, fsync, rồi trả lời.\n• Bạn **fsync** thường xuyên đến đâu là một núm vặn độ bền: hãy biết núm của bạn ở đâu.\n• **B-tree** sửa trang tại chỗ: đọc dễ đoán, ghi rải rác.\n• **LSM-tree** chỉ nối thêm: ghi nhanh, trả giá bằng compaction và việc đọc khó hơn.\n• **Kho theo cột** phục vụ phân tích bằng cách chỉ đọc các cột mà truy vấn cần.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Sao chép dữ liệu**: phải làm gì khi một server CSDL không gánh nổi mọi lần đọc, hoặc có thể chết."
+      },
+      "changes": [],
+      "metrics": {
+        "crashSafe": "có",
+        "wps": "200.000",
+        "diskPattern": "toàn bộ tuần tự",
+        "lookupCost": "≈ 1 tệp"
+      },
+      "overrides": {
+        "app": {
+          "emphasis": true
+        },
+        "mem-5": {
+          "emphasis": true
+        },
+        "lz": {
+          "emphasis": true
+        },
+        "wal-4": {
+          "emphasis": true
+        },
+        "ent-4": {
+          "emphasis": true
+        },
+        "s3": {
+          "emphasis": true
+        },
+        "big-2": {
+          "emphasis": true
+        },
+        "lz-label": {
+          "emphasis": true
+        },
+        "am-7": {
+          "emphasis": true
+        },
+        "mw-6": {
+          "emphasis": true
+        },
+        "n3-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

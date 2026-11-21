@@ -1,0 +1,2375 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 633,
+          "y": -502
+        },
+        "width": 297,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "DATABASE PER SERVICE\n⚠ no shared tables\n⚠ no joins across services\n→ ask the owner: API or events\n# each team picks its own store",
+        "position": {
+          "x": 633,
+          "y": -502
+        },
+        "width": 273,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "shoppers",
+        "position": {
+          "x": 0,
+          "y": -528
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Load Balancer",
+        "position": {
+          "x": 0,
+          "y": -288
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m1",
+        "type": "process",
+        "title": "Monolith",
+        "description": "all features · users · catalog · orders · payments",
+        "position": {
+          "x": -120,
+          "y": 0
+        },
+        "width": 200,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m1-2",
+        "type": "process",
+        "title": "Monolith",
+        "description": "all features · reports leak · out of memory · CPU 97%",
+        "position": {
+          "x": -120,
+          "y": 0
+        },
+        "width": 192,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m1-3",
+        "type": "process",
+        "title": "Monolith",
+        "description": "all features · users · catalog · orders",
+        "position": {
+          "x": -144,
+          "y": 0
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m2",
+        "type": "process",
+        "title": "Monolith",
+        "description": "all features",
+        "position": {
+          "x": 120,
+          "y": 0
+        },
+        "width": 176,
+        "height": 80,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m2-2",
+        "type": "process",
+        "title": "Monolith",
+        "description": "all features · ⚠ crashed · checkout down too",
+        "position": {
+          "x": 120,
+          "y": 0
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mdb",
+        "type": "process",
+        "title": "one database",
+        "position": {
+          "x": 0,
+          "y": 264
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mdb-2",
+        "type": "process",
+        "title": "shared tables",
+        "position": {
+          "x": 0,
+          "y": 264
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mdb-3",
+        "type": "process",
+        "title": "monolith DB",
+        "position": {
+          "x": -144,
+          "y": 264
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "API Gateway",
+        "position": {
+          "x": 0,
+          "y": -288
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-2",
+        "type": "process",
+        "title": "API Gateway",
+        "description": "⚠ release train: all 4 together",
+        "position": {
+          "x": 0,
+          "y": -288
+        },
+        "width": 196,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "usr",
+        "type": "process",
+        "title": "Users",
+        "position": {
+          "x": -324,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cat",
+        "type": "process",
+        "title": "Catalog",
+        "position": {
+          "x": -108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Layers",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cat-2",
+        "type": "process",
+        "title": "Catalog",
+        "position": {
+          "x": -108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Layers",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord",
+        "type": "process",
+        "title": "Orders",
+        "position": {
+          "x": 108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-2",
+        "type": "process",
+        "title": "Orders",
+        "description": "history: 20 orders",
+        "position": {
+          "x": 108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-3",
+        "type": "process",
+        "title": "Orders",
+        "description": "local copy: name · photo",
+        "position": {
+          "x": 108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-4",
+        "type": "process",
+        "title": "Orders",
+        "description": "contract: needs amount",
+        "position": {
+          "x": 108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Payments",
+        "position": {
+          "x": 324,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Payments",
+        "description": "slow · 2 s",
+        "position": {
+          "x": 324,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-3",
+        "type": "process",
+        "title": "Payments",
+        "description": "CI: breaks Orders’ contract ✗",
+        "position": {
+          "x": 324,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-4",
+        "type": "process",
+        "title": "Payments",
+        "description": "new",
+        "position": {
+          "x": 324,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "usrdb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -324,
+          "y": 240
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "catdb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -108,
+          "y": 240
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "orddb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 108,
+          "y": 240
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "paydb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 324,
+          "y": 240
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "paydb-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 216,
+          "y": 240
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ul",
+        "from": "users",
+        "to": "lb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "l1",
+        "from": "lb",
+        "to": "m1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "l1-2",
+        "from": "lb",
+        "to": "m1-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "l2",
+        "from": "lb",
+        "to": "m2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "l2-2",
+        "from": "lb",
+        "to": "m2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "d1",
+        "from": "m1",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "d1-2",
+        "from": "m1-2",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "d2",
+        "from": "m2",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "d2-2",
+        "from": "m2-2",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "none"
+      },
+      {
+        "id": "ug",
+        "from": "users",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ug-2",
+        "from": "users",
+        "to": "gw-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gusr",
+        "from": "gw",
+        "to": "usr",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gusr-2",
+        "from": "gw-2",
+        "to": "usr",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gcat",
+        "from": "gw",
+        "to": "cat",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gcat-2",
+        "from": "gw-2",
+        "to": "cat",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gcat-3",
+        "from": "gw",
+        "to": "cat-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "gord",
+        "from": "gw",
+        "to": "ord",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gord-2",
+        "from": "gw-2",
+        "to": "ord",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gord-3",
+        "from": "gw",
+        "to": "ord-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "gord-4",
+        "from": "gw",
+        "to": "ord-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gord-5",
+        "from": "gw",
+        "to": "ord-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gpay",
+        "from": "gw",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gpay-2",
+        "from": "gw",
+        "to": "pay-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "gpay-3",
+        "from": "gw-2",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gpay-4",
+        "from": "gw",
+        "to": "pay-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gpay-5",
+        "from": "gw",
+        "to": "pay-4",
+        "label": "/payments/*",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "musr",
+        "from": "usr",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "musr-2",
+        "from": "usr",
+        "to": "mdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mcat",
+        "from": "cat",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mcat-2",
+        "from": "cat",
+        "to": "mdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mord",
+        "from": "ord",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mord-2",
+        "from": "ord",
+        "to": "mdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mpay",
+        "from": "pay",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mpay-2",
+        "from": "pay",
+        "to": "mdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dusr",
+        "from": "usr",
+        "to": "usrdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dcat",
+        "from": "cat",
+        "to": "catdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dcat-2",
+        "from": "cat-2",
+        "to": "catdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dord",
+        "from": "ord",
+        "to": "orddb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dord-2",
+        "from": "ord-2",
+        "to": "orddb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "dord-3",
+        "from": "ord-3",
+        "to": "orddb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dord-4",
+        "from": "ord-4",
+        "to": "orddb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dpay",
+        "from": "pay",
+        "to": "paydb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dpay-2",
+        "from": "pay-2",
+        "to": "paydb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "dpay-3",
+        "from": "pay-3",
+        "to": "paydb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dpay-4",
+        "from": "pay-4",
+        "to": "paydb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "op",
+        "from": "ord",
+        "to": "pay",
+        "label": "API call",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "op-2",
+        "from": "ord",
+        "to": "pay-2",
+        "label": "timeout",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-3",
+        "from": "ord",
+        "to": "pay",
+        "label": "chatty calls",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "op-4",
+        "from": "ord-4",
+        "to": "pay-3",
+        "label": "contract tested",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "oc",
+        "from": "ord-2",
+        "to": "cat-2",
+        "label": "× 20 calls",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "co",
+        "from": "cat",
+        "to": "ord-3",
+        "label": "ProductUpdated",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "gm",
+        "from": "gw",
+        "to": "m1-3",
+        "label": "everything else",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dm",
+        "from": "m1-3",
+        "to": "mdb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      }
+    ]
+  },
+  "meta": {
+    "title": "Monolith vs Microservices",
+    "summary": "One codebase or many services? What each buys you, what each costs, and how to move between them.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "deploys",
+        "label": "Deploys / day"
+      },
+      {
+        "id": "blast",
+        "label": "A bug takes down"
+      },
+      {
+        "id": "hops",
+        "label": "Network hops / page"
+      },
+      {
+        "id": "opsCost",
+        "label": "Ops overhead"
+      }
+    ],
+    "goals": [
+      {
+        "text": "What a monolith is good at — and where it hurts",
+        "step": "s2"
+      },
+      {
+        "text": "Splitting by business capability",
+        "step": "s3"
+      },
+      {
+        "text": "The costs: a network in the middle",
+        "step": "s5"
+      },
+      {
+        "text": "Queries across services: local read copies",
+        "step": "s8"
+      },
+      {
+        "text": "Contract tests and the distributed monolith",
+        "step": "s9"
+      },
+      {
+        "text": "Migrating safely with a strangler fig",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "lb": {
+      "until": "s3"
+    },
+    "m1": {
+      "until": "s2"
+    },
+    "m1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "m1-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "m2": {
+      "until": "s2"
+    },
+    "m2-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "mdb": {
+      "until": "s4"
+    },
+    "mdb-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mdb-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "gw": {
+      "from": "s3"
+    },
+    "gw-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "usr": {
+      "from": "s3"
+    },
+    "cat": {
+      "from": "s3"
+    },
+    "cat-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ord": {
+      "from": "s3"
+    },
+    "ord-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ord-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ord-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "pay": {
+      "from": "s3"
+    },
+    "pay-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "pay-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "pay-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "usrdb": {
+      "from": "s4"
+    },
+    "catdb": {
+      "from": "s4"
+    },
+    "orddb": {
+      "from": "s4"
+    },
+    "paydb": {
+      "from": "s4"
+    },
+    "paydb-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ul": {
+      "until": "s3"
+    },
+    "l1": {
+      "until": "s2"
+    },
+    "l1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "l2": {
+      "until": "s2"
+    },
+    "l2-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "d1": {
+      "until": "s2"
+    },
+    "d1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "d2": {
+      "until": "s2"
+    },
+    "d2-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ug": {
+      "from": "s3"
+    },
+    "ug-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gusr": {
+      "from": "s3"
+    },
+    "gusr-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gcat": {
+      "from": "s3"
+    },
+    "gcat-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gcat-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gord": {
+      "from": "s3"
+    },
+    "gord-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gord-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gord-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "gord-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "gpay": {
+      "from": "s3"
+    },
+    "gpay-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "gpay-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gpay-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "gpay-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "musr": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "musr-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mcat": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mcat-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mord": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mord-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mpay": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mpay-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dusr": {
+      "from": "s4"
+    },
+    "dcat": {
+      "from": "s4"
+    },
+    "dcat-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dord": {
+      "from": "s4"
+    },
+    "dord-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dord-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "dord-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dpay": {
+      "from": "s4"
+    },
+    "dpay-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "dpay-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dpay-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "op": {
+      "from": "s4"
+    },
+    "op-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "op-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "op-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "oc": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "co": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "gm": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dm": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Monolith",
+      "title": "One app, one deploy",
+      "chapter": "setup",
+      "body": "Your shop is a [[monolith]]: one codebase with every feature — accounts, catalog, orders, payments — deployed as one unit, several copies behind a load balancer, all sharing one database.\n\nFor a small team this is great: calls between features are plain function calls, one deploy ships everything, and a stack trace shows the whole story.",
+      "callout": {
+        "kind": "insight",
+        "text": "Many very large companies ran on a monolith for years. It is a perfectly good architecture — until it isn’t."
+      },
+      "changes": [],
+      "metrics": {
+        "deploys": "1",
+        "blast": "whole site",
+        "hops": "1",
+        "opsCost": "low"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Growing pains",
+      "title": "Fifty engineers, one codebase",
+      "chapter": "problem",
+      "body": "The team grows to fifty people across six teams. Every change goes into one weekly release, so a bug in one feature delays everyone’s work.\n\nA memory leak in the new reports feature crashes the whole process — checkout included. And to give search more memory, you must scale every copy of everything.",
+      "callout": {
+        "kind": "warning",
+        "text": "The monolith’s problems are mostly about people: teams waiting on each other, and one team’s bug becoming everyone’s outage."
+      },
+      "changes": [
+        "~ 6 teams share one release",
+        "- Reports bug crashes checkout",
+        "~ Scale everything to scale one feature"
+      ],
+      "metrics": {
+        "deploys": "1 / week",
+        "blast": "whole site",
+        "hops": "1",
+        "opsCost": "low"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Split",
+      "title": "Split by business capability",
+      "chapter": "solution",
+      "body": "Break the app into [[microservices]] along business lines: Users, Catalog, Orders, Payments. Each is a separate program, owned by one team, deployed on its own schedule.\n\nAn **API gateway** gives clients one front door and routes each request to the right service.",
+      "callout": {
+        "kind": "tip",
+        "text": "Split along business capabilities, not technical layers. A “database service” or “UI service” just moves the coupling around."
+      },
+      "changes": [
+        "- Monolith",
+        "+ 4 services, one per team",
+        "+ API gateway"
+      ],
+      "metrics": {
+        "deploys": "40 / day",
+        "blast": "one feature",
+        "hops": "2–4",
+        "opsCost": "high"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Own data",
+      "title": "Each service owns its data",
+      "chapter": "technique",
+      "body": "If services still share one database, they are still tied together: a schema change by one team can break three others. So each service gets its **own database**, and nobody else touches it.\n\nNeed payment data in Orders? Ask Payments through its API — or listen to its events.",
+      "callout": {
+        "kind": "insight",
+        "text": "Database per service is what makes independent deploys real. It also means no more joins or transactions across services — see the Sagas lesson."
+      },
+      "changes": [
+        "- Shared database",
+        "+ A database per service",
+        "+ Orders → Payments via API"
+      ],
+      "metrics": {
+        "deploys": "40 / day",
+        "blast": "one feature",
+        "hops": "2–4",
+        "opsCost": "high"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Network",
+      "title": "The network is in the middle now",
+      "chapter": "problem",
+      "body": "Showing one order page now takes several calls: gateway → Orders → Payments, plus Users and Catalog. Each hop adds latency, and each can be slow or fail on its own — watch one time out.\n\nDebugging spans four codebases. You need timeouts, retries, tracing and good dashboards (the Reliability module) just to stay where the monolith started.",
+      "callout": {
+        "kind": "warning",
+        "text": "A function call never fails halfway. A network call does — partially, slowly, and at the worst moment."
+      },
+      "changes": [
+        "+ 6 network hops per page",
+        "- Payments call times out",
+        "~ Page fails or degrades"
+      ],
+      "metrics": {
+        "deploys": "40 / day",
+        "blast": "one feature",
+        "hops": "6",
+        "opsCost": "high"
+      },
+      "overrides": {
+        "pay": {
+          "visible": false
+        },
+        "gpay": {
+          "visible": false
+        },
+        "dpay": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Distributed monolith",
+      "title": "Case: the distributed monolith",
+      "chapter": "problem",
+      "body": "One company split its monolith into twelve services — but they kept reading each other’s tables, and every feature needed changes in five services released together.\n\nThey got the network costs of microservices *and* the coupling of a monolith. Releases got slower, not faster.",
+      "callout": {
+        "kind": "warning",
+        "text": "If services must be deployed together, they are one service. Boundaries come first; the split comes second."
+      },
+      "changes": [
+        "~ Services read each other’s data",
+        "- Must release together",
+        "- Worst of both worlds"
+      ],
+      "metrics": {
+        "deploys": "1 / week",
+        "blast": "whole site",
+        "hops": "6",
+        "opsCost": "high"
+      },
+      "overrides": {
+        "gw": {
+          "visible": false
+        },
+        "pay": {
+          "emphasis": true
+        },
+        "usrdb": {
+          "visible": false
+        },
+        "catdb": {
+          "visible": false
+        },
+        "orddb": {
+          "visible": false
+        },
+        "paydb": {
+          "visible": false
+        },
+        "ug": {
+          "visible": false
+        },
+        "gusr": {
+          "visible": false
+        },
+        "gcat": {
+          "visible": false
+        },
+        "gord": {
+          "visible": false
+        },
+        "gpay": {
+          "visible": false
+        },
+        "dusr": {
+          "visible": false
+        },
+        "dcat": {
+          "visible": false
+        },
+        "dord": {
+          "visible": false
+        },
+        "dpay": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Joins?",
+      "title": "Case: the order-history page",
+      "chapter": "problem",
+      "body": "The order-history page shows each order with its product names and photos. In the monolith that was one SQL join. Now orders live in Orders and products in Catalog — and there are no joins across services.\n\nSo Orders calls Catalog once per order: 20 orders, 20 calls (the **N+1** problem). The page is slow, and if Catalog is down, order history is down too.",
+      "callout": {
+        "kind": "warning",
+        "text": "Screens that combine data from many services are where microservices hurt most. Plan for them up front."
+      },
+      "changes": [
+        "+ Order history needs Catalog data",
+        "- 20 calls to Catalog per page"
+      ],
+      "metrics": {
+        "deploys": "40 / day",
+        "blast": "one feature",
+        "hops": "1 + 20",
+        "opsCost": "high"
+      },
+      "overrides": {
+        "gusr": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "gpay": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "dusr": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "dpay": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "gw": {
+          "emphasis": true
+        },
+        "cat": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "usrdb": {
+          "emphasis": true
+        },
+        "catdb": {
+          "emphasis": true
+        },
+        "orddb": {
+          "emphasis": true
+        },
+        "paydb": {
+          "emphasis": true
+        },
+        "ug": {
+          "emphasis": true
+        },
+        "gcat": {
+          "visible": false
+        },
+        "gord": {
+          "visible": false
+        },
+        "dcat": {
+          "visible": false
+        },
+        "dord": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Local copy",
+      "title": "Keep a local read copy",
+      "chapter": "solution",
+      "body": "Orders keeps its own copy of the few catalog fields it displays — name and photo — and Catalog publishes a `ProductUpdated` event whenever they change. Orders updates its copy from those events.\n\nOrder history is one query in Orders’ own database again, and it keeps working when Catalog is down. The price stays as it was at purchase anyway: it’s a historical fact, not a live lookup.",
+      "callout": {
+        "kind": "tip",
+        "text": "The copy is eventually consistent: a renamed product shows the new name a moment later. For a history page, that’s fine."
+      },
+      "changes": [
+        "+ ProductUpdated events",
+        "+ Local copy of name and photo in Orders",
+        "- Calls to Catalog per page"
+      ],
+      "metrics": {
+        "deploys": "40 / day",
+        "blast": "one feature",
+        "hops": "2",
+        "opsCost": "high"
+      },
+      "overrides": {
+        "cat": {
+          "emphasis": true
+        },
+        "ord": {
+          "visible": false
+        },
+        "gcat": {
+          "emphasis": true
+        },
+        "gord": {
+          "visible": false
+        },
+        "dcat": {
+          "emphasis": true
+        },
+        "dord": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Contracts",
+      "title": "Case: an API change breaks a neighbour",
+      "chapter": "technique",
+      "body": "The Payments team renames `amount` to `amount_cents`. Their own tests pass, they deploy — and every checkout in Orders starts failing. Independent deploys only work if teams can’t break each other by accident.\n\nWith [[consumer-driven contract tests]], Orders publishes exactly which fields it relies on. Payments’ build runs those contracts before every release, and this change is blocked in CI instead of in production.",
+      "callout": {
+        "kind": "tip",
+        "text": "Pair contracts with the API versioning rules from the REST lesson: add fields freely, remove them only when no contract needs them."
+      },
+      "changes": [
+        "+ Orders publishes a contract for Payments’ API",
+        "~ Breaking change blocked in Payments’ CI"
+      ],
+      "metrics": {
+        "deploys": "40 / day",
+        "blast": "one feature",
+        "hops": "2–4",
+        "opsCost": "high"
+      },
+      "overrides": {
+        "ord": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "gord": {
+          "visible": false
+        },
+        "gpay": {
+          "visible": false
+        },
+        "dord": {
+          "visible": false
+        },
+        "dpay": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Choosing",
+      "title": "Which one should you pick?",
+      "chapter": "insight",
+      "body": "• Team size — Monolith: One to a few teams; Microservices: Many teams\n• Deploys — Monolith: Together; Microservices: Independent\n• Calls — Monolith: In-process, fast; Microservices: Network, can fail\n• Data — Monolith: One DB, joins, transactions; Microservices: DB per service, sagas\n• Ops — Monolith: Simple; Microservices: Needs good tooling\n\nA common path: start with a **modular monolith** — one deployable with strict internal boundaries — and split out a module only when a team clearly needs independence.",
+      "callout": {
+        "kind": "tip",
+        "text": "Microservices solve an organisational scaling problem. If you don’t have that problem yet, they mostly add cost."
+      },
+      "changes": [],
+      "metrics": {
+        "deploys": "40 / day",
+        "blast": "one feature",
+        "hops": "2–4",
+        "opsCost": "high"
+      },
+      "overrides": {
+        "ord": {
+          "emphasis": true
+        },
+        "pay": {
+          "emphasis": true
+        },
+        "gord": {
+          "emphasis": true
+        },
+        "gpay": {
+          "emphasis": true
+        },
+        "dord": {
+          "emphasis": true
+        },
+        "dpay": {
+          "emphasis": true
+        },
+        "op": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Strangler",
+      "title": "Migrating: the strangler fig",
+      "chapter": "technique",
+      "body": "Don’t rewrite everything at once. Put the gateway in front of the monolith, build **one** new service — Payments — and route only `/payments/*` to it. Everything else still goes to the monolith.\n\nMove one capability at a time until the monolith is small enough to retire. Each step is shippable and reversible.",
+      "callout": {
+        "kind": "insight",
+        "text": "Named after the strangler fig, which grows around a tree until it can stand on its own."
+      },
+      "changes": [
+        "+ Gateway in front of the monolith",
+        "+ New Payments service with its own DB",
+        "~ /payments/* → new service"
+      ],
+      "metrics": {
+        "deploys": "5 / day",
+        "blast": "whole site",
+        "hops": "1–2",
+        "opsCost": "medium"
+      },
+      "overrides": {
+        "usr": {
+          "visible": false
+        },
+        "cat": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "usrdb": {
+          "visible": false
+        },
+        "catdb": {
+          "visible": false
+        },
+        "orddb": {
+          "visible": false
+        },
+        "paydb": {
+          "visible": false
+        },
+        "gusr": {
+          "visible": false
+        },
+        "gcat": {
+          "visible": false
+        },
+        "gord": {
+          "visible": false
+        },
+        "gpay": {
+          "visible": false
+        },
+        "dusr": {
+          "visible": false
+        },
+        "dcat": {
+          "visible": false
+        },
+        "dord": {
+          "visible": false
+        },
+        "dpay": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• A **monolith** is simple and fast — until many teams share it.\n• **Microservices** split by business capability, each with its **own data**.\n• You pay with network calls, partial failures and operational tooling.\n• Replace joins with **local read copies**; protect APIs with **contract tests**.\n• Avoid the **distributed monolith**; migrate gradually with a **strangler fig**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Service Discovery** — how services find each other when instances come and go."
+      },
+      "changes": [],
+      "metrics": {
+        "deploys": "40 / day",
+        "blast": "one feature",
+        "hops": "2–4",
+        "opsCost": "high"
+      },
+      "overrides": {
+        "usr": {
+          "emphasis": true
+        },
+        "cat": {
+          "emphasis": true
+        },
+        "ord": {
+          "emphasis": true
+        },
+        "pay": {
+          "emphasis": true
+        },
+        "usrdb": {
+          "emphasis": true
+        },
+        "catdb": {
+          "emphasis": true
+        },
+        "orddb": {
+          "emphasis": true
+        },
+        "paydb": {
+          "emphasis": true
+        },
+        "gusr": {
+          "emphasis": true
+        },
+        "gcat": {
+          "emphasis": true
+        },
+        "gord": {
+          "emphasis": true
+        },
+        "gpay": {
+          "emphasis": true
+        },
+        "dusr": {
+          "emphasis": true
+        },
+        "dcat": {
+          "emphasis": true
+        },
+        "dord": {
+          "emphasis": true
+        },
+        "dpay": {
+          "emphasis": true
+        },
+        "op": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

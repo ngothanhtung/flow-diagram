@@ -1,0 +1,2121 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 566,
+          "y": -353
+        },
+        "width": 280,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "SCOPE EVERY QUERY\nSELECT * FROM invoices\n WHERE id = 1043\n   AND org_id = :caller_org\n→ Eve (Globex) → no row → 404",
+        "position": {
+          "x": 566,
+          "y": -353
+        },
+        "width": 256,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 624,
+          "y": -355
+        },
+        "width": 396,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "ALLOW-LIST WRITABLE FIELDS\n⚠ update(user, request.body)\n→ update(user, pick(body, \"name\", \"email\"))\n# role: admin-only endpoint",
+        "position": {
+          "x": 624,
+          "y": -355
+        },
+        "width": 372,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 595,
+          "y": -353
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "THE DATABASE FILTERS TOO\nCREATE POLICY tenant ON invoices\n  USING (org_id = current_org())\n→ SELECT * FROM invoices\n#   → only the caller’s organisation",
+        "position": {
+          "x": 595,
+          "y": -353
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 571,
+          "y": -353
+        },
+        "width": 289,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "ROLES → PERMISSIONS\nviewer      read\naccountant  read · edit\napprover    read · approve\nadmin       everything + users",
+        "position": {
+          "x": 571,
+          "y": -353
+        },
+        "width": 265,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 587,
+          "y": -353
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "WHY CAN ALICE VIEW 1042?\ninvoice 1042  in      folder Q3\nfolder Q3     shared  team Finance\nteam Finance  member  alice\n→ alice may view invoice 1042",
+        "position": {
+          "x": 587,
+          "y": -353
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice · Acme",
+        "position": {
+          "x": -252,
+          "y": -126
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice · Acme",
+        "description": "role: accountant",
+        "position": {
+          "x": -252,
+          "y": -126
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice · Acme",
+        "description": "member of team Finance",
+        "position": {
+          "x": -252,
+          "y": -126
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice · Acme",
+        "description": "⚠ report includes Globex!",
+        "position": {
+          "x": -252,
+          "y": -126
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice · Acme",
+        "description": "✓ only Acme invoices",
+        "position": {
+          "x": -252,
+          "y": -126
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve",
+        "type": "process",
+        "title": "Eve · Globex",
+        "description": "GET /invoices/1043 → Acme’s!",
+        "position": {
+          "x": 252,
+          "y": -126
+        },
+        "width": 204,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve-2",
+        "type": "process",
+        "title": "Eve · Globex",
+        "description": "/invoices/1043 → 404",
+        "position": {
+          "x": 252,
+          "y": -126
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve-3",
+        "type": "process",
+        "title": "Eve · Globex",
+        "description": "⚠ PATCH /me { \"role\": \"admin\" }",
+        "position": {
+          "x": 252,
+          "y": -126
+        },
+        "width": 204,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve-4",
+        "type": "process",
+        "title": "Eve · Globex",
+        "description": "Globex rows only",
+        "position": {
+          "x": 252,
+          "y": -126
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve-5",
+        "type": "process",
+        "title": "Eve · Globex",
+        "position": {
+          "x": 252,
+          "y": -126
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api",
+        "type": "process",
+        "title": "Invoices API",
+        "description": "checks: logged in? ✓",
+        "position": {
+          "x": 0,
+          "y": -126
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-2",
+        "type": "process",
+        "title": "Invoices API",
+        "description": "checks: owner = caller’s org",
+        "position": {
+          "x": 0,
+          "y": -126
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-3",
+        "type": "process",
+        "title": "Invoices API",
+        "description": "saves every field sent",
+        "position": {
+          "x": 0,
+          "y": -126
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-4",
+        "type": "process",
+        "title": "Invoices API",
+        "description": "SET app.org = caller’s org",
+        "position": {
+          "x": 0,
+          "y": -126
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-5",
+        "type": "process",
+        "title": "Invoices API",
+        "description": "role allows “edit”? ✓",
+        "position": {
+          "x": 0,
+          "y": -126
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-6",
+        "type": "process",
+        "title": "Invoices API",
+        "description": "follows the relationship chain",
+        "position": {
+          "x": 0,
+          "y": -126
+        },
+        "width": 204,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-7",
+        "type": "process",
+        "title": "Invoices API",
+        "position": {
+          "x": 0,
+          "y": -126
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "invoices",
+        "description": "1043 · Acme · $48,200",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "invoices",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "invoices",
+        "description": "⚠ eve · role = admin!",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 122,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "invoices",
+        "description": "row-level security: org_id",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "invoices",
+        "description": "⚠ users · payments · invoices dumped",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 184,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "policy",
+        "type": "process",
+        "title": "Policy Service",
+        "description": "✓ allow: edit · deny: approve",
+        "position": {
+          "x": 0,
+          "y": -378
+        },
+        "width": 220,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "policy-2",
+        "type": "process",
+        "title": "Policy Service",
+        "position": {
+          "x": 0,
+          "y": -378
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports",
+        "type": "process",
+        "title": "Reports",
+        "description": "admin creds · injection bug",
+        "position": {
+          "x": 252,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-2",
+        "type": "process",
+        "title": "Reports",
+        "description": "read-only · invoices view · users table: denied",
+        "position": {
+          "x": 252,
+          "y": 126
+        },
+        "width": 184,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-3",
+        "type": "process",
+        "title": "Reports",
+        "description": "own identity · all tenants",
+        "position": {
+          "x": 252,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-4",
+        "type": "process",
+        "title": "Reports",
+        "description": "acts as Alice · Acme only",
+        "position": {
+          "x": 252,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-5",
+        "type": "process",
+        "title": "Reports",
+        "description": "read-only · invoices view",
+        "position": {
+          "x": 252,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-6",
+        "type": "process",
+        "title": "Reports",
+        "position": {
+          "x": 252,
+          "y": 126
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "audit",
+        "type": "process",
+        "title": "audit log",
+        "description": "alice viewed 1042 · 09:14",
+        "position": {
+          "x": -252,
+          "y": 126
+        },
+        "width": 184,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Clipboard",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "audit-2",
+        "type": "process",
+        "title": "audit log",
+        "position": {
+          "x": -252,
+          "y": 126
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Clipboard",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "aa",
+        "from": "alice",
+        "to": "api",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-2",
+        "from": "alice",
+        "to": "api-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-3",
+        "from": "alice",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-4",
+        "from": "alice",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-5",
+        "from": "alice-2",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-6",
+        "from": "alice-3",
+        "to": "api-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-7",
+        "from": "alice-2",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-8",
+        "from": "alice",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-9",
+        "from": "alice-4",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-10",
+        "from": "alice-5",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ea",
+        "from": "eve",
+        "to": "api",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ea-2",
+        "from": "eve-2",
+        "to": "api-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "ea-3",
+        "from": "eve-3",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ea-4",
+        "from": "eve-4",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ea-5",
+        "from": "eve-5",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ea-6",
+        "from": "eve-5",
+        "to": "api-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ea-7",
+        "from": "eve-5",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad",
+        "from": "api",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-2",
+        "from": "api-2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-3",
+        "from": "api-3",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-4",
+        "from": "api-4",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-5",
+        "from": "api-5",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-6",
+        "from": "api-6",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-7",
+        "from": "api-7",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-8",
+        "from": "api-7",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap",
+        "from": "api-7",
+        "to": "policy",
+        "label": "can Alice edit 1042?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ap-2",
+        "from": "api-7",
+        "to": "policy-2",
+        "label": "can Alice edit 1042?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rd",
+        "from": "reports",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "rd-2",
+        "from": "reports-2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "rd-3",
+        "from": "reports-3",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rd-4",
+        "from": "reports-4",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rd-5",
+        "from": "reports-5",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "rd-6",
+        "from": "reports-6",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ar",
+        "from": "api-7",
+        "to": "reports-3",
+        "label": "run report",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-2",
+        "from": "api-7",
+        "to": "reports-4",
+        "label": "Alice’s token",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dau",
+        "from": "db-2",
+        "to": "audit",
+        "label": "every access recorded",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "dau-2",
+        "from": "db-2",
+        "to": "audit-2",
+        "label": "every access recorded",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Authorization",
+    "summary": "Knowing who someone is doesn’t tell you what they may see or do. Checking that, everywhere.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "exposed",
+        "label": "Others’ data exposed"
+      },
+      {
+        "id": "checks",
+        "label": "Permission checks"
+      },
+      {
+        "id": "privilege",
+        "label": "Service access"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Broken object-level authorization",
+        "step": "s1"
+      },
+      {
+        "text": "Ownership checks and field allow-lists",
+        "step": "s3"
+      },
+      {
+        "text": "Row-level security in the database",
+        "step": "s4"
+      },
+      {
+        "text": "Roles, relationships and central policy",
+        "step": "s7"
+      },
+      {
+        "text": "Least privilege and confused deputies",
+        "step": "s11"
+      },
+      {
+        "text": "Audit logs",
+        "step": "s12"
+      }
+    ]
+  },
+  "presence": {
+    "alice-2": {
+      "from": "s5",
+      "until": "s8"
+    },
+    "alice-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "alice-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "alice-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "eve": {
+      "until": "s2"
+    },
+    "eve-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "eve-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "eve-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "eve-5": {
+      "from": "s5"
+    },
+    "api": {
+      "until": "s2"
+    },
+    "api-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "api-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "api-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "api-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "api-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "api-7": {
+      "from": "s7"
+    },
+    "db": {
+      "until": "s2"
+    },
+    "db-2": {
+      "from": "s2"
+    },
+    "db-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "db-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "policy": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "policy-2": {
+      "from": "s8"
+    },
+    "reports": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "reports-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "reports-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "reports-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "reports-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "reports-6": {
+      "from": "s13"
+    },
+    "audit": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "audit-2": {
+      "from": "s13"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "aa": {
+      "until": "s2"
+    },
+    "aa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "aa-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "aa-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "aa-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "aa-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "aa-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "aa-8": {
+      "from": "s8"
+    },
+    "aa-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "aa-10": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ea": {
+      "until": "s2"
+    },
+    "ea-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ea-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ea-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ea-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ea-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ea-7": {
+      "from": "s7"
+    },
+    "ad": {
+      "until": "s2"
+    },
+    "ad-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ad-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ad-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ad-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ad-7": {
+      "from": "s7"
+    },
+    "ad-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ap": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ap-2": {
+      "from": "s8"
+    },
+    "rd": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rd-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "rd-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "rd-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "rd-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "rd-6": {
+      "from": "s13"
+    },
+    "ar": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ar-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dau": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "dau-2": {
+      "from": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Change the URL",
+      "title": "Logged in is not the same as allowed",
+      "chapter": "problem",
+      "body": "Eve, from another company, is a legitimate user. She opens her invoice at `/invoices/1042`, changes the number to `1043` — and sees an invoice belonging to Acme.\n\nThe API checked that she was *logged in*, never that this invoice was *hers*. This is broken object-level authorization — the most common API security flaw.",
+      "callout": {
+        "kind": "warning",
+        "text": "Hiding a button in the UI is not authorization. Attackers call your API directly, with any id they like."
+      },
+      "changes": [],
+      "metrics": {
+        "exposed": "yes",
+        "checks": "login only",
+        "privilege": "everything"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Ownership",
+      "title": "Check ownership on every request",
+      "chapter": "solution",
+      "body": "Every lookup must be scoped to who is asking: fetch invoice 1043 *only if* it belongs to the caller’s organisation. For Eve that finds nothing, and she gets `404 Not Found`.\n\nDeny by default: any endpoint that forgets the check should fail closed, not open.",
+      "callout": {
+        "kind": "tip",
+        "text": "Answer 404, not 403, for other people’s objects — don’t confirm they exist. Random ids (UUIDs) help, but are no substitute for the check."
+      },
+      "changes": [
+        "+ Queries scoped to the caller’s organisation",
+        "~ Eve’s request → 404"
+      ],
+      "metrics": {
+        "exposed": "no",
+        "checks": "every request",
+        "privilege": "everything"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Mass assign",
+      "title": "Case: “role”: “admin”",
+      "chapter": "problem",
+      "body": "Eve edits her own profile — that’s allowed. But the API takes the JSON body and saves every field in it. So she adds `\"role\": \"admin\"` to the request and promotes herself.\n\nThis is [[mass assignment]]. Fix: each endpoint has an allow-list of fields it may change, and roles change only through a separate admin-only endpoint.",
+      "callout": {
+        "kind": "warning",
+        "text": "Frameworks that bind request bodies straight onto database models make this easy to get wrong. Be explicit about writable fields."
+      },
+      "changes": [
+        "+ Eve sends an extra “role” field",
+        "- API saves it · Eve is admin",
+        "~ Fix: allow-list writable fields"
+      ],
+      "metrics": {
+        "exposed": "yes",
+        "checks": "every request",
+        "privilege": "everything"
+      },
+      "overrides": {
+        "db-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Row-level",
+      "title": "Let the database enforce tenants too",
+      "chapter": "technique",
+      "body": "Ownership checks live in application code, so one query that forgets `AND org_id = …` brings the leak right back. Add a second layer: [[row-level security]] in the database.\n\nThe app tells each connection which organisation it is serving; the database then filters every query by that org. Even `SELECT * FROM invoices` only returns the caller’s rows.",
+      "callout": {
+        "kind": "insight",
+        "text": "Defence in depth: assume any single check will eventually be forgotten, and make sure a second one is there."
+      },
+      "changes": [
+        "+ Row-level security on invoices",
+        "~ App sets the caller’s org per connection"
+      ],
+      "metrics": {
+        "exposed": "no",
+        "checks": "app + database",
+        "privilege": "everything"
+      },
+      "overrides": {
+        "db-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Roles",
+      "title": "Roles: what each kind of user may do",
+      "chapter": "technique",
+      "body": "Inside Acme, people need different powers: some only view invoices, some edit them, a few approve large ones. Rather than list permissions per person, group them into [[roles]] and give each person a role — role-based access control (RBAC).\n\nAlice is an accountant: she can edit invoices but not approve them.",
+      "callout": {
+        "kind": "tip",
+        "text": "Keep roles few and meaningful. Hundreds of special-case roles become impossible to reason about."
+      },
+      "changes": [
+        "+ Roles: viewer, accountant, approver, admin"
+      ],
+      "metrics": {
+        "exposed": "no",
+        "checks": "every request",
+        "privilege": "everything"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "db-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Sharing",
+      "title": "Relationships: sharing and teams",
+      "chapter": "technique",
+      "body": "Roles struggle with sharing: “Alice can see this folder because it was shared with her team”. **Relationship-based** access (ReBAC) stores facts like “invoice 1042 is in folder Q3”, “Q3 is shared with team Finance”, “Alice is in Finance”, and follows the chain.\n\nThis is how Google Docs-style sharing works at scale.",
+      "callout": {
+        "kind": "insight",
+        "text": "Google’s Zanzibar paper popularised this model; SpiceDB and OpenFGA are open-source versions."
+      },
+      "changes": [
+        "+ Permissions derived from relationships"
+      ],
+      "metrics": {
+        "exposed": "no",
+        "checks": "every request",
+        "privilege": "everything"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "alice-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Policy",
+      "title": "Decide in one place",
+      "chapter": "technique",
+      "body": "Permission checks scattered as if-statements across twenty services drift apart, and nobody can answer “who can approve invoices?”. Instead, each service asks a [[policy service]]: “may Alice edit invoice 1042?”, and enforces the yes or no.\n\nThe rules live in one place, are tested like code, and every decision can be logged.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tools: Open Policy Agent (Rego), AWS Cedar, or a permissions service like SpiceDB. Cache decisions briefly to keep calls fast."
+      },
+      "changes": [
+        "+ Central policy service",
+        "~ API asks, then enforces"
+      ],
+      "metrics": {
+        "exposed": "no",
+        "checks": "central policy",
+        "privilege": "everything"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "alice-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Master key",
+      "title": "Case: a service with keys to everything",
+      "chapter": "problem",
+      "body": "The reports service connects to the database with the admin account — it was quickest to set up. One day a SQL-injection bug is found in a report filter.\n\nBecause the service could read *every* table, the attacker dumps users, password hashes and payment details too — not just invoices.",
+      "callout": {
+        "kind": "warning",
+        "text": "A component’s permissions define the blast radius of its bugs."
+      },
+      "changes": [
+        "+ Reports service with admin DB credentials",
+        "- Injection bug exposes every table"
+      ],
+      "metrics": {
+        "exposed": "yes",
+        "checks": "central policy",
+        "privilege": "everything"
+      },
+      "overrides": {
+        "ea-7": {
+          "effect": "none"
+        },
+        "ap-2": {
+          "effect": "none"
+        },
+        "alice": {
+          "emphasis": true
+        },
+        "db-2": {
+          "visible": false
+        },
+        "ad-7": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Least privilege",
+      "title": "Least privilege",
+      "chapter": "solution",
+      "body": "Give every service — and every person — only the access its job needs. The reports service gets a **read-only** account that can see the invoices view and nothing else; each service has its own credentials and identity.\n\nThe same injection bug now leaks, at worst, invoices the service could already read — and alarms fire when it tries anything else.",
+      "callout": {
+        "kind": "tip",
+        "text": "Apply it everywhere: database grants, cloud IAM roles, API scopes, and staff access (time-limited, approved, logged)."
+      },
+      "changes": [
+        "~ Reports: read-only, invoices view only",
+        "+ Separate credentials per service"
+      ],
+      "metrics": {
+        "exposed": "no",
+        "checks": "central policy",
+        "privilege": "least privilege"
+      },
+      "overrides": {
+        "ea-7": {
+          "effect": "none"
+        },
+        "ap-2": {
+          "effect": "none"
+        },
+        "db-2": {
+          "emphasis": true
+        },
+        "ad-7": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Deputy",
+      "title": "Case: the confused deputy",
+      "chapter": "problem",
+      "body": "Alice asks for a report of invoices over $10,000. The API hands the job to the reports service, which queries with *its own* identity — and it may read every tenant’s invoices. Alice’s report includes Globex’s.\n\nThe reports service was tricked into using its authority on someone else’s behalf: a [[confused deputy]].",
+      "callout": {
+        "kind": "warning",
+        "text": "Whenever a service acts for a user, ask: whose permissions apply here — the service’s or the user’s?"
+      },
+      "changes": [
+        "+ Report runs as the reports service",
+        "- Alice sees other tenants’ invoices"
+      ],
+      "metrics": {
+        "exposed": "yes",
+        "checks": "central policy",
+        "privilege": "least privilege"
+      },
+      "overrides": {
+        "ad-7": {
+          "effect": "none"
+        },
+        "ap-2": {
+          "effect": "none"
+        },
+        "alice": {
+          "visible": false
+        },
+        "eve-5": {
+          "visible": false
+        },
+        "aa-8": {
+          "visible": false
+        },
+        "ea-7": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "On behalf",
+      "title": "Act as the user, not as yourself",
+      "chapter": "solution",
+      "body": "Pass the user’s identity along: the API forwards Alice’s token (or exchanges it for a narrower one), and the reports service runs the query *as Alice* — with her organisation and her permissions.\n\nThe service’s own powerful credentials are only used for things no user asked for, like nightly maintenance.",
+      "callout": {
+        "kind": "tip",
+        "text": "OAuth token exchange and service meshes can carry the end user’s identity across every hop automatically."
+      },
+      "changes": [
+        "~ Alice’s token passed to Reports",
+        "~ Query runs with Alice’s permissions",
+        "- Other tenants’ data"
+      ],
+      "metrics": {
+        "exposed": "no",
+        "checks": "central policy",
+        "privilege": "least privilege"
+      },
+      "overrides": {
+        "ad-7": {
+          "effect": "none"
+        },
+        "alice": {
+          "visible": false
+        },
+        "eve-5": {
+          "visible": false
+        },
+        "aa-8": {
+          "visible": false
+        },
+        "ea-7": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Audit",
+      "title": "Audit logs: who saw what",
+      "chapter": "technique",
+      "body": "Finally, record every access to sensitive data — who, what, when, from where — in an append-only [[audit log]] that the people being audited can’t edit.\n\nIt answers “who looked at this customer’s invoices?” after an incident, and powers alerts: a support agent opening 5,000 invoices in ten minutes is worth a page.",
+      "callout": {
+        "kind": "insight",
+        "text": "Audit logs are also required by most compliance standards (SOC 2, HIPAA, GDPR requests)."
+      },
+      "changes": [
+        "+ Append-only audit log",
+        "+ Alert on unusual access"
+      ],
+      "metrics": {
+        "exposed": "no",
+        "checks": "central policy",
+        "privilege": "least privilege"
+      },
+      "overrides": {
+        "ap-2": {
+          "effect": "none"
+        },
+        "alice": {
+          "emphasis": true
+        },
+        "eve-5": {
+          "emphasis": true
+        },
+        "aa-8": {
+          "emphasis": true
+        },
+        "ea-7": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Check that the caller may access **this object**, on every request.\n• Use **roles** for kinds of users, **relationships** for sharing.\n• Decide in a **central policy**; enforce in each service.\n• Allow-list writable fields; add **row-level security** as a second layer.\n• Grant **least privilege**; act **as the user**, not as the service; keep an **audit log**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Encryption & Secrets** — protecting data on the wire, on disk, and the keys themselves."
+      },
+      "changes": [],
+      "metrics": {
+        "exposed": "no",
+        "checks": "central policy",
+        "privilege": "least privilege"
+      },
+      "overrides": {}
+    }
+  ]
+}

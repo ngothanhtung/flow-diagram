@@ -1,0 +1,2225 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 811,
+          "y": -436
+        },
+        "width": 404,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "THE TLS HANDSHAKE\nserver shows its certificate\nbrowser checks the CA signature\nboth agree on fresh session keys\n→ everything after: encrypted + tamper-proof",
+        "position": {
+          "x": 811,
+          "y": -436
+        },
+        "width": 380,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 778,
+          "y": -436
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "NEVER EXPIRE BY SURPRISE\n⚠ renewed by hand, once a year\n→ ACME: auto-renew every 60 days\n→ alert 30 days before any expiry\n# check every endpoint, not just www",
+        "position": {
+          "x": 778,
+          "y": -436
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 787,
+          "y": -436
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "ENVELOPE ENCRYPTION\ndata  —encrypted with→  data key\ndata key —encrypted by→ KMS master key\n→ steal the disk: no usable key\n# rotate keys, audit every use",
+        "position": {
+          "x": 787,
+          "y": -436
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 762,
+          "y": -436
+        },
+        "width": 305,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "ROTATING KEYS\nnew master key v2 in the KMS\nre-wrap each data key: kilobytes\n→ the data is never re-encrypted\n# new writes use fresh data keys",
+        "position": {
+          "x": 762,
+          "y": -436
+        },
+        "width": 281,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice · café Wi-Fi",
+        "description": "http:// · password in clear",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 192,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice · café Wi-Fi",
+        "description": "https:// · encrypted",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 188,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice · café Wi-Fi",
+        "description": "⚠ “Your connection is not private”",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 192,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice · café Wi-Fi",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice",
+        "description": "encrypt with Bob’s public key",
+        "position": {
+          "x": 0,
+          "y": -441
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "router",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -252
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Wifi",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Load Balancer",
+        "position": {
+          "x": 0,
+          "y": -63
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-2",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "certificate: shop.example",
+        "position": {
+          "x": 0,
+          "y": -63
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-3",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "certificate expired 03:00",
+        "position": {
+          "x": 0,
+          "y": -63
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "App",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "App",
+        "description": "mTLS · own certificate",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "App",
+        "description": "API key in source code",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-4",
+        "type": "process",
+        "title": "App",
+        "description": "✓ no secrets in code",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-5",
+        "type": "process",
+        "title": "App",
+        "description": "✓ never sees card numbers",
+        "position": {
+          "x": 0,
+          "y": 126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "customer DB",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "customer DB",
+        "description": "⚠ backup in public bucket",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 200,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "customer DB",
+        "description": "encrypted · AES-256",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 200,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "customer DB",
+        "description": "data keys re-wrapped · v2",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 200,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "customer DB",
+        "description": "card: tok_4f2c",
+        "position": {
+          "x": 0,
+          "y": 315
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mallory",
+        "type": "process",
+        "title": "Mallory · same Wi-Fi",
+        "description": "reads: alice / hunter2",
+        "position": {
+          "x": -294,
+          "y": -63
+        },
+        "width": 188,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mallory-2",
+        "type": "process",
+        "title": "Mallory · same Wi-Fi",
+        "description": "sees random bytes",
+        "position": {
+          "x": -294,
+          "y": -63
+        },
+        "width": 188,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief",
+        "type": "process",
+        "title": "thief",
+        "description": "reads every customer",
+        "position": {
+          "x": 273,
+          "y": 315
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief-2",
+        "type": "process",
+        "title": "thief",
+        "description": "only ciphertext",
+        "position": {
+          "x": 273,
+          "y": 315
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief-3",
+        "type": "process",
+        "title": "thief",
+        "description": "steals tokens · useless",
+        "position": {
+          "x": 273,
+          "y": 315
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kms",
+        "type": "process",
+        "title": "KMS",
+        "description": "key service",
+        "position": {
+          "x": 0,
+          "y": 525
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Key",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "repo",
+        "type": "process",
+        "title": "Public Repo",
+        "description": "⚠ sk_live_… in history",
+        "position": {
+          "x": 273,
+          "y": 126
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "repo-2",
+        "type": "process",
+        "title": "Public Repo",
+        "description": "✓ secret scan: clean",
+        "position": {
+          "x": 273,
+          "y": 126
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot",
+        "type": "process",
+        "title": "scanner bot",
+        "description": "key found in 4 min",
+        "position": {
+          "x": 441,
+          "y": -105
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "vault",
+        "type": "process",
+        "title": "Secrets Manager",
+        "description": "rotated every 30 days",
+        "position": {
+          "x": -252,
+          "y": 126
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "vault-2",
+        "type": "process",
+        "title": "Secrets Manager",
+        "position": {
+          "x": -252,
+          "y": 126
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pp",
+        "type": "process",
+        "title": "Payment Provider",
+        "description": "holds real card numbers",
+        "position": {
+          "x": -252,
+          "y": 315
+        },
+        "width": 176,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "chat",
+        "type": "process",
+        "title": "Chat Server",
+        "description": "sees only ciphertext",
+        "position": {
+          "x": 0,
+          "y": -126
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob",
+        "type": "process",
+        "title": "Bob",
+        "description": "decrypt with private key",
+        "position": {
+          "x": 273,
+          "y": -126
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ar",
+        "from": "alice",
+        "to": "router",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-2",
+        "from": "alice-2",
+        "to": "router",
+        "label": "TLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-3",
+        "from": "alice-3",
+        "to": "router",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-4",
+        "from": "alice-4",
+        "to": "router",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-5",
+        "from": "alice-4",
+        "to": "router",
+        "label": "TLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rl",
+        "from": "router",
+        "to": "lb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rl-2",
+        "from": "router",
+        "to": "lb-2",
+        "label": "TLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rl-3",
+        "from": "router",
+        "to": "lb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la",
+        "from": "lb",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-2",
+        "from": "lb-2",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-3",
+        "from": "lb-3",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-4",
+        "from": "lb",
+        "to": "app-2",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-5",
+        "from": "lb",
+        "to": "app",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-6",
+        "from": "lb",
+        "to": "app-3",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-7",
+        "from": "lb",
+        "to": "app-4",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "la-8",
+        "from": "lb",
+        "to": "app-5",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad",
+        "from": "app",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-2",
+        "from": "app-2",
+        "to": "db",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-3",
+        "from": "app",
+        "to": "db-2",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-4",
+        "from": "app",
+        "to": "db-3",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-5",
+        "from": "app",
+        "to": "db-4",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-6",
+        "from": "app-3",
+        "to": "db",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-7",
+        "from": "app-4",
+        "to": "db",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-8",
+        "from": "app-5",
+        "to": "db-5",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-9",
+        "from": "app",
+        "to": "db",
+        "label": "mTLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "sn",
+        "from": "router",
+        "to": "mallory",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sn-2",
+        "from": "router",
+        "to": "mallory-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "st",
+        "from": "db-2",
+        "to": "thief",
+        "label": "backup copied",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "st-2",
+        "from": "db-3",
+        "to": "thief-2",
+        "label": "backup copied",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "st-3",
+        "from": "db-5",
+        "to": "thief-3",
+        "label": "backup copied",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "dk",
+        "from": "db-3",
+        "to": "kms",
+        "label": "unwrap data key",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "dk-2",
+        "from": "db-4",
+        "to": "kms",
+        "label": "re-wrap data keys",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "dk-3",
+        "from": "db",
+        "to": "kms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dk-4",
+        "from": "db-5",
+        "to": "kms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ap",
+        "from": "app-3",
+        "to": "repo",
+        "label": "git push",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ap-2",
+        "from": "app-4",
+        "to": "repo-2",
+        "label": "git push",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "rb",
+        "from": "repo",
+        "to": "bot",
+        "label": "scraped",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "right",
+        "toSide": "bottom",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "av",
+        "from": "app-4",
+        "to": "vault",
+        "label": "fetch at startup",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "av-2",
+        "from": "app",
+        "to": "vault-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "pt",
+        "from": "app-5",
+        "to": "pp",
+        "label": "card → token",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "fromSide": "left",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -126,
+            "y": 126
+          },
+          {
+            "x": -126,
+            "y": 315
+          }
+        ],
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ac",
+        "from": "alice-5",
+        "to": "chat",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "cb",
+        "from": "chat",
+        "to": "bob",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Encryption & Secrets",
+    "summary": "Protecting data on the wire, on disk, and the keys and passwords your services use.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "inTransit",
+        "label": "Encrypted in transit"
+      },
+      {
+        "id": "atRest",
+        "label": "Encrypted at rest"
+      },
+      {
+        "id": "secrets",
+        "label": "Secrets live in"
+      }
+    ],
+    "goals": [
+      {
+        "text": "TLS, certificates and renewing them",
+        "step": "s3"
+      },
+      {
+        "text": "Encryption inside the data center and at rest",
+        "step": "s6"
+      },
+      {
+        "text": "Rotating keys",
+        "step": "s7"
+      },
+      {
+        "text": "Keeping secrets out of code",
+        "step": "s9"
+      },
+      {
+        "text": "Tokenization and end-to-end encryption",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "alice": {
+      "until": "s2"
+    },
+    "alice-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "alice-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "alice-4": {
+      "from": "s4"
+    },
+    "alice-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lb-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "app-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "app-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "app-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "app-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "db-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "db-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "db-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "db-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "mallory": {
+      "until": "s2"
+    },
+    "mallory-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "thief": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "thief-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "thief-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "kms": {
+      "from": "s6"
+    },
+    "repo": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "repo-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bot": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "vault": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "vault-2": {
+      "from": "s12"
+    },
+    "pp": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "chat": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "bob": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-4-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ar": {
+      "until": "s2"
+    },
+    "ar-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ar-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ar-4": {
+      "from": "s4",
+      "until": "s11"
+    },
+    "ar-5": {
+      "from": "s12"
+    },
+    "rl-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "rl-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la": {
+      "until": "s2"
+    },
+    "la-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "la-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "la-5": {
+      "from": "s5"
+    },
+    "la-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "la-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "la-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ad": {
+      "until": "s4"
+    },
+    "ad-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ad-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ad-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ad-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ad-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ad-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ad-9": {
+      "from": "s12"
+    },
+    "sn": {
+      "until": "s2"
+    },
+    "sn-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "st": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "st-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "st-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dk": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dk-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dk-3": {
+      "from": "s8"
+    },
+    "dk-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ap": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ap-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "rb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "av": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "av-2": {
+      "from": "s12"
+    },
+    "pt": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ac": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cb": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Café Wi-Fi",
+      "title": "Plain HTTP on café Wi-Fi",
+      "chapter": "problem",
+      "body": "Alice logs in from a café. The site uses plain `http://`, so her password and session cookie travel as readable text through the Wi-Fi router and a dozen networks beyond it.\n\nMallory, on the same Wi-Fi, records the traffic and reads everything — and could even change pages on the way back.",
+      "callout": {
+        "kind": "warning",
+        "text": "Anyone on the path — Wi-Fi, ISP, a compromised router — can read and alter unencrypted traffic."
+      },
+      "changes": [],
+      "metrics": {
+        "inTransit": "no",
+        "atRest": "no"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "TLS",
+      "title": "TLS: encrypt the wire",
+      "chapter": "solution",
+      "body": "With HTTPS, [[TLS]] encrypts everything between Alice’s browser and the site. During the handshake the server presents a **certificate**, signed by a certificate authority the browser trusts, proving it really is `shop.example`.\n\nMallory still copies every packet — but sees only random-looking bytes, and can’t alter them without detection.",
+      "callout": {
+        "kind": "tip",
+        "text": "Certificates are free and automatic with Let’s Encrypt. Add HSTS so browsers never fall back to http://."
+      },
+      "changes": [
+        "+ TLS certificate on the load balancer",
+        "~ Mallory sees only ciphertext"
+      ],
+      "metrics": {
+        "inTransit": "outside only",
+        "atRest": "no"
+      },
+      "overrides": {
+        "lb": {
+          "visible": false
+        },
+        "rl": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Expired",
+      "title": "Case: the certificate expired at 3 a.m.",
+      "chapter": "problem",
+      "body": "Certificates have an expiry date. This one was renewed by hand once a year — by someone who has since left. At 03:00 it expires, every browser shows a full-page security warning, and most users leave.\n\nAn outage caused by a date. Fix: automatic renewal with ACME (Let’s Encrypt, or your cloud’s certificate manager), and an alert 30 days before any certificate expires.",
+      "callout": {
+        "kind": "tip",
+        "text": "Short-lived certificates (90 days or less) force automation — and limit the damage if a private key ever leaks."
+      },
+      "changes": [
+        "- Certificate expired 03:00",
+        "- Browsers block the site",
+        "~ Fix: auto-renew + expiry alerts"
+      ],
+      "metrics": {
+        "inTransit": "outside only",
+        "atRest": "no"
+      },
+      "overrides": {
+        "lb": {
+          "visible": false
+        },
+        "mallory-2": {
+          "visible": false
+        },
+        "rl": {
+          "visible": false
+        },
+        "sn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Inside too",
+      "title": "Encrypt inside the data center too",
+      "chapter": "technique",
+      "body": "The load balancer **terminates** TLS — and traditionally sent plain traffic onward, trusting the internal network. But one compromised machine inside could then read everything.\n\nModern systems assume no network is trusted (**zero trust**): services talk over [[mutual TLS]], where both sides present certificates, so every hop is encrypted and every caller is identified.",
+      "callout": {
+        "kind": "tip",
+        "text": "A service mesh can add mTLS between all services automatically, with short-lived certificates it rotates for you."
+      },
+      "changes": [
+        "~ LB → app → DB over mutual TLS",
+        "+ Every service has its own certificate"
+      ],
+      "metrics": {
+        "inTransit": "yes",
+        "atRest": "no"
+      },
+      "overrides": {
+        "lb": {
+          "emphasis": true
+        },
+        "app": {
+          "visible": false
+        },
+        "mallory-2": {
+          "emphasis": true
+        },
+        "rl": {
+          "emphasis": true
+        },
+        "sn-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Stolen backup",
+      "title": "The stolen backup",
+      "chapter": "problem",
+      "body": "Every byte on the wire is now safe. Then a database backup is left in a storage bucket that was accidentally made public, and someone copies it.\n\nEncryption in transit does nothing here: the data on disk — every customer’s name, address and order history — is readable.",
+      "callout": {
+        "kind": "warning",
+        "text": "Disks get lost, snapshots get shared, buckets get misconfigured. Data at rest needs its own protection."
+      },
+      "changes": [
+        "- Backup in a public bucket",
+        "- Copied and readable"
+      ],
+      "metrics": {
+        "inTransit": "yes",
+        "atRest": "no"
+      },
+      "overrides": {
+        "app": {
+          "emphasis": true
+        },
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "At rest",
+      "title": "Encrypt at rest, keep keys elsewhere",
+      "chapter": "solution",
+      "body": "Encrypt disks, database files and backups. The trick is the key: if it sits next to the data, a thief takes both. So keys live in a separate [[key management service]] (KMS), which never hands out its master key.\n\nWith **envelope encryption**, data is encrypted with a data key, and the data key is itself encrypted by the KMS. Every use of a key is logged, and access can be revoked.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cloud databases and storage encrypt at rest with a checkbox. For very sensitive fields, also encrypt in the application."
+      },
+      "changes": [
+        "+ Data and backups encrypted (AES-256)",
+        "+ Keys held by a KMS",
+        "~ Stolen copy is unreadable"
+      ],
+      "metrics": {
+        "inTransit": "yes",
+        "atRest": "yes"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Rotation",
+      "title": "Rotating keys without re-encrypting everything",
+      "chapter": "technique",
+      "body": "Keys should change regularly — and immediately if one might have leaked. Re-encrypting terabytes of data would take days.\n\nEnvelope encryption makes it cheap: create a new master key in the KMS and **re-wrap** each small data key with it. The data itself is never touched, and new writes simply get fresh data keys.",
+      "callout": {
+        "kind": "tip",
+        "text": "Most KMSs rotate master keys automatically every year and keep old versions to unwrap older data keys."
+      },
+      "changes": [
+        "+ Master key v2 in the KMS",
+        "~ Data keys re-wrapped (KB, not TB)",
+        "~ Data untouched"
+      ],
+      "metrics": {
+        "inTransit": "yes",
+        "atRest": "yes"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Leaked key",
+      "title": "Case: a secret in the code",
+      "chapter": "problem",
+      "body": "A developer hard-codes the payment provider’s API key in the source to test something, and the repository is public. Bots scan public repositories continuously: the key is found and used within minutes.\n\nDeleting the line doesn’t help — it’s in the git history forever. The only fix is to **revoke** the key and issue a new one.",
+      "callout": {
+        "kind": "warning",
+        "text": "Secrets in code end up in repos, builds, logs and laptops. Treat any secret that touched git as compromised."
+      },
+      "changes": [
+        "+ API key committed to a public repo",
+        "- Found by a scanner bot in minutes"
+      ],
+      "metrics": {
+        "inTransit": "yes",
+        "atRest": "yes",
+        "secrets": "source code"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "db": {
+          "emphasis": true
+        },
+        "la-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Vault",
+      "title": "A secrets manager",
+      "chapter": "solution",
+      "body": "Keep secrets out of code entirely. The app fetches them at startup from a [[secrets manager]] (HashiCorp Vault, AWS Secrets Manager), proving its own identity to get only the secrets it needs.\n\nSecrets are rotated regularly — or issued short-lived on demand — and scanners in CI block any commit that looks like a key.",
+      "callout": {
+        "kind": "tip",
+        "text": "Never log secrets, and keep them out of error messages and environment dumps."
+      },
+      "changes": [
+        "+ Secrets manager",
+        "~ App fetches secrets at startup",
+        "+ Automatic rotation · secret scanning in CI"
+      ],
+      "metrics": {
+        "inTransit": "yes",
+        "atRest": "yes",
+        "secrets": "secrets manager"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Tokenize",
+      "title": "Case: card numbers — tokenize them",
+      "chapter": "technique",
+      "body": "Card numbers are the most valuable data you could hold, and every system that stores or even sees them must meet strict rules (PCI DSS). Encrypting them still leaves you holding them.\n\nBetter: don’t hold them. The checkout sends the card to a payment provider, which stores it and returns a [[token]] like `tok_4f2c`. Your database, logs and analytics only ever see tokens — worthless to a thief.",
+      "callout": {
+        "kind": "insight",
+        "text": "The safest sensitive data is data you never store. Ask whether you need it at all before deciding how to protect it."
+      },
+      "changes": [
+        "+ Payment provider holds the real card numbers",
+        "~ Database stores tokens only",
+        "- Card numbers in your systems"
+      ],
+      "metrics": {
+        "inTransit": "yes",
+        "atRest": "yes",
+        "secrets": "secrets manager"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "db": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        },
+        "dk-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "End-to-end",
+      "title": "End-to-end: even the server can’t read it",
+      "chapter": "technique",
+      "body": "For private messages you can go further. With [[end-to-end encryption]], Alice’s phone encrypts each message with Bob’s public key; only Bob’s phone holds the private key to decrypt it.\n\nThe chat server stores and forwards ciphertext. A breach of the server — or a request to hand over messages — reveals nothing readable.\n\nThat’s the idea in one line. Real protocols use the key pairs to agree on a fresh secret key for every message, so a key stolen later can’t unlock old conversations (**forward secrecy**).",
+      "callout": {
+        "kind": "insight",
+        "text": "The trade-off: the server can’t search, filter or back up readable messages, and losing your device can mean losing history. Signal and WhatsApp use the Signal protocol."
+      },
+      "changes": [
+        "+ Messages encrypted on the device",
+        "~ Server relays only ciphertext"
+      ],
+      "metrics": {
+        "inTransit": "end-to-end",
+        "atRest": "yes",
+        "secrets": "secrets manager"
+      },
+      "overrides": {
+        "alice-4": {
+          "visible": false
+        },
+        "router": {
+          "visible": false
+        },
+        "lb": {
+          "visible": false
+        },
+        "app": {
+          "visible": false
+        },
+        "db": {
+          "visible": false
+        },
+        "kms": {
+          "visible": false
+        },
+        "rl": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        },
+        "dk-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• **TLS** everywhere outside; **mTLS** between services inside.\n• Encrypt **at rest**, with keys held separately in a **KMS**.\n• Automate **certificate renewal**; rotate keys by **re-wrapping** data keys.\n• Keep secrets in a **secrets manager**, rotate them, scan for leaks.\n• **Tokenize** what you’d rather not hold at all, like card numbers.\n• **End-to-end** encryption when even the server shouldn’t read the data.",
+      "callout": {
+        "kind": "tip",
+        "text": "That completes Security. Next module: **Shipping** — testing changes and getting them to production safely."
+      },
+      "changes": [],
+      "metrics": {
+        "inTransit": "yes",
+        "atRest": "yes",
+        "secrets": "secrets manager"
+      },
+      "overrides": {
+        "alice-4": {
+          "emphasis": true
+        },
+        "router": {
+          "emphasis": true
+        },
+        "lb": {
+          "emphasis": true
+        },
+        "app": {
+          "emphasis": true
+        },
+        "db": {
+          "emphasis": true
+        },
+        "kms": {
+          "emphasis": true
+        },
+        "rl": {
+          "emphasis": true
+        },
+        "la-5": {
+          "emphasis": true
+        },
+        "dk-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

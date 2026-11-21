@@ -1,0 +1,2153 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "users",
+        "type": "process",
+        "title": "200,000 users",
+        "position": {
+          "x": 0,
+          "y": -434
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "200,000 users",
+        "position": {
+          "x": 0,
+          "y": -651
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 3%",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-2",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 34%",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-3",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 24%",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-4",
+        "type": "process",
+        "title": "Server A",
+        "description": "4 active · CPU 50%",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-5",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 55%",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-6",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 2%",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-7",
+        "type": "process",
+        "title": "API A",
+        "description": "CPU 40%",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-8",
+        "type": "process",
+        "title": "Server A",
+        "description": "v1 · next · CPU 50%",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 100%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-2",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 36%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-3",
+        "type": "process",
+        "title": "Server B",
+        "description": "23 queued · CPU 97%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-4",
+        "type": "process",
+        "title": "Server B",
+        "description": "9 active · CPU 52%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-5",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 57%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-6",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 2%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-7",
+        "type": "process",
+        "title": "API B",
+        "description": "CPU 42%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-8",
+        "type": "process",
+        "title": "Server B",
+        "description": "draining → v2 · CPU 5%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c",
+        "type": "process",
+        "title": "Server C",
+        "description": "CPU 3%",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-2",
+        "type": "process",
+        "title": "Server C",
+        "description": "CPU 33%",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-3",
+        "type": "process",
+        "title": "Server C",
+        "description": "CPU 25%",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-4",
+        "type": "process",
+        "title": "Server C",
+        "description": "4 active · CPU 48%",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-5",
+        "type": "process",
+        "title": "Server C",
+        "description": "⚠ out of pool",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-6",
+        "type": "process",
+        "title": "Server C",
+        "description": "CPU 2%",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-7",
+        "type": "process",
+        "title": "Images",
+        "description": "CPU 30%",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-8",
+        "type": "process",
+        "title": "Server C",
+        "description": "✓ v2 ✓ · CPU 50%",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Load Balancer",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-2",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "round robin",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-3",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "least connections",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-4",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-5",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "ACTIVE · VIP",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb2",
+        "type": "process",
+        "title": "Standby LB",
+        "description": "STANDBY",
+        "position": {
+          "x": -434,
+          "y": -279
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb2-2",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "ACTIVE · VIP",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb2-3",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "L7 · routes by path",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb2-4",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "rolling deploy",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb2-5",
+        "type": "process",
+        "title": "Load Balancer",
+        "description": "VIP",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ub",
+        "from": "users",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ul",
+        "from": "users-2",
+        "to": "lb",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ul-2",
+        "from": "users-2",
+        "to": "lb-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-3",
+        "from": "users-2",
+        "to": "lb-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "ul-4",
+        "from": "users-2",
+        "to": "lb-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ul-5",
+        "from": "users-2",
+        "to": "lb-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "la",
+        "from": "lb",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "la-2",
+        "from": "lb-2",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "la-3",
+        "from": "lb-2",
+        "to": "a-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "la-4",
+        "from": "lb-3",
+        "to": "a-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "la-5",
+        "from": "lb-3",
+        "to": "a-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 5
+      },
+      {
+        "id": "la-6",
+        "from": "lb-4",
+        "to": "a-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la-7",
+        "from": "lb-5",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lbb",
+        "from": "lb",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lbb-2",
+        "from": "lb-2",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "lbb-3",
+        "from": "lb-2",
+        "to": "b-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "lbb-4",
+        "from": "lb-3",
+        "to": "b-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "lbb-5",
+        "from": "lb-3",
+        "to": "b-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 5
+      },
+      {
+        "id": "lbb-6",
+        "from": "lb-4",
+        "to": "b-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "lbb-7",
+        "from": "lb-5",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lc",
+        "from": "lb",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lc-2",
+        "from": "lb-2",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "lc-3",
+        "from": "lb-2",
+        "to": "c-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "lc-4",
+        "from": "lb-3",
+        "to": "c-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "lc-5",
+        "from": "lb-3",
+        "to": "c-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "lc-6",
+        "from": "lb-4",
+        "to": "c-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "lc-7",
+        "from": "lb-5",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "beat",
+        "from": "lb2",
+        "to": "lb-5",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ul2",
+        "from": "users-2",
+        "to": "lb2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ul2-2",
+        "from": "users-2",
+        "to": "lb2-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ul2-3",
+        "from": "users-2",
+        "to": "lb2-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ul2-4",
+        "from": "users-2",
+        "to": "lb2-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "la2",
+        "from": "lb2-2",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "la2-2",
+        "from": "lb2-3",
+        "to": "a-7",
+        "label": "/api/*",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "la2-3",
+        "from": "lb2-4",
+        "to": "a-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "la2-4",
+        "from": "lb2-5",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lbb2",
+        "from": "lb2-2",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lbb2-2",
+        "from": "lb2-3",
+        "to": "b-7",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lbb2-3",
+        "from": "lb2-4",
+        "to": "b-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "lbb2-4",
+        "from": "lb2-5",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lc2",
+        "from": "lb2-2",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lc2-2",
+        "from": "lb2-3",
+        "to": "c-7",
+        "label": "/images/*",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lc2-3",
+        "from": "lb2-4",
+        "to": "c-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "lc2-4",
+        "from": "lb2-5",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      }
+    ]
+  },
+  "meta": {
+    "title": "Load Balancing",
+    "summary": "One front door for many servers — and the rules for who gets which request.",
+    "minutes": 12,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "users",
+        "label": "Users"
+      },
+      {
+        "id": "rps",
+        "label": "Requests / s"
+      },
+      {
+        "id": "p95",
+        "label": "p95 latency"
+      },
+      {
+        "id": "errors",
+        "label": "Errors"
+      },
+      {
+        "id": "healthy",
+        "label": "Healthy servers"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why a pool of servers needs one front door",
+        "step": "s2"
+      },
+      {
+        "text": "Round robin vs least connections",
+        "step": "s5"
+      },
+      {
+        "text": "Health checks that route around failure",
+        "step": "s6"
+      },
+      {
+        "text": "Removing the load balancer as a SPOF",
+        "step": "s9"
+      },
+      {
+        "text": "Layer-7 routing and zero-downtime deploys",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "users": {
+      "until": "s2"
+    },
+    "users-2": {
+      "from": "s2"
+    },
+    "a": {
+      "until": "s2"
+    },
+    "a-2": {
+      "from": "s2"
+    },
+    "a-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "a-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "a-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "a-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "a-8": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "b": {
+      "until": "s2"
+    },
+    "b-2": {
+      "from": "s2"
+    },
+    "b-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "b-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "b-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "b-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b-8": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "c": {
+      "until": "s2"
+    },
+    "c-2": {
+      "from": "s2"
+    },
+    "c-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "c-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "c-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "c-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "c-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "c-8": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lb": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lb-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "lb-3": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "lb-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "lb-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lb2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lb2-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "lb2-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "lb2-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lb2-5": {
+      "from": "s12"
+    },
+    "ub": {
+      "until": "s2"
+    },
+    "ul": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ul-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "ul-3": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "ul-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ul-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "la": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "la-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "la-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "la-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "la-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "la-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lbb": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lbb-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lbb-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lbb-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "lbb-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "lbb-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "lbb-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lc": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lc-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lc-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lc-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "lc-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "lc-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "lc-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "beat": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ul2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ul2-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ul2-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ul2-4": {
+      "from": "s12"
+    },
+    "la2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "la2-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "la2-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "la2-4": {
+      "from": "s12"
+    },
+    "lbb2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "lbb2-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "lbb2-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lbb2-4": {
+      "from": "s12"
+    },
+    "lc2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "lc2-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "lc2-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lc2-4": {
+      "from": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Hot spot",
+      "title": "Three servers, one address",
+      "chapter": "problem",
+      "body": "We scaled out to three servers — but users only know one address, the one in DNS. Every request lands on Server B while A and C sit idle.\n\nThe extra hardware bought us nothing. We need a single front door that spreads requests across all of them.",
+      "callout": {
+        "kind": "warning",
+        "text": "Adding servers only helps if traffic actually reaches them."
+      },
+      "changes": [],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "1.8 s",
+        "errors": "12%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Add an LB",
+      "title": "Put a load balancer in front",
+      "chapter": "solution",
+      "body": "A [[load balancer]] (LB) becomes the one public address of the service. Clients connect to it; it forwards each request to one of the servers behind it and relays the answer back.\n\nServers can now come and go without clients ever knowing.",
+      "callout": {
+        "kind": "insight",
+        "text": "The servers behind a load balancer are called its **pool** (or target group)."
+      },
+      "changes": [
+        "+ Load balancer",
+        "~ Users now talk to the LB, not to servers",
+        "~ CPU 3 / 100 / 3% → ~35% each"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "90 ms",
+        "errors": "0%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Round robin",
+      "title": "Round robin: take turns",
+      "chapter": "technique",
+      "body": "How does the LB choose? The simplest rule is [[round robin]]: A, then B, then C, then A again. Watch the requests go out in turn.\n\nIt’s cheap and fair — as long as the servers are equally powerful and every request costs about the same.",
+      "callout": {
+        "kind": "tip",
+        "text": "**Weighted** round robin gives bigger servers a bigger share, e.g. A : B : C = 2 : 1 : 1."
+      },
+      "changes": [
+        "~ Strategy: round robin",
+        "~ Slowed down so you can follow each request"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "90 ms",
+        "errors": "0%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Heavy work",
+      "title": "When requests aren’t equal",
+      "chapter": "problem",
+      "body": "Real traffic is lumpy. Loading a page takes 5 ms; exporting a year of reports takes 5 seconds. Round robin counts *requests*, not *work*.\n\nHere every third request is heavy (the big squares), and by luck of the rotation they all land on Server B. It drowns while A and C coast.",
+      "callout": {
+        "kind": "warning",
+        "text": "Round robin has no idea how busy a server actually is."
+      },
+      "changes": [
+        "+ Heavy requests",
+        "~ Server B CPU 36% → 97%",
+        "~ p95 latency 90 ms → 1.2 s"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "1.2 s",
+        "errors": "3%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {
+        "ul-2": {
+          "effect": "pulse"
+        },
+        "a-2": {
+          "visible": false
+        },
+        "b-2": {
+          "visible": false
+        },
+        "c-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Least conns",
+      "title": "Least connections",
+      "chapter": "technique",
+      "body": "With [[least connections]], the LB tracks how many requests each server is busy with and sends the next one to the least busy.\n\nA server stuck on slow work holds more open connections, so it automatically receives less new work. The load evens out.",
+      "callout": {
+        "kind": "tip",
+        "text": "Other strategies: **least response time**, **IP hash** (same client → same server) and **power of two choices** (pick two at random, use the less busy)."
+      },
+      "changes": [
+        "~ Strategy: least connections",
+        "~ Server B CPU 97% → 52%",
+        "~ p95 latency 1.2 s → 140 ms"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "140 ms",
+        "errors": "0%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {
+        "a-2": {
+          "visible": false
+        },
+        "b-2": {
+          "visible": false
+        },
+        "c-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Health checks",
+      "title": "Health checks route around failure",
+      "chapter": "technique",
+      "body": "Every few seconds the LB probes each server — say `GET /health`. A server that misses several checks in a row is pulled out of the pool; once it recovers, it’s put back.\n\nServer C just crashed, and users didn’t notice a thing. In the last lesson, a dead server meant errors for a quarter of them.",
+      "callout": {
+        "kind": "insight",
+        "text": "Health checks plus spare servers mean no single server is a single point of failure any more."
+      },
+      "changes": [
+        "- Server C down",
+        "+ Health checks (green rings)",
+        "~ C taken out of the pool",
+        "~ Errors stay at 0%"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "150 ms",
+        "errors": "0%",
+        "healthy": "2 / 3"
+      },
+      "overrides": {
+        "ul-3": {
+          "effect": "comet"
+        },
+        "a-2": {
+          "visible": false
+        },
+        "b-2": {
+          "visible": false
+        },
+        "c-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "LB fails",
+      "title": "Who balances the balancer?",
+      "chapter": "problem",
+      "body": "We removed one single point of failure and created another. Every request now passes through one load balancer — when it dies, so does everything behind it.\n\nThe servers are perfectly healthy. Nobody can reach them.",
+      "callout": {
+        "kind": "warning",
+        "text": "Anything that every request depends on must itself be redundant."
+      },
+      "changes": [
+        "- Load balancer down",
+        "~ Errors 0% → 100%"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "errors": "100%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {
+        "a-2": {
+          "visible": false
+        },
+        "b-2": {
+          "visible": false
+        },
+        "c-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Standby",
+      "title": "Add a standby",
+      "chapter": "solution",
+      "body": "Run two load balancers: an **active** one serving traffic and a **passive** standby. They share a [[virtual IP]] (VIP) — the address clients actually use — and exchange heartbeats every second.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cloud load balancers (AWS ELB, Google Cloud LB…) do this for you: they run redundantly across machines and zones."
+      },
+      "changes": [
+        "+ Standby load balancer",
+        "+ Heartbeats between the pair",
+        "~ Active LB owns the VIP"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "90 ms",
+        "errors": "0%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {
+        "a-2": {
+          "emphasis": true
+        },
+        "b-2": {
+          "emphasis": true
+        },
+        "c-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Failover",
+      "title": "Failover in seconds",
+      "chapter": "solution",
+      "body": "The active LB dies. The standby notices the missing heartbeats, claims the virtual IP and starts forwarding traffic.\n\nClients keep using the same address. At worst, a few in-flight requests are retried.",
+      "callout": {
+        "kind": "insight",
+        "text": "This pattern — **active–passive failover** — protects databases, caches and queues too."
+      },
+      "changes": [
+        "- Active LB down",
+        "~ Standby promoted to active",
+        "~ VIP moved to the new active LB"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "95 ms",
+        "errors": "0%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s10",
+      "short": "By path",
+      "title": "Route by what’s in the request",
+      "chapter": "technique",
+      "body": "Load balancers come in two kinds. A **layer 4** balancer only sees IP addresses and ports, and forwards whole connections. A **layer 7** balancer reads the HTTP request itself.\n\nThat lets it route by path: `/api/*` to the API servers, `/images/*` to a separate image service — each pool scaled and deployed on its own.",
+      "callout": {
+        "kind": "tip",
+        "text": "L7 balancers can also route by host name, header or cookie, terminate TLS, and add caching or compression."
+      },
+      "changes": [
+        "~ LB routes by URL path",
+        "~ Server C → image service"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "85 ms",
+        "errors": "0%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {
+        "a-2": {
+          "visible": false
+        },
+        "b-2": {
+          "visible": false
+        },
+        "c-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Deploy",
+      "title": "Case: deploying without downtime",
+      "chapter": "technique",
+      "body": "Time to ship version 2. A [[rolling deploy]] updates one server at a time: the load balancer first **drains** it — no new requests, but in-flight ones finish — then it’s updated, passes its health check and rejoins.\n\nHere C is already on v2, B is draining, and A waits its turn. Users never see an error.",
+      "callout": {
+        "kind": "tip",
+        "text": "Blue-green deploys go further: bring up a full v2 pool, then switch the load balancer over at once — and back, if anything looks wrong."
+      },
+      "changes": [
+        "~ C updated to v2",
+        "~ B draining, then updating",
+        "~ A still on v1"
+      ],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "95 ms",
+        "errors": "0%",
+        "healthy": "2 / 3"
+      },
+      "overrides": {
+        "a-2": {
+          "visible": false
+        },
+        "b-2": {
+          "visible": false
+        },
+        "c-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• A load balancer gives a pool of servers **one stable address**.\n• **Round robin** is simple; **least connections** adapts to uneven work.\n• **Health checks** pull dead servers out of the pool automatically.\n• The LB must be redundant too: **active–passive** with a shared VIP.\n• **L7** balancers route by path; **draining** enables zero-downtime deploys.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Stateless Services** — what breaks when a user’s next request lands on a different server."
+      },
+      "changes": [],
+      "metrics": {
+        "users": "200,000",
+        "rps": "6,000",
+        "p95": "90 ms",
+        "errors": "0%",
+        "healthy": "3 / 3"
+      },
+      "overrides": {
+        "a-2": {
+          "emphasis": true
+        },
+        "b-2": {
+          "emphasis": true
+        },
+        "c-2": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

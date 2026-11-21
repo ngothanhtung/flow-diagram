@@ -1,0 +1,2216 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "cz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 22
+        },
+        "width": 594,
+        "height": 418,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "cz-label",
+        "type": "text",
+        "title": "CỤM ĐỒNG THUẬN · etcd",
+        "position": {
+          "x": -198,
+          "y": -166
+        },
+        "width": 177,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "cz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 579,
+          "y": -370
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "ĐA SỐ (QUORUM)\n3 node → 2 phải đồng ý\n5 node → 3 phải đồng ý\n→ hai đa số luôn giao nhau\n# nên chỉ một phía có thể quyết định",
+        "position": {
+          "x": 579,
+          "y": -370
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 575,
+          "y": -361
+        },
+        "width": 330,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "BẦU CỬ · NHIỆM KỲ 2\nB: hết giờ, không có heartbeat\nB: nhiệm kỳ 1 → 2, tự bầu mình\nB → C: “bầu cho tôi nhé?”\n→ C: đồng ý → 2 trên 3 → B lãnh đạo\n# mỗi node một phiếu mỗi nhiệm kỳ",
+        "position": {
+          "x": 575,
+          "y": -361
+        },
+        "width": 306,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 555,
+          "y": -370
+        },
+        "width": 289,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "QUY TẮC COMMIT\n1  leader nối thêm mục\n2  gửi tới mọi follower\n3  đa số đã lưu nó\n→ đã commit → trả lời “đã lưu”",
+        "position": {
+          "x": 555,
+          "y": -370
+        },
+        "width": 265,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 555,
+          "y": -370
+        },
+        "width": 289,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "NODE → ĐA SỐ → ĐƯỢC MẤT\n3  →  2  →  1\n⚠ 4  →  3  →  1   không lợi gì\n5  →  3  →  2\n7  →  4  →  3",
+        "position": {
+          "x": 555,
+          "y": -370
+        },
+        "width": 265,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 588,
+          "y": -370
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "HÓA ĐƠN\nmỗi lượt ghi: + 1 lượt đi về tới đa số\nmột leader → thông lượng một máy\n⚠ không đa số → không ghi\n# bầu cử tạm dừng ghi ≈ 1 s",
+        "position": {
+          "x": 588,
+          "y": -370
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "app1",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 1",
+        "position": {
+          "x": 0,
+          "y": -374
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a",
+        "type": "process",
+        "title": "node A",
+        "description": "leader",
+        "position": {
+          "x": 0,
+          "y": -110
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-2",
+        "type": "process",
+        "title": "node A",
+        "description": "leader · ghế 7 → Ana",
+        "position": {
+          "x": 0,
+          "y": -110
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-3",
+        "type": "process",
+        "title": "node A",
+        "description": "1 trên 3 · không commit được",
+        "position": {
+          "x": 0,
+          "y": -110
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-4",
+        "type": "process",
+        "title": "node A",
+        "description": "vẫn ở nhiệm kỳ 1",
+        "position": {
+          "x": 0,
+          "y": -110
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-5",
+        "type": "process",
+        "title": "node A",
+        "description": "log 1 2 3 · 4′ Ana, chưa xác nhận",
+        "position": {
+          "x": 0,
+          "y": -110
+        },
+        "width": 176,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-6",
+        "type": "process",
+        "title": "node A",
+        "description": "✓ follower · nhiệm kỳ 2 · đã bắt kịp",
+        "position": {
+          "x": 0,
+          "y": -110
+        },
+        "width": 176,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-7",
+        "type": "process",
+        "title": "node A",
+        "description": "zone 1",
+        "position": {
+          "x": 0,
+          "y": -110
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-8",
+        "type": "process",
+        "title": "node A",
+        "description": "✓ follower",
+        "position": {
+          "x": 0,
+          "y": -110
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b",
+        "type": "process",
+        "title": "node B",
+        "description": "✓ follower",
+        "position": {
+          "x": -220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-2",
+        "type": "process",
+        "title": "node B",
+        "description": "leader · ghế 7 → Ben",
+        "position": {
+          "x": -220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-3",
+        "type": "process",
+        "title": "node B",
+        "description": "leader · nhiệm kỳ 2",
+        "position": {
+          "x": -220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-4",
+        "type": "process",
+        "title": "node B",
+        "description": "leader · nhiệm kỳ 2 · log 1 2 3 · 4 Ben ✓",
+        "position": {
+          "x": -220,
+          "y": 154
+        },
+        "width": 180,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-5",
+        "type": "process",
+        "title": "node B",
+        "description": "leader · nhiệm kỳ 2 · zone 2",
+        "position": {
+          "x": -220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-6",
+        "type": "process",
+        "title": "node B",
+        "description": "⚠ đã tỉnh · tưởng còn lãnh đạo nhiệm kỳ 2",
+        "position": {
+          "x": -220,
+          "y": 154
+        },
+        "width": 180,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-7",
+        "type": "process",
+        "title": "node B",
+        "description": "bị từ chối → rút lui",
+        "position": {
+          "x": -220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c",
+        "type": "process",
+        "title": "node C",
+        "description": "✓ follower",
+        "position": {
+          "x": 220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-2",
+        "type": "process",
+        "title": "node C",
+        "description": "✓ đã bầu cho B",
+        "position": {
+          "x": 220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-3",
+        "type": "process",
+        "title": "node C",
+        "description": "log 1 2 3 · 4 Ben ✓",
+        "position": {
+          "x": 220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-4",
+        "type": "process",
+        "title": "node C",
+        "description": "zone 3",
+        "position": {
+          "x": 220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-5",
+        "type": "process",
+        "title": "node C",
+        "description": "leader · nhiệm kỳ 3",
+        "position": {
+          "x": 220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-6",
+        "type": "process",
+        "title": "node C",
+        "description": "leader · nhiệm kỳ 3 · chờ thêm 1 xác nhận",
+        "position": {
+          "x": 220,
+          "y": 154
+        },
+        "width": 176,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app2",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 2",
+        "position": {
+          "x": -484,
+          "y": 154
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "store",
+        "type": "process",
+        "title": "kho lưu trữ chung",
+        "description": "⚠ report.csv · bị B ghi đè",
+        "position": {
+          "x": 0,
+          "y": 418
+        },
+        "width": 192,
+        "height": 130,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "store-2",
+        "type": "process",
+        "title": "kho lưu trữ chung",
+        "description": "token cao nhất đã thấy: 3",
+        "position": {
+          "x": 0,
+          "y": 418
+        },
+        "width": 192,
+        "height": 147,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k8s",
+        "type": "process",
+        "title": "Kubernetes",
+        "description": "trạng thái cụm",
+        "position": {
+          "x": -242,
+          "y": -396
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dbf",
+        "type": "process",
+        "title": "Cơ sở dữ liệu",
+        "description": "ai là primary?",
+        "position": {
+          "x": 0,
+          "y": -396
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "job",
+        "type": "process",
+        "title": "Bộ lập lịch",
+        "description": "một khóa chạy",
+        "position": {
+          "x": 242,
+          "y": -396
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Clock",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "w1a",
+        "from": "app1",
+        "to": "a",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1a-2",
+        "from": "app1",
+        "to": "a-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1a-3",
+        "from": "app1",
+        "to": "a-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1a-4",
+        "from": "app1",
+        "to": "a-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1a-5",
+        "from": "app1",
+        "to": "a-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ab",
+        "from": "a",
+        "to": "b",
+        "label": "sao chép",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ac",
+        "from": "a",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w2b",
+        "from": "app2",
+        "to": "b-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w2b-2",
+        "from": "app2",
+        "to": "b-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w2b-3",
+        "from": "app2",
+        "to": "b-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w2b-4",
+        "from": "app2",
+        "to": "b-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "xab",
+        "from": "a-2",
+        "to": "b-2",
+        "label": "✕ bị cắt",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xab-2",
+        "from": "a-3",
+        "to": "b-3",
+        "label": "✕ bị cắt",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xab-3",
+        "from": "a-4",
+        "to": "b-3",
+        "label": "✕ bị cắt",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xab-4",
+        "from": "a-5",
+        "to": "b-4",
+        "label": "✕ bị cắt",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xac",
+        "from": "a-2",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xac-2",
+        "from": "a-3",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xac-3",
+        "from": "a-4",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xac-4",
+        "from": "a-5",
+        "to": "c-3",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "bc",
+        "from": "b-2",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bc-2",
+        "from": "b-3",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bc-3",
+        "from": "b-3",
+        "to": "c-2",
+        "label": "bầu cho tôi? · nhiệm kỳ 2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bc-4",
+        "from": "b-4",
+        "to": "c-3",
+        "label": "nối mục 4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bc-5",
+        "from": "b-5",
+        "to": "c-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1b",
+        "from": "app1",
+        "to": "b-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1b-2",
+        "from": "app1",
+        "to": "b-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ba",
+        "from": "b-3",
+        "to": "a-6",
+        "label": "heartbeat · nhiệm kỳ 2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ba-2",
+        "from": "b-5",
+        "to": "a-7",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1c",
+        "from": "app1",
+        "to": "c-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1c-2",
+        "from": "app1",
+        "to": "c-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ca",
+        "from": "c-5",
+        "to": "a-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ca-2",
+        "from": "c-6",
+        "to": "a-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cb",
+        "from": "c-5",
+        "to": "b-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "cb-2",
+        "from": "c-5",
+        "to": "b-7",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cb-3",
+        "from": "c-6",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cb-4",
+        "from": "c-5",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "sb",
+        "from": "b-6",
+        "to": "store",
+        "label": "ghi (cũ)",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.62,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sb-2",
+        "from": "b-7",
+        "to": "store-2",
+        "label": "token 2 ✕",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.62,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sc",
+        "from": "c-5",
+        "to": "store",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "sc-2",
+        "from": "c-5",
+        "to": "store-2",
+        "label": "token 3 ✓",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "u1",
+        "from": "k8s",
+        "to": "b",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "u2",
+        "from": "dbf",
+        "to": "a-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "u3",
+        "from": "job",
+        "to": "c-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Đồng thuận & bầu leader",
+    "summary": "Cách một nhóm máy chủ thống nhất một leader và một lịch sử, kể cả khi vài máy không liên lạc được.",
+    "minutes": 14,
+    "level": "advanced",
+    "metrics": [
+      {
+        "id": "leaders",
+        "label": "Leader"
+      },
+      {
+        "id": "term",
+        "label": "Nhiệm kỳ"
+      },
+      {
+        "id": "writes",
+        "label": "Ghi"
+      },
+      {
+        "id": "canLose",
+        "label": "Có thể mất"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao failover ngây thơ gây ra split brain",
+        "step": "s2"
+      },
+      {
+        "text": "Quorum đa số, và vì sao chúng giao nhau",
+        "step": "s3"
+      },
+      {
+        "text": "Nhiệm kỳ, phiếu bầu và bầu cử (Raft)",
+        "step": "s4"
+      },
+      {
+        "text": "Khi nào một lượt ghi được tính là đã commit",
+        "step": "s5"
+      },
+      {
+        "text": "Một cụm cần bao nhiêu node",
+        "step": "s7"
+      },
+      {
+        "text": "Fencing token cho leader bị tạm dừng",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "a": {
+      "until": "s2"
+    },
+    "a-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "a-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "a-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "a-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "a-8": {
+      "from": "s8"
+    },
+    "b-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "b-3": {
+      "from": "s3",
+      "until": "s7"
+    },
+    "b-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "b-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "b-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "c": {
+      "until": "s7"
+    },
+    "c-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "c-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "c-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "c-5": {
+      "from": "s8"
+    },
+    "c-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "app2": {
+      "from": "s2",
+      "until": "s8"
+    },
+    "card": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "store": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "store-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cz": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k8s": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dbf": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "job": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cz-label": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-5-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "w1a": {
+      "until": "s2"
+    },
+    "w1a-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "w1a-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w1a-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "w1a-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ab": {
+      "until": "s2"
+    },
+    "ac": {
+      "until": "s2"
+    },
+    "w2b": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "w2b-2": {
+      "from": "s3",
+      "until": "s7"
+    },
+    "w2b-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "w2b-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "xab": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "xab-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "xab-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "xab-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "xac": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "xac-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "xac-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "xac-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bc": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "bc-2": {
+      "from": "s3",
+      "until": "s7"
+    },
+    "bc-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bc-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bc-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "w1b": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "w1b-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ba": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ba-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "w1c": {
+      "from": "s8"
+    },
+    "w1c-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ca": {
+      "from": "s8"
+    },
+    "ca-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "cb-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cb-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cb-4": {
+      "from": "s11"
+    },
+    "sb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sb-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sc": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sc-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "u1": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "u2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "u3": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Một leader",
+      "title": "Một leader, hai follower",
+      "chapter": "setup",
+      "body": "Từ bài *Sao chép dữ liệu*: một [[leader]] nhận mọi lượt ghi và chép sang các follower. Nếu leader chết, một follower được thăng cấp và tiếp tục.\n\nCâu đó giấu một trong những câu hỏi khó nhất của hệ phân tán: **ai quyết định** leader đã chết, và chuyện gì xảy ra nếu quyết định sai?",
+      "callout": {
+        "kind": "insight",
+        "text": "Nhìn từ ngoài, một máy chủ đã sập, một máy chủ chậm và một máy chủ sau sợi cáp đứt trông y hệt nhau: im lặng."
+      },
+      "changes": [],
+      "metrics": {
+        "leaders": "1",
+        "writes": "ổn",
+        "canLose": "?"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Split brain",
+      "title": "Hai leader cùng lúc",
+      "chapter": "problem",
+      "body": "Một sự cố mạng cắt A khỏi B và C. A vẫn sống và vẫn phục vụ Máy chủ ứng dụng 1, nhưng B không nghe thấy gì, cho rằng leader đã chết và tự thăng cấp.\n\nGiờ hai leader cùng nhận ghi. Qua A, ghế 7 bán cho Ana; qua B, cùng ghế đó bán cho Ben. Hai lịch sử không bao giờ gộp gọn gàng được: [[split brain]] (não chia đôi).",
+      "callout": {
+        "kind": "warning",
+        "text": "Timeout có thể cho bạn biết một máy chủ không liên lạc được. Nó không bao giờ cho biết máy chủ đã chết."
+      },
+      "changes": [
+        "- Mạng giữa A và các node khác bị cắt",
+        "+ B tự thăng cấp",
+        "- Hai leader, hai lịch sử khác nhau"
+      ],
+      "metrics": {
+        "leaders": "2",
+        "writes": "phân kỳ",
+        "canLose": "?"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Đa số",
+      "title": "Quy tắc: không có đa số thì không gì được tính",
+      "chapter": "solution",
+      "body": "Cách sửa là một quy tắc duy nhất. Leader chỉ được bầu, và lượt ghi chỉ được xác nhận, khi **hơn một nửa** số node đồng ý. Với ba node, đó là hai.\n\nBị cắt, A chỉ liên lạc được với chính nó: 1 trên 3. Nó không xác nhận được gì, nên lượt ghi của Máy chủ ứng dụng 1 chờ rồi timeout. B và C là 2 trên 3: chúng được bầu leader và tiếp tục. Hai đa số bất kỳ luôn chung ít nhất một node, nên hai leader không bao giờ cùng thắng.",
+      "callout": {
+        "kind": "insight",
+        "text": "Đây là CAP trong thực tế: phía thiểu số từ bỏ tính sẵn sàng để dữ liệu giữ nhất quán."
+      },
+      "changes": [
+        "+ Quy tắc: mọi quyết định cần 2 trên 3",
+        "~ A một mình → không xác nhận được lượt ghi",
+        "~ B + C → một đa số hợp lệ"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ổn",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Bầu cử",
+      "title": "Leader được bầu thế nào",
+      "chapter": "technique",
+      "body": "Đây là thuật toán [[Raft]]. Leader gửi heartbeat đều đặn. Mỗi follower chạy một bộ hẹn giờ có độ dài *ngẫu nhiên*; nếu hết giờ mà không có heartbeat, follower đó trở thành **ứng viên**.\n\nBộ hẹn giờ của B hết trước. B mở [[nhiệm kỳ]] 2, tự bầu cho mình và xin phiếu các node khác. Mỗi node chỉ bỏ một phiếu cho mỗi nhiệm kỳ, và chỉ cho ứng viên có log ít nhất đầy đủ bằng log của mình. C đồng ý, 2 trên 3, nên B lãnh đạo nhiệm kỳ 2.",
+      "callout": {
+        "kind": "tip",
+        "text": "Bộ hẹn giờ ngẫu nhiên khiến hiếm khi hai node cùng ứng cử. Nếu phiếu bị chia, không ai thắng, bộ hẹn giờ khởi động lại, và nhiệm kỳ sau sẽ phân định, thường trong vòng một giây."
+      },
+      "changes": [
+        "+ B: không có heartbeat → ứng viên nhiệm kỳ 2",
+        "+ C bầu cho B",
+        "~ B thắng 2 trên 3 và bắt đầu gửi heartbeat"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ổn",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "w2b-2": {
+          "effect": "none"
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "bc-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Commit",
+      "title": "Lượt ghi được commit bởi đa số",
+      "chapter": "technique",
+      "body": "Lượt ghi theo cùng quy tắc. Máy chủ ứng dụng 2 gửi `seat 7 → Ben` tới leader. B nối nó vào [[log]] của mình và gửi tới các follower.\n\nNgay khi đa số đã lưu mục đó (B và C), nó được **commit**. Chỉ khi đó B mới áp dụng nó và trả lời “đã lưu”. Một mục đã commit sống sót qua mọi sự cố mà vẫn còn lại một đa số.",
+      "callout": {
+        "kind": "insight",
+        "text": "Mọi node áp dụng cùng các mục log theo cùng thứ tự, nên mọi node kết thúc ở cùng một trạng thái. Đó là **máy trạng thái được sao chép** (replicated state machine), ý tưởng nằm dưới tất cả những điều này."
+      },
+      "changes": [
+        "+ B nối mục 4 vào log",
+        "+ C lưu nó → 2 trên 3",
+        "~ Đã commit → Máy chủ ứng dụng 2 nhận “đã lưu”"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ổn",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        },
+        "b-3": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "w2b-2": {
+          "visible": false
+        },
+        "bc-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Hàn gắn",
+      "title": "Leader cũ rút lui",
+      "chapter": "solution",
+      "body": "Mạng lành lại. A, vẫn tin mình lãnh đạo nhiệm kỳ 1, nhận một heartbeat từ B mang dấu **nhiệm kỳ 2**. Nhiệm kỳ cao hơn luôn thắng: A lập tức thành follower.\n\nLog của A có một mục chưa bao giờ đạt đa số: lượt đặt chỗ của Ana, mà Máy chủ ứng dụng 1 chưa bao giờ được báo là thành công. A bỏ nó và chép log của B. Cả ba node lại giống hệt nhau, và không gì đã được xác nhận bị mất.",
+      "callout": {
+        "kind": "tip",
+        "text": "Nhiệm kỳ là một đồng hồ logic. Không ai so giờ đồng hồ, chỉ hỏi “số nhiệm kỳ của ai cao hơn?”"
+      },
+      "changes": [
+        "+ Mạng được khôi phục",
+        "~ A thấy nhiệm kỳ 2 → rút lui",
+        "- Mục chưa xác nhận của A bị bỏ",
+        "~ A chép log từ B · ứng dụng đi theo leader"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ổn",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        },
+        "b-3": {
+          "emphasis": true
+        },
+        "c": {
+          "emphasis": true
+        },
+        "w2b-2": {
+          "emphasis": true
+        },
+        "bc-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Bao nhiêu",
+      "title": "Bao nhiêu node?",
+      "chapter": "insight",
+      "body": "Một cụm **N** node cần ⌊N/2⌋ + 1 phiếu, nên vẫn chạy khi có ⌊(N − 1)/2⌋ node sập. Ba node chịu được một sự cố; năm node chịu được hai.\n\nNode thứ tư là một cái bẫy: đa số thành 3, nên bạn vẫn chỉ chịu được một sự cố, lại thêm một máy có thể hỏng. Hãy dùng số lẻ, và đặt mỗi node ở một zone khác nhau để một sự cố không cuốn theo cả đa số.",
+      "callout": {
+        "kind": "tip",
+        "text": "Ba hoặc năm là phổ biến. Cụm càng lớn, mỗi lượt ghi càng phải chờ nhiều xác nhận, nên cụm lớn hơn chậm hơn chứ không an toàn hơn."
+      },
+      "changes": [
+        "+ Mỗi availability zone một node"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ổn",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Zombie",
+      "title": "Tình huống: leader bị tạm dừng",
+      "chapter": "problem",
+      "body": "Leader B đứng hình hai mươi giây: một lần dọn rác (garbage collection) dài, hoặc máy ảo của nó đang bị di chuyển. A và C không nghe heartbeat, bầu C cho nhiệm kỳ 3 và đi tiếp.\n\nRồi B tỉnh dậy. Theo nó biết, chưa có thời gian nào trôi qua và nó vẫn là leader. Trước khi tin nhắn tiếp theo sửa nó, nó làm nốt việc đang dở: ghi một tệp vào kho lưu trữ chung, đè thẳng lên công việc của leader mới.",
+      "callout": {
+        "kind": "warning",
+        "text": "Một node không thể biết mình từng bị tạm dừng. “Tôi vừa kiểm tra mình là leader cách đây một lúc” không bao giờ chứng minh bạn vẫn là leader."
+      },
+      "changes": [
+        "- B đứng hình 20 s",
+        "+ A và C bầu C · nhiệm kỳ 3",
+        "- B tỉnh dậy và ghi như thể vẫn lãnh đạo"
+      ],
+      "metrics": {
+        "leaders": "1 + một zombie",
+        "term": "3",
+        "writes": "phân kỳ",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Fencing",
+      "title": "Fencing token",
+      "chapter": "solution",
+      "body": "Cách sửa không phụ thuộc vào việc B nhận ra điều gì. Mọi yêu cầu leader gửi đi đều mang **số nhiệm kỳ** của nó làm [[fencing token]], và kho lưu trữ nhớ token cao nhất nó từng thấy.\n\nC đã ghi với token 3. Khi lượt ghi của B đến với token 2, kho lưu trữ từ chối. Leader cũ bị chính tài nguyên rào lại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Khóa phân tán cũng vậy: dịch vụ khóa phải cấp một số tăng dần với mỗi lần khóa, và tài nguyên được bảo vệ phải kiểm tra số đó. Một khóa chỉ nói “nó là của bạn” thì không an toàn."
+      },
+      "changes": [
+        "+ Mọi lượt ghi mang nhiệm kỳ của leader",
+        "+ Kho từ chối token cũ hơn token mới nhất nó đã thấy",
+        "~ Lượt ghi của B bị từ chối: 2 < 3"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "3",
+        "writes": "ổn",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Cái giá",
+      "title": "Đồng thuận tốn những gì",
+      "chapter": "tradeoff",
+      "body": "Mỗi lượt ghi phải chờ một lượt đi về tới đa số. Trong một trung tâm dữ liệu, đó là một hai mili giây; với node ở các vùng khác nhau, đó là 50–150 ms cho *mỗi* lượt ghi.\n\nMọi lượt ghi đi qua một leader, nên thông lượng bị giới hạn bởi một máy. Và khi không liên lạc được đa số, cụm không nhận lượt ghi nào cả, một cách có chủ đích.",
+      "callout": {
+        "kind": "warning",
+        "text": "Đồng thuận mua sự đúng đắn bằng độ trễ và tính sẵn sàng. Hãy dành nó cho những quyết định nhỏ mà quan trọng, không phải cho mỗi lượt thích và lượt xem trang."
+      },
+      "changes": [
+        "~ Mỗi lượt ghi: + 1 lượt đi về tới đa số",
+        "~ Một cuộc bầu cử tạm dừng ghi khoảng một giây"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "3",
+        "writes": "ổn",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "b": {
+          "emphasis": true
+        },
+        "c-5": {
+          "visible": false
+        },
+        "w1c": {
+          "visible": false
+        },
+        "ca": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Thực tế",
+      "title": "Bạn dùng nó nhiều hơn rất nhiều so với tự viết",
+      "chapter": "insight",
+      "body": "Hầu như không ai tự cài đặt Raft hay Paxos. Bạn chạy một cụm đồng thuận nhỏ, **etcd**, **ZooKeeper** hoặc **Consul**, và chỉ giữ ở đó những sự thật quan trọng: ai là leader, cấu hình nói gì, ai giữ khóa nào.\n\nMọi thứ khác dựa vào nó. Kubernetes giữ toàn bộ trạng thái cụm trong etcd. Kafka bầu các controller bằng Raft. Các cơ sở dữ liệu như CockroachDB, Spanner và MongoDB chạy đồng thuận trong mỗi shard hoặc replica set để quyết định failover.",
+      "callout": {
+        "kind": "insight",
+        "text": "Khi bài Sao chép dữ liệu nói “thăng cấp follower cập nhật nhất”, đây chính là bộ máy khiến việc đó an toàn."
+      },
+      "changes": [
+        "+ Ba hệ thống phụ thuộc vào cụm"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "3",
+        "writes": "ổn",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "app1": {
+          "visible": false
+        },
+        "c-5": {
+          "emphasis": true
+        },
+        "w1c": {
+          "visible": false
+        },
+        "ca": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Timeout không phân biệt được **đã chết** với **không liên lạc được**: failover ngây thơ dễ gây split brain.\n• **Quy tắc đa số**: bầu cử và lượt ghi cần hơn một nửa số node, và hai đa số luôn giao nhau.\n• **Nhiệm kỳ** xếp thứ tự các leader: nhiệm kỳ cao hơn thắng và leader cũ rút lui.\n• Một lượt ghi được **commit** khi đa số đã ghi log nó, không bao giờ sớm hơn.\n• Chạy **3 hoặc 5** node trên nhiều zone, và dùng **fencing token** cho mọi thứ nằm ngoài log.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Giao dịch & cô lập**: giữ một cơ sở dữ liệu đúng đắn khi nhiều yêu cầu cùng thay đổi nó."
+      },
+      "changes": [],
+      "metrics": {
+        "leaders": "1",
+        "term": "3",
+        "writes": "ổn",
+        "canLose": "1 trên 3"
+      },
+      "overrides": {
+        "app1": {
+          "emphasis": true
+        },
+        "w1c": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1554 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "max",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -6
+        },
+        "width": 273,
+        "height": 248,
+        "color": "#bfbfbf",
+        "backgroundColor": "#141414",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "max-label",
+        "type": "text",
+        "title": "largest machine you can buy",
+        "position": {
+          "x": -15,
+          "y": -109
+        },
+        "width": 223,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "max"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "100 users",
+        "position": {
+          "x": 0,
+          "y": -372
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "12,000 users",
+        "position": {
+          "x": 0,
+          "y": -372
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "500,000 users",
+        "position": {
+          "x": 0,
+          "y": -372
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-4",
+        "type": "process",
+        "title": "4 a.m. · 50,000 users",
+        "position": {
+          "x": 0,
+          "y": -372
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-5",
+        "type": "process",
+        "title": "4 a.m. · 50,000 users",
+        "position": {
+          "x": -217,
+          "y": -372
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-6",
+        "type": "process",
+        "title": "noon · 750,000 users",
+        "position": {
+          "x": 0,
+          "y": -372
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a",
+        "type": "process",
+        "title": "App Server",
+        "description": "4 vCPU · 16 GB · CPU 1%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-2",
+        "type": "process",
+        "title": "App Server",
+        "description": "4 vCPU · 16 GB · CPU 100%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-3",
+        "type": "process",
+        "title": "App Server",
+        "description": "16 vCPU · 64 GB · CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 186,
+        "height": 112,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-4",
+        "type": "process",
+        "title": "App Server",
+        "description": "192 vCPU · 768 GB · CPU 100%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 217,
+        "height": 131,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "max"
+      },
+      {
+        "id": "a-5",
+        "type": "process",
+        "title": "App Server",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 217,
+        "height": 131,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-6",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 54%",
+        "position": {
+          "x": -325,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-7",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 5%",
+        "position": {
+          "x": -325,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-8",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 11%",
+        "position": {
+          "x": -325,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-9",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 99%",
+        "position": {
+          "x": -325,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 52%",
+        "position": {
+          "x": -108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-2",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 5%",
+        "position": {
+          "x": -108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-3",
+        "type": "process",
+        "title": "Server B",
+        "description": "autoscaled: 2 of 2–8 · CPU 10%",
+        "position": {
+          "x": -108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-4",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 99%",
+        "position": {
+          "x": -108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-5",
+        "type": "process",
+        "title": "Server B",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": -108,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c",
+        "type": "process",
+        "title": "Server C",
+        "description": "CPU 50%",
+        "position": {
+          "x": 109,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-2",
+        "type": "process",
+        "title": "Server C",
+        "description": "CPU 6%",
+        "position": {
+          "x": 109,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-3",
+        "type": "process",
+        "title": "booting",
+        "position": {
+          "x": 109,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "d",
+        "type": "process",
+        "title": "Server D",
+        "description": "CPU 48%",
+        "position": {
+          "x": 326,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "d-2",
+        "type": "process",
+        "title": "Server D",
+        "description": "CPU 5%",
+        "position": {
+          "x": 326,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "d-3",
+        "type": "process",
+        "title": "booting",
+        "position": {
+          "x": 326,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "e",
+        "type": "process",
+        "title": "booting",
+        "description": "≈ 3 min",
+        "position": {
+          "x": -542,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f",
+        "type": "process",
+        "title": "booting",
+        "position": {
+          "x": 543,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "a",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-2",
+        "from": "users-2",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-3",
+        "from": "users-2",
+        "to": "a-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-4",
+        "from": "users-3",
+        "to": "a-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-5",
+        "from": "users-3",
+        "to": "a-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-6",
+        "from": "users-3",
+        "to": "a-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-7",
+        "from": "users-4",
+        "to": "a-7",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ua-8",
+        "from": "users-5",
+        "to": "a-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-9",
+        "from": "users-6",
+        "to": "a-9",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ub",
+        "from": "users-3",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ub-2",
+        "from": "users-4",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ub-3",
+        "from": "users-5",
+        "to": "b-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ub-4",
+        "from": "users-6",
+        "to": "b-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ub-5",
+        "from": "users-3",
+        "to": "b-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "uc",
+        "from": "users-3",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "uc-2",
+        "from": "users-4",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "uc-3",
+        "from": "users-6",
+        "to": "c-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "ud",
+        "from": "users-3",
+        "to": "d",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ud-2",
+        "from": "users-4",
+        "to": "d-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ud-3",
+        "from": "users-6",
+        "to": "d-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "ue",
+        "from": "users-6",
+        "to": "e",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "uf",
+        "from": "users-6",
+        "to": "f",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Vertical vs Horizontal Scaling",
+    "summary": "Your one server is melting. Do you buy a bigger one, or more of them?",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "users",
+        "label": "Users"
+      },
+      {
+        "id": "rps",
+        "label": "Requests / s"
+      },
+      {
+        "id": "p95",
+        "label": "p95 latency"
+      },
+      {
+        "id": "errors",
+        "label": "Errors"
+      },
+      {
+        "id": "cost",
+        "label": "Cost / month"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Spot the symptoms of an overloaded server",
+        "step": "s2"
+      },
+      {
+        "text": "Scale up — and know its limits",
+        "step": "s5"
+      },
+      {
+        "text": "Scale out with many smaller servers",
+        "step": "s6"
+      },
+      {
+        "text": "Autoscale with the daily cycle — and pre-scale for spikes",
+        "step": "s8"
+      },
+      {
+        "text": "See why scaling out needs a load balancer",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "users": {
+      "until": "s2"
+    },
+    "users-2": {
+      "from": "s2",
+      "until": "s4"
+    },
+    "users-3": {
+      "from": "s4"
+    },
+    "users-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "users-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "users-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a": {
+      "until": "s2"
+    },
+    "a-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "a-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "a-6": {
+      "from": "s6"
+    },
+    "a-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "a-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "a-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "max": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "b": {
+      "from": "s6"
+    },
+    "b-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "b-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "b-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "c": {
+      "from": "s6"
+    },
+    "c-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "c-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "d": {
+      "from": "s6"
+    },
+    "d-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "d-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "e": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "max-label": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua": {
+      "until": "s2"
+    },
+    "ua-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ua-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ua-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ua-6": {
+      "from": "s6"
+    },
+    "ua-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ua-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ua-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ub": {
+      "from": "s6"
+    },
+    "ub-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ub-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ub-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ub-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "uc": {
+      "from": "s6"
+    },
+    "uc-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "uc-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ud": {
+      "from": "s6"
+    },
+    "ud-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ud-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ue": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "uf": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "One server",
+      "title": "It starts with one server",
+      "chapter": "setup",
+      "body": "Your app runs on a single machine. Every request — opening a page, posting a photo — travels from a user’s device to that server and back.\n\nWith a hundred users it barely notices: the CPU idles around **1%**.",
+      "callout": {
+        "kind": "insight",
+        "text": "A server has a fixed budget of CPU, memory, disk and network. Its **capacity** is how many requests per second it can serve before one of those runs out."
+      },
+      "changes": [],
+      "metrics": {
+        "users": "100",
+        "rps": "4",
+        "p95": "80 ms",
+        "errors": "0%",
+        "cost": "$150"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Viral spike",
+      "title": "Then you go viral",
+      "chapter": "problem",
+      "body": "A post takes off and traffic jumps **120×**. This machine can serve about 400 requests per second, and 480 are arriving. The CPU pins at 100%, requests queue up waiting their turn, latency balloons, and some give up and time out.\n\nYou need more capacity. There are two fundamentally different ways to get it.",
+      "callout": {
+        "kind": "warning",
+        "text": "Overload looks like: CPU near 100%, growing request queues, rising latency, then timeouts."
+      },
+      "changes": [
+        "~ Users 100 → 12,000",
+        "~ CPU 1% → 100%",
+        "+ Requests timing out"
+      ],
+      "metrics": {
+        "users": "12,000",
+        "rps": "480",
+        "p95": "2.4 s",
+        "errors": "17%",
+        "cost": "$150"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Scale up",
+      "title": "Way 1 — scale up",
+      "chapter": "solution",
+      "body": "The simplest fix: move to a bigger machine. More cores, more memory, faster disks.\n\nNothing about your design changes — the code doesn’t even know. This is [[vertical scaling]], or *scaling up*.",
+      "callout": {
+        "kind": "tip",
+        "text": "Scaling up is a great first move: zero code changes and nothing new to operate. Four times the machine, roughly four times the price."
+      },
+      "changes": [
+        "~ Server 4 vCPU → 16 vCPU",
+        "~ CPU 100% → 30%",
+        "~ Cost $150 → $600 / month"
+      ],
+      "metrics": {
+        "users": "12,000",
+        "rps": "480",
+        "p95": "110 ms",
+        "errors": "0%",
+        "cost": "$600"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "The ceiling",
+      "title": "…until you hit the ceiling",
+      "chapter": "tradeoff",
+      "body": "Growth continues and you upgrade again and again — but machines only get so big. Even the largest general-purpose server can’t keep up, and software rarely uses 192 cores as well as it used 16: locks, memory and one shared disk get in the way.\n\nEvery upgrade is also a migration: a restart, and downtime while you move.",
+      "callout": {
+        "kind": "warning",
+        "text": "Vertical scaling has a hard ceiling. In the cloud, price grows roughly in line with size — until the top of the range, where the exotic machines carry a premium and twice the cores no longer means twice the throughput."
+      },
+      "changes": [
+        "~ Users 12,000 → 500,000",
+        "+ Largest machine reached",
+        "~ Cost $600 → $7,200 / month"
+      ],
+      "metrics": {
+        "users": "500,000",
+        "rps": "20,000",
+        "p95": "3.1 s",
+        "errors": "12%",
+        "cost": "$7,200"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "One failure",
+      "title": "…and it’s a single point of failure",
+      "chapter": "problem",
+      "body": "Worse, everything depends on one machine. A bad deploy, a full disk or a dead power supply and the whole product is offline.\n\nA component whose failure takes the entire system down is a [[single point of failure]] (SPOF).",
+      "callout": {
+        "kind": "warning",
+        "text": "However big it is, one box is always one failure away from a full outage."
+      },
+      "changes": [
+        "- App server down",
+        "~ Errors 12% → 100%"
+      ],
+      "metrics": {
+        "users": "500,000",
+        "rps": "20,000",
+        "errors": "100%",
+        "cost": "$7,200"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Scale out",
+      "title": "Way 2 — scale out",
+      "chapter": "solution",
+      "body": "Instead of one giant machine, run several mid-size ones side by side — here four with 96 vCPU each — all running the same code.\n\nNeed more capacity? Add another server. Mid-size machines are the best value, there’s no hard ceiling, and each one is a small slice of the whole. This is [[horizontal scaling]], or *scaling out* — how virtually every large system grows.",
+      "callout": {
+        "kind": "tip",
+        "text": "Four 96-vCPU servers have twice the capacity of the biggest single machine — and any one of them can fail while the other three carry the load."
+      },
+      "changes": [
+        "~ 1 giant server → 4 mid-size servers",
+        "~ Capacity × 2 · cost $7,200 → $14,400 / month",
+        "~ CPU ≈ 52% each",
+        "~ Errors 100% → 0%"
+      ],
+      "metrics": {
+        "users": "500,000",
+        "rps": "20,000",
+        "p95": "95 ms",
+        "errors": "0%",
+        "cost": "$14,400"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "Night time",
+      "title": "Peak capacity, idle all night",
+      "chapter": "problem",
+      "body": "Traffic follows the clock. At 8 p.m. you need all four servers; at 4 a.m. traffic is a tenth of that, and they sit at 5% CPU.\n\nYou’re paying for peak capacity 24 hours a day. Most of the time, most of it does nothing.",
+      "callout": {
+        "kind": "insight",
+        "text": "Consumer apps commonly swing 3–10× between their daily peak and trough."
+      },
+      "changes": [
+        "~ 4 a.m.: users 500,000 → 50,000",
+        "~ CPU ≈ 52% → 5%"
+      ],
+      "metrics": {
+        "users": "50,000",
+        "rps": "2,000",
+        "p95": "90 ms",
+        "errors": "0%",
+        "cost": "$14,400"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "a-6": {
+          "visible": false
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "d": {
+          "visible": false
+        },
+        "ua-6": {
+          "visible": false
+        },
+        "ub": {
+          "visible": false
+        },
+        "uc": {
+          "visible": false
+        },
+        "ud": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Autoscale",
+      "title": "Autoscaling: follow the demand",
+      "chapter": "solution",
+      "body": "Because the servers are interchangeable, an [[autoscaler]] can add and remove them automatically — for example, keep average CPU near 50%.\n\nAt night it scales **in** to two servers — never fewer, so one can still fail — and in the evening it scales back **out**. You pay roughly for what you use.",
+      "callout": {
+        "kind": "tip",
+        "text": "Autoscaling only works when servers are stateless and sit behind a load balancer — the next two lessons."
+      },
+      "changes": [
+        "- 2 servers removed overnight",
+        "~ CPU 5% → 10% on the two that remain",
+        "~ Average cost $14,400 → $10,800 / month"
+      ],
+      "metrics": {
+        "users": "50,000",
+        "rps": "2,000",
+        "p95": "90 ms",
+        "errors": "0%",
+        "cost": "$10,800"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "a-6": {
+          "visible": false
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "d": {
+          "visible": false
+        },
+        "ua-6": {
+          "visible": false
+        },
+        "ub": {
+          "visible": false
+        },
+        "uc": {
+          "visible": false
+        },
+        "ud": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Flash sale",
+      "title": "Case: the flash sale",
+      "chapter": "problem",
+      "body": "At noon two servers are comfortably serving 150,000 users. Then a flash sale starts and traffic jumps **5×** in two minutes. The autoscaler reacts — but a new server takes about three minutes to boot and warm up.\n\nFor those minutes the two running servers can serve only about two-thirds of the traffic. The fix is to scale **before** the spike: scheduled scaling for known events, and spare headroom for unknown ones.",
+      "callout": {
+        "kind": "warning",
+        "text": "Autoscaling reacts; it can’t predict. Pre-warm for launches, sales and big broadcasts."
+      },
+      "changes": [
+        "~ Users × 5 at noon",
+        "+ 4 servers booting (≈ 3 min)",
+        "- Errors while they warm up"
+      ],
+      "metrics": {
+        "users": "750,000",
+        "rps": "30,000",
+        "p95": "2.8 s",
+        "errors": "36%",
+        "cost": "$21,600"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "a-6": {
+          "visible": false
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "d": {
+          "visible": false
+        },
+        "ua-6": {
+          "visible": false
+        },
+        "ub": {
+          "visible": false
+        },
+        "uc": {
+          "visible": false
+        },
+        "ud": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Who routes?",
+      "title": "But who sends users where?",
+      "chapter": "problem",
+      "body": "Right now each group of users is hard-wired to one server’s address. When Server B dies, a quarter of your users get errors — even though three healthy servers are right there.\n\nClients can’t tell which servers are alive or busy. Something has to sit in front and steer every request to a healthy server.",
+      "callout": {
+        "kind": "insight",
+        "text": "That something is a **load balancer** — the subject of the next lesson."
+      },
+      "changes": [
+        "- Server B down",
+        "~ Errors 0% → 25%"
+      ],
+      "metrics": {
+        "users": "500,000",
+        "rps": "20,000",
+        "p95": "95 ms",
+        "errors": "25%",
+        "cost": "$14,400"
+      },
+      "overrides": {
+        "users-3": {
+          "emphasis": true
+        },
+        "a-6": {
+          "emphasis": true
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "emphasis": true
+        },
+        "d": {
+          "emphasis": true
+        },
+        "ua-6": {
+          "emphasis": true
+        },
+        "ub": {
+          "visible": false
+        },
+        "uc": {
+          "emphasis": true
+        },
+        "ud": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Recap",
+      "title": "Recap: up vs out",
+      "chapter": "recap",
+      "body": "• How — Scale up: Bigger machine; Scale out: More machines\n• Code changes — Scale up: None; Scale out: Some1\n• Ceiling — Scale up: Hardware limit; Scale out: Practically none\n• Failure — Scale up: Total outage; Scale out: Partial2\n• To grow — Scale up: Migrate + restart; Scale out: Add a server\n• Cost — Scale up: Premium at the top; Scale out: Linear\n\nScaling out also lets you **autoscale**: add servers for the evening peak, remove them at night.\n\n1 Servers must be interchangeable — see *Stateless Services*. 2 Zero, once a load balancer routes around failures.",
+      "callout": {
+        "kind": "tip",
+        "text": "Rule of thumb: scale up while it’s cheap and simple, then scale out."
+      },
+      "changes": [],
+      "metrics": {
+        "users": "500,000",
+        "rps": "20,000",
+        "p95": "95 ms",
+        "errors": "0%",
+        "cost": "$14,400"
+      },
+      "overrides": {
+        "b": {
+          "emphasis": true
+        },
+        "ub": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

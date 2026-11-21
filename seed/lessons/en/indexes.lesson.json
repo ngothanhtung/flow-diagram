@@ -1,0 +1,2231 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "idx-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -168
+        },
+        "width": 694,
+        "height": 363,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "idx-4-label",
+        "type": "text",
+        "title": "INDEX ON email INCLUDE (id, name)",
+        "position": {
+          "x": -203,
+          "y": -329
+        },
+        "width": 268,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "idx-4"
+      },
+      {
+        "id": "idx-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -176
+        },
+        "width": 694,
+        "height": 378,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "idx-3-label",
+        "type": "text",
+        "title": "INDEX ON country · NOT SELECTIVE",
+        "position": {
+          "x": -206,
+          "y": -344
+        },
+        "width": 261,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "idx-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -176
+        },
+        "width": 694,
+        "height": 378,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "idx-2-label",
+        "type": "text",
+        "title": "INDEX ON (country, city)",
+        "position": {
+          "x": -237,
+          "y": -344
+        },
+        "width": 200,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "idx",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -168
+        },
+        "width": 694,
+        "height": 363,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "idx-label",
+        "type": "text",
+        "title": "INDEX ON email · B-TREE",
+        "position": {
+          "x": -241,
+          "y": -329
+        },
+        "width": 192,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "idx"
+      },
+      {
+        "id": "tbl",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 246
+        },
+        "width": 1362,
+        "height": 165,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "tbl-label",
+        "type": "text",
+        "title": "USERS TABLE · 50M ROWS",
+        "position": {
+          "x": -579,
+          "y": 184
+        },
+        "width": 184,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "tbl"
+      },
+      {
+        "id": "q",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 910,
+          "y": -438
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-text",
+        "type": "text",
+        "title": "THE QUERY\nSELECT * FROM users\nWHERE email = 'alice@example.com'\n# 50,000,000 rows · no index",
+        "position": {
+          "x": 910,
+          "y": -438
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q"
+      },
+      {
+        "id": "q-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 906,
+          "y": -438
+        },
+        "width": 305,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-2-text",
+        "type": "text",
+        "title": "SORTED → BINARY SEARCH\nhalve the range at every step\nlog₂(50,000,000) ≈ 26 steps\n→ 26 comparisons, not 50 million",
+        "position": {
+          "x": 906,
+          "y": -438
+        },
+        "width": 281,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-2"
+      },
+      {
+        "id": "q-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 910,
+          "y": -436
+        },
+        "width": 313,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-3-text",
+        "type": "text",
+        "title": "FAN-OUT PER LEVEL\neach node ≈ 500 keys\n2 levels: 500² = 250,000 rows\n3 levels: 500³ = 125,000,000 rows\n→ ~4 page reads to find any row",
+        "position": {
+          "x": 910,
+          "y": -436
+        },
+        "width": 289,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-3"
+      },
+      {
+        "id": "q-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 922,
+          "y": -438
+        },
+        "width": 338,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-4-text",
+        "type": "text",
+        "title": "CAN IT USE THE INDEX?\ncountry = 'NL' AND city = 'Delft'  ✓\ncountry = 'NL'                     ✓\n⚠ city = 'Delft'  ✗ full scan",
+        "position": {
+          "x": 922,
+          "y": -438
+        },
+        "width": 314,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-4"
+      },
+      {
+        "id": "q-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 922,
+          "y": -436
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-5-text",
+        "type": "text",
+        "title": "CAN IT USE THE INDEX?\nemail = 'alice@…'          ✓ seek\nemail LIKE 'alice%'          ✓ range\n⚠ email LIKE '%@gmail.com'  ✗ scan\n⚠ LOWER(email) = '…'        ✗ scan",
+        "position": {
+          "x": 922,
+          "y": -436
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-5"
+      },
+      {
+        "id": "q-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 980,
+          "y": -436
+        },
+        "width": 454,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-6-text",
+        "type": "text",
+        "title": "HOW MANY ROWS MATCH?\nemail = 'alice@…'      1 row    ✓ index\n→ status = 'pending'    0.1%     ✓ partial index\n⚠ country = 'US'        40%      ✗ scan is cheaper\n# an index helps when it rules out most rows",
+        "position": {
+          "x": 980,
+          "y": -436
+        },
+        "width": 430,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-6"
+      },
+      {
+        "id": "q-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 951,
+          "y": -427
+        },
+        "width": 396,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-7-text",
+        "type": "text",
+        "title": "EXPLAIN\nSELECT * FROM users WHERE email = 'a@…'\n→ Index Scan using users_email_idx\n#   rows=1  time=0.04 ms\nSELECT * FROM users WHERE email LIKE '%@g…'\n⚠ Seq Scan on users  rows=50,000,000",
+        "position": {
+          "x": 951,
+          "y": -427
+        },
+        "width": 372,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-7"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "App",
+        "position": {
+          "x": -429,
+          "y": -462
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "p0",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -617,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -505,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -393,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -281,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -169,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p5",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -56,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p6",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 57,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p7",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 169,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p8",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 281,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p9",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 393,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p10",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 505,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p11",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 617,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "root",
+        "type": "process",
+        "title": "A–Z",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "root-2",
+        "type": "process",
+        "title": "country",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "root-3",
+        "type": "process",
+        "title": "all",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "b1",
+        "type": "process",
+        "title": "A–H",
+        "position": {
+          "x": -231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "b1-2",
+        "type": "process",
+        "title": "DE · city",
+        "position": {
+          "x": -231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "b1-3",
+        "type": "process",
+        "title": "AR – FR",
+        "position": {
+          "x": -231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "b1-4",
+        "type": "process",
+        "title": "A–H + name",
+        "position": {
+          "x": -231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-4"
+      },
+      {
+        "id": "b2",
+        "type": "process",
+        "title": "I–Q",
+        "position": {
+          "x": 0,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "b2-2",
+        "type": "process",
+        "title": "NL · city",
+        "position": {
+          "x": 0,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "b2-3",
+        "type": "process",
+        "title": "GB – MX",
+        "position": {
+          "x": 0,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "b2-4",
+        "type": "process",
+        "title": "I–Q + name",
+        "position": {
+          "x": 0,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-4"
+      },
+      {
+        "id": "b3",
+        "type": "process",
+        "title": "R–Z",
+        "position": {
+          "x": 231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "b3-2",
+        "type": "process",
+        "title": "US · city",
+        "position": {
+          "x": 231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "b3-3",
+        "type": "process",
+        "title": "NG – ZA",
+        "position": {
+          "x": 231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "b3-4",
+        "type": "process",
+        "title": "R–Z + name",
+        "position": {
+          "x": 231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-4"
+      },
+      {
+        "id": "scan-to",
+        "type": "text",
+        "title": "",
+        "position": {
+          "x": 383,
+          "y": 172
+        },
+        "width": 28,
+        "height": 28
+      }
+    ],
+    "edges": [
+      {
+        "id": "scan",
+        "from": "app",
+        "to": "scan-to",
+        "label": "reads every page",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.62,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.25
+      },
+      {
+        "id": "ar",
+        "from": "app",
+        "to": "root",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ar-2",
+        "from": "app",
+        "to": "root-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ar-3",
+        "from": "app",
+        "to": "root-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "rb1",
+        "from": "root",
+        "to": "b1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb1-2",
+        "from": "root-2",
+        "to": "b1-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb1-3",
+        "from": "root-3",
+        "to": "b1-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "rb1-4",
+        "from": "root",
+        "to": "b1-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "rb2",
+        "from": "root",
+        "to": "b2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb2-2",
+        "from": "root-2",
+        "to": "b2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb2-3",
+        "from": "root-3",
+        "to": "b2-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "rb2-4",
+        "from": "root",
+        "to": "b2-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "rb3",
+        "from": "root",
+        "to": "b3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb3-2",
+        "from": "root-2",
+        "to": "b3-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb3-3",
+        "from": "root-3",
+        "to": "b3-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "rb3-4",
+        "from": "root",
+        "to": "b3-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "b1p",
+        "from": "b1",
+        "to": "p2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b1p-2",
+        "from": "b1-2",
+        "to": "p2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b1p-3",
+        "from": "b1-3",
+        "to": "p2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b1p-4",
+        "from": "b1-4",
+        "to": "p2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b2p",
+        "from": "b2",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b2p-2",
+        "from": "b2-2",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b2p-3",
+        "from": "b2-3",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b2p-4",
+        "from": "b2-4",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b3p",
+        "from": "b3",
+        "to": "p9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b3p-2",
+        "from": "b3-2",
+        "to": "p9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b3p-3",
+        "from": "b3-3",
+        "to": "p9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b3p-4",
+        "from": "b3-4",
+        "to": "p9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "ins",
+        "from": "app",
+        "to": "p11",
+        "label": "INSERT row",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.7,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -429,
+            "y": 172
+          },
+          {
+            "x": 617,
+            "y": 172
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Indexes",
+    "summary": "Why the same query can take two seconds or two milliseconds.",
+    "minutes": 12,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "p95",
+        "label": "p95 latency"
+      },
+      {
+        "id": "rows",
+        "label": "Rows read"
+      },
+      {
+        "id": "writeCost",
+        "label": "Writes per insert"
+      },
+      {
+        "id": "indexes",
+        "label": "Indexes"
+      }
+    ],
+    "goals": [
+      {
+        "text": "What a full table scan costs",
+        "step": "s1"
+      },
+      {
+        "text": "How a B-tree index finds a row",
+        "step": "s4"
+      },
+      {
+        "text": "What indexes cost on every write",
+        "step": "s5"
+      },
+      {
+        "text": "Composite indexes and column order",
+        "step": "s6"
+      },
+      {
+        "text": "When an index can’t help — and how to check",
+        "step": "s7"
+      }
+    ]
+  },
+  "presence": {
+    "q": {
+      "until": "s2"
+    },
+    "q-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "idx": {
+      "from": "s3"
+    },
+    "idx-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "idx-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "idx-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "root": {
+      "from": "s3"
+    },
+    "root-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "root-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b1": {
+      "from": "s3"
+    },
+    "b1-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b1-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b1-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b2": {
+      "from": "s3"
+    },
+    "b2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b2-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b2-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b3": {
+      "from": "s3"
+    },
+    "b3-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b3-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b3-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "scan-to": {
+      "until": "s9"
+    },
+    "idx-4-label": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "idx-3-label": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "idx-2-label": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "idx-label": {
+      "from": "s3"
+    },
+    "q-text": {
+      "until": "s2"
+    },
+    "q-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-4-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-5-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-6-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-7-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "scan": {
+      "until": "s9"
+    },
+    "ar": {
+      "from": "s3"
+    },
+    "ar-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ar-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rb1": {
+      "from": "s3"
+    },
+    "rb1-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "rb1-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rb1-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "rb2": {
+      "from": "s3"
+    },
+    "rb2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "rb2-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rb2-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "rb3": {
+      "from": "s3"
+    },
+    "rb3-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "rb3-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rb3-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b1p": {
+      "from": "s3"
+    },
+    "b1p-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b1p-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b1p-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b2p": {
+      "from": "s3"
+    },
+    "b2p-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b2p-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b2p-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b3p": {
+      "from": "s3"
+    },
+    "b3p-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b3p-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b3p-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ins": {
+      "from": "s5",
+      "until": "s6"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Slow query",
+      "title": "Finding one user takes two seconds",
+      "chapter": "problem",
+      "body": "Logging in looks up a user by email. With 50 million users, it takes over two seconds — and it gets slower every day.\n\nWith nothing to guide it, the database does a [[full table scan]]: it reads every page of the table, checking each row. Watch the amber request crawl along.",
+      "callout": {
+        "kind": "warning",
+        "text": "Scans grow with the table. Fine at a thousand rows; painful at fifty million."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "2.3 s",
+        "rows": "50,000,000",
+        "writeCost": "1",
+        "indexes": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Phone book",
+      "title": "How a phone book does it",
+      "chapter": "insight",
+      "body": "Nobody reads a phone book page by page. Because it’s **sorted**, you open the middle, see whether your name comes before or after, and throw away half the book. Repeat.\n\nHalving 50 million entries takes only about 26 steps.",
+      "callout": {
+        "kind": "insight",
+        "text": "An index is a sorted copy of one column, with a pointer back to each full row."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "2.3 s",
+        "rows": "50,000,000",
+        "writeCost": "1",
+        "indexes": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Add index",
+      "title": "Add an index",
+      "chapter": "solution",
+      "body": "`CREATE INDEX ON users (email)` builds a [[B-tree]]: a small tree of sorted keys. The root says which branch covers your email, the branch says which page holds the row.\n\nThree hops instead of fifty million rows: the lookup now takes about 2 ms.",
+      "callout": {
+        "kind": "tip",
+        "text": "Primary keys get an index automatically. Columns you search, join or sort on usually need one too."
+      },
+      "changes": [
+        "+ B-tree index on email",
+        "~ Rows read 50,000,000 → 1",
+        "~ p95 latency 2.3 s → 2 ms"
+      ],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "scan-to": {
+          "visible": false
+        },
+        "scan": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Why shallow",
+      "title": "Why B-trees stay shallow",
+      "chapter": "technique",
+      "body": "Each tree node is one disk page holding hundreds of keys, so every level multiplies the reach by hundreds.\n\nThree or four levels cover billions of rows — and the top levels are used so often they stay in memory.",
+      "callout": {
+        "kind": "insight",
+        "text": "That’s why an indexed lookup costs about the same at a million rows as at a billion."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "scan-to": {
+          "visible": false
+        },
+        "scan": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Writes pay",
+      "title": "Every index makes writes slower",
+      "chapter": "tradeoff",
+      "body": "When a user signs up, the row goes into the table *and* into every index on it, keeping each one sorted. Watch the writes (dark squares) land in both places.\n\nIndexes also take disk and memory. Index what you query, not everything.",
+      "callout": {
+        "kind": "warning",
+        "text": "A table with 6 indexes does 7 writes per insert. Unused indexes are pure cost."
+      },
+      "changes": [
+        "+ Inserts update table and index",
+        "~ Writes per insert 1 → 2"
+      ],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "scan-to": {
+          "visible": false
+        },
+        "scan": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Column order",
+      "title": "Composite indexes: order matters",
+      "chapter": "technique",
+      "body": "An index can cover several columns, like `(country, city)`. It’s sorted by country first, then by city within each country — like a phone book sorted by last name, then first name.\n\nIt speeds up queries on `country`, or `country` + `city`. A query on `city` alone can’t use it and falls back to a scan.",
+      "callout": {
+        "kind": "tip",
+        "text": "Put the column you always filter on first. Indexes help from the left."
+      },
+      "changes": [
+        "~ Index on (country, city)",
+        "+ City-only query → full scan"
+      ],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "idx": {
+          "visible": false
+        },
+        "root": {
+          "visible": false
+        },
+        "b1": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        },
+        "b3": {
+          "visible": false
+        },
+        "scan-to": {
+          "emphasis": true
+        },
+        "idx-label": {
+          "visible": false
+        },
+        "scan": {
+          "emphasis": true
+        },
+        "ar": {
+          "visible": false
+        },
+        "rb1": {
+          "visible": false
+        },
+        "rb2": {
+          "visible": false
+        },
+        "rb3": {
+          "visible": false
+        },
+        "b1p": {
+          "visible": false
+        },
+        "b2p": {
+          "visible": false
+        },
+        "b3p": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Wildcards",
+      "title": "Case: queries the index can’t help",
+      "chapter": "problem",
+      "body": "Marketing asks for every Gmail user: `WHERE email LIKE '%@gmail.com'`. The index is sorted by the *start* of each email, and this pattern says nothing about the start — so it’s a full scan again.\n\nThe same happens with functions: `WHERE LOWER(email) = …` can’t use a plain index on `email`, because the index stores the original values.",
+      "callout": {
+        "kind": "tip",
+        "text": "Fixes: an expression index on LOWER(email), a stored domain column with its own index, or a search engine for free-text matching."
+      },
+      "changes": [
+        "+ Leading-wildcard query",
+        "~ Index ignored → full scan"
+      ],
+      "metrics": {
+        "p95": "2.3 s",
+        "rows": "50,000,000",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "ar": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "rb1": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "rb2": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "rb3": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "b1p": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "b2p": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "b3p": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "idx": {
+          "emphasis": true
+        },
+        "root": {
+          "emphasis": true
+        },
+        "b1": {
+          "emphasis": true
+        },
+        "b2": {
+          "emphasis": true
+        },
+        "b3": {
+          "emphasis": true
+        },
+        "idx-label": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Selectivity",
+      "title": "Case: the index nobody uses",
+      "chapter": "problem",
+      "body": "Support wants every user in one country: `WHERE country = 'US'`. You add an index on `country` — and the database ignores it, because 40% of all rows match.\n\nFollowing the index would mean hopping to a different table page for each of 20 million rows — slower than simply reading the table front to back. An index pays off when it is [[selective]]: when it narrows the search to a small fraction of the rows.",
+      "callout": {
+        "kind": "tip",
+        "text": "If you only ever query a small slice — `WHERE status = 'pending'` — use a **partial index** that contains just those rows: tiny, fast and cheap to maintain."
+      },
+      "changes": [
+        "+ Index on country",
+        "~ 40% of rows match → full scan anyway",
+        "~ Writes per insert 2 → 3, for nothing"
+      ],
+      "metrics": {
+        "p95": "2.6 s",
+        "rows": "50,000,000",
+        "writeCost": "3",
+        "indexes": "2"
+      },
+      "overrides": {
+        "idx": {
+          "visible": false
+        },
+        "root": {
+          "visible": false
+        },
+        "b1": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        },
+        "b3": {
+          "visible": false
+        },
+        "idx-label": {
+          "visible": false
+        },
+        "ar": {
+          "visible": false
+        },
+        "rb1": {
+          "visible": false
+        },
+        "rb2": {
+          "visible": false
+        },
+        "rb3": {
+          "visible": false
+        },
+        "b1p": {
+          "visible": false
+        },
+        "b2p": {
+          "visible": false
+        },
+        "b3p": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "EXPLAIN",
+      "title": "Ask the database: EXPLAIN",
+      "chapter": "technique",
+      "body": "You don’t have to guess. Prefix a query with `EXPLAIN` and the database shows its plan: which index it will use, and how many rows it expects to read.\n\n“Index Scan” on a few rows is good news. “Seq Scan” on a big table is the red flag. `EXPLAIN ANALYZE` runs the query and reports real timings.",
+      "callout": {
+        "kind": "tip",
+        "text": "Most databases also keep a slow-query log. Start there: it lists the queries actually costing you time."
+      },
+      "changes": [
+        "+ Query plan shown",
+        "- Unused country index dropped"
+      ],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "idx": {
+          "emphasis": true
+        },
+        "root": {
+          "emphasis": true
+        },
+        "b1": {
+          "emphasis": true
+        },
+        "b2": {
+          "emphasis": true
+        },
+        "b3": {
+          "emphasis": true
+        },
+        "idx-label": {
+          "emphasis": true
+        },
+        "ar": {
+          "emphasis": true
+        },
+        "rb1": {
+          "emphasis": true
+        },
+        "rb2": {
+          "emphasis": true
+        },
+        "rb3": {
+          "emphasis": true
+        },
+        "b1p": {
+          "emphasis": true
+        },
+        "b2p": {
+          "emphasis": true
+        },
+        "b3p": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Covering",
+      "title": "Covering indexes: skip the table",
+      "chapter": "technique",
+      "body": "The login page only needs the user’s name and id. If the index stores those columns too, the database can answer from the index alone — it never visits the table pages.\n\nThis is a [[covering index]]. Watch lookups stop at the branches instead of reaching the table.",
+      "callout": {
+        "kind": "tip",
+        "text": "In PostgreSQL: CREATE INDEX ON users (email) INCLUDE (id, name). It makes the index bigger, so cover only hot queries."
+      },
+      "changes": [
+        "~ Index includes id and name",
+        "- Table lookups for this query"
+      ],
+      "metrics": {
+        "p95": "1 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "idx": {
+          "visible": false
+        },
+        "b1": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        },
+        "b3": {
+          "visible": false
+        },
+        "idx-label": {
+          "visible": false
+        },
+        "rb1": {
+          "visible": false
+        },
+        "rb2": {
+          "visible": false
+        },
+        "rb3": {
+          "visible": false
+        },
+        "b1p": {
+          "visible": false
+        },
+        "b2p": {
+          "visible": false
+        },
+        "b3p": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Without an index, a lookup **scans every row**.\n• A **B-tree** index finds any row in a handful of page reads.\n• Every index adds work to **every write** — index what you query.\n• Composite indexes work **from the leftmost column**.\n• Leading wildcards, functions and **low selectivity** defeat indexes — check with **EXPLAIN**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Storage Engines** — what the database actually does with a write, and why some are built for reads and others for writes."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "idx": {
+          "emphasis": true
+        },
+        "b1": {
+          "emphasis": true
+        },
+        "b2": {
+          "emphasis": true
+        },
+        "b3": {
+          "emphasis": true
+        },
+        "idx-label": {
+          "emphasis": true
+        },
+        "rb1": {
+          "emphasis": true
+        },
+        "rb2": {
+          "emphasis": true
+        },
+        "rb3": {
+          "emphasis": true
+        },
+        "b1p": {
+          "emphasis": true
+        },
+        "b2p": {
+          "emphasis": true
+        },
+        "b3p": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

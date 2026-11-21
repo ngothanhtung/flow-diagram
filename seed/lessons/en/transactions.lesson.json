@@ -1,0 +1,2421 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 510,
+          "y": -398
+        },
+        "width": 363,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "BOOK A SEAT\nn = SELECT left FROM seats WHERE id = 7\nif n > 0:\n  UPDATE seats SET left = {n − 1}\n  INSERT INTO bookings …\n# n − 1 is worked out in the app",
+        "position": {
+          "x": 510,
+          "y": -398
+        },
+        "width": 339,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 497,
+          "y": -407
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "WHAT HAPPENED\nAna reads   ██░░░░░░░░░░  left = 1\nBen reads   ███░░░░░░░░░  left = 1\nAna writes  ██████░░░░░░  left = 0\nBen writes  ████████░░░░  left = 0 !",
+        "position": {
+          "x": 497,
+          "y": -407
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 497,
+          "y": -398
+        },
+        "width": 338,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "INSIDE A TRANSACTION\nBEGIN\n  SELECT left …          → 1 (both!)\n  UPDATE … INSERT …\nCOMMIT\n⚠ all-or-nothing ≠ one-at-a-time",
+        "position": {
+          "x": 497,
+          "y": -398
+        },
+        "width": 314,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 481,
+          "y": -407
+        },
+        "width": 305,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "ONE ATOMIC STATEMENT\nUPDATE seats SET left = left − 1\n WHERE id = 7 AND left > 0\n→ Ana: 1 row changed → booked\n# Ben: 0 rows changed → sold out",
+        "position": {
+          "x": 481,
+          "y": -407
+        },
+        "width": 281,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 493,
+          "y": -407
+        },
+        "width": 330,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "COMPARE-AND-SET\nread:  left = 1, version = 8\nwrite: … SET left = 0, version = 9\n       WHERE id = 7 AND version = 8\n⚠ Ben: 0 rows → reload, retry",
+        "position": {
+          "x": 493,
+          "y": -407
+        },
+        "width": 306,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 506,
+          "y": -407
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "NOTHING TO LOCK\nSELECT … FROM bookings\n  WHERE seat = 7 FOR UPDATE   → 0 rows\nINSERT INTO bookings (seat = 7)\n⚠ both see 0 rows → both insert",
+        "position": {
+          "x": 506,
+          "y": -407
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 489,
+          "y": -407
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-7-text",
+        "type": "text",
+        "title": "A WAIT CYCLE\nAna: lock A … waiting for B\nBen: lock B … waiting for A\n⚠ cycle → database aborts one\n→ fix: always lock lowest id first",
+        "position": {
+          "x": 489,
+          "y": -407
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-7"
+      },
+      {
+        "id": "card-8",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 497,
+          "y": -398
+        },
+        "width": 338,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-8-text",
+        "type": "text",
+        "title": "THREE SHORT STEPS\n1. UPDATE seat 7 SET held_by = Ana,\n     held_until = now() + 10 min\n2. charge card (no transaction open)\n3. UPDATE seat 7 SET sold_to = Ana\n# job: release holds past held_until",
+        "position": {
+          "x": 497,
+          "y": -398
+        },
+        "width": 314,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-8"
+      },
+      {
+        "id": "ana",
+        "type": "process",
+        "title": "Ana",
+        "position": {
+          "x": -168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-2",
+        "type": "process",
+        "title": "Ana",
+        "description": "booked seat 7 ✓",
+        "position": {
+          "x": -168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-3",
+        "type": "process",
+        "title": "Ana",
+        "description": "v8 → v9 ✓",
+        "position": {
+          "x": -168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-4",
+        "type": "process",
+        "title": "Ana",
+        "description": "transfer A → B",
+        "position": {
+          "x": -168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-5",
+        "type": "process",
+        "title": "Ana",
+        "description": "paying… (lock held)",
+        "position": {
+          "x": -168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-6",
+        "type": "process",
+        "title": "Ana",
+        "description": "seat held · paying",
+        "position": {
+          "x": -168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben",
+        "type": "process",
+        "title": "Ben",
+        "position": {
+          "x": 168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-2",
+        "type": "process",
+        "title": "Ben",
+        "description": "booked seat 7 ✓",
+        "position": {
+          "x": 168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-3",
+        "type": "process",
+        "title": "Ben",
+        "description": "sold out · sorry",
+        "position": {
+          "x": 168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-4",
+        "type": "process",
+        "title": "Ben",
+        "description": "v8 is stale · retry",
+        "position": {
+          "x": 168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-5",
+        "type": "process",
+        "title": "Ben",
+        "description": "aborted · retrying",
+        "position": {
+          "x": 168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-6",
+        "type": "process",
+        "title": "Ben",
+        "description": "duplicate key · sold out",
+        "position": {
+          "x": 168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-7",
+        "type": "process",
+        "title": "Ben",
+        "description": "waiting for seat 7",
+        "position": {
+          "x": 168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-8",
+        "type": "process",
+        "title": "Ben",
+        "description": "seat 7 held · pick another",
+        "position": {
+          "x": 168,
+          "y": -432
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1",
+        "type": "process",
+        "title": "Server 1",
+        "position": {
+          "x": -168,
+          "y": -144
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a2",
+        "type": "process",
+        "title": "Server 2",
+        "position": {
+          "x": 168,
+          "y": -144
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7 · left: 1",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 192,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7 · left: 0 · 2 bookings!",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 196,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7 · left: 0 · 2 bookings! · read committed",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 200,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7 · left: 0 · row 7 locked by Ana",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 196,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7 · left: 0",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 192,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-6",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7 · left: 0 · version 9",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 192,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-7",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7 · left: 0 · serializable",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 196,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-8",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "⚠ bookings: seat 7 × 2",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 192,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-9",
+        "type": "process",
+        "title": "accounts DB",
+        "description": "Ana holds A · waits for B · Ben holds B · waits for A",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 208,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-10",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7 · left: 0 · UNIQUE (concert, seat)",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 200,
+        "height": 136,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-11",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7 · left: 1 · locked 3 s · 40 waiting",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 196,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-12",
+        "type": "process",
+        "title": "tickets DB",
+        "description": "seat 7: held for Ana · 12:10",
+        "position": {
+          "x": 0,
+          "y": 144
+        },
+        "width": 196,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Payment Provider",
+        "description": "3 s per charge",
+        "position": {
+          "x": -384,
+          "y": -144
+        },
+        "width": 176,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Payment Provider",
+        "position": {
+          "x": -384,
+          "y": -144
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "aa",
+        "from": "ana",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-2",
+        "from": "ana-2",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-3",
+        "from": "ana-3",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-4",
+        "from": "ana-4",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-5",
+        "from": "ana-5",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-6",
+        "from": "ana-6",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb",
+        "from": "ben",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-2",
+        "from": "ben-2",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-3",
+        "from": "ben-3",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-4",
+        "from": "ben-4",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-5",
+        "from": "ben-5",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-6",
+        "from": "ben-6",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-7",
+        "from": "ben-7",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-8",
+        "from": "ben-8",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad",
+        "from": "a1",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-2",
+        "from": "a1",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-3",
+        "from": "a1",
+        "to": "db-3",
+        "label": "BEGIN … COMMIT",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-4",
+        "from": "a1",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-5",
+        "from": "a1",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-6",
+        "from": "a1",
+        "to": "db-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-7",
+        "from": "a1",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-8",
+        "from": "a1",
+        "to": "db-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-9",
+        "from": "a1",
+        "to": "db-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-10",
+        "from": "a1",
+        "to": "db-10",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-11",
+        "from": "a1",
+        "to": "db-11",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "none"
+      },
+      {
+        "id": "ad-12",
+        "from": "a1",
+        "to": "db-12",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd",
+        "from": "a2",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-2",
+        "from": "a2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-3",
+        "from": "a2",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-4",
+        "from": "a2",
+        "to": "db-4",
+        "label": "waits for the lock",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-5",
+        "from": "a2",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-6",
+        "from": "a2",
+        "to": "db-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-7",
+        "from": "a2",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-8",
+        "from": "a2",
+        "to": "db-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-9",
+        "from": "a2",
+        "to": "db-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-10",
+        "from": "a2",
+        "to": "db-10",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-11",
+        "from": "a2",
+        "to": "db-11",
+        "label": "waits for the lock",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-12",
+        "from": "a2",
+        "to": "db-12",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap",
+        "from": "a1",
+        "to": "pay",
+        "label": "charge card",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-2",
+        "from": "a1",
+        "to": "pay-2",
+        "label": "charge card",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Transactions & Isolation",
+    "summary": "Two people, one seat, the same millisecond. How databases keep concurrent changes correct.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "seatsLeft",
+        "label": "Seats left"
+      },
+      {
+        "id": "sold",
+        "label": "Tickets sold"
+      },
+      {
+        "id": "oversold",
+        "label": "Oversold"
+      },
+      {
+        "id": "lockWait",
+        "label": "Ben waits"
+      }
+    ],
+    "goals": [
+      {
+        "text": "How read-then-write races oversell",
+        "step": "s2"
+      },
+      {
+        "text": "Row locks and atomic updates",
+        "step": "s5"
+      },
+      {
+        "text": "Optimistic concurrency and isolation levels",
+        "step": "s7"
+      },
+      {
+        "text": "Phantoms and write skew",
+        "step": "s8"
+      },
+      {
+        "text": "Deadlocks and constraints as a safety net",
+        "step": "s10"
+      },
+      {
+        "text": "Short transactions with holds that expire",
+        "step": "s12"
+      }
+    ]
+  },
+  "presence": {
+    "ana": {
+      "until": "s2"
+    },
+    "ana-2": {
+      "from": "s2"
+    },
+    "ana-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ana-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ana-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ana-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ben": {
+      "until": "s2"
+    },
+    "ben-2": {
+      "from": "s2",
+      "until": "s9"
+    },
+    "ben-3": {
+      "from": "s4"
+    },
+    "ben-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ben-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ben-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ben-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ben-8": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "db": {
+      "until": "s2"
+    },
+    "db-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "db-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "db-5": {
+      "from": "s5"
+    },
+    "db-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "db-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "db-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "db-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "db-10": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "db-11": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "db-12": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-8": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "pay": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "pay-2": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-8-text": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "aa": {
+      "until": "s2"
+    },
+    "aa-2": {
+      "from": "s2"
+    },
+    "aa-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "aa-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "aa-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "aa-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "bb": {
+      "until": "s2"
+    },
+    "bb-2": {
+      "from": "s2",
+      "until": "s9"
+    },
+    "bb-3": {
+      "from": "s4"
+    },
+    "bb-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bb-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bb-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "bb-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "bb-8": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ad": {
+      "until": "s2"
+    },
+    "ad-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ad-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ad-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-5": {
+      "from": "s5"
+    },
+    "ad-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ad-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ad-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ad-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ad-10": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ad-11": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ad-12": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "bd": {
+      "until": "s2"
+    },
+    "bd-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "bd-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "bd-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bd-5": {
+      "from": "s5"
+    },
+    "bd-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bd-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bd-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bd-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bd-10": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "bd-11": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "bd-12": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ap": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ap-2": {
+      "from": "s12",
+      "until": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Last seat",
+      "title": "One seat left",
+      "chapter": "setup",
+      "body": "Ana and Ben both want the last seat at a concert. Their requests land on different app servers, which share one database.\n\nThe booking code looks reasonable: **read** how many seats are left, and if there’s one, **write** the booking.",
+      "callout": {
+        "kind": "insight",
+        "text": "Each request on its own is correct. The trouble only appears when two run at the same time."
+      },
+      "changes": [],
+      "metrics": {
+        "seatsLeft": "1",
+        "sold": "0",
+        "oversold": "no",
+        "lockWait": "0 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Race",
+      "title": "Both of them get it",
+      "chapter": "problem",
+      "body": "Both servers read “1 seat left” before either has written. Both decide the seat is free, both write, and both send a confirmation.\n\nOne seat, two tickets. This is a [[race condition]] — here a **lost update**: Ben’s write silently overwrote Ana’s.",
+      "callout": {
+        "kind": "warning",
+        "text": "Races are rare in testing and common in production — exactly when it’s busiest, like the moment tickets go on sale."
+      },
+      "changes": [
+        "+ Both read “1 left”",
+        "+ Both write “0 left”",
+        "- Seat 7 sold twice"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "2 for 1 seat",
+        "oversold": "yes",
+        "lockWait": "0 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Not enough",
+      "title": "A transaction alone doesn’t stop it",
+      "chapter": "insight",
+      "body": "Wrap it in `BEGIN … COMMIT` and the booking becomes all-or-nothing — but it can still be sold twice. Under the default isolation level of most databases (**read committed**), each read simply sees the latest committed value: 1.\n\n[[Isolation]] is the part of a transaction that says what concurrent transactions can see of each other. The default is deliberately weak, for speed.",
+      "callout": {
+        "kind": "tip",
+        "text": "ACID’s “I” is a dial, not a switch. Know which level your database uses by default (PostgreSQL and SQL Server: read committed; MySQL: repeatable read)."
+      },
+      "changes": [
+        "+ BEGIN … COMMIT around the booking",
+        "- Still sold twice"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "2 for 1 seat",
+        "oversold": "yes",
+        "lockWait": "0 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Lock",
+      "title": "Lock the row while you decide",
+      "chapter": "solution",
+      "body": "Read with `SELECT … FOR UPDATE`. Ana’s transaction locks row 7; when Ben’s tries to read it, the database makes him **wait** until Ana commits (watch his request hold at the database).\n\nThen Ben reads the new value — 0 — and gets a polite “sold out”.",
+      "callout": {
+        "kind": "tip",
+        "text": "Locks are held until COMMIT, so keep these transactions short: never wait for a user, a payment API or anything slow while holding one."
+      },
+      "changes": [
+        "~ Read with FOR UPDATE",
+        "+ Ben waits ~40 ms for Ana’s lock",
+        "~ Seat sold once"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "no",
+        "lockWait": "40 ms"
+      },
+      "overrides": {
+        "ben-2": {
+          "visible": false
+        },
+        "bb-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Atomic",
+      "title": "Or do it in one statement",
+      "chapter": "technique",
+      "body": "Often you don’t need to read first at all. Let the database check and change in one atomic step:\n\n`UPDATE seats SET left = left − 1 WHERE id = 7 AND left > 0` — then look at how many rows it changed. 1 means you got the seat; 0 means it was gone.",
+      "callout": {
+        "kind": "tip",
+        "text": "Counters, stock levels and balances are usually safest as a single conditional UPDATE. No gap between check and change, no lock held across round trips."
+      },
+      "changes": [
+        "~ Check and change in one UPDATE",
+        "~ Ben’s update changes 0 rows → sold out"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "no",
+        "lockWait": "2 ms"
+      },
+      "overrides": {
+        "ben-2": {
+          "visible": false
+        },
+        "bb-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Versions",
+      "title": "Optimistic: check a version number",
+      "chapter": "technique",
+      "body": "Locks are *pessimistic*: they assume a conflict and make others wait. [[Optimistic concurrency]] assumes conflicts are rare: read the row with its version, then write `… WHERE id = 7 AND version = 8`, bumping it to 9.\n\nIf someone got there first, the version no longer matches, the write changes 0 rows, and you reload and try again. Nobody waits.",
+      "callout": {
+        "kind": "insight",
+        "text": "Ideal when users edit things for a while — a document, a profile, a cart. Holding a lock for minutes would block everyone."
+      },
+      "changes": [
+        "+ version column",
+        "~ Ben’s write rejected (version changed) → retries → sold out"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "no",
+        "lockWait": "0 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "visible": false
+        },
+        "ben-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "visible": false
+        },
+        "bb-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Levels",
+      "title": "Isolation levels",
+      "chapter": "insight",
+      "body": "Databases offer several isolation levels. Stronger ones prevent more anomalies, but make transactions wait or abort more often.\n\n• **Read committed** — Prevents: Dirty reads; Cost: Lowest\n• **Snapshot / repeatable read** — Prevents: + changing reads; lost updates in some databases1; Cost: Some aborts\n• **Serializable** — Prevents: Everything: as if one at a time; Cost: Most aborts — retry\n\n1 PostgreSQL aborts the second writer; MySQL’s repeatable read lets the lost update through. Same name, different guarantees — check your database’s documentation.",
+      "callout": {
+        "kind": "tip",
+        "text": "With serializable, the database may abort a transaction rather than allow an anomaly. Your code must catch that and retry."
+      },
+      "changes": [],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "no",
+        "lockWait": "0 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "emphasis": true
+        },
+        "ben-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "emphasis": true
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "emphasis": true
+        },
+        "bb-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "emphasis": true
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Phantom",
+      "title": "Case: locking a row that doesn’t exist yet",
+      "chapter": "problem",
+      "body": "A new booking flow drops the seat counter and checks the bookings table instead: “is there a booking for seat 7? No — insert one.” Both transactions even use `FOR UPDATE`…\n\n…but there is no row to lock yet. Both see nothing, both insert, and seat 7 is booked twice. A row that appears between your check and your write is a [[phantom]]; deciding on what you read and then writing something else is called [[write skew]].",
+      "callout": {
+        "kind": "tip",
+        "text": "Fixes: serializable isolation, locking an existing parent row (the seat itself), or a unique constraint — see the next steps."
+      },
+      "changes": [
+        "+ Check-then-insert booking flow",
+        "- FOR UPDATE finds no row to lock",
+        "- Seat 7 booked twice"
+      ],
+      "metrics": {
+        "sold": "2 for 1 seat",
+        "oversold": "yes",
+        "lockWait": "0 ms"
+      },
+      "overrides": {
+        "ben-2": {
+          "emphasis": true
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "bb-2": {
+          "emphasis": true
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Deadlock",
+      "title": "Case: the deadlock",
+      "chapter": "problem",
+      "body": "Locks bring their own trap. Ana transfers money from account A to B: she locks A, then asks for B. At the same instant Ben transfers from B to A: he locks B, then asks for A.\n\nEach waits for the other, forever. The database detects the cycle — immediately in some engines, after about a second in others — and aborts one transaction (Ben’s), which must retry.",
+      "callout": {
+        "kind": "tip",
+        "text": "Prevent it by always taking locks in the same order — for example, lowest account id first. Then a cycle can’t form."
+      },
+      "changes": [
+        "+ Two transfers lock A and B in opposite orders",
+        "- Both wait on each other",
+        "~ Database aborts Ben’s transaction"
+      ],
+      "metrics": {
+        "oversold": "no",
+        "lockWait": "1.0 s"
+      },
+      "overrides": {
+        "ana-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Constraint",
+      "title": "Constraints: the last line of defence",
+      "chapter": "solution",
+      "body": "Code changes, and someone will eventually write a booking path that forgets the lock. So let the database enforce the rule itself: a [[unique constraint]] on `(concert, seat)` in the bookings table.\n\nNow a second booking for seat 7 is rejected with a duplicate-key error, whatever the application code does.",
+      "callout": {
+        "kind": "insight",
+        "text": "Encode invariants as constraints — unique, foreign key, check (balance ≥ 0). They hold even when the code has bugs."
+      },
+      "changes": [
+        "+ UNIQUE (concert, seat) on bookings",
+        "~ A duplicate booking is rejected"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "no",
+        "lockWait": "0 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "emphasis": true
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "emphasis": true
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Slow lock",
+      "title": "Case: a lock held during a payment",
+      "chapter": "problem",
+      "body": "To be safe, someone moves the card payment *inside* the booking transaction: lock seat 7, call the payment provider, then commit. The provider takes 3 seconds.\n\nFor those 3 seconds the seat stays locked, and every other buyer of it waits — each holding a database connection. On sale day the connection pool runs dry and the whole site stalls.",
+      "callout": {
+        "kind": "warning",
+        "text": "Never wait on anything slow — a user, a payment API, an email — while holding a database lock or an open transaction."
+      },
+      "changes": [
+        "+ Payment call inside the transaction",
+        "~ Seat 7 locked for 3 s per attempt",
+        "- Connection pool exhausted"
+      ],
+      "metrics": {
+        "seatsLeft": "1",
+        "sold": "0",
+        "oversold": "no",
+        "lockWait": "3.0 s"
+      },
+      "overrides": {
+        "ana-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Hold",
+      "title": "Reserve, pay, then confirm",
+      "chapter": "solution",
+      "body": "Split it into short steps. Transaction 1 marks seat 7 as **held for Ana until 12:10** and commits at once. Then she pays — outside any transaction. Transaction 2 marks the seat **sold**.\n\nIf she never pays, a cleanup job releases holds that have expired. Ben is told immediately that the seat is taken — no waiting, no locks held for seconds.",
+      "callout": {
+        "kind": "insight",
+        "text": "This is the “seat held for 10 minutes” timer on every ticket and airline site. A reservation with an expiry replaces a long lock."
+      },
+      "changes": [
+        "~ Transaction 1: hold seat (expires 12:10)",
+        "~ Payment outside the transaction",
+        "~ Transaction 2: confirm",
+        "+ Expired holds released"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "no",
+        "lockWait": "2 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• **Read-then-write** under concurrency causes races and lost updates.\n• Fix with **row locks**, a single **atomic UPDATE**, or **version checks**.\n• Isolation levels trade correctness for waiting and **retries**.\n• Lock in a **consistent order**; back rules with **constraints**.\n• Keep transactions **short**: hold a reservation, never a lock, while waiting on payments.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Files & Media** — where photos and videos go instead of the database, and how they get there and back."
+      },
+      "changes": [],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "no",
+        "lockWait": "2 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "emphasis": true
+        },
+        "ben-3": {
+          "emphasis": true
+        },
+        "db-5": {
+          "emphasis": true
+        },
+        "aa-2": {
+          "emphasis": true
+        },
+        "bb-3": {
+          "emphasis": true
+        },
+        "ad-5": {
+          "emphasis": true
+        },
+        "bd-5": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

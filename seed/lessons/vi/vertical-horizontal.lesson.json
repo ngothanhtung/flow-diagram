@@ -1,0 +1,1554 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "max",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 322,
+        "height": 289,
+        "color": "#bfbfbf",
+        "backgroundColor": "#141414",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "max-label",
+        "type": "text",
+        "title": "máy lớn nhất có thể mua",
+        "position": {
+          "x": -55,
+          "y": -124
+        },
+        "width": 192,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "max"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "100 người dùng",
+        "position": {
+          "x": 0,
+          "y": -456
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "12.000 người dùng",
+        "position": {
+          "x": 0,
+          "y": -456
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "500.000 người dùng",
+        "position": {
+          "x": 0,
+          "y": -456
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-4",
+        "type": "process",
+        "title": "4 giờ sáng · 50.000 người dùng",
+        "position": {
+          "x": 0,
+          "y": -456
+        },
+        "width": 248,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-5",
+        "type": "process",
+        "title": "4 giờ sáng · 50.000 người dùng",
+        "position": {
+          "x": -266,
+          "y": -456
+        },
+        "width": 248,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-6",
+        "type": "process",
+        "title": "trưa · 750.000 người dùng",
+        "position": {
+          "x": 0,
+          "y": -456
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "4 vCPU · 16 GB · CPU 1%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 228,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-2",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "4 vCPU · 16 GB · CPU 100%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 228,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-3",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "16 vCPU · 64 GB · CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 228,
+        "height": 137,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-4",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "192 vCPU · 768 GB · CPU 100%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 266,
+        "height": 160,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "max"
+      },
+      {
+        "id": "a-5",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 266,
+        "height": 160,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-6",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 54%",
+        "position": {
+          "x": -399,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-7",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 5%",
+        "position": {
+          "x": -399,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-8",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 11%",
+        "position": {
+          "x": -399,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-9",
+        "type": "process",
+        "title": "Server A",
+        "description": "CPU 99%",
+        "position": {
+          "x": -399,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 52%",
+        "position": {
+          "x": -133,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-2",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 5%",
+        "position": {
+          "x": -133,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-3",
+        "type": "process",
+        "title": "Server B",
+        "description": "tự co giãn: 2 trong 2–8 · CPU 10%",
+        "position": {
+          "x": -133,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-4",
+        "type": "process",
+        "title": "Server B",
+        "description": "CPU 99%",
+        "position": {
+          "x": -133,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-5",
+        "type": "process",
+        "title": "Server B",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": -133,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c",
+        "type": "process",
+        "title": "Server C",
+        "description": "CPU 50%",
+        "position": {
+          "x": 133,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-2",
+        "type": "process",
+        "title": "Server C",
+        "description": "CPU 6%",
+        "position": {
+          "x": 133,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-3",
+        "type": "process",
+        "title": "đang khởi động",
+        "position": {
+          "x": 133,
+          "y": 0
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "d",
+        "type": "process",
+        "title": "Server D",
+        "description": "CPU 48%",
+        "position": {
+          "x": 399,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "d-2",
+        "type": "process",
+        "title": "Server D",
+        "description": "CPU 5%",
+        "position": {
+          "x": 399,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "d-3",
+        "type": "process",
+        "title": "đang khởi động",
+        "position": {
+          "x": 399,
+          "y": 0
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "e",
+        "type": "process",
+        "title": "đang khởi động",
+        "description": "≈ 3 phút",
+        "position": {
+          "x": -665,
+          "y": 0
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f",
+        "type": "process",
+        "title": "đang khởi động",
+        "position": {
+          "x": 665,
+          "y": 0
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "a",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-2",
+        "from": "users-2",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-3",
+        "from": "users-2",
+        "to": "a-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-4",
+        "from": "users-3",
+        "to": "a-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-5",
+        "from": "users-3",
+        "to": "a-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-6",
+        "from": "users-3",
+        "to": "a-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-7",
+        "from": "users-4",
+        "to": "a-7",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ua-8",
+        "from": "users-5",
+        "to": "a-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-9",
+        "from": "users-6",
+        "to": "a-9",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ub",
+        "from": "users-3",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ub-2",
+        "from": "users-4",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ub-3",
+        "from": "users-5",
+        "to": "b-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ub-4",
+        "from": "users-6",
+        "to": "b-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "ub-5",
+        "from": "users-3",
+        "to": "b-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "uc",
+        "from": "users-3",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "uc-2",
+        "from": "users-4",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "uc-3",
+        "from": "users-6",
+        "to": "c-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "ud",
+        "from": "users-3",
+        "to": "d",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ud-2",
+        "from": "users-4",
+        "to": "d-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ud-3",
+        "from": "users-6",
+        "to": "d-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "ue",
+        "from": "users-6",
+        "to": "e",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "uf",
+        "from": "users-6",
+        "to": "f",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Mở rộng theo chiều dọc hay chiều ngang",
+    "summary": "Server duy nhất của bạn đang quá tải. Mua một cái lớn hơn, hay mua thêm?",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "users",
+        "label": "Người dùng"
+      },
+      {
+        "id": "rps",
+        "label": "Yêu cầu / s"
+      },
+      {
+        "id": "p95",
+        "label": "Độ trễ p95"
+      },
+      {
+        "id": "errors",
+        "label": "Lỗi"
+      },
+      {
+        "id": "cost",
+        "label": "Chi phí / tháng"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Nhận ra triệu chứng của một server quá tải",
+        "step": "s2"
+      },
+      {
+        "text": "Mở rộng theo chiều dọc, và biết giới hạn của nó",
+        "step": "s5"
+      },
+      {
+        "text": "Mở rộng theo chiều ngang với nhiều server nhỏ hơn",
+        "step": "s6"
+      },
+      {
+        "text": "Tự động co giãn theo chu kỳ ngày, và mở rộng trước cho các đợt tăng vọt",
+        "step": "s8"
+      },
+      {
+        "text": "Hiểu vì sao mở rộng ngang cần bộ cân bằng tải",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "users": {
+      "until": "s2"
+    },
+    "users-2": {
+      "from": "s2",
+      "until": "s4"
+    },
+    "users-3": {
+      "from": "s4"
+    },
+    "users-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "users-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "users-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a": {
+      "until": "s2"
+    },
+    "a-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "a-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "a-6": {
+      "from": "s6"
+    },
+    "a-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "a-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "a-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "max": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "b": {
+      "from": "s6"
+    },
+    "b-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "b-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "b-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "c": {
+      "from": "s6"
+    },
+    "c-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "c-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "d": {
+      "from": "s6"
+    },
+    "d-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "d-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "e": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "max-label": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua": {
+      "until": "s2"
+    },
+    "ua-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ua-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ua-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ua-6": {
+      "from": "s6"
+    },
+    "ua-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ua-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ua-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ub": {
+      "from": "s6"
+    },
+    "ub-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ub-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ub-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ub-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "uc": {
+      "from": "s6"
+    },
+    "uc-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "uc-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ud": {
+      "from": "s6"
+    },
+    "ud-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ud-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ue": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "uf": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Một server",
+      "title": "Mọi thứ bắt đầu với một server",
+      "chapter": "setup",
+      "body": "Ứng dụng của bạn chạy trên một máy duy nhất. Mỗi yêu cầu (mở một trang, đăng một bức ảnh) đi từ thiết bị của người dùng tới server đó rồi quay về.\n\nVới một trăm người dùng nó gần như không nhận ra: CPU nhàn rỗi quanh **1%**.",
+      "callout": {
+        "kind": "insight",
+        "text": "Một server có ngân sách cố định về CPU, bộ nhớ, ổ đĩa và mạng. **Năng lực** của nó là số yêu cầu mỗi giây nó phục vụ được trước khi một trong số đó cạn."
+      },
+      "changes": [],
+      "metrics": {
+        "users": "100",
+        "rps": "4",
+        "p95": "80 ms",
+        "errors": "0%",
+        "cost": "150 $"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Tăng vọt viral",
+      "title": "Rồi bạn lên viral",
+      "chapter": "problem",
+      "body": "Một bài đăng bùng nổ và lưu lượng tăng vọt **120×**. Máy này phục vụ được khoảng 400 yêu cầu mỗi giây, mà có tới 480 đang đến. CPU kẹt ở 100%, các yêu cầu xếp hàng chờ lượt, độ trễ phình to và một số bỏ cuộc vì hết thời gian chờ.\n\nBạn cần thêm năng lực. Có hai cách khác nhau về bản chất để có được nó.",
+      "callout": {
+        "kind": "warning",
+        "text": "Quá tải trông như sau: CPU gần 100%, hàng đợi yêu cầu dài ra, độ trễ tăng, rồi timeout."
+      },
+      "changes": [
+        "~ Người dùng 100 → 12.000",
+        "~ CPU 1% → 100%",
+        "+ Yêu cầu bị timeout"
+      ],
+      "metrics": {
+        "users": "12.000",
+        "rps": "480",
+        "p95": "2,4 s",
+        "errors": "17%",
+        "cost": "150 $"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Mở rộng dọc",
+      "title": "Cách 1: mở rộng theo chiều dọc",
+      "chapter": "solution",
+      "body": "Cách sửa đơn giản nhất: chuyển sang máy lớn hơn. Nhiều lõi hơn, nhiều bộ nhớ hơn, ổ đĩa nhanh hơn.\n\nThiết kế của bạn không đổi gì; mã thậm chí không biết. Đây là [[mở rộng theo chiều dọc]], hay *scale up*.",
+      "callout": {
+        "kind": "tip",
+        "text": "Mở rộng dọc là bước đầu tiên tuyệt vời: không sửa mã và không có gì mới phải vận hành. Máy gấp bốn, giá cũng khoảng gấp bốn."
+      },
+      "changes": [
+        "~ Server 4 vCPU → 16 vCPU",
+        "~ CPU 100% → 30%",
+        "~ Chi phí $150 → $600 / tháng"
+      ],
+      "metrics": {
+        "users": "12.000",
+        "rps": "480",
+        "p95": "110 ms",
+        "errors": "0%",
+        "cost": "600 $"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Trần",
+      "title": "…cho tới khi bạn chạm trần",
+      "chapter": "tradeoff",
+      "body": "Tăng trưởng tiếp tục và bạn nâng cấp hết lần này tới lần khác, nhưng máy chỉ to được tới một mức. Ngay cả server đa dụng lớn nhất cũng không theo kịp, và phần mềm hiếm khi dùng 192 lõi tốt như khi dùng 16: khóa, bộ nhớ và một ổ đĩa dùng chung cản đường.\n\nMỗi lần nâng cấp cũng là một lần di chuyển: khởi động lại, và ngừng dịch vụ trong lúc chuyển.",
+      "callout": {
+        "kind": "warning",
+        "text": "Mở rộng dọc có một trần cứng. Trên đám mây, giá tăng gần như theo kích thước, cho tới đỉnh của dải sản phẩm, nơi những cỗ máy đặc biệt có giá cao hơn và gấp đôi số lõi không còn nghĩa là gấp đôi thông lượng."
+      },
+      "changes": [
+        "~ Người dùng 12.000 → 500.000",
+        "+ Đã tới máy lớn nhất",
+        "~ Chi phí $600 → $7.200 / tháng"
+      ],
+      "metrics": {
+        "users": "500.000",
+        "rps": "20.000",
+        "p95": "3,1 s",
+        "errors": "12%",
+        "cost": "7.200 $"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Một sự cố",
+      "title": "…và nó là điểm lỗi duy nhất",
+      "chapter": "problem",
+      "body": "Tệ hơn, mọi thứ phụ thuộc vào một máy. Một lần triển khai lỗi, một ổ đĩa đầy hay một bộ nguồn hỏng, và toàn bộ sản phẩm ngừng hoạt động.\n\nMột thành phần mà khi hỏng sẽ kéo sập cả hệ thống được gọi là [[điểm lỗi duy nhất]] (SPOF).",
+      "callout": {
+        "kind": "warning",
+        "text": "Dù to đến đâu, một máy luôn chỉ cách sự cố sập toàn bộ đúng một lần hỏng."
+      },
+      "changes": [
+        "- Server ứng dụng sập",
+        "~ Lỗi 12% → 100%"
+      ],
+      "metrics": {
+        "users": "500.000",
+        "rps": "20.000",
+        "errors": "100%",
+        "cost": "7.200 $"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Mở rộng ngang",
+      "title": "Cách 2: mở rộng theo chiều ngang",
+      "chapter": "solution",
+      "body": "Thay vì một máy khổng lồ, chạy vài máy cỡ vừa cạnh nhau (ở đây là bốn máy, mỗi máy 96 vCPU), tất cả chạy cùng một mã.\n\nCần thêm năng lực? Thêm một server. Máy cỡ vừa đáng tiền nhất, không có trần cứng, và mỗi máy chỉ là một phần nhỏ của tổng thể. Đây là [[mở rộng theo chiều ngang]], hay *scale out*: cách mà hầu như mọi hệ thống lớn phát triển.",
+      "callout": {
+        "kind": "tip",
+        "text": "Bốn server 96 vCPU có năng lực gấp đôi máy đơn lớn nhất, và bất kỳ máy nào cũng có thể hỏng trong khi ba máy còn lại gánh tải."
+      },
+      "changes": [
+        "~ 1 server khổng lồ → 4 server cỡ vừa",
+        "~ Năng lực × 2 · chi phí $7.200 → $14.400 / tháng",
+        "~ CPU ≈ 52% mỗi máy",
+        "~ Lỗi 100% → 0%"
+      ],
+      "metrics": {
+        "users": "500.000",
+        "rps": "20.000",
+        "p95": "95 ms",
+        "errors": "0%",
+        "cost": "14.400 $"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "Ban đêm",
+      "title": "Năng lực đỉnh, nhàn rỗi cả đêm",
+      "chapter": "problem",
+      "body": "Lưu lượng đi theo đồng hồ. Lúc 8 giờ tối bạn cần cả bốn server; lúc 4 giờ sáng lưu lượng chỉ bằng một phần mười, và chúng ngồi ở 5% CPU.\n\nBạn trả tiền cho năng lực đỉnh 24 giờ mỗi ngày. Phần lớn thời gian, phần lớn số đó không làm gì cả.",
+      "callout": {
+        "kind": "insight",
+        "text": "Ứng dụng tiêu dùng thường dao động 3–10× giữa đỉnh và đáy trong ngày."
+      },
+      "changes": [
+        "~ 4 giờ sáng: người dùng 500.000 → 50.000",
+        "~ CPU ≈ 52% → 5%"
+      ],
+      "metrics": {
+        "users": "50.000",
+        "rps": "2.000",
+        "p95": "90 ms",
+        "errors": "0%",
+        "cost": "14.400 $"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "a-6": {
+          "visible": false
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "d": {
+          "visible": false
+        },
+        "ua-6": {
+          "visible": false
+        },
+        "ub": {
+          "visible": false
+        },
+        "uc": {
+          "visible": false
+        },
+        "ud": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Tự co giãn",
+      "title": "Tự động co giãn: theo sát nhu cầu",
+      "chapter": "solution",
+      "body": "Vì các server có thể thay thế cho nhau, một [[autoscaler]] có thể tự động thêm và bớt chúng, chẳng hạn giữ CPU trung bình quanh 50%.\n\nBan đêm nó thu nhỏ (**scale in**) còn hai server (không bao giờ ít hơn, để một máy vẫn có thể hỏng) và buổi tối nó lại mở rộng (**scale out**). Bạn trả gần đúng theo mức dùng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tự động co giãn chỉ hoạt động khi server là phi trạng thái và đứng sau bộ cân bằng tải: hai bài học tiếp theo."
+      },
+      "changes": [
+        "- Bớt 2 server qua đêm",
+        "~ CPU 5% → 10% trên hai máy còn lại",
+        "~ Chi phí trung bình $14.400 → $10.800 / tháng"
+      ],
+      "metrics": {
+        "users": "50.000",
+        "rps": "2.000",
+        "p95": "90 ms",
+        "errors": "0%",
+        "cost": "10.800 $"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "a-6": {
+          "visible": false
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "d": {
+          "visible": false
+        },
+        "ua-6": {
+          "visible": false
+        },
+        "ub": {
+          "visible": false
+        },
+        "uc": {
+          "visible": false
+        },
+        "ud": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Flash sale",
+      "title": "Tình huống: flash sale",
+      "chapter": "problem",
+      "body": "Buổi trưa, hai server thoải mái phục vụ 150.000 người dùng. Rồi một đợt flash sale bắt đầu và lưu lượng tăng vọt **5×** trong hai phút. Autoscaler phản ứng, nhưng một server mới mất khoảng ba phút để khởi động và làm nóng.\n\nTrong những phút đó, hai server đang chạy chỉ phục vụ được khoảng hai phần ba lưu lượng. Cách khắc phục là mở rộng **trước** đợt tăng vọt: mở rộng theo lịch cho sự kiện đã biết, và dư địa cho những sự kiện chưa biết.",
+      "callout": {
+        "kind": "warning",
+        "text": "Tự động co giãn chỉ phản ứng; nó không dự đoán được. Hãy làm nóng trước cho các đợt ra mắt, khuyến mãi và phát sóng lớn."
+      },
+      "changes": [
+        "~ Người dùng × 5 lúc trưa",
+        "+ 4 server đang khởi động (≈ 3 phút)",
+        "- Lỗi trong lúc làm nóng"
+      ],
+      "metrics": {
+        "users": "750.000",
+        "rps": "30.000",
+        "p95": "2,8 s",
+        "errors": "36%",
+        "cost": "21.600 $"
+      },
+      "overrides": {
+        "users-3": {
+          "visible": false
+        },
+        "a-6": {
+          "visible": false
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "d": {
+          "visible": false
+        },
+        "ua-6": {
+          "visible": false
+        },
+        "ub": {
+          "visible": false
+        },
+        "uc": {
+          "visible": false
+        },
+        "ud": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Ai định tuyến?",
+      "title": "Nhưng ai gửi người dùng đi đâu?",
+      "chapter": "problem",
+      "body": "Hiện mỗi nhóm người dùng bị gắn cứng vào địa chỉ của một server. Khi Server B chết, một phần tư người dùng của bạn gặp lỗi, dù ba server khỏe mạnh ở ngay đó.\n\nClient không biết server nào còn sống hay đang bận. Phải có thứ gì đó đứng phía trước và điều hướng mỗi yêu cầu tới một server khỏe mạnh.",
+      "callout": {
+        "kind": "insight",
+        "text": "Thứ đó là **bộ cân bằng tải**, chủ đề của bài học tiếp theo."
+      },
+      "changes": [
+        "- Server B sập",
+        "~ Lỗi 0% → 25%"
+      ],
+      "metrics": {
+        "users": "500.000",
+        "rps": "20.000",
+        "p95": "95 ms",
+        "errors": "25%",
+        "cost": "14.400 $"
+      },
+      "overrides": {
+        "users-3": {
+          "emphasis": true
+        },
+        "a-6": {
+          "emphasis": true
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "emphasis": true
+        },
+        "d": {
+          "emphasis": true
+        },
+        "ua-6": {
+          "emphasis": true
+        },
+        "ub": {
+          "visible": false
+        },
+        "uc": {
+          "emphasis": true
+        },
+        "ud": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Tổng kết",
+      "title": "Tổng kết: dọc hay ngang",
+      "chapter": "recap",
+      "body": "• Cách làm — Dọc: Máy lớn hơn; Ngang: Nhiều máy hơn\n• Sửa mã — Dọc: Không; Ngang: Một ít1\n• Trần — Dọc: Giới hạn phần cứng; Ngang: Gần như không có\n• Sự cố — Dọc: Sập toàn bộ; Ngang: Một phần2\n• Để tăng trưởng — Dọc: Di chuyển + khởi động lại; Ngang: Thêm một server\n• Chi phí — Dọc: Đắt ở mức cao nhất; Ngang: Tuyến tính\n\nMở rộng ngang còn cho phép **tự động co giãn**: thêm server cho giờ cao điểm buổi tối, bớt đi vào ban đêm.\n\n1 Các server phải thay thế được cho nhau: xem *Dịch vụ phi trạng thái*. 2 Bằng không, khi đã có bộ cân bằng tải định tuyến tránh các sự cố.",
+      "callout": {
+        "kind": "tip",
+        "text": "Quy tắc kinh nghiệm: mở rộng dọc khi còn rẻ và đơn giản, sau đó mở rộng ngang."
+      },
+      "changes": [],
+      "metrics": {
+        "users": "500.000",
+        "rps": "20.000",
+        "p95": "95 ms",
+        "errors": "0%",
+        "cost": "14.400 $"
+      },
+      "overrides": {
+        "b": {
+          "emphasis": true
+        },
+        "ub": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2421 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 524,
+          "y": -451
+        },
+        "width": 363,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "ĐẶT MỘT GHẾ\nn = SELECT left FROM seats WHERE id = 7\nif n > 0:\n  UPDATE seats SET left = {n − 1}\n  INSERT INTO bookings …\n# n − 1 được tính trong ứng dụng",
+        "position": {
+          "x": 524,
+          "y": -451
+        },
+        "width": 339,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 499,
+          "y": -460
+        },
+        "width": 313,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "CHUYỆN GÌ ĐÃ XẢY RA\nAna đọc  ██░░░░░░░░░░  left = 1\nBen đọc  ███░░░░░░░░░  left = 1\nAna ghi  ██████░░░░░░  left = 0\nBen ghi  ████████░░░░  left = 0 !",
+        "position": {
+          "x": 499,
+          "y": -460
+        },
+        "width": 289,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 524,
+          "y": -451
+        },
+        "width": 363,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "BÊN TRONG GIAO DỊCH\nBEGIN\n  SELECT left …          → 1 (cả hai!)\n  UPDATE … INSERT …\nCOMMIT\n⚠ tất-cả-hoặc-không ≠ lần lượt từng cái",
+        "position": {
+          "x": 524,
+          "y": -451
+        },
+        "width": 339,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 495,
+          "y": -460
+        },
+        "width": 305,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "MỘT CÂU LỆNH NGUYÊN TỬ\nUPDATE seats SET left = left − 1\n WHERE id = 7 AND left > 0\n→ Ana: đổi 1 dòng → đã đặt\n# Ben: đổi 0 dòng → hết vé",
+        "position": {
+          "x": 495,
+          "y": -460
+        },
+        "width": 281,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 503,
+          "y": -460
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "COMPARE-AND-SET\nđọc:  left = 1, version = 8\nghi:  … SET left = 0, version = 9\n      WHERE id = 7 AND version = 8\n⚠ Ben: 0 dòng → tải lại, thử lại",
+        "position": {
+          "x": 503,
+          "y": -460
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 520,
+          "y": -460
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "KHÔNG CÓ GÌ ĐỂ KHÓA\nSELECT … FROM bookings\n  WHERE seat = 7 FOR UPDATE   → 0 dòng\nINSERT INTO bookings (seat = 7)\n⚠ cả hai thấy 0 dòng → cả hai chèn",
+        "position": {
+          "x": 520,
+          "y": -460
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 524,
+          "y": -460
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-7-text",
+        "type": "text",
+        "title": "MỘT VÒNG CHỜ\nAna: khóa A … chờ B\nBen: khóa B … chờ A\n⚠ vòng lặp → CSDL hủy một bên\n→ cách sửa: luôn khóa id nhỏ nhất trước",
+        "position": {
+          "x": 524,
+          "y": -460
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-7"
+      },
+      {
+        "id": "card-8",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 540,
+          "y": -451
+        },
+        "width": 396,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-8-text",
+        "type": "text",
+        "title": "BA BƯỚC NGẮN\n1. UPDATE seat 7 SET held_by = Ana,\n     held_until = now() + 10 min\n2. trừ tiền thẻ (không có giao dịch mở)\n3. UPDATE seat 7 SET sold_to = Ana\n# tác vụ: giải phóng chỗ giữ quá held_until",
+        "position": {
+          "x": 540,
+          "y": -451
+        },
+        "width": 372,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-8"
+      },
+      {
+        "id": "ana",
+        "type": "process",
+        "title": "Ana",
+        "position": {
+          "x": -182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-2",
+        "type": "process",
+        "title": "Ana",
+        "description": "đã đặt ghế 7 ✓",
+        "position": {
+          "x": -182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-3",
+        "type": "process",
+        "title": "Ana",
+        "description": "v8 → v9 ✓",
+        "position": {
+          "x": -182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-4",
+        "type": "process",
+        "title": "Ana",
+        "description": "chuyển A → B",
+        "position": {
+          "x": -182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-5",
+        "type": "process",
+        "title": "Ana",
+        "description": "đang trả… (giữ khóa)",
+        "position": {
+          "x": -182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ana-6",
+        "type": "process",
+        "title": "Ana",
+        "description": "đang giữ ghế · thanh toán",
+        "position": {
+          "x": -182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben",
+        "type": "process",
+        "title": "Ben",
+        "position": {
+          "x": 182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-2",
+        "type": "process",
+        "title": "Ben",
+        "description": "đã đặt ghế 7 ✓",
+        "position": {
+          "x": 182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-3",
+        "type": "process",
+        "title": "Ben",
+        "description": "hết vé · xin lỗi",
+        "position": {
+          "x": 182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-4",
+        "type": "process",
+        "title": "Ben",
+        "description": "v8 đã cũ · thử lại",
+        "position": {
+          "x": 182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-5",
+        "type": "process",
+        "title": "Ben",
+        "description": "đã hủy · đang thử lại",
+        "position": {
+          "x": 182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-6",
+        "type": "process",
+        "title": "Ben",
+        "description": "trùng khóa · hết vé",
+        "position": {
+          "x": 182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-7",
+        "type": "process",
+        "title": "Ben",
+        "description": "đang chờ ghế 7",
+        "position": {
+          "x": 182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ben-8",
+        "type": "process",
+        "title": "Ben",
+        "description": "ghế 7 đang được giữ · chọn ghế khác",
+        "position": {
+          "x": 182,
+          "y": -468
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a1",
+        "type": "process",
+        "title": "Máy chủ 1",
+        "position": {
+          "x": -182,
+          "y": -156
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a2",
+        "type": "process",
+        "title": "Máy chủ 2",
+        "position": {
+          "x": 182,
+          "y": -156
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7 · còn: 1",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7 · còn: 0 · 2 lượt đặt!",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7 · còn: 0 · 2 lượt đặt! · read committed",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 188,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7 · còn: 0 · dòng 7 bị Ana khóa",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 176,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7 · còn: 0",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-6",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7 · còn: 0 · phiên bản 9",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-7",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7 · còn: 0 · serializable",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 184,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-8",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "⚠ đặt chỗ: ghế 7 × 2",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-9",
+        "type": "process",
+        "title": "CSDL tài khoản",
+        "description": "Ana giữ A · chờ B · Ben giữ B · chờ A",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 228,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-10",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7 · còn: 0 · UNIQUE (concert, seat)",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 188,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-11",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7 · còn: 1 · khóa 3 s · 40 đang chờ",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 180,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-12",
+        "type": "process",
+        "title": "CSDL vé",
+        "description": "ghế 7: giữ cho Ana · 12:10",
+        "position": {
+          "x": 0,
+          "y": 156
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Nhà cung cấp thanh toán",
+        "description": "3 s mỗi lần trừ tiền",
+        "position": {
+          "x": -416,
+          "y": -156
+        },
+        "width": 208,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Nhà cung cấp thanh toán",
+        "position": {
+          "x": -416,
+          "y": -156
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "aa",
+        "from": "ana",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-2",
+        "from": "ana-2",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-3",
+        "from": "ana-3",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-4",
+        "from": "ana-4",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-5",
+        "from": "ana-5",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-6",
+        "from": "ana-6",
+        "to": "a1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb",
+        "from": "ben",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-2",
+        "from": "ben-2",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-3",
+        "from": "ben-3",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-4",
+        "from": "ben-4",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-5",
+        "from": "ben-5",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-6",
+        "from": "ben-6",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-7",
+        "from": "ben-7",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bb-8",
+        "from": "ben-8",
+        "to": "a2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad",
+        "from": "a1",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-2",
+        "from": "a1",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-3",
+        "from": "a1",
+        "to": "db-3",
+        "label": "BEGIN … COMMIT",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-4",
+        "from": "a1",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-5",
+        "from": "a1",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-6",
+        "from": "a1",
+        "to": "db-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-7",
+        "from": "a1",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-8",
+        "from": "a1",
+        "to": "db-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-9",
+        "from": "a1",
+        "to": "db-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-10",
+        "from": "a1",
+        "to": "db-10",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-11",
+        "from": "a1",
+        "to": "db-11",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "none"
+      },
+      {
+        "id": "ad-12",
+        "from": "a1",
+        "to": "db-12",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd",
+        "from": "a2",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-2",
+        "from": "a2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-3",
+        "from": "a2",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-4",
+        "from": "a2",
+        "to": "db-4",
+        "label": "chờ khóa",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-5",
+        "from": "a2",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-6",
+        "from": "a2",
+        "to": "db-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-7",
+        "from": "a2",
+        "to": "db-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-8",
+        "from": "a2",
+        "to": "db-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-9",
+        "from": "a2",
+        "to": "db-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-10",
+        "from": "a2",
+        "to": "db-10",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-11",
+        "from": "a2",
+        "to": "db-11",
+        "label": "chờ khóa",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bd-12",
+        "from": "a2",
+        "to": "db-12",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap",
+        "from": "a1",
+        "to": "pay",
+        "label": "trừ tiền thẻ",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-2",
+        "from": "a1",
+        "to": "pay-2",
+        "label": "trừ tiền thẻ",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Giao dịch & cô lập",
+    "summary": "Hai người, một ghế, cùng một mili giây. Cách cơ sở dữ liệu giữ cho các thay đổi đồng thời luôn đúng.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "seatsLeft",
+        "label": "Ghế còn lại"
+      },
+      {
+        "id": "sold",
+        "label": "Vé đã bán"
+      },
+      {
+        "id": "oversold",
+        "label": "Bán quá"
+      },
+      {
+        "id": "lockWait",
+        "label": "Ben chờ"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao đua đọc-rồi-ghi bán quá số lượng",
+        "step": "s2"
+      },
+      {
+        "text": "Khóa dòng và cập nhật nguyên tử",
+        "step": "s5"
+      },
+      {
+        "text": "Đồng thời lạc quan và các mức cô lập",
+        "step": "s7"
+      },
+      {
+        "text": "Bóng ma và write skew",
+        "step": "s8"
+      },
+      {
+        "text": "Deadlock và ràng buộc làm lưới an toàn",
+        "step": "s10"
+      },
+      {
+        "text": "Giao dịch ngắn với giữ chỗ có hạn",
+        "step": "s12"
+      }
+    ]
+  },
+  "presence": {
+    "ana": {
+      "until": "s2"
+    },
+    "ana-2": {
+      "from": "s2"
+    },
+    "ana-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ana-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ana-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ana-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ben": {
+      "until": "s2"
+    },
+    "ben-2": {
+      "from": "s2",
+      "until": "s9"
+    },
+    "ben-3": {
+      "from": "s4"
+    },
+    "ben-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ben-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ben-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ben-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ben-8": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "db": {
+      "until": "s2"
+    },
+    "db-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "db-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "db-5": {
+      "from": "s5"
+    },
+    "db-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "db-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "db-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "db-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "db-10": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "db-11": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "db-12": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-8": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "pay": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "pay-2": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-8-text": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "aa": {
+      "until": "s2"
+    },
+    "aa-2": {
+      "from": "s2"
+    },
+    "aa-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "aa-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "aa-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "aa-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "bb": {
+      "until": "s2"
+    },
+    "bb-2": {
+      "from": "s2",
+      "until": "s9"
+    },
+    "bb-3": {
+      "from": "s4"
+    },
+    "bb-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bb-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bb-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "bb-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "bb-8": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ad": {
+      "until": "s2"
+    },
+    "ad-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ad-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ad-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-5": {
+      "from": "s5"
+    },
+    "ad-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ad-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ad-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ad-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ad-10": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ad-11": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ad-12": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "bd": {
+      "until": "s2"
+    },
+    "bd-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "bd-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "bd-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bd-5": {
+      "from": "s5"
+    },
+    "bd-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bd-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bd-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bd-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bd-10": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "bd-11": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "bd-12": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ap": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ap-2": {
+      "from": "s12",
+      "until": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Ghế cuối",
+      "title": "Còn một ghế",
+      "chapter": "setup",
+      "body": "Ana và Ben cùng muốn ghế cuối cùng của một buổi hòa nhạc. Yêu cầu của họ rơi vào hai máy chủ ứng dụng khác nhau, dùng chung một cơ sở dữ liệu.\n\nMã đặt chỗ trông hợp lý: **đọc** còn bao nhiêu ghế, và nếu còn một, **ghi** lượt đặt chỗ.",
+      "callout": {
+        "kind": "insight",
+        "text": "Từng yêu cầu riêng lẻ đều đúng. Rắc rối chỉ xuất hiện khi hai cái chạy cùng lúc."
+      },
+      "changes": [],
+      "metrics": {
+        "seatsLeft": "1",
+        "sold": "0",
+        "oversold": "không",
+        "lockWait": "0 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Đua",
+      "title": "Cả hai đều có",
+      "chapter": "problem",
+      "body": "Cả hai máy chủ đọc “còn 1 ghế” trước khi bên nào ghi. Cả hai cho rằng ghế còn trống, cả hai ghi, và cả hai gửi xác nhận.\n\nMột ghế, hai vé. Đây là một [[tình trạng đua]] (race condition), ở đây là một **cập nhật bị mất** (lost update): lượt ghi của Ben lặng lẽ đè lên của Ana.",
+      "callout": {
+        "kind": "warning",
+        "text": "Tình trạng đua hiếm khi gặp lúc kiểm thử nhưng phổ biến khi chạy thật, đúng lúc đông nhất, như khoảnh khắc vé bắt đầu mở bán."
+      },
+      "changes": [
+        "+ Cả hai đọc “còn 1”",
+        "+ Cả hai ghi “còn 0”",
+        "- Ghế 7 bị bán hai lần"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "2 cho 1 ghế",
+        "oversold": "có",
+        "lockWait": "0 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Chưa đủ",
+      "title": "Riêng giao dịch không ngăn được",
+      "chapter": "insight",
+      "body": "Bọc nó trong `BEGIN … COMMIT` thì lượt đặt chỗ thành tất-cả-hoặc-không, nhưng vẫn có thể bị bán hai lần. Ở mức cô lập mặc định của hầu hết cơ sở dữ liệu (**read committed**), mỗi lượt đọc chỉ thấy giá trị đã commit gần nhất: 1.\n\n[[Cô lập]] là phần của giao dịch quy định các giao dịch đồng thời thấy được gì của nhau. Mặc định cố ý để yếu, cho nhanh.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chữ “I” trong ACID là một núm vặn, không phải công tắc. Hãy biết cơ sở dữ liệu của bạn dùng mức nào mặc định (PostgreSQL và SQL Server: read committed; MySQL: repeatable read)."
+      },
+      "changes": [
+        "+ BEGIN … COMMIT bao quanh việc đặt chỗ",
+        "- Vẫn bán hai lần"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "2 cho 1 ghế",
+        "oversold": "có",
+        "lockWait": "0 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Khóa",
+      "title": "Khóa dòng khi đang quyết định",
+      "chapter": "solution",
+      "body": "Đọc bằng `SELECT … FOR UPDATE`. Giao dịch của Ana khóa dòng 7; khi giao dịch của Ben cố đọc nó, cơ sở dữ liệu bắt anh **chờ** tới khi Ana commit (xem yêu cầu của anh dừng ở cơ sở dữ liệu).\n\nRồi Ben đọc giá trị mới, 0, và nhận một câu “hết vé” lịch sự.",
+      "callout": {
+        "kind": "tip",
+        "text": "Khóa được giữ tới COMMIT, nên hãy giữ các giao dịch này ngắn: đừng bao giờ chờ người dùng, API thanh toán hay bất cứ thứ gì chậm khi đang giữ khóa."
+      },
+      "changes": [
+        "~ Đọc với FOR UPDATE",
+        "+ Ben chờ khóa của Ana ~40 ms",
+        "~ Ghế bán một lần"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "không",
+        "lockWait": "40 ms"
+      },
+      "overrides": {
+        "ben-2": {
+          "visible": false
+        },
+        "bb-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Nguyên tử",
+      "title": "Hoặc làm trong một câu lệnh",
+      "chapter": "technique",
+      "body": "Thường thì bạn chẳng cần đọc trước. Để cơ sở dữ liệu kiểm tra và thay đổi trong một bước nguyên tử:\n\n`UPDATE seats SET left = left − 1 WHERE id = 7 AND left > 0`, rồi xem có bao nhiêu dòng thay đổi. 1 nghĩa là bạn có ghế; 0 nghĩa là ghế đã hết.",
+      "callout": {
+        "kind": "tip",
+        "text": "Bộ đếm, mức tồn kho và số dư thường an toàn nhất khi là một UPDATE có điều kiện duy nhất. Không có khe hở giữa kiểm tra và thay đổi, không có khóa giữ qua các lượt đi về."
+      },
+      "changes": [
+        "~ Kiểm tra và thay đổi trong một UPDATE",
+        "~ Update của Ben đổi 0 dòng → hết vé"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "không",
+        "lockWait": "2 ms"
+      },
+      "overrides": {
+        "ben-2": {
+          "visible": false
+        },
+        "bb-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Phiên bản",
+      "title": "Lạc quan: kiểm tra số phiên bản",
+      "chapter": "technique",
+      "body": "Khóa mang tính *bi quan*: chúng giả định sẽ có xung đột và bắt người khác chờ. [[Đồng thời lạc quan]] giả định xung đột hiếm: đọc dòng cùng phiên bản của nó, rồi ghi `… WHERE id = 7 AND version = 8`, tăng lên 9.\n\nNếu ai đó tới trước, phiên bản không còn khớp, lượt ghi đổi 0 dòng, và bạn tải lại rồi thử lại. Không ai phải chờ.",
+      "callout": {
+        "kind": "insight",
+        "text": "Lý tưởng khi người dùng chỉnh sửa thứ gì đó một lúc: tài liệu, hồ sơ, giỏ hàng. Giữ khóa hàng phút sẽ chặn tất cả mọi người."
+      },
+      "changes": [
+        "+ cột version",
+        "~ Lượt ghi của Ben bị từ chối (phiên bản đã đổi) → thử lại → hết vé"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "không",
+        "lockWait": "0 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "visible": false
+        },
+        "ben-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "visible": false
+        },
+        "bb-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Các mức",
+      "title": "Các mức cô lập",
+      "chapter": "insight",
+      "body": "Cơ sở dữ liệu có nhiều mức cô lập. Mức mạnh hơn ngăn được nhiều bất thường hơn, nhưng khiến giao dịch phải chờ hoặc bị hủy thường hơn.\n\n• **Read committed** — Ngăn được: Đọc bẩn; Chi phí: Thấp nhất\n• **Snapshot / repeatable read** — Ngăn được: + lượt đọc thay đổi; cập nhật bị mất ở một số CSDL1; Chi phí: Hủy đôi khi\n• **Serializable** — Ngăn được: Mọi thứ: như thể lần lượt từng cái; Chi phí: Hủy nhiều nhất: thử lại\n\n1 PostgreSQL hủy bên ghi thứ hai; repeatable read của MySQL để lọt cập nhật bị mất. Cùng tên, khác bảo đảm: hãy xem tài liệu của cơ sở dữ liệu bạn dùng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Với serializable, cơ sở dữ liệu có thể hủy một giao dịch thay vì để xảy ra bất thường. Mã của bạn phải bắt lỗi đó và thử lại."
+      },
+      "changes": [],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "không",
+        "lockWait": "0 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "emphasis": true
+        },
+        "ben-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "emphasis": true
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "emphasis": true
+        },
+        "bb-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "emphasis": true
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Bóng ma",
+      "title": "Tình huống: khóa một dòng chưa tồn tại",
+      "chapter": "problem",
+      "body": "Một luồng đặt chỗ mới bỏ bộ đếm ghế và kiểm tra bảng đặt chỗ: “có lượt đặt nào cho ghế 7 không? Không, vậy chèn một.” Cả hai giao dịch thậm chí còn dùng `FOR UPDATE`…\n\n…nhưng chưa có dòng nào để khóa. Cả hai không thấy gì, cả hai chèn, và ghế 7 bị đặt hai lần. Một dòng xuất hiện giữa lúc bạn kiểm tra và lúc bạn ghi là một [[bóng ma]] (phantom); quyết định dựa trên thứ đã đọc rồi ghi một thứ khác gọi là [[write skew]].",
+      "callout": {
+        "kind": "tip",
+        "text": "Cách sửa: cô lập serializable, khóa một dòng cha đã có (chính chiếc ghế), hoặc ràng buộc duy nhất; xem các bước tiếp theo."
+      },
+      "changes": [
+        "+ Luồng kiểm-tra-rồi-chèn",
+        "- FOR UPDATE không tìm được dòng để khóa",
+        "- Ghế 7 bị đặt hai lần"
+      ],
+      "metrics": {
+        "sold": "2 cho 1 ghế",
+        "oversold": "có",
+        "lockWait": "0 ms"
+      },
+      "overrides": {
+        "ben-2": {
+          "emphasis": true
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "bb-2": {
+          "emphasis": true
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Deadlock",
+      "title": "Tình huống: deadlock",
+      "chapter": "problem",
+      "body": "Khóa có cái bẫy riêng. Ana chuyển tiền từ tài khoản A sang B: khóa A, rồi xin B. Cùng lúc đó Ben chuyển từ B sang A: khóa B, rồi xin A.\n\nMỗi bên chờ bên kia, mãi mãi. Cơ sở dữ liệu phát hiện vòng lặp (ngay lập tức ở một số engine, sau khoảng một giây ở engine khác) và hủy một giao dịch (của Ben), giao dịch này phải thử lại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Ngăn chặn bằng cách luôn lấy khóa theo cùng một thứ tự, ví dụ id tài khoản nhỏ nhất trước. Khi đó vòng lặp không thể hình thành."
+      },
+      "changes": [
+        "+ Hai lượt chuyển khóa A và B theo thứ tự ngược nhau",
+        "- Cả hai chờ nhau",
+        "~ CSDL hủy giao dịch của Ben"
+      ],
+      "metrics": {
+        "oversold": "không",
+        "lockWait": "1,0 s"
+      },
+      "overrides": {
+        "ana-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Ràng buộc",
+      "title": "Ràng buộc: tuyến phòng thủ cuối cùng",
+      "chapter": "solution",
+      "body": "Mã thay đổi, và sớm muộn sẽ có người viết một luồng đặt chỗ quên khóa. Vậy hãy để chính cơ sở dữ liệu thực thi quy tắc: một [[ràng buộc duy nhất]] trên `(concert, seat)` trong bảng đặt chỗ.\n\nGiờ lượt đặt thứ hai cho ghế 7 bị từ chối với lỗi trùng khóa, bất kể mã ứng dụng làm gì.",
+      "callout": {
+        "kind": "insight",
+        "text": "Mã hóa các bất biến thành ràng buộc: unique, khóa ngoại, check (số dư ≥ 0). Chúng vẫn đứng vững ngay cả khi mã có lỗi."
+      },
+      "changes": [
+        "+ UNIQUE (concert, seat) trên bảng đặt chỗ",
+        "~ Lượt đặt trùng bị từ chối"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "không",
+        "lockWait": "0 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "emphasis": true
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "emphasis": true
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Khóa chậm",
+      "title": "Tình huống: giữ khóa trong lúc thanh toán",
+      "chapter": "problem",
+      "body": "Để cho chắc, ai đó chuyển việc thanh toán thẻ vào *bên trong* giao dịch đặt chỗ: khóa ghế 7, gọi nhà cung cấp thanh toán, rồi commit. Nhà cung cấp mất 3 giây.\n\nTrong 3 giây đó ghế bị khóa, và mọi người mua khác phải chờ, mỗi người giữ một kết nối cơ sở dữ liệu. Vào ngày mở bán, pool kết nối cạn kiệt và cả trang web đứng hình.",
+      "callout": {
+        "kind": "warning",
+        "text": "Đừng bao giờ chờ thứ gì chậm (người dùng, API thanh toán, email) khi đang giữ khóa cơ sở dữ liệu hoặc một giao dịch đang mở."
+      },
+      "changes": [
+        "+ Gọi thanh toán bên trong giao dịch",
+        "~ Ghế 7 bị khóa 3 s mỗi lần thử",
+        "- Pool kết nối cạn kiệt"
+      ],
+      "metrics": {
+        "seatsLeft": "1",
+        "sold": "0",
+        "oversold": "không",
+        "lockWait": "3,0 s"
+      },
+      "overrides": {
+        "ana-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Giữ chỗ",
+      "title": "Giữ chỗ, thanh toán, rồi xác nhận",
+      "chapter": "solution",
+      "body": "Chia thành các bước ngắn. Giao dịch 1 đánh dấu ghế 7 là **giữ cho Ana tới 12:10** và commit ngay. Rồi Ana thanh toán, bên ngoài mọi giao dịch. Giao dịch 2 đánh dấu ghế là **đã bán**.\n\nNếu cô ấy không bao giờ trả tiền, một tác vụ dọn dẹp sẽ giải phóng các chỗ giữ đã hết hạn. Ben được báo ngay là ghế đã có người: không chờ đợi, không khóa giữ hàng giây.",
+      "callout": {
+        "kind": "insight",
+        "text": "Đây chính là đồng hồ “ghế được giữ 10 phút” trên mọi trang bán vé và hãng bay. Một lượt giữ chỗ có hạn thay cho một khóa dài."
+      },
+      "changes": [
+        "~ Giao dịch 1: giữ ghế (hết hạn 12:10)",
+        "~ Thanh toán ngoài giao dịch",
+        "~ Giao dịch 2: xác nhận",
+        "+ Chỗ giữ hết hạn được giải phóng"
+      ],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "không",
+        "lockWait": "2 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "visible": false
+        },
+        "ben-3": {
+          "visible": false
+        },
+        "db-5": {
+          "visible": false
+        },
+        "aa-2": {
+          "visible": false
+        },
+        "bb-3": {
+          "visible": false
+        },
+        "ad-5": {
+          "visible": false
+        },
+        "bd-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• **Đọc-rồi-ghi** khi đồng thời gây ra tình trạng đua và cập nhật bị mất.\n• Sửa bằng **khóa dòng**, một **UPDATE nguyên tử** duy nhất, hoặc **kiểm tra phiên bản**.\n• Các mức cô lập đánh đổi tính đúng lấy việc chờ và **thử lại**.\n• Khóa theo **thứ tự nhất quán**; củng cố quy tắc bằng **ràng buộc**.\n• Giữ giao dịch **ngắn**: khi chờ thanh toán, hãy giữ chỗ, đừng bao giờ giữ khóa.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Tệp & đa phương tiện**: ảnh và video được lưu ở đâu thay vì cơ sở dữ liệu, và chúng đến đó rồi quay về ra sao."
+      },
+      "changes": [],
+      "metrics": {
+        "seatsLeft": "0",
+        "sold": "1",
+        "oversold": "không",
+        "lockWait": "2 ms"
+      },
+      "overrides": {
+        "ana-2": {
+          "emphasis": true
+        },
+        "ben-3": {
+          "emphasis": true
+        },
+        "db-5": {
+          "emphasis": true
+        },
+        "aa-2": {
+          "emphasis": true
+        },
+        "bb-3": {
+          "emphasis": true
+        },
+        "ad-5": {
+          "emphasis": true
+        },
+        "bd-5": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

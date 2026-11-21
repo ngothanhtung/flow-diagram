@@ -1,0 +1,2375 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 665,
+          "y": -524
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "CSDL RIÊNG CHO TỪNG DỊCH VỤ\n⚠ không có bảng dùng chung\n⚠ không join xuyên dịch vụ\n→ hỏi chủ sở hữu: API hoặc sự kiện\n# mỗi nhóm tự chọn kho dữ liệu",
+        "position": {
+          "x": 665,
+          "y": -524
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "người mua",
+        "position": {
+          "x": 0,
+          "y": -550
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "position": {
+          "x": 0,
+          "y": -300
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m1",
+        "type": "process",
+        "title": "Monolith",
+        "description": "mọi tính năng · tài khoản · danh mục · đơn hàng · thanh toán",
+        "position": {
+          "x": -125,
+          "y": 0
+        },
+        "width": 204,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m1-2",
+        "type": "process",
+        "title": "Monolith",
+        "description": "mọi tính năng · rò rỉ ở báo cáo · hết bộ nhớ · CPU 97%",
+        "position": {
+          "x": -125,
+          "y": 0
+        },
+        "width": 184,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m1-3",
+        "type": "process",
+        "title": "Monolith",
+        "description": "mọi tính năng · tài khoản · danh mục · đơn hàng",
+        "position": {
+          "x": -150,
+          "y": 0
+        },
+        "width": 184,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m2",
+        "type": "process",
+        "title": "Monolith",
+        "description": "mọi tính năng",
+        "position": {
+          "x": 125,
+          "y": 0
+        },
+        "width": 176,
+        "height": 83,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "m2-2",
+        "type": "process",
+        "title": "Monolith",
+        "description": "mọi tính năng · ⚠ đã sập · thanh toán cũng chết",
+        "position": {
+          "x": 125,
+          "y": 0
+        },
+        "width": 184,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mdb",
+        "type": "process",
+        "title": "một cơ sở dữ liệu",
+        "position": {
+          "x": 0,
+          "y": 275
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mdb-2",
+        "type": "process",
+        "title": "bảng dùng chung",
+        "position": {
+          "x": 0,
+          "y": 275
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mdb-3",
+        "type": "process",
+        "title": "DB của monolith",
+        "position": {
+          "x": -150,
+          "y": 275
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "API Gateway",
+        "position": {
+          "x": 0,
+          "y": -300
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-2",
+        "type": "process",
+        "title": "API Gateway",
+        "description": "⚠ chuyến tàu phát hành: cả 4 cùng lúc",
+        "position": {
+          "x": 0,
+          "y": -300
+        },
+        "width": 196,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "usr",
+        "type": "process",
+        "title": "Tài khoản",
+        "position": {
+          "x": -337,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cat",
+        "type": "process",
+        "title": "Danh mục",
+        "position": {
+          "x": -112,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Layers",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cat-2",
+        "type": "process",
+        "title": "Danh mục",
+        "position": {
+          "x": -112,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Layers",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord",
+        "type": "process",
+        "title": "Đơn hàng",
+        "position": {
+          "x": 113,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-2",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "lịch sử: 20 đơn hàng",
+        "position": {
+          "x": 113,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-3",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "bản sao cục bộ: tên · ảnh",
+        "position": {
+          "x": 113,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-4",
+        "type": "process",
+        "title": "Đơn hàng",
+        "description": "hợp đồng: cần amount",
+        "position": {
+          "x": 113,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Thanh toán",
+        "position": {
+          "x": 338,
+          "y": 0
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "chậm · 2 s",
+        "position": {
+          "x": 338,
+          "y": 0
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-3",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "CI: phá hợp đồng của Đơn hàng ✗",
+        "position": {
+          "x": 338,
+          "y": 0
+        },
+        "width": 188,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-4",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "mới",
+        "position": {
+          "x": 338,
+          "y": 0
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "usrdb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -337,
+          "y": 250
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "catdb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -112,
+          "y": 250
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "orddb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 113,
+          "y": 250
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "paydb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 338,
+          "y": 250
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "paydb-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 225,
+          "y": 250
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ul",
+        "from": "users",
+        "to": "lb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "l1",
+        "from": "lb",
+        "to": "m1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "l1-2",
+        "from": "lb",
+        "to": "m1-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "l2",
+        "from": "lb",
+        "to": "m2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "l2-2",
+        "from": "lb",
+        "to": "m2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "d1",
+        "from": "m1",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "d1-2",
+        "from": "m1-2",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "d2",
+        "from": "m2",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "d2-2",
+        "from": "m2-2",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "none"
+      },
+      {
+        "id": "ug",
+        "from": "users",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ug-2",
+        "from": "users",
+        "to": "gw-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gusr",
+        "from": "gw",
+        "to": "usr",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gusr-2",
+        "from": "gw-2",
+        "to": "usr",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gcat",
+        "from": "gw",
+        "to": "cat",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gcat-2",
+        "from": "gw-2",
+        "to": "cat",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gcat-3",
+        "from": "gw",
+        "to": "cat-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "gord",
+        "from": "gw",
+        "to": "ord",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gord-2",
+        "from": "gw-2",
+        "to": "ord",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gord-3",
+        "from": "gw",
+        "to": "ord-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "gord-4",
+        "from": "gw",
+        "to": "ord-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gord-5",
+        "from": "gw",
+        "to": "ord-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gpay",
+        "from": "gw",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gpay-2",
+        "from": "gw",
+        "to": "pay-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "gpay-3",
+        "from": "gw-2",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gpay-4",
+        "from": "gw",
+        "to": "pay-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "gpay-5",
+        "from": "gw",
+        "to": "pay-4",
+        "label": "/payments/*",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "musr",
+        "from": "usr",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "musr-2",
+        "from": "usr",
+        "to": "mdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mcat",
+        "from": "cat",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mcat-2",
+        "from": "cat",
+        "to": "mdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mord",
+        "from": "ord",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mord-2",
+        "from": "ord",
+        "to": "mdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mpay",
+        "from": "pay",
+        "to": "mdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "mpay-2",
+        "from": "pay",
+        "to": "mdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dusr",
+        "from": "usr",
+        "to": "usrdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dcat",
+        "from": "cat",
+        "to": "catdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dcat-2",
+        "from": "cat-2",
+        "to": "catdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dord",
+        "from": "ord",
+        "to": "orddb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dord-2",
+        "from": "ord-2",
+        "to": "orddb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "dord-3",
+        "from": "ord-3",
+        "to": "orddb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dord-4",
+        "from": "ord-4",
+        "to": "orddb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dpay",
+        "from": "pay",
+        "to": "paydb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dpay-2",
+        "from": "pay-2",
+        "to": "paydb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "dpay-3",
+        "from": "pay-3",
+        "to": "paydb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dpay-4",
+        "from": "pay-4",
+        "to": "paydb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "op",
+        "from": "ord",
+        "to": "pay",
+        "label": "lời gọi API",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "op-2",
+        "from": "ord",
+        "to": "pay-2",
+        "label": "timeout",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-3",
+        "from": "ord",
+        "to": "pay",
+        "label": "gọi qua lại liên tục",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "op-4",
+        "from": "ord-4",
+        "to": "pay-3",
+        "label": "đã kiểm thử hợp đồng",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "oc",
+        "from": "ord-2",
+        "to": "cat-2",
+        "label": "× 20 lời gọi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "co",
+        "from": "cat",
+        "to": "ord-3",
+        "label": "ProductUpdated",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "gm",
+        "from": "gw",
+        "to": "m1-3",
+        "label": "mọi thứ khác",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dm",
+        "from": "m1-3",
+        "to": "mdb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      }
+    ]
+  },
+  "meta": {
+    "title": "Monolith hay microservice",
+    "summary": "Một codebase hay nhiều dịch vụ? Mỗi cách mang lại gì, tốn gì, và làm sao chuyển từ cách này sang cách kia.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "deploys",
+        "label": "Deploy / ngày"
+      },
+      {
+        "id": "blast",
+        "label": "Một lỗi làm sập"
+      },
+      {
+        "id": "hops",
+        "label": "Bước mạng / trang"
+      },
+      {
+        "id": "opsCost",
+        "label": "Gánh nặng vận hành"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Monolith giỏi ở đâu, và đau ở đâu",
+        "step": "s2"
+      },
+      {
+        "text": "Tách theo năng lực nghiệp vụ",
+        "step": "s3"
+      },
+      {
+        "text": "Cái giá: một mạng ở giữa",
+        "step": "s5"
+      },
+      {
+        "text": "Truy vấn xuyên dịch vụ: bản sao đọc cục bộ",
+        "step": "s8"
+      },
+      {
+        "text": "Kiểm thử hợp đồng và monolith phân tán",
+        "step": "s9"
+      },
+      {
+        "text": "Di chuyển an toàn với strangler fig",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "lb": {
+      "until": "s3"
+    },
+    "m1": {
+      "until": "s2"
+    },
+    "m1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "m1-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "m2": {
+      "until": "s2"
+    },
+    "m2-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "mdb": {
+      "until": "s4"
+    },
+    "mdb-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mdb-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "gw": {
+      "from": "s3"
+    },
+    "gw-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "usr": {
+      "from": "s3"
+    },
+    "cat": {
+      "from": "s3"
+    },
+    "cat-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ord": {
+      "from": "s3"
+    },
+    "ord-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ord-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ord-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "pay": {
+      "from": "s3"
+    },
+    "pay-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "pay-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "pay-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "usrdb": {
+      "from": "s4"
+    },
+    "catdb": {
+      "from": "s4"
+    },
+    "orddb": {
+      "from": "s4"
+    },
+    "paydb": {
+      "from": "s4"
+    },
+    "paydb-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ul": {
+      "until": "s3"
+    },
+    "l1": {
+      "until": "s2"
+    },
+    "l1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "l2": {
+      "until": "s2"
+    },
+    "l2-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "d1": {
+      "until": "s2"
+    },
+    "d1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "d2": {
+      "until": "s2"
+    },
+    "d2-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ug": {
+      "from": "s3"
+    },
+    "ug-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gusr": {
+      "from": "s3"
+    },
+    "gusr-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gcat": {
+      "from": "s3"
+    },
+    "gcat-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gcat-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gord": {
+      "from": "s3"
+    },
+    "gord-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gord-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gord-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "gord-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "gpay": {
+      "from": "s3"
+    },
+    "gpay-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "gpay-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gpay-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "gpay-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "musr": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "musr-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mcat": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mcat-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mord": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mord-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mpay": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mpay-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dusr": {
+      "from": "s4"
+    },
+    "dcat": {
+      "from": "s4"
+    },
+    "dcat-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dord": {
+      "from": "s4"
+    },
+    "dord-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dord-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "dord-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dpay": {
+      "from": "s4"
+    },
+    "dpay-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "dpay-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dpay-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "op": {
+      "from": "s4"
+    },
+    "op-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "op-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "op-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "oc": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "co": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "gm": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dm": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Monolith",
+      "title": "Một ứng dụng, một lần triển khai",
+      "chapter": "setup",
+      "body": "Cửa hàng của bạn là một [[monolith]]: một codebase chứa mọi tính năng (tài khoản, danh mục, đơn hàng, thanh toán), triển khai như một khối, nhiều bản sao phía sau bộ cân bằng tải, tất cả dùng chung một cơ sở dữ liệu.\n\nVới một nhóm nhỏ, cách này rất tốt: lời gọi giữa các tính năng chỉ là lời gọi hàm, một lần triển khai đưa mọi thứ lên, và một stack trace cho thấy toàn bộ câu chuyện.",
+      "callout": {
+        "kind": "insight",
+        "text": "Nhiều công ty rất lớn đã chạy trên monolith suốt nhiều năm. Đây là một kiến trúc hoàn toàn tốt, cho đến khi nó không còn tốt nữa."
+      },
+      "changes": [],
+      "metrics": {
+        "deploys": "1",
+        "blast": "toàn bộ trang",
+        "hops": "1",
+        "opsCost": "thấp"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Nỗi đau khi lớn lên",
+      "title": "Năm mươi kỹ sư, một codebase",
+      "chapter": "problem",
+      "body": "Đội ngũ tăng lên năm mươi người trong sáu nhóm. Mọi thay đổi đều vào chung một bản phát hành hằng tuần, nên lỗi ở một tính năng làm chậm công việc của tất cả mọi người.\n\nMột lỗi rò rỉ bộ nhớ trong tính năng báo cáo mới làm sập cả tiến trình, kể cả thanh toán. Và để cho tìm kiếm thêm bộ nhớ, bạn phải mở rộng mọi bản sao của mọi thứ.",
+      "callout": {
+        "kind": "warning",
+        "text": "Vấn đề của monolith chủ yếu là chuyện con người: các nhóm phải chờ nhau, và lỗi của một nhóm trở thành sự cố của tất cả."
+      },
+      "changes": [
+        "~ 6 nhóm dùng chung một bản phát hành",
+        "- Lỗi báo cáo làm sập thanh toán",
+        "~ Mở rộng tất cả để mở rộng một tính năng"
+      ],
+      "metrics": {
+        "deploys": "1 / tuần",
+        "blast": "toàn bộ trang",
+        "hops": "1",
+        "opsCost": "thấp"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Tách",
+      "title": "Tách theo năng lực nghiệp vụ",
+      "chapter": "solution",
+      "body": "Chia ứng dụng thành các [[microservice]] theo các mảng nghiệp vụ: Tài khoản, Danh mục, Đơn hàng, Thanh toán. Mỗi cái là một chương trình riêng, thuộc về một nhóm, triển khai theo lịch riêng.\n\nMột **API gateway** cho client một cửa chính duy nhất và định tuyến mỗi yêu cầu tới đúng dịch vụ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tách theo năng lực nghiệp vụ, không theo tầng kỹ thuật. Một “dịch vụ cơ sở dữ liệu” hay “dịch vụ UI” chỉ dời sự ràng buộc đi chỗ khác."
+      },
+      "changes": [
+        "- Monolith",
+        "+ 4 dịch vụ, mỗi nhóm một cái",
+        "+ API gateway"
+      ],
+      "metrics": {
+        "deploys": "40 / ngày",
+        "blast": "một tính năng",
+        "hops": "2–4",
+        "opsCost": "cao"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Dữ liệu riêng",
+      "title": "Mỗi dịch vụ sở hữu dữ liệu của mình",
+      "chapter": "technique",
+      "body": "Nếu các dịch vụ vẫn dùng chung một cơ sở dữ liệu, chúng vẫn bị trói vào nhau: một thay đổi schema của một nhóm có thể làm hỏng ba nhóm khác. Vì vậy mỗi dịch vụ có **cơ sở dữ liệu riêng**, và không ai khác được đụng vào.\n\nCần dữ liệu thanh toán trong Đơn hàng? Hãy hỏi Thanh toán qua API của nó, hoặc lắng nghe các sự kiện của nó.",
+      "callout": {
+        "kind": "insight",
+        "text": "Cơ sở dữ liệu riêng cho từng dịch vụ là điều khiến việc triển khai độc lập trở thành thật. Nó cũng có nghĩa là không còn join hay giao dịch xuyên dịch vụ: xem bài Saga."
+      },
+      "changes": [
+        "- Cơ sở dữ liệu dùng chung",
+        "+ Mỗi dịch vụ một cơ sở dữ liệu",
+        "+ Đơn hàng → Thanh toán qua API"
+      ],
+      "metrics": {
+        "deploys": "40 / ngày",
+        "blast": "một tính năng",
+        "hops": "2–4",
+        "opsCost": "cao"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Mạng",
+      "title": "Giờ mạng nằm ở giữa",
+      "chapter": "problem",
+      "body": "Hiển thị một trang đơn hàng giờ cần nhiều lời gọi: gateway → Đơn hàng → Thanh toán, cộng thêm Tài khoản và Danh mục. Mỗi chặng thêm độ trễ, và mỗi chặng đều có thể tự chậm hoặc tự lỗi: hãy xem một lời gọi bị timeout.\n\nGỡ lỗi trải dài trên bốn codebase. Bạn cần timeout, retry, tracing và dashboard tốt (module Độ tin cậy) chỉ để đứng yên ở chỗ monolith đã bắt đầu.",
+      "callout": {
+        "kind": "warning",
+        "text": "Một lời gọi hàm không bao giờ hỏng giữa chừng. Một lời gọi mạng thì có: một phần, chậm chạp, và vào lúc tệ nhất."
+      },
+      "changes": [
+        "+ 6 chặng mạng mỗi trang",
+        "- Lời gọi tới Thanh toán bị timeout",
+        "~ Trang lỗi hoặc xuống cấp"
+      ],
+      "metrics": {
+        "deploys": "40 / ngày",
+        "blast": "một tính năng",
+        "hops": "6",
+        "opsCost": "cao"
+      },
+      "overrides": {
+        "pay": {
+          "visible": false
+        },
+        "gpay": {
+          "visible": false
+        },
+        "dpay": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Monolith phân tán",
+      "title": "Tình huống: monolith phân tán",
+      "chapter": "problem",
+      "body": "Một công ty tách monolith của mình thành mười hai dịch vụ, nhưng chúng vẫn đọc bảng của nhau, và mỗi tính năng đều cần thay đổi ở năm dịch vụ phát hành cùng lúc.\n\nHọ nhận cả chi phí mạng của microservice *lẫn* sự ràng buộc của monolith. Phát hành chậm đi chứ không nhanh lên.",
+      "callout": {
+        "kind": "warning",
+        "text": "Nếu các dịch vụ phải triển khai cùng nhau thì chúng là một dịch vụ. Ranh giới đi trước; việc tách đi sau."
+      },
+      "changes": [
+        "~ Các dịch vụ đọc dữ liệu của nhau",
+        "- Phải phát hành cùng nhau",
+        "- Tệ nhất của cả hai"
+      ],
+      "metrics": {
+        "deploys": "1 / tuần",
+        "blast": "toàn bộ trang",
+        "hops": "6",
+        "opsCost": "cao"
+      },
+      "overrides": {
+        "gw": {
+          "visible": false
+        },
+        "pay": {
+          "emphasis": true
+        },
+        "usrdb": {
+          "visible": false
+        },
+        "catdb": {
+          "visible": false
+        },
+        "orddb": {
+          "visible": false
+        },
+        "paydb": {
+          "visible": false
+        },
+        "ug": {
+          "visible": false
+        },
+        "gusr": {
+          "visible": false
+        },
+        "gcat": {
+          "visible": false
+        },
+        "gord": {
+          "visible": false
+        },
+        "gpay": {
+          "visible": false
+        },
+        "dusr": {
+          "visible": false
+        },
+        "dcat": {
+          "visible": false
+        },
+        "dord": {
+          "visible": false
+        },
+        "dpay": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Join?",
+      "title": "Tình huống: trang lịch sử đơn hàng",
+      "chapter": "problem",
+      "body": "Trang lịch sử đơn hàng hiển thị mỗi đơn kèm tên và ảnh sản phẩm. Trong monolith đó là một phép join SQL. Giờ đơn hàng nằm ở Đơn hàng, sản phẩm nằm ở Danh mục, và không có join xuyên dịch vụ.\n\nVì vậy Đơn hàng gọi Danh mục một lần cho mỗi đơn: 20 đơn, 20 lời gọi (vấn đề **N+1**). Trang chậm, và nếu Danh mục sập, lịch sử đơn hàng cũng sập theo.",
+      "callout": {
+        "kind": "warning",
+        "text": "Những màn hình gộp dữ liệu từ nhiều dịch vụ là nơi microservice gây đau nhất. Hãy tính đến chúng ngay từ đầu."
+      },
+      "changes": [
+        "+ Lịch sử đơn hàng cần dữ liệu Danh mục",
+        "- 20 lời gọi tới Danh mục mỗi trang"
+      ],
+      "metrics": {
+        "deploys": "40 / ngày",
+        "blast": "một tính năng",
+        "hops": "1 + 20",
+        "opsCost": "cao"
+      },
+      "overrides": {
+        "gusr": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "gpay": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "dusr": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "dpay": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "gw": {
+          "emphasis": true
+        },
+        "cat": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "usrdb": {
+          "emphasis": true
+        },
+        "catdb": {
+          "emphasis": true
+        },
+        "orddb": {
+          "emphasis": true
+        },
+        "paydb": {
+          "emphasis": true
+        },
+        "ug": {
+          "emphasis": true
+        },
+        "gcat": {
+          "visible": false
+        },
+        "gord": {
+          "visible": false
+        },
+        "dcat": {
+          "visible": false
+        },
+        "dord": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Bản sao cục bộ",
+      "title": "Giữ một bản sao đọc cục bộ",
+      "chapter": "solution",
+      "body": "Đơn hàng giữ bản sao riêng của vài trường danh mục mà nó hiển thị (tên và ảnh), và Danh mục phát sự kiện `ProductUpdated` mỗi khi chúng thay đổi. Đơn hàng cập nhật bản sao từ các sự kiện đó.\n\nLịch sử đơn hàng lại là một truy vấn duy nhất trong cơ sở dữ liệu của chính Đơn hàng, và vẫn chạy khi Danh mục sập. Dù sao giá vẫn giữ như lúc mua: đó là dữ kiện lịch sử, không phải tra cứu trực tiếp.",
+      "callout": {
+        "kind": "tip",
+        "text": "Bản sao nhất quán cuối cùng: sản phẩm được đổi tên sẽ hiện tên mới một lát sau. Với trang lịch sử, như vậy là ổn."
+      },
+      "changes": [
+        "+ Sự kiện ProductUpdated",
+        "+ Bản sao cục bộ tên và ảnh trong Đơn hàng",
+        "- Lời gọi tới Danh mục mỗi trang"
+      ],
+      "metrics": {
+        "deploys": "40 / ngày",
+        "blast": "một tính năng",
+        "hops": "2",
+        "opsCost": "cao"
+      },
+      "overrides": {
+        "cat": {
+          "emphasis": true
+        },
+        "ord": {
+          "visible": false
+        },
+        "gcat": {
+          "emphasis": true
+        },
+        "gord": {
+          "visible": false
+        },
+        "dcat": {
+          "emphasis": true
+        },
+        "dord": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Hợp đồng",
+      "title": "Tình huống: một thay đổi API làm hỏng hàng xóm",
+      "chapter": "technique",
+      "body": "Nhóm Thanh toán đổi tên `amount` thành `amount_cents`. Kiểm thử của họ vẫn qua, họ triển khai, và mọi lượt thanh toán trong Đơn hàng bắt đầu lỗi. Triển khai độc lập chỉ hiệu quả khi các nhóm không thể vô tình làm hỏng nhau.\n\nVới [[kiểm thử hợp đồng do bên tiêu dùng dẫn dắt]], Đơn hàng công bố chính xác những trường mà nó dựa vào. Bản build của Thanh toán chạy các hợp đồng đó trước mỗi lần phát hành, và thay đổi này bị chặn ở CI thay vì ở production.",
+      "callout": {
+        "kind": "tip",
+        "text": "Kết hợp hợp đồng với quy tắc đánh phiên bản API trong bài REST: thêm trường thoải mái, chỉ xóa khi không còn hợp đồng nào cần đến."
+      },
+      "changes": [
+        "+ Đơn hàng công bố hợp đồng cho API của Thanh toán",
+        "~ Thay đổi phá vỡ bị chặn ở CI của Thanh toán"
+      ],
+      "metrics": {
+        "deploys": "40 / ngày",
+        "blast": "một tính năng",
+        "hops": "2–4",
+        "opsCost": "cao"
+      },
+      "overrides": {
+        "ord": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "gord": {
+          "visible": false
+        },
+        "gpay": {
+          "visible": false
+        },
+        "dord": {
+          "visible": false
+        },
+        "dpay": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Lựa chọn",
+      "title": "Nên chọn cái nào?",
+      "chapter": "insight",
+      "body": "• Quy mô nhóm — Monolith: Một đến vài nhóm; Microservice: Nhiều nhóm\n• Triển khai — Monolith: Cùng nhau; Microservice: Độc lập\n• Lời gọi — Monolith: Trong tiến trình, nhanh; Microservice: Qua mạng, có thể lỗi\n• Dữ liệu — Monolith: Một DB, join, giao dịch; Microservice: DB riêng mỗi dịch vụ, saga\n• Vận hành — Monolith: Đơn giản; Microservice: Cần công cụ tốt\n\nMột lộ trình phổ biến: bắt đầu bằng **monolith dạng module** (một khối triển khai duy nhất với ranh giới nội bộ chặt chẽ) và chỉ tách một module ra khi một nhóm rõ ràng cần sự độc lập.",
+      "callout": {
+        "kind": "tip",
+        "text": "Microservice giải quyết bài toán mở rộng quy mô tổ chức. Nếu bạn chưa gặp bài toán đó, chúng chủ yếu chỉ thêm chi phí."
+      },
+      "changes": [],
+      "metrics": {
+        "deploys": "40 / ngày",
+        "blast": "một tính năng",
+        "hops": "2–4",
+        "opsCost": "cao"
+      },
+      "overrides": {
+        "ord": {
+          "emphasis": true
+        },
+        "pay": {
+          "emphasis": true
+        },
+        "gord": {
+          "emphasis": true
+        },
+        "gpay": {
+          "emphasis": true
+        },
+        "dord": {
+          "emphasis": true
+        },
+        "dpay": {
+          "emphasis": true
+        },
+        "op": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Strangler",
+      "title": "Di chuyển: strangler fig",
+      "chapter": "technique",
+      "body": "Đừng viết lại mọi thứ một lần. Đặt gateway trước monolith, xây **một** dịch vụ mới là Thanh toán, và chỉ định tuyến `/payments/*` tới nó. Mọi thứ khác vẫn đi tới monolith.\n\nChuyển từng năng lực một cho đến khi monolith đủ nhỏ để cho nghỉ hưu. Mỗi bước đều có thể phát hành và đảo ngược.",
+      "callout": {
+        "kind": "insight",
+        "text": "Tên gọi lấy từ cây đa bóp cổ (strangler fig), loài mọc quấn quanh một cây khác cho đến khi tự đứng vững được."
+      },
+      "changes": [
+        "+ Gateway đặt trước monolith",
+        "+ Dịch vụ Thanh toán mới với DB riêng",
+        "~ /payments/* → dịch vụ mới"
+      ],
+      "metrics": {
+        "deploys": "5 / ngày",
+        "blast": "toàn bộ trang",
+        "hops": "1–2",
+        "opsCost": "trung bình"
+      },
+      "overrides": {
+        "usr": {
+          "visible": false
+        },
+        "cat": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "usrdb": {
+          "visible": false
+        },
+        "catdb": {
+          "visible": false
+        },
+        "orddb": {
+          "visible": false
+        },
+        "paydb": {
+          "visible": false
+        },
+        "gusr": {
+          "visible": false
+        },
+        "gcat": {
+          "visible": false
+        },
+        "gord": {
+          "visible": false
+        },
+        "gpay": {
+          "visible": false
+        },
+        "dusr": {
+          "visible": false
+        },
+        "dcat": {
+          "visible": false
+        },
+        "dord": {
+          "visible": false
+        },
+        "dpay": {
+          "visible": false
+        },
+        "op": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• **Monolith** đơn giản và nhanh, cho đến khi nhiều nhóm cùng dùng chung.\n• **Microservice** tách theo năng lực nghiệp vụ, mỗi cái có **dữ liệu riêng**.\n• Bạn trả giá bằng lời gọi mạng, lỗi một phần và công cụ vận hành.\n• Thay join bằng **bản sao đọc cục bộ**; bảo vệ API bằng **kiểm thử hợp đồng**.\n• Tránh **monolith phân tán**; di chuyển dần dần với **strangler fig**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Khám phá dịch vụ**: cách các dịch vụ tìm thấy nhau khi các instance đến rồi đi."
+      },
+      "changes": [],
+      "metrics": {
+        "deploys": "40 / ngày",
+        "blast": "một tính năng",
+        "hops": "2–4",
+        "opsCost": "cao"
+      },
+      "overrides": {
+        "usr": {
+          "emphasis": true
+        },
+        "cat": {
+          "emphasis": true
+        },
+        "ord": {
+          "emphasis": true
+        },
+        "pay": {
+          "emphasis": true
+        },
+        "usrdb": {
+          "emphasis": true
+        },
+        "catdb": {
+          "emphasis": true
+        },
+        "orddb": {
+          "emphasis": true
+        },
+        "paydb": {
+          "emphasis": true
+        },
+        "gusr": {
+          "emphasis": true
+        },
+        "gcat": {
+          "emphasis": true
+        },
+        "gord": {
+          "emphasis": true
+        },
+        "gpay": {
+          "emphasis": true
+        },
+        "dusr": {
+          "emphasis": true
+        },
+        "dcat": {
+          "emphasis": true
+        },
+        "dord": {
+          "emphasis": true
+        },
+        "dpay": {
+          "emphasis": true
+        },
+        "op": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

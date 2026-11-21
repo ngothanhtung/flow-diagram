@@ -1,0 +1,2078 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 979,
+          "y": -443
+        },
+        "width": 272,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "WHERE DOES EACH USER GO?\nuser 1001 → hash % 4 = 2 → C\nuser 1002 → hash % 4 = 0 → A\nuser 1003 → hash % 4 = 3 → D\n→ neighbours scatter evenly",
+        "position": {
+          "x": 979,
+          "y": -443
+        },
+        "width": 248,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1000,
+          "y": -445
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "SPLIT A HOT COUNTER\nwrite: likes:42#rand(0..7) += 1\nread:  sum of likes:42#0 … #7\n→ 8 sub-keys spread over 4 shards",
+        "position": {
+          "x": 1000,
+          "y": -445
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1000,
+          "y": -445
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "SCATTER–GATHER\nask all 4 shards for their top 10\nmerge 40 results, keep the top 10\n⚠ as slow as the slowest shard",
+        "position": {
+          "x": 1000,
+          "y": -445
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1012,
+          "y": -445
+        },
+        "width": 338,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "% 4 → % 5\nuser 1001: % 4 = 2, % 5 = 1  → moves\nuser 1002: % 4 = 0, % 5 = 0  → stays\n⚠ ~80% of keys change shard",
+        "position": {
+          "x": 1012,
+          "y": -445
+        },
+        "width": 314,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "App",
+        "position": {
+          "x": 0,
+          "y": -468
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "App",
+        "description": "route by user_id",
+        "position": {
+          "x": 0,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "App",
+        "description": "hash(user_id) % 4",
+        "position": {
+          "x": 0,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-4",
+        "type": "process",
+        "title": "App",
+        "description": "likes:42 → #0…#7",
+        "position": {
+          "x": 0,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-5",
+        "type": "process",
+        "title": "App",
+        "description": "top 10 by followers?",
+        "position": {
+          "x": 0,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-6",
+        "type": "process",
+        "title": "App",
+        "description": "hash(user_id) % 5",
+        "position": {
+          "x": 0,
+          "y": -468
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa",
+        "type": "process",
+        "title": "⚠ 20 TB · 40,000 writes/s",
+        "description": "CPU 98%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 239,
+        "height": 132,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-2",
+        "type": "process",
+        "title": "A · ids 1–25M",
+        "description": "CPU 50%",
+        "position": {
+          "x": -409,
+          "y": 0
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-3",
+        "type": "process",
+        "title": "A · ids 1–25M",
+        "description": "CPU 12%",
+        "position": {
+          "x": -409,
+          "y": 0
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-4",
+        "type": "process",
+        "title": "A · hash % 4 = 0",
+        "description": "CPU 50%",
+        "position": {
+          "x": -409,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-5",
+        "type": "process",
+        "title": "A · hash % 4 = 0",
+        "description": "CPU 20%",
+        "position": {
+          "x": -409,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-6",
+        "type": "process",
+        "title": "A · likes:42#0,#1",
+        "description": "CPU 50%",
+        "position": {
+          "x": -409,
+          "y": 0
+        },
+        "width": 220,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sa-7",
+        "type": "process",
+        "title": "A · moving",
+        "description": "CPU 50%",
+        "position": {
+          "x": -409,
+          "y": 0
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb",
+        "type": "process",
+        "title": "B · ids 25–50M",
+        "description": "CPU 50%",
+        "position": {
+          "x": -136,
+          "y": 0
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-2",
+        "type": "process",
+        "title": "B · ids 25–50M",
+        "description": "CPU 14%",
+        "position": {
+          "x": -136,
+          "y": 0
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-3",
+        "type": "process",
+        "title": "B · hash % 4 = 1",
+        "description": "CPU 50%",
+        "position": {
+          "x": -136,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-4",
+        "type": "process",
+        "title": "B · hash % 4 = 1",
+        "description": "CPU 20%",
+        "position": {
+          "x": -136,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-5",
+        "type": "process",
+        "title": "B · likes:42#2,#3",
+        "description": "CPU 50%",
+        "position": {
+          "x": -136,
+          "y": 0
+        },
+        "width": 220,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sb-6",
+        "type": "process",
+        "title": "B · moving",
+        "description": "CPU 50%",
+        "position": {
+          "x": -136,
+          "y": 0
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc",
+        "type": "process",
+        "title": "C · ids 50–75M",
+        "description": "CPU 50%",
+        "position": {
+          "x": 137,
+          "y": 0
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-2",
+        "type": "process",
+        "title": "C · ids 50–75M",
+        "description": "CPU 20%",
+        "position": {
+          "x": 137,
+          "y": 0
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-3",
+        "type": "process",
+        "title": "C · hash % 4 = 2",
+        "description": "CPU 50%",
+        "position": {
+          "x": 137,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-4",
+        "type": "process",
+        "title": "⚠ user 42 · pop star · 70%",
+        "description": "CPU 98%",
+        "position": {
+          "x": 137,
+          "y": 0
+        },
+        "width": 228,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-5",
+        "type": "process",
+        "title": "C · likes:42#4,#5",
+        "description": "CPU 50%",
+        "position": {
+          "x": 137,
+          "y": 0
+        },
+        "width": 220,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sc-6",
+        "type": "process",
+        "title": "C · moving",
+        "description": "CPU 50%",
+        "position": {
+          "x": 137,
+          "y": 0
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd",
+        "type": "process",
+        "title": "D · ids 75M+",
+        "description": "CPU 50%",
+        "position": {
+          "x": 410,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-2",
+        "type": "process",
+        "title": "⚠ D · ids 75M+ · all new users",
+        "description": "CPU 97%",
+        "position": {
+          "x": 410,
+          "y": 0
+        },
+        "width": 236,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-3",
+        "type": "process",
+        "title": "D · hash % 4 = 3",
+        "description": "CPU 50%",
+        "position": {
+          "x": 410,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-4",
+        "type": "process",
+        "title": "D · hash % 4 = 3",
+        "description": "CPU 20%",
+        "position": {
+          "x": 410,
+          "y": 0
+        },
+        "width": 176,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-5",
+        "type": "process",
+        "title": "D · likes:42#6,#7",
+        "description": "CPU 50%",
+        "position": {
+          "x": 410,
+          "y": 0
+        },
+        "width": 220,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sd-6",
+        "type": "process",
+        "title": "D · moving",
+        "description": "CPU 50%",
+        "position": {
+          "x": 410,
+          "y": 0
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "se",
+        "type": "process",
+        "title": "E · new",
+        "description": "CPU 50%",
+        "position": {
+          "x": 683,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "wsa",
+        "from": "app",
+        "to": "sa",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-2",
+        "from": "app-2",
+        "to": "sa-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-3",
+        "from": "app-2",
+        "to": "sa-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-4",
+        "from": "app-3",
+        "to": "sa-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-5",
+        "from": "app-3",
+        "to": "sa-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-6",
+        "from": "app-4",
+        "to": "sa-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsa-7",
+        "from": "app-5",
+        "to": "sa-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wsa-8",
+        "from": "app-6",
+        "to": "sa-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "wsb",
+        "from": "app-2",
+        "to": "sb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-2",
+        "from": "app-2",
+        "to": "sb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-3",
+        "from": "app-3",
+        "to": "sb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-4",
+        "from": "app-3",
+        "to": "sb-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-5",
+        "from": "app-4",
+        "to": "sb-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsb-6",
+        "from": "app-5",
+        "to": "sb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wsb-7",
+        "from": "app-6",
+        "to": "sb-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "wsc",
+        "from": "app-2",
+        "to": "sc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-2",
+        "from": "app-2",
+        "to": "sc-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-3",
+        "from": "app-3",
+        "to": "sc-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-4",
+        "from": "app-3",
+        "to": "sc-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-5",
+        "from": "app-4",
+        "to": "sc-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsc-6",
+        "from": "app-5",
+        "to": "sc-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wsc-7",
+        "from": "app-6",
+        "to": "sc-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "wsd",
+        "from": "app-2",
+        "to": "sd",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-2",
+        "from": "app-2",
+        "to": "sd-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-3",
+        "from": "app-3",
+        "to": "sd-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-4",
+        "from": "app-3",
+        "to": "sd-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-5",
+        "from": "app-4",
+        "to": "sd-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wsd-6",
+        "from": "app-5",
+        "to": "sd-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wsd-7",
+        "from": "app-6",
+        "to": "sd-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "wse",
+        "from": "app-6",
+        "to": "se",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "msa",
+        "from": "sa-7",
+        "to": "se",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -409,
+            "y": -125
+          },
+          {
+            "x": 683,
+            "y": -125
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "msb",
+        "from": "sb-6",
+        "to": "se",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -136,
+            "y": -125
+          },
+          {
+            "x": 683,
+            "y": -125
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "msc",
+        "from": "sc-6",
+        "to": "se",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 137,
+            "y": -125
+          },
+          {
+            "x": 683,
+            "y": -125
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "msd",
+        "from": "sd-6",
+        "to": "se",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 410,
+            "y": -125
+          },
+          {
+            "x": 683,
+            "y": -125
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Sharding",
+    "summary": "When the data or the writes outgrow one machine, split them across many.",
+    "minutes": 11,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "shards",
+        "label": "Shards"
+      },
+      {
+        "id": "perShard",
+        "label": "Writes per shard"
+      },
+      {
+        "id": "hottest",
+        "label": "Busiest shard"
+      },
+      {
+        "id": "size",
+        "label": "Data per shard"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why replicas don’t help with writes",
+        "step": "s1"
+      },
+      {
+        "text": "Shard keys: ranges vs hashes",
+        "step": "s4"
+      },
+      {
+        "text": "Hot keys: the celebrity problem",
+        "step": "s5"
+      },
+      {
+        "text": "The cost of cross-shard queries",
+        "step": "s7"
+      },
+      {
+        "text": "Why adding a shard is painful",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "app": {
+      "until": "s2"
+    },
+    "app-2": {
+      "from": "s2",
+      "until": "s4"
+    },
+    "app-3": {
+      "from": "s4"
+    },
+    "app-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "app-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "app-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sa": {
+      "until": "s2"
+    },
+    "sa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sa-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sa-4": {
+      "from": "s4"
+    },
+    "sa-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sa-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sa-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sb": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sb-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sb-3": {
+      "from": "s4"
+    },
+    "sb-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sb-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sb-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sc": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sc-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sc-3": {
+      "from": "s4"
+    },
+    "sc-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sc-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sc-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sd": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sd-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sd-3": {
+      "from": "s4"
+    },
+    "sd-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sd-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sd-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "se": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wsa": {
+      "until": "s2"
+    },
+    "wsa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wsa-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wsa-4": {
+      "from": "s4"
+    },
+    "wsa-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wsa-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wsa-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wsa-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wsb": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wsb-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wsb-3": {
+      "from": "s4"
+    },
+    "wsb-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wsb-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wsb-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wsb-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wsc": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wsc-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wsc-3": {
+      "from": "s4"
+    },
+    "wsc-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wsc-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wsc-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wsc-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wsd": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wsd-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wsd-3": {
+      "from": "s4"
+    },
+    "wsd-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wsd-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wsd-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wsd-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wse": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "msa": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "msb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "msc": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "msd": {
+      "from": "s8",
+      "until": "s9"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Too big",
+      "title": "Too big for one machine",
+      "chapter": "problem",
+      "body": "The users database has grown to 20 TB and takes 40,000 writes a second. Followers would help with reads — but every **write** still has to go through one leader, and all the data has to fit on its disks.\n\nYou’re already on the biggest machine, and every backup, restore or new replica now takes the best part of a day to copy.",
+      "callout": {
+        "kind": "warning",
+        "text": "Replication copies all the data everywhere. To scale writes and storage, the data itself has to be split."
+      },
+      "changes": [],
+      "metrics": {
+        "shards": "1",
+        "perShard": "40,000/s",
+        "hottest": "100% of writes",
+        "size": "20 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Split by range",
+      "title": "Split the data: sharding",
+      "chapter": "solution",
+      "body": "[[Sharding]] splits one big database into several smaller ones — **shards** — each holding part of the data and taking part of the writes.\n\nA [[shard key]] decides where each row lives. Here: by user id range. The app (or a router) looks up the range and sends each query to the right shard.",
+      "callout": {
+        "kind": "tip",
+        "text": "Each shard is usually replicated too: shards scale writes, followers within a shard scale reads and survive failures."
+      },
+      "changes": [
+        "+ 4 shards",
+        "~ Shard key: user_id ranges",
+        "~ 40,000 → 10,000 writes/s per shard"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10,000/s",
+        "hottest": "25% of writes",
+        "size": "5 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Hot spot",
+      "title": "Ranges create hot spots",
+      "chapter": "problem",
+      "body": "User ids grow over time, so every new signup lands in the last range. New users are also the most active — and shard D ends up with most of the writes while A sits nearly idle.\n\nThe same happens with dates or alphabetical names: data that arrives in order piles onto one shard.\n\nRange-partitioned databases (Bigtable, HBase, CockroachDB) soften this by splitting a busy range in two automatically — but writes that always land at the “end” simply follow the last range.",
+      "callout": {
+        "kind": "warning",
+        "text": "A shard key must spread both the data and the traffic."
+      },
+      "changes": [
+        "~ Shard D: 78% of writes",
+        "~ Shard A: 7%"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "uneven",
+        "hottest": "78% of writes",
+        "size": "5 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Hash it",
+      "title": "Hash the key",
+      "chapter": "solution",
+      "body": "Instead of ranges, run the key through a hash function and take the remainder: `shard = hash(user_id) % 4`.\n\nConsecutive ids scatter to unrelated shards, so new users — and their traffic — spread evenly.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hashing loses range queries (“all users with ids 1–1000” now touches every shard). Usually a fine trade."
+      },
+      "changes": [
+        "~ Shard key: hash(user_id) % 4",
+        "~ Busiest shard 78% → 25%"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10,000/s",
+        "hottest": "25% of writes",
+        "size": "5 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Celebrity",
+      "title": "Case: the celebrity",
+      "chapter": "problem",
+      "body": "Hashing spreads *keys* evenly, not traffic. A pop star with 50 million followers lives on shard C like anyone else — and every view of their profile, every like on their posts, lands there too.\n\nShard C is melting while A, B and D are fine. This is a [[hot key]], sometimes called the celebrity problem.",
+      "callout": {
+        "kind": "warning",
+        "text": "No shard key fixes a single key that is more popular than one machine can handle."
+      },
+      "changes": [
+        "+ One very popular user on shard C",
+        "~ Shard C: 70% of traffic"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "uneven",
+        "hottest": "70% of writes",
+        "size": "5 TB"
+      },
+      "overrides": {
+        "sa-4": {
+          "visible": false
+        },
+        "sb-3": {
+          "visible": false
+        },
+        "sc-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "wsa-4": {
+          "visible": false
+        },
+        "wsb-3": {
+          "visible": false
+        },
+        "wsc-3": {
+          "visible": false
+        },
+        "wsd-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Split key",
+      "title": "Cache it, or split it",
+      "chapter": "solution",
+      "body": "For a key that is **read** hot, put it in a cache (or many cache replicas) in front of the shard — most profile views never reach it.\n\nFor a key that is **write** hot, like the pop star’s like counter, split it: write to `likes:42#0` … `likes:42#7` at random, spread across shards, and add them up when reading.",
+      "callout": {
+        "kind": "tip",
+        "text": "Systems that face this daily (social networks, ticketing) treat their top keys specially — detected automatically, handled on purpose."
+      },
+      "changes": [
+        "+ Hot reads served from cache",
+        "+ likes:42 split into 8 sub-keys",
+        "~ Busiest shard 70% → 27%"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10,000/s",
+        "hottest": "27% of writes",
+        "size": "5 TB"
+      },
+      "overrides": {
+        "app-3": {
+          "visible": false
+        },
+        "sa-4": {
+          "visible": false
+        },
+        "sb-3": {
+          "visible": false
+        },
+        "sc-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "wsa-4": {
+          "visible": false
+        },
+        "wsb-3": {
+          "visible": false
+        },
+        "wsc-3": {
+          "visible": false
+        },
+        "wsd-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Cross-shard",
+      "title": "Queries that span every shard",
+      "chapter": "tradeoff",
+      "body": "Looking up one user is fast: hash the id, ask one shard. But “top 10 users by followers” isn’t keyed by user — the app must ask **every** shard and merge the answers.\n\nThese [[scatter–gather]] queries are as slow as the slowest shard, and joins across shards are hard.",
+      "callout": {
+        "kind": "warning",
+        "text": "Pick a shard key that matches your most important queries — ideally they only ever touch one shard."
+      },
+      "changes": [
+        "+ One query → all 4 shards",
+        "~ Answer waits for the slowest"
+      ],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10,000/s",
+        "hottest": "25% of writes",
+        "size": "5 TB"
+      },
+      "overrides": {
+        "app-3": {
+          "visible": false
+        },
+        "sa-4": {
+          "emphasis": true
+        },
+        "sb-3": {
+          "emphasis": true
+        },
+        "sc-3": {
+          "emphasis": true
+        },
+        "sd-3": {
+          "emphasis": true
+        },
+        "wsa-4": {
+          "visible": false
+        },
+        "wsb-3": {
+          "visible": false
+        },
+        "wsc-3": {
+          "visible": false
+        },
+        "wsd-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Add a shard",
+      "title": "Adding a shard moves almost everything",
+      "chapter": "problem",
+      "body": "Shards fill up, so you add a fifth. But `hash % 4` becomes `hash % 5` — and for about **80%** of users the remainder changes.\n\nTerabytes have to move between shards while the system keeps serving traffic.",
+      "callout": {
+        "kind": "warning",
+        "text": "With hash % N, changing N reshuffles nearly every key. The next lesson fixes exactly this."
+      },
+      "changes": [
+        "+ Shard E",
+        "~ hash % 4 → hash % 5",
+        "- ~80% of rows must move"
+      ],
+      "metrics": {
+        "shards": "5",
+        "perShard": "8,000/s",
+        "hottest": "20% of writes",
+        "size": "4 TB"
+      },
+      "overrides": {
+        "app-3": {
+          "visible": false
+        },
+        "sa-4": {
+          "visible": false
+        },
+        "sb-3": {
+          "visible": false
+        },
+        "sc-3": {
+          "visible": false
+        },
+        "sd-3": {
+          "visible": false
+        },
+        "wsa-4": {
+          "visible": false
+        },
+        "wsb-3": {
+          "visible": false
+        },
+        "wsc-3": {
+          "visible": false
+        },
+        "wsd-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• **Sharding** splits data and writes across machines.\n• The **shard key** decides where rows live — it must spread load evenly.\n• **Ranges** make hot spots; **hashes** spread load but scatter range queries.\n• A single **hot key** needs caching or splitting.\n• Queries off the shard key hit **every shard**; resharding with % N moves most data.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Consistent Hashing** — add or remove a shard and move only a fraction of the keys."
+      },
+      "changes": [],
+      "metrics": {
+        "shards": "4",
+        "perShard": "10,000/s",
+        "hottest": "25% of writes",
+        "size": "5 TB"
+      },
+      "overrides": {
+        "app-3": {
+          "emphasis": true
+        },
+        "sa-4": {
+          "emphasis": true
+        },
+        "sb-3": {
+          "emphasis": true
+        },
+        "sc-3": {
+          "emphasis": true
+        },
+        "sd-3": {
+          "emphasis": true
+        },
+        "wsa-4": {
+          "emphasis": true
+        },
+        "wsb-3": {
+          "emphasis": true
+        },
+        "wsc-3": {
+          "emphasis": true
+        },
+        "wsd-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

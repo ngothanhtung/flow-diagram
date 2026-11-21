@@ -1,0 +1,2231 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "idx-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -168
+        },
+        "width": 694,
+        "height": 363,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "idx-4-label",
+        "type": "text",
+        "title": "CHỈ MỤC TRÊN email INCLUDE (id, name)",
+        "position": {
+          "x": -187,
+          "y": -329
+        },
+        "width": 299,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "idx-4"
+      },
+      {
+        "id": "idx-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -176
+        },
+        "width": 694,
+        "height": 378,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "idx-3-label",
+        "type": "text",
+        "title": "CHỈ MỤC TRÊN country · KHÔNG CHỌN LỌC",
+        "position": {
+          "x": -187,
+          "y": -344
+        },
+        "width": 299,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "idx-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -176
+        },
+        "width": 694,
+        "height": 378,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "idx-2-label",
+        "type": "text",
+        "title": "CHỈ MỤC TRÊN (country, city)",
+        "position": {
+          "x": -222,
+          "y": -344
+        },
+        "width": 230,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "idx",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -168
+        },
+        "width": 694,
+        "height": 363,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "idx-label",
+        "type": "text",
+        "title": "CHỈ MỤC TRÊN email · B-TREE",
+        "position": {
+          "x": -225,
+          "y": -329
+        },
+        "width": 223,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "idx"
+      },
+      {
+        "id": "tbl",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 246
+        },
+        "width": 1362,
+        "height": 165,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "tbl-label",
+        "type": "text",
+        "title": "BẢNG USERS · 50 TRIỆU DÒNG",
+        "position": {
+          "x": -563,
+          "y": 184
+        },
+        "width": 215,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "tbl"
+      },
+      {
+        "id": "q",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 910,
+          "y": -438
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-text",
+        "type": "text",
+        "title": "TRUY VẤN\nSELECT * FROM users\nWHERE email = 'alice@example.com'\n# 50.000.000 dòng · không chỉ mục",
+        "position": {
+          "x": 910,
+          "y": -438
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q"
+      },
+      {
+        "id": "q-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 931,
+          "y": -438
+        },
+        "width": 355,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-2-text",
+        "type": "text",
+        "title": "ĐÃ SẮP XẾP → TÌM KIẾM NHỊ PHÂN\nchia đôi khoảng tìm ở mỗi bước\nlog₂(50.000.000) ≈ 26 bước\n→ 26 phép so sánh, không phải 50 triệu",
+        "position": {
+          "x": 931,
+          "y": -438
+        },
+        "width": 331,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-2"
+      },
+      {
+        "id": "q-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 943,
+          "y": -436
+        },
+        "width": 379,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-3-text",
+        "type": "text",
+        "title": "ĐỘ PHÂN NHÁNH MỖI TẦNG\nmỗi nút ≈ 500 khóa\n2 tầng: 500² = 250.000 dòng\n3 tầng: 500³ = 125.000.000 dòng\n→ ~4 lần đọc trang để tìm bất kỳ dòng nào",
+        "position": {
+          "x": 943,
+          "y": -436
+        },
+        "width": 355,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-3"
+      },
+      {
+        "id": "q-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 922,
+          "y": -438
+        },
+        "width": 338,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-4-text",
+        "type": "text",
+        "title": "CÓ DÙNG ĐƯỢC CHỈ MỤC KHÔNG?\ncountry = 'NL' AND city = 'Delft'  ✓\ncountry = 'NL'                     ✓\n⚠ city = 'Delft'  ✗ quét toàn bảng",
+        "position": {
+          "x": 922,
+          "y": -438
+        },
+        "width": 314,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-4"
+      },
+      {
+        "id": "q-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 931,
+          "y": -436
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-5-text",
+        "type": "text",
+        "title": "CÓ DÙNG ĐƯỢC CHỈ MỤC KHÔNG?\nemail = 'alice@…'          ✓ tra thẳng\nemail LIKE 'alice%'          ✓ khoảng\n⚠ email LIKE '%@gmail.com'  ✗ quét\n⚠ LOWER(email) = '…'        ✗ quét",
+        "position": {
+          "x": 931,
+          "y": -436
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-5"
+      },
+      {
+        "id": "q-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 984,
+          "y": -436
+        },
+        "width": 462,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-6-text",
+        "type": "text",
+        "title": "BAO NHIÊU DÒNG KHỚP?\nemail = 'alice@…'      1 dòng   ✓ chỉ mục\n→ status = 'pending'    0,1%     ✓ chỉ mục một phần\n⚠ country = 'US'        40%      ✗ quét rẻ hơn\n# chỉ mục có ích khi nó loại được phần lớn số dòng",
+        "position": {
+          "x": 984,
+          "y": -436
+        },
+        "width": 438,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-6"
+      },
+      {
+        "id": "q-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 951,
+          "y": -427
+        },
+        "width": 396,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "q-7-text",
+        "type": "text",
+        "title": "EXPLAIN\nSELECT * FROM users WHERE email = 'a@…'\n→ Index Scan using users_email_idx\n#   rows=1  time=0.04 ms\nSELECT * FROM users WHERE email LIKE '%@g…'\n⚠ Seq Scan on users  rows=50,000,000",
+        "position": {
+          "x": 951,
+          "y": -427
+        },
+        "width": 372,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "q-7"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Ứng dụng",
+        "position": {
+          "x": -429,
+          "y": -462
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "p0",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -617,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -505,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -393,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -281,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -169,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p5",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -56,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p6",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 57,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p7",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 169,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p8",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 281,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p9",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 393,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p10",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 505,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "p11",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 617,
+          "y": 264
+        },
+        "width": 72,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "tbl"
+      },
+      {
+        "id": "root",
+        "type": "process",
+        "title": "A–Z",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "root-2",
+        "type": "process",
+        "title": "country",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "root-3",
+        "type": "process",
+        "title": "tất cả",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "b1",
+        "type": "process",
+        "title": "A–H",
+        "position": {
+          "x": -231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "b1-2",
+        "type": "process",
+        "title": "DE · city",
+        "position": {
+          "x": -231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "b1-3",
+        "type": "process",
+        "title": "AR – FR",
+        "position": {
+          "x": -231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "b1-4",
+        "type": "process",
+        "title": "A–H + name",
+        "position": {
+          "x": -231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-4"
+      },
+      {
+        "id": "b2",
+        "type": "process",
+        "title": "I–Q",
+        "position": {
+          "x": 0,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "b2-2",
+        "type": "process",
+        "title": "NL · city",
+        "position": {
+          "x": 0,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "b2-3",
+        "type": "process",
+        "title": "GB – MX",
+        "position": {
+          "x": 0,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "b2-4",
+        "type": "process",
+        "title": "I–Q + name",
+        "position": {
+          "x": 0,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-4"
+      },
+      {
+        "id": "b3",
+        "type": "process",
+        "title": "R–Z",
+        "position": {
+          "x": 231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "b3-2",
+        "type": "process",
+        "title": "US · city",
+        "position": {
+          "x": 231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-2"
+      },
+      {
+        "id": "b3-3",
+        "type": "process",
+        "title": "NG – ZA",
+        "position": {
+          "x": 231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-3"
+      },
+      {
+        "id": "b3-4",
+        "type": "process",
+        "title": "R–Z + name",
+        "position": {
+          "x": 231,
+          "y": -66
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx-4"
+      },
+      {
+        "id": "scan-to",
+        "type": "text",
+        "title": "",
+        "position": {
+          "x": 383,
+          "y": 172
+        },
+        "width": 28,
+        "height": 28
+      }
+    ],
+    "edges": [
+      {
+        "id": "scan",
+        "from": "app",
+        "to": "scan-to",
+        "label": "đọc mọi trang",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.62,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.25
+      },
+      {
+        "id": "ar",
+        "from": "app",
+        "to": "root",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ar-2",
+        "from": "app",
+        "to": "root-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ar-3",
+        "from": "app",
+        "to": "root-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "rb1",
+        "from": "root",
+        "to": "b1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb1-2",
+        "from": "root-2",
+        "to": "b1-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb1-3",
+        "from": "root-3",
+        "to": "b1-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "rb1-4",
+        "from": "root",
+        "to": "b1-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "rb2",
+        "from": "root",
+        "to": "b2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb2-2",
+        "from": "root-2",
+        "to": "b2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb2-3",
+        "from": "root-3",
+        "to": "b2-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "rb2-4",
+        "from": "root",
+        "to": "b2-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "rb3",
+        "from": "root",
+        "to": "b3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb3-2",
+        "from": "root-2",
+        "to": "b3-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rb3-3",
+        "from": "root-3",
+        "to": "b3-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "rb3-4",
+        "from": "root",
+        "to": "b3-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "b1p",
+        "from": "b1",
+        "to": "p2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b1p-2",
+        "from": "b1-2",
+        "to": "p2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b1p-3",
+        "from": "b1-3",
+        "to": "p2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b1p-4",
+        "from": "b1-4",
+        "to": "p2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b2p",
+        "from": "b2",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b2p-2",
+        "from": "b2-2",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b2p-3",
+        "from": "b2-3",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b2p-4",
+        "from": "b2-4",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b3p",
+        "from": "b3",
+        "to": "p9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b3p-2",
+        "from": "b3-2",
+        "to": "p9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "b3p-3",
+        "from": "b3-3",
+        "to": "p9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "b3p-4",
+        "from": "b3-4",
+        "to": "p9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "ins",
+        "from": "app",
+        "to": "p11",
+        "label": "INSERT dòng",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.7,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -429,
+            "y": 172
+          },
+          {
+            "x": 617,
+            "y": 172
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Chỉ mục",
+    "summary": "Vì sao cùng một truy vấn có thể mất hai giây hoặc hai mili giây.",
+    "minutes": 12,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "p95",
+        "label": "Độ trễ p95"
+      },
+      {
+        "id": "rows",
+        "label": "Số dòng đọc"
+      },
+      {
+        "id": "writeCost",
+        "label": "Lần ghi mỗi insert"
+      },
+      {
+        "id": "indexes",
+        "label": "Chỉ mục"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Quét toàn bảng tốn bao nhiêu",
+        "step": "s1"
+      },
+      {
+        "text": "Chỉ mục B-tree tìm một dòng như thế nào",
+        "step": "s4"
+      },
+      {
+        "text": "Chỉ mục tốn gì ở mỗi lần ghi",
+        "step": "s5"
+      },
+      {
+        "text": "Chỉ mục ghép và thứ tự cột",
+        "step": "s6"
+      },
+      {
+        "text": "Khi nào chỉ mục không giúp được, và cách kiểm tra",
+        "step": "s7"
+      }
+    ]
+  },
+  "presence": {
+    "q": {
+      "until": "s2"
+    },
+    "q-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "idx": {
+      "from": "s3"
+    },
+    "idx-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "idx-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "idx-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "root": {
+      "from": "s3"
+    },
+    "root-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "root-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b1": {
+      "from": "s3"
+    },
+    "b1-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b1-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b1-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b2": {
+      "from": "s3"
+    },
+    "b2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b2-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b2-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b3": {
+      "from": "s3"
+    },
+    "b3-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b3-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b3-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "scan-to": {
+      "until": "s9"
+    },
+    "idx-4-label": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "idx-3-label": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "idx-2-label": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "idx-label": {
+      "from": "s3"
+    },
+    "q-text": {
+      "until": "s2"
+    },
+    "q-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-4-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-5-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-6-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-7-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "scan": {
+      "until": "s9"
+    },
+    "ar": {
+      "from": "s3"
+    },
+    "ar-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ar-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rb1": {
+      "from": "s3"
+    },
+    "rb1-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "rb1-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rb1-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "rb2": {
+      "from": "s3"
+    },
+    "rb2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "rb2-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rb2-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "rb3": {
+      "from": "s3"
+    },
+    "rb3-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "rb3-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rb3-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b1p": {
+      "from": "s3"
+    },
+    "b1p-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b1p-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b1p-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b2p": {
+      "from": "s3"
+    },
+    "b2p-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b2p-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b2p-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b3p": {
+      "from": "s3"
+    },
+    "b3p-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b3p-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b3p-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ins": {
+      "from": "s5",
+      "until": "s6"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Truy vấn chậm",
+      "title": "Tìm một người dùng mất hai giây",
+      "chapter": "problem",
+      "body": "Đăng nhập tìm người dùng theo email. Với 50 triệu người dùng, việc đó mất hơn hai giây, và mỗi ngày một chậm hơn.\n\nKhông có gì dẫn đường, cơ sở dữ liệu thực hiện [[quét toàn bảng]] (full table scan): đọc mọi trang của bảng, kiểm tra từng dòng. Hãy xem yêu cầu màu hổ phách bò chậm chạp.",
+      "callout": {
+        "kind": "warning",
+        "text": "Lần quét lớn dần theo bảng. Ổn ở một nghìn dòng; khổ sở ở năm mươi triệu."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "2,3 s",
+        "rows": "50.000.000",
+        "writeCost": "1",
+        "indexes": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Danh bạ",
+      "title": "Danh bạ điện thoại làm thế nào",
+      "chapter": "insight",
+      "body": "Không ai đọc danh bạ từng trang một. Vì nó đã được **sắp xếp**, bạn mở ở giữa, xem tên mình đứng trước hay sau, rồi bỏ đi một nửa cuốn. Lặp lại.\n\nChia đôi 50 triệu mục chỉ mất khoảng 26 bước.",
+      "callout": {
+        "kind": "insight",
+        "text": "Chỉ mục là một bản sao đã sắp xếp của một cột, kèm con trỏ trỏ về từng dòng đầy đủ."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "2,3 s",
+        "rows": "50.000.000",
+        "writeCost": "1",
+        "indexes": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Thêm chỉ mục",
+      "title": "Thêm một chỉ mục",
+      "chapter": "solution",
+      "body": "`CREATE INDEX ON users (email)` dựng một [[B-tree]]: một cây nhỏ gồm các khóa đã sắp xếp. Gốc cho biết nhánh nào chứa email của bạn, nhánh cho biết trang nào giữ dòng đó.\n\nBa bước nhảy thay cho năm mươi triệu dòng: giờ việc tra cứu chỉ mất khoảng 2 ms.",
+      "callout": {
+        "kind": "tip",
+        "text": "Khóa chính tự động có chỉ mục. Những cột bạn tìm, join hay sắp xếp theo thường cũng cần một cái."
+      },
+      "changes": [
+        "+ Chỉ mục B-tree trên email",
+        "~ Số dòng đọc 50.000.000 → 1",
+        "~ Độ trễ p95 2,3 s → 2 ms"
+      ],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "scan-to": {
+          "visible": false
+        },
+        "scan": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Vì sao nông",
+      "title": "Vì sao B-tree luôn nông",
+      "chapter": "technique",
+      "body": "Mỗi nút của cây là một trang đĩa chứa hàng trăm khóa, nên mỗi tầng nhân tầm với lên hàng trăm lần.\n\nBa hoặc bốn tầng đủ phủ hàng tỉ dòng, và các tầng trên được dùng thường xuyên đến mức luôn nằm trong bộ nhớ.",
+      "callout": {
+        "kind": "insight",
+        "text": "Đó là lý do một lần tra cứu có chỉ mục tốn gần như nhau dù bảng có một triệu hay một tỉ dòng."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "scan-to": {
+          "visible": false
+        },
+        "scan": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Ghi phải trả",
+      "title": "Mỗi chỉ mục làm lệnh ghi chậm hơn",
+      "chapter": "tradeoff",
+      "body": "Khi một người dùng đăng ký, dòng đó vào bảng *và* vào mọi chỉ mục trên bảng, giữ từng cái luôn được sắp xếp. Hãy xem các lệnh ghi (ô vuông tối) đáp xuống cả hai nơi.\n\nChỉ mục còn tốn đĩa và bộ nhớ. Hãy đánh chỉ mục những gì bạn truy vấn, chứ không phải mọi thứ.",
+      "callout": {
+        "kind": "warning",
+        "text": "Một bảng có 6 chỉ mục thực hiện 7 lần ghi cho mỗi lệnh insert. Chỉ mục không dùng tới là chi phí thuần túy."
+      },
+      "changes": [
+        "+ Insert cập nhật cả bảng lẫn chỉ mục",
+        "~ Số lần ghi mỗi insert 1 → 2"
+      ],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "scan-to": {
+          "visible": false
+        },
+        "scan": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Thứ tự cột",
+      "title": "Chỉ mục ghép: thứ tự quan trọng",
+      "chapter": "technique",
+      "body": "Một chỉ mục có thể phủ nhiều cột, như `(country, city)`. Nó được sắp theo quốc gia trước, rồi theo thành phố trong mỗi quốc gia, như danh bạ sắp theo họ rồi đến tên.\n\nNó tăng tốc các truy vấn trên `country`, hoặc `country` + `city`. Truy vấn chỉ trên `city` không dùng được nó và quay về quét toàn bảng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đặt cột bạn luôn lọc theo lên đầu. Chỉ mục giúp từ bên trái."
+      },
+      "changes": [
+        "~ Chỉ mục trên (country, city)",
+        "+ Truy vấn chỉ theo thành phố → quét toàn bảng"
+      ],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "idx": {
+          "visible": false
+        },
+        "root": {
+          "visible": false
+        },
+        "b1": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        },
+        "b3": {
+          "visible": false
+        },
+        "scan-to": {
+          "emphasis": true
+        },
+        "idx-label": {
+          "visible": false
+        },
+        "scan": {
+          "emphasis": true
+        },
+        "ar": {
+          "visible": false
+        },
+        "rb1": {
+          "visible": false
+        },
+        "rb2": {
+          "visible": false
+        },
+        "rb3": {
+          "visible": false
+        },
+        "b1p": {
+          "visible": false
+        },
+        "b2p": {
+          "visible": false
+        },
+        "b3p": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Ký tự đại diện",
+      "title": "Tình huống: truy vấn chỉ mục không giúp được",
+      "chapter": "problem",
+      "body": "Bộ phận marketing muốn mọi người dùng Gmail: `WHERE email LIKE '%@gmail.com'`. Chỉ mục được sắp theo *phần đầu* của mỗi email, còn mẫu này chẳng nói gì về phần đầu, nên lại quét toàn bảng.\n\nĐiều tương tự xảy ra với hàm: `WHERE LOWER(email) = …` không dùng được chỉ mục thường trên `email`, vì chỉ mục lưu giá trị gốc.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cách sửa: chỉ mục biểu thức trên LOWER(email), một cột tên miền được lưu sẵn có chỉ mục riêng, hoặc công cụ tìm kiếm cho việc khớp văn bản tự do."
+      },
+      "changes": [
+        "+ Truy vấn có ký tự đại diện ở đầu",
+        "~ Bỏ qua chỉ mục → quét toàn bảng"
+      ],
+      "metrics": {
+        "p95": "2,3 s",
+        "rows": "50.000.000",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "ar": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "rb1": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "rb2": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "rb3": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "b1p": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "b2p": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "b3p": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "idx": {
+          "emphasis": true
+        },
+        "root": {
+          "emphasis": true
+        },
+        "b1": {
+          "emphasis": true
+        },
+        "b2": {
+          "emphasis": true
+        },
+        "b3": {
+          "emphasis": true
+        },
+        "idx-label": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Độ chọn lọc",
+      "title": "Tình huống: chỉ mục không ai dùng",
+      "chapter": "problem",
+      "body": "Bộ phận hỗ trợ muốn mọi người dùng ở một quốc gia: `WHERE country = 'US'`. Bạn thêm chỉ mục trên `country`, và cơ sở dữ liệu phớt lờ nó, vì 40% số dòng khớp.\n\nĐi theo chỉ mục nghĩa là nhảy tới một trang bảng khác cho mỗi dòng trong 20 triệu dòng: chậm hơn cả việc đọc bảng từ đầu tới cuối. Chỉ mục đáng giá khi nó có [[độ chọn lọc]] cao: khi nó thu hẹp việc tìm xuống một phần nhỏ số dòng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Nếu bạn chỉ luôn truy vấn một lát nhỏ, như `WHERE status = 'pending'`, hãy dùng **chỉ mục một phần** chỉ chứa những dòng đó: tí hon, nhanh và rẻ để duy trì."
+      },
+      "changes": [
+        "+ Chỉ mục trên country",
+        "~ 40% số dòng khớp → vẫn quét toàn bảng",
+        "~ Số lần ghi mỗi insert 2 → 3, vô ích"
+      ],
+      "metrics": {
+        "p95": "2,6 s",
+        "rows": "50.000.000",
+        "writeCost": "3",
+        "indexes": "2"
+      },
+      "overrides": {
+        "idx": {
+          "visible": false
+        },
+        "root": {
+          "visible": false
+        },
+        "b1": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        },
+        "b3": {
+          "visible": false
+        },
+        "idx-label": {
+          "visible": false
+        },
+        "ar": {
+          "visible": false
+        },
+        "rb1": {
+          "visible": false
+        },
+        "rb2": {
+          "visible": false
+        },
+        "rb3": {
+          "visible": false
+        },
+        "b1p": {
+          "visible": false
+        },
+        "b2p": {
+          "visible": false
+        },
+        "b3p": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "EXPLAIN",
+      "title": "Hỏi cơ sở dữ liệu: EXPLAIN",
+      "chapter": "technique",
+      "body": "Bạn không cần đoán. Thêm `EXPLAIN` trước một truy vấn và cơ sở dữ liệu cho xem kế hoạch: nó sẽ dùng chỉ mục nào, và dự kiến đọc bao nhiêu dòng.\n\n“Index Scan” trên vài dòng là tin tốt. “Seq Scan” trên một bảng lớn là cờ đỏ. `EXPLAIN ANALYZE` chạy truy vấn và báo thời gian thực.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hầu hết cơ sở dữ liệu còn giữ nhật ký truy vấn chậm. Hãy bắt đầu từ đó: nó liệt kê những truy vấn thực sự đang tốn thời gian của bạn."
+      },
+      "changes": [
+        "+ Hiện kế hoạch truy vấn",
+        "- Gỡ chỉ mục country không dùng"
+      ],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "idx": {
+          "emphasis": true
+        },
+        "root": {
+          "emphasis": true
+        },
+        "b1": {
+          "emphasis": true
+        },
+        "b2": {
+          "emphasis": true
+        },
+        "b3": {
+          "emphasis": true
+        },
+        "idx-label": {
+          "emphasis": true
+        },
+        "ar": {
+          "emphasis": true
+        },
+        "rb1": {
+          "emphasis": true
+        },
+        "rb2": {
+          "emphasis": true
+        },
+        "rb3": {
+          "emphasis": true
+        },
+        "b1p": {
+          "emphasis": true
+        },
+        "b2p": {
+          "emphasis": true
+        },
+        "b3p": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Bao phủ",
+      "title": "Chỉ mục bao phủ: bỏ qua bảng",
+      "chapter": "technique",
+      "body": "Trang đăng nhập chỉ cần tên và id của người dùng. Nếu chỉ mục lưu cả các cột đó, cơ sở dữ liệu có thể trả lời chỉ từ chỉ mục: nó không bao giờ ghé các trang của bảng.\n\nĐây là [[chỉ mục bao phủ]] (covering index). Hãy xem các lần tra cứu dừng ở nhánh thay vì đi tới bảng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Trong PostgreSQL: CREATE INDEX ON users (email) INCLUDE (id, name). Chỉ mục sẽ lớn hơn, nên chỉ bao phủ các truy vấn nóng."
+      },
+      "changes": [
+        "~ Chỉ mục chứa id và name",
+        "- Số lần đọc bảng cho truy vấn này"
+      ],
+      "metrics": {
+        "p95": "1 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "idx": {
+          "visible": false
+        },
+        "b1": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        },
+        "b3": {
+          "visible": false
+        },
+        "idx-label": {
+          "visible": false
+        },
+        "rb1": {
+          "visible": false
+        },
+        "rb2": {
+          "visible": false
+        },
+        "rb3": {
+          "visible": false
+        },
+        "b1p": {
+          "visible": false
+        },
+        "b2p": {
+          "visible": false
+        },
+        "b3p": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Tổng kết",
+      "title": "Tổng kết",
+      "chapter": "recap",
+      "body": "• Không có chỉ mục, một lần tra cứu **quét mọi dòng**.\n• Chỉ mục **B-tree** tìm bất kỳ dòng nào chỉ với vài lần đọc trang.\n• Mỗi chỉ mục thêm việc cho **mỗi lần ghi**: hãy đánh chỉ mục những gì bạn truy vấn.\n• Chỉ mục ghép hoạt động **từ cột ngoài cùng bên trái**.\n• Ký tự đại diện ở đầu, hàm và **độ chọn lọc thấp** vô hiệu hóa chỉ mục: kiểm tra bằng **EXPLAIN**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Storage engine**: cơ sở dữ liệu thực sự làm gì với một lần ghi, và vì sao có loại được xây cho đọc, có loại cho ghi."
+      },
+      "changes": [],
+      "metrics": {
+        "p95": "2 ms",
+        "rows": "1",
+        "writeCost": "2",
+        "indexes": "1"
+      },
+      "overrides": {
+        "idx": {
+          "emphasis": true
+        },
+        "b1": {
+          "emphasis": true
+        },
+        "b2": {
+          "emphasis": true
+        },
+        "b3": {
+          "emphasis": true
+        },
+        "idx-label": {
+          "emphasis": true
+        },
+        "rb1": {
+          "emphasis": true
+        },
+        "rb2": {
+          "emphasis": true
+        },
+        "rb3": {
+          "emphasis": true
+        },
+        "b1p": {
+          "emphasis": true
+        },
+        "b2p": {
+          "emphasis": true
+        },
+        "b3p": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

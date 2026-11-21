@@ -1,0 +1,2017 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "ring",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 820,
+        "height": 820,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 2,
+        "fill": "flat",
+        "opacity": 0.45,
+        "shape": "circle",
+        "borderStyle": "solid"
+      },
+      {
+        "id": "ring-label",
+        "type": "text",
+        "title": "hash ring · 0 → 2³²",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 174,
+        "height": 34,
+        "fontSize": 13,
+        "color": "#6b7a90"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 748,
+          "y": -383
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "% 4 → % 5\nhash(k) % 4  →  hash(k) % 5\n⚠ ~80% of keys land somewhere new\n# we want ~1/5 to move",
+        "position": {
+          "x": 748,
+          "y": -383
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 731,
+          "y": -383
+        },
+        "width": 280,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "MISSES AFTER ADDING A SERVER\nhash % N    ██████████░░  80%\nconsistent  ██░░░░░░░░░░  20%",
+        "position": {
+          "x": 731,
+          "y": -383
+        },
+        "width": 256,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "a",
+        "type": "process",
+        "title": "A",
+        "position": {
+          "x": -430,
+          "y": -164
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-2",
+        "type": "process",
+        "title": "A",
+        "position": {
+          "x": -71,
+          "y": 404
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-3",
+        "type": "process",
+        "title": "A",
+        "description": "copy 1",
+        "position": {
+          "x": -71,
+          "y": 404
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b",
+        "type": "process",
+        "title": "B",
+        "position": {
+          "x": -143,
+          "y": -164
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-2",
+        "type": "process",
+        "title": "B",
+        "position": {
+          "x": 404,
+          "y": 71
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-3",
+        "type": "process",
+        "title": "B",
+        "description": "copy 2",
+        "position": {
+          "x": 404,
+          "y": 71
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c",
+        "type": "process",
+        "title": "C",
+        "position": {
+          "x": 144,
+          "y": -164
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-2",
+        "type": "process",
+        "title": "C",
+        "position": {
+          "x": 53,
+          "y": -404
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-3",
+        "type": "process",
+        "title": "C",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 53,
+          "y": -404
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-4",
+        "type": "process",
+        "title": "C",
+        "description": "copy 3",
+        "position": {
+          "x": 53,
+          "y": -404
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "d",
+        "type": "process",
+        "title": "D",
+        "position": {
+          "x": 431,
+          "y": -164
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "d-2",
+        "type": "process",
+        "title": "D",
+        "position": {
+          "x": -385,
+          "y": -140
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "d-3",
+        "type": "process",
+        "title": "D",
+        "description": "⚠ 44% of keys",
+        "position": {
+          "x": -385,
+          "y": -140
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ring-key-26",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 369,
+          "y": 175
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#fa8c16"
+      },
+      {
+        "id": "ring-key-40",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 314,
+          "y": 264
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#fa8c16"
+      },
+      {
+        "id": "ring-key-54",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 241,
+          "y": 332
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#fa8c16"
+      },
+      {
+        "id": "ring-key-68",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 154,
+          "y": 380
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#fa8c16"
+      },
+      {
+        "id": "ring-key-82",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 57,
+          "y": 406
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#fa8c16"
+      },
+      {
+        "id": "ring-key-82-2",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 57,
+          "y": 406
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#4096ff"
+      },
+      {
+        "id": "ring-key-118",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": -192,
+          "y": 362
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#4096ff"
+      },
+      {
+        "id": "ring-key-132",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": -274,
+          "y": 305
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#4096ff"
+      },
+      {
+        "id": "ring-key-146",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": -340,
+          "y": 229
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#4096ff"
+      },
+      {
+        "id": "ring-key-160",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": -385,
+          "y": 140
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#4096ff"
+      },
+      {
+        "id": "ring-key-174",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": -408,
+          "y": 43
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#4096ff"
+      },
+      {
+        "id": "ring-key-216",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": -332,
+          "y": -241
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-230",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": -259,
+          "y": -314
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-244",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": -180,
+          "y": -369
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-258",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": -85,
+          "y": -401
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-296",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 180,
+          "y": -376
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#73d13d"
+      },
+      {
+        "id": "ring-key-296-2",
+        "type": "text",
+        "title": "◉",
+        "position": {
+          "x": 180,
+          "y": -376
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-296-3",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 180,
+          "y": -376
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-322",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 323,
+          "y": -252
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#73d13d"
+      },
+      {
+        "id": "ring-key-322-2",
+        "type": "text",
+        "title": "◉",
+        "position": {
+          "x": 323,
+          "y": -252
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#d4b106"
+      },
+      {
+        "id": "ring-key-322-3",
+        "type": "text",
+        "title": "◉",
+        "position": {
+          "x": 323,
+          "y": -252
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-322-4",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 323,
+          "y": -252
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-322-5",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 323,
+          "y": -252
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#fa8c16"
+      },
+      {
+        "id": "ring-key-336",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 375,
+          "y": -171
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#73d13d"
+      },
+      {
+        "id": "ring-key-336-2",
+        "type": "text",
+        "title": "◉",
+        "position": {
+          "x": 375,
+          "y": -171
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#d4b106"
+      },
+      {
+        "id": "ring-key-336-3",
+        "type": "text",
+        "title": "◉",
+        "position": {
+          "x": 375,
+          "y": -171
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-336-4",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 375,
+          "y": -171
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-336-5",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 375,
+          "y": -171
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#fa8c16"
+      },
+      {
+        "id": "ring-key-350",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 404,
+          "y": -71
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#73d13d"
+      },
+      {
+        "id": "ring-key-350-2",
+        "type": "text",
+        "title": "◉",
+        "position": {
+          "x": 404,
+          "y": -71
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#d4b106"
+      },
+      {
+        "id": "ring-key-350-3",
+        "type": "text",
+        "title": "◉",
+        "position": {
+          "x": 404,
+          "y": -71
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-key-350-4",
+        "type": "text",
+        "title": "●",
+        "position": {
+          "x": 404,
+          "y": -71
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "e",
+        "type": "process",
+        "title": "E",
+        "position": {
+          "x": 270,
+          "y": -316
+        },
+        "width": 176,
+        "height": 79,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ring-vnode-75",
+        "type": "text",
+        "title": "◆",
+        "position": {
+          "x": 106,
+          "y": 396
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#4096ff"
+      },
+      {
+        "id": "ring-vnode-315",
+        "type": "text",
+        "title": "◆",
+        "position": {
+          "x": 290,
+          "y": -290
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#fa8c16"
+      },
+      {
+        "id": "ring-vnode-225",
+        "type": "text",
+        "title": "◆",
+        "position": {
+          "x": -294,
+          "y": -290
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      },
+      {
+        "id": "ring-vnode-180",
+        "type": "text",
+        "title": "◆",
+        "position": {
+          "x": -410,
+          "y": 0
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#4096ff"
+      },
+      {
+        "id": "ring-vnode-30",
+        "type": "text",
+        "title": "◆",
+        "position": {
+          "x": 355,
+          "y": 210
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#fa8c16"
+      },
+      {
+        "id": "ring-vnode-340",
+        "type": "text",
+        "title": "◆",
+        "position": {
+          "x": 385,
+          "y": -136
+        },
+        "width": 28,
+        "height": 28,
+        "fontSize": 20,
+        "color": "#9254de"
+      }
+    ],
+    "edges": [
+      {
+        "id": "k1",
+        "from": "ring",
+        "to": "a-2",
+        "label": "key @ 160°",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.25,
+        "fromSide": "left",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -372,
+            "y": 173
+          },
+          {
+            "x": -355,
+            "y": 205
+          },
+          {
+            "x": -336,
+            "y": 235
+          },
+          {
+            "x": -314,
+            "y": 264
+          },
+          {
+            "x": -290,
+            "y": 290
+          },
+          {
+            "x": -264,
+            "y": 314
+          },
+          {
+            "x": -235,
+            "y": 336
+          },
+          {
+            "x": -205,
+            "y": 355
+          },
+          {
+            "x": -173,
+            "y": 372
+          },
+          {
+            "x": -140,
+            "y": 385
+          },
+          {
+            "x": -106,
+            "y": 396
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "k1-2",
+        "from": "ring",
+        "to": "a-3",
+        "label": "key @ 160°",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.25,
+        "fromSide": "left",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -372,
+            "y": 173
+          },
+          {
+            "x": -355,
+            "y": 205
+          },
+          {
+            "x": -336,
+            "y": 235
+          },
+          {
+            "x": -314,
+            "y": 264
+          },
+          {
+            "x": -290,
+            "y": 290
+          },
+          {
+            "x": -264,
+            "y": 314
+          },
+          {
+            "x": -235,
+            "y": 336
+          },
+          {
+            "x": -205,
+            "y": 355
+          },
+          {
+            "x": -173,
+            "y": 372
+          },
+          {
+            "x": -140,
+            "y": 385
+          },
+          {
+            "x": -106,
+            "y": 396
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "reverse",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "k2",
+        "from": "ring",
+        "to": "b-2",
+        "label": "key @ 54°",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.25,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 269,
+            "y": 309
+          },
+          {
+            "x": 295,
+            "y": 285
+          },
+          {
+            "x": 319,
+            "y": 258
+          },
+          {
+            "x": 340,
+            "y": 229
+          },
+          {
+            "x": 359,
+            "y": 199
+          },
+          {
+            "x": 375,
+            "y": 167
+          },
+          {
+            "x": 388,
+            "y": 133
+          },
+          {
+            "x": 398,
+            "y": 99
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "k2-2",
+        "from": "ring",
+        "to": "b-3",
+        "label": "copy 2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -36,
+            "y": 408
+          },
+          {
+            "x": 0,
+            "y": 410
+          },
+          {
+            "x": 36,
+            "y": 408
+          },
+          {
+            "x": 71,
+            "y": 404
+          },
+          {
+            "x": 106,
+            "y": 396
+          },
+          {
+            "x": 140,
+            "y": 385
+          },
+          {
+            "x": 173,
+            "y": 372
+          },
+          {
+            "x": 205,
+            "y": 355
+          },
+          {
+            "x": 235,
+            "y": 336
+          },
+          {
+            "x": 264,
+            "y": 314
+          },
+          {
+            "x": 290,
+            "y": 290
+          },
+          {
+            "x": 314,
+            "y": 264
+          },
+          {
+            "x": 336,
+            "y": 235
+          },
+          {
+            "x": 355,
+            "y": 205
+          },
+          {
+            "x": 372,
+            "y": 173
+          },
+          {
+            "x": 385,
+            "y": 140
+          },
+          {
+            "x": 396,
+            "y": 106
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "k2-3",
+        "from": "ring",
+        "to": "b-2",
+        "label": "key @ 26°",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.25,
+        "fromSide": "right",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 383,
+            "y": 147
+          },
+          {
+            "x": 394,
+            "y": 113
+          },
+          {
+            "x": 402,
+            "y": 78
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "k3",
+        "from": "ring",
+        "to": "c-4",
+        "label": "copy 3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "right",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 408,
+            "y": 36
+          },
+          {
+            "x": 410,
+            "y": 0
+          },
+          {
+            "x": 408,
+            "y": -36
+          },
+          {
+            "x": 404,
+            "y": -71
+          },
+          {
+            "x": 396,
+            "y": -106
+          },
+          {
+            "x": 385,
+            "y": -140
+          },
+          {
+            "x": 372,
+            "y": -173
+          },
+          {
+            "x": 355,
+            "y": -205
+          },
+          {
+            "x": 336,
+            "y": -235
+          },
+          {
+            "x": 314,
+            "y": -264
+          },
+          {
+            "x": 290,
+            "y": -290
+          },
+          {
+            "x": 264,
+            "y": -314
+          },
+          {
+            "x": 235,
+            "y": -336
+          },
+          {
+            "x": 205,
+            "y": -355
+          },
+          {
+            "x": 173,
+            "y": -372
+          },
+          {
+            "x": 140,
+            "y": -385
+          },
+          {
+            "x": 106,
+            "y": -396
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Consistent Hashing",
+    "summary": "Add or remove servers and move only a sliver of the data.",
+    "minutes": 10,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "nodes",
+        "label": "Servers on ring"
+      },
+      {
+        "id": "moved",
+        "label": "Keys moved"
+      },
+      {
+        "id": "maxShare",
+        "label": "Biggest share"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why hash % N reshuffles everything",
+        "step": "s1"
+      },
+      {
+        "text": "Keys belong to the next server clockwise",
+        "step": "s3"
+      },
+      {
+        "text": "Adding or removing a server moves one arc",
+        "step": "s5"
+      },
+      {
+        "text": "Virtual nodes even out the load",
+        "step": "s7"
+      },
+      {
+        "text": "Replicas on the ring, and cache clusters",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "a": {
+      "until": "s2"
+    },
+    "a-2": {
+      "from": "s2"
+    },
+    "a-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b": {
+      "until": "s2"
+    },
+    "b-2": {
+      "from": "s2"
+    },
+    "b-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "c": {
+      "until": "s2"
+    },
+    "c-2": {
+      "from": "s2",
+      "until": "s10"
+    },
+    "c-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "c-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "d": {
+      "until": "s2"
+    },
+    "d-2": {
+      "from": "s2"
+    },
+    "d-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ring": {
+      "from": "s2"
+    },
+    "ring-key-26": {
+      "from": "s3"
+    },
+    "ring-key-40": {
+      "from": "s3"
+    },
+    "ring-key-54": {
+      "from": "s3"
+    },
+    "ring-key-68": {
+      "from": "s3"
+    },
+    "ring-key-82": {
+      "from": "s3",
+      "until": "s10"
+    },
+    "ring-key-82-2": {
+      "from": "s7"
+    },
+    "ring-key-118": {
+      "from": "s3"
+    },
+    "ring-key-132": {
+      "from": "s3"
+    },
+    "ring-key-146": {
+      "from": "s3"
+    },
+    "ring-key-160": {
+      "from": "s3"
+    },
+    "ring-key-174": {
+      "from": "s3"
+    },
+    "ring-key-216": {
+      "from": "s3"
+    },
+    "ring-key-230": {
+      "from": "s3"
+    },
+    "ring-key-244": {
+      "from": "s3"
+    },
+    "ring-key-258": {
+      "from": "s3"
+    },
+    "ring-key-296": {
+      "from": "s3",
+      "until": "s10"
+    },
+    "ring-key-296-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ring-key-296-3": {
+      "from": "s6"
+    },
+    "ring-key-322": {
+      "from": "s3",
+      "until": "s9"
+    },
+    "ring-key-322-2": {
+      "from": "s4",
+      "until": "s10"
+    },
+    "ring-key-322-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ring-key-322-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ring-key-322-5": {
+      "from": "s7"
+    },
+    "ring-key-336": {
+      "from": "s3",
+      "until": "s9"
+    },
+    "ring-key-336-2": {
+      "from": "s4",
+      "until": "s10"
+    },
+    "ring-key-336-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ring-key-336-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ring-key-336-5": {
+      "from": "s7"
+    },
+    "ring-key-350": {
+      "from": "s3",
+      "until": "s9"
+    },
+    "ring-key-350-2": {
+      "from": "s4",
+      "until": "s10"
+    },
+    "ring-key-350-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ring-key-350-4": {
+      "from": "s6"
+    },
+    "e": {
+      "from": "s4",
+      "until": "s10"
+    },
+    "ring-vnode-75": {
+      "from": "s7"
+    },
+    "ring-vnode-315": {
+      "from": "s7"
+    },
+    "ring-vnode-225": {
+      "from": "s7"
+    },
+    "ring-vnode-180": {
+      "from": "s7"
+    },
+    "ring-vnode-30": {
+      "from": "s7"
+    },
+    "ring-vnode-340": {
+      "from": "s7"
+    },
+    "ring-label": {
+      "from": "s2"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "k1": {
+      "from": "s3"
+    },
+    "k1-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "k2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "k2-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "k2-3": {
+      "from": "s10"
+    },
+    "k3": {
+      "from": "s8",
+      "until": "s9"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "The problem",
+      "title": "hash % N breaks when N changes",
+      "chapter": "problem",
+      "body": "Last lesson ended badly: with `shard = hash(key) % N`, going from 4 to 5 shards changes the answer for about 80% of keys. Nearly all the data moves.\n\nWe want a scheme where adding a server only moves the keys that server should take over — roughly 1/N of them.",
+      "callout": {
+        "kind": "insight",
+        "text": "The trick is to stop tying placement to N at all."
+      },
+      "changes": [],
+      "metrics": {
+        "nodes": "4",
+        "moved": "80%",
+        "maxShare": "25%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "The ring",
+      "title": "Bend the hash space into a ring",
+      "chapter": "technique",
+      "body": "Hash values run from 0 to 2³². Join the ends and you get a [[ring]].\n\nNow hash each **server’s** name too, and place it on the ring at that point. The servers glide to wherever their hashes put them — not evenly spaced, just wherever the hash lands.",
+      "callout": {
+        "kind": "tip",
+        "text": "Nothing here depends on how many servers there are. That’s the whole point."
+      },
+      "changes": [
+        "+ Hash ring",
+        "~ Servers placed at hash(server name)"
+      ],
+      "metrics": {
+        "nodes": "4"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Keys",
+      "title": "Each key goes clockwise",
+      "chapter": "technique",
+      "body": "Hash each **key** onto the ring too. A key belongs to the **first server clockwise** from it. The coloured arcs show which server owns which stretch; each dot is a key, coloured by its owner.\n\nWatch a lookup travel clockwise from a key to its server.",
+      "callout": {
+        "kind": "insight",
+        "text": "To find a key’s server: hash the key, walk clockwise, stop at the first server. Clients do this with a sorted list and a binary search."
+      },
+      "changes": [
+        "+ Keys on the ring",
+        "~ Each key owned by the next server clockwise"
+      ],
+      "metrics": {
+        "nodes": "4",
+        "maxShare": "28%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Add a server",
+      "title": "Adding a server moves one arc",
+      "chapter": "solution",
+      "body": "Server E joins at its hash position, between C and B. It takes over only the keys in the arc just counter-clockwise of it — the ones that used to walk past it to C.\n\nEvery other key stays exactly where it was. The pulsing keys are the only ones that move.",
+      "callout": {
+        "kind": "tip",
+        "text": "Adding the 5th server moves about 1/5 of the keys — the minimum possible."
+      },
+      "changes": [
+        "+ Server E",
+        "~ 3 of 18 keys move (to E)",
+        "~ Everything else stays put"
+      ],
+      "metrics": {
+        "nodes": "5",
+        "moved": "17%",
+        "maxShare": "28%"
+      },
+      "overrides": {
+        "ring-key-322": {
+          "visible": false
+        },
+        "ring-key-336": {
+          "visible": false
+        },
+        "ring-key-350": {
+          "visible": false
+        },
+        "k1": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Remove one",
+      "title": "Removing a server moves one arc too",
+      "chapter": "technique",
+      "body": "Back to four servers — and now C dies. Its keys simply continue clockwise to the next server, D. Nobody else is affected.\n\nCompare that with `% N`, where losing one server would reshuffle almost everything.",
+      "callout": {
+        "kind": "insight",
+        "text": "Amazon’s Dynamo, Cassandra and many caches and CDNs place data this way. Close cousins — rendezvous and jump hashing — get the same result without a ring."
+      },
+      "changes": [
+        "- Server C",
+        "~ C’s 4 keys move to D"
+      ],
+      "metrics": {
+        "nodes": "3",
+        "moved": "22%",
+        "maxShare": "44%"
+      },
+      "overrides": {
+        "c-2": {
+          "visible": false
+        },
+        "ring-key-296": {
+          "visible": false
+        },
+        "ring-key-322": {
+          "visible": false
+        },
+        "ring-key-322-2": {
+          "visible": false
+        },
+        "ring-key-336": {
+          "visible": false
+        },
+        "ring-key-336-2": {
+          "visible": false
+        },
+        "ring-key-350": {
+          "visible": false
+        },
+        "ring-key-350-2": {
+          "visible": false
+        },
+        "e": {
+          "visible": false
+        },
+        "k1": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Uneven",
+      "title": "Random positions, uneven arcs",
+      "chapter": "problem",
+      "body": "Servers land wherever their hash puts them, so arcs are uneven. With C gone, D now owns a huge stretch of the ring — and gets far more keys and traffic than A or B.\n\nWith only a few servers, luck alone can leave one doing twice the work of another.",
+      "callout": {
+        "kind": "warning",
+        "text": "Uneven arcs mean uneven load — exactly the hot spot sharding was meant to avoid."
+      },
+      "changes": [
+        "~ D owns 44% of the keys"
+      ],
+      "metrics": {
+        "nodes": "3",
+        "maxShare": "44%"
+      },
+      "overrides": {
+        "c-2": {
+          "visible": false
+        },
+        "d-2": {
+          "visible": false
+        },
+        "ring-key-296": {
+          "visible": false
+        },
+        "ring-key-322": {
+          "visible": false
+        },
+        "ring-key-322-2": {
+          "visible": false
+        },
+        "ring-key-336": {
+          "visible": false
+        },
+        "ring-key-336-2": {
+          "visible": false
+        },
+        "ring-key-350": {
+          "visible": false
+        },
+        "ring-key-350-2": {
+          "visible": false
+        },
+        "e": {
+          "visible": false
+        },
+        "k1": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Virtual nodes",
+      "title": "Virtual nodes even it out",
+      "chapter": "solution",
+      "body": "Give each server several positions on the ring — [[virtual nodes]] (the diamonds) — by hashing `A#1`, `A#2`, … Each server now owns many small arcs instead of one big one.\n\nShares even out, and when a server leaves, its keys spread across *all* the others instead of dumping on one neighbour.",
+      "callout": {
+        "kind": "tip",
+        "text": "Real systems use anywhere from 16 to a few hundred virtual nodes per server. Stronger servers can get more of them."
+      },
+      "changes": [
+        "+ 3 positions per server",
+        "~ Biggest share 44% → 33%"
+      ],
+      "metrics": {
+        "nodes": "3",
+        "maxShare": "33%"
+      },
+      "overrides": {
+        "c-2": {
+          "visible": false
+        },
+        "d-2": {
+          "emphasis": true
+        },
+        "ring-key-82": {
+          "visible": false
+        },
+        "ring-key-296": {
+          "visible": false
+        },
+        "ring-key-322": {
+          "visible": false
+        },
+        "ring-key-322-2": {
+          "visible": false
+        },
+        "ring-key-336": {
+          "visible": false
+        },
+        "ring-key-336-2": {
+          "visible": false
+        },
+        "ring-key-350": {
+          "visible": false
+        },
+        "ring-key-350-2": {
+          "visible": false
+        },
+        "e": {
+          "visible": false
+        },
+        "k1": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Replicas",
+      "title": "Copies on the next servers clockwise",
+      "chapter": "technique",
+      "body": "One copy per key isn’t enough — a dead server would lose its data. So each key is stored on the first **three** distinct servers clockwise: its owner plus the next two.\n\nFollow the key at 160°: copy 1 on A, copy 2 on B, copy 3 on C. If A dies, B and C still have it, and the next server along takes over A’s share.",
+      "callout": {
+        "kind": "tip",
+        "text": "Dynamo calls this the preference list. With virtual nodes, skip positions owned by a server you already picked."
+      },
+      "changes": [
+        "+ Each key stored on 3 servers",
+        "~ Survives any single failure"
+      ],
+      "metrics": {
+        "nodes": "4",
+        "maxShare": "28%"
+      },
+      "overrides": {
+        "a-2": {
+          "visible": false
+        },
+        "b-2": {
+          "visible": false
+        },
+        "c-2": {
+          "visible": false
+        },
+        "ring-key-82": {
+          "emphasis": true
+        },
+        "ring-key-82-2": {
+          "visible": false
+        },
+        "ring-key-296": {
+          "emphasis": true
+        },
+        "ring-key-296-3": {
+          "visible": false
+        },
+        "ring-key-322": {
+          "emphasis": true
+        },
+        "ring-key-322-2": {
+          "visible": false
+        },
+        "ring-key-322-5": {
+          "visible": false
+        },
+        "ring-key-336": {
+          "emphasis": true
+        },
+        "ring-key-336-2": {
+          "visible": false
+        },
+        "ring-key-336-5": {
+          "visible": false
+        },
+        "ring-key-350": {
+          "emphasis": true
+        },
+        "ring-key-350-2": {
+          "visible": false
+        },
+        "ring-key-350-4": {
+          "visible": false
+        },
+        "e": {
+          "visible": false
+        },
+        "ring-vnode-75": {
+          "visible": false
+        },
+        "ring-vnode-315": {
+          "visible": false
+        },
+        "ring-vnode-225": {
+          "visible": false
+        },
+        "ring-vnode-180": {
+          "visible": false
+        },
+        "ring-vnode-30": {
+          "visible": false
+        },
+        "ring-vnode-340": {
+          "visible": false
+        },
+        "k1": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Cache fleet",
+      "title": "Case: growing a cache cluster",
+      "chapter": "insight",
+      "body": "A fleet of Memcached servers sits in front of a database, and clients pick a server with `hash(key) % N`. Adding a fifth server remaps ~80% of keys — they all miss at once, and the database is flattened by the stampede.\n\nWith consistent hashing, adding the fifth server moves only ~20% of keys. The cache stays mostly warm and the database barely notices.",
+      "callout": {
+        "kind": "insight",
+        "text": "This is where consistent hashing started: spreading web caches across machines that come and go."
+      },
+      "changes": [
+        "+ Fifth cache server",
+        "~ Cache misses after the change: 80% → 20%"
+      ],
+      "metrics": {
+        "nodes": "5",
+        "moved": "20%",
+        "maxShare": "28%"
+      },
+      "overrides": {
+        "a-2": {
+          "emphasis": true
+        },
+        "b-2": {
+          "emphasis": true
+        },
+        "c-2": {
+          "emphasis": true
+        },
+        "ring-key-82-2": {
+          "visible": false
+        },
+        "ring-key-296-3": {
+          "visible": false
+        },
+        "ring-key-322-2": {
+          "emphasis": true
+        },
+        "ring-key-322-5": {
+          "visible": false
+        },
+        "ring-key-336-2": {
+          "emphasis": true
+        },
+        "ring-key-336-5": {
+          "visible": false
+        },
+        "ring-key-350-2": {
+          "emphasis": true
+        },
+        "ring-key-350-4": {
+          "visible": false
+        },
+        "e": {
+          "emphasis": true
+        },
+        "ring-vnode-75": {
+          "visible": false
+        },
+        "ring-vnode-315": {
+          "visible": false
+        },
+        "ring-vnode-225": {
+          "visible": false
+        },
+        "ring-vnode-180": {
+          "visible": false
+        },
+        "ring-vnode-30": {
+          "visible": false
+        },
+        "ring-vnode-340": {
+          "visible": false
+        },
+        "k1": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Put servers and keys on a **hash ring**; a key belongs to the **next server clockwise**.\n• Adding or removing a server moves only **one arc** — about 1/N of keys.\n• **Virtual nodes** even out shares and spread the load when servers leave.\n• Store each key on the **next N servers** clockwise for redundancy.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Unique IDs at Scale** — giving every row a name once there is no single database to count for you."
+      },
+      "changes": [],
+      "metrics": {
+        "nodes": "3",
+        "maxShare": "33%"
+      },
+      "overrides": {
+        "ring-key-82-2": {
+          "emphasis": true
+        },
+        "ring-key-296-3": {
+          "emphasis": true
+        },
+        "ring-key-322-5": {
+          "emphasis": true
+        },
+        "ring-key-336-5": {
+          "emphasis": true
+        },
+        "ring-key-350-4": {
+          "emphasis": true
+        },
+        "ring-vnode-75": {
+          "emphasis": true
+        },
+        "ring-vnode-315": {
+          "emphasis": true
+        },
+        "ring-vnode-225": {
+          "emphasis": true
+        },
+        "ring-vnode-180": {
+          "emphasis": true
+        },
+        "ring-vnode-30": {
+          "emphasis": true
+        },
+        "ring-vnode-340": {
+          "emphasis": true
+        },
+        "k1": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

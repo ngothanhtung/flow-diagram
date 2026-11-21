@@ -1,0 +1,1341 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 335,
+          "y": -394
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "MỘT LỆNH GỌI, CÓ BACKOFF\nlần thử 1  █░░░░░░░░░░░  timeout\nthử lại 1  ██░░░░░░░░░░  +100 ms\nthử lại 2  █████░░░░░░░  +200 ms\nthử lại 3  ██████████░░  +400 ms ✓",
+        "position": {
+          "x": 335,
+          "y": -394
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 385,
+          "y": -394
+        },
+        "width": 421,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "IDEMPOTENCY-KEY: 7F3A\nlần thử 1 → trừ $40, lưu kết quả với khóa 7f3a\n⚠ mất phản hồi → dịch vụ đơn hàng thử lại\nlần thử 2 → đã thấy 7f3a: trả kết quả đã lưu\n→ một lần trừ tiền, dù thử lại bao nhiêu lần",
+        "position": {
+          "x": 385,
+          "y": -394
+        },
+        "width": 397,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "shoppers",
+        "type": "process",
+        "title": "người mua",
+        "position": {
+          "x": 0,
+          "y": -420
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "200 / 200 thread đang chờ · CPU 98%",
+        "position": {
+          "x": 0,
+          "y": -210
+        },
+        "width": 180,
+        "height": 131,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-2",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "dự phòng: chờ thanh toán · CPU 40%",
+        "position": {
+          "x": 0,
+          "y": -210
+        },
+        "width": 180,
+        "height": 131,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-3",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "CPU 40%",
+        "position": {
+          "x": 0,
+          "y": -210
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-4",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "200 / 200 thread đang chờ · CPU 95%",
+        "position": {
+          "x": 0,
+          "y": -210
+        },
+        "width": 180,
+        "height": 131,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-5",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "CPU 45%",
+        "position": {
+          "x": 0,
+          "y": -210
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-6",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "dự phòng: chờ thanh toán · CPU 25%",
+        "position": {
+          "x": 0,
+          "y": -210
+        },
+        "width": 180,
+        "height": 131,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-7",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "CPU 35%",
+        "position": {
+          "x": 0,
+          "y": -210
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-8",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "deadline: 2 s · còn 1,4 s · CPU 35%",
+        "position": {
+          "x": 0,
+          "y": -210
+        },
+        "width": 176,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-9",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "pool thanh toán 40 / 40 · các pool khác trống · CPU 40%",
+        "position": {
+          "x": 0,
+          "y": -210
+        },
+        "width": 204,
+        "height": 131,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "trả lời sau 30 s",
+        "position": {
+          "x": 0,
+          "y": 84
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "thường chậm",
+        "position": {
+          "x": 0,
+          "y": 84
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-3",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "CPU 50%",
+        "position": {
+          "x": 0,
+          "y": 84
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-4",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "⚠ 4× tải bình thường · CPU 100%",
+        "position": {
+          "x": 0,
+          "y": 84
+        },
+        "width": 188,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-5",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "đang hồi phục · CPU 62%",
+        "position": {
+          "x": 0,
+          "y": 84
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-6",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": 0,
+          "y": 84
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-7",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "✓ chỉ trừ tiền một lần · CPU 50%",
+        "position": {
+          "x": 0,
+          "y": 84
+        },
+        "width": 188,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-8",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "ngân sách: 1,4 s · CPU 45%",
+        "position": {
+          "x": 0,
+          "y": 84
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-9",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "lại chậm",
+        "position": {
+          "x": 0,
+          "y": 84
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "br",
+        "type": "process",
+        "title": "MỞ · lỗi sau 1 ms",
+        "position": {
+          "x": 0,
+          "y": -63
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Unplug",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "br-2",
+        "type": "process",
+        "title": "✓ ĐÓNG",
+        "position": {
+          "x": 0,
+          "y": -63
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Unplug",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "uo",
+        "from": "shoppers",
+        "to": "order",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-2",
+        "from": "shoppers",
+        "to": "order-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-3",
+        "from": "shoppers",
+        "to": "order-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-4",
+        "from": "shoppers",
+        "to": "order-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-5",
+        "from": "shoppers",
+        "to": "order-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uo-6",
+        "from": "shoppers",
+        "to": "order-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "op",
+        "from": "order",
+        "to": "pay",
+        "label": "không có timeout",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-2",
+        "from": "order-2",
+        "to": "pay-2",
+        "label": "timeout 800 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "op-3",
+        "from": "order-3",
+        "to": "pay-3",
+        "label": "timeout 800 ms · thử lại 1 lần",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-4",
+        "from": "order-4",
+        "to": "pay-4",
+        "label": "thử lại 3 lần, ngay lập tức",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-5",
+        "from": "order-5",
+        "to": "pay-5",
+        "label": "backoff + jitter",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "op-6",
+        "from": "order-9",
+        "to": "pay-9",
+        "label": "pool thanh toán · 40 thread",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "ob",
+        "from": "order-6",
+        "to": "br",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "ob-2",
+        "from": "order-7",
+        "to": "br-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ob-3",
+        "from": "order-8",
+        "to": "br-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "bp",
+        "from": "br",
+        "to": "pay-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "bp-2",
+        "from": "br-2",
+        "to": "pay-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "bp-3",
+        "from": "br-2",
+        "to": "pay-7",
+        "label": "Idempotency-Key: 7f3a",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "bp-4",
+        "from": "br-2",
+        "to": "pay-8",
+        "label": "deadline: 12:00:02.000",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      }
+    ]
+  },
+  "meta": {
+    "title": "Timeout & thử lại",
+    "summary": "Gọi an toàn một dịch vụ đang gặp khó: bỏ cuộc đúng lúc, thử lại cẩn thận và biết khi nào dừng.",
+    "minutes": 11,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "success",
+        "label": "Thanh toán OK"
+      },
+      {
+        "id": "p99",
+        "label": "Độ trễ p99"
+      },
+      {
+        "id": "payLoad",
+        "label": "Tải lên dịch vụ thanh toán"
+      },
+      {
+        "id": "threads",
+        "label": "Thread đơn hàng bận"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Một dịch vụ chậm lan truyền sự cố thế nào",
+        "step": "s1"
+      },
+      {
+        "text": "Timeout và phương án dự phòng",
+        "step": "s2"
+      },
+      {
+        "text": "Thử lại, bão thử lại và backoff có jitter",
+        "step": "s5"
+      },
+      {
+        "text": "Circuit breaker và khóa idempotency",
+        "step": "s8"
+      },
+      {
+        "text": "Deadline và bulkhead",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "order": {
+      "until": "s2"
+    },
+    "order-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "order-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "order-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "order-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "order-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "order-7": {
+      "from": "s7"
+    },
+    "order-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "order-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "pay": {
+      "until": "s2"
+    },
+    "pay-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "pay-3": {
+      "from": "s3"
+    },
+    "pay-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "pay-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "pay-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "pay-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "pay-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "pay-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "br": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "br-2": {
+      "from": "s7"
+    },
+    "card-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "uo": {
+      "until": "s2"
+    },
+    "uo-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "uo-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "uo-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "uo-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "uo-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "op": {
+      "until": "s2"
+    },
+    "op-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "op-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "op-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "op-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "op-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ob": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ob-2": {
+      "from": "s7"
+    },
+    "ob-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bp": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bp-2": {
+      "from": "s7"
+    },
+    "bp-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bp-4": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Lệnh gọi chậm",
+      "title": "Một dịch vụ chậm kéo sập dịch vụ khác",
+      "chapter": "problem",
+      "body": "Dịch vụ thanh toán bắt đầu trả lời sau 30 giây thay vì 50 ms. Dịch vụ đơn hàng gọi nó và cứ thế **chờ**, không giới hạn.\n\nMỗi lệnh gọi đang chờ giữ một thread. Trong vòng một phút, cả 200 đều kẹt, và dịch vụ đơn hàng không phục vụ nổi cả những trang không cần thanh toán. Một phụ thuộc chậm đã thành sự cố toàn phần.",
+      "callout": {
+        "kind": "warning",
+        "text": "Đây là sự cố dây chuyền: rắc rối lan ngược lên qua mọi thứ chờ mà không có giới hạn."
+      },
+      "changes": [],
+      "metrics": {
+        "success": "40%",
+        "p99": "30,0 s",
+        "payLoad": "1×",
+        "threads": "200 / 200 bận"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Timeout",
+      "title": "Đặt timeout, có phương án dự phòng",
+      "chapter": "solution",
+      "body": "Đặt cho mọi lệnh gọi ra ngoài một [[timeout]]: nếu thanh toán chưa trả lời trong 800 ms, bỏ cuộc và giải phóng thread.\n\nRồi xuống cấp một cách êm ái: nhận đơn ở trạng thái “chờ thanh toán” và trừ tiền ngay sau đó. Dịch vụ đơn hàng vẫn chạy cho mọi việc khác.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đặt timeout theo độ trễ thực tế: cao hơn p99 của phụ thuộc một chút, và luôn ngắn hơn timeout của chính bên gọi bạn."
+      },
+      "changes": [
+        "+ Timeout 800 ms cho lệnh gọi thanh toán",
+        "+ Dự phòng: “chờ thanh toán”",
+        "~ Thread bận 200 → 35"
+      ],
+      "metrics": {
+        "success": "72%",
+        "p99": "820 ms",
+        "payLoad": "1×",
+        "threads": "35 / 200 bận"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Thử lại",
+      "title": "Thử lại những trục trặc thoáng qua",
+      "chapter": "technique",
+      "body": "Nhiều lỗi chỉ thoáng qua: một gói tin bị rơi, một máy chủ đang khởi động lại, một trục trặc ngắn. Thử lại sau giây lát thường thành công.\n\nMột lần thử lại (màu hổ phách) biến hầu hết các lỗi đó thành thành công.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chỉ thử lại những lỗi có thể thành công lần sau: timeout, 503. Thử lại một 400 Bad Request thì chỉ thất bại tiếp."
+      },
+      "changes": [
+        "+ Thử lại một lần với timeout và 503",
+        "~ Thanh toán thành công 72% → 97%"
+      ],
+      "metrics": {
+        "success": "97%",
+        "p99": "950 ms",
+        "payLoad": "1,1×",
+        "threads": "38 / 200 bận"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Bão thử lại",
+      "title": "Thử lại biến thành bão",
+      "chapter": "problem",
+      "body": "Rồi thanh toán thật sự quá tải. Mọi bên gọi đều thử lại, ba lần, ngay lập tức. Mỗi yêu cầu thất bại thành bốn, nên dịch vụ đang khó khăn giờ nhận **4×** tải bình thường.\n\nNó không bao giờ hồi phục được: chính các lần thử lại giữ nó nằm sập. Client của bạn đã biến thành một cuộc tấn công từ chối dịch vụ.",
+      "callout": {
+        "kind": "warning",
+        "text": "Thử lại cũng nhân lên qua các tầng: 3 lần thử lại ở mỗi tầng trong 3 tầng là tới 64 lệnh gọi cho một cú nhấp."
+      },
+      "changes": [
+        "~ Thanh toán quá tải",
+        "~ 3 lần thử lại ngay cho mỗi lỗi",
+        "~ Tải lên thanh toán 1× → 4×"
+      ],
+      "metrics": {
+        "success": "18%",
+        "p99": "2,4 s",
+        "payLoad": "4×",
+        "threads": "200 / 200 bận"
+      },
+      "overrides": {
+        "pay-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Backoff",
+      "title": "Lùi lại, kèm jitter",
+      "chapter": "solution",
+      "body": "Chờ trước khi thử lại, và mỗi lần chờ lâu hơn: 100 ms, rồi 200, rồi 400: [[exponential backoff]]. Thêm yếu tố ngẫu nhiên ([[jitter]]) để hàng nghìn client không thử lại cùng một khoảnh khắc.\n\nGiới hạn số lần thử, và giới hạn tỷ lệ lưu lượng có thể là thử lại (ngân sách thử lại ~10%). Thanh toán có khoảng trống để hồi phục.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hầu hết SDK đám mây đã làm exponential backoff có jitter: kiểm tra rằng nó đang bật, và các tầng không chồng chất các lần thử lại."
+      },
+      "changes": [
+        "~ Thử lại chờ 100 → 200 → 400 ms (+ jitter)",
+        "+ Ngân sách thử lại: 10%",
+        "~ Tải lên thanh toán 4× → 1,2×"
+      ],
+      "metrics": {
+        "success": "96%",
+        "p99": "1,3 s",
+        "payLoad": "1,2×",
+        "threads": "45 / 200 bận"
+      },
+      "overrides": {
+        "pay-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Cầu dao",
+      "title": "Circuit breaker: tạm ngừng gọi một lúc",
+      "chapter": "technique",
+      "body": "Thanh toán sập hẳn. Dù có timeout, mỗi lệnh gọi vẫn phí 800 ms để phát hiện ra điều đó. Một [[circuit breaker]] (cầu dao) theo dõi lỗi: vượt một ngưỡng, nó **mở** và cho lệnh gọi thất bại ngay lập tức, không cần thử.\n\nCứ 30 giây nó cho một lệnh gọi thử đi qua (**nửa mở**, tín hiệu xanh). Nếu thành công, nó đóng lại.",
+      "callout": {
+        "kind": "insight",
+        "text": "Giống cầu dao trong nhà bạn: nó nhảy để bảo vệ phần còn lại của hệ thống, và bạn bật lại khi lỗi đã được sửa."
+      },
+      "changes": [
+        "- Thanh toán sập",
+        "+ Circuit breaker: MỞ",
+        "~ Lệnh gọi lỗi mất 1 ms, không phải 800 ms"
+      ],
+      "metrics": {
+        "success": "88%",
+        "p99": "25 ms",
+        "payLoad": "nghỉ ngơi",
+        "threads": "6 / 200 bận"
+      },
+      "overrides": {
+        "pay-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Đóng",
+      "title": "Nửa mở, rồi đóng",
+      "chapter": "solution",
+      "body": "Thanh toán hồi phục. Lệnh gọi thử kế tiếp thành công, nên cầu dao đóng và lưu lượng chảy lại, từ từ, để dịch vụ không bị dồn ngập ngay khi vừa trở lại.\n\nTrong lúc đó, các đơn “chờ thanh toán” được trừ tiền từ một hàng đợi. Không đơn nào bị mất, và phần còn lại của trang chưa từng sập.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các thư viện như resilience4j và Polly, và service mesh như Envoy/Istio, cung cấp sẵn timeout, thử lại và cầu dao."
+      },
+      "changes": [
+        "+ Thanh toán đã hồi phục",
+        "~ Cầu dao NỬA MỞ → ĐÓNG",
+        "~ Đơn đang chờ đã được trừ tiền"
+      ],
+      "metrics": {
+        "success": "99%",
+        "p99": "180 ms",
+        "payLoad": "1×",
+        "threads": "30 / 200 bận"
+      },
+      "overrides": {
+        "pay-3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Idempotency",
+      "title": "Thử lại không được trừ tiền hai lần",
+      "chapter": "technique",
+      "body": "Một trường hợp hiểm: thanh toán đã trừ tiền thẻ, nhưng phản hồi bị mất trên đường về. Dịch vụ đơn hàng bị timeout và thử lại, và khách hàng bị trừ tiền **hai lần**.\n\nCách sửa: gửi một [[khóa idempotency]] (một id duy nhất cho mỗi đơn) kèm mỗi lần thử. Thanh toán ghi nhớ kết quả của từng khóa và trả lại kết quả đó cho các bản trùng, thay vì trừ tiền lần nữa.",
+      "callout": {
+        "kind": "insight",
+        "text": "Mọi thao tác có thể được thử lại đều phải idempotent: làm hai lần có tác dụng như làm một lần."
+      },
+      "changes": [
+        "+ Idempotency-Key trên lệnh gọi thanh toán",
+        "~ Lần thử trùng trả về kết quả đã lưu"
+      ],
+      "metrics": {
+        "success": "99%",
+        "p99": "180 ms",
+        "payLoad": "1×",
+        "threads": "30 / 200 bận"
+      },
+      "overrides": {
+        "ob-2": {
+          "effect": "ants"
+        },
+        "pay-3": {
+          "visible": false
+        },
+        "bp-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Deadline",
+      "title": "Chuyển tiếp deadline",
+      "chapter": "technique",
+      "body": "Trình duyệt của người mua bỏ cuộc sau 2 giây. Nhưng nếu dịch vụ đơn hàng đã tiêu 1,8 s, thì thanh toán bắt đầu thêm 800 ms việc mới là vô ích: chẳng ai thấy câu trả lời.\n\nVì vậy mỗi yêu cầu mang theo một [[deadline]]: “trả lời trước 12:00:02.000”. Mỗi dịch vụ kiểm tra thời gian còn lại và chuyển tiếp phần ngân sách còn lại; nếu đã hết, nó dừng ngay.",
+      "callout": {
+        "kind": "tip",
+        "text": "gRPC tự động truyền deadline. Với HTTP, hãy truyền thời gian còn lại trong một header."
+      },
+      "changes": [
+        "+ Deadline đi kèm mỗi yêu cầu",
+        "~ Không bắt đầu việc nào không kịp xong"
+      ],
+      "metrics": {
+        "success": "99%",
+        "p99": "180 ms",
+        "payLoad": "1×",
+        "threads": "28 / 200 bận"
+      },
+      "overrides": {
+        "order-7": {
+          "visible": false
+        },
+        "pay-3": {
+          "visible": false
+        },
+        "ob-2": {
+          "visible": false
+        },
+        "bp-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Bulkhead",
+      "title": "Bulkhead: các pool riêng",
+      "chapter": "technique",
+      "body": "Nhớ bước 1, khi thanh toán chậm ngốn hết 200 thread? Dịch vụ đơn hàng cũng có thể tự bảo vệ bằng cách cho mỗi phụ thuộc một pool riêng: chẳng hạn 40 thread cho thanh toán, 40 cho kho, phần còn lại cho mọi thứ khác.\n\nGiờ khi thanh toán chậm, chỉ 40 thread của nó bị đầy. Duyệt hàng, tìm kiếm và giỏ hàng vẫn chạy. Giống các khoang kín nước của con tàu: mẫu [[bulkhead]].",
+      "callout": {
+        "kind": "insight",
+        "text": "Timeout giới hạn một lệnh gọi có thể làm hại bạn bao lâu; bulkhead giới hạn bao nhiêu lệnh gọi có thể làm vậy."
+      },
+      "changes": [
+        "+ Pool riêng cho mỗi phụ thuộc",
+        "~ Thanh toán chậm chỉ làm đầy 40 thread của nó",
+        "~ Phần còn lại của trang không bị ảnh hưởng"
+      ],
+      "metrics": {
+        "success": "92%",
+        "p99": "820 ms",
+        "payLoad": "1×",
+        "threads": "40 / 40 thanh toán · phần còn lại trống"
+      },
+      "overrides": {
+        "order-7": {
+          "visible": false
+        },
+        "pay-3": {
+          "visible": false
+        },
+        "br-2": {
+          "visible": false
+        },
+        "ob-2": {
+          "visible": false
+        },
+        "bp-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Mọi lệnh gọi từ xa đều cần **timeout** và **phương án dự phòng**.\n• **Thử lại** lỗi thoáng qua, với **exponential backoff, jitter** và giới hạn.\n• **Circuit breaker** ngừng dồn dập gọi một dịch vụ đang sập.\n• Thao tác được thử lại phải **idempotent**.\n• Truyền **deadline**; cô lập phụ thuộc bằng **bulkhead**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Khả năng quan sát**: ngay từ đầu, làm sao bạn biết được thanh toán đang chậm."
+      },
+      "changes": [],
+      "metrics": {
+        "success": "99%",
+        "p99": "180 ms",
+        "payLoad": "1×",
+        "threads": "30 / 200 bận"
+      },
+      "overrides": {
+        "order-7": {
+          "emphasis": true
+        },
+        "pay-3": {
+          "emphasis": true
+        },
+        "br-2": {
+          "emphasis": true
+        },
+        "ob-2": {
+          "emphasis": true
+        },
+        "bp-2": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

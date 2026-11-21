@@ -1,0 +1,1012 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "sum",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 570,
+          "y": -529
+        },
+        "width": 371,
+        "height": 159,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "sum-text",
+        "type": "text",
+        "title": "WHERE THE TIME WENT\nDNS lookup           20 ms\nTCP + TLS handshake  60 ms\nrequest + server     55 ms\ndownload             20 ms\n→ total             155 ms\n# 130 ms of it is waiting on the network",
+        "position": {
+          "x": 570,
+          "y": -529
+        },
+        "width": 347,
+        "height": 139,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "sum"
+      },
+      {
+        "id": "dev",
+        "type": "process",
+        "title": "you",
+        "description": "https://shop.example",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 224,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dev-2",
+        "type": "process",
+        "title": "you",
+        "description": "✓ page ready · 155 ms",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dev-3",
+        "type": "process",
+        "title": "you",
+        "description": "40 files · 1 connection",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dev-4",
+        "type": "process",
+        "title": "you · Sydney",
+        "description": "https://shop.example",
+        "position": {
+          "x": 0,
+          "y": -572
+        },
+        "width": 224,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dns",
+        "type": "process",
+        "title": "DNS",
+        "description": "resolver · → 203.0.113.7",
+        "position": {
+          "x": 0,
+          "y": 22
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dns-2",
+        "type": "process",
+        "title": "DNS",
+        "description": "resolver",
+        "position": {
+          "x": 0,
+          "y": 22
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web",
+        "type": "process",
+        "title": "Web Server",
+        "position": {
+          "x": 220,
+          "y": -22
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-2",
+        "type": "process",
+        "title": "Web Server",
+        "description": "CPU 30%",
+        "position": {
+          "x": 220,
+          "y": -22
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-3",
+        "type": "process",
+        "title": "Web Server",
+        "description": "CPU 35%",
+        "position": {
+          "x": 220,
+          "y": -22
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-4",
+        "type": "process",
+        "title": "Web Server",
+        "description": "Virginia",
+        "position": {
+          "x": 220,
+          "y": -22
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "database",
+        "position": {
+          "x": 220,
+          "y": 264
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "database",
+        "description": "400 ms · scanning",
+        "position": {
+          "x": 220,
+          "y": 264
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "q",
+        "from": "dev",
+        "to": "dns",
+        "label": "where is shop.example?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "q-2",
+        "from": "dev",
+        "to": "dns-2",
+        "label": "cached · 5 min",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "q-3",
+        "from": "dev-2",
+        "to": "dns-2",
+        "label": "cached · 5 min",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "q-4",
+        "from": "dev-3",
+        "to": "dns-2",
+        "label": "cached · 5 min",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "q-5",
+        "from": "dev-4",
+        "to": "dns-2",
+        "label": "cached · 5 min",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "q-6",
+        "from": "dev-2",
+        "to": "dns-2",
+        "label": "20 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "h",
+        "from": "dev",
+        "to": "web",
+        "label": "TCP + TLS handshake",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "h-2",
+        "from": "dev",
+        "to": "web-2",
+        "label": "GET /products",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "h-3",
+        "from": "dev-2",
+        "to": "web-2",
+        "label": "HTML · 120 KB",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "h-4",
+        "from": "dev-3",
+        "to": "web-3",
+        "label": "HTTP/2 · many requests at once",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 1.2,
+        "effectCount": 6
+      },
+      {
+        "id": "h-5",
+        "from": "dev-4",
+        "to": "web-4",
+        "label": "≈ 200 ms per round trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.55,
+        "effectCount": 1
+      },
+      {
+        "id": "h-6",
+        "from": "dev-2",
+        "to": "web",
+        "label": "60 + 55 + 20 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "s",
+        "from": "web-2",
+        "to": "db",
+        "label": "SELECT … FROM products",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "s-2",
+        "from": "web-3",
+        "to": "db",
+        "label": "SELECT … FROM products",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "s-3",
+        "from": "web-2",
+        "to": "db-2",
+        "label": "ORDER BY score · 400 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "s-4",
+        "from": "web-4",
+        "to": "db",
+        "label": "SELECT … FROM products",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.55,
+        "effectCount": 1
+      },
+      {
+        "id": "s-5",
+        "from": "web",
+        "to": "db",
+        "label": "15 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "How a Request Travels",
+    "summary": "Follow one page load hop by hop — and find out where the time really goes.",
+    "minutes": 10,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "dns",
+        "label": "DNS lookup"
+      },
+      {
+        "id": "connect",
+        "label": "Connect"
+      },
+      {
+        "id": "request",
+        "label": "Request + server"
+      },
+      {
+        "id": "download",
+        "label": "Download"
+      },
+      {
+        "id": "total",
+        "label": "Total"
+      }
+    ],
+    "goals": [
+      {
+        "text": "What DNS does and why it is cached",
+        "step": "s2"
+      },
+      {
+        "text": "Why a connection costs round trips",
+        "step": "s3"
+      },
+      {
+        "text": "The path: browser → server → database → back",
+        "step": "s5"
+      },
+      {
+        "text": "Where page-load time actually goes",
+        "step": "s7"
+      },
+      {
+        "text": "Cases: a slow query and a distant user",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "dev": {
+      "until": "s9"
+    },
+    "dev-2": {
+      "from": "s6"
+    },
+    "dev-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dev-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dns": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dns-2": {
+      "from": "s3"
+    },
+    "web": {
+      "from": "s3"
+    },
+    "web-2": {
+      "from": "s4",
+      "until": "s9"
+    },
+    "web-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "web-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "db": {
+      "from": "s5"
+    },
+    "db-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sum": {
+      "from": "s10"
+    },
+    "sum-text": {
+      "from": "s10"
+    },
+    "q": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-2": {
+      "from": "s3",
+      "until": "s9"
+    },
+    "q-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-6": {
+      "from": "s10"
+    },
+    "h": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "h-2": {
+      "from": "s4",
+      "until": "s9"
+    },
+    "h-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "h-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "h-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "h-6": {
+      "from": "s10"
+    },
+    "s": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "s-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "s-5": {
+      "from": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Hit Enter",
+      "title": "Users say the shop feels slow",
+      "chapter": "problem",
+      "body": "Before you can make something faster, you need to know where the time goes. So let’s follow a single page load.\n\nYou type `shop.example` and press Enter. About a sixth of a second later the page appears. A lot happens in between.",
+      "callout": {
+        "kind": "insight",
+        "text": "Every web request is a conversation between machines. Each step costs time, and the costs add up."
+      },
+      "changes": [],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Find address",
+      "title": "Find the address (DNS)",
+      "chapter": "technique",
+      "body": "Networks route by numeric IP address, not by name. So the browser first asks a [[DNS]] resolver: *where is shop.example?*\n\nThe answer — `203.0.113.7` — comes back in about 20 ms.",
+      "callout": {
+        "kind": "tip",
+        "text": "Answers are cached for a time-to-live (TTL). For the next few minutes, repeat visits skip this step entirely."
+      },
+      "changes": [
+        "+ DNS resolver",
+        "+ Lookup: 20 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "total": "20 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Connect",
+      "title": "Open a connection",
+      "chapter": "technique",
+      "body": "Now the browser opens a connection to `203.0.113.7`. A TCP handshake agrees to talk; a TLS handshake sets up encryption. Each needs a [[round trip]] — there and back.\n\nHere a round trip takes 30 ms, so connecting costs 60 ms before a single byte of the page is requested.",
+      "callout": {
+        "kind": "insight",
+        "text": "Round-trip time (RTT) is set by distance and the network, not by how fast your server is."
+      },
+      "changes": [
+        "+ Web server",
+        "~ DNS answer cached",
+        "+ Handshake: 2 round trips = 60 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "total": "80 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Request",
+      "title": "Send the request",
+      "chapter": "technique",
+      "body": "Over the open connection the browser sends `GET /products`. The server parses it, checks the session and runs your code.\n\nThat costs one more round trip plus ~10 ms of server work.",
+      "changes": [
+        "+ Request: 1 round trip + 10 ms server time"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "40 ms",
+        "total": "120 ms"
+      },
+      "overrides": {
+        "web": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Fetch data",
+      "title": "The server asks the database",
+      "chapter": "technique",
+      "body": "The products don’t live in the web server — they live in a [[database]]. The server sends a query and waits for the rows to come back.\n\nWatch a request travel all the way in and the response all the way out.",
+      "callout": {
+        "kind": "tip",
+        "text": "Keeping the server stateless and the data in a database is what later lets us run many servers. (See Scaling.)"
+      },
+      "changes": [
+        "+ Database",
+        "+ Query: 15 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "55 ms",
+        "total": "135 ms"
+      },
+      "overrides": {
+        "web": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Response",
+      "title": "The response comes home",
+      "chapter": "solution",
+      "body": "The server turns rows into HTML and sends it back; downloading it takes another 20 ms. The browser renders the page — **155 ms** after you pressed Enter.\n\nThen it notices images and stylesheets in the page and fires off more requests. Reusing the open connection saves them the handshake.",
+      "changes": [
+        "+ Download: 20 ms",
+        "~ Page ready after 155 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "55 ms",
+        "download": "20 ms",
+        "total": "155 ms"
+      },
+      "overrides": {
+        "dev": {
+          "visible": false
+        },
+        "web": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "h-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "More files",
+      "title": "One page, forty more requests",
+      "chapter": "technique",
+      "body": "The HTML is only the start. It references images, stylesheets, scripts and fonts — about **40 more files** — and the browser fetches them all.\n\nWith old HTTP/1.1 each connection carried one request at a time, so browsers opened ~6 connections and queued the rest. [[HTTP/2]] sends them all at once over the single connection we already opened.",
+      "callout": {
+        "kind": "tip",
+        "text": "Fewer, smaller files still help: bundle scripts, compress text (gzip/brotli), use modern image formats, and lazy-load what’s below the fold."
+      },
+      "changes": [
+        "+ 40 more requests: images, CSS, JS, fonts",
+        "~ All multiplexed over one HTTP/2 connection",
+        "~ Fully loaded after 275 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "55 ms",
+        "download": "140 ms",
+        "total": "275 ms"
+      },
+      "overrides": {
+        "dev": {
+          "visible": false
+        },
+        "dev-2": {
+          "visible": false
+        },
+        "web": {
+          "visible": false
+        },
+        "web-2": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "h-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Slow query",
+      "title": "Case: one slow query",
+      "chapter": "problem",
+      "body": "A new “recommended for you” box ships. Its query sorts every product by a score on each page view, and the database now takes **400 ms** to answer.\n\nSame network, same handshakes — but the page jumps from 155 ms to over half a second. Watch requests wait at the database.",
+      "callout": {
+        "kind": "insight",
+        "text": "Measure before optimising. Here the network is fine; the fix is in the database (see the Indexes lesson)."
+      },
+      "changes": [
+        "+ “Recommended” query on every page",
+        "~ Database time 15 → 400 ms",
+        "~ Total 155 → 540 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "440 ms",
+        "download": "20 ms",
+        "total": "540 ms"
+      },
+      "overrides": {
+        "dev": {
+          "emphasis": true
+        },
+        "dev-2": {
+          "visible": false
+        },
+        "web": {
+          "visible": false
+        },
+        "web-2": {
+          "emphasis": true
+        },
+        "db": {
+          "visible": false
+        },
+        "q-2": {
+          "emphasis": true
+        },
+        "h-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Far away",
+      "title": "Case: a user in Sydney",
+      "chapter": "problem",
+      "body": "Back to the fast query. Now the same page is opened in Sydney, while the server is in Virginia: every round trip takes about **200 ms** instead of 30.\n\nTwo handshake round trips plus the request round trip cost 600 ms before the page even downloads. Same server, same code — over 4× slower.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cut round trips (TLS 1.3, HTTP/3, keep connections open) and move content closer to users (CDNs, regions — Module 02)."
+      },
+      "changes": [
+        "~ User in Sydney · 200 ms per round trip",
+        "~ Connect 60 → 400 ms",
+        "~ Total 155 → 705 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "400 ms",
+        "request": "225 ms",
+        "download": "60 ms",
+        "total": "705 ms"
+      },
+      "overrides": {
+        "dev-2": {
+          "visible": false
+        },
+        "web": {
+          "visible": false
+        },
+        "db": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Recap",
+      "title": "Where the time went",
+      "chapter": "recap",
+      "body": "Of 155 ms, only about 25 ms was the server and database actually working. The other **~130 ms** was messages crossing the network.\n\n• **DNS** turns names into addresses; answers are cached.\n• Connections cost **round trips** — reuse them.\n• Server code is often the smallest slice of latency — unless a **slow query** sneaks in.\n• **Distance** multiplies every round trip.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Latency & Throughput** — what happens to that 155 ms when thousands of users arrive at once."
+      },
+      "changes": [],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "55 ms",
+        "download": "20 ms",
+        "total": "155 ms"
+      },
+      "overrides": {
+        "dev-2": {
+          "emphasis": true
+        },
+        "web": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

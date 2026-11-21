@@ -1,0 +1,1536 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "bbz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 498,
+          "y": -352
+        },
+        "width": 317,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "bbz-label",
+        "type": "text",
+        "title": "SCRIPT · EMPTY",
+        "position": {
+          "x": 411,
+          "y": -391
+        },
+        "width": 123,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "bbz"
+      },
+      {
+        "id": "ubz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -449,
+          "y": -351
+        },
+        "width": 411,
+        "height": 165,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "ubz-label",
+        "type": "text",
+        "title": "USER · 8 TOKENS",
+        "position": {
+          "x": -579,
+          "y": -413
+        },
+        "width": 131,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "ubz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 918,
+          "y": -606
+        },
+        "width": 379,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "LIMIT: 100 PER MINUTE\nfixed window     resets at :00\n⚠ 100 at 0:59 + 100 at 1:00 = 200 in 2 s\nsliding window   rolling last 60 s\ntoken bucket     burst ≤ 100, then refill\n→ bursts allowed, average capped",
+        "position": {
+          "x": 918,
+          "y": -606
+        },
+        "width": 355,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "real users",
+        "position": {
+          "x": -192,
+          "y": -640
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "Acme Corp · 10,000 users",
+        "position": {
+          "x": -192,
+          "y": -640
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "launch day · ×5",
+        "position": {
+          "x": -192,
+          "y": -640
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot",
+        "type": "process",
+        "title": "runaway script",
+        "description": "5,000 req/s",
+        "position": {
+          "x": 256,
+          "y": -640
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-2",
+        "type": "process",
+        "title": "runaway script",
+        "description": "✓ backing off · 10 req/s",
+        "position": {
+          "x": 256,
+          "y": -640
+        },
+        "width": 220,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-3",
+        "type": "process",
+        "title": "runaway script",
+        "position": {
+          "x": 256,
+          "y": -640
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api",
+        "type": "process",
+        "title": "API",
+        "description": "⚠ mostly serving one client · CPU 99%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-2",
+        "type": "process",
+        "title": "API",
+        "description": "CPU 45%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-3",
+        "type": "process",
+        "title": "API",
+        "description": "CPU 42%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-4",
+        "type": "process",
+        "title": "API",
+        "description": "CPU 55%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-5",
+        "type": "process",
+        "title": "API",
+        "description": "CPU 82%",
+        "position": {
+          "x": 0,
+          "y": 96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "Gateway",
+        "description": "rate limiter · limit: 10 req/s per client",
+        "position": {
+          "x": 0,
+          "y": -288
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-2",
+        "type": "process",
+        "title": "Gateway",
+        "description": "rate limiter",
+        "position": {
+          "x": -192,
+          "y": -288
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-3",
+        "type": "process",
+        "title": "Gateway",
+        "description": "rate limiter · tenant Acme: 2,000 req/s",
+        "position": {
+          "x": -192,
+          "y": -288
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-4",
+        "type": "process",
+        "title": "Gateway",
+        "description": "rate limiter · shedding background work",
+        "position": {
+          "x": -192,
+          "y": -288
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ubt",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": -538,
+          "y": -333
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#9fd28f",
+        "backgroundColor": "#202a1d",
+        "borderColor": "#9fd28f",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "ubz"
+      },
+      {
+        "id": "gw2",
+        "type": "process",
+        "title": "Gateway",
+        "description": "rate limiter · limit: 10 req/s per client",
+        "position": {
+          "x": 256,
+          "y": -288
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw2-2",
+        "type": "process",
+        "title": "Gateway",
+        "description": "rate limiter · Retry-After: 30",
+        "position": {
+          "x": 256,
+          "y": -288
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw2-3",
+        "type": "process",
+        "title": "Gateway",
+        "description": "rate limiter",
+        "position": {
+          "x": 256,
+          "y": -288
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Gauge",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "redis",
+        "type": "process",
+        "title": "counters",
+        "position": {
+          "x": 32,
+          "y": -288
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "api",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ba",
+        "from": "bot",
+        "to": "api",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "ug",
+        "from": "users",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ug-2",
+        "from": "users",
+        "to": "gw-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ug-3",
+        "from": "users-2",
+        "to": "gw-3",
+        "label": "over tenant quota → 429",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "ug-4",
+        "from": "users-3",
+        "to": "gw-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "bg",
+        "from": "bot",
+        "to": "gw",
+        "label": "429 Too Many Requests",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.82,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "bg-2",
+        "from": "bot",
+        "to": "gw2",
+        "label": "429 Too Many Requests",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "bg-3",
+        "from": "bot-2",
+        "to": "gw2-2",
+        "label": "within limit",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bg-4",
+        "from": "bot-3",
+        "to": "gw2",
+        "label": "within limit",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bg-5",
+        "from": "bot-3",
+        "to": "gw2-3",
+        "label": "within limit",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bg-6",
+        "from": "bot-2",
+        "to": "gw2",
+        "label": "within limit",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ga",
+        "from": "gw",
+        "to": "api-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ga-2",
+        "from": "gw-2",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ga-3",
+        "from": "gw-3",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "ga-4",
+        "from": "gw-4",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ga2",
+        "from": "gw2",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "ga2-2",
+        "from": "gw2-2",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ga2-3",
+        "from": "gw2",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ga2-4",
+        "from": "gw2-3",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "gr",
+        "from": "gw-2",
+        "to": "redis",
+        "label": "INCR",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "gr-2",
+        "from": "gw-3",
+        "to": "redis",
+        "label": "INCR",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "gr-3",
+        "from": "gw-4",
+        "to": "redis",
+        "label": "INCR",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "none"
+      },
+      {
+        "id": "g2r",
+        "from": "gw2",
+        "to": "redis",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "g2r-2",
+        "from": "gw2-2",
+        "to": "redis",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "g2r-3",
+        "from": "gw2-3",
+        "to": "redis",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ul2",
+        "from": "users-3",
+        "to": "gw-4",
+        "label": "background · dropped first",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.22,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.5
+      }
+    ]
+  },
+  "meta": {
+    "title": "Rate Limiting",
+    "summary": "Give every client a fair budget, so one runaway script can’t take everyone down.",
+    "minutes": 10,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "abuser",
+        "label": "Runaway script"
+      },
+      {
+        "id": "served",
+        "label": "Real users served"
+      },
+      {
+        "id": "apiCpu",
+        "label": "API CPU"
+      },
+      {
+        "id": "limited",
+        "label": "Rejected (429)"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why one client can starve everyone",
+        "step": "s1"
+      },
+      {
+        "text": "Token buckets and limiting algorithms",
+        "step": "s3"
+      },
+      {
+        "text": "Limits across many gateways",
+        "step": "s5"
+      },
+      {
+        "text": "429s, back-off and per-tenant quotas",
+        "step": "s7"
+      },
+      {
+        "text": "Load shedding under global overload",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "users-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "users-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bot": {
+      "until": "s6"
+    },
+    "bot-2": {
+      "from": "s6"
+    },
+    "bot-3": {
+      "from": "s7",
+      "until": "s9"
+    },
+    "api": {
+      "until": "s2"
+    },
+    "api-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "api-3": {
+      "from": "s5"
+    },
+    "api-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "api-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "gw": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "gw-2": {
+      "from": "s5"
+    },
+    "gw-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gw-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ubz": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "ubt": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "bbz": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "gw2": {
+      "from": "s5"
+    },
+    "gw2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gw2-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "redis": {
+      "from": "s5"
+    },
+    "bbz-label": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "ubz-label": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua": {
+      "until": "s2"
+    },
+    "ba": {
+      "until": "s2"
+    },
+    "ug": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "ug-2": {
+      "from": "s5"
+    },
+    "ug-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ug-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bg": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "bg-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bg-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bg-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bg-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bg-6": {
+      "from": "s9"
+    },
+    "ga": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "ga-2": {
+      "from": "s5"
+    },
+    "ga-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ga-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ga2": {
+      "from": "s5"
+    },
+    "ga2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ga2-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ga2-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "gr": {
+      "from": "s5"
+    },
+    "gr-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gr-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "g2r": {
+      "from": "s5"
+    },
+    "g2r-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "g2r-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ul2": {
+      "from": "s8",
+      "until": "s9"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Runaway",
+      "title": "One script, everyone suffers",
+      "chapter": "problem",
+      "body": "A customer’s script has a bug: it calls your API in a tight loop — 5,000 requests a second. The API servers spend almost all their time on it.\n\nReal users’ requests queue behind the flood and time out. Nobody attacked you; one client simply took more than its share.",
+      "callout": {
+        "kind": "warning",
+        "text": "Shared capacity needs a fairness rule. Without one, the noisiest client wins."
+      },
+      "changes": [],
+      "metrics": {
+        "abuser": "5,000 req/s",
+        "served": "61%",
+        "apiCpu": "99%",
+        "limited": "0/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Limit",
+      "title": "A rate limiter at the front door",
+      "chapter": "solution",
+      "body": "Put a [[rate limiter]] in the gateway in front of the API. Each client — identified by API key, user id or IP address — gets a budget, say 10 requests per second.\n\nRequests within budget pass through. The rest are rejected immediately with `429 Too Many Requests`, before they cost the API anything.",
+      "callout": {
+        "kind": "tip",
+        "text": "Rejecting early is cheap: the gateway answers in microseconds, and the API never sees the excess."
+      },
+      "changes": [
+        "+ Gateway with a rate limiter",
+        "~ Script limited to 10 req/s",
+        "~ API CPU 99% → 45%"
+      ],
+      "metrics": {
+        "abuser": "5,000 req/s",
+        "served": "99%",
+        "apiCpu": "45%",
+        "limited": "4,990/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Token bucket",
+      "title": "How it counts: the token bucket",
+      "chapter": "technique",
+      "body": "The most common algorithm is the [[token bucket]]. Each client has a bucket holding up to 10 tokens, refilled at 10 per second. Every request takes a token; an empty bucket means 429.\n\nA real user’s bucket stays mostly full (the green dots). The script empties its bucket instantly and stays empty.",
+      "callout": {
+        "kind": "insight",
+        "text": "Bucket size allows short bursts; the refill rate caps the long-run average. Two numbers, easy to explain."
+      },
+      "changes": [
+        "+ A bucket per client"
+      ],
+      "metrics": {
+        "abuser": "5,000 req/s",
+        "served": "99%",
+        "apiCpu": "45%",
+        "limited": "4,990/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Algorithms",
+      "title": "Windows vs buckets",
+      "chapter": "technique",
+      "body": "A simpler **fixed window** counts requests per calendar minute and resets at :00. Easy — but a client can send a full minute’s budget at 12:00:59 and again at 12:01:00: double the limit in two seconds.\n\nA **sliding window** smooths that edge; a **token bucket** allows controlled bursts. Most API gateways use one of the latter two.",
+      "callout": {
+        "kind": "tip",
+        "text": "Need a steady outflow instead (e.g. to a fragile partner API)? A leaky bucket queues requests and releases them at a fixed pace."
+      },
+      "changes": [],
+      "metrics": {
+        "abuser": "5,000 req/s",
+        "served": "99%",
+        "apiCpu": "45%",
+        "limited": "4,990/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Many gateways",
+      "title": "Many gateways, one budget",
+      "chapter": "problem",
+      "body": "One gateway isn’t enough, so you run several behind a load balancer. If each counts on its own, a client spread across 10 gateways gets 10× its limit.\n\nSo gateways keep the counters in a shared, fast store (often Redis): each request does an atomic increment and checks the total.",
+      "callout": {
+        "kind": "tip",
+        "text": "The shared store adds ~1 ms per request. Some systems trade a little accuracy for speed by syncing local counters every second."
+      },
+      "changes": [
+        "+ Second gateway",
+        "+ Shared counter store",
+        "- Per-client buckets now live in the store"
+      ],
+      "metrics": {
+        "abuser": "5,000 req/s",
+        "served": "99%",
+        "apiCpu": "45%",
+        "limited": "4,990/s"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Back off",
+      "title": "Tell clients how to behave",
+      "chapter": "technique",
+      "body": "A good 429 says when to come back: a `Retry-After: 30` header, plus headers showing the limit and what’s left. Well-behaved clients slow down and retry later.\n\nThe script’s owner fixes their loop. Now it uses its fair share and nothing more.",
+      "callout": {
+        "kind": "tip",
+        "text": "Publish your limits in the API docs, and offer higher tiers for customers who genuinely need more."
+      },
+      "changes": [
+        "+ Retry-After and RateLimit headers",
+        "~ Script backs off to 10 req/s"
+      ],
+      "metrics": {
+        "abuser": "10 req/s",
+        "served": "100%",
+        "apiCpu": "38%",
+        "limited": "0/s"
+      },
+      "overrides": {
+        "gw2": {
+          "visible": false
+        },
+        "ga2": {
+          "visible": false
+        },
+        "g2r": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Tenants",
+      "title": "Case: one customer’s 10,000 users",
+      "chapter": "problem",
+      "body": "You sell your API to companies. One customer runs a nightly import with 10,000 well-behaved users — each under their personal limit, but together using 70% of your capacity. Other customers slow down every night.\n\nPer-user limits can’t see this. Add limits per **tenant** (customer account), sized by their plan, on top of per-user limits.",
+      "callout": {
+        "kind": "tip",
+        "text": "Layer limits: per user, per tenant, per endpoint (expensive endpoints get lower limits), and a global ceiling."
+      },
+      "changes": [
+        "+ Per-tenant quota (by plan)",
+        "~ Big import capped at its plan’s share"
+      ],
+      "metrics": {
+        "served": "99%",
+        "apiCpu": "55%",
+        "limited": "1,200/s"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "bot-2": {
+          "visible": false
+        },
+        "api-3": {
+          "visible": false
+        },
+        "gw-2": {
+          "visible": false
+        },
+        "gw2": {
+          "emphasis": true
+        },
+        "ug-2": {
+          "visible": false
+        },
+        "ga-2": {
+          "visible": false
+        },
+        "ga2": {
+          "visible": false
+        },
+        "gr": {
+          "visible": false
+        },
+        "g2r": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Shedding",
+      "title": "When everyone spikes: shed load",
+      "chapter": "technique",
+      "body": "Rate limits stop one client hogging capacity. But on launch day *everyone* arrives at once and the total is still more than you can serve.\n\nThen [[load shedding]] decides what to drop: background work like prefetching, recommendations and analytics (amber) is rejected first, so logins and checkouts keep working.",
+      "callout": {
+        "kind": "insight",
+        "text": "Failing some requests on purpose beats failing all of them by accident."
+      },
+      "changes": [
+        "~ Real users ×5",
+        "+ Low-priority requests shed at the gateway",
+        "~ Checkouts still 100%"
+      ],
+      "metrics": {
+        "served": "100%",
+        "apiCpu": "82%",
+        "limited": "2,000 shed/s"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "bot-2": {
+          "visible": false
+        },
+        "api-3": {
+          "visible": false
+        },
+        "gw-2": {
+          "visible": false
+        },
+        "gw2": {
+          "visible": false
+        },
+        "ug-2": {
+          "visible": false
+        },
+        "ga-2": {
+          "visible": false
+        },
+        "ga2": {
+          "visible": false
+        },
+        "gr": {
+          "visible": false
+        },
+        "g2r": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Give each client a **budget**; reject the excess early with **429**.\n• **Token buckets** allow short bursts and cap the average rate.\n• Across many gateways, keep counters in a **shared store**.\n• Layer limits: per **user**, per **tenant**, per endpoint.\n• Under global overload, **shed** low-priority work first.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Timeouts & Retries** — what to do when the service you’re calling is the one in trouble."
+      },
+      "changes": [],
+      "metrics": {
+        "abuser": "10 req/s",
+        "served": "100%",
+        "apiCpu": "38%",
+        "limited": "0/s"
+      },
+      "overrides": {
+        "ga2": {
+          "effect": "comet",
+          "emphasis": true
+        },
+        "users": {
+          "emphasis": true
+        },
+        "bot-2": {
+          "emphasis": true
+        },
+        "api-3": {
+          "emphasis": true
+        },
+        "gw-2": {
+          "emphasis": true
+        },
+        "gw2": {
+          "emphasis": true
+        },
+        "ug-2": {
+          "emphasis": true
+        },
+        "ga-2": {
+          "emphasis": true
+        },
+        "gr": {
+          "emphasis": true
+        },
+        "g2r": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

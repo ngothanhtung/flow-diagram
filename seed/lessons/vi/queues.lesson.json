@@ -1,0 +1,2497 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "mq-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 18
+        },
+        "width": 468,
+        "height": 144,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-6-label",
+        "type": "text",
+        "title": "HÀNG ĐỢI · 50.000 JOB · CŨ NHẤT 25 PHÚT",
+        "position": {
+          "x": -67,
+          "y": -33
+        },
+        "width": 314,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-6"
+      },
+      {
+        "id": "mq-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 18
+        },
+        "width": 468,
+        "height": 144,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-5-label",
+        "type": "text",
+        "title": "TOPIC · 4 PHÂN VÙNG THEO TÀI KHOẢN",
+        "position": {
+          "x": -86,
+          "y": -33
+        },
+        "width": 276,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-5"
+      },
+      {
+        "id": "mq-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 18
+        },
+        "width": 468,
+        "height": 144,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-4-label",
+        "type": "text",
+        "title": "HÀNG ĐỢI · SỰ KIỆN TÀI KHOẢN",
+        "position": {
+          "x": -109,
+          "y": -33
+        },
+        "width": 230,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-4"
+      },
+      {
+        "id": "mq-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 42,
+          "y": 18
+        },
+        "width": 552,
+        "height": 165,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-3-label",
+        "type": "text",
+        "title": "HÀNG ĐỢI · ĐANG RÚT CẠN",
+        "position": {
+          "x": -128,
+          "y": -44
+        },
+        "width": 192,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-3"
+      },
+      {
+        "id": "mq-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 18
+        },
+        "width": 468,
+        "height": 144,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-2-label",
+        "type": "text",
+        "title": "HÀNG ĐỢI · 1.200 JOB ĐANG CHỜ",
+        "position": {
+          "x": -105,
+          "y": -33
+        },
+        "width": 238,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-2"
+      },
+      {
+        "id": "mq",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 42,
+          "y": 18
+        },
+        "width": 552,
+        "height": 165,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-label",
+        "type": "text",
+        "title": "HÀNG ĐỢI · JOB VIDEO",
+        "position": {
+          "x": -139,
+          "y": -44
+        },
+        "width": 169,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 786,
+          "y": -622
+        },
+        "width": 388,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "XÁC NHẬN\n1. worker nhận job → bị ẩn, không bị xóa\n2. worker xong → ack → bị xóa\n3. không ack trong 60 s → hiện lại\n⚠ có thể chạy hai lần → làm job idempotent",
+        "position": {
+          "x": 786,
+          "y": -622
+        },
+        "width": 364,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "nhà sáng tạo tải lên",
+        "position": {
+          "x": 0,
+          "y": -648
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "nhà sáng tạo · ×10",
+        "position": {
+          "x": 0,
+          "y": -648
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "tăng vọt cả ngày",
+        "position": {
+          "x": 0,
+          "y": -648
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web",
+        "type": "process",
+        "title": "Máy chủ web",
+        "description": "chuyển mã · 30 s · CPU 96%",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-2",
+        "type": "process",
+        "title": "Máy chủ web",
+        "description": "✓ 202 Accepted · 80 ms",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-3",
+        "type": "process",
+        "title": "Máy chủ web",
+        "description": "✓ 202 Accepted · 85 ms",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-4",
+        "type": "process",
+        "title": "Máy chủ web",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-5",
+        "type": "process",
+        "title": "Máy chủ web",
+        "description": "503 · thử lại sau 60 s",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q",
+        "type": "process",
+        "title": "▮ ▮",
+        "position": {
+          "x": 202,
+          "y": 36
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "mq"
+      },
+      {
+        "id": "q-2",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 202,
+          "y": 36
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q-3",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮",
+        "position": {
+          "x": 202,
+          "y": 36
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "mq-3"
+      },
+      {
+        "id": "q-4",
+        "type": "process",
+        "title": "▮ ▮ ▮",
+        "position": {
+          "x": 202,
+          "y": 36
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": -144,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "nhịp đều",
+        "position": {
+          "x": -144,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-3",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": -216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-4",
+        "type": "process",
+        "title": "Worker",
+        "description": "“deleted” ✓",
+        "position": {
+          "x": -216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-5",
+        "type": "process",
+        "title": "Worker",
+        "description": "phân vùng 1",
+        "position": {
+          "x": -216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-6",
+        "type": "process",
+        "title": "Worker",
+        "description": "CPU 100%",
+        "position": {
+          "x": -216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": 144,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "nhịp đều",
+        "position": {
+          "x": 144,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-3",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": 216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-4",
+        "type": "process",
+        "title": "Worker",
+        "description": "⚠ “email changed” · trễ",
+        "position": {
+          "x": 216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-5",
+        "type": "process",
+        "title": "Worker",
+        "description": "phân vùng 2",
+        "position": {
+          "x": 216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-6",
+        "type": "process",
+        "title": "Worker",
+        "description": "CPU 100%",
+        "position": {
+          "x": 216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w4",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": -432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w4-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "phân vùng 0",
+        "position": {
+          "x": -432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w4-3",
+        "type": "process",
+        "title": "Worker",
+        "description": "CPU 100%",
+        "position": {
+          "x": -432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w3",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": 0,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w3-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": 0,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w5",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": 432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w5-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "phân vùng 3",
+        "position": {
+          "x": 432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w5-3",
+        "type": "process",
+        "title": "Worker",
+        "description": "CPU 100%",
+        "position": {
+          "x": 432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dlq",
+        "type": "process",
+        "title": "dead letter",
+        "position": {
+          "x": -540,
+          "y": 18
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Skull",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "uw",
+        "from": "users",
+        "to": "web",
+        "label": "tải lên … chờ 30 s",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.25
+      },
+      {
+        "id": "uw-2",
+        "from": "users",
+        "to": "web-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "uw-3",
+        "from": "users-2",
+        "to": "web-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "uw-4",
+        "from": "users-2",
+        "to": "web-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "uw-5",
+        "from": "users",
+        "to": "web-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "uw-6",
+        "from": "users-3",
+        "to": "web-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "wq",
+        "from": "web-2",
+        "to": "mq",
+        "label": "đưa job vào hàng đợi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "wq-2",
+        "from": "web-3",
+        "to": "mq-2",
+        "label": "đưa job vào hàng đợi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "wq-3",
+        "from": "web-4",
+        "to": "mq-3",
+        "label": "đưa job vào hàng đợi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "wq-4",
+        "from": "web-4",
+        "to": "mq",
+        "label": "đưa job vào hàng đợi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "wq-5",
+        "from": "web-4",
+        "to": "mq-4",
+        "label": "đưa job vào hàng đợi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "wq-6",
+        "from": "web-4",
+        "to": "mq-5",
+        "label": "đưa job vào hàng đợi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "wq-7",
+        "from": "web-5",
+        "to": "mq-6",
+        "label": "đưa job vào hàng đợi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "qw1",
+        "from": "mq",
+        "to": "w1",
+        "label": "lấy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-2",
+        "from": "mq-2",
+        "to": "w1-2",
+        "label": "lấy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-3",
+        "from": "mq-3",
+        "to": "w1-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw1-4",
+        "from": "mq",
+        "to": "w1-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-5",
+        "from": "mq-4",
+        "to": "w1-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-6",
+        "from": "mq-5",
+        "to": "w1-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-7",
+        "from": "mq-6",
+        "to": "w1-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2",
+        "from": "mq",
+        "to": "w2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-2",
+        "from": "mq-2",
+        "to": "w2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-3",
+        "from": "mq-3",
+        "to": "w2-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw2-4",
+        "from": "mq",
+        "to": "w2-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-5",
+        "from": "mq-4",
+        "to": "w2-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-6",
+        "from": "mq-5",
+        "to": "w2-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-7",
+        "from": "mq-6",
+        "to": "w2-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw4",
+        "from": "mq-3",
+        "to": "w4",
+        "label": "lấy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw4-2",
+        "from": "mq",
+        "to": "w4",
+        "label": "lấy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw4-3",
+        "from": "mq-4",
+        "to": "w4",
+        "label": "lấy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw4-4",
+        "from": "mq-5",
+        "to": "w4-2",
+        "label": "lấy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw4-5",
+        "from": "mq-6",
+        "to": "w4-3",
+        "label": "lấy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw3",
+        "from": "mq-3",
+        "to": "w3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw3-2",
+        "from": "mq-3",
+        "to": "w3-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw3-3",
+        "from": "mq-3",
+        "to": "w3-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "qw5",
+        "from": "mq-3",
+        "to": "w5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw5-2",
+        "from": "mq",
+        "to": "w5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw5-3",
+        "from": "mq-4",
+        "to": "w5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw5-4",
+        "from": "mq-5",
+        "to": "w5-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw5-5",
+        "from": "mq-6",
+        "to": "w5-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "dl",
+        "from": "mq",
+        "to": "dlq",
+        "label": "sau 3 lần thất bại",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.35,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6
+      },
+      {
+        "id": "dl-2",
+        "from": "mq",
+        "to": "dlq",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "none"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Hàng đợi tin nhắn",
+    "summary": "Trả lời ngay, làm việc chậm sau, và không bao giờ đánh rơi một job nào trên đường.",
+    "minutes": 12,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "respond",
+        "label": "Phản hồi upload"
+      },
+      {
+        "id": "backlog",
+        "label": "Tồn đọng"
+      },
+      {
+        "id": "workers",
+        "label": "Worker"
+      },
+      {
+        "id": "lost",
+        "label": "Job bị mất"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao việc chậm không nên nằm trong yêu cầu",
+        "step": "s1"
+      },
+      {
+        "text": "Producer, hàng đợi và consumer",
+        "step": "s2"
+      },
+      {
+        "text": "Hấp thụ đợt tăng đột biến thành việc tồn đọng",
+        "step": "s3"
+      },
+      {
+        "text": "Ack, thử lại và dead-letter queue",
+        "step": "s6"
+      },
+      {
+        "text": "Thứ tự, phân vùng và backpressure",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "users-2": {
+      "from": "s3",
+      "until": "s7"
+    },
+    "users-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "web": {
+      "until": "s2"
+    },
+    "web-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "web-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "web-4": {
+      "from": "s4"
+    },
+    "web-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "mq": {
+      "from": "s2"
+    },
+    "mq-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mq-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "mq-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "mq-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "mq-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "q": {
+      "from": "s2"
+    },
+    "q-2": {
+      "from": "s3",
+      "until": "s11"
+    },
+    "q-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "q-4": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "w1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "w1-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w1-3": {
+      "from": "s4"
+    },
+    "w1-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "w1-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "w1-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "w2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "w2-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w2-3": {
+      "from": "s4"
+    },
+    "w2-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "w2-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "w2-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "w4": {
+      "from": "s4"
+    },
+    "w4-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "w4-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "w3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "w3-2": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "w5": {
+      "from": "s4"
+    },
+    "w5-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "w5-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dlq": {
+      "from": "s7"
+    },
+    "mq-6-label": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "mq-5-label": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "mq-4-label": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "mq-3-label": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "mq-2-label": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mq-label": {
+      "from": "s2"
+    },
+    "card-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "uw": {
+      "until": "s2"
+    },
+    "uw-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "uw-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "uw-4": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "uw-5": {
+      "from": "s7"
+    },
+    "uw-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "wq": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wq-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wq-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "wq-4": {
+      "from": "s7"
+    },
+    "wq-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wq-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "wq-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "qw1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "qw1-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "qw1-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "qw1-4": {
+      "from": "s7"
+    },
+    "qw1-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw1-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "qw1-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "qw2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "qw2-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "qw2-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "qw2-4": {
+      "from": "s7"
+    },
+    "qw2-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw2-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "qw2-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "qw4": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "qw4-2": {
+      "from": "s7"
+    },
+    "qw4-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw4-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "qw4-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "qw3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "qw3-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "qw3-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "qw5": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "qw5-2": {
+      "from": "s7"
+    },
+    "qw5-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw5-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "qw5-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dl": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dl-2": {
+      "from": "s11"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Tải lên chậm",
+      "title": "Việc chậm nằm trong yêu cầu",
+      "chapter": "problem",
+      "body": "Nhà sáng tạo tải video lên, và mỗi video phải được chuyển mã sang nhiều kích thước: khoảng 30 giây việc nặng. Hiện tại máy chủ web làm việc đó *bên trong* yêu cầu tải lên.\n\nVậy là nhà sáng tạo nhìn vòng xoay tải suốt 30 s, nhiều yêu cầu bị quá thời gian, và trong lúc máy chủ nghiền video, mọi trang khác trên trang web cũng chậm theo.",
+      "callout": {
+        "kind": "warning",
+        "text": "Bất cứ thứ gì chậm, nặng hay không đáng tin nằm trong yêu cầu (video, email, báo cáo, lệnh gọi bên thứ ba) đều bắt người dùng phải chờ."
+      },
+      "changes": [],
+      "metrics": {
+        "respond": "30,0 s",
+        "workers": "0",
+        "lost": "25%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Thêm hàng đợi",
+      "title": "Đặt một hàng đợi ở giữa",
+      "chapter": "solution",
+      "body": "Giờ máy chủ web chỉ lưu tệp tải lên, đặt một thông điệp **job** nhỏ vào [[hàng đợi tin nhắn]] và trả lời ngay: “đang xử lý, chúng tôi sẽ báo bạn”.\n\nCác máy [[worker]] riêng lấy job khỏi hàng đợi và chuyển mã theo nhịp của chúng. Máy chủ web là **producer**; worker là **consumer**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các hàng đợi phổ biến: RabbitMQ, Amazon SQS, Google Pub/Sub và Kafka (một log cũng dùng được như hàng đợi)."
+      },
+      "changes": [
+        "+ Hàng đợi",
+        "+ 2 worker",
+        "~ Phản hồi tải lên 30 s → 80 ms"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "2 job",
+        "workers": "2",
+        "lost": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Đột biến",
+      "title": "Đợt tăng đột biến thành việc tồn đọng",
+      "chapter": "insight",
+      "body": "Một nhà sáng tạo lớn phát trực tiếp và lượt tải lên tăng gấp mười. Không có hàng đợi, đợt tăng đó đã đánh sập máy chủ web.\n\nGiờ tầng web vẫn nhanh (nó chỉ đưa vào hàng đợi) và job chỉ việc chờ đến lượt. Worker giữ nhịp đều và bắt kịp sau cơn cao điểm.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hàng đợi biến “quá nhiều việc ngay lúc này” thành “chờ lâu hơn một chút về sau”. Đây gọi là cân bằng tải theo thời gian (load levelling)."
+      },
+      "changes": [
+        "~ Lượt tải lên ×10",
+        "+ Tồn đọng tăng: 1.200 job",
+        "~ Phản hồi tải lên vẫn ~85 ms"
+      ],
+      "metrics": {
+        "respond": "85 ms",
+        "backlog": "1.200 job",
+        "workers": "2",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Thêm worker",
+      "title": "Thêm worker để rút cạn",
+      "chapter": "technique",
+      "body": "Cần bắt kịp nhanh hơn? Khởi động thêm worker. Tất cả cùng lấy từ một hàng đợi, và mỗi job chỉ đến đúng **một** worker: mẫu [[consumer cạnh tranh]].\n\nWorker không giữ trạng thái, nên thêm vào rất dễ, và nhiều nhóm tự động mở rộng chúng theo độ dài hàng đợi.",
+      "callout": {
+        "kind": "tip",
+        "text": "Producer và consumer giờ mở rộng độc lập: thêm máy chủ web cho lưu lượng, thêm worker cho xử lý."
+      },
+      "changes": [
+        "+ Thêm 3 worker",
+        "~ Tồn đọng 1.200 → 300 và đang giảm"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "300 job",
+        "workers": "5",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Sập",
+      "title": "Một worker chết giữa chừng",
+      "chapter": "problem",
+      "body": "Một worker sập giữa lúc chuyển mã. Nếu hàng đợi xóa mỗi job ngay khi giao đi, video đó sẽ biến mất luôn, và nhà sáng tạo chờ mãi.\n\nMáy móc sập, khởi động lại và bị thay thế liên tục. Hàng đợi phải giả định điều đó.",
+      "callout": {
+        "kind": "warning",
+        "text": "Giao một job không giống với hoàn thành nó."
+      },
+      "changes": [
+        "- Worker đã sập",
+        "- Các job đang làm bị mất"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "300 job",
+        "workers": "4",
+        "lost": "12"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Ack",
+      "title": "Xác nhận khi xong",
+      "chapter": "solution",
+      "body": "Cách sửa: một job chỉ bị *ẩn* khi đang ở trong tay một worker. Khi worker xong, nó gửi [[xác nhận]] (ack) và job bị xóa. Không có ack trong thời hạn? Job xuất hiện lại và một worker khác nhận nó.\n\nCái giá: giờ một job có thể chạy **hai lần** (chẳng hạn worker làm xong nhưng chết trước khi ack). Vì vậy job phải [[idempotent]], tức là lặp lại vẫn an toàn.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đây là giao “ít nhất một lần” (at-least-once), chuẩn chung của hàng đợi. Đúng một lần (exactly-once) rất khó; consumer idempotent cho ra cùng kết quả."
+      },
+      "changes": [
+        "+ Ack sau mỗi job",
+        "+ Job chưa ack được giao lại sau 60 s",
+        "~ Job bị mất 12 → 0"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "320 job",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Độc",
+      "title": "Thông điệp độc và dead-letter queue",
+      "chapter": "technique",
+      "body": "Một tệp tải lên bị hỏng. Mọi worker thử nó đều sập hoặc lỗi, job bị giao lại rồi lại lỗi, mãi mãi, lãng phí worker và chặn các job khác.\n\nVì vậy hàng đợi đếm số lần thử. Sau, chẳng hạn, 3 lần thất bại, thông điệp được chuyển sang [[dead-letter queue]] (DLQ) để người hoặc script kiểm tra.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đặt cảnh báo theo kích thước DLQ. Một dead-letter queue đang lớn dần thường là dấu hiệu đầu tiên của bug."
+      },
+      "changes": [
+        "- Worker sập đã bị gỡ",
+        "+ Dead-letter queue",
+        "~ Job lỗi bị gạt sang bên sau 3 lần thử"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "60 job",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "mq": {
+          "emphasis": true
+        },
+        "q": {
+          "emphasis": true
+        },
+        "q-2": {
+          "visible": false
+        },
+        "mq-label": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Thứ tự",
+      "title": "Tình huống: thông điệp sai thứ tự",
+      "chapter": "problem",
+      "body": "Một hàng đợi khác mang các sự kiện tài khoản: `created`, `email changed`, `deleted`. Với nhiều worker lấy song song, một worker chậm có thể xong “email changed” *sau khi* worker khác đã xử lý “deleted”.\n\nNhiều hàng đợi không bảo đảm thứ tự gì cả, và ngay cả loại có thứ tự cũng mất nó khi nhiều consumer làm song song.",
+      "callout": {
+        "kind": "warning",
+        "text": "Nếu tính đúng đắn phụ thuộc vào thứ tự, bạn phải thiết kế cho nó một cách rõ ràng."
+      },
+      "changes": [
+        "+ Sự kiện tài khoản: created → changed → deleted",
+        "- Được xử lý thành created → deleted → changed"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "60 job",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "w1-3": {
+          "visible": false
+        },
+        "w2-3": {
+          "visible": false
+        },
+        "dlq": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        },
+        "wq-4": {
+          "visible": false
+        },
+        "qw1-4": {
+          "visible": false
+        },
+        "qw2-4": {
+          "visible": false
+        },
+        "qw4-2": {
+          "visible": false
+        },
+        "qw5-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Phân vùng",
+      "title": "Thứ tự theo khóa nhờ phân vùng",
+      "chapter": "solution",
+      "body": "Các hệ thống như Kafka chia một topic thành nhiều [[phân vùng]] (partition). Thông điệp cùng khóa (chẳng hạn id tài khoản) luôn vào cùng một phân vùng, và mỗi phân vùng được một worker đọc theo thứ tự.\n\nNhờ vậy sự kiện của một tài khoản giữ đúng thứ tự, trong khi các tài khoản khác nhau vẫn được xử lý song song trên các phân vùng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Thứ tự được bảo đảm theo khóa, không phải toàn cục. Thứ tự toàn cục nghĩa là một consumer, và không có song song."
+      },
+      "changes": [
+        "+ 4 phân vùng, theo id tài khoản",
+        "~ Mỗi worker giữ một phân vùng",
+        "~ Sự kiện của mỗi tài khoản giữ thứ tự"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "60 job",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "w1-3": {
+          "visible": false
+        },
+        "w2-3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "w5": {
+          "visible": false
+        },
+        "dlq": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        },
+        "wq-4": {
+          "visible": false
+        },
+        "qw1-4": {
+          "visible": false
+        },
+        "qw2-4": {
+          "visible": false
+        },
+        "qw4-2": {
+          "visible": false
+        },
+        "qw5-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Backpressure",
+      "title": "Khi tồn đọng không bao giờ cạn",
+      "chapter": "technique",
+      "body": "Hàng đợi hấp thụ đợt tăng đột biến, nhưng nếu job đến nhanh hơn tốc độ worker xử lý *trong nhiều giờ*, tồn đọng tăng mãi. Job ngày càng cũ, và rốt cuộc hết chỗ lưu trữ.\n\nHãy theo dõi **tuổi** của hàng đợi, không chỉ độ dài, và đẩy ngược lại: tự động mở rộng worker, giới hạn hàng đợi và bảo producer chậm lại (hoặc từ chối job mới với lời “thử lại sau” rõ ràng).",
+      "callout": {
+        "kind": "insight",
+        "text": "Hàng đợi mua được thời gian, không mua được năng lực. Về lâu dài, thông lượng phải theo kịp tốc độ đến."
+      },
+      "changes": [
+        "+ Cảnh báo: job cũ nhất > 10 phút",
+        "+ Hàng đợi bị giới hạn · producer được bảo thử lại sau"
+      ],
+      "metrics": {
+        "respond": "120 ms",
+        "backlog": "50.000 job",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "web-4": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "emphasis": true
+        },
+        "w1-3": {
+          "visible": false
+        },
+        "w2-3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "w5": {
+          "visible": false
+        },
+        "dlq": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        },
+        "uw-5": {
+          "visible": false
+        },
+        "wq-4": {
+          "visible": false
+        },
+        "qw1-4": {
+          "visible": false
+        },
+        "qw2-4": {
+          "visible": false
+        },
+        "qw4-2": {
+          "visible": false
+        },
+        "qw5-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Đưa việc chậm ra khỏi yêu cầu: **đưa job vào hàng đợi** và trả lời ngay.\n• Hàng đợi **hấp thụ đột biến**; thêm **worker** để rút cạn tồn đọng.\n• **Ack** sau khi xong; job chưa ack sẽ được thử lại, nên giữ job **idempotent**.\n• Gửi các lỗi lặp lại vào **dead-letter queue**.\n• Giữ thứ tự **theo khóa** bằng phân vùng; theo dõi **tuổi hàng đợi** và đẩy ngược lại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Pub/Sub & sự kiện**: khi một việc xảy ra cần kích hoạt nhiều việc khác."
+      },
+      "changes": [],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "60 job",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "web-4": {
+          "emphasis": true
+        },
+        "mq": {
+          "emphasis": true
+        },
+        "q": {
+          "emphasis": true
+        },
+        "w1-3": {
+          "emphasis": true
+        },
+        "w2-3": {
+          "emphasis": true
+        },
+        "w4": {
+          "emphasis": true
+        },
+        "w5": {
+          "emphasis": true
+        },
+        "dlq": {
+          "emphasis": true
+        },
+        "mq-label": {
+          "emphasis": true
+        },
+        "uw-5": {
+          "emphasis": true
+        },
+        "wq-4": {
+          "emphasis": true
+        },
+        "qw1-4": {
+          "emphasis": true
+        },
+        "qw2-4": {
+          "emphasis": true
+        },
+        "qw4-2": {
+          "emphasis": true
+        },
+        "qw5-2": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

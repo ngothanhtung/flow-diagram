@@ -1,0 +1,1385 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 584,
+          "y": -319
+        },
+        "width": 379,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "HÓA ĐƠN\n1.000.000 người dùng ÷ 2 s\n→ 500.000 yêu cầu / s\n⚠ ~475.000 trong số đó: “không có gì mới”",
+        "position": {
+          "x": 584,
+          "y": -319
+        },
+        "width": 355,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice",
+        "description": "có gì mới không?",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice",
+        "description": "một trong 1.000.000",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice",
+        "description": "tin nhắn mới từ Bob",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice",
+        "description": "ngoại tuyến · tàu điện ngầm",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-6",
+        "type": "process",
+        "title": "Alice",
+        "description": "online",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv",
+        "type": "process",
+        "title": "Máy chủ chat",
+        "description": "1 tin nhắn mới cho Alice",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-2",
+        "type": "process",
+        "title": "Máy chủ chat",
+        "description": "CPU 15%",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-3",
+        "type": "process",
+        "title": "Máy chủ chat",
+        "description": "⚠ 500.000 req/s · 95% trống · CPU 94%",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 204,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-4",
+        "type": "process",
+        "title": "Máy chủ chat",
+        "description": "giữ đến khi có tin · CPU 20%",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-5",
+        "type": "process",
+        "title": "Máy chủ 1",
+        "description": "socket của Alice",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-6",
+        "type": "process",
+        "title": "Máy chủ 1",
+        "description": "không có socket cho Alice",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob",
+        "type": "process",
+        "title": "Bob",
+        "position": {
+          "x": 234,
+          "y": -108
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob-2",
+        "type": "process",
+        "title": "Bob",
+        "position": {
+          "x": 234,
+          "y": -144
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv2",
+        "type": "process",
+        "title": "Máy chủ 2",
+        "description": "socket của Bob",
+        "position": {
+          "x": 234,
+          "y": 108
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "br",
+        "type": "process",
+        "title": "Pub/Sub",
+        "description": "Redis",
+        "position": {
+          "x": 0,
+          "y": 108
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Radio",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ms",
+        "type": "process",
+        "title": "tin nhắn",
+        "description": "đã lưu: 1042, 1043",
+        "position": {
+          "x": -234,
+          "y": 108
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ps",
+        "type": "process",
+        "title": "trực tuyến",
+        "description": "alice · thấy 4 s trước",
+        "position": {
+          "x": -234,
+          "y": 108
+        },
+        "width": 192,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "bs",
+        "from": "bob",
+        "to": "srv",
+        "label": "Bob gửi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bs-2",
+        "from": "bob",
+        "to": "srv-2",
+        "label": "Bob gửi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bs-3",
+        "from": "bob",
+        "to": "srv-3",
+        "label": "Bob gửi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bs-4",
+        "from": "bob",
+        "to": "srv-4",
+        "label": "Bob gửi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bs-5",
+        "from": "bob",
+        "to": "srv-2",
+        "label": "WebSocket",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "sa",
+        "from": "srv",
+        "to": "alice",
+        "label": "máy chủ không thể bắt đầu yêu cầu",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "sa-2",
+        "from": "srv-2",
+        "to": "alice-4",
+        "label": "luồng sự kiện (SSE)",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "sa-3",
+        "from": "srv-2",
+        "to": "alice-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "sa-4",
+        "from": "srv-5",
+        "to": "alice-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "sa-5",
+        "from": "srv-6",
+        "to": "alice-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "sa-6",
+        "from": "srv-5",
+        "to": "alice-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "ap",
+        "from": "alice-2",
+        "to": "srv-2",
+        "label": "GET /messages · mỗi 2 s",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ap-2",
+        "from": "alice-3",
+        "to": "srv-3",
+        "label": "GET /messages · mỗi 2 s",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ap-3",
+        "from": "alice-2",
+        "to": "srv-4",
+        "label": "GET /messages · được giữ mở",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-4",
+        "from": "alice-4",
+        "to": "srv-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-5",
+        "from": "alice-4",
+        "to": "srv-2",
+        "label": "WebSocket · hai chiều",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-6",
+        "from": "alice-4",
+        "to": "srv-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "ap-7",
+        "from": "alice-5",
+        "to": "srv-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ap-8",
+        "from": "alice-6",
+        "to": "srv-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "sb",
+        "from": "srv-2",
+        "to": "bob",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "b2",
+        "from": "bob-2",
+        "to": "srv2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "x2b",
+        "from": "srv2",
+        "to": "bob-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "s2r",
+        "from": "srv2",
+        "to": "br",
+        "label": "publish “alice”",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "r2",
+        "from": "br",
+        "to": "srv2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "rs",
+        "from": "br",
+        "to": "srv-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "rs-2",
+        "from": "br",
+        "to": "srv-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "sr",
+        "from": "srv-5",
+        "to": "br",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "sr-2",
+        "from": "srv-6",
+        "to": "br",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ms~2",
+        "from": "br",
+        "to": "ms",
+        "label": "lưu trước",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "ps~2",
+        "from": "srv-5",
+        "to": "ps",
+        "label": "heartbeat",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.6,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Cập nhật thời gian thực",
+    "summary": "Cách máy chủ báo cho bạn rằng có chuyện vừa xảy ra: chat, tỷ số trực tiếp, thông báo.",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "delay",
+        "label": "Độ trễ tin nhắn"
+      },
+      {
+        "id": "rpm",
+        "label": "Yêu cầu / người / phút"
+      },
+      {
+        "id": "wasted",
+        "label": "Phản hồi rỗng"
+      },
+      {
+        "id": "conns",
+        "label": "Kết nối mở"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao HTTP tự nó không thể đẩy dữ liệu",
+        "step": "s1"
+      },
+      {
+        "text": "Short polling và long polling",
+        "step": "s4"
+      },
+      {
+        "text": "Server-Sent Events và WebSocket",
+        "step": "s6"
+      },
+      {
+        "text": "Mở rộng các kết nối duy trì liên tục",
+        "step": "s7"
+      },
+      {
+        "text": "Người dùng ngoại tuyến và trạng thái trực tuyến",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "alice": {
+      "until": "s2"
+    },
+    "alice-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "alice-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "alice-4": {
+      "from": "s5"
+    },
+    "alice-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "alice-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "srv": {
+      "until": "s2"
+    },
+    "srv-2": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "srv-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "srv-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "srv-5": {
+      "from": "s7"
+    },
+    "srv-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bob": {
+      "until": "s7"
+    },
+    "bob-2": {
+      "from": "s7"
+    },
+    "card": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "srv2": {
+      "from": "s7"
+    },
+    "br": {
+      "from": "s7"
+    },
+    "ms": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ps": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "bs": {
+      "until": "s2"
+    },
+    "bs-2": {
+      "from": "s2",
+      "until": "s6"
+    },
+    "bs-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "bs-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bs-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sa": {
+      "until": "s2"
+    },
+    "sa-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sa-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sa-4": {
+      "from": "s7"
+    },
+    "sa-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sa-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ap": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ap-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ap-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ap-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ap-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ap-6": {
+      "from": "s7"
+    },
+    "ap-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ap-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sb": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b2": {
+      "from": "s7"
+    },
+    "x2b": {
+      "from": "s7"
+    },
+    "s2r": {
+      "from": "s7"
+    },
+    "r2": {
+      "from": "s7"
+    },
+    "rs": {
+      "from": "s7"
+    },
+    "rs-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sr": {
+      "from": "s7"
+    },
+    "sr-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ms~2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ps~2": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Không có đường vào",
+      "title": "Bob đã gửi tin nhắn. Làm sao Alice biết?",
+      "chapter": "problem",
+      "body": "Tin nhắn của Bob tới máy chủ chat. Điện thoại của Alice nên hiển thị nó ngay lập tức.\n\nNhưng HTTP thuần là yêu cầu → phản hồi: chỉ **client** mới có thể bắt đầu cuộc trò chuyện. Máy chủ không có cách nào gọi tới điện thoại của Alice để nói “bạn có thư”.",
+      "callout": {
+        "kind": "insight",
+        "text": "Điện thoại và trình duyệt nằm sau router gia đình và mạng di động vốn chặn kết nối đến: client phải là bên chủ động kết nối."
+      },
+      "changes": [],
+      "metrics": {
+        "delay": "không bao giờ",
+        "rpm": "0",
+        "conns": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Polling",
+      "title": "Polling: hỏi liên tục",
+      "chapter": "technique",
+      "body": "Cách sửa đơn giản nhất: ứng dụng của Alice hỏi “có gì mới không?” mỗi 2 giây. Hầu hết câu trả lời đều trống (chấm nhạt); thỉnh thoảng có một cái mang tin nhắn (xanh lá).\n\nDễ xây bằng các yêu cầu bình thường, nhưng tin nhắn đến trễ tới 2 giây, và phần lớn yêu cầu bị lãng phí.",
+      "callout": {
+        "kind": "tip",
+        "text": "Polling ổn cho những thứ thay đổi chậm (trạng thái build, trang theo dõi đơn hàng) với khoảng thời gian hợp lý."
+      },
+      "changes": [
+        "+ Alice polling mỗi 2 s"
+      ],
+      "metrics": {
+        "delay": "tới 2 s",
+        "rpm": "30",
+        "wasted": "95%",
+        "conns": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Ở quy mô lớn",
+      "title": "Polling một triệu điện thoại",
+      "chapter": "problem",
+      "body": "Giờ hãy nhân lên. Một triệu người dùng, mỗi người hỏi mỗi 2 giây, là nửa triệu yêu cầu mỗi giây, và 95% trong số đó nhận câu trả lời “không có gì mới”.\n\nBạn sẽ trả tiền cho cả đội máy chủ mà việc chính là nói không. Polling nhanh hơn để giảm độ trễ chỉ làm tệ hơn.",
+      "callout": {
+        "kind": "warning",
+        "text": "Polling đánh đổi độ mới với tải: giảm một nửa độ trễ thì gấp đôi số yêu cầu."
+      },
+      "changes": [
+        "~ Người dùng 1 → 1.000.000",
+        "~ 500.000 yêu cầu/s, 95% trống"
+      ],
+      "metrics": {
+        "delay": "tới 2 s",
+        "rpm": "30",
+        "wasted": "95%",
+        "conns": "0"
+      },
+      "overrides": {
+        "alice-2": {
+          "visible": false
+        },
+        "srv-2": {
+          "visible": false
+        },
+        "bs-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Long polling",
+      "title": "Long polling: giữ yêu cầu mở",
+      "chapter": "solution",
+      "body": "Thay vì trả lời “không có gì” ngay, máy chủ **giữ** yêu cầu mở (hãy xem yêu cầu chờ ở máy chủ) cho đến khi có tin nhắn đến, hoặc khoảng 30 giây trôi qua. Rồi nó trả lời, và ứng dụng lập tức hỏi lại.\n\nGiờ tin nhắn đến gần như ngay lập tức, và câu trả lời trống rất hiếm.",
+      "callout": {
+        "kind": "tip",
+        "text": "Long polling chạy ở bất cứ đâu HTTP thuần chạy được, nên nó vẫn được dùng làm phương án dự phòng khi không có gì tốt hơn."
+      },
+      "changes": [
+        "~ Máy chủ giữ mỗi yêu cầu cho đến khi có tin",
+        "~ Độ trễ tới 2 s → dưới 100 ms",
+        "~ Phản hồi trống 95% → 10%"
+      ],
+      "metrics": {
+        "delay": "< 100 ms",
+        "rpm": "2",
+        "wasted": "10%",
+        "conns": "1 bị giữ / người dùng"
+      },
+      "overrides": {
+        "alice-2": {
+          "emphasis": true
+        },
+        "srv-2": {
+          "visible": false
+        },
+        "bs-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "SSE",
+      "title": "Server-Sent Events: một phản hồi không bao giờ kết thúc",
+      "chapter": "technique",
+      "body": "Với [[Server-Sent Events]] (SSE), ứng dụng gửi một yêu cầu và máy chủ không bao giờ kết thúc phản hồi. Thay vào đó, nó ghi mỗi sự kiện mới vào luồng đang mở đó ngay khi sự kiện xảy ra.\n\nĐây là một chiều (máy chủ → client), HTTP thuần, và trình duyệt tự kết nối lại. Alice vẫn gửi tin nhắn của mình bằng các yêu cầu bình thường.",
+      "callout": {
+        "kind": "tip",
+        "text": "Lý tưởng cho feed, thông báo, tỷ số trực tiếp và dashboard, và để stream câu trả lời của AI từng token một."
+      },
+      "changes": [
+        "+ Một luồng sự kiện sống lâu tới Alice",
+        "~ Độ trễ → dưới 50 ms"
+      ],
+      "metrics": {
+        "delay": "< 50 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1 mỗi người dùng"
+      },
+      "overrides": {
+        "srv-2": {
+          "emphasis": true
+        },
+        "bs-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "WebSocket",
+      "title": "WebSocket: nói chuyện hai chiều",
+      "chapter": "technique",
+      "body": "Một [[WebSocket]] bắt đầu như một yêu cầu HTTP, rồi được nâng cấp thành kết nối hai chiều lâu dài. Bên nào cũng có thể gửi tin nhắn bất cứ lúc nào, với chi phí mỗi tin nhắn rất nhỏ.\n\nBob và Alice mỗi người giữ một socket; tin nhắn đi hai chiều qua máy chủ chỉ trong vài mili giây.",
+      "callout": {
+        "kind": "tip",
+        "text": "Dùng WebSocket khi client thường xuyên phản hồi lại: chat, game nhiều người chơi, chỉnh sửa cộng tác, màn hình giao dịch."
+      },
+      "changes": [
+        "+ Kết nối hai chiều lâu dài",
+        "~ Gửi không còn cần yêu cầu riêng"
+      ],
+      "metrics": {
+        "delay": "< 20 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1 mỗi người dùng"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "Nhiều máy chủ",
+      "title": "Mở rộng: máy chủ nào đang giữ Alice?",
+      "chapter": "insight",
+      "body": "Mỗi kết nối mở tốn bộ nhớ, nên một triệu người dùng cần nhiều máy chủ chat. Giờ socket của Bob ở máy chủ 2, nhưng của Alice ở máy chủ 1: máy chủ 2 không thể gửi trực tiếp cho cô.\n\nVì vậy các máy chủ chuyển tiếp qua [[pub/sub]]: máy chủ 2 phát lên kênh của Alice, và máy chủ nào đang giữ socket của cô thì đã đăng ký kênh đó và chuyển tiếp. Hãy xem một tin nhắn đi đường vòng.",
+      "callout": {
+        "kind": "insight",
+        "text": "Đây lại là bài trước: pub/sub là cách các hệ thống thời gian thực rải tin nhắn ra khắp các máy chủ."
+      },
+      "changes": [
+        "+ Máy chủ 2",
+        "+ Pub/sub giữa các máy chủ",
+        "~ Tin nhắn được chuyển tới máy chủ giữ từng socket"
+      ],
+      "metrics": {
+        "delay": "< 30 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1 triệu trên 20 máy chủ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s8",
+      "short": "Ngoại tuyến",
+      "title": "Tình huống: điện thoại của Alice ngoại tuyến",
+      "chapter": "problem",
+      "body": "Alice đi vào tàu điện ngầm. Socket của cô bị rớt, và tin nhắn của Bob không có chỗ nào để đến.\n\nVì vậy mỗi tin nhắn trước tiên được **lưu** vào một kho, rồi mới được đẩy đi nếu người nhận đang kết nối. Khi Alice kết nối lại, ứng dụng của cô nói “tin cuối tôi thấy là 1041” và lấy mọi thứ sau đó. Nếu cô vẫn ngoại tuyến, một **thông báo đẩy** (APNs, FCM) đánh thức điện thoại của cô.",
+      "callout": {
+        "kind": "tip",
+        "text": "Giao tin thời gian thực chỉ là một tối ưu hóa. Tin nhắn đã lưu, được lấy khi kết nối lại, mới là nguồn sự thật."
+      },
+      "changes": [
+        "- Alice ngoại tuyến",
+        "+ Tin nhắn được lưu trước",
+        "+ Bắt kịp khi kết nối lại · thông báo đẩy"
+      ],
+      "metrics": {
+        "delay": "< 30 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1 triệu trên 20 máy chủ"
+      },
+      "overrides": {
+        "x2b": {
+          "effect": "none"
+        },
+        "r2": {
+          "effect": "none"
+        },
+        "alice-4": {
+          "visible": false
+        },
+        "srv-5": {
+          "visible": false
+        },
+        "sa-4": {
+          "visible": false
+        },
+        "ap-6": {
+          "visible": false
+        },
+        "rs": {
+          "visible": false
+        },
+        "sr": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Trực tuyến",
+      "title": "Trạng thái trực tuyến: ai đang online",
+      "chapter": "technique",
+      "body": "Chấm xanh cạnh một cái tên cần đến [[trạng thái trực tuyến]] (presence): mỗi ứng dụng gửi một heartbeat nhỏ mỗi 30 giây, và máy chủ ghi lại “lần cuối thấy”. Một phút không có heartbeat nghĩa là ngoại tuyến.\n\nVới một triệu người dùng, đó là ~33.000 heartbeat mỗi giây. Hãy giữ trạng thái trực tuyến trong một kho nhanh với khóa tự hết hạn, và chỉ đẩy thay đổi tới những người thực sự đang xem liên hệ đó.",
+      "callout": {
+        "kind": "insight",
+        "text": "Trạng thái trực tuyến vốn được thiết kế để gần đúng: trễ vài giây không sao, và tiết kiệm được lưu lượng khổng lồ."
+      },
+      "changes": [
+        "+ Heartbeat mỗi 30 s",
+        "+ Kho trạng thái với khóa tự hết hạn"
+      ],
+      "metrics": {
+        "delay": "< 30 ms",
+        "rpm": "2",
+        "wasted": "0%",
+        "conns": "1 triệu trên 20 máy chủ"
+      },
+      "overrides": {
+        "alice-4": {
+          "visible": false
+        },
+        "srv-5": {
+          "emphasis": true
+        },
+        "sa-4": {
+          "visible": false
+        },
+        "ap-6": {
+          "visible": false
+        },
+        "rs": {
+          "emphasis": true
+        },
+        "sr": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• **Polling** — Độ trễ: Tối đa bằng chu kỳ hỏi; Hướng: Client hỏi\n• **Long polling** — Độ trễ: Thấp; Hướng: Client hỏi, máy chủ chờ\n• **SSE** — Độ trễ: Thấp; Hướng: Máy chủ → client\n• **WebSocket** — Độ trễ: Thấp nhất; Hướng: Hai chiều\n\nỞ quy mô lớn, kết nối lâu dài cần nhiều máy chủ, nối với nhau bằng **pub/sub**. Hãy **lưu** mọi tin nhắn trước, để người dùng ngoại tuyến bắt kịp khi quay lại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Vậy là xong Giao tiếp. Module tiếp theo: **Độ tin cậy**, bắt đầu với dự phòng và failover."
+      },
+      "changes": [],
+      "metrics": {
+        "delay": "< 30 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1 triệu trên 20 máy chủ"
+      },
+      "overrides": {
+        "alice-4": {
+          "emphasis": true
+        },
+        "sa-4": {
+          "emphasis": true
+        },
+        "ap-6": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

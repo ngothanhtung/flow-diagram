@@ -1,0 +1,1693 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 904,
+          "y": -520
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "WHAT A PAGE IS MADE OF\nHTML (per user)     30 KB\nimages             1.6 MB\nscripts + styles   400 KB\n→ 98% of bytes are the same for everyone",
+        "position": {
+          "x": 904,
+          "y": -520
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "lon",
+        "type": "process",
+        "title": "London",
+        "position": {
+          "x": 0,
+          "y": -546
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lon-2",
+        "type": "process",
+        "title": "London · ×20",
+        "position": {
+          "x": 0,
+          "y": -546
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "syd",
+        "type": "process",
+        "title": "Sydney",
+        "position": {
+          "x": 546,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "syd-2",
+        "type": "process",
+        "title": "Sydney · ×20",
+        "position": {
+          "x": 546,
+          "y": 0
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 88%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-2",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 20%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-3",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 32%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-4",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · logo.png · new · CPU 20%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-5",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · logo.3f9a.png · CPU 15%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-6",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 22%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-7",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 5%",
+        "position": {
+          "x": -234,
+          "y": 234
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "origin-8",
+        "type": "process",
+        "title": "Origin",
+        "description": "Virginia · CPU 15%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el",
+        "type": "process",
+        "title": "Edge",
+        "description": "London",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-2",
+        "type": "process",
+        "title": "Edge",
+        "description": "London · warm",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-3",
+        "type": "process",
+        "title": "Edge",
+        "description": "London · ⚠ logo.png · old",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-4",
+        "type": "process",
+        "title": "Edge",
+        "description": "London · logo.3f9a.png · 1 yr",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-5",
+        "type": "process",
+        "title": "Edge",
+        "description": "London · CPU 60%",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "el-6",
+        "type": "process",
+        "title": "Edge",
+        "description": "London · /cart → private · pass",
+        "position": {
+          "x": 0,
+          "y": -312
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es",
+        "type": "process",
+        "title": "Edge",
+        "description": "Sydney",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-2",
+        "type": "process",
+        "title": "Edge",
+        "description": "Sydney · ⚠ cold · filling",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-3",
+        "type": "process",
+        "title": "Edge",
+        "description": "Sydney · ⚠ logo.png · old",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-4",
+        "type": "process",
+        "title": "Edge",
+        "description": "Sydney · logo.3f9a.png · 1 yr",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-5",
+        "type": "process",
+        "title": "Edge",
+        "description": "Sydney · CPU 60%",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "es-6",
+        "type": "process",
+        "title": "Edge",
+        "description": "Sydney · /cart → private · pass",
+        "position": {
+          "x": 312,
+          "y": 0
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sh",
+        "type": "process",
+        "title": "Shield",
+        "description": "mid-tier cache",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "lo",
+        "from": "lon",
+        "to": "origin",
+        "label": "≈ 75 ms per round trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 2
+      },
+      {
+        "id": "so",
+        "from": "syd",
+        "to": "origin",
+        "label": "≈ 200 ms per round trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 2
+      },
+      {
+        "id": "le",
+        "from": "lon",
+        "to": "el",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "le-2",
+        "from": "lon",
+        "to": "el-2",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "le-3",
+        "from": "lon",
+        "to": "el-3",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "le-4",
+        "from": "lon",
+        "to": "el-4",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "le-5",
+        "from": "lon-2",
+        "to": "el-5",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 6
+      },
+      {
+        "id": "le-6",
+        "from": "lon",
+        "to": "el-6",
+        "label": "≈ 10 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo",
+        "from": "el",
+        "to": "origin-2",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-2",
+        "from": "el-2",
+        "to": "origin-3",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-3",
+        "from": "el-3",
+        "to": "origin-4",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-4",
+        "from": "el-4",
+        "to": "origin-5",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-5",
+        "from": "el-5",
+        "to": "origin-2",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 6
+      },
+      {
+        "id": "eo-6",
+        "from": "el-6",
+        "to": "origin-6",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eo-7",
+        "from": "el",
+        "to": "origin-8",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se",
+        "from": "syd",
+        "to": "es",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se-2",
+        "from": "syd",
+        "to": "es-2",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se-3",
+        "from": "syd",
+        "to": "es-3",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se-4",
+        "from": "syd",
+        "to": "es-4",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "se-5",
+        "from": "syd-2",
+        "to": "es-5",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 6
+      },
+      {
+        "id": "se-6",
+        "from": "syd",
+        "to": "es-6",
+        "label": "≈ 12 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso",
+        "from": "es",
+        "to": "origin-2",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-2",
+        "from": "es-2",
+        "to": "origin-3",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-3",
+        "from": "es-3",
+        "to": "origin-4",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-4",
+        "from": "es-4",
+        "to": "origin-5",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-5",
+        "from": "es-5",
+        "to": "origin-2",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 6
+      },
+      {
+        "id": "eso-6",
+        "from": "es-6",
+        "to": "origin-6",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "eso-7",
+        "from": "es",
+        "to": "origin-8",
+        "label": "only on a miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "esh",
+        "from": "el",
+        "to": "sh",
+        "label": "edge miss",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "ssh",
+        "from": "es",
+        "to": "sh",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.72,
+        "effectCount": 3
+      },
+      {
+        "id": "sho",
+        "from": "sh",
+        "to": "origin-7",
+        "label": "once per file",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      }
+    ]
+  },
+  "meta": {
+    "title": "Content Delivery",
+    "summary": "Copy what everyone downloads to servers near your users — and stop fighting the speed of light.",
+    "minutes": 10,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "lon",
+        "label": "London latency"
+      },
+      {
+        "id": "syd",
+        "label": "Sydney latency"
+      },
+      {
+        "id": "origin",
+        "label": "Origin load"
+      },
+      {
+        "id": "hitRate",
+        "label": "Cache hit rate"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why distant users are slow",
+        "step": "s1"
+      },
+      {
+        "text": "How edge servers cache static files",
+        "step": "s3"
+      },
+      {
+        "text": "Cold caches and versioned file names",
+        "step": "s6"
+      },
+      {
+        "text": "How a CDN shields the origin",
+        "step": "s7"
+      },
+      {
+        "text": "Private pages and origin shields",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "lon-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "syd-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "origin": {
+      "until": "s3"
+    },
+    "origin-2": {
+      "from": "s3",
+      "until": "s8"
+    },
+    "origin-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "origin-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "origin-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "origin-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "origin-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "origin-8": {
+      "from": "s10"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "el": {
+      "from": "s3"
+    },
+    "el-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "el-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "el-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "el-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "el-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "es": {
+      "from": "s3"
+    },
+    "es-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "es-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "es-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "es-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "es-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sh": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lo": {
+      "until": "s3"
+    },
+    "so": {
+      "until": "s3"
+    },
+    "le": {
+      "from": "s3"
+    },
+    "le-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "le-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "le-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "le-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "le-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "eo": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "eo-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "eo-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "eo-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "eo-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "eo-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "eo-7": {
+      "from": "s10"
+    },
+    "se": {
+      "from": "s3"
+    },
+    "se-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "se-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "se-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "se-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "se-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "eso": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "eso-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "eso-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "eso-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "eso-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "eso-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "eso-7": {
+      "from": "s10"
+    },
+    "esh": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ssh": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sho": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Far away",
+      "title": "Your users are far away",
+      "chapter": "problem",
+      "body": "Your servers are in Virginia. A user in London waits about 75 ms per round trip; in Sydney about 200 ms. A page needs many round trips, so Sydney waits well over a second.\n\nMeanwhile every image for every user worldwide is served by that one origin.",
+      "callout": {
+        "kind": "warning",
+        "text": "You can’t speed up light. The only way to cut distance latency is to serve users from somewhere closer."
+      },
+      "changes": [],
+      "metrics": {
+        "lon": "80 ms",
+        "syd": "210 ms",
+        "origin": "9,000 req/s",
+        "hitRate": "0%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Same bytes",
+      "title": "Most bytes are the same for everyone",
+      "chapter": "insight",
+      "body": "Look inside a page load. The HTML is personal, but images, scripts, stylesheets and videos are **identical** for every user.\n\nIdentical, rarely-changing files are perfect for caching — anywhere, including far from the origin.",
+      "callout": {
+        "kind": "insight",
+        "text": "Static assets are often 90%+ of the bytes on a page."
+      },
+      "changes": [],
+      "metrics": {
+        "lon": "80 ms",
+        "syd": "210 ms",
+        "origin": "9,000 req/s",
+        "hitRate": "0%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Edges",
+      "title": "Put copies at the edge",
+      "chapter": "solution",
+      "body": "A [[CDN]] (content delivery network) runs [[edge servers]] in hundreds of cities. Point your static files at it, and each user is served by the edge nearest them.\n\nLondon now gets images in ~10 ms. Only misses (amber) travel all the way to Virginia.",
+      "callout": {
+        "kind": "tip",
+        "text": "Popular CDNs: Cloudflare, Fastly, Akamai, Amazon CloudFront. You rent their edges; you don’t run them."
+      },
+      "changes": [
+        "+ Edge servers in London and Sydney",
+        "~ 90% of requests answered at the edge",
+        "~ Origin load 9,000 → 900 req/s"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "900 req/s",
+        "hitRate": "90%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Cold edge",
+      "title": "First requests are misses",
+      "chapter": "technique",
+      "body": "Edges are [[pull-through]] caches: they start empty. The first request for a file misses, the edge fetches it from the origin, keeps a copy, and serves everyone after that.\n\nLondon’s edge is warm; Sydney’s just started and is still filling up — so Sydney users briefly pay the long trip.",
+      "callout": {
+        "kind": "insight",
+        "text": "This is the same cache-aside idea from the last lesson, spread around the planet."
+      },
+      "changes": [
+        "~ Sydney edge: cold, filling from origin",
+        "~ Sydney latency 15 → 95 ms (for now)"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "95 ms",
+        "origin": "2,400 req/s",
+        "hitRate": "70%"
+      },
+      "overrides": {
+        "origin-2": {
+          "visible": false
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Old files",
+      "title": "You ship a new logo. Nobody sees it.",
+      "chapter": "problem",
+      "body": "You replace `logo.png` on the origin. But edges cached the old one with a one-day TTL, so users keep seeing the old logo — some in London, some in Sydney, for hours.\n\nYou could purge the edges — modern CDNs do that in seconds — but someone has to remember to, every time, and no purge can reach the copies already saved in users’ browsers.",
+      "callout": {
+        "kind": "warning",
+        "text": "Long TTLs are what make a CDN fast — and what makes updates slow to appear."
+      },
+      "changes": [
+        "~ Origin: new logo.png",
+        "- Edges still serve the old one"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "900 req/s",
+        "hitRate": "90%"
+      },
+      "overrides": {
+        "origin-2": {
+          "visible": false
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Versioning",
+      "title": "Give every version a new name",
+      "chapter": "solution",
+      "body": "Put a fingerprint of the file’s contents in its name: `logo.3f9a.png`. A new logo gets a new name, so it can never be confused with the old one.\n\nNow files can be cached for a **year**. The HTML (short TTL, or not cached) simply points at the latest names.",
+      "callout": {
+        "kind": "tip",
+        "text": "Build tools such as Vite and webpack add these content hashes for you."
+      },
+      "changes": [
+        "~ logo.png → logo.3f9a.png",
+        "~ Cache lifetime 1 day → 1 year",
+        "- Stale logos"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "900 req/s",
+        "hitRate": "96%"
+      },
+      "overrides": {
+        "origin-2": {
+          "visible": false
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Spike",
+      "title": "Spikes hit the edge, not you",
+      "chapter": "insight",
+      "body": "A launch goes viral and traffic jumps 20×. Almost all of it is answered by edges spread around the world; the origin barely notices.\n\nThe same spread-out capacity helps absorb floods of malicious traffic (DDoS attacks).",
+      "callout": {
+        "kind": "insight",
+        "text": "A CDN is a cache, a global network and a shield for your origin, all at once."
+      },
+      "changes": [
+        "~ Traffic × 20",
+        "~ Origin load stays ≈ 1,100 req/s"
+      ],
+      "metrics": {
+        "lon": "14 ms",
+        "syd": "18 ms",
+        "origin": "1,100 req/s",
+        "hitRate": "97%"
+      },
+      "overrides": {
+        "lon": {
+          "visible": false
+        },
+        "syd": {
+          "visible": false
+        },
+        "origin-2": {
+          "emphasis": true
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Private",
+      "title": "Case: never cache someone’s cart",
+      "chapter": "problem",
+      "body": "A config change tells the CDN to cache *every* page for 5 minutes. Bob opens his cart; the edge stores it. Alice opens hers a second later — and the edge serves her **Bob’s cart**.\n\nPages that depend on who is asking must be marked `Cache-Control: private` (or `no-store`) so edges always pass them through to the origin.",
+      "callout": {
+        "kind": "warning",
+        "text": "Caching personal data publicly is a classic, very public incident. Default to private; cache public content on purpose."
+      },
+      "changes": [
+        "+ Cart and account pages: Cache-Control: private",
+        "~ Personal pages always go to the origin"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "1,400 req/s",
+        "hitRate": "88%"
+      },
+      "overrides": {
+        "lon": {
+          "emphasis": true
+        },
+        "syd": {
+          "emphasis": true
+        },
+        "el": {
+          "visible": false
+        },
+        "es": {
+          "visible": false
+        },
+        "le": {
+          "visible": false
+        },
+        "se": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Shield",
+      "title": "Origin shield: one more layer",
+      "chapter": "technique",
+      "body": "A real CDN has hundreds of edges. When a new file goes viral, every edge misses once — hundreds of requests for the same file hit your origin at the same moment.\n\nAn [[origin shield]] is a mid-tier cache in front of the origin. Edges miss to the shield; only the shield ever asks the origin, so each file is fetched once.",
+      "callout": {
+        "kind": "tip",
+        "text": "Most CDNs offer shielding as a setting. Pick a shield location close to your origin."
+      },
+      "changes": [
+        "+ Origin shield between edges and origin",
+        "~ Origin sees one fetch per file"
+      ],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "120 req/s",
+        "hitRate": "98%"
+      },
+      "overrides": {
+        "el": {
+          "emphasis": true
+        },
+        "es": {
+          "emphasis": true
+        },
+        "le": {
+          "emphasis": true
+        },
+        "se": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Distance adds latency; **edge servers** move content close to users.\n• CDNs are **pull-through caches**: misses fill them from your origin.\n• **Versioned file names** let you cache for a year and still update instantly.\n• The edge absorbs **spikes** and shields the origin.\n• Never cache **personal pages** publicly; add an **origin shield** at scale.",
+      "callout": {
+        "kind": "tip",
+        "text": "That wraps up Scaling. Next module: **Data & Storage**, starting with SQL vs NoSQL."
+      },
+      "changes": [],
+      "metrics": {
+        "lon": "12 ms",
+        "syd": "15 ms",
+        "origin": "900 req/s",
+        "hitRate": "96%"
+      },
+      "overrides": {}
+    }
+  ]
+}

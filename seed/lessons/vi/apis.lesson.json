@@ -1,0 +1,1289 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 421,
+          "y": -299
+        },
+        "width": 297,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "MÀN HÌNH HỒ SƠ, BẰNG REST\nGET /users/42           → 18 KB\nGET /users/42/posts     → 26 KB\nGET /users/42/followers →  4 KB\n# ba yêu cầu, lần lượt từng cái",
+        "position": {
+          "x": 421,
+          "y": -299
+        },
+        "width": 273,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 437,
+          "y": -299
+        },
+        "width": 330,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "MÀN HÌNH CẦN GÌ\ntên, URL ảnh đại diện       ~0,4 KB\n3 bài gần nhất + xem trước  ~2,5 KB\nsố người theo dõi           ~0,1 KB\n⚠ tải về 48 KB · dùng ~3 KB",
+        "position": {
+          "x": 437,
+          "y": -299
+        },
+        "width": 306,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 441,
+          "y": -282
+        },
+        "width": 338,
+        "height": 159,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "MỘT TRUY VẤN\nquery {\n  user(id: 42) { name avatar\n    posts(last: 3) { title preview }\n    followers { count } }\n}\n→ 1 lượt khứ hồi · 3 KB",
+        "position": {
+          "x": 441,
+          "y": -282
+        },
+        "width": 314,
+        "height": 139,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 441,
+          "y": -290
+        },
+        "width": 338,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "MỘT TRUY VẤN “NHỎ”\nfollowers {\n  followers {\n    followers { posts { comments } }\n  } }\n⚠ 41.000 lượt tra cứu cơ sở dữ liệu",
+        "position": {
+          "x": 441,
+          "y": -290
+        },
+        "width": 314,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 470,
+          "y": -299
+        },
+        "width": 396,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "MỘT HỢP ĐỒNG GRPC\nservice Users {\n  rpc GetUser (UserId) returns (User);\n}\n→ nhị phân · có kiểu · nhỏ hơn JSON vài lần",
+        "position": {
+          "x": 470,
+          "y": -299
+        },
+        "width": 372,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 516,
+          "y": -301
+        },
+        "width": 487,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "PHÂN TRANG DANH SÁCH DÀI\n⚠ ?offset=40000&limit=20  → duyệt 40.020 hàng\n→ ?after=9f3c&limit=20     → tìm theo chỉ mục, 20 hàng\n# phản hồi kèm con trỏ kế tiếp: \"a71b\"",
+        "position": {
+          "x": 516,
+          "y": -301
+        },
+        "width": 463,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 495,
+          "y": -299
+        },
+        "width": 446,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-7-text",
+        "type": "text",
+        "title": "PHÁT TRIỂN AN TOÀN\n⚠ xóa hoặc đổi tên trường → ứng dụng cũ hỏng\n→ thêm một trường         → không gì hỏng\n→ đánh dấu lỗi thời, đo, xóa sau\n# thay đổi không tương thích? → /v2 song song /v1",
+        "position": {
+          "x": 495,
+          "y": -299
+        },
+        "width": 422,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-7"
+      },
+      {
+        "id": "phone",
+        "type": "process",
+        "title": "ứng dụng di động",
+        "position": {
+          "x": 0,
+          "y": -304
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "phone-2",
+        "type": "process",
+        "title": "ứng dụng di động",
+        "description": "đang tải…",
+        "position": {
+          "x": 0,
+          "y": -304
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "phone-3",
+        "type": "process",
+        "title": "ứng dụng di động",
+        "description": "người theo dõi · trang 2.001",
+        "position": {
+          "x": 0,
+          "y": -304
+        },
+        "width": 176,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "phone-4",
+        "type": "process",
+        "title": "ứng dụng di động",
+        "description": "⚠ ứng dụng v3.2 · crash",
+        "position": {
+          "x": 0,
+          "y": -304
+        },
+        "width": 176,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api",
+        "type": "process",
+        "title": "REST API",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-2",
+        "type": "process",
+        "title": "REST API",
+        "description": "GET /users/42/followers · GET /users/42/posts · GET /users/42",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 236,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-3",
+        "type": "process",
+        "title": "GraphQL",
+        "description": "một endpoint",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Braces",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-4",
+        "type": "process",
+        "title": "GraphQL",
+        "description": "một endpoint · name → display_name",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Braces",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "us",
+        "type": "process",
+        "title": "Users",
+        "description": "dịch vụ",
+        "position": {
+          "x": -112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "us-2",
+        "type": "process",
+        "title": "Users",
+        "description": "dịch vụ · ⚠ 41.000 lượt tra cứu · CPU 97%",
+        "position": {
+          "x": -112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "us-3",
+        "type": "process",
+        "title": "Users",
+        "description": "dịch vụ · CPU 30%",
+        "position": {
+          "x": -112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "us-4",
+        "type": "process",
+        "title": "Users",
+        "description": "dịch vụ · 2.000.000 người theo dõi · CPU 30%",
+        "position": {
+          "x": -112,
+          "y": 64
+        },
+        "width": 184,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ps",
+        "type": "process",
+        "title": "Posts",
+        "description": "dịch vụ",
+        "position": {
+          "x": 112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ps-2",
+        "type": "process",
+        "title": "Posts",
+        "description": "dịch vụ · CPU 30%",
+        "position": {
+          "x": 112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "pa",
+        "from": "phone",
+        "to": "api",
+        "label": "HTTPS + JSON",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pa-2",
+        "from": "phone",
+        "to": "api-2",
+        "label": "HTTPS + JSON",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "pa-3",
+        "from": "phone-2",
+        "to": "api-2",
+        "label": "4G · 100 ms mỗi lượt khứ hồi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "pa-4",
+        "from": "phone",
+        "to": "api-3",
+        "label": "4G · 100 ms mỗi lượt khứ hồi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pa-5",
+        "from": "phone-3",
+        "to": "api-3",
+        "label": "GET followers?after=9f3c&limit=20",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "pa-6",
+        "from": "phone-4",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pa-7",
+        "from": "phone",
+        "to": "api-3",
+        "label": "GraphQL",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "au",
+        "from": "api-3",
+        "to": "us",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "au-2",
+        "from": "api-3",
+        "to": "us-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "au-3",
+        "from": "api-3",
+        "to": "us-3",
+        "label": "gRPC",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "au-4",
+        "from": "api-3",
+        "to": "us-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "au-5",
+        "from": "api-4",
+        "to": "us-3",
+        "label": "gRPC",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap",
+        "from": "api-3",
+        "to": "ps",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-2",
+        "from": "api-3",
+        "to": "ps-2",
+        "label": "gRPC",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-3",
+        "from": "api-3",
+        "to": "ps-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "ap-4",
+        "from": "api-4",
+        "to": "ps-2",
+        "label": "gRPC",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "REST, RPC & GraphQL",
+    "summary": "Ba cách để các chương trình hỏi nhau thứ chúng cần, và mỗi cách tốn bao nhiêu với một chiếc điện thoại dùng 4G.",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "trips",
+        "label": "Lượt khứ hồi / màn hình"
+      },
+      {
+        "id": "payload",
+        "label": "Đã tải"
+      },
+      {
+        "id": "screenMs",
+        "label": "Màn hình sẵn sàng"
+      },
+      {
+        "id": "unused",
+        "label": "Dữ liệu thừa"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Hợp đồng API là gì",
+        "step": "s1"
+      },
+      {
+        "text": "REST: tài nguyên và động từ",
+        "step": "s2"
+      },
+      {
+        "text": "GraphQL: hỏi đúng thứ bạn cần",
+        "step": "s4"
+      },
+      {
+        "text": "RPC giữa các dịch vụ nội bộ",
+        "step": "s6"
+      },
+      {
+        "text": "Phân trang và đánh phiên bản API",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "phone-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "phone-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "phone-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "api": {
+      "until": "s2"
+    },
+    "api-2": {
+      "from": "s2",
+      "until": "s4"
+    },
+    "api-3": {
+      "from": "s4"
+    },
+    "api-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "us": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "us-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "us-3": {
+      "from": "s6"
+    },
+    "us-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ps": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "ps-2": {
+      "from": "s6"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "pa": {
+      "until": "s2"
+    },
+    "pa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "pa-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "pa-4": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "pa-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pa-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "pa-7": {
+      "from": "s9"
+    },
+    "au": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "au-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "au-3": {
+      "from": "s6"
+    },
+    "au-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "au-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ap": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "ap-2": {
+      "from": "s6"
+    },
+    "ap-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ap-4": {
+      "from": "s8",
+      "until": "s9"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Hợp đồng",
+      "title": "Chương trình cần một hợp đồng",
+      "chapter": "setup",
+      "body": "Ứng dụng di động của bạn hiển thị một hồ sơ: tên, ảnh đại diện, ba bài đăng gần nhất và số người theo dõi. Dữ liệu nằm trên máy chủ của bạn, nên ứng dụng phải hỏi để lấy.\n\n[[API]] là cách hỏi đã được thỏa thuận: có những địa chỉ nào, gửi gì, và nhận lại gì. Ở đây là JSON qua HTTPS.",
+      "callout": {
+        "kind": "insight",
+        "text": "API là một lời hứa. Khi các ứng dụng đã phụ thuộc vào nó, thay đổi nó mà không làm hỏng chúng là một bài toán thiết kế thực sự."
+      },
+      "changes": [],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "REST",
+      "title": "REST: tài nguyên và động từ",
+      "chapter": "technique",
+      "body": "[[REST]] coi dữ liệu là các **tài nguyên** có địa chỉ (`/users/42`, `/users/42/posts`) và dùng các động từ HTTP trên chúng: `GET` để đọc, `POST` để tạo, `PUT`/`PATCH` để cập nhật, `DELETE` để xóa.\n\nNó đơn giản, chạy với mọi công cụ, và phản hồi `GET` có thể được trình duyệt và CDN lưu cache. `GET`, `PUT` và `DELETE` còn là [[idempotent]] (lặp lại không thay đổi gì thêm), trong khi `POST` thì không, điều này quan trọng ngay khi client thử lại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Mã trạng thái cũng mang ý nghĩa: 200 OK, 201 Created, 404 Not Found, 429 Too Many Requests, 500 lỗi máy chủ."
+      },
+      "changes": [
+        "+ Ba endpoint cho màn hình hồ sơ"
+      ],
+      "metrics": {
+        "trips": "3",
+        "payload": "48 KB",
+        "screenMs": "210 ms",
+        "unused": "94%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Trên 4G",
+      "title": "Lắm lời và cồng kềnh trên điện thoại",
+      "chapter": "problem",
+      "body": "Trên điện thoại, mỗi lượt khứ hồi tốn khoảng 100 ms. Client gọi ba lần lần lượt (thường là buộc phải vậy, vì một lệnh gọi cần id từ câu trả lời trước), nên màn hình phải chờ cả ba nối tiếp nhau.\n\nMỗi endpoint còn trả về *toàn bộ* đối tượng: 48 KB về tới để hiển thị khoảng 3 KB. Đó là [[over-fetching]]; cần nhiều lệnh gọi cho một màn hình là [[under-fetching]].",
+      "callout": {
+        "kind": "warning",
+        "text": "Lượt khứ hồi và byte lãng phí gây hại nhất ở nơi mạng chậm nhất: đúng nơi người dùng di động đang ở."
+      },
+      "changes": [
+        "~ Mạng: 4G, 100 ms mỗi lượt khứ hồi",
+        "~ Màn hình sẵn sàng 210 → 420 ms",
+        "- 94% dữ liệu tải về không dùng tới"
+      ],
+      "metrics": {
+        "trips": "3",
+        "payload": "48 KB",
+        "screenMs": "420 ms",
+        "unused": "94%"
+      },
+      "overrides": {
+        "phone": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "GraphQL",
+      "title": "GraphQL: hỏi đúng thứ bạn cần",
+      "chapter": "solution",
+      "body": "Với [[GraphQL]], client gửi một truy vấn mô tả đúng hình dạng nó muốn. Máy chủ GraphQL lấy từng phần từ các dịch vụ phía sau và chỉ trả về những trường đó.\n\nHãy xem một yêu cầu rời điện thoại, tách ra tới dịch vụ Users và Posts, rồi quay về thành một phản hồi duy nhất.",
+      "callout": {
+        "kind": "tip",
+        "text": "Rất hợp khi nhiều client khác nhau (iOS, Android, web, TV) mỗi bên cần dữ liệu hơi khác nhau từ cùng một backend."
+      },
+      "changes": [
+        "~ REST API → endpoint GraphQL",
+        "+ Dịch vụ Users và Posts phía sau",
+        "~ 3 lượt khứ hồi → 1",
+        "~ 48 KB → 3 KB"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "140 ms",
+        "unused": "0%"
+      },
+      "overrides": {
+        "phone": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Cái giá",
+      "title": "Truy vấn linh hoạt có thể rất tốn kém",
+      "chapter": "tradeoff",
+      "body": "Client có thể hỏi *bất cứ thứ gì* schema cho phép, kể cả người theo dõi của người theo dõi của người theo dõi, cùng mọi bài đăng của họ. Một truy vấn trông vô hại (ô vuông lớn) làm dịch vụ Users quá tải.\n\nVà vì truy vấn thường được gửi dưới dạng `POST` tới một URL duy nhất, cache HTTP thông thường và CDN không giúp được nếu không làm thêm, chẳng hạn persisted query.",
+      "callout": {
+        "kind": "warning",
+        "text": "GraphQL trên production cần giới hạn độ sâu và chi phí truy vấn, và thường cần một danh sách cho phép các truy vấn đã duyệt (“persisted”)."
+      },
+      "changes": [
+        "+ Một truy vấn lồng sâu",
+        "~ Dịch vụ Users quá tải"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "2,1 MB",
+        "screenMs": "3,8 s",
+        "unused": "0%"
+      },
+      "overrides": {
+        "pa-4": {
+          "effect": "pulse"
+        },
+        "ap": {
+          "effect": "pulse"
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "RPC",
+      "title": "Bên trong trung tâm dữ liệu: RPC",
+      "chapter": "technique",
+      "body": "Phía sau API, các dịch vụ gọi nhau liên tục. Ở đây lựa chọn thường gặp là [[RPC]] (remote procedure call): gọi một hàm trên máy khác như thể nó ở ngay máy mình; ngày nay thường là **gRPC**.\n\nHợp đồng là một schema có kiểu (Protocol Buffers); mã cho cả hai phía được sinh ra từ nó, và thông điệp đi dưới dạng nhị phân gọn qua HTTP/2.",
+      "callout": {
+        "kind": "tip",
+        "text": "gRPC nhanh, chặt chẽ về kiểu và hỗ trợ streaming, nhưng trình duyệt không nói được nó một cách tự nhiên (cần proxy gRPC-Web), nên nó chủ yếu ở bên trong mạng của bạn."
+      },
+      "changes": [
+        "~ API → dịch vụ: gRPC + protobuf"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "Phân trang",
+      "title": "Tình huống: danh sách 2 triệu mục",
+      "chapter": "technique",
+      "body": "Danh sách người theo dõi của một người nổi tiếng có 2 triệu mục. Trả về tất cả trong một phản hồi nghĩa là hàng trăm megabyte và phải chờ rất lâu. API trả danh sách theo từng **trang**.\n\n`?offset=40000&limit=20` trông đơn giản, nhưng cơ sở dữ liệu vẫn phải đi qua 40.000 hàng. Một [[con trỏ]] (cursor; “20 mục sau id 9f3c”) nhảy thẳng tới đó bằng chỉ mục, và không bỏ sót hay lặp lại mục nào khi có mục mới.",
+      "callout": {
+        "kind": "tip",
+        "text": "Trả về con trỏ của trang kế tiếp trong mỗi phản hồi. Client chỉ cần gửi lại nó."
+      },
+      "changes": [
+        "+ Người theo dõi trả về 20 mục mỗi lần",
+        "~ Phân trang bằng con trỏ"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {
+        "phone": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "au-3": {
+          "visible": false
+        },
+        "ap-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Phiên bản",
+      "title": "Tình huống: đổi tên một trường làm hỏng ứng dụng cũ",
+      "chapter": "problem",
+      "body": "Một lần dọn dẹp đổi tên `name` thành `display_name`. Ứng dụng mới chạy tốt, nhưng hàng triệu điện thoại vẫn chạy phiên bản năm ngoái, và màn hình hồ sơ của chúng giờ bị crash.\n\nKhông thể ép ứng dụng di động cập nhật. Vì vậy API phát triển theo kiểu **bổ sung**: thêm trường mới, giữ trường cũ, và chỉ xóa khi gần như không còn ai gọi nó. Với thay đổi thật sự không tương thích, hãy phát hành phiên bản mới (`/v2/`) và chạy cả hai.",
+      "callout": {
+        "kind": "warning",
+        "text": "Một khi API đã công khai, mọi trường đều là một lời hứa. Hãy đo xem ai đang dùng trước khi làm hỏng nó."
+      },
+      "changes": [
+        "- Phiên bản ứng dụng cũ bị crash",
+        "~ Sửa: giữ name, thêm display_name",
+        "+ /v2 cho thay đổi không tương thích"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {
+        "phone": {
+          "visible": false
+        },
+        "api-3": {
+          "visible": false
+        },
+        "us-3": {
+          "emphasis": true
+        },
+        "au-3": {
+          "visible": false
+        },
+        "ap-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Lựa chọn",
+      "title": "Dùng cái nào, ở đâu?",
+      "chapter": "insight",
+      "body": "• **REST** — Hợp nhất cho: API công khai, CRUD đơn giản, cache; Cẩn thận: Nhiều lệnh gọi mỗi màn hình\n• **GraphQL** — Hợp nhất cho: Nhiều client, màn hình đa dạng; Cẩn thận: Truy vấn tốn kém, cache\n• **gRPC** — Hợp nhất cho: Giữa các dịch vụ; Cẩn thận: Không dành cho trình duyệt\n\nChúng kết hợp với nhau rất tốt: REST hoặc GraphQL ở biên cho client, gRPC giữa các dịch vụ bên trong.",
+      "callout": {
+        "kind": "insight",
+        "text": "Dù chọn kiểu nào, hãy đánh phiên bản API và đừng bao giờ làm hỏng client hiện có: thêm trường, đừng đổi tên hay xóa."
+      },
+      "changes": [],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {
+        "phone": {
+          "emphasis": true
+        },
+        "api-3": {
+          "emphasis": true
+        },
+        "au-3": {
+          "emphasis": true
+        },
+        "ap-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• **API** là hợp đồng giữa các chương trình.\n• **REST**: tài nguyên + động từ HTTP; đơn giản và cache được, nhưng lắm lời với màn hình phong phú.\n• **GraphQL**: một truy vấn, đúng các trường cần; đề phòng truy vấn tốn kém.\n• **gRPC**: lệnh gọi nhanh, có kiểu giữa các dịch vụ nội bộ.\n• Phân trang danh sách dài bằng **con trỏ**; phát triển API theo kiểu **bổ sung**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Hàng đợi tin nhắn**: cho những việc không nên bắt ai phải chờ câu trả lời."
+      },
+      "changes": [],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {}
+    }
+  ]
+}

@@ -1,0 +1,2784 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "batch-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -407,
+          "y": 111
+        },
+        "width": 370,
+        "height": 444,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "batch-4-label",
+        "type": "text",
+        "title": "NIGHTLY · EXACT",
+        "position": {
+          "x": -516,
+          "y": -90
+        },
+        "width": 131,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "batch-4"
+      },
+      {
+        "id": "batch-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -406,
+          "y": 111
+        },
+        "width": 521,
+        "height": 444,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "batch-3-label",
+        "type": "text",
+        "title": "MAP + COMBINE → REDUCE",
+        "position": {
+          "x": -564,
+          "y": -90
+        },
+        "width": 184,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "batch-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -408,
+          "y": 111
+        },
+        "width": 489,
+        "height": 444,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "batch-2-label",
+        "type": "text",
+        "title": "MAP → SHUFFLE → REDUCE",
+        "position": {
+          "x": -550,
+          "y": -90
+        },
+        "width": 184,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "batch",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -407,
+          "y": 111
+        },
+        "width": 370,
+        "height": 444,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "batch-label",
+        "type": "text",
+        "title": "NIGHTLY BATCH JOB",
+        "position": {
+          "x": -509,
+          "y": -90
+        },
+        "width": 146,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "batch"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 964,
+          "y": -788
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "COUNTING 2 BILLION VIEWS\nmap:     each worker counts its chunk\nshuffle: same video → same worker\nreduce:  sum the counts per video\n→ 100 workers: ~20 minutes",
+        "position": {
+          "x": 964,
+          "y": -788
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 969,
+          "y": -788
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "TAMING A HOT KEY\n⚠ viral video: 800M rows → one reducer\n→ combiner: each mapper sends 1 count\n→ salting: 4f2#0 … 4f2#9 → 10 reducers\n# job: 3 h → 20 min",
+        "position": {
+          "x": 969,
+          "y": -788
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 964,
+          "y": -788
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "VIEWS OF VIDEO 4F2 PER MINUTE\n12:01  █░░░░░░░░░░░  120\n12:02  █░░░░░░░░░░░  140\n12:03  ████░░░░░░░░  780\n12:04  ████████████  2,500 ↑ trending",
+        "position": {
+          "x": 964,
+          "y": -788
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 948,
+          "y": -788
+        },
+        "width": 313,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "EVENT TIME VS ARRIVAL TIME\nview at 12:04, arrives 14:10\nwatermark: “events ≤ 5 min late”\n⚠ 2 h late → correct window later\n→ duplicate id → dropped",
+        "position": {
+          "x": 948,
+          "y": -788
+        },
+        "width": 289,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 944,
+          "y": -788
+        },
+        "width": 305,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "UNIQUE VIEWERS OF 4F2\nexact: remember every viewer id\n⚠ 50M ids × 16 bytes ≈ 800 MB\n→ HyperLogLog: 12 KB, ~1% error\n# sketches merge across machines",
+        "position": {
+          "x": 944,
+          "y": -788
+        },
+        "width": 281,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "viewers",
+        "type": "process",
+        "title": "viewers",
+        "position": {
+          "x": 0,
+          "y": -814
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Video App",
+        "position": {
+          "x": 0,
+          "y": -407
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "prod",
+        "type": "process",
+        "title": "production DB",
+        "description": "CPU 95%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "prod-2",
+        "type": "process",
+        "title": "production DB",
+        "description": "CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash",
+        "type": "process",
+        "title": "Dashboard",
+        "position": {
+          "x": 0,
+          "y": 555
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash-2",
+        "type": "process",
+        "title": "Dashboard",
+        "description": "trending: yesterday’s",
+        "position": {
+          "x": 0,
+          "y": 555
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash-3",
+        "type": "process",
+        "title": "Dashboard",
+        "description": "trending: now",
+        "position": {
+          "x": 0,
+          "y": 555
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash-4",
+        "type": "process",
+        "title": "Dashboard",
+        "description": "live counts: 4 min old",
+        "position": {
+          "x": 0,
+          "y": 555
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash-5",
+        "type": "process",
+        "title": "Dashboard",
+        "description": "unique viewers ≈ 48.2M",
+        "position": {
+          "x": 0,
+          "y": 555
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "logs",
+        "type": "process",
+        "title": "event logs",
+        "position": {
+          "x": -407,
+          "y": -407
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -533,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-2",
+        "type": "process",
+        "title": "map",
+        "position": {
+          "x": -533,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w1-3",
+        "type": "process",
+        "title": "map + combine",
+        "position": {
+          "x": -533,
+          "y": 0
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "w2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -280,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-2",
+        "type": "process",
+        "title": "map",
+        "position": {
+          "x": -280,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w2-3",
+        "type": "process",
+        "title": "map + combine",
+        "position": {
+          "x": -280,
+          "y": 0
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "w3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -533,
+          "y": 222
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w3-2",
+        "type": "process",
+        "title": "reduce",
+        "position": {
+          "x": -533,
+          "y": 222
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w3-3",
+        "type": "process",
+        "title": "40% of data · 3 h",
+        "position": {
+          "x": -533,
+          "y": 222
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w3-4",
+        "type": "process",
+        "title": "reduce · even",
+        "position": {
+          "x": -533,
+          "y": 222
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "w4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -280,
+          "y": 222
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w4-2",
+        "type": "process",
+        "title": "reduce",
+        "position": {
+          "x": -280,
+          "y": 222
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w4-3",
+        "type": "process",
+        "title": "5 min",
+        "position": {
+          "x": -280,
+          "y": 222
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w4-4",
+        "type": "process",
+        "title": "reduce · even",
+        "position": {
+          "x": -280,
+          "y": 222
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "wh",
+        "type": "process",
+        "title": "warehouse",
+        "position": {
+          "x": -407,
+          "y": 555
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kafka",
+        "type": "process",
+        "title": "Event Stream",
+        "position": {
+          "x": 407,
+          "y": -407
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kafka-2",
+        "type": "process",
+        "title": "Event Stream",
+        "description": "event from 2 h ago",
+        "position": {
+          "x": 407,
+          "y": -407
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kafka-3",
+        "type": "process",
+        "title": "Event Stream",
+        "description": "lag: 4 min · 18M events",
+        "position": {
+          "x": 407,
+          "y": -407
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kafka-4",
+        "type": "process",
+        "title": "Event Stream",
+        "description": "4 partitions · lag 2 s",
+        "position": {
+          "x": 407,
+          "y": -407
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc",
+        "type": "process",
+        "title": "Stream Processor",
+        "position": {
+          "x": 407,
+          "y": 111
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-2",
+        "type": "process",
+        "title": "Stream Processor",
+        "description": "windows: 1 min",
+        "position": {
+          "x": 407,
+          "y": 111
+        },
+        "width": 180,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-3",
+        "type": "process",
+        "title": "Stream Processor",
+        "description": "watermark: 12:05 · dedupe on",
+        "position": {
+          "x": 407,
+          "y": 111
+        },
+        "width": 184,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-4",
+        "type": "process",
+        "title": "Stream Processor",
+        "description": "⚠ falling behind",
+        "position": {
+          "x": 407,
+          "y": 111
+        },
+        "width": 180,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-5",
+        "type": "process",
+        "title": "Stream Processor",
+        "description": "partitions 0–1",
+        "position": {
+          "x": 407,
+          "y": 111
+        },
+        "width": 180,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-6",
+        "type": "process",
+        "title": "Stream Processor",
+        "description": "HyperLogLog per video",
+        "position": {
+          "x": 407,
+          "y": 111
+        },
+        "width": 180,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "live",
+        "type": "process",
+        "title": "live counts",
+        "position": {
+          "x": 407,
+          "y": 555
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc2",
+        "type": "process",
+        "title": "Stream Processor",
+        "description": "partitions 2–3",
+        "position": {
+          "x": 629,
+          "y": 111
+        },
+        "width": 180,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "va",
+        "from": "viewers",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ad",
+        "from": "app",
+        "to": "prod",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ad-2",
+        "from": "app",
+        "to": "prod-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "dp",
+        "from": "dash",
+        "to": "prod",
+        "label": "GROUP BY video · every minute",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "al",
+        "from": "app",
+        "to": "logs",
+        "label": "append events",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "lb",
+        "from": "logs",
+        "to": "batch",
+        "label": "read 1 day",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "lb-2",
+        "from": "logs",
+        "to": "batch-2",
+        "label": "read 1 day",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "lb-3",
+        "from": "logs",
+        "to": "batch-3",
+        "label": "read 1 day",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "lb-4",
+        "from": "logs",
+        "to": "batch-4",
+        "label": "read 1 day",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bw",
+        "from": "batch",
+        "to": "wh",
+        "label": "write results",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bw-2",
+        "from": "batch-2",
+        "to": "wh",
+        "label": "write results",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bw-3",
+        "from": "batch-3",
+        "to": "wh",
+        "label": "write results",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bw-4",
+        "from": "batch-4",
+        "to": "wh",
+        "label": "write results",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "dw",
+        "from": "dash",
+        "to": "wh",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dw-2",
+        "from": "dash-2",
+        "to": "wh",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ak",
+        "from": "app",
+        "to": "kafka",
+        "label": "publish each view",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "ak-2",
+        "from": "app",
+        "to": "kafka-2",
+        "label": "publish each view",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "ak-3",
+        "from": "app",
+        "to": "kafka-3",
+        "label": "publish each view",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "ak-4",
+        "from": "app",
+        "to": "kafka-4",
+        "label": "publish each view",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "kp",
+        "from": "kafka",
+        "to": "proc",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "kp-2",
+        "from": "kafka",
+        "to": "proc-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "kp-3",
+        "from": "kafka-2",
+        "to": "proc-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "kp-4",
+        "from": "kafka-3",
+        "to": "proc-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "kp-5",
+        "from": "kafka-4",
+        "to": "proc-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "kp-6",
+        "from": "kafka",
+        "to": "proc-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "pl",
+        "from": "proc",
+        "to": "live",
+        "label": "update counts",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "pl-2",
+        "from": "proc-2",
+        "to": "live",
+        "label": "update counts",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "pl-3",
+        "from": "proc-3",
+        "to": "live",
+        "label": "update counts",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "pl-4",
+        "from": "proc-4",
+        "to": "live",
+        "label": "update counts",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "pl-5",
+        "from": "proc-5",
+        "to": "live",
+        "label": "update counts",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "pl-6",
+        "from": "proc-6",
+        "to": "live",
+        "label": "update counts",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "dl",
+        "from": "dash-3",
+        "to": "live",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dl-2",
+        "from": "dash",
+        "to": "live",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dl-3",
+        "from": "dash-4",
+        "to": "live",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dl-4",
+        "from": "dash-5",
+        "to": "live",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "kp2",
+        "from": "kafka-4",
+        "to": "proc2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "p2l",
+        "from": "proc2",
+        "to": "live",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      }
+    ]
+  },
+  "meta": {
+    "title": "Batch & Stream Processing",
+    "summary": "Crunching billions of events: overnight in big batches, or continuously as they arrive.",
+    "minutes": 15,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "freshness",
+        "label": "Results age"
+      },
+      {
+        "id": "prodLoad",
+        "label": "Production DB load"
+      },
+      {
+        "id": "eventsDay",
+        "label": "Events / day"
+      },
+      {
+        "id": "exact",
+        "label": "Counts exact"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Keep analytics off the production database",
+        "step": "s1"
+      },
+      {
+        "text": "Batch processing and map/reduce",
+        "step": "s3"
+      },
+      {
+        "text": "Skewed keys: combiners and salting",
+        "step": "s5"
+      },
+      {
+        "text": "Stream processing and windows",
+        "step": "s8"
+      },
+      {
+        "text": "Late events, lag and partitions",
+        "step": "s11"
+      },
+      {
+        "text": "Approximate counts, and running both",
+        "step": "s13"
+      }
+    ]
+  },
+  "presence": {
+    "prod": {
+      "until": "s2"
+    },
+    "prod-2": {
+      "from": "s2"
+    },
+    "dash-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dash-3": {
+      "from": "s7",
+      "until": "s12"
+    },
+    "dash-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dash-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "logs": {
+      "from": "s2"
+    },
+    "batch": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "batch-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "batch-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "batch-4": {
+      "from": "s13"
+    },
+    "w1": {
+      "from": "s2"
+    },
+    "w1-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "w1-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "w2": {
+      "from": "s2"
+    },
+    "w2-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "w2-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "w3": {
+      "from": "s2"
+    },
+    "w3-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w3-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "w3-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "w4": {
+      "from": "s2"
+    },
+    "w4-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w4-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "w4-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wh": {
+      "from": "s2"
+    },
+    "card": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "kafka": {
+      "from": "s7"
+    },
+    "kafka-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "kafka-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "kafka-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "proc": {
+      "from": "s7"
+    },
+    "proc-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "proc-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "proc-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "proc-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "proc-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "live": {
+      "from": "s7"
+    },
+    "proc2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "batch-4-label": {
+      "from": "s13"
+    },
+    "batch-3-label": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "batch-2-label": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "batch-label": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "card-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-3-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-5-text": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ad": {
+      "until": "s2"
+    },
+    "ad-2": {
+      "from": "s2"
+    },
+    "dp": {
+      "until": "s2"
+    },
+    "al": {
+      "from": "s2"
+    },
+    "lb": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "lb-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "lb-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "lb-4": {
+      "from": "s13"
+    },
+    "bw": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "bw-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "bw-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bw-4": {
+      "from": "s13"
+    },
+    "dw": {
+      "from": "s2"
+    },
+    "dw-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ak": {
+      "from": "s7"
+    },
+    "ak-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ak-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ak-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "kp": {
+      "from": "s7"
+    },
+    "kp-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "kp-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "kp-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "kp-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "kp-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "pl": {
+      "from": "s7"
+    },
+    "pl-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "pl-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "pl-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "pl-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "pl-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "dl": {
+      "from": "s7",
+      "until": "s12"
+    },
+    "dl-2": {
+      "from": "s9"
+    },
+    "dl-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dl-4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "kp2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "p2l": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Live DB",
+      "title": "Analytics on the production database",
+      "chapter": "problem",
+      "body": "Every view of every video is a row in the production database — about 2 billion a day. A dashboard shows views per video, recomputed every minute with a big `GROUP BY`.\n\nEach run scans the whole day so far — hundreds of millions of rows by mid-morning — and the database that serves the app grinds: viewers wait while it counts.",
+      "callout": {
+        "kind": "warning",
+        "text": "Production databases are tuned for many small, fast queries. Huge scans steal their memory, CPU and disk."
+      },
+      "changes": [],
+      "metrics": {
+        "freshness": "live",
+        "prodLoad": "95%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Batch",
+      "title": "Batch: collect now, compute later",
+      "chapter": "solution",
+      "body": "Instead, the app appends every view as an event to cheap **object storage** — files, not database rows. Once a night a [[batch job]] reads the whole day, computes the counts on a cluster of workers, and writes the results to an analytics **warehouse**.\n\nThe dashboard reads the warehouse. The production database only serves the app again.",
+      "callout": {
+        "kind": "tip",
+        "text": "Batch is simple, cheap and easy to rerun: if the job had a bug, fix it and run it again over the same files."
+      },
+      "changes": [
+        "+ Event logs in object storage",
+        "+ Nightly batch job on 4 workers",
+        "+ Warehouse for analytics",
+        "~ Production DB load 95% → 30%"
+      ],
+      "metrics": {
+        "freshness": "up to 24 h",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Map/reduce",
+      "title": "Split the work: map, shuffle, reduce",
+      "chapter": "technique",
+      "body": "2 billion events won’t fit through one machine quickly, so the job is split. **Map**: each worker reads its own chunk of the files and counts views per video. **Shuffle**: counts for the same video are sent to the same worker. **Reduce**: that worker adds them up.\n\nAdd more workers and the job finishes proportionally faster.",
+      "callout": {
+        "kind": "tip",
+        "text": "This is MapReduce. Today Spark, BigQuery, Snowflake and friends do the same thing behind a SQL interface."
+      },
+      "changes": [
+        "~ Workers 1–2: map their chunks",
+        "~ Workers 3–4: reduce per video"
+      ],
+      "metrics": {
+        "freshness": "up to 24 h",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {
+        "batch": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "batch-label": {
+          "visible": false
+        },
+        "lb": {
+          "visible": false
+        },
+        "bw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Skew",
+      "title": "Case: one video, one exhausted reducer",
+      "chapter": "problem",
+      "body": "One video went viral: 40% of all views yesterday. In the shuffle, every view of it goes to the *same* reducer. That worker grinds for 3 hours while the other 99 finished in 5 minutes — and the job waits for the slowest.\n\nSplitting work by key only balances it if the keys are balanced. Real data rarely is.",
+      "callout": {
+        "kind": "warning",
+        "text": "Skew is the most common reason a big batch job is mysteriously slow. Look for one task taking far longer than the rest."
+      },
+      "changes": [
+        "+ One video = 40% of the data",
+        "- One reducer runs 3 h",
+        "~ Job finishes 3 h late"
+      ],
+      "metrics": {
+        "freshness": "up to 27 h",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {
+        "batch": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "batch-label": {
+          "visible": false
+        },
+        "lb": {
+          "visible": false
+        },
+        "bw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Combine",
+      "title": "Combine early, split hot keys",
+      "chapter": "solution",
+      "body": "Two standard fixes. A [[combiner]] pre-aggregates on each mapper: instead of shipping 800 million “view of 4f2” rows, every mapper sends one partial count. For keys that are still too hot, [[salting]] splits them — `4f2#0` … `4f2#9` go to ten reducers, and a final step adds the ten totals.\n\nThe job drops from 3 hours back to about 20 minutes.",
+      "callout": {
+        "kind": "tip",
+        "text": "Spark and most SQL engines combine automatically for sums and counts, and can detect and split skewed keys for joins."
+      },
+      "changes": [
+        "+ Combiner on every mapper",
+        "+ Hot key split across 10 reducers",
+        "~ Job 3 h → 20 min"
+      ],
+      "metrics": {
+        "freshness": "up to 24 h",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {
+        "batch": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "batch-label": {
+          "visible": false
+        },
+        "lb": {
+          "visible": false
+        },
+        "bw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Too late",
+      "title": "A day late is too late",
+      "chapter": "problem",
+      "body": "Some questions can’t wait for tonight. A video going viral should show up in “Trending” *now*. A bot farm faking millions of views should be caught in minutes, before it earns any money.\n\nRunning the batch job every hour helps a little, but each run still re-reads a huge pile of data.",
+      "callout": {
+        "kind": "insight",
+        "text": "Batch answers “what happened?”. Some products need “what is happening?”."
+      },
+      "changes": [
+        "- Trending list is a day old",
+        "- Fake views caught only tomorrow"
+      ],
+      "metrics": {
+        "freshness": "up to 24 h",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "batch": {
+          "emphasis": true
+        },
+        "w1": {
+          "emphasis": true
+        },
+        "w2": {
+          "emphasis": true
+        },
+        "w3": {
+          "emphasis": true
+        },
+        "w4": {
+          "emphasis": true
+        },
+        "batch-label": {
+          "emphasis": true
+        },
+        "lb": {
+          "emphasis": true
+        },
+        "bw": {
+          "emphasis": true
+        },
+        "dw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Stream",
+      "title": "Stream processing: compute as events arrive",
+      "chapter": "solution",
+      "body": "Now the app publishes each view to an **event stream** (Kafka). A [[stream processor]] (Flink, Kafka Streams, Spark Streaming) reads events as they arrive and keeps running counts, writing results to a fast store.\n\nThe dashboard is seconds behind reality instead of a day.",
+      "callout": {
+        "kind": "tip",
+        "text": "The processor keeps its counts in local state and checkpoints it regularly, so a crash resumes from the last checkpoint instead of from scratch."
+      },
+      "changes": [
+        "- Nightly batch job",
+        "+ Event stream",
+        "+ Stream processor",
+        "+ Live counts store",
+        "~ Results age 24 h → 5 s"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Windows",
+      "title": "Counting in windows",
+      "chapter": "technique",
+      "body": "A stream never ends, so “count views” needs a time frame: a [[window]]. **Tumbling** windows cut time into fixed slices (views per minute). **Sliding** windows overlap (views in the last 10 minutes, updated every minute).\n\nA sudden jump between windows is exactly what “trending” — or fraud — looks like.",
+      "callout": {
+        "kind": "tip",
+        "text": "Session windows group events by bursts of activity — useful for “how long did people watch?”."
+      },
+      "changes": [
+        "+ 1-minute tumbling windows per video"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Late events",
+      "title": "Case: late and duplicate events",
+      "chapter": "problem",
+      "body": "A phone watches videos in the subway with no signal and uploads its views two hours later. Should they count for 12:04, when they happened, or now, when they arrived? And a flaky network makes some phones send the same event twice.\n\nStream processors use **event time** (when it happened), a [[watermark]] to decide when a window is complete enough to publish, a policy for stragglers, and an event id to drop duplicates.",
+      "callout": {
+        "kind": "warning",
+        "text": "“Exactly-once” in streaming means checkpoints plus idempotent writes — the same lesson as queues, at billions of events a day."
+      },
+      "changes": [
+        "+ Events 2 h late",
+        "+ Duplicate events",
+        "~ Watermarks + dedupe by event id"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "with care"
+      },
+      "overrides": {
+        "dash": {
+          "emphasis": true
+        },
+        "dash-3": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "kafka": {
+          "visible": false
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "ak": {
+          "visible": false
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        },
+        "dl": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Lag",
+      "title": "Case: the processor falls behind",
+      "chapter": "problem",
+      "body": "A celebrity live stream triples traffic for an hour. The stream processor can’t keep up, and unprocessed events pile up in the stream: [[consumer lag]] reaches 4 minutes and 18 million events.\n\nNothing is lost — the stream keeps everything — but the “live” dashboard is now 4 minutes old, and the fraud check runs 4 minutes late.",
+      "callout": {
+        "kind": "warning",
+        "text": "Consumer lag is the key health metric of any streaming system. Alert on it, in seconds or events."
+      },
+      "changes": [
+        "~ Traffic × 3",
+        "- Processor at 100%",
+        "- Lag: 4 min · 18M events"
+      ],
+      "metrics": {
+        "freshness": "4 min",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "with care"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "dash-3": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "kafka": {
+          "visible": false
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "ak": {
+          "visible": false
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        },
+        "dl": {
+          "visible": false
+        },
+        "dl-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Partitions",
+      "title": "Scale out across partitions",
+      "chapter": "solution",
+      "body": "The stream is split into **partitions** (by video id, so each video’s events stay in order). Each processor instance owns some partitions, so adding instances adds throughput: two processors, two partitions each.\n\nThe backlog drains, lag drops back to seconds, and an autoscaler can add processors whenever lag grows.",
+      "callout": {
+        "kind": "tip",
+        "text": "The number of partitions caps the parallelism. Create more partitions than you need today — adding them later reshuffles keys."
+      },
+      "changes": [
+        "+ Second processor",
+        "~ 4 partitions split 2 + 2",
+        "~ Lag 4 min → 2 s"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "with care"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "dash-3": {
+          "emphasis": true
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "kafka": {
+          "visible": false
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "ak": {
+          "visible": false
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        },
+        "dl": {
+          "emphasis": true
+        },
+        "dl-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Unique",
+      "title": "Case: counting unique viewers",
+      "chapter": "technique",
+      "body": "Views are easy to count. **Unique** viewers are not: to count exactly you must remember every viewer id you’ve seen — 50 million ids for a popular video, about 800 MB of state, per video, per window.\n\nA [[HyperLogLog]] sketch estimates the number of distinct ids in 12 KB with about 1% error, and sketches from different machines and windows simply merge.",
+      "callout": {
+        "kind": "insight",
+        "text": "Approximate algorithms (HyperLogLog, count-min sketch, t-digest for percentiles) trade a tiny error for enormous savings. Dashboards rarely need the last 1%."
+      },
+      "changes": [
+        "+ Unique viewers per video",
+        "~ Exact set → HyperLogLog sketch",
+        "~ 800 MB → 12 KB per video"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "≈ 1% error"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "kafka": {
+          "emphasis": true
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "ak": {
+          "emphasis": true
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        },
+        "dl-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Both",
+      "title": "Batch and stream, together",
+      "chapter": "insight",
+      "body": "Many systems run both: a stream for fast, approximate answers and a nightly batch that recomputes the exact numbers from the full log (the **lambda architecture**).\n\nOthers keep only the stream and, to fix a bug or rebuild results, **replay** the retained event log through a new version of the processor (the **kappa architecture**).\n\n• Freshness — Batch: Hours; Stream: Seconds\n• Complexity — Batch: Low; Stream: Higher\n• Rerun — Batch: Easy; Stream: Replay the log",
+      "callout": {
+        "kind": "tip",
+        "text": "Start with batch unless you clearly need seconds. Add streaming for the few results that do."
+      },
+      "changes": [
+        "+ Nightly batch back alongside the stream"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {
+        "dash": {
+          "emphasis": true
+        },
+        "logs": {
+          "emphasis": true
+        },
+        "w1": {
+          "emphasis": true
+        },
+        "w2": {
+          "emphasis": true
+        },
+        "w3": {
+          "emphasis": true
+        },
+        "w4": {
+          "emphasis": true
+        },
+        "wh": {
+          "emphasis": true
+        },
+        "proc": {
+          "emphasis": true
+        },
+        "al": {
+          "emphasis": true
+        },
+        "dw": {
+          "emphasis": true
+        },
+        "kp": {
+          "emphasis": true
+        },
+        "pl": {
+          "emphasis": true
+        },
+        "dl-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s14",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Keep heavy analytics **off the production database**.\n• **Batch**: process large, finished datasets cheaply — results are hours old.\n• **Stream**: process events as they arrive — seconds old, more moving parts.\n• Watch for **skewed keys** (combine, salt) and **consumer lag** (add partitions and processors).\n• Handle **late** and **duplicate** events; many systems run **both**.",
+      "callout": {
+        "kind": "tip",
+        "text": "That completes Architecture. Next module: **Security** — starting with authentication."
+      },
+      "changes": [],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 billion",
+        "exact": "yes"
+      },
+      "overrides": {}
+    }
+  ]
+}

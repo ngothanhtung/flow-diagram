@@ -1,0 +1,1884 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 597,
+          "y": -374
+        },
+        "width": 330,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "POINT-IN-TIME RECOVERY\n03:00  restore the nightly snapshot\n       replay the write log…\n→ 14:02  stop here — data intact\n⚠ 14:03  the bad migration",
+        "position": {
+          "x": 597,
+          "y": -374
+        },
+        "width": 306,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 634,
+          "y": -376
+        },
+        "width": 404,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "REPLICATION STYLES\nsingle-leader  one writer · simple\nmulti-leader   writer per region · conflicts\nleaderless     write N, read R · quorums",
+        "position": {
+          "x": 634,
+          "y": -376
+        },
+        "width": 380,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "300,000 users",
+        "position": {
+          "x": 0,
+          "y": -400
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "Alice sees her old name",
+        "position": {
+          "x": 0,
+          "y": -400
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "Alice sees her new name",
+        "position": {
+          "x": 0,
+          "y": -400
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "App Server",
+        "position": {
+          "x": 0,
+          "y": -180
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld",
+        "type": "process",
+        "title": "database",
+        "description": "CPU 90%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-2",
+        "type": "process",
+        "title": "leader",
+        "description": "CPU 90%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-3",
+        "type": "process",
+        "title": "leader",
+        "description": "CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-4",
+        "type": "process",
+        "title": "leader",
+        "description": "name: Alice Kim · CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-5",
+        "type": "process",
+        "title": "leader",
+        "description": "name: Alice Kim · CPU 32%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ld-6",
+        "type": "process",
+        "title": "leader",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1",
+        "type": "process",
+        "title": "follower",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-2",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 40%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-3",
+        "type": "process",
+        "title": "follower",
+        "description": "name: Alice Lee · 2 s behind · CPU 40%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 184,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-4",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 50%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-5",
+        "type": "process",
+        "title": "leader",
+        "description": "✓ promoted · CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-6",
+        "type": "process",
+        "title": "leader",
+        "description": "CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f1-7",
+        "type": "process",
+        "title": "leader",
+        "description": "⚠ email = NULL · 2M rows · CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f2",
+        "type": "process",
+        "title": "follower",
+        "position": {
+          "x": 180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f2-2",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 40%",
+        "position": {
+          "x": 180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f2-3",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 50%",
+        "position": {
+          "x": 180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f2-4",
+        "type": "process",
+        "title": "follower",
+        "description": "⚠ copied the mistake · CPU 40%",
+        "position": {
+          "x": 180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f3",
+        "type": "process",
+        "title": "follower",
+        "description": "CPU 40%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "f3-2",
+        "type": "process",
+        "title": "follower",
+        "description": "⚠ copied the mistake · CPU 40%",
+        "position": {
+          "x": -180,
+          "y": 180
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "an",
+        "type": "process",
+        "title": "analytics replica",
+        "description": "20-min report",
+        "position": {
+          "x": 0,
+          "y": 380
+        },
+        "width": 188,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "analysts",
+        "type": "process",
+        "title": "finance team",
+        "position": {
+          "x": 260,
+          "y": 380
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bk",
+        "type": "process",
+        "title": "backups",
+        "description": "✓ snapshot 03:00 + write log",
+        "position": {
+          "x": 0,
+          "y": 380
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Clock",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "ua-2",
+        "from": "users-2",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ua-3",
+        "from": "users-3",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "al",
+        "from": "app",
+        "to": "ld",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "al-2",
+        "from": "app",
+        "to": "ld-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "al-3",
+        "from": "app",
+        "to": "ld-3",
+        "label": "writes",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "al-4",
+        "from": "app",
+        "to": "ld-4",
+        "label": "writes",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "al-5",
+        "from": "app",
+        "to": "ld-5",
+        "label": "writes + Alice’s reads",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-6",
+        "from": "app",
+        "to": "ld-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1",
+        "from": "ld-2",
+        "to": "f1",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1-2",
+        "from": "ld-3",
+        "to": "f1-2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1-3",
+        "from": "ld-4",
+        "to": "f1-3",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1-4",
+        "from": "ld-5",
+        "to": "f1-2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1-5",
+        "from": "ld-6",
+        "to": "f1-4",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "none"
+      },
+      {
+        "id": "r2",
+        "from": "ld-2",
+        "to": "f2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2-2",
+        "from": "ld-3",
+        "to": "f2-2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2-3",
+        "from": "ld-4",
+        "to": "f2-2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2-4",
+        "from": "ld-5",
+        "to": "f2-2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2-5",
+        "from": "ld-6",
+        "to": "f2-3",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "none"
+      },
+      {
+        "id": "a1",
+        "from": "app",
+        "to": "f1-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a1-2",
+        "from": "app",
+        "to": "f1-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "a1-3",
+        "from": "app",
+        "to": "f1-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "a2",
+        "from": "app",
+        "to": "f2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a2-2",
+        "from": "app",
+        "to": "f2-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "al2",
+        "from": "app",
+        "to": "f1-5",
+        "label": "writes",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "al2-2",
+        "from": "app",
+        "to": "f1-6",
+        "label": "writes",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "al2-3",
+        "from": "app",
+        "to": "f1-7",
+        "label": "writes",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1n",
+        "from": "f1-5",
+        "to": "f3",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1n-2",
+        "from": "f1-6",
+        "to": "f3",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r1n-3",
+        "from": "f1-7",
+        "to": "f3-2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2n",
+        "from": "f1-5",
+        "to": "f2-2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2n-2",
+        "from": "f1-6",
+        "to": "f2-2",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "r2n-3",
+        "from": "f1-7",
+        "to": "f2-4",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "a1n",
+        "from": "app",
+        "to": "f3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a1n-2",
+        "from": "app",
+        "to": "f3-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a2n",
+        "from": "app",
+        "to": "f2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "a2n-2",
+        "from": "app",
+        "to": "f2-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "r3",
+        "from": "f1-6",
+        "to": "an",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.65,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep",
+        "from": "analysts",
+        "to": "an",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bkl",
+        "from": "f1-7",
+        "to": "bk",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Replication",
+    "summary": "Keep copies of the database on several machines — for more reads and for survival.",
+    "minutes": 12,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "dbLoad",
+        "label": "Database CPU"
+      },
+      {
+        "id": "reads",
+        "label": "Read capacity"
+      },
+      {
+        "id": "lag",
+        "label": "Replica lag"
+      },
+      {
+        "id": "writes",
+        "label": "Writes"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Leaders, followers and the replication log",
+        "step": "s2"
+      },
+      {
+        "text": "Scaling reads with replicas",
+        "step": "s3"
+      },
+      {
+        "text": "Replication lag and read-your-writes",
+        "step": "s5"
+      },
+      {
+        "text": "Failover when the leader dies",
+        "step": "s7"
+      },
+      {
+        "text": "Analytics replicas, backups and replication styles",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "users-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "users-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ld": {
+      "until": "s2"
+    },
+    "ld-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ld-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ld-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ld-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ld-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f1-2": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "f1-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "f1-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f1-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f1-6": {
+      "from": "s8"
+    },
+    "f1-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f2-2": {
+      "from": "s3"
+    },
+    "f2-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f2-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f3": {
+      "from": "s7"
+    },
+    "f3-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "an": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "analysts": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bk": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-2-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ua-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "al": {
+      "until": "s2"
+    },
+    "al-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "al-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "al-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "al-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "al-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "r1-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "r1-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "r1-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "r1-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "r2-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "r2-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "r2-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "r2-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "a1": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "a1-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a1-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "a2": {
+      "from": "s3",
+      "until": "s6"
+    },
+    "a2-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "al2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "al2-2": {
+      "from": "s8"
+    },
+    "al2-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "r1n": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "r1n-2": {
+      "from": "s8"
+    },
+    "r1n-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "r2n": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "r2n-2": {
+      "from": "s8"
+    },
+    "r2n-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a1n": {
+      "from": "s7"
+    },
+    "a1n-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a2n": {
+      "from": "s7"
+    },
+    "a2n-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "r3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rep": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bkl": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "One DB",
+      "title": "One database, doing everything",
+      "chapter": "problem",
+      "body": "Every read and every write goes to a single database server. It’s 90% busy — and most of that is reads: product pages, profiles, feeds.\n\nIt’s also a single point of failure: if it dies, so does everything.",
+      "callout": {
+        "kind": "insight",
+        "text": "Most apps read far more than they write — often 10 or 100 reads per write."
+      },
+      "changes": [],
+      "metrics": {
+        "dbLoad": "90%",
+        "reads": "1×",
+        "writes": "ok"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Copies",
+      "title": "Keep copies: leader and followers",
+      "chapter": "solution",
+      "body": "Add two [[followers]] (replicas). The [[leader]] still takes every write, and streams each change to the followers through a replication log.\n\nEach follower replays the changes and ends up with the same data.",
+      "callout": {
+        "kind": "tip",
+        "text": "Also called primary/replica or master/slave. Built into PostgreSQL, MySQL, MongoDB and most others."
+      },
+      "changes": [
+        "+ Two followers",
+        "+ Replication stream from the leader"
+      ],
+      "metrics": {
+        "dbLoad": "90%",
+        "reads": "1×",
+        "lag": "0 s",
+        "writes": "ok"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Read replicas",
+      "title": "Send reads to the followers",
+      "chapter": "solution",
+      "body": "Now the app sends **reads** to the followers and only **writes** to the leader. Read capacity doubles — two machines now do nothing but reads — and the leader cools down to 30%.\n\nNeed more reads? Add another follower.",
+      "callout": {
+        "kind": "tip",
+        "text": "This works brilliantly for read-heavy apps. It doesn’t help write-heavy ones — every write still goes through one leader."
+      },
+      "changes": [
+        "~ Reads → followers",
+        "~ Writes → leader only",
+        "~ Leader CPU 90% → 30%"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ok"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Lag",
+      "title": "Copies lag behind",
+      "chapter": "problem",
+      "body": "Replication is usually [[asynchronous]]: the leader confirms a write right away and ships it to followers a moment later.\n\nAlice renames herself, then reloads her profile. The read lands on a follower that hasn’t caught up — she sees her **old** name and thinks the save failed.",
+      "callout": {
+        "kind": "warning",
+        "text": "Lag is normally milliseconds, but under load it can grow to seconds or minutes."
+      },
+      "changes": [
+        "+ Alice writes a new name",
+        "- Follower still has the old one"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "2 s",
+        "writes": "ok"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "f1-2": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        },
+        "a1": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Read your writes",
+      "title": "Read your own writes",
+      "chapter": "technique",
+      "body": "A common fix: for a few seconds after someone writes, send *their* reads to the leader. Everyone else keeps using followers.\n\nThe other option is [[synchronous]] replication: the leader waits for a follower to confirm before saying “saved”. No lag — but slower writes, and they stall if that follower is down.",
+      "callout": {
+        "kind": "tip",
+        "text": "For data you can’t afford to lose, a common setup is one synchronous follower (for safety) and the rest asynchronous (for speed). Many systems stay fully asynchronous and accept losing the last moments of writes in a crash."
+      },
+      "changes": [
+        "~ Alice’s reads → leader for 5 s",
+        "~ She sees her new name"
+      ],
+      "metrics": {
+        "dbLoad": "32%",
+        "reads": "2×",
+        "lag": "2 s",
+        "writes": "ok"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "f1-2": {
+          "emphasis": true
+        },
+        "ua": {
+          "visible": false
+        },
+        "a1": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Leader dies",
+      "title": "The leader dies",
+      "chapter": "problem",
+      "body": "The leader crashes. Reads keep working — the followers still have the data — but every write now fails. Nobody can sign up, post or pay.",
+      "callout": {
+        "kind": "warning",
+        "text": "Followers protect your reads. Writes need a new leader."
+      },
+      "changes": [
+        "- Leader down",
+        "- Writes failing"
+      ],
+      "metrics": {
+        "dbLoad": "0%",
+        "reads": "2×",
+        "writes": "failing"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "f2-2": {
+          "visible": false
+        },
+        "ua": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Failover",
+      "title": "Failover: promote a follower",
+      "chapter": "solution",
+      "body": "[[Failover]]: the most up-to-date follower is promoted to leader, the app points its writes there, and the other follower replicates from it. A fresh follower is added to restore the spare.\n\nWrites resume within seconds to a minute. Any writes the old leader hadn’t shipped yet may be lost — another reason to keep one follower synchronous.\n\nThe hard part is being *sure* the leader is dead. If it was only slow or cut off, you now have two leaders both accepting writes — [[split brain]]. Doing this safely takes a majority vote: see *Consensus & Leader Election*.",
+      "callout": {
+        "kind": "insight",
+        "text": "Same idea as the standby load balancer: a spare that takes over. Managed databases automate it."
+      },
+      "changes": [
+        "- Old leader removed",
+        "~ Follower promoted to leader",
+        "+ New follower"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ok"
+      },
+      "overrides": {
+        "f2-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Reports",
+      "title": "Case: the 20-minute report",
+      "chapter": "problem",
+      "body": "The finance team runs a monthly report — a 20-minute query that scans years of orders. They point it at a follower, and that follower, which also serves the app’s reads, grinds to a halt and falls minutes behind.\n\nFix: a dedicated **analytics replica** that the app never reads from. Heavy queries can be as slow as they like there.",
+      "callout": {
+        "kind": "tip",
+        "text": "At larger scale, copy data into a separate analytics warehouse (BigQuery, Snowflake, Redshift) built for huge scans."
+      },
+      "changes": [
+        "+ Analytics replica, outside the app’s read pool",
+        "~ Reports no longer slow the app"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ok"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s9",
+      "short": "Not a backup",
+      "title": "Case: the migration with no WHERE",
+      "chapter": "problem",
+      "body": "A deploy runs a migration with a missing `WHERE`: `UPDATE users SET email = NULL`. The leader obeys — and replication faithfully copies the mistake to every follower within a second.\n\nReplicas protect you from a *machine* failing, not from a bad write. For that you need [[backups]]: a nightly snapshot plus the archived write log, which together can rebuild the database as it was at any chosen moment — [[point-in-time recovery]].",
+      "callout": {
+        "kind": "warning",
+        "text": "A backup you have never restored is a hope, not a backup. Rehearse restores, and know how long one takes."
+      },
+      "changes": [
+        "- Bad migration blanks a column",
+        "- Every replica copies the damage",
+        "+ Nightly snapshot + write-log archive",
+        "~ Restore to 14:02, a minute before the mistake"
+      ],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ok"
+      },
+      "overrides": {
+        "f1-6": {
+          "visible": false
+        },
+        "f2-2": {
+          "visible": false
+        },
+        "f3": {
+          "visible": false
+        },
+        "al2-2": {
+          "visible": false
+        },
+        "r1n-2": {
+          "visible": false
+        },
+        "r2n-2": {
+          "visible": false
+        },
+        "a1n": {
+          "visible": false
+        },
+        "a2n": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Styles",
+      "title": "Three ways to replicate",
+      "chapter": "insight",
+      "body": "Everything so far was **single-leader**: one writer, many readers. It’s simple and it’s what most SQL databases do.\n\n**Multi-leader** puts a leader in each region so writes stay local — at the cost of conflicts when two regions edit the same row. **Leaderless** systems (Cassandra, Riak, ScyllaDB — the “Dynamo-style” databases) write to several copies at once and read from several — the quorums in the CAP lesson.",
+      "callout": {
+        "kind": "insight",
+        "text": "Prefer single-leader until you have a concrete reason (global writes, extreme availability) to take on conflict handling."
+      },
+      "changes": [],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ok"
+      },
+      "overrides": {
+        "f1-6": {
+          "emphasis": true
+        },
+        "f2-2": {
+          "emphasis": true
+        },
+        "f3": {
+          "emphasis": true
+        },
+        "al2-2": {
+          "emphasis": true
+        },
+        "r1n-2": {
+          "emphasis": true
+        },
+        "r2n-2": {
+          "emphasis": true
+        },
+        "a1n": {
+          "emphasis": true
+        },
+        "a2n": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• A **leader** takes writes and streams them to **followers**.\n• Followers **scale reads** and survive losing a machine.\n• Async replicas **lag**: route a user’s reads to the leader right after they write.\n• When the leader dies, **fail over** to a follower.\n• Keep heavy **analytics** on its own replica.\n• Replicas are **not backups**: keep snapshots and rehearse restoring them.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Sharding** — for when even the leader can’t keep up with the writes."
+      },
+      "changes": [],
+      "metrics": {
+        "dbLoad": "30%",
+        "reads": "2×",
+        "lag": "0 s",
+        "writes": "ok"
+      },
+      "overrides": {}
+    }
+  ]
+}

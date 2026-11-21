@@ -1,0 +1,1385 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 551,
+          "y": -319
+        },
+        "width": 313,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "THE BILL\n1,000,000 users ÷ 2 s\n→ 500,000 requests / s\n⚠ ~475,000 of them: “nothing new”",
+        "position": {
+          "x": 551,
+          "y": -319
+        },
+        "width": 289,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice",
+        "description": "anything new?",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice",
+        "description": "one of 1,000,000",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice",
+        "description": "new message from Bob",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice",
+        "description": "offline · subway",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-6",
+        "type": "process",
+        "title": "Alice",
+        "description": "online",
+        "position": {
+          "x": 0,
+          "y": -342
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv",
+        "type": "process",
+        "title": "Chat Server",
+        "description": "1 new message for Alice",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-2",
+        "type": "process",
+        "title": "Chat Server",
+        "description": "CPU 15%",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-3",
+        "type": "process",
+        "title": "Chat Server",
+        "description": "⚠ 500,000 req/s · 95% empty · CPU 94%",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 196,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-4",
+        "type": "process",
+        "title": "Chat Server",
+        "description": "holding until news · CPU 20%",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-5",
+        "type": "process",
+        "title": "Server 1",
+        "description": "Alice’s socket",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv-6",
+        "type": "process",
+        "title": "Server 1",
+        "description": "no socket for Alice",
+        "position": {
+          "x": 0,
+          "y": -108
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob",
+        "type": "process",
+        "title": "Bob",
+        "position": {
+          "x": 234,
+          "y": -108
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob-2",
+        "type": "process",
+        "title": "Bob",
+        "position": {
+          "x": 234,
+          "y": -144
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "srv2",
+        "type": "process",
+        "title": "Server 2",
+        "description": "Bob’s socket",
+        "position": {
+          "x": 234,
+          "y": 108
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "br",
+        "type": "process",
+        "title": "Pub/Sub",
+        "description": "Redis",
+        "position": {
+          "x": 0,
+          "y": 108
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Radio",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ms",
+        "type": "process",
+        "title": "messages",
+        "description": "saved: 1042, 1043",
+        "position": {
+          "x": -234,
+          "y": 108
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:MessageSquare",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ps",
+        "type": "process",
+        "title": "presence",
+        "description": "alice · seen 4 s ago",
+        "position": {
+          "x": -234,
+          "y": 108
+        },
+        "width": 176,
+        "height": 122,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "bs",
+        "from": "bob",
+        "to": "srv",
+        "label": "Bob sends",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bs-2",
+        "from": "bob",
+        "to": "srv-2",
+        "label": "Bob sends",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bs-3",
+        "from": "bob",
+        "to": "srv-3",
+        "label": "Bob sends",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bs-4",
+        "from": "bob",
+        "to": "srv-4",
+        "label": "Bob sends",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bs-5",
+        "from": "bob",
+        "to": "srv-2",
+        "label": "WebSocket",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "sa",
+        "from": "srv",
+        "to": "alice",
+        "label": "server can’t start a request",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "sa-2",
+        "from": "srv-2",
+        "to": "alice-4",
+        "label": "event stream (SSE)",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "sa-3",
+        "from": "srv-2",
+        "to": "alice-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "sa-4",
+        "from": "srv-5",
+        "to": "alice-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "sa-5",
+        "from": "srv-6",
+        "to": "alice-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "sa-6",
+        "from": "srv-5",
+        "to": "alice-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "ap",
+        "from": "alice-2",
+        "to": "srv-2",
+        "label": "GET /messages · every 2 s",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ap-2",
+        "from": "alice-3",
+        "to": "srv-3",
+        "label": "GET /messages · every 2 s",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "morse",
+        "effectColor": "#bfbfbf",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ap-3",
+        "from": "alice-2",
+        "to": "srv-4",
+        "label": "GET /messages · held open",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-4",
+        "from": "alice-4",
+        "to": "srv-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-5",
+        "from": "alice-4",
+        "to": "srv-2",
+        "label": "WebSocket · both ways",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-6",
+        "from": "alice-4",
+        "to": "srv-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "ap-7",
+        "from": "alice-5",
+        "to": "srv-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ap-8",
+        "from": "alice-6",
+        "to": "srv-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "sb",
+        "from": "srv-2",
+        "to": "bob",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "b2",
+        "from": "bob-2",
+        "to": "srv2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "x2b",
+        "from": "srv2",
+        "to": "bob-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "s2r",
+        "from": "srv2",
+        "to": "br",
+        "label": "publish “alice”",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "r2",
+        "from": "br",
+        "to": "srv2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "rs",
+        "from": "br",
+        "to": "srv-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "rs-2",
+        "from": "br",
+        "to": "srv-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "sr",
+        "from": "srv-5",
+        "to": "br",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "sr-2",
+        "from": "srv-6",
+        "to": "br",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ms~2",
+        "from": "br",
+        "to": "ms",
+        "label": "store first",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.2,
+        "effectCount": 1
+      },
+      {
+        "id": "ps~2",
+        "from": "srv-5",
+        "to": "ps",
+        "label": "heartbeat",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.6,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Real-time Updates",
+    "summary": "How the server tells you something happened — chat, live scores, notifications.",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "delay",
+        "label": "Message delay"
+      },
+      {
+        "id": "rpm",
+        "label": "Requests / user / min"
+      },
+      {
+        "id": "wasted",
+        "label": "Empty responses"
+      },
+      {
+        "id": "conns",
+        "label": "Open connections"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why HTTP can’t push on its own",
+        "step": "s1"
+      },
+      {
+        "text": "Short polling vs long polling",
+        "step": "s4"
+      },
+      {
+        "text": "Server-Sent Events and WebSockets",
+        "step": "s6"
+      },
+      {
+        "text": "Scaling persistent connections",
+        "step": "s7"
+      },
+      {
+        "text": "Offline users and presence",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "alice": {
+      "until": "s2"
+    },
+    "alice-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "alice-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "alice-4": {
+      "from": "s5"
+    },
+    "alice-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "alice-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "srv": {
+      "until": "s2"
+    },
+    "srv-2": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "srv-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "srv-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "srv-5": {
+      "from": "s7"
+    },
+    "srv-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bob": {
+      "until": "s7"
+    },
+    "bob-2": {
+      "from": "s7"
+    },
+    "card": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "srv2": {
+      "from": "s7"
+    },
+    "br": {
+      "from": "s7"
+    },
+    "ms": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ps": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "bs": {
+      "until": "s2"
+    },
+    "bs-2": {
+      "from": "s2",
+      "until": "s6"
+    },
+    "bs-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "bs-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bs-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sa": {
+      "until": "s2"
+    },
+    "sa-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sa-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sa-4": {
+      "from": "s7"
+    },
+    "sa-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sa-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ap": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ap-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ap-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ap-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ap-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ap-6": {
+      "from": "s7"
+    },
+    "ap-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ap-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sb": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "b2": {
+      "from": "s7"
+    },
+    "x2b": {
+      "from": "s7"
+    },
+    "s2r": {
+      "from": "s7"
+    },
+    "r2": {
+      "from": "s7"
+    },
+    "rs": {
+      "from": "s7"
+    },
+    "rs-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sr": {
+      "from": "s7"
+    },
+    "sr-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ms~2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ps~2": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "No way in",
+      "title": "Bob sent a message. How does Alice find out?",
+      "chapter": "problem",
+      "body": "Bob’s message reaches the chat server. Alice’s phone should show it instantly.\n\nBut plain HTTP is request → response: only the **client** can start a conversation. The server has no way to call Alice’s phone and say “you’ve got mail”.",
+      "callout": {
+        "kind": "insight",
+        "text": "Phones and browsers sit behind home routers and mobile networks that block incoming connections — the client has to reach out."
+      },
+      "changes": [],
+      "metrics": {
+        "delay": "never",
+        "rpm": "0",
+        "conns": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Polling",
+      "title": "Polling: keep asking",
+      "chapter": "technique",
+      "body": "The simplest fix: Alice’s app asks “anything new?” every 2 seconds. Most answers are empty (pale dots); now and then one carries a message (green).\n\nEasy to build with ordinary requests — but messages arrive up to 2 seconds late, and most requests are wasted.",
+      "callout": {
+        "kind": "tip",
+        "text": "Polling is fine for things that change slowly — a build status, an order tracking page — with a sensible interval."
+      },
+      "changes": [
+        "+ Alice polls every 2 s"
+      ],
+      "metrics": {
+        "delay": "up to 2 s",
+        "rpm": "30",
+        "wasted": "95%",
+        "conns": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "At scale",
+      "title": "Polling a million phones",
+      "chapter": "problem",
+      "body": "Now multiply. A million users each asking every 2 seconds is half a million requests per second — and 95% of them get the answer “nothing new”.\n\nYou’d be paying for a fleet of servers whose main job is saying no. Polling faster to cut the delay makes it worse.",
+      "callout": {
+        "kind": "warning",
+        "text": "Polling trades freshness against load: halve the delay, double the requests."
+      },
+      "changes": [
+        "~ Users 1 → 1,000,000",
+        "~ 500,000 requests/s, 95% empty"
+      ],
+      "metrics": {
+        "delay": "up to 2 s",
+        "rpm": "30",
+        "wasted": "95%",
+        "conns": "0"
+      },
+      "overrides": {
+        "alice-2": {
+          "visible": false
+        },
+        "srv-2": {
+          "visible": false
+        },
+        "bs-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Long polling",
+      "title": "Long polling: hold the request open",
+      "chapter": "solution",
+      "body": "Instead of answering “nothing” immediately, the server **holds** the request open (watch the request wait at the server) until a message arrives, or about 30 seconds pass. Then it responds, and the app immediately asks again.\n\nMessages now arrive almost instantly, and empty answers are rare.",
+      "callout": {
+        "kind": "tip",
+        "text": "Long polling works anywhere plain HTTP works, so it’s still used as a fallback when nothing better is available."
+      },
+      "changes": [
+        "~ Server holds each request until there’s news",
+        "~ Delay up to 2 s → under 100 ms",
+        "~ Empty responses 95% → 10%"
+      ],
+      "metrics": {
+        "delay": "< 100 ms",
+        "rpm": "2",
+        "wasted": "10%",
+        "conns": "1 held / user"
+      },
+      "overrides": {
+        "alice-2": {
+          "emphasis": true
+        },
+        "srv-2": {
+          "visible": false
+        },
+        "bs-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "SSE",
+      "title": "Server-Sent Events: one response that never ends",
+      "chapter": "technique",
+      "body": "With [[Server-Sent Events]] (SSE), the app makes one request and the server never finishes the response. Instead, it writes each new event down that open stream as it happens.\n\nIt’s one-way (server → client), plain HTTP, and browsers reconnect automatically. Alice still sends her own messages with normal requests.",
+      "callout": {
+        "kind": "tip",
+        "text": "Ideal for feeds, notifications, live scores and dashboards — and for streaming AI responses token by token."
+      },
+      "changes": [
+        "+ One long-lived event stream to Alice",
+        "~ Delay → under 50 ms"
+      ],
+      "metrics": {
+        "delay": "< 50 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1 per user"
+      },
+      "overrides": {
+        "srv-2": {
+          "emphasis": true
+        },
+        "bs-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "WebSockets",
+      "title": "WebSockets: talk both ways",
+      "chapter": "technique",
+      "body": "A [[WebSocket]] starts as an HTTP request, then upgrades into a permanent two-way connection. Either side can send a message at any moment, with tiny overhead per message.\n\nBob and Alice each hold one socket; messages flow both ways through the server in a few milliseconds.",
+      "callout": {
+        "kind": "tip",
+        "text": "Use WebSockets when the client talks back often: chat, multiplayer games, collaborative editing, trading screens."
+      },
+      "changes": [
+        "+ Persistent two-way connections",
+        "~ Sending no longer needs separate requests"
+      ],
+      "metrics": {
+        "delay": "< 20 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1 per user"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "Many servers",
+      "title": "Scaling: which server has Alice?",
+      "chapter": "insight",
+      "body": "Each open connection costs memory, so a million users need many chat servers. Now Bob’s socket is on server 2, but Alice’s is on server 1 — server 2 can’t deliver to her directly.\n\nSo servers relay through [[pub/sub]]: server 2 publishes to Alice’s channel, and whichever server holds her socket is subscribed and forwards it. Watch a message take the long way round.",
+      "callout": {
+        "kind": "insight",
+        "text": "This is the previous lesson again — pub/sub is how real-time systems fan messages out across servers."
+      },
+      "changes": [
+        "+ Server 2",
+        "+ Pub/sub between servers",
+        "~ Messages relayed to the server holding each socket"
+      ],
+      "metrics": {
+        "delay": "< 30 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1M on 20 servers"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s8",
+      "short": "Offline",
+      "title": "Case: Alice’s phone is offline",
+      "chapter": "problem",
+      "body": "Alice goes into the subway. Her socket drops, and Bob’s messages have nowhere to go.\n\nSo every message is first **saved** to a store, then pushed if the recipient is connected. When Alice reconnects, her app says “I last saw message 1041” and fetches everything after it. If she stays offline, a mobile **push notification** (APNs, FCM) wakes her phone.",
+      "callout": {
+        "kind": "tip",
+        "text": "Real-time delivery is an optimisation. The stored message, fetched on reconnect, is the source of truth."
+      },
+      "changes": [
+        "- Alice offline",
+        "+ Messages stored first",
+        "+ Catch up on reconnect · push notification"
+      ],
+      "metrics": {
+        "delay": "< 30 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1M on 20 servers"
+      },
+      "overrides": {
+        "x2b": {
+          "effect": "none"
+        },
+        "r2": {
+          "effect": "none"
+        },
+        "alice-4": {
+          "visible": false
+        },
+        "srv-5": {
+          "visible": false
+        },
+        "sa-4": {
+          "visible": false
+        },
+        "ap-6": {
+          "visible": false
+        },
+        "rs": {
+          "visible": false
+        },
+        "sr": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Presence",
+      "title": "Presence: who’s online",
+      "chapter": "technique",
+      "body": "The green dot next to a name needs [[presence]]: each app sends a small heartbeat every 30 seconds, and the server records “last seen”. No heartbeat for a minute means offline.\n\nWith a million users that’s ~33,000 heartbeats a second. Keep presence in a fast store with expiring keys, and only push changes to people who are actually looking at that contact.",
+      "callout": {
+        "kind": "insight",
+        "text": "Presence is approximate by design — a few seconds of delay is fine, and it saves enormous traffic."
+      },
+      "changes": [
+        "+ Heartbeats every 30 s",
+        "+ Presence store with expiring keys"
+      ],
+      "metrics": {
+        "delay": "< 30 ms",
+        "rpm": "2",
+        "wasted": "0%",
+        "conns": "1M on 20 servers"
+      },
+      "overrides": {
+        "alice-4": {
+          "visible": false
+        },
+        "srv-5": {
+          "emphasis": true
+        },
+        "sa-4": {
+          "visible": false
+        },
+        "ap-6": {
+          "visible": false
+        },
+        "rs": {
+          "emphasis": true
+        },
+        "sr": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• **Polling** — Delay: Up to the interval; Direction: Client asks\n• **Long polling** — Delay: Low; Direction: Client asks, server waits\n• **SSE** — Delay: Low; Direction: Server → client\n• **WebSocket** — Delay: Lowest; Direction: Both ways\n\nPersistent connections need many servers at scale, joined by **pub/sub**. **Store** every message first, so offline users catch up when they return.",
+      "callout": {
+        "kind": "tip",
+        "text": "That completes Communication. Next module: **Reliability** — starting with redundancy and failover."
+      },
+      "changes": [],
+      "metrics": {
+        "delay": "< 30 ms",
+        "rpm": "0",
+        "wasted": "0%",
+        "conns": "1M on 20 servers"
+      },
+      "overrides": {
+        "alice-4": {
+          "emphasis": true
+        },
+        "sa-4": {
+          "emphasis": true
+        },
+        "ap-6": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

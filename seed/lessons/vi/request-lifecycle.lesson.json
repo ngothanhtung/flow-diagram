@@ -1,0 +1,1012 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "sum",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 524,
+          "y": -529
+        },
+        "width": 280,
+        "height": 159,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "sum-text",
+        "type": "text",
+        "title": "THỜI GIAN ĐÃ ĐI ĐÂU\ntra DNS              20 ms\nbắt tay TCP + TLS    60 ms\nyêu cầu + server     55 ms\ntải về               20 ms\n→ tổng              155 ms\n# trong đó 130 ms là chờ mạng",
+        "position": {
+          "x": 524,
+          "y": -529
+        },
+        "width": 256,
+        "height": 139,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "sum"
+      },
+      {
+        "id": "dev",
+        "type": "process",
+        "title": "bạn",
+        "description": "https://shop.example",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 224,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dev-2",
+        "type": "process",
+        "title": "bạn",
+        "description": "✓ trang sẵn sàng · 155 ms",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dev-3",
+        "type": "process",
+        "title": "bạn",
+        "description": "40 tệp · 1 kết nối",
+        "position": {
+          "x": 0,
+          "y": -264
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dev-4",
+        "type": "process",
+        "title": "bạn · Sydney",
+        "description": "https://shop.example",
+        "position": {
+          "x": 0,
+          "y": -572
+        },
+        "width": 224,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dns",
+        "type": "process",
+        "title": "DNS",
+        "description": "bộ phân giải · → 203.0.113.7",
+        "position": {
+          "x": 0,
+          "y": 22
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dns-2",
+        "type": "process",
+        "title": "DNS",
+        "description": "bộ phân giải",
+        "position": {
+          "x": 0,
+          "y": 22
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web",
+        "type": "process",
+        "title": "Web server",
+        "position": {
+          "x": 220,
+          "y": -22
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-2",
+        "type": "process",
+        "title": "Web server",
+        "description": "CPU 30%",
+        "position": {
+          "x": 220,
+          "y": -22
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-3",
+        "type": "process",
+        "title": "Web server",
+        "description": "CPU 35%",
+        "position": {
+          "x": 220,
+          "y": -22
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-4",
+        "type": "process",
+        "title": "Web server",
+        "description": "Virginia",
+        "position": {
+          "x": 220,
+          "y": -22
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "CSDL",
+        "position": {
+          "x": 220,
+          "y": 264
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "CSDL",
+        "description": "400 ms · quét toàn bộ",
+        "position": {
+          "x": 220,
+          "y": 264
+        },
+        "width": 176,
+        "height": 122,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "q",
+        "from": "dev",
+        "to": "dns",
+        "label": "shop.example ở đâu?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "q-2",
+        "from": "dev",
+        "to": "dns-2",
+        "label": "đã cache · 5 phút",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "q-3",
+        "from": "dev-2",
+        "to": "dns-2",
+        "label": "đã cache · 5 phút",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "q-4",
+        "from": "dev-3",
+        "to": "dns-2",
+        "label": "đã cache · 5 phút",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "q-5",
+        "from": "dev-4",
+        "to": "dns-2",
+        "label": "đã cache · 5 phút",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "q-6",
+        "from": "dev-2",
+        "to": "dns-2",
+        "label": "20 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "h",
+        "from": "dev",
+        "to": "web",
+        "label": "bắt tay TCP + TLS",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "h-2",
+        "from": "dev",
+        "to": "web-2",
+        "label": "GET /products",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "h-3",
+        "from": "dev-2",
+        "to": "web-2",
+        "label": "HTML · 120 KB",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "h-4",
+        "from": "dev-3",
+        "to": "web-3",
+        "label": "HTTP/2 · nhiều yêu cầu cùng lúc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 1.2,
+        "effectCount": 6
+      },
+      {
+        "id": "h-5",
+        "from": "dev-4",
+        "to": "web-4",
+        "label": "≈ 200 ms mỗi lượt khứ hồi",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.55,
+        "effectCount": 1
+      },
+      {
+        "id": "h-6",
+        "from": "dev-2",
+        "to": "web",
+        "label": "60 + 55 + 20 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "s",
+        "from": "web-2",
+        "to": "db",
+        "label": "SELECT … FROM products",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "s-2",
+        "from": "web-3",
+        "to": "db",
+        "label": "SELECT … FROM products",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "s-3",
+        "from": "web-2",
+        "to": "db-2",
+        "label": "ORDER BY score · 400 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "s-4",
+        "from": "web-4",
+        "to": "db",
+        "label": "SELECT … FROM products",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.55,
+        "effectCount": 1
+      },
+      {
+        "id": "s-5",
+        "from": "web",
+        "to": "db",
+        "label": "15 ms",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Hành trình của một yêu cầu",
+    "summary": "Theo dõi một lần tải trang qua từng chặng, và tìm ra thời gian thật sự đi đâu.",
+    "minutes": 10,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "dns",
+        "label": "Tra DNS"
+      },
+      {
+        "id": "connect",
+        "label": "Kết nối"
+      },
+      {
+        "id": "request",
+        "label": "Yêu cầu + server"
+      },
+      {
+        "id": "download",
+        "label": "Tải về"
+      },
+      {
+        "id": "total",
+        "label": "Tổng"
+      }
+    ],
+    "goals": [
+      {
+        "text": "DNS làm gì và vì sao nó được cache",
+        "step": "s2"
+      },
+      {
+        "text": "Vì sao một kết nối tốn nhiều lượt khứ hồi",
+        "step": "s3"
+      },
+      {
+        "text": "Đường đi: trình duyệt → server → CSDL → quay về",
+        "step": "s5"
+      },
+      {
+        "text": "Thời gian tải trang thật sự đi đâu",
+        "step": "s7"
+      },
+      {
+        "text": "Tình huống: một truy vấn chậm và một người dùng ở xa",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "dev": {
+      "until": "s9"
+    },
+    "dev-2": {
+      "from": "s6"
+    },
+    "dev-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dev-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dns": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dns-2": {
+      "from": "s3"
+    },
+    "web": {
+      "from": "s3"
+    },
+    "web-2": {
+      "from": "s4",
+      "until": "s9"
+    },
+    "web-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "web-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "db": {
+      "from": "s5"
+    },
+    "db-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sum": {
+      "from": "s10"
+    },
+    "sum-text": {
+      "from": "s10"
+    },
+    "q": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-2": {
+      "from": "s3",
+      "until": "s9"
+    },
+    "q-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-6": {
+      "from": "s10"
+    },
+    "h": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "h-2": {
+      "from": "s4",
+      "until": "s9"
+    },
+    "h-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "h-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "h-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "h-6": {
+      "from": "s10"
+    },
+    "s": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "s-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "s-5": {
+      "from": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Nhấn Enter",
+      "title": "Người dùng than cửa hàng chậm",
+      "chapter": "problem",
+      "body": "Trước khi làm gì đó nhanh hơn, bạn cần biết thời gian đi đâu. Vậy hãy theo dõi một lần tải trang.\n\nBạn gõ `shop.example` và nhấn Enter. Khoảng một phần sáu giây sau trang hiện ra. Ở giữa có rất nhiều chuyện xảy ra.",
+      "callout": {
+        "kind": "insight",
+        "text": "Mỗi yêu cầu web là một cuộc trò chuyện giữa các máy. Mỗi bước tốn thời gian, và chi phí cộng dồn lại."
+      },
+      "changes": [],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Tìm địa chỉ",
+      "title": "Tìm địa chỉ (DNS)",
+      "chapter": "technique",
+      "body": "Mạng định tuyến theo địa chỉ IP dạng số, không theo tên. Vì vậy trình duyệt trước tiên hỏi một bộ phân giải [[DNS]]: *shop.example ở đâu?*\n\nCâu trả lời (`203.0.113.7`) quay về sau khoảng 20 ms.",
+      "callout": {
+        "kind": "tip",
+        "text": "Câu trả lời được cache trong một thời gian sống (TTL). Trong vài phút tiếp theo, các lần ghé lại bỏ qua hẳn bước này."
+      },
+      "changes": [
+        "+ Bộ phân giải DNS",
+        "+ Tra cứu: 20 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "total": "20 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Kết nối",
+      "title": "Mở một kết nối",
+      "chapter": "technique",
+      "body": "Giờ trình duyệt mở kết nối tới `203.0.113.7`. Bắt tay TCP thống nhất cuộc nói chuyện; bắt tay TLS thiết lập mã hóa. Mỗi lần cần một [[lượt khứ hồi]] (round trip): đi và về.\n\nỞ đây một lượt khứ hồi mất 30 ms, nên kết nối tốn 60 ms trước khi một byte nào của trang được yêu cầu.",
+      "callout": {
+        "kind": "insight",
+        "text": "Thời gian khứ hồi (RTT) do khoảng cách và mạng quyết định, không phải do server của bạn nhanh đến đâu."
+      },
+      "changes": [
+        "+ Web server",
+        "~ Câu trả lời DNS đã cache",
+        "+ Bắt tay: 2 lượt khứ hồi = 60 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "total": "80 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Yêu cầu",
+      "title": "Gửi yêu cầu",
+      "chapter": "technique",
+      "body": "Qua kết nối đang mở, trình duyệt gửi `GET /products`. Server phân tích nó, kiểm tra phiên và chạy mã của bạn.\n\nViệc đó tốn thêm một lượt khứ hồi cộng ~10 ms xử lý ở server.",
+      "changes": [
+        "+ Yêu cầu: 1 lượt khứ hồi + 10 ms ở server"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "40 ms",
+        "total": "120 ms"
+      },
+      "overrides": {
+        "web": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Lấy dữ liệu",
+      "title": "Server hỏi cơ sở dữ liệu",
+      "chapter": "technique",
+      "body": "Sản phẩm không nằm trong web server mà nằm trong một [[cơ sở dữ liệu]]. Server gửi truy vấn và chờ các dòng dữ liệu trả về.\n\nHãy xem một yêu cầu đi hết đường vào và phản hồi đi hết đường ra.",
+      "callout": {
+        "kind": "tip",
+        "text": "Giữ server phi trạng thái và dữ liệu nằm trong CSDL là điều giúp ta về sau chạy được nhiều server. (Xem Mở rộng.)"
+      },
+      "changes": [
+        "+ Cơ sở dữ liệu",
+        "+ Truy vấn: 15 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "55 ms",
+        "total": "135 ms"
+      },
+      "overrides": {
+        "web": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Phản hồi",
+      "title": "Phản hồi trở về nhà",
+      "chapter": "solution",
+      "body": "Server biến các dòng thành HTML rồi gửi lại; tải về mất thêm 20 ms. Trình duyệt hiển thị trang sau **155 ms** kể từ lúc bạn nhấn Enter.\n\nRồi nó thấy ảnh và stylesheet trong trang và gửi thêm yêu cầu. Dùng lại kết nối đang mở giúp chúng khỏi phải bắt tay.",
+      "changes": [
+        "+ Tải về: 20 ms",
+        "~ Trang sẵn sàng sau 155 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "55 ms",
+        "download": "20 ms",
+        "total": "155 ms"
+      },
+      "overrides": {
+        "dev": {
+          "visible": false
+        },
+        "web": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "h-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Thêm tệp",
+      "title": "Một trang, thêm bốn mươi yêu cầu",
+      "chapter": "technique",
+      "body": "HTML chỉ là khởi đầu. Nó tham chiếu ảnh, stylesheet, script và font (khoảng **40 tệp nữa**) và trình duyệt tải hết.\n\nVới HTTP/1.1 cũ, mỗi kết nối chỉ chở một yêu cầu mỗi lúc, nên trình duyệt mở ~6 kết nối và xếp hàng phần còn lại. [[HTTP/2]] gửi tất cả cùng lúc qua đúng một kết nối ta đã mở.",
+      "callout": {
+        "kind": "tip",
+        "text": "Ít tệp hơn và nhỏ hơn vẫn có ích: gộp script, nén văn bản (gzip/brotli), dùng định dạng ảnh hiện đại và tải lười phần nằm dưới màn hình đầu."
+      },
+      "changes": [
+        "+ Thêm 40 yêu cầu: ảnh, CSS, JS, font",
+        "~ Tất cả ghép kênh trên một kết nối HTTP/2",
+        "~ Tải xong hoàn toàn sau 275 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "55 ms",
+        "download": "140 ms",
+        "total": "275 ms"
+      },
+      "overrides": {
+        "dev": {
+          "visible": false
+        },
+        "dev-2": {
+          "visible": false
+        },
+        "web": {
+          "visible": false
+        },
+        "web-2": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "h-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Truy vấn chậm",
+      "title": "Tình huống: một truy vấn chậm",
+      "chapter": "problem",
+      "body": "Một ô “gợi ý cho bạn” mới ra mắt. Truy vấn của nó sắp xếp mọi sản phẩm theo điểm ở mỗi lần xem trang, và giờ CSDL mất **400 ms** để trả lời.\n\nCùng mạng, cùng các lần bắt tay, nhưng trang nhảy từ 155 ms lên hơn nửa giây. Hãy xem các yêu cầu chờ ở CSDL.",
+      "callout": {
+        "kind": "insight",
+        "text": "Đo trước khi tối ưu. Ở đây mạng vẫn ổn; cách sửa nằm ở CSDL (xem bài Chỉ mục)."
+      },
+      "changes": [
+        "+ Truy vấn “gợi ý” ở mọi trang",
+        "~ Thời gian CSDL 15 → 400 ms",
+        "~ Tổng 155 → 540 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "440 ms",
+        "download": "20 ms",
+        "total": "540 ms"
+      },
+      "overrides": {
+        "dev": {
+          "emphasis": true
+        },
+        "dev-2": {
+          "visible": false
+        },
+        "web": {
+          "visible": false
+        },
+        "web-2": {
+          "emphasis": true
+        },
+        "db": {
+          "visible": false
+        },
+        "q-2": {
+          "emphasis": true
+        },
+        "h-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Ở xa",
+      "title": "Tình huống: người dùng ở Sydney",
+      "chapter": "problem",
+      "body": "Quay lại truy vấn nhanh. Giờ cùng trang đó được mở ở Sydney, còn server ở Virginia: mỗi lượt khứ hồi mất khoảng **200 ms** thay vì 30.\n\nHai lượt khứ hồi bắt tay cộng lượt khứ hồi của yêu cầu tốn 600 ms trước cả khi trang bắt đầu tải. Cùng server, cùng mã: chậm hơn 4 lần.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cắt bớt lượt khứ hồi (TLS 1.3, HTTP/3, giữ kết nối mở) và đưa nội dung lại gần người dùng (CDN, vùng: Mô-đun 02)."
+      },
+      "changes": [
+        "~ Người dùng ở Sydney · 200 ms mỗi lượt khứ hồi",
+        "~ Kết nối 60 → 400 ms",
+        "~ Tổng 155 → 705 ms"
+      ],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "400 ms",
+        "request": "225 ms",
+        "download": "60 ms",
+        "total": "705 ms"
+      },
+      "overrides": {
+        "dev-2": {
+          "visible": false
+        },
+        "web": {
+          "visible": false
+        },
+        "db": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Tổng kết",
+      "title": "Thời gian đã đi đâu",
+      "chapter": "recap",
+      "body": "Trong 155 ms, chỉ khoảng 25 ms là server và CSDL thật sự làm việc. **~130 ms** còn lại là các thông điệp băng qua mạng.\n\n• **DNS** biến tên thành địa chỉ; câu trả lời được cache.\n• Kết nối tốn **lượt khứ hồi**: hãy dùng lại chúng.\n• Mã server thường là phần nhỏ nhất của độ trễ, trừ khi có một **truy vấn chậm** lọt vào.\n• **Khoảng cách** nhân lên mọi lượt khứ hồi.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Độ trễ & thông lượng**: chuyện gì xảy ra với 155 ms đó khi hàng nghìn người dùng đến cùng lúc."
+      },
+      "changes": [],
+      "metrics": {
+        "dns": "20 ms",
+        "connect": "60 ms",
+        "request": "55 ms",
+        "download": "20 ms",
+        "total": "155 ms"
+      },
+      "overrides": {
+        "dev-2": {
+          "emphasis": true
+        },
+        "web": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

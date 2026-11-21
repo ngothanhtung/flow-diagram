@@ -1,0 +1,2407 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 984,
+          "y": -722
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "WHO PICKS THE INSTANCE?\nclient-side   Orders gets the list,\n              balances itself\nserver-side   Orders calls “payments”,\n              a proxy picks for it",
+        "position": {
+          "x": 984,
+          "y": -722
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "ord",
+        "type": "process",
+        "title": "Orders",
+        "description": "config: 10.0.3.7, 10.0.3.8",
+        "position": {
+          "x": -408,
+          "y": -25
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-2",
+        "type": "process",
+        "title": "Orders",
+        "description": "cached list · 10 s",
+        "position": {
+          "x": -408,
+          "y": -25
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-3",
+        "type": "process",
+        "title": "Orders",
+        "position": {
+          "x": -408,
+          "y": -25
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-4",
+        "type": "process",
+        "title": "Orders",
+        "description": "resolves payments.internal",
+        "position": {
+          "x": -408,
+          "y": -25
+        },
+        "width": 204,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-5",
+        "type": "process",
+        "title": "Orders",
+        "description": "cached list · still works",
+        "position": {
+          "x": -408,
+          "y": -25
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord-6",
+        "type": "process",
+        "title": "Orders",
+        "description": "retries · TLS · metrics (Java)",
+        "position": {
+          "x": -408,
+          "y": -25
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pa",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.3.7",
+        "position": {
+          "x": 0,
+          "y": -306
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pa-2",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.3.7 · ⚠ replaced",
+        "position": {
+          "x": 0,
+          "y": -306
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pb",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.3.8",
+        "position": {
+          "x": 0,
+          "y": -16
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.5.21 · idle · nobody knows it",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc-2",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.5.21",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc-3",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.5.21 · missed 3 heartbeats",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc-4",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.5.21 · just started · cold",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pc-5",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.5.21 · ready ✓ · ramping 10% → 100%",
+        "position": {
+          "x": 0,
+          "y": 306
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg",
+        "type": "process",
+        "title": "Registry",
+        "description": "payments → .3.8, .5.21",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-2",
+        "type": "process",
+        "title": "Registry",
+        "description": "payments → .3.8, .6.4",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-3",
+        "type": "process",
+        "title": "Registry",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-4",
+        "type": "process",
+        "title": "DNS",
+        "description": "TTL 10 s",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-5",
+        "type": "process",
+        "title": "Registry",
+        "description": "✓ leader · 2 of 3 up",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-6",
+        "type": "process",
+        "title": "Control Plane",
+        "position": {
+          "x": 408,
+          "y": 0
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Settings",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pn",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.6.4 · ✓ new · registered",
+        "position": {
+          "x": 0,
+          "y": -331
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pn-2",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.6.4",
+        "position": {
+          "x": 0,
+          "y": -331
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pn-3",
+        "type": "process",
+        "title": "Payments",
+        "description": "10.0.6.4 · retries · TLS · metrics (Go)",
+        "position": {
+          "x": 0,
+          "y": -331
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg2",
+        "type": "process",
+        "title": "⚠ DOWN",
+        "position": {
+          "x": 646,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 408,
+          "y": -272
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "so",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -326,
+          "y": 107
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spn",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 82,
+          "y": -199
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 82,
+          "y": 98
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "clients",
+        "type": "process",
+        "title": "apps & browsers",
+        "position": {
+          "x": -408,
+          "y": -748
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "API Gateway",
+        "description": "auth · rate limits · routing",
+        "position": {
+          "x": -408,
+          "y": -374
+        },
+        "width": 196,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "opa",
+        "from": "ord",
+        "to": "pa",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": -306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opa-2",
+        "from": "ord",
+        "to": "pa-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": -306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb",
+        "from": "ord",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-2",
+        "from": "ord-2",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-3",
+        "from": "ord-3",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-4",
+        "from": "ord-4",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-5",
+        "from": "ord-5",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opb-6",
+        "from": "ord-6",
+        "to": "pb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opc",
+        "from": "ord-2",
+        "to": "pc-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": 306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opc-2",
+        "from": "ord-4",
+        "to": "pc-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": 306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opc-3",
+        "from": "ord-4",
+        "to": "pc-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": 306
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "hpb",
+        "from": "pb",
+        "to": "reg",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-2",
+        "from": "pb",
+        "to": "reg-2",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-3",
+        "from": "pb",
+        "to": "reg-3",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-4",
+        "from": "pb",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-5",
+        "from": "pb",
+        "to": "reg-5",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpb-6",
+        "from": "pb",
+        "to": "reg-6",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpc",
+        "from": "pc-2",
+        "to": "reg",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": 306
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpc-2",
+        "from": "pc-3",
+        "to": "reg-2",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": 306
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "hpc-3",
+        "from": "pc-4",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": 306
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpc-4",
+        "from": "pc-5",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": 306
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "lk",
+        "from": "ord-2",
+        "to": "reg",
+        "label": "where is payments?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-2",
+        "from": "ord-2",
+        "to": "reg-2",
+        "label": "where is payments?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-3",
+        "from": "ord-3",
+        "to": "reg-3",
+        "label": "where is payments?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-4",
+        "from": "ord-4",
+        "to": "reg-4",
+        "label": "payments.internal?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-5",
+        "from": "ord-5",
+        "to": "reg-5",
+        "label": "where is payments?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lk-6",
+        "from": "ord-6",
+        "to": "reg-4",
+        "label": "payments.internal?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.27,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": -408,
+            "y": 442
+          },
+          {
+            "x": 408,
+            "y": 442
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "opn",
+        "from": "ord-2",
+        "to": "pn",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": -331
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opn-2",
+        "from": "ord-3",
+        "to": "pn-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": -331
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opn-3",
+        "from": "ord-4",
+        "to": "pn-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": -331
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opn-4",
+        "from": "ord-5",
+        "to": "pn-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": -331
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "opn-5",
+        "from": "ord-6",
+        "to": "pn-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -204,
+            "y": -25
+          },
+          {
+            "x": -204,
+            "y": -331
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "hpn",
+        "from": "pn",
+        "to": "reg-2",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -331
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-2",
+        "from": "pn-2",
+        "to": "reg-3",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -331
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-3",
+        "from": "pn-2",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -331
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-4",
+        "from": "pn-2",
+        "to": "reg-5",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -331
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-5",
+        "from": "pn-3",
+        "to": "reg-4",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -331
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "hpn-6",
+        "from": "pn-2",
+        "to": "reg-6",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 204,
+            "y": -331
+          },
+          {
+            "x": 204,
+            "y": 0
+          }
+        ],
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "r2",
+        "from": "reg-5",
+        "to": "reg2",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "r3",
+        "from": "reg-5",
+        "to": "reg3",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "push",
+        "from": "reg-6",
+        "to": "ord-3",
+        "label": "config pushed to sidecars",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.73,
+        "fromSide": "bottom",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 408,
+            "y": 442
+          },
+          {
+            "x": -408,
+            "y": 442
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cg",
+        "from": "clients",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "go",
+        "from": "gw",
+        "to": "ord-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      }
+    ]
+  },
+  "meta": {
+    "title": "Service Discovery & Gateways",
+    "summary": "How services find each other when instances come and go — and one front door for everyone outside.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "deadCalls",
+        "label": "Calls to dead instances"
+      },
+      {
+        "id": "instances",
+        "label": "Payments instances"
+      },
+      {
+        "id": "lookup",
+        "label": "How orders finds payments"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why hard-coded addresses break",
+        "step": "s2"
+      },
+      {
+        "text": "Registries, heartbeats and DNS",
+        "step": "s4"
+      },
+      {
+        "text": "Client-side vs server-side discovery",
+        "step": "s5"
+      },
+      {
+        "text": "Readiness, slow start and draining",
+        "step": "s8"
+      },
+      {
+        "text": "A registry that can’t go down",
+        "step": "s9"
+      },
+      {
+        "text": "Service meshes and API gateways",
+        "step": "s12"
+      }
+    ]
+  },
+  "presence": {
+    "ord": {
+      "until": "s3"
+    },
+    "ord-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "ord-3": {
+      "from": "s5"
+    },
+    "ord-4": {
+      "from": "s6",
+      "until": "s9"
+    },
+    "ord-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ord-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "pa": {
+      "until": "s2"
+    },
+    "pa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "pc": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "pc-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "pc-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "pc-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pc-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "reg": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "reg-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "reg-3": {
+      "from": "s5"
+    },
+    "reg-4": {
+      "from": "s6",
+      "until": "s11"
+    },
+    "reg-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "reg-6": {
+      "from": "s11",
+      "until": "s13"
+    },
+    "pn": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "pn-2": {
+      "from": "s5"
+    },
+    "pn-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "reg2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "reg3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "so": {
+      "from": "s11"
+    },
+    "spn": {
+      "from": "s11"
+    },
+    "spb": {
+      "from": "s11"
+    },
+    "clients": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "gw": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "opa": {
+      "until": "s2"
+    },
+    "opa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "opb": {
+      "until": "s3"
+    },
+    "opb-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "opb-3": {
+      "from": "s5"
+    },
+    "opb-4": {
+      "from": "s6",
+      "until": "s9"
+    },
+    "opb-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "opb-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "opc": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "opc-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "opc-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "hpb": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "hpb-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "hpb-3": {
+      "from": "s5"
+    },
+    "hpb-4": {
+      "from": "s6",
+      "until": "s11"
+    },
+    "hpb-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "hpb-6": {
+      "from": "s11",
+      "until": "s13"
+    },
+    "hpc": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "hpc-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "hpc-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "hpc-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lk": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lk-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lk-3": {
+      "from": "s5"
+    },
+    "lk-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "lk-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "lk-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "opn": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "opn-2": {
+      "from": "s5"
+    },
+    "opn-3": {
+      "from": "s6",
+      "until": "s9"
+    },
+    "opn-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "opn-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "hpn": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "hpn-2": {
+      "from": "s5"
+    },
+    "hpn-3": {
+      "from": "s6",
+      "until": "s9"
+    },
+    "hpn-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "hpn-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "hpn-6": {
+      "from": "s11",
+      "until": "s13"
+    },
+    "r2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "r3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "push": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cg": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "go": {
+      "from": "s12",
+      "until": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Config",
+      "title": "Orders calls Payments",
+      "chapter": "setup",
+      "body": "With microservices, Orders needs to call Payments. The simplest way: put the payment servers’ IP addresses in Orders’ config file and spread calls across them.\n\nIt works — as long as those two machines never change.",
+      "callout": {
+        "kind": "insight",
+        "text": "In a monolith this question doesn’t exist: “calling payments” is a function call in the same process."
+      },
+      "changes": [],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "hard-coded IPs"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Churn",
+      "title": "Instances come and go",
+      "chapter": "problem",
+      "body": "In the cloud, servers are cattle: the autoscaler adds and removes them, deploys replace them, crashed ones are swapped out. Instance 10.0.3.7 was just replaced by a new one at 10.0.5.21.\n\nOrders still has the old list. Half its calls go to an address where nothing answers, while the new instance sits idle.",
+      "callout": {
+        "kind": "warning",
+        "text": "Any address written into config goes stale. In an autoscaled system that can happen many times a day."
+      },
+      "changes": [
+        "- 10.0.3.7 replaced",
+        "+ New instance 10.0.5.21 (unknown to Orders)",
+        "- 50% of calls fail"
+      ],
+      "metrics": {
+        "deadCalls": "50%",
+        "instances": "2",
+        "lookup": "hard-coded IPs"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Registry",
+      "title": "A service registry",
+      "chapter": "solution",
+      "body": "Every instance **registers** itself with a [[service registry]] when it starts, then keeps sending heartbeats (the green pings). Orders asks the registry “where is payments?” and gets the current list.\n\nPopular registries: Consul, etcd, ZooKeeper, Eureka — and Kubernetes, which does this for every service automatically.",
+      "callout": {
+        "kind": "tip",
+        "text": "Orders caches the list for a few seconds instead of asking on every call — the registry must not become a bottleneck."
+      },
+      "changes": [
+        "+ Service registry",
+        "+ Instances register + heartbeat",
+        "~ Orders looks up payments’ addresses"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "registry"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Churn again",
+      "title": "Instances join and leave by themselves",
+      "chapter": "insight",
+      "body": "Now churn is harmless. A new instance (10.0.6.4) starts, registers, and gets traffic within seconds. Instance 10.0.5.21 hangs: it misses three heartbeats, and the registry drops it.\n\nNobody edited a config file.",
+      "callout": {
+        "kind": "insight",
+        "text": "Heartbeats turn “is it alive?” into data the registry can act on — the same idea as load balancer health checks."
+      },
+      "changes": [
+        "+ 10.0.6.4 registers",
+        "- 10.0.5.21 missed 3 heartbeats → removed"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "registry"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Who balances",
+      "title": "Client-side or server-side?",
+      "chapter": "technique",
+      "body": "**Client-side discovery**: Orders gets the list itself and picks an instance (round robin, least loaded). No extra hop, but every client needs that logic.\n\n**Server-side discovery**: Orders calls one stable name, and an internal load balancer — or a Kubernetes Service — looks up the instances and forwards the call. Clients stay simple.",
+      "callout": {
+        "kind": "tip",
+        "text": "Kubernetes gives every service a stable name and virtual IP; most teams never see the registry at all."
+      },
+      "changes": [],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "registry"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "DNS",
+      "title": "Discovery through DNS",
+      "chapter": "technique",
+      "body": "The registry can also answer through plain [[DNS]]: looking up `payments.internal` returns the healthy instances’ IPs. Every language and tool already speaks DNS.\n\nThe catch is caching: clients and libraries may keep an answer for its whole TTL (or longer), still calling an instance that has gone away. Keep TTLs short and retry on connection errors.",
+      "callout": {
+        "kind": "warning",
+        "text": "Some runtimes cache DNS answers forever by default. Check yours before relying on DNS-based discovery."
+      },
+      "changes": [
+        "~ Registry answers DNS queries",
+        "~ payments.internal → healthy IPs · TTL 10 s"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "DNS"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Too early",
+      "title": "Case: traffic before it’s ready",
+      "chapter": "problem",
+      "body": "A new instance registers the moment its process starts — before it has opened database connections or warmed its caches. The registry hands its address out at once, it gets a full share of traffic, and for 30 seconds a third of payment calls time out.\n\nBeing *alive* is not the same as being *ready*.",
+      "callout": {
+        "kind": "warning",
+        "text": "Cold starts are worst right after deploys and autoscaling — exactly when traffic is moving around anyway."
+      },
+      "changes": [
+        "+ New instance 10.0.5.21 · still starting",
+        "- Gets traffic immediately",
+        "- Calls to it time out"
+      ],
+      "metrics": {
+        "deadCalls": "33%",
+        "instances": "3",
+        "lookup": "DNS"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Ready",
+      "title": "Readiness, slow start and draining",
+      "chapter": "solution",
+      "body": "Separate two checks: **liveness** (“the process is running”) and **readiness** (“it can serve requests now”). An instance is only listed once it passes its readiness check, and balancers ramp its share up gradually — [[slow start]].\n\nShutdown is the mirror image: deregister first, wait for in-flight requests to finish (**draining**), then stop.",
+      "callout": {
+        "kind": "tip",
+        "text": "Kubernetes has these built in: readinessProbe, livenessProbe, and a preStop hook plus grace period for draining."
+      },
+      "changes": [
+        "+ Readiness check before listing",
+        "+ Slow start: 10% → 100% over a minute",
+        "+ Deregister, drain, then stop"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "3",
+        "lookup": "DNS"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Registry down",
+      "title": "What if the registry goes down?",
+      "chapter": "insight",
+      "body": "Everything now depends on the registry, so it can’t be a single point of failure. Two things save you. Callers **cache** their last known list, so traffic keeps flowing even while the registry is unreachable — they just won’t see changes for a while.\n\nAnd the registry runs as a small **cluster** of 3 or 5 nodes that agree by majority vote (Raft or Paxos). Losing one node — or even two out of five — changes nothing.",
+      "callout": {
+        "kind": "insight",
+        "text": "etcd, Consul and ZooKeeper are all consensus clusters. Odd sizes matter: 3 nodes survive 1 failure, 5 survive 2."
+      },
+      "changes": [
+        "+ Registry runs as 3 nodes",
+        "- One node down",
+        "~ Majority (2 of 3) keeps answering"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "registry"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "reg-4": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "hpb-4": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Plumbing",
+      "title": "Every team rebuilds the same plumbing",
+      "chapter": "problem",
+      "body": "Discovery is only the start. Every call between services also needs timeouts, retries, circuit breakers, encryption and metrics.\n\nWith services in Java, Go, Python and Node, each team writes its own version of all of that — with its own bugs, and its own defaults.",
+      "callout": {
+        "kind": "warning",
+        "text": "Five implementations of retry logic means five different behaviours during an outage."
+      },
+      "changes": [
+        "+ Retry/TLS/metrics code in every service"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "DNS"
+      },
+      "overrides": {
+        "ord-3": {
+          "visible": false
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "reg-4": {
+          "emphasis": true
+        },
+        "pn-2": {
+          "visible": false
+        },
+        "opb-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "hpb-4": {
+          "emphasis": true
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Mesh",
+      "title": "A service mesh: sidecars do it",
+      "chapter": "solution",
+      "body": "A [[service mesh]] (Istio, Linkerd) runs a small proxy — a **sidecar** — next to every service. Each service just talks to its local sidecar; the sidecars find instances, retry, time out, encrypt (mTLS) and report metrics.\n\nA **control plane** pushes the current instances and policies to every sidecar. The plumbing is written once, in one place.",
+      "callout": {
+        "kind": "tip",
+        "text": "A mesh adds latency (two extra local hops) and real operational complexity. Worth it with many services; overkill for a handful."
+      },
+      "changes": [
+        "+ Sidecar proxy next to each service",
+        "~ Registry → control plane",
+        "- Plumbing code removed from services"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "mesh sidecars"
+      },
+      "overrides": {
+        "ord-3": {
+          "emphasis": true
+        },
+        "reg-3": {
+          "visible": false
+        },
+        "pn-2": {
+          "emphasis": true
+        },
+        "opb-3": {
+          "emphasis": true
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "opn-2": {
+          "emphasis": true
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Gateway",
+      "title": "At the edge: an API gateway",
+      "chapter": "technique",
+      "body": "Discovery handles calls *between* services. For clients outside — apps and browsers — an [[API gateway]] is the single front door: it authenticates requests, applies rate limits, terminates TLS and routes each path to the right service.\n\nClients never learn your internal layout, so you can split, merge or move services freely.",
+      "callout": {
+        "kind": "tip",
+        "text": "Different clients often get their own gateway — a backend-for-frontend (BFF) — that shapes responses for mobile or web."
+      },
+      "changes": [
+        "+ API gateway in front of the services",
+        "+ Clients only know the gateway"
+      ],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "mesh sidecars"
+      },
+      "overrides": {
+        "reg-3": {
+          "visible": false
+        },
+        "hpb-3": {
+          "visible": false
+        },
+        "lk-3": {
+          "visible": false
+        },
+        "hpn-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Hard-coded addresses go stale as instances come and go.\n• A **registry** with heartbeats (or **DNS**) keeps the list current.\n• List instances only when **ready**; deregister and **drain** before stopping.\n• Discovery can live in the client, a proxy, or a **mesh sidecar**.\n• An **API gateway** is the one front door for outside clients.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Sagas** — keeping data consistent when one action spans several services."
+      },
+      "changes": [],
+      "metrics": {
+        "deadCalls": "0%",
+        "instances": "2",
+        "lookup": "mesh sidecars"
+      },
+      "overrides": {
+        "reg-3": {
+          "emphasis": true
+        },
+        "hpb-3": {
+          "emphasis": true
+        },
+        "lk-3": {
+          "emphasis": true
+        },
+        "hpn-2": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

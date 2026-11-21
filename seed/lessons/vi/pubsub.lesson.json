@@ -1,0 +1,1335 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 741,
+          "y": -624
+        },
+        "width": 289,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "THỜI GIAN THANH TOÁN\nlưu đơn hàng            120 ms\n+ 4 lệnh gọi × ~200 ms  800 ms\n→ ~920 ms trước lời “cảm ơn”",
+        "position": {
+          "x": 741,
+          "y": -624
+        },
+        "width": 265,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 798,
+          "y": -622
+        },
+        "width": 404,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "HÀNG ĐỢI HAY TOPIC\nhàng đợi → mỗi thông điệp tới MỘT consumer\n           chia việc\ntopic    → mỗi thông điệp tới MỌI subscriber\n           loan báo điều đã xảy ra",
+        "position": {
+          "x": 798,
+          "y": -622
+        },
+        "width": 380,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 778,
+          "y": -622
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "SỰ KIỆN: NHỮNG ĐIỀU KHOẢN NHỎ\nai phản ứng với OrderPlaced? xem 5 repo\nsubscriber hành động muộn hơn chút\ntrùng lặp & sai thứ tự xảy ra\n→ subscriber idempotent + tracing",
+        "position": {
+          "x": 778,
+          "y": -622
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "shoppers",
+        "type": "process",
+        "title": "người mua",
+        "position": {
+          "x": 0,
+          "y": -648
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "chờ 4 lệnh gọi",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 176,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-2",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "⚠ thanh toán thất bại",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 176,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "order-3",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "em",
+        "type": "process",
+        "title": "Email",
+        "position": {
+          "x": -432,
+          "y": 288
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Mail",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "em-2",
+        "type": "process",
+        "title": "Email",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": -432,
+          "y": 288
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Mail",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "em-3",
+        "type": "process",
+        "title": "Email",
+        "description": "⚠ sập · 4 sự kiện đang chờ",
+        "position": {
+          "x": -432,
+          "y": 288
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Mail",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv",
+        "type": "process",
+        "title": "Kho",
+        "position": {
+          "x": -144,
+          "y": 288
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "an",
+        "type": "process",
+        "title": "Analytics",
+        "position": {
+          "x": 144,
+          "y": 288
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "an-2",
+        "type": "process",
+        "title": "Analytics",
+        "description": "tua về 30 ngày trước",
+        "position": {
+          "x": 144,
+          "y": 288
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "loy",
+        "type": "process",
+        "title": "Thành viên",
+        "position": {
+          "x": 432,
+          "y": 288
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Gift",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bus",
+        "type": "process",
+        "title": "Event Bus",
+        "description": "topic: orders",
+        "position": {
+          "x": 0,
+          "y": -18
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Radio",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bus-2",
+        "type": "process",
+        "title": "Event Bus",
+        "description": "topic: orders · giữ 30 ngày",
+        "position": {
+          "x": 0,
+          "y": -18
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Radio",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fr",
+        "type": "process",
+        "title": "Kiểm tra gian lận",
+        "position": {
+          "x": 0,
+          "y": 576
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "wait",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮",
+        "position": {
+          "x": -432,
+          "y": 173
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb",
+        "type": "process",
+        "title": "đơn hàng + outbox",
+        "position": {
+          "x": -396,
+          "y": -324
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "uo",
+        "from": "shoppers",
+        "to": "order",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5,
+        "effectCount": 2
+      },
+      {
+        "id": "uo-2",
+        "from": "shoppers",
+        "to": "order-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5,
+        "effectCount": 2
+      },
+      {
+        "id": "uo-3",
+        "from": "shoppers",
+        "to": "order-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "dem",
+        "from": "order",
+        "to": "em",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dem-2",
+        "from": "order-2",
+        "to": "em-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dinv",
+        "from": "order",
+        "to": "inv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dinv-2",
+        "from": "order-2",
+        "to": "inv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dan",
+        "from": "order",
+        "to": "an",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dan-2",
+        "from": "order-2",
+        "to": "an",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dloy",
+        "from": "order",
+        "to": "loy",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "dloy-2",
+        "from": "order-2",
+        "to": "loy",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "ob",
+        "from": "order-3",
+        "to": "bus",
+        "label": "OrderPlaced",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ob-2",
+        "from": "odb",
+        "to": "bus",
+        "label": "relay",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.75,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ob-3",
+        "from": "order-3",
+        "to": "bus-2",
+        "label": "OrderPlaced",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bem",
+        "from": "bus",
+        "to": "em",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bem-2",
+        "from": "bus",
+        "to": "em-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "bem-3",
+        "from": "bus-2",
+        "to": "em",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "binv",
+        "from": "bus",
+        "to": "inv",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "binv-2",
+        "from": "bus-2",
+        "to": "inv",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ban",
+        "from": "bus",
+        "to": "an",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ban-2",
+        "from": "bus-2",
+        "to": "an-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bloy",
+        "from": "bus",
+        "to": "loy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bloy-2",
+        "from": "bus-2",
+        "to": "loy",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bfr",
+        "from": "bus",
+        "to": "fr",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "od",
+        "from": "order-3",
+        "to": "odb",
+        "label": "một giao dịch",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Pub/Sub & sự kiện",
+    "summary": "Thông báo rằng một việc đã xảy ra, và để ai quan tâm thì phản ứng, không ai phải chờ.",
+    "minutes": 10,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "checkout",
+        "label": "Thời gian thanh toán"
+      },
+      {
+        "id": "knows",
+        "label": "Lệnh gọi của dịch vụ đơn hàng"
+      },
+      {
+        "id": "breaks",
+        "label": "Email sập làm hỏng thanh toán"
+      },
+      {
+        "id": "subs",
+        "label": "Người đăng ký"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao gọi trực tiếp làm các dịch vụ dính chặt vào nhau",
+        "step": "s2"
+      },
+      {
+        "text": "Publisher, topic và subscriber",
+        "step": "s3"
+      },
+      {
+        "text": "Hàng đợi và topic",
+        "step": "s4"
+      },
+      {
+        "text": "Cái giá của thiết kế hướng sự kiện",
+        "step": "s7"
+      },
+      {
+        "text": "Mẫu outbox và phát lại sự kiện",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "order": {
+      "until": "s2"
+    },
+    "order-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "order-3": {
+      "from": "s3"
+    },
+    "em-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "em-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "an-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bus": {
+      "from": "s3"
+    },
+    "bus-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "fr": {
+      "from": "s5"
+    },
+    "wait": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "odb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "uo": {
+      "until": "s2"
+    },
+    "uo-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "uo-3": {
+      "from": "s3"
+    },
+    "dem": {
+      "until": "s2"
+    },
+    "dem-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dinv": {
+      "until": "s2"
+    },
+    "dinv-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dan": {
+      "until": "s2"
+    },
+    "dan-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dloy": {
+      "until": "s2"
+    },
+    "dloy-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ob": {
+      "from": "s3"
+    },
+    "ob-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ob-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bem": {
+      "from": "s3"
+    },
+    "bem-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bem-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "binv": {
+      "from": "s3"
+    },
+    "binv-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ban": {
+      "from": "s3"
+    },
+    "ban-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bloy": {
+      "from": "s3"
+    },
+    "bloy-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bfr": {
+      "from": "s5"
+    },
+    "od": {
+      "from": "s8",
+      "until": "s9"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Gọi tất cả",
+      "title": "Thanh toán gọi tất cả mọi người",
+      "chapter": "problem",
+      "body": "Khi có đơn hàng, bốn việc khác phải xảy ra: gửi email xác nhận, giữ hàng trong kho, ghi nhận analytics, cộng điểm thành viên.\n\nDịch vụ đơn hàng gọi lần lượt từng dịch vụ và chờ từng câu trả lời, nên người mua phải chờ cả bốn: gần một giây.",
+      "callout": {
+        "kind": "warning",
+        "text": "Mỗi tính năng mới liên quan đến đơn hàng đồng nghĩa với việc sửa, kiểm thử và triển khai lại dịch vụ đơn hàng."
+      },
+      "changes": [],
+      "metrics": {
+        "checkout": "920 ms",
+        "knows": "4 dịch vụ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Email sập",
+      "title": "Email sập, nên không ai mua được",
+      "chapter": "problem",
+      "body": "Nhà cung cấp email gặp sự cố. Lệnh gọi từ dịch vụ đơn hàng tới đó thất bại, và vì thanh toán chờ mọi lệnh gọi, **thanh toán thất bại**.\n\nMột email xác nhận, vốn hoàn toàn có thể gửi muộn mười phút, vừa làm dừng toàn bộ việc bán hàng.",
+      "callout": {
+        "kind": "warning",
+        "text": "Với lệnh gọi trực tiếp, độ sẵn sàng nhân lên với nhau: bốn dịch vụ mỗi cái 99,9% khiến thanh toán chỉ còn khoảng 99,6%."
+      },
+      "changes": [
+        "- Dịch vụ email sập",
+        "- Thanh toán thất bại"
+      ],
+      "metrics": {
+        "checkout": "920 ms",
+        "knows": "4 dịch vụ",
+        "breaks": "có"
+      },
+      "overrides": {
+        "em": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Publish",
+      "title": "Thay vào đó, phát một sự kiện",
+      "chapter": "solution",
+      "body": "Giờ dịch vụ đơn hàng lưu đơn rồi **phát** (publish) một sự kiện duy nhất, `OrderPlaced`, lên một topic trên [[event bus]], rồi trả lời người mua ngay.\n\nEmail, kho, analytics và thành viên đều **đăng ký** (subscribe) topic đó, và mỗi bên nhận một bản sao sự kiện của riêng mình.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các broker phổ biến: Kafka, Amazon SNS + SQS, Google Pub/Sub, RabbitMQ (fanout exchange), Redis Streams."
+      },
+      "changes": [
+        "+ Event bus · topic “orders”",
+        "~ 4 lệnh gọi trực tiếp → 1 sự kiện được phát",
+        "~ Thanh toán 920 → 140 ms"
+      ],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "không",
+        "subs": "4"
+      },
+      "overrides": {
+        "em": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Hàng đợi hay topic",
+      "title": "Hàng đợi hay topic?",
+      "chapter": "insight",
+      "body": "Ở bài trước, mỗi job đến với **một** worker: hàng đợi chia việc. Topic làm điều ngược lại: mỗi sự kiện đến với **mọi** subscriber, nó loan tin.\n\nHệ thống thực tế kết hợp cả hai: mỗi dịch vụ đăng ký có hàng đợi sự kiện riêng, được dùng chung bởi mọi instance đang chạy của dịch vụ đó.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hàng đợi: “ai đó làm việc này.” Topic: “việc này đã xảy ra.”"
+      },
+      "changes": [],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "không",
+        "subs": "4"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Subscriber mới",
+      "title": "Tính năng mới chỉ cần đăng ký",
+      "chapter": "solution",
+      "body": "Nhóm rủi ro muốn kiểm tra gian lận cho mọi đơn hàng. Họ xây một dịch vụ đăng ký `OrderPlaced`, vậy là xong.\n\nDịch vụ đơn hàng không thay đổi, không triển khai lại, thậm chí không biết việc kiểm tra gian lận tồn tại. Đây là [[liên kết lỏng]] (loose coupling).",
+      "callout": {
+        "kind": "tip",
+        "text": "Publisher không biết subscriber của mình. Các nhóm có thể thêm phản ứng với sự kiện mà không cần phối hợp lịch phát hành."
+      },
+      "changes": [
+        "+ Kiểm tra gian lận đăng ký",
+        "~ Dịch vụ đơn hàng: không thay đổi"
+      ],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "không",
+        "subs": "5"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Bắt kịp",
+      "title": "Một subscriber sập? Nó sẽ bắt kịp",
+      "chapter": "insight",
+      "body": "Email lại sập. Lần này thanh toán không hề hay biết: event bus giữ các bản sao sự kiện của email trong subscription của nó cho đến khi email quay lại.\n\nKhi email hồi phục, nó xử lý phần tồn đọng và mọi email xác nhận đều được gửi: hơi muộn, nhưng không mất cái nào.",
+      "callout": {
+        "kind": "insight",
+        "text": "Sự kiện được lưu bền: một subscriber chậm hay hỏng chỉ làm chậm chính nó."
+      },
+      "changes": [
+        "- Dịch vụ email sập",
+        "+ Sự kiện của nó chờ trong subscription",
+        "~ Thanh toán không bị ảnh hưởng"
+      ],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "không",
+        "subs": "5"
+      },
+      "overrides": {
+        "em": {
+          "visible": false
+        },
+        "bem": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Đánh đổi",
+      "title": "Cái giá của sự kiện",
+      "chapter": "tradeoff",
+      "body": "Sự kiện tách rời các dịch vụ, nhưng luồng xử lý khó nhìn thấy hơn: “chuyện gì xảy ra khi có đơn hàng?” giờ nằm rải rác trên năm codebase.\n\nSubscriber hành động muộn hơn một chút (nhất quán cuối cùng), sự kiện có thể đến hai lần hoặc sai thứ tự, và gỡ lỗi cần tracing tốt.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đặt tên sự kiện như sự thật ở thì quá khứ (OrderPlaced, PaymentFailed), và làm mọi subscriber idempotent."
+      },
+      "changes": [],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "không",
+        "subs": "5"
+      },
+      "overrides": {
+        "em": {
+          "emphasis": true
+        },
+        "bem": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Outbox",
+      "title": "Tình huống: đã lưu, nhưng không bao giờ thông báo",
+      "chapter": "problem",
+      "body": "Dịch vụ đơn hàng lưu đơn vào cơ sở dữ liệu, rồi phát `OrderPlaced`. Một ngày nó sập giữa hai bước đó: đơn hàng tồn tại, nhưng không sự kiện nào được gửi. Không email, không giữ hàng, không điểm thành viên.\n\nCách sửa: [[transactional outbox]]. Ghi sự kiện vào bảng `outbox` trong *cùng* giao dịch cơ sở dữ liệu với đơn hàng; sau đó một relay phát mọi thứ trong outbox lên bus.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hoặc cả đơn hàng lẫn sự kiện của nó đều được lưu, hoặc không cái nào. Relay thử lại cho đến khi bus chấp nhận, nên subscriber phải xử lý được trùng lặp. Nó có thể quét bảng định kỳ, hoặc đọc theo log của chính cơ sở dữ liệu (**change data capture**, ví dụ Debezium)."
+      },
+      "changes": [
+        "+ CSDL đơn hàng với bảng outbox",
+        "+ Relay phát từ outbox",
+        "~ Không còn mất sự kiện sau khi sập"
+      ],
+      "metrics": {
+        "checkout": "145 ms",
+        "knows": "1 event bus",
+        "breaks": "không",
+        "subs": "5"
+      },
+      "overrides": {
+        "ob": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Phát lại",
+      "title": "Tình huống: phát lại lịch sử",
+      "chapter": "insight",
+      "body": "Analytics phát hiện một bug đã đếm sai doanh thu 30 ngày qua. Với hàng đợi kiểu cũ, các sự kiện đó đã biến mất khi bị tiêu thụ.\n\nMột bus dựa trên log như Kafka **giữ** sự kiện trong nhiều ngày hoặc nhiều tuần. Analytics sửa code, tua vị trí đọc về 30 ngày trước và xử lý lại mọi sự kiện; các subscriber khác không bị ảnh hưởng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Sự kiện được lưu giữ cũng cho phép một subscriber hoàn toàn mới xây dựng dữ liệu từ lịch sử thay vì bắt đầu trống rỗng."
+      },
+      "changes": [
+        "+ Bus giữ sự kiện 30 ngày",
+        "~ Analytics tua lại và xử lý lại"
+      ],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "không",
+        "subs": "5"
+      },
+      "overrides": {
+        "an": {
+          "visible": false
+        },
+        "bus": {
+          "visible": false
+        },
+        "fr": {
+          "visible": false
+        },
+        "ob": {
+          "visible": false
+        },
+        "bem": {
+          "visible": false
+        },
+        "binv": {
+          "visible": false
+        },
+        "ban": {
+          "visible": false
+        },
+        "bloy": {
+          "visible": false
+        },
+        "bfr": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Gọi trực tiếp khiến bên gọi **chậm** và **mong manh**, và buộc mọi nhóm vào nó.\n• **Phát** một sự kiện; mỗi **subscriber** nhận bản sao của riêng mình.\n• Tính năng mới **chỉ cần đăng ký**; subscriber bị sập sẽ **bắt kịp** sau.\n• Cái giá: nhất quán cuối cùng, trùng lặp và tracing khó hơn.\n• Dùng **outbox** để việc lưu và sự kiện không bao giờ lệch nhau; log được lưu giữ cho phép **phát lại**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Cập nhật thời gian thực**: đưa sự kiện đến tận màn hình người dùng."
+      },
+      "changes": [],
+      "metrics": {
+        "checkout": "140 ms",
+        "knows": "1 event bus",
+        "breaks": "không",
+        "subs": "5"
+      },
+      "overrides": {
+        "an": {
+          "emphasis": true
+        },
+        "bus": {
+          "emphasis": true
+        },
+        "fr": {
+          "emphasis": true
+        },
+        "ob": {
+          "emphasis": true
+        },
+        "bem": {
+          "emphasis": true
+        },
+        "binv": {
+          "emphasis": true
+        },
+        "ban": {
+          "emphasis": true
+        },
+        "bloy": {
+          "emphasis": true
+        },
+        "bfr": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

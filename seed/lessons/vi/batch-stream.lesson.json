@@ -1,0 +1,2784 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "batch-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -495,
+          "y": 135
+        },
+        "width": 450,
+        "height": 540,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "batch-4-label",
+        "type": "text",
+        "title": "BAN ĐÊM · CHÍNH XÁC",
+        "position": {
+          "x": -629,
+          "y": -114
+        },
+        "width": 162,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "batch-4"
+      },
+      {
+        "id": "batch-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -494,
+          "y": 135
+        },
+        "width": 521,
+        "height": 540,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "batch-3-label",
+        "type": "text",
+        "title": "MAP + COMBINE → REDUCE",
+        "position": {
+          "x": -652,
+          "y": -114
+        },
+        "width": 184,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "batch-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -494,
+          "y": 135
+        },
+        "width": 485,
+        "height": 540,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "batch-2-label",
+        "type": "text",
+        "title": "MAP → SHUFFLE → REDUCE",
+        "position": {
+          "x": -634,
+          "y": -114
+        },
+        "width": 184,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "batch",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -495,
+          "y": 135
+        },
+        "width": 450,
+        "height": 540,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "batch-label",
+        "type": "text",
+        "title": "BATCH JOB BAN ĐÊM",
+        "position": {
+          "x": -637,
+          "y": -114
+        },
+        "width": 146,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "batch"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1120,
+          "y": -964
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "ĐẾM 2 TỶ LƯỢT XEM\nmap:     mỗi worker đếm phần của mình\nshuffle: cùng video → cùng worker\nreduce:  cộng số đếm theo video\n→ 100 worker: ~20 phút",
+        "position": {
+          "x": 1120,
+          "y": -964
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1133,
+          "y": -964
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "THUẦN HÓA MỘT KHÓA NÓNG\n⚠ video viral: 800 tr dòng → một reducer\n→ combiner: mỗi mapper gửi 1 số đếm\n→ salting: 4f2#0 … 4f2#9 → 10 reducer\n# job: 3 giờ → 20 phút",
+        "position": {
+          "x": 1133,
+          "y": -964
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1129,
+          "y": -964
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "LƯỢT XEM VIDEO 4F2 MỖI PHÚT\n12:01  █░░░░░░░░░░░  120\n12:02  █░░░░░░░░░░░  140\n12:03  ████░░░░░░░░  780\n12:04  ████████████  2.500 ↑ thịnh hành",
+        "position": {
+          "x": 1129,
+          "y": -964
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1108,
+          "y": -964
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "THỜI GIAN SỰ KIỆN VS THỜI GIAN TỚI\nxem lúc 12:04, tới lúc 14:10\nwatermark: “sự kiện trễ ≤ 5 phút”\n⚠ trễ 2 giờ → đúng cửa sổ, sau đó\n→ id trùng → bị loại",
+        "position": {
+          "x": 1108,
+          "y": -964
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1100,
+          "y": -964
+        },
+        "width": 305,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "NGƯỜI XEM DUY NHẤT CỦA 4F2\nchính xác: nhớ mọi id người xem\n⚠ 50 tr id × 16 byte ≈ 800 MB\n→ HyperLogLog: 12 KB, ~1% sai số\n# sketch gộp được giữa các máy",
+        "position": {
+          "x": 1100,
+          "y": -964
+        },
+        "width": 281,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "viewers",
+        "type": "process",
+        "title": "người xem",
+        "position": {
+          "x": 0,
+          "y": -990
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Ứng dụng video",
+        "position": {
+          "x": 0,
+          "y": -495
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "prod",
+        "type": "process",
+        "title": "DB production",
+        "description": "CPU 95%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 216,
+        "height": 108,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "prod-2",
+        "type": "process",
+        "title": "DB production",
+        "description": "CPU 30%",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 216,
+        "height": 108,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash",
+        "type": "process",
+        "title": "Dashboard",
+        "position": {
+          "x": 0,
+          "y": 675
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash-2",
+        "type": "process",
+        "title": "Dashboard",
+        "description": "thịnh hành: của hôm qua",
+        "position": {
+          "x": 0,
+          "y": 675
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash-3",
+        "type": "process",
+        "title": "Dashboard",
+        "description": "thịnh hành: bây giờ",
+        "position": {
+          "x": 0,
+          "y": 675
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash-4",
+        "type": "process",
+        "title": "Dashboard",
+        "description": "số đếm trực tiếp: cũ 4 phút",
+        "position": {
+          "x": 0,
+          "y": 675
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dash-5",
+        "type": "process",
+        "title": "Dashboard",
+        "description": "người xem duy nhất ≈ 48,2 tr",
+        "position": {
+          "x": 0,
+          "y": 675
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ChartLine",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "logs",
+        "type": "process",
+        "title": "log sự kiện",
+        "position": {
+          "x": -495,
+          "y": -495
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -621,
+          "y": 0
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-2",
+        "type": "process",
+        "title": "map",
+        "position": {
+          "x": -621,
+          "y": 0
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w1-3",
+        "type": "process",
+        "title": "map + combine",
+        "position": {
+          "x": -621,
+          "y": 0
+        },
+        "width": 212,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "w2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -368,
+          "y": 0
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-2",
+        "type": "process",
+        "title": "map",
+        "position": {
+          "x": -368,
+          "y": 0
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w2-3",
+        "type": "process",
+        "title": "map + combine",
+        "position": {
+          "x": -368,
+          "y": 0
+        },
+        "width": 212,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "w3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -607,
+          "y": 270
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w3-2",
+        "type": "process",
+        "title": "reduce",
+        "position": {
+          "x": -607,
+          "y": 270
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w3-3",
+        "type": "process",
+        "title": "40% dữ liệu · 3 giờ",
+        "position": {
+          "x": -607,
+          "y": 270
+        },
+        "width": 192,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w3-4",
+        "type": "process",
+        "title": "reduce · đều nhau",
+        "position": {
+          "x": -607,
+          "y": 270
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "w4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -382,
+          "y": 270
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w4-2",
+        "type": "process",
+        "title": "reduce",
+        "position": {
+          "x": -382,
+          "y": 270
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w4-3",
+        "type": "process",
+        "title": "5 phút",
+        "position": {
+          "x": -382,
+          "y": 270
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-2"
+      },
+      {
+        "id": "w4-4",
+        "type": "process",
+        "title": "reduce · đều nhau",
+        "position": {
+          "x": -382,
+          "y": 270
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Cpu",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "batch-3"
+      },
+      {
+        "id": "wh",
+        "type": "process",
+        "title": "kho dữ liệu",
+        "position": {
+          "x": -495,
+          "y": 675
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kafka",
+        "type": "process",
+        "title": "Luồng sự kiện",
+        "position": {
+          "x": 495,
+          "y": -495
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kafka-2",
+        "type": "process",
+        "title": "Luồng sự kiện",
+        "description": "sự kiện từ 2 giờ trước",
+        "position": {
+          "x": 495,
+          "y": -495
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kafka-3",
+        "type": "process",
+        "title": "Luồng sự kiện",
+        "description": "lag: 4 phút · 18 tr sự kiện",
+        "position": {
+          "x": 495,
+          "y": -495
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kafka-4",
+        "type": "process",
+        "title": "Luồng sự kiện",
+        "description": "4 phân vùng · lag 2 s",
+        "position": {
+          "x": 495,
+          "y": -495
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc",
+        "type": "process",
+        "title": "Bộ xử lý luồng",
+        "position": {
+          "x": 495,
+          "y": 135
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-2",
+        "type": "process",
+        "title": "Bộ xử lý luồng",
+        "description": "cửa sổ: 1 phút",
+        "position": {
+          "x": 495,
+          "y": 135
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-3",
+        "type": "process",
+        "title": "Bộ xử lý luồng",
+        "description": "watermark: 12:05 · bật khử trùng",
+        "position": {
+          "x": 495,
+          "y": 135
+        },
+        "width": 220,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-4",
+        "type": "process",
+        "title": "Bộ xử lý luồng",
+        "description": "⚠ đang tụt lại",
+        "position": {
+          "x": 495,
+          "y": 135
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-5",
+        "type": "process",
+        "title": "Bộ xử lý luồng",
+        "description": "phân vùng 0–1",
+        "position": {
+          "x": 495,
+          "y": 135
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc-6",
+        "type": "process",
+        "title": "Bộ xử lý luồng",
+        "description": "HyperLogLog theo video",
+        "position": {
+          "x": 495,
+          "y": 135
+        },
+        "width": 220,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "live",
+        "type": "process",
+        "title": "số đếm trực tiếp",
+        "position": {
+          "x": 495,
+          "y": 675
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "proc2",
+        "type": "process",
+        "title": "Bộ xử lý luồng",
+        "description": "phân vùng 2–3",
+        "position": {
+          "x": 765,
+          "y": 135
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Activity",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "va",
+        "from": "viewers",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ad",
+        "from": "app",
+        "to": "prod",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ad-2",
+        "from": "app",
+        "to": "prod-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "dp",
+        "from": "dash",
+        "to": "prod",
+        "label": "GROUP BY video · mỗi phút",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "al",
+        "from": "app",
+        "to": "logs",
+        "label": "ghi nối sự kiện",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "lb",
+        "from": "logs",
+        "to": "batch",
+        "label": "đọc 1 ngày",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "lb-2",
+        "from": "logs",
+        "to": "batch-2",
+        "label": "đọc 1 ngày",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "lb-3",
+        "from": "logs",
+        "to": "batch-3",
+        "label": "đọc 1 ngày",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "lb-4",
+        "from": "logs",
+        "to": "batch-4",
+        "label": "đọc 1 ngày",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bw",
+        "from": "batch",
+        "to": "wh",
+        "label": "ghi kết quả",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bw-2",
+        "from": "batch-2",
+        "to": "wh",
+        "label": "ghi kết quả",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bw-3",
+        "from": "batch-3",
+        "to": "wh",
+        "label": "ghi kết quả",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bw-4",
+        "from": "batch-4",
+        "to": "wh",
+        "label": "ghi kết quả",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "dw",
+        "from": "dash",
+        "to": "wh",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dw-2",
+        "from": "dash-2",
+        "to": "wh",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ak",
+        "from": "app",
+        "to": "kafka",
+        "label": "phát mỗi lượt xem",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "ak-2",
+        "from": "app",
+        "to": "kafka-2",
+        "label": "phát mỗi lượt xem",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "ak-3",
+        "from": "app",
+        "to": "kafka-3",
+        "label": "phát mỗi lượt xem",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "ak-4",
+        "from": "app",
+        "to": "kafka-4",
+        "label": "phát mỗi lượt xem",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "kp",
+        "from": "kafka",
+        "to": "proc",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "kp-2",
+        "from": "kafka",
+        "to": "proc-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "kp-3",
+        "from": "kafka-2",
+        "to": "proc-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "kp-4",
+        "from": "kafka-3",
+        "to": "proc-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "kp-5",
+        "from": "kafka-4",
+        "to": "proc-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "kp-6",
+        "from": "kafka",
+        "to": "proc-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "pl",
+        "from": "proc",
+        "to": "live",
+        "label": "cập nhật số đếm",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "pl-2",
+        "from": "proc-2",
+        "to": "live",
+        "label": "cập nhật số đếm",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "pl-3",
+        "from": "proc-3",
+        "to": "live",
+        "label": "cập nhật số đếm",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "pl-4",
+        "from": "proc-4",
+        "to": "live",
+        "label": "cập nhật số đếm",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "pl-5",
+        "from": "proc-5",
+        "to": "live",
+        "label": "cập nhật số đếm",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "pl-6",
+        "from": "proc-6",
+        "to": "live",
+        "label": "cập nhật số đếm",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 3
+      },
+      {
+        "id": "dl",
+        "from": "dash-3",
+        "to": "live",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dl-2",
+        "from": "dash",
+        "to": "live",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dl-3",
+        "from": "dash-4",
+        "to": "live",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dl-4",
+        "from": "dash-5",
+        "to": "live",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "kp2",
+        "from": "kafka-4",
+        "to": "proc2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      },
+      {
+        "id": "p2l",
+        "from": "proc2",
+        "to": "live",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 1.1,
+        "effectCount": 6
+      }
+    ]
+  },
+  "meta": {
+    "title": "Xử lý theo lô & luồng",
+    "summary": "Xử lý hàng tỷ sự kiện: qua đêm theo những lô lớn, hoặc liên tục ngay khi chúng tới.",
+    "minutes": 15,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "freshness",
+        "label": "Tuổi của kết quả"
+      },
+      {
+        "id": "prodLoad",
+        "label": "Tải CSDL production"
+      },
+      {
+        "id": "eventsDay",
+        "label": "Sự kiện / ngày"
+      },
+      {
+        "id": "exact",
+        "label": "Đếm chính xác"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Đưa phân tích ra khỏi cơ sở dữ liệu production",
+        "step": "s1"
+      },
+      {
+        "text": "Xử lý theo lô và map/reduce",
+        "step": "s3"
+      },
+      {
+        "text": "Khóa lệch: combiner và salting",
+        "step": "s5"
+      },
+      {
+        "text": "Xử lý luồng và cửa sổ",
+        "step": "s8"
+      },
+      {
+        "text": "Sự kiện đến muộn, độ trễ và phân vùng",
+        "step": "s11"
+      },
+      {
+        "text": "Đếm gần đúng, và chạy cả hai",
+        "step": "s13"
+      }
+    ]
+  },
+  "presence": {
+    "prod": {
+      "until": "s2"
+    },
+    "prod-2": {
+      "from": "s2"
+    },
+    "dash-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dash-3": {
+      "from": "s7",
+      "until": "s12"
+    },
+    "dash-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dash-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "logs": {
+      "from": "s2"
+    },
+    "batch": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "batch-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "batch-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "batch-4": {
+      "from": "s13"
+    },
+    "w1": {
+      "from": "s2"
+    },
+    "w1-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "w1-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "w2": {
+      "from": "s2"
+    },
+    "w2-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "w2-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "w3": {
+      "from": "s2"
+    },
+    "w3-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w3-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "w3-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "w4": {
+      "from": "s2"
+    },
+    "w4-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w4-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "w4-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wh": {
+      "from": "s2"
+    },
+    "card": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "kafka": {
+      "from": "s7"
+    },
+    "kafka-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "kafka-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "kafka-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "proc": {
+      "from": "s7"
+    },
+    "proc-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "proc-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "proc-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "proc-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "proc-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "live": {
+      "from": "s7"
+    },
+    "proc2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "batch-4-label": {
+      "from": "s13"
+    },
+    "batch-3-label": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "batch-2-label": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "batch-label": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "card-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-3-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-5-text": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ad": {
+      "until": "s2"
+    },
+    "ad-2": {
+      "from": "s2"
+    },
+    "dp": {
+      "until": "s2"
+    },
+    "al": {
+      "from": "s2"
+    },
+    "lb": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "lb-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "lb-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "lb-4": {
+      "from": "s13"
+    },
+    "bw": {
+      "from": "s2",
+      "until": "s7"
+    },
+    "bw-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "bw-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bw-4": {
+      "from": "s13"
+    },
+    "dw": {
+      "from": "s2"
+    },
+    "dw-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ak": {
+      "from": "s7"
+    },
+    "ak-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ak-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ak-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "kp": {
+      "from": "s7"
+    },
+    "kp-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "kp-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "kp-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "kp-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "kp-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "pl": {
+      "from": "s7"
+    },
+    "pl-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "pl-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "pl-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "pl-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "pl-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "dl": {
+      "from": "s7",
+      "until": "s12"
+    },
+    "dl-2": {
+      "from": "s9"
+    },
+    "dl-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dl-4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "kp2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "p2l": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "DB đang chạy",
+      "title": "Phân tích ngay trên CSDL production",
+      "chapter": "problem",
+      "body": "Mỗi lượt xem của mỗi video là một dòng trong cơ sở dữ liệu production, khoảng 2 tỷ mỗi ngày. Một dashboard hiển thị lượt xem theo video, tính lại mỗi phút bằng một câu `GROUP BY` lớn.\n\nMỗi lần chạy quét toàn bộ ngày tính đến lúc đó (hàng trăm triệu dòng vào giữa buổi sáng) và cơ sở dữ liệu phục vụ ứng dụng ì ạch: người xem phải chờ trong lúc nó đếm.",
+      "callout": {
+        "kind": "warning",
+        "text": "Cơ sở dữ liệu production được tinh chỉnh cho nhiều truy vấn nhỏ và nhanh. Những lần quét khổng lồ cướp mất bộ nhớ, CPU và đĩa của nó."
+      },
+      "changes": [],
+      "metrics": {
+        "freshness": "trực tiếp",
+        "prodLoad": "95%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Lô",
+      "title": "Lô: thu thập bây giờ, tính sau",
+      "chapter": "solution",
+      "body": "Thay vào đó, ứng dụng ghi nối mỗi lượt xem thành một sự kiện vào **object storage** rẻ tiền: các file, không phải dòng CSDL. Mỗi đêm một lần, một [[batch job]] đọc cả ngày, tính số đếm trên một cụm worker và ghi kết quả vào một **kho dữ liệu** phân tích.\n\nDashboard đọc từ kho dữ liệu. CSDL production lại chỉ phục vụ ứng dụng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Xử lý theo lô đơn giản, rẻ và dễ chạy lại: nếu job có lỗi, sửa rồi chạy lại trên chính các file đó."
+      },
+      "changes": [
+        "+ Log sự kiện trong object storage",
+        "+ Batch job ban đêm trên 4 worker",
+        "+ Kho dữ liệu cho phân tích",
+        "~ Tải CSDL production 95% → 30%"
+      ],
+      "metrics": {
+        "freshness": "tới 24 giờ",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Map/reduce",
+      "title": "Chia việc: map, shuffle, reduce",
+      "chapter": "technique",
+      "body": "2 tỷ sự kiện không thể đi qua một máy cho nhanh, nên job được chia nhỏ. **Map**: mỗi worker đọc phần file của mình và đếm lượt xem theo video. **Shuffle**: số đếm của cùng một video được gửi tới cùng một worker. **Reduce**: worker đó cộng chúng lại.\n\nThêm worker thì job xong nhanh hơn tương ứng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đây là MapReduce. Ngày nay Spark, BigQuery, Snowflake và những công cụ tương tự làm điều tương tự sau một giao diện SQL."
+      },
+      "changes": [
+        "~ Worker 1–2: map phần của mình",
+        "~ Worker 3–4: reduce theo video"
+      ],
+      "metrics": {
+        "freshness": "tới 24 giờ",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {
+        "batch": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "batch-label": {
+          "visible": false
+        },
+        "lb": {
+          "visible": false
+        },
+        "bw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Lệch",
+      "title": "Tình huống: một video, một reducer kiệt sức",
+      "chapter": "problem",
+      "body": "Một video viral: 40% tổng lượt xem hôm qua. Trong shuffle, mọi lượt xem của nó đều tới *cùng một* reducer. Worker đó cày 3 giờ trong khi 99 worker kia xong trong 5 phút, và job phải chờ worker chậm nhất.\n\nChia việc theo khóa chỉ cân bằng khi các khóa cân bằng. Dữ liệu thật hiếm khi như vậy.",
+      "callout": {
+        "kind": "warning",
+        "text": "Lệch khóa là lý do phổ biến nhất khiến một batch job lớn chậm một cách khó hiểu. Hãy tìm một task chạy lâu hơn hẳn các task còn lại."
+      },
+      "changes": [
+        "+ Một video = 40% dữ liệu",
+        "- Một reducer chạy 3 giờ",
+        "~ Job xong trễ 3 giờ"
+      ],
+      "metrics": {
+        "freshness": "tới 27 giờ",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {
+        "batch": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "batch-label": {
+          "visible": false
+        },
+        "lb": {
+          "visible": false
+        },
+        "bw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Gộp",
+      "title": "Gộp sớm, tách khóa nóng",
+      "chapter": "solution",
+      "body": "Hai cách sửa tiêu chuẩn. Một [[combiner]] tổng hợp trước trên mỗi mapper: thay vì gửi 800 triệu dòng “lượt xem của 4f2”, mỗi mapper gửi một số đếm từng phần. Với những khóa vẫn còn quá nóng, [[salting]] tách chúng ra: `4f2#0` … `4f2#9` đi tới mười reducer, và một bước cuối cộng mười tổng lại.\n\nJob giảm từ 3 giờ về lại khoảng 20 phút.",
+      "callout": {
+        "kind": "tip",
+        "text": "Spark và hầu hết các engine SQL tự động gộp cho phép tổng và đếm, và có thể phát hiện rồi tách khóa lệch khi join."
+      },
+      "changes": [
+        "+ Combiner trên mỗi mapper",
+        "+ Khóa nóng được tách cho 10 reducer",
+        "~ Job 3 giờ → 20 phút"
+      ],
+      "metrics": {
+        "freshness": "tới 24 giờ",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {
+        "batch": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "batch-label": {
+          "visible": false
+        },
+        "lb": {
+          "visible": false
+        },
+        "bw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Quá muộn",
+      "title": "Trễ một ngày là quá muộn",
+      "chapter": "problem",
+      "body": "Có những câu hỏi không thể chờ tới tối nay. Một video đang viral phải hiện trong “Thịnh hành” *ngay bây giờ*. Một trại bot làm giả hàng triệu lượt xem phải bị bắt trong vài phút, trước khi kiếm được đồng nào.\n\nChạy batch job mỗi giờ giúp được chút ít, nhưng mỗi lần chạy vẫn đọc lại một đống dữ liệu khổng lồ.",
+      "callout": {
+        "kind": "insight",
+        "text": "Xử lý theo lô trả lời “điều gì đã xảy ra?”. Có sản phẩm cần “điều gì đang xảy ra?”."
+      },
+      "changes": [
+        "- Danh sách thịnh hành đã cũ một ngày",
+        "- Lượt xem giả đến mai mới bị phát hiện"
+      ],
+      "metrics": {
+        "freshness": "tới 24 giờ",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "batch": {
+          "emphasis": true
+        },
+        "w1": {
+          "emphasis": true
+        },
+        "w2": {
+          "emphasis": true
+        },
+        "w3": {
+          "emphasis": true
+        },
+        "w4": {
+          "emphasis": true
+        },
+        "batch-label": {
+          "emphasis": true
+        },
+        "lb": {
+          "emphasis": true
+        },
+        "bw": {
+          "emphasis": true
+        },
+        "dw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Luồng",
+      "title": "Xử lý luồng: tính ngay khi sự kiện tới",
+      "chapter": "solution",
+      "body": "Giờ ứng dụng phát mỗi lượt xem lên một **luồng sự kiện** (Kafka). Một [[bộ xử lý luồng]] (Flink, Kafka Streams, Spark Streaming) đọc sự kiện ngay khi tới và duy trì số đếm liên tục, ghi kết quả vào một kho dữ liệu nhanh.\n\nDashboard chỉ chậm hơn thực tế vài giây thay vì một ngày.",
+      "callout": {
+        "kind": "tip",
+        "text": "Bộ xử lý giữ số đếm trong trạng thái cục bộ và tạo checkpoint thường xuyên, nên khi sập nó tiếp tục từ checkpoint gần nhất thay vì làm lại từ đầu."
+      },
+      "changes": [
+        "- Batch job ban đêm",
+        "+ Luồng sự kiện",
+        "+ Bộ xử lý luồng",
+        "+ Kho số đếm trực tiếp",
+        "~ Tuổi của kết quả 24 giờ → 5 s"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Cửa sổ",
+      "title": "Đếm theo cửa sổ",
+      "chapter": "technique",
+      "body": "Luồng không bao giờ kết thúc, nên “đếm lượt xem” cần một khung thời gian: một [[cửa sổ]]. Cửa sổ **tumbling** cắt thời gian thành các lát cố định (lượt xem mỗi phút). Cửa sổ **trượt** chồng lên nhau (lượt xem trong 10 phút gần nhất, cập nhật mỗi phút).\n\nMột cú nhảy đột ngột giữa các cửa sổ chính là dáng vẻ của “thịnh hành”, hoặc gian lận.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cửa sổ phiên nhóm sự kiện theo từng đợt hoạt động: hữu ích cho câu hỏi “mọi người đã xem bao lâu?”."
+      },
+      "changes": [
+        "+ Cửa sổ tumbling 1 phút cho mỗi video"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Sự kiện muộn",
+      "title": "Tình huống: sự kiện muộn và trùng lặp",
+      "chapter": "problem",
+      "body": "Một chiếc điện thoại xem video trên tàu điện ngầm không có sóng và tải lượt xem lên hai giờ sau. Chúng nên được tính cho 12:04, lúc chúng xảy ra, hay cho bây giờ, lúc chúng tới? Và mạng chập chờn khiến vài điện thoại gửi cùng một sự kiện hai lần.\n\nBộ xử lý luồng dùng **thời gian sự kiện** (lúc nó xảy ra), một [[watermark]] để quyết định khi nào một cửa sổ đủ trọn vẹn để công bố, một quy tắc cho những sự kiện tới trễ, và một id sự kiện để loại bỏ bản trùng.",
+      "callout": {
+        "kind": "warning",
+        "text": "“Exactly-once” trong xử lý luồng nghĩa là checkpoint cộng với ghi idempotent: cùng bài học như với hàng đợi, ở quy mô hàng tỷ sự kiện mỗi ngày."
+      },
+      "changes": [
+        "+ Sự kiện trễ 2 giờ",
+        "+ Sự kiện trùng lặp",
+        "~ Watermark + khử trùng theo id sự kiện"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "cẩn thận"
+      },
+      "overrides": {
+        "dash": {
+          "emphasis": true
+        },
+        "dash-3": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "kafka": {
+          "visible": false
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "ak": {
+          "visible": false
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        },
+        "dl": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Độ trễ",
+      "title": "Tình huống: bộ xử lý bị tụt lại",
+      "chapter": "problem",
+      "body": "Buổi livestream của một người nổi tiếng làm lưu lượng tăng gấp ba trong một giờ. Bộ xử lý luồng không theo kịp, và sự kiện chưa xử lý chất đống trong luồng: [[consumer lag]] lên tới 4 phút và 18 triệu sự kiện.\n\nKhông mất gì cả (luồng giữ lại mọi thứ), nhưng dashboard “trực tiếp” giờ đã cũ 4 phút, và kiểm tra gian lận chạy trễ 4 phút.",
+      "callout": {
+        "kind": "warning",
+        "text": "Consumer lag là chỉ số sức khỏe then chốt của mọi hệ thống xử lý luồng. Hãy cảnh báo theo nó, tính bằng giây hoặc số sự kiện."
+      },
+      "changes": [
+        "~ Lưu lượng × 3",
+        "- Bộ xử lý ở 100%",
+        "- Lag: 4 phút · 18 tr sự kiện"
+      ],
+      "metrics": {
+        "freshness": "4 phút",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "cẩn thận"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "dash-3": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "kafka": {
+          "visible": false
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "ak": {
+          "visible": false
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        },
+        "dl": {
+          "visible": false
+        },
+        "dl-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Phân vùng",
+      "title": "Mở rộng ngang theo phân vùng",
+      "chapter": "solution",
+      "body": "Luồng được chia thành các **phân vùng** (theo id video, để sự kiện của mỗi video giữ đúng thứ tự). Mỗi instance của bộ xử lý sở hữu vài phân vùng, nên thêm instance là thêm thông lượng: hai bộ xử lý, mỗi cái hai phân vùng.\n\nPhần tồn đọng được xả hết, lag giảm về vài giây, và autoscaler có thể thêm bộ xử lý bất cứ khi nào lag tăng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Số phân vùng giới hạn mức song song. Hãy tạo nhiều phân vùng hơn mức cần hôm nay: thêm vào sau sẽ phải xáo trộn lại các khóa."
+      },
+      "changes": [
+        "+ Bộ xử lý thứ hai",
+        "~ 4 phân vùng chia 2 + 2",
+        "~ Lag 4 phút → 2 s"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "cẩn thận"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "dash-3": {
+          "emphasis": true
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "kafka": {
+          "visible": false
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "ak": {
+          "visible": false
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        },
+        "dl": {
+          "emphasis": true
+        },
+        "dl-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Duy nhất",
+      "title": "Tình huống: đếm người xem duy nhất",
+      "chapter": "technique",
+      "body": "Lượt xem thì dễ đếm. Người xem **duy nhất** thì không: để đếm chính xác bạn phải nhớ mọi id người xem đã gặp, 50 triệu id cho một video nổi tiếng, khoảng 800 MB trạng thái, cho mỗi video, mỗi cửa sổ.\n\nMột sketch [[HyperLogLog]] ước tính số id khác nhau chỉ trong 12 KB với sai số khoảng 1%, và các sketch từ những máy và cửa sổ khác nhau gộp lại được dễ dàng.",
+      "callout": {
+        "kind": "insight",
+        "text": "Thuật toán gần đúng (HyperLogLog, count-min sketch, t-digest cho phân vị) đổi một sai số nhỏ xíu lấy khoản tiết kiệm khổng lồ. Dashboard hiếm khi cần tới 1% cuối cùng."
+      },
+      "changes": [
+        "+ Người xem duy nhất theo video",
+        "~ Tập chính xác → sketch HyperLogLog",
+        "~ 800 MB → 12 KB mỗi video"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "≈ 1% sai số"
+      },
+      "overrides": {
+        "dash": {
+          "visible": false
+        },
+        "logs": {
+          "visible": false
+        },
+        "w1": {
+          "visible": false
+        },
+        "w2": {
+          "visible": false
+        },
+        "w3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "wh": {
+          "visible": false
+        },
+        "kafka": {
+          "emphasis": true
+        },
+        "proc": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        },
+        "dw": {
+          "visible": false
+        },
+        "ak": {
+          "emphasis": true
+        },
+        "kp": {
+          "visible": false
+        },
+        "pl": {
+          "visible": false
+        },
+        "dl-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Cả hai",
+      "title": "Lô và luồng, cùng nhau",
+      "chapter": "insight",
+      "body": "Nhiều hệ thống chạy cả hai: một luồng cho câu trả lời nhanh, gần đúng, và một lô ban đêm tính lại con số chính xác từ toàn bộ log (**kiến trúc lambda**).\n\nSố khác chỉ giữ luồng và, để sửa lỗi hay dựng lại kết quả, **phát lại** log sự kiện đã lưu qua một phiên bản mới của bộ xử lý (**kiến trúc kappa**).\n\n• Độ mới — Lô: Hàng giờ; Luồng: Vài giây\n• Độ phức tạp — Lô: Thấp; Luồng: Cao hơn\n• Chạy lại — Lô: Dễ; Luồng: Phát lại log",
+      "callout": {
+        "kind": "tip",
+        "text": "Hãy bắt đầu với xử lý theo lô, trừ khi bạn rõ ràng cần độ trễ tính bằng giây. Thêm xử lý luồng cho số ít kết quả thật sự cần."
+      },
+      "changes": [
+        "+ Lô ban đêm quay lại bên cạnh luồng"
+      ],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {
+        "dash": {
+          "emphasis": true
+        },
+        "logs": {
+          "emphasis": true
+        },
+        "w1": {
+          "emphasis": true
+        },
+        "w2": {
+          "emphasis": true
+        },
+        "w3": {
+          "emphasis": true
+        },
+        "w4": {
+          "emphasis": true
+        },
+        "wh": {
+          "emphasis": true
+        },
+        "proc": {
+          "emphasis": true
+        },
+        "al": {
+          "emphasis": true
+        },
+        "dw": {
+          "emphasis": true
+        },
+        "kp": {
+          "emphasis": true
+        },
+        "pl": {
+          "emphasis": true
+        },
+        "dl-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s14",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Giữ phân tích nặng **tránh xa CSDL production**.\n• **Lô**: xử lý rẻ các tập dữ liệu lớn đã hoàn tất; kết quả cũ vài giờ.\n• **Luồng**: xử lý sự kiện ngay khi tới; cũ vài giây, nhiều bộ phận chuyển động hơn.\n• Coi chừng **khóa lệch** (combine, salt) và **consumer lag** (thêm phân vùng và bộ xử lý).\n• Xử lý sự kiện **muộn** và **trùng lặp**; nhiều hệ thống chạy **cả hai**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Vậy là xong Kiến trúc. Module tiếp theo: **Bảo mật**, bắt đầu với xác thực."
+      },
+      "changes": [],
+      "metrics": {
+        "freshness": "5 s",
+        "prodLoad": "30%",
+        "eventsDay": "2 tỷ",
+        "exact": "có"
+      },
+      "overrides": {}
+    }
+  ]
+}

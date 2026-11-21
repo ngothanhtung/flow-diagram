@@ -1,0 +1,1966 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 781,
+          "y": -422
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "ĐÒI HỎI\ntạo     URL dài → mã ngắn\nmở      mã ngắn → chuyển hướng\n→ chuyển hướng: nhanh, luôn hoạt động\n# tạo link có thể chậm hơn",
+        "position": {
+          "x": 781,
+          "y": -422
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 790,
+          "y": -422
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "TÍNH NHẨM\n100 tr link / tháng      ≈ 40 ghi/s\n× 100 lần mở mỗi link    ≈ 4.000 đọc/s\nđỉnh buổi tối × 3        ≈ 12.000 đọc/s\n→ 5 năm: 6 tỷ link ≈ 3 TB",
+        "position": {
+          "x": 790,
+          "y": -422
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 794,
+          "y": -424
+        },
+        "width": 371,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "API\nPOST /links  { url }   →  { code }\nGET  /x7Kp2Qa          →  302 + Location\n# bảng: code PK · long_url · expires_at",
+        "position": {
+          "x": 794,
+          "y": -424
+        },
+        "width": 347,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 790,
+          "y": -422
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "HAI URL, MỘT MÃ\nhash(“…/summer-sale”)  →  x7Kp2Qa…\nhash(“…/cat-video”)    →  x7Kp2Qa…\n⚠ cùng 7 ký tự → trùng\n# kiểm tra, chỉnh, thử lại: mỗi lần ghi",
+        "position": {
+          "x": 790,
+          "y": -422
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 728,
+          "y": -422
+        },
+        "width": 239,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "CƠ SỐ 62\nbảng chữ   0–9  a–z  A–Z\n125        →  21\n7.000.000  →  tn1e\n→ 62⁷ ≈ 3,5 nghìn tỷ mã",
+        "position": {
+          "x": 728,
+          "y": -422
+        },
+        "width": 215,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 777,
+          "y": -422
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "CÙNG ID, ĐÃ XÁO\n⚠ 7.000.000 → tn1e     số sau quá rõ\n⚠ 7.000.001 → tn1f\n→ 7.000.000 → x7Kp2Qa  sau khi xáo\n→ 7.000.001 → Lm03vTe",
+        "position": {
+          "x": 777,
+          "y": -422
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 806,
+          "y": -413
+        },
+        "width": 396,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-7-text",
+        "type": "text",
+        "title": "HAI KIỂU CHUYỂN HƯỚNG\n301 vĩnh viễn  trình duyệt ghi nhớ\n→ tải ít nhất\n⚠ không đếm click, không sửa, không hết hạn\n302 tạm thời   mọi click đều quay lại\n→ phân tích và kiểm soát · tải nhiều hơn",
+        "position": {
+          "x": 806,
+          "y": -413
+        },
+        "width": 372,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-7"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "người bấm link",
+        "position": {
+          "x": 0,
+          "y": -448
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "sho.rt",
+        "description": "cần thiết kế",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Share2",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "Máy chủ API",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "Máy chủ API",
+        "description": "mã = hash(url)[0..7]",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-4",
+        "type": "process",
+        "title": "Máy chủ API",
+        "description": "khối 7.000.000 – 7.999.999",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-5",
+        "type": "process",
+        "title": "Máy chủ API",
+        "description": "mã = base62(xáo(id))",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-6",
+        "type": "process",
+        "title": "Máy chủ API",
+        "description": "302 Found",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-7",
+        "type": "process",
+        "title": "Máy chủ API",
+        "description": "giới hạn tốc độ · kiểm tra đích",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "bảng links",
+        "position": {
+          "x": 336,
+          "y": -112
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "bảng links",
+        "description": "⚠ mã đã dùng → thử lại",
+        "position": {
+          "x": 336,
+          "y": -112
+        },
+        "width": 192,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ids",
+        "type": "process",
+        "title": "Khối ID",
+        "position": {
+          "x": -196,
+          "y": 280
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hash",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spy",
+        "type": "process",
+        "title": "scraper",
+        "position": {
+          "x": -308,
+          "y": -308
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spy-2",
+        "type": "process",
+        "title": "script spam",
+        "position": {
+          "x": -308,
+          "y": -308
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache",
+        "type": "process",
+        "title": "Cache",
+        "description": "mã → URL · 90% hit",
+        "position": {
+          "x": -336,
+          "y": -112
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-2",
+        "type": "process",
+        "title": "Cache",
+        "description": "mã → URL",
+        "position": {
+          "x": -336,
+          "y": -112
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k0",
+        "type": "process",
+        "title": "phân vùng = hash(mã)",
+        "position": {
+          "x": 336,
+          "y": -280
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k0-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 336,
+          "y": -280
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k1",
+        "type": "process",
+        "title": "kho key-value",
+        "position": {
+          "x": 336,
+          "y": -112
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 336,
+          "y": 56
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "stream",
+        "type": "process",
+        "title": "Luồng click",
+        "position": {
+          "x": 224,
+          "y": 280
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "counts",
+        "type": "process",
+        "title": "số click",
+        "position": {
+          "x": 448,
+          "y": 280
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "us",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "us-2",
+        "from": "users",
+        "to": "app-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-3",
+        "from": "users",
+        "to": "app-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-4",
+        "from": "users",
+        "to": "app-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-5",
+        "from": "users",
+        "to": "app-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-6",
+        "from": "users",
+        "to": "app-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-7",
+        "from": "users",
+        "to": "app-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd",
+        "from": "app-2",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-2",
+        "from": "app-3",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sd-3",
+        "from": "app-4",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sd-4",
+        "from": "app-5",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sd-5",
+        "from": "app-6",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "id",
+        "from": "app-4",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -36,
+            "y": 280
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "id-2",
+        "from": "app-5",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -36,
+            "y": 280
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "id-3",
+        "from": "app-2",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -36,
+            "y": 280
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "id-4",
+        "from": "app-6",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -36,
+            "y": 280
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "id-5",
+        "from": "app-7",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -36,
+            "y": 280
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "sp",
+        "from": "spy",
+        "to": "app-5",
+        "label": "GET /tn1f, /tn1g …",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.16,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -39,
+            "y": -308
+          }
+        ],
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sp-2",
+        "from": "spy-2",
+        "to": "app-7",
+        "label": "POST /links × 5.000",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.16,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -39,
+            "y": -308
+          }
+        ],
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sc",
+        "from": "app-2",
+        "to": "cache",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-2",
+        "from": "app-6",
+        "to": "cache-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-3",
+        "from": "app-2",
+        "to": "cache-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-4",
+        "from": "app-7",
+        "to": "cache-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k0l",
+        "from": "app-2",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 196,
+            "y": -112
+          },
+          {
+            "x": 196,
+            "y": -280
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k0l-2",
+        "from": "app-2",
+        "to": "k0-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 196,
+            "y": -112
+          },
+          {
+            "x": 196,
+            "y": -280
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k0l-3",
+        "from": "app-7",
+        "to": "k0-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 196,
+            "y": -112
+          },
+          {
+            "x": 196,
+            "y": -280
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k1l",
+        "from": "app-2",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k1l-2",
+        "from": "app-7",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k2l",
+        "from": "app-2",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 196,
+            "y": -112
+          },
+          {
+            "x": 196,
+            "y": 56
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k2l-2",
+        "from": "app-7",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 196,
+            "y": -112
+          },
+          {
+            "x": 196,
+            "y": 56
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "ev",
+        "from": "app-2",
+        "to": "stream",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 36,
+            "y": 280
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "ev-2",
+        "from": "app-7",
+        "to": "stream",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 36,
+            "y": 280
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "ag",
+        "from": "stream",
+        "to": "counts",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Thiết kế dịch vụ rút gọn URL",
+    "summary": "Bản thiết kế đầu-cuối đầu tiên: từ một yêu cầu một dòng tới hệ thống phục vụ hàng tỷ lượt chuyển hướng.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "redirectMs",
+        "label": "Thời gian chuyển hướng"
+      },
+      {
+        "id": "dbQps",
+        "label": "Lượt tra kho"
+      },
+      {
+        "id": "codeKind",
+        "label": "Mã ngắn"
+      },
+      {
+        "id": "linksKept",
+        "label": "Link giữ lại"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Biến yêu cầu thành các đòi hỏi và con số",
+        "step": "s2"
+      },
+      {
+        "text": "Sinh mã ngắn không bao giờ trùng",
+        "step": "s5"
+      },
+      {
+        "text": "Thiết kế đường đọc: cache và kiểu chuyển hướng",
+        "step": "s8"
+      },
+      {
+        "text": "Lưu hàng tỷ dòng khóa → giá trị",
+        "step": "s9"
+      },
+      {
+        "text": "Giữ phân tích và lạm dụng khỏi đường găng",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "app": {
+      "until": "s3"
+    },
+    "app-2": {
+      "from": "s3"
+    },
+    "app-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "app-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "app-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "app-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "app-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "db": {
+      "from": "s3",
+      "until": "s9"
+    },
+    "db-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ids": {
+      "from": "s5"
+    },
+    "spy": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "spy-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cache": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cache-2": {
+      "from": "s8"
+    },
+    "k0": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "k0-2": {
+      "from": "s10"
+    },
+    "k1": {
+      "from": "s9"
+    },
+    "k2": {
+      "from": "s9"
+    },
+    "stream": {
+      "from": "s10"
+    },
+    "counts": {
+      "from": "s10"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-5-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-6-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-7-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "us": {
+      "until": "s3"
+    },
+    "us-2": {
+      "from": "s3"
+    },
+    "us-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "us-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "us-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "us-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "us-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "sd": {
+      "from": "s3",
+      "until": "s8"
+    },
+    "sd-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "sd-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sd-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sd-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "id": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "id-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "id-3": {
+      "from": "s7"
+    },
+    "id-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "id-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "sp": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sp-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "sc": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sc-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sc-3": {
+      "from": "s9"
+    },
+    "sc-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k0l": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "k0l-2": {
+      "from": "s10"
+    },
+    "k0l-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k1l": {
+      "from": "s9"
+    },
+    "k1l-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k2l": {
+      "from": "s9"
+    },
+    "k2l-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ev": {
+      "from": "s10"
+    },
+    "ev-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ag": {
+      "from": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Yêu cầu",
+      "title": "Yêu cầu: một dịch vụ rút gọn link",
+      "chapter": "setup",
+      "body": "Đến lúc dùng mọi thứ cùng lúc, từ trên xuống như trong *HLD & LLD*. Nhiệm vụ: xây một dịch vụ như bit.ly. Dán một URL dài, nhận lại một URL ngắn, `sho.rt/x7Kp2Qa`, và ai mở nó sẽ được chuyển tới URL gốc.\n\nTrước khi vẽ ô, hãy chốt “chạy được” nghĩa là gì. **Nó phải**: tạo link ngắn, và chuyển hướng. **Nó nên**: cho link hết hạn và đếm click. Còn các phẩm chất quan trọng: chuyển hướng phải nhanh và gần như không bao giờ lỗi (dịch vụ rút gọn chết là mọi link từng chia sẻ đều hỏng), trong khi tạo link có thể chậm hơn chút.",
+      "callout": {
+        "kind": "insight",
+        "text": "Mọi bản thiết kế đều bắt đầu bằng ba câu hỏi: nó phải làm gì, với khối lượng bao nhiêu, và điều gì quan trọng nhất khi không thể có tất cả?"
+      },
+      "changes": [],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Con số",
+      "title": "Gắn con số vào",
+      "chapter": "setup",
+      "body": "Tính nhẩm trước (Mô-đun 01). Giả sử **100 triệu** link mới mỗi tháng: khoảng 40 lượt ghi mỗi giây. Mỗi link được mở chừng 100 lần, nên chuyển hướng trung bình 4.000 lượt mỗi giây, đỉnh gần **12.000**.\n\nGiữ trong năm năm là 6 tỷ link. Mỗi link khoảng 500 byte: **3 TB**. Hai điều nổi bật: hệ thống **nặng về đọc** (một trăm lượt đọc cho mỗi lượt ghi), và dữ liệu lớn nhưng rất đơn giản.",
+      "callout": {
+        "kind": "tip",
+        "text": "Con số chọn thiết kế. “100 lượt đọc mỗi lượt ghi” nghĩa là cache. “3 TB dòng khóa → giá trị” nghĩa là phải trải ra nhiều máy."
+      },
+      "changes": [
+        "+ 40 ghi/s · 4.000 chuyển hướng/s · 12.000 lúc đỉnh",
+        "+ 6 tỷ link ≈ 3 TB trong 5 năm"
+      ],
+      "metrics": {
+        "linksKept": "6 tỷ · 3 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Bản nháp đầu",
+      "title": "Thứ đơn giản nhất chạy được",
+      "chapter": "solution",
+      "body": "Hai endpoint. `POST /links` lưu một URL và trả về mã; `GET /x7Kp2Qa` tra mã và trả lời bằng một chuyển hướng.\n\nMột bảng là đủ: `code` (khóa chính), `long_url`, `created_at`, `expires_at`. Các máy chủ API không trạng thái sau một bộ cân bằng tải, cộng một cơ sở dữ liệu, là một phiên bản một hoàn toàn ổn.",
+      "callout": {
+        "kind": "insight",
+        "text": "Bắt đầu từ thiết kế đơn giản nhất đáp ứng yêu cầu, rồi hỏi cái gì hỏng trước. Còn hai câu hỏi mở: mã đến từ đâu, và chuyện gì xảy ra ở 12.000 lượt đọc mỗi giây?"
+      },
+      "changes": [
+        "+ Máy chủ API không trạng thái",
+        "+ Bảng link, khóa theo mã"
+      ],
+      "metrics": {
+        "redirectMs": "25 ms",
+        "dbQps": "4.000/s",
+        "codeKind": "?",
+        "linksKept": "6 tỷ · 3 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Dùng hash?",
+      "title": "Mã đến từ đâu? Thử hash",
+      "chapter": "problem",
+      "body": "Ý tưởng đầu tiên: hash URL dài và giữ bảy ký tự đầu. Không cần phối hợp, và cùng một URL luôn cho cùng một mã.\n\nNhưng bảy ký tự không chứa nổi cả một hash, nên đôi khi các URL khác nhau sẽ **trùng**, và với hàng tỷ link thì liên tục. Mỗi lần chèn phải kiểm tra “mã này đã bị URL khác dùng chưa?” rồi thử lại với một chỉnh sửa. Tệ hơn, hai người rút gọn cùng một URL nhận cùng một mã, nên không ai có hạn dùng hay thống kê riêng.",
+      "callout": {
+        "kind": "warning",
+        "text": "Hash bị cắt ngắn trùng sớm hơn nhiều so với trực giác: bài toán ngày sinh. Với 3,5 nghìn tỷ mã khả dĩ, hãy chờ lần trùng đầu tiên chỉ sau khoảng hai triệu link."
+      },
+      "changes": [
+        "+ Mã = 7 ký tự đầu của hash(url)",
+        "- Trùng: kiểm tra và thử lại mỗi lần chèn"
+      ],
+      "metrics": {
+        "redirectMs": "25 ms",
+        "dbQps": "4.000/s",
+        "codeKind": "hash · trùng",
+        "linksKept": "6 tỷ · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "db": {
+          "visible": false
+        },
+        "us-2": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Đếm",
+      "title": "Đếm rồi mã hóa",
+      "chapter": "solution",
+      "body": "Tốt hơn: cấp cho mỗi link một **số** duy nhất và viết số đó ở [[cơ số 62]]: chữ số, chữ thường và chữ hoa. Số duy nhất vào nghĩa là mã duy nhất ra, chẳng có gì phải kiểm tra.\n\nBảy ký tự cơ số 62 bao được 62⁷ ≈ 3,5 nghìn tỷ link, gấp hàng trăm lần nhu cầu. Các số lấy thẳng từ *ID duy nhất ở quy mô lớn*: mỗi máy chủ API giữ chỗ một khối một triệu id từ một dịch vụ đếm nhỏ, rồi tự đếm dần trong khối đó.",
+      "callout": {
+        "kind": "tip",
+        "text": "Mã hóa là chia liên tiếp: 125 ÷ 62 = 2 dư 1, nên 125 thành “21”. Giải mã làm ngược lại: mã *chính là* id."
+      },
+      "changes": [
+        "+ Dịch vụ đếm phát các khối id",
+        "~ Mã = id viết ở cơ số 62",
+        "- Không còn kiểm tra trùng"
+      ],
+      "metrics": {
+        "redirectMs": "25 ms",
+        "dbQps": "4.000/s",
+        "codeKind": "bộ đếm · duy nhất",
+        "linksKept": "6 tỷ · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "db": {
+          "emphasis": true
+        },
+        "us-2": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Đoán được",
+      "title": "Tình huống: mã có thể đếm lần lượt",
+      "chapter": "problem",
+      "body": "Mã từ bộ đếm ra theo thứ tự: `tn1e`, `tn1f`, `tn1g`. Ai cũng có thể dò hết không gian và gom mọi link từng được tạo, kể cả link tài liệu “riêng tư” và URL đặt lại mật khẩu mà người ta đã rút gọn.\n\nCách sửa giữ tính duy nhất và bỏ thứ tự. Hoặc xáo trộn từng id bằng một phép trộn đảo ngược được (hoán vị có khóa) trước khi mã hóa, hoặc chọn bảy ký tự ngẫu nhiên và để khóa duy nhất của bảng từ chối các bản trùng hiếm hoi.",
+      "callout": {
+        "kind": "warning",
+        "text": "Mã khó đoán làm chậm việc cào dữ liệu. Đó không phải bảo mật: thứ gì thực sự riêng tư cần kiểm soát truy cập thật (Mô-đun 07)."
+      },
+      "changes": [
+        "- Mã tuần tự có thể bị liệt kê",
+        "+ Id được xáo trước khi mã hóa",
+        "~ Mã trông ngẫu nhiên mà vẫn không bao giờ trùng"
+      ],
+      "metrics": {
+        "redirectMs": "25 ms",
+        "dbQps": "4.000/s",
+        "codeKind": "xáo trộn · duy nhất",
+        "linksKept": "6 tỷ · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "us-2": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Cache",
+      "title": "Đọc chiếm ưu thế: hãy cache",
+      "chapter": "solution",
+      "body": "Giờ tới đường đọc. Một phần nhỏ link nhận phần lớn click (bài viral hôm nay, không phải năm ngoái), và link không bao giờ đổi sau khi tạo. Đó là trường hợp lý tưởng cho cache (xem *Bộ nhớ đệm*).\n\nĐặt một cache trong bộ nhớ phía trước, ánh xạ `code → long_url`. Khoảng 90% lượt chuyển hướng dừng ở đó trong vòng một mili giây; cơ sở dữ liệu chỉ thấy các lượt miss. Vì link bất biến nên gần như không có gì để vô hiệu: một TTL và cơ chế loại LRU là đủ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đừng quên cache phủ định. Bot gửi mã ngẫu nhiên cả ngày; hãy cache cả kết quả “không có mã này”, nếu không mỗi yêu cầu đó thành một lần truy vấn cơ sở dữ liệu."
+      },
+      "changes": [
+        "+ Cache: mã → URL dài",
+        "~ 90% chuyển hướng không chạm tới cơ sở dữ liệu",
+        "~ Chuyển hướng 25 ms → 5 ms"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "xáo trộn · duy nhất",
+        "linksKept": "6 tỷ · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "emphasis": true
+        },
+        "us-2": {
+          "emphasis": true
+        },
+        "sd": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "301 hay 302",
+      "title": "Chuyển hướng nào: 301 hay 302?",
+      "chapter": "tradeoff",
+      "body": "`301 Moved Permanently` cho phép trình duyệt nhớ câu trả lời, nên lượt click sau không bao giờ tới bạn. Đó là yêu cầu rẻ nhất có thể, và nó nghĩa là bạn không còn đếm được click đó, đổi đích đến hay cho link hết hạn với người dùng ấy.\n\n`302 Found` là tạm thời: mọi click đều quay lại với bạn. Tải nhiều hơn, nhưng bạn giữ quyền kiểm soát và số liệu phân tích. Phần lớn dịch vụ rút gọn chọn 302 và để cache gánh chi phí.",
+      "callout": {
+        "kind": "insight",
+        "text": "Cả một quyết định thiết kế giấu trong một mã trạng thái: ai được cache câu trả lời, và trong bao lâu?"
+      },
+      "changes": [
+        "~ Quyết định: trả 302, giữ phân tích và quyền kiểm soát"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "xáo trộn · duy nhất",
+        "linksKept": "6 tỷ · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "us-2": {
+          "visible": false
+        },
+        "id-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Lưu trữ",
+      "title": "Ba terabyte khóa: trải chúng ra",
+      "chapter": "solution",
+      "body": "Sáu tỷ dòng sẽ không thoải mái trên một máy. Nhưng hãy xem dữ liệu được dùng thế nào: mọi truy vấn đều là “lấy mã này”. Không join, không quét theo khoảng, không giao dịch nhiều dòng.\n\nĐó chính là việc của một **kho key-value**: DynamoDB, Cassandra (xem *SQL hay NoSQL*). Phân vùng theo hash của mã để tải trải đều (*Sharding*, *Consistent hashing*), và giữ ba bản sao mỗi phân vùng ở các vùng khác nhau (*Sao chép dữ liệu*).",
+      "callout": {
+        "kind": "tip",
+        "text": "Vì mã trông ngẫu nhiên, hash của chúng cân bằng gần như hoàn hảo: không có phân vùng nóng. Phân vùng theo ngày tạo sẽ dồn gần hết lưu lượng vào “hôm nay”."
+      },
+      "changes": [
+        "~ Một cơ sở dữ liệu → kho key-value (hiện 3 phân vùng)",
+        "+ 3 bản sao mỗi phân vùng, ở các vùng khác nhau",
+        "~ Mỗi lượt chuyển hướng chạm đúng một phân vùng"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "xáo trộn · duy nhất",
+        "linksKept": "3 TB · phân vùng ×3 bản sao"
+      },
+      "overrides": {
+        "app-2": {
+          "emphasis": true
+        },
+        "us-2": {
+          "emphasis": true
+        },
+        "id-3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Click",
+      "title": "Đếm click mà không làm chậm chúng",
+      "chapter": "technique",
+      "body": "Đội sản phẩm muốn số click theo từng link. Cách ngây thơ, `UPDATE links SET clicks = clicks + 1` ở mỗi lượt chuyển hướng, biến 4.000 lượt đọc rẻ mỗi giây thành 4.000 lượt ghi, tất cả dồn vào những dòng nóng nhất.\n\nThay vào đó, máy chủ API thả một sự kiện `click` nhỏ xíu vào một luồng và trả lời chuyển hướng ngay. Một consumer cộng dồn sự kiện thành số đếm theo link vài giây một lần (xem *Hàng đợi tin nhắn* và *Xử lý theo lô & luồng*).",
+      "callout": {
+        "kind": "insight",
+        "text": "Chuyển hướng là sản phẩm; số đếm là phụ phẩm. Đừng bao giờ đặt phụ phẩm lên đường găng."
+      },
+      "changes": [
+        "+ Sự kiện click → luồng",
+        "+ Một job luồng tổng hợp số đếm",
+        "~ Đường chuyển hướng không đổi: vẫn khoảng 5 ms"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "xáo trộn · duy nhất",
+        "linksKept": "3 TB · phân vùng ×3 bản sao"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s11",
+      "short": "Lạm dụng",
+      "title": "Tình huống: kẻ spam mê dịch vụ rút gọn",
+      "chapter": "problem",
+      "body": "Link ngắn che giấu nơi nó dẫn tới: lý tưởng cho lừa đảo. Một script bắt đầu tạo 5.000 link mỗi phút trỏ tới các trang ngân hàng giả. Chẳng mấy chốc cả tên miền của bạn vào danh sách chặn, và link của *mọi* khách hàng ngừng hoạt động.\n\nPhòng thủ nhiều lớp. **Giới hạn tốc độ** tạo link theo tài khoản và theo IP (*Giới hạn tốc độ*). Kiểm tra mọi đích đến với danh sách lừa đảo và mã độc, lúc tạo và kiểm lại sau. Và cho link **hết hạn**, để những link bị bỏ rơi thôi là mối rủi ro.",
+      "callout": {
+        "kind": "warning",
+        "text": "Vận hành là một phần của thiết kế. Với hầu hết dịch vụ rút gọn link, sự cố nghiêm trọng đầu tiên không phải tải, mà là lạm dụng."
+      },
+      "changes": [
+        "+ Giới hạn tốc độ trên POST /links",
+        "+ Kiểm tra an toàn đích đến",
+        "+ Link hết hạn (TTL)"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "xáo trộn · duy nhất",
+        "linksKept": "3 TB · phân vùng ×3 bản sao"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "us-2": {
+          "visible": false
+        },
+        "id-3": {
+          "visible": false
+        },
+        "sc-3": {
+          "visible": false
+        },
+        "k0l-2": {
+          "visible": false
+        },
+        "k1l": {
+          "visible": false
+        },
+        "k2l": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Tóm tắt",
+      "title": "Bản thiết kế hoàn chỉnh",
+      "chapter": "recap",
+      "body": "• Mã — Quyết định: Bộ đếm xáo trộn, cơ số 62; Vì: Duy nhất, khỏi kiểm tra\n• Đường đọc — Quyết định: Cache + 302; Vì: 100 đọc mỗi lần ghi\n• Lưu trữ — Quyết định: Key-value, phân vùng theo hash; Vì: Tra một khóa, 3 TB\n• Click — Quyết định: Sự kiện trên luồng; Vì: Ngoài đường găng\n• Lạm dụng — Quyết định: Giới hạn, kiểm tra, hết hạn; Vì: Bảo vệ tên miền\n\nHãy để ý phương pháp hơn là đáp án: đòi hỏi → con số → thiết kế đơn giản nhất → tìm nút thắt → sửa → lặp lại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Thiết kế news feed**, nơi phần khó không phải lưu bài viết, mà là quyết định *khi nào* làm việc."
+      },
+      "changes": [],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "xáo trộn · duy nhất",
+        "linksKept": "3 TB · phân vùng ×3 bản sao"
+      },
+      "overrides": {
+        "app-2": {
+          "emphasis": true
+        },
+        "us-2": {
+          "emphasis": true
+        },
+        "id-3": {
+          "emphasis": true
+        },
+        "sc-3": {
+          "emphasis": true
+        },
+        "k0l-2": {
+          "emphasis": true
+        },
+        "k1l": {
+          "emphasis": true
+        },
+        "k2l": {
+          "emphasis": true
+        },
+        "ev": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2322 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 642,
+          "y": -374
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "REQUIREMENTS\npost        text and a photo\nhome feed   posts from people I follow\n→ feed opens in under 200 ms\n# a new post may take a few seconds",
+        "position": {
+          "x": 642,
+          "y": -374
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 654,
+          "y": -374
+        },
+        "width": 379,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "NAPKIN MATH\n200 M users × 10 opens   ≈ 23,000 feeds/s\n50 M posts a day         ≈ 600 posts/s\n→ about 40 feed reads per post written\n# a typical user follows 200 accounts",
+        "position": {
+          "x": 654,
+          "y": -374
+        },
+        "width": 355,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 662,
+          "y": -374
+        },
+        "width": 396,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "COST OF PULL\n23,000 feed loads / s\n× 200 authors each\n⚠ = 4.6 million lookups / s\n# and each load waits for the slowest shard",
+        "position": {
+          "x": 662,
+          "y": -374
+        },
+        "width": 372,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 654,
+          "y": -374
+        },
+        "width": 379,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "CURSOR PAGINATION\nGET /feed?limit=20\n# → posts 9041 … 9017 · next: before=9017\nGET /feed?before=9017&limit=20\n→ stays put while new posts arrive",
+        "position": {
+          "x": 654,
+          "y": -374
+        },
+        "width": 355,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "readers",
+        "type": "process",
+        "title": "people opening their feed",
+        "position": {
+          "x": 0,
+          "y": -400
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api",
+        "type": "process",
+        "title": "Feed API",
+        "description": "to be designed",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-2",
+        "type": "process",
+        "title": "Feed API",
+        "description": "merge 200 timelines",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-3",
+        "type": "process",
+        "title": "Feed API",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-4",
+        "type": "process",
+        "title": "Feed API",
+        "description": "merge: my list + 3 celebrities",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-5",
+        "type": "process",
+        "title": "Feed API",
+        "description": "rebuild on open · max 500 at once",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k0",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 300,
+          "y": -250
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k0-2",
+        "type": "process",
+        "title": "CPU 97%",
+        "position": {
+          "x": 300,
+          "y": -250
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k1",
+        "type": "process",
+        "title": "posts, by author",
+        "position": {
+          "x": 300,
+          "y": -100
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k1-2",
+        "type": "process",
+        "title": "posts, by author",
+        "description": "CPU 97%",
+        "position": {
+          "x": 300,
+          "y": -100
+        },
+        "width": 184,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 300,
+          "y": 50
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k2-2",
+        "type": "process",
+        "title": "CPU 97%",
+        "position": {
+          "x": 300,
+          "y": 50
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "author",
+        "type": "process",
+        "title": "Ana posts",
+        "position": {
+          "x": -400,
+          "y": -300
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "author-2",
+        "type": "process",
+        "title": "pop star · 50 M followers",
+        "position": {
+          "x": -400,
+          "y": -300
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "feeds",
+        "type": "process",
+        "title": "Feed Cache",
+        "description": "per-user lists",
+        "position": {
+          "x": -300,
+          "y": -100
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "feeds-2",
+        "type": "process",
+        "title": "Feed Cache",
+        "description": "per-user lists · alice → [9041, 9038, 9017 …]",
+        "position": {
+          "x": -300,
+          "y": -100
+        },
+        "width": 192,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "feeds-3",
+        "type": "process",
+        "title": "Feed Cache",
+        "description": "per-user lists · idle lists expire",
+        "position": {
+          "x": -300,
+          "y": -100
+        },
+        "width": 188,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "feeds-4",
+        "type": "process",
+        "title": "Feed Cache",
+        "description": "per-user lists · empty · warming up",
+        "position": {
+          "x": -300,
+          "y": -100
+        },
+        "width": 188,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "jobs",
+        "type": "process",
+        "title": "Queue",
+        "position": {
+          "x": 0,
+          "y": 225
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Inbox",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "jobs-2",
+        "type": "process",
+        "title": "Queue",
+        "description": "⚠ backlog: 50 M deliveries",
+        "position": {
+          "x": 0,
+          "y": 225
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Inbox",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "jobs-3",
+        "type": "process",
+        "title": "Queue",
+        "description": "✓ celebrities skipped",
+        "position": {
+          "x": 0,
+          "y": 225
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Inbox",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers",
+        "type": "process",
+        "title": "Fan-out Workers",
+        "position": {
+          "x": -300,
+          "y": 225
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers-2",
+        "type": "process",
+        "title": "Fan-out Workers",
+        "description": "CPU 100%",
+        "position": {
+          "x": -300,
+          "y": 225
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers-3",
+        "type": "process",
+        "title": "Fan-out Workers",
+        "description": "active in last 30 days only",
+        "position": {
+          "x": -300,
+          "y": 225
+        },
+        "width": 228,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "graph",
+        "type": "process",
+        "title": "who follows whom",
+        "position": {
+          "x": -300,
+          "y": 475
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Network",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "us",
+        "from": "readers",
+        "to": "api",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "us-2",
+        "from": "readers",
+        "to": "api-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "us-3",
+        "from": "readers",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-4",
+        "from": "readers",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-5",
+        "from": "readers",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "k0l",
+        "from": "api-2",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k0l-2",
+        "from": "api-2",
+        "to": "k0-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k0l-3",
+        "from": "api-3",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "k0l-4",
+        "from": "api-4",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "k0l-5",
+        "from": "api-5",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k1l",
+        "from": "api-2",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k1l-2",
+        "from": "api-2",
+        "to": "k1-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k1l-3",
+        "from": "api-3",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "k1l-4",
+        "from": "api-3",
+        "to": "k1",
+        "label": "hydrate: 20 posts, 1 batch",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.6,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "k1l-5",
+        "from": "api-4",
+        "to": "k1",
+        "label": "pull celebrity timelines",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.6,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "k1l-6",
+        "from": "api-5",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k2l",
+        "from": "api-2",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k2l-2",
+        "from": "api-2",
+        "to": "k2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k2l-3",
+        "from": "api-3",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "k2l-4",
+        "from": "api-4",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "k2l-5",
+        "from": "api-5",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "au",
+        "from": "author",
+        "to": "api-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -35,
+            "y": -300
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "au-2",
+        "from": "author-2",
+        "to": "api-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -35,
+            "y": -300
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "au-3",
+        "from": "author-2",
+        "to": "api-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -35,
+            "y": -300
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "au-4",
+        "from": "author",
+        "to": "api-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -35,
+            "y": -300
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "fc",
+        "from": "api-3",
+        "to": "feeds",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "fc-2",
+        "from": "api-3",
+        "to": "feeds-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "fc-3",
+        "from": "api-4",
+        "to": "feeds",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "fc-4",
+        "from": "api-3",
+        "to": "feeds-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "fc-5",
+        "from": "api-5",
+        "to": "feeds-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "q",
+        "from": "api-3",
+        "to": "jobs",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "q-2",
+        "from": "api-3",
+        "to": "jobs-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "q-3",
+        "from": "api-4",
+        "to": "jobs-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "q-4",
+        "from": "api-5",
+        "to": "jobs",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "qw",
+        "from": "jobs",
+        "to": "workers",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "qw-2",
+        "from": "jobs-2",
+        "to": "workers-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "qw-3",
+        "from": "jobs-3",
+        "to": "workers",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "qw-4",
+        "from": "jobs",
+        "to": "workers-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "wf",
+        "from": "workers",
+        "to": "feeds",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "wf-2",
+        "from": "workers",
+        "to": "feeds-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "wf-3",
+        "from": "workers-2",
+        "to": "feeds",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wf-4",
+        "from": "workers-3",
+        "to": "feeds-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "wf-5",
+        "from": "workers",
+        "to": "feeds-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "wg",
+        "from": "workers",
+        "to": "graph",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wg-2",
+        "from": "workers-2",
+        "to": "graph",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wg-3",
+        "from": "workers-3",
+        "to": "graph",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Design a News Feed",
+    "summary": "Posts from everyone you follow, in 200 ms — and the question of when to do the work.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "feedMs",
+        "label": "Feed load time"
+      },
+      {
+        "id": "readWork",
+        "label": "Lookups per feed"
+      },
+      {
+        "id": "fanout",
+        "label": "Feed writes per post"
+      },
+      {
+        "id": "postDelay",
+        "label": "Post reaches followers"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Size the read and write load of a feed",
+        "step": "s2"
+      },
+      {
+        "text": "Fan-out on read vs fan-out on write",
+        "step": "s5"
+      },
+      {
+        "text": "Why celebrities break pure push — and the hybrid fix",
+        "step": "s8"
+      },
+      {
+        "text": "What to store, and for whom",
+        "step": "s9"
+      },
+      {
+        "text": "Cursors, and rebuilding derived data",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "api": {
+      "until": "s3"
+    },
+    "api-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "api-3": {
+      "from": "s5"
+    },
+    "api-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "api-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "k0": {
+      "from": "s3"
+    },
+    "k0-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k1": {
+      "from": "s3"
+    },
+    "k1-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k2": {
+      "from": "s3"
+    },
+    "k2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "author": {
+      "from": "s5"
+    },
+    "author-2": {
+      "from": "s7",
+      "until": "s9"
+    },
+    "feeds": {
+      "from": "s5"
+    },
+    "feeds-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "feeds-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "feeds-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "jobs": {
+      "from": "s5"
+    },
+    "jobs-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "jobs-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "workers": {
+      "from": "s5"
+    },
+    "workers-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "workers-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "graph": {
+      "from": "s5"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "us": {
+      "until": "s3"
+    },
+    "us-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "us-3": {
+      "from": "s5"
+    },
+    "us-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "us-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k0l": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "k0l-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k0l-3": {
+      "from": "s5"
+    },
+    "k0l-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "k0l-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k1l": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "k1l-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k1l-3": {
+      "from": "s5"
+    },
+    "k1l-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "k1l-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "k1l-6": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k2l": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "k2l-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k2l-3": {
+      "from": "s5"
+    },
+    "k2l-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "k2l-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "au": {
+      "from": "s5"
+    },
+    "au-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "au-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "au-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "fc": {
+      "from": "s5"
+    },
+    "fc-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "fc-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "fc-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "fc-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "q": {
+      "from": "s5"
+    },
+    "q-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "qw": {
+      "from": "s5"
+    },
+    "qw-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "qw-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "wf": {
+      "from": "s5"
+    },
+    "wf-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wf-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wf-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "wf-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "wg": {
+      "from": "s5"
+    },
+    "wg-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wg-3": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "The brief",
+      "title": "The brief: a home feed",
+      "chapter": "setup",
+      "body": "Second design. A social app: people follow each other, and the home screen shows recent posts from everyone you follow, newest first.\n\nWhat matters: opening the feed must feel instant — under 200 ms. A new post should reach followers within a few seconds, but not necessarily at the same instant for everyone. **Eventual consistency is fine**: nobody is harmed if a post shows up five seconds late.",
+      "callout": {
+        "kind": "insight",
+        "text": "Notice the freedom in that last requirement. Deciding what does *not* have to be immediate or exact is what makes large systems possible."
+      },
+      "changes": [],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Numbers",
+      "title": "Put numbers on it",
+      "chapter": "setup",
+      "body": "**200 million** people use it daily and open the feed about ten times each: 2 billion feed loads a day, or 23,000 a second on average. They write 50 million posts a day — about 600 a second.\n\nSo feeds are read roughly **40 times** more often than posts are written. And a typical user follows 200 accounts. Remember that number.",
+      "callout": {
+        "kind": "tip",
+        "text": "Two numbers will drive everything that follows: reads outnumber writes 40 to 1, and every feed draws on 200 sources."
+      },
+      "changes": [
+        "+ 23,000 feed loads/s · 600 posts/s",
+        "+ Typical user follows 200 accounts"
+      ],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Pull",
+      "title": "First draft: build the feed when it’s asked for",
+      "chapter": "solution",
+      "body": "Store posts in a table indexed by `(author_id, created_at)`, sharded by author. To build Alice’s feed: find the 200 accounts she follows, fetch the latest posts of each, merge them by time, return the top 20.\n\nThis is the [[pull]] model, or fan-out on read. Posting is as cheap as it gets — one insert — and a new post is visible to everyone at once.",
+      "callout": {
+        "kind": "insight",
+        "text": "Nothing is precomputed, so nothing can go stale and nothing needs repairing. For a small app, this is the right design."
+      },
+      "changes": [
+        "+ Posts store, sharded by author",
+        "+ Feed = query 200 authors, merge, keep the top 20"
+      ],
+      "metrics": {
+        "feedMs": "600 ms",
+        "readWork": "200",
+        "fanout": "0",
+        "postDelay": "instantly"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Wrong side",
+      "title": "The work lands on the wrong side",
+      "chapter": "problem",
+      "body": "Every feed load fans out to 200 authors spread over many shards, and has to wait for the slowest answer — the fan-out tail from *Latency & Throughput*.\n\nWorse is the total: 23,000 feed loads a second × 200 lookups = **4.6 million** lookups a second, mostly recomputing a result identical to what the same person saw a minute ago. The expensive work sits on the path that runs 40 times more often.",
+      "callout": {
+        "kind": "warning",
+        "text": "When reads far outnumber writes, move the work to write time."
+      },
+      "changes": [
+        "~ 23,000 feeds/s × 200 lookups = 4.6 M lookups/s",
+        "- Post shards overloaded",
+        "~ Feed load 600 ms → 1.4 s"
+      ],
+      "metrics": {
+        "feedMs": "1.4 s",
+        "readWork": "200",
+        "fanout": "0",
+        "postDelay": "instantly"
+      },
+      "overrides": {
+        "k0": {
+          "visible": false
+        },
+        "k1": {
+          "visible": false
+        },
+        "k2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Push",
+      "title": "Flip it: deliver posts when they’re written",
+      "chapter": "solution",
+      "body": "Give every user a ready-made feed: a list in a cache, newest first. When Ana posts, a **fan-out worker** looks up her followers and adds the post to each of their lists. This is the [[push]] model, or fan-out on write.\n\nOpening the feed is now one read of one list. The fan-out runs behind a queue (*Message Queues*), so Ana’s post returns immediately and her followers see it a second or two later.",
+      "callout": {
+        "kind": "tip",
+        "text": "The arithmetic works: 600 posts/s × 200 followers ≈ 120,000 small cache writes a second — far cheaper than 4.6 million lookups."
+      },
+      "changes": [
+        "+ Feed cache: one list per user",
+        "+ Queue and fan-out workers",
+        "+ Follower lookup",
+        "~ Feed load: 200 lookups → 1"
+      ],
+      "metrics": {
+        "feedMs": "40 ms",
+        "readWork": "1",
+        "fanout": "200 on average",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "k0": {
+          "emphasis": true
+        },
+        "k1": {
+          "emphasis": true
+        },
+        "k2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Ids only",
+      "title": "Store ids, not posts",
+      "chapter": "technique",
+      "body": "Each feed list holds only **post ids** — a few bytes apiece — and only the newest 800 or so. When a feed is read, the API fetches the posts themselves in one batch from the post store (“hydration”).\n\nKeeping a single copy of every post means an edit or a delete happens in one place. A deleted post is simply dropped during hydration; nobody has to chase it through millions of lists.",
+      "callout": {
+        "kind": "tip",
+        "text": "200 million lists × 800 ids × 8 bytes ≈ 1.3 TB of memory: a big cache cluster, but an ordinary one. Storing whole posts would cost a hundred times as much."
+      },
+      "changes": [
+        "~ Feed lists hold post ids only, capped at 800",
+        "+ Posts fetched in one batch at read time",
+        "~ Edits and deletes happen in one place"
+      ],
+      "metrics": {
+        "feedMs": "40 ms",
+        "readWork": "1 list + 1 batch",
+        "fanout": "200 on average",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "feeds": {
+          "visible": false
+        },
+        "k1l-3": {
+          "visible": false
+        },
+        "fc": {
+          "visible": false
+        },
+        "wf": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Celebrity",
+      "title": "Case: fifty million followers",
+      "chapter": "problem",
+      "body": "A pop star with **50 million** followers posts. That single post becomes 50 million cache writes. Even at 100,000 writes a second, delivery takes more than eight minutes — and the queue is so backed up that everyone else’s posts wait behind it.\n\nIt’s the hot-key problem from *Sharding*: one unusually heavy key overwhelms a design tuned for the average.",
+      "callout": {
+        "kind": "warning",
+        "text": "Averages hide this. The typical account has 200 followers; a few thousand accounts have millions — and they post at the busiest moments."
+      },
+      "changes": [
+        "+ A celebrity posts to 50 M followers",
+        "- 50 M feed writes for one post",
+        "- Queue backlog delays everybody"
+      ],
+      "metrics": {
+        "feedMs": "40 ms",
+        "readWork": "1 list + 1 batch",
+        "fanout": "50,000,000",
+        "postDelay": "8+ min"
+      },
+      "overrides": {
+        "author": {
+          "visible": false
+        },
+        "feeds": {
+          "emphasis": true
+        },
+        "jobs": {
+          "visible": false
+        },
+        "workers": {
+          "visible": false
+        },
+        "k1l-3": {
+          "emphasis": true
+        },
+        "au": {
+          "visible": false
+        },
+        "fc": {
+          "emphasis": true
+        },
+        "q": {
+          "visible": false
+        },
+        "qw": {
+          "visible": false
+        },
+        "wf": {
+          "visible": false
+        },
+        "wg": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Hybrid",
+      "title": "Hybrid: push for most, pull for the famous",
+      "chapter": "solution",
+      "body": "Treat the two kinds of account differently. Ordinary users keep fan-out on write. Accounts above a threshold — say 100,000 followers — are **not** fanned out at all.\n\nWhen Alice opens her feed, the API reads her ready-made list *and* pulls the latest posts of the handful of celebrities she follows — each one a single cached timeline — then merges the two. A few extra lookups per read, instead of 50 million writes per post.",
+      "callout": {
+        "kind": "insight",
+        "text": "Neither pure strategy survives real data. Large designs usually end up as a hybrid, split along exactly the dimension that is skewed."
+      },
+      "changes": [
+        "~ Accounts over 100 k followers: no fan-out",
+        "+ Their posts are merged in at read time",
+        "~ Post delay back to ≈ 2 s"
+      ],
+      "metrics": {
+        "feedMs": "60 ms",
+        "readWork": "1 list + a few",
+        "fanout": "200 · celebrities 0",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "wg": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "api-3": {
+          "visible": false
+        },
+        "author": {
+          "visible": false
+        },
+        "jobs": {
+          "visible": false
+        },
+        "workers": {
+          "emphasis": true
+        },
+        "us-3": {
+          "visible": false
+        },
+        "k0l-3": {
+          "visible": false
+        },
+        "k1l-3": {
+          "visible": false
+        },
+        "k2l-3": {
+          "visible": false
+        },
+        "au": {
+          "visible": false
+        },
+        "fc": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "qw": {
+          "visible": false
+        },
+        "wf": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Idle users",
+      "title": "Case: feeds nobody reads",
+      "chapter": "tradeoff",
+      "body": "Of everyone who follows Ana, perhaps a third opened the app this month. Fanning out to the rest fills memory with lists nobody will ever look at.\n\nSo skip them: fan out only to followers active in the last 30 days, and let everyone else’s list expire. When a lapsed user comes back, build their feed once with the pull model, cache it, and resume pushing.",
+      "callout": {
+        "kind": "tip",
+        "text": "The pull path never goes away. It is how feeds are created, repaired and rebuilt — push is an optimisation layered on top of it."
+      },
+      "changes": [
+        "~ Fan out only to recently active followers",
+        "~ Idle feed lists expire",
+        "+ Returning users: rebuilt by pull, once"
+      ],
+      "metrics": {
+        "feedMs": "60 ms",
+        "readWork": "1 list + a few",
+        "fanout": "≈ 70 · active only",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "api-3": {
+          "emphasis": true
+        },
+        "author": {
+          "emphasis": true
+        },
+        "feeds": {
+          "visible": false
+        },
+        "jobs": {
+          "emphasis": true
+        },
+        "workers": {
+          "visible": false
+        },
+        "us-3": {
+          "emphasis": true
+        },
+        "k0l-3": {
+          "emphasis": true
+        },
+        "k1l-3": {
+          "emphasis": true
+        },
+        "k2l-3": {
+          "emphasis": true
+        },
+        "au": {
+          "emphasis": true
+        },
+        "fc": {
+          "visible": false
+        },
+        "q": {
+          "emphasis": true
+        },
+        "qw": {
+          "visible": false
+        },
+        "wf": {
+          "visible": false
+        },
+        "wg": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Scrolling",
+      "title": "Scrolling: cursors, not page numbers",
+      "chapter": "technique",
+      "body": "Alice scrolls down for more. “Page 2” would mean “skip 20, take 20” — but three new posts have arrived at the top since page 1, so she’d see three posts twice.\n\nUse a [[cursor]] instead (see *REST, RPC & GraphQL*): “give me 20 posts older than post 9017”. The position is tied to a post, not to a count, so new arrivals can’t shift it.",
+      "callout": {
+        "kind": "tip",
+        "text": "Time-ordered ids (*Unique IDs at Scale*) make this easy: “older than” is simply “id less than”."
+      },
+      "changes": [
+        "+ GET /feed?before=9017&limit=20"
+      ],
+      "metrics": {
+        "feedMs": "60 ms",
+        "readWork": "1 list + a few",
+        "fanout": "≈ 70 · active only",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "feeds": {
+          "emphasis": true
+        },
+        "workers": {
+          "emphasis": true
+        },
+        "fc": {
+          "emphasis": true
+        },
+        "qw": {
+          "emphasis": true
+        },
+        "wf": {
+          "emphasis": true
+        },
+        "wg": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Cache lost",
+      "title": "Case: the feed cache is wiped",
+      "chapter": "insight",
+      "body": "A bad deploy flushes the feed cache. Every feed is gone — and nothing of value is lost. Posts and the follow graph are the **source of truth**; feed lists are **derived data** that can be rebuilt from them.\n\nThe danger is a stampede: millions of users rebuilding by pull at the same moment. So rebuild lazily, only when a user actually opens the app; cap how many rebuilds run at once; and serve a thinner feed until the cache is warm again.",
+      "callout": {
+        "kind": "insight",
+        "text": "Know which of your data is the truth and which is a convenience. You can afford to be relaxed about the second only because you are strict about the first."
+      },
+      "changes": [
+        "- Feed cache flushed",
+        "~ Feeds rebuilt on demand from posts + follows",
+        "~ Rebuilds throttled to protect the post store"
+      ],
+      "metrics": {
+        "feedMs": "350 ms",
+        "readWork": "rebuild: 200",
+        "fanout": "≈ 70 · active only",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "api-3": {
+          "visible": false
+        },
+        "feeds": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "k0l-3": {
+          "visible": false
+        },
+        "k1l-3": {
+          "visible": false
+        },
+        "k2l-3": {
+          "visible": false
+        },
+        "au": {
+          "visible": false
+        },
+        "fc": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "wf": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "The finished design",
+      "chapter": "recap",
+      "body": "• Build feeds — Decision: On write (push); Because: 40 reads per post\n• Celebrities — Decision: Pull, merged at read; Because: 50 M writes per post\n• Feed entries — Decision: Post ids, capped; Because: One copy of each post\n• Idle users — Decision: No fan-out; rebuild; Because: Unread feeds cost memory\n• Scrolling — Decision: Cursors; Because: New posts shift pages\n\nA ranked feed adds one more stage — score the candidates before returning them — but the plumbing underneath is the same.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Design a Chat System** — where every message has to arrive, in order, and show up exactly once."
+      },
+      "changes": [],
+      "metrics": {
+        "feedMs": "60 ms",
+        "readWork": "1 list + a few",
+        "fanout": "≈ 70 · active only",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "api-3": {
+          "emphasis": true
+        },
+        "feeds": {
+          "emphasis": true
+        },
+        "us-3": {
+          "emphasis": true
+        },
+        "k0l-3": {
+          "emphasis": true
+        },
+        "k1l-3": {
+          "emphasis": true
+        },
+        "k2l-3": {
+          "emphasis": true
+        },
+        "au": {
+          "emphasis": true
+        },
+        "fc": {
+          "emphasis": true
+        },
+        "q": {
+          "emphasis": true
+        },
+        "wf": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

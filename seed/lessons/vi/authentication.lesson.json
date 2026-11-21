@@ -1,0 +1,2080 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 613,
+          "y": -372
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "HASH CHẬM, CÓ SALT\nhunter2 + salt 9f2c → $argon2id$…7Qe\ncùng mật khẩu, salt khác → hash khác\n→ ~100 ms mỗi lần đoán, có chủ đích\n⚠ MD5 / SHA-256: hàng tỷ lần mỗi giây",
+        "position": {
+          "x": 613,
+          "y": -372
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 651,
+          "y": -372
+        },
+        "width": 421,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "ĐẶT LẠI AN TOÀN\ntoken: 32 byte ngẫu nhiên, dùng một lần\nhết hạn sau 15 phút\ncùng câu trả lời dù email có tồn tại hay không\n→ sau khi đặt lại: thu hồi mọi phiên",
+        "position": {
+          "x": 651,
+          "y": -372
+        },
+        "width": 397,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice",
+        "description": "cookie: HttpOnly · Secure",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice",
+        "description": "liên kết đặt lại · hết hạn sau 15 phút",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice",
+        "description": "⚠ đã gõ mật khẩu + mã",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice",
+        "description": "passkey · chỉ shop.example",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-6",
+        "type": "process",
+        "title": "Alice",
+        "description": "access 15 phút · refresh thu hồi được",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-2",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "description": "băm lần thử, so sánh",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 180,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-3",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "description": "cùng câu trả lời cho mọi email",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 184,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-4",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "description": "5.000 lượt đăng nhập / s",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 184,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-5",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "description": "5 lần thử / tài khoản / phút",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 184,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-6",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "description": "✓ mật khẩu ✓ + điện thoại ✓",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 184,
+        "height": 114,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-7",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "description": "trông như đăng nhập bình thường",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 184,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-8",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "description": "✓ kiểm tra chữ ký + tên miền",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 184,
+        "height": 114,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-9",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "description": "✓ kiểm tra chữ ký ID token",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 184,
+        "height": 114,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-10",
+        "type": "process",
+        "title": "Dịch vụ đăng nhập",
+        "description": "token hết hạn → 401",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 180,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "bảng người dùng",
+        "description": "⚠ alice@… : hunter2",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 196,
+        "height": 130,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "bảng người dùng",
+        "description": "alice@… : $argon2id$…7Qe",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 196,
+        "height": 130,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "bảng người dùng",
+        "description": "alice@… : chỉ khóa công khai",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 196,
+        "height": 130,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-4",
+        "type": "process",
+        "title": "bảng người dùng",
+        "description": "alice@… : google-id 1042 · không mật khẩu",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 204,
+        "height": 163,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-5",
+        "type": "process",
+        "title": "bảng người dùng",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief",
+        "type": "process",
+        "title": "kẻ tấn công",
+        "description": "đọc mọi mật khẩu",
+        "position": {
+          "x": 260,
+          "y": 100
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief-2",
+        "type": "process",
+        "title": "kẻ tấn công",
+        "description": "lấy được hash · nhiều năm mới bẻ được",
+        "position": {
+          "x": 260,
+          "y": 100
+        },
+        "width": 196,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mail",
+        "type": "process",
+        "title": "Email",
+        "position": {
+          "x": -240,
+          "y": -140
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Mail",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot",
+        "type": "process",
+        "title": "bot",
+        "description": "1 tỷ mật khẩu bị lộ",
+        "position": {
+          "x": 260,
+          "y": -380
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-2",
+        "type": "process",
+        "title": "bot",
+        "description": "bị làm chậm tới mức bò",
+        "position": {
+          "x": 260,
+          "y": -380
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-3",
+        "type": "process",
+        "title": "bot",
+        "description": "không có điện thoại → bị chặn",
+        "position": {
+          "x": 260,
+          "y": -380
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-4",
+        "type": "process",
+        "title": "bot",
+        "description": "token từ log bị lộ",
+        "position": {
+          "x": 260,
+          "y": -380
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "phone",
+        "type": "process",
+        "title": "Điện thoại của Alice",
+        "position": {
+          "x": -240,
+          "y": -380
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fake",
+        "type": "process",
+        "title": "Đăng nhập giả",
+        "description": "shop-example.co · ⚠ chuyển tiếp theo thời gian thực",
+        "position": {
+          "x": 260,
+          "y": -140
+        },
+        "width": 216,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fake-2",
+        "type": "process",
+        "title": "Đăng nhập giả",
+        "description": "shop-example.co · không có passkey cho tên miền này",
+        "position": {
+          "x": 260,
+          "y": -140
+        },
+        "width": 216,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "idp",
+        "type": "process",
+        "title": "Nhà cung cấp danh tính",
+        "description": "vd. Google",
+        "position": {
+          "x": -240,
+          "y": -140
+        },
+        "width": 204,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:IdCard",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "al",
+        "from": "alice",
+        "to": "login",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-2",
+        "from": "alice",
+        "to": "login-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-3",
+        "from": "alice-2",
+        "to": "login",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-4",
+        "from": "alice-3",
+        "to": "login-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-5",
+        "from": "alice",
+        "to": "login-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-6",
+        "from": "alice",
+        "to": "login-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-7",
+        "from": "alice",
+        "to": "login-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-8",
+        "from": "alice-5",
+        "to": "login-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-9",
+        "from": "alice",
+        "to": "login-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-10",
+        "from": "alice-6",
+        "to": "login-10",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu",
+        "from": "login",
+        "to": "users",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-2",
+        "from": "login-2",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-3",
+        "from": "login",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-4",
+        "from": "login-3",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-5",
+        "from": "login-4",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-6",
+        "from": "login-5",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-7",
+        "from": "login-6",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-8",
+        "from": "login-7",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "lu-9",
+        "from": "login-8",
+        "to": "users-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-10",
+        "from": "login-9",
+        "to": "users-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-11",
+        "from": "login-10",
+        "to": "users-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-12",
+        "from": "login",
+        "to": "users-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "st",
+        "from": "users",
+        "to": "thief",
+        "label": "bản sao lưu bị đánh cắp",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "st-2",
+        "from": "users-2",
+        "to": "thief-2",
+        "label": "bản sao lưu bị đánh cắp",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "lm",
+        "from": "login-3",
+        "to": "mail",
+        "label": "token dùng một lần",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ma",
+        "from": "mail",
+        "to": "alice-3",
+        "label": "liên kết đặt lại",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.65,
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bl",
+        "from": "bot",
+        "to": "login-4",
+        "label": "thử mọi cặp",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "bl-2",
+        "from": "bot-2",
+        "to": "login-5",
+        "label": "429 · thử thách",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "bl-3",
+        "from": "bot-3",
+        "to": "login-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "bl-4",
+        "from": "bot-4",
+        "to": "login-10",
+        "label": "token hết hạn",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "lp",
+        "from": "login-6",
+        "to": "phone",
+        "label": "phê duyệt đăng nhập?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "left",
+        "toSide": "bottom",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lp-2",
+        "from": "login-7",
+        "to": "phone",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "bottom",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lp-3",
+        "from": "login-8",
+        "to": "phone",
+        "label": "ký thử thách",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "left",
+        "toSide": "bottom",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "af",
+        "from": "alice-4",
+        "to": "fake",
+        "label": "shop-example.co",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "af-2",
+        "from": "alice-5",
+        "to": "fake-2",
+        "label": "shop-example.co",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.35,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "fl",
+        "from": "fake",
+        "to": "login-7",
+        "label": "mật khẩu + mã",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ai",
+        "from": "alice",
+        "to": "idp",
+        "label": "đăng nhập tại nhà cung cấp",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.72,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ai-2",
+        "from": "alice-6",
+        "to": "idp",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "ai-3",
+        "from": "alice",
+        "to": "idp",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "il",
+        "from": "idp",
+        "to": "login-9",
+        "label": "ID token có chữ ký",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "il-2",
+        "from": "idp",
+        "to": "login-10",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "il-3",
+        "from": "idp",
+        "to": "login",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Xác thực",
+    "summary": "Chứng minh một người là ai, mà không trở thành lý do khiến mật khẩu của họ bị lộ.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "leak",
+        "label": "Nếu bảng người dùng bị lộ"
+      },
+      {
+        "id": "stuffing",
+        "label": "Đăng nhập bằng mật khẩu bị đánh cắp"
+      },
+      {
+        "id": "mfa",
+        "label": "Yếu tố thứ hai"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Lưu mật khẩu dưới dạng hash chậm, có salt",
+        "step": "s2"
+      },
+      {
+        "text": "Phiên và đặt lại mật khẩu an toàn",
+        "step": "s4"
+      },
+      {
+        "text": "Credential stuffing và yếu tố thứ hai",
+        "step": "s7"
+      },
+      {
+        "text": "Lừa đảo phishing và passkey",
+        "step": "s9"
+      },
+      {
+        "text": "Nhà cung cấp danh tính và token sống ngắn",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "alice-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "alice-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "alice-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "alice-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "alice-6": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "login-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "login-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "login-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "login-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "login-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "login-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "login-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "login-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "login-10": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "users": {
+      "until": "s2"
+    },
+    "users-2": {
+      "from": "s2",
+      "until": "s9"
+    },
+    "users-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "users-4": {
+      "from": "s10",
+      "until": "s12"
+    },
+    "users-5": {
+      "from": "s12"
+    },
+    "thief": {
+      "until": "s2"
+    },
+    "thief-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "mail": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bot": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bot-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bot-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bot-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "phone": {
+      "from": "s7",
+      "until": "s10"
+    },
+    "fake": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "fake-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "idp": {
+      "from": "s10"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "al-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "al-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "al-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "al-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "al-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "al-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "al-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "al-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "al-10": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lu": {
+      "until": "s2"
+    },
+    "lu-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lu-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lu-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lu-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "lu-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "lu-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "lu-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lu-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "lu-10": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "lu-11": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lu-12": {
+      "from": "s12"
+    },
+    "st": {
+      "until": "s2"
+    },
+    "st-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lm": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ma": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bl": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bl-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bl-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bl-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lp": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "lp-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lp-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "af": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "af-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "fl": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ai": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ai-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ai-3": {
+      "from": "s12"
+    },
+    "il": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "il-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "il-3": {
+      "from": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Văn bản thuần",
+      "title": "Một bảng đầy mật khẩu",
+      "chapter": "problem",
+      "body": "Alice đăng ký và dịch vụ đăng nhập lưu mật khẩu của cô đúng y như cô đã gõ. Đăng nhập chỉ là một phép so sánh đơn giản.\n\nRồi một bản sao lưu cơ sở dữ liệu bị lộ: một bucket cấu hình sai, một chiếc laptop bị đánh cắp. Mọi mật khẩu đều đọc được ngay lập tức, và vì người ta dùng lại mật khẩu, kẻ tấn công giờ có thể thử chúng trên email, ngân hàng và mọi thứ khác.",
+      "callout": {
+        "kind": "warning",
+        "text": "Hãy giả định một ngày nào đó cơ sở dữ liệu của bạn sẽ bị lộ. Câu hỏi là kẻ tấn công có thể làm gì với nó."
+      },
+      "changes": [],
+      "metrics": {
+        "leak": "mọi mật khẩu",
+        "mfa": "không"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Hash",
+      "title": "Lưu một hash chậm, có salt",
+      "chapter": "solution",
+      "body": "Đừng bao giờ lưu chính mật khẩu. Hãy lưu một [[hash]]: một dấu vân tay một chiều. Khi đăng nhập, băm những gì Alice gõ rồi so sánh dấu vân tay.\n\nDùng hàm hash dành cho mật khẩu, như **argon2id**, **bcrypt** hoặc **scrypt**: một **salt** ngẫu nhiên cho mỗi người dùng khiến các mật khẩu giống nhau trông khác nhau, và sự chậm có chủ đích (~100 ms) biến hàng tỷ lần đoán thành nhiều năm.",
+      "callout": {
+        "kind": "warning",
+        "text": "Hash nhanh như MD5 hay SHA-256 là công cụ sai: một card đồ họa thử hàng tỷ lần mỗi giây."
+      },
+      "changes": [
+        "~ Mật khẩu → hash argon2id, salt riêng mỗi người"
+      ],
+      "metrics": {
+        "leak": "chỉ có hash",
+        "mfa": "không"
+      },
+      "overrides": {
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Phiên",
+      "title": "Sau khi đăng nhập: một phiên",
+      "chapter": "technique",
+      "body": "Không ai muốn gõ mật khẩu ở mỗi cú nhấp. Sau khi đăng nhập thành công, dịch vụ tạo một **phiên** và đưa cho trình duyệt một id phiên ngẫu nhiên trong cookie; các yêu cầu sau xuất trình cookie đó.\n\nĐánh dấu nó `HttpOnly` (script không đọc được), `Secure` (chỉ HTTPS) và `SameSite` (không gửi từ trang khác). Hoặc cấp một token có chữ ký, sống ngắn: xem bài Dịch vụ phi trạng thái.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hãy đối xử với id phiên như mật khẩu: dài, ngẫu nhiên, không bao giờ nằm trong URL hay log, và bị vô hiệu khi đăng xuất."
+      },
+      "changes": [
+        "+ Cookie phiên sau khi đăng nhập"
+      ],
+      "metrics": {
+        "leak": "chỉ có hash",
+        "mfa": "không"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "emphasis": true
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Đặt lại",
+      "title": "Tình huống: luồng quên mật khẩu",
+      "chapter": "technique",
+      "body": "Đặt lại mật khẩu là cửa thứ hai vào mọi tài khoản, và thường là cửa yếu nhất. Lỗi điển hình: token đặt lại đoán được hoặc không bao giờ hết hạn, và một biểu mẫu báo “không có tài khoản nào với email đó”, cho kẻ tấn công biết chính xác email nào đã đăng ký.\n\nMột luồng an toàn: token ngẫu nhiên dài, dùng một lần, hiệu lực 15 phút; cùng một câu trả lời dù tài khoản có tồn tại hay không; và mọi phiên hiện có bị đăng xuất sau khi đổi.",
+      "callout": {
+        "kind": "warning",
+        "text": "Mọi thứ có thể đổi mật khẩu (đặt lại, đổi email, công cụ hỗ trợ) đều cần sự cẩn trọng như chính việc đăng nhập."
+      },
+      "changes": [
+        "+ Email đặt lại với token dùng một lần",
+        "~ Token hết hạn sau 15 phút",
+        "~ Cùng câu trả lời cho email lạ"
+      ],
+      "metrics": {
+        "leak": "chỉ có hash",
+        "mfa": "không"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Stuffing",
+      "title": "Credential stuffing",
+      "chapter": "problem",
+      "body": "Một con bot có danh sách một tỷ cặp email + mật khẩu bị lộ từ các trang *khác*. Nó thử tất cả trên biểu mẫu đăng nhập của bạn, hàng nghìn lần mỗi giây.\n\nHàm hash của bạn hoàn hảo, vậy mà vẫn khoảng 0,5% lần thử thành công, vì những người đó dùng lại mật khẩu. Đó là hàng nghìn tài khoản bị chiếm.",
+      "callout": {
+        "kind": "warning",
+        "text": "Credential stuffing là kiểu tấn công chiếm tài khoản phổ biến nhất. Nó hoàn toàn không cần lỗ hổng nào trong mã của bạn."
+      },
+      "changes": [
+        "+ Bot thử lại mật khẩu bị lộ",
+        "- ~0,5% lần thử thành công"
+      ],
+      "metrics": {
+        "leak": "chỉ có hash",
+        "stuffing": "0,5% thành công",
+        "mfa": "không"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Làm chậm",
+      "title": "Khiến việc đoán trở nên tốn kém",
+      "chapter": "solution",
+      "body": "Bảo vệ chính biểu mẫu: **giới hạn tốc độ** số lần thử theo tài khoản và theo địa chỉ IP, thêm thử thách khi lưu lượng trông như tự động, và từ chối khi đăng ký những mật khẩu có trong danh sách rò rỉ đã biết.\n\nGắn cờ những lần đăng nhập rủi ro (thiết bị mới, quốc gia mới) và yêu cầu thêm bằng chứng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các dịch vụ như Have I Been Pwned cho phép kiểm tra mật khẩu với các vụ rò rỉ mà không cần gửi mật khẩu đi."
+      },
+      "changes": [
+        "+ Giới hạn tốc độ theo tài khoản và IP",
+        "+ Từ chối mật khẩu đã bị lộ",
+        "~ Stuffing thành công 0,5% → 0,05%"
+      ],
+      "metrics": {
+        "leak": "chỉ có hash",
+        "stuffing": "0,05% thành công",
+        "mfa": "không"
+      },
+      "overrides": {
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Yếu tố 2",
+      "title": "Một yếu tố thứ hai",
+      "chapter": "solution",
+      "body": "[[Xác thực đa yếu tố]] yêu cầu thứ bạn *có* bên cạnh thứ bạn biết: mã từ ứng dụng xác thực, một lần phê duyệt push trên điện thoại, hoặc khóa phần cứng.\n\nChỉ một mật khẩu bị đánh cắp không còn mở được tài khoản. **Passkey** còn đi xa hơn: một cặp khóa lưu trên thiết bị, không có gì dùng lại được để đánh cắp hay lừa lấy.",
+      "callout": {
+        "kind": "tip",
+        "text": "Mã SMS còn hơn không, nhưng có thể bị chặn (chiếm SIM). Hãy ưu tiên mã ứng dụng, push hoặc passkey."
+      },
+      "changes": [
+        "+ Phê duyệt trên điện thoại của Alice",
+        "~ Mật khẩu bị đánh cắp không còn đủ dùng"
+      ],
+      "metrics": {
+        "leak": "chỉ có hash",
+        "stuffing": "0% thành công",
+        "mfa": "có"
+      },
+      "overrides": {
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Phishing",
+      "title": "Tình huống: một trang đăng nhập giả hoàn hảo",
+      "chapter": "problem",
+      "body": "Một email cảnh báo về “lần đăng nhập bất thường” và dẫn tới `shop-example.co`, một bản sao giống hệt trang đăng nhập của bạn. Alice gõ mật khẩu *và* mã dùng một lần từ ứng dụng.\n\nTrang giả chuyển cả hai tới trang thật trong vài giây và cuỗm luôn phiên của cô. Mã và phê duyệt push chặn được mật khẩu bị đánh cắp, nhưng không chặn được trang phishing chuyển tiếp chúng theo thời gian thực.",
+      "callout": {
+        "kind": "warning",
+        "text": "Bất cứ thứ gì con người đọc và gõ được, một trang giả đều có thể hỏi rồi chuyển đi. Đào tạo có ích; riêng nó thì không đủ."
+      },
+      "changes": [
+        "+ Trang đăng nhập giả chuyển tiếp theo thời gian thực",
+        "- Bị lấy cả mật khẩu lẫn mã dùng một lần"
+      ],
+      "metrics": {
+        "leak": "chỉ có hash",
+        "stuffing": "0% thành công",
+        "mfa": "dễ bị phishing"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Passkey",
+      "title": "Passkey: không có gì để gõ, không có gì để đánh cắp",
+      "chapter": "solution",
+      "body": "Một [[passkey]] (WebAuthn) thay mật khẩu bằng một cặp khóa giữ trên điện thoại hoặc laptop của Alice. Để đăng nhập, thiết bị ký một thử thách từ trang web, và chữ ký gắn với tên miền thật, `shop.example`.\n\nTrên trang giả, thiết bị của cô đơn giản là không có passkey nào để đưa ra. Không có gì để gõ, không có gì để chuyển tiếp, và máy chủ chỉ lưu khóa công khai, vô dụng với kẻ trộm.",
+      "callout": {
+        "kind": "tip",
+        "text": "Passkey đồng bộ giữa các thiết bị của một người (Apple, Google, trình quản lý mật khẩu), nên mất điện thoại không khiến họ bị khóa ngoài."
+      },
+      "changes": [
+        "~ Mật khẩu + mã → passkey",
+        "- Trang giả không lấy được gì dùng được",
+        "~ Máy chủ chỉ lưu khóa công khai"
+      ],
+      "metrics": {
+        "leak": "không có gì dùng được",
+        "stuffing": "0% thành công",
+        "mfa": "passkey"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Dùng nhà cung cấp",
+      "title": "Hoặc để nhà cung cấp danh tính lo",
+      "chapter": "technique",
+      "body": "“Đăng nhập bằng Google” dùng [[OpenID Connect]] (xây trên OAuth 2.0). Ứng dụng của bạn đưa Alice tới **nhà cung cấp danh tính**; cô chứng minh mình là ai ở đó, và nhà cung cấp gửi lại một **ID token** có chữ ký nói rằng “đây là Alice”.\n\nDịch vụ của bạn kiểm tra chữ ký và không bao giờ thấy, lưu hay làm lộ mật khẩu nào. Các công ty dùng cùng ý tưởng cho đăng nhập một lần (Okta, Entra ID).",
+      "callout": {
+        "kind": "insight",
+        "text": "Xác thực rất khó làm đúng. Giao nó cho một chuyên gia thường là lựa chọn an toàn nhất."
+      },
+      "changes": [
+        "+ Nhà cung cấp danh tính",
+        "- Không còn lưu mật khẩu"
+      ],
+      "metrics": {
+        "leak": "không có gì dùng được",
+        "stuffing": "0% thành công",
+        "mfa": "có"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Token",
+      "title": "Tình huống: một token bị đánh cắp",
+      "chapter": "problem",
+      "body": "Một lỗi ghi header của yêu cầu vào log, và kẻ tấn công tìm thấy token của Alice trong log. Một token có giá trị như mật khẩu khi còn hiệu lực: nếu nó không bao giờ hết hạn, kẻ tấn công là Alice mãi mãi.\n\nVì vậy hãy dùng **access token** sống ngắn (vài phút) cùng một **refresh token** được lưu cẩn thận và có thể **thu hồi**. Đăng xuất, hoặc “đăng xuất khỏi mọi nơi”, sẽ thu hồi nó.",
+      "callout": {
+        "kind": "tip",
+        "text": "Thời hạn ngắn giới hạn thiệt hại của mọi vụ lộ. Thu hồi cho phép bạn chấm dứt nó ngay lập tức."
+      },
+      "changes": [
+        "+ Access token hết hạn sau 15 phút",
+        "+ Refresh token có thể thu hồi",
+        "- Token bị đánh cắp bị từ chối khi hết hạn"
+      ],
+      "metrics": {
+        "leak": "không có gì dùng được",
+        "stuffing": "0% thành công",
+        "mfa": "có"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Lưu mật khẩu dưới dạng **hash chậm, có salt** (argon2id, bcrypt).\n• Phiên trong cookie **HttpOnly, Secure**, hoặc token sống ngắn.\n• Chặn stuffing bằng **giới hạn tốc độ**, kiểm tra rò rỉ và **yếu tố thứ hai**.\n• Làm cho **đặt lại mật khẩu** mạnh như đăng nhập; **passkey** đánh bại phishing.\n• Cân nhắc một **nhà cung cấp danh tính**; giữ token **sống ngắn và thu hồi được**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Phân quyền**: biết một người là ai không cho bạn biết họ được làm gì."
+      },
+      "changes": [],
+      "metrics": {
+        "leak": "không có gì dùng được",
+        "stuffing": "0% thành công",
+        "mfa": "có"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "login": {
+          "emphasis": true
+        },
+        "al": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

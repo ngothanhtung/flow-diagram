@@ -1,0 +1,1547 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "usz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 179,
+          "y": 320
+        },
+        "width": 666,
+        "height": 288,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "usz-label",
+        "type": "text",
+        "title": "US REGION",
+        "position": {
+          "x": -101,
+          "y": 197
+        },
+        "width": 85,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "usz"
+      },
+      {
+        "id": "euz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 181,
+          "y": -320
+        },
+        "width": 662,
+        "height": 288,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "euz-label",
+        "type": "text",
+        "title": "EU REGION",
+        "position": {
+          "x": -97,
+          "y": -443
+        },
+        "width": 85,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "euz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 766,
+          "y": -393
+        },
+        "width": 363,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "WHOSE CLOCK?\nreal 12:00:03   US saves “12 Elm St”\n# stamped 12:00:06 — clock is 3 s fast\nreal 12:00:05   EU saves the correction\n# stamped 12:00:05\n⚠ sync keeps 12:00:06: the old address",
+        "position": {
+          "x": 766,
+          "y": -393
+        },
+        "width": 339,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 791,
+          "y": -393
+        },
+        "width": 413,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "DURING A PARTITION, CHOOSE\nC — refuse, never be wrong\n    payments, inventory, bookings\nA — answer, maybe be stale\n    likes, carts, feeds\n# without a partition: latency vs consistency",
+        "position": {
+          "x": 791,
+          "y": -393
+        },
+        "width": 389,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 737,
+          "y": -404
+        },
+        "width": 305,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "N = 3, W = 2, R = 2\nwrite → wait for 2 of 3\nread  → ask 2, keep the newest\n→ W + R = 4 > 3: always overlaps",
+        "position": {
+          "x": 737,
+          "y": -404
+        },
+        "width": 281,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 766,
+          "y": -404
+        },
+        "width": 363,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "CHOOSE PER OPERATION\nlike      W = 1, R = 1 · fast, eventual\npayment   W = 2, R = 2 · slower, safe\n→ cost of being wrong decides",
+        "position": {
+          "x": 766,
+          "y": -404
+        },
+        "width": 339,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 766,
+          "y": -393
+        },
+        "width": 363,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "STRONGEST → WEAKEST\nlinearizable   everyone sees the latest\ncausal         effects after causes\nread-your-writes  you see your own\nmonotonic      never go back in time\neventual       copies converge… later",
+        "position": {
+          "x": 766,
+          "y": -393
+        },
+        "width": 339,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "eu",
+        "type": "process",
+        "title": "seats left: 1",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "eu-2",
+        "type": "process",
+        "title": "seats left: 0 · sold to Ana",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "eu-3",
+        "type": "process",
+        "title": "seats left: 0 · Ana",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "eu-4",
+        "type": "process",
+        "title": "12:00:05 · 5 Rue Cler — the fix",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 244,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "eu-5",
+        "type": "process",
+        "title": "seats left: 0",
+        "position": {
+          "x": 0,
+          "y": -320
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "us",
+        "type": "process",
+        "title": "seats left: 1",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-2",
+        "type": "process",
+        "title": "seats left: 1",
+        "description": "⚠ can’t reach EU",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-3",
+        "type": "process",
+        "title": "read-only · refusing writes",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 236,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-4",
+        "type": "process",
+        "title": "seats left: 0 · sold to Ben",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-5",
+        "type": "process",
+        "title": "seats left: 0 · Ana",
+        "description": "Ben refunded",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 204,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-6",
+        "type": "process",
+        "title": "12:00:06 · 12 Elm St — clock +3 s",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 252,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "us-7",
+        "type": "process",
+        "title": "seats left: 0",
+        "position": {
+          "x": 0,
+          "y": 320
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "eus",
+        "type": "process",
+        "title": "EU users",
+        "position": {
+          "x": 384,
+          "y": -320
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "euz"
+      },
+      {
+        "id": "uss",
+        "type": "process",
+        "title": "US users",
+        "position": {
+          "x": 384,
+          "y": 320
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "uss-2",
+        "type": "process",
+        "title": "US users: errors",
+        "position": {
+          "x": 384,
+          "y": 320
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "usz"
+      },
+      {
+        "id": "cl",
+        "type": "process",
+        "title": "client",
+        "position": {
+          "x": 0,
+          "y": -384
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q1",
+        "type": "process",
+        "title": "v2",
+        "position": {
+          "x": -224,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q2",
+        "type": "process",
+        "title": "v2",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q3",
+        "type": "process",
+        "title": "v1 · stale",
+        "position": {
+          "x": 224,
+          "y": 0
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q3-2",
+        "type": "process",
+        "title": "v2",
+        "position": {
+          "x": 224,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ue",
+        "from": "eus",
+        "to": "eu",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ue-2",
+        "from": "eus",
+        "to": "eu-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ue-3",
+        "from": "eus",
+        "to": "eu-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ue-4",
+        "from": "eus",
+        "to": "eu-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ue-5",
+        "from": "eus",
+        "to": "eu-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu",
+        "from": "uss",
+        "to": "us",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-2",
+        "from": "uss",
+        "to": "us-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-3",
+        "from": "uss-2",
+        "to": "us-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-4",
+        "from": "uss",
+        "to": "us-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-5",
+        "from": "uss",
+        "to": "us-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-6",
+        "from": "uss",
+        "to": "us-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "uu-7",
+        "from": "uss",
+        "to": "us-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "rep",
+        "from": "eu",
+        "to": "us",
+        "label": "replication",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "rep-2",
+        "from": "eu",
+        "to": "us-2",
+        "label": "✕ network partition",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "none"
+      },
+      {
+        "id": "rep-3",
+        "from": "eu",
+        "to": "us-3",
+        "label": "✕ network partition",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "none"
+      },
+      {
+        "id": "rep-4",
+        "from": "eu-2",
+        "to": "us-4",
+        "label": "✕ network partition",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "none"
+      },
+      {
+        "id": "rep-5",
+        "from": "eu-3",
+        "to": "us-5",
+        "label": "catching up",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "rep-6",
+        "from": "eu-4",
+        "to": "us-6",
+        "label": "sync · highest timestamp wins",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "rep-7",
+        "from": "eu-5",
+        "to": "us-7",
+        "label": "replication",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "c1",
+        "from": "cl",
+        "to": "q1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "c2",
+        "from": "cl",
+        "to": "q2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "c3",
+        "from": "cl",
+        "to": "q3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "c3-2",
+        "from": "cl",
+        "to": "q3-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.7,
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "CAP & Consistency",
+    "summary": "When the network splits, copies of your data must choose between being right and being reachable.",
+    "minutes": 12,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "consistent",
+        "label": "Consistent"
+      },
+      {
+        "id": "available",
+        "label": "Available"
+      },
+      {
+        "id": "errors",
+        "label": "Errors"
+      },
+      {
+        "id": "conflicts",
+        "label": "Conflicts"
+      }
+    ],
+    "goals": [
+      {
+        "text": "What a network partition is",
+        "step": "s2"
+      },
+      {
+        "text": "Choosing consistency vs availability",
+        "step": "s4"
+      },
+      {
+        "text": "Eventual consistency, conflicts and clocks",
+        "step": "s5"
+      },
+      {
+        "text": "Quorums: W + R > N",
+        "step": "s8"
+      },
+      {
+        "text": "Consistency chosen per operation",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "euz": {
+      "until": "s8"
+    },
+    "usz": {
+      "until": "s8"
+    },
+    "eu": {
+      "until": "s4"
+    },
+    "eu-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "eu-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "eu-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "eu-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "us": {
+      "until": "s2"
+    },
+    "us-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "us-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "us-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "us-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "us-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "us-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "eus": {
+      "until": "s8"
+    },
+    "uss": {
+      "until": "s8"
+    },
+    "uss-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cl": {
+      "from": "s8"
+    },
+    "q1": {
+      "from": "s8"
+    },
+    "q2": {
+      "from": "s8"
+    },
+    "q3": {
+      "from": "s8"
+    },
+    "q3-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "usz-label": {
+      "until": "s8"
+    },
+    "euz-label": {
+      "until": "s8"
+    },
+    "card-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-5-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ue": {
+      "until": "s4"
+    },
+    "ue-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ue-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ue-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ue-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "uu": {
+      "until": "s2"
+    },
+    "uu-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "uu-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "uu-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "uu-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "uu-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "uu-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "rep": {
+      "until": "s2"
+    },
+    "rep-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "rep-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "rep-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "rep-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "rep-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "rep-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "c1": {
+      "from": "s8"
+    },
+    "c2": {
+      "from": "s8"
+    },
+    "c3": {
+      "from": "s8"
+    },
+    "c3-2": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Two regions",
+      "title": "Copies in two regions",
+      "chapter": "setup",
+      "body": "A ticket site keeps a copy of its data in Europe and in the US, so each region’s users get fast answers. Every write is replicated to the other side.\n\nOne concert has **1 seat left**, and both copies agree.",
+      "callout": {
+        "kind": "insight",
+        "text": "Replicating across regions buys speed and survival — and opens the question this lesson is about."
+      },
+      "changes": [],
+      "metrics": {
+        "consistent": "yes",
+        "available": "yes",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Partition",
+      "title": "The network splits",
+      "chapter": "problem",
+      "body": "An undersea cable is cut. Both regions are healthy and their users can still reach them — but the regions can’t talk to *each other*. This is a [[network partition]].\n\nNow a US user wants to buy the last seat. The US copy can’t check with Europe. What should it do?",
+      "callout": {
+        "kind": "warning",
+        "text": "Partitions aren’t rare: cables, routers, misconfigurations and overloaded links all cause them."
+      },
+      "changes": [
+        "- Link between regions down"
+      ],
+      "metrics": {
+        "consistent": "?",
+        "available": "?",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Choose C",
+      "title": "Option 1: stay consistent",
+      "chapter": "technique",
+      "body": "Refuse what can’t be confirmed. Europe holds the primary copy, so it keeps serving; the US side rejects writes — and reads that might be stale — until the link is back.\n\nNobody ever sees wrong data. But US users get errors for as long as the partition lasts.",
+      "callout": {
+        "kind": "tip",
+        "text": "Choose consistency where wrong answers cost money: payments, bank balances, inventory, ticket sales."
+      },
+      "changes": [
+        "~ US side refuses requests",
+        "- US users see errors"
+      ],
+      "metrics": {
+        "consistent": "yes",
+        "available": "partly",
+        "errors": "50%",
+        "conflicts": "0"
+      },
+      "overrides": {
+        "uss": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Choose A",
+      "title": "Option 2: stay available",
+      "chapter": "technique",
+      "body": "Answer with what you have. Both sides keep accepting writes. Ana in Paris buys the last seat. Ben in Boston buys the last seat.\n\nEveryone gets an answer — and the two copies now **disagree**. When the link returns, there are two sales of one seat.",
+      "callout": {
+        "kind": "tip",
+        "text": "Choose availability where a brief disagreement is fine: likes, view counts, shopping carts, social feeds."
+      },
+      "changes": [
+        "~ Both sides accept writes",
+        "- Same seat sold twice"
+      ],
+      "metrics": {
+        "consistent": "no",
+        "available": "yes",
+        "errors": "0%",
+        "conflicts": "1"
+      },
+      "overrides": {
+        "uss": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Heal",
+      "title": "Healing: eventual consistency",
+      "chapter": "technique",
+      "body": "The cable is repaired and the copies exchange what they missed. Left alone they will converge — [[eventual consistency]] — but someone has to decide what to do with the conflict.\n\nOptions: **last write wins** (simple, silently drops one sale), or let the app merge (keep both, refund one, apologise).",
+      "callout": {
+        "kind": "warning",
+        "text": "“Last write wins” is the default in many databases. It loses data quietly — make sure that’s acceptable."
+      },
+      "changes": [
+        "+ Link restored",
+        "~ Copies exchange missed writes",
+        "~ Conflict resolved: Ben refunded"
+      ],
+      "metrics": {
+        "consistent": "yes",
+        "available": "yes",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Clocks",
+      "title": "Case: “last” by whose clock?",
+      "chapter": "problem",
+      "body": "Last write wins needs to know which write *was* last — and each server stamps writes with its own clock. Clocks drift. Here the US server’s clock runs 3 seconds fast.\n\nA customer saves a delivery address through the US copy, then corrects it two seconds later through the EU copy. The correction is newer, but its timestamp is **smaller** — so when the copies sync, last write wins keeps the old address and silently throws the fix away.",
+      "callout": {
+        "kind": "tip",
+        "text": "Never order events across machines by wall-clock time. Use version numbers or **logical clocks** (Lamport timestamps, version vectors) that count events instead of reading the time — or keep both versions and let the app merge."
+      },
+      "changes": [
+        "+ US clock runs 3 s fast",
+        "- The newer write carries the older timestamp",
+        "- Last write wins keeps the wrong address"
+      ],
+      "metrics": {
+        "consistent": "yes",
+        "available": "yes",
+        "errors": "0%",
+        "conflicts": "1"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "CAP",
+      "title": "What CAP actually says",
+      "chapter": "insight",
+      "body": "The [[CAP theorem]]: when a network **P**artition happens, a replicated system must give up either **C**onsistency (every read sees the latest write, as if there were only one copy) or **A**vailability (every request to a working server gets an answer).\n\nYou don’t “pick two of three” — partitions will happen, so the real choice is what to do when they do.\n\nCAP’s “consistency” is what database people call **linearizability**. It is not the C in ACID, which is about a transaction keeping your data’s rules intact.",
+      "callout": {
+        "kind": "insight",
+        "text": "PACELC adds the everyday half: even without a partition, keeping copies in sync costs latency. Consistency is never free."
+      },
+      "changes": [],
+      "metrics": {
+        "consistent": "yes",
+        "available": "yes",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s8",
+      "short": "Quorums",
+      "title": "Quorums: tune the trade-off",
+      "chapter": "technique",
+      "body": "Many databases let you choose per request. With **N** = 3 copies, a write waits for **W** copies to confirm and a read asks **R** copies, using the newest answer.\n\nIf **W + R > N**, every read overlaps at least one copy that saw the latest write — here W = 2 and R = 2, so a read always reaches a `v2` even though one copy is stale.",
+      "callout": {
+        "kind": "tip",
+        "text": "W = 1, R = 1: fast and available, possibly stale. W = 3: every copy must answer — consistent but fragile. Cassandra, Riak and ScyllaDB expose these knobs per request; DynamoDB offers the simpler choice of eventual or strongly consistent reads."
+      },
+      "changes": [
+        "+ 3 copies (N = 3)",
+        "~ Writes wait for 2 (W = 2)",
+        "~ Reads ask 2 (R = 2)"
+      ],
+      "metrics": {
+        "consistent": "yes",
+        "available": "yes",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s9",
+      "short": "Per operation",
+      "title": "Case: a payment and a like",
+      "chapter": "technique",
+      "body": "One app, two very different writes. A **like** can be confirmed by one copy and spread later (W = 1, R = 1): fast, always available, and nobody minds if a count is briefly off.\n\nRecording a **payment** (the big square) uses a majority for both the write and every read (W = 2, R = 2): slower, and it fails if two copies can’t be reached — rather than risk anyone reading a stale “unpaid”.",
+      "callout": {
+        "kind": "tip",
+        "text": "You don’t pick consistency once for the whole system. Pick it per operation, by asking what a wrong answer would cost."
+      },
+      "changes": [
+        "+ Likes: W = 1, R = 1",
+        "+ Payments: W = 2, R = 2"
+      ],
+      "metrics": {
+        "consistent": "per op",
+        "available": "per op",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {
+        "c1": {
+          "effect": "comet"
+        },
+        "c2": {
+          "effect": "pulse"
+        },
+        "q3": {
+          "visible": false
+        },
+        "c3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Models",
+      "title": "Consistency is a spectrum",
+      "chapter": "insight",
+      "body": "“Consistent” isn’t yes or no. Between the strongest ([[linearizable]]: everyone sees the latest write) and eventual sit useful promises: **read-your-writes** (you always see your own changes), **monotonic reads** (time never goes backwards for you), and **causal** consistency (replies never appear before the message they answer).\n\nWeaker promises are cheaper and more available. Pick the weakest one your users won’t notice.",
+      "callout": {
+        "kind": "insight",
+        "text": "Many “eventual” systems offer read-your-writes per session — enough for most apps."
+      },
+      "changes": [],
+      "metrics": {
+        "consistent": "per op",
+        "available": "yes",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {
+        "q3": {
+          "emphasis": true
+        },
+        "c3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• A **partition** splits copies that can each still serve users.\n• During one, choose **consistency** (refuse) or **availability** (answer, maybe stale).\n• Available systems are **eventually consistent** and must resolve conflicts — without trusting wall clocks.\n• **Quorums** (W + R > N) tune the trade-off per request.\n• Pick the **weakest consistency** each operation can tolerate.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Consensus & Leader Election** — how a group of servers agrees on one truth, even when some of them can’t be reached."
+      },
+      "changes": [],
+      "metrics": {
+        "consistent": "yes",
+        "available": "yes",
+        "errors": "0%",
+        "conflicts": "0"
+      },
+      "overrides": {}
+    }
+  ]
+}

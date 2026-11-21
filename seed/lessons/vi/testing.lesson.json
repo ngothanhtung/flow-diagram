@@ -1,0 +1,1634 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 633,
+          "y": -406
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "MỘT UNIT TEST\nbasket = [{ price: 9.99, qty: 3 }]\ntotal(basket, \"SAVE10\")\n→ expect 26.97  ✓\n# không DB, không mạng, ~1 ms",
+        "position": {
+          "x": 633,
+          "y": -406
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 670,
+          "y": -406
+        },
+        "width": 396,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "HỢP ĐỒNG\nGET /stock/sku-42\n→ 200 { \"sku\": \"sku-42\", \"in_stock\": 3 }\n⚠ đổi tên in_stock → build của Kho thất bại\n# kiểm tra ở cả hai phía, riêng rẽ",
+        "position": {
+          "x": 670,
+          "y": -406
+        },
+        "width": 372,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 674,
+          "y": -406
+        },
+        "width": 404,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "BA TẦNG\nđầu cuối      20   15 phút   cả hành trình\ntích hợp     200    4 phút   hàng xóm thật\n→ unit       2.000   30 s      từng phần một\n# nhanh và nhiều ở đáy, ít ở đỉnh",
+        "position": {
+          "x": 674,
+          "y": -406
+        },
+        "width": 380,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "người mua",
+        "position": {
+          "x": 0,
+          "y": -432
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "người mua · bị tính thừa",
+        "position": {
+          "x": 0,
+          "y": -432
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "trình duyệt test",
+        "position": {
+          "x": 0,
+          "y": -432
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-4",
+        "type": "process",
+        "title": "bộ tạo tải · 5× lưu lượng",
+        "position": {
+          "x": 0,
+          "y": -432
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "svc",
+        "type": "process",
+        "title": "Checkout",
+        "description": "mã của bạn",
+        "position": {
+          "x": 0,
+          "y": -96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "svc-2",
+        "type": "process",
+        "title": "Checkout",
+        "description": "mã của bạn · 26,98 €, đúng ra là 26,97 €",
+        "position": {
+          "x": 0,
+          "y": -96
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "svc-3",
+        "type": "process",
+        "title": "Checkout",
+        "description": "mã của bạn · p99 tăng ở mức 4,2× · CPU 82%",
+        "position": {
+          "x": 0,
+          "y": -96
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "DB đơn hàng",
+        "position": {
+          "x": 264,
+          "y": -96
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "DB đơn hàng · thật, trong container",
+        "position": {
+          "x": 264,
+          "y": -96
+        },
+        "width": 272,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "DB đơn hàng",
+        "description": "CPU 70%",
+        "position": {
+          "x": 264,
+          "y": -96
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Nhà cung cấp thanh toán",
+        "description": "bên ngoài",
+        "position": {
+          "x": 0,
+          "y": 216
+        },
+        "width": 204,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Nhà cung cấp thanh toán",
+        "description": "sandbox",
+        "position": {
+          "x": 0,
+          "y": 216
+        },
+        "width": 204,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-3",
+        "type": "process",
+        "title": "Nhà cung cấp thanh toán",
+        "description": "bên ngoài · chèn vào: trễ 5 s",
+        "position": {
+          "x": 0,
+          "y": 216
+        },
+        "width": 208,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv",
+        "type": "process",
+        "title": "Kho",
+        "description": "nhóm khác",
+        "position": {
+          "x": 264,
+          "y": 216
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Boxes",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "inv-2",
+        "type": "process",
+        "title": "Kho",
+        "description": "nhóm khác · xác minh hợp đồng",
+        "position": {
+          "x": 264,
+          "y": 216
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Boxes",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "tests",
+        "type": "process",
+        "title": "Test",
+        "description": "✓ 2.000 test · 30 s",
+        "position": {
+          "x": -312,
+          "y": -96
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:FlaskConical",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "tests-2",
+        "type": "process",
+        "title": "Test",
+        "description": "✓ 200 test · 4 phút",
+        "position": {
+          "x": -312,
+          "y": -96
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:FlaskConical",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "tests-3",
+        "type": "process",
+        "title": "Test",
+        "description": "✓ 20 hành trình · 15 phút",
+        "position": {
+          "x": -312,
+          "y": -96
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:FlaskConical",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "tests-4",
+        "type": "process",
+        "title": "Test",
+        "position": {
+          "x": -312,
+          "y": -96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:FlaskConical",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "tests-5",
+        "type": "process",
+        "title": "Test",
+        "description": "chờ email 2 s",
+        "position": {
+          "x": -312,
+          "y": -96
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:FlaskConical",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fdb",
+        "type": "process",
+        "title": "DB fake · trong bộ nhớ",
+        "position": {
+          "x": 264,
+          "y": -96
+        },
+        "width": 232,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#bfbfbf",
+        "backgroundColor": "#141414",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "opacity": 0.75,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fpay",
+        "type": "process",
+        "title": "stub: “đã duyệt”",
+        "position": {
+          "x": 0,
+          "y": 216
+        },
+        "width": 180,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#bfbfbf",
+        "backgroundColor": "#141414",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "opacity": 0.75,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fpay-2",
+        "type": "process",
+        "title": "sandbox nhà cung cấp",
+        "position": {
+          "x": 0,
+          "y": 216
+        },
+        "width": 216,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#bfbfbf",
+        "backgroundColor": "#141414",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "opacity": 0.75,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "finv",
+        "type": "process",
+        "title": "stub: “còn hàng”",
+        "position": {
+          "x": 264,
+          "y": 216
+        },
+        "width": 180,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#bfbfbf",
+        "backgroundColor": "#141414",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "opacity": 0.75,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "us",
+        "from": "users",
+        "to": "svc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "us-2",
+        "from": "users-2",
+        "to": "svc-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "us-3",
+        "from": "users-3",
+        "to": "svc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "us-4",
+        "from": "users-4",
+        "to": "svc-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd",
+        "from": "svc",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sd-2",
+        "from": "svc-2",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sd-3",
+        "from": "svc",
+        "to": "fdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sd-4",
+        "from": "svc",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "sd-5",
+        "from": "svc-3",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sp",
+        "from": "svc",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "sp-2",
+        "from": "svc-2",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "sp-3",
+        "from": "svc",
+        "to": "fpay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sp-4",
+        "from": "svc",
+        "to": "fpay-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "sp-5",
+        "from": "svc",
+        "to": "pay-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "si",
+        "from": "svc",
+        "to": "inv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 132,
+            "y": 216
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "si-2",
+        "from": "svc-2",
+        "to": "inv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 132,
+            "y": 216
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "si-3",
+        "from": "svc",
+        "to": "finv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 132,
+            "y": 216
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "si-4",
+        "from": "svc",
+        "to": "inv-2",
+        "label": "hợp đồng",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 132,
+            "y": 216
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "si-5",
+        "from": "svc-3",
+        "to": "inv",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 132,
+            "y": 216
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ts",
+        "from": "tests",
+        "to": "svc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ts-2",
+        "from": "tests-2",
+        "to": "svc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "ts-3",
+        "from": "tests-4",
+        "to": "svc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "tu",
+        "from": "tests-3",
+        "to": "users-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "tu-2",
+        "from": "tests-5",
+        "to": "users-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Kiểm thử",
+    "summary": "Biết một thay đổi là an toàn trước khi người dùng phát hiện ra: test nhanh cho logic, vài test chậm cho mọi thứ còn lại.",
+    "minutes": 12,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "feedback",
+        "label": "Phản hồi sau"
+      },
+      {
+        "id": "covers",
+        "label": "Test bao phủ"
+      },
+      {
+        "id": "escaped",
+        "label": "Lỗi đến người dùng"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Unit test và test double",
+        "step": "s3"
+      },
+      {
+        "text": "Test tích hợp và test hợp đồng",
+        "step": "s5"
+      },
+      {
+        "text": "Test đầu cuối và kim tự tháp kiểm thử",
+        "step": "s7"
+      },
+      {
+        "text": "Test chập chờn, kiểm thử tải và sự cố",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "users": {
+      "until": "s2"
+    },
+    "users-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "users-3": {
+      "from": "s7",
+      "until": "s10"
+    },
+    "users-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "svc-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "svc-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "db-2": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "db-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "pay": {
+      "until": "s3"
+    },
+    "pay-2": {
+      "from": "s7"
+    },
+    "pay-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "inv-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "tests": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "tests-2": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "tests-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "tests-4": {
+      "from": "s8"
+    },
+    "tests-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "fdb": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "fpay": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "fpay-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "finv": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "card-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "us": {
+      "until": "s2"
+    },
+    "us-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "us-3": {
+      "from": "s7",
+      "until": "s10"
+    },
+    "us-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "sd-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sd-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "sd-4": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "sd-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "sp": {
+      "until": "s2"
+    },
+    "sp-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sp-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "sp-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sp-5": {
+      "from": "s7"
+    },
+    "si-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "si-3": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "si-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "si-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ts": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "ts-2": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "ts-3": {
+      "from": "s8"
+    },
+    "tu": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "tu-2": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Có an toàn không?",
+      "title": "Thay đổi này có an toàn không?",
+      "chapter": "setup",
+      "body": "Dịch vụ thanh toán áp dụng mã giảm giá. Nó đọc và ghi cơ sở dữ liệu đơn hàng, trừ tiền thẻ qua một nhà cung cấp thanh toán bên ngoài, và hỏi dịch vụ của nhóm Kho xem hàng còn không.\n\nMột lập trình viên vừa đổi cách làm tròn giảm giá. Trước khi phát hành, nhóm kiểm tra bằng tay: bấm qua vài lượt mua trên máy chủ thử nghiệm, mọi thứ đều có vẻ ổn.",
+      "callout": {
+        "kind": "insight",
+        "text": "Mỗi thay đổi đều kéo theo một câu hỏi: nó còn làm hỏng gì nữa? Test là cách trả lời nhanh, mỗi lần, mà không phải trông vào việc ai đó nhớ cần kiểm tra gì."
+      },
+      "changes": [],
+      "metrics": {
+        "feedback": "1 ngày",
+        "covers": "những gì ai đó bấm thử",
+        "escaped": "thường xuyên"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Bằng tay",
+      "title": "Bấm thử lung tung sẽ bỏ sót",
+      "chapter": "problem",
+      "body": "Không ai thử một giỏ ba món giá 9,99 € với mã giảm 10%. Cách làm tròn mới tính 26,98 € thay vì 26,97 €: thừa một xu trên hàng nghìn đơn trước khi bộ phận hỗ trợ nhận ra.\n\nKiểm tra thủ công thì chậm, nên ít khi làm, và chỉ bao phủ những gì ai đó nghĩ ra để thử. Lỗi do người dùng phát hiện.",
+      "callout": {
+        "kind": "warning",
+        "text": "Lỗi được phát hiện càng muộn càng tốn kém: vài giây trong test, vài giờ khi review, vài ngày trên production, cộng thêm hoàn tiền và niềm tin."
+      },
+      "changes": [
+        "- Lỗi làm tròn đã lên production",
+        "- Khách hàng tìm ra, không phải nhóm"
+      ],
+      "metrics": {
+        "feedback": "1 ngày",
+        "covers": "những gì ai đó bấm thử",
+        "escaped": "thường xuyên"
+      },
+      "overrides": {
+        "svc": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        },
+        "si": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Unit test",
+      "title": "Unit test: một phần, tách riêng",
+      "chapter": "solution",
+      "body": "Một [[unit test]] gọi một hàm với đầu vào biết trước và kiểm tra đầu ra; ở đây là tổng tiền cho một giỏ hàng và mã. Nó chạy trong vài mili giây, không có cơ sở dữ liệu, không có mạng.\n\nVì quá rẻ, bạn viết hàng nghìn cái, và chúng chạy ở mọi thay đổi. Trường hợp làm tròn trở thành một dòng sẽ thất bại ngay khi ai đó làm hỏng nó lần nữa.",
+      "callout": {
+        "kind": "tip",
+        "text": "Viết test cho một lỗi trước khi sửa: xem nó thất bại, sửa code, xem nó qua. Lỗi đó sẽ không bao giờ lặng lẽ quay lại."
+      },
+      "changes": [
+        "+ Unit test gọi Checkout trực tiếp",
+        "- Cơ sở dữ liệu, nhà cung cấp và Kho thật"
+      ],
+      "metrics": {
+        "feedback": "30 s",
+        "covers": "chỉ logic",
+        "escaped": "ít hơn"
+      },
+      "overrides": {
+        "svc": {
+          "emphasis": true
+        },
+        "db": {
+          "visible": false
+        },
+        "inv": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        },
+        "si": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Test double",
+      "title": "Test double thay cho phần còn lại",
+      "chapter": "technique",
+      "body": "Checkout không chạy được nếu thiếu các phụ thuộc, nên test thay chúng bằng [[test double]]: một cơ sở dữ liệu **fake** sống trong bộ nhớ, một nhà cung cấp **stub** luôn trả lời “đã duyệt”, một **mock** ghi lại xem thẻ có bị trừ tiền đúng một lần không.\n\nVấn đề: double chỉ biết những gì bạn bảo nó. Nếu nhà cung cấp thật đổi tên một trường, mọi unit test vẫn qua.",
+      "callout": {
+        "kind": "warning",
+        "text": "Double làm test nhanh và lặp lại được, nhưng có thể âm thầm lệch khỏi thực tế. Phải có thứ gì đó kiểm thử với hệ thống thật nữa."
+      },
+      "changes": [
+        "+ DB fake, nhà cung cấp stub, Kho stub"
+      ],
+      "metrics": {
+        "feedback": "30 s",
+        "covers": "chỉ logic",
+        "escaped": "ít hơn"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        },
+        "inv": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        },
+        "si": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Tích hợp",
+      "title": "Test tích hợp: những hàng xóm thật",
+      "chapter": "solution",
+      "body": "Một [[test tích hợp]] chạy Checkout với một cơ sở dữ liệu thật, khởi động mới trong một container cho lần chạy test, và kiểm tra những gì thực sự vào bảng. Lỗi gõ SQL, migration hỏng và kiểu không khớp lộ ra ở đây, không phải trên production.\n\nNhà cung cấp thanh toán vẫn là stub (không thể trừ tiền thẻ thật), nhưng bạn có thể gọi sandbox của họ trong một bộ test riêng, nhỏ hơn.",
+      "callout": {
+        "kind": "tip",
+        "text": "Container khiến việc này rẻ: một PostgreSQL hay Kafka dùng xong bỏ khởi động trong vài giây, nên test tích hợp cũng có thể chạy ở mọi thay đổi."
+      },
+      "changes": [
+        "~ DB fake → DB thật trong container",
+        "~ Test mất vài giây, không phải mili giây"
+      ],
+      "metrics": {
+        "feedback": "4 phút",
+        "covers": "+ truy vấn cơ sở dữ liệu",
+        "escaped": "ít hơn"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        },
+        "inv": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        },
+        "si": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Hợp đồng",
+      "title": "Test hợp đồng: giữa các nhóm",
+      "chapter": "technique",
+      "body": "Checkout phụ thuộc vào Kho, thuộc một nhóm khác và được triển khai theo lịch riêng của họ. Nếu họ đổi tên `in_stock` thành `available`, stub của Checkout sẽ không bao giờ biết.\n\nMột [[test hợp đồng]] ghi lại điều Checkout mong đợi (yêu cầu này, một phản hồi có các trường này), và pipeline của chính Kho kiểm tra mọi thay đổi với nó. Một thay đổi phá vỡ sẽ thất bại trong build của *họ*, trước khi phát hành.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các công cụ như Pact ghi lại những kỳ vọng này của bên tiêu dùng. Hợp đồng thay thế phần lớn các test đầu cuối chậm mà nếu không sẽ cần giữa các dịch vụ."
+      },
+      "changes": [
+        "+ Kỳ vọng của Checkout được ghi thành hợp đồng",
+        "+ Kho xác minh nó ở mọi thay đổi"
+      ],
+      "metrics": {
+        "feedback": "4 phút",
+        "covers": "+ hợp đồng API",
+        "escaped": "hiếm"
+      },
+      "overrides": {
+        "db": {
+          "visible": false
+        },
+        "inv": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        },
+        "si": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Đầu cuối",
+      "title": "Test đầu cuối: cả hành trình",
+      "chapter": "solution",
+      "body": "Một [[test đầu cuối]] điều khiển hệ thống thật như người dùng: mở cửa hàng trên trình duyệt, thêm ba món, nhập mã, trả bằng thẻ sandbox, thấy trang xác nhận.\n\nĐây là test duy nhất chứng minh mọi thứ chạy cùng nhau, và cũng chậm nhất, dễ vỡ nhất. Chừng một tá cho các hành trình mang lại doanh thu là đủ.",
+      "callout": {
+        "kind": "warning",
+        "text": "Test đầu cuối cho bạn biết có gì đó hỏng, chứ không biết cái gì. Khi một test như vậy thất bại, các test rẻ hơn bên dưới phải chỉ ra nguyên nhân."
+      },
+      "changes": [
+        "+ Test trình duyệt điều khiển cả hệ thống",
+        "~ Vài phút mỗi lần chạy"
+      ],
+      "metrics": {
+        "feedback": "15 phút",
+        "covers": "toàn hệ thống",
+        "escaped": "hiếm"
+      },
+      "overrides": {
+        "sd": {
+          "effect": "pulse",
+          "emphasis": true
+        },
+        "db": {
+          "emphasis": true
+        },
+        "inv": {
+          "emphasis": true
+        },
+        "si": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Kim tự tháp",
+      "title": "Kim tự tháp kiểm thử",
+      "chapter": "insight",
+      "body": "Gộp lại, các bộ test tạo thành một [[kim tự tháp kiểm thử]]: hàng nghìn unit test ở đáy, hàng trăm test tích hợp và hợp đồng ở giữa, một nhúm test đầu cuối trên đỉnh.\n\nTầng dưới nhanh, chính xác và rẻ để chạy ở mọi thay đổi; tầng trên chậm nhưng gần với những gì người dùng làm hơn. Hãy đẩy mỗi phép kiểm tra xuống thấp nhất có thể.",
+      "callout": {
+        "kind": "insight",
+        "text": "Một kim tự tháp lộn ngược, chủ yếu là test đầu cuối, là cái bẫy phổ biến: một giờ mỗi lần chạy, thường xuyên thất bại ngẫu nhiên, và một nhóm không còn tin vào build đỏ."
+      },
+      "changes": [],
+      "metrics": {
+        "feedback": "30 s → 15 phút",
+        "covers": "toàn hệ thống",
+        "escaped": "hiếm"
+      },
+      "overrides": {
+        "sp-5": {
+          "effect": "none"
+        },
+        "users-3": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Chập chờn",
+      "title": "Tình huống: test chập chờn",
+      "chapter": "problem",
+      "body": "Một test đầu cuối thất bại khoảng một lần trong hai mươi lần chạy. Nó chờ cố định hai giây cho email xác nhận, và đôi khi email mất ba giây. Mọi người quen bấm “chạy lại”, và khi một lỗi thật làm test đó đỏ, họ cũng chạy lại luôn.\n\nMột [[test chập chờn]] (flaky) còn tệ hơn không có test: nó dạy cả nhóm phớt lờ thất bại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hãy sửa nguyên nhân: chờ một điều kiện thay vì thời gian cố định, kiểm soát đồng hồ, cho mỗi test dữ liệu riêng, không bao giờ phụ thuộc vào thứ tự test. Theo dõi test chập chờn rồi sửa hoặc xóa; đừng giấu chúng sau cơ chế chạy lại tự động."
+      },
+      "changes": [
+        "- Thất bại 1 trong 20 lần chạy không rõ lý do",
+        "- Thất bại thật bị chạy lại và bỏ qua"
+      ],
+      "metrics": {
+        "feedback": "15 phút",
+        "covers": "toàn hệ thống",
+        "escaped": "thường xuyên"
+      },
+      "overrides": {
+        "us-3": {
+          "effect": "comet",
+          "emphasis": true
+        },
+        "si": {
+          "effect": "none"
+        },
+        "users-3": {
+          "emphasis": true
+        },
+        "tests-4": {
+          "visible": false
+        },
+        "ts-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Tải & sự cố",
+      "title": "Kiểm thử tải và sự cố",
+      "chapter": "technique",
+      "body": "Đúng thôi chưa đủ. Một **test tải** gửi lưu lượng giống production tới một bản sao của hệ thống và tìm ra điểm độ trễ bắt đầu tăng vọt (xem *Độ trễ & thông lượng*) trước khi người dùng gặp phải.\n\n**Test sự cố** cố ý làm hỏng mọi thứ (dừng một bản sao cơ sở dữ liệu, làm chậm nhà cung cấp thanh toán) và kiểm tra xem timeout, thử lại và failover có hoạt động như thiết kế không (xem *Timeout & thử lại*).",
+      "callout": {
+        "kind": "tip",
+        "text": "Tầng cuối chạy ngay trên production: phát hành cho vài người dùng trước và theo dõi các con số. Đó là canary ở bài sau."
+      },
+      "changes": [
+        "+ Test tải: 5× lưu lượng bình thường trên staging",
+        "+ Test sự cố: nhà cung cấp thanh toán chậm tới 5 s"
+      ],
+      "metrics": {
+        "feedback": "vài giờ · hằng đêm",
+        "covers": "+ tải và sự cố",
+        "escaped": "hiếm"
+      },
+      "overrides": {
+        "svc": {
+          "visible": false
+        },
+        "db": {
+          "visible": false
+        },
+        "pay-2": {
+          "visible": false
+        },
+        "tests-4": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        },
+        "sp-5": {
+          "visible": false
+        },
+        "si": {
+          "visible": false
+        },
+        "ts-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• **Unit test** kiểm tra một phần với double thay cho phần còn lại, đủ nhanh để chạy hàng nghìn cái ở mọi thay đổi.\n• **Test tích hợp** dùng hàng xóm thật (một DB trong container) để bắt những gì double bỏ sót.\n• **Test hợp đồng** bắt các thay đổi API phá vỡ giữa các nhóm, ngay trong build của bên cung cấp.\n• Một vài **test đầu cuối** bao phủ những hành trình quan trọng: giữ kim tự tháp đúng chiều.\n• Sửa các test **chập chờn**, và kiểm thử **tải** và **sự cố**, không chỉ tính đúng đắn.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **CI/CD & triển khai**: chạy tất cả những điều này ở mọi thay đổi, và đưa lên production an toàn."
+      },
+      "changes": [],
+      "metrics": {
+        "feedback": "30 s → 15 phút",
+        "covers": "toàn hệ thống",
+        "escaped": "hiếm"
+      },
+      "overrides": {
+        "sp-5": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "svc": {
+          "emphasis": true
+        },
+        "db": {
+          "emphasis": true
+        },
+        "pay-2": {
+          "emphasis": true
+        },
+        "tests-4": {
+          "emphasis": true
+        },
+        "sd": {
+          "emphasis": true
+        },
+        "si": {
+          "emphasis": true
+        },
+        "ts-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

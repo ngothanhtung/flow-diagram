@@ -1,0 +1,2322 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 676,
+          "y": -374
+        },
+        "width": 396,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "ĐÒI HỎI\nđăng bài         chữ và một ảnh\nfeed trang chủ   bài của người tôi theo dõi\n→ feed mở trong dưới 200 ms\n# bài mới có thể mất vài giây",
+        "position": {
+          "x": 676,
+          "y": -374
+        },
+        "width": 372,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 693,
+          "y": -374
+        },
+        "width": 429,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "TÍNH NHẨM\n200 tr người × 10 lần mở   ≈ 23.000 feed/s\n50 tr bài mỗi ngày         ≈ 600 bài/s\n→ khoảng 40 lượt đọc feed cho mỗi bài được viết\n# người dùng điển hình theo dõi 200 tài khoản",
+        "position": {
+          "x": 693,
+          "y": -374
+        },
+        "width": 405,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 651,
+          "y": -374
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "CHI PHÍ CỦA PULL\n23.000 lượt tải feed / s\n× mỗi lượt 200 tác giả\n⚠ = 4,6 triệu lượt tra / s\n# và mỗi lượt tải chờ shard chậm nhất",
+        "position": {
+          "x": 651,
+          "y": -374
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 660,
+          "y": -374
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "PHÂN TRANG BẰNG CON TRỎ\nGET /feed?limit=20\n# → bài 9041 … 9017 · tiếp: before=9017\nGET /feed?before=9017&limit=20\n→ đứng yên khi có bài mới đến",
+        "position": {
+          "x": 660,
+          "y": -374
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "readers",
+        "type": "process",
+        "title": "người mở feed",
+        "position": {
+          "x": 0,
+          "y": -400
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api",
+        "type": "process",
+        "title": "API feed",
+        "description": "cần thiết kế",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-2",
+        "type": "process",
+        "title": "API feed",
+        "description": "trộn 200 dòng thời gian",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-3",
+        "type": "process",
+        "title": "API feed",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-4",
+        "type": "process",
+        "title": "API feed",
+        "description": "trộn: danh sách của tôi + 3 người nổi tiếng",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 180,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-5",
+        "type": "process",
+        "title": "API feed",
+        "description": "dựng lại khi mở · tối đa 500 cùng lúc",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k0",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 300,
+          "y": -250
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k0-2",
+        "type": "process",
+        "title": "CPU 97%",
+        "position": {
+          "x": 300,
+          "y": -250
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k1",
+        "type": "process",
+        "title": "bài viết, theo tác giả",
+        "position": {
+          "x": 300,
+          "y": -100
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k1-2",
+        "type": "process",
+        "title": "bài viết, theo tác giả",
+        "description": "CPU 97%",
+        "position": {
+          "x": 300,
+          "y": -100
+        },
+        "width": 212,
+        "height": 113,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 300,
+          "y": 50
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k2-2",
+        "type": "process",
+        "title": "CPU 97%",
+        "position": {
+          "x": 300,
+          "y": 50
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "author",
+        "type": "process",
+        "title": "Ana đăng bài",
+        "position": {
+          "x": -400,
+          "y": -300
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "author-2",
+        "type": "process",
+        "title": "ngôi sao pop · 50 tr người theo dõi",
+        "position": {
+          "x": -400,
+          "y": -300
+        },
+        "width": 248,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "feeds",
+        "type": "process",
+        "title": "Cache feed",
+        "description": "danh sách theo người dùng",
+        "position": {
+          "x": -300,
+          "y": -100
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "feeds-2",
+        "type": "process",
+        "title": "Cache feed",
+        "description": "danh sách theo người dùng · alice → [9041, 9038, 9017 …]",
+        "position": {
+          "x": -300,
+          "y": -100
+        },
+        "width": 192,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "feeds-3",
+        "type": "process",
+        "title": "Cache feed",
+        "description": "danh sách theo người dùng · danh sách không hoạt động hết hạn",
+        "position": {
+          "x": -300,
+          "y": -100
+        },
+        "width": 212,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "feeds-4",
+        "type": "process",
+        "title": "Cache feed",
+        "description": "danh sách theo người dùng · trống · đang làm ấm",
+        "position": {
+          "x": -300,
+          "y": -100
+        },
+        "width": 192,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "jobs",
+        "type": "process",
+        "title": "Hàng đợi",
+        "position": {
+          "x": 0,
+          "y": 225
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Inbox",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "jobs-2",
+        "type": "process",
+        "title": "Hàng đợi",
+        "description": "⚠ tồn đọng: 50 tr lượt giao",
+        "position": {
+          "x": 0,
+          "y": 225
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Inbox",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "jobs-3",
+        "type": "process",
+        "title": "Hàng đợi",
+        "description": "✓ bỏ qua người nổi tiếng",
+        "position": {
+          "x": 0,
+          "y": 225
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Inbox",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers",
+        "type": "process",
+        "title": "Worker fan-out",
+        "position": {
+          "x": -300,
+          "y": 225
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers-2",
+        "type": "process",
+        "title": "Worker fan-out",
+        "description": "CPU 100%",
+        "position": {
+          "x": -300,
+          "y": 225
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers-3",
+        "type": "process",
+        "title": "Worker fan-out",
+        "description": "chỉ người hoạt động trong 30 ngày",
+        "position": {
+          "x": -300,
+          "y": 225
+        },
+        "width": 220,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "graph",
+        "type": "process",
+        "title": "ai theo dõi ai",
+        "position": {
+          "x": -300,
+          "y": 475
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Network",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "us",
+        "from": "readers",
+        "to": "api",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "us-2",
+        "from": "readers",
+        "to": "api-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "us-3",
+        "from": "readers",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-4",
+        "from": "readers",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-5",
+        "from": "readers",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "k0l",
+        "from": "api-2",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k0l-2",
+        "from": "api-2",
+        "to": "k0-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k0l-3",
+        "from": "api-3",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "k0l-4",
+        "from": "api-4",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "k0l-5",
+        "from": "api-5",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": -250
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k1l",
+        "from": "api-2",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k1l-2",
+        "from": "api-2",
+        "to": "k1-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k1l-3",
+        "from": "api-3",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "k1l-4",
+        "from": "api-3",
+        "to": "k1",
+        "label": "hydrate: 20 bài, 1 lô",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.6,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "k1l-5",
+        "from": "api-4",
+        "to": "k1",
+        "label": "kéo dòng thời gian người nổi tiếng",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.6,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "k1l-6",
+        "from": "api-5",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k2l",
+        "from": "api-2",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k2l-2",
+        "from": "api-2",
+        "to": "k2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "k2l-3",
+        "from": "api-3",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "k2l-4",
+        "from": "api-4",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "k2l-5",
+        "from": "api-5",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 175,
+            "y": -100
+          },
+          {
+            "x": 175,
+            "y": 50
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "au",
+        "from": "author",
+        "to": "api-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -35,
+            "y": -300
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "au-2",
+        "from": "author-2",
+        "to": "api-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -35,
+            "y": -300
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "au-3",
+        "from": "author-2",
+        "to": "api-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -35,
+            "y": -300
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "au-4",
+        "from": "author",
+        "to": "api-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -35,
+            "y": -300
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "fc",
+        "from": "api-3",
+        "to": "feeds",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "fc-2",
+        "from": "api-3",
+        "to": "feeds-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "fc-3",
+        "from": "api-4",
+        "to": "feeds",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "fc-4",
+        "from": "api-3",
+        "to": "feeds-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "fc-5",
+        "from": "api-5",
+        "to": "feeds-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "q",
+        "from": "api-3",
+        "to": "jobs",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "q-2",
+        "from": "api-3",
+        "to": "jobs-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "q-3",
+        "from": "api-4",
+        "to": "jobs-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "q-4",
+        "from": "api-5",
+        "to": "jobs",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "qw",
+        "from": "jobs",
+        "to": "workers",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "qw-2",
+        "from": "jobs-2",
+        "to": "workers-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "qw-3",
+        "from": "jobs-3",
+        "to": "workers",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "qw-4",
+        "from": "jobs",
+        "to": "workers-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "wf",
+        "from": "workers",
+        "to": "feeds",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "wf-2",
+        "from": "workers",
+        "to": "feeds-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "wf-3",
+        "from": "workers-2",
+        "to": "feeds",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "wf-4",
+        "from": "workers-3",
+        "to": "feeds-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "wf-5",
+        "from": "workers",
+        "to": "feeds-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "wg",
+        "from": "workers",
+        "to": "graph",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wg-2",
+        "from": "workers-2",
+        "to": "graph",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wg-3",
+        "from": "workers-3",
+        "to": "graph",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Thiết kế news feed",
+    "summary": "Bài viết của mọi người bạn theo dõi, trong 200 ms, và câu hỏi khi nào làm việc.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "feedMs",
+        "label": "Thời gian tải feed"
+      },
+      {
+        "id": "readWork",
+        "label": "Lượt tra mỗi feed"
+      },
+      {
+        "id": "fanout",
+        "label": "Lần ghi feed mỗi bài"
+      },
+      {
+        "id": "postDelay",
+        "label": "Bài đến người theo dõi"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Ước lượng tải đọc và ghi của một feed",
+        "step": "s2"
+      },
+      {
+        "text": "Fan-out khi đọc hay fan-out khi ghi",
+        "step": "s5"
+      },
+      {
+        "text": "Vì sao người nổi tiếng phá vỡ push thuần, và cách sửa lai",
+        "step": "s8"
+      },
+      {
+        "text": "Lưu gì, và cho ai",
+        "step": "s9"
+      },
+      {
+        "text": "Con trỏ, và dựng lại dữ liệu dẫn xuất",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "api": {
+      "until": "s3"
+    },
+    "api-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "api-3": {
+      "from": "s5"
+    },
+    "api-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "api-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "k0": {
+      "from": "s3"
+    },
+    "k0-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k1": {
+      "from": "s3"
+    },
+    "k1-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k2": {
+      "from": "s3"
+    },
+    "k2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "author": {
+      "from": "s5"
+    },
+    "author-2": {
+      "from": "s7",
+      "until": "s9"
+    },
+    "feeds": {
+      "from": "s5"
+    },
+    "feeds-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "feeds-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "feeds-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "jobs": {
+      "from": "s5"
+    },
+    "jobs-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "jobs-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "workers": {
+      "from": "s5"
+    },
+    "workers-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "workers-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "graph": {
+      "from": "s5"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "us": {
+      "until": "s3"
+    },
+    "us-2": {
+      "from": "s3",
+      "until": "s5"
+    },
+    "us-3": {
+      "from": "s5"
+    },
+    "us-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "us-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k0l": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "k0l-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k0l-3": {
+      "from": "s5"
+    },
+    "k0l-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "k0l-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k1l": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "k1l-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k1l-3": {
+      "from": "s5"
+    },
+    "k1l-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "k1l-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "k1l-6": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k2l": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "k2l-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "k2l-3": {
+      "from": "s5"
+    },
+    "k2l-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "k2l-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "au": {
+      "from": "s5"
+    },
+    "au-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "au-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "au-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "fc": {
+      "from": "s5"
+    },
+    "fc-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "fc-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "fc-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "fc-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "q": {
+      "from": "s5"
+    },
+    "q-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "qw": {
+      "from": "s5"
+    },
+    "qw-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "qw-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "wf": {
+      "from": "s5"
+    },
+    "wf-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wf-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wf-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "wf-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "wg": {
+      "from": "s5"
+    },
+    "wg-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "wg-3": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Yêu cầu",
+      "title": "Yêu cầu: một feed trang chủ",
+      "chapter": "setup",
+      "body": "Thiết kế thứ hai. Một ứng dụng mạng xã hội: mọi người theo dõi nhau, và màn hình chính hiển thị các bài mới của tất cả những người bạn theo dõi, mới nhất trước.\n\nĐiều quan trọng: mở feed phải có cảm giác tức thì, dưới 200 ms. Một bài mới phải tới người theo dõi trong vài giây, nhưng không nhất thiết cùng lúc với mọi người. **Nhất quán cuối cùng là đủ**: chẳng ai thiệt gì nếu một bài hiện muộn năm giây.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hãy để ý sự tự do trong yêu cầu cuối cùng ấy. Quyết định điều gì *không* cần tức thì hay chính xác là thứ làm cho các hệ thống lớn khả thi."
+      },
+      "changes": [],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Con số",
+      "title": "Gắn con số vào",
+      "chapter": "setup",
+      "body": "**200 triệu** người dùng mỗi ngày và mỗi người mở feed khoảng mười lần: 2 tỷ lượt tải feed mỗi ngày, tức trung bình 23.000 lượt mỗi giây. Họ viết 50 triệu bài mỗi ngày, khoảng 600 bài mỗi giây.\n\nVậy feed được đọc nhiều hơn số bài được viết khoảng **40 lần**. Và một người dùng điển hình theo dõi 200 tài khoản. Hãy nhớ con số đó.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hai con số sẽ chi phối mọi thứ phía sau: đọc nhiều hơn ghi 40 lần, và mỗi feed lấy từ 200 nguồn."
+      },
+      "changes": [
+        "+ 23.000 lượt tải feed/s · 600 bài/s",
+        "+ Người dùng điển hình theo dõi 200 tài khoản"
+      ],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Pull",
+      "title": "Bản nháp đầu: dựng feed khi được yêu cầu",
+      "chapter": "solution",
+      "body": "Lưu bài viết trong một bảng có chỉ mục `(author_id, created_at)`, shard theo tác giả. Để dựng feed của Alice: tìm 200 tài khoản cô theo dõi, lấy các bài mới nhất của từng người, trộn theo thời gian, trả về 20 bài đầu.\n\nĐây là mô hình [[pull]], hay fan-out khi đọc. Đăng bài rẻ hết mức (một lệnh insert) và bài mới hiện cho mọi người ngay lập tức.",
+      "callout": {
+        "kind": "insight",
+        "text": "Không có gì được tính trước, nên không có gì bị cũ và không có gì cần sửa. Với một ứng dụng nhỏ, đây là thiết kế đúng."
+      },
+      "changes": [
+        "+ Kho bài viết, shard theo tác giả",
+        "+ Feed = truy vấn 200 tác giả, trộn, giữ 20 bài đầu"
+      ],
+      "metrics": {
+        "feedMs": "600 ms",
+        "readWork": "200",
+        "fanout": "0",
+        "postDelay": "tức thì"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Sai phía",
+      "title": "Công việc rơi vào sai phía",
+      "chapter": "problem",
+      "body": "Mỗi lượt tải feed tỏa ra 200 tác giả rải trên nhiều shard, và phải chờ câu trả lời chậm nhất: cái đuôi fan-out trong *Độ trễ & thông lượng*.\n\nTệ hơn là tổng số: 23.000 lượt tải feed mỗi giây × 200 lượt tra = **4,6 triệu** lượt tra mỗi giây, phần lớn là tính lại một kết quả y hệt cái mà chính người đó đã thấy một phút trước. Phần việc đắt nằm trên đường chạy nhiều hơn 40 lần.",
+      "callout": {
+        "kind": "warning",
+        "text": "Khi đọc nhiều hơn ghi rất nhiều, hãy dời công việc sang lúc ghi."
+      },
+      "changes": [
+        "~ 23.000 feed/s × 200 lượt tra = 4,6 tr lượt tra/s",
+        "- Shard bài viết quá tải",
+        "~ Tải feed 600 ms → 1,4 s"
+      ],
+      "metrics": {
+        "feedMs": "1,4 s",
+        "readWork": "200",
+        "fanout": "0",
+        "postDelay": "tức thì"
+      },
+      "overrides": {
+        "k0": {
+          "visible": false
+        },
+        "k1": {
+          "visible": false
+        },
+        "k2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Push",
+      "title": "Đảo ngược: giao bài khi được viết",
+      "chapter": "solution",
+      "body": "Cho mỗi người dùng một feed dựng sẵn: một danh sách trong cache, mới nhất trước. Khi Ana đăng bài, một **worker fan-out** tra danh sách người theo dõi cô và thêm bài vào danh sách của từng người. Đây là mô hình [[push]], hay fan-out khi ghi.\n\nMở feed giờ chỉ là một lần đọc một danh sách. Fan-out chạy sau một hàng đợi (*Hàng đợi tin nhắn*), nên bài của Ana trả về ngay và người theo dõi thấy nó sau một hai giây.",
+      "callout": {
+        "kind": "tip",
+        "text": "Phép tính ổn: 600 bài/s × 200 người theo dõi ≈ 120.000 lượt ghi nhỏ vào cache mỗi giây, rẻ hơn nhiều so với 4,6 triệu lượt tra."
+      },
+      "changes": [
+        "+ Cache feed: mỗi người dùng một danh sách",
+        "+ Hàng đợi và worker fan-out",
+        "+ Tra người theo dõi",
+        "~ Tải feed: 200 lượt tra → 1"
+      ],
+      "metrics": {
+        "feedMs": "40 ms",
+        "readWork": "1",
+        "fanout": "trung bình 200",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "k0": {
+          "emphasis": true
+        },
+        "k1": {
+          "emphasis": true
+        },
+        "k2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Chỉ id",
+      "title": "Lưu id, không lưu bài",
+      "chapter": "technique",
+      "body": "Mỗi danh sách feed chỉ giữ **id bài viết**, vài byte mỗi cái, và chỉ khoảng 800 cái mới nhất. Khi feed được đọc, API lấy chính các bài viết trong một lô từ kho bài viết (“hydrate”).\n\nGiữ một bản duy nhất của mỗi bài nghĩa là sửa hay xóa chỉ xảy ra ở một chỗ. Bài đã xóa đơn giản bị bỏ qua khi hydrate; không ai phải lùng nó qua hàng triệu danh sách.",
+      "callout": {
+        "kind": "tip",
+        "text": "200 triệu danh sách × 800 id × 8 byte ≈ 1,3 TB bộ nhớ: một cụm cache lớn, nhưng bình thường. Lưu nguyên bài viết sẽ tốn gấp trăm lần."
+      },
+      "changes": [
+        "~ Danh sách feed chỉ giữ id, tối đa 800",
+        "+ Bài viết lấy theo một lô khi đọc",
+        "~ Sửa và xóa ở một chỗ"
+      ],
+      "metrics": {
+        "feedMs": "40 ms",
+        "readWork": "1 danh sách + 1 lô",
+        "fanout": "trung bình 200",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "feeds": {
+          "visible": false
+        },
+        "k1l-3": {
+          "visible": false
+        },
+        "fc": {
+          "visible": false
+        },
+        "wf": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Người nổi tiếng",
+      "title": "Tình huống: năm mươi triệu người theo dõi",
+      "chapter": "problem",
+      "body": "Một ngôi sao nhạc pop có **50 triệu** người theo dõi đăng bài. Một bài đó thành 50 triệu lượt ghi cache. Ngay cả với 100.000 lượt ghi mỗi giây, việc giao mất hơn tám phút, và hàng đợi tắc đến mức bài của mọi người khác phải chờ phía sau.\n\nĐó là bài toán khóa nóng trong *Sharding*: một khóa nặng bất thường đè bẹp một thiết kế được chỉnh theo mức trung bình.",
+      "callout": {
+        "kind": "warning",
+        "text": "Số trung bình che giấu điều này. Tài khoản điển hình có 200 người theo dõi; vài nghìn tài khoản có hàng triệu, và họ đăng bài vào những lúc đông nhất."
+      },
+      "changes": [
+        "+ Người nổi tiếng đăng cho 50 tr người theo dõi",
+        "- 50 tr lượt ghi feed cho một bài",
+        "- Hàng đợi tắc làm chậm mọi người"
+      ],
+      "metrics": {
+        "feedMs": "40 ms",
+        "readWork": "1 danh sách + 1 lô",
+        "fanout": "50.000.000",
+        "postDelay": "8+ phút"
+      },
+      "overrides": {
+        "author": {
+          "visible": false
+        },
+        "feeds": {
+          "emphasis": true
+        },
+        "jobs": {
+          "visible": false
+        },
+        "workers": {
+          "visible": false
+        },
+        "k1l-3": {
+          "emphasis": true
+        },
+        "au": {
+          "visible": false
+        },
+        "fc": {
+          "emphasis": true
+        },
+        "q": {
+          "visible": false
+        },
+        "qw": {
+          "visible": false
+        },
+        "wf": {
+          "visible": false
+        },
+        "wg": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Lai",
+      "title": "Lai: push cho số đông, pull cho người nổi tiếng",
+      "chapter": "solution",
+      "body": "Đối xử khác nhau với hai loại tài khoản. Người dùng thường vẫn dùng fan-out khi ghi. Tài khoản vượt một ngưỡng, chẳng hạn 100.000 người theo dõi, **không** được fan-out chút nào.\n\nKhi Alice mở feed, API đọc danh sách dựng sẵn của cô *và* kéo các bài mới nhất của vài người nổi tiếng cô theo dõi (mỗi người là một dòng thời gian trong cache), rồi trộn hai thứ. Vài lượt tra thêm mỗi lần đọc, thay vì 50 triệu lượt ghi mỗi bài.",
+      "callout": {
+        "kind": "insight",
+        "text": "Không chiến lược thuần nào sống sót trước dữ liệu thật. Các thiết kế lớn thường kết thúc ở dạng lai, chia đúng theo chiều bị lệch."
+      },
+      "changes": [
+        "~ Tài khoản trên 100 nghìn người theo dõi: không fan-out",
+        "+ Bài của họ được trộn vào khi đọc",
+        "~ Độ trễ bài trở lại ≈ 2 s"
+      ],
+      "metrics": {
+        "feedMs": "60 ms",
+        "readWork": "1 danh sách + vài cái",
+        "fanout": "200 · người nổi tiếng 0",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "wg": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "api-3": {
+          "visible": false
+        },
+        "author": {
+          "visible": false
+        },
+        "jobs": {
+          "visible": false
+        },
+        "workers": {
+          "emphasis": true
+        },
+        "us-3": {
+          "visible": false
+        },
+        "k0l-3": {
+          "visible": false
+        },
+        "k1l-3": {
+          "visible": false
+        },
+        "k2l-3": {
+          "visible": false
+        },
+        "au": {
+          "visible": false
+        },
+        "fc": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "qw": {
+          "visible": false
+        },
+        "wf": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Không hoạt động",
+      "title": "Tình huống: feed không ai đọc",
+      "chapter": "tradeoff",
+      "body": "Trong số những người theo dõi Ana, có lẽ một phần ba mở ứng dụng tháng này. Fan-out cho phần còn lại lấp đầy bộ nhớ bằng những danh sách không ai xem.\n\nVậy hãy bỏ qua họ: chỉ fan-out cho người theo dõi hoạt động trong 30 ngày qua, và để danh sách của những người khác hết hạn. Khi một người dùng vắng lâu quay lại, dựng feed của họ một lần bằng mô hình pull, cache nó, rồi tiếp tục push.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đường pull không bao giờ biến mất. Đó là cách feed được tạo, sửa và dựng lại; push là một tối ưu đặt lên trên nó."
+      },
+      "changes": [
+        "~ Chỉ fan-out cho người theo dõi mới hoạt động",
+        "~ Danh sách feed không hoạt động hết hạn",
+        "+ Người dùng quay lại: dựng lại bằng pull, một lần"
+      ],
+      "metrics": {
+        "feedMs": "60 ms",
+        "readWork": "1 danh sách + vài cái",
+        "fanout": "≈ 70 · chỉ người hoạt động",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "api-3": {
+          "emphasis": true
+        },
+        "author": {
+          "emphasis": true
+        },
+        "feeds": {
+          "visible": false
+        },
+        "jobs": {
+          "emphasis": true
+        },
+        "workers": {
+          "visible": false
+        },
+        "us-3": {
+          "emphasis": true
+        },
+        "k0l-3": {
+          "emphasis": true
+        },
+        "k1l-3": {
+          "emphasis": true
+        },
+        "k2l-3": {
+          "emphasis": true
+        },
+        "au": {
+          "emphasis": true
+        },
+        "fc": {
+          "visible": false
+        },
+        "q": {
+          "emphasis": true
+        },
+        "qw": {
+          "visible": false
+        },
+        "wf": {
+          "visible": false
+        },
+        "wg": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Cuộn",
+      "title": "Cuộn: con trỏ, không phải số trang",
+      "chapter": "technique",
+      "body": "Alice cuộn xuống để xem thêm. “Trang 2” nghĩa là “bỏ 20, lấy 20”, nhưng từ lúc xem trang 1 đã có ba bài mới ở trên cùng, nên cô sẽ thấy ba bài hai lần.\n\nThay vào đó hãy dùng [[con trỏ]] (xem *REST, RPC & GraphQL*): “cho tôi 20 bài cũ hơn bài 9017”. Vị trí gắn với một bài, không phải một số đếm, nên bài mới đến không làm nó xê dịch.",
+      "callout": {
+        "kind": "tip",
+        "text": "Id có thứ tự theo thời gian (*ID duy nhất ở quy mô lớn*) làm việc này dễ dàng: “cũ hơn” đơn giản là “id nhỏ hơn”."
+      },
+      "changes": [
+        "+ GET /feed?before=9017&limit=20"
+      ],
+      "metrics": {
+        "feedMs": "60 ms",
+        "readWork": "1 danh sách + vài cái",
+        "fanout": "≈ 70 · chỉ người hoạt động",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "feeds": {
+          "emphasis": true
+        },
+        "workers": {
+          "emphasis": true
+        },
+        "fc": {
+          "emphasis": true
+        },
+        "qw": {
+          "emphasis": true
+        },
+        "wf": {
+          "emphasis": true
+        },
+        "wg": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Mất cache",
+      "title": "Tình huống: cache feed bị xóa sạch",
+      "chapter": "insight",
+      "body": "Một lần deploy hỏng xóa sạch cache feed. Mọi feed biến mất, và không có gì giá trị bị mất. Bài viết và đồ thị theo dõi là **nguồn sự thật**; danh sách feed là **dữ liệu dẫn xuất** có thể dựng lại từ chúng.\n\nMối nguy là một cuộc giẫm đạp: hàng triệu người dùng cùng dựng lại bằng pull một lúc. Vậy hãy dựng lại lười, chỉ khi người dùng thực sự mở ứng dụng; giới hạn số lần dựng lại chạy cùng lúc; và phục vụ một feed mỏng hơn cho tới khi cache ấm trở lại.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hãy biết dữ liệu nào là sự thật và dữ liệu nào là sự tiện lợi. Bạn chỉ có thể thoải mái với loại thứ hai vì bạn nghiêm ngặt với loại thứ nhất."
+      },
+      "changes": [
+        "- Cache feed bị xóa",
+        "~ Feed dựng lại theo yêu cầu từ bài viết + quan hệ theo dõi",
+        "~ Giới hạn việc dựng lại để bảo vệ kho bài viết"
+      ],
+      "metrics": {
+        "feedMs": "350 ms",
+        "readWork": "dựng lại: 200",
+        "fanout": "≈ 70 · chỉ người hoạt động",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "api-3": {
+          "visible": false
+        },
+        "feeds": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "k0l-3": {
+          "visible": false
+        },
+        "k1l-3": {
+          "visible": false
+        },
+        "k2l-3": {
+          "visible": false
+        },
+        "au": {
+          "visible": false
+        },
+        "fc": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "wf": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Tóm tắt",
+      "title": "Bản thiết kế hoàn chỉnh",
+      "chapter": "recap",
+      "body": "• Dựng feed — Quyết định: Khi ghi (push); Vì: 40 lượt đọc mỗi bài\n• Người nổi tiếng — Quyết định: Pull, trộn khi đọc; Vì: 50 tr lượt ghi mỗi bài\n• Mục feed — Quyết định: Id bài viết, có giới hạn; Vì: Mỗi bài một bản\n• Người không hoạt động — Quyết định: Không fan-out; dựng lại; Vì: Feed không đọc tốn bộ nhớ\n• Cuộn — Quyết định: Con trỏ; Vì: Bài mới làm xê dịch trang\n\nMột feed có xếp hạng thêm một bước nữa (chấm điểm các ứng viên trước khi trả về), nhưng hệ thống ống nước bên dưới vẫn như cũ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Thiết kế hệ thống chat**, nơi mọi tin nhắn đều phải tới, đúng thứ tự, và hiện đúng một lần."
+      },
+      "changes": [],
+      "metrics": {
+        "feedMs": "60 ms",
+        "readWork": "1 danh sách + vài cái",
+        "fanout": "≈ 70 · chỉ người hoạt động",
+        "postDelay": "≈ 2 s"
+      },
+      "overrides": {
+        "api-3": {
+          "emphasis": true
+        },
+        "feeds": {
+          "emphasis": true
+        },
+        "us-3": {
+          "emphasis": true
+        },
+        "k0l-3": {
+          "emphasis": true
+        },
+        "k1l-3": {
+          "emphasis": true
+        },
+        "k2l-3": {
+          "emphasis": true
+        },
+        "au": {
+          "emphasis": true
+        },
+        "fc": {
+          "emphasis": true
+        },
+        "q": {
+          "emphasis": true
+        },
+        "wf": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

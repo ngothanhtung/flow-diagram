@@ -1,0 +1,2080 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 606,
+          "y": -372
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "SALTED, SLOW HASHING\nhunter2 + salt 9f2c → $argon2id$…7Qe\nsame password, other salt → other hash\n→ ~100 ms per guess, on purpose\n⚠ MD5 / SHA-256: billions per second",
+        "position": {
+          "x": 606,
+          "y": -372
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 610,
+          "y": -372
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "A SAFE RESET\ntoken: 32 random bytes, single use\nexpires after 15 minutes\nsame reply whether the email exists\n→ after the reset: revoke every session",
+        "position": {
+          "x": 610,
+          "y": -372
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice",
+        "description": "cookie: HttpOnly · Secure",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice",
+        "description": "reset link · expires 15 min",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice",
+        "description": "⚠ typed password + code",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice",
+        "description": "passkey · shop.example only",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-6",
+        "type": "process",
+        "title": "Alice",
+        "description": "access 15 min · refresh revocable",
+        "position": {
+          "x": 0,
+          "y": -380
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login",
+        "type": "process",
+        "title": "Login Service",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-2",
+        "type": "process",
+        "title": "Login Service",
+        "description": "hash attempt, compare",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-3",
+        "type": "process",
+        "title": "Login Service",
+        "description": "same reply for every email",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-4",
+        "type": "process",
+        "title": "Login Service",
+        "description": "5,000 logins / s",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-5",
+        "type": "process",
+        "title": "Login Service",
+        "description": "5 tries / account / min",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-6",
+        "type": "process",
+        "title": "Login Service",
+        "description": "✓ password ✓ + phone ✓",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-7",
+        "type": "process",
+        "title": "Login Service",
+        "description": "looks like a normal login",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-8",
+        "type": "process",
+        "title": "Login Service",
+        "description": "✓ checks signature + domain",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-9",
+        "type": "process",
+        "title": "Login Service",
+        "description": "✓ verifies ID token signature",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "login-10",
+        "type": "process",
+        "title": "Login Service",
+        "description": "token expired → 401",
+        "position": {
+          "x": 0,
+          "y": -140
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:LockKeyhole",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "users table",
+        "description": "⚠ alice@… : hunter2",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 200,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "users table",
+        "description": "alice@… : $argon2id$…7Qe",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 200,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "users table",
+        "description": "alice@… : public key only",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 200,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-4",
+        "type": "process",
+        "title": "users table",
+        "description": "alice@… : google-id 1042 · no password",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 204,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-5",
+        "type": "process",
+        "title": "users table",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief",
+        "type": "process",
+        "title": "attacker",
+        "description": "reads every password",
+        "position": {
+          "x": 260,
+          "y": 100
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "thief-2",
+        "type": "process",
+        "title": "attacker",
+        "description": "gets hashes · years to crack",
+        "position": {
+          "x": 260,
+          "y": 100
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mail",
+        "type": "process",
+        "title": "Email",
+        "position": {
+          "x": -240,
+          "y": -140
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Mail",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot",
+        "type": "process",
+        "title": "bot",
+        "description": "1B leaked passwords",
+        "position": {
+          "x": 260,
+          "y": -380
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-2",
+        "type": "process",
+        "title": "bot",
+        "description": "slowed to a crawl",
+        "position": {
+          "x": 260,
+          "y": -380
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-3",
+        "type": "process",
+        "title": "bot",
+        "description": "no phone → blocked",
+        "position": {
+          "x": 260,
+          "y": -380
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bot-4",
+        "type": "process",
+        "title": "bot",
+        "description": "token from leaked logs",
+        "position": {
+          "x": 260,
+          "y": -380
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "phone",
+        "type": "process",
+        "title": "Alice’s phone",
+        "position": {
+          "x": -240,
+          "y": -380
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fake",
+        "type": "process",
+        "title": "Fake Login",
+        "description": "shop-example.co · ⚠ relays in real time",
+        "position": {
+          "x": 260,
+          "y": -140
+        },
+        "width": 192,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fake-2",
+        "type": "process",
+        "title": "Fake Login",
+        "description": "shop-example.co · no passkey for this domain",
+        "position": {
+          "x": 260,
+          "y": -140
+        },
+        "width": 192,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "idp",
+        "type": "process",
+        "title": "Identity Provider",
+        "description": "e.g. Google",
+        "position": {
+          "x": -240,
+          "y": -140
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:IdCard",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "al",
+        "from": "alice",
+        "to": "login",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-2",
+        "from": "alice",
+        "to": "login-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-3",
+        "from": "alice-2",
+        "to": "login",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-4",
+        "from": "alice-3",
+        "to": "login-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-5",
+        "from": "alice",
+        "to": "login-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-6",
+        "from": "alice",
+        "to": "login-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-7",
+        "from": "alice",
+        "to": "login-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-8",
+        "from": "alice-5",
+        "to": "login-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-9",
+        "from": "alice",
+        "to": "login-9",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "al-10",
+        "from": "alice-6",
+        "to": "login-10",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu",
+        "from": "login",
+        "to": "users",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-2",
+        "from": "login-2",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-3",
+        "from": "login",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-4",
+        "from": "login-3",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-5",
+        "from": "login-4",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-6",
+        "from": "login-5",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-7",
+        "from": "login-6",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-8",
+        "from": "login-7",
+        "to": "users-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "lu-9",
+        "from": "login-8",
+        "to": "users-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-10",
+        "from": "login-9",
+        "to": "users-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-11",
+        "from": "login-10",
+        "to": "users-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lu-12",
+        "from": "login",
+        "to": "users-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "st",
+        "from": "users",
+        "to": "thief",
+        "label": "stolen backup",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "st-2",
+        "from": "users-2",
+        "to": "thief-2",
+        "label": "stolen backup",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "lm",
+        "from": "login-3",
+        "to": "mail",
+        "label": "one-time token",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ma",
+        "from": "mail",
+        "to": "alice-3",
+        "label": "reset link",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.65,
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "bl",
+        "from": "bot",
+        "to": "login-4",
+        "label": "try every pair",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "bl-2",
+        "from": "bot-2",
+        "to": "login-5",
+        "label": "429 · challenge",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "bl-3",
+        "from": "bot-3",
+        "to": "login-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "bl-4",
+        "from": "bot-4",
+        "to": "login-10",
+        "label": "expired token",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "lp",
+        "from": "login-6",
+        "to": "phone",
+        "label": "approve sign-in?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "left",
+        "toSide": "bottom",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lp-2",
+        "from": "login-7",
+        "to": "phone",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "bottom",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "lp-3",
+        "from": "login-8",
+        "to": "phone",
+        "label": "sign challenge",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "left",
+        "toSide": "bottom",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "af",
+        "from": "alice-4",
+        "to": "fake",
+        "label": "shop-example.co",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.35,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "af-2",
+        "from": "alice-5",
+        "to": "fake-2",
+        "label": "shop-example.co",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.35,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "fl",
+        "from": "fake",
+        "to": "login-7",
+        "label": "password + code",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ai",
+        "from": "alice",
+        "to": "idp",
+        "label": "sign in at provider",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.72,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ai-2",
+        "from": "alice-6",
+        "to": "idp",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "ai-3",
+        "from": "alice",
+        "to": "idp",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "il",
+        "from": "idp",
+        "to": "login-9",
+        "label": "signed ID token",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "il-2",
+        "from": "idp",
+        "to": "login-10",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "il-3",
+        "from": "idp",
+        "to": "login",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Authentication",
+    "summary": "Proving who someone is — without becoming the reason their password leaks.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "leak",
+        "label": "If the user table leaks"
+      },
+      {
+        "id": "stuffing",
+        "label": "Stolen-password logins"
+      },
+      {
+        "id": "mfa",
+        "label": "Second factor"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Store passwords as slow, salted hashes",
+        "step": "s2"
+      },
+      {
+        "text": "Sessions and a safe password reset",
+        "step": "s4"
+      },
+      {
+        "text": "Credential stuffing and second factors",
+        "step": "s7"
+      },
+      {
+        "text": "Phishing and passkeys",
+        "step": "s9"
+      },
+      {
+        "text": "Identity providers and short-lived tokens",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "alice-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "alice-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "alice-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "alice-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "alice-6": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "login-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "login-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "login-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "login-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "login-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "login-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "login-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "login-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "login-10": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "users": {
+      "until": "s2"
+    },
+    "users-2": {
+      "from": "s2",
+      "until": "s9"
+    },
+    "users-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "users-4": {
+      "from": "s10",
+      "until": "s12"
+    },
+    "users-5": {
+      "from": "s12"
+    },
+    "thief": {
+      "until": "s2"
+    },
+    "thief-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "mail": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bot": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bot-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bot-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bot-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "phone": {
+      "from": "s7",
+      "until": "s10"
+    },
+    "fake": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "fake-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "idp": {
+      "from": "s10"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "al-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "al-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "al-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "al-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "al-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "al-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "al-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "al-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "al-10": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lu": {
+      "until": "s2"
+    },
+    "lu-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lu-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lu-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lu-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "lu-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "lu-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "lu-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lu-9": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "lu-10": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "lu-11": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lu-12": {
+      "from": "s12"
+    },
+    "st": {
+      "until": "s2"
+    },
+    "st-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lm": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ma": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bl": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bl-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bl-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bl-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "lp": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "lp-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lp-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "af": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "af-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "fl": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ai": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ai-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ai-3": {
+      "from": "s12"
+    },
+    "il": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "il-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "il-3": {
+      "from": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Plain text",
+      "title": "A table full of passwords",
+      "chapter": "problem",
+      "body": "Alice signs up and the login service stores her password exactly as she typed it. Logging in is a simple comparison.\n\nThen a database backup leaks — a misconfigured bucket, a stolen laptop. Every password is readable instantly, and because people reuse passwords, the attacker can now try them on email, banking and everything else.",
+      "callout": {
+        "kind": "warning",
+        "text": "Assume your database will leak one day. The question is what an attacker can do with it."
+      },
+      "changes": [],
+      "metrics": {
+        "leak": "all passwords",
+        "mfa": "no"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Hashing",
+      "title": "Store a slow, salted hash",
+      "chapter": "solution",
+      "body": "Never store the password itself. Store a [[hash]]: a one-way fingerprint. At login, hash what Alice typed and compare fingerprints.\n\nUse a hash built for passwords — **argon2id**, **bcrypt** or **scrypt**: a random **salt** per user makes identical passwords look different, and deliberate slowness (~100 ms) turns billions of guesses into years.",
+      "callout": {
+        "kind": "warning",
+        "text": "Fast hashes like MD5 or SHA-256 are the wrong tool: a graphics card tries billions per second."
+      },
+      "changes": [
+        "~ Passwords → argon2id hashes, salted per user"
+      ],
+      "metrics": {
+        "leak": "hashes only",
+        "mfa": "no"
+      },
+      "overrides": {
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Session",
+      "title": "After login: a session",
+      "chapter": "technique",
+      "body": "Nobody wants to type a password on every click. After a successful login the service creates a **session** and gives the browser a random session id in a cookie; later requests present the cookie.\n\nMark it `HttpOnly` (scripts can’t read it), `Secure` (HTTPS only) and `SameSite` (not sent from other sites). Or issue a short-lived signed token — see the Stateless Services lesson.",
+      "callout": {
+        "kind": "tip",
+        "text": "Treat session ids like passwords: long, random, never in URLs or logs, and invalidated at logout."
+      },
+      "changes": [
+        "+ Session cookie after login"
+      ],
+      "metrics": {
+        "leak": "hashes only",
+        "mfa": "no"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "emphasis": true
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Reset",
+      "title": "Case: the forgotten-password flow",
+      "chapter": "technique",
+      "body": "Password reset is a second way into every account — and often the weakest. Typical bugs: reset tokens that are guessable or never expire, and a form that says “no account with that email”, telling attackers exactly which emails are registered.\n\nA safe flow: a long random token, single use, valid for 15 minutes; the same reply whether or not the account exists; and every existing session signed out after the change.",
+      "callout": {
+        "kind": "warning",
+        "text": "Anything that can change a password — reset, email change, support tools — needs the same care as the login itself."
+      },
+      "changes": [
+        "+ Reset email with a single-use token",
+        "~ Token expires after 15 min",
+        "~ Same reply for unknown emails"
+      ],
+      "metrics": {
+        "leak": "hashes only",
+        "mfa": "no"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Stuffing",
+      "title": "Credential stuffing",
+      "chapter": "problem",
+      "body": "A bot has a list of a billion email + password pairs leaked from *other* sites. It tries them all against your login form, thousands per second.\n\nYour hashing is perfect — and still about 0.5% of attempts succeed, because those people reused a password. That’s thousands of accounts taken over.",
+      "callout": {
+        "kind": "warning",
+        "text": "Credential stuffing is the most common account-takeover attack. It needs no flaw in your code at all."
+      },
+      "changes": [
+        "+ Bot replaying leaked passwords",
+        "- ~0.5% of attempts succeed"
+      ],
+      "metrics": {
+        "leak": "hashes only",
+        "stuffing": "0.5% succeed",
+        "mfa": "no"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Slow down",
+      "title": "Make guessing expensive",
+      "chapter": "solution",
+      "body": "Defend the form itself: **rate-limit** attempts per account and per IP address, add a challenge when traffic looks automated, and reject passwords that appear in known breach lists at signup.\n\nFlag risky logins — a new device, a new country — and ask for extra proof.",
+      "callout": {
+        "kind": "tip",
+        "text": "Services such as Have I Been Pwned let you check a password against breaches without ever sending the password."
+      },
+      "changes": [
+        "+ Rate limits per account and IP",
+        "+ Breached passwords rejected",
+        "~ Successful stuffing 0.5% → 0.05%"
+      ],
+      "metrics": {
+        "leak": "hashes only",
+        "stuffing": "0.05% succeed",
+        "mfa": "no"
+      },
+      "overrides": {
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "2nd factor",
+      "title": "A second factor",
+      "chapter": "solution",
+      "body": "[[Multi-factor authentication]] asks for something you *have* as well as something you know: a code from an authenticator app, a push approval on your phone, or a hardware key.\n\nA stolen password alone no longer opens the account. **Passkeys** go further: a key pair stored on the device, nothing reusable to steal or phish.",
+      "callout": {
+        "kind": "tip",
+        "text": "SMS codes are better than nothing but can be intercepted (SIM swapping). Prefer app codes, push, or passkeys."
+      },
+      "changes": [
+        "+ Approval on Alice’s phone",
+        "~ Stolen passwords alone stop working"
+      ],
+      "metrics": {
+        "leak": "hashes only",
+        "stuffing": "0% succeed",
+        "mfa": "yes"
+      },
+      "overrides": {
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Phishing",
+      "title": "Case: a perfect fake login page",
+      "chapter": "problem",
+      "body": "An email warns of an “unusual sign-in” and links to `shop-example.co` — a pixel-perfect copy of your login page. Alice types her password *and* the one-time code from her app.\n\nThe fake site relays both to the real one within seconds and walks away with her session. Codes and push approvals stop stolen passwords, but not a phishing site that forwards them in real time.",
+      "callout": {
+        "kind": "warning",
+        "text": "Anything a person can read and type, a fake page can ask for and pass on. Training helps; it isn’t enough on its own."
+      },
+      "changes": [
+        "+ Fake login page relaying in real time",
+        "- Password and one-time code both captured"
+      ],
+      "metrics": {
+        "leak": "hashes only",
+        "stuffing": "0% succeed",
+        "mfa": "phishable"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Passkeys",
+      "title": "Passkeys: nothing to type, nothing to steal",
+      "chapter": "solution",
+      "body": "A [[passkey]] (WebAuthn) replaces the password with a key pair kept on Alice’s phone or laptop. To sign in, the device signs a challenge from the site — and the signature is tied to the real domain, `shop.example`.\n\nOn the fake site her device simply has no passkey to offer. There’s nothing to type, nothing to relay, and the server only stores public keys, which are useless to a thief.",
+      "callout": {
+        "kind": "tip",
+        "text": "Passkeys sync across a person’s devices (Apple, Google, password managers), so losing a phone doesn’t lock them out."
+      },
+      "changes": [
+        "~ Password + code → passkey",
+        "- Fake site gets nothing usable",
+        "~ Server stores public keys only"
+      ],
+      "metrics": {
+        "leak": "nothing usable",
+        "stuffing": "0% succeed",
+        "mfa": "passkey"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Use a provider",
+      "title": "Or let an identity provider do it",
+      "chapter": "technique",
+      "body": "“Sign in with Google” uses [[OpenID Connect]] (built on OAuth 2.0). Your app sends Alice to the **identity provider**; she proves who she is there, and the provider sends back a signed **ID token** saying “this is Alice”.\n\nYour service verifies the signature and never sees, stores or leaks a password. Companies use the same idea for single sign-on (Okta, Entra ID).",
+      "callout": {
+        "kind": "insight",
+        "text": "Authentication is hard to get right. Delegating it to a specialist is often the most secure choice."
+      },
+      "changes": [
+        "+ Identity provider",
+        "- Passwords no longer stored"
+      ],
+      "metrics": {
+        "leak": "nothing usable",
+        "stuffing": "0% succeed",
+        "mfa": "yes"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Tokens",
+      "title": "Case: a stolen token",
+      "chapter": "problem",
+      "body": "A bug logs request headers, and an attacker finds Alice’s token in the logs. A token is as good as a password while it’s valid — if it never expires, the attacker is Alice forever.\n\nSo use short-lived **access tokens** (minutes) plus a **refresh token** that is stored carefully and can be **revoked**. Logging out, or “log out everywhere”, revokes it.",
+      "callout": {
+        "kind": "tip",
+        "text": "Short expiry limits the damage of any leak. Revocation lets you end it immediately."
+      },
+      "changes": [
+        "+ Access tokens expire after 15 min",
+        "+ Revocable refresh tokens",
+        "- Stolen token rejected after expiry"
+      ],
+      "metrics": {
+        "leak": "nothing usable",
+        "stuffing": "0% succeed",
+        "mfa": "yes"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "login": {
+          "visible": false
+        },
+        "al": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Store passwords as **slow, salted hashes** (argon2id, bcrypt).\n• Sessions in **HttpOnly, Secure** cookies, or short-lived tokens.\n• Stop stuffing with **rate limits**, breach checks and a **second factor**.\n• Make **password reset** as strong as login; **passkeys** defeat phishing.\n• Consider an **identity provider**; keep tokens **short-lived and revocable**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Authorization** — knowing who someone is doesn’t tell you what they may do."
+      },
+      "changes": [],
+      "metrics": {
+        "leak": "nothing usable",
+        "stuffing": "0% succeed",
+        "mfa": "yes"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "login": {
+          "emphasis": true
+        },
+        "al": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2497 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "mq-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 18
+        },
+        "width": 468,
+        "height": 144,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-6-label",
+        "type": "text",
+        "title": "QUEUE · 50,000 JOBS · OLDEST 25 MIN",
+        "position": {
+          "x": -82,
+          "y": -33
+        },
+        "width": 284,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-6"
+      },
+      {
+        "id": "mq-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 18
+        },
+        "width": 468,
+        "height": 144,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-5-label",
+        "type": "text",
+        "title": "TOPIC · 4 PARTITIONS BY ACCOUNT",
+        "position": {
+          "x": -97,
+          "y": -33
+        },
+        "width": 253,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-5"
+      },
+      {
+        "id": "mq-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 18
+        },
+        "width": 468,
+        "height": 144,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-4-label",
+        "type": "text",
+        "title": "QUEUE · ACCOUNT EVENTS",
+        "position": {
+          "x": -132,
+          "y": -33
+        },
+        "width": 184,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-4"
+      },
+      {
+        "id": "mq-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 42,
+          "y": 18
+        },
+        "width": 552,
+        "height": 165,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-3-label",
+        "type": "text",
+        "title": "QUEUE · DRAINING",
+        "position": {
+          "x": -154,
+          "y": -44
+        },
+        "width": 139,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-3"
+      },
+      {
+        "id": "mq-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 18
+        },
+        "width": 468,
+        "height": 144,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-2-label",
+        "type": "text",
+        "title": "QUEUE · 1,200 JOBS WAITING",
+        "position": {
+          "x": -116,
+          "y": -33
+        },
+        "width": 215,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq-2"
+      },
+      {
+        "id": "mq",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 42,
+          "y": 18
+        },
+        "width": 552,
+        "height": 165,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "mq-label",
+        "type": "text",
+        "title": "QUEUE · VIDEO JOBS",
+        "position": {
+          "x": -147,
+          "y": -44
+        },
+        "width": 154,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "mq"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 790,
+          "y": -622
+        },
+        "width": 396,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "ACKNOWLEDGEMENTS\n1. worker takes a job → hidden, not deleted\n2. worker finishes → ack → deleted\n3. no ack in 60 s → visible again\n⚠ may run twice → make jobs idempotent",
+        "position": {
+          "x": 790,
+          "y": -622
+        },
+        "width": 372,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "creators uploading",
+        "position": {
+          "x": 0,
+          "y": -648
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "creators · ×10",
+        "position": {
+          "x": 0,
+          "y": -648
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-3",
+        "type": "process",
+        "title": "all-day surge",
+        "position": {
+          "x": 0,
+          "y": -648
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web",
+        "type": "process",
+        "title": "Web Server",
+        "description": "transcoding · 30 s · CPU 96%",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-2",
+        "type": "process",
+        "title": "Web Server",
+        "description": "✓ 202 Accepted · 80 ms",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-3",
+        "type": "process",
+        "title": "Web Server",
+        "description": "✓ 202 Accepted · 85 ms",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-4",
+        "type": "process",
+        "title": "Web Server",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "web-5",
+        "type": "process",
+        "title": "Web Server",
+        "description": "503 · try again in 60 s",
+        "position": {
+          "x": 0,
+          "y": -324
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q",
+        "type": "process",
+        "title": "▮ ▮",
+        "position": {
+          "x": 202,
+          "y": 36
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "mq"
+      },
+      {
+        "id": "q-2",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 202,
+          "y": 36
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "q-3",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮",
+        "position": {
+          "x": 202,
+          "y": 36
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "mq-3"
+      },
+      {
+        "id": "q-4",
+        "type": "process",
+        "title": "▮ ▮ ▮",
+        "position": {
+          "x": 202,
+          "y": 36
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": -144,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "steady pace",
+        "position": {
+          "x": -144,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-3",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": -216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-4",
+        "type": "process",
+        "title": "Worker",
+        "description": "“deleted” ✓",
+        "position": {
+          "x": -216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-5",
+        "type": "process",
+        "title": "Worker",
+        "description": "partition 1",
+        "position": {
+          "x": -216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w1-6",
+        "type": "process",
+        "title": "Worker",
+        "description": "CPU 100%",
+        "position": {
+          "x": -216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": 144,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "steady pace",
+        "position": {
+          "x": 144,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-3",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": 216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-4",
+        "type": "process",
+        "title": "Worker",
+        "description": "⚠ “email changed” · late",
+        "position": {
+          "x": 216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-5",
+        "type": "process",
+        "title": "Worker",
+        "description": "partition 2",
+        "position": {
+          "x": 216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w2-6",
+        "type": "process",
+        "title": "Worker",
+        "description": "CPU 100%",
+        "position": {
+          "x": 216,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w4",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": -432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w4-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "partition 0",
+        "position": {
+          "x": -432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w4-3",
+        "type": "process",
+        "title": "Worker",
+        "description": "CPU 100%",
+        "position": {
+          "x": -432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w3",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": 0,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w3-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 0,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w5",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": 432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w5-2",
+        "type": "process",
+        "title": "Worker",
+        "description": "partition 3",
+        "position": {
+          "x": 432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "w5-3",
+        "type": "process",
+        "title": "Worker",
+        "description": "CPU 100%",
+        "position": {
+          "x": 432,
+          "y": 324
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Video",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dlq",
+        "type": "process",
+        "title": "dead letters",
+        "position": {
+          "x": -540,
+          "y": 18
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Skull",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "uw",
+        "from": "users",
+        "to": "web",
+        "label": "upload … wait 30 s",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.25
+      },
+      {
+        "id": "uw-2",
+        "from": "users",
+        "to": "web-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "uw-3",
+        "from": "users-2",
+        "to": "web-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "uw-4",
+        "from": "users-2",
+        "to": "web-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "uw-5",
+        "from": "users",
+        "to": "web-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "uw-6",
+        "from": "users-3",
+        "to": "web-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "wq",
+        "from": "web-2",
+        "to": "mq",
+        "label": "enqueue job",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "wq-2",
+        "from": "web-3",
+        "to": "mq-2",
+        "label": "enqueue job",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "wq-3",
+        "from": "web-4",
+        "to": "mq-3",
+        "label": "enqueue job",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "wq-4",
+        "from": "web-4",
+        "to": "mq",
+        "label": "enqueue job",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "wq-5",
+        "from": "web-4",
+        "to": "mq-4",
+        "label": "enqueue job",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "wq-6",
+        "from": "web-4",
+        "to": "mq-5",
+        "label": "enqueue job",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 2
+      },
+      {
+        "id": "wq-7",
+        "from": "web-5",
+        "to": "mq-6",
+        "label": "enqueue job",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 6
+      },
+      {
+        "id": "qw1",
+        "from": "mq",
+        "to": "w1",
+        "label": "pull",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-2",
+        "from": "mq-2",
+        "to": "w1-2",
+        "label": "pull",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-3",
+        "from": "mq-3",
+        "to": "w1-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw1-4",
+        "from": "mq",
+        "to": "w1-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-5",
+        "from": "mq-4",
+        "to": "w1-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-6",
+        "from": "mq-5",
+        "to": "w1-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw1-7",
+        "from": "mq-6",
+        "to": "w1-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2",
+        "from": "mq",
+        "to": "w2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-2",
+        "from": "mq-2",
+        "to": "w2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-3",
+        "from": "mq-3",
+        "to": "w2-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw2-4",
+        "from": "mq",
+        "to": "w2-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-5",
+        "from": "mq-4",
+        "to": "w2-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-6",
+        "from": "mq-5",
+        "to": "w2-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw2-7",
+        "from": "mq-6",
+        "to": "w2-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw4",
+        "from": "mq-3",
+        "to": "w4",
+        "label": "pull",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw4-2",
+        "from": "mq",
+        "to": "w4",
+        "label": "pull",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw4-3",
+        "from": "mq-4",
+        "to": "w4",
+        "label": "pull",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw4-4",
+        "from": "mq-5",
+        "to": "w4-2",
+        "label": "pull",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw4-5",
+        "from": "mq-6",
+        "to": "w4-3",
+        "label": "pull",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw3",
+        "from": "mq-3",
+        "to": "w3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw3-2",
+        "from": "mq-3",
+        "to": "w3-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw3-3",
+        "from": "mq-3",
+        "to": "w3-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "qw5",
+        "from": "mq-3",
+        "to": "w5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 6
+      },
+      {
+        "id": "qw5-2",
+        "from": "mq",
+        "to": "w5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw5-3",
+        "from": "mq-4",
+        "to": "w5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw5-4",
+        "from": "mq-5",
+        "to": "w5-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "qw5-5",
+        "from": "mq-6",
+        "to": "w5-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "dl",
+        "from": "mq",
+        "to": "dlq",
+        "label": "after 3 failures",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.35,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.6
+      },
+      {
+        "id": "dl-2",
+        "from": "mq",
+        "to": "dlq",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "none"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Message Queues",
+    "summary": "Answer right away, do the slow work later — and never lose a job along the way.",
+    "minutes": 12,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "respond",
+        "label": "Upload response"
+      },
+      {
+        "id": "backlog",
+        "label": "Backlog"
+      },
+      {
+        "id": "workers",
+        "label": "Workers"
+      },
+      {
+        "id": "lost",
+        "label": "Lost jobs"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why slow work doesn’t belong in a request",
+        "step": "s1"
+      },
+      {
+        "text": "Producers, queues and consumers",
+        "step": "s2"
+      },
+      {
+        "text": "Absorbing spikes as backlog",
+        "step": "s3"
+      },
+      {
+        "text": "Acks, retries and dead-letter queues",
+        "step": "s6"
+      },
+      {
+        "text": "Ordering, partitions and backpressure",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "users-2": {
+      "from": "s3",
+      "until": "s7"
+    },
+    "users-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "web": {
+      "until": "s2"
+    },
+    "web-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "web-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "web-4": {
+      "from": "s4"
+    },
+    "web-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "mq": {
+      "from": "s2"
+    },
+    "mq-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mq-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "mq-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "mq-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "mq-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "q": {
+      "from": "s2"
+    },
+    "q-2": {
+      "from": "s3",
+      "until": "s11"
+    },
+    "q-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "q-4": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "w1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "w1-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w1-3": {
+      "from": "s4"
+    },
+    "w1-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "w1-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "w1-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "w2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "w2-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w2-3": {
+      "from": "s4"
+    },
+    "w2-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "w2-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "w2-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "w4": {
+      "from": "s4"
+    },
+    "w4-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "w4-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "w3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "w3-2": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "w5": {
+      "from": "s4"
+    },
+    "w5-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "w5-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dlq": {
+      "from": "s7"
+    },
+    "mq-6-label": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "mq-5-label": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "mq-4-label": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "mq-3-label": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "mq-2-label": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mq-label": {
+      "from": "s2"
+    },
+    "card-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "uw": {
+      "until": "s2"
+    },
+    "uw-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "uw-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "uw-4": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "uw-5": {
+      "from": "s7"
+    },
+    "uw-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "wq": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "wq-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wq-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "wq-4": {
+      "from": "s7"
+    },
+    "wq-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "wq-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "wq-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "qw1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "qw1-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "qw1-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "qw1-4": {
+      "from": "s7"
+    },
+    "qw1-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw1-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "qw1-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "qw2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "qw2-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "qw2-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "qw2-4": {
+      "from": "s7"
+    },
+    "qw2-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw2-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "qw2-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "qw4": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "qw4-2": {
+      "from": "s7"
+    },
+    "qw4-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw4-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "qw4-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "qw3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "qw3-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "qw3-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "qw5": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "qw5-2": {
+      "from": "s7"
+    },
+    "qw5-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "qw5-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "qw5-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dl": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dl-2": {
+      "from": "s11"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Slow upload",
+      "title": "Slow work inside the request",
+      "chapter": "problem",
+      "body": "Creators upload videos, and each one must be transcoded into several sizes — about 30 seconds of heavy work. Right now the web server does it *inside* the upload request.\n\nSo the creator stares at a spinner for 30 s, many requests time out, and while servers grind through videos, every other page on the site slows down too.",
+      "callout": {
+        "kind": "warning",
+        "text": "Anything slow, heavy or unreliable inside a request — video, email, reports, third-party calls — makes users wait for it."
+      },
+      "changes": [],
+      "metrics": {
+        "respond": "30.0 s",
+        "workers": "0",
+        "lost": "25%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Add a queue",
+      "title": "Put a queue in between",
+      "chapter": "solution",
+      "body": "The web server now just stores the upload, puts a small **job** message on a [[message queue]], and replies at once: “processing — we’ll notify you”.\n\nSeparate [[worker]] machines pull jobs off the queue and transcode at their own pace. The web server is the **producer**; workers are **consumers**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Popular queues: RabbitMQ, Amazon SQS, Google Pub/Sub, and Kafka (a log that also works as a queue)."
+      },
+      "changes": [
+        "+ Queue",
+        "+ 2 workers",
+        "~ Upload response 30 s → 80 ms"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "2 jobs",
+        "workers": "2",
+        "lost": "0"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Spike",
+      "title": "A spike becomes a backlog",
+      "chapter": "insight",
+      "body": "A big creator goes live and uploads jump tenfold. Without the queue, that spike would have flattened the web servers.\n\nNow the web tier stays fast — it only enqueues — and jobs simply wait their turn. Workers keep a steady pace and catch up after the rush.",
+      "callout": {
+        "kind": "insight",
+        "text": "A queue turns “too much work right now” into “a bit more waiting later”. This is called load levelling."
+      },
+      "changes": [
+        "~ Uploads ×10",
+        "+ Backlog builds: 1,200 jobs",
+        "~ Upload response stays ~85 ms"
+      ],
+      "metrics": {
+        "respond": "85 ms",
+        "backlog": "1,200 jobs",
+        "workers": "2",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "More workers",
+      "title": "Add workers to drain it",
+      "chapter": "technique",
+      "body": "Need to catch up faster? Start more workers. They all pull from the same queue, and each job goes to exactly **one** of them — the [[competing consumers]] pattern.\n\nWorkers are stateless, so adding them is easy, and many teams scale them automatically on queue length.",
+      "callout": {
+        "kind": "tip",
+        "text": "Producers and consumers now scale independently: add web servers for traffic, workers for processing."
+      },
+      "changes": [
+        "+ 3 more workers",
+        "~ Backlog 1,200 → 300 and falling"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "300 jobs",
+        "workers": "5",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Crash",
+      "title": "A worker dies mid-job",
+      "chapter": "problem",
+      "body": "A worker crashes halfway through transcoding. If the queue deleted each job the moment it handed it out, that video is simply gone — the creator waits forever.\n\nMachines crash, get restarted and are replaced all the time. The queue has to assume it.",
+      "callout": {
+        "kind": "warning",
+        "text": "Handing out a job is not the same as finishing it."
+      },
+      "changes": [
+        "- Worker crashed",
+        "- Its in-progress jobs lost"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "300 jobs",
+        "workers": "4",
+        "lost": "12"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Acks",
+      "title": "Acknowledge when done",
+      "chapter": "solution",
+      "body": "Fix: a job is only *hidden* while a worker has it. When the worker finishes, it sends an [[acknowledgement]] and the job is deleted. No ack within a timeout? The job reappears and another worker picks it up.\n\nThe catch: a job can now run **twice** (say, a worker finishes but dies before acking). So jobs must be [[idempotent]] — safe to repeat.",
+      "callout": {
+        "kind": "tip",
+        "text": "This is “at-least-once” delivery, the norm for queues. Exactly-once is very hard; idempotent consumers get you the same result."
+      },
+      "changes": [
+        "+ Ack after each job",
+        "+ Unacked jobs redelivered after 60 s",
+        "~ Lost jobs 12 → 0"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "320 jobs",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Poison",
+      "title": "Poison messages and the dead-letter queue",
+      "chapter": "technique",
+      "body": "One upload is a corrupt file. Every worker that tries it crashes or fails, the job is redelivered, and it fails again — forever, wasting workers and blocking others.\n\nSo queues count attempts. After, say, 3 failures the message is moved to a [[dead-letter queue]] (DLQ) for a human or a script to inspect.",
+      "callout": {
+        "kind": "tip",
+        "text": "Alert on DLQ size. A growing dead-letter queue is often the first sign of a bug."
+      },
+      "changes": [
+        "- Crashed worker removed",
+        "+ Dead-letter queue",
+        "~ Failing jobs moved aside after 3 attempts"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "60 jobs",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "mq": {
+          "emphasis": true
+        },
+        "q": {
+          "emphasis": true
+        },
+        "q-2": {
+          "visible": false
+        },
+        "mq-label": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Order",
+      "title": "Case: messages out of order",
+      "chapter": "problem",
+      "body": "A different queue carries account events: `created`, `email changed`, `deleted`. With several workers pulling in parallel, a slow worker can finish “email changed” *after* another worker has already processed “deleted”.\n\nMany queues give no ordering guarantee at all — and even ordered ones lose it once several consumers work in parallel.",
+      "callout": {
+        "kind": "warning",
+        "text": "If correctness depends on order, you must design for it explicitly."
+      },
+      "changes": [
+        "+ Account events: created → changed → deleted",
+        "- Processed as created → deleted → changed"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "60 jobs",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "w1-3": {
+          "visible": false
+        },
+        "w2-3": {
+          "visible": false
+        },
+        "dlq": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        },
+        "wq-4": {
+          "visible": false
+        },
+        "qw1-4": {
+          "visible": false
+        },
+        "qw2-4": {
+          "visible": false
+        },
+        "qw4-2": {
+          "visible": false
+        },
+        "qw5-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Partitions",
+      "title": "Order per key with partitions",
+      "chapter": "solution",
+      "body": "Systems like Kafka split a topic into [[partitions]]. Messages with the same key (say, the account id) always go to the same partition, and each partition is read by one worker, in order.\n\nSo events for one account stay in order, while different accounts are still processed in parallel across partitions.",
+      "callout": {
+        "kind": "tip",
+        "text": "Order is guaranteed per key, not globally. Global order means one consumer — and no parallelism."
+      },
+      "changes": [
+        "+ 4 partitions, keyed by account id",
+        "~ Each worker owns one partition",
+        "~ Events per account stay in order"
+      ],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "60 jobs",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "visible": false
+        },
+        "w1-3": {
+          "visible": false
+        },
+        "w2-3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "w5": {
+          "visible": false
+        },
+        "dlq": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        },
+        "wq-4": {
+          "visible": false
+        },
+        "qw1-4": {
+          "visible": false
+        },
+        "qw2-4": {
+          "visible": false
+        },
+        "qw4-2": {
+          "visible": false
+        },
+        "qw5-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Backpressure",
+      "title": "When the backlog never drains",
+      "chapter": "technique",
+      "body": "Queues absorb spikes — but if jobs arrive faster than workers finish them *for hours*, the backlog grows forever. Jobs get older and older, and eventually storage runs out.\n\nWatch queue **age**, not just length, and push back: autoscale workers, cap the queue, and tell producers to slow down (or reject new jobs with a clear “try later”).",
+      "callout": {
+        "kind": "insight",
+        "text": "A queue buys time, not capacity. Long-term, throughput must match the arrival rate."
+      },
+      "changes": [
+        "+ Alert: oldest job > 10 min",
+        "+ Queue capped · producers told to retry later"
+      ],
+      "metrics": {
+        "respond": "120 ms",
+        "backlog": "50,000 jobs",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "web-4": {
+          "visible": false
+        },
+        "mq": {
+          "visible": false
+        },
+        "q": {
+          "visible": false
+        },
+        "q-2": {
+          "emphasis": true
+        },
+        "w1-3": {
+          "visible": false
+        },
+        "w2-3": {
+          "visible": false
+        },
+        "w4": {
+          "visible": false
+        },
+        "w5": {
+          "visible": false
+        },
+        "dlq": {
+          "visible": false
+        },
+        "mq-label": {
+          "visible": false
+        },
+        "uw-5": {
+          "visible": false
+        },
+        "wq-4": {
+          "visible": false
+        },
+        "qw1-4": {
+          "visible": false
+        },
+        "qw2-4": {
+          "visible": false
+        },
+        "qw4-2": {
+          "visible": false
+        },
+        "qw5-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Move slow work out of the request: **enqueue** a job and answer immediately.\n• Queues **absorb spikes**; add **workers** to drain the backlog.\n• **Ack** after finishing; unacked jobs are retried — keep jobs **idempotent**.\n• Park repeat failures in a **dead-letter queue**.\n• Keep order **per key** with partitions; watch **queue age** and push back.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Pub/Sub & Events** — when one thing happening should trigger many others."
+      },
+      "changes": [],
+      "metrics": {
+        "respond": "80 ms",
+        "backlog": "60 jobs",
+        "workers": "4",
+        "lost": "0"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "web-4": {
+          "emphasis": true
+        },
+        "mq": {
+          "emphasis": true
+        },
+        "q": {
+          "emphasis": true
+        },
+        "w1-3": {
+          "emphasis": true
+        },
+        "w2-3": {
+          "emphasis": true
+        },
+        "w4": {
+          "emphasis": true
+        },
+        "w5": {
+          "emphasis": true
+        },
+        "dlq": {
+          "emphasis": true
+        },
+        "mq-label": {
+          "emphasis": true
+        },
+        "uw-5": {
+          "emphasis": true
+        },
+        "wq-4": {
+          "emphasis": true
+        },
+        "qw1-4": {
+          "emphasis": true
+        },
+        "qw2-4": {
+          "emphasis": true
+        },
+        "qw4-2": {
+          "emphasis": true
+        },
+        "qw5-2": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

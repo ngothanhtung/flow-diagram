@@ -1,0 +1,1789 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "sz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 23
+        },
+        "width": 644,
+        "height": 690,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "sz-label",
+        "type": "text",
+        "title": "HLD · TOÀN HỆ THỐNG",
+        "position": {
+          "x": -231,
+          "y": -301
+        },
+        "width": 162,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "sz"
+      },
+      {
+        "id": "oz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -138,
+          "y": 92
+        },
+        "width": 608,
+        "height": 575,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "oz-label",
+        "type": "text",
+        "title": "DỊCH VỤ ĐƠN HÀNG · BÊN TRONG",
+        "position": {
+          "x": -317,
+          "y": -175
+        },
+        "width": 230,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "oz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 555,
+          "y": -434
+        },
+        "width": 313,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "HLD QUYẾT ĐỊNH\ncó dịch vụ nào, mỗi cái sở hữu gì\nlời gọi hay sự kiện giữa chúng\nkho nào cho dữ liệu nào\nmở rộng ra sao, hỏng ra sao",
+        "position": {
+          "x": 555,
+          "y": -434
+        },
+        "width": 289,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 613,
+          "y": -434
+        },
+        "width": 429,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "CÁC QUYẾT ĐỊNH Ở CẤP NÀY\nĐơn hàng → Tài xế   sự kiện, không phải lời gọi\nthanh toán         SQL: giao dịch\nvị trí tài xế      key-value: 40 nghìn ghi/s\n# mỗi cái đều có một phương án bạn đã bỏ",
+        "position": {
+          "x": 613,
+          "y": -434
+        },
+        "width": 405,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 617,
+          "y": -434
+        },
+        "width": 437,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "TRẠNG THÁI ĐƠN HÀNG\nplaced → paid → cooking → on the way → delivered\n→ hủy: chỉ từ placed hoặc paid\n⚠ cooking → cancelled: không được phép\n# thử lại dùng lại khóa idempotency",
+        "position": {
+          "x": 617,
+          "y": -434
+        },
+        "width": 413,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 571,
+          "y": -434
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "LỜI HỨA\nPOST /orders  { items, address }\n  Idempotency-Key: 7f3a…\n→ 201 { order_id, status: \"placed\" }\nevent OrderPlaced { order_id, items }",
+        "position": {
+          "x": 571,
+          "y": -434
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 563,
+          "y": -417
+        },
+        "width": 330,
+        "height": 159,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "MỘT BUỔI THIẾT KẾ\n1  yêu cầu        phải làm gì?\n2  ước lượng      quy mô bao nhiêu?\n3  API + mô hình dữ liệu\n4  thiết kế cấp cao\n→ 5  đào sâu  (LLD chỗ rủi ro)\n6  sự cố và đánh đổi",
+        "position": {
+          "x": 563,
+          "y": -417
+        },
+        "width": 306,
+        "height": 139,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "khách hàng",
+        "position": {
+          "x": 0,
+          "y": -460
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "API Gateway",
+        "position": {
+          "x": 0,
+          "y": -230
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-2",
+        "type": "process",
+        "title": "API Gateway",
+        "position": {
+          "x": -138,
+          "y": -276
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord",
+        "type": "process",
+        "title": "Đơn hàng",
+        "position": {
+          "x": -230,
+          "y": 46
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cou",
+        "type": "process",
+        "title": "Tài xế",
+        "position": {
+          "x": 0,
+          "y": 46
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Thanh toán",
+        "position": {
+          "x": 230,
+          "y": 46
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "dịch vụ khác",
+        "position": {
+          "x": 46,
+          "y": 506
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-3",
+        "type": "process",
+        "title": "Thanh toán",
+        "description": "đào sâu",
+        "position": {
+          "x": 230,
+          "y": 46
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb",
+        "type": "process",
+        "title": "đơn hàng",
+        "position": {
+          "x": -230,
+          "y": 276
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb-2",
+        "type": "process",
+        "title": "bảng orders",
+        "position": {
+          "x": -322,
+          "y": 506
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb-3",
+        "type": "process",
+        "title": "bảng orders",
+        "description": "chỉ mục (user_id, created_at)",
+        "position": {
+          "x": -322,
+          "y": 506
+        },
+        "width": 204,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdb",
+        "type": "process",
+        "title": "vị trí",
+        "position": {
+          "x": 0,
+          "y": 276
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdb-2",
+        "type": "process",
+        "title": "vị trí",
+        "description": "key-value",
+        "position": {
+          "x": 0,
+          "y": 276
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdb-3",
+        "type": "process",
+        "title": "vị trí",
+        "description": "đào sâu",
+        "position": {
+          "x": 0,
+          "y": 276
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pdb",
+        "type": "process",
+        "title": "thanh toán",
+        "position": {
+          "x": 230,
+          "y": 276
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pdb-2",
+        "type": "process",
+        "title": "thanh toán",
+        "description": "SQL",
+        "position": {
+          "x": 230,
+          "y": 276
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ctl",
+        "type": "process",
+        "title": "Controller",
+        "description": "HTTP vào",
+        "position": {
+          "x": -138,
+          "y": -69
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Braces",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      },
+      {
+        "id": "svc",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "position": {
+          "x": -138,
+          "y": 115
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      },
+      {
+        "id": "svc-2",
+        "type": "process",
+        "title": "Dịch vụ đơn hàng",
+        "description": "máy trạng thái",
+        "position": {
+          "x": -138,
+          "y": 115
+        },
+        "width": 176,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      },
+      {
+        "id": "repo",
+        "type": "process",
+        "title": "Repository",
+        "position": {
+          "x": -322,
+          "y": 299
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      },
+      {
+        "id": "payc",
+        "type": "process",
+        "title": "Client thanh toán",
+        "position": {
+          "x": 46,
+          "y": 299
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ug",
+        "from": "users",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "go",
+        "from": "gw",
+        "to": "ord",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": -92
+          },
+          {
+            "x": -230,
+            "y": -92
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "gc",
+        "from": "gw",
+        "to": "cou",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "gc-2",
+        "from": "gw-2",
+        "to": "ctl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "gc-3",
+        "from": "gw-2",
+        "to": "ctl",
+        "label": "hợp đồng",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "gp",
+        "from": "gw",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": -92
+          },
+          {
+            "x": 230,
+            "y": -92
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "gp-2",
+        "from": "gw",
+        "to": "pay-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": -92
+          },
+          {
+            "x": 230,
+            "y": -92
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "oo",
+        "from": "ord",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "cc",
+        "from": "cou",
+        "to": "cdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "cc-2",
+        "from": "cou",
+        "to": "cdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "cc-3",
+        "from": "cou",
+        "to": "cdb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "pp",
+        "from": "pay",
+        "to": "pdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "pp-2",
+        "from": "pay",
+        "to": "pdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "pp-3",
+        "from": "payc",
+        "to": "pay-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "pp-4",
+        "from": "pay-3",
+        "to": "pdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ev",
+        "from": "ord",
+        "to": "cou",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ev-2",
+        "from": "ord",
+        "to": "cou",
+        "label": "sự kiện OrderPlaced",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "cs",
+        "from": "ctl",
+        "to": "svc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "cs-2",
+        "from": "ctl",
+        "to": "svc-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sr",
+        "from": "svc",
+        "to": "repo",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -138,
+            "y": 207
+          },
+          {
+            "x": -322,
+            "y": 207
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sr-2",
+        "from": "svc-2",
+        "to": "repo",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -138,
+            "y": 207
+          },
+          {
+            "x": -322,
+            "y": 207
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sp",
+        "from": "svc",
+        "to": "payc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -138,
+            "y": 207
+          },
+          {
+            "x": 46,
+            "y": 207
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sp-2",
+        "from": "svc-2",
+        "to": "payc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -138,
+            "y": 207
+          },
+          {
+            "x": 46,
+            "y": 207
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ro",
+        "from": "repo",
+        "to": "odb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ro-2",
+        "from": "repo",
+        "to": "odb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "HLD & LLD",
+    "summary": "Cùng một hệ thống ở hai mức phóng to: bản đồ các dịch vụ, và bên trong một dịch vụ.",
+    "minutes": 8,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "zoom",
+        "label": "Mức thu phóng"
+      },
+      {
+        "id": "unit",
+        "label": "Khối xây dựng"
+      },
+      {
+        "id": "output",
+        "label": "Bạn tạo ra"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Thiết kế cấp cao quyết định gì",
+        "step": "s2"
+      },
+      {
+        "text": "Thiết kế cấp thấp quyết định gì",
+        "step": "s4"
+      },
+      {
+        "text": "Hợp đồng: nơi hai cấp gặp nhau",
+        "step": "s6"
+      },
+      {
+        "text": "Một buổi thiết kế chuyển qua lại giữa hai cấp thế nào",
+        "step": "s7"
+      }
+    ]
+  },
+  "presence": {
+    "gw-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "pay-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "pay-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "odb-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "odb-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "cdb-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "cdb-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pdb-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sz": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "oz": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "ctl": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "svc": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "svc-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "repo": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "payc": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "sz-label": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "oz-label": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gc-2": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "gc-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gp-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cc-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "cc-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pp-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "pp-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "pp-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ev-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "cs": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "cs-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sr": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "sr-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sp": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "sp-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ro": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "ro-2": {
+      "from": "s5",
+      "until": "s6"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Hai cấp",
+      "title": "Một hệ thống, hai mức phóng to",
+      "chapter": "setup",
+      "body": "Một ứng dụng giao đồ ăn. Nhìn từ xa, đó là vài dịch vụ (Đơn hàng, Tài xế, Thanh toán), mỗi dịch vụ có dữ liệu riêng, nói chuyện qua một API gateway và một luồng sự kiện.\n\nNhìn gần, mỗi ô đó là một chương trình riêng, có lớp, bảng và quy tắc. Thiết kế hệ thống làm việc ở cả hai khoảng cách, và chúng có tên: [[thiết kế cấp cao]] (HLD) và [[thiết kế cấp thấp]] (LLD).",
+      "callout": {
+        "kind": "insight",
+        "text": "Không cấp nào “thật hơn”. Chúng trả lời những câu hỏi khác nhau, cho những người đọc khác nhau, và thay đổi với tốc độ khác nhau."
+      },
+      "changes": [],
+      "metrics": {
+        "zoom": "toàn hệ thống",
+        "unit": "dịch vụ · kho lưu trữ · hàng đợi",
+        "output": "sơ đồ kiến trúc"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Bản đồ",
+      "title": "Thiết kế cấp cao: bản đồ",
+      "chapter": "technique",
+      "body": "HLD quyết định **các phần là gì và chúng nối với nhau thế nào**: có những dịch vụ nào và mỗi cái sở hữu gì, chúng nói chuyện ra sao (một lời gọi hay một sự kiện), mỗi loại dữ liệu nằm ở đâu, và điều gì xảy ra khi lưu lượng tăng hay một phần hỏng.\n\nĐó là cấp độ của mọi bài học từ đầu tới giờ. Kết quả của nó là một sơ đồ như thế này, kèm lập luận viết bên cạnh.",
+      "callout": {
+        "kind": "tip",
+        "text": "Một HLD tốt vừa trong một trang. Nếu một ô cần cả đoạn văn để giải thích, đoạn đó thuộc về LLD của ô ấy."
+      },
+      "changes": [
+        "+ Đơn vị thiết kế là toàn hệ thống"
+      ],
+      "metrics": {
+        "zoom": "toàn hệ thống",
+        "unit": "dịch vụ · kho lưu trữ · hàng đợi",
+        "output": "sơ đồ kiến trúc"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Đánh đổi",
+      "title": "Quyết định HLD là những đánh đổi",
+      "chapter": "tradeoff",
+      "body": "Đặt đơn không nên phải chờ tìm được tài xế, nên Đơn hàng **phát một sự kiện** và Tài xế nhận nó khi có thể (xem *Pub/Sub & sự kiện*).\n\nThanh toán cần giao dịch, nên nó có một cơ sở dữ liệu quan hệ. Tài xế gửi vị trí vài giây một lần (hàng chục nghìn lượt ghi mỗi giây, lượt sau ghi đè lượt trước), nên kho đó là một kho key-value nhanh. Mỗi lựa chọn đến từ các con số và từ những gì dữ liệu cần.",
+      "callout": {
+        "kind": "insight",
+        "text": "Mỗi mũi tên và mỗi kho trên sơ đồ HLD là một quyết định có phương án khác. Hãy sẵn sàng nói bạn đã từ bỏ điều gì."
+      },
+      "changes": [
+        "~ Đơn hàng → Tài xế: một sự kiện, không phải lời gọi",
+        "~ Thanh toán: SQL · vị trí: key-value"
+      ],
+      "metrics": {
+        "zoom": "toàn hệ thống",
+        "unit": "dịch vụ · kho lưu trữ · hàng đợi",
+        "output": "sơ đồ kiến trúc"
+      },
+      "overrides": {
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "visible": false
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Phóng to",
+      "title": "Thiết kế cấp thấp: bên trong một ô",
+      "chapter": "solution",
+      "body": "Giờ hãy mở ô Đơn hàng. LLD quyết định **một thành phần được xây dựng thế nào**: các module hay lớp tạo nên nó, giao diện giữa chúng, bảng và chỉ mục, thuật toán và cách xử lý lỗi.\n\nỞ đây một controller nhận yêu cầu HTTP, một dịch vụ đơn hàng giữ các quy tắc, một repository nói chuyện với cơ sở dữ liệu, và một client bọc các lời gọi tới Thanh toán.",
+      "callout": {
+        "kind": "tip",
+        "text": "Đặt cơ sở dữ liệu và các dịch vụ khác sau những giao diện nhỏ (các phần màu vàng) là điều khiến logic lõi dễ kiểm thử; xem *Kiểm thử*."
+      },
+      "changes": [
+        "- Phần còn lại của hệ thống",
+        "+ Bên trong Đơn hàng: controller, dịch vụ, repository, client thanh toán"
+      ],
+      "metrics": {
+        "zoom": "một dịch vụ",
+        "unit": "lớp · bảng · trạng thái",
+        "output": "thiết kế lớp & schema"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "gw": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "cou": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "odb": {
+          "visible": false
+        },
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "visible": false
+        },
+        "ug": {
+          "visible": false
+        },
+        "go": {
+          "visible": false
+        },
+        "gc": {
+          "visible": false
+        },
+        "gp": {
+          "visible": false
+        },
+        "oo": {
+          "visible": false
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Quyết định LLD",
+      "title": "Quyết định LLD: trạng thái, schema, trường hợp biên",
+      "chapter": "technique",
+      "body": "Một đơn hàng đi qua các trạng thái, và LLD chốt những bước chuyển nào được phép: có thể hủy khi đang `placed` hoặc `paid`, nhưng không thể khi bếp đã bắt đầu nấu.\n\nNó cũng chốt bảng (cột, kiểu, một chỉ mục trên `(user_id, created_at)` cho “đơn của tôi”) và các trường hợp khó chịu: nếu lời gọi thanh toán bị timeout, hay cùng một đơn đến hai lần thì sao?",
+      "callout": {
+        "kind": "insight",
+        "text": "Phần lớn lỗi trên production nằm ở cấp này: một thay đổi trạng thái không ai tính tới, một chỉ mục bị thiếu, một lần thử lại trừ tiền hai lần."
+      },
+      "changes": [
+        "+ Máy trạng thái của đơn hàng",
+        "+ Thiết kế bảng và chỉ mục",
+        "+ Khóa idempotency trên POST /orders"
+      ],
+      "metrics": {
+        "zoom": "một dịch vụ",
+        "unit": "lớp · bảng · trạng thái",
+        "output": "thiết kế lớp & schema"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "gw": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "cou": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "odb": {
+          "visible": false
+        },
+        "odb-2": {
+          "visible": false
+        },
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "visible": false
+        },
+        "svc": {
+          "visible": false
+        },
+        "ug": {
+          "visible": false
+        },
+        "go": {
+          "visible": false
+        },
+        "gc": {
+          "visible": false
+        },
+        "gp": {
+          "visible": false
+        },
+        "oo": {
+          "visible": false
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        },
+        "cs": {
+          "visible": false
+        },
+        "sr": {
+          "visible": false
+        },
+        "sp": {
+          "visible": false
+        },
+        "ro": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Hợp đồng",
+      "title": "Nơi chúng gặp nhau: hợp đồng",
+      "chapter": "insight",
+      "body": "Hai cấp gặp nhau ở rìa mỗi ô. HLD cố định điều một thành phần **hứa**: API của nó và các sự kiện nó phát ra. LLD quyết định nó giữ lời hứa đó **thế nào**.\n\nSự phân chia này cho phép các nhóm làm việc độc lập: Đơn hàng có thể viết lại mọi thứ bên trong ô của mình, miễn là `POST /orders` và `OrderPlaced` vẫn mang cùng ý nghĩa.",
+      "callout": {
+        "kind": "tip",
+        "text": "Thay đổi hợp đồng là thay đổi HLD: các nhóm khác phải đồng ý, và phiên bản cũ lẫn mới phải chạy song song một thời gian (xem *REST, RPC & GraphQL* về đánh phiên bản)."
+      },
+      "changes": [
+        "+ Hợp đồng ở rìa dịch vụ"
+      ],
+      "metrics": {
+        "zoom": "các đường nối",
+        "unit": "API · sự kiện",
+        "output": "hợp đồng API"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "gw": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "cou": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "odb": {
+          "visible": false
+        },
+        "odb-2": {
+          "emphasis": true
+        },
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "visible": false
+        },
+        "svc": {
+          "emphasis": true
+        },
+        "ug": {
+          "visible": false
+        },
+        "go": {
+          "visible": false
+        },
+        "gc": {
+          "visible": false
+        },
+        "gp": {
+          "visible": false
+        },
+        "oo": {
+          "visible": false
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        },
+        "cs": {
+          "emphasis": true
+        },
+        "sr": {
+          "emphasis": true
+        },
+        "sp": {
+          "emphasis": true
+        },
+        "ro": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Từ trên xuống",
+      "title": "Tình huống: thiết kế sai cấp",
+      "chapter": "tradeoff",
+      "body": "Được yêu cầu thiết kế ứng dụng này trong một buổi phỏng vấn, một ứng viên dành hai mươi phút cho sơ đồ lớp mà không hề nhắc rằng vị trí tài xế đổ về 40.000 lần mỗi giây. Một người khác vẽ các ô hoàn hảo, nhưng không nói được làm sao để một đơn không bị trừ tiền hai lần.\n\nHãy làm **từ trên xuống**: yêu cầu, số liệu ước chừng, HLD; rồi đào sâu vào một hai chỗ có vấn đề khó, và làm *những chỗ đó* ở cấp LLD.",
+      "callout": {
+        "kind": "tip",
+        "text": "Một buổi thiết kế thường diễn ra: yêu cầu → ước lượng → API → mô hình dữ liệu → HLD → đào sâu → tình huống lỗi. Các bài thiết kế tiếp theo đi đúng thứ tự này."
+      },
+      "changes": [
+        "~ Quay lại toàn hệ thống",
+        "+ Đào sâu: ghi vị trí, trừ tiền hai lần"
+      ],
+      "metrics": {
+        "zoom": "cả hai, từ trên xuống",
+        "unit": "tổng thể, rồi tới phần rủi ro",
+        "output": "thiết kế có đào sâu"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "gw": {
+          "emphasis": true
+        },
+        "ord": {
+          "emphasis": true
+        },
+        "cou": {
+          "emphasis": true
+        },
+        "pay": {
+          "visible": false
+        },
+        "odb": {
+          "emphasis": true
+        },
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "emphasis": true
+        },
+        "ug": {
+          "emphasis": true
+        },
+        "go": {
+          "emphasis": true
+        },
+        "gc": {
+          "emphasis": true
+        },
+        "gp": {
+          "visible": false
+        },
+        "oo": {
+          "emphasis": true
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Mức zoom — HLD: Toàn hệ thống; LLD: Một thành phần\n• Các phần — HLD: Dịch vụ, kho, hàng đợi; LLD: Lớp, bảng, trạng thái\n• Quyết định — HLD: Cái gì nói với cái gì, dữ liệu nằm ở đâu; LLD: Mỗi phần hoạt động bên trong ra sao\n• Thay đổi — HLD: Hiếm, cần đồng thuận; LLD: Thường xuyên, trong một nhóm\n\nKhóa học này làm việc ở cấp HLD và đi xuống LLD khi một quyết định phụ thuộc vào nó. LLD, tức thiết kế hướng đối tượng và design pattern, là một môn riêng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Thiết kế dịch vụ rút gọn URL**: bài thiết kế đầy đủ đầu tiên, từ một yêu cầu một dòng tới bản thiết kế hoàn chỉnh."
+      },
+      "changes": [],
+      "metrics": {
+        "zoom": "toàn hệ thống",
+        "unit": "dịch vụ · kho lưu trữ · hàng đợi",
+        "output": "sơ đồ kiến trúc"
+      },
+      "overrides": {
+        "pay": {
+          "emphasis": true
+        },
+        "cdb": {
+          "emphasis": true
+        },
+        "gp": {
+          "emphasis": true
+        },
+        "cc": {
+          "emphasis": true
+        },
+        "pp": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

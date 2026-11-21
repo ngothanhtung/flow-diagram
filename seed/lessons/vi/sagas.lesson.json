@@ -1,0 +1,2932 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 596,
+          "y": -483
+        },
+        "width": 421,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "SAGA\n1. đặt vé bay      ✓   hoàn tác: hủy vé bay\n2. đặt khách sạn   ✓   hoàn tác: hủy khách sạn\n⚠ 3. thuê xe         ✗\n→ hoàn tác theo thứ tự ngược: 2 ← 1",
+        "position": {
+          "x": 596,
+          "y": -483
+        },
+        "width": 397,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 571,
+          "y": -483
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "SẮP THỨ TỰ CÁC BƯỚC\n1. kiểm tra xe   dễ lỗi → đầu tiên\n2. giữ vé bay + khách sạn\n3. trừ tiền thẻ  khó hoàn tác → sau cùng\n4. xác nhận + email",
+        "position": {
+          "x": 571,
+          "y": -483
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "trav",
+        "type": "process",
+        "title": "khách du lịch",
+        "description": "⚠ vé máy bay + khách sạn, không có xe",
+        "position": {
+          "x": 0,
+          "y": -500
+        },
+        "width": 216,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-2",
+        "type": "process",
+        "title": "khách du lịch",
+        "description": "không có xe → không đặt gì",
+        "position": {
+          "x": 0,
+          "y": -500
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-3",
+        "type": "process",
+        "title": "khách du lịch",
+        "description": "đang chờ…",
+        "position": {
+          "x": 0,
+          "y": -500
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-4",
+        "type": "process",
+        "title": "khách du lịch",
+        "description": "✓ không có xe → hoàn tiền đủ",
+        "position": {
+          "x": 0,
+          "y": -500
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-5",
+        "type": "process",
+        "title": "khách du lịch",
+        "position": {
+          "x": 0,
+          "y": -500
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-6",
+        "type": "process",
+        "title": "khách du lịch",
+        "description": "chỉ trừ tiền ở cuối",
+        "position": {
+          "x": 0,
+          "y": -500
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-7",
+        "type": "process",
+        "title": "khách du lịch",
+        "description": "đang chờ hoàn tiền",
+        "position": {
+          "x": 0,
+          "y": -500
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-8",
+        "type": "process",
+        "title": "khách du lịch",
+        "description": "✓ chuyến đi đã xác nhận",
+        "position": {
+          "x": 0,
+          "y": -500
+        },
+        "width": 212,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip",
+        "type": "process",
+        "title": "Dịch vụ chuyến đi",
+        "position": {
+          "x": 0,
+          "y": -225
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-2",
+        "type": "process",
+        "title": "Bộ điều phối",
+        "description": "phiếu: có · có · không → rollback",
+        "position": {
+          "x": 0,
+          "y": -225
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-3",
+        "type": "process",
+        "title": "Bộ điều phối",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": 0,
+          "y": -225
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-4",
+        "type": "process",
+        "title": "Orchestrator của saga",
+        "description": "chuyến 81: khách sạn ✓ · xe đang chờ",
+        "position": {
+          "x": 0,
+          "y": -225
+        },
+        "width": 212,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-5",
+        "type": "process",
+        "title": "Orchestrator của saga",
+        "position": {
+          "x": 0,
+          "y": -225
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-6",
+        "type": "process",
+        "title": "Orchestrator của saga",
+        "description": "đã khởi động lại · tiếp tục chuyến 81",
+        "position": {
+          "x": 0,
+          "y": -225
+        },
+        "width": 212,
+        "height": 113,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-7",
+        "type": "process",
+        "title": "Orchestrator của saga",
+        "description": "hủy khách sạn · lần thử 4",
+        "position": {
+          "x": 0,
+          "y": -225
+        },
+        "width": 208,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-8",
+        "type": "process",
+        "title": "Orchestrator của saga",
+        "description": "xe: không rõ → đang hỏi",
+        "position": {
+          "x": 0,
+          "y": -225
+        },
+        "width": 208,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl",
+        "type": "process",
+        "title": "Chuyến bay",
+        "description": "✓ đã đặt vé",
+        "position": {
+          "x": -225,
+          "y": 50
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-2",
+        "type": "process",
+        "title": "Chuyến bay",
+        "description": "đã chuẩn bị ✓",
+        "position": {
+          "x": -225,
+          "y": 50
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-3",
+        "type": "process",
+        "title": "Chuyến bay",
+        "description": "bị khóa",
+        "position": {
+          "x": -225,
+          "y": 50
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-4",
+        "type": "process",
+        "title": "Chuyến bay",
+        "description": "đã đặt → đã hủy",
+        "position": {
+          "x": -225,
+          "y": 50
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-5",
+        "type": "process",
+        "title": "Chuyến bay",
+        "description": "→ FlightBooked",
+        "position": {
+          "x": -225,
+          "y": 50
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-6",
+        "type": "process",
+        "title": "Chuyến bay",
+        "description": "ghế: đã giữ chỗ",
+        "position": {
+          "x": -225,
+          "y": 50
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-7",
+        "type": "process",
+        "title": "Chuyến bay",
+        "description": "đã hủy ✓",
+        "position": {
+          "x": -225,
+          "y": 50
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho",
+        "type": "process",
+        "title": "Khách sạn",
+        "description": "✓ đã đặt phòng",
+        "position": {
+          "x": 0,
+          "y": 50
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-2",
+        "type": "process",
+        "title": "Khách sạn",
+        "description": "đã chuẩn bị ✓",
+        "position": {
+          "x": 0,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-3",
+        "type": "process",
+        "title": "Khách sạn",
+        "description": "bị khóa",
+        "position": {
+          "x": 0,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-4",
+        "type": "process",
+        "title": "Khách sạn",
+        "description": "đã đặt → đã hủy",
+        "position": {
+          "x": 0,
+          "y": 50
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-5",
+        "type": "process",
+        "title": "Khách sạn",
+        "description": "→ HotelBooked",
+        "position": {
+          "x": 0,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-6",
+        "type": "process",
+        "title": "Khách sạn",
+        "description": "phòng: đã giữ chỗ",
+        "position": {
+          "x": 0,
+          "y": 50
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-7",
+        "type": "process",
+        "title": "Khách sạn",
+        "description": "khóa 81-hotel đã thấy → cùng phòng",
+        "position": {
+          "x": 0,
+          "y": 50
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-8",
+        "type": "process",
+        "title": "Khách sạn",
+        "description": "⚠ API sập",
+        "position": {
+          "x": 0,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car",
+        "type": "process",
+        "title": "Thuê xe",
+        "description": "⚠ hết xe",
+        "position": {
+          "x": 225,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-2",
+        "type": "process",
+        "title": "Thuê xe",
+        "description": "phiếu: không",
+        "position": {
+          "x": 225,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-3",
+        "type": "process",
+        "title": "Thuê xe",
+        "description": "bị khóa",
+        "position": {
+          "x": 225,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-4",
+        "type": "process",
+        "title": "Thuê xe",
+        "position": {
+          "x": 225,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-5",
+        "type": "process",
+        "title": "Thuê xe",
+        "description": "→ CarRented",
+        "position": {
+          "x": 225,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-6",
+        "type": "process",
+        "title": "Thuê xe",
+        "description": "đã kiểm tra trước ✓",
+        "position": {
+          "x": 225,
+          "y": 50
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-7",
+        "type": "process",
+        "title": "Thuê xe",
+        "description": "81-car: đã đặt ✓",
+        "position": {
+          "x": 225,
+          "y": 50
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-8",
+        "type": "process",
+        "title": "Thuê xe",
+        "description": "✓ đã đặt xe",
+        "position": {
+          "x": 225,
+          "y": 50
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fldb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -225,
+          "y": 275
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "hodb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 275
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cardb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 225,
+          "y": 275
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb",
+        "type": "process",
+        "title": "trạng thái saga",
+        "position": {
+          "x": -275,
+          "y": -225
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bus",
+        "type": "process",
+        "title": "Bus sự kiện",
+        "position": {
+          "x": 0,
+          "y": -225
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Radio",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ut",
+        "from": "trav",
+        "to": "trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ut-2",
+        "from": "trav-2",
+        "to": "trip-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-3",
+        "from": "trav-3",
+        "to": "trip-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ut-4",
+        "from": "trav-4",
+        "to": "trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-5",
+        "from": "trav-5",
+        "to": "trip-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-6",
+        "from": "trav-6",
+        "to": "trip-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-7",
+        "from": "trav-5",
+        "to": "trip-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-8",
+        "from": "trav-7",
+        "to": "trip-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-9",
+        "from": "trav-5",
+        "to": "trip-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-10",
+        "from": "trav-8",
+        "to": "trip-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "tfl",
+        "from": "trip",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tfl-2",
+        "from": "trip-2",
+        "to": "fl-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "tfl-3",
+        "from": "trip-3",
+        "to": "fl-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tfl-4",
+        "from": "trip",
+        "to": "fl-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tfl-5",
+        "from": "trip-4",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tfl-6",
+        "from": "trip-5",
+        "to": "fl-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tfl-7",
+        "from": "trip-6",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tfl-8",
+        "from": "trip-7",
+        "to": "fl-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tfl-9",
+        "from": "trip-8",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tfl-10",
+        "from": "trip-5",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho",
+        "from": "trip",
+        "to": "ho",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-2",
+        "from": "trip-2",
+        "to": "ho-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "tho-3",
+        "from": "trip-3",
+        "to": "ho-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tho-4",
+        "from": "trip",
+        "to": "ho-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-5",
+        "from": "trip-4",
+        "to": "ho",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-6",
+        "from": "trip-5",
+        "to": "ho-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-7",
+        "from": "trip-6",
+        "to": "ho-7",
+        "label": "đặt khách sạn · khóa 81-hotel",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "tho-8",
+        "from": "trip-7",
+        "to": "ho-8",
+        "label": "thử lại với backoff",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "laser",
+        "effectColor": "#ff4d4f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-9",
+        "from": "trip-8",
+        "to": "ho",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tho-10",
+        "from": "trip-5",
+        "to": "ho",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tcar",
+        "from": "trip",
+        "to": "car",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "tcar-2",
+        "from": "trip-2",
+        "to": "car-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "tcar-3",
+        "from": "trip-3",
+        "to": "car-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tcar-4",
+        "from": "trip-4",
+        "to": "car-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tcar-5",
+        "from": "trip-5",
+        "to": "car-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tcar-6",
+        "from": "trip-6",
+        "to": "car-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tcar-7",
+        "from": "trip-7",
+        "to": "car",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tcar-8",
+        "from": "trip-8",
+        "to": "car-7",
+        "label": "trạng thái của 81-car?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "tcar-9",
+        "from": "trip-5",
+        "to": "car-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dfl",
+        "from": "fl",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dfl-2",
+        "from": "fl-2",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dfl-3",
+        "from": "fl-3",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dfl-4",
+        "from": "fl-4",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dfl-5",
+        "from": "fl-5",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dfl-6",
+        "from": "fl-6",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dfl-7",
+        "from": "fl-7",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dho",
+        "from": "ho",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dho-2",
+        "from": "ho-2",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dho-3",
+        "from": "ho-3",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dho-4",
+        "from": "ho-4",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dho-5",
+        "from": "ho-5",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dho-6",
+        "from": "ho-6",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dho-7",
+        "from": "ho-7",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "dho-8",
+        "from": "ho-8",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar",
+        "from": "car",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-2",
+        "from": "car-2",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-3",
+        "from": "car-3",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-4",
+        "from": "car-4",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dcar-5",
+        "from": "car-5",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-6",
+        "from": "car-6",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dcar-7",
+        "from": "car-7",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-8",
+        "from": "car-8",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "so",
+        "from": "trip-4",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "so-2",
+        "from": "trip-5",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "so-3",
+        "from": "trip-6",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "so-4",
+        "from": "trip-7",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "so-5",
+        "from": "trip-8",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ub",
+        "from": "trav-5",
+        "to": "bus",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bfl",
+        "from": "bus",
+        "to": "fl-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "bho",
+        "from": "bus",
+        "to": "ho-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "bcar",
+        "from": "bus",
+        "to": "car-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Saga & giao dịch phân tán",
+    "summary": "Một hành động, nhiều dịch vụ, nhiều cơ sở dữ liệu: làm sao giữ được tất cả hoặc không gì cả mà không cần một giao dịch lớn.",
+    "minutes": 13,
+    "level": "advanced",
+    "metrics": [
+      {
+        "id": "allOrNothing",
+        "label": "Chuyến đi trọn gói hoặc không"
+      },
+      {
+        "id": "blocked",
+        "label": "Khóa bị giữ khi chờ"
+      },
+      {
+        "id": "coord",
+        "label": "Điều phối"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao một giao dịch không thể trải qua nhiều dịch vụ",
+        "step": "s1"
+      },
+      {
+        "text": "Two-phase commit và vì sao nó bị chặn",
+        "step": "s3"
+      },
+      {
+        "text": "Saga và hành động bù trừ",
+        "step": "s4"
+      },
+      {
+        "text": "Điều phối tập trung vs vũ đạo",
+        "step": "s6"
+      },
+      {
+        "text": "Hoàn tác thất bại và kết quả không rõ",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "trav": {
+      "until": "s2"
+    },
+    "trav-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "trav-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "trav-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "trav-5": {
+      "from": "s5",
+      "until": "s11"
+    },
+    "trav-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "trav-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "trav-8": {
+      "from": "s11"
+    },
+    "trip": {
+      "until": "s5"
+    },
+    "trip-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "trip-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "trip-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "trip-5": {
+      "from": "s7"
+    },
+    "trip-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "trip-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "trip-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "fl-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "fl-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "fl-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "fl-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "fl-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "fl-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ho-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ho-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ho-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ho-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ho-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ho-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ho-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "car": {
+      "until": "s10"
+    },
+    "car-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "car-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "car-4": {
+      "from": "s5",
+      "until": "s9"
+    },
+    "car-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "car-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "car-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "car-8": {
+      "from": "s11"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "odb": {
+      "from": "s5"
+    },
+    "bus": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ut": {
+      "until": "s2"
+    },
+    "ut-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ut-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ut-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ut-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ut-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ut-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ut-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ut-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ut-10": {
+      "from": "s11"
+    },
+    "tfl": {
+      "until": "s2"
+    },
+    "tfl-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "tfl-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "tfl-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "tfl-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "tfl-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "tfl-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "tfl-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "tfl-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "tfl-10": {
+      "from": "s11"
+    },
+    "tho": {
+      "until": "s2"
+    },
+    "tho-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "tho-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "tho-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "tho-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "tho-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "tho-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "tho-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "tho-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "tho-10": {
+      "from": "s11"
+    },
+    "tcar": {
+      "until": "s5"
+    },
+    "tcar-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "tcar-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "tcar-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "tcar-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "tcar-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "tcar-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "tcar-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "tcar-9": {
+      "from": "s11"
+    },
+    "dfl-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dfl-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "dfl-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "dfl-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dfl-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dfl-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dho-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dho-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "dho-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "dho-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dho-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dho-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "dho-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dcar": {
+      "until": "s10"
+    },
+    "dcar-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dcar-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "dcar-4": {
+      "from": "s5",
+      "until": "s9"
+    },
+    "dcar-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dcar-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dcar-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dcar-8": {
+      "from": "s11"
+    },
+    "so": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "so-2": {
+      "from": "s7"
+    },
+    "so-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "so-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "so-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ub": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bfl": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bho": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bcar": {
+      "from": "s6",
+      "until": "s7"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Nửa chuyến đi",
+      "title": "Một chuyến đi, ba cơ sở dữ liệu",
+      "chapter": "problem",
+      "body": "Một khách du lịch đặt chuyến đi: vé máy bay, khách sạn và xe thuê. Mỗi thứ nằm ở một dịch vụ khác nhau với cơ sở dữ liệu riêng (mỗi dịch vụ một CSDL, từ các bài trước).\n\nDịch vụ chuyến đi đặt vé máy bay: xong. Khách sạn: xong. Xe: **hết xe**. Giờ khách có vé máy bay và khách sạn mà không dùng được, và đã bị trừ tiền cả hai.",
+      "callout": {
+        "kind": "warning",
+        "text": "BEGIN … COMMIT chỉ chạy được bên trong một cơ sở dữ liệu. Giữa các dịch vụ không có sẵn chức năng “hoàn tác tất cả”."
+      },
+      "changes": [],
+      "metrics": {
+        "allOrNothing": "không",
+        "coord": "không có"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "2PC",
+      "title": "Two-phase commit",
+      "chapter": "technique",
+      "body": "Một cách sửa kinh điển là [[two-phase commit]] (2PC). Pha 1: một bộ điều phối yêu cầu mọi bên tham gia **chuẩn bị**: làm việc, khóa các dòng và hứa rằng có thể commit (các ping). Pha 2: nếu tất cả nói có, nó bảo mọi bên **commit**; nếu có ai nói không, tất cả rollback.\n\nDịch vụ thuê xe bỏ phiếu không, nên không có gì được đặt ở đâu cả. Tất cả hoặc không gì cả.",
+      "callout": {
+        "kind": "tip",
+        "text": "2PC được dùng bên trong một số cơ sở dữ liệu và với giao dịch XA. Nó đòi hỏi mọi bên tham gia đều hỗ trợ, mà phần lớn API web và nhiều kho NoSQL thì không."
+      },
+      "changes": [
+        "~ Dịch vụ chuyến đi thành bộ điều phối 2PC",
+        "+ Chuẩn bị → bỏ phiếu → commit hoặc rollback"
+      ],
+      "metrics": {
+        "allOrNothing": "có",
+        "blocked": "trong lúc commit",
+        "coord": "2PC"
+      },
+      "overrides": {
+        "trip": {
+          "visible": false
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "tcar": {
+          "visible": false
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Bị chặn",
+      "title": "Khi bộ điều phối chết",
+      "chapter": "problem",
+      "body": "Điểm yếu: sau khi chuẩn bị, các bên phải chờ quyết định của bộ điều phối. Nếu nó sập đúng lúc đó, chuyến bay và khách sạn nằm ở trạng thái “đã chuẩn bị”, giữ khóa trên ghế và phòng, không tự commit hay rollback được.\n\nNhững khách khác muốn đặt các ghế và phòng đó cũng phải chờ, cho đến khi bộ điều phối hồi phục. (Bản thân chuyến đi vẫn là tất cả hoặc không gì cả; chỉ là nó không thể hoàn tất.)",
+      "callout": {
+        "kind": "warning",
+        "text": "2PC là giao thức chặn: một bộ điều phối chậm hoặc chết có thể đóng băng mọi bên tham gia. Giữa các dịch vụ và qua internet, điều đó thường không chấp nhận được."
+      },
+      "changes": [
+        "- Bộ điều phối sập sau prepare",
+        "- Ghế và phòng vẫn bị khóa"
+      ],
+      "metrics": {
+        "allOrNothing": "có",
+        "blocked": "3 dịch vụ",
+        "coord": "2PC"
+      },
+      "overrides": {
+        "trip": {
+          "visible": false
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "tcar": {
+          "visible": false
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Saga",
+      "title": "Saga: commit từng bước, hoàn tác khi lỗi",
+      "chapter": "solution",
+      "body": "Một [[saga]] chia chuyến đi thành các giao dịch cục bộ, mỗi giao dịch commit ngay: đặt vé máy bay, rồi đặt khách sạn, rồi thuê xe. Không có gì bị giữ mở.\n\nMỗi bước có một **hành động bù trừ** hoàn tác nó về mặt nghiệp vụ. Khi thuê xe thất bại, saga chạy chúng theo thứ tự ngược: hủy khách sạn, rồi hủy vé máy bay (các vòng đỏ).",
+      "callout": {
+        "kind": "insight",
+        "text": "Saga đánh đổi tính cô lập lấy tính sẵn sàng: không có khóa nào được giữ giữa các dịch vụ, nhưng hệ thống có lúc nằm ở trạng thái lưng chừng."
+      },
+      "changes": [
+        "~ Mỗi bước commit cục bộ",
+        "+ Bù trừ: hủy khách sạn ← hủy vé máy bay",
+        "~ Không giữ khóa giữa các dịch vụ"
+      ],
+      "metrics": {
+        "allOrNothing": "cuối cùng",
+        "blocked": "không có",
+        "coord": "saga"
+      },
+      "overrides": {
+        "trip": {
+          "emphasis": true
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "emphasis": true
+        },
+        "tcar": {
+          "emphasis": true
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Điều phối tập trung",
+      "title": "Điều phối tập trung: một dịch vụ chạy saga",
+      "chapter": "technique",
+      "body": "Trong saga **điều phối tập trung**, một thành phần, gọi là orchestrator, là một máy trạng thái nhỏ: nó bảo mỗi dịch vụ làm gì tiếp theo, chờ câu trả lời, và quyết định tiếp tục hay bù trừ.\n\nNó lưu mọi thay đổi trạng thái vào cơ sở dữ liệu riêng, nên nếu sập nó tiếp tục đúng chỗ đã dừng.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các engine workflow như Temporal, AWS Step Functions và Camunda được xây cho việc này: saga bền vững, tiếp tục được và quan sát được."
+      },
+      "changes": [
+        "~ Dịch vụ chuyến đi → orchestrator của saga",
+        "+ Trạng thái saga được lưu sau mỗi bước"
+      ],
+      "metrics": {
+        "allOrNothing": "cuối cùng",
+        "blocked": "không có",
+        "coord": "bộ điều phối"
+      },
+      "overrides": {
+        "fl": {
+          "emphasis": true
+        },
+        "ho": {
+          "emphasis": true
+        },
+        "car": {
+          "visible": false
+        },
+        "dfl": {
+          "emphasis": true
+        },
+        "dho": {
+          "emphasis": true
+        },
+        "dcar": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Vũ đạo",
+      "title": "Vũ đạo: dịch vụ phản ứng với sự kiện",
+      "chapter": "technique",
+      "body": "Trong saga kiểu **vũ đạo** (choreography) không có nhạc trưởng. Chuyến bay phát `FlightBooked`; Khách sạn lắng nghe, đặt phòng và phát `HotelBooked`; Thuê xe lắng nghe và thuê xe, hoặc phát `CarFailed`, mà Khách sạn và Chuyến bay phản ứng bằng cách hủy.\n\nKhông có thành phần trung tâm nào để xây hay vận hành, nhưng luồng xử lý trải khắp mọi dịch vụ, khó theo dõi và khó thay đổi hơn.",
+      "callout": {
+        "kind": "insight",
+        "text": "Vũ đạo hợp với saga ngắn, ít bước. Khi saga lớn dần, một orchestrator thường dễ hiểu hơn."
+      },
+      "changes": [
+        "- Orchestrator",
+        "+ Bus sự kiện",
+        "~ Mỗi dịch vụ phản ứng với sự kiện của bước trước"
+      ],
+      "metrics": {
+        "allOrNothing": "cuối cùng",
+        "blocked": "không có",
+        "coord": "sự kiện"
+      },
+      "overrides": {
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "car-4": {
+          "visible": false
+        },
+        "odb": {
+          "visible": false
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        },
+        "dcar-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Lưng chừng",
+      "title": "Vướng mắc: không có cô lập",
+      "chapter": "tradeoff",
+      "body": "Khi saga đang chạy, người khác có thể thấy trạng thái làm dở của nó: ghế đã bị giữ, khách sạn thì chưa đặt. Và có những bước không thật sự hoàn tác được: email “chuyến bay của bạn đã được xác nhận” đã gửi đi rồi.\n\nHãy thiết kế cho điều đó: dùng trạng thái **tạm giữ** (“đã giữ chỗ”, không phải “đã xác nhận”), đặt bước dễ thất bại nhất **đầu tiên**, và những bước khó hoàn tác nhất, như trừ tiền thẻ và gửi email, **sau cùng**.",
+      "callout": {
+        "kind": "warning",
+        "text": "Bù trừ là một hành động mới, không phải rollback. Hoàn tiền không giống với việc chưa từng trừ tiền."
+      },
+      "changes": [
+        "~ Đặt chỗ bắt đầu ở trạng thái “đã giữ chỗ”",
+        "~ Kiểm tra xe còn trống trước tiên",
+        "~ Trừ tiền thẻ sau cùng"
+      ],
+      "metrics": {
+        "allOrNothing": "cuối cùng",
+        "blocked": "không có",
+        "coord": "bộ điều phối"
+      },
+      "overrides": {
+        "trav-5": {
+          "visible": false
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "car-4": {
+          "visible": false
+        },
+        "odb": {
+          "emphasis": true
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        },
+        "dcar-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Tiếp tục",
+      "title": "Tình huống: sập rồi tiếp tục",
+      "chapter": "insight",
+      "body": "Orchestrator sập ngay sau khi Khách sạn đặt phòng, nhưng trước khi nó kịp lưu lại việc đó. Khi khởi động lại, nó thấy “khách sạn: đang chờ” và gửi lại yêu cầu đặt phòng.\n\nNếu Khách sạn đặt thêm phòng thứ hai, khách trả tiền hai lần. Vì vậy mỗi bước mang một **khóa idempotency** (id saga + bước), và Khách sạn trả về lượt đặt đã có thay vì tạo cái mới.",
+      "callout": {
+        "kind": "tip",
+        "text": "Bản chất saga là ít nhất một lần. Mọi bước và mọi bù trừ phải an toàn khi lặp lại."
+      },
+      "changes": [
+        "- Orchestrator khởi động lại giữa saga",
+        "~ “đặt khách sạn” gửi hai lần",
+        "~ Cùng khóa → cùng lượt đặt"
+      ],
+      "metrics": {
+        "allOrNothing": "cuối cùng",
+        "blocked": "không có",
+        "coord": "bộ điều phối"
+      },
+      "overrides": {
+        "dfl": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "dcar-4": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "trav-5": {
+          "emphasis": true
+        },
+        "trip-5": {
+          "visible": false
+        },
+        "fl": {
+          "emphasis": true
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "car-4": {
+          "emphasis": true
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        },
+        "so-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Hoàn tác thất bại",
+      "title": "Tình huống: chính việc hoàn tác thất bại",
+      "chapter": "problem",
+      "body": "Không thuê được xe, nên saga hủy khách sạn, nhưng API của khách sạn đang sập. Bỏ cuộc không phải lựa chọn: khách sẽ phải trả tiền cho một phòng không dùng được.\n\nVì thế các bù trừ được **thử lại** với backoff cho đến khi thành công, và phải an toàn khi lặp lại. Một bù trừ vẫn kẹt sau vài giờ sẽ vào hàng đợi để con người xử lý.",
+      "callout": {
+        "kind": "warning",
+        "text": "Một bù trừ phải có khả năng thành công vào lúc nào đó. Đừng bao giờ thiết kế bù trừ có thể thất bại một cách chính đáng, và hãy cảnh báo khi có cái bị kẹt."
+      },
+      "changes": [
+        "- API khách sạn sập khi “hủy khách sạn”",
+        "~ Thử lại với backoff",
+        "+ Chuyển cho bộ phận hỗ trợ sau 4 giờ"
+      ],
+      "metrics": {
+        "allOrNothing": "cuối cùng",
+        "blocked": "không có",
+        "coord": "bộ điều phối"
+      },
+      "overrides": {
+        "trav-5": {
+          "visible": false
+        },
+        "trip-5": {
+          "visible": false
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "emphasis": true
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "emphasis": true
+        },
+        "so-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Không rõ",
+      "title": "Tình huống: timeout nghĩa là “không rõ”",
+      "chapter": "technique",
+      "body": "Lời gọi thuê xe bị timeout. Dịch vụ thuê xe đã đặt xe trước khi mất kết nối, hay chưa? Timeout không phải thất bại: kết quả là **không rõ**.\n\nBù trừ mù quáng có thể hủy một lượt đặt chưa từng tồn tại, hoặc bỏ sót một lượt đã có. Thay vào đó, hãy hỏi: truy vấn dịch vụ thuê xe về yêu cầu `81-car`, hoặc đơn giản là thử lại với cùng khóa idempotency để nhận câu trả lời thật.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hãy coi mỗi bước từ xa có ba kết quả: thành công, thất bại, không rõ. Chỉ hai kết quả đầu mới cho saga đi tiếp."
+      },
+      "changes": [
+        "- “thuê xe” bị timeout",
+        "~ Trạng thái không rõ → truy vấn 81-car",
+        "~ Trả lời: đã đặt → tiếp tục"
+      ],
+      "metrics": {
+        "allOrNothing": "cuối cùng",
+        "blocked": "không có",
+        "coord": "bộ điều phối"
+      },
+      "overrides": {
+        "dfl": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "dho": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "trav-5": {
+          "emphasis": true
+        },
+        "trip-5": {
+          "visible": false
+        },
+        "fl": {
+          "emphasis": true
+        },
+        "ho": {
+          "emphasis": true
+        },
+        "so-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Giao dịch cơ sở dữ liệu không thể trải qua **nhiều dịch vụ**.\n• **Two-phase commit** là tất cả hoặc không gì cả, nhưng bị chặn khi bộ điều phối lỗi.\n• Một **saga** commit từng bước và chạy **bù trừ** khi thất bại.\n• **Điều phối tập trung** hoặc **vũ đạo**; hãy làm mọi bước **idempotent**.\n• Bù trừ phải **thành công vào lúc nào đó**; timeout nghĩa là **không rõ**, không phải thất bại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Xử lý theo lô & luồng**: xử lý khối lượng sự kiện khổng lồ, qua đêm hoặc ngay khi chúng xảy ra."
+      },
+      "changes": [],
+      "metrics": {
+        "allOrNothing": "cuối cùng",
+        "blocked": "không có",
+        "coord": "bộ điều phối"
+      },
+      "overrides": {
+        "trip-5": {
+          "emphasis": true
+        },
+        "so-2": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

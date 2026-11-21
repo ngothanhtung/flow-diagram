@@ -1,0 +1,1150 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "kvz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -431,
+          "y": -18
+        },
+        "width": 334,
+        "height": 486,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "kvz-label",
+        "type": "text",
+        "title": "KHÓA-GIÁ TRỊ · 3 NÚT",
+        "position": {
+          "x": -503,
+          "y": -240
+        },
+        "width": 169,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "kvz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 678,
+          "y": -403
+        },
+        "width": 297,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "BẢNG\nusers   (id, name, email)\norders  (id, user_id, total)\n# orders.user_id → users.id\n→ JOIN chúng trong một truy vấn",
+        "position": {
+          "x": 678,
+          "y": -403
+        },
+        "width": 273,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 702,
+          "y": -403
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "MỘT GIAO DỊCH\nBEGIN\n  UPDATE balance − 50  WHERE id = Ana\n  UPDATE balance + 50  WHERE id = Ben\n→ COMMIT — cả hai, hoặc không cái nào",
+        "position": {
+          "x": 702,
+          "y": -403
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 723,
+          "y": -394
+        },
+        "width": 388,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "HAI TÀI LIỆU\n{ \"sku\": \"shoe-42\",\n  \"size\": 42, \"colors\": [\"red\", \"black\"] }\n{ \"sku\": \"laptop-7\",\n  \"cpu\": \"M3\", \"ram_gb\": 16 }\n# cùng collection, khác hình dạng",
+        "position": {
+          "x": 723,
+          "y": -394
+        },
+        "width": 364,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 731,
+          "y": -405
+        },
+        "width": 404,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "KHÓA → GIÁ TRỊ\nsession:9f2c  →  { user: 42, cart: [7, 13] }\nGET / SET theo khóa · ~1 ms\n# không có gì để truy vấn, chỉ tra cứu",
+        "position": {
+          "x": 731,
+          "y": -405
+        },
+        "width": 380,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 736,
+          "y": -394
+        },
+        "width": 413,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "XÂY CHO MỘT VIỆC\ntìm kiếm      văn bản tự do, xếp hạng, lỗi gõ\nchuỗi thời gian số đo, dữ liệu cảm biến\nđồ thị        bạn của bạn\ncột rộng      lượng ghi khổng lồ\nkho đối tượng tệp, ảnh, bản sao lưu",
+        "position": {
+          "x": 736,
+          "y": -394
+        },
+        "width": 389,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "1M người dùng",
+        "position": {
+          "x": 0,
+          "y": -429
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Server ứng dụng",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql",
+        "type": "process",
+        "title": "CSDL SQL",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql-2",
+        "type": "process",
+        "title": "CSDL SQL",
+        "description": "ACID",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql-3",
+        "type": "process",
+        "title": "CSDL SQL",
+        "description": "ALTER TABLE · 400 triệu dòng · 6 giờ · CPU 90%",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 188,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql-4",
+        "type": "process",
+        "title": "CSDL SQL",
+        "description": "CPU 45%",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql-5",
+        "type": "process",
+        "title": "CSDL SQL",
+        "description": "CPU 40%",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "doc",
+        "type": "process",
+        "title": "kho tài liệu",
+        "position": {
+          "x": 0,
+          "y": 363
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kv1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -396,
+          "y": -144
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "kvz"
+      },
+      {
+        "id": "kv2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -396,
+          "y": 145
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "kvz"
+      },
+      {
+        "id": "kv3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -482,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "kvz"
+      },
+      {
+        "id": "search",
+        "type": "process",
+        "title": "Tìm kiếm",
+        "description": "chỉ mục đảo",
+        "position": {
+          "x": 363,
+          "y": 363
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Search",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "as",
+        "from": "app",
+        "to": "sql",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "as-2",
+        "from": "app",
+        "to": "sql-2",
+        "label": "BEGIN … COMMIT",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "as-3",
+        "from": "app",
+        "to": "sql-3",
+        "label": "sản phẩm · đơn hàng · người dùng",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "as-4",
+        "from": "app",
+        "to": "sql-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "as-5",
+        "from": "app",
+        "to": "sql-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "as-6",
+        "from": "app",
+        "to": "sql-5",
+        "label": "đơn hàng · thanh toán",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ad",
+        "from": "app",
+        "to": "doc",
+        "label": "danh mục sản phẩm",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ad-2",
+        "from": "app",
+        "to": "doc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ad-3",
+        "from": "app",
+        "to": "doc",
+        "label": "danh mục",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ak",
+        "from": "app",
+        "to": "kvz",
+        "label": "phiên",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ak-2",
+        "from": "app",
+        "to": "kvz",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ak-3",
+        "from": "app",
+        "to": "kvz",
+        "label": "phiên · giỏ hàng",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sx",
+        "from": "app",
+        "to": "search",
+        "label": "“giày chạy bộ màu đỏ”",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.75,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 182,
+            "y": 0
+          },
+          {
+            "x": 182,
+            "y": 363
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sx-2",
+        "from": "app",
+        "to": "search",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 182,
+            "y": 0
+          },
+          {
+            "x": 182,
+            "y": 363
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "cs",
+        "from": "sql-5",
+        "to": "search",
+        "label": "luồng thay đổi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "SQL hay NoSQL",
+    "summary": "Bảng, tài liệu hay khóa đơn thuần: mỗi loại cơ sở dữ liệu giỏi điều gì, và đánh đổi điều gì.",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "joins",
+        "label": "Join"
+      },
+      {
+        "id": "tx",
+        "label": "Giao dịch"
+      },
+      {
+        "id": "schema",
+        "label": "Lược đồ"
+      },
+      {
+        "id": "scaleOut",
+        "label": "Mở rộng việc ghi"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Bảng, join và giao dịch",
+        "step": "s2"
+      },
+      {
+        "text": "Nơi cơ sở dữ liệu quan hệ gặp khó",
+        "step": "s3"
+      },
+      {
+        "text": "Kho tài liệu và kho khóa-giá trị",
+        "step": "s5"
+      },
+      {
+        "text": "Chọn theo từng loại dữ liệu",
+        "step": "s7"
+      },
+      {
+        "text": "Công cụ tìm kiếm và các chuyên gia khác",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "sql": {
+      "until": "s2"
+    },
+    "sql-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sql-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sql-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "sql-5": {
+      "from": "s5"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "doc": {
+      "from": "s4"
+    },
+    "kvz": {
+      "from": "s5"
+    },
+    "kv1": {
+      "from": "s5"
+    },
+    "kv2": {
+      "from": "s5"
+    },
+    "kv3": {
+      "from": "s5"
+    },
+    "search": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "kvz-label": {
+      "from": "s5"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "as": {
+      "until": "s2"
+    },
+    "as-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "as-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "as-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "as-5": {
+      "from": "s5"
+    },
+    "as-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ad": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-2": {
+      "from": "s5"
+    },
+    "ad-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ak": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ak-2": {
+      "from": "s6"
+    },
+    "ak-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sx": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sx-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cs": {
+      "from": "s8",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Bảng",
+      "title": "Dữ liệu trong bảng",
+      "chapter": "setup",
+      "body": "Hầu hết ứng dụng bắt đầu với một cơ sở dữ liệu [[quan hệ]] (SQL) như PostgreSQL hay MySQL. Dữ liệu nằm trong các bảng với một tập cột cố định: một [[lược đồ]] (schema).\n\nCác bảng trỏ tới nhau bằng khóa, và **join** kết hợp chúng trong một truy vấn: “mọi đơn hàng kèm tên khách hàng”.",
+      "callout": {
+        "kind": "insight",
+        "text": "Cơ sở dữ liệu SQL có cả chục năm công cụ phía sau. Khi phân vân, đó là lựa chọn mặc định rất an toàn."
+      },
+      "changes": [],
+      "metrics": {
+        "joins": "có",
+        "tx": "có",
+        "schema": "cố định",
+        "scaleOut": "khó"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Giao dịch",
+      "title": "Tất cả hoặc không gì cả: giao dịch",
+      "chapter": "technique",
+      "body": "Chuyển $50 từ Ana sang Ben là hai lệnh cập nhật. Nếu server sập giữa chừng, tiền biến mất.\n\nMột [[giao dịch]] (transaction) nhóm chúng lại: cả hai cùng xảy ra, hoặc không cái nào. CSDL quan hệ đảm bảo điều này (các tính chất **ACID**), nên chúng giữ thanh toán, đơn hàng và tồn kho.",
+      "callout": {
+        "kind": "tip",
+        "text": "ACID: Atomic (tất cả hoặc không gì), Consistent (luật luôn đúng), Isolated (không thấy trạng thái dở dang), Durable (đã commit là đã lưu)."
+      },
+      "changes": [
+        "+ Hai lệnh ghi, một giao dịch"
+      ],
+      "metrics": {
+        "joins": "có",
+        "tx": "có",
+        "schema": "cố định",
+        "scaleOut": "khó"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Đau đầu khi lớn",
+      "title": "Đau đầu khi lớn",
+      "chapter": "problem",
+      "body": "Danh mục sản phẩm của bạn cũng vào chung CSDL. Giày có cỡ, laptop có CPU, sách có tác giả, nên bảng sản phẩm mọc ra hàng trăm cột gần như trống, và mỗi loại sản phẩm mới lại là một lần migration trên bảng 400 triệu dòng. Vài lần trong số đó viết lại hoặc khóa cả bảng hàng giờ.\n\nTrong khi đó mọi lệnh ghi vẫn đi qua một server CSDL duy nhất.",
+      "callout": {
+        "kind": "warning",
+        "text": "Lược đồ cứng nhắc và một server ghi duy nhất là hai điểm đau kinh điển của CSDL quan hệ ở quy mô lớn."
+      },
+      "changes": [
+        "+ Danh mục sản phẩm trong CSDL SQL",
+        "~ Bảng sản phẩm: 300 cột, phần lớn trống"
+      ],
+      "metrics": {
+        "joins": "có",
+        "tx": "có",
+        "schema": "cố định",
+        "scaleOut": "khó"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Tài liệu",
+      "title": "Tài liệu: mỗi bản ghi một hình dạng",
+      "chapter": "solution",
+      "body": "[[Kho tài liệu]] (như MongoDB) giữ mỗi bản ghi thành một tài liệu tự đủ. Một đôi giày và một chiếc laptop có thể có các trường hoàn toàn khác nhau, không cần migration, dù giờ mã của bạn phải xử lý mọi hình dạng nó từng ghi.\n\nMọi thứ về một sản phẩm nằm cùng nhau, nên đọc nó chỉ là một lần lấy, và tài liệu tự nhiên trải ra nhiều server.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tài liệu tỏa sáng khi bạn đọc và ghi trọn vẹn đối tượng một lần: danh mục, hồ sơ, nội dung."
+      },
+      "changes": [
+        "+ Kho tài liệu cho danh mục",
+        "~ CSDL SQL quay về lo đơn hàng & người dùng"
+      ],
+      "metrics": {
+        "joins": "hạn chế",
+        "tx": "mỗi tài liệu",
+        "schema": "linh hoạt",
+        "scaleOut": "dễ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Khóa-giá trị",
+      "title": "Khóa-giá trị: chỉ việc tra",
+      "chapter": "technique",
+      "body": "Kho đơn giản nhất: kho [[khóa-giá trị]] (Redis, DynamoDB) ánh xạ một khóa tới một giá trị. Không truy vấn, không join: get và set theo khóa, trong khoảng một mili giây.\n\nVì mỗi khóa đứng riêng, dữ liệu chia ra nhiều nút gần như miễn phí.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hoàn hảo cho phiên, giỏ hàng, feature flag và bộ đếm: bất cứ thứ gì bạn luôn lấy theo một id."
+      },
+      "changes": [
+        "+ Cụm khóa-giá trị cho phiên"
+      ],
+      "metrics": {
+        "joins": "không",
+        "tx": "hạn chế",
+        "schema": "không có",
+        "scaleOut": "dễ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Đánh đổi",
+      "title": "NoSQL đánh đổi những gì",
+      "chapter": "tradeoff",
+      "body": "Kho NoSQL mở rộng ngang dễ dàng phần lớn *vì* chúng từ bỏ vài thứ: join giữa các bản ghi, giao dịch nhiều bản ghi, và thường là tính nhất quán chặt.\n\n• Hình dạng dữ liệu — SQL: Bảng cố định; NoSQL: Linh hoạt\n• Join — SQL: Có; NoSQL: Trong mã của bạn\n• Giao dịch — SQL: Nhiều dòng; NoSQL: Thường một bản ghi\n• Mở rộng lượt ghi — SQL: Khó; NoSQL: Có sẵn\n\nĐây là xu hướng mặc định, không phải định luật, và ranh giới ngày càng mờ: PostgreSQL lưu tài liệu JSON, MongoDB và DynamoDB có giao dịch nhiều bản ghi, còn CSDL SQL phân tán (Spanner, CockroachDB) mở rộng lượt ghi mà vẫn giữ join và giao dịch, trả giá bằng độ trễ và độ phức tạp.",
+      "callout": {
+        "kind": "warning",
+        "text": "Chọn NoSQL “vì quy mô” mà bạn chưa có thường đồng nghĩa với tự tay dựng lại join và giao dịch."
+      },
+      "changes": [],
+      "metrics": {
+        "joins": "hạn chế",
+        "tx": "hạn chế",
+        "schema": "linh hoạt",
+        "scaleOut": "dễ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "Dùng cả hai",
+      "title": "Dùng mỗi thứ đúng chỗ",
+      "chapter": "solution",
+      "body": "Hệ thống thực tế trộn lẫn chúng: [[lưu trữ đa ngôn ngữ]] (polyglot persistence). Tiền và đơn hàng ở lại CSDL quan hệ vì giao dịch; danh mục sống trong tài liệu; phiên vào kho khóa-giá trị.\n\nBắt đầu với một CSDL, và chỉ thêm cái khác khi một loại dữ liệu rõ ràng cần nó.",
+      "callout": {
+        "kind": "insight",
+        "text": "Câu hỏi không phải “SQL hay NoSQL?” mà là “dữ liệu này cần gì: quan hệ, sự linh hoạt, hay tốc độ tra cứu thuần túy?”"
+      },
+      "changes": [
+        "~ Đơn hàng & thanh toán → SQL",
+        "~ Danh mục → tài liệu",
+        "~ Phiên → khóa-giá trị"
+      ],
+      "metrics": {
+        "joins": "có",
+        "tx": "có",
+        "schema": "linh hoạt",
+        "scaleOut": "dễ"
+      },
+      "overrides": {
+        "as-5": {
+          "visible": false
+        },
+        "ad-2": {
+          "visible": false
+        },
+        "ak-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Tìm kiếm",
+      "title": "Tình huống: “giày chạy bộ màu đỏ”",
+      "chapter": "problem",
+      "body": "Người mua gõ văn bản tự do vào ô tìm kiếm. Trong SQL, việc đó thành `WHERE name LIKE '%red%'` trên hàng triệu dòng: chậm, không xếp hạng được kết quả, không xử lý lỗi gõ và không khớp “giày” với các biến thể.\n\n[[Công cụ tìm kiếm]] (Elasticsearch, OpenSearch) xây chỉ mục đảo: với mỗi từ, danh sách tài liệu chứa nó. Nó được nạp từ CSDL chính qua một luồng thay đổi.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chỉ mục tìm kiếm là bản sao, không phải nguồn sự thật: nó luôn có thể được dựng lại từ CSDL chính."
+      },
+      "changes": [
+        "+ Công cụ tìm kiếm cho danh mục",
+        "+ Luồng thay đổi: SQL → chỉ mục tìm kiếm"
+      ],
+      "metrics": {
+        "joins": "có",
+        "tx": "có",
+        "schema": "linh hoạt",
+        "scaleOut": "dễ"
+      },
+      "overrides": {
+        "ad-2": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "as-5": {
+          "emphasis": true
+        },
+        "ak-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Chuyên gia",
+      "title": "Những kho chuyên biệt hơn",
+      "chapter": "insight",
+      "body": "Tìm kiếm là một ví dụ về kho được xây cho một kiểu truy cập. Còn những kho khác, mỗi cái giỏi hơn hẳn CSDL đa dụng ở việc của nó, và kém hơn ở mọi thứ khác.\n\nHãy dùng chúng khi một khối lượng công việc rõ ràng không hợp, chứ không phải mặc định: mỗi kho thêm vào là thêm thứ phải vận hành, bảo mật, sao lưu và đồng bộ.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hầu hết hệ thống chạy tốt nhiều năm trên một CSDL quan hệ. Hãy thêm từng chuyên gia một, cho một nhu cầu đã đo được."
+      },
+      "changes": [],
+      "metrics": {
+        "joins": "có",
+        "tx": "có",
+        "schema": "linh hoạt",
+        "scaleOut": "dễ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s10",
+      "short": "Tổng kết",
+      "title": "Tổng kết",
+      "chapter": "recap",
+      "body": "• **SQL**: bảng, join và giao dịch, lựa chọn mặc định an toàn.\n• **Tài liệu**: bản ghi linh hoạt, tự đủ, mở rộng ngang được.\n• **Khóa-giá trị**: nhanh và đơn giản nhất, chỉ tra theo id.\n• Chọn theo từng loại dữ liệu; nhiều hệ thống dùng **vài loại**.\n• Các chuyên gia như **tìm kiếm** là bản sao được nạp từ nguồn sự thật.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Chỉ mục**: vì sao cùng một truy vấn có thể mất 2 giây hoặc 2 mili giây."
+      },
+      "changes": [],
+      "metrics": {
+        "joins": "có",
+        "tx": "có",
+        "schema": "linh hoạt",
+        "scaleOut": "dễ"
+      },
+      "overrides": {}
+    }
+  ]
+}

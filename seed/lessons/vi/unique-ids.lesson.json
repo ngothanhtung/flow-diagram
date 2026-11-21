@@ -1,0 +1,2310 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "idx",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -62,
+          "y": 270
+        },
+        "width": 1328,
+        "height": 135,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 843,
+          "y": -965
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "UUID V4\nf47ac10b-58cc-4372-a567-0e02b2c3d479\n122 bit ngẫu nhiên\n→ tạo ở đâu cũng được, không hỏi ai\n# 16 byte thay vì 8",
+        "position": {
+          "x": 843,
+          "y": -965
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 893,
+          "y": -967
+        },
+        "width": 437,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "DÒNG TIẾP THEO ĐI ĐÂU?\nid bộ đếm     → luôn là trang cuối\n⚠ id ngẫu nhiên → trang bất kỳ, lần nào cũng vậy\n# trang nguội, tách trang, phình to",
+        "position": {
+          "x": 893,
+          "y": -967
+        },
+        "width": 413,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 860,
+          "y": -965
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "UUID V7\n018f6b1c-3a40-7d2e-9b6f-5c1a2e4d7f90\n48 bit   mili giây từ năm 1970\n74 bit   ngẫu nhiên\n→ xếp theo thời gian, không cần phối hợp",
+        "position": {
+          "x": 860,
+          "y": -965
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 843,
+          "y": -965
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "MỘT ID 64 BIT\n41 bit   mili giây      ≈ 69 năm\n10 bit   id máy         1.024 máy\n12 bit   số thứ tự      4.096 mỗi ms\n→ thời gian | máy | số thứ tự",
+        "position": {
+          "x": 843,
+          "y": -965
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 852,
+          "y": -965
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "BỘ TẠO ID CỦA MÁY CHỦ 1\nid đóng dấu cuối    12:00:07.250\n⚠ đồng hồ giờ chỉ     12:00:05.250\n→ chờ 2 s rồi tiếp tục\n# không bao giờ dùng lại dấu thời gian",
+        "position": {
+          "x": 852,
+          "y": -965
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 819,
+          "y": -965
+        },
+        "width": 289,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "ĐỌC CÁC ID\nT2 09:00   /orders/1004\nT3 09:00   /orders/1250\n⚠ ≈ 246 đơn mỗi ngày\n→ id công khai: ord_8fK2xQ9dLm",
+        "position": {
+          "x": 819,
+          "y": -965
+        },
+        "width": 265,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "s1",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 1",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-2",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 1",
+        "description": "khối 1000–1999",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 184,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-3",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 1",
+        "description": "f47ac10b-58cc-…",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 192,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-4",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 1",
+        "description": "018f6b1c-3a40-7…",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 196,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-5",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 1",
+        "description": "máy 1",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 184,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s1-6",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 1",
+        "description": "đồng hồ −2 s · đang chờ",
+        "position": {
+          "x": -315,
+          "y": -540
+        },
+        "width": 188,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dA",
+        "type": "process",
+        "title": "CSDL đơn hàng",
+        "description": "id kế tiếp: 1004",
+        "position": {
+          "x": -315,
+          "y": 270
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dA-2",
+        "type": "process",
+        "title": "shard A",
+        "description": "⚠ đơn 1004 · Ana",
+        "position": {
+          "x": -315,
+          "y": 270
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dA-3",
+        "type": "process",
+        "title": "shard A",
+        "position": {
+          "x": -315,
+          "y": 270
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dB",
+        "type": "process",
+        "title": "shard B",
+        "description": "⚠ đơn 1004 · Ben",
+        "position": {
+          "x": 315,
+          "y": 270
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dB-2",
+        "type": "process",
+        "title": "shard B",
+        "position": {
+          "x": 315,
+          "y": 270
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 2",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-2",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 2",
+        "description": "khối 2000–2999",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 184,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-3",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 2",
+        "description": "9c1e6a2d-03b7-…",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 192,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-4",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 2",
+        "description": "018f6b1c-3a41-7…",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 196,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "s2-5",
+        "type": "process",
+        "title": "Máy chủ ứng dụng 2",
+        "description": "máy 2",
+        "position": {
+          "x": 315,
+          "y": -540
+        },
+        "width": 184,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "tk",
+        "type": "process",
+        "title": "Máy cấp số",
+        "description": "id kế tiếp: 1005",
+        "position": {
+          "x": 0,
+          "y": -990
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "tk-2",
+        "type": "process",
+        "title": "Máy cấp số",
+        "description": "khối kế tiếp: 3000",
+        "position": {
+          "x": 0,
+          "y": -990
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Ticket",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "p0",
+        "type": "process",
+        "title": "chỉ mục khóa chính · trang sắp theo id →",
+        "position": {
+          "x": -590,
+          "y": 270
+        },
+        "width": 216,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -403,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p1-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -403,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -286,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -169,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p3-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -169,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -52,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p4-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -52,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p5",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 66,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p6",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 183,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p6-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 183,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p7",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 300,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p8",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 417,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p8-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 417,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p9",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 535,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "p9-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 535,
+          "y": 270
+        },
+        "width": 77,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "idx"
+      },
+      {
+        "id": "spy",
+        "type": "process",
+        "title": "đối thủ",
+        "position": {
+          "x": -315,
+          "y": -990
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "a1",
+        "from": "s1",
+        "to": "dA",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "a1-2",
+        "from": "s1",
+        "to": "dA-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "a1-3",
+        "from": "s1",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "a1-4",
+        "from": "s1-2",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "a1-5",
+        "from": "s1-3",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "a1-6",
+        "from": "s1-5",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "a1-7",
+        "from": "s1-6",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "b1",
+        "from": "s1",
+        "to": "dB",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "b1-2",
+        "from": "s1",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "b1-3",
+        "from": "s1-2",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "b1-4",
+        "from": "s1-3",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "b1-5",
+        "from": "s1-5",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "b1-6",
+        "from": "s1-6",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 315,
+            "y": -135
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "a2",
+        "from": "s2",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "a2-2",
+        "from": "s2-2",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "a2-3",
+        "from": "s2-3",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "a2-4",
+        "from": "s2-5",
+        "to": "dA-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -315,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "b2",
+        "from": "s2",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "b2-2",
+        "from": "s2-2",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "b2-3",
+        "from": "s2-3",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 3
+      },
+      {
+        "id": "b2-4",
+        "from": "s2-5",
+        "to": "dB-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "t1",
+        "from": "s1",
+        "to": "tk",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "t1-2",
+        "from": "s1-2",
+        "to": "tk-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "t2",
+        "from": "s2",
+        "to": "tk",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "t2-2",
+        "from": "s2-2",
+        "to": "tk-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "right",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "r1",
+        "from": "s1-3",
+        "to": "p1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": -403,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r3",
+        "from": "s1-3",
+        "to": "p4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": -52,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r5",
+        "from": "s1-3",
+        "to": "p8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 417,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r5-2",
+        "from": "s1-4",
+        "to": "p9-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -315,
+            "y": -135
+          },
+          {
+            "x": 535,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r2",
+        "from": "s2-3",
+        "to": "p3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": -169,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r4",
+        "from": "s2-3",
+        "to": "p6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": 183,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "r4-2",
+        "from": "s2-4",
+        "to": "p9-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 315,
+            "y": -135
+          },
+          {
+            "x": 535,
+            "y": -135
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "sp",
+        "from": "spy",
+        "to": "s1-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "ID duy nhất ở quy mô lớn",
+    "summary": "Đặt cho mỗi dòng một cái tên không ai khác dùng bao giờ, mà không cần một bộ đếm chung bắt mọi người xếp hàng.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "collide",
+        "label": "ID trùng"
+      },
+      {
+        "id": "idSize",
+        "label": "Kích thước ID"
+      },
+      {
+        "id": "sortable",
+        "label": "Sắp theo thời gian"
+      },
+      {
+        "id": "idDep",
+        "label": "Phụ thuộc vào"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Vì sao bộ đếm của cơ sở dữ liệu hỏng khi sharding",
+        "step": "s2"
+      },
+      {
+        "text": "Máy chủ cấp số và khối id",
+        "step": "s4"
+      },
+      {
+        "text": "UUID, và khóa ngẫu nhiên làm gì với một chỉ mục",
+        "step": "s6"
+      },
+      {
+        "text": "Id xếp theo thời gian: UUID v7 và Snowflake",
+        "step": "s8"
+      },
+      {
+        "text": "Đồng hồ lùi lại, và những gì id để lộ",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "s1": {
+      "until": "s4"
+    },
+    "s1-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "s1-3": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "s1-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s1-5": {
+      "from": "s8"
+    },
+    "s1-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dA": {
+      "until": "s2"
+    },
+    "dA-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dA-3": {
+      "from": "s3"
+    },
+    "dB": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dB-2": {
+      "from": "s3"
+    },
+    "s2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "s2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "s2-3": {
+      "from": "s5",
+      "until": "s7"
+    },
+    "s2-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "s2-5": {
+      "from": "s8"
+    },
+    "tk": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "tk-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "idx": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p0": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p1": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p1-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p2": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p3-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p4-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p5": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p6-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p7": {
+      "from": "s6",
+      "until": "s8"
+    },
+    "p8": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p8-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p9": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p9-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "spy": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-5-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-6-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "a1": {
+      "until": "s2"
+    },
+    "a1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "a1-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a1-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a1-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "a1-6": {
+      "from": "s8"
+    },
+    "a1-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "b1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "b1-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "b1-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "b1-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "b1-5": {
+      "from": "s8"
+    },
+    "b1-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "a2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a2-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "a2-4": {
+      "from": "s8"
+    },
+    "b2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "b2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "b2-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "b2-4": {
+      "from": "s8"
+    },
+    "t1": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "t1-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "t2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "t2-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "r1": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r5-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "r2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "r4-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sp": {
+      "from": "s10",
+      "until": "s11"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Một bộ đếm",
+      "title": "Mỗi dòng cần một cái tên",
+      "chapter": "setup",
+      "body": "Đơn hàng, người dùng, thanh toán: mỗi dòng cần một định danh **duy nhất**, mãi mãi. Bảng khác trỏ tới nó, URL chứa nó, nhân viên hỗ trợ đọc nó qua điện thoại.\n\nVới một cơ sở dữ liệu thì có sẵn miễn phí. Một cột `AUTO_INCREMENT` (hay `SERIAL`) phát ra 1001, 1002, 1003… và cơ sở dữ liệu bảo đảm không số nào được dùng hai lần.",
+      "callout": {
+        "kind": "insight",
+        "text": "Bộ đếm cho bạn nhiều hơn tính duy nhất: id nhỏ, và sắp theo id cũng là sắp theo thời gian tạo. Hãy để ý mỗi phương án giữ lại món quà nào."
+      },
+      "changes": [],
+      "metrics": {
+        "collide": "không",
+        "idSize": "64 bit",
+        "sortable": "có",
+        "idDep": "một CSDL"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Va chạm",
+      "title": "Hai shard, hai bộ đếm",
+      "chapter": "problem",
+      "body": "Bảng đơn hàng được chia shard (xem *Sharding*). Mỗi shard là một cơ sở dữ liệu riêng với bộ đếm riêng, và cả hai vừa phát ra số **1004**.\n\nHai đơn hàng khác nhau giờ dùng chung một id. Một liên kết tới `/orders/1004`, một mục cache, một khoản hoàn tiền: mỗi thứ đều có thể chỉ đơn này hoặc đơn kia. Và ngày bạn gộp hay chia lại shard, các dòng sẽ đụng nhau.",
+      "callout": {
+        "kind": "warning",
+        "text": "Tính duy nhất phải đúng trên *toàn hệ thống*, không chỉ bên trong một máy."
+      },
+      "changes": [
+        "+ Shard B, với bộ đếm riêng",
+        "- Đơn 1004 giờ tồn tại hai lần"
+      ],
+      "metrics": {
+        "collide": "có",
+        "idSize": "64 bit",
+        "sortable": "có",
+        "idDep": "mỗi shard"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Máy cấp số",
+      "title": "Cách 1: một bộ đếm cho tất cả",
+      "chapter": "solution",
+      "body": "Đưa bộ đếm ra khỏi các shard vào một dịch vụ nhỏ chỉ có một việc là phát số kế tiếp: một [[máy chủ cấp số]] (ticket server). Trước mỗi lần chèn, máy chủ ứng dụng xin nó một id.\n\nTính duy nhất trở lại, và id vẫn xếp theo thời gian. Nhưng giờ mỗi lần chèn tốn thêm một lượt đi về, và nếu máy cấp số sập thì không ai tạo được gì.",
+      "callout": {
+        "kind": "tip",
+        "text": "Flickr đã chạy hai máy cấp số trong nhiều năm, một máy phát số lẻ và máy kia phát số chẵn, để máy nào hỏng cũng không làm sập trang."
+      },
+      "changes": [
+        "+ Máy cấp số",
+        "~ Mỗi lần chèn phải xin nó id trước",
+        "- Một điểm lỗi duy nhất mới"
+      ],
+      "metrics": {
+        "collide": "không",
+        "idSize": "64 bit",
+        "sortable": "có",
+        "idDep": "máy cấp số · mỗi lần chèn"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Khối",
+      "title": "Phát theo khối, không phát lẻ từng số",
+      "chapter": "technique",
+      "body": "Xin ít lần hơn. Mỗi máy chủ ứng dụng giữ trước cả một **khối**, chẳng hạn 1.000 id, trong một lần gọi và phát chúng từ bộ nhớ. Vậy là một lượt đi về cho mỗi nghìn lần chèn, và ứng dụng vẫn chạy được một lúc nếu máy cấp số sập.\n\nCái giá: id không còn theo thứ tự tạo giữa các máy (số 2001 của Máy 2 có thể cũ hơn số 1500 của Máy 1), và một máy chủ sập sẽ mang theo phần còn lại của khối, để lại khoảng trống.",
+      "callout": {
+        "kind": "insight",
+        "text": "Khoảng trống vô hại. Đừng bao giờ hứa id không có khoảng trống hay xếp thứ tự chặt chẽ: số hóa đơn mà luật bắt phải liền mạch là một bộ đếm riêng, có chủ đích."
+      },
+      "changes": [
+        "~ Máy chủ giữ trước 1.000 id mỗi lần gọi",
+        "~ 1 lượt đi về mỗi 1.000 lần chèn",
+        "- Thứ tự thời gian chặt chẽ giữa các máy"
+      ],
+      "metrics": {
+        "collide": "không",
+        "idSize": "64 bit",
+        "sortable": "gần đúng",
+        "idDep": "máy cấp số · hiếm khi"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "UUID",
+      "title": "Cách 2: chọn một số không ai khác chọn",
+      "chapter": "solution",
+      "body": "Hoặc bỏ hẳn việc phối hợp. Một [[UUID]] (phiên bản 4) gồm 122 bit ngẫu nhiên. Máy chủ, điện thoại hay script nào cũng tạo được, chẳng cần hỏi ai.\n\nHai cái có thể trùng không? Về lý thuyết thì có. Thực tế bạn phải tạo một tỷ cái mỗi giây trong khoảng 86 năm mới đạt 50% khả năng có một lần lặp.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cái giá là kích thước: 128 bit, gấp đôi một id thường, và id đó được chép vào mọi chỉ mục và mọi bảng trỏ tới dòng."
+      },
+      "changes": [
+        "- Máy cấp số",
+        "+ Mỗi máy chủ tạo id ngẫu nhiên 128 bit",
+        "~ Không cần phối hợp gì"
+      ],
+      "metrics": {
+        "collide": "không",
+        "idSize": "128 bit",
+        "sortable": "không",
+        "idDep": "không gì cả"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Ngẫu nhiên gây hại",
+      "title": "Tình huống: id ngẫu nhiên và chỉ mục",
+      "chapter": "problem",
+      "body": "Khóa chính nằm trong một B-tree, sắp theo id (xem *Chỉ mục*). Id từ bộ đếm luôn rơi vào trang **cuối**, trang này luôn ở trong bộ nhớ. Id ngẫu nhiên thì lần nào cũng rơi vào một trang **bất kỳ**.\n\nKhi chỉ mục lớn hơn bộ nhớ, phần lớn lần chèn phải lấy một trang nguội từ đĩa trước, và các trang bị tách khắp cây. Tốc độ chèn có thể giảm nhiều lần, và chỉ mục phình ra với những trang trống một nửa.",
+      "callout": {
+        "kind": "warning",
+        "text": "Đau nhất ở nơi chính bảng được lưu theo thứ tự khóa chính (InnoDB của MySQL, SQL Server), nhưng B-tree nào cũng chịu ảnh hưởng."
+      },
+      "changes": [
+        "+ Trong một shard: chỉ mục khóa chính",
+        "- Lượt chèn tản ra mọi trang"
+      ],
+      "metrics": {
+        "collide": "không",
+        "idSize": "128 bit",
+        "sortable": "không",
+        "idDep": "không gì cả"
+      },
+      "overrides": {
+        "dA-3": {
+          "visible": false
+        },
+        "dB-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Thời gian trước",
+      "title": "Đặt thời gian lên đầu",
+      "chapter": "solution",
+      "body": "Giữ tính ngẫu nhiên, nhưng mở đầu bằng một dấu thời gian. [[UUID v7]], cùng người anh em ULID, bắt đầu bằng 48 bit mili giây, theo sau là các bit ngẫu nhiên.\n\nId mới luôn lớn hơn id cũ, nên lượt chèn quay về mép phải của chỉ mục. Vẫn không cần phối hợp, và “sắp theo id” lại có nghĩa là “sắp theo thời gian tạo”.",
+      "callout": {
+        "kind": "tip",
+        "text": "Nếu muốn dùng UUID làm khóa chính, hãy dùng phiên bản 7. Để phiên bản 4 cho những token cần không thể đoán được."
+      },
+      "changes": [
+        "~ UUID v4 → UUID v7",
+        "~ Lượt chèn lại nối vào trang cuối"
+      ],
+      "metrics": {
+        "collide": "không",
+        "idSize": "128 bit",
+        "sortable": "có",
+        "idDep": "một đồng hồ"
+      },
+      "overrides": {
+        "dA-3": {
+          "visible": false
+        },
+        "dB-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Snowflake",
+      "title": "Cách 3: id Snowflake",
+      "chapter": "solution",
+      "body": "Twitter cần những id vừa trong 64 bit, xếp theo thời gian, và có thể tạo hàng chục nghìn lần mỗi giây mà không cần bộ đếm trung tâm. Câu trả lời của họ, [[Snowflake]], gói ba trường vào một con số.\n\nMột **dấu thời gian** tính bằng mili giây, **id máy** của bộ tạo, và một **số thứ tự** đếm lên trong mili giây đó. Hai máy không bao giờ trùng vì id máy khác nhau; một máy không bao giờ lặp nhờ số thứ tự.",
+      "callout": {
+        "kind": "tip",
+        "text": "Mỗi máy có thể tạo 4.096 id mỗi mili giây. Discord, Instagram và nhiều nơi khác dùng cùng ý tưởng với cách chia bit hơi khác."
+      },
+      "changes": [
+        "~ UUID → id Snowflake 64 bit",
+        "+ Mỗi máy chủ nhận một id máy khi khởi động"
+      ],
+      "metrics": {
+        "collide": "không",
+        "idSize": "64 bit",
+        "sortable": "có",
+        "idDep": "id máy + đồng hồ"
+      },
+      "overrides": {
+        "dA-3": {
+          "emphasis": true
+        },
+        "dB-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Đồng hồ",
+      "title": "Tình huống: đồng hồ lùi lại",
+      "chapter": "problem",
+      "body": "Id Snowflake chỉ duy nhất nếu đồng hồ của một máy không bao giờ lặp lại một mili giây. Nhưng đồng hồ có bị chỉnh: dịch vụ đồng bộ giờ phát hiện Máy chủ 1 chạy nhanh hai giây và chỉnh lùi lại. Trong hai giây, nó sẽ đóng dấu id bằng những thời điểm đã dùng: bị trùng.\n\nCách phòng rất đơn giản. Nhớ dấu thời gian cuối cùng bạn đã phát; nếu đồng hồ giờ chỉ sớm hơn, hãy **chờ** (hoặc từ chối phát id) cho tới khi thời gian đuổi kịp.",
+      "callout": {
+        "kind": "warning",
+        "text": "Cách khác làm hỏng nó: hai máy có cùng id máy. Hãy cấp id từ một nơi duy nhất (một dịch vụ cấu hình, hoặc lấy bit từ thứ vốn đã duy nhất), đừng bao giờ gán bằng tay."
+      },
+      "changes": [
+        "- Đồng hồ Máy chủ 1 bị chỉnh lùi 2 s",
+        "+ Bộ tạo chờ đến khi đồng hồ vượt dấu cuối của nó",
+        "~ Không trùng: máy chủ đó tạm dừng chèn 2 s"
+      ],
+      "metrics": {
+        "collide": "không",
+        "idSize": "64 bit",
+        "sortable": "có",
+        "idDep": "id máy + đồng hồ"
+      },
+      "overrides": {
+        "s1-5": {
+          "visible": false
+        },
+        "a1-6": {
+          "visible": false
+        },
+        "b1-5": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Rò rỉ",
+      "title": "Tình huống: id để lộ những gì",
+      "chapter": "tradeoff",
+      "body": "Id nằm trong URL, và người ta đọc chúng. Một đối thủ đặt một đơn vào thứ Hai (**#1004**) và một đơn nữa vào thứ Ba (**#1250**), và giờ biết bạn nhận khoảng 246 đơn mỗi ngày.\n\nId tuần tự cũng dễ dò lần lượt: đổi `/invoices/1004` thành `/invoices/1005` và xem trả về gì. Id dựa trên thời gian để lộ chính xác lúc mỗi thứ được tạo.",
+      "callout": {
+        "kind": "tip",
+        "text": "Hai lớp phòng thủ, và lớp thứ hai bạn cần bất kể thế nào: hiển thị một id công khai ngẫu nhiên riêng, và **kiểm tra phân quyền ở mọi request** (xem *Phân quyền*). Id không đoán được không phải là kiểm soát truy cập."
+      },
+      "changes": [
+        "+ Đối thủ đọc id trong URL",
+        "~ Id công khai → ngẫu nhiên; khóa nội bộ vẫn có thứ tự"
+      ],
+      "metrics": {
+        "collide": "không",
+        "idSize": "64 bit",
+        "sortable": "có",
+        "idDep": "id máy + đồng hồ"
+      },
+      "overrides": {
+        "s1-5": {
+          "emphasis": true
+        },
+        "a1-6": {
+          "emphasis": true
+        },
+        "b1-5": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Chọn lựa",
+      "title": "Id nào cho việc nào",
+      "chapter": "tradeoff",
+      "body": "• **Bộ đếm CSDL** — Kích thước: 64 bit; Theo thời gian: Có; Cần: Một CSDL\n• **Khối số** — Kích thước: 64 bit; Theo thời gian: Gần đúng; Cần: Dịch vụ cấp số\n• **UUID v4** — Kích thước: 128 bit; Theo thời gian: Không; Cần: Không gì cả\n• **UUID v7** — Kích thước: 128 bit; Theo thời gian: Có; Cần: Một đồng hồ\n• **Snowflake** — Kích thước: 64 bit; Theo thời gian: Có; Cần: Id máy + đồng hồ\n\nMột cơ sở dữ liệu? Dùng bộ đếm của nó. Nhiều bên ghi và không chia sẻ gì? UUID v7. Id số gọn nhẹ với khối lượng cực lớn? Snowflake.",
+      "callout": {
+        "kind": "insight",
+        "text": "Không có id tốt nhất, chỉ có những tính chất hệ thống của bạn cần: kích thước, thứ tự, tính độc lập và tính bí mật."
+      },
+      "changes": [],
+      "metrics": {
+        "collide": "không",
+        "idSize": "64 bit",
+        "sortable": "có",
+        "idDep": "id máy + đồng hồ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s12",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Bộ đếm theo từng cơ sở dữ liệu thôi duy nhất ngay khi bạn **sharding**.\n• **Máy chủ cấp số** khôi phục điều đó; phát theo **khối** bỏ được lượt đi về cho mỗi lần chèn.\n• **UUID v4** không cần ai, nhưng làm lượt chèn tản khắp chỉ mục; **UUID v7** đặt thời gian lên đầu để sửa điều đó.\n• **Snowflake**: thời gian + id máy + số thứ tự trong 64 bit; đề phòng đồng hồ lùi lại.\n• Id **để lộ** khối lượng và thời điểm. Đừng bao giờ coi chúng là kiểm soát truy cập.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **CAP & tính nhất quán**: các bản sao dữ liệu nên làm gì khi mạng giữa chúng bị đứt."
+      },
+      "changes": [],
+      "metrics": {
+        "collide": "không",
+        "idSize": "64 bit",
+        "sortable": "có",
+        "idDep": "id máy + đồng hồ"
+      },
+      "overrides": {}
+    }
+  ]
+}

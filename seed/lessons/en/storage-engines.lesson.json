@@ -1,0 +1,3516 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "cz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": -44
+        },
+        "width": 1314,
+        "height": 211,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "lz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 724,
+          "y": -242
+        },
+        "width": 612,
+        "height": 273,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "lz-label",
+        "type": "text",
+        "title": "LOG FILE · APPEND ONLY",
+        "position": {
+          "x": 520,
+          "y": -358
+        },
+        "width": 184,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "lz"
+      },
+      {
+        "id": "pz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -55,
+          "y": 396
+        },
+        "width": 1426,
+        "height": 194,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1321,
+          "y": -634
+        },
+        "width": 437,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "THE DURABILITY DIAL\nfsync every commit    safest · slowest\n→ group commit        same safety, shared fsync\nfsync every 100 ms    fast · may lose 100 ms\n⚠ fsync never         fastest · may lose minutes",
+        "position": {
+          "x": 1321,
+          "y": -634
+        },
+        "width": 413,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "App",
+        "position": {
+          "x": 0,
+          "y": -660
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "200,000 writes / s",
+        "position": {
+          "x": 0,
+          "y": -660
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "Analytics query",
+        "position": {
+          "x": 0,
+          "y": -660
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem",
+        "type": "process",
+        "title": "Pages in memory",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 230,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-2",
+        "type": "process",
+        "title": "Pages in memory",
+        "description": "power cut · 4 s of writes gone",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 230,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-3",
+        "type": "process",
+        "title": "Pages in memory",
+        "description": "checkpoint: flushing",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 230,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-4",
+        "type": "process",
+        "title": "Pages in memory",
+        "description": "⚠ full of changed pages · CPU 100%",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 230,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-5",
+        "type": "process",
+        "title": "Memtable",
+        "description": "sorted · in memory",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 194,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "mem-6",
+        "type": "process",
+        "title": "Memtable",
+        "description": "sorted · in memory · GET user:42 · not here",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 194,
+        "height": 117,
+        "shape": "rounded",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "p0",
+        "type": "process",
+        "title": "data file · 8 KB pages",
+        "position": {
+          "x": -624,
+          "y": 396
+        },
+        "width": 232,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p0-2",
+        "type": "process",
+        "title": "B-tree pages · updated in place",
+        "position": {
+          "x": -624,
+          "y": 396
+        },
+        "width": 180,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p0-3",
+        "type": "process",
+        "title": "B-tree pages · updated in place",
+        "position": {
+          "x": -624,
+          "y": 396
+        },
+        "width": 180,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p0-4",
+        "type": "process",
+        "title": "row store · every page read",
+        "position": {
+          "x": -624,
+          "y": 396
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -431,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p1-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -431,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -316,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p2-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -316,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -201,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p3-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -201,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p4",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -85,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p4-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -85,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p5",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 31,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p5-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 31,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p6",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 196,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p6-2",
+        "type": "process",
+        "title": "⚠ torn page",
+        "position": {
+          "x": 196,
+          "y": 396
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p6-3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 196,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p7",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 362,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p7-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 362,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p8",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 477,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p8-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 477,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p9",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 592,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "p9-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 592,
+          "y": 396
+        },
+        "width": 75,
+        "height": 72,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "wal",
+        "type": "process",
+        "title": "Log",
+        "description": "✓ fsync before “saved”",
+        "position": {
+          "x": 534,
+          "y": -220
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Scroll",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "wal-2",
+        "type": "process",
+        "title": "Log",
+        "description": "1 fsync for 8 transactions",
+        "position": {
+          "x": 534,
+          "y": -220
+        },
+        "width": 176,
+        "height": 90,
+        "shape": "rounded",
+        "icon": "lucide:Scroll",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "wal-3",
+        "type": "process",
+        "title": "Log",
+        "description": "✓ older entries discarded",
+        "position": {
+          "x": 534,
+          "y": -220
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Scroll",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "wal-4",
+        "type": "process",
+        "title": "Log",
+        "position": {
+          "x": 534,
+          "y": -220
+        },
+        "width": 176,
+        "height": 90,
+        "shape": "rounded",
+        "icon": "lucide:Scroll",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-2",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-3",
+        "type": "process",
+        "title": "▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-4",
+        "type": "process",
+        "title": "▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-5",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "ent-6",
+        "type": "process",
+        "title": "▮ ▮ ▮ ▮ ▮",
+        "position": {
+          "x": 751,
+          "y": -220
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#8d99ae",
+        "backgroundColor": "#1c1f23",
+        "borderColor": "#8d99ae",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "lz"
+      },
+      {
+        "id": "s0",
+        "type": "process",
+        "title": "sorted files (SSTables) · oldest",
+        "position": {
+          "x": -337,
+          "y": 396
+        },
+        "width": 208,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s0-2",
+        "type": "process",
+        "title": "not here",
+        "position": {
+          "x": -337,
+          "y": 396
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -104,
+          "y": 396
+        },
+        "width": 154,
+        "height": 92,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s1-2",
+        "type": "process",
+        "title": "✓ maybe → found",
+        "position": {
+          "x": -104,
+          "y": 396
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 112,
+          "y": 396
+        },
+        "width": 154,
+        "height": 92,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s2-2",
+        "type": "process",
+        "title": "not here",
+        "position": {
+          "x": 112,
+          "y": 396
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s3",
+        "type": "process",
+        "title": "newest",
+        "position": {
+          "x": 330,
+          "y": 396
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "s3-2",
+        "type": "process",
+        "title": "not here",
+        "position": {
+          "x": 330,
+          "y": 396
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "big",
+        "type": "process",
+        "title": "merged · newest values only",
+        "position": {
+          "x": -176,
+          "y": 396
+        },
+        "width": 229,
+        "height": 138,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "big-2",
+        "type": "process",
+        "title": "sorted files · never modified",
+        "position": {
+          "x": -176,
+          "y": 396
+        },
+        "width": 229,
+        "height": 138,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "pz"
+      },
+      {
+        "id": "c0",
+        "type": "process",
+        "title": "id",
+        "description": "column store · one file per column",
+        "position": {
+          "x": -541,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c1",
+        "type": "process",
+        "title": "user",
+        "position": {
+          "x": -325,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c2",
+        "type": "process",
+        "title": "item",
+        "position": {
+          "x": -108,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c3",
+        "type": "process",
+        "title": "price",
+        "position": {
+          "x": 109,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c4",
+        "type": "process",
+        "title": "date",
+        "position": {
+          "x": 325,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "c5",
+        "type": "process",
+        "title": "+35",
+        "position": {
+          "x": 541,
+          "y": -44
+        },
+        "width": 176,
+        "height": 82,
+        "shape": "rounded",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "cz"
+      },
+      {
+        "id": "scan-to",
+        "type": "text",
+        "title": "",
+        "position": {
+          "x": 484,
+          "y": 290
+        },
+        "width": 28,
+        "height": 28
+      }
+    ],
+    "edges": [
+      {
+        "id": "am",
+        "from": "app",
+        "to": "mem",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "am-2",
+        "from": "app",
+        "to": "mem-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "am-3",
+        "from": "app",
+        "to": "mem-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "am-4",
+        "from": "app-2",
+        "to": "mem-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "am-5",
+        "from": "app-2",
+        "to": "mem-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "am-6",
+        "from": "app",
+        "to": "mem-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "am-7",
+        "from": "app",
+        "to": "mem-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "f1",
+        "from": "mem",
+        "to": "p1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -431,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f1-2",
+        "from": "mem-2",
+        "to": "p1",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -431,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "f1-3",
+        "from": "mem-3",
+        "to": "p1-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -431,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "f1-4",
+        "from": "mem",
+        "to": "p1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -431,
+            "y": 88
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f1-5",
+        "from": "mem-4",
+        "to": "p1-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -431,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f4",
+        "from": "mem",
+        "to": "p4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -85,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f4-2",
+        "from": "mem-2",
+        "to": "p4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -85,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "f4-3",
+        "from": "mem-3",
+        "to": "p4-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -85,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "f4-4",
+        "from": "mem",
+        "to": "p4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -85,
+            "y": 88
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f4-5",
+        "from": "mem-4",
+        "to": "p4-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -85,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f6",
+        "from": "mem",
+        "to": "p6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 196,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f6-2",
+        "from": "mem-2",
+        "to": "p6-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 196,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "f6-3",
+        "from": "mem-3",
+        "to": "p6-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 196,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "f6-4",
+        "from": "mem",
+        "to": "p6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 196,
+            "y": 88
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f6-5",
+        "from": "mem-4",
+        "to": "p6-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 196,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f8",
+        "from": "mem",
+        "to": "p8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 477,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f8-2",
+        "from": "mem-2",
+        "to": "p8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 477,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "f8-3",
+        "from": "mem-3",
+        "to": "p8-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 477,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "f8-4",
+        "from": "mem",
+        "to": "p8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 477,
+            "y": 88
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "f8-5",
+        "from": "mem-4",
+        "to": "p8-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 477,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "mw",
+        "from": "mem",
+        "to": "wal",
+        "label": "1 · append",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "mw-2",
+        "from": "mem",
+        "to": "wal-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "mw-3",
+        "from": "mem-3",
+        "to": "wal-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "mw-4",
+        "from": "mem",
+        "to": "wal-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "mw-5",
+        "from": "mem-4",
+        "to": "wal-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "mw-6",
+        "from": "mem-5",
+        "to": "wal-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "mw-7",
+        "from": "mem-6",
+        "to": "wal-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "f0",
+        "from": "mem-4",
+        "to": "p0-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -624,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f2",
+        "from": "mem-4",
+        "to": "p2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -316,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f3",
+        "from": "mem-4",
+        "to": "p3-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -201,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f5",
+        "from": "mem-4",
+        "to": "p5-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 31,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f7",
+        "from": "mem-4",
+        "to": "p7-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 362,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "f9",
+        "from": "mem-4",
+        "to": "p9-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 592,
+            "y": 88
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 6
+      },
+      {
+        "id": "n3",
+        "from": "mem-5",
+        "to": "s3",
+        "label": "flush: one sequential write",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 330,
+            "y": 88
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "n3-2",
+        "from": "mem-6",
+        "to": "s3-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 330,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "n3-3",
+        "from": "mem-5",
+        "to": "s3",
+        "label": "flush",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 330,
+            "y": 88
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "n0",
+        "from": "mem-6",
+        "to": "s0-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -337,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "n1",
+        "from": "mem-6",
+        "to": "s1-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": -104,
+            "y": 88
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "n2",
+        "from": "mem-6",
+        "to": "s2-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 88
+          },
+          {
+            "x": 112,
+            "y": 88
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "col",
+        "from": "app-3",
+        "to": "c3",
+        "label": "reads 1 column of 40",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": -352
+          },
+          {
+            "x": 109,
+            "y": -352
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "scan",
+        "from": "app-3",
+        "to": "scan-to",
+        "startMarker": "none",
+        "endMarker": "none",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": -660,
+            "y": -660
+          },
+          {
+            "x": -660,
+            "y": 290
+          }
+        ],
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.25
+      }
+    ]
+  },
+  "meta": {
+    "title": "Storage Engines",
+    "summary": "What a database actually does with your write — and why some are built for reads and others for writes.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "crashSafe",
+        "label": "Survives a crash"
+      },
+      {
+        "id": "wps",
+        "label": "Writes / second"
+      },
+      {
+        "id": "diskPattern",
+        "label": "Disk writes"
+      },
+      {
+        "id": "lookupCost",
+        "label": "Reads per lookup"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why “saved” needs a write-ahead log",
+        "step": "s3"
+      },
+      {
+        "text": "fsync, group commit and checkpoints",
+        "step": "s5"
+      },
+      {
+        "text": "How a B-tree engine reads and writes",
+        "step": "s6"
+      },
+      {
+        "text": "LSM-trees: memtable, SSTables, Bloom filters, compaction",
+        "step": "s10"
+      },
+      {
+        "text": "Choosing: B-tree or LSM, rows or columns",
+        "step": "s12"
+      }
+    ]
+  },
+  "presence": {
+    "app-2": {
+      "from": "s7",
+      "until": "s9"
+    },
+    "app-3": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "mem": {
+      "until": "s7"
+    },
+    "mem-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "mem-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "mem-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "mem-5": {
+      "from": "s8"
+    },
+    "mem-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "p0": {
+      "until": "s6"
+    },
+    "p0-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "p0-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "p0-4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "p1": {
+      "until": "s7"
+    },
+    "p1-2": {
+      "from": "s5",
+      "until": "s13"
+    },
+    "p2": {
+      "until": "s7"
+    },
+    "p2-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "p3": {
+      "until": "s7"
+    },
+    "p3-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "p4": {
+      "until": "s7"
+    },
+    "p4-2": {
+      "from": "s5",
+      "until": "s13"
+    },
+    "p5": {
+      "until": "s7"
+    },
+    "p5-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "p6": {
+      "until": "s7"
+    },
+    "p6-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "p6-3": {
+      "from": "s5",
+      "until": "s13"
+    },
+    "p7": {
+      "until": "s7"
+    },
+    "p7-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "p8": {
+      "until": "s7"
+    },
+    "p8-2": {
+      "from": "s5",
+      "until": "s13"
+    },
+    "p9": {
+      "until": "s7"
+    },
+    "p9-2": {
+      "from": "s7",
+      "until": "s13"
+    },
+    "lz": {
+      "from": "s3"
+    },
+    "wal": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wal-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "wal-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "wal-4": {
+      "from": "s6"
+    },
+    "ent": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ent-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ent-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ent-4": {
+      "from": "s6"
+    },
+    "ent-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ent-6": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "s0": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s0-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "s1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s1-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "s2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "s2-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "s3": {
+      "from": "s8"
+    },
+    "s3-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "big": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "big-2": {
+      "from": "s11"
+    },
+    "cz": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c0": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c1": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c2": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c3": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "c5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "scan-to": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "lz-label": {
+      "from": "s3"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "am": {
+      "until": "s7"
+    },
+    "am-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "am-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "am-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "am-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "am-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "am-7": {
+      "from": "s10"
+    },
+    "f1": {
+      "until": "s5"
+    },
+    "f1-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f1-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "f1-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f1-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f4": {
+      "until": "s5"
+    },
+    "f4-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f4-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "f4-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f4-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f6": {
+      "until": "s5"
+    },
+    "f6-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f6-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "f6-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f6-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f8": {
+      "until": "s5"
+    },
+    "f8-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "f8-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "f8-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "f8-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "mw": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "mw-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "mw-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "mw-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "mw-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "mw-6": {
+      "from": "s8"
+    },
+    "mw-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "f0": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "f9": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "n3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "n3-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "n3-3": {
+      "from": "s10"
+    },
+    "n0": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "n1": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "n2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "col": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "scan": {
+      "from": "s12",
+      "until": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Two places",
+      "title": "Memory and disk",
+      "chapter": "setup",
+      "body": "A database server has two places to keep data. **Memory** is fast — a change takes nanoseconds — but everything in it vanishes when the process stops. **Disk** survives a crash or a power cut, but a write that must be confirmed as truly on the device (an `fsync`) is thousands of times slower.\n\nA [[storage engine]] is the part of the database that decides what goes where, and when. Every design is a different answer to one question: how do you get the speed of memory and the safety of disk at once?",
+      "callout": {
+        "kind": "insight",
+        "text": "Tables are stored as fixed-size **pages** — typically 8 or 16 KB, each holding dozens of rows. The engine keeps recently used pages in memory and reads the rest from disk on demand."
+      },
+      "changes": [],
+      "metrics": {
+        "crashSafe": "?"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Crash",
+      "title": "Fast and wrong: memory first, disk whenever",
+      "chapter": "problem",
+      "body": "The simplest engine: change the page in memory, reply “saved”, and copy changed pages to disk every few seconds in the background. Writes are blazing fast.\n\nThen the power fails. Everything changed since the last background copy is gone — including orders that customers were told had gone through. Worse, a page that was half-written when the power died is now garbage: a [[torn page]].",
+      "callout": {
+        "kind": "warning",
+        "text": "“Saved” has to mean “survives a crash”. That is the D in ACID — **durability**."
+      },
+      "changes": [
+        "+ Reply “saved” as soon as memory is updated",
+        "- Power cut: the last few seconds of writes are lost",
+        "- One half-written page is corrupt"
+      ],
+      "metrics": {
+        "crashSafe": "no",
+        "wps": "500,000",
+        "diskPattern": "random · whenever"
+      },
+      "overrides": {
+        "mem": {
+          "visible": false
+        },
+        "p6": {
+          "visible": false
+        },
+        "am": {
+          "visible": false
+        },
+        "f1": {
+          "visible": false
+        },
+        "f4": {
+          "visible": false
+        },
+        "f6": {
+          "visible": false
+        },
+        "f8": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Log first",
+      "title": "Write it down first: the write-ahead log",
+      "chapter": "solution",
+      "body": "The obvious fix — push every changed page to disk before replying — is safe but painfully slow: a whole 8 KB page rewritten at a random position, to save one 100-byte row.\n\nInstead, describe the change in a few bytes and **append** it to a log file, forcing that to disk before replying. This is the [[write-ahead log]] (WAL). Appending to the end of one file is the fastest thing a disk can do. The pages themselves are changed in memory and copied out later, at leisure.\n\nThe speeds shown are for one ordinary SSD. Yours will differ; the ratios between the designs won’t.",
+      "callout": {
+        "kind": "insight",
+        "text": "After a crash the engine replays the log and rebuilds exactly the state it had promised — repairing any torn pages along the way. The log is the truth; the pages are a convenient summary of it."
+      },
+      "changes": [
+        "+ Write-ahead log: append, then fsync",
+        "~ “Saved” only once the log entry is on disk",
+        "~ Data pages are copied out later, in the background"
+      ],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "5,000",
+        "diskPattern": "sequential log"
+      },
+      "overrides": {
+        "mem": {
+          "emphasis": true
+        },
+        "p6": {
+          "emphasis": true
+        },
+        "am": {
+          "emphasis": true
+        },
+        "f1": {
+          "emphasis": true
+        },
+        "f4": {
+          "emphasis": true
+        },
+        "f6": {
+          "emphasis": true
+        },
+        "f8": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "How sure?",
+      "title": "Case: how sure is “saved”?",
+      "chapter": "tradeoff",
+      "body": "Forcing the log to disk takes a fraction of a millisecond on an SSD, and by default it happens once per transaction. At thousands of commits a second, that one step becomes the limit.\n\n[[Group commit]] helps for free: transactions that arrive in the same instant share a single fsync. Beyond that there is a dial. Most databases can sync on a timer instead — every 100 ms, or every second — multiplying throughput, and accepting that a crash loses the last moments of “saved” writes.",
+      "callout": {
+        "kind": "warning",
+        "text": "Know where your dial is set. Redis in append-only mode syncs once a second by default; PostgreSQL with `synchronous_commit = off` and MySQL with `innodb_flush_log_at_trx_commit = 2` can both lose the last moments before a power cut."
+      },
+      "changes": [
+        "+ Group commit: many transactions, one fsync",
+        "~ Writes 5,000 → 40,000 per second",
+        "~ Optional: sync on a timer — faster, but a crash loses the last moments"
+      ],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "40,000",
+        "diskPattern": "sequential log"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Checkpoint",
+      "title": "The log can’t grow for ever",
+      "chapter": "technique",
+      "body": "Left alone, the log would grow without limit, and recovering from a crash would mean replaying days of it. So every few minutes the engine takes a [[checkpoint]]: it copies all changed pages to the data file, notes “everything up to here is safely in the pages”, and throws the older log away.\n\nRecovery then replays only the log written since the last checkpoint — seconds to a few minutes of work.",
+      "callout": {
+        "kind": "tip",
+        "text": "A checkpoint is a burst of scattered page writes. Databases spread them out over time; when they can’t keep up, you see it as periodic latency spikes."
+      },
+      "changes": [
+        "+ Checkpoint: copy changed pages out, trim the log",
+        "~ Crash recovery replays only the log since the checkpoint"
+      ],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "40,000",
+        "diskPattern": "log + random pages"
+      },
+      "overrides": {
+        "mem": {
+          "visible": false
+        },
+        "p1": {
+          "visible": false
+        },
+        "p4": {
+          "visible": false
+        },
+        "p6": {
+          "visible": false
+        },
+        "p8": {
+          "visible": false
+        },
+        "am": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "B-tree",
+      "title": "The classic engine: pages and B-trees, updated in place",
+      "chapter": "insight",
+      "body": "What we just built is the design inside PostgreSQL, MySQL (InnoDB), SQL Server and Oracle. Data lives in fixed-size pages, found through **B-trees** (see *Indexes*) — in some engines the table itself is one. To change a row, the engine finds its page and modifies that page *in place*, with the log for safety.\n\nIt is excellent at reads. Any row is three or four page reads away — usually straight from memory — and neighbouring keys sit on neighbouring pages, so range scans are cheap.",
+      "callout": {
+        "kind": "insight",
+        "text": "One copy of every row, at a known address. That is what makes reads predictable — and why every write has to go and find that address."
+      },
+      "changes": [
+        "~ Reads: 3–4 pages, mostly from memory",
+        "~ Writes: find the page, change it in place"
+      ],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "40,000",
+        "diskPattern": "log + random pages",
+        "lookupCost": "3–4 pages"
+      },
+      "overrides": {
+        "am": {
+          "effect": "comet",
+          "emphasis": true
+        },
+        "mem": {
+          "emphasis": true
+        },
+        "p1": {
+          "emphasis": true
+        },
+        "p1-2": {
+          "visible": false
+        },
+        "p4": {
+          "emphasis": true
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p6": {
+          "emphasis": true
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p8": {
+          "emphasis": true
+        },
+        "p8-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Firehose",
+      "title": "Case: a firehose of writes",
+      "chapter": "problem",
+      "body": "Now the workload changes: sensor readings, chat messages, click events — 200,000 small writes a second, each for a different key. Every one lands on a different page. Memory fills with changed pages, and each must eventually be written back to its own spot on disk: a whole page, for a few bytes of change.\n\nThe log keeps up easily, because it is sequential. The **scattered page writes** don’t. Checkpoints fall behind, and write throughput is capped by how fast the disk can do random writes.",
+      "callout": {
+        "kind": "warning",
+        "text": "This is **write amplification**: storing 100 bytes costs a log record plus an 8 KB page write. On a write-heavy workload the disk can end up writing tens of times more bytes than you actually stored."
+      },
+      "changes": [
+        "~ Workload: 200,000 small writes/s, scattered keys",
+        "- Every page is dirty · checkpoints fall behind",
+        "~ Throughput stuck near 40,000 writes/s"
+      ],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "40,000 of 200,000",
+        "diskPattern": "log + random pages",
+        "lookupCost": "3–4 pages"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "p1-2": {
+          "emphasis": true
+        },
+        "p4-2": {
+          "emphasis": true
+        },
+        "p6-3": {
+          "emphasis": true
+        },
+        "p8-2": {
+          "emphasis": true
+        },
+        "ent-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "LSM-tree",
+      "title": "Never update in place: the LSM-tree",
+      "chapter": "solution",
+      "body": "A different design drops the idea that each row has one home. A write goes to the log and into a sorted structure in memory, the [[memtable]]. That’s all — there is no page to find.\n\nWhen the memtable fills up it is written to disk in one go as an immutable, sorted file — an [[SSTable]] — and a fresh memtable starts. Every disk write is sequential. This is the [[log-structured merge tree]] (LSM): the design behind Cassandra, HBase, ScyllaDB and RocksDB, the engine many other databases embed.",
+      "callout": {
+        "kind": "tip",
+        "text": "An update is just a newer entry with the same key; a delete is a marker called a **tombstone**. Nothing already on disk is ever modified."
+      },
+      "changes": [
+        "~ Pages in memory → memtable (sorted)",
+        "+ A full memtable is flushed as one sorted file",
+        "~ All disk writes sequential · 200,000 writes/s"
+      ],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "200,000",
+        "diskPattern": "all sequential",
+        "lookupCost": "?"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "p1-2": {
+          "visible": false
+        },
+        "p2-2": {
+          "visible": false
+        },
+        "p3-2": {
+          "visible": false
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p5-2": {
+          "visible": false
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p7-2": {
+          "visible": false
+        },
+        "p8-2": {
+          "visible": false
+        },
+        "p9-2": {
+          "visible": false
+        },
+        "ent-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Find a key",
+      "title": "Case: where is my key?",
+      "chapter": "problem",
+      "body": "Reading is now the hard part. The newest value for a key might be in the memtable, or in any SSTable. Check them from newest to oldest: a key last written long ago — or one that doesn’t exist at all — costs a search of every file.\n\nTwo tricks rescue reads. Each SSTable carries a **Bloom filter** (see *Caching*) that answers “definitely not in this file” without touching the disk, and a small index of where each key range starts. A typical lookup then reads from just one file.",
+      "callout": {
+        "kind": "insight",
+        "text": "B-trees pay at write time to keep reads simple. LSM-trees keep writes simple and pay at read time. Every storage engine sits somewhere on that line."
+      },
+      "changes": [
+        "- A lookup may have to check every SSTable",
+        "+ A Bloom filter and a small index per file",
+        "~ Most lookups read a single file"
+      ],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "200,000",
+        "diskPattern": "all sequential",
+        "lookupCost": "≈ 1 file"
+      },
+      "overrides": {
+        "app": {
+          "emphasis": true
+        },
+        "mem-5": {
+          "visible": false
+        },
+        "p1-2": {
+          "visible": false
+        },
+        "p2-2": {
+          "visible": false
+        },
+        "p3-2": {
+          "visible": false
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p5-2": {
+          "visible": false
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p7-2": {
+          "visible": false
+        },
+        "p8-2": {
+          "visible": false
+        },
+        "p9-2": {
+          "visible": false
+        },
+        "ent-4": {
+          "visible": false
+        },
+        "s3": {
+          "visible": false
+        },
+        "mw-6": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Compaction",
+      "title": "Compaction: tidying up in the background",
+      "chapter": "technique",
+      "body": "Files pile up, and the older ones are full of values that have since been overwritten or deleted. So a background process keeps **merging** SSTables: read a few sorted files, write one new sorted file that keeps only the newest value of each key, delete the inputs.\n\nThis is [[compaction]]. It limits how many files a read has to consider, and gives the space back. It is also the price of the design: every byte is rewritten several times over its life, and compaction competes with live traffic for the disk.",
+      "callout": {
+        "kind": "warning",
+        "text": "If writes outrun compaction, files accumulate, reads slow down and the disk fills up. Watching the compaction backlog is the first rule of running an LSM database."
+      },
+      "changes": [
+        "+ Compaction merges three files into one",
+        "- Overwritten values and tombstones are dropped",
+        "~ Fewer files to consider on every read"
+      ],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "200,000",
+        "diskPattern": "all sequential",
+        "lookupCost": "≈ 1 file"
+      },
+      "overrides": {
+        "mem-5": {
+          "emphasis": true
+        },
+        "p1-2": {
+          "visible": false
+        },
+        "p2-2": {
+          "visible": false
+        },
+        "p3-2": {
+          "visible": false
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p5-2": {
+          "visible": false
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p7-2": {
+          "visible": false
+        },
+        "p8-2": {
+          "visible": false
+        },
+        "p9-2": {
+          "visible": false
+        },
+        "ent-4": {
+          "emphasis": true
+        },
+        "s3": {
+          "emphasis": true
+        },
+        "mw-6": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Choosing",
+      "title": "B-tree or LSM?",
+      "chapter": "tradeoff",
+      "body": "• Writes — B-tree: Scattered page updates; LSM-tree: Sequential appends\n• Reads — B-tree: A few pages, predictable; LSM-tree: Several files; filters help\n• Space — B-tree: Pages left part-empty; LSM-tree: Compact, compresses well\n• Background — B-tree: Checkpoints; LSM-tree: Compaction\n• Found in — B-tree: PostgreSQL, MySQL; LSM-tree: Cassandra, RocksDB\n\nRead-heavy, with range queries and transactions: a B-tree. Write-heavy, huge and mostly appended: an LSM-tree. Several newer SQL databases — CockroachDB, TiDB, MyRocks — put SQL on top of an LSM engine.",
+      "callout": {
+        "kind": "insight",
+        "text": "You rarely choose a storage engine directly; you choose a database and inherit its engine. Knowing which one is underneath explains most of how it behaves under load."
+      },
+      "changes": [],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "200,000",
+        "diskPattern": "all sequential",
+        "lookupCost": "≈ 1 file"
+      },
+      "overrides": {
+        "p1-2": {
+          "visible": false
+        },
+        "p2-2": {
+          "visible": false
+        },
+        "p3-2": {
+          "visible": false
+        },
+        "p4-2": {
+          "visible": false
+        },
+        "p5-2": {
+          "visible": false
+        },
+        "p6-3": {
+          "visible": false
+        },
+        "p7-2": {
+          "visible": false
+        },
+        "p8-2": {
+          "visible": false
+        },
+        "p9-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Columns",
+      "title": "Case: rows or columns?",
+      "chapter": "insight",
+      "body": "One more axis. Both engines so far keep each **row** together — ideal when you fetch or change whole records. But an analyst asks for `SELECT SUM(price) FROM orders` across two billion rows, and a row store has to read all 40 columns of every row to add up one of them.\n\nA [[column store]] keeps each column in its own file. The query reads only `price` — a fortieth of the data — and because similar values sit side by side, it compresses several times over. That is how warehouses such as BigQuery, Snowflake, Redshift and ClickHouse scan billions of rows in seconds.",
+      "callout": {
+        "kind": "tip",
+        "text": "Row stores serve the app: many small reads and writes. Column stores serve analytics: a few enormous scans. It is why data gets copied from one to the other — see *Batch & Stream Processing*."
+      },
+      "changes": [
+        "+ Analytics query: SUM(price) over 2 billion rows",
+        "- Row store: every column of every row is read",
+        "+ Column store: 1 column of 40"
+      ],
+      "metrics": {
+        "crashSafe": "yes",
+        "lookupCost": "scan: 1 of 40 columns"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "mem-5": {
+          "visible": false
+        },
+        "p1-2": {
+          "emphasis": true
+        },
+        "p2-2": {
+          "emphasis": true
+        },
+        "p3-2": {
+          "emphasis": true
+        },
+        "p4-2": {
+          "emphasis": true
+        },
+        "p5-2": {
+          "emphasis": true
+        },
+        "p6-3": {
+          "emphasis": true
+        },
+        "p7-2": {
+          "emphasis": true
+        },
+        "p8-2": {
+          "emphasis": true
+        },
+        "p9-2": {
+          "emphasis": true
+        },
+        "lz": {
+          "visible": false
+        },
+        "wal-4": {
+          "visible": false
+        },
+        "ent-4": {
+          "visible": false
+        },
+        "s3": {
+          "visible": false
+        },
+        "big-2": {
+          "visible": false
+        },
+        "lz-label": {
+          "visible": false
+        },
+        "am-7": {
+          "visible": false
+        },
+        "mw-6": {
+          "visible": false
+        },
+        "n3-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Memory is fast and forgetful; disk is durable and slow. A storage engine bridges the two.\n• The **write-ahead log** makes “saved” true: append, fsync, then reply.\n• How often you **fsync** is a durability dial — know where yours is set.\n• **B-trees** update pages in place: predictable reads, scattered writes.\n• **LSM-trees** only append: fast writes, paid for with compaction and harder reads.\n• **Column stores** serve analytics by reading only the columns a query needs.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Replication** — what to do when one database server can’t take all the reads, or might die."
+      },
+      "changes": [],
+      "metrics": {
+        "crashSafe": "yes",
+        "wps": "200,000",
+        "diskPattern": "all sequential",
+        "lookupCost": "≈ 1 file"
+      },
+      "overrides": {
+        "app": {
+          "emphasis": true
+        },
+        "mem-5": {
+          "emphasis": true
+        },
+        "lz": {
+          "emphasis": true
+        },
+        "wal-4": {
+          "emphasis": true
+        },
+        "ent-4": {
+          "emphasis": true
+        },
+        "s3": {
+          "emphasis": true
+        },
+        "big-2": {
+          "emphasis": true
+        },
+        "lz-label": {
+          "emphasis": true
+        },
+        "am-7": {
+          "emphasis": true
+        },
+        "mw-6": {
+          "emphasis": true
+        },
+        "n3-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

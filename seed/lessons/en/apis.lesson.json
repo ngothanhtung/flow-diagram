@@ -1,0 +1,1289 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 437,
+          "y": -279
+        },
+        "width": 330,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "THE PROFILE SCREEN, IN REST\nGET /users/42           → 18 KB\nGET /users/42/posts     → 26 KB\nGET /users/42/followers →  4 KB\n# three requests, one after another",
+        "position": {
+          "x": 437,
+          "y": -279
+        },
+        "width": 306,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 433,
+          "y": -279
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "WHAT THE SCREEN NEEDS\nname, avatar URL           ~0.4 KB\nlast 3 posts + previews    ~2.5 KB\nfollower count             ~0.1 KB\n⚠ downloaded 48 KB · used ~3 KB",
+        "position": {
+          "x": 433,
+          "y": -279
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 441,
+          "y": -262
+        },
+        "width": 338,
+        "height": 159,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "ONE QUERY\nquery {\n  user(id: 42) { name avatar\n    posts(last: 3) { title preview }\n    followers { count } }\n}\n→ 1 round trip · 3 KB",
+        "position": {
+          "x": 441,
+          "y": -262
+        },
+        "width": 314,
+        "height": 139,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 441,
+          "y": -270
+        },
+        "width": 338,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "A “SMALL” QUERY\nfollowers {\n  followers {\n    followers { posts { comments } }\n  } }\n⚠ 41,000 database lookups",
+        "position": {
+          "x": 441,
+          "y": -270
+        },
+        "width": 314,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 474,
+          "y": -279
+        },
+        "width": 404,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "A GRPC CONTRACT\nservice Users {\n  rpc GetUser (UserId) returns (User);\n}\n→ binary · typed · a few × smaller than JSON",
+        "position": {
+          "x": 474,
+          "y": -279
+        },
+        "width": 380,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 491,
+          "y": -281
+        },
+        "width": 437,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "PAGING A LONG LIST\n⚠ ?offset=40000&limit=20  → walks 40,020 rows\n→ ?after=9f3c&limit=20     → index seek, 20 rows\n# response includes next cursor: \"a71b\"",
+        "position": {
+          "x": 491,
+          "y": -281
+        },
+        "width": 413,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 479,
+          "y": -279
+        },
+        "width": 413,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-7-text",
+        "type": "text",
+        "title": "EVOLVING SAFELY\n⚠ remove or rename a field   → old apps break\n→ add a field                → nothing breaks\n→ deprecate, measure, remove later\n# breaking change? → /v2 alongside /v1",
+        "position": {
+          "x": 479,
+          "y": -279
+        },
+        "width": 389,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-7"
+      },
+      {
+        "id": "phone",
+        "type": "process",
+        "title": "mobile app",
+        "position": {
+          "x": 0,
+          "y": -304
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "phone-2",
+        "type": "process",
+        "title": "mobile app",
+        "description": "loading…",
+        "position": {
+          "x": 0,
+          "y": -304
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "phone-3",
+        "type": "process",
+        "title": "mobile app",
+        "description": "followers · page 2,001",
+        "position": {
+          "x": 0,
+          "y": -304
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "phone-4",
+        "type": "process",
+        "title": "mobile app",
+        "description": "⚠ app v3.2 · crashed",
+        "position": {
+          "x": 0,
+          "y": -304
+        },
+        "width": 184,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api",
+        "type": "process",
+        "title": "REST API",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-2",
+        "type": "process",
+        "title": "REST API",
+        "description": "GET /users/42/followers · GET /users/42/posts · GET /users/42",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 236,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-3",
+        "type": "process",
+        "title": "GraphQL",
+        "description": "one endpoint",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Braces",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-4",
+        "type": "process",
+        "title": "GraphQL",
+        "description": "one endpoint · name → display_name",
+        "position": {
+          "x": 0,
+          "y": -112
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Braces",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "us",
+        "type": "process",
+        "title": "Users",
+        "description": "service",
+        "position": {
+          "x": -112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "us-2",
+        "type": "process",
+        "title": "Users",
+        "description": "service · ⚠ 41,000 lookups · CPU 97%",
+        "position": {
+          "x": -112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "us-3",
+        "type": "process",
+        "title": "Users",
+        "description": "service · CPU 30%",
+        "position": {
+          "x": -112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "us-4",
+        "type": "process",
+        "title": "Users",
+        "description": "service · 2,000,000 followers · CPU 30%",
+        "position": {
+          "x": -112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:User",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ps",
+        "type": "process",
+        "title": "Posts",
+        "description": "service",
+        "position": {
+          "x": 112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ps-2",
+        "type": "process",
+        "title": "Posts",
+        "description": "service · CPU 30%",
+        "position": {
+          "x": 112,
+          "y": 64
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "pa",
+        "from": "phone",
+        "to": "api",
+        "label": "HTTPS + JSON",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pa-2",
+        "from": "phone",
+        "to": "api-2",
+        "label": "HTTPS + JSON",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "pa-3",
+        "from": "phone-2",
+        "to": "api-2",
+        "label": "4G · 100 ms per round trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.6,
+        "effectCount": 2
+      },
+      {
+        "id": "pa-4",
+        "from": "phone",
+        "to": "api-3",
+        "label": "4G · 100 ms per round trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#ffe58f",
+        "labelBackground": "#613400",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pa-5",
+        "from": "phone-3",
+        "to": "api-3",
+        "label": "GET followers?after=9f3c&limit=20",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.45,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "pa-6",
+        "from": "phone-4",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "pa-7",
+        "from": "phone",
+        "to": "api-3",
+        "label": "GraphQL",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "au",
+        "from": "api-3",
+        "to": "us",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "au-2",
+        "from": "api-3",
+        "to": "us-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "au-3",
+        "from": "api-3",
+        "to": "us-3",
+        "label": "gRPC",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "au-4",
+        "from": "api-3",
+        "to": "us-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "au-5",
+        "from": "api-4",
+        "to": "us-3",
+        "label": "gRPC",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap",
+        "from": "api-3",
+        "to": "ps",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-2",
+        "from": "api-3",
+        "to": "ps-2",
+        "label": "gRPC",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap-3",
+        "from": "api-3",
+        "to": "ps-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "ap-4",
+        "from": "api-4",
+        "to": "ps-2",
+        "label": "gRPC",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "REST, RPC & GraphQL",
+    "summary": "Three ways for programs to ask each other for things — and what each costs a phone on 4G.",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "trips",
+        "label": "Round trips / screen"
+      },
+      {
+        "id": "payload",
+        "label": "Downloaded"
+      },
+      {
+        "id": "screenMs",
+        "label": "Screen ready"
+      },
+      {
+        "id": "unused",
+        "label": "Unused data"
+      }
+    ],
+    "goals": [
+      {
+        "text": "What an API contract is",
+        "step": "s1"
+      },
+      {
+        "text": "REST: resources and verbs",
+        "step": "s2"
+      },
+      {
+        "text": "GraphQL: ask for exactly what you need",
+        "step": "s4"
+      },
+      {
+        "text": "RPC between internal services",
+        "step": "s6"
+      },
+      {
+        "text": "Pagination and API versioning",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "phone-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "phone-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "phone-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "api": {
+      "until": "s2"
+    },
+    "api-2": {
+      "from": "s2",
+      "until": "s4"
+    },
+    "api-3": {
+      "from": "s4"
+    },
+    "api-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "us": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "us-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "us-3": {
+      "from": "s6"
+    },
+    "us-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ps": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "ps-2": {
+      "from": "s6"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "pa": {
+      "until": "s2"
+    },
+    "pa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "pa-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "pa-4": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "pa-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pa-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "pa-7": {
+      "from": "s9"
+    },
+    "au": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "au-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "au-3": {
+      "from": "s6"
+    },
+    "au-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "au-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ap": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "ap-2": {
+      "from": "s6"
+    },
+    "ap-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ap-4": {
+      "from": "s8",
+      "until": "s9"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Contract",
+      "title": "Programs need a contract",
+      "chapter": "setup",
+      "body": "Your mobile app shows a profile: name, avatar, the last three posts and a follower count. The data lives on your servers, so the app has to ask for it.\n\nAn [[API]] is the agreed way to ask: which addresses exist, what to send, and what comes back. Here it’s JSON over HTTPS.",
+      "callout": {
+        "kind": "insight",
+        "text": "An API is a promise. Once apps depend on it, changing it without breaking them is a real design problem."
+      },
+      "changes": [],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "REST",
+      "title": "REST: resources and verbs",
+      "chapter": "technique",
+      "body": "[[REST]] treats data as **resources** with addresses — `/users/42`, `/users/42/posts` — and uses HTTP verbs on them: `GET` to read, `POST` to create, `PUT`/`PATCH` to update, `DELETE` to remove.\n\nIt’s simple, works with every tool, and `GET` responses can be cached by browsers and CDNs. `GET`, `PUT` and `DELETE` are also [[idempotent]] — repeating one changes nothing more — while `POST` is not, which matters the moment a client retries.",
+      "callout": {
+        "kind": "tip",
+        "text": "Status codes carry meaning too: 200 OK, 201 Created, 404 Not Found, 429 Too Many Requests, 500 server error."
+      },
+      "changes": [
+        "+ Three endpoints for the profile screen"
+      ],
+      "metrics": {
+        "trips": "3",
+        "payload": "48 KB",
+        "screenMs": "210 ms",
+        "unused": "94%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "On 4G",
+      "title": "Chatty and bloated on a phone",
+      "chapter": "problem",
+      "body": "On a phone, each round trip costs about 100 ms. The client makes its three calls one after another — often it has to, because one call needs an id from the previous answer — so the screen waits for all three in a row.\n\nEach endpoint also returns the *whole* object: 48 KB arrive to show about 3 KB. That’s [[over-fetching]]; needing several calls for one screen is [[under-fetching]].",
+      "callout": {
+        "kind": "warning",
+        "text": "Round trips and wasted bytes hurt most where networks are slowest — exactly where mobile users are."
+      },
+      "changes": [
+        "~ Network: 4G, 100 ms per round trip",
+        "~ Screen ready 210 → 420 ms",
+        "- 94% of downloaded data unused"
+      ],
+      "metrics": {
+        "trips": "3",
+        "payload": "48 KB",
+        "screenMs": "420 ms",
+        "unused": "94%"
+      },
+      "overrides": {
+        "phone": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "GraphQL",
+      "title": "GraphQL: ask for exactly what you need",
+      "chapter": "solution",
+      "body": "With [[GraphQL]], the client sends one query describing the exact shape it wants. The GraphQL server fetches each part from the services behind it and returns just those fields.\n\nWatch one request leave the phone, split to the Users and Posts services, and come back as one response.",
+      "callout": {
+        "kind": "tip",
+        "text": "Great when many different clients (iOS, Android, web, TV) each need slightly different data from the same backend."
+      },
+      "changes": [
+        "~ REST API → GraphQL endpoint",
+        "+ Users and Posts services behind it",
+        "~ 3 round trips → 1",
+        "~ 48 KB → 3 KB"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "140 ms",
+        "unused": "0%"
+      },
+      "overrides": {
+        "phone": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "The catch",
+      "title": "Flexible queries can be expensive",
+      "chapter": "tradeoff",
+      "body": "Clients can ask for *anything* the schema allows — including followers of followers of followers, with all their posts. One innocent-looking query (the big square) melts the Users service.\n\nAnd because queries are normally sent as a `POST` to a single URL, ordinary HTTP caches and CDNs can’t help without extra work such as persisted queries.",
+      "callout": {
+        "kind": "warning",
+        "text": "Production GraphQL needs query depth and cost limits, and often an allow-list of approved (“persisted”) queries."
+      },
+      "changes": [
+        "+ A deeply nested query",
+        "~ Users service overloaded"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "2.1 MB",
+        "screenMs": "3.8 s",
+        "unused": "0%"
+      },
+      "overrides": {
+        "pa-4": {
+          "effect": "pulse"
+        },
+        "ap": {
+          "effect": "pulse"
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "RPC",
+      "title": "Inside the data center: RPC",
+      "chapter": "technique",
+      "body": "Behind the API, services call each other constantly. Here the usual choice is [[RPC]] (remote procedure call): calling a function on another machine as if it were local — today usually **gRPC**.\n\nThe contract is a typed schema (Protocol Buffers); code for both sides is generated from it, and messages travel as compact binary over HTTP/2.",
+      "callout": {
+        "kind": "tip",
+        "text": "gRPC is fast and strictly typed, and supports streaming — but browsers can’t speak it natively (they need a gRPC-Web proxy), so it mostly stays inside your network."
+      },
+      "changes": [
+        "~ API → services: gRPC + protobuf"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "Pagination",
+      "title": "Case: a list with 2 million items",
+      "chapter": "technique",
+      "body": "A celebrity’s followers list has 2 million entries. Returning it in one response would mean hundreds of megabytes and a very long wait. APIs return lists in **pages**.\n\n`?offset=40000&limit=20` looks simple, but the database still walks past 40,000 rows. A [[cursor]] — “the 20 after id 9f3c” — jumps straight there with an index, and doesn’t skip or repeat items when new ones arrive.",
+      "callout": {
+        "kind": "tip",
+        "text": "Return the cursor for the next page in each response. Clients just pass it back."
+      },
+      "changes": [
+        "+ Followers returned 20 at a time",
+        "~ Cursor-based paging"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {
+        "phone": {
+          "visible": false
+        },
+        "us-3": {
+          "visible": false
+        },
+        "au-3": {
+          "visible": false
+        },
+        "ap-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Versions",
+      "title": "Case: renaming a field breaks old apps",
+      "chapter": "problem",
+      "body": "A tidy-up renames `name` to `display_name`. The new app is fine — but millions of phones still run last year’s version, and their profile screens now crash.\n\nMobile apps can’t be forced to update. So APIs evolve **additively**: add the new field, keep the old one, and only remove it once almost nobody calls it. For truly breaking changes, publish a new version (`/v2/`) and run both.",
+      "callout": {
+        "kind": "warning",
+        "text": "Once an API is public, every field is a promise. Measure who uses it before you break it."
+      },
+      "changes": [
+        "- Old app versions crash",
+        "~ Fix: keep name, add display_name",
+        "+ /v2 for breaking changes"
+      ],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {
+        "phone": {
+          "visible": false
+        },
+        "api-3": {
+          "visible": false
+        },
+        "us-3": {
+          "emphasis": true
+        },
+        "au-3": {
+          "visible": false
+        },
+        "ap-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Choosing",
+      "title": "Which one, where?",
+      "chapter": "insight",
+      "body": "• **REST** — Best for: Public APIs, simple CRUD, caching; Watch out: Many calls per screen\n• **GraphQL** — Best for: Many clients, varied screens; Watch out: Costly queries, caching\n• **gRPC** — Best for: Service-to-service; Watch out: Not for browsers\n\nThey mix happily: REST or GraphQL at the edge for clients, gRPC between services inside.",
+      "callout": {
+        "kind": "insight",
+        "text": "Whatever the style, version your API and never break existing clients — add fields, don’t rename or remove them."
+      },
+      "changes": [],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {
+        "phone": {
+          "emphasis": true
+        },
+        "api-3": {
+          "emphasis": true
+        },
+        "au-3": {
+          "emphasis": true
+        },
+        "ap-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• An **API** is a contract between programs.\n• **REST**: resources + HTTP verbs; simple and cacheable, but chatty for rich screens.\n• **GraphQL**: one query, exact fields; guard against expensive queries.\n• **gRPC**: fast, typed calls between internal services.\n• Page long lists with **cursors**; evolve APIs **additively**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Message Queues** — for work that shouldn’t make anyone wait for an answer."
+      },
+      "changes": [],
+      "metrics": {
+        "trips": "1",
+        "payload": "3 KB",
+        "screenMs": "130 ms",
+        "unused": "0%"
+      },
+      "overrides": {}
+    }
+  ]
+}

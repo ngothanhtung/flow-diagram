@@ -1,0 +1,1150 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "kvz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -431,
+          "y": -18
+        },
+        "width": 334,
+        "height": 486,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "kvz-label",
+        "type": "text",
+        "title": "KEY–VALUE · 3 NODES",
+        "position": {
+          "x": -507,
+          "y": -240
+        },
+        "width": 162,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "kvz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 677,
+          "y": -403
+        },
+        "width": 272,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "TABLES\nusers   (id, name, email)\norders  (id, user_id, total)\n# orders.user_id → users.id\n→ JOIN them in one query",
+        "position": {
+          "x": 677,
+          "y": -403
+        },
+        "width": 248,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 714,
+          "y": -403
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "ONE TRANSACTION\nBEGIN\n  UPDATE balance − 50  WHERE id = Ana\n  UPDATE balance + 50  WHERE id = Ben\n→ COMMIT — both happen, or neither",
+        "position": {
+          "x": 714,
+          "y": -403
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 735,
+          "y": -394
+        },
+        "width": 388,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "TWO DOCUMENTS\n{ \"sku\": \"shoe-42\",\n  \"size\": 42, \"colors\": [\"red\", \"black\"] }\n{ \"sku\": \"laptop-7\",\n  \"cpu\": \"M3\", \"ram_gb\": 16 }\n# same collection, different shapes",
+        "position": {
+          "x": 735,
+          "y": -394
+        },
+        "width": 364,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 743,
+          "y": -405
+        },
+        "width": 404,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "KEY → VALUE\nsession:9f2c  →  { user: 42, cart: [7, 13] }\nGET / SET by key · ~1 ms\n# nothing to query — only lookups",
+        "position": {
+          "x": 743,
+          "y": -405
+        },
+        "width": 380,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 723,
+          "y": -394
+        },
+        "width": 363,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "BUILT FOR ONE JOB\nsearch        free text, ranking, typos\ntime-series   metrics, sensor data\ngraph         friends-of-friends\nwide-column   huge write volumes\nobject store  files, images, backups",
+        "position": {
+          "x": 723,
+          "y": -394
+        },
+        "width": 339,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "1M users",
+        "position": {
+          "x": 0,
+          "y": -429
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "App Server",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql",
+        "type": "process",
+        "title": "SQL database",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql-2",
+        "type": "process",
+        "title": "SQL database",
+        "description": "ACID",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql-3",
+        "type": "process",
+        "title": "SQL database",
+        "description": "ALTER TABLE · 400M rows · 6 h · CPU 90%",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 212,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql-4",
+        "type": "process",
+        "title": "SQL database",
+        "description": "CPU 45%",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sql-5",
+        "type": "process",
+        "title": "SQL database",
+        "description": "CPU 40%",
+        "position": {
+          "x": 363,
+          "y": 0
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "doc",
+        "type": "process",
+        "title": "document store",
+        "position": {
+          "x": 0,
+          "y": 363
+        },
+        "width": 228,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "kv1",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -396,
+          "y": -144
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "kvz"
+      },
+      {
+        "id": "kv2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -396,
+          "y": 145
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "kvz"
+      },
+      {
+        "id": "kv3",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -482,
+          "y": 0
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "kvz"
+      },
+      {
+        "id": "search",
+        "type": "process",
+        "title": "Search",
+        "description": "inverted index",
+        "position": {
+          "x": 363,
+          "y": 363
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Search",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "as",
+        "from": "app",
+        "to": "sql",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 4
+      },
+      {
+        "id": "as-2",
+        "from": "app",
+        "to": "sql-2",
+        "label": "BEGIN … COMMIT",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "as-3",
+        "from": "app",
+        "to": "sql-3",
+        "label": "products · orders · users",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "as-4",
+        "from": "app",
+        "to": "sql-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "as-5",
+        "from": "app",
+        "to": "sql-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "as-6",
+        "from": "app",
+        "to": "sql-5",
+        "label": "orders · payments",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ad",
+        "from": "app",
+        "to": "doc",
+        "label": "product catalog",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ad-2",
+        "from": "app",
+        "to": "doc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ad-3",
+        "from": "app",
+        "to": "doc",
+        "label": "catalog",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ak",
+        "from": "app",
+        "to": "kvz",
+        "label": "sessions",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ak-2",
+        "from": "app",
+        "to": "kvz",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "ak-3",
+        "from": "app",
+        "to": "kvz",
+        "label": "sessions · carts",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sx",
+        "from": "app",
+        "to": "search",
+        "label": "“red running shoes”",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.75,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 182,
+            "y": 0
+          },
+          {
+            "x": 182,
+            "y": 363
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sx-2",
+        "from": "app",
+        "to": "search",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 182,
+            "y": 0
+          },
+          {
+            "x": 182,
+            "y": 363
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "cs",
+        "from": "sql-5",
+        "to": "search",
+        "label": "change stream",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "SQL vs NoSQL",
+    "summary": "Tables, documents or plain keys — what each kind of database is good at, and what it gives up.",
+    "minutes": 11,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "joins",
+        "label": "Joins"
+      },
+      {
+        "id": "tx",
+        "label": "Transactions"
+      },
+      {
+        "id": "schema",
+        "label": "Schema"
+      },
+      {
+        "id": "scaleOut",
+        "label": "Scale out writes"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Tables, joins and transactions",
+        "step": "s2"
+      },
+      {
+        "text": "Where relational databases strain",
+        "step": "s3"
+      },
+      {
+        "text": "Document and key-value stores",
+        "step": "s5"
+      },
+      {
+        "text": "Choosing per kind of data",
+        "step": "s7"
+      },
+      {
+        "text": "Search engines and other specialists",
+        "step": "s8"
+      }
+    ]
+  },
+  "presence": {
+    "sql": {
+      "until": "s2"
+    },
+    "sql-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "sql-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sql-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "sql-5": {
+      "from": "s5"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "doc": {
+      "from": "s4"
+    },
+    "kvz": {
+      "from": "s5"
+    },
+    "kv1": {
+      "from": "s5"
+    },
+    "kv2": {
+      "from": "s5"
+    },
+    "kv3": {
+      "from": "s5"
+    },
+    "search": {
+      "from": "s8",
+      "until": "s10"
+    },
+    "kvz-label": {
+      "from": "s5"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "as": {
+      "until": "s2"
+    },
+    "as-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "as-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "as-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "as-5": {
+      "from": "s5"
+    },
+    "as-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ad": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-2": {
+      "from": "s5"
+    },
+    "ad-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ak": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ak-2": {
+      "from": "s6"
+    },
+    "ak-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sx": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sx-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cs": {
+      "from": "s8",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Tables",
+      "title": "Data in tables",
+      "chapter": "setup",
+      "body": "Most apps start with a [[relational]] (SQL) database such as PostgreSQL or MySQL. Data lives in tables with a fixed set of columns — a [[schema]].\n\nTables point at each other with keys, and a **join** combines them in one query: “every order with its customer’s name”.",
+      "callout": {
+        "kind": "insight",
+        "text": "SQL databases have decades of tooling behind them. When unsure, they’re a very safe default."
+      },
+      "changes": [],
+      "metrics": {
+        "joins": "yes",
+        "tx": "yes",
+        "schema": "fixed",
+        "scaleOut": "hard"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Transactions",
+      "title": "All or nothing: transactions",
+      "chapter": "technique",
+      "body": "Moving $50 from Ana to Ben is two updates. If the server crashes between them, money disappears.\n\nA [[transaction]] groups them: both happen, or neither does. Relational databases guarantee this (the **ACID** properties), which is why they hold payments, orders and inventory.",
+      "callout": {
+        "kind": "tip",
+        "text": "ACID: Atomic (all or nothing), Consistent (rules hold), Isolated (no half-done views), Durable (committed means saved)."
+      },
+      "changes": [
+        "+ Two writes, one transaction"
+      ],
+      "metrics": {
+        "joins": "yes",
+        "tx": "yes",
+        "schema": "fixed",
+        "scaleOut": "hard"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Growing pains",
+      "title": "Growing pains",
+      "chapter": "problem",
+      "body": "Your product catalog lands in the same database. Shoes have sizes, laptops have CPUs, books have authors — so the products table sprouts hundreds of mostly-empty columns, and every new product type means another migration on a 400-million-row table. Some of those rewrite or lock the whole table for hours.\n\nMeanwhile all writes still go through one database server.",
+      "callout": {
+        "kind": "warning",
+        "text": "Rigid schemas and a single write server are the two classic pain points of relational databases at scale."
+      },
+      "changes": [
+        "+ Product catalog in the SQL database",
+        "~ Products table: 300 columns, mostly empty"
+      ],
+      "metrics": {
+        "joins": "yes",
+        "tx": "yes",
+        "schema": "fixed",
+        "scaleOut": "hard"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Documents",
+      "title": "Documents: each record its own shape",
+      "chapter": "solution",
+      "body": "A [[document store]] (such as MongoDB) keeps each record as a self-contained document. A shoe and a laptop can have completely different fields, with no migration to run — though your code must now cope with every shape it has ever written.\n\nEverything about one product lives together, so reading it is a single fetch, and documents spread naturally across many servers.",
+      "callout": {
+        "kind": "tip",
+        "text": "Documents shine when you read and write whole objects at once — catalogs, profiles, content."
+      },
+      "changes": [
+        "+ Document store for the catalog",
+        "~ SQL database back to orders & users"
+      ],
+      "metrics": {
+        "joins": "limited",
+        "tx": "per doc",
+        "schema": "flexible",
+        "scaleOut": "easy"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s5",
+      "short": "Key–value",
+      "title": "Key–value: just look it up",
+      "chapter": "technique",
+      "body": "The simplest store of all: a [[key–value]] store (Redis, DynamoDB) maps a key to a value. No queries, no joins — get and set by key, in about a millisecond.\n\nBecause each key stands alone, the data splits across many nodes almost for free.",
+      "callout": {
+        "kind": "tip",
+        "text": "Perfect for sessions, carts, feature flags and counters — anything you always fetch by one id."
+      },
+      "changes": [
+        "+ Key–value cluster for sessions"
+      ],
+      "metrics": {
+        "joins": "no",
+        "tx": "limited",
+        "schema": "none",
+        "scaleOut": "easy"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Trade-offs",
+      "title": "What NoSQL gives up",
+      "chapter": "tradeoff",
+      "body": "NoSQL stores scale out easily largely *because* they give things up: joins across records, multi-record transactions, and often strict consistency.\n\n• Data shape — SQL: Fixed tables; NoSQL: Flexible\n• Joins — SQL: Yes; NoSQL: In your code\n• Transactions — SQL: Across rows; NoSQL: Usually one record\n• Scaling writes — SQL: Hard; NoSQL: Built in\n\nThese are defaults, not laws, and the lines keep blurring: PostgreSQL stores JSON documents, MongoDB and DynamoDB offer multi-record transactions, and distributed SQL databases (Spanner, CockroachDB) scale writes out while keeping joins and transactions — paying for it in latency and complexity.",
+      "callout": {
+        "kind": "warning",
+        "text": "Picking NoSQL “for scale” you don’t have yet often means rebuilding joins and transactions by hand."
+      },
+      "changes": [],
+      "metrics": {
+        "joins": "limited",
+        "tx": "limited",
+        "schema": "flexible",
+        "scaleOut": "easy"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s7",
+      "short": "Use both",
+      "title": "Use each where it fits",
+      "chapter": "solution",
+      "body": "Real systems mix them — [[polyglot persistence]]. Money and orders stay relational for transactions; the catalog lives in documents; sessions go to a key–value store.\n\nStart with one database, and add another only when a kind of data clearly wants it.",
+      "callout": {
+        "kind": "insight",
+        "text": "The question isn’t “SQL or NoSQL?” but “what does this data need: relations, flexibility, or raw lookup speed?”"
+      },
+      "changes": [
+        "~ Orders & payments → SQL",
+        "~ Catalog → documents",
+        "~ Sessions → key–value"
+      ],
+      "metrics": {
+        "joins": "yes",
+        "tx": "yes",
+        "schema": "flexible",
+        "scaleOut": "easy"
+      },
+      "overrides": {
+        "as-5": {
+          "visible": false
+        },
+        "ad-2": {
+          "visible": false
+        },
+        "ak-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Search",
+      "title": "Case: “red running shoes”",
+      "chapter": "problem",
+      "body": "Shoppers type free text into a search box. In SQL that becomes `WHERE name LIKE '%red%'` on millions of rows — slow, and it can’t rank results, handle typos or match “shoe” to “shoes”.\n\nA [[search engine]] (Elasticsearch, OpenSearch) builds an inverted index: for every word, the list of documents containing it. It’s fed from the main database by a stream of changes.",
+      "callout": {
+        "kind": "tip",
+        "text": "The search index is a copy, not the source of truth — it can always be rebuilt from the main database."
+      },
+      "changes": [
+        "+ Search engine for the catalog",
+        "+ Change stream: SQL → search index"
+      ],
+      "metrics": {
+        "joins": "yes",
+        "tx": "yes",
+        "schema": "flexible",
+        "scaleOut": "easy"
+      },
+      "overrides": {
+        "ad-2": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "as-5": {
+          "emphasis": true
+        },
+        "ak-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Specialists",
+      "title": "More specialised stores",
+      "chapter": "insight",
+      "body": "Search is one example of a store built for one access pattern. There are others, each much better than a general database at its job — and worse at everything else.\n\nReach for them when a workload clearly doesn’t fit, not by default: every extra store is more to run, secure, back up and keep in sync.",
+      "callout": {
+        "kind": "insight",
+        "text": "Most systems run fine on one relational database for years. Add specialists one at a time, for a measured need."
+      },
+      "changes": [],
+      "metrics": {
+        "joins": "yes",
+        "tx": "yes",
+        "schema": "flexible",
+        "scaleOut": "easy"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s10",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• **SQL**: tables, joins and transactions — a safe default.\n• **Documents**: flexible, self-contained records that scale out.\n• **Key–value**: fastest and simplest, lookup by id only.\n• Choose per kind of data; many systems use **several**.\n• Specialists like **search** are copies fed from the source of truth.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Indexes** — why the same query can take 2 seconds or 2 milliseconds."
+      },
+      "changes": [],
+      "metrics": {
+        "joins": "yes",
+        "tx": "yes",
+        "schema": "flexible",
+        "scaleOut": "easy"
+      },
+      "overrides": {}
+    }
+  ]
+}

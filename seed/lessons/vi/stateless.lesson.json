@@ -1,0 +1,1630 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice",
+        "description": "✓ giỏ: 2 món",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice",
+        "description": "⚠ đã đăng xuất · giỏ trống",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice",
+        "description": "token có chữ ký: Alice",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice",
+        "description": "⚠ ảnh đại diện: ảnh hỏng",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice",
+        "description": "✓ ảnh đại diện ✓",
+        "position": {
+          "x": 0,
+          "y": -589
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-2",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "round robin",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-3",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "sticky: Alice → A",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "lb-4",
+        "type": "process",
+        "title": "Bộ cân bằng tải",
+        "description": "sticky: Alice → B",
+        "position": {
+          "x": 0,
+          "y": -279
+        },
+        "width": 228,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Split",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a",
+        "type": "process",
+        "title": "Server A",
+        "description": "phiên: Alice · giỏ 2",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-2",
+        "type": "process",
+        "title": "Server A",
+        "description": "⚠ SẬP",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-3",
+        "type": "process",
+        "title": "Server A",
+        "description": "phi trạng thái",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-4",
+        "type": "process",
+        "title": "Server A",
+        "description": "avatar.png trên đĩa cục bộ",
+        "position": {
+          "x": -217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b",
+        "type": "process",
+        "title": "Server B",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-2",
+        "type": "process",
+        "title": "Server B",
+        "description": "⚠ không có phiên của Alice",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-3",
+        "type": "process",
+        "title": "Server B",
+        "description": "phi trạng thái",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-4",
+        "type": "process",
+        "title": "Server B",
+        "description": "⚠ avatar.png?",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c",
+        "type": "process",
+        "title": "Server C",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-2",
+        "type": "process",
+        "title": "Server C",
+        "description": "⚠ không có phiên của Alice",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-3",
+        "type": "process",
+        "title": "Server C",
+        "description": "phi trạng thái",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-4",
+        "type": "process",
+        "title": "Server C",
+        "description": "⚠ avatar.png?",
+        "position": {
+          "x": 217,
+          "y": 0
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "st",
+        "type": "process",
+        "title": "kho phiên",
+        "description": "Alice · giỏ 2",
+        "position": {
+          "x": 0,
+          "y": 310
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "os",
+        "type": "process",
+        "title": "kho đối tượng",
+        "description": "avatar.png",
+        "position": {
+          "x": 0,
+          "y": 310
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ul",
+        "from": "alice",
+        "to": "lb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-2",
+        "from": "alice",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-3",
+        "from": "alice",
+        "to": "lb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-4",
+        "from": "alice-2",
+        "to": "lb-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-5",
+        "from": "alice-3",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-6",
+        "from": "alice-4",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ul-7",
+        "from": "alice-5",
+        "to": "lb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la",
+        "from": "lb",
+        "to": "a",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la-2",
+        "from": "lb-2",
+        "to": "a",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la-3",
+        "from": "lb-3",
+        "to": "a",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la-4",
+        "from": "lb-4",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la-5",
+        "from": "lb-2",
+        "to": "a-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "la-6",
+        "from": "lb-2",
+        "to": "a-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "la-7",
+        "from": "lb-2",
+        "to": "a-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lbb",
+        "from": "lb",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "lbb-2",
+        "from": "lb-2",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lbb-3",
+        "from": "lb-3",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "lbb-4",
+        "from": "lb-4",
+        "to": "b-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lbb-5",
+        "from": "lb-2",
+        "to": "b-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lbb-6",
+        "from": "lb-2",
+        "to": "b-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lc",
+        "from": "lb",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "lc-2",
+        "from": "lb-2",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lc-3",
+        "from": "lb-3",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "lc-4",
+        "from": "lb-4",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "lc-5",
+        "from": "lb-2",
+        "to": "c-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "lc-6",
+        "from": "lb-2",
+        "to": "c-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "as",
+        "from": "a-3",
+        "to": "st",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "as-2",
+        "from": "a-2",
+        "to": "st",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "none"
+      },
+      {
+        "id": "bs",
+        "from": "b-3",
+        "to": "st",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "cs",
+        "from": "c-3",
+        "to": "st",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ao",
+        "from": "a-3",
+        "to": "os",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "bo",
+        "from": "b-3",
+        "to": "os",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "co",
+        "from": "c-3",
+        "to": "os",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Dịch vụ phi trạng thái",
+    "summary": "Vì sao yêu cầu tiếp theo phải chạy được trên bất kỳ server nào, và trạng thái được chuyển đi đâu.",
+    "minutes": 10,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "ok",
+        "label": "Yêu cầu của Alice OK"
+      },
+      {
+        "id": "survive",
+        "label": "Sống sót khi mất một server"
+      },
+      {
+        "id": "scale",
+        "label": "Thêm server bất cứ lúc nào"
+      },
+      {
+        "id": "extra",
+        "label": "Chi phí mỗi yêu cầu"
+      }
+    ],
+    "goals": [
+      {
+        "text": "“Trạng thái” là gì, và vì sao nó buộc người dùng vào một server",
+        "step": "s2"
+      },
+      {
+        "text": "Sticky session, và cách chúng hỏng",
+        "step": "s4"
+      },
+      {
+        "text": "Kho phiên dùng chung giúp server thay thế được cho nhau",
+        "step": "s6"
+      },
+      {
+        "text": "Mang trạng thái trong token có chữ ký",
+        "step": "s7"
+      },
+      {
+        "text": "Tệp thuộc về kho lưu trữ đối tượng",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "alice-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "alice-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "alice-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "alice-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "lb": {
+      "until": "s2"
+    },
+    "lb-2": {
+      "from": "s2"
+    },
+    "lb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lb-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a": {
+      "until": "s4"
+    },
+    "a-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "a-3": {
+      "from": "s5"
+    },
+    "a-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b": {
+      "until": "s4"
+    },
+    "b-2": {
+      "from": "s2",
+      "until": "s5"
+    },
+    "b-3": {
+      "from": "s5"
+    },
+    "b-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "c": {
+      "until": "s5"
+    },
+    "c-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "c-3": {
+      "from": "s5"
+    },
+    "c-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "st": {
+      "from": "s5"
+    },
+    "os": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ul": {
+      "until": "s2"
+    },
+    "ul-2": {
+      "from": "s2"
+    },
+    "ul-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ul-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ul-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ul-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ul-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "la": {
+      "until": "s2"
+    },
+    "la-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "la-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "la-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "la-5": {
+      "from": "s5"
+    },
+    "la-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "la-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lbb": {
+      "until": "s2"
+    },
+    "lbb-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lbb-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lbb-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lbb-5": {
+      "from": "s5"
+    },
+    "lbb-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "lc": {
+      "until": "s2"
+    },
+    "lc-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "lc-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "lc-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "lc-5": {
+      "from": "s5"
+    },
+    "lc-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "as": {
+      "from": "s5"
+    },
+    "as-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bs": {
+      "from": "s5"
+    },
+    "cs": {
+      "from": "s5"
+    },
+    "ao": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "bo": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "co": {
+      "from": "s9",
+      "until": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Đã đăng nhập",
+      "title": "Alice đăng nhập",
+      "chapter": "setup",
+      "body": "Alice đăng nhập và thêm hai món vào giỏ hàng. Yêu cầu của cô tình cờ rơi vào Server A, nơi giữ một [[phiên]] trong bộ nhớ: cô là ai và trong giỏ có gì.\n\nTrình duyệt của cô giữ một cookie chứa id phiên, để các yêu cầu sau tìm lại được phiên đó.",
+      "callout": {
+        "kind": "insight",
+        "text": "**Trạng thái** là bất cứ thứ gì server ghi nhớ giữa các yêu cầu: đăng nhập, giỏ hàng, tệp tải lên dở dang."
+      },
+      "changes": [],
+      "metrics": {
+        "ok": "1 / 1",
+        "extra": "+0 ms"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Đã đăng xuất",
+      "title": "Yêu cầu tiếp theo rơi vào chỗ khác",
+      "chapter": "problem",
+      "body": "Bộ cân bằng tải đang làm đúng việc: round robin gửi các yêu cầu tiếp theo của Alice tới B rồi tới C. Cả hai chưa từng nghe về cô.\n\nVới Alice, ứng dụng bị hỏng: trang này hiện giỏ hàng, trang sau lại bắt cô đăng nhập lại.",
+      "callout": {
+        "kind": "warning",
+        "text": "Nếu một server giữ trạng thái trong bộ nhớ, mọi server khác đều vô dụng với người dùng đó."
+      },
+      "changes": [
+        "~ Yêu cầu 2 và 3 tới B và C",
+        "- “Vui lòng đăng nhập lại”"
+      ],
+      "metrics": {
+        "ok": "1 / 3",
+        "survive": "không",
+        "scale": "không",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Sticky",
+      "title": "Cách 1: sticky session",
+      "chapter": "solution",
+      "body": "Bảo bộ cân bằng tải nhớ mỗi người dùng bắt đầu ở đâu (thường bằng cookie) và cứ gửi họ về đó. Alice luôn tới A, nên cô vẫn đăng nhập.\n\nBật nhanh, không cần sửa mã.",
+      "callout": {
+        "kind": "warning",
+        "text": "Người dùng bị dính không thể di chuyển. Nếu nhiều người dồn vào một server, nó vẫn quá tải trong khi các server khác ngồi không."
+      },
+      "changes": [
+        "~ LB gắn Alice → Server A",
+        "~ Mọi yêu cầu của cô đều thành công"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "không",
+        "scale": "hạn chế",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "lb-2": {
+          "visible": false
+        },
+        "b": {
+          "emphasis": true
+        },
+        "b-2": {
+          "visible": false
+        },
+        "c": {
+          "emphasis": true
+        },
+        "ul-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "A chết",
+      "title": "…cho tới khi Server A chết",
+      "chapter": "problem",
+      "body": "Server A sập. Bộ cân bằng tải làm đúng và chuyển Alice sang B, nhưng phiên của cô đã chết theo bộ nhớ của A.\n\nCô bị đăng xuất và giỏ hàng trống trơn. Mọi người dùng gắn với A vừa trải qua điều tương tự.",
+      "callout": {
+        "kind": "warning",
+        "text": "Sticky session biến mỗi server thành một điểm lỗi duy nhất nho nhỏ đối với người dùng của nó."
+      },
+      "changes": [
+        "- Server A sập",
+        "- Mất phiên của Alice",
+        "~ Giỏ 2 món → trống"
+      ],
+      "metrics": {
+        "ok": "0 / 3",
+        "survive": "không",
+        "scale": "hạn chế",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "lb-2": {
+          "visible": false
+        },
+        "b-2": {
+          "emphasis": true
+        },
+        "ul-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Kho chung",
+      "title": "Cách 2: đưa trạng thái ra ngoài",
+      "chapter": "solution",
+      "body": "Giữ phiên trong một [[kho phiên]] dùng chung, nhanh (thường là Redis). Mọi server đọc phiên của Alice từ đó, nên server nào cũng xử lý được bất kỳ yêu cầu nào.\n\nGiờ các server là [[phi trạng thái]]: chúng không nhớ gì giữa các yêu cầu. Round robin trở lại, và cô vẫn đăng nhập.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cái giá: thêm một bước nhảy khoảng một mili giây mỗi yêu cầu. Rẻ, để đổi lấy những server có thể thêm, bớt hay mất tùy ý."
+      },
+      "changes": [
+        "+ Kho phiên",
+        "~ Server không giữ gì trong bộ nhớ",
+        "~ Lại round robin"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "có",
+        "scale": "có",
+        "extra": "+1 ms"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "lb-2": {
+          "emphasis": true
+        },
+        "a-2": {
+          "visible": false
+        },
+        "ul-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Mất một máy",
+      "title": "Giờ mất một server chẳng còn là chuyện gì",
+      "chapter": "insight",
+      "body": "Server A lại chết. Bộ cân bằng tải định tuyến vòng qua nó, B và C đọc cùng một phiên từ kho, và Alice không nhận ra gì.\n\nĐây là điều làm tự động co giãn trở nên khả thi: server có thể được tạo và hủy bất cứ lúc nào.",
+      "callout": {
+        "kind": "insight",
+        "text": "Server phi trạng thái là gia súc, không phải thú cưng: máy nào cũng thay được mà không ai nhận ra."
+      },
+      "changes": [
+        "- Server A sập",
+        "~ Alice vẫn đăng nhập, giỏ còn nguyên"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "có",
+        "scale": "có",
+        "extra": "+1 ms"
+      },
+      "overrides": {
+        "a-2": {
+          "emphasis": true
+        },
+        "a-3": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        },
+        "as": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Token",
+      "title": "Hoặc: để yêu cầu mang theo nó",
+      "chapter": "technique",
+      "body": "Một lựa chọn khác là đặt trạng thái vào chính yêu cầu: một [[token]] có chữ ký (như JWT) nói rằng “đây là Alice”. Server nào cũng xác minh được chữ ký mà không cần tra cứu gì.\n\nKhông cần kho và không có bước nhảy thêm, nhưng token khó hủy trước khi hết hạn, và nó đi kèm mọi yêu cầu, nên hãy giữ nó nhỏ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cách chia phổ biến: token cho danh tính, kho dùng chung cho mọi thứ lớn hoặc phải đổi tức thì (giỏ hàng, đăng nhập bị thu hồi)."
+      },
+      "changes": [
+        "- Kho phiên",
+        "+ Token có chữ ký trong mỗi yêu cầu",
+        "~ Bỏ được bước nhảy thêm"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "có",
+        "scale": "có",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "a-3": {
+          "emphasis": true
+        },
+        "st": {
+          "visible": false
+        },
+        "ul-2": {
+          "visible": false
+        },
+        "la-5": {
+          "emphasis": true
+        },
+        "as": {
+          "visible": false
+        },
+        "bs": {
+          "visible": false
+        },
+        "cs": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Tải lên",
+      "title": "Tình huống: tệp trên ổ đĩa cục bộ",
+      "chapter": "problem",
+      "body": "Alice tải lên ảnh đại diện mới. Server A lưu `avatar.png` vào ổ đĩa của chính nó và hiển thị: hoàn hảo.\n\nTrang tiếp theo của cô được tải từ Server B, nơi không có tệp đó: ảnh hỏng. Tệp cũng là trạng thái.",
+      "callout": {
+        "kind": "warning",
+        "text": "Mọi thứ ghi vào ổ đĩa cục bộ của một server (tệp tải lên, PDF được tạo, tệp tạm) đều biến mất với mọi server khác, và mất vĩnh viễn khi server bị thay."
+      },
+      "changes": [
+        "+ Ảnh đại diện lưu trên đĩa của Server A",
+        "- Ảnh hỏng khi B hoặc C phục vụ"
+      ],
+      "metrics": {
+        "ok": "1 / 3",
+        "survive": "không",
+        "scale": "không",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "a-3": {
+          "visible": false
+        },
+        "b-3": {
+          "visible": false
+        },
+        "c-3": {
+          "visible": false
+        },
+        "st": {
+          "visible": false
+        },
+        "ul-2": {
+          "visible": false
+        },
+        "la-5": {
+          "visible": false
+        },
+        "lbb-5": {
+          "visible": false
+        },
+        "lc-5": {
+          "visible": false
+        },
+        "as": {
+          "visible": false
+        },
+        "bs": {
+          "visible": false
+        },
+        "cs": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Kho đối tượng",
+      "title": "Đặt tệp vào kho lưu trữ đối tượng",
+      "chapter": "solution",
+      "body": "Lưu tệp trong [[kho lưu trữ đối tượng]] dùng chung (Amazon S3, Google Cloud Storage, Azure Blob): gần như vô hạn, bền vững, và mọi server đều truy cập được.\n\nServer A ghi ảnh đại diện vào đó (ô vuông tối); B và C đọc cùng một tệp. Tốt hơn nữa, trình duyệt lấy ảnh thẳng từ kho qua CDN.",
+      "callout": {
+        "kind": "tip",
+        "text": "Quy tắc kinh nghiệm: server không giữ gì cần tồn tại lâu hơn yêu cầu. Phiên → kho hoặc token; tệp → kho đối tượng; dữ liệu → cơ sở dữ liệu."
+      },
+      "changes": [
+        "+ Kho lưu trữ đối tượng",
+        "~ Tệp tải lên ghi vào kho, không vào đĩa cục bộ",
+        "~ Mọi server đều thấy mọi tệp"
+      ],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "có",
+        "scale": "có",
+        "extra": "+0 ms"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "a-3": {
+          "emphasis": true
+        },
+        "b-3": {
+          "emphasis": true
+        },
+        "c-3": {
+          "emphasis": true
+        },
+        "st": {
+          "visible": false
+        },
+        "ul-2": {
+          "visible": false
+        },
+        "la-5": {
+          "emphasis": true
+        },
+        "lbb-5": {
+          "emphasis": true
+        },
+        "lc-5": {
+          "emphasis": true
+        },
+        "as": {
+          "visible": false
+        },
+        "bs": {
+          "visible": false
+        },
+        "cs": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Tổng kết",
+      "title": "Tổng kết",
+      "chapter": "recap",
+      "body": "• Trạng thái giữ trong bộ nhớ của server **buộc người dùng** vào server đó.\n• **Sticky session** che giấu vấn đề cho tới khi một server chết.\n• Đưa trạng thái vào **kho dùng chung**, hoặc mang nó trong **token có chữ ký**.\n• Tệp vào **kho lưu trữ đối tượng**, không bao giờ vào đĩa cục bộ của server.\n• Server **phi trạng thái** có thể thêm, bớt và mất tùy ý.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Bộ nhớ đệm**: cơ sở dữ liệu phía sau tất cả các server phi trạng thái này sắp trở thành nút thắt cổ chai."
+      },
+      "changes": [],
+      "metrics": {
+        "ok": "3 / 3",
+        "survive": "có",
+        "scale": "có",
+        "extra": "+1 ms"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "st": {
+          "emphasis": true
+        },
+        "ul-2": {
+          "emphasis": true
+        },
+        "as": {
+          "emphasis": true
+        },
+        "bs": {
+          "emphasis": true
+        },
+        "cs": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

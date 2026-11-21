@@ -1,0 +1,2932 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 562,
+          "y": -463
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "THE SAGA\n1. book flight   ✓   undo: cancel flight\n2. book hotel    ✓   undo: cancel hotel\n⚠ 3. rent car     ✗\n→ run undos in reverse: 2 ← 1",
+        "position": {
+          "x": 562,
+          "y": -463
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 554,
+          "y": -463
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "ORDER THE STEPS\n1. check car    likely to fail → first\n2. reserve flight + hotel\n3. charge card   hard to undo → last\n4. confirm + email",
+        "position": {
+          "x": 554,
+          "y": -463
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "trav",
+        "type": "process",
+        "title": "traveller",
+        "description": "⚠ flight + hotel, no car",
+        "position": {
+          "x": 0,
+          "y": -480
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-2",
+        "type": "process",
+        "title": "traveller",
+        "description": "no car → nothing booked",
+        "position": {
+          "x": 0,
+          "y": -480
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-3",
+        "type": "process",
+        "title": "traveller",
+        "description": "waiting…",
+        "position": {
+          "x": 0,
+          "y": -480
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-4",
+        "type": "process",
+        "title": "traveller",
+        "description": "✓ no car → fully refunded",
+        "position": {
+          "x": 0,
+          "y": -480
+        },
+        "width": 180,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-5",
+        "type": "process",
+        "title": "traveller",
+        "position": {
+          "x": 0,
+          "y": -480
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-6",
+        "type": "process",
+        "title": "traveller",
+        "description": "charged only at the end",
+        "position": {
+          "x": 0,
+          "y": -480
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-7",
+        "type": "process",
+        "title": "traveller",
+        "description": "refund pending",
+        "position": {
+          "x": 0,
+          "y": -480
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trav-8",
+        "type": "process",
+        "title": "traveller",
+        "description": "✓ trip confirmed",
+        "position": {
+          "x": 0,
+          "y": -480
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip",
+        "type": "process",
+        "title": "Trip Service",
+        "position": {
+          "x": 0,
+          "y": -216
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-2",
+        "type": "process",
+        "title": "Coordinator",
+        "description": "votes: yes · yes · no → roll back",
+        "position": {
+          "x": 0,
+          "y": -216
+        },
+        "width": 196,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-3",
+        "type": "process",
+        "title": "Coordinator",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 0,
+          "y": -216
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-4",
+        "type": "process",
+        "title": "Saga Orchestrator",
+        "description": "trip 81: hotel ✓ · car pending",
+        "position": {
+          "x": 0,
+          "y": -216
+        },
+        "width": 208,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-5",
+        "type": "process",
+        "title": "Saga Orchestrator",
+        "position": {
+          "x": 0,
+          "y": -216
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-6",
+        "type": "process",
+        "title": "Saga Orchestrator",
+        "description": "restarted · resuming trip 81",
+        "position": {
+          "x": 0,
+          "y": -216
+        },
+        "width": 208,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-7",
+        "type": "process",
+        "title": "Saga Orchestrator",
+        "description": "cancel hotel · attempt 4",
+        "position": {
+          "x": 0,
+          "y": -216
+        },
+        "width": 208,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "trip-8",
+        "type": "process",
+        "title": "Saga Orchestrator",
+        "description": "car: unknown → asking",
+        "position": {
+          "x": 0,
+          "y": -216
+        },
+        "width": 208,
+        "height": 98,
+        "shape": "rounded",
+        "icon": "lucide:Route",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl",
+        "type": "process",
+        "title": "Flights",
+        "description": "✓ flight booked",
+        "position": {
+          "x": -216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-2",
+        "type": "process",
+        "title": "Flights",
+        "description": "prepared ✓",
+        "position": {
+          "x": -216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-3",
+        "type": "process",
+        "title": "Flights",
+        "description": "locked",
+        "position": {
+          "x": -216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-4",
+        "type": "process",
+        "title": "Flights",
+        "description": "booked → cancelled",
+        "position": {
+          "x": -216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-5",
+        "type": "process",
+        "title": "Flights",
+        "description": "→ FlightBooked",
+        "position": {
+          "x": -216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-6",
+        "type": "process",
+        "title": "Flights",
+        "description": "seat: reserved",
+        "position": {
+          "x": -216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fl-7",
+        "type": "process",
+        "title": "Flights",
+        "description": "cancelled ✓",
+        "position": {
+          "x": -216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Plane",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho",
+        "type": "process",
+        "title": "Hotels",
+        "description": "✓ room booked",
+        "position": {
+          "x": 0,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-2",
+        "type": "process",
+        "title": "Hotels",
+        "description": "prepared ✓",
+        "position": {
+          "x": 0,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-3",
+        "type": "process",
+        "title": "Hotels",
+        "description": "locked",
+        "position": {
+          "x": 0,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-4",
+        "type": "process",
+        "title": "Hotels",
+        "description": "booked → cancelled",
+        "position": {
+          "x": 0,
+          "y": 48
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-5",
+        "type": "process",
+        "title": "Hotels",
+        "description": "→ HotelBooked",
+        "position": {
+          "x": 0,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-6",
+        "type": "process",
+        "title": "Hotels",
+        "description": "room: reserved",
+        "position": {
+          "x": 0,
+          "y": 48
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-7",
+        "type": "process",
+        "title": "Hotels",
+        "description": "key 81-hotel seen → same room",
+        "position": {
+          "x": 0,
+          "y": 48
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ho-8",
+        "type": "process",
+        "title": "Hotels",
+        "description": "⚠ API down",
+        "position": {
+          "x": 0,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hotel",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car",
+        "type": "process",
+        "title": "Cars",
+        "description": "⚠ no cars left",
+        "position": {
+          "x": 216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-2",
+        "type": "process",
+        "title": "Cars",
+        "description": "vote: no",
+        "position": {
+          "x": 216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-3",
+        "type": "process",
+        "title": "Cars",
+        "description": "locked",
+        "position": {
+          "x": 216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-4",
+        "type": "process",
+        "title": "Cars",
+        "position": {
+          "x": 216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-5",
+        "type": "process",
+        "title": "Cars",
+        "description": "→ CarRented",
+        "position": {
+          "x": 216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-6",
+        "type": "process",
+        "title": "Cars",
+        "description": "checked first ✓",
+        "position": {
+          "x": 216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-7",
+        "type": "process",
+        "title": "Cars",
+        "description": "81-car: booked ✓",
+        "position": {
+          "x": 216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "car-8",
+        "type": "process",
+        "title": "Cars",
+        "description": "✓ car booked",
+        "position": {
+          "x": 216,
+          "y": 48
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "fldb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": -216,
+          "y": 264
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "hodb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 264
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cardb",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 216,
+          "y": 264
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb",
+        "type": "process",
+        "title": "saga state",
+        "position": {
+          "x": -264,
+          "y": -216
+        },
+        "width": 192,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ListOrdered",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bus",
+        "type": "process",
+        "title": "Event Bus",
+        "position": {
+          "x": 0,
+          "y": -216
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Radio",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ut",
+        "from": "trav",
+        "to": "trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ut-2",
+        "from": "trav-2",
+        "to": "trip-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-3",
+        "from": "trav-3",
+        "to": "trip-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ut-4",
+        "from": "trav-4",
+        "to": "trip",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-5",
+        "from": "trav-5",
+        "to": "trip-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-6",
+        "from": "trav-6",
+        "to": "trip-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-7",
+        "from": "trav-5",
+        "to": "trip-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-8",
+        "from": "trav-7",
+        "to": "trip-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-9",
+        "from": "trav-5",
+        "to": "trip-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ut-10",
+        "from": "trav-8",
+        "to": "trip-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "tfl",
+        "from": "trip",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tfl-2",
+        "from": "trip-2",
+        "to": "fl-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "tfl-3",
+        "from": "trip-3",
+        "to": "fl-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tfl-4",
+        "from": "trip",
+        "to": "fl-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tfl-5",
+        "from": "trip-4",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tfl-6",
+        "from": "trip-5",
+        "to": "fl-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tfl-7",
+        "from": "trip-6",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tfl-8",
+        "from": "trip-7",
+        "to": "fl-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tfl-9",
+        "from": "trip-8",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tfl-10",
+        "from": "trip-5",
+        "to": "fl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho",
+        "from": "trip",
+        "to": "ho",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-2",
+        "from": "trip-2",
+        "to": "ho-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "tho-3",
+        "from": "trip-3",
+        "to": "ho-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tho-4",
+        "from": "trip",
+        "to": "ho-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-5",
+        "from": "trip-4",
+        "to": "ho",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-6",
+        "from": "trip-5",
+        "to": "ho-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-7",
+        "from": "trip-6",
+        "to": "ho-7",
+        "label": "book hotel · key 81-hotel",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "tho-8",
+        "from": "trip-7",
+        "to": "ho-8",
+        "label": "retry with backoff",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "laser",
+        "effectColor": "#ff4d4f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "tho-9",
+        "from": "trip-8",
+        "to": "ho",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tho-10",
+        "from": "trip-5",
+        "to": "ho",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tcar",
+        "from": "trip",
+        "to": "car",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "tcar-2",
+        "from": "trip-2",
+        "to": "car-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "tcar-3",
+        "from": "trip-3",
+        "to": "car-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tcar-4",
+        "from": "trip-4",
+        "to": "car-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tcar-5",
+        "from": "trip-5",
+        "to": "car-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "tcar-6",
+        "from": "trip-6",
+        "to": "car-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tcar-7",
+        "from": "trip-7",
+        "to": "car",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "tcar-8",
+        "from": "trip-8",
+        "to": "car-7",
+        "label": "status of 81-car?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "tcar-9",
+        "from": "trip-5",
+        "to": "car-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dfl",
+        "from": "fl",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dfl-2",
+        "from": "fl-2",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dfl-3",
+        "from": "fl-3",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dfl-4",
+        "from": "fl-4",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dfl-5",
+        "from": "fl-5",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dfl-6",
+        "from": "fl-6",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dfl-7",
+        "from": "fl-7",
+        "to": "fldb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dho",
+        "from": "ho",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dho-2",
+        "from": "ho-2",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dho-3",
+        "from": "ho-3",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dho-4",
+        "from": "ho-4",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dho-5",
+        "from": "ho-5",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dho-6",
+        "from": "ho-6",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dho-7",
+        "from": "ho-7",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "ants",
+        "effectColor": "#ffd591",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "animationSpeed": 0.5
+      },
+      {
+        "id": "dho-8",
+        "from": "ho-8",
+        "to": "hodb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar",
+        "from": "car",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-2",
+        "from": "car-2",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-3",
+        "from": "car-3",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-4",
+        "from": "car-4",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dcar-5",
+        "from": "car-5",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-6",
+        "from": "car-6",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dcar-7",
+        "from": "car-7",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "dcar-8",
+        "from": "car-8",
+        "to": "cardb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "so",
+        "from": "trip-4",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "so-2",
+        "from": "trip-5",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "so-3",
+        "from": "trip-6",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "so-4",
+        "from": "trip-7",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "so-5",
+        "from": "trip-8",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ub",
+        "from": "trav-5",
+        "to": "bus",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bfl",
+        "from": "bus",
+        "to": "fl-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "bho",
+        "from": "bus",
+        "to": "ho-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "bcar",
+        "from": "bus",
+        "to": "car-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Sagas & Distributed Transactions",
+    "summary": "One action, several services, several databases: how to keep it all-or-nothing without one big transaction.",
+    "minutes": 13,
+    "level": "advanced",
+    "metrics": [
+      {
+        "id": "allOrNothing",
+        "label": "Trips all-or-nothing"
+      },
+      {
+        "id": "blocked",
+        "label": "Locks held waiting"
+      },
+      {
+        "id": "coord",
+        "label": "Coordination"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why one transaction can’t span services",
+        "step": "s1"
+      },
+      {
+        "text": "Two-phase commit and why it blocks",
+        "step": "s3"
+      },
+      {
+        "text": "Sagas and compensating actions",
+        "step": "s4"
+      },
+      {
+        "text": "Orchestration vs choreography",
+        "step": "s6"
+      },
+      {
+        "text": "Failing undos and unknown outcomes",
+        "step": "s10"
+      }
+    ]
+  },
+  "presence": {
+    "trav": {
+      "until": "s2"
+    },
+    "trav-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "trav-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "trav-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "trav-5": {
+      "from": "s5",
+      "until": "s11"
+    },
+    "trav-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "trav-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "trav-8": {
+      "from": "s11"
+    },
+    "trip": {
+      "until": "s5"
+    },
+    "trip-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "trip-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "trip-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "trip-5": {
+      "from": "s7"
+    },
+    "trip-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "trip-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "trip-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "fl-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "fl-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "fl-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "fl-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "fl-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "fl-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ho-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ho-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ho-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ho-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ho-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ho-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ho-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "car": {
+      "until": "s10"
+    },
+    "car-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "car-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "car-4": {
+      "from": "s5",
+      "until": "s9"
+    },
+    "car-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "car-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "car-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "car-8": {
+      "from": "s11"
+    },
+    "card": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "odb": {
+      "from": "s5"
+    },
+    "bus": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ut": {
+      "until": "s2"
+    },
+    "ut-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ut-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ut-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ut-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ut-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ut-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ut-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "ut-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ut-10": {
+      "from": "s11"
+    },
+    "tfl": {
+      "until": "s2"
+    },
+    "tfl-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "tfl-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "tfl-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "tfl-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "tfl-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "tfl-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "tfl-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "tfl-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "tfl-10": {
+      "from": "s11"
+    },
+    "tho": {
+      "until": "s2"
+    },
+    "tho-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "tho-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "tho-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "tho-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "tho-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "tho-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "tho-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "tho-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "tho-10": {
+      "from": "s11"
+    },
+    "tcar": {
+      "until": "s5"
+    },
+    "tcar-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "tcar-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "tcar-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "tcar-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "tcar-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "tcar-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "tcar-8": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "tcar-9": {
+      "from": "s11"
+    },
+    "dfl-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dfl-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "dfl-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "dfl-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dfl-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dfl-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dho-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dho-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "dho-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "dho-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dho-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dho-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "dho-8": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "dcar": {
+      "until": "s10"
+    },
+    "dcar-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "dcar-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "dcar-4": {
+      "from": "s5",
+      "until": "s9"
+    },
+    "dcar-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "dcar-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "dcar-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "dcar-8": {
+      "from": "s11"
+    },
+    "so": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "so-2": {
+      "from": "s7"
+    },
+    "so-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "so-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "so-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ub": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bfl": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bho": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "bcar": {
+      "from": "s6",
+      "until": "s7"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Half a trip",
+      "title": "One trip, three databases",
+      "chapter": "problem",
+      "body": "A traveller books a trip: a flight, a hotel and a rental car. Each lives in a different service with its own database (database per service, from the previous lessons).\n\nThe trip service books the flight — done. The hotel — done. The car — **no cars left**. Now the traveller has a flight and a hotel they can’t use, and has been charged for both.",
+      "callout": {
+        "kind": "warning",
+        "text": "BEGIN … COMMIT only works inside one database. Across services, there is no built-in “undo everything”."
+      },
+      "changes": [],
+      "metrics": {
+        "allOrNothing": "no",
+        "coord": "none"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "2PC",
+      "title": "Two-phase commit",
+      "chapter": "technique",
+      "body": "A classic fix is [[two-phase commit]] (2PC). Phase 1: a coordinator asks every participant to **prepare** — do the work, lock the rows, and promise it can commit (the pings). Phase 2: if all said yes, it tells everyone to **commit**; if anyone said no, everyone rolls back.\n\nThe car service votes no, so nothing is booked anywhere. All or nothing.",
+      "callout": {
+        "kind": "tip",
+        "text": "2PC is used inside some databases and with XA transactions. It needs every participant to support it — most web APIs and many NoSQL stores don’t."
+      },
+      "changes": [
+        "~ Trip service becomes a 2PC coordinator",
+        "+ Prepare → vote → commit or roll back"
+      ],
+      "metrics": {
+        "allOrNothing": "yes",
+        "blocked": "during commit",
+        "coord": "2PC"
+      },
+      "overrides": {
+        "trip": {
+          "visible": false
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "tcar": {
+          "visible": false
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Blocked",
+      "title": "When the coordinator dies",
+      "chapter": "problem",
+      "body": "The weakness: after preparing, participants must wait for the coordinator’s decision. If it crashes right then, flights and hotels sit “prepared”, holding locks on seats and rooms, unable to commit or roll back on their own.\n\nOther travellers trying to book those seats and rooms wait too — until the coordinator recovers. (The trip itself stays all-or-nothing; it just can’t finish.)",
+      "callout": {
+        "kind": "warning",
+        "text": "2PC is a blocking protocol: one slow or dead coordinator can freeze every participant. Across services and the internet, that’s usually unacceptable."
+      },
+      "changes": [
+        "- Coordinator crashed after prepare",
+        "- Seats and rooms stay locked"
+      ],
+      "metrics": {
+        "allOrNothing": "yes",
+        "blocked": "3 services",
+        "coord": "2PC"
+      },
+      "overrides": {
+        "trip": {
+          "visible": false
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "tcar": {
+          "visible": false
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Saga",
+      "title": "A saga: commit step by step, undo on failure",
+      "chapter": "solution",
+      "body": "A [[saga]] splits the trip into local transactions that each commit immediately: book flight, then book hotel, then rent car. Nothing is held open.\n\nEvery step has a **compensating action** that semantically undoes it. When the car fails, the saga runs them in reverse: cancel the hotel, then cancel the flight (the red rings).",
+      "callout": {
+        "kind": "insight",
+        "text": "A saga trades isolation for availability: no locks are held across services, but the system is briefly in between states."
+      },
+      "changes": [
+        "~ Each step commits locally",
+        "+ Compensations: cancel hotel ← cancel flight",
+        "~ No locks held across services"
+      ],
+      "metrics": {
+        "allOrNothing": "eventually",
+        "blocked": "none",
+        "coord": "saga"
+      },
+      "overrides": {
+        "trip": {
+          "emphasis": true
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "emphasis": true
+        },
+        "tcar": {
+          "emphasis": true
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Orchestration",
+      "title": "Orchestration: one service runs the saga",
+      "chapter": "technique",
+      "body": "In an **orchestrated** saga, one component — the orchestrator — is a small state machine: it tells each service what to do next, waits for the answer, and decides whether to continue or compensate.\n\nIt saves every state change to its own database, so if it crashes it resumes exactly where it stopped.",
+      "callout": {
+        "kind": "tip",
+        "text": "Workflow engines such as Temporal, AWS Step Functions and Camunda are built for this: durable, resumable, observable sagas."
+      },
+      "changes": [
+        "~ Trip service → saga orchestrator",
+        "+ Saga state saved after every step"
+      ],
+      "metrics": {
+        "allOrNothing": "eventually",
+        "blocked": "none",
+        "coord": "orchestrator"
+      },
+      "overrides": {
+        "fl": {
+          "emphasis": true
+        },
+        "ho": {
+          "emphasis": true
+        },
+        "car": {
+          "visible": false
+        },
+        "dfl": {
+          "emphasis": true
+        },
+        "dho": {
+          "emphasis": true
+        },
+        "dcar": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Choreography",
+      "title": "Choreography: services react to events",
+      "chapter": "technique",
+      "body": "In a **choreographed** saga there is no conductor. Flights publishes `FlightBooked`; Hotels listens, books a room and publishes `HotelBooked`; Cars listens and rents a car — or publishes `CarFailed`, which Hotels and Flights react to by cancelling.\n\nNo central component to build or run — but the flow is spread across every service, and harder to follow and change.",
+      "callout": {
+        "kind": "insight",
+        "text": "Choreography suits short sagas with few steps. As sagas grow, an orchestrator is usually easier to reason about."
+      },
+      "changes": [
+        "- Orchestrator",
+        "+ Event bus",
+        "~ Each service reacts to the previous step’s event"
+      ],
+      "metrics": {
+        "allOrNothing": "eventually",
+        "blocked": "none",
+        "coord": "events"
+      },
+      "overrides": {
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "car-4": {
+          "visible": false
+        },
+        "odb": {
+          "visible": false
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        },
+        "dcar-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "In between",
+      "title": "The catch: no isolation",
+      "chapter": "tradeoff",
+      "body": "While a saga runs, other people can see its half-done state: the seat is taken, the hotel isn’t booked yet. And some steps can’t really be undone — an email “your flight is confirmed” has already gone out.\n\nDesign for it: use **pending** states (“reserved”, not “confirmed”), put the step most likely to fail **first**, and the hardest to undo — charging the card, sending emails — **last**.",
+      "callout": {
+        "kind": "warning",
+        "text": "A compensation is a new action, not a rollback. A refund is not the same as never having charged."
+      },
+      "changes": [
+        "~ Bookings start as “reserved”",
+        "~ Car availability checked first",
+        "~ Card charged last"
+      ],
+      "metrics": {
+        "allOrNothing": "eventually",
+        "blocked": "none",
+        "coord": "orchestrator"
+      },
+      "overrides": {
+        "trav-5": {
+          "visible": false
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "car-4": {
+          "visible": false
+        },
+        "odb": {
+          "emphasis": true
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        },
+        "dcar-4": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Resume",
+      "title": "Case: crash and resume",
+      "chapter": "insight",
+      "body": "The orchestrator crashes right after Hotels booked a room — but before it saved that fact. On restart it sees “hotel: pending” and sends the booking request again.\n\nIf Hotels books a second room, the traveller pays twice. So every step carries an **idempotency key** (the saga id + step), and Hotels returns the existing booking instead of creating another.",
+      "callout": {
+        "kind": "tip",
+        "text": "Sagas are at-least-once by nature. Every step and every compensation must be safe to repeat."
+      },
+      "changes": [
+        "- Orchestrator restarted mid-saga",
+        "~ “book hotel” sent twice",
+        "~ Same key → same booking"
+      ],
+      "metrics": {
+        "allOrNothing": "eventually",
+        "blocked": "none",
+        "coord": "orchestrator"
+      },
+      "overrides": {
+        "dfl": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "dcar-4": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "trav-5": {
+          "emphasis": true
+        },
+        "trip-5": {
+          "visible": false
+        },
+        "fl": {
+          "emphasis": true
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "visible": false
+        },
+        "car-4": {
+          "emphasis": true
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "visible": false
+        },
+        "so-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Undo fails",
+      "title": "Case: the undo itself fails",
+      "chapter": "problem",
+      "body": "The car can’t be rented, so the saga cancels the hotel — but the hotel’s API is down. Giving up isn’t an option: the traveller would be charged for a room they can’t use.\n\nSo compensations are **retried** with backoff until they succeed, and must be safe to repeat. A compensation still stuck after a few hours goes to a queue for a person to resolve.",
+      "callout": {
+        "kind": "warning",
+        "text": "A compensation must be able to succeed eventually. Never design one that can legitimately fail — and alert when one is stuck."
+      },
+      "changes": [
+        "- Hotel API down during “cancel hotel”",
+        "~ Retried with backoff",
+        "+ Escalated to support after 4 h"
+      ],
+      "metrics": {
+        "allOrNothing": "eventually",
+        "blocked": "none",
+        "coord": "orchestrator"
+      },
+      "overrides": {
+        "trav-5": {
+          "visible": false
+        },
+        "trip-5": {
+          "visible": false
+        },
+        "fl": {
+          "visible": false
+        },
+        "ho": {
+          "visible": false
+        },
+        "car": {
+          "emphasis": true
+        },
+        "dfl": {
+          "visible": false
+        },
+        "dho": {
+          "visible": false
+        },
+        "dcar": {
+          "emphasis": true
+        },
+        "so-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Unknown",
+      "title": "Case: a timeout means “unknown”",
+      "chapter": "technique",
+      "body": "The call to rent the car times out. Did the car service book it before the connection dropped, or not? A timeout is not a failure — the outcome is **unknown**.\n\nCompensating blindly could cancel a booking that never existed, or leave one that did. Instead, ask: query the car service for request `81-car`, or simply retry with the same idempotency key and get the real answer.",
+      "callout": {
+        "kind": "tip",
+        "text": "Treat every remote step as having three outcomes: succeeded, failed, unknown. Only the first two let the saga move on."
+      },
+      "changes": [
+        "- “rent car” timed out",
+        "~ Status unknown → query 81-car",
+        "~ Answer: booked → continue"
+      ],
+      "metrics": {
+        "allOrNothing": "eventually",
+        "blocked": "none",
+        "coord": "orchestrator"
+      },
+      "overrides": {
+        "dfl": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "dho": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "trav-5": {
+          "emphasis": true
+        },
+        "trip-5": {
+          "visible": false
+        },
+        "fl": {
+          "emphasis": true
+        },
+        "ho": {
+          "emphasis": true
+        },
+        "so-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• A database transaction can’t span **several services**.\n• **Two-phase commit** is all-or-nothing but blocks when the coordinator fails.\n• A **saga** commits step by step and runs **compensations** on failure.\n• **Orchestrate** or **choreograph**; make every step **idempotent**.\n• Compensations must **eventually succeed**; a timeout means **unknown**, not failed.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Batch & Stream Processing** — crunching huge volumes of events, overnight or as they happen."
+      },
+      "changes": [],
+      "metrics": {
+        "allOrNothing": "eventually",
+        "blocked": "none",
+        "coord": "orchestrator"
+      },
+      "overrides": {
+        "trip-5": {
+          "emphasis": true
+        },
+        "so-2": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

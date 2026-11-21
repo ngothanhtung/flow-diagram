@@ -1,0 +1,2121 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 600,
+          "y": -355
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "GIỚI HẠN MỌI TRUY VẤN\nSELECT * FROM invoices\n WHERE id = 1043\n   AND org_id = :caller_org\n→ Eve (Globex) → không có dòng nào → 404",
+        "position": {
+          "x": 600,
+          "y": -355
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 612,
+          "y": -357
+        },
+        "width": 396,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "DANH SÁCH TRƯỜNG ĐƯỢC GHI\n⚠ update(user, request.body)\n→ update(user, pick(body, \"name\", \"email\"))\n# role: endpoint chỉ cho admin",
+        "position": {
+          "x": 612,
+          "y": -357
+        },
+        "width": 372,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 583,
+          "y": -355
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "CƠ SỞ DỮ LIỆU CŨNG LỌC\nCREATE POLICY tenant ON invoices\n  USING (org_id = current_org())\n→ SELECT * FROM invoices\n#   → only the caller’s organisation",
+        "position": {
+          "x": 583,
+          "y": -355
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 571,
+          "y": -355
+        },
+        "width": 313,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "VAI TRÒ → QUYỀN\nngười xem    đọc\nkế toán      đọc · sửa\nngười duyệt  đọc · duyệt\nadmin        mọi thứ + người dùng",
+        "position": {
+          "x": 571,
+          "y": -355
+        },
+        "width": 289,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 608,
+          "y": -355
+        },
+        "width": 388,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "VÌ SAO ALICE XEM ĐƯỢC 1042?\nhóa đơn 1042    trong       thư mục Q3\nthư mục Q3      chia sẻ     nhóm Tài chính\nnhóm Tài chính  thành viên  alice\n→ alice được xem hóa đơn 1042",
+        "position": {
+          "x": 608,
+          "y": -355
+        },
+        "width": 364,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice · Acme",
+        "position": {
+          "x": -240,
+          "y": -120
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice · Acme",
+        "description": "vai trò: kế toán",
+        "position": {
+          "x": -240,
+          "y": -120
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice · Acme",
+        "description": "thành viên nhóm Tài chính",
+        "position": {
+          "x": -240,
+          "y": -120
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-4",
+        "type": "process",
+        "title": "Alice · Acme",
+        "description": "⚠ báo cáo có cả Globex!",
+        "position": {
+          "x": -240,
+          "y": -120
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-5",
+        "type": "process",
+        "title": "Alice · Acme",
+        "description": "✓ chỉ hóa đơn của Acme",
+        "position": {
+          "x": -240,
+          "y": -120
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve",
+        "type": "process",
+        "title": "Eve · Globex",
+        "description": "GET /invoices/1043 → của Acme!",
+        "position": {
+          "x": 240,
+          "y": -120
+        },
+        "width": 204,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve-2",
+        "type": "process",
+        "title": "Eve · Globex",
+        "description": "/invoices/1043 → 404",
+        "position": {
+          "x": 240,
+          "y": -120
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve-3",
+        "type": "process",
+        "title": "Eve · Globex",
+        "description": "⚠ PATCH /me { \"role\": \"admin\" }",
+        "position": {
+          "x": 240,
+          "y": -120
+        },
+        "width": 204,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve-4",
+        "type": "process",
+        "title": "Eve · Globex",
+        "description": "Chỉ các dòng của Globex",
+        "position": {
+          "x": 240,
+          "y": -120
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "eve-5",
+        "type": "process",
+        "title": "Eve · Globex",
+        "position": {
+          "x": 240,
+          "y": -120
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api",
+        "type": "process",
+        "title": "API hóa đơn",
+        "description": "kiểm tra: đã đăng nhập? ✓",
+        "position": {
+          "x": 0,
+          "y": -120
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-2",
+        "type": "process",
+        "title": "API hóa đơn",
+        "description": "kiểm tra: chủ sở hữu = tổ chức người gọi",
+        "position": {
+          "x": 0,
+          "y": -120
+        },
+        "width": 196,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-3",
+        "type": "process",
+        "title": "API hóa đơn",
+        "description": "lưu mọi trường được gửi",
+        "position": {
+          "x": 0,
+          "y": -120
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-4",
+        "type": "process",
+        "title": "API hóa đơn",
+        "description": "SET app.org = tổ chức người gọi",
+        "position": {
+          "x": 0,
+          "y": -120
+        },
+        "width": 196,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-5",
+        "type": "process",
+        "title": "API hóa đơn",
+        "description": "vai trò cho phép “sửa”? ✓",
+        "position": {
+          "x": 0,
+          "y": -120
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-6",
+        "type": "process",
+        "title": "API hóa đơn",
+        "description": "lần theo chuỗi quan hệ",
+        "position": {
+          "x": 0,
+          "y": -120
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "api-7",
+        "type": "process",
+        "title": "API hóa đơn",
+        "position": {
+          "x": 0,
+          "y": -120
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "hóa đơn",
+        "description": "1043 · Acme · 48.200 $",
+        "position": {
+          "x": 0,
+          "y": 120
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "hóa đơn",
+        "position": {
+          "x": 0,
+          "y": 120
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "hóa đơn",
+        "description": "⚠ eve · role = admin!",
+        "position": {
+          "x": 0,
+          "y": 120
+        },
+        "width": 176,
+        "height": 122,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "hóa đơn",
+        "description": "row-level security: org_id",
+        "position": {
+          "x": 0,
+          "y": 120
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "hóa đơn",
+        "description": "⚠ người dùng · thanh toán · hóa đơn bị lấy",
+        "position": {
+          "x": 0,
+          "y": 120
+        },
+        "width": 188,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "policy",
+        "type": "process",
+        "title": "Dịch vụ chính sách",
+        "description": "✓ cho phép: sửa · từ chối: duyệt",
+        "position": {
+          "x": 0,
+          "y": -360
+        },
+        "width": 192,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "policy-2",
+        "type": "process",
+        "title": "Dịch vụ chính sách",
+        "position": {
+          "x": 0,
+          "y": -360
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Shield",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports",
+        "type": "process",
+        "title": "Báo cáo",
+        "description": "quyền admin · lỗi injection",
+        "position": {
+          "x": 240,
+          "y": 120
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-2",
+        "type": "process",
+        "title": "Báo cáo",
+        "description": "chỉ đọc · view hóa đơn · bảng users: bị từ chối",
+        "position": {
+          "x": 240,
+          "y": 120
+        },
+        "width": 184,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-3",
+        "type": "process",
+        "title": "Báo cáo",
+        "description": "danh tính riêng · mọi khách hàng",
+        "position": {
+          "x": 240,
+          "y": 120
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-4",
+        "type": "process",
+        "title": "Báo cáo",
+        "description": "hành động như Alice · chỉ Acme",
+        "position": {
+          "x": 240,
+          "y": 120
+        },
+        "width": 176,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-5",
+        "type": "process",
+        "title": "Báo cáo",
+        "description": "chỉ đọc · view hóa đơn",
+        "position": {
+          "x": 240,
+          "y": 120
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reports-6",
+        "type": "process",
+        "title": "Báo cáo",
+        "position": {
+          "x": 240,
+          "y": 120
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "audit",
+        "type": "process",
+        "title": "nhật ký kiểm toán",
+        "description": "alice đã xem 1042 · 09:14",
+        "position": {
+          "x": -240,
+          "y": 120
+        },
+        "width": 188,
+        "height": 130,
+        "shape": "database",
+        "icon": "lucide:Clipboard",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "audit-2",
+        "type": "process",
+        "title": "nhật ký kiểm toán",
+        "position": {
+          "x": -240,
+          "y": 120
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Clipboard",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "aa",
+        "from": "alice",
+        "to": "api",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-2",
+        "from": "alice",
+        "to": "api-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-3",
+        "from": "alice",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-4",
+        "from": "alice",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-5",
+        "from": "alice-2",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-6",
+        "from": "alice-3",
+        "to": "api-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-7",
+        "from": "alice-2",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-8",
+        "from": "alice",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-9",
+        "from": "alice-4",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "aa-10",
+        "from": "alice-5",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ea",
+        "from": "eve",
+        "to": "api",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ea-2",
+        "from": "eve-2",
+        "to": "api-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "ea-3",
+        "from": "eve-3",
+        "to": "api-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "ea-4",
+        "from": "eve-4",
+        "to": "api-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ea-5",
+        "from": "eve-5",
+        "to": "api-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ea-6",
+        "from": "eve-5",
+        "to": "api-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ea-7",
+        "from": "eve-5",
+        "to": "api-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad",
+        "from": "api",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-2",
+        "from": "api-2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-3",
+        "from": "api-3",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-4",
+        "from": "api-4",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-5",
+        "from": "api-5",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-6",
+        "from": "api-6",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-7",
+        "from": "api-7",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-8",
+        "from": "api-7",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ap",
+        "from": "api-7",
+        "to": "policy",
+        "label": "Alice có được sửa 1042?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ap-2",
+        "from": "api-7",
+        "to": "policy-2",
+        "label": "Alice có được sửa 1042?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.55,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rd",
+        "from": "reports",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both"
+      },
+      {
+        "id": "rd-2",
+        "from": "reports-2",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "rd-3",
+        "from": "reports-3",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rd-4",
+        "from": "reports-4",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "rd-5",
+        "from": "reports-5",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "rd-6",
+        "from": "reports-6",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ar",
+        "from": "api-7",
+        "to": "reports-3",
+        "label": "chạy báo cáo",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ar-2",
+        "from": "api-7",
+        "to": "reports-4",
+        "label": "Token của Alice",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "chase",
+        "effectColor": "#87e8de",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "dau",
+        "from": "db-2",
+        "to": "audit",
+        "label": "mọi truy cập đều được ghi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "dau-2",
+        "from": "db-2",
+        "to": "audit-2",
+        "label": "mọi truy cập đều được ghi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.5,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Phân quyền",
+    "summary": "Biết một người là ai không cho biết họ được xem hay làm gì. Phải kiểm tra điều đó, ở mọi nơi.",
+    "minutes": 13,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "exposed",
+        "label": "Lộ dữ liệu người khác"
+      },
+      {
+        "id": "checks",
+        "label": "Kiểm tra quyền"
+      },
+      {
+        "id": "privilege",
+        "label": "Quyền truy cập dịch vụ"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Phân quyền cấp đối tượng bị hỏng",
+        "step": "s1"
+      },
+      {
+        "text": "Kiểm tra quyền sở hữu và danh sách trường được phép",
+        "step": "s3"
+      },
+      {
+        "text": "Bảo mật cấp dòng trong cơ sở dữ liệu",
+        "step": "s4"
+      },
+      {
+        "text": "Vai trò, quan hệ và chính sách tập trung",
+        "step": "s7"
+      },
+      {
+        "text": "Đặc quyền tối thiểu và confused deputy",
+        "step": "s11"
+      },
+      {
+        "text": "Nhật ký kiểm toán",
+        "step": "s12"
+      }
+    ]
+  },
+  "presence": {
+    "alice-2": {
+      "from": "s5",
+      "until": "s8"
+    },
+    "alice-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "alice-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "alice-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "eve": {
+      "until": "s2"
+    },
+    "eve-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "eve-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "eve-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "eve-5": {
+      "from": "s5"
+    },
+    "api": {
+      "until": "s2"
+    },
+    "api-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "api-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "api-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "api-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "api-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "api-7": {
+      "from": "s7"
+    },
+    "db": {
+      "until": "s2"
+    },
+    "db-2": {
+      "from": "s2"
+    },
+    "db-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "db-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "policy": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "policy-2": {
+      "from": "s8"
+    },
+    "reports": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "reports-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "reports-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "reports-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "reports-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "reports-6": {
+      "from": "s13"
+    },
+    "audit": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "audit-2": {
+      "from": "s13"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "aa": {
+      "until": "s2"
+    },
+    "aa-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "aa-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "aa-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "aa-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "aa-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "aa-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "aa-8": {
+      "from": "s8"
+    },
+    "aa-9": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "aa-10": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ea": {
+      "until": "s2"
+    },
+    "ea-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ea-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ea-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ea-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ea-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ea-7": {
+      "from": "s7"
+    },
+    "ad": {
+      "until": "s2"
+    },
+    "ad-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ad-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ad-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ad-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ad-7": {
+      "from": "s7"
+    },
+    "ad-8": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "ap": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ap-2": {
+      "from": "s8"
+    },
+    "rd": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "rd-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "rd-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "rd-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "rd-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "rd-6": {
+      "from": "s13"
+    },
+    "ar": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ar-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dau": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "dau-2": {
+      "from": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Đổi URL",
+      "title": "Đã đăng nhập không có nghĩa là được phép",
+      "chapter": "problem",
+      "body": "Eve, ở một công ty khác, là người dùng hợp lệ. Cô mở hóa đơn của mình tại `/invoices/1042`, đổi số thành `1043` và thấy một hóa đơn của Acme.\n\nAPI kiểm tra rằng cô đã *đăng nhập*, nhưng chưa bao giờ kiểm tra hóa đơn này là *của cô*. Đây là phân quyền cấp đối tượng bị hỏng, lỗ hổng bảo mật API phổ biến nhất.",
+      "callout": {
+        "kind": "warning",
+        "text": "Giấu một nút trong giao diện không phải là phân quyền. Kẻ tấn công gọi thẳng API của bạn, với bất kỳ id nào họ muốn."
+      },
+      "changes": [],
+      "metrics": {
+        "exposed": "có",
+        "checks": "chỉ đăng nhập",
+        "privilege": "mọi thứ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Sở hữu",
+      "title": "Kiểm tra quyền sở hữu ở mọi yêu cầu",
+      "chapter": "solution",
+      "body": "Mọi truy vấn phải giới hạn theo người đang hỏi: lấy hóa đơn 1043 *chỉ khi* nó thuộc tổ chức của người gọi. Với Eve, truy vấn không tìm thấy gì, và cô nhận `404 Not Found`.\n\nMặc định từ chối: bất kỳ endpoint nào quên kiểm tra đều phải thất bại ở trạng thái đóng, không phải mở.",
+      "callout": {
+        "kind": "tip",
+        "text": "Trả về 404, không phải 403, cho đối tượng của người khác: đừng xác nhận rằng chúng tồn tại. Id ngẫu nhiên (UUID) có ích, nhưng không thay được việc kiểm tra."
+      },
+      "changes": [
+        "+ Truy vấn giới hạn theo tổ chức của người gọi",
+        "~ Yêu cầu của Eve → 404"
+      ],
+      "metrics": {
+        "exposed": "không",
+        "checks": "mọi yêu cầu",
+        "privilege": "mọi thứ"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Mass assign",
+      "title": "Tình huống: “role”: “admin”",
+      "chapter": "problem",
+      "body": "Eve sửa hồ sơ của chính mình, việc đó được phép. Nhưng API lấy phần thân JSON và lưu mọi trường trong đó. Thế là cô thêm `\"role\": \"admin\"` vào yêu cầu và tự thăng chức.\n\nĐây là [[mass assignment]]. Cách sửa: mỗi endpoint có danh sách những trường được phép đổi, và vai trò chỉ đổi qua một endpoint riêng chỉ dành cho admin.",
+      "callout": {
+        "kind": "warning",
+        "text": "Framework gắn thẳng thân yêu cầu vào model cơ sở dữ liệu khiến lỗi này rất dễ mắc. Hãy khai báo rõ các trường được ghi."
+      },
+      "changes": [
+        "+ Eve gửi thêm trường “role”",
+        "- API lưu lại · Eve thành admin",
+        "~ Sửa: danh sách trường được ghi"
+      ],
+      "metrics": {
+        "exposed": "có",
+        "checks": "mọi yêu cầu",
+        "privilege": "mọi thứ"
+      },
+      "overrides": {
+        "db-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Cấp dòng",
+      "title": "Để cơ sở dữ liệu cùng tách khách hàng",
+      "chapter": "technique",
+      "body": "Kiểm tra sở hữu nằm trong mã ứng dụng, nên chỉ một truy vấn quên `AND org_id = …` là rò rỉ quay lại. Hãy thêm lớp thứ hai: [[bảo mật cấp dòng]] (row-level security) trong cơ sở dữ liệu.\n\nỨng dụng cho mỗi kết nối biết nó đang phục vụ tổ chức nào; cơ sở dữ liệu sau đó lọc mọi truy vấn theo tổ chức đó. Ngay cả `SELECT * FROM invoices` cũng chỉ trả về các dòng của người gọi.",
+      "callout": {
+        "kind": "insight",
+        "text": "Phòng thủ nhiều lớp: hãy giả định mọi kiểm tra đơn lẻ rồi sẽ có lúc bị quên, và đảm bảo luôn có kiểm tra thứ hai."
+      },
+      "changes": [
+        "+ Row-level security trên hóa đơn",
+        "~ Ứng dụng đặt tổ chức người gọi cho mỗi kết nối"
+      ],
+      "metrics": {
+        "exposed": "không",
+        "checks": "ứng dụng + cơ sở dữ liệu",
+        "privilege": "mọi thứ"
+      },
+      "overrides": {
+        "db-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Vai trò",
+      "title": "Vai trò: mỗi loại người dùng được làm gì",
+      "chapter": "technique",
+      "body": "Trong Acme, mỗi người cần quyền hạn khác nhau: có người chỉ xem hóa đơn, có người sửa, một số ít duyệt những hóa đơn lớn. Thay vì liệt kê quyền cho từng người, hãy gom chúng thành [[vai trò]] và cho mỗi người một vai trò: kiểm soát truy cập theo vai trò (RBAC).\n\nAlice là kế toán: cô có thể sửa hóa đơn nhưng không duyệt được.",
+      "callout": {
+        "kind": "tip",
+        "text": "Giữ ít vai trò và có ý nghĩa. Hàng trăm vai trò cho các trường hợp đặc biệt sẽ không thể suy xét nổi."
+      },
+      "changes": [
+        "+ Vai trò: người xem, kế toán, người duyệt, admin"
+      ],
+      "metrics": {
+        "exposed": "không",
+        "checks": "mọi yêu cầu",
+        "privilege": "mọi thứ"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "db-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Chia sẻ",
+      "title": "Quan hệ: chia sẻ và nhóm",
+      "chapter": "technique",
+      "body": "Vai trò gặp khó với chia sẻ: “Alice xem được thư mục này vì nó được chia sẻ với nhóm của cô”. Truy cập **dựa trên quan hệ** (ReBAC) lưu các dữ kiện như “hóa đơn 1042 nằm trong thư mục Q3”, “Q3 được chia sẻ với nhóm Tài chính”, “Alice thuộc Tài chính”, rồi lần theo chuỗi.\n\nĐó là cách chia sẻ kiểu Google Docs hoạt động ở quy mô lớn.",
+      "callout": {
+        "kind": "insight",
+        "text": "Bài báo Zanzibar của Google phổ biến mô hình này; SpiceDB và OpenFGA là các phiên bản mã nguồn mở."
+      },
+      "changes": [
+        "+ Quyền suy ra từ quan hệ"
+      ],
+      "metrics": {
+        "exposed": "không",
+        "checks": "mọi yêu cầu",
+        "privilege": "mọi thứ"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "alice-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Chính sách",
+      "title": "Quyết định ở một nơi",
+      "chapter": "technique",
+      "body": "Những kiểm tra quyền rải rác thành câu lệnh if trong hai mươi dịch vụ sẽ lệch nhau dần, và không ai trả lời được “ai được duyệt hóa đơn?”. Thay vào đó, mỗi dịch vụ hỏi một [[dịch vụ chính sách]]: “Alice có được sửa hóa đơn 1042 không?”, rồi thực thi câu trả lời có hay không.\n\nQuy tắc nằm ở một chỗ, được kiểm thử như mã, và mọi quyết định đều có thể ghi log.",
+      "callout": {
+        "kind": "tip",
+        "text": "Công cụ: Open Policy Agent (Rego), AWS Cedar, hoặc một dịch vụ quyền như SpiceDB. Cache quyết định trong thời gian ngắn để giữ lời gọi nhanh."
+      },
+      "changes": [
+        "+ Dịch vụ chính sách tập trung",
+        "~ API hỏi, rồi thực thi"
+      ],
+      "metrics": {
+        "exposed": "không",
+        "checks": "chính sách tập trung",
+        "privilege": "mọi thứ"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "alice-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Chìa khóa vạn năng",
+      "title": "Tình huống: một dịch vụ giữ chìa khóa của mọi thứ",
+      "chapter": "problem",
+      "body": "Dịch vụ báo cáo kết nối cơ sở dữ liệu bằng tài khoản admin, vì đó là cách cài đặt nhanh nhất. Một ngày, người ta phát hiện lỗi SQL injection trong một bộ lọc báo cáo.\n\nVì dịch vụ đọc được *mọi* bảng, kẻ tấn công lấy luôn cả người dùng, hash mật khẩu và thông tin thanh toán, không chỉ hóa đơn.",
+      "callout": {
+        "kind": "warning",
+        "text": "Quyền của một thành phần quyết định bán kính thiệt hại của các lỗi trong nó."
+      },
+      "changes": [
+        "+ Dịch vụ báo cáo dùng thông tin đăng nhập admin của DB",
+        "- Lỗi injection làm lộ mọi bảng"
+      ],
+      "metrics": {
+        "exposed": "có",
+        "checks": "chính sách tập trung",
+        "privilege": "mọi thứ"
+      },
+      "overrides": {
+        "ea-7": {
+          "effect": "none"
+        },
+        "ap-2": {
+          "effect": "none"
+        },
+        "alice": {
+          "emphasis": true
+        },
+        "db-2": {
+          "visible": false
+        },
+        "ad-7": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Đặc quyền tối thiểu",
+      "title": "Đặc quyền tối thiểu",
+      "chapter": "solution",
+      "body": "Hãy cho mỗi dịch vụ, và mỗi người, chỉ quyền truy cập mà công việc cần. Dịch vụ báo cáo nhận một tài khoản **chỉ đọc** thấy được view hóa đơn và không gì khác; mỗi dịch vụ có thông tin đăng nhập và danh tính riêng.\n\nCùng lỗi injection đó giờ tệ nhất chỉ làm lộ những hóa đơn mà dịch vụ vốn đã đọc được, và báo động vang lên khi nó thử làm gì khác.",
+      "callout": {
+        "kind": "tip",
+        "text": "Áp dụng ở mọi nơi: quyền trong cơ sở dữ liệu, vai trò IAM trên cloud, scope của API và quyền truy cập của nhân viên (có thời hạn, được duyệt, có ghi log)."
+      },
+      "changes": [
+        "~ Báo cáo: chỉ đọc, chỉ view hóa đơn",
+        "+ Thông tin đăng nhập riêng cho mỗi dịch vụ"
+      ],
+      "metrics": {
+        "exposed": "không",
+        "checks": "chính sách tập trung",
+        "privilege": "đặc quyền tối thiểu"
+      },
+      "overrides": {
+        "ea-7": {
+          "effect": "none"
+        },
+        "ap-2": {
+          "effect": "none"
+        },
+        "db-2": {
+          "emphasis": true
+        },
+        "ad-7": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Deputy",
+      "title": "Tình huống: confused deputy",
+      "chapter": "problem",
+      "body": "Alice yêu cầu báo cáo các hóa đơn trên 10.000 $. API giao việc cho dịch vụ báo cáo, vốn truy vấn bằng danh tính *của chính nó*, và danh tính đó đọc được hóa đơn của mọi khách hàng. Báo cáo của Alice có cả hóa đơn của Globex.\n\nDịch vụ báo cáo đã bị lừa dùng quyền của mình thay cho người khác: một [[confused deputy]].",
+      "callout": {
+        "kind": "warning",
+        "text": "Mỗi khi một dịch vụ hành động thay người dùng, hãy hỏi: quyền của ai được áp dụng ở đây, của dịch vụ hay của người dùng?"
+      },
+      "changes": [
+        "+ Báo cáo chạy dưới danh nghĩa dịch vụ báo cáo",
+        "- Alice thấy hóa đơn của khách hàng khác"
+      ],
+      "metrics": {
+        "exposed": "có",
+        "checks": "chính sách tập trung",
+        "privilege": "đặc quyền tối thiểu"
+      },
+      "overrides": {
+        "ad-7": {
+          "effect": "none"
+        },
+        "ap-2": {
+          "effect": "none"
+        },
+        "alice": {
+          "visible": false
+        },
+        "eve-5": {
+          "visible": false
+        },
+        "aa-8": {
+          "visible": false
+        },
+        "ea-7": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Thay mặt",
+      "title": "Hành động như người dùng, không như chính mình",
+      "chapter": "solution",
+      "body": "Truyền tiếp danh tính người dùng: API chuyển token của Alice (hoặc đổi lấy một token hẹp hơn), và dịch vụ báo cáo chạy truy vấn *như Alice*, với tổ chức và quyền của cô.\n\nThông tin đăng nhập mạnh của chính dịch vụ chỉ dùng cho những việc không người dùng nào yêu cầu, như bảo trì ban đêm.",
+      "callout": {
+        "kind": "tip",
+        "text": "OAuth token exchange và service mesh có thể tự động mang danh tính người dùng cuối qua mọi chặng."
+      },
+      "changes": [
+        "~ Token của Alice được chuyển tới Báo cáo",
+        "~ Truy vấn chạy với quyền của Alice",
+        "- Dữ liệu khách hàng khác"
+      ],
+      "metrics": {
+        "exposed": "không",
+        "checks": "chính sách tập trung",
+        "privilege": "đặc quyền tối thiểu"
+      },
+      "overrides": {
+        "ad-7": {
+          "effect": "none"
+        },
+        "alice": {
+          "visible": false
+        },
+        "eve-5": {
+          "visible": false
+        },
+        "aa-8": {
+          "visible": false
+        },
+        "ea-7": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Kiểm toán",
+      "title": "Nhật ký kiểm toán: ai đã xem gì",
+      "chapter": "technique",
+      "body": "Cuối cùng, ghi lại mọi truy cập vào dữ liệu nhạy cảm (ai, cái gì, khi nào, từ đâu) vào một [[nhật ký kiểm toán]] chỉ cho phép ghi thêm, mà những người bị kiểm toán không sửa được.\n\nNó trả lời câu hỏi “ai đã xem hóa đơn của khách hàng này?” sau một sự cố, và kích hoạt cảnh báo: một nhân viên hỗ trợ mở 5.000 hóa đơn trong mười phút là đáng để báo động.",
+      "callout": {
+        "kind": "insight",
+        "text": "Hầu hết các tiêu chuẩn tuân thủ (SOC 2, HIPAA, yêu cầu theo GDPR) cũng bắt buộc có nhật ký kiểm toán."
+      },
+      "changes": [
+        "+ Nhật ký kiểm toán chỉ ghi thêm",
+        "+ Cảnh báo truy cập bất thường"
+      ],
+      "metrics": {
+        "exposed": "không",
+        "checks": "chính sách tập trung",
+        "privilege": "đặc quyền tối thiểu"
+      },
+      "overrides": {
+        "ap-2": {
+          "effect": "none"
+        },
+        "alice": {
+          "emphasis": true
+        },
+        "eve-5": {
+          "emphasis": true
+        },
+        "aa-8": {
+          "emphasis": true
+        },
+        "ea-7": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• Kiểm tra người gọi có được truy cập **đối tượng này** không, ở mọi yêu cầu.\n• Dùng **vai trò** cho các loại người dùng, **quan hệ** cho việc chia sẻ.\n• Quyết định trong **chính sách tập trung**; thực thi ở từng dịch vụ.\n• Liệt kê rõ trường được ghi; thêm **row-level security** làm lớp thứ hai.\n• Cấp **đặc quyền tối thiểu**; hành động **như người dùng**, không như dịch vụ; giữ **nhật ký kiểm toán**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Tiếp theo: **Mã hóa & bí mật**: bảo vệ dữ liệu trên đường truyền, trên đĩa, và chính các khóa."
+      },
+      "changes": [],
+      "metrics": {
+        "exposed": "không",
+        "checks": "chính sách tập trung",
+        "privilege": "đặc quyền tối thiểu"
+      },
+      "overrides": {}
+    }
+  ]
+}

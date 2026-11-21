@@ -1,0 +1,2182 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 872,
+          "y": -381
+        },
+        "width": 379,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "REQUIREMENTS\nsend      to a person or a group\nreceive   at once if online, later if not\n→ never lost · in order · shown once\n# under 200 ms when both are online",
+        "position": {
+          "x": 872,
+          "y": -381
+        },
+        "width": 355,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 868,
+          "y": -381
+        },
+        "width": 371,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "NAPKIN MATH\n50 M users × 40 messages  ≈ 23,000 / s\n× 200 bytes               ≈ 400 GB / day\n20 M connected at peak\n→ ÷ 200 k per server ≈ 100 gateways",
+        "position": {
+          "x": 868,
+          "y": -381
+        },
+        "width": 347,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 876,
+          "y": -381
+        },
+        "width": 388,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "ONE ROW PER MESSAGE\npartition key   conversation_id\nsort key        seq   41, 42, 43 …\nmessage_id · sender · body · sent_at\n→ “latest 50 of conv 88” is one range read",
+        "position": {
+          "x": 876,
+          "y": -381
+        },
+        "width": 364,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "alice",
+        "type": "process",
+        "title": "Alice",
+        "position": {
+          "x": -261,
+          "y": -406
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-2",
+        "type": "process",
+        "title": "Alice",
+        "description": "retry · same id 7f3a",
+        "position": {
+          "x": -261,
+          "y": -406
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "alice-3",
+        "type": "process",
+        "title": "Alice",
+        "description": "sees: Bob is online",
+        "position": {
+          "x": -261,
+          "y": -406
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob",
+        "type": "process",
+        "title": "Bob",
+        "position": {
+          "x": 261,
+          "y": -406
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob-2",
+        "type": "process",
+        "title": "Bob · offline, has up to #41",
+        "position": {
+          "x": 261,
+          "y": -406
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "opacity": 0.6,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob-3",
+        "type": "process",
+        "title": "Bob · sees it once ✓✓",
+        "position": {
+          "x": 261,
+          "y": -406
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob-4",
+        "type": "process",
+        "title": "Bob · typing…",
+        "position": {
+          "x": 261,
+          "y": -406
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "bob-5",
+        "type": "process",
+        "title": "Bob · reconnected, synced from #43",
+        "position": {
+          "x": 261,
+          "y": -406
+        },
+        "width": 256,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "chat",
+        "type": "process",
+        "title": "Chat Service",
+        "description": "to be designed",
+        "position": {
+          "x": 0,
+          "y": -116
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "chat-2",
+        "type": "process",
+        "title": "Chat Server",
+        "description": "sockets: alice, bob",
+        "position": {
+          "x": 0,
+          "y": -116
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "chat-3",
+        "type": "process",
+        "title": "Chat Service",
+        "description": "which gateway has Bob?",
+        "position": {
+          "x": 0,
+          "y": -116
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "chat-4",
+        "type": "process",
+        "title": "Chat Service",
+        "position": {
+          "x": 0,
+          "y": -116
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "chat-5",
+        "type": "process",
+        "title": "Chat Service",
+        "description": "conv 88 · next seq 43",
+        "position": {
+          "x": 0,
+          "y": -116
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "chat-6",
+        "type": "process",
+        "title": "Chat Service",
+        "description": "seen 7f3a → just ack",
+        "position": {
+          "x": 0,
+          "y": -116
+        },
+        "width": 200,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "chat-7",
+        "type": "process",
+        "title": "Chat Service",
+        "description": "3 members",
+        "position": {
+          "x": 0,
+          "y": -116
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "g1",
+        "type": "process",
+        "title": "Gateway 1",
+        "position": {
+          "x": -261,
+          "y": -116
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Network",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "g2",
+        "type": "process",
+        "title": "Gateway 2",
+        "position": {
+          "x": 261,
+          "y": -116
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Network",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "g2-2",
+        "type": "process",
+        "title": "Gateway 2",
+        "description": "⚠ DOWN",
+        "position": {
+          "x": 261,
+          "y": -116
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Network",
+        "iconPosition": "left",
+        "color": "#8c8c8c",
+        "backgroundColor": "#1f1f1f",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg",
+        "type": "process",
+        "title": "Sessions",
+        "description": "bob → gateway 2",
+        "position": {
+          "x": 0,
+          "y": -406
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-2",
+        "type": "process",
+        "title": "Sessions",
+        "position": {
+          "x": 0,
+          "y": -406
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-3",
+        "type": "process",
+        "title": "Sessions",
+        "description": "bob: no entry",
+        "position": {
+          "x": 0,
+          "y": -406
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-4",
+        "type": "process",
+        "title": "Sessions",
+        "description": "bob: online · 30 s TTL",
+        "position": {
+          "x": 0,
+          "y": -406
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "reg-5",
+        "type": "process",
+        "title": "Sessions",
+        "description": "bob → gateway 1",
+        "position": {
+          "x": 0,
+          "y": -406
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "store",
+        "type": "process",
+        "title": "message store",
+        "position": {
+          "x": -261,
+          "y": 203
+        },
+        "width": 216,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "store-2",
+        "type": "process",
+        "title": "message store",
+        "description": "conv 88 · #42 #43 waiting",
+        "position": {
+          "x": -261,
+          "y": 203
+        },
+        "width": 220,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "notifier",
+        "type": "process",
+        "title": "Push",
+        "description": "APNs / FCM",
+        "position": {
+          "x": 261,
+          "y": 203
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Bell",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cara",
+        "type": "process",
+        "title": "Cara",
+        "position": {
+          "x": 522,
+          "y": -116
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Smartphone",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "wa",
+        "from": "alice",
+        "to": "chat-2",
+        "label": "WebSocket",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "wb",
+        "from": "chat-2",
+        "to": "bob",
+        "label": "WebSocket",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.7,
+        "fromSide": "right",
+        "toSide": "bottom",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "a1",
+        "from": "alice",
+        "to": "g1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "a1-2",
+        "from": "alice-2",
+        "to": "g1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "a1-3",
+        "from": "alice-3",
+        "to": "g1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "gc",
+        "from": "g1",
+        "to": "chat-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "gc-2",
+        "from": "g1",
+        "to": "chat-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "gc-3",
+        "from": "g1",
+        "to": "chat-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "gc-4",
+        "from": "g1",
+        "to": "chat-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "gc-5",
+        "from": "g1",
+        "to": "chat-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "cg",
+        "from": "chat-3",
+        "to": "g2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "cg-2",
+        "from": "chat-4",
+        "to": "g2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cg-3",
+        "from": "chat-5",
+        "to": "g2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cg-4",
+        "from": "chat-4",
+        "to": "g2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "cg-5",
+        "from": "chat-6",
+        "to": "g2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cg-6",
+        "from": "chat-7",
+        "to": "g2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "cg-7",
+        "from": "chat-4",
+        "to": "g2-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "b2",
+        "from": "g2",
+        "to": "bob",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "b2-2",
+        "from": "g2",
+        "to": "bob-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "effect": "none"
+      },
+      {
+        "id": "b2-3",
+        "from": "g2",
+        "to": "bob-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "b2-4",
+        "from": "g2",
+        "to": "bob-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "heartbeat",
+        "effectColor": "#b7eb8f",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "b2-5",
+        "from": "g2-2",
+        "to": "bob-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "cr",
+        "from": "chat-4",
+        "to": "reg",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cr-2",
+        "from": "chat-5",
+        "to": "reg-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cr-3",
+        "from": "chat-4",
+        "to": "reg-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cr-4",
+        "from": "chat-6",
+        "to": "reg-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cr-5",
+        "from": "chat-7",
+        "to": "reg-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cr-6",
+        "from": "chat-4",
+        "to": "reg-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cr-7",
+        "from": "chat-4",
+        "to": "reg-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cr-8",
+        "from": "chat-4",
+        "to": "reg-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "cs",
+        "from": "chat-5",
+        "to": "store",
+        "label": "1 · store",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.7,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cs-2",
+        "from": "chat-4",
+        "to": "store-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cs-3",
+        "from": "chat-6",
+        "to": "store",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cs-4",
+        "from": "chat-7",
+        "to": "store",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cs-5",
+        "from": "chat-4",
+        "to": "store",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "none"
+      },
+      {
+        "id": "cs-6",
+        "from": "chat-4",
+        "to": "store",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cp",
+        "from": "chat-4",
+        "to": "notifier",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "meteor",
+        "effectColor": "#95de64",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "cp-2",
+        "from": "chat-6",
+        "to": "notifier",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "none"
+      },
+      {
+        "id": "cp-3",
+        "from": "chat-7",
+        "to": "notifier",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "none"
+      },
+      {
+        "id": "cp-4",
+        "from": "chat-4",
+        "to": "notifier",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "none"
+      },
+      {
+        "id": "pb",
+        "from": "notifier",
+        "to": "bob-2",
+        "label": "“2 new messages”",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.6,
+        "fromSide": "right",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 392,
+            "y": 203
+          },
+          {
+            "x": 392,
+            "y": -406
+          }
+        ],
+        "effect": "meteor",
+        "effectColor": "#95de64",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "pb-2",
+        "from": "notifier",
+        "to": "bob-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 392,
+            "y": 203
+          },
+          {
+            "x": 392,
+            "y": -406
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "pb-3",
+        "from": "notifier",
+        "to": "bob",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 392,
+            "y": 203
+          },
+          {
+            "x": 392,
+            "y": -406
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "pb-4",
+        "from": "notifier",
+        "to": "bob-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 392,
+            "y": 203
+          },
+          {
+            "x": 392,
+            "y": -406
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "pb-5",
+        "from": "notifier",
+        "to": "bob-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#475569",
+        "width": 2,
+        "lineStyle": "dotted",
+        "fromSide": "right",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": 392,
+            "y": 203
+          },
+          {
+            "x": 392,
+            "y": -406
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "c2",
+        "from": "g2",
+        "to": "cara",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "b1",
+        "from": "bob-5",
+        "to": "g1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 261,
+            "y": -261
+          },
+          {
+            "x": -220,
+            "y": -261
+          }
+        ],
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Design a Chat System",
+    "summary": "Twenty million open connections, and a promise: every message arrives, in order, exactly once.",
+    "minutes": 14,
+    "level": "advanced",
+    "metrics": [
+      {
+        "id": "deliverMs",
+        "label": "Delivery time"
+      },
+      {
+        "id": "conns",
+        "label": "Open connections"
+      },
+      {
+        "id": "canLoseMsg",
+        "label": "Can lose a message"
+      },
+      {
+        "id": "ordered",
+        "label": "Order guaranteed"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Size connections as well as messages",
+        "step": "s2"
+      },
+      {
+        "text": "Route between stateful gateways",
+        "step": "s5"
+      },
+      {
+        "text": "Store first: durability and ordering",
+        "step": "s6"
+      },
+      {
+        "text": "Offline delivery, sync and duplicates",
+        "step": "s8"
+      },
+      {
+        "text": "Groups, presence and a gateway failure",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "alice-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "alice-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "bob-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "bob-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "bob-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "bob-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "chat": {
+      "until": "s3"
+    },
+    "chat-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "chat-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "chat-4": {
+      "from": "s5"
+    },
+    "chat-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "chat-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "chat-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "g1": {
+      "from": "s4"
+    },
+    "g2": {
+      "from": "s4"
+    },
+    "g2-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "reg": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "reg-2": {
+      "from": "s6"
+    },
+    "reg-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "reg-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "reg-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "store": {
+      "from": "s6"
+    },
+    "store-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "notifier": {
+      "from": "s7"
+    },
+    "cara": {
+      "from": "s9",
+      "until": "s11"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "wa": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "wb": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a1": {
+      "from": "s4"
+    },
+    "a1-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "a1-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "gc": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "gc-2": {
+      "from": "s5"
+    },
+    "gc-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gc-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "gc-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cg": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "cg-2": {
+      "from": "s5"
+    },
+    "cg-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "cg-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cg-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "cg-6": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cg-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "b2": {
+      "from": "s4"
+    },
+    "b2-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "b2-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b2-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "b2-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cr": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "cr-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "cr-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cr-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "cr-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cr-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cr-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cr-8": {
+      "from": "s12"
+    },
+    "cs": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "cs-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cs-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "cs-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cs-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cs-6": {
+      "from": "s11"
+    },
+    "cp": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cp-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "cp-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cp-4": {
+      "from": "s10"
+    },
+    "pb": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pb-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "pb-3": {
+      "from": "s9"
+    },
+    "pb-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "pb-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "c2": {
+      "from": "s9",
+      "until": "s11"
+    },
+    "b1": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "The brief",
+      "title": "The brief: a chat app",
+      "chapter": "setup",
+      "body": "Third design: one-to-one and small-group chat, like WhatsApp or Messenger. Messages arrive instantly when the other person is online, wait for them when they aren’t, and show up on all of their devices.\n\nWhat matters most is trust: **no message may be lost**, messages must appear **in order**, and each one exactly once. Speed matters too — under 200 ms when both people are online — but never at the cost of those three.",
+      "callout": {
+        "kind": "insight",
+        "text": "Compare the last design. The feed could be late and approximate; chat has to be complete and ordered. Same building blocks, opposite priorities."
+      },
+      "changes": [],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Numbers",
+      "title": "Put numbers on it",
+      "chapter": "setup",
+      "body": "**50 million** people use it each day and send 40 messages each: 2 billion messages a day, about 23,000 a second — several times that at peak. Messages are small (≈ 200 bytes), but that is still 400 GB a day, around 150 TB a year.\n\nThe unusual number is **connections**. Chat is pushed, not polled, so every online user holds a connection open. At peak that’s 20 million of them.",
+      "callout": {
+        "kind": "tip",
+        "text": "One well-tuned server can hold a few hundred thousand mostly-idle connections. Twenty million means about a hundred servers that do nothing but hold sockets."
+      },
+      "changes": [
+        "+ 23,000 messages/s · 400 GB/day",
+        "+ 20 M connections open at peak"
+      ],
+      "metrics": {
+        "conns": "20 M at peak"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "One server",
+      "title": "First draft: one server, two sockets",
+      "chapter": "solution",
+      "body": "From *Real-time Updates*: polling wastes requests and adds delay, so each phone opens a [[WebSocket]] — one long-lived connection that the server can push down at any moment.\n\nWith a single server the rest is trivial. Alice and Bob are both connected to it; when Alice’s message arrives, the server finds Bob’s socket in its own memory and writes to it.",
+      "callout": {
+        "kind": "insight",
+        "text": "Unlike everything in *Stateless Services*, this server is **stateful**: Bob’s connection lives on one particular machine. That single fact shapes the rest of the design."
+      },
+      "changes": [
+        "+ Chat server",
+        "+ One WebSocket per device"
+      ],
+      "metrics": {
+        "deliverMs": "80 ms",
+        "conns": "2 · one server",
+        "canLoseMsg": "yes",
+        "ordered": "no"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Where is Bob?",
+      "title": "A hundred servers: where is Bob?",
+      "chapter": "problem",
+      "body": "Twenty million sockets need about a hundred servers. Split the roles: **gateways** do nothing but hold connections, and a stateless **chat service** behind them holds the logic.\n\nNow Alice is connected to gateway 1 and Bob to gateway 2. Alice’s message reaches the chat service — which has no idea which of a hundred gateways is holding Bob’s socket.",
+      "callout": {
+        "kind": "tip",
+        "text": "Keep gateways dumb. Logic changes every day; if it lives behind the gateways you can deploy it without dropping twenty million connections."
+      },
+      "changes": [
+        "+ Gateways that only hold sockets",
+        "~ Chat logic → a stateless service",
+        "- The chat service can’t find Bob"
+      ],
+      "metrics": {
+        "conns": "20 M · 100 gateways",
+        "canLoseMsg": "yes",
+        "ordered": "no"
+      },
+      "overrides": {
+        "b2": {
+          "effect": "none"
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Registry",
+      "title": "A registry of who is connected where",
+      "chapter": "solution",
+      "body": "When a device connects, its gateway writes an entry into a fast in-memory store: `bob → gateway 2`, with a short TTL that heartbeats keep refreshing. The chat service looks Bob up and hands the message to the right gateway, which writes it to his socket.\n\nIt’s *Service Discovery* again, at the scale of individual users: a registry kept honest by heartbeats.",
+      "callout": {
+        "kind": "tip",
+        "text": "If an entry is missing or stale, nothing breaks: Bob is treated as offline and gets the message when he next connects. Which means it needs somewhere to wait…"
+      },
+      "changes": [
+        "+ Session registry: user → gateway",
+        "+ Heartbeats keep entries fresh",
+        "~ Messages are routed to the right gateway"
+      ],
+      "metrics": {
+        "deliverMs": "90 ms",
+        "conns": "20 M · 100 gateways",
+        "canLoseMsg": "yes",
+        "ordered": "no"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s6",
+      "short": "Store first",
+      "title": "Write it down before you pass it on",
+      "chapter": "solution",
+      "body": "So far a message exists only in memory while it travels. If a server crashes mid-delivery, it’s gone. The rule: **store first, then deliver**. The chat service writes each message to a durable store, and only then tells Alice “sent ✓”.\n\nIn the same step it stamps the message with the conversation’s next **sequence number**. Order is decided once, by the server — never by the phones’ clocks, which disagree (see *CAP & Consistency*).",
+      "callout": {
+        "kind": "tip",
+        "text": "The store is write-heavy and always read the same way — “the latest messages of conversation X”. Partition by conversation id, sort by sequence: a wide-column store such as Cassandra or HBase — both LSM engines, see *Storage Engines* — fits well."
+      },
+      "changes": [
+        "+ Message store, partitioned by conversation",
+        "+ A sequence number per conversation",
+        "~ “Sent ✓” only after the write succeeds"
+      ],
+      "metrics": {
+        "deliverMs": "110 ms",
+        "conns": "20 M · 100 gateways",
+        "canLoseMsg": "no",
+        "ordered": "yes"
+      },
+      "overrides": {
+        "chat-4": {
+          "visible": false
+        },
+        "gc-2": {
+          "visible": false
+        },
+        "cg-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Offline",
+      "title": "Case: Bob is in a tunnel",
+      "chapter": "problem",
+      "body": "Bob’s phone loses signal. His registry entry expires, so the chat service knows not to try. The message is already safe in the store, and a **push notification** goes out through Apple’s or Google’s service to wake his phone.\n\nWhen Bob reconnects, his app says “I have conversation 88 up to #41”, and the server replies with everything after it. This **sync by cursor** is one mechanism for a five-second gap, a week offline, or a brand-new device.",
+      "callout": {
+        "kind": "insight",
+        "text": "Live delivery is an optimisation. The real protocol is “store, then sync” — the open socket only makes the sync happen sooner."
+      },
+      "changes": [
+        "- Bob offline · registry entry expired",
+        "+ Push notification through APNs / FCM",
+        "+ On reconnect: “send me everything after #41”"
+      ],
+      "metrics": {
+        "deliverMs": "110 ms",
+        "conns": "20 M · 100 gateways",
+        "canLoseMsg": "no",
+        "ordered": "yes"
+      },
+      "overrides": {
+        "bob": {
+          "visible": false
+        },
+        "chat-4": {
+          "emphasis": true
+        },
+        "reg-2": {
+          "visible": false
+        },
+        "store": {
+          "visible": false
+        },
+        "gc-2": {
+          "emphasis": true
+        },
+        "cg-2": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Duplicates",
+      "title": "Case: sent twice, shown once",
+      "chapter": "problem",
+      "body": "Alice hits send in a lift. The message reaches the server and is stored — but the “sent ✓” reply gets lost. Her app can’t tell, so it retries, and now the server has received the same message twice.\n\nFix it the way *Timeouts & Retries* taught: the app gives every message a unique id *before* sending and reuses it on every retry. The server recognises an id it has already stored and simply acknowledges again. Receiving apps discard duplicates the same way.",
+      "callout": {
+        "kind": "tip",
+        "text": "At-least-once delivery plus idempotent receivers adds up to “exactly once” on the screen. The ticks are plain acknowledgements: ✓ stored by the server, ✓✓ received by the device."
+      },
+      "changes": [
+        "+ Message ids generated on the device",
+        "~ A retry reuses its id → stored once",
+        "+ Receipts: ✓ sent · ✓✓ delivered"
+      ],
+      "metrics": {
+        "deliverMs": "110 ms",
+        "conns": "20 M · 100 gateways",
+        "canLoseMsg": "no",
+        "ordered": "yes"
+      },
+      "overrides": {
+        "alice": {
+          "visible": false
+        },
+        "bob": {
+          "visible": false
+        },
+        "chat-4": {
+          "visible": false
+        },
+        "reg-2": {
+          "emphasis": true
+        },
+        "store": {
+          "emphasis": true
+        },
+        "a1": {
+          "visible": false
+        },
+        "gc-2": {
+          "visible": false
+        },
+        "cg-2": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Groups",
+      "title": "Group chats: store once, deliver to many",
+      "chapter": "technique",
+      "body": "A group message is stored **once**, in the group’s conversation. Then the chat service looks up the members, finds each one’s gateway in the registry, and delivers a copy to every device that is online — fan-out on write, just like the news feed.\n\nThat works well up to a few hundred members. A channel with 100,000 members is the celebrity problem again; there, apps fetch new messages when the channel is opened instead.",
+      "callout": {
+        "kind": "tip",
+        "text": "Members who are offline cost nothing extra: each syncs from its own cursor when it returns."
+      },
+      "changes": [
+        "+ Cara joins the conversation",
+        "~ One stored message → a delivery per online member"
+      ],
+      "metrics": {
+        "deliverMs": "110 ms",
+        "conns": "20 M · 100 gateways",
+        "canLoseMsg": "no",
+        "ordered": "yes"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "bob": {
+          "emphasis": true
+        },
+        "chat-4": {
+          "visible": false
+        },
+        "a1": {
+          "emphasis": true
+        },
+        "gc-2": {
+          "visible": false
+        },
+        "cg-2": {
+          "visible": false
+        },
+        "b2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Presence",
+      "title": "“Online” and “typing…” play by other rules",
+      "chapter": "tradeoff",
+      "body": "Presence looks simple and is surprisingly expensive: each time someone connects or disconnects, every one of their contacts’ screens may need an update. With 20 million people coming and going, that’s a storm of tiny messages.\n\nSo treat it as **ephemeral**. Derive “online” from the registry’s heartbeats; send updates only to people who have that chat or contact list open right now; never store “typing…” at all. If an update is lost, the next heartbeat corrects it.",
+      "callout": {
+        "kind": "insight",
+        "text": "One product, two consistency levels: messages are durable and ordered; presence is best-effort and may be seconds stale. Choosing per feature is the CAP lesson in practice."
+      },
+      "changes": [
+        "+ Presence derived from heartbeats (TTL 30 s)",
+        "~ Updates only to people who are looking",
+        "~ “Typing…” is never stored"
+      ],
+      "metrics": {
+        "deliverMs": "110 ms",
+        "conns": "20 M · 100 gateways",
+        "canLoseMsg": "no",
+        "ordered": "yes"
+      },
+      "overrides": {
+        "gc-2": {
+          "effect": "heartbeat",
+          "emphasis": true
+        },
+        "cg-2": {
+          "effect": "none",
+          "emphasis": true
+        },
+        "c2": {
+          "effect": "heartbeat"
+        },
+        "alice": {
+          "visible": false
+        },
+        "bob": {
+          "visible": false
+        },
+        "chat-4": {
+          "emphasis": true
+        },
+        "reg-2": {
+          "visible": false
+        },
+        "a1": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        },
+        "pb-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Gateway dies",
+      "title": "Case: a gateway dies",
+      "chapter": "problem",
+      "body": "Gateway 2 crashes and 200,000 sockets drop at once. No message is lost — everything was stored first — but 200,000 apps now try to reconnect in the same second, and could knock over whichever gateway they land on.\n\nThe apps reconnect with **exponential backoff and jitter** (*Timeouts & Retries*), the load balancer spreads them across the healthy gateways, each one registers its new location, and every app syncs from its cursor.",
+      "callout": {
+        "kind": "warning",
+        "text": "Stateful servers fail loudly. Plan for the reconnect storm — and before a deploy, drain gateways gently instead of cutting everyone off at once."
+      },
+      "changes": [
+        "- Gateway 2 down · 200,000 sockets dropped",
+        "~ Apps reconnect with backoff and jitter",
+        "~ Bob lands on gateway 1 and syncs from #43"
+      ],
+      "metrics": {
+        "deliverMs": "110 ms",
+        "conns": "20 M · 99 gateways",
+        "canLoseMsg": "no",
+        "ordered": "yes"
+      },
+      "overrides": {
+        "alice": {
+          "emphasis": true
+        },
+        "bob": {
+          "visible": false
+        },
+        "g2": {
+          "visible": false
+        },
+        "reg-2": {
+          "visible": false
+        },
+        "a1": {
+          "emphasis": true
+        },
+        "cg-2": {
+          "visible": false
+        },
+        "b2": {
+          "visible": false
+        },
+        "pb-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "The finished design",
+      "chapter": "recap",
+      "body": "• Transport — Decision: WebSockets on dumb gateways; Because: Server must push; 20 M sockets\n• Routing — Decision: Registry: user → gateway; Because: Connections are stateful\n• Durability — Decision: Store first, then deliver; Because: Never lose a message\n• Order, duplicates — Decision: Server sequence + device ids; Because: Clocks and retries lie\n• Offline — Decision: Push + sync by cursor; Because: One path for every gap\n\nEnd-to-end encryption (*Encryption & Secrets*) changes what the server can read, not this architecture: it stores and forwards ciphertext.",
+      "callout": {
+        "kind": "tip",
+        "text": "That’s the course. You have the building blocks and three complete designs — now pick a product you use every day and sketch how you would build it."
+      },
+      "changes": [],
+      "metrics": {
+        "deliverMs": "110 ms",
+        "conns": "20 M · 100 gateways",
+        "canLoseMsg": "no",
+        "ordered": "yes"
+      },
+      "overrides": {
+        "bob": {
+          "emphasis": true
+        },
+        "g2": {
+          "emphasis": true
+        },
+        "reg-2": {
+          "emphasis": true
+        },
+        "cg-2": {
+          "emphasis": true
+        },
+        "b2": {
+          "emphasis": true
+        },
+        "pb-3": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2216 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "cz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 20
+        },
+        "width": 540,
+        "height": 380,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "cz-label",
+        "type": "text",
+        "title": "CONSENSUS CLUSTER · etcd",
+        "position": {
+          "x": -160,
+          "y": -190
+        },
+        "width": 200,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "cz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 541,
+          "y": -335
+        },
+        "width": 322,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "MAJORITY (QUORUM)\n3 nodes → 2 must agree\n5 nodes → 3 must agree\n→ two majorities always overlap\n# so only one side can ever decide",
+        "position": {
+          "x": 541,
+          "y": -335
+        },
+        "width": 298,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 529,
+          "y": -326
+        },
+        "width": 297,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "ELECTION · TERM 2\nB: timer fires — no heartbeat\nB: term 1 → 2, votes for itself\nB → C: “vote for me?”\n→ C: yes → 2 of 3 → B leads\n# one vote per node per term",
+        "position": {
+          "x": 529,
+          "y": -326
+        },
+        "width": 273,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 520,
+          "y": -335
+        },
+        "width": 280,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "COMMIT RULE\n1  leader appends the entry\n2  sends it to every follower\n3  a majority has stored it\n→ committed → reply “saved”",
+        "position": {
+          "x": 520,
+          "y": -335
+        },
+        "width": 256,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 512,
+          "y": -335
+        },
+        "width": 264,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "NODES → MAJORITY → CAN LOSE\n3  →  2  →  1\n⚠ 4  →  3  →  1   no gain\n5  →  3  →  2\n7  →  4  →  3",
+        "position": {
+          "x": 512,
+          "y": -335
+        },
+        "width": 240,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 553,
+          "y": -335
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "THE BILL\nevery write: + 1 majority round trip\none leader → one machine’s throughput\n⚠ no majority → no writes\n# an election pauses writes ≈ 1 s",
+        "position": {
+          "x": 553,
+          "y": -335
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "app1",
+        "type": "process",
+        "title": "App Server 1",
+        "position": {
+          "x": 0,
+          "y": -340
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a",
+        "type": "process",
+        "title": "node A",
+        "description": "leader",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-2",
+        "type": "process",
+        "title": "node A",
+        "description": "leader · seat 7 → Ana",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 122,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-3",
+        "type": "process",
+        "title": "node A",
+        "description": "1 of 3 · can’t commit",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 122,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-4",
+        "type": "process",
+        "title": "node A",
+        "description": "still on term 1",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-5",
+        "type": "process",
+        "title": "node A",
+        "description": "log 1 2 3 · 4′ Ana, unconfirmed",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-6",
+        "type": "process",
+        "title": "node A",
+        "description": "✓ follower · term 2 · caught up",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-7",
+        "type": "process",
+        "title": "node A",
+        "description": "zone 1",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "a-8",
+        "type": "process",
+        "title": "node A",
+        "description": "✓ follower",
+        "position": {
+          "x": 0,
+          "y": -100
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b",
+        "type": "process",
+        "title": "node B",
+        "description": "✓ follower",
+        "position": {
+          "x": -200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-2",
+        "type": "process",
+        "title": "node B",
+        "description": "leader · seat 7 → Ben",
+        "position": {
+          "x": -200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 122,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-3",
+        "type": "process",
+        "title": "node B",
+        "description": "leader · term 2",
+        "position": {
+          "x": -200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-4",
+        "type": "process",
+        "title": "node B",
+        "description": "leader · term 2 · log 1 2 3 · 4 Ben ✓",
+        "position": {
+          "x": -200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-5",
+        "type": "process",
+        "title": "node B",
+        "description": "leader · term 2 · zone 2",
+        "position": {
+          "x": -200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-6",
+        "type": "process",
+        "title": "node B",
+        "description": "⚠ awake · thinks it leads term 2",
+        "position": {
+          "x": -200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "b-7",
+        "type": "process",
+        "title": "node B",
+        "description": "refused → steps down",
+        "position": {
+          "x": -200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c",
+        "type": "process",
+        "title": "node C",
+        "description": "✓ follower",
+        "position": {
+          "x": 200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-2",
+        "type": "process",
+        "title": "node C",
+        "description": "✓ voted for B",
+        "position": {
+          "x": 200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-3",
+        "type": "process",
+        "title": "node C",
+        "description": "log 1 2 3 · 4 Ben ✓",
+        "position": {
+          "x": 200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-4",
+        "type": "process",
+        "title": "node C",
+        "description": "zone 3",
+        "position": {
+          "x": 200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-5",
+        "type": "process",
+        "title": "node C",
+        "description": "leader · term 3",
+        "position": {
+          "x": 200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "c-6",
+        "type": "process",
+        "title": "node C",
+        "description": "leader · term 3 · waits for 1 more ack",
+        "position": {
+          "x": 200,
+          "y": 140
+        },
+        "width": 176,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app2",
+        "type": "process",
+        "title": "App Server 2",
+        "position": {
+          "x": -440,
+          "y": 140
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "store",
+        "type": "process",
+        "title": "shared storage",
+        "description": "⚠ report.csv · overwritten by B",
+        "position": {
+          "x": 0,
+          "y": 380
+        },
+        "width": 228,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "store-2",
+        "type": "process",
+        "title": "shared storage",
+        "description": "highest token seen: 3",
+        "position": {
+          "x": 0,
+          "y": 380
+        },
+        "width": 228,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:File",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k8s",
+        "type": "process",
+        "title": "Kubernetes",
+        "description": "cluster state",
+        "position": {
+          "x": -220,
+          "y": -360
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Box",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "dbf",
+        "type": "process",
+        "title": "Database",
+        "description": "who is primary?",
+        "position": {
+          "x": 0,
+          "y": -360
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "job",
+        "type": "process",
+        "title": "Scheduler",
+        "description": "one runner lock",
+        "position": {
+          "x": 220,
+          "y": -360
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Clock",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "w1a",
+        "from": "app1",
+        "to": "a",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1a-2",
+        "from": "app1",
+        "to": "a-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1a-3",
+        "from": "app1",
+        "to": "a-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1a-4",
+        "from": "app1",
+        "to": "a-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1a-5",
+        "from": "app1",
+        "to": "a-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ab",
+        "from": "a",
+        "to": "b",
+        "label": "replication",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ac",
+        "from": "a",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w2b",
+        "from": "app2",
+        "to": "b-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w2b-2",
+        "from": "app2",
+        "to": "b-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w2b-3",
+        "from": "app2",
+        "to": "b-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w2b-4",
+        "from": "app2",
+        "to": "b-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "xab",
+        "from": "a-2",
+        "to": "b-2",
+        "label": "✕ cut off",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xab-2",
+        "from": "a-3",
+        "to": "b-3",
+        "label": "✕ cut off",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xab-3",
+        "from": "a-4",
+        "to": "b-3",
+        "label": "✕ cut off",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xab-4",
+        "from": "a-5",
+        "to": "b-4",
+        "label": "✕ cut off",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "left",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xac",
+        "from": "a-2",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xac-2",
+        "from": "a-3",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xac-3",
+        "from": "a-4",
+        "to": "c-2",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "xac-4",
+        "from": "a-5",
+        "to": "c-3",
+        "startMarker": "none",
+        "endMarker": "cross",
+        "color": "#ff7875",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "none"
+      },
+      {
+        "id": "bc",
+        "from": "b-2",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bc-2",
+        "from": "b-3",
+        "to": "c",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bc-3",
+        "from": "b-3",
+        "to": "c-2",
+        "label": "vote for me? · term 2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "bc-4",
+        "from": "b-4",
+        "to": "c-3",
+        "label": "append entry 4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "bc-5",
+        "from": "b-5",
+        "to": "c-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1b",
+        "from": "app1",
+        "to": "b-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1b-2",
+        "from": "app1",
+        "to": "b-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ba",
+        "from": "b-3",
+        "to": "a-6",
+        "label": "heartbeat · term 2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ba-2",
+        "from": "b-5",
+        "to": "a-7",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "left",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1c",
+        "from": "app1",
+        "to": "c-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "w1c-2",
+        "from": "app1",
+        "to": "c-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ca",
+        "from": "c-5",
+        "to": "a-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ca-2",
+        "from": "c-6",
+        "to": "a-8",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "top",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cb",
+        "from": "c-5",
+        "to": "b-6",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "cb-2",
+        "from": "c-5",
+        "to": "b-7",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cb-3",
+        "from": "c-6",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "cb-4",
+        "from": "c-5",
+        "to": "b",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "sb",
+        "from": "b-6",
+        "to": "store",
+        "label": "write (stale)",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.62,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sb-2",
+        "from": "b-7",
+        "to": "store-2",
+        "label": "token 2 ✕",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.62,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "left",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sc",
+        "from": "c-5",
+        "to": "store",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "sc-2",
+        "from": "c-5",
+        "to": "store-2",
+        "label": "token 3 ✓",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.4,
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "u1",
+        "from": "k8s",
+        "to": "b",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "u2",
+        "from": "dbf",
+        "to": "a-8",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "u3",
+        "from": "job",
+        "to": "c-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "Consensus & Leader Election",
+    "summary": "How a group of servers agrees on one leader and one history — even when some of them can’t be reached.",
+    "minutes": 14,
+    "level": "advanced",
+    "metrics": [
+      {
+        "id": "leaders",
+        "label": "Leaders"
+      },
+      {
+        "id": "term",
+        "label": "Term"
+      },
+      {
+        "id": "writes",
+        "label": "Writes"
+      },
+      {
+        "id": "canLose",
+        "label": "Can lose"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Why naive failover causes split brain",
+        "step": "s2"
+      },
+      {
+        "text": "Majority quorums — and why they overlap",
+        "step": "s3"
+      },
+      {
+        "text": "Terms, votes and elections (Raft)",
+        "step": "s4"
+      },
+      {
+        "text": "When a write counts as committed",
+        "step": "s5"
+      },
+      {
+        "text": "How many nodes a cluster needs",
+        "step": "s7"
+      },
+      {
+        "text": "Fencing tokens for paused leaders",
+        "step": "s9"
+      }
+    ]
+  },
+  "presence": {
+    "a": {
+      "until": "s2"
+    },
+    "a-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "a-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "a-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "a-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "a-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "a-7": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "a-8": {
+      "from": "s8"
+    },
+    "b-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "b-3": {
+      "from": "s3",
+      "until": "s7"
+    },
+    "b-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "b-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "b-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "b-7": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "c": {
+      "until": "s7"
+    },
+    "c-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "c-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "c-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "c-5": {
+      "from": "s8"
+    },
+    "c-6": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "app2": {
+      "from": "s2",
+      "until": "s8"
+    },
+    "card": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "store": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "store-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cz": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k8s": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "dbf": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "job": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cz-label": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-5-text": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "w1a": {
+      "until": "s2"
+    },
+    "w1a-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "w1a-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "w1a-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "w1a-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ab": {
+      "until": "s2"
+    },
+    "ac": {
+      "until": "s2"
+    },
+    "w2b": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "w2b-2": {
+      "from": "s3",
+      "until": "s7"
+    },
+    "w2b-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "w2b-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "xab": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "xab-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "xab-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "xab-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "xac": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "xac-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "xac-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "xac-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bc": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "bc-2": {
+      "from": "s3",
+      "until": "s7"
+    },
+    "bc-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "bc-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "bc-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "w1b": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "w1b-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ba": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ba-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "w1c": {
+      "from": "s8"
+    },
+    "w1c-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ca": {
+      "from": "s8"
+    },
+    "ca-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "cb-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "cb-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "cb-4": {
+      "from": "s11"
+    },
+    "sb": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sb-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sc": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sc-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "u1": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "u2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "u3": {
+      "from": "s11",
+      "until": "s12"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "One leader",
+      "title": "One leader, two followers",
+      "chapter": "setup",
+      "body": "From *Replication*: one [[leader]] takes every write and copies it to its followers. If the leader dies, a follower is promoted and carries on.\n\nThat sentence hides one of the hardest questions in distributed systems: **who decides** the leader is dead — and what happens if they’re wrong?",
+      "callout": {
+        "kind": "insight",
+        "text": "From the outside, a crashed server, a slow server and a server behind a broken cable all look exactly the same: silence."
+      },
+      "changes": [],
+      "metrics": {
+        "leaders": "1",
+        "writes": "ok",
+        "canLose": "?"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Split brain",
+      "title": "Two leaders at once",
+      "chapter": "problem",
+      "body": "A network fault cuts A off from B and C. A is alive and still serving App Server 1 — but B hears nothing, assumes the leader is dead, and promotes itself.\n\nNow two leaders accept writes. Through A, seat 7 is sold to Ana; through B, the same seat is sold to Ben. Two histories that can never be merged cleanly: [[split brain]].",
+      "callout": {
+        "kind": "warning",
+        "text": "A timeout can tell you a server is unreachable. It can never tell you the server is dead."
+      },
+      "changes": [
+        "- Network between A and the others is cut",
+        "+ B promotes itself",
+        "- Two leaders, two different histories"
+      ],
+      "metrics": {
+        "leaders": "2",
+        "writes": "diverging",
+        "canLose": "?"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Majority",
+      "title": "The rule: nothing counts without a majority",
+      "chapter": "solution",
+      "body": "The fix is one rule. A leader is only elected — and a write only confirmed — when **more than half** of all nodes agree. With three nodes, that’s two.\n\nCut off, A can reach only itself: 1 of 3. It can’t confirm anything, so App Server 1’s writes wait and time out. B and C are 2 of 3: they may elect a leader and carry on. Any two majorities share at least one node, so two leaders can never both win.",
+      "callout": {
+        "kind": "insight",
+        "text": "This is CAP in practice: the minority side gives up availability so that the data stays consistent."
+      },
+      "changes": [
+        "+ Rule: every decision needs 2 of 3",
+        "~ A alone → can’t confirm writes",
+        "~ B + C → a valid majority"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ok",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Election",
+      "title": "How a leader gets elected",
+      "chapter": "technique",
+      "body": "This is the [[Raft]] algorithm. A leader sends regular heartbeats. Every follower runs a timer of *random* length; if it runs out with no heartbeat, that follower becomes a **candidate**.\n\nB’s timer fires first. It starts [[term]] 2, votes for itself and asks the others. A node gives one vote per term, and only to a candidate whose log is at least as complete as its own. C says yes — 2 of 3 — so B leads term 2.",
+      "callout": {
+        "kind": "tip",
+        "text": "Random timers mean two nodes rarely stand at once. If the vote does split, nobody wins, the timers restart, and the next term settles it — usually within a second."
+      },
+      "changes": [
+        "+ B: no heartbeat → candidate for term 2",
+        "+ C votes for B",
+        "~ B wins 2 of 3 and starts sending heartbeats"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ok",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "w2b-2": {
+          "effect": "none"
+        },
+        "b": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "bc-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Commit",
+      "title": "A write is committed by a majority",
+      "chapter": "technique",
+      "body": "Writes follow the same rule. App Server 2 sends `seat 7 → Ben` to the leader. B appends it to its [[log]] and sends it to the followers.\n\nAs soon as a majority has stored the entry — B and C — it is **committed**. Only then does B apply it and answer “saved”. A committed entry survives any failure that leaves a majority standing.",
+      "callout": {
+        "kind": "insight",
+        "text": "Every node applies the same log entries in the same order, so every node ends up in the same state. That’s a **replicated state machine** — the idea underneath all of this."
+      },
+      "changes": [
+        "+ B appends entry 4 to its log",
+        "+ C stores it → 2 of 3",
+        "~ Committed → App Server 2 hears “saved”"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ok",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        },
+        "b-3": {
+          "visible": false
+        },
+        "c": {
+          "visible": false
+        },
+        "w2b-2": {
+          "visible": false
+        },
+        "bc-2": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Heal",
+      "title": "The old leader steps down",
+      "chapter": "solution",
+      "body": "The network heals. A — still believing it leads term 1 — receives a heartbeat from B stamped **term 2**. A higher term always wins: A becomes a follower at once.\n\nA’s log holds one entry that never reached a majority: Ana’s booking, which App Server 1 was never told had succeeded. A discards it and copies B’s log instead. All three nodes are identical again, and nothing that was confirmed has been lost.",
+      "callout": {
+        "kind": "tip",
+        "text": "Terms are a logical clock. Nobody compares wall-clock times — only “whose term number is higher?”"
+      },
+      "changes": [
+        "+ Network restored",
+        "~ A sees term 2 → steps down",
+        "- A’s unconfirmed entry discarded",
+        "~ A copies the log from B · apps follow the leader"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ok",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        },
+        "b-3": {
+          "emphasis": true
+        },
+        "c": {
+          "emphasis": true
+        },
+        "w2b-2": {
+          "emphasis": true
+        },
+        "bc-2": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "How many",
+      "title": "How many nodes?",
+      "chapter": "insight",
+      "body": "A cluster of **N** nodes needs ⌊N/2⌋ + 1 votes, so it keeps working with ⌊(N − 1)/2⌋ of them down. Three nodes survive one failure; five survive two.\n\nA fourth node is a trap: the majority becomes 3, so you still survive only one failure — with one more machine that can fail. Use odd sizes, and put each node in a different zone so one outage can’t take a majority with it.",
+      "callout": {
+        "kind": "tip",
+        "text": "Three or five is typical. Every write waits for more acknowledgements as the cluster grows, so bigger clusters get slower, not safer."
+      },
+      "changes": [
+        "+ One node per availability zone"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "2",
+        "writes": "ok",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Zombie",
+      "title": "Case: the leader that paused",
+      "chapter": "problem",
+      "body": "Leader B freezes for twenty seconds — a long garbage-collection pause, or its virtual machine being moved. A and C hear no heartbeats, elect C for term 3, and move on.\n\nThen B wakes up. As far as it can tell no time has passed, and it is still the leader. Before the next message corrects it, it finishes what it was doing: writing a file to shared storage — straight over the new leader’s work.",
+      "callout": {
+        "kind": "warning",
+        "text": "A node cannot know it was paused. “I checked that I was the leader a moment ago” is never proof that you still are."
+      },
+      "changes": [
+        "- B freezes for 20 s",
+        "+ A and C elect C · term 3",
+        "- B wakes up and writes as if it still led"
+      ],
+      "metrics": {
+        "leaders": "1 + a zombie",
+        "term": "3",
+        "writes": "diverging",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Fencing",
+      "title": "Fencing tokens",
+      "chapter": "solution",
+      "body": "The fix doesn’t depend on B noticing anything. Every request a leader sends carries its **term number** as a [[fencing token]], and the storage remembers the highest token it has seen.\n\nC has already written with token 3. When B’s write arrives carrying token 2, the storage refuses it. The stale leader is fenced off by the resource itself.",
+      "callout": {
+        "kind": "tip",
+        "text": "The same goes for distributed locks: the lock service must hand out an increasing number with each lock, and the protected resource must check it. A lock that only says “it’s yours” is not safe."
+      },
+      "changes": [
+        "+ Every write carries the leader’s term",
+        "+ Storage rejects tokens older than the newest it has seen",
+        "~ B’s write refused: 2 < 3"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "3",
+        "writes": "ok",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "b": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "The price",
+      "title": "What consensus costs",
+      "chapter": "tradeoff",
+      "body": "Every write waits for a round trip to a majority. Inside one data center that’s a millisecond or two; with nodes in different regions it’s 50–150 ms on *every* write.\n\nAll writes pass through one leader, so throughput is capped by a single machine. And when no majority can be reached, the cluster accepts no writes at all — on purpose.",
+      "callout": {
+        "kind": "warning",
+        "text": "Consensus buys correctness with latency and availability. Spend it on the small, critical decisions — not on every like and page view."
+      },
+      "changes": [
+        "~ Each write: + 1 majority round trip",
+        "~ An election pauses writes for about a second"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "3",
+        "writes": "ok",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "b": {
+          "emphasis": true
+        },
+        "c-5": {
+          "visible": false
+        },
+        "w1c": {
+          "visible": false
+        },
+        "ca": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "In practice",
+      "title": "You use it far more than you write it",
+      "chapter": "insight",
+      "body": "Almost nobody implements Raft or Paxos themselves. You run a small consensus cluster — **etcd**, **ZooKeeper** or **Consul** — and keep only the critical facts in it: who the leader is, what the configuration says, who holds which lock.\n\nEverything else leans on it. Kubernetes keeps all its cluster state in etcd. Kafka elects its controllers with Raft. Databases such as CockroachDB, Spanner and MongoDB run consensus inside every shard or replica set to decide failover.",
+      "callout": {
+        "kind": "insight",
+        "text": "When the Replication lesson said “promote the most up-to-date follower”, this is the machinery that makes it safe."
+      },
+      "changes": [
+        "+ Three systems that depend on the cluster"
+      ],
+      "metrics": {
+        "leaders": "1",
+        "term": "3",
+        "writes": "ok",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "app1": {
+          "visible": false
+        },
+        "c-5": {
+          "emphasis": true
+        },
+        "w1c": {
+          "visible": false
+        },
+        "ca": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• A timeout can’t tell **dead** from **unreachable** — naive failover risks split brain.\n• **Majority rule**: elections and writes need more than half the nodes, and two majorities always overlap.\n• **Terms** order the leaders: a higher term wins and a stale leader steps down.\n• A write is **committed** once a majority has logged it — never before.\n• Run **3 or 5** nodes across zones, and use **fencing tokens** for anything outside the log.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Transactions & Isolation** — keeping one database correct when many requests change it at once."
+      },
+      "changes": [],
+      "metrics": {
+        "leaders": "1",
+        "term": "3",
+        "writes": "ok",
+        "canLose": "1 of 3"
+      },
+      "overrides": {
+        "app1": {
+          "emphasis": true
+        },
+        "w1c": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

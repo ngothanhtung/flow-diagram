@@ -1,0 +1,2297 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1241,
+          "y": -791
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "MỘT LƯỢT TẢI LÊN PRESIGNED\nPUT https://bucket…/videos/7a1e.mp4\n  ?expires=900&signature=3b9f…\n→ một khóa · một lượt tải · 15 phút\n# ứng dụng không bao giờ chạm vào byte",
+        "position": {
+          "x": 1241,
+          "y": -791
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1257,
+          "y": -791
+        },
+        "width": 388,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "TẢI LÊN NHIỀU PHẦN\nbắt đầu      → id tải lên + 200 URL\nphần 1…200  mỗi phần 10 MB, 4 phần một lúc\n⚠ phần 37 lỗi → gửi lại phần 37\n→ hoàn tất  → videos/7a1e.mp4",
+        "position": {
+          "x": 1257,
+          "y": -791
+        },
+        "width": 364,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1311,
+          "y": -782
+        },
+        "width": 495,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "MỘT VIDEO, NĂM CHẤT LƯỢNG\n1080p   5 Mbit/s\n 720p   3 Mbit/s\n→ 480p   1,5 Mbit/s   ← hiện tại: đường truyền 2 Mbit/s\n 360p   0,8 Mbit/s\n 240p   0,4 Mbit/s",
+        "position": {
+          "x": 1311,
+          "y": -782
+        },
+        "width": 471,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1290,
+          "y": -791
+        },
+        "width": 454,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "LỚP LƯU TRỮ · MỖI TB-THÁNG\ntiêu chuẩn          ≈ $23     nóng, đọc rẻ\nít truy cập         ≈ $12,50  trả tiền mỗi lần đọc\nlưu trữ lâu dài     ≈ $1–4    đọc chậm hoặc đắt\n→ sau một năm: 730 TB → ≈ $6.300 / tháng",
+        "position": {
+          "x": 1290,
+          "y": -791
+        },
+        "width": 430,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "người dùng chia sẻ ảnh",
+        "position": {
+          "x": 0,
+          "y": -817
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "users-2",
+        "type": "process",
+        "title": "người dùng tải video lên",
+        "position": {
+          "x": 0,
+          "y": -817
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "Máy chủ ứng dụng",
+        "position": {
+          "x": 0,
+          "y": -258
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "Máy chủ ứng dụng",
+        "description": "CPU 85%",
+        "position": {
+          "x": 0,
+          "y": -258
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "Máy chủ ứng dụng",
+        "description": "chuyển tiếp lượt tải 2 GB · CPU 90%",
+        "position": {
+          "x": 0,
+          "y": -258
+        },
+        "width": 180,
+        "height": 115,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-4",
+        "type": "process",
+        "title": "Máy chủ ứng dụng",
+        "description": "CPU 20%",
+        "position": {
+          "x": 0,
+          "y": -258
+        },
+        "width": 176,
+        "height": 81,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "blob",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "ảnh dạng BLOB",
+        "position": {
+          "x": 0,
+          "y": 258
+        },
+        "width": 217,
+        "height": 109,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "blob-2",
+        "type": "process",
+        "title": "cơ sở dữ liệu",
+        "description": "⚠ +2 TB / ngày · CPU 95%",
+        "position": {
+          "x": 0,
+          "y": 258
+        },
+        "width": 217,
+        "height": 109,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#ff4d4f",
+        "borderWidth": 2.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "metadata",
+        "description": "khóa · chủ sở hữu · kích thước · loại",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 184,
+        "height": 140,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "metadata",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-3",
+        "type": "process",
+        "title": "metadata",
+        "description": "trạng thái: pending → uploaded",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 176,
+        "height": 123,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-4",
+        "type": "process",
+        "title": "metadata",
+        "description": "✓ trạng thái: ready",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-5",
+        "type": "process",
+        "title": "metadata",
+        "description": "312 pending > 1 ngày",
+        "position": {
+          "x": -430,
+          "y": 258
+        },
+        "width": 176,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj",
+        "type": "process",
+        "title": "Object storage",
+        "description": "photos/9f2c.jpg",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj-2",
+        "type": "process",
+        "title": "Object storage",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj-3",
+        "type": "process",
+        "title": "Object storage",
+        "description": "phần 1–200 → một đối tượng",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj-4",
+        "type": "process",
+        "title": "Object storage",
+        "description": "bản gốc > 90 ngày → lưu trữ lâu dài",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "obj-5",
+        "type": "process",
+        "title": "Object storage",
+        "description": "đã chặn truy cập công khai",
+        "position": {
+          "x": 430,
+          "y": 258
+        },
+        "width": 219,
+        "height": 129,
+        "shape": "rounded",
+        "icon": "lucide:Package",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "jq",
+        "type": "process",
+        "title": "▮ ▮ ▮",
+        "position": {
+          "x": 671,
+          "y": 258
+        },
+        "width": 176,
+        "height": 72,
+        "shape": "queue",
+        "icon": null,
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers",
+        "type": "process",
+        "title": "Worker",
+        "description": "đổi kích thước · xóa GPS · chuyển mã",
+        "position": {
+          "x": 903,
+          "y": 258
+        },
+        "width": 176,
+        "height": 108,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "workers-2",
+        "type": "process",
+        "title": "Worker",
+        "position": {
+          "x": 903,
+          "y": 258
+        },
+        "width": 176,
+        "height": 99,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdn",
+        "type": "process",
+        "title": "CDN",
+        "position": {
+          "x": 430,
+          "y": -344
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdn-2",
+        "type": "process",
+        "title": "CDN",
+        "description": "các đoạn · mỗi đoạn 4 s",
+        "position": {
+          "x": 430,
+          "y": -344
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Globe",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "sweep",
+        "type": "process",
+        "title": "Dọn dẹp",
+        "description": "hằng đêm",
+        "position": {
+          "x": -430,
+          "y": -258
+        },
+        "width": 176,
+        "height": 93,
+        "shape": "rounded",
+        "icon": "lucide:RefreshCw",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spy",
+        "type": "process",
+        "title": "bất kỳ ai",
+        "position": {
+          "x": 860,
+          "y": -344
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ua",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-2",
+        "from": "users",
+        "to": "app-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "ua-3",
+        "from": "users-2",
+        "to": "app-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.5,
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "ua-4",
+        "from": "users-2",
+        "to": "app-4",
+        "label": "tôi tải lên được không?",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ua-5",
+        "from": "users-2",
+        "to": "app-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ua-6",
+        "from": "users",
+        "to": "app-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "ab",
+        "from": "app",
+        "to": "blob",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "ab-2",
+        "from": "app-2",
+        "to": "blob-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "ad",
+        "from": "app",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ad-2",
+        "from": "app-3",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "ad-3",
+        "from": "app-4",
+        "to": "db-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ad-4",
+        "from": "app-4",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ad-5",
+        "from": "app-4",
+        "to": "db-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "ad-6",
+        "from": "app",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ad-7",
+        "from": "app",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": -430,
+            "y": 0
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ao",
+        "from": "app",
+        "to": "obj",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 430,
+            "y": 0
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "ao-2",
+        "from": "app-3",
+        "to": "obj-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 430,
+            "y": 0
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.5,
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "uo",
+        "from": "users-2",
+        "to": "obj-2",
+        "label": "các byte",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.3,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "uo-2",
+        "from": "users-2",
+        "to": "obj-3",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "animationSpeed": 0.8,
+        "effectSize": 1.6,
+        "effectCount": 5
+      },
+      {
+        "id": "uo-3",
+        "from": "users",
+        "to": "obj-2",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "uo-4",
+        "from": "users",
+        "to": "obj-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "uo-5",
+        "from": "users",
+        "to": "obj-5",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 301,
+            "y": -817
+          },
+          {
+            "x": 301,
+            "y": 258
+          }
+        ],
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "oa",
+        "from": "obj-2",
+        "to": "app-4",
+        "label": "đã tải lên xong",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "oa-2",
+        "from": "obj-3",
+        "to": "app-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "oa-3",
+        "from": "obj-2",
+        "to": "app-4",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      },
+      {
+        "id": "oa-4",
+        "from": "obj-2",
+        "to": "app",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "oa-5",
+        "from": "obj-4",
+        "to": "app",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "oa-6",
+        "from": "obj-5",
+        "to": "app",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "top",
+        "toSide": "bottom",
+        "bendPoints": [
+          {
+            "x": 430,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "ow",
+        "from": "obj-2",
+        "to": "workers",
+        "label": "job",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelOffset": 0.25,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ow-2",
+        "from": "obj-2",
+        "to": "workers-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ow-3",
+        "from": "obj-4",
+        "to": "workers-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "ow-4",
+        "from": "obj-5",
+        "to": "workers-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "uc",
+        "from": "users",
+        "to": "cdn",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "uc-2",
+        "from": "users",
+        "to": "cdn-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "top",
+        "effect": "pulse",
+        "effectColor": "#ff9c6e",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectSize": 1.6,
+        "effectCount": 4
+      },
+      {
+        "id": "co",
+        "from": "cdn",
+        "to": "obj-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "co-2",
+        "from": "cdn-2",
+        "to": "obj-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "co-3",
+        "from": "cdn",
+        "to": "obj-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "co-4",
+        "from": "cdn",
+        "to": "obj-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "none"
+      },
+      {
+        "id": "sd",
+        "from": "sweep",
+        "to": "db-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "so",
+        "from": "sweep",
+        "to": "obj-2",
+        "label": "xóa tệp mồ côi",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "labelOffset": 0.35,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -430,
+            "y": -86
+          },
+          {
+            "x": 430,
+            "y": -86
+          }
+        ],
+        "effect": "laser",
+        "effectColor": "#ff4d4f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "so-2",
+        "from": "spy",
+        "to": "obj-5",
+        "label": "GET /?list",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.3,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      }
+    ]
+  },
+  "meta": {
+    "title": "Tệp & đa phương tiện",
+    "summary": "Ảnh và video không thuộc về cơ sở dữ liệu của bạn: chúng nên được lưu ở đâu, và đi đến đó rồi quay về như thế nào.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "dbGrowth",
+        "label": "CSDL phình ra"
+      },
+      {
+        "id": "appTraffic",
+        "label": "Qua server ứng dụng"
+      },
+      {
+        "id": "imgLoad",
+        "label": "Tải ảnh"
+      },
+      {
+        "id": "storeCost",
+        "label": "Lưu trữ / tháng"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Byte trong object storage, metadata trong cơ sở dữ liệu",
+        "step": "s3"
+      },
+      {
+        "text": "Tải lên trực tiếp bằng presigned URL; tệp lớn chia thành nhiều phần",
+        "step": "s5"
+      },
+      {
+        "text": "Xử lý, phân phối qua CDN và video thích ứng",
+        "step": "s7"
+      },
+      {
+        "text": "Giữ metadata và tệp khớp nhau",
+        "step": "s10"
+      },
+      {
+        "text": "Lớp lưu trữ, vòng đời và bucket riêng tư",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "users-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "app-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "app-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "app-4": {
+      "from": "s5",
+      "until": "s8"
+    },
+    "blob": {
+      "until": "s2"
+    },
+    "blob-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "db": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "db-2": {
+      "from": "s4"
+    },
+    "db-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "db-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "db-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "obj": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "obj-2": {
+      "from": "s4"
+    },
+    "obj-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "obj-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "obj-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "jq": {
+      "from": "s7"
+    },
+    "workers": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "workers-2": {
+      "from": "s8"
+    },
+    "cdn": {
+      "from": "s8"
+    },
+    "cdn-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "sweep": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "spy": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-2-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-text": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-4-text": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ua-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ua-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ua-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ua-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ua-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ab": {
+      "until": "s2"
+    },
+    "ab-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "ad": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ad-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ad-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ad-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "ad-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ad-6": {
+      "from": "s8"
+    },
+    "ad-7": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "ao": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "ao-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "uo": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "uo-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "uo-3": {
+      "from": "s7"
+    },
+    "uo-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "uo-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "oa": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "oa-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "oa-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "oa-4": {
+      "from": "s8"
+    },
+    "oa-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "oa-6": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "ow": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ow-2": {
+      "from": "s8"
+    },
+    "ow-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ow-4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "uc": {
+      "from": "s8"
+    },
+    "uc-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "co": {
+      "from": "s8"
+    },
+    "co-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "co-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "co-4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "sd": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "so": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "so-2": {
+      "from": "s12",
+      "until": "s13"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "BLOB",
+      "title": "Ảnh trong cơ sở dữ liệu",
+      "chapter": "setup",
+      "body": "Ứng dụng PhotoShare trong bài *Tính nhẩm nhanh* bắt đầu đơn giản: ảnh tải lên được lưu dưới dạng [[BLOB]] (một cột nhị phân), ngay cạnh chú thích, chủ sở hữu và ngày của nó. Một cơ sở dữ liệu, một bản sao lưu, một chỗ để tìm.\n\nVới vài nghìn người dùng đầu tiên, cách này chạy hoàn toàn ổn.",
+      "callout": {
+        "kind": "insight",
+        "text": "Một bức ảnh nặng vài megabyte; các thông tin về nó (chủ sở hữu, kích thước, chú thích, thời điểm) chỉ vài trăm byte. Đây là hai loại dữ liệu rất khác nhau."
+      },
+      "changes": [],
+      "metrics": {
+        "dbGrowth": "+2 GB / ngày",
+        "appTraffic": "mọi ảnh, cả hai chiều",
+        "imgLoad": "180 ms"
+      },
+      "overrides": {
+        "ua": {
+          "effect": "pulse"
+        }
+      }
+    },
+    {
+      "id": "s2",
+      "short": "Nghẽn",
+      "title": "Hai terabyte mỗi ngày",
+      "chapter": "problem",
+      "body": "Giờ mỗi ngày có một triệu ảnh, mỗi ảnh 2 MB: **2 TB mỗi ngày**, 730 TB mỗi năm. Cơ sở dữ liệu, các bản sao và các bản sao lưu đều phình ra từng ấy. Một lần khôi phục mất nhiều ngày, và mỗi bản sao mới phải chép lại tất cả.\n\nMỗi lượt xem ảnh cũng đi qua máy chủ ứng dụng và cơ sở dữ liệu. Ảnh đẩy các hàng hữu ích ra khỏi bộ nhớ của cơ sở dữ liệu, và các truy vấn chú thích, lượt thích trở nên chậm.",
+      "callout": {
+        "kind": "warning",
+        "text": "Cơ sở dữ liệu được xây để tìm và cập nhật các bản ghi nhỏ. Chuyển hàng megabyte vào ra là việc tốn kém và chỉ gây cản trở."
+      },
+      "changes": [
+        "~ 1 triệu lượt tải lên/ngày × 2 MB",
+        "- Cơ sở dữ liệu, bản sao và bản sao lưu phình to",
+        "- Lượt xem ảnh lấn át mọi thứ khác"
+      ],
+      "metrics": {
+        "dbGrowth": "+2 TB / ngày",
+        "appTraffic": "mọi ảnh, cả hai chiều",
+        "imgLoad": "450 ms"
+      },
+      "overrides": {
+        "app": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s3",
+      "short": "Object storage",
+      "title": "Byte trong object storage, thông tin trong cơ sở dữ liệu",
+      "chapter": "solution",
+      "body": "Chuyển các byte sang [[object storage]]: Amazon S3, Google Cloud Storage, Azure Blob Storage. Đó là một kho khóa → tệp khổng lồ: `PUT` một tệp dưới một khóa như `photos/9f2c.jpg`, rồi `GET` để lấy lại. Không truy vấn, không join, và trên thực tế không giới hạn kích thước.\n\nNó tự sao chép mỗi đối tượng sang nhiều trung tâm dữ liệu cho bạn và rẻ hơn nhiều mỗi terabyte so với ổ đĩa cơ sở dữ liệu. Cơ sở dữ liệu giữ một hàng nhỏ cho mỗi ảnh: khóa, chủ sở hữu, kích thước và loại.",
+      "callout": {
+        "kind": "tip",
+        "text": "Cách tách này (metadata trong cơ sở dữ liệu, byte trong object storage) là cách gần như mọi sản phẩm lưu tệp, từ ảnh đại diện đến video nhiều gigabyte."
+      },
+      "changes": [
+        "+ Object storage cho các byte",
+        "~ Cơ sở dữ liệu giữ một hàng ~1 KB mỗi ảnh",
+        "~ Mức tăng của cơ sở dữ liệu 2 TB → 1 GB mỗi ngày"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "mọi ảnh, cả hai chiều",
+        "imgLoad": "260 ms",
+        "storeCost": "$16.800"
+      },
+      "overrides": {
+        "ua": {
+          "effect": "pulse",
+          "emphasis": true
+        },
+        "app": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Qua máy chủ",
+      "title": "Tình huống: video 2 GB qua kết nối điện thoại",
+      "chapter": "problem",
+      "body": "Lượt tải lên vẫn đi *qua* máy chủ ứng dụng trên đường tới kho lưu trữ. Một video 2 GB từ điện thoại mất nhiều phút, và suốt thời gian đó nó giữ một kết nối và bộ nhớ của máy chủ, chỉ để chuyển byte đi tiếp.\n\nMáy chủ ứng dụng rốt cuộc được định cỡ theo băng thông thay vì theo logic mà chúng thực sự chạy, và một đợt tải video lên làm chậm việc tải trang của mọi người.",
+      "callout": {
+        "kind": "warning",
+        "text": "Nếu máy chủ của bạn chỉ chuyển tiếp những byte mà chúng không hề nhìn tới, chúng là một kẻ trung gian đắt đỏ."
+      },
+      "changes": [
+        "+ Tải video lên, tối đa 2 GB",
+        "- Mỗi lượt tải lên giữ một máy chủ ứng dụng nhiều phút"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chuyển tiếp 2 TB / ngày",
+        "imgLoad": "320 ms",
+        "storeCost": "$16.800"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "app": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Presigned",
+      "title": "Tải thẳng lên kho lưu trữ",
+      "chapter": "solution",
+      "body": "Thay vào đó, ứng dụng cấp quyền rồi tránh sang một bên. Điện thoại hỏi “tôi có thể tải lên video 2 GB không?”; ứng dụng kiểm tra người dùng, ghi một hàng `pending` và trả về một [[presigned URL]]: một đường link được ký bằng khóa của ứng dụng, cho phép *một* lượt tải lên, vào *một* khóa, trong 15 phút tới.\n\nĐiện thoại gửi byte thẳng tới object storage. Khi tải lên xong, kho lưu trữ gửi một sự kiện và ứng dụng đánh dấu hàng là `uploaded`.",
+      "callout": {
+        "kind": "tip",
+        "text": "Chữ ký cũng có thể cố định loại nội dung và kích thước tối đa, để URL không thể bị dùng lại nhằm đổ thứ khác vào bucket của bạn."
+      },
+      "changes": [
+        "+ Ứng dụng cấp presigned URL",
+        "+ Điện thoại tải thẳng lên kho lưu trữ",
+        "+ Kho lưu trữ báo “đã tải lên xong”"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chỉ yêu cầu nhỏ",
+        "imgLoad": "260 ms",
+        "storeCost": "$16.800"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "app": {
+          "visible": false
+        },
+        "db-2": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Theo phần",
+      "title": "Tệp lớn: tải lên theo từng phần",
+      "chapter": "technique",
+      "body": "Một yêu cầu 2 GB qua mạng di động hiếm khi tới nơi nguyên vẹn. [[Tải lên nhiều phần]] (multipart upload) chia tệp thành các phần (chẳng hạn mỗi phần 10 MB) gửi song song, mỗi phần có presigned URL riêng.\n\nPhần nào lỗi thì chỉ cần gửi lại; kết nối bị rớt sẽ tiếp tục từ phần cuối cùng đã tới. Khi mọi phần đã có, một lệnh gọi cuối ghép chúng thành một đối tượng duy nhất.",
+      "callout": {
+        "kind": "tip",
+        "text": "Các phần song song cũng nhanh hơn: nhiều kết nối tận dụng đường truyền tốt hơn một. Hãy tự động xóa các lượt tải bị bỏ dở, nếu không bạn phải trả tiền lưu các phần của chúng."
+      },
+      "changes": [
+        "~ 2 GB → 200 phần, mỗi phần 10 MB",
+        "+ Phần lỗi được thử lại riêng",
+        "+ Tải lên tiếp tục sau khi mất kết nối"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chỉ yêu cầu nhỏ",
+        "imgLoad": "260 ms",
+        "storeCost": "$16.800"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "app": {
+          "visible": false
+        },
+        "db-2": {
+          "emphasis": true
+        },
+        "obj-2": {
+          "visible": false
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Xử lý",
+      "title": "Tạo các phiên bản người dùng thực sự tải về",
+      "chapter": "technique",
+      "body": "Bản gốc hiếm khi là thứ bạn hiển thị. Mỗi sự kiện “đã tải lên xong” được đưa vào hàng đợi (xem *Hàng đợi tin nhắn*), và các worker tạo ra những gì ứng dụng cần: ảnh thu nhỏ và hai ba kích thước của mỗi ảnh, quét mã độc, và, trước khi chia sẻ bất cứ thứ gì, xóa vị trí GPS ẩn trong metadata của ảnh.\n\nVideo được chuyển mã sang nhiều độ phân giải. Khi worker xong, nó lưu các tệp mới và đánh dấu hàng là `ready`; trước đó, ứng dụng hiển thị “đang xử lý…”.",
+      "callout": {
+        "kind": "warning",
+        "text": "Đừng bao giờ tin một tệp tải lên. Hãy kiểm tra loại tệp thật, kích thước và nội dung trong worker, chứ không chỉ những gì client khai báo."
+      },
+      "changes": [
+        "+ Sự kiện tải lên → hàng đợi job → worker",
+        "+ Ảnh thu nhỏ, các kích thước, chuyển mã",
+        "+ Đã xóa dữ liệu vị trí, quét mã độc"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chỉ yêu cầu nhỏ",
+        "imgLoad": "120 ms",
+        "storeCost": "$16.800"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "app": {
+          "visible": false
+        },
+        "db-2": {
+          "visible": false
+        },
+        "obj-2": {
+          "emphasis": true
+        },
+        "ua": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "CDN",
+      "title": "Phục vụ từ edge",
+      "chapter": "solution",
+      "body": "Lượt tải về nhiều hơn hẳn lượt tải lên, nên chúng cũng không được đi qua ứng dụng. Ảnh được phục vụ bởi **CDN** (xem *Phân phối nội dung*) với object storage làm origin: người xem đầu tiên ở một thành phố kéo một bản sao về edge gần nhất, mọi người sau đó lấy từ đó.\n\nCho mỗi phiên bản một khóa thay đổi khi nội dung thay đổi (`photos/9f2c_w640.webp`), và nó có thể được cache cả năm mà không bao giờ bị cũ.",
+      "callout": {
+        "kind": "tip",
+        "text": "Với ảnh riêng tư, ứng dụng cấp các URL CDN có chữ ký, sống ngắn: cùng ý tưởng với tải lên presigned, theo chiều ngược lại."
+      },
+      "changes": [
+        "+ CDN đứng trước object storage",
+        "~ Lượt xem được phục vụ từ edge gần nhất",
+        "~ Tải ảnh 120 → 35 ms"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chỉ yêu cầu nhỏ",
+        "imgLoad": "35 ms",
+        "storeCost": "$16.800"
+      },
+      "overrides": {
+        "app": {
+          "emphasis": true
+        },
+        "db-2": {
+          "emphasis": true
+        },
+        "ua": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Video",
+      "title": "Video: để trình phát tự chọn",
+      "chapter": "technique",
+      "body": "Một tệp video quá lớn để tải hết trước khi phát, và kết nối của người xem thay đổi từng giây. Vì vậy mỗi video được cắt thành các đoạn vài giây, mã hóa ở nhiều chất lượng (từ 240p đến 1080p), kèm một tệp playlist nhỏ liệt kê tất cả.\n\nTrình phát lấy từng đoạn từ CDN và chọn chất lượng cho đoạn kế tiếp dựa trên tốc độ đoạn trước tới nơi. Tàu vào đường hầm: hình ảnh giảm xuống 360p thay vì đứng hình. Đây là [[streaming tốc độ bit thích ứng]] (HLS hoặc DASH).",
+      "callout": {
+        "kind": "insight",
+        "text": "Các đoạn nhỏ, cache riêng được cũng là lý do video chạy rất tốt trên CDN: mọi đoạn phổ biến rồi sẽ có mặt ở mọi edge."
+      },
+      "changes": [
+        "+ Mỗi video: đoạn 4 giây × 5 chất lượng",
+        "+ Trình phát đổi chất lượng theo từng đoạn"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chỉ yêu cầu nhỏ",
+        "imgLoad": "35 ms",
+        "storeCost": "$16.800"
+      },
+      "overrides": {
+        "ua": {
+          "effect": "none"
+        },
+        "ad-6": {
+          "effect": "none"
+        },
+        "uo-3": {
+          "effect": "none"
+        },
+        "ow-2": {
+          "effect": "none"
+        },
+        "cdn": {
+          "visible": false
+        },
+        "uc": {
+          "visible": false
+        },
+        "co": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Khớp nhau",
+      "title": "Tình huống: hàng không có tệp, tệp không có hàng",
+      "chapter": "problem",
+      "body": "Hai kho có thể lệch nhau. Một điện thoại nhận presigned URL rồi mất sóng: hàng ghi `pending` mãi mãi. Một người dùng xóa ảnh: hàng biến mất, nhưng tệp vẫn còn, vẫn tốn tiền, và vẫn truy cập được với bất kỳ ai còn giữ đường link.\n\nSửa như mọi cập nhật trên hai hệ thống (xem *Saga*): mỗi hàng có một **trạng thái**; sự kiện từ kho lưu trữ đẩy nó tiến lên; thao tác xóa gỡ hàng trước rồi đưa việc xóa tệp vào hàng đợi; và một **job dọn dẹp** hằng đêm xóa các hàng `pending` cũ hơn một ngày cùng các tệp không có hàng nào trỏ tới.",
+      "callout": {
+        "kind": "tip",
+        "text": "Xóa dữ liệu người dùng là nghĩa vụ pháp lý ở nhiều nơi. Hãy chắc chắn việc xóa đến được mọi bản sao: các kích thước, bản chuyển mã, bản sao lưu và CDN."
+      },
+      "changes": [
+        "+ Trạng thái trên mỗi hàng: pending → uploaded → ready",
+        "+ Xóa: hàng trước, rồi xóa tệp qua hàng đợi",
+        "+ Dọn tệp mồ côi hằng đêm"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chỉ yêu cầu nhỏ",
+        "imgLoad": "35 ms",
+        "storeCost": "$16.800"
+      },
+      "overrides": {
+        "db-2": {
+          "visible": false
+        },
+        "cdn": {
+          "emphasis": true
+        },
+        "ad-6": {
+          "visible": false
+        },
+        "uc": {
+          "emphasis": true
+        },
+        "co": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s11",
+      "short": "Vòng đời",
+      "title": "Tệp cũ có thể nằm ở chỗ rẻ hơn",
+      "chapter": "tradeoff",
+      "body": "Hầu hết ảnh được xem trong vài tuần đầu rồi gần như không bao giờ nữa. Object storage bán các **lớp lưu trữ**: tiêu chuẩn cho dữ liệu nóng, “truy cập không thường xuyên” cho dữ liệu ít dùng hơn, và các tầng lưu trữ lâu dài chỉ tốn một phần nhỏ, nhưng đọc thì tốn hơn, hoặc mất từ vài phút đến vài giờ.\n\nMột [[quy tắc vòng đời]] tự động chuyển đối tượng: bản gốc cũ hơn 90 ngày chuyển sang tầng lưu trữ lâu dài, trong khi các kích thước nhỏ mà người dùng vẫn duyệt xem thì vẫn nóng.",
+      "callout": {
+        "kind": "warning",
+        "text": "Lưu trữ rẻ mà đọc đắt là cái bẫy cho dữ liệu bạn vẫn đọc thường xuyên. Hãy kiểm tra tệp của bạn thực sự được truy cập thế nào trước khi lưu trữ lâu dài."
+      },
+      "changes": [
+        "+ Vòng đời: bản gốc → lưu trữ lâu dài sau 90 ngày",
+        "~ Hóa đơn lưu trữ sau một năm $16.800 → ≈ $6.300 / tháng"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chỉ yêu cầu nhỏ",
+        "imgLoad": "35 ms",
+        "storeCost": "≈ $6.300"
+      },
+      "overrides": {
+        "db-2": {
+          "emphasis": true
+        },
+        "obj-2": {
+          "visible": false
+        },
+        "ad-6": {
+          "emphasis": true
+        },
+        "uo-3": {
+          "visible": false
+        },
+        "oa-4": {
+          "visible": false
+        },
+        "ow-2": {
+          "visible": false
+        },
+        "co": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Bucket công khai",
+      "title": "Tình huống: bucket ai cũng liệt kê được",
+      "chapter": "problem",
+      "body": "Một lập trình viên để bucket công khai “cho ảnh hiện lên”. Nhiều tháng sau, có người phát hiện họ có thể **liệt kê** nó và tải về mọi ảnh từng được tải lên, kể cả ảnh riêng tư và bản gốc kèm dữ liệu vị trí. Rò rỉ kiểu này nằm trong số các vụ xâm phạm đám mây phổ biến nhất.\n\nGiữ bucket ở chế độ riêng tư và chặn truy cập công khai ở cấp tài khoản. Phục vụ qua CDN bằng URL có chữ ký, cho mỗi dịch vụ một khóa chỉ chạm được vào đường dẫn của riêng nó, và dùng tên đối tượng khó đoán làm lớp bảo vệ cuối cùng, không phải duy nhất.",
+      "callout": {
+        "kind": "warning",
+        "text": "Một khóa ngẫu nhiên không phải là kiểm soát truy cập. Nếu chỉ cần một URL để đọc tệp riêng tư, URL đó phải hết hạn."
+      },
+      "changes": [
+        "- Bucket ai cũng liệt kê được",
+        "+ Chặn truy cập công khai, CDN với URL có chữ ký",
+        "+ Khóa đặc quyền tối thiểu cho từng dịch vụ"
+      ],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chỉ yêu cầu nhỏ",
+        "imgLoad": "35 ms",
+        "storeCost": "≈ $6.300"
+      },
+      "overrides": {
+        "obj-2": {
+          "visible": false
+        },
+        "uo-3": {
+          "visible": false
+        },
+        "oa-4": {
+          "visible": false
+        },
+        "ow-2": {
+          "visible": false
+        },
+        "co": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s13",
+      "short": "Tóm tắt",
+      "title": "Tóm tắt",
+      "chapter": "recap",
+      "body": "• **Byte** trong object storage, **metadata** trong cơ sở dữ liệu, nối với nhau bằng khóa của đối tượng.\n• Client tải lên **trực tiếp** bằng presigned URL; tệp lớn đi theo **từng phần** có thể thử lại và tiếp tục.\n• **Worker** tạo ảnh thu nhỏ, các kích thước và bản chuyển mã, và xóa những gì không nên chia sẻ.\n• Phục vụ qua **CDN** với khóa có phiên bản; stream video theo các đoạn **thích ứng**.\n• Giữ hàng và tệp **khớp nhau**, chuyển tệp cũ sang **lớp rẻ hơn**, và giữ bucket **riêng tư**.",
+      "callout": {
+        "kind": "tip",
+        "text": "Vậy là xong Dữ liệu & lưu trữ. Module tiếp theo: **Giao tiếp**: cách các dịch vụ nói chuyện với nhau."
+      },
+      "changes": [],
+      "metrics": {
+        "dbGrowth": "+1 GB / ngày",
+        "appTraffic": "chỉ yêu cầu nhỏ",
+        "imgLoad": "35 ms",
+        "storeCost": "≈ $6.300"
+      },
+      "overrides": {
+        "obj-2": {
+          "emphasis": true
+        },
+        "uo-3": {
+          "emphasis": true
+        },
+        "oa-4": {
+          "emphasis": true
+        },
+        "ow-2": {
+          "emphasis": true
+        },
+        "co": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

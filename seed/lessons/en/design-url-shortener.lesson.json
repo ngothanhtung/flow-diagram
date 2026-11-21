@@ -1,0 +1,1966 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 825,
+          "y": -470
+        },
+        "width": 305,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "REQUIREMENTS\ncreate     long URL → short code\nopen       short code → redirect\n→ redirects: fast, always up\n# creating a link may be slower",
+        "position": {
+          "x": 825,
+          "y": -470
+        },
+        "width": 281,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 854,
+          "y": -470
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "NAPKIN MATH\n100 M links / month    ≈ 40 writes/s\n× 100 opens each       ≈ 4,000 reads/s\nevening peak × 3       ≈ 12,000 reads/s\n→ 5 years: 6 billion links ≈ 3 TB",
+        "position": {
+          "x": 854,
+          "y": -470
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 858,
+          "y": -472
+        },
+        "width": 371,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "THE API\nPOST /links  { url }   →  { code }\nGET  /x7Kp2Qa          →  302 + Location\n# table: code PK · long_url · expires_at",
+        "position": {
+          "x": 858,
+          "y": -472
+        },
+        "width": 347,
+        "height": 100,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 850,
+          "y": -470
+        },
+        "width": 355,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "TWO URLS, ONE CODE\nhash(“…/summer-sale”)  →  x7Kp2Qa…\nhash(“…/cat-video”)    →  x7Kp2Qa…\n⚠ same 7 characters → collision\n# check, tweak, retry — on every write",
+        "position": {
+          "x": 850,
+          "y": -470
+        },
+        "width": 331,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 800,
+          "y": -470
+        },
+        "width": 255,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "BASE 62\nalphabet   0–9  a–z  A–Z\n125        →  21\n7,000,000  →  tn1e\n→ 62⁷ ≈ 3.5 trillion codes",
+        "position": {
+          "x": 800,
+          "y": -470
+        },
+        "width": 231,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 854,
+          "y": -470
+        },
+        "width": 363,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "SAME IDS, SHUFFLED\n⚠ 7,000,000 → tn1e     next is obvious\n⚠ 7,000,001 → tn1f\n→ 7,000,000 → x7Kp2Qa  after scrambling\n→ 7,000,001 → Lm03vTe",
+        "position": {
+          "x": 854,
+          "y": -470
+        },
+        "width": 339,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 845,
+          "y": -461
+        },
+        "width": 346,
+        "height": 142,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-7-text",
+        "type": "text",
+        "title": "TWO KINDS OF REDIRECT\n301 permanent  browser remembers it\n→ least load\n⚠ no click counts, edits or expiry\n302 temporary  every click comes back\n→ analytics and control · more load",
+        "position": {
+          "x": 845,
+          "y": -461
+        },
+        "width": 322,
+        "height": 122,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-7"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "people clicking links",
+        "position": {
+          "x": 0,
+          "y": -496
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app",
+        "type": "process",
+        "title": "sho.rt",
+        "description": "to be designed",
+        "position": {
+          "x": 0,
+          "y": -124
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Share2",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-2",
+        "type": "process",
+        "title": "API Servers",
+        "position": {
+          "x": 0,
+          "y": -124
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-3",
+        "type": "process",
+        "title": "API Servers",
+        "description": "code = hash(url)[0..7]",
+        "position": {
+          "x": 0,
+          "y": -124
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-4",
+        "type": "process",
+        "title": "API Servers",
+        "description": "block 7,000,000 – 7,999,999",
+        "position": {
+          "x": 0,
+          "y": -124
+        },
+        "width": 192,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-5",
+        "type": "process",
+        "title": "API Servers",
+        "description": "code = base62(scramble(id))",
+        "position": {
+          "x": 0,
+          "y": -124
+        },
+        "width": 224,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-6",
+        "type": "process",
+        "title": "API Servers",
+        "description": "302 Found",
+        "position": {
+          "x": 0,
+          "y": -124
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "app-7",
+        "type": "process",
+        "title": "API Servers",
+        "description": "rate limit · destination check",
+        "position": {
+          "x": 0,
+          "y": -124
+        },
+        "width": 196,
+        "height": 91,
+        "shape": "rounded",
+        "icon": "lucide:Server",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db",
+        "type": "process",
+        "title": "links table",
+        "position": {
+          "x": 372,
+          "y": -124
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "db-2",
+        "type": "process",
+        "title": "links table",
+        "description": "⚠ code taken → retry",
+        "position": {
+          "x": 372,
+          "y": -124
+        },
+        "width": 200,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ids",
+        "type": "process",
+        "title": "ID Blocks",
+        "position": {
+          "x": -217,
+          "y": 310
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Hash",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spy",
+        "type": "process",
+        "title": "scraper",
+        "position": {
+          "x": -341,
+          "y": -341
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "spy-2",
+        "type": "process",
+        "title": "spam script",
+        "position": {
+          "x": -341,
+          "y": -341
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Laptop",
+        "iconPosition": "left",
+        "color": "#d9d9d9",
+        "backgroundColor": "#262626",
+        "borderColor": "#8c8c8c",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache",
+        "type": "process",
+        "title": "Cache",
+        "description": "code → URL · 90% hits",
+        "position": {
+          "x": -372,
+          "y": -124
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cache-2",
+        "type": "process",
+        "title": "Cache",
+        "description": "code → URL",
+        "position": {
+          "x": -372,
+          "y": -124
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Zap",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k0",
+        "type": "process",
+        "title": "partition = hash(code)",
+        "position": {
+          "x": 372,
+          "y": -310
+        },
+        "width": 200,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k0-2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 372,
+          "y": -310
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k1",
+        "type": "process",
+        "title": "key–value store",
+        "position": {
+          "x": 372,
+          "y": -124
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "k2",
+        "type": "process",
+        "title": "",
+        "position": {
+          "x": 372,
+          "y": 62
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "stream",
+        "type": "process",
+        "title": "Click Stream",
+        "position": {
+          "x": 248,
+          "y": 310
+        },
+        "width": 200,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:WavesHorizontal",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "counts",
+        "type": "process",
+        "title": "click counts",
+        "position": {
+          "x": 496,
+          "y": 310
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:ChartColumn",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      }
+    ],
+    "edges": [
+      {
+        "id": "us",
+        "from": "users",
+        "to": "app",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "us-2",
+        "from": "users",
+        "to": "app-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-3",
+        "from": "users",
+        "to": "app-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-4",
+        "from": "users",
+        "to": "app-4",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-5",
+        "from": "users",
+        "to": "app-5",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "us-6",
+        "from": "users",
+        "to": "app-6",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "us-7",
+        "from": "users",
+        "to": "app-7",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd",
+        "from": "app-2",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sd-2",
+        "from": "app-3",
+        "to": "db-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#ffa940",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sd-3",
+        "from": "app-4",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sd-4",
+        "from": "app-5",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 5
+      },
+      {
+        "id": "sd-5",
+        "from": "app-6",
+        "to": "db",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "id",
+        "from": "app-4",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -40,
+            "y": 310
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "id-2",
+        "from": "app-5",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -40,
+            "y": 310
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 1
+      },
+      {
+        "id": "id-3",
+        "from": "app-2",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -40,
+            "y": 310
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "id-4",
+        "from": "app-6",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -40,
+            "y": 310
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "id-5",
+        "from": "app-7",
+        "to": "ids",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "fromSide": "bottom",
+        "toSide": "right",
+        "bendPoints": [
+          {
+            "x": -40,
+            "y": 310
+          }
+        ],
+        "effect": "none"
+      },
+      {
+        "id": "sp",
+        "from": "spy",
+        "to": "app-5",
+        "label": "GET /tn1f, /tn1g …",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.16,
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -43,
+            "y": -341
+          }
+        ],
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sp-2",
+        "from": "spy-2",
+        "to": "app-7",
+        "label": "POST /links × 5,000",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#ff7875",
+        "width": 2,
+        "labelOffset": 0.16,
+        "labelColor": "#ffa39e",
+        "labelBackground": "#5c0011",
+        "fromSide": "right",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -43,
+            "y": -341
+          }
+        ],
+        "effect": "blink",
+        "effectColor": "#ff85c0",
+        "glowIntensity": 1,
+        "glowColor": "auto"
+      },
+      {
+        "id": "sc",
+        "from": "app-2",
+        "to": "cache",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-2",
+        "from": "app-6",
+        "to": "cache-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-3",
+        "from": "app-2",
+        "to": "cache-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "sc-4",
+        "from": "app-7",
+        "to": "cache-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k0l",
+        "from": "app-2",
+        "to": "k0",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 217,
+            "y": -124
+          },
+          {
+            "x": 217,
+            "y": -310
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k0l-2",
+        "from": "app-2",
+        "to": "k0-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 217,
+            "y": -124
+          },
+          {
+            "x": 217,
+            "y": -310
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k0l-3",
+        "from": "app-7",
+        "to": "k0-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 217,
+            "y": -124
+          },
+          {
+            "x": 217,
+            "y": -310
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k1l",
+        "from": "app-2",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k1l-2",
+        "from": "app-7",
+        "to": "k1",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k2l",
+        "from": "app-2",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 217,
+            "y": -124
+          },
+          {
+            "x": 217,
+            "y": 62
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "k2l-2",
+        "from": "app-7",
+        "to": "k2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "right",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 217,
+            "y": -124
+          },
+          {
+            "x": 217,
+            "y": 62
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 6
+      },
+      {
+        "id": "ev",
+        "from": "app-2",
+        "to": "stream",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 40,
+            "y": 310
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "ev-2",
+        "from": "app-7",
+        "to": "stream",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "left",
+        "bendPoints": [
+          {
+            "x": 40,
+            "y": 310
+          }
+        ],
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 2
+      },
+      {
+        "id": "ag",
+        "from": "stream",
+        "to": "counts",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "dots",
+        "effectColor": "#d3adf7",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectSize": 1.6,
+        "effectCount": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Design a URL Shortener",
+    "summary": "A first end-to-end design: from a one-line brief to a system that serves billions of redirects.",
+    "minutes": 14,
+    "level": "intermediate",
+    "metrics": [
+      {
+        "id": "redirectMs",
+        "label": "Redirect time"
+      },
+      {
+        "id": "dbQps",
+        "label": "Store lookups"
+      },
+      {
+        "id": "codeKind",
+        "label": "Short codes"
+      },
+      {
+        "id": "linksKept",
+        "label": "Links kept"
+      }
+    ],
+    "goals": [
+      {
+        "text": "Turn a brief into requirements and numbers",
+        "step": "s2"
+      },
+      {
+        "text": "Generate short codes that never collide",
+        "step": "s5"
+      },
+      {
+        "text": "Design the read path: cache and redirect type",
+        "step": "s8"
+      },
+      {
+        "text": "Store billions of key → value rows",
+        "step": "s9"
+      },
+      {
+        "text": "Keep analytics and abuse off the critical path",
+        "step": "s11"
+      }
+    ]
+  },
+  "presence": {
+    "app": {
+      "until": "s3"
+    },
+    "app-2": {
+      "from": "s3"
+    },
+    "app-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "app-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "app-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "app-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "app-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card": {
+      "until": "s2"
+    },
+    "card-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-7": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "db": {
+      "from": "s3",
+      "until": "s9"
+    },
+    "db-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "ids": {
+      "from": "s5"
+    },
+    "spy": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "spy-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "cache": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cache-2": {
+      "from": "s8"
+    },
+    "k0": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "k0-2": {
+      "from": "s10"
+    },
+    "k1": {
+      "from": "s9"
+    },
+    "k2": {
+      "from": "s9"
+    },
+    "stream": {
+      "from": "s10"
+    },
+    "counts": {
+      "from": "s10"
+    },
+    "card-text": {
+      "until": "s2"
+    },
+    "card-2-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4-text": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-5-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-6-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-7-text": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "us": {
+      "until": "s3"
+    },
+    "us-2": {
+      "from": "s3"
+    },
+    "us-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "us-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "us-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "us-6": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "us-7": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "sd": {
+      "from": "s3",
+      "until": "s8"
+    },
+    "sd-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "sd-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sd-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sd-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "id": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "id-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "id-3": {
+      "from": "s7"
+    },
+    "id-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "id-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "sp": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "sp-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "sc": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "sc-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "sc-3": {
+      "from": "s9"
+    },
+    "sc-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k0l": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "k0l-2": {
+      "from": "s10"
+    },
+    "k0l-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k1l": {
+      "from": "s9"
+    },
+    "k1l-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "k2l": {
+      "from": "s9"
+    },
+    "k2l-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ev": {
+      "from": "s10"
+    },
+    "ev-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "ag": {
+      "from": "s10"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "The brief",
+      "title": "The brief: a link shortener",
+      "chapter": "setup",
+      "body": "Time to use everything at once, top-down as in *HLD & LLD*. The task: build a service like bit.ly. Paste a long URL, get a short one back — `sho.rt/x7Kp2Qa` — and anyone who opens it is redirected to the original.\n\nBefore drawing boxes, pin down what “works” means. **It must**: create a short link, and redirect. **It should**: expire links and count clicks. And the qualities that matter: redirects have to be fast and almost never fail — a dead shortener breaks every link ever shared — while creating a link may take a moment longer.",
+      "callout": {
+        "kind": "insight",
+        "text": "Every design starts with the same three questions: what must it do, how much of it, and what matters most when you can’t have everything?"
+      },
+      "changes": [],
+      "metrics": {},
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "Numbers",
+      "title": "Put numbers on it",
+      "chapter": "setup",
+      "body": "Napkin math first (Module 01). Say **100 million** new links a month — about 40 writes a second. Each link is opened roughly 100 times, so redirects average 4,000 a second and peak near **12,000**.\n\nKept for five years, that’s 6 billion links. At about 500 bytes each: **3 TB**. Two things jump out: the system is **read-heavy** — a hundred reads for every write — and the data is large but very simple.",
+      "callout": {
+        "kind": "tip",
+        "text": "The numbers choose the design. “100 reads per write” says cache. “3 TB of key → value rows” says this will have to spread across machines."
+      },
+      "changes": [
+        "+ 40 writes/s · 4,000 redirects/s · 12,000 at peak",
+        "+ 6 billion links ≈ 3 TB over 5 years"
+      ],
+      "metrics": {
+        "linksKept": "6 billion · 3 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "First draft",
+      "title": "The simplest thing that works",
+      "chapter": "solution",
+      "body": "Two endpoints. `POST /links` stores a URL and returns a code; `GET /x7Kp2Qa` looks the code up and answers with a redirect.\n\nOne table does it: `code` (the primary key), `long_url`, `created_at`, `expires_at`. Stateless API servers behind a load balancer, plus one database, make a perfectly good version one.",
+      "callout": {
+        "kind": "insight",
+        "text": "Start with the simplest design that meets the brief, then ask what breaks first. Two questions are still open: where do the codes come from, and what happens at 12,000 reads a second?"
+      },
+      "changes": [
+        "+ Stateless API servers",
+        "+ Links table, keyed by code"
+      ],
+      "metrics": {
+        "redirectMs": "25 ms",
+        "dbQps": "4,000/s",
+        "codeKind": "?",
+        "linksKept": "6 billion · 3 TB"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s4",
+      "short": "Hash it?",
+      "title": "Where do codes come from? Try a hash",
+      "chapter": "problem",
+      "body": "First idea: hash the long URL and keep the first seven characters. No coordination needed, and the same URL always gives the same code.\n\nBut seven characters can’t hold a whole hash, so different URLs will sometimes **collide** — and with billions of links, constantly. Every insert has to check “is this code already taken by another URL?” and retry with a tweak. Worse, two users shortening the same URL get the same code, so neither can have their own expiry or statistics.",
+      "callout": {
+        "kind": "warning",
+        "text": "Truncated hashes collide far sooner than intuition says — the birthday problem. With 3.5 trillion possible codes, expect the first clash after only about two million links."
+      },
+      "changes": [
+        "+ Code = first 7 characters of hash(url)",
+        "- Collisions: check and retry on every insert"
+      ],
+      "metrics": {
+        "redirectMs": "25 ms",
+        "dbQps": "4,000/s",
+        "codeKind": "hash · collides",
+        "linksKept": "6 billion · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "db": {
+          "visible": false
+        },
+        "us-2": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "Count it",
+      "title": "Count, then encode",
+      "chapter": "solution",
+      "body": "Better: give every link a unique **number** and write that number in [[base 62]] — digits, lowercase and uppercase letters. A unique number in means a unique code out, with nothing to check.\n\nSeven base-62 characters cover 62⁷ ≈ 3.5 trillion links, hundreds of times more than we need. The numbers come straight from *Unique IDs at Scale*: each API server reserves a block of a million ids from a small counter service, then counts through it locally.",
+      "callout": {
+        "kind": "tip",
+        "text": "Encoding is repeated division: 125 ÷ 62 = 2 remainder 1, so 125 becomes “21”. Decoding reverses it — the code *is* the id."
+      },
+      "changes": [
+        "+ Counter service handing out blocks of ids",
+        "~ Code = the id written in base 62",
+        "- No more collision checks"
+      ],
+      "metrics": {
+        "redirectMs": "25 ms",
+        "dbQps": "4,000/s",
+        "codeKind": "counter · unique",
+        "linksKept": "6 billion · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "db": {
+          "emphasis": true
+        },
+        "us-2": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Guessable",
+      "title": "Case: codes you can count",
+      "chapter": "problem",
+      "body": "Counter codes come out in order: `tn1e`, `tn1f`, `tn1g`. Anyone can walk the whole space and harvest every link ever made — including the “private” document links and password-reset URLs people shortened.\n\nThe fix keeps the uniqueness and loses the order. Either scramble each id with a reversible shuffle (a keyed permutation) before encoding it, or pick seven random characters and let the table’s unique key reject the rare duplicate.",
+      "callout": {
+        "kind": "warning",
+        "text": "Unguessable codes slow scraping down. They are not security: anything truly private needs real access control (Module 07)."
+      },
+      "changes": [
+        "- Sequential codes can be enumerated",
+        "+ Ids are scrambled before encoding",
+        "~ Codes look random and still never collide"
+      ],
+      "metrics": {
+        "redirectMs": "25 ms",
+        "dbQps": "4,000/s",
+        "codeKind": "scrambled · unique",
+        "linksKept": "6 billion · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "us-2": {
+          "visible": false
+        },
+        "sd": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Cache",
+      "title": "Reads dominate: cache them",
+      "chapter": "solution",
+      "body": "Now the read path. A small share of links gets most of the clicks — today’s viral post, not last year’s — and a link never changes once it’s created. That is the ideal case for a cache (see *Caching*).\n\nPut an in-memory cache in front, mapping `code → long_url`. About 90% of redirects stop there within a millisecond; the database only sees the misses. Since links are immutable there is almost nothing to invalidate: a TTL and LRU eviction are enough.",
+      "callout": {
+        "kind": "tip",
+        "text": "Don’t forget negative caching. Bots request random codes all day; cache “no such code” too, or every one of them becomes a database lookup."
+      },
+      "changes": [
+        "+ Cache: code → long URL",
+        "~ 90% of redirects never reach the database",
+        "~ Redirect 25 ms → 5 ms"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "scrambled · unique",
+        "linksKept": "6 billion · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "emphasis": true
+        },
+        "us-2": {
+          "emphasis": true
+        },
+        "sd": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "301 or 302",
+      "title": "Which redirect: 301 or 302?",
+      "chapter": "tradeoff",
+      "body": "`301 Moved Permanently` lets the browser remember the answer, so the next click never reaches you. It’s the cheapest request there is — and it means you can no longer count that click, change the destination, or expire the link for that user.\n\n`302 Found` is temporary: every click comes back to you. More load, but you keep control and analytics. Most shorteners choose 302 and let the cache absorb the cost.",
+      "callout": {
+        "kind": "insight",
+        "text": "A whole design decision hiding in a status code: who gets to cache the answer, and for how long?"
+      },
+      "changes": [
+        "~ Decision: answer with 302 — keep analytics and control"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "scrambled · unique",
+        "linksKept": "6 billion · 3 TB"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "us-2": {
+          "visible": false
+        },
+        "id-3": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s9",
+      "short": "Storage",
+      "title": "Three terabytes of keys: spread them out",
+      "chapter": "solution",
+      "body": "Six billion rows won’t stay comfortable on one machine. But look at how the data is used: every query is “get this one code”. No joins, no range scans, no multi-row transactions.\n\nThat is exactly what a **key–value store** is for — DynamoDB, Cassandra (see *SQL vs NoSQL*). Partition by a hash of the code so load spreads evenly (*Sharding*, *Consistent Hashing*), and keep three copies of every partition in different zones (*Replication*).",
+      "callout": {
+        "kind": "tip",
+        "text": "Because the codes look random, hashing them balances almost perfectly — no hot partition. Partitioning by creation date would have sent nearly all traffic to “today”."
+      },
+      "changes": [
+        "~ One database → key–value store (3 partitions shown)",
+        "+ 3 replicas of each partition, across zones",
+        "~ Every redirect touches exactly one partition"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "scrambled · unique",
+        "linksKept": "3 TB · partitioned ×3 copies"
+      },
+      "overrides": {
+        "app-2": {
+          "emphasis": true
+        },
+        "us-2": {
+          "emphasis": true
+        },
+        "id-3": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s10",
+      "short": "Clicks",
+      "title": "Counting clicks without slowing them",
+      "chapter": "technique",
+      "body": "Product wants click counts per link. The naive way — `UPDATE links SET clicks = clicks + 1` on every redirect — turns 4,000 cheap reads a second into 4,000 writes, all landing on the hottest rows.\n\nInstead, the API server drops a tiny `click` event onto a stream and answers the redirect straight away. A consumer adds the events up into per-link counts every few seconds (see *Message Queues* and *Batch & Stream Processing*).",
+      "callout": {
+        "kind": "insight",
+        "text": "The redirect is the product; the count is a by-product. Never put the by-product on the critical path."
+      },
+      "changes": [
+        "+ Click events → stream",
+        "+ A stream job aggregates the counts",
+        "~ Redirect path unchanged: still about 5 ms"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "scrambled · unique",
+        "linksKept": "3 TB · partitioned ×3 copies"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s11",
+      "short": "Abuse",
+      "title": "Case: spammers love shorteners",
+      "chapter": "problem",
+      "body": "A short link hides where it goes — ideal for phishing. A script starts creating 5,000 links a minute that point at fake bank pages. Soon your whole domain is on blocklists, and *every* customer’s links stop working.\n\nDefend in layers. **Rate-limit** link creation per account and per IP (*Rate Limiting*). Check every destination against phishing and malware lists, when it’s created and again later. And let links **expire**, so abandoned ones stop being a liability.",
+      "callout": {
+        "kind": "warning",
+        "text": "Operations are part of the design. For most link shorteners the first serious incident isn’t load — it’s abuse."
+      },
+      "changes": [
+        "+ Rate limit on POST /links",
+        "+ Destination safety check",
+        "+ Links expire (TTL)"
+      ],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "scrambled · unique",
+        "linksKept": "3 TB · partitioned ×3 copies"
+      },
+      "overrides": {
+        "app-2": {
+          "visible": false
+        },
+        "us-2": {
+          "visible": false
+        },
+        "id-3": {
+          "visible": false
+        },
+        "sc-3": {
+          "visible": false
+        },
+        "k0l-2": {
+          "visible": false
+        },
+        "k1l": {
+          "visible": false
+        },
+        "k2l": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s12",
+      "short": "Recap",
+      "title": "The finished design",
+      "chapter": "recap",
+      "body": "• Codes — Decision: Scrambled counter, base 62; Because: Unique with no checks\n• Read path — Decision: Cache + 302; Because: 100 reads per write\n• Storage — Decision: Key–value, hash-partitioned; Because: One-key lookups, 3 TB\n• Clicks — Decision: Events on a stream; Because: Off the critical path\n• Abuse — Decision: Limits, checks, expiry; Because: Protect the domain\n\nNotice the method more than the answer: requirements → numbers → simplest design → find the bottleneck → fix it → repeat.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Design a News Feed** — where the hard part isn’t storing posts, but deciding *when* to do the work."
+      },
+      "changes": [],
+      "metrics": {
+        "redirectMs": "5 ms",
+        "dbQps": "400/s",
+        "codeKind": "scrambled · unique",
+        "linksKept": "3 TB · partitioned ×3 copies"
+      },
+      "overrides": {
+        "app-2": {
+          "emphasis": true
+        },
+        "us-2": {
+          "emphasis": true
+        },
+        "id-3": {
+          "emphasis": true
+        },
+        "sc-3": {
+          "emphasis": true
+        },
+        "k0l-2": {
+          "emphasis": true
+        },
+        "k1l": {
+          "emphasis": true
+        },
+        "k2l": {
+          "emphasis": true
+        },
+        "ev": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

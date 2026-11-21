@@ -1,0 +1,1789 @@
+{
+  "format": "x-flow-lesson",
+  "version": 1,
+  "diagram": {
+    "nodes": [
+      {
+        "id": "sz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 0,
+          "y": 22
+        },
+        "width": 616,
+        "height": 660,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "sz-label",
+        "type": "text",
+        "title": "HLD · THE WHOLE SYSTEM",
+        "position": {
+          "x": -206,
+          "y": -287
+        },
+        "width": 184,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "sz"
+      },
+      {
+        "id": "oz",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": -123,
+          "y": 88
+        },
+        "width": 610,
+        "height": 550,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "opacity": 0.45
+      },
+      {
+        "id": "oz-label",
+        "type": "text",
+        "title": "ORDERS SERVICE · INSIDE",
+        "position": {
+          "x": -322,
+          "y": -166
+        },
+        "width": 192,
+        "height": 33,
+        "fontSize": 12,
+        "fontWeight": "semibold",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "oz"
+      },
+      {
+        "id": "card",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 549,
+          "y": -414
+        },
+        "width": 338,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-text",
+        "type": "text",
+        "title": "HLD DECIDES\nwhich services exist, what each owns\ncall or event between them\nwhich store for which data\nhow it scales, how it fails",
+        "position": {
+          "x": 549,
+          "y": -414
+        },
+        "width": 314,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card"
+      },
+      {
+        "id": "card-2",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 574,
+          "y": -414
+        },
+        "width": 388,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-2-text",
+        "type": "text",
+        "title": "DECISIONS AT THIS LEVEL\nOrders → Couriers   an event, not a call\npayments           SQL: transactions\ncourier locations  key–value: 40k writes/s\n# each one has an alternative you gave up",
+        "position": {
+          "x": 574,
+          "y": -414
+        },
+        "width": 364,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-2"
+      },
+      {
+        "id": "card-3",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 599,
+          "y": -414
+        },
+        "width": 437,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "ORDER STATES\nplaced → paid → cooking → on the way → delivered\n→ cancel: only from placed or paid\n⚠ cooking → cancelled: not allowed\n# retries reuse the idempotency key",
+        "position": {
+          "x": 599,
+          "y": -414
+        },
+        "width": 413,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-3"
+      },
+      {
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 553,
+          "y": -414
+        },
+        "width": 346,
+        "height": 124,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "THE PROMISE\nPOST /orders  { items, address }\n  Idempotency-Key: 7f3a…\n→ 201 { order_id, status: \"placed\" }\nevent OrderPlaced { order_id, items }",
+        "position": {
+          "x": 553,
+          "y": -414
+        },
+        "width": 322,
+        "height": 104,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 562,
+          "y": -397
+        },
+        "width": 363,
+        "height": 159,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-5-text",
+        "type": "text",
+        "title": "A DESIGN SESSION\n1  requirements      what must it do?\n2  estimates         how much of it?\n3  API + data model\n4  high-level design\n→ 5  deep dives  (LLD where it’s risky)\n6  failures and trade-offs",
+        "position": {
+          "x": 562,
+          "y": -397
+        },
+        "width": 339,
+        "height": 139,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-5"
+      },
+      {
+        "id": "users",
+        "type": "process",
+        "title": "customers",
+        "position": {
+          "x": 0,
+          "y": -440
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Users",
+        "iconPosition": "left",
+        "color": "#e5e7eb",
+        "backgroundColor": "#1f2937",
+        "borderColor": "#9ca3af",
+        "borderWidth": 1.5,
+        "borderStyle": "dashed",
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw",
+        "type": "process",
+        "title": "API Gateway",
+        "position": {
+          "x": 0,
+          "y": -220
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "gw-2",
+        "type": "process",
+        "title": "API Gateway",
+        "position": {
+          "x": -132,
+          "y": -264
+        },
+        "width": 192,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Signpost",
+        "iconPosition": "left",
+        "color": "#ffd591",
+        "backgroundColor": "#4d2000",
+        "borderColor": "#fa8c16",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ord",
+        "type": "process",
+        "title": "Orders",
+        "position": {
+          "x": -220,
+          "y": 44
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:ShoppingCart",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cou",
+        "type": "process",
+        "title": "Couriers",
+        "position": {
+          "x": 0,
+          "y": 44
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Car",
+        "iconPosition": "left",
+        "color": "#b7eb8f",
+        "backgroundColor": "#0f2e05",
+        "borderColor": "#73d13d",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay",
+        "type": "process",
+        "title": "Payments",
+        "position": {
+          "x": 220,
+          "y": 44
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-2",
+        "type": "process",
+        "title": "Payments",
+        "description": "another service",
+        "position": {
+          "x": 44,
+          "y": 484
+        },
+        "width": 176,
+        "height": 75,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "opacity": 0.45,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pay-3",
+        "type": "process",
+        "title": "Payments",
+        "description": "deep dive",
+        "position": {
+          "x": 220,
+          "y": 44
+        },
+        "width": 176,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#d3adf7",
+        "backgroundColor": "#22075e",
+        "borderColor": "#9254de",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb",
+        "type": "process",
+        "title": "orders",
+        "position": {
+          "x": -220,
+          "y": 264
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb-2",
+        "type": "process",
+        "title": "orders table",
+        "position": {
+          "x": -308,
+          "y": 484
+        },
+        "width": 208,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "odb-3",
+        "type": "process",
+        "title": "orders table",
+        "description": "index (user_id, created_at)",
+        "position": {
+          "x": -308,
+          "y": 484
+        },
+        "width": 208,
+        "height": 106,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdb",
+        "type": "process",
+        "title": "locations",
+        "position": {
+          "x": 0,
+          "y": 264
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdb-2",
+        "type": "process",
+        "title": "locations",
+        "description": "key–value",
+        "position": {
+          "x": 0,
+          "y": 264
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "cdb-3",
+        "type": "process",
+        "title": "locations",
+        "description": "deep dive",
+        "position": {
+          "x": 0,
+          "y": 264
+        },
+        "width": 184,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pdb",
+        "type": "process",
+        "title": "payments",
+        "position": {
+          "x": 220,
+          "y": 264
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "pdb-2",
+        "type": "process",
+        "title": "payments",
+        "description": "SQL",
+        "position": {
+          "x": 220,
+          "y": 264
+        },
+        "width": 176,
+        "height": 104,
+        "shape": "database",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#87e8de",
+        "backgroundColor": "#002329",
+        "borderColor": "#36cfc9",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none"
+      },
+      {
+        "id": "ctl",
+        "type": "process",
+        "title": "Controller",
+        "description": "HTTP in",
+        "position": {
+          "x": -132,
+          "y": -66
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Braces",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      },
+      {
+        "id": "svc",
+        "type": "process",
+        "title": "Order Service",
+        "position": {
+          "x": -132,
+          "y": 110
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      },
+      {
+        "id": "svc-2",
+        "type": "process",
+        "title": "Order Service",
+        "description": "state machine",
+        "position": {
+          "x": -132,
+          "y": 110
+        },
+        "width": 212,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Workflow",
+        "iconPosition": "left",
+        "color": "#91caff",
+        "backgroundColor": "#0b2a5b",
+        "borderColor": "#4096ff",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      },
+      {
+        "id": "repo",
+        "type": "process",
+        "title": "Repository",
+        "position": {
+          "x": -308,
+          "y": 286
+        },
+        "width": 184,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:Database",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      },
+      {
+        "id": "payc",
+        "type": "process",
+        "title": "Payment Client",
+        "position": {
+          "x": 44,
+          "y": 286
+        },
+        "width": 220,
+        "height": 73,
+        "shape": "rounded",
+        "icon": "lucide:CreditCard",
+        "iconPosition": "left",
+        "color": "#fffb8f",
+        "backgroundColor": "#3d3300",
+        "borderColor": "#d4b106",
+        "borderWidth": 1.5,
+        "fill": "flat",
+        "shadow": "none",
+        "parentId": "oz"
+      }
+    ],
+    "edges": [
+      {
+        "id": "ug",
+        "from": "users",
+        "to": "gw",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "go",
+        "from": "gw",
+        "to": "ord",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": -88
+          },
+          {
+            "x": -220,
+            "y": -88
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "gc",
+        "from": "gw",
+        "to": "cou",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "gc-2",
+        "from": "gw-2",
+        "to": "ctl",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "gc-3",
+        "from": "gw-2",
+        "to": "ctl",
+        "label": "the contract",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "labelColor": "#b7eb8f",
+        "labelBackground": "#092b00",
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "gp",
+        "from": "gw",
+        "to": "pay",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": -88
+          },
+          {
+            "x": 220,
+            "y": -88
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "gp-2",
+        "from": "gw",
+        "to": "pay-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": 0,
+            "y": -88
+          },
+          {
+            "x": 220,
+            "y": -88
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "oo",
+        "from": "ord",
+        "to": "odb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "cc",
+        "from": "cou",
+        "to": "cdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "cc-2",
+        "from": "cou",
+        "to": "cdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "cc-3",
+        "from": "cou",
+        "to": "cdb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "pp",
+        "from": "pay",
+        "to": "pdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "pp-2",
+        "from": "pay",
+        "to": "pdb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "pp-3",
+        "from": "payc",
+        "to": "pay-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "pp-4",
+        "from": "pay-3",
+        "to": "pdb",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 3
+      },
+      {
+        "id": "ev",
+        "from": "ord",
+        "to": "cou",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "ev-2",
+        "from": "ord",
+        "to": "cou",
+        "label": "OrderPlaced event",
+        "startMarker": "none",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "lineStyle": "dashed",
+        "effect": "convoy",
+        "effectColor": "#ffe58f",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "effectCount": 1
+      },
+      {
+        "id": "cs",
+        "from": "ctl",
+        "to": "svc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "cs-2",
+        "from": "ctl",
+        "to": "svc-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sr",
+        "from": "svc",
+        "to": "repo",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -132,
+            "y": 198
+          },
+          {
+            "x": -308,
+            "y": 198
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sr-2",
+        "from": "svc-2",
+        "to": "repo",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -132,
+            "y": 198
+          },
+          {
+            "x": -308,
+            "y": 198
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sp",
+        "from": "svc",
+        "to": "payc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -132,
+            "y": 198
+          },
+          {
+            "x": 44,
+            "y": 198
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "sp-2",
+        "from": "svc-2",
+        "to": "payc",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "fromSide": "bottom",
+        "toSide": "top",
+        "bendPoints": [
+          {
+            "x": -132,
+            "y": 198
+          },
+          {
+            "x": 44,
+            "y": 198
+          }
+        ],
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ro",
+        "from": "repo",
+        "to": "odb-2",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      },
+      {
+        "id": "ro-2",
+        "from": "repo",
+        "to": "odb-3",
+        "startMarker": "arrow",
+        "endMarker": "arrow",
+        "color": "#64748b",
+        "width": 2,
+        "effect": "comet",
+        "effectColor": "#ffbb96",
+        "glowIntensity": 1,
+        "glowColor": "auto",
+        "direction": "both",
+        "effectCount": 2
+      }
+    ]
+  },
+  "meta": {
+    "title": "HLD & LLD",
+    "summary": "The same system at two zoom levels: the map of services, and the inside of one of them.",
+    "minutes": 8,
+    "level": "beginner",
+    "metrics": [
+      {
+        "id": "zoom",
+        "label": "Zoom level"
+      },
+      {
+        "id": "unit",
+        "label": "Building blocks"
+      },
+      {
+        "id": "output",
+        "label": "You produce"
+      }
+    ],
+    "goals": [
+      {
+        "text": "What high-level design decides",
+        "step": "s2"
+      },
+      {
+        "text": "What low-level design decides",
+        "step": "s4"
+      },
+      {
+        "text": "Contracts: where the two meet",
+        "step": "s6"
+      },
+      {
+        "text": "How a design session moves between them",
+        "step": "s7"
+      }
+    ]
+  },
+  "presence": {
+    "gw-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "pay-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "pay-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "odb-2": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "odb-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "cdb-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "cdb-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pdb-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "sz": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "oz": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "ctl": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "svc": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "svc-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "repo": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "payc": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "sz-label": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "oz-label": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "card-text": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-text": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-text": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-text": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-text": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "gc-2": {
+      "from": "s4",
+      "until": "s6"
+    },
+    "gc-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "gp-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "cc-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "cc-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "pp-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "pp-3": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "pp-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "ev-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "cs": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "cs-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sr": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "sr-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "sp": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "sp-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "ro": {
+      "from": "s4",
+      "until": "s7"
+    },
+    "ro-2": {
+      "from": "s5",
+      "until": "s6"
+    }
+  },
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Two levels",
+      "title": "One system, two zoom levels",
+      "chapter": "setup",
+      "body": "A food-delivery app. From far away it is a handful of services — Orders, Couriers, Payments — each with its own data, talking through an API gateway and a stream of events.\n\nUp close, each of those boxes is a program of its own, with classes, tables and rules. System design works at both distances, and they have names: [[high-level design]] (HLD) and [[low-level design]] (LLD).",
+      "callout": {
+        "kind": "insight",
+        "text": "Neither is “more real”. They answer different questions, for different readers, and change at different speeds."
+      },
+      "changes": [],
+      "metrics": {
+        "zoom": "whole system",
+        "unit": "services · stores · queues",
+        "output": "architecture diagram"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s2",
+      "short": "The map",
+      "title": "High-level design: the map",
+      "chapter": "technique",
+      "body": "HLD decides **what the parts are and how they connect**: which services exist and what each owns, how they talk (a call, or an event), where each kind of data lives, and what happens when traffic grows or a part fails.\n\nIt is the level of every lesson so far. Its output is a diagram like this one, with the reasoning written next to it.",
+      "callout": {
+        "kind": "tip",
+        "text": "A good HLD fits on one page. If a box needs a paragraph to explain, that paragraph belongs to the LLD of that box."
+      },
+      "changes": [
+        "+ The whole system is the unit of design"
+      ],
+      "metrics": {
+        "zoom": "whole system",
+        "unit": "services · stores · queues",
+        "output": "architecture diagram"
+      },
+      "overrides": {}
+    },
+    {
+      "id": "s3",
+      "short": "Trade-offs",
+      "title": "HLD decisions are trade-offs",
+      "chapter": "tradeoff",
+      "body": "Placing an order should not wait for a courier to be found, so Orders **publishes an event** and Couriers picks it up when it can (see *Pub/Sub & Events*).\n\nPayments needs transactions, so it gets a relational database. Couriers send their location every few seconds — tens of thousands of writes a second, each overwriting the last — so that store is a fast key–value one. Each choice comes from the numbers and from what the data needs.",
+      "callout": {
+        "kind": "insight",
+        "text": "Every arrow and every store on an HLD diagram is a decision with an alternative. Be ready to say what you gave up."
+      },
+      "changes": [
+        "~ Orders → Couriers: an event, not a call",
+        "~ Payments: SQL · locations: key–value"
+      ],
+      "metrics": {
+        "zoom": "whole system",
+        "unit": "services · stores · queues",
+        "output": "architecture diagram"
+      },
+      "overrides": {
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "visible": false
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s4",
+      "short": "Zoom in",
+      "title": "Low-level design: inside one box",
+      "chapter": "solution",
+      "body": "Now open the Orders box. LLD decides **how one component is built**: the modules or classes it is made of, the interfaces between them, its tables and indexes, its algorithms and its error handling.\n\nHere a controller takes HTTP requests, an order service holds the rules, a repository talks to the database, and a client wraps the calls to Payments.",
+      "callout": {
+        "kind": "tip",
+        "text": "Keeping the database and other services behind small interfaces (the yellow parts) is what makes the core logic easy to test — see *Testing*."
+      },
+      "changes": [
+        "- The rest of the system",
+        "+ Inside Orders: controller, service, repository, payment client"
+      ],
+      "metrics": {
+        "zoom": "one service",
+        "unit": "classes · tables · states",
+        "output": "class & schema design"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "gw": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "cou": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "odb": {
+          "visible": false
+        },
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "visible": false
+        },
+        "ug": {
+          "visible": false
+        },
+        "go": {
+          "visible": false
+        },
+        "gc": {
+          "visible": false
+        },
+        "gp": {
+          "visible": false
+        },
+        "oo": {
+          "visible": false
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "short": "LLD decisions",
+      "title": "LLD decisions: states, schemas, edge cases",
+      "chapter": "technique",
+      "body": "An order moves through states, and LLD pins down which moves are allowed: it can be cancelled while `placed` or `paid`, but not once the kitchen has started.\n\nIt also settles the table (columns, types, an index on `(user_id, created_at)` for “my orders”) and the awkward cases: what if the payment call times out, or the same order arrives twice?",
+      "callout": {
+        "kind": "insight",
+        "text": "Most production bugs live at this level: a state change nobody allowed for, a missing index, a retry that charges twice."
+      },
+      "changes": [
+        "+ Order state machine",
+        "+ Table and index design",
+        "+ Idempotency key on POST /orders"
+      ],
+      "metrics": {
+        "zoom": "one service",
+        "unit": "classes · tables · states",
+        "output": "class & schema design"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "gw": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "cou": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "odb": {
+          "visible": false
+        },
+        "odb-2": {
+          "visible": false
+        },
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "visible": false
+        },
+        "svc": {
+          "visible": false
+        },
+        "ug": {
+          "visible": false
+        },
+        "go": {
+          "visible": false
+        },
+        "gc": {
+          "visible": false
+        },
+        "gp": {
+          "visible": false
+        },
+        "oo": {
+          "visible": false
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        },
+        "cs": {
+          "visible": false
+        },
+        "sr": {
+          "visible": false
+        },
+        "sp": {
+          "visible": false
+        },
+        "ro": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "s6",
+      "short": "Contracts",
+      "title": "Where they meet: contracts",
+      "chapter": "insight",
+      "body": "The two levels meet at the edges of each box. HLD fixes what a component **promises** — its API and the events it publishes. LLD decides **how** it keeps that promise.\n\nThat split is what lets teams work independently: Orders can rewrite everything inside its box, as long as `POST /orders` and `OrderPlaced` keep meaning the same thing.",
+      "callout": {
+        "kind": "tip",
+        "text": "Changing a contract is an HLD change: other teams must agree, and old and new versions must work side by side for a while (see *REST, RPC & GraphQL* on versioning)."
+      },
+      "changes": [
+        "+ The contract at the edge of the service"
+      ],
+      "metrics": {
+        "zoom": "the seams",
+        "unit": "APIs · events",
+        "output": "API contract"
+      },
+      "overrides": {
+        "users": {
+          "visible": false
+        },
+        "gw": {
+          "visible": false
+        },
+        "ord": {
+          "visible": false
+        },
+        "cou": {
+          "visible": false
+        },
+        "pay": {
+          "visible": false
+        },
+        "odb": {
+          "visible": false
+        },
+        "odb-2": {
+          "emphasis": true
+        },
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "visible": false
+        },
+        "svc": {
+          "emphasis": true
+        },
+        "ug": {
+          "visible": false
+        },
+        "go": {
+          "visible": false
+        },
+        "gc": {
+          "visible": false
+        },
+        "gp": {
+          "visible": false
+        },
+        "oo": {
+          "visible": false
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "visible": false
+        },
+        "cs": {
+          "emphasis": true
+        },
+        "sr": {
+          "emphasis": true
+        },
+        "sp": {
+          "emphasis": true
+        },
+        "ro": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s7",
+      "short": "Top-down",
+      "title": "Case: designing at the wrong level",
+      "chapter": "tradeoff",
+      "body": "Asked to design this app in an interview, one candidate spends twenty minutes on class diagrams and never mentions that courier locations arrive 40,000 times a second. Another draws perfect boxes, but can’t say how an order avoids being charged twice.\n\nWork **top-down**: requirements, rough numbers, the HLD — then dive into the one or two places where the hard problems are, and do *those* at the LLD level.",
+      "callout": {
+        "kind": "tip",
+        "text": "A design session usually runs: requirements → estimates → API → data model → HLD → deep dives → failure cases. The walkthroughs that follow use exactly this order."
+      },
+      "changes": [
+        "~ Back to the whole system",
+        "+ Deep dives: location writes, double charges"
+      ],
+      "metrics": {
+        "zoom": "both, top-down",
+        "unit": "the whole, then the risky parts",
+        "output": "design with deep dives"
+      },
+      "overrides": {
+        "users": {
+          "emphasis": true
+        },
+        "gw": {
+          "emphasis": true
+        },
+        "ord": {
+          "emphasis": true
+        },
+        "cou": {
+          "emphasis": true
+        },
+        "pay": {
+          "visible": false
+        },
+        "odb": {
+          "emphasis": true
+        },
+        "cdb": {
+          "visible": false
+        },
+        "pdb": {
+          "emphasis": true
+        },
+        "ug": {
+          "emphasis": true
+        },
+        "go": {
+          "emphasis": true
+        },
+        "gc": {
+          "emphasis": true
+        },
+        "gp": {
+          "visible": false
+        },
+        "oo": {
+          "emphasis": true
+        },
+        "cc": {
+          "visible": false
+        },
+        "pp": {
+          "visible": false
+        },
+        "ev": {
+          "emphasis": true
+        }
+      }
+    },
+    {
+      "id": "s8",
+      "short": "Recap",
+      "title": "Recap",
+      "chapter": "recap",
+      "body": "• Zoom — HLD: Whole system; LLD: One component\n• Parts — HLD: Services, stores, queues; LLD: Classes, tables, states\n• Decides — HLD: What talks to what, where data lives; LLD: How each part works inside\n• Changes — HLD: Rarely, with agreement; LLD: Often, within a team\n\nThis course works at the HLD level and dips into LLD where a decision depends on it. LLD — object-oriented design, design patterns — is a subject of its own.",
+      "callout": {
+        "kind": "tip",
+        "text": "Next up: **Design a URL Shortener** — the first full walkthrough, from a one-line brief to a finished design."
+      },
+      "changes": [],
+      "metrics": {
+        "zoom": "whole system",
+        "unit": "services · stores · queues",
+        "output": "architecture diagram"
+      },
+      "overrides": {
+        "pay": {
+          "emphasis": true
+        },
+        "cdb": {
+          "emphasis": true
+        },
+        "gp": {
+          "emphasis": true
+        },
+        "cc": {
+          "emphasis": true
+        },
+        "pp": {
+          "emphasis": true
+        }
+      }
+    }
+  ]
+}

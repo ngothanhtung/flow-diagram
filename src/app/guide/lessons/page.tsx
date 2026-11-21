@@ -140,6 +140,9 @@ export default function LessonGuidePage() {
             hide and narrate its Elements. The drawing follows the <Link href='/guide' className='text-sky-300 underline-offset-2 hover:underline'>Diagram authoring guide</Link>; this page
             covers only what a Lesson adds. Import it with <strong>File → Import JSON…</strong> in the lesson editor and keep editing by hand.
           </p>
+          <p className='mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground'>
+            Forty complete Lessons, in English and Vietnamese, ship in <Pill>seed/lessons/</Pill> — real examples of everything below, ready to Import.
+          </p>
 
           <Section id='model' title='1. The model'>
             <ul className='list-disc space-y-1.5 pl-5'>
