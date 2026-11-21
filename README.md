@@ -112,7 +112,9 @@ The app supports **Google** and **Email/Password** sign-in:
    firebase deploy --only firestore
    ```
 
-   These rules ensure each user can only read/write their own diagrams (`users/{uid}/diagrams/{id}`), support public diagrams via the `public-diagrams` collection, gate administrator access via the `users-roles` collection, and enforce the optional Access list in `config/access` (step 1.5).
+   These rules ensure each user can only read/write their own diagrams (`users/{uid}/diagrams/{id}`), support public diagrams via the `public-diagrams` collection, gate administrator access via the `users-roles` collection, and enforce the optional Access list in `config/access` (step 1.5). They also cover Lessons (`users/{uid}/lessons/{id}` and the `public-lessons` mirror).
+
+   **Upgrading an existing deployment:** Lessons need the new rules. Run `firebase deploy --only firestore` again before anyone uses `/lessons`; until then the deployed rules deny every Lesson read and write (`Missing or insufficient permissions`).
 
 ### 1.4. (Optional) Grant administrator access
 
@@ -390,7 +392,9 @@ Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · shadcn/ui
    firebase deploy --only firestore
    ```
 
-   Rules này đảm bảo mỗi người dùng chỉ đọc/ghi được sơ đồ của chính mình (`users/{uid}/diagrams/{id}`), hỗ trợ sơ đồ public qua collection `public-diagrams`, phân quyền administrator qua collection `users-roles`, và thực thi Access list tuỳ chọn trong `config/access` (bước 1.5).
+   Rules này đảm bảo mỗi người dùng chỉ đọc/ghi được sơ đồ của chính mình (`users/{uid}/diagrams/{id}`), hỗ trợ sơ đồ public qua collection `public-diagrams`, phân quyền administrator qua collection `users-roles`, và thực thi Access list tuỳ chọn trong `config/access` (bước 1.5). Rules cũng bao gồm Lesson (`users/{uid}/lessons/{id}` và bản sao `public-lessons`).
+
+   **Nâng cấp một bản đã triển khai:** Lesson cần rules mới. Chạy lại `firebase deploy --only firestore` trước khi ai đó dùng `/lessons`; nếu chưa, rules đang chạy sẽ chặn mọi thao tác đọc/ghi Lesson (`Missing or insufficient permissions`).
 
 ### 1.4. (Tuỳ chọn) Cấp quyền administrator
 

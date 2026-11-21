@@ -39,8 +39,9 @@ formats). The script fails if any output needs a normalizer fix.
 **Into the local emulator** (`npm run emulators` running): for one account,
 created if it doesn't exist and made an administrator, with Public on so each
 lesson's `/lessons/<id>/view` link works at once. Ids are
-`tutorial-<lang>-<id>`, so a re-run overwrites; the Vietnamese copies are named
-"<title> (VI)".
+`tutorial-<lang>-<id>`, so a re-run overwrites; the Vietnamese copies are titled
+"<title> (VI)" (in `meta.title`, which is the Lesson's name, and the stored
+`name` alike).
 
 ```bash
 SEED_EMAIL=you@example.com SEED_PASSWORD=… npx vite-node scripts/seed-emulator-lessons.ts [--lang en|vi|all]
@@ -53,6 +54,9 @@ emulators with Ctrl+C so the data is exported to `.emulator-data/`.
 editor **File → Import JSON…** and pick a file; Save, then set Public if
 wanted.
 
-A real Firebase project needs the lesson rules first:
+## Upgrading an existing deployment
+
+A real Firebase project needs the lesson rules first: run
 `firebase deploy --only firestore` (rules and indexes) before anyone opens
-`/lessons` there.
+`/lessons` there or imports these files. Until then the deployed rules deny
+every Lesson read and write.
