@@ -4,8 +4,8 @@ import type { LessonStep } from '@/lib/lesson/lesson-types';
  * "In this lesson": every Lesson step as a numbered stop on a rail, its short
  * name underneath — the timeline system-design-tutorials shows under its
  * stage. The rail fills up to the current Lesson step; steps before it read
- * as done (solid green), the current one is orange-red. Click a stop to go there. Scrolls sideways when there are more
- * steps than fit.
+ * as done (solid green), the current one is bright lime. Click a stop to go
+ * there. Scrolls sideways when there are more steps than fit.
  */
 export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]; index: number; onSelect: (index: number) => void }) {
   const count = steps.length;
@@ -30,9 +30,9 @@ export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]
               const current = i === index;
               const done = i < index;
               const label = step.short || step.title || `Lesson step ${i + 1}`;
-              // Seen = solid green; the step on screen stands out in orange-red.
+              // Seen = solid green; the step on screen stands out in bright lime.
               const dot = current
-                ? 'scale-110 border-orange-300 bg-orange-600 text-white shadow-[1px_1.5px_0_rgba(0,0,0,0.35)] dark:border-orange-300 dark:bg-orange-600'
+                ? 'scale-110 border-lime-200 bg-lime-400 text-lime-950 shadow-[0_0_0_3px_rgba(163,230,53,0.25)] dark:border-lime-200 dark:bg-lime-400'
                 : done
                   ? 'border-emerald-300 bg-emerald-700 text-white dark:border-emerald-200 dark:bg-emerald-800 group-hover:-translate-y-px'
                   : 'border-border bg-card text-foreground group-hover:-translate-y-px group-hover:bg-accent';
