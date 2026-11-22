@@ -452,6 +452,7 @@ export default function HelpViPage() {
           <li>
             <strong>Preview</strong> trình chiếu bài đang soạn, đã Save hay chưa, phủ lên trình soạn và bắt đầu từ bước bài học hiện tại; <Kbd>Esc</Kbd> để quay lại. Trong đó <Kbd>←</Kbd> <Kbd>→</Kbd> đổi bước,{' '}
             <Kbd>Space</Kbd> dừng/chạy Effect, <Kbd>0</Kbd> vừa khung.
+            Thanh <strong>In this lesson</strong> dưới hình liệt kê mọi bước bài học theo tên ngắn — bước đã qua được tô màu — và bấm vào một bước để nhảy tới đó.
           </li>
           <li>
             <strong>Public link:</strong> nút <strong>Private / Public</strong> trên header bật link ngay và sao chép nó. Ai cũng mở được mà không cần đăng nhập; link hiện bản <em>đã Save</em> gần nhất nên hãy

@@ -4,6 +4,7 @@ import { AlertTriangle, ChevronLeft, ChevronRight, Check, Lightbulb, Lock, Maxim
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { FlowCanvas } from '@/components/FlowCanvas';
+import { LessonTimeline } from '@/components/lessons/LessonTimeline';
 import { NarrationText } from '@/components/lessons/NarrationText';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
@@ -152,37 +153,40 @@ export function LessonPlayer({
 
       <main className='flex min-h-0 flex-1 flex-col lg:flex-row'>
         {sidebar && dockOpen && <aside className='hidden min-h-0 w-72 shrink-0 flex-col border-r border-border lg:flex'>{sidebar}</aside>}
-        <section className='relative min-h-0 flex-1 overflow-hidden bg-background'>
-          <FlowCanvas
-            document={view.document}
-            readOnly
-            elementLooks={view.looks}
-            fitSignal={fitSignal}
-            runningEdgeIds={null}
-            nodeExecutionStates={undefined}
-            effectsPaused={paused}
-            infoOpen={false}
-            onToggleInfo={noop}
-            selectedNodeId={null}
-            onSelectNode={noop}
-            onNodeMove={noop}
-            onNodeResize={noop}
-            onNodeDragStart={noop}
-            onNodeDragEnd={noop}
-            onConnect={noop}
-            isDragging={false}
-            linkingFromId={null}
-            onLinkStart={noop}
-            onLinkMove={noop}
-            onLinkEnd={noop}
-            selectedEdgeId={null}
-            onSelectEdge={noop}
-            onEdgeReconnect={noop}
-            onEdgeUpdate={noop}
-            activeShape={null}
-            onShapeDrawn={noop}
-          />
-        </section>
+        <div className='flex min-h-0 min-w-0 flex-1 flex-col'>
+          <section className='relative min-h-0 flex-1 overflow-hidden bg-background'>
+            <FlowCanvas
+              document={view.document}
+              readOnly
+              elementLooks={view.looks}
+              fitSignal={fitSignal}
+              runningEdgeIds={null}
+              nodeExecutionStates={undefined}
+              effectsPaused={paused}
+              infoOpen={false}
+              onToggleInfo={noop}
+              selectedNodeId={null}
+              onSelectNode={noop}
+              onNodeMove={noop}
+              onNodeResize={noop}
+              onNodeDragStart={noop}
+              onNodeDragEnd={noop}
+              onConnect={noop}
+              isDragging={false}
+              linkingFromId={null}
+              onLinkStart={noop}
+              onLinkMove={noop}
+              onLinkEnd={noop}
+              selectedEdgeId={null}
+              onSelectEdge={noop}
+              onEdgeReconnect={noop}
+              onEdgeUpdate={noop}
+              activeShape={null}
+              onShapeDrawn={noop}
+            />
+          </section>
+          <LessonTimeline steps={steps} index={index} onSelect={goTo} />
+        </div>
 
         <aside className='flex max-h-[50%] min-h-0 shrink-0 flex-col border-t border-border lg:max-h-none lg:w-96 lg:border-t-0 lg:border-l' aria-label='Narration'>
           <div className='min-h-0 flex-1 space-y-3 overflow-y-auto p-4'>
@@ -238,19 +242,6 @@ export function LessonPlayer({
               <Button variant='toolbar' size='lg' disabled={index <= 0} onClick={() => goTo(index - 1)} title='Previous (Left arrow)'>
                 <ChevronLeft size={13} /> Previous
               </Button>
-              <div className='flex flex-wrap items-center justify-center gap-1.5'>
-                {steps.map((s, i) => (
-                  <button
-                    key={s.id}
-                    type='button'
-                    onClick={() => goTo(i)}
-                    title={s.short || s.title}
-                    aria-label={`Go to lesson step ${i + 1}`}
-                    aria-current={i === index ? 'step' : undefined}
-                    className={`size-2.5 rounded-full transition ${i === index ? 'bg-primary' : nav.visited.has(s.id) ? 'bg-primary/40' : 'bg-border'}`}
-                  />
-                ))}
-              </div>
               {atEnd && nextLessonHref ? (
                 <Button variant='accent' size='lg' nativeButton={false} render={<Link href={nextLessonHref} />} title='Next lesson in the course'>
                   Next lesson <ChevronRight size={13} />

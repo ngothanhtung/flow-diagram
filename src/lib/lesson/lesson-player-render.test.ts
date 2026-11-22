@@ -38,3 +38,27 @@ describe('LessonPlayer server render', () => {
     expect(html).toContain('Second paragraph.');
   });
 });
+
+describe('LessonPlayer step timeline', () => {
+  function threeSteps(): LessonDocumentJSON {
+    const base = emptyLessonDocument('Timeline');
+    return {
+      ...base,
+      steps: [
+        { ...base.steps[0], id: 's1', short: 'Hit Enter', title: 'You press Enter' },
+        { ...base.steps[0], id: 's2', short: 'Find address', title: 'DNS' },
+        { ...base.steps[0], id: 's3', short: '', title: 'Connect to the server' },
+      ],
+    };
+  }
+
+  it('lists every Lesson step, numbered, with its short name under it', () => {
+    const html = renderToStaticMarkup(createElement(LessonPlayer, { lesson: threeSteps(), initialStepId: 's2' }));
+    expect(html).toContain('In this lesson');
+    expect(html).toContain('Lesson step 2 of 3');
+    for (const label of ['Hit Enter', 'Find address']) expect(html).toContain(`>${label}<`);
+    // A Lesson step without a short name falls back to its title.
+    expect(html).toContain('>Connect to the server<');
+    expect(html).toMatch(/aria-current="step"[^>]*>\s*<span[^>]*>2</);
+  });
+});

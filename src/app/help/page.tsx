@@ -453,7 +453,8 @@ export default function HelpPage() {
           </li>
           <li>
             <strong>Preview</strong> plays the lesson you are editing, saved or not, over the editor, starting at the current Lesson step; <Kbd>Esc</Kbd> returns. In it, <Kbd>←</Kbd> <Kbd>→</Kbd> change
-            Lesson step, <Kbd>Space</Kbd> pauses Effects and <Kbd>0</Kbd> fits the view.
+            Lesson step, <Kbd>Space</Kbd> pauses Effects and <Kbd>0</Kbd> fits the view. The <strong>In this lesson</strong> bar under the drawing lists every Lesson step by its
+            short name — the ones you have passed are filled in — and a click jumps to one.
           </li>
           <li>
             <strong>Public link:</strong> the <strong>Private / Public</strong> control in the header turns the link on at once and copies it. Anyone can open it without signing in; it shows the last
