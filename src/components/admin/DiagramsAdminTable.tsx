@@ -110,6 +110,8 @@ export function AdminDiagramsPage() {
     [],
   );
 
+  // TanStack Table returns functions React Compiler can't memoize, so the compiler would skip this component; accepted (the compiler isn't enabled in next.config).
+  // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data: rows,
     columns,

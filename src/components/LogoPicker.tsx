@@ -225,6 +225,8 @@ export function LogoPicker({ value, onChange, className }: LogoPickerProps) {
     return Math.max(60, cellWidth / 1.25);
   }, [gridWidth]);
 
+  // TanStack Virtual returns functions React Compiler can't memoize, so the compiler would skip this component; accepted (the compiler isn't enabled in next.config).
+  // eslint-disable-next-line react-hooks/incompatible-library
   const rowVirtualizer = useVirtualizer({
     count: rows,
     getScrollElement: () => scrollRef.current,

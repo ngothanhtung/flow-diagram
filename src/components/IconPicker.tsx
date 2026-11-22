@@ -83,6 +83,8 @@ export function IconPicker({ value, onChange, className }: IconPickerProps) {
 
   const rows = Math.ceil(iconNames.length / COLUMNS);
   const scrollRef = useRef<HTMLDivElement>(null);
+  // TanStack Virtual returns functions React Compiler can't memoize, so the compiler would skip this component; accepted (the compiler isn't enabled in next.config).
+  // eslint-disable-next-line react-hooks/incompatible-library
   const rowVirtualizer = useVirtualizer({
     count: rows,
     getScrollElement: () => scrollRef.current,
