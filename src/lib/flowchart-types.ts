@@ -162,6 +162,10 @@ export interface FlowNode {
   borderColor?: NodePaint;
   borderWidth?: number;
   borderStyle?: 'solid' | 'dashed' | 'dotted';
+  /** A free text object's box: corner radius (px). Unset = square. */
+  cornerRadius?: number;
+  /** A free text object's box: space between its edge and the words (px). Unset = `TEXT_PADDING`. */
+  padding?: number;
   opacity?: number;
   /**
    * How the body is painted: `'flat'` is the plain `backgroundColor`,

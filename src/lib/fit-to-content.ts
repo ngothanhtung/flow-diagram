@@ -17,7 +17,7 @@
 
 import type { FlowNode } from './flowchart-types';
 import { NODE_FONT_FAMILIES, NODE_FONT_WEIGHTS } from './node-fonts';
-import { TEXT_PADDING, nodeSizeLimits, resolveNodeStyle } from './node-style';
+import { nodeSizeLimits, resolveNodeStyle, textBoxStyle } from './node-style';
 
 function measureNaturalSize(build: (container: HTMLDivElement) => void): { width: number; height: number } {
   const container = document.createElement('div');
@@ -62,7 +62,8 @@ export function fitTextNodeSize(node: FlowNode): { width: number; height: number
     container.appendChild(el);
   });
 
-  return clampSize(node, content.width + TEXT_PADDING * 2, content.height + TEXT_PADDING * 2);
+  const { padding } = textBoxStyle(node);
+  return clampSize(node, content.width + padding * 2, content.height + padding * 2);
 }
 
 /**

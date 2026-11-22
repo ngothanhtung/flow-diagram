@@ -126,6 +126,41 @@ export const TEXT_MAX_HEIGHT = 1200;
 /** Inset between the text and its box, so a selected label isn't cramped. */
 export const TEXT_PADDING = 6;
 
+export interface TextBoxStyle {
+  /** Box fill, or none. */
+  fill: string | null;
+  /** Border colour, or none (it takes both a colour and a width). */
+  stroke: string | null;
+  strokeWidth: number;
+  borderStyle: 'solid' | 'dashed' | 'dotted';
+  radius: number;
+  padding: number;
+}
+
+const TEXT_BOX_HEX = /^#(?:[0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i;
+const boxNumber = (value: unknown, min: number, max: number, fallback: number) => (typeof value === 'number' && Number.isFinite(value) ? Math.min(max, Math.max(min, value)) : fallback);
+
+/**
+ * The box a free text object may wear — fill, border, rounded corners,
+ * padding — read off its own explicit fields only, never type defaults: a
+ * text object with none of them is just words, exactly as before. Saves
+ * stacking a rectangle under the text to frame it.
+ */
+export function textBoxStyle(node: FlowNode): TextBoxStyle {
+  const isText = node.type === 'text';
+  const hex = (value: unknown) => (isText && typeof value === 'string' && TEXT_BOX_HEX.test(value) ? value : null);
+  const strokeWidth = isText ? boxNumber(node.borderWidth, 0, 8, 0) : 0;
+  const strokeColor = hex(node.borderColor);
+  return {
+    fill: hex(node.backgroundColor),
+    stroke: strokeColor && strokeWidth > 0 ? strokeColor : null,
+    strokeWidth,
+    borderStyle: node.borderStyle === 'dashed' || node.borderStyle === 'dotted' ? node.borderStyle : 'solid',
+    radius: isText ? boxNumber(node.cornerRadius, 0, 48, 0) : 0,
+    padding: isText ? boxNumber(node.padding, 0, 64, TEXT_PADDING) : TEXT_PADDING,
+  };
+}
+
 // --- Free icon / logo ------------------------------------------------------
 // The graphic counterpart to free text: a single glyph or brand mark on
 // the canvas, no silhouette, no fill, no ports. Its box is only the drag

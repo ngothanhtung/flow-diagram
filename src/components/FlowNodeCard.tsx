@@ -10,7 +10,7 @@ import { useResolvedIcon } from '@/lib/icon-library';
 import { localEndpointsOfLine } from '@/lib/line-geometry';
 import type { ConnectionSide, EdgeMarker, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
 import { NarrationText } from '@/components/lessons/NarrationText';
-import { GROUP_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
+import { GROUP_HEADER_HEIGHT, nodeOutline, nodeSizeLimits, resolveNodeStyle, textBoxStyle } from '@/lib/node-style';
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from './node-effect-layer';
 import type { ElementLook } from '@/lib/lesson/lesson-types';
 import { LookGroup } from './look-group';
@@ -203,6 +203,7 @@ export function FlowNodeCard({
   const style = resolveNodeStyle(node);
   const isGroup = node.type === 'group';
   const isText = node.type === 'text';
+  const textBox = textBoxStyle(node);
   const isIconObject = node.type === 'icon';
   const isLine = node.type === 'line';
   const hasGroupTitle = isGroup && !!node.title?.trim();
@@ -629,9 +630,26 @@ export function FlowNodeCard({
              fill or border to click, so an invisible rectangle over the
              box provides the hit area for selecting and dragging, and a
              hairline appears on hover so an empty or short label is
-             still findable. */
+             still findable. It may also wear a box of its own — fill,
+             border, rounded corners, padding (`textBoxStyle`) — so framing
+             a caption needs no rectangle underneath. */
           <>
             <rect x={-width / 2} y={-height / 2} width={width} height={height} fill='transparent' pointerEvents='all' />
+            {(textBox.fill || textBox.stroke) && (
+              <rect
+                x={-width / 2 + textBox.strokeWidth / 2}
+                y={-height / 2 + textBox.strokeWidth / 2}
+                width={Math.max(0, width - textBox.strokeWidth)}
+                height={Math.max(0, height - textBox.strokeWidth)}
+                rx={textBox.radius}
+                fill={textBox.fill ?? 'none'}
+                stroke={textBox.stroke ?? 'none'}
+                strokeWidth={textBox.strokeWidth}
+                strokeDasharray={textBox.stroke ? edgeLineDash(textBox.borderStyle, textBox.strokeWidth) : undefined}
+                strokeLinecap={textBox.stroke ? edgeLineCap(textBox.borderStyle) : undefined}
+                pointerEvents='none'
+              />
+            )}
             {!isSelected && (
               <rect
                 x={-width / 2}
@@ -654,7 +672,7 @@ export function FlowNodeCard({
                 style={{
                   color: foreground,
                   fontFamily: NODE_FONT_FAMILIES[fontFamily],
-                  padding: TEXT_PADDING,
+                  padding: textBox.padding,
                   justifyContent: textAlign === 'left' ? 'flex-start' : textAlign === 'right' ? 'flex-end' : 'center',
                 }}
               >

@@ -289,6 +289,8 @@ A container is a node with `type: 'group'`; a member points at it with `parentId
 
 **Text only gets the motion family of node effects.** Every decoration effect (`glow`/`pulse`/`ripple`/`trace`/`sheen`) traces `outline.d`, and a text node's outline defaults to a plain rectangle — rendering one on text would draw exactly the border a text object is defined not to have. `FlowNodeCard` skips mounting `<NodeEffectLayer>` for `isText` nodes (motion still applies, via the `<g style={motionStyle}>` wrapper), and `NodeEffectField` hides the whole Decoration group from the picker on a text node so the UI doesn't offer a choice that renders nothing.
 
+A text object can also wear a box of its own (`textBoxStyle` in `node-style.ts`, the inspector's **Box** section): `backgroundColor`, `borderColor` + `borderWidth` + `borderStyle`, `cornerRadius` and `padding` (unset = `TEXT_PADDING`). They are read off the node's own explicit hex fields only, never type defaults, so a text object without them is just words as before; Fit counts the padding.
+
 A text object can opt into Markdown (`markdown: true`, the inspector's Plain | Markdown switch): its `title` is then edited in the same `NarrationEditor` as a Lesson step's Body and drawn through `NarrationText` (bold, italic, code, `{red|coloured}` spans, lists, small headings, code blocks; no links or HTML). It is a per-object flag, never automatic: existing text (code samples with `*`, lines starting `- `) must render exactly as before.
 
 ### Free icon / logo objects
