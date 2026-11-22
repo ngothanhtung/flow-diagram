@@ -56,20 +56,18 @@ const merriweather = Merriweather({
   weight: "variable",
 });
 
-// Reading and code fonts of the lesson pages (narration, step timeline,
-// course sidebar), the pair DocsHub uses. Unlike Geist / Geist Mono they
-// ship a Vietnamese subset, so tone-marked letters (ị, ữ, ồ…) come from
-// the same font instead of a fallback.
+// The app's text and mono fonts (globals.css --font-sans / --font-mono),
+// the pair DocsHub uses. Unlike Geist / Geist Mono they ship a Vietnamese
+// subset, so tone-marked letters (ị, ữ, ồ…) come from the same font
+// instead of a fallback. Geist stays loaded: diagrams can pick Geist Mono.
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "vietnamese"],
-  preload: false,
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin", "vietnamese"],
-  preload: false,
 });
 
 export const metadata: Metadata = {

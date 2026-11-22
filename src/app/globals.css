@@ -363,10 +363,14 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* App chrome: Inter + JetBrains Mono (DocsHub's pair), both with a Vietnamese
+     subset — this Next's Geist / Geist Mono have none, so tone-marked letters fell
+     back to another font. Diagram content never uses these: every node, edge label
+     and table sets its own font (lib/node-fonts.ts). */
+  --font-sans: var(--font-inter), var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), var(--font-geist-mono), ui-monospace, monospace;
   --font-heading: var(--font-sans);
-  /* Lesson reading surfaces (narration, step timeline, course sidebar): Vietnamese-complete. */
+  /* Lesson reading surfaces and Narration code; the same fonts, named for where they're used. */
   --font-reading: var(--font-inter), var(--font-geist-sans), sans-serif;
   --font-code: var(--font-jetbrains-mono), var(--font-geist-mono), ui-monospace, monospace;
   --color-sidebar-ring: var(--sidebar-ring);
