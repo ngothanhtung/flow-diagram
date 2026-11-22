@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { ButtonGroup } from '@/components/ui/button-group';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
-import { contentBounds, exportPixelSize, exportScope, imageFilename, type ImageBackground, type ImageFormat } from '@/lib/image-export';
+import { exportBox, exportPixelSize, exportScope, imageFilename, type ImageBackground, type ImageFormat, type ImageView } from '@/lib/image-export';
 import { downloadBlob, exportDiagramImage } from './render-image';
 
 type Area = 'all' | 'selection';
@@ -56,6 +56,7 @@ export function ExportImageDialog({
   const [format, setFormat] = useState<ImageFormat>('png');
   const [area, setArea] = useState<Area>('all');
   const [background, setBackground] = useState<ImageBackground>('theme');
+  const [view, setView] = useState<ImageView>('flat');
   const [busy, setBusy] = useState(false);
 
   const hasSelection = selectedNodeIds.length > 0;
@@ -63,15 +64,15 @@ export function ExportImageDialog({
   const scope = exportScope(document, effectiveArea === 'selection' ? selectedNodeIds : null);
   // Cheap (pure arithmetic over the document), so it is simply recomputed
   // while the dialog is open rather than memoised.
-  const box = open ? contentBounds(scope) : null;
+  const box = open ? exportBox(scope, view) : null;
   const size = box ? exportPixelSize(box, format) : null;
 
   const handleDownload = async () => {
     if (!box) return;
     setBusy(true);
     try {
-      const blob = await exportDiagramImage(scope, format, background);
-      downloadBlob(blob, imageFilename(name, format, effectiveArea === 'selection'));
+      const blob = await exportDiagramImage(scope, format, background, view);
+      downloadBlob(blob, imageFilename(name, format, effectiveArea === 'selection', view));
       onOpenChange(false);
     } catch (error) {
       console.error('Image export failed', error);
@@ -105,6 +106,15 @@ export function ExportImageDialog({
                 { value: 'svg', label: 'SVG' },
               ]}
             />
+            <Choice
+              label='View'
+              value={view}
+              onChange={setView}
+              options={[
+                { value: 'flat', label: 'Flat' },
+                { value: 'isometric', label: 'Isometric' },
+              ]}
+            />
             {hasSelection && (
               <Choice
                 label='Area'
@@ -126,7 +136,7 @@ export function ExportImageDialog({
               ]}
             />
             <p className='font-mono text-[10px] text-muted-foreground'>
-              {imageFilename(name, format, effectiveArea === 'selection')}
+              {imageFilename(name, format, effectiveArea === 'selection', view)}
               {size ? ` · ${size.width} × ${size.height} px` : ''}
             </p>
           </div>

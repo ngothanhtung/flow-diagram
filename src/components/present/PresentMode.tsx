@@ -3,7 +3,7 @@
 import { Box, ChevronLeft, ChevronRight, RotateCcw, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { FlowCanvas } from '@/components/FlowCanvas';
-import { IsometricStage } from '@/components/present/IsometricStage';
+import { IsometricDiagram } from '@/components/present/IsometricDiagram';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { presentKeyAction, presentTarget } from '@/lib/present';
@@ -87,7 +87,11 @@ export function PresentMode({ document, name, onExit }: { document: FlowDocument
       onMouseMove={wake}
       className={`fixed inset-0 z-[100] bg-background text-foreground ${idle ? 'cursor-none' : ''}`}
     >
-      <IsometricStage enabled={isometric}>
+      {isometric ? (
+        <div className='h-full w-full p-6'>
+          <IsometricDiagram document={document} nodeStates={run.nodeExecutionStates} edgeStates={run.edgeExecutionStates} />
+        </div>
+      ) : (
       <FlowCanvas
         document={document}
         readOnly
@@ -116,7 +120,7 @@ export function PresentMode({ document, name, onExit }: { document: FlowDocument
         activeShape={null}
         onShapeDrawn={noop}
       />
-      </IsometricStage>
+      )}
 
       {/* Fades out while the mouse rests, so the room sees only the Diagram. */}
       <div

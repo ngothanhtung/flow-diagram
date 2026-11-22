@@ -10,6 +10,7 @@
 // Diagram — the data can.
 
 import { buildFragment } from './clipboard-fragment';
+import { isometricScene } from './isometric';
 import { edgeLabelBox, resolveEdgeLabelStyle } from './edge-label-style';
 import { resolveDocumentStyles } from './edge-style';
 import type { FlowDocumentJSON, FlowEdge, FlowNode } from './flowchart-types';
@@ -196,7 +197,7 @@ export function exportPixelSize(box: Box, format: ImageFormat): { width: number;
  * name stays readable), whitespace collapsed, capped in length, falling
  * back to "diagram". `-selection` marks a partial export.
  */
-export function imageFilename(name: string, format: ImageFormat, selectionOnly = false): string {
+export function imageFilename(name: string, format: ImageFormat, selectionOnly = false, view: ImageView = 'flat'): string {
   const cleaned = name
     .normalize('NFC')
     .replace(/[\u0000-\u001f\u007f<>:"/\\|?*]+/g, ' ')
@@ -205,5 +206,14 @@ export function imageFilename(name: string, format: ImageFormat, selectionOnly =
     .replace(/^\.+|\.+$/g, '')
     .slice(0, 100)
     .trim();
-  return `${cleaned || 'diagram'}${selectionOnly ? '-selection' : ''}.${format}`;
+  return `${cleaned || 'diagram'}${selectionOnly ? '-selection' : ''}${view === 'isometric' ? '-isometric' : ''}.${format}`;
+}
+
+/** Flat (the canvas as drawn) or isometric (boxes on a tilted floor, `lib/isometric.ts`). */
+export type ImageView = 'flat' | 'isometric';
+
+/** The picture's frame for a view; null when there is nothing to draw. */
+export function exportBox(doc: FlowDocumentJSON, view: ImageView): Box | null {
+  if (view === 'flat') return contentBounds(doc);
+  return doc.nodes.length === 0 ? null : isometricScene(doc).bounds;
 }

@@ -15,7 +15,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';
 import { PresentButton } from '@/components/present/PresentButton';
-import { IsometricStage } from '@/components/present/IsometricStage';
+import { IsometricDiagram } from '@/components/present/IsometricDiagram';
 import { findPublicDiagramById, listAllDiagrams, openDiagram, toViewerRow, type AdminDiagramRow } from '@/lib/firebase/diagrams';
 import { ACCESS_LEVEL_LABELS, routeForRole, type DiagramRole } from '@/lib/sharing';
 import { normalizeDocument } from '@/lib/document-validation';
@@ -186,12 +186,14 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
 
       <main className={['grid min-h-0 flex-1 overflow-hidden', infoOpen ? 'grid-cols-[1fr_384px]' : 'grid-cols-1'].join(' ')}>
         <section className='relative h-full min-h-0 overflow-hidden bg-background'>
-          <IsometricStage enabled={isometric}>
+          {isometric ? (
+            <div className='h-full w-full p-6'>
+              <IsometricDiagram document={diagram.document} nodeStates={run.nodeExecutionStates} edgeStates={run.edgeExecutionStates} />
+            </div>
+          ) : (
           <FlowCanvas
             document={diagram.document}
             readOnly
-            // Tilted, the zoom dock would tilt too: the isometric view shows the Diagram alone.
-            hideViewControls={isometric}
             infoOpen={infoOpen}
             onToggleInfo={() => setInfoOpen((open) => !open)}
             runningEdgeIds={run.runningEdgeIds}
@@ -217,7 +219,7 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
             activeShape={null}
             onShapeDrawn={noop}
           />
-          </IsometricStage>
+          )}
         </section>
 
         {infoOpen && (
