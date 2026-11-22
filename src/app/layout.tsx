@@ -13,7 +13,7 @@ import {
 import "./globals.css";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toast";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geistSans = Geist({
@@ -93,7 +93,7 @@ export default function RootLayout({
           <TooltipProvider>
             <AuthProvider>{children}</AuthProvider>
           </TooltipProvider>
-          <Toaster richColors position="top-right" />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

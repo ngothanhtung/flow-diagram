@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { autoLayoutScope, canAutoLayout, type LayoutDirection } from '@/lib/auto-layout';
 import { useEditorStore } from '@/lib/editor-store';
 

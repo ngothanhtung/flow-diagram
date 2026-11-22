@@ -3,7 +3,7 @@
 import { LayoutTemplate } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, ResetCanvasDialog, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { EditorShell } from '@/components/editor/EditorShell';

@@ -2,7 +2,7 @@
 
 import { Bookmark, BookmarkX, Check, CopyPlus, Eye, History, LoaderCircle, Pencil, RotateCcw, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { RunControls } from '@/components/editor/PlaybackControls';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';

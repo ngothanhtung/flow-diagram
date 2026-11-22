@@ -3,7 +3,7 @@
 import { Check, Copy, FileUp, Globe, GraduationCap, Info, LoaderCircle, LockKeyhole, Play, TriangleAlert } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { AuthLoadingScreen } from '@/components/auth/LoginForm';
 import { UserMenu } from '@/components/auth/UserMenu';

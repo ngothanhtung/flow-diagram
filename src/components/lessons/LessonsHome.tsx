@@ -5,7 +5,7 @@ import { getCoreRowModel, getPaginationRowModel, getSortedRowModel, useReactTabl
 import { ArrowDown, ArrowUp, Boxes, ExternalLink, FolderInput, GraduationCap, LoaderCircle, MoreHorizontal, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { UserMenu } from '@/components/auth/UserMenu';

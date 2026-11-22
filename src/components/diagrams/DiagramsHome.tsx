@@ -5,7 +5,7 @@ import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedR
 import { ArrowDown, ArrowUp, BookOpen, Boxes, FolderInput, GraduationCap, Ellipsis, Eye, ExternalLink, Globe, LayoutTemplate, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Share2, Trash2, Users } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { DataTable, DataTableFooter, formatDateTime, formatNumber } from '@/components/data-table';
 import { AuthLoadingScreen, LoginForm } from '@/components/auth/LoginForm';
 import { SharedVerifyNotice } from '@/components/auth/AccessViews';

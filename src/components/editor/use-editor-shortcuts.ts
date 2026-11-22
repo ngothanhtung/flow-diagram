@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useLayoutEffect, useRef } from 'react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { buildFragment, parseFragment, serializeFragment } from '@/lib/clipboard-fragment';
 import { summarizeFixes } from '@/lib/document-validation';
 import { useEditorStore } from '@/lib/editor-store';

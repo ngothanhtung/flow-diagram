@@ -5,7 +5,7 @@ import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedR
 import { LayoutTemplate, Pencil, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { DataTable, DataTableFooter, formatDateTime, formatNumber } from '@/components/data-table';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';

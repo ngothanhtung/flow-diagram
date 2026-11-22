@@ -2,7 +2,7 @@
 
 import { Check, Copy, Globe, Link2, LoaderCircle, LockKeyhole, Share2, UserPlus, Users, X } from 'lucide-react';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
