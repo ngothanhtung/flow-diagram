@@ -1,11 +1,13 @@
 'use client';
 
-import { AlertTriangle, ChevronLeft, ChevronRight, Check, Lightbulb, Lock, Maximize, X, Zap } from 'lucide-react';
+import { AlertTriangle, ChevronLeft, ChevronRight, Check, Lightbulb, Lock, Maximize, PanelLeft, X, Zap } from 'lucide-react';
+import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { NarrationText } from '@/components/lessons/NarrationText';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import { parseChangeLine } from '@/lib/lesson/narration';
 import { resolveStepView } from '@/lib/lesson/lesson-step-view';
 import { CALLOUT_KINDS, LESSON_CHAPTERS, contentOf, lessonNameOf, stepMetricValue, type CalloutKind, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
@@ -39,8 +41,29 @@ function isTypingTarget(target: EventTarget | null): boolean {
  * Presentation of a Lesson: the Diagram stepped through its Lesson steps
  * beside the Narration. Pure view — owns only the current step, the set of
  * steps visited this session (for goal checkmarks), pause and fit.
+ *
+ * In the viewer it can also carry the Course sidebar (`sidebar`: docked on
+ * wide screens, a drawer below `lg`), a "Next lesson" link shown on the last
+ * Lesson step, and `onReachEnd`, called whenever the last step is shown.
+ * The editor's Preview passes none of them.
  */
-export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { lesson: LessonDocumentJSON; initialStepId?: string; onClose?: () => void; headerEnd?: ReactNode }) {
+export function LessonPlayer({
+  lesson,
+  initialStepId,
+  onClose,
+  headerEnd,
+  sidebar,
+  nextLessonHref,
+  onReachEnd,
+}: {
+  lesson: LessonDocumentJSON;
+  initialStepId?: string;
+  onClose?: () => void;
+  headerEnd?: ReactNode;
+  sidebar?: ReactNode;
+  nextLessonHref?: string;
+  onReachEnd?: () => void;
+}) {
   const content = useMemo(() => contentOf(lesson), [lesson]);
   const steps = lesson.steps;
   const count = steps.length;
@@ -50,6 +73,8 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
   });
   const [paused, setPaused] = useState(false);
   const [fitSignal, setFitSignal] = useState(0);
+  const [dockOpen, setDockOpen] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const index = Math.min(nav.index, Math.max(0, count - 1));
   const step = steps[index];
@@ -62,6 +87,16 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
     },
     [count, steps],
   );
+
+  const atEnd = count > 0 && index === count - 1;
+  useEffect(() => {
+    if (atEnd) onReachEnd?.();
+  }, [atEnd, onReachEnd]);
+
+  const toggleCourse = () => {
+    if (window.matchMedia('(min-width: 1024px)').matches) setDockOpen((open) => !open);
+    else setDrawerOpen(true);
+  };
 
   const view = useMemo(() => resolveStepView(lesson.diagram, content, step?.id ?? '', 'viewer'), [lesson.diagram, content, step?.id]);
 
@@ -90,7 +125,12 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
   return (
     <div className='flex h-dvh flex-col bg-background text-foreground'>
       <header className='flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-border px-3 py-3 sm:px-6'>
-        <div className='flex min-w-0 items-baseline gap-3'>
+        <div className='flex min-w-0 items-center gap-3'>
+          {sidebar && (
+            <Button variant='toolbar' size='icon-lg' title='Course' aria-label='Show or hide the course' onClick={toggleCourse}>
+              <PanelLeft size={14} />
+            </Button>
+          )}
           <h1 className='truncate text-base font-semibold'>{lessonNameOf(lesson)}</h1>
           {meta.minutes !== undefined && <span className='shrink-0 text-xs text-muted-foreground'>{meta.minutes} min</span>}
           {meta.level && <span className='shrink-0 text-xs capitalize text-muted-foreground'>{meta.level}</span>}
@@ -111,6 +151,7 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
       </header>
 
       <main className='flex min-h-0 flex-1 flex-col lg:flex-row'>
+        {sidebar && dockOpen && <aside className='hidden min-h-0 w-72 shrink-0 flex-col border-r border-border lg:flex'>{sidebar}</aside>}
         <section className='relative min-h-0 flex-1 overflow-hidden bg-background'>
           <FlowCanvas
             document={view.document}
@@ -210,9 +251,15 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
                   />
                 ))}
               </div>
-              <Button variant='toolbar' size='lg' disabled={index >= count - 1} onClick={() => goTo(index + 1)} title='Next (Right arrow)'>
-                Next <ChevronRight size={13} />
-              </Button>
+              {atEnd && nextLessonHref ? (
+                <Button variant='accent' size='lg' nativeButton={false} render={<Link href={nextLessonHref} />} title='Next lesson in the course'>
+                  Next lesson <ChevronRight size={13} />
+                </Button>
+              ) : (
+                <Button variant='toolbar' size='lg' disabled={index >= count - 1} onClick={() => goTo(index + 1)} title='Next (Right arrow)'>
+                  Next <ChevronRight size={13} />
+                </Button>
+              )}
             </div>
             {meta.goals.length > 0 && (
               <ul className='space-y-1 text-xs'>
@@ -235,6 +282,18 @@ export function LessonPlayer({ lesson, initialStepId, onClose, headerEnd }: { le
           </div>
         </aside>
       </main>
+
+      {sidebar && (
+        <Sheet open={drawerOpen} onOpenChange={setDrawerOpen}>
+          <SheetContent side='left' className='w-80 border-border p-0'>
+            <SheetTitle className='sr-only'>Course</SheetTitle>
+            {/* A click on a lesson closes the drawer (the page then changes). */}
+            <div className='min-h-0 flex-1 overflow-y-auto [&>nav>div:first-child]:pr-12' onClick={(event) => (event.target as HTMLElement).closest('a') && setDrawerOpen(false)}>
+              {sidebar}
+            </div>
+          </SheetContent>
+        </Sheet>
+      )}
     </div>
   );
 }

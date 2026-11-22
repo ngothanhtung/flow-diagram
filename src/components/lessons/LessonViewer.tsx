@@ -2,18 +2,39 @@
 
 import { FileQuestion } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { AuthLoadingScreen } from '@/components/auth/LoginForm';
+import { CourseSidebar } from '@/components/lessons/CourseSidebar';
 import { LessonPlayer } from '@/components/lessons/LessonPlayer';
+import { loadLessonTree, loadPublicLessonTree } from '@/lib/firebase/lesson-tree';
 import { findPublicLessonById, loadLesson } from '@/lib/firebase/lessons';
+import { loadDone, markDone, nextLessonId } from '@/lib/lesson/lesson-progress';
 import { normalizeLessonDocument } from '@/lib/lesson/lesson-normalize';
+import { pathTo, type LessonTree } from '@/lib/lesson/lesson-tree';
 import type { LessonDocumentJSON } from '@/lib/lesson/lesson-types';
+
+/** The Course sidebar's data: the owner's tree (theirs in full when they are viewing, else the public copy). */
+interface Course {
+  tree: LessonTree;
+  isOwner: boolean;
+}
 
 type State =
   | { status: 'loading' }
-  | { status: 'ready'; lesson: LessonDocumentJSON }
+  | { status: 'ready'; lessonId: string; lesson: LessonDocumentJSON; course: Course | null }
   | { status: 'not-found' | 'invalid' | 'error' };
+
+/** The tree is extra: a missing tree, a failed read or a Lesson that isn't in it all mean no sidebar. */
+async function courseFor(lessonId: string, ownerUid: string, isOwner: boolean): Promise<Course | null> {
+  try {
+    const tree = isOwner ? await loadLessonTree(ownerUid) : await loadPublicLessonTree(ownerUid);
+    if (!tree || pathTo(tree, lessonId).length === 0) return null;
+    return { tree, isOwner };
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Read-only lesson page (`/lessons/{id}/view`). A signed-in user's own
@@ -23,24 +44,29 @@ type State =
 export function LessonViewer({ lessonId }: { lessonId: string }) {
   const { user, loading } = useAuth();
   const [state, setState] = useState<State>({ status: 'loading' });
+  // Lessons finished in this browser. Read on the client only: the server
+  // render shows the loading screen, which doesn't use it.
+  const [done, setDone] = useState<ReadonlySet<string>>(() => (typeof window === 'undefined' ? new Set() : loadDone()));
 
   useEffect(() => {
     if (loading) return;
     let cancelled = false;
-    const resolve = async (): Promise<unknown | null> => {
+    const resolve = async (): Promise<{ raw: unknown; ownerUid: string; isOwner: boolean } | null> => {
       if (user) {
         const own = await loadLesson(user.uid, lessonId).catch(() => null);
-        if (own) return own.document;
+        if (own) return { raw: own.document, ownerUid: user.uid, isOwner: true };
       }
       const shared = await findPublicLessonById(lessonId);
-      return shared ? shared.document : null;
+      return shared ? { raw: shared.document, ownerUid: shared.ownerUid, isOwner: false } : null;
     };
     resolve()
-      .then((raw) => {
+      .then(async (found) => {
         if (cancelled) return;
-        if (raw === null) return setState({ status: 'not-found' });
-        const result = normalizeLessonDocument(raw);
-        setState(result.ok ? { status: 'ready', lesson: result.lesson } : { status: 'invalid' });
+        if (found === null) return setState({ status: 'not-found' });
+        const result = normalizeLessonDocument(found.raw);
+        if (!result.ok) return setState({ status: 'invalid' });
+        const course = typeof found.ownerUid === 'string' && found.ownerUid ? await courseFor(lessonId, found.ownerUid, found.isOwner) : null;
+        if (!cancelled) setState({ status: 'ready', lessonId, lesson: result.lesson, course });
       })
       .catch(() => {
         if (!cancelled) setState({ status: 'error' });
@@ -50,8 +76,25 @@ export function LessonViewer({ lessonId }: { lessonId: string }) {
     };
   }, [lessonId, user, loading]);
 
-  if (loading || state.status === 'loading') return <AuthLoadingScreen />;
-  if (state.status === 'ready') return <LessonPlayer lesson={state.lesson} />;
+  const handleReachEnd = useCallback(() => setDone(markDone(lessonId)), [lessonId]);
+
+  // Moving to another Lesson (sidebar, Next lesson) keeps this component: until
+  // the new one has loaded, the previous one must not be shown under its id.
+  if (loading || state.status === 'loading' || (state.status === 'ready' && state.lessonId !== lessonId)) return <AuthLoadingScreen />;
+  if (state.status === 'ready') {
+    const { course } = state;
+    const next = course ? nextLessonId(course.tree, lessonId) : null;
+    return (
+      <LessonPlayer
+        // A new Lesson (Course sidebar or Next lesson) starts at its first step.
+        key={lessonId}
+        lesson={state.lesson}
+        onReachEnd={handleReachEnd}
+        nextLessonHref={next ? `/lessons/${next}/view` : undefined}
+        sidebar={course ? <CourseSidebar key={lessonId} tree={course.tree} currentId={lessonId} done={done} showPrivate={course.isOwner} /> : undefined}
+      />
+    );
+  }
 
   const copy = {
     'not-found': ['Lesson not found', 'No lesson matches this id, or you do not have access to it.'],
