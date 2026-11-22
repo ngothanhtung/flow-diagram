@@ -75,7 +75,9 @@ FIREBASE_API_KEY=… SEED_EMAIL=… SEED_PASSWORD=… \
 Without the account's password, a project owner can import for it by uid
 instead (this bypasses the rules): `FIREBASE_ACCESS_TOKEN=… npx vite-node
 scripts/import-lessons.ts --project <project-id> --uid <uid>`. Neither grants
-the account a role.
+the account a role. Add `--tree-only` to leave the account's Lessons untouched
+and write only the Lesson tree (its index is checked against the account's
+real Lessons — their names and Public flags — before it is written).
 
 **By hand, anywhere**: on `/lessons` press **New lesson**, then in the lesson
 editor **File → Import JSON…** and pick a file; Save, then set Public if

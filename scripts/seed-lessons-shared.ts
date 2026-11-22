@@ -4,7 +4,7 @@
 
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
-import { normalizeLessonTree, publicTreeOf, type LessonTree } from '../src/lib/lesson/lesson-tree';
+import { normalizeLessonTree, publicTreeOf, reconcileLessonTree, type LessonTree } from '../src/lib/lesson/lesson-tree';
 import { mergeSeedTree } from '../src/lib/lesson/tutorial-tree';
 
 export type SeedLesson = {
@@ -82,9 +82,12 @@ export function readSeedTree(dir: string, languages: string[]): LessonTree {
  * and `public-lesson-trees/{uid}` — after merging the seed into what the
  * account already has (its own folders and lessons are kept).
  */
-export function seededTreeDocs(existing: unknown, seed: LessonTree, uid: string, now: Date) {
+export function seededTreeDocs(existing: unknown, seed: LessonTree, uid: string, now: Date, lessons?: { id: string; title: string; public: boolean }[]) {
   const current = existing === null ? null : normalizeLessonTree(existing).tree;
-  const tree = mergeSeedTree(current, seed);
+  const merged = mergeSeedTree(current, seed);
+  // With the account's real Lessons, the index carries their real titles and
+  // Public flags, and drops seeded entries for Lessons that don't exist.
+  const tree = lessons ? reconcileLessonTree(merged, lessons).tree : merged;
   return {
     tree: { ...tree, updatedAt: now } as Record<string, unknown>,
     mirror: { ...publicTreeOf(tree, uid), updatedAt: now } as Record<string, unknown>,

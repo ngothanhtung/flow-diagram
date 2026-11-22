@@ -3,7 +3,10 @@
 // deployed Firestore rules, exactly like the app's own Save:
 //
 //   FIREBASE_API_KEY=… SEED_EMAIL=… SEED_PASSWORD=… \
-//     npx vite-node scripts/import-lessons.ts --project <project-id> [--lang en|vi|all] [--dir seed/lessons] [--create-account]
+//     npx vite-node scripts/import-lessons.ts --project <project-id> [--lang en|vi|all] [--dir seed/lessons] [--create-account] [--tree-only]
+//
+// --tree-only leaves the Lessons alone and writes only the Lesson tree (for
+// an account whose Lessons were imported before trees existed, or edited since).
 //
 // Or, without the account's password, as a project owner (bypasses the
 // rules — e.g. an access token from the signed-in Firebase CLI):
@@ -30,6 +33,7 @@ const dir = path.resolve(root, argValue('--dir', 'seed/lessons'));
 const langArg = argValue('--lang', 'all');
 const languages = langArg === 'all' ? ['en', 'vi'] : [langArg];
 const createAccount = process.argv.includes('--create-account');
+const treeOnly = process.argv.includes('--tree-only');
 const ownerUid = argValue('--uid', '');
 const accessToken = process.env.FIREBASE_ACCESS_TOKEN;
 
@@ -91,16 +95,37 @@ async function writeDoc(docPath: string, data: Record<string, unknown>): Promise
 }
 
 const lessons = readSeedLessons(dir, languages);
-for (const { id, name, document, updatedAt } of lessons) {
-  await writeDoc(`users/${uid}/lessons/${id}`, { name, document, public: true, createdAt: updatedAt, updatedAt });
-  await writeDoc(`public-lessons/${id}`, { ownerUid: uid, name, document, public: true, updatedAt });
+if (!treeOnly) {
+  for (const { id, name, document, updatedAt } of lessons) {
+    await writeDoc(`users/${uid}/lessons/${id}`, { name, document, public: true, createdAt: updatedAt, updatedAt });
+    await writeDoc(`public-lessons/${id}`, { ownerUid: uid, name, document, public: true, updatedAt });
+  }
+  for (const lang of languages) console.log(`${lang}: ${lessons.filter((lesson) => lesson.lang === lang).length} lessons imported`);
 }
-for (const lang of languages) console.log(`${lang}: ${lessons.filter((lesson) => lesson.lang === lang).length} lessons imported`);
+
+/** Every Lesson the account owns, as the tree index records it (name and Public only — the documents stay unread). */
+async function listLessonSummaries(): Promise<{ id: string; title: string; public: boolean }[]> {
+  const out: { id: string; title: string; public: boolean }[] = [];
+  let pageToken = '';
+  do {
+    const query = `pageSize=300&mask.fieldPaths=name&mask.fieldPaths=public${pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : ''}`;
+    const response = await fetch(`https://firestore.googleapis.com/v1/projects/${project}/databases/(default)/documents/users/${uid}/lessons?${query}`, { headers: { Authorization: `Bearer ${token}` } });
+    if (!response.ok) fail(`Listing lessons failed: ${response.status} ${await response.text()}`);
+    const body = (await response.json()) as { documents?: { name: string; fields?: Record<string, FirestoreValue> }[]; nextPageToken?: string };
+    for (const document of body.documents ?? []) {
+      const fields = fromFields(document.fields ?? {});
+      out.push({ id: document.name.split('/').pop() ?? '', title: typeof fields.name === 'string' && fields.name ? fields.name : 'Untitled lesson', public: fields.public === true });
+    }
+    pageToken = body.nextPageToken ?? '';
+  } while (pageToken);
+  return out;
+}
 
 // The Lesson tree: the curriculum's chapters, merged into the account's own
-// tree (written after the lessons; the public copy last).
-const treeDocs = seededTreeDocs(await readDoc(`users/${uid}/lesson-trees/main`), readSeedTree(dir, languages), uid, new Date());
+// tree and checked against its real Lessons (written after the lessons; the
+// public copy last).
+const treeDocs = seededTreeDocs(await readDoc(`users/${uid}/lesson-trees/main`), readSeedTree(dir, languages), uid, new Date(), await listLessonSummaries());
 await writeDoc(`users/${uid}/lesson-trees/main`, treeDocs.tree);
 await writeDoc(`public-lesson-trees/${uid}`, treeDocs.mirror);
 console.log('Lesson tree imported.');
-console.log(`Done — ${lessons.length} lessons for uid ${uid} in ${project}.`);
+console.log(`Done — ${treeOnly ? 'tree only' : `${lessons.length} lessons`} for uid ${uid} in ${project}.`);
