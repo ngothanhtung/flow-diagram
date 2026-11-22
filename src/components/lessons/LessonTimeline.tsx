@@ -4,7 +4,7 @@ import type { LessonStep } from '@/lib/lesson/lesson-types';
  * "In this lesson": every Lesson step as a numbered stop on a rail, its short
  * name underneath — the timeline system-design-tutorials shows under its
  * stage. The rail fills up to the current Lesson step; steps before it read
- * as done (solid green), the current one is green (#52c41a) with a soft ripple.
+ * as done (solid green), the current one is the card colour with a white border and a soft ripple.
  * Click a stop to go there. Scrolls sideways when there are more steps than fit.
  */
 export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]; index: number; onSelect: (index: number) => void }) {
@@ -33,10 +33,10 @@ export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]
               const label = step.short || step.title || `Lesson step ${i + 1}`;
               // Seen = solid green; the step on screen stands out in green (#52c41a).
               const dot = current
-                ? 'scale-110 border-[#95de64] bg-[#52c41a] text-white shadow-[0_0_0_3px_rgba(82,196,26,0.25)]'
+                ? 'scale-110 border-foreground bg-card text-foreground shadow-[0_0_0_3px_color-mix(in_oklab,var(--foreground)_18%,transparent)]'
                 : done
                   ? 'border-emerald-300 bg-emerald-700 text-white dark:border-emerald-200 dark:bg-emerald-800 group-hover:-translate-y-px'
-                  : 'border-border bg-card text-foreground group-hover:-translate-y-px group-hover:bg-accent';
+                  : 'border-foreground/15 bg-card text-foreground group-hover:-translate-y-px group-hover:bg-accent';
               return (
                 <li key={step.id} className='min-w-0'>
                   <button
@@ -47,8 +47,8 @@ export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]
                     className='group flex w-full flex-col items-center px-0.5 focus-visible:outline-none'
                   >
                     <span className='relative grid size-[26px] place-items-center'>
-                      {/* A soft green ring pulses out of the current stop (none when the OS asks for less motion). */}
-                      {current && <span aria-hidden='true' className='absolute inset-0 rounded-full bg-[#52c41a] motion-safe:animate-[lesson-step-ripple_2s_ease-out_infinite] motion-reduce:hidden' />}
+                      {/* A soft white ring pulses out of the current stop (none when the OS asks for less motion). */}
+                      {current && <span aria-hidden='true' className='absolute inset-0 rounded-full bg-foreground motion-safe:animate-[lesson-step-ripple_2s_ease-out_infinite] motion-reduce:hidden' />}
                       <span className={`relative grid size-[26px] place-items-center rounded-full border text-xs font-semibold tabular-nums transition group-focus-visible:ring-2 group-focus-visible:ring-ring ${dot}`}>{i + 1}</span>
                     </span>
                     <span className={`mt-1.5 line-clamp-2 min-h-[2.7em] text-center text-xs leading-[1.35] ${current ? 'font-semibold text-foreground' : done ? 'text-foreground/85' : 'text-muted-foreground'}`}>{label}</span>
