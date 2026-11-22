@@ -74,3 +74,31 @@ describe('LessonPlayer Narration blocks', () => {
     expect(html).toMatch(/<pre[^>]*><code[^>]*>SELECT \*\*x\*\* \[\[y\]\] &lt;b&gt;<\/code><\/pre>/);
   });
 });
+
+describe('LessonPlayer metrics bar', () => {
+  function twoSteps(): LessonDocumentJSON {
+    const base = emptyLessonDocument('Metrics bar');
+    return {
+      ...base,
+      meta: { ...base.meta, metrics: [{ id: 'dns', label: 'DNS lookup' }, { id: 'total', label: 'Total' }] },
+      steps: [
+        { ...base.steps[0], id: 's1', metrics: { dns: '20 ms' } },
+        { ...base.steps[0], id: 's2', metrics: { dns: '20 ms', total: '155 ms' } },
+      ],
+    };
+  }
+
+  it('shows the metrics above the drawing, not in the narration column', () => {
+    const html = renderToStaticMarkup(createElement(LessonPlayer, { lesson: twoSteps(), initialStepId: 's2' }));
+    const bar = html.indexOf('aria-label="Metrics"');
+    expect(bar).toBeGreaterThan(-1);
+    expect(bar).toBeLessThan(html.indexOf('aria-label="Narration"'));
+    expect(html.slice(html.indexOf('aria-label="Narration"'))).not.toContain('155 ms');
+  });
+
+  it('marks the metrics this Lesson step changed', () => {
+    const html = renderToStaticMarkup(createElement(LessonPlayer, { lesson: twoSteps(), initialStepId: 's2' }));
+    expect(html).toMatch(/data-changed="true"[^>]*>(?:(?!data-changed).)*155 ms/);
+    expect(html).toMatch(/data-changed="false"[^>]*>(?:(?!data-changed).)*20 ms/);
+  });
+});

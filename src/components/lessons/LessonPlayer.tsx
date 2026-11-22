@@ -4,6 +4,7 @@ import { AlertTriangle, ChevronLeft, ChevronRight, Check, Lightbulb, Lock, Maxim
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { FlowCanvas } from '@/components/FlowCanvas';
+import { LessonMetricsBar } from '@/components/lessons/LessonMetricsBar';
 import { LessonTimeline } from '@/components/lessons/LessonTimeline';
 import { NarrationText } from '@/components/lessons/NarrationText';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -11,7 +12,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import { parseChangeLine } from '@/lib/lesson/narration';
 import { resolveStepView } from '@/lib/lesson/lesson-step-view';
-import { CALLOUT_KINDS, LESSON_CHAPTERS, contentOf, lessonNameOf, stepMetricValue, type CalloutKind, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
+import { CALLOUT_KINDS, LESSON_CHAPTERS, contentOf, lessonNameOf, type CalloutKind, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
 
 const CHAPTER_TONE = {
   sand: 'bg-amber-700/10 text-amber-800 ring-amber-700/30 dark:bg-amber-200/10 dark:text-amber-200 dark:ring-amber-200/30',
@@ -154,6 +155,7 @@ export function LessonPlayer({
       <main className='flex min-h-0 flex-1 flex-col lg:flex-row'>
         {sidebar && dockOpen && <aside className='hidden min-h-0 w-72 shrink-0 flex-col border-r border-border font-reading lg:flex'>{sidebar}</aside>}
         <div className='flex min-h-0 min-w-0 flex-1 flex-col'>
+          <LessonMetricsBar metrics={meta.metrics} step={step} previous={index > 0 ? steps[index - 1] : undefined} />
           <section className='relative min-h-0 flex-1 overflow-hidden bg-background'>
             <FlowCanvas
               document={view.document}
@@ -220,16 +222,6 @@ export function LessonPlayer({
                       );
                     })}
                   </ul>
-                )}
-                {meta.metrics.length > 0 && (
-                  <dl className='grid grid-cols-2 gap-2'>
-                    {meta.metrics.map((m) => (
-                      <div key={m.id} className='rounded-lg bg-card px-3 py-2 ring-1 ring-border'>
-                        <dt className='text-[10px] uppercase tracking-wider text-muted-foreground'>{m.label}</dt>
-                        <dd className='text-sm font-semibold'>{stepMetricValue(step, m.id) || '—'}</dd>
-                      </div>
-                    ))}
-                  </dl>
                 )}
               </>
             ) : (
