@@ -1,12 +1,13 @@
 'use client';
 
-import { Boxes, Eye, FileQuestion, ImageDown, Info, Pencil, X } from 'lucide-react';
+import { Boxes, Eye, FileQuestion, ImageDown, Info, Pencil } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AuthLoadingScreen } from '@/components/auth/LoginForm';
 import { useAuth } from '@/components/auth/AuthProvider';
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { JsonInspector } from '@/components/JsonInspector';
+import { PanelHeader } from '@/components/PanelHeader';
 import { RunControls } from '@/components/editor/PlaybackControls';
 import { ExportImageDialog } from '@/components/export/ExportImageDialog';
 import { Button } from '@/components/ui/button';
@@ -212,12 +213,7 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
         {infoOpen && (
           // The same docked column as the editors' Inspector: hairline, header strip, flat sections.
           <aside className='flex h-full min-h-0 flex-col border-l border-border bg-card/40' aria-label='Diagram info'>
-            <div className='flex shrink-0 items-center gap-1.5 border-b border-border px-4 py-2 font-reading text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>
-              <Info size={12} /> Info
-              <button type='button' aria-label='Close the info panel' title='Close' onClick={() => setInfoOpen(false)} className='ml-auto grid size-5 place-items-center rounded transition hover:bg-accent hover:text-foreground'>
-                <X size={12} />
-              </button>
-            </div>
+            <PanelHeader icon={<Info size={12} />} label='Info' onClose={() => setInfoOpen(false)} closeLabel='Close the info panel' />
             <ScrollArea className='min-h-0 flex-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
               <div className='flex min-h-full flex-col divide-y divide-border'>
                 <section className='px-4 py-3'>

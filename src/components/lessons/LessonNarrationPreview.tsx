@@ -2,6 +2,7 @@
 
 import { Eye } from 'lucide-react';
 import { StepNarration } from '@/components/lessons/StepNarration';
+import { PanelHeader } from '@/components/PanelHeader';
 import { useEditorStore } from '@/lib/editor-store';
 
 /**
@@ -18,9 +19,7 @@ export function LessonNarrationPreview() {
   const step = lesson.steps[index];
   return (
     <div className='flex h-full min-h-0 flex-col font-reading'>
-      <div className='flex shrink-0 items-center gap-1.5 border-b border-border px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>
-        <Eye size={12} /> Narration preview
-      </div>
+      <PanelHeader icon={<Eye size={12} />} label='Narration preview' />
       <div className='min-h-0 flex-1 space-y-3 overflow-y-auto p-4'>{step ? <StepNarration step={step} index={index} count={lesson.steps.length} /> : <p className='text-sm text-muted-foreground'>This lesson has no steps.</p>}</div>
     </div>
   );

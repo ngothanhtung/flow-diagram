@@ -1,9 +1,10 @@
 'use client';
 
-import { SlidersHorizontal, X } from 'lucide-react';
+import { SlidersHorizontal } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
 import { EdgeInspector } from '@/components/EdgeInspector';
 import { JsonInspector } from '@/components/JsonInspector';
+import { PanelHeader } from '@/components/PanelHeader';
 import { JsonPlaygroundPanel } from '@/components/editor/JsonPlaygroundPanel';
 import { NodeInspector } from '@/components/inspector/NodeInspector';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -131,12 +132,7 @@ export function InspectorColumn({ ariaLabel, onClose, children }: { ariaLabel: s
         onClose();
       }}
     >
-      <div className='flex shrink-0 items-center gap-1.5 border-b border-border px-4 py-2 font-reading text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>
-        <SlidersHorizontal size={12} /> Inspector
-        <button type='button' aria-label='Close the inspector' title='Close (Esc)' onClick={onClose} className='ml-auto grid size-5 place-items-center rounded transition hover:bg-accent hover:text-foreground'>
-          <X size={12} />
-        </button>
-      </div>
+      <PanelHeader icon={<SlidersHorizontal size={12} />} label='Inspector' onClose={onClose} closeLabel='Close the inspector' />
       <div className='min-h-0 flex-1'>{children}</div>
     </aside>
   );
