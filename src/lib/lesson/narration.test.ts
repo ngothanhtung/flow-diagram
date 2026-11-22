@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseChangeLine, parseNarration, parseNarrationBlocks } from './narration';
+import { NARRATION_COLORS, parseChangeLine, parseNarration, parseNarrationBlocks } from './narration';
 
 describe('parseNarration', () => {
   it('splits paragraphs on blank lines', () => {
@@ -14,6 +14,21 @@ describe('parseNarration', () => {
       { kind: 'code', text: 'c' },
       { kind: 'term', text: 't' },
     ]);
+  });
+
+  it('parses {colour|text}: a palette name or a hex colour, resolved to a hex value', () => {
+    const [p] = parseNarration('a {red|hot} b {#52c41a|ok} c {#fff|w}');
+    expect(p.filter((i) => i.kind === 'color')).toEqual([
+      { kind: 'color', text: 'hot', color: NARRATION_COLORS.red },
+      { kind: 'color', text: 'ok', color: '#52c41a' },
+      { kind: 'color', text: 'w', color: '#fff' },
+    ]);
+  });
+
+  it('leaves an unknown colour, a bad hex, an empty body or an unclosed brace as text', () => {
+    for (const source of ['{nope|x}', '{#12|x}', '{red|}', '{red|x', 'json {"a": 1}', '{red;x:y|z}']) {
+      expect(parseNarration(source), source).toEqual([[{ kind: 'text', text: source }]]);
+    }
   });
 
   it('leaves unclosed markers as text', () => {

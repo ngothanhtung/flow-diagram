@@ -18,6 +18,7 @@ import { useMemo, useRef, useState, type ReactNode } from 'react';
 import { FieldLabel } from '@/components/lessons/lesson-fields';
 import { NarrationText } from '@/components/lessons/NarrationText';
 import { useEditorStore } from '@/lib/editor-store';
+import { NARRATION_COLORS } from '@/lib/lesson/narration';
 import { fenceBlock, prefixLines, toggleWrap, type TextEdit } from '@/lib/lesson/narration-commands';
 
 type Command = (doc: string, from: number, to: number) => TextEdit;
@@ -163,6 +164,24 @@ export function NarrationEditor({ label, value, onChange, placeholder, minLines 
                 className='grid h-6 min-w-6 place-items-center rounded px-1 text-muted-foreground transition hover:bg-accent hover:text-foreground'
               >
                 {command.icon}
+              </button>
+            ))}
+            <span className='mx-1 h-4 w-px bg-border' aria-hidden='true' />
+            {/* Colour the selection: {name|text}; pressing the same colour again takes it off. */}
+            {Object.entries(NARRATION_COLORS).map(([name, hex]) => (
+              <button
+                key={name}
+                type='button'
+                title={`Colour: ${name}  {${name}|text}`}
+                aria-label={`Colour ${name}`}
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={() => {
+                  if (viewRef.current) runCommand(viewRef.current, (d, f, t) => toggleWrap(d, f, t, `{${name}|`, '}'));
+                  viewRef.current?.focus();
+                }}
+                className='grid size-6 place-items-center rounded transition hover:bg-accent'
+              >
+                <span className='size-3 rounded-full ring-1 ring-black/20' style={{ backgroundColor: hex }} />
               </button>
             ))}
           </div>

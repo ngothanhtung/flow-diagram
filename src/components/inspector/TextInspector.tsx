@@ -58,7 +58,7 @@ export function TextInspector({ node, onUpdate, onDuplicate, onDelete, parentTit
       {isMarkdown ? (
         // Edits go straight to the document (its typing gesture makes one stretch one undo step).
         <div className='mt-1.5'>
-          <NarrationEditor key={`${node.id}-md`} label='' value={node.title} onChange={(title) => onUpdate(node.id, { title })} placeholder='**bold**, `code`, - lists …' minLines={5} hint='**bold** *italic* `code` · - list · 1. list · ### heading · ``` code' />
+          <NarrationEditor key={`${node.id}-md`} label='' value={node.title} onChange={(title) => onUpdate(node.id, { title })} placeholder='**bold**, `code`, - lists …' minLines={5} hint='**bold** *italic* `code` · {red|colour} · - list · 1. list · ### heading · ``` code' />
         </div>
       ) : (
         /* The whole content is the title, so this is multi-line: Enter

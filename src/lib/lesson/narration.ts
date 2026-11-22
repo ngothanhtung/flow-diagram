@@ -1,13 +1,39 @@
 // Narration markup: a tiny, safe subset of Markdown. Output is data, never
 // HTML — the renderer maps it to React nodes, so markup characters in a
 // source can't become elements. Inline: **bold**, *italic*, `code`,
-// [[term]] (no nesting; an unclosed marker stays literal text). Blocks
+// [[term]], {colour|text} (a palette name or a hex colour; no nesting; an
+// unclosed marker, an unknown colour stays literal text). Blocks
 // (parseNarrationBlocks): paragraphs split on blank lines, `- `/`* ` and
 // `1. ` lists, `#`–`###` small headings, ``` code blocks. No links, no HTML.
-export type NarrationInline = { kind: 'text' | 'bold' | 'italic' | 'code' | 'term'; text: string };
+export type NarrationInline = { kind: 'text' | 'bold' | 'italic' | 'code' | 'term'; text: string } | { kind: 'color'; text: string; color: string };
+
+/** The names `{name|text}` accepts: mid-tone hues that read on a light and a dark canvas alike. */
+export const NARRATION_COLORS: Readonly<Record<string, string>> = {
+  red: '#ff4d4f',
+  orange: '#fa8c16',
+  gold: '#faad14',
+  lime: '#a0d911',
+  green: '#52c41a',
+  cyan: '#13c2c2',
+  blue: '#1890ff',
+  purple: '#9254de',
+  magenta: '#eb2f96',
+};
+const HEX_COLOR = /^#(?:[0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i;
+
+/** `{colour|text}` at `i`: a palette name or a hex colour, and a non-empty text; null when it isn't one. */
+function colorSpan(line: string, i: number): { text: string; color: string; end: number } | null {
+  if (line[i] !== '{') return null;
+  const bar = line.indexOf('|', i + 1);
+  const close = line.indexOf('}', i + 1);
+  if (bar < 0 || close < 0 || bar > close || close === bar + 1) return null;
+  const name = line.slice(i + 1, bar);
+  const color = Object.hasOwn(NARRATION_COLORS, name) ? NARRATION_COLORS[name] : HEX_COLOR.test(name) ? name : null;
+  return color ? { text: line.slice(bar + 1, close), color, end: close + 1 } : null;
+}
 export type NarrationParagraph = NarrationInline[];
 
-const MARKERS: { open: string; close: string; kind: NarrationInline['kind'] }[] = [
+const MARKERS: { open: string; close: string; kind: 'bold' | 'italic' | 'code' | 'term' }[] = [
   { open: '[[', close: ']]', kind: 'term' },
   { open: '**', close: '**', kind: 'bold' },
   { open: '`', close: '`', kind: 'code' },
@@ -24,6 +50,13 @@ function parseInline(line: string): NarrationParagraph {
   let i = 0;
   while (i < line.length) {
     let matched = false;
+    const span = colorSpan(line, i);
+    if (span) {
+      flush();
+      out.push({ kind: 'color', text: span.text, color: span.color });
+      i = span.end;
+      continue;
+    }
     for (const m of MARKERS) {
       if (!line.startsWith(m.open, i)) continue;
       const end = line.indexOf(m.close, i + m.open.length);

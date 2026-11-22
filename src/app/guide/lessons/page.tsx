@@ -251,6 +251,7 @@ export default function LessonGuidePage() {
                 ['*italic*', 'italic'],
                 ['`code`', 'code'],
                 ['[[term]]', 'a highlighted glossary term'],
+                ['{red|text}  or  {#52c41a|text}', 'coloured text: a name (red, orange, gold, lime, green, cyan, blue, purple, magenta) or a hex colour. Also works in a free Text object set to Markdown'],
                 ['- item  or  * item (one per line)', 'a bulleted list'],
                 ['1. item (one per line)', 'a numbered list'],
                 ['### Heading  (# to ###)', 'a small heading'],

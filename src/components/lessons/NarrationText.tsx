@@ -13,6 +13,12 @@ function renderInline(item: NarrationInline, key: number) {
           {item.text}
         </code>
       );
+    case 'color':
+      return (
+        <span key={key} style={{ color: item.color }}>
+          {item.text}
+        </span>
+      );
     case 'term':
       return (
         <span

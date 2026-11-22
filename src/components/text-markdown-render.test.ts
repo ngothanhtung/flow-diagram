@@ -26,6 +26,13 @@ describe('a free text object', () => {
     expect(html).not.toContain('**bold**');
   });
 
+  it('colours a {colour|span} and never lets the colour value carry markup', () => {
+    const html = render({ title: '{red|hot} {#52c41a|ok} {red;x:y|no}', markdown: true });
+    expect(html).toContain('color:#ff4d4f');
+    expect(html).toContain('color:#52c41a');
+    expect(html).toContain('{red;x:y|no}');
+  });
+
   it('stays plain text otherwise, asterisks and all', () => {
     const html = render({ title: source });
     expect(html).toContain('**bold**');

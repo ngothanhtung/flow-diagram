@@ -26,7 +26,7 @@ function nodeEffectOptions(nodeType: string | undefined): SelectOption[] {
 }
 const EDGE_EFFECT_SELECT: SelectOption[] = [{ value: SAME, label: 'Same as diagram' }, ...EDGE_EFFECT_OPTIONS.map(({ value, label }) => ({ value, label }))];
 
-const BODY_HINT = '**bold** *italic* `code` [[term]] · - list · 1. list · ### heading · ``` code — blank line = new paragraph';
+const BODY_HINT = '**bold** *italic* `code` [[term]] · {red|colour} · - list · 1. list · ### heading · ``` code — blank line = new paragraph';
 const CHANGES_HINT = 'One per line. Start with + added, ~ changed or - removed.';
 
 function splitLines(text: string): string[] {
