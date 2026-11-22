@@ -57,3 +57,44 @@ describe('snapDiagramToGrid', () => {
     expect(a.height).toBe(240);
   });
 });
+
+describe('snapDiagramToGrid straightens Lines', () => {
+  it('grows the odd-cell block of a side-by-side pair so the Line between them runs straight', () => {
+    const doc: FlowDocumentJSON = {
+      nodes: [node('a', 100, 40, 200, 80), node('b', 400, 60, 200, 120)],
+      edges: [{ id: 'e', from: 'a', to: 'b' }],
+    };
+    const [a, b] = snapDiagramToGrid(doc).nodes;
+    expect(a.position.y).toBe(b.position.y);
+    for (const box of [a, b]) for (const value of edges(box)) expect(Math.abs(value % 40)).toBe(0);
+  });
+
+  it('does the same for a stacked pair, along x', () => {
+    const doc: FlowDocumentJSON = {
+      nodes: [node('a', 100, 40, 200, 80), node('b', 120, 300, 160, 80)],
+      edges: [{ id: 'e', from: 'a', to: 'b' }],
+    };
+    const [a, b] = snapDiagramToGrid(doc).nodes;
+    expect(a.position.x).toBe(b.position.x);
+  });
+
+  it('leaves a pair alone when growing would run into another block', () => {
+    const doc: FlowDocumentJSON = {
+      nodes: [node('a', 100, 40, 200, 80), node('b', 400, 60, 200, 120), node('wall', 400, 160, 200, 80), node('roof', 400, -40, 200, 80)],
+      edges: [{ id: 'e', from: 'a', to: 'b' }],
+    };
+    const out = snapDiagramToGrid(doc).nodes;
+    expect(out.find((n) => n.id === 'b')!.height).toBe(120);
+  });
+});
+
+describe('snapDiagramToGrid straightens variants', () => {
+  it('still grows a block that shares its spot with another variant of itself', () => {
+    const doc: FlowDocumentJSON = {
+      nodes: [node('a', 100, 40, 200, 80), node('b', 400, 60, 200, 120), node('b-2', 400, 60, 200, 120)],
+      edges: [{ id: 'e', from: 'a', to: 'b' }],
+    };
+    const out = snapDiagramToGrid(doc).nodes;
+    expect(out.find((n) => n.id === 'b')!.position.y).toBe(out.find((n) => n.id === 'a')!.position.y);
+  });
+});

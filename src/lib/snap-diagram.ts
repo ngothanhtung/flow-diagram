@@ -29,6 +29,54 @@ function cells(length: number, min: number, max: number, grid: number): number {
   return down >= length ? down : length;
 }
 
+const overlaps = (a: Box, b: Box) => a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+
+/**
+ * Two blocks joined by a straight Line, side by side (or stacked) but half a
+ * cell off-centre — one is an odd number of cells tall (wide), the other even —
+ * make the Line jog. The odd one grows a cell towards the other's centre so
+ * they line up, unless that would run it into another block it didn't already
+ * touch, past its group, or beyond what a block may be.
+ */
+function straightenLines(document: FlowDocumentJSON, boxes: Map<string, Box>, grid: number): void {
+  const byId = new Map(document.nodes.map((node) => [node.id, node]));
+  const half = grid / 2;
+  const isBlock = (id: string) => byId.get(id)?.type === 'process';
+  for (const edge of document.edges) {
+    if (edge.bendPoints?.length || !isBlock(edge.from) || !isBlock(edge.to)) continue;
+    const a = boxes.get(edge.from)!;
+    const b = boxes.get(edge.to)!;
+    const centre = (box: Box) => ({ x: (box.left + box.right) / 2, y: (box.top + box.bottom) / 2 });
+    const [ca, cb] = [centre(a), centre(b)];
+    const axis = Math.abs(ca.y - cb.y) === half && Math.abs(ca.x - cb.x) > grid ? 'y' : Math.abs(ca.x - cb.x) === half && Math.abs(ca.y - cb.y) > grid ? 'x' : null;
+    if (!axis) continue;
+    const span = (box: Box) => (axis === 'y' ? box.bottom - box.top : box.right - box.left);
+    const [oddId, otherId] = (span(a) / grid) % 2 === 1 ? [edge.from, edge.to] : [edge.to, edge.from];
+    const odd = boxes.get(oddId)!;
+    const target = centre(boxes.get(otherId)!)[axis];
+    const grown: Box = { ...odd };
+    if (axis === 'y') {
+      if (target > centre(odd).y) grown.bottom += grid;
+      else grown.top -= grid;
+    } else if (target > centre(odd).x) grown.right += grid;
+    else grown.left -= grid;
+    const node = byId.get(oddId)!;
+    const limits = nodeSizeLimits(node);
+    if (grown.right - grown.left > limits.maxWidth || grown.bottom - grown.top > limits.maxHeight) continue;
+    const parent = node.parentId ? boxes.get(node.parentId) : undefined;
+    if (parent && (grown.left < parent.left || grown.top < parent.top || grown.right > parent.right || grown.bottom > parent.bottom)) continue;
+    // Only a block it didn't already touch counts: in a Lesson, variants of one
+    // block share a spot (each shown in its own Lesson steps).
+    const blocked = document.nodes.some((other) => {
+      if (other.id === oddId || other.type === 'group' || other.parentId === oddId) return false;
+      const box = boxes.get(other.id)!;
+      return overlaps(grown, box) && !overlaps(odd, box);
+    });
+    if (blocked) continue;
+    boxes.set(oddId, grown);
+  }
+}
+
 export function snapDiagramToGrid(document: FlowDocumentJSON, grid = SNAP_GRID): FlowDocumentJSON {
   const byId = new Map(document.nodes.map((node) => [node.id, node]));
   const depthOf = (node: FlowNode): number => {
@@ -69,6 +117,12 @@ export function snapDiagramToGrid(document: FlowDocumentJSON, grid = SNAP_GRID):
       box = { left: snappedLeft, top: snappedTop, right: snappedLeft + cells(width, limits.minWidth, limits.maxWidth, grid), bottom: snappedTop + cells(height, limits.minHeight, limits.maxHeight, grid) };
     }
     boxes.set(node.id, box);
+  }
+
+  straightenLines(document, boxes, grid);
+
+  for (const node of document.nodes) {
+    const box = boxes.get(node.id)!;
     const next = { x: (box.left + box.right) / 2, y: (box.top + box.bottom) / 2 };
     const nextWidth = box.right - box.left;
     const nextHeight = box.bottom - box.top;
