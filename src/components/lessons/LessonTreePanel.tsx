@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import {
   FOLDER_COLORS,
+  LESSON_NOUN,
   addFolder,
   childFolders,
   deleteFolder,
@@ -29,6 +30,7 @@ import {
   reorderFolder,
   type LessonTree,
   type TreeEdit,
+  type TreeNoun,
 } from '@/lib/lesson/lesson-tree';
 
 export type TreeSelection = { kind: 'all' } | { kind: 'unfiled' } | { kind: 'folder'; id: string };
@@ -39,7 +41,7 @@ const rowClass = (active: boolean) =>
   `group/row flex w-full min-w-0 items-center gap-1.5 rounded-md py-1 pr-1 text-sm transition ${active ? 'bg-sky-500/15 text-foreground ring-1 ring-sky-400/40' : 'text-muted-foreground hover:bg-accent/60 hover:text-foreground'}`;
 
 /**
- * The left column of `/lessons`: All lessons, the Lesson tree and Unfiled.
+ * The left column of `/lessons` (and of `/`, for Diagrams): All, the folder tree and Unfiled.
  * Every change goes through `onEdit` (a pure edit applied to the stored
  * tree in a transaction); a refused edit comes back with its reason.
  */
@@ -51,6 +53,7 @@ export function LessonTreePanel({
   onSelect,
   onToggle,
   onEdit,
+  noun = LESSON_NOUN,
 }: {
   tree: LessonTree;
   totalCount: number;
@@ -59,6 +62,8 @@ export function LessonTreePanel({
   onSelect: (selection: TreeSelection) => void;
   onToggle: (folderId: string, open?: boolean) => void;
   onEdit: (edit: (tree: LessonTree) => TreeEdit) => Promise<boolean>;
+  /** What the leaves are called: Lessons (default) or Diagrams. */
+  noun?: TreeNoun;
 }) {
   const [naming, setNaming] = useState<Naming>(null);
   const [namingKey, setNamingKey] = useState(0);
@@ -167,10 +172,10 @@ export function LessonTreePanel({
   const movingFolder = moving !== null && Object.hasOwn(tree.folders, moving) ? tree.folders[moving] : null;
 
   return (
-    <nav aria-label='Lesson folders' className='flex min-h-0 flex-col gap-1 p-3'>
+    <nav aria-label={`${noun.title} folders`} className='flex min-h-0 flex-col gap-1 p-3'>
       <button type='button' className={`${rowClass(selection.kind === 'all')} pl-1.5`} onClick={() => onSelect({ kind: 'all' })}>
         <Library size={15} className='shrink-0' />
-        <span className='flex-1 truncate text-left font-medium'>All lessons</span>
+        <span className='flex-1 truncate text-left font-medium'>All {noun.many}</span>
         <span className='text-[11px] tabular-nums text-muted-foreground'>{totalCount}</span>
       </button>
 
@@ -191,7 +196,7 @@ export function LessonTreePanel({
         key={namingKey}
         open={naming !== null}
         title={naming?.mode === 'rename' ? 'Rename folder' : naming?.parentId ? 'New subfolder' : 'New folder'}
-        description={naming?.mode === 'rename' ? 'The number in front of it follows its position.' : 'Folders organise your lessons; learners see them beside a lesson.'}
+        description={naming?.mode === 'rename' ? 'The number in front of it follows its position.' : noun === LESSON_NOUN ? 'Folders organise your lessons; learners see them beside a lesson.' : `Folders organise your ${noun.many}.`}
         initialName={naming?.mode === 'rename' && Object.hasOwn(tree.folders, naming.folderId) ? tree.folders[naming.folderId].name : ''}
         confirmLabel={naming?.mode === 'rename' ? 'Rename' : 'Create'}
         onSubmit={(name) => void submitName(name)}
@@ -201,7 +206,7 @@ export function LessonTreePanel({
         open={movingFolder !== null}
         tree={tree}
         title='Move folder'
-        description={`Choose where “${movingFolder?.name ?? ''}” goes. It keeps its subfolders and lessons.`}
+        description={`Choose where “${movingFolder?.name ?? ''}” goes. It keeps its subfolders and ${noun.many}.`}
         noneLabel='Top level'
         currentId={movingFolder?.parentId ?? null}
         excludeId={moving ?? undefined}
@@ -215,8 +220,9 @@ export function LessonTreePanel({
       <DeleteFolderDialog
         tree={tree}
         folderId={deleting}
+        noun={noun}
         // A selection inside the deleted branch falls back to All lessons in LessonsHome.
-        onConfirm={(id) => void onEdit((current) => deleteFolder(current, id))}
+        onConfirm={(id) => void onEdit((current) => deleteFolder(current, id, noun))}
         onOpenChange={(next) => !next && setDeleting(null)}
       />
     </nav>

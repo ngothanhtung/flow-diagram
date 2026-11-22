@@ -26,6 +26,17 @@ export const FOLDER_PAINT: Record<FolderColor, { fill: string; stroke: string }>
 };
 
 export const DEFAULT_FOLDER_COLOR: FolderColor = 'slate';
+
+/** What the tree's leaves are called on screen: the same folders organise Lessons and Diagrams. */
+export interface TreeNoun {
+  /** "lesson" */
+  one: string;
+  /** "lessons" */
+  many: string;
+  /** "Lesson" — for labels that start a sentence or name the kind. */
+  title: string;
+}
+export const LESSON_NOUN: TreeNoun = { one: 'lesson', many: 'lessons', title: 'Lesson' };
 export const UNTITLED_FOLDER = 'Untitled folder';
 export const FOLDER_NAME_MAX = 80;
 
@@ -217,10 +228,10 @@ export function reorderFolder(tree: LessonTree, id: string, delta: -1 | 1): Tree
   return done(withFolders(tree, folders));
 }
 
-export function deleteFolder(tree: LessonTree, id: string): TreeEdit {
+export function deleteFolder(tree: LessonTree, id: string, noun: TreeNoun = LESSON_NOUN): TreeEdit {
   if (!hasFolder(tree, id)) return fail('That folder no longer exists.');
   const count = lessonCountInSubtree(tree, id);
-  if (count > 0) return fail(`This folder still holds ${count} lesson${count === 1 ? '' : 's'}. Move or delete them first.`);
+  if (count > 0) return fail(`This folder still holds ${count} ${count === 1 ? noun.one : noun.many}. Move or delete them first.`);
   const gone = descendantFolderIds(tree, id).add(id);
   return done(withFolders(tree, Object.fromEntries(Object.entries(tree.folders).filter(([folderId]) => !gone.has(folderId)))));
 }

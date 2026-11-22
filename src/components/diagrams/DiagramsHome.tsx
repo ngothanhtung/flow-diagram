@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type SortingState } from '@tanstack/react-table';
-import { BookOpen, Boxes, GraduationCap, Ellipsis, Eye, ExternalLink, Globe, LayoutTemplate, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Share2, Trash2, Users } from 'lucide-react';
+import { ArrowDown, ArrowUp, BookOpen, Boxes, FolderInput, GraduationCap, Ellipsis, Eye, ExternalLink, Globe, LayoutTemplate, LoaderCircle, LockKeyhole, Pencil, Plus, RefreshCw, Share2, Trash2, Users } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -19,6 +19,12 @@ import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ShareDialog } from '@/components/diagrams/ShareDialog';
+import { FolderIcon } from '@/components/lessons/FolderIcon';
+import { LessonTreePanel, type TreeSelection } from '@/components/lessons/LessonTreePanel';
+import { MoveToFolderDialog } from '@/components/lessons/lesson-tree-dialogs';
+import { DIAGRAM_NOUN, diagramSummary } from '@/lib/diagram-tree';
+import { reconcileStoredDiagramTree, updateDiagramTree } from '@/lib/firebase/diagram-tree';
+import { childFolders, emptyLessonTree, folderLessons, folderNumber, moveLesson, reconcileLessonTree, reorderLesson, upsertLessonEntry, type LessonTree, type TreeEdit } from '@/lib/lesson/lesson-tree';
 import { ThemeToggle } from '@/components/theme-toggle';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { createDiagram, deleteDiagram, listDiagrams, listSharedWithMe, type SharedDiagram, type StoredDiagram } from '@/lib/firebase/diagrams';
@@ -29,9 +35,29 @@ import { actorOf, savedByLabel, type VersionActor } from '@/lib/version-history'
 import type { User } from 'firebase/auth';
 
 /** Columns that should shrink to their content instead of stretching. */
-const NARROW_COLUMNS = new Set(['no', 'public', 'nodeCount', 'edgeCount', 'updatedAt', 'createdAt', 'actions']);
+const NARROW_COLUMNS = new Set(['folder', 'no', 'public', 'nodeCount', 'edgeCount', 'updatedAt', 'createdAt', 'actions']);
 /** Columns whose content should align to the right (numbers, actions). */
 const RIGHT_ALIGNED_COLUMNS = new Set(['no', 'nodeCount', 'edgeCount', 'actions']);
+
+/** Which Diagram folders are expanded on `/`, per user, in this browser. */
+const openKey = (uid: string) => `xflow:diagram-tree-open:${uid}`;
+
+function loadOpenIds(uid: string): Set<string> | null {
+  try {
+    const raw: unknown = JSON.parse(window.localStorage.getItem(openKey(uid)) ?? 'null');
+    return Array.isArray(raw) ? new Set(raw.filter((id): id is string => typeof id === 'string')) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveOpenIds(uid: string, ids: ReadonlySet<string>) {
+  try {
+    window.localStorage.setItem(openKey(uid), JSON.stringify([...ids]));
+  } catch {
+    // Storage full or blocked: the tree just won't remember what was open.
+  }
+}
 
 /** Flattened row for the owner's diagram list (timestamps as millis). */
 interface DiagramRow {
@@ -94,8 +120,23 @@ function toDiagramRow(diagram: StoredDiagram): DiagramRow {
   };
 }
 
-/** Single-column row actions (Edit / View / Share / Delete) behind an ellipsis trigger. */
-function RowActionsMenu({ diagram, onDelete, onShare }: { diagram: DiagramRow; onDelete: () => void; onShare: () => void }) {
+/** Single-column row actions (Edit / View / Share / folder moves / Delete) behind an ellipsis trigger. */
+function RowActionsMenu({
+  diagram,
+  onDelete,
+  onShare,
+  onMoveToFolder,
+  onMoveUp,
+  onMoveDown,
+}: {
+  diagram: DiagramRow;
+  onDelete: () => void;
+  onShare: () => void;
+  onMoveToFolder: () => void;
+  /** Present only while a folder is shown; null at that end of the folder. */
+  onMoveUp?: (() => void) | null;
+  onMoveDown?: (() => void) | null;
+}) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -137,6 +178,39 @@ function RowActionsMenu({ diagram, onDelete, onShare }: { diagram: DiagramRow; o
                 Share
               </CommandItem>
               <CommandItem
+                onSelect={() => {
+                  setOpen(false);
+                  onMoveToFolder();
+                }}
+              >
+                <FolderInput size={13} />
+                Move to folder…
+              </CommandItem>
+              {onMoveUp !== undefined && (
+                <CommandItem
+                  disabled={!onMoveUp}
+                  onSelect={() => {
+                    setOpen(false);
+                    onMoveUp?.();
+                  }}
+                >
+                  <ArrowUp size={13} />
+                  Move up
+                </CommandItem>
+              )}
+              {onMoveDown !== undefined && (
+                <CommandItem
+                  disabled={!onMoveDown}
+                  onSelect={() => {
+                    setOpen(false);
+                    onMoveDown?.();
+                  }}
+                >
+                  <ArrowDown size={13} />
+                  Move down
+                </CommandItem>
+              )}
+              <CommandItem
                 className='text-rose-600 dark:text-rose-300 data-selected:bg-rose-500/10 data-selected:text-rose-700 dark:data-selected:text-rose-100'
                 onSelect={() => {
                   setOpen(false);
@@ -174,6 +248,11 @@ export function DiagramsHome() {
   const [sharedCounts, setSharedCounts] = useState<Map<string, number>>(() => new Map());
   const [tab, setTab] = useState<'mine' | 'shared'>('mine');
   const [sharedCount, setSharedCount] = useState<number | null>(null);
+  // The stored Diagram tree (null = the user has none yet) and what the panel shows.
+  const [storedTree, setStoredTree] = useState<LessonTree | null>(null);
+  const [selection, setSelection] = useState<TreeSelection>({ kind: 'all' });
+  const [openIds, setOpenIds] = useState<ReadonlySet<string>>(new Set());
+  const [movingDiagram, setMovingDiagram] = useState<DiagramRow | null>(null);
   const currentUid = user?.uid ?? null;
 
   useEffect(() => {
@@ -214,7 +293,12 @@ export function DiagramsHome() {
           return new Map();
         }),
       ]);
+      // The tree is extra: failing to read or repair it never hides the list.
+      const tree = await reconcileStoredDiagramTree(userId, diagrams).catch(() => null);
+      // Rows and tree land together, so the list never flashes everything as Unfiled.
       setRows(diagrams.map(toDiagramRow));
+      setStoredTree(tree);
+      setOpenIds(loadOpenIds(userId) ?? new Set(tree ? childFolders(tree, null).map((folder) => folder.id) : []));
       setSharedCounts(new Map([...owned].map(([id, index]) => [id, index.collaboratorEmails.length])));
       setStatus('ready');
     } catch {
@@ -227,11 +311,63 @@ export function DiagramsHome() {
     void refresh(user.uid);
   }, [user, refresh]);
 
+  // The index always lists every Diagram on screen, even before the stored tree caught up.
+  const summaries = useMemo(() => rows.map((row) => diagramSummary({ id: row.id, name: row.name, public: row.public })), [rows]);
+  const tree = useMemo(() => reconcileLessonTree(storedTree ?? emptyLessonTree(), summaries).tree, [storedTree, summaries]);
+  // A selected folder that was deleted (or moved away in another tab) falls back to All diagrams.
+  const view = useMemo<TreeSelection>(() => (selection.kind === 'folder' && !Object.hasOwn(tree.folders, selection.id) ? { kind: 'all' } : selection), [selection, tree]);
+
+  const editTree = async (edit: (tree: LessonTree) => TreeEdit): Promise<boolean> => {
+    if (!user) return false;
+    try {
+      // Index what this page shows, but only add: its list may predate a Diagram another tab made.
+      const result = await updateDiagramTree(user.uid, (current) => edit(reconcileLessonTree(current, summaries, { prune: false, refresh: false }).tree));
+      if (!result.ok) {
+        toast.error(result.reason);
+        return false;
+      }
+      setStoredTree(result.tree);
+      return true;
+    } catch {
+      toast.error('Could not update folders', { description: 'Check your connection and try again.' });
+      return false;
+    }
+  };
+
+  const select = (next: TreeSelection) => {
+    setSelection(next);
+    // A folder lists its Diagrams in their own order; the other views sort by date.
+    setSorting(next.kind === 'folder' ? [] : [{ id: 'updatedAt', desc: true }]);
+  };
+
+  const toggleOpen = (folderId: string, open?: boolean) => {
+    if (!user) return;
+    const next = new Set(openIds);
+    if (open ?? !next.has(folderId)) next.add(folderId);
+    else next.delete(folderId);
+    setOpenIds(next);
+    saveOpenIds(user.uid, next);
+  };
+
+  const visibleRows = useMemo(() => {
+    const byId = new Map(rows.map((row) => [row.id, row]));
+    if (view.kind === 'folder') return folderLessons(tree, view.id).flatMap((entry) => byId.get(entry.id) ?? []);
+    if (view.kind === 'unfiled') return rows.filter((row) => (Object.hasOwn(tree.lessons, row.id) ? tree.lessons[row.id].folderId : null) === null);
+    return rows;
+  }, [rows, tree, view]);
+
+  const folderLabel = (folderId: string | null) => (folderId !== null && Object.hasOwn(tree.folders, folderId) ? `${folderNumber(tree, folderId)} ${tree.folders[folderId].name}` : null);
+
   const handleCreate = async (document: FlowDocumentJSON = { nodes: [], edges: [] }, name = 'Untitled diagram') => {
     if (!user) return;
     setBusy(true);
     try {
       const id = await createDiagram(user.uid, name, document, false, actorOf(user));
+      // Made while a folder is shown → it goes in that folder. Filing is extra: a failure leaves it Unfiled.
+      if (view.kind === 'folder') {
+        const folderId = view.id;
+        await updateDiagramTree(user.uid, (current) => ({ ok: true, tree: upsertLessonEntry(reconcileLessonTree(current, summaries, { prune: false, refresh: false }).tree, id, { folderId, title: name, public: false }) })).catch(() => undefined);
+      }
       router.push(`/diagrams/${id}/edit`);
     } catch {
       toast.error('Could not create diagram', { description: 'Check sign-in and Firestore rules.' });
@@ -277,6 +413,23 @@ export function DiagramsHome() {
             <p className='truncate font-mono text-[10px] text-muted-foreground'>{row.original.id}</p>
           </Link>
         ),
+      },
+      {
+        id: 'folder',
+        header: 'Folder',
+        enableSorting: false,
+        enableGlobalFilter: false,
+        cell: ({ row }) => {
+          const folderId = Object.hasOwn(tree.lessons, row.original.id) ? tree.lessons[row.original.id].folderId : null;
+          const label = folderLabel(folderId);
+          if (!label || folderId === null) return <span className='text-xs text-muted-foreground'>Unfiled</span>;
+          return (
+            <button type='button' className='flex max-w-48 items-center gap-1.5 text-xs text-muted-foreground transition hover:text-foreground' onClick={() => select({ kind: 'folder', id: folderId })} title={`Show ${label}`}>
+              <FolderIcon color={tree.folders[folderId].color} size={12} className='shrink-0' />
+              <span className='truncate'>{label}</span>
+            </button>
+          );
+        },
       },
       {
         accessorKey: 'public',
@@ -332,16 +485,29 @@ export function DiagramsHome() {
         header: '',
         enableSorting: false,
         enableGlobalFilter: false,
-        cell: ({ row }) => <RowActionsMenu diagram={row.original} onDelete={() => setDeleting(row.original)} onShare={() => setSharing(row.original)} />,
+        cell: ({ row }) => (
+          <RowActionsMenu
+            diagram={row.original}
+            onDelete={() => setDeleting(row.original)}
+            onShare={() => setSharing(row.original)}
+            onMoveToFolder={() => setMovingDiagram(row.original)}
+            onMoveUp={view.kind !== 'folder' ? undefined : row.index === 0 ? null : () => void editTree((current) => reorderLesson(current, row.original.id, -1))}
+            onMoveDown={view.kind !== 'folder' ? undefined : row.index >= visibleRows.length - 1 ? null : () => void editTree((current) => reorderLesson(current, row.original.id, 1))}
+          />
+        ),
       },
     ],
-    [currentUid, sharedCounts],
+    // The handlers only close over `user`, the tree and the rows on screen.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [currentUid, sharedCounts, user, tree, view.kind, visibleRows],
   );
 
   const table = useReactTable({
-    data: rows,
+    data: visibleRows,
     columns,
-    state: { sorting, globalFilter },
+    state: { sorting, globalFilter, columnVisibility: { folder: view.kind === 'all' } },
+    // A folder lists its Diagrams in their own order — the one Move up/down changes — so it doesn't sort.
+    enableSorting: view.kind !== 'folder',
     onSortingChange: setSorting,
     onGlobalFilterChange: setGlobalFilter,
     globalFilterFn: 'includesString',
@@ -436,14 +602,33 @@ export function DiagramsHome() {
           )}
         </div>
 
-        <TabsContent value='mine' className='flex min-h-0 flex-1 flex-col'>
-          <DataTable
-            table={table}
-            narrowColumns={NARROW_COLUMNS}
-            rightAlignedColumns={RIGHT_ALIGNED_COLUMNS}
-            emptyMessage={status === 'error' ? 'Could not read Firestore. Check sign-in and rules.' : status === 'loading' ? 'Loading…' : 'No diagrams yet — create your first one with “New diagram”.'}
-          />
-          <DataTableFooter table={table} />
+        <TabsContent value='mine' className='flex min-h-0 flex-1 flex-col md:flex-row'>
+          <aside className='max-h-[40vh] shrink-0 overflow-auto border-y border-border md:max-h-none md:w-72 md:border-r md:border-b-0'>
+            <LessonTreePanel tree={tree} totalCount={rows.length} selection={view} openIds={openIds} onSelect={select} onToggle={toggleOpen} onEdit={editTree} noun={DIAGRAM_NOUN} />
+          </aside>
+          <section className='flex min-h-0 min-w-0 flex-1 flex-col'>
+            <div className='flex items-center gap-2 px-6 py-3 text-xs text-muted-foreground'>
+              {view.kind === 'folder' && <FolderIcon color={tree.folders[view.id].color} size={13} />}
+              <span className='font-medium text-foreground'>{view.kind === 'folder' ? folderLabel(view.id) : view.kind === 'unfiled' ? 'Unfiled' : 'All diagrams'}</span>
+            </div>
+            <DataTable
+              table={table}
+              narrowColumns={NARROW_COLUMNS}
+              rightAlignedColumns={RIGHT_ALIGNED_COLUMNS}
+              emptyMessage={
+                status === 'error'
+                  ? 'Could not read Firestore. Check sign-in and rules.'
+                  : status === 'loading'
+                    ? 'Loading…'
+                    : view.kind === 'all'
+                      ? 'No diagrams yet — create your first one with “New diagram”.'
+                      : view.kind === 'unfiled'
+                        ? 'Every diagram is in a folder.'
+                        : 'No diagrams directly in this folder — “New diagram” creates one here.'
+              }
+            />
+            <DataTableFooter table={table} />
+          </section>
         </TabsContent>
 
         {/* Kept mounted (hidden when inactive) so the tab can show its count. */}
@@ -476,6 +661,21 @@ export function DiagramsHome() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      <MoveToFolderDialog
+        open={movingDiagram !== null}
+        tree={tree}
+        title='Move diagram'
+        description={`Choose a folder for “${movingDiagram?.name ?? ''}”.`}
+        noneLabel='Unfiled'
+        currentId={movingDiagram && Object.hasOwn(tree.lessons, movingDiagram.id) ? tree.lessons[movingDiagram.id].folderId : null}
+        onPick={(folderId) => {
+          if (!movingDiagram) return;
+          const id = movingDiagram.id;
+          void editTree((current) => moveLesson(current, id, folderId)).then((moved) => moved && folderId && toggleOpen(folderId, true));
+        }}
+        onOpenChange={(next) => !next && setMovingDiagram(null)}
+      />
 
       <ShareDialog
         open={sharing !== null}

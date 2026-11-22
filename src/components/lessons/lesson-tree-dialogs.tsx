@@ -7,7 +7,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
-import { FOLDER_NAME_MAX, childFolders, descendantFolderIds, folderNumber, lessonCountInSubtree, type LessonTree } from '@/lib/lesson/lesson-tree';
+import { FOLDER_NAME_MAX, LESSON_NOUN, childFolders, descendantFolderIds, folderNumber, lessonCountInSubtree, type LessonTree, type TreeNoun } from '@/lib/lesson/lesson-tree';
 
 /** Name a new folder or rename one. `key` it per opening so the field starts from `initialName`. */
 export function FolderNameDialog({
@@ -139,7 +139,7 @@ export function MoveToFolderDialog({
  * Delete a folder — or, when its subtree still holds Lessons, explain why
  * it can't be deleted and delete nothing.
  */
-export function DeleteFolderDialog({ tree, folderId, onConfirm, onOpenChange }: { tree: LessonTree; folderId: string | null; onConfirm: (folderId: string) => void; onOpenChange: (open: boolean) => void }) {
+export function DeleteFolderDialog({ tree, folderId, noun = LESSON_NOUN, onConfirm, onOpenChange }: { tree: LessonTree; folderId: string | null; noun?: TreeNoun; onConfirm: (folderId: string) => void; onOpenChange: (open: boolean) => void }) {
   const folder = folderId !== null && Object.hasOwn(tree.folders, folderId) ? tree.folders[folderId] : null;
   const lessons = folderId !== null && folder ? lessonCountInSubtree(tree, folderId) : 0;
   const subfolders = folderId !== null && folder ? descendantFolderIds(tree, folderId).size : 0;
@@ -154,7 +154,7 @@ export function DeleteFolderDialog({ tree, folderId, onConfirm, onOpenChange }: 
               </AlertDialogMedia>
               <AlertDialogTitle>This folder can’t be deleted</AlertDialogTitle>
               <AlertDialogDescription>
-                “{folder?.name}” still holds {lessons} lesson{lessons === 1 ? '' : 's'}
+                “{folder?.name}” still holds {lessons} {lessons === 1 ? noun.one : noun.many}
                 {subfolders > 0 ? ' (including its subfolders)' : ''}. Move or delete them first.
               </AlertDialogDescription>
             </AlertDialogHeader>
@@ -170,7 +170,7 @@ export function DeleteFolderDialog({ tree, folderId, onConfirm, onOpenChange }: 
               </AlertDialogMedia>
               <AlertDialogTitle>Delete folder?</AlertDialogTitle>
               <AlertDialogDescription>
-                “{folder?.name}”{subfolders > 0 ? ` and its ${subfolders} subfolder${subfolders === 1 ? '' : 's'}` : ''} will be deleted. No lessons are affected.
+                “{folder?.name}”{subfolders > 0 ? ` and its ${subfolders} subfolder${subfolders === 1 ? '' : 's'}` : ''} will be deleted. No {noun.many} are affected.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

@@ -156,7 +156,10 @@ One branch of a Lesson tree, with a name and a colour; its number ("01.") follow
 _Avoid_: Module, chapter (a Lesson step's Chapter is something else), category
 
 **Unfiled**:
-The Lessons that are in no Lesson folder. Shown only to their owner; not part of the Course sidebar.
+The Lessons that are in no Lesson folder. Shown only to their owner; not part of the Course sidebar. On `/`, the Diagrams in no Diagram folder.
+
+**Diagram tree** / **Diagram folder**:
+The same folders as the Lesson tree, organising a user's own Diagrams on `/`. Seen only by their owner. A Diagram folder cannot be deleted while it, or any folder inside it, still holds a Diagram.
 
 **Course sidebar**:
 The Lesson tree beside a Lesson being viewed, for moving between Lessons: only Public Lessons, unless the viewer is their owner. "Course" here names the tree as a whole, never a single Lesson.

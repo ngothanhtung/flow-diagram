@@ -371,6 +371,13 @@ service cloud.firestore {
       allow create, update, delete: if hasAccess() && request.auth.uid == userId && treeId == 'main';
     }
 
+    // A user's Diagram tree: the same folders, over their own Diagrams. Only
+    // the owner sees it — no public copy (Diagrams have no Course sidebar).
+    match /users/{userId}/diagram-trees/{treeId} {
+      allow get: if hasAccess() && (request.auth.uid == userId || isAdministrator());
+      allow create, update, delete: if hasAccess() && request.auth.uid == userId && treeId == 'main';
+    }
+
     // The tree's public copy — only Public Lessons and the folders leading
     // to them — read with one get() by the Course sidebar. Keyed by the
     // owner's uid, so unlike public-lessons the slot can't be claimed by
