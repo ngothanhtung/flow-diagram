@@ -9,6 +9,7 @@ import { NODE_FONT_FAMILIES, NODE_FONT_WEIGHTS } from '@/lib/node-fonts';
 import { useResolvedIcon } from '@/lib/icon-library';
 import { localEndpointsOfLine } from '@/lib/line-geometry';
 import type { ConnectionSide, EdgeMarker, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
+import { NarrationText } from '@/components/lessons/NarrationText';
 import { GROUP_HEADER_HEIGHT, TEXT_PADDING, nodeOutline, nodeSizeLimits, resolveNodeStyle } from '@/lib/node-style';
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from './node-effect-layer';
 import type { ElementLook } from '@/lib/lesson/lesson-types';
@@ -666,10 +667,10 @@ export function FlowNodeCard({
                     lineHeight: 1.35,
                     // Newlines the user typed in the inspector are part of
                     // the content, so they have to survive rendering.
-                    whiteSpace: 'pre-wrap',
+                    whiteSpace: node.markdown === true ? 'normal' : 'pre-wrap',
                   }}
                 >
-                  {node.title}
+                  {node.markdown === true ? <NarrationText source={node.title} /> : node.title}
                 </div>
               </div>
             </foreignObject>

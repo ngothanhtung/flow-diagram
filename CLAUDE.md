@@ -289,6 +289,8 @@ A container is a node with `type: 'group'`; a member points at it with `parentId
 
 **Text only gets the motion family of node effects.** Every decoration effect (`glow`/`pulse`/`ripple`/`trace`/`sheen`) traces `outline.d`, and a text node's outline defaults to a plain rectangle — rendering one on text would draw exactly the border a text object is defined not to have. `FlowNodeCard` skips mounting `<NodeEffectLayer>` for `isText` nodes (motion still applies, via the `<g style={motionStyle}>` wrapper), and `NodeEffectField` hides the whole Decoration group from the picker on a text node so the UI doesn't offer a choice that renders nothing.
 
+A text object can opt into Markdown (`markdown: true`, the inspector's Plain | Markdown switch): its `title` is then edited in the same `NarrationEditor` as a Lesson step's Body and drawn through `NarrationText` (bold, italic, code, lists, small headings, code blocks; no links or HTML). It is a per-object flag, never automatic: existing text (code samples with `*`, lines starting `- `) must render exactly as before.
+
 ### Free icon / logo objects
 
 `type: 'icon'` is the graphic counterpart to free text: a single glyph or brand mark on the canvas with no silhouette, fill, border or ports, positioned and resized independently of any block — arm it from the dock's Icon tool (`Sticker` glyph, next to Text), which builds a square-ish box via `nodeSizeLimits`'s `ICON_OBJECT_*` constants (24–480, default 96×96). The glyph itself renders at `iconSize` (12–256, default 64 — the same large ceiling `resolveNodeStyle` gives the legacy logo type above), independent of that box, exactly like the old dedicated logo block's icon did.

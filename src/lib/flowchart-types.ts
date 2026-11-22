@@ -181,6 +181,8 @@ export interface FlowNode {
   fontSize?: number;
   fontWeight?: 'normal' | 'medium' | 'semibold' | 'bold';
   textAlign?: 'left' | 'center' | 'right';
+  /** A free text object only: `title` is Markdown (the Lesson Narration subset — bold, italic, code, lists, small headings, code blocks), drawn as formatted text. Unset = plain text, as before. */
+  markdown?: boolean;
   portSize?: number;
   /** Editable input/output handle positions. */
   connectionPoints?: NodeConnectionPoints;
