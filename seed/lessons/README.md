@@ -16,6 +16,13 @@ under each the curriculum's 9 chapters in order with their colours (ids
 `tutorial-<lang>-<chapter>`, Vietnamese names from the source's
 `i18n/vi.json`), and in each chapter its lessons.
 
+Every lesson is laid out on the editor's 40px grid: each box's top-left on a
+grid point and its size whole cells (so all edges sit on grid lines), a Line's
+free bends on the half grid, and blocks that share a source row or column sized
+so their centres line up (a Line between them runs straight). Lessons someone
+has already edited are tidied in place instead of re-imported:
+`scripts/snap-lessons-to-grid.ts` (see below).
+
 Every file passes `normalizeLessonDocument` with no fix, and no two blocks
 shown in the same Lesson step overlap — `src/lib/lesson/seed-lessons.test.ts`
 checks both on `npm test`.
@@ -78,6 +85,16 @@ scripts/import-lessons.ts --project <project-id> --uid <uid>`. Neither grants
 the account a role. Add `--tree-only` to leave the account's Lessons untouched
 and write only the Lesson tree (its index is checked against the account's
 real Lessons — their names and Public flags — before it is written).
+
+**Re-importing over edited lessons**: `import-lessons.ts --skip a,b` leaves the
+named lessons alone. To put lessons a person has edited onto the grid without
+losing their changes, snap them in place (only `document` is written, plus the
+Public copy):
+
+```bash
+npx vite-node scripts/snap-lessons-to-grid.ts --emulator --uid <uid> [--ids a,b]
+FIREBASE_ACCESS_TOKEN=… npx vite-node scripts/snap-lessons-to-grid.ts --project <id> --uid <uid> [--ids a,b]
+```
 
 **By hand, anywhere**: on `/lessons` press **New lesson**, then in the lesson
 editor **File → Import JSON…** and pick a file; Save, then set Public if

@@ -5,6 +5,7 @@
 //   FIREBASE_API_KEY=… SEED_EMAIL=… SEED_PASSWORD=… \
 //     npx vite-node scripts/import-lessons.ts --project <project-id> [--lang en|vi|all] [--dir seed/lessons] [--create-account] [--tree-only]
 //
+// --skip a,b leaves those Lessons as they are (ones edited since the import).
 // --tree-only leaves the Lessons alone and writes only the Lesson tree (for
 // an account whose Lessons were imported before trees existed, or edited since).
 //
@@ -34,6 +35,8 @@ const langArg = argValue('--lang', 'all');
 const languages = langArg === 'all' ? ['en', 'vi'] : [langArg];
 const createAccount = process.argv.includes('--create-account');
 const treeOnly = process.argv.includes('--tree-only');
+// Lessons not to overwrite (e.g. ones the owner has edited since the last import).
+const skip = new Set(argValue('--skip', '').split(',').map((id) => id.trim()).filter(Boolean));
 const ownerUid = argValue('--uid', '');
 const accessToken = process.env.FIREBASE_ACCESS_TOKEN;
 
@@ -97,6 +100,10 @@ async function writeDoc(docPath: string, data: Record<string, unknown>): Promise
 const lessons = readSeedLessons(dir, languages);
 if (!treeOnly) {
   for (const { id, name, document, updatedAt } of lessons) {
+    if (skip.has(id)) {
+      console.log(`skipped ${id}`);
+      continue;
+    }
     await writeDoc(`users/${uid}/lessons/${id}`, { name, document, public: true, createdAt: updatedAt, updatedAt });
     await writeDoc(`public-lessons/${id}`, { ownerUid: uid, name, document, public: true, updatedAt });
   }
