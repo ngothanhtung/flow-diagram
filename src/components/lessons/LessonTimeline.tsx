@@ -35,7 +35,7 @@ export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]
               const dot = current
                 ? 'scale-110 border-foreground bg-[#006046] text-white shadow-[0_0_0_3px_color-mix(in_oklab,var(--foreground)_18%,transparent)]'
                 : done
-                  ? 'border-emerald-300 bg-emerald-700 text-white dark:border-emerald-200 dark:bg-emerald-800 group-hover:-translate-y-px'
+                  ? 'border-foreground/15 bg-emerald-700 text-white dark:bg-emerald-800 group-hover:-translate-y-px'
                   : 'border-foreground/15 bg-card text-foreground group-hover:-translate-y-px group-hover:bg-accent';
               return (
                 <li key={step.id} className='min-w-0'>
