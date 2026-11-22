@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 781,
-          "y": -422
+          "x": 860,
+          "y": -440
         },
-        "width": 346,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "ĐÒI HỎI\ntạo     URL dài → mã ngắn\nmở      mã ngắn → chuyển hướng\n→ chuyển hướng: nhanh, luôn hoạt động\n# tạo link có thể chậm hơn",
         "position": {
-          "x": 781,
-          "y": -422
+          "x": 860,
+          "y": -440
         },
-        "width": 322,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 790,
-          "y": -422
+          "x": 880,
+          "y": -440
         },
-        "width": 363,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "TÍNH NHẨM\n100 tr link / tháng      ≈ 40 ghi/s\n× 100 lần mở mỗi link    ≈ 4.000 đọc/s\nđỉnh buổi tối × 3        ≈ 12.000 đọc/s\n→ 5 năm: 6 tỷ link ≈ 3 TB",
         "position": {
-          "x": 790,
-          "y": -422
+          "x": 880,
+          "y": -440
         },
-        "width": 339,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,10 +76,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 794,
-          "y": -424
+          "x": 880,
+          "y": -460
         },
-        "width": 371,
+        "width": 400,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "API\nPOST /links  { url }   →  { code }\nGET  /x7Kp2Qa          →  302 + Location\n# bảng: code PK · long_url · expires_at",
         "position": {
-          "x": 794,
-          "y": -424
+          "x": 880,
+          "y": -460
         },
-        "width": 347,
-        "height": 100,
+        "width": 400,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 790,
-          "y": -422
+          "x": 880,
+          "y": -440
         },
-        "width": 363,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "HAI URL, MỘT MÃ\nhash(“…/summer-sale”)  →  x7Kp2Qa…\nhash(“…/cat-video”)    →  x7Kp2Qa…\n⚠ cùng 7 ký tự → trùng\n# kiểm tra, chỉnh, thử lại: mỗi lần ghi",
         "position": {
-          "x": 790,
-          "y": -422
+          "x": 880,
+          "y": -440
         },
-        "width": 339,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 728,
-          "y": -422
+          "x": 800,
+          "y": -440
         },
-        "width": 239,
-        "height": 124,
+        "width": 240,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "CƠ SỐ 62\nbảng chữ   0–9  a–z  A–Z\n125        →  21\n7.000.000  →  tn1e\n→ 62⁷ ≈ 3,5 nghìn tỷ mã",
         "position": {
-          "x": 728,
-          "y": -422
+          "x": 800,
+          "y": -440
         },
-        "width": 215,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 777,
-          "y": -422
+          "x": 860,
+          "y": -440
         },
-        "width": 338,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "CÙNG ID, ĐÃ XÁO\n⚠ 7.000.000 → tn1e     số sau quá rõ\n⚠ 7.000.001 → tn1f\n→ 7.000.000 → x7Kp2Qa  sau khi xáo\n→ 7.000.001 → Lm03vTe",
         "position": {
-          "x": 777,
-          "y": -422
+          "x": 860,
+          "y": -440
         },
-        "width": 314,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 806,
-          "y": -413
+          "x": 880,
+          "y": -440
         },
-        "width": 396,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "HAI KIỂU CHUYỂN HƯỚNG\n301 vĩnh viễn  trình duyệt ghi nhớ\n→ tải ít nhất\n⚠ không đếm click, không sửa, không hết hạn\n302 tạm thời   mọi click đều quay lại\n→ phân tích và kiểm soát · tải nhiều hơn",
         "position": {
-          "x": 806,
-          "y": -413
+          "x": 880,
+          "y": -440
         },
-        "width": 372,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -247,10 +247,10 @@
         "title": "người bấm link",
         "position": {
           "x": 0,
-          "y": -448
+          "y": -480
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -268,11 +268,11 @@
         "title": "sho.rt",
         "description": "cần thiết kế",
         "position": {
-          "x": 0,
-          "y": -112
+          "x": 20,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Share2",
         "iconPosition": "left",
@@ -288,11 +288,11 @@
         "type": "process",
         "title": "Máy chủ API",
         "position": {
-          "x": 0,
-          "y": -112
+          "x": 20,
+          "y": -120
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -309,11 +309,11 @@
         "title": "Máy chủ API",
         "description": "mã = hash(url)[0..7]",
         "position": {
-          "x": 0,
-          "y": -112
+          "x": 20,
+          "y": -120
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -330,11 +330,11 @@
         "title": "Máy chủ API",
         "description": "khối 7.000.000 – 7.999.999",
         "position": {
-          "x": 0,
-          "y": -112
+          "x": 20,
+          "y": -120
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -351,11 +351,11 @@
         "title": "Máy chủ API",
         "description": "mã = base62(xáo(id))",
         "position": {
-          "x": 0,
-          "y": -112
+          "x": 20,
+          "y": -120
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -372,11 +372,11 @@
         "title": "Máy chủ API",
         "description": "302 Found",
         "position": {
-          "x": 0,
-          "y": -112
+          "x": 20,
+          "y": -120
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -393,11 +393,11 @@
         "title": "Máy chủ API",
         "description": "giới hạn tốc độ · kiểm tra đích",
         "position": {
-          "x": 0,
-          "y": -112
+          "x": 20,
+          "y": -120
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -413,11 +413,11 @@
         "type": "process",
         "title": "bảng links",
         "position": {
-          "x": 336,
-          "y": -112
+          "x": 380,
+          "y": -100
         },
-        "width": 192,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -434,11 +434,11 @@
         "title": "bảng links",
         "description": "⚠ mã đã dùng → thử lại",
         "position": {
-          "x": 336,
-          "y": -112
+          "x": 380,
+          "y": -100
         },
-        "width": 192,
-        "height": 106,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -454,11 +454,11 @@
         "type": "process",
         "title": "Khối ID",
         "position": {
-          "x": -196,
-          "y": 280
+          "x": -220,
+          "y": 320
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Hash",
         "iconPosition": "left",
@@ -474,11 +474,11 @@
         "type": "process",
         "title": "scraper",
         "position": {
-          "x": -308,
-          "y": -308
+          "x": -340,
+          "y": -320
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -494,11 +494,11 @@
         "type": "process",
         "title": "script spam",
         "position": {
-          "x": -308,
-          "y": -308
+          "x": -340,
+          "y": -320
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -515,11 +515,11 @@
         "title": "Cache",
         "description": "mã → URL · 90% hit",
         "position": {
-          "x": -336,
-          "y": -112
+          "x": -340,
+          "y": -120
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -536,11 +536,11 @@
         "title": "Cache",
         "description": "mã → URL",
         "position": {
-          "x": -336,
-          "y": -112
+          "x": -340,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -556,11 +556,11 @@
         "type": "process",
         "title": "phân vùng = hash(mã)",
         "position": {
-          "x": 336,
-          "y": -280
+          "x": 380,
+          "y": -300
         },
-        "width": 192,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -576,11 +576,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 336,
-          "y": -280
+          "x": 380,
+          "y": -300
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -596,11 +596,11 @@
         "type": "process",
         "title": "kho key-value",
         "position": {
-          "x": 336,
-          "y": -112
+          "x": 360,
+          "y": -100
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -616,11 +616,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 336,
-          "y": 56
+          "x": 380,
+          "y": 60
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -636,11 +636,11 @@
         "type": "process",
         "title": "Luồng click",
         "position": {
-          "x": 224,
-          "y": 280
+          "x": 260,
+          "y": 320
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:WavesHorizontal",
         "iconPosition": "left",
@@ -656,11 +656,11 @@
         "type": "process",
         "title": "số click",
         "position": {
-          "x": 448,
-          "y": 280
+          "x": 500,
+          "y": 300
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -866,8 +866,8 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": -36,
-            "y": 280
+            "x": -40,
+            "y": 320
           }
         ],
         "effect": "comet",
@@ -890,8 +890,8 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": -36,
-            "y": 280
+            "x": -40,
+            "y": 320
           }
         ],
         "effect": "comet",
@@ -914,8 +914,8 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": -36,
-            "y": 280
+            "x": -40,
+            "y": 320
           }
         ],
         "effect": "none"
@@ -933,8 +933,8 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": -36,
-            "y": 280
+            "x": -40,
+            "y": 320
           }
         ],
         "effect": "none"
@@ -952,8 +952,8 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": -36,
-            "y": 280
+            "x": -40,
+            "y": 320
           }
         ],
         "effect": "none"
@@ -972,8 +972,8 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -39,
-            "y": -308
+            "x": -40,
+            "y": -320
           }
         ],
         "effect": "blink",
@@ -997,8 +997,8 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -39,
-            "y": -308
+            "x": -40,
+            "y": -320
           }
         ],
         "effect": "blink",
@@ -1078,12 +1078,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 196,
-            "y": -112
+            "x": 220,
+            "y": -120
           },
           {
-            "x": 196,
-            "y": -280
+            "x": 220,
+            "y": -300
           }
         ],
         "effect": "comet",
@@ -1105,12 +1105,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 196,
-            "y": -112
+            "x": 220,
+            "y": -120
           },
           {
-            "x": 196,
-            "y": -280
+            "x": 220,
+            "y": -300
           }
         ],
         "effect": "comet",
@@ -1132,12 +1132,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 196,
-            "y": -112
+            "x": 220,
+            "y": -120
           },
           {
-            "x": 196,
-            "y": -280
+            "x": 220,
+            "y": -300
           }
         ],
         "effect": "comet",
@@ -1189,12 +1189,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 196,
-            "y": -112
+            "x": 220,
+            "y": -120
           },
           {
-            "x": 196,
-            "y": 56
+            "x": 220,
+            "y": 60
           }
         ],
         "effect": "comet",
@@ -1216,12 +1216,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 196,
-            "y": -112
+            "x": 220,
+            "y": -120
           },
           {
-            "x": 196,
-            "y": 56
+            "x": 220,
+            "y": 60
           }
         ],
         "effect": "comet",
@@ -1243,8 +1243,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 36,
-            "y": 280
+            "x": 40,
+            "y": 320
           }
         ],
         "effect": "dots",
@@ -1266,8 +1266,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 36,
-            "y": 280
+            "x": 40,
+            "y": 320
           }
         ],
         "effect": "dots",

@@ -9,11 +9,11 @@
         "title": "Alice",
         "description": "✓ giỏ: 2 món",
         "position": {
-          "x": 0,
-          "y": -589
+          "x": 20,
+          "y": -660
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -30,11 +30,11 @@
         "title": "Alice",
         "description": "⚠ đã đăng xuất · giỏ trống",
         "position": {
-          "x": 0,
-          "y": -589
+          "x": 20,
+          "y": -660
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -51,11 +51,11 @@
         "title": "Alice",
         "description": "token có chữ ký: Alice",
         "position": {
-          "x": 0,
-          "y": -589
+          "x": 20,
+          "y": -660
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -72,11 +72,11 @@
         "title": "Alice",
         "description": "⚠ ảnh đại diện: ảnh hỏng",
         "position": {
-          "x": 0,
-          "y": -589
+          "x": 20,
+          "y": -660
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -93,11 +93,11 @@
         "title": "Alice",
         "description": "✓ ảnh đại diện ✓",
         "position": {
-          "x": 0,
-          "y": -589
+          "x": 20,
+          "y": -660
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -114,10 +114,10 @@
         "title": "Bộ cân bằng tải",
         "position": {
           "x": 0,
-          "y": -279
+          "y": -320
         },
-        "width": 228,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Split",
         "iconPosition": "left",
@@ -135,10 +135,10 @@
         "description": "round robin",
         "position": {
           "x": 0,
-          "y": -279
+          "y": -320
         },
-        "width": 228,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Split",
         "iconPosition": "left",
@@ -156,10 +156,10 @@
         "description": "sticky: Alice → A",
         "position": {
           "x": 0,
-          "y": -279
+          "y": -320
         },
-        "width": 228,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Split",
         "iconPosition": "left",
@@ -177,10 +177,10 @@
         "description": "sticky: Alice → B",
         "position": {
           "x": 0,
-          "y": -279
+          "y": -320
         },
-        "width": 228,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Split",
         "iconPosition": "left",
@@ -197,11 +197,11 @@
         "title": "Server A",
         "description": "phiên: Alice · giỏ 2",
         "position": {
-          "x": -217,
-          "y": 0
+          "x": -260,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -218,11 +218,11 @@
         "title": "Server A",
         "description": "⚠ SẬP",
         "position": {
-          "x": -217,
-          "y": 0
+          "x": -260,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -240,11 +240,11 @@
         "title": "Server A",
         "description": "phi trạng thái",
         "position": {
-          "x": -217,
-          "y": 0
+          "x": -260,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -261,11 +261,11 @@
         "title": "Server A",
         "description": "avatar.png trên đĩa cục bộ",
         "position": {
-          "x": -217,
-          "y": 0
+          "x": -260,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -281,11 +281,11 @@
         "type": "process",
         "title": "Server B",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -302,11 +302,11 @@
         "title": "Server B",
         "description": "⚠ không có phiên của Alice",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -323,11 +323,11 @@
         "title": "Server B",
         "description": "phi trạng thái",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -344,11 +344,11 @@
         "title": "Server B",
         "description": "⚠ avatar.png?",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -364,11 +364,11 @@
         "type": "process",
         "title": "Server C",
         "position": {
-          "x": 217,
-          "y": 0
+          "x": 260,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -385,11 +385,11 @@
         "title": "Server C",
         "description": "⚠ không có phiên của Alice",
         "position": {
-          "x": 217,
-          "y": 0
+          "x": 260,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -406,11 +406,11 @@
         "title": "Server C",
         "description": "phi trạng thái",
         "position": {
-          "x": 217,
-          "y": 0
+          "x": 260,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -427,11 +427,11 @@
         "title": "Server C",
         "description": "⚠ avatar.png?",
         "position": {
-          "x": 217,
-          "y": 0
+          "x": 260,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -448,11 +448,11 @@
         "title": "kho phiên",
         "description": "Alice · giỏ 2",
         "position": {
-          "x": 0,
-          "y": 310
+          "x": 20,
+          "y": 340
         },
-        "width": 184,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -470,10 +470,10 @@
         "description": "avatar.png",
         "position": {
           "x": 0,
-          "y": 310
+          "y": 340
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Box",
         "iconPosition": "left",

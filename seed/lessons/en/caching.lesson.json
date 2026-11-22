@@ -8,10 +8,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 568,
-          "y": -291
+          "x": 620,
+          "y": -300
         },
-        "width": 346,
+        "width": 360,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "WHO READS WHAT\ntop 1% of products   → 60% of reads\ntop 10% of products  → 90% of reads\n# the same rows, read again and again",
         "position": {
-          "x": 568,
-          "y": -291
+          "x": 620,
+          "y": -300
         },
-        "width": 322,
-        "height": 100,
+        "width": 360,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 560,
-          "y": -289
+          "x": 620,
+          "y": -280
         },
-        "width": 330,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "AVERAGE READ TIME\ncache hit  ≈ 1 ms\ndatabase   ≈ 20 ms\n80% hits:  0.8×1 + 0.2×20  = 4.8 ms\n→ 95% hits: 0.95×1 + 0.05×20 = 2 ms",
         "position": {
-          "x": 560,
-          "y": -289
+          "x": 620,
+          "y": -280
         },
-        "width": 306,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 540,
-          "y": -289
+          "x": 600,
+          "y": -280
         },
-        "width": 289,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "LEAST RECENTLY USED\nproduct:42    used 1 s ago\nproduct:7     used 4 s ago\nproduct:913   used 2 min ago\n⚠ evict product:5 · unused 3 h",
         "position": {
-          "x": 540,
-          "y": -289
+          "x": 600,
+          "y": -280
         },
-        "width": 265,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 568,
-          "y": -289
+          "x": 620,
+          "y": -280
         },
-        "width": 346,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "BLOOM FILTER · 12 M IDS IN 15 MB\nis product:99900017 real?\n→ “definitely not” → 404, no lookup\n“probably yes” → cache, then database\n# never wrong about a “no”",
         "position": {
-          "x": 568,
-          "y": -289
+          "x": 620,
+          "y": -280
         },
-        "width": 322,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 573,
+          "x": 620,
           "y": -280
         },
-        "width": 355,
-        "height": 142,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "WHERE A READ CAN STOP\nbrowser cache       0 ms · per user\nCDN edge            ~10 ms · per city\nin-process memory   ~0 ms · per server\nshared cache        ~1 ms\ndatabase            ~20 ms",
         "position": {
-          "x": 573,
+          "x": 620,
           "y": -280
         },
-        "width": 331,
-        "height": 122,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "process",
         "title": "20,000 users",
         "position": {
-          "x": 0,
-          "y": -315
+          "x": 20,
+          "y": -320
         },
-        "width": 200,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -199,11 +199,11 @@
         "type": "process",
         "title": "users see $20",
         "position": {
-          "x": 0,
-          "y": -315
+          "x": 20,
+          "y": -320
         },
-        "width": 212,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -220,11 +220,11 @@
         "type": "process",
         "title": "users see $25",
         "position": {
-          "x": 0,
-          "y": -315
+          "x": 20,
+          "y": -320
         },
-        "width": 212,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -241,11 +241,11 @@
         "type": "process",
         "title": "everyone opens the home page",
         "position": {
-          "x": 0,
-          "y": -315
+          "x": 20,
+          "y": -320
         },
-        "width": 220,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -262,11 +262,11 @@
         "type": "process",
         "title": "real users + a crawler guessing IDs",
         "position": {
-          "x": 0,
-          "y": -315
+          "x": 20,
+          "y": -320
         },
-        "width": 272,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -283,11 +283,11 @@
         "type": "process",
         "title": "App Server",
         "position": {
-          "x": 0,
-          "y": -63
+          "x": 20,
+          "y": -80
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -304,11 +304,11 @@
         "title": "database",
         "description": "CPU 92%",
         "position": {
-          "x": 231,
-          "y": -63
+          "x": 260,
+          "y": -80
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -325,11 +325,11 @@
         "title": "database",
         "description": "CPU 25%",
         "position": {
-          "x": 231,
-          "y": -63
+          "x": 260,
+          "y": -80
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -346,11 +346,11 @@
         "title": "database",
         "description": "CPU 8%",
         "position": {
-          "x": 231,
-          "y": -63
+          "x": 260,
+          "y": -80
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -367,11 +367,11 @@
         "title": "database",
         "description": "price: $25 · CPU 8%",
         "position": {
-          "x": 231,
-          "y": -63
+          "x": 260,
+          "y": -80
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -388,11 +388,11 @@
         "title": "database",
         "description": "price: $25 · CPU 9%",
         "position": {
-          "x": 231,
-          "y": -63
+          "x": 260,
+          "y": -80
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -409,11 +409,11 @@
         "title": "database",
         "description": "CPU 12%",
         "position": {
-          "x": 231,
-          "y": -63
+          "x": 260,
+          "y": -80
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -430,11 +430,11 @@
         "title": "database",
         "description": "⚠ 2,000 identical queries · CPU 100%",
         "position": {
-          "x": 231,
-          "y": -63
+          "x": 260,
+          "y": -80
         },
-        "width": 184,
-        "height": 140,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -451,11 +451,11 @@
         "title": "database",
         "description": "CPU 9%",
         "position": {
-          "x": 231,
-          "y": -63
+          "x": 260,
+          "y": -80
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -472,11 +472,11 @@
         "title": "database",
         "description": "0 rows found · CPU 85%",
         "position": {
-          "x": 231,
-          "y": -63
+          "x": 260,
+          "y": -80
         },
-        "width": 176,
-        "height": 122,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -493,11 +493,11 @@
         "title": "Cache",
         "description": "in memory",
         "position": {
-          "x": -231,
-          "y": -63
+          "x": -260,
+          "y": -60
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -514,11 +514,11 @@
         "title": "Cache",
         "description": "in memory · ⚠ price: $20 · stale",
         "position": {
-          "x": -231,
-          "y": -63
+          "x": -260,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -535,11 +535,11 @@
         "title": "Cache",
         "description": "in memory · TTL 60 s · price: $25",
         "position": {
-          "x": -231,
-          "y": -63
+          "x": -260,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -556,11 +556,11 @@
         "title": "Cache",
         "description": "in memory · ⚠ memory full",
         "position": {
-          "x": -231,
-          "y": -63
+          "x": -260,
+          "y": -60
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -577,11 +577,11 @@
         "title": "Cache",
         "description": "in memory · home page · expired",
         "position": {
-          "x": -231,
-          "y": -63
+          "x": -260,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -598,11 +598,11 @@
         "title": "Cache",
         "description": "in memory · ✓ refreshed early · 1 fetch",
         "position": {
-          "x": -231,
-          "y": -63
+          "x": -260,
+          "y": -60
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -619,11 +619,11 @@
         "title": "Cache",
         "description": "in memory · ⚠ nothing to cache",
         "position": {
-          "x": -231,
-          "y": -63
+          "x": -260,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -640,11 +640,11 @@
         "title": "Cache",
         "description": "in memory · “not found” · TTL 30 s",
         "position": {
-          "x": -231,
-          "y": -63
+          "x": -260,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",

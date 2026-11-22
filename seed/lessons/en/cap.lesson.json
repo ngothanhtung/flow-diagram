@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 179,
-          "y": 320
+          "x": 200,
+          "y": 340
         },
-        "width": 666,
-        "height": 288,
+        "width": 720,
+        "height": 360,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "US REGION",
         "position": {
-          "x": -101,
-          "y": 197
+          "x": -100,
+          "y": 180
         },
-        "width": 85,
-        "height": 33,
+        "width": 120,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 181,
-          "y": -320
+          "x": 200,
+          "y": -340
         },
-        "width": 662,
-        "height": 288,
+        "width": 720,
+        "height": 360,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "EU REGION",
         "position": {
-          "x": -97,
-          "y": -443
+          "x": -100,
+          "y": -500
         },
-        "width": 85,
-        "height": 33,
+        "width": 120,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 766,
-          "y": -393
+          "x": 840,
+          "y": -440
         },
-        "width": 363,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "WHOSE CLOCK?\nreal 12:00:03   US saves “12 Elm St”\n# stamped 12:00:06 — clock is 3 s fast\nreal 12:00:05   EU saves the correction\n# stamped 12:00:05\n⚠ sync keeps 12:00:06: the old address",
         "position": {
-          "x": 766,
-          "y": -393
+          "x": 840,
+          "y": -440
         },
-        "width": 339,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 791,
-          "y": -393
+          "x": 860,
+          "y": -440
         },
-        "width": 413,
-        "height": 142,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "DURING A PARTITION, CHOOSE\nC — refuse, never be wrong\n    payments, inventory, bookings\nA — answer, maybe be stale\n    likes, carts, feeds\n# without a partition: latency vs consistency",
         "position": {
-          "x": 791,
-          "y": -393
+          "x": 860,
+          "y": -440
         },
-        "width": 389,
-        "height": 122,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,10 +144,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 737,
-          "y": -404
+          "x": 800,
+          "y": -460
         },
-        "width": 305,
+        "width": 320,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "N = 3, W = 2, R = 2\nwrite → wait for 2 of 3\nread  → ask 2, keep the newest\n→ W + R = 4 > 3: always overlaps",
         "position": {
-          "x": 737,
-          "y": -404
+          "x": 800,
+          "y": -460
         },
-        "width": 281,
-        "height": 100,
+        "width": 320,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,10 +178,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 766,
-          "y": -404
+          "x": 840,
+          "y": -460
         },
-        "width": 363,
+        "width": 400,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "CHOOSE PER OPERATION\nlike      W = 1, R = 1 · fast, eventual\npayment   W = 2, R = 2 · slower, safe\n→ cost of being wrong decides",
         "position": {
-          "x": 766,
-          "y": -404
+          "x": 840,
+          "y": -460
         },
-        "width": 339,
-        "height": 100,
+        "width": 400,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 766,
-          "y": -393
+          "x": 840,
+          "y": -440
         },
-        "width": 363,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "STRONGEST → WEAKEST\nlinearizable   everyone sees the latest\ncausal         effects after causes\nread-your-writes  you see your own\nmonotonic      never go back in time\neventual       copies converge… later",
         "position": {
-          "x": 766,
-          "y": -393
+          "x": 840,
+          "y": -440
         },
-        "width": 339,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -246,11 +246,11 @@
         "type": "process",
         "title": "seats left: 1",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 216,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -267,11 +267,11 @@
         "type": "process",
         "title": "seats left: 0 · sold to Ana",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 216,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -288,11 +288,11 @@
         "type": "process",
         "title": "seats left: 0 · Ana",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 200,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -309,11 +309,11 @@
         "type": "process",
         "title": "12:00:05 · 5 Rue Cler — the fix",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 244,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -330,11 +330,11 @@
         "type": "process",
         "title": "seats left: 0",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 216,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -351,11 +351,11 @@
         "type": "process",
         "title": "seats left: 1",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 340
         },
-        "width": 216,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -373,11 +373,11 @@
         "title": "seats left: 1",
         "description": "⚠ can’t reach EU",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 340
         },
-        "width": 216,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -394,11 +394,11 @@
         "type": "process",
         "title": "read-only · refusing writes",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 340
         },
-        "width": 236,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -415,11 +415,11 @@
         "type": "process",
         "title": "seats left: 0 · sold to Ben",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 340
         },
-        "width": 216,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -437,11 +437,11 @@
         "title": "seats left: 0 · Ana",
         "description": "Ben refunded",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 340
         },
-        "width": 204,
-        "height": 113,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -458,11 +458,11 @@
         "type": "process",
         "title": "12:00:06 · 12 Elm St — clock +3 s",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 340
         },
-        "width": 252,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -479,11 +479,11 @@
         "type": "process",
         "title": "seats left: 0",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 340
         },
-        "width": 216,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -500,11 +500,11 @@
         "type": "process",
         "title": "EU users",
         "position": {
-          "x": 384,
-          "y": -320
+          "x": 420,
+          "y": -360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -522,11 +522,11 @@
         "type": "process",
         "title": "US users",
         "position": {
-          "x": 384,
-          "y": 320
+          "x": 420,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -544,11 +544,11 @@
         "type": "process",
         "title": "US users: errors",
         "position": {
-          "x": 384,
-          "y": 320
+          "x": 420,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -566,11 +566,11 @@
         "type": "process",
         "title": "client",
         "position": {
-          "x": 0,
-          "y": -384
+          "x": 20,
+          "y": -400
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -586,11 +586,11 @@
         "type": "process",
         "title": "v2",
         "position": {
-          "x": -224,
-          "y": 0
+          "x": -260,
+          "y": 20
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -606,11 +606,11 @@
         "type": "process",
         "title": "v2",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -626,11 +626,11 @@
         "type": "process",
         "title": "v1 · stale",
         "position": {
-          "x": 224,
-          "y": 0
+          "x": 260,
+          "y": 20
         },
-        "width": 192,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -646,11 +646,11 @@
         "type": "process",
         "title": "v2",
         "position": {
-          "x": 224,
-          "y": 0
+          "x": 260,
+          "y": 20
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

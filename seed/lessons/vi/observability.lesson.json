@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 547,
-          "y": -448
+          "x": 600,
+          "y": -480
         },
-        "width": 305,
-        "height": 142,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "DASHBOARD · ĐỘ TRỄ P99\ngateway      ████████████  2,4 s\nđơn hàng     ████████████  2,3 s\nthanh toán   ███████████░  2,2 s\nkho          ░░░░░░░░░░░░  30 ms\nDB đơn hàng  ░░░░░░░░░░░░  8 ms",
         "position": {
-          "x": 547,
-          "y": -448
+          "x": 600,
+          "y": -480
         },
-        "width": 281,
-        "height": 122,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 609,
-          "y": -457
+          "x": 660,
+          "y": -480
         },
-        "width": 429,
-        "height": 124,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "SLO THANH TOÁN\nSLI: lượt thanh toán nhanh hơn 1 s\nSLO: 99,9% trong 30 ngày\nngân sách lỗi: 0,1% được phép chậm\n⚠ giờ qua: 1,4% chậm = 14× ngân sách → gọi trực",
         "position": {
-          "x": 609,
-          "y": -457
+          "x": 660,
+          "y": -480
         },
-        "width": 405,
-        "height": 104,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 605,
-          "y": -448
+          "x": 660,
+          "y": -480
         },
-        "width": 421,
-        "height": 142,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "LOG · LỌC THEO REQ=A91\n07.112 gateway  req=a91 POST /checkout\n07.118 orders   req=a91 reserve stock: ok\n07.121 payments req=a91 calling fraud-api\n09.243 payments req=a91 fraud-api ok (2122 ms)\n→ 2,1 s nằm trong một lần gọi",
         "position": {
-          "x": 605,
-          "y": -448
+          "x": 660,
+          "y": -480
         },
-        "width": 397,
-        "height": 122,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 592,
-          "y": -448
+          "x": 640,
+          "y": -480
         },
-        "width": 396,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "TRACE A91 · 2,4 S\ngateway                ████████████  2,4 s\n đơn hàng              ████████████  2,35 s\n  kho                  █░░░░░░░░░░░  30 ms\n  thanh toán           ████████████  2,2 s\n   API chống gian lận  ███████████░  2,1 s",
         "position": {
-          "x": 592,
-          "y": -448
+          "x": 640,
+          "y": -480
         },
-        "width": 372,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 634,
-          "y": -448
+          "x": 680,
+          "y": -480
         },
-        "width": 479,
-        "height": 142,
+        "width": 480,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "TRACE B17 · 310 MS\ngateway                ████████████  310 ms\n đơn hàng              ████████████  300 ms\n  kho                  ██░░░░░░░░░░  30 ms\n  thanh toán           ███████████░  220 ms\n   API chống gian lận  ████░░░░░░░░  30 ms (từ cache)",
         "position": {
-          "x": 634,
-          "y": -448
+          "x": 680,
+          "y": -480
         },
-        "width": 455,
-        "height": 122,
+        "width": 480,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 563,
-          "y": -448
+          "x": 620,
+          "y": -480
         },
-        "width": 338,
-        "height": 142,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "LỖI THANH TOÁN · GIỜ QUA\n02:50             ░░░░░░░░░░░░  0,1%\n03:00             ░░░░░░░░░░░░  0,1%\n03:10 triển khai  ░░░░░░░░░░░░  0,2%\n03:12             ████████████  6%\n03:16 rollback    ░░░░░░░░░░░░  0,2%",
         "position": {
-          "x": 563,
-          "y": -448
+          "x": 620,
+          "y": -480
         },
-        "width": 314,
-        "height": 122,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 609,
-          "y": -448
+          "x": 660,
+          "y": -480
         },
-        "width": 429,
-        "height": 142,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "POST-MORTEM · LỖI THANH TOÁN\nảnh hưởng: 6% lượt thanh toán thất bại, 4 phút\nnguyên nhân: timeout sai trong cấu hình kho\nphát hiện 1 phút · giảm thiểu 4 phút (rollback)\n→ hành động: triển khai canary cho cấu hình\n→ hành động: cảnh báo lỗi sau khi đổi cấu hình",
         "position": {
-          "x": 609,
-          "y": -448
+          "x": 660,
+          "y": -480
         },
-        "width": 405,
-        "height": 122,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -246,11 +246,11 @@
         "type": "process",
         "title": "người mua",
         "position": {
-          "x": 0,
-          "y": -483
+          "x": 20,
+          "y": -520
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -268,11 +268,11 @@
         "title": "Gateway",
         "description": "?",
         "position": {
-          "x": 0,
-          "y": -253
+          "x": 20,
+          "y": -260
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -289,11 +289,11 @@
         "title": "Gateway",
         "description": "p99 2,4 s",
         "position": {
-          "x": 0,
-          "y": -253
+          "x": 20,
+          "y": -260
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -310,11 +310,11 @@
         "title": "Gateway",
         "description": "SLO đang bị đốt nhanh gấp 14 lần",
         "position": {
-          "x": 0,
-          "y": -253
+          "x": 20,
+          "y": -260
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -331,11 +331,11 @@
         "title": "Gateway",
         "description": "req=a91",
         "position": {
-          "x": 0,
-          "y": -253
+          "x": 20,
+          "y": -260
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -351,11 +351,11 @@
         "type": "process",
         "title": "Gateway",
         "position": {
-          "x": 0,
-          "y": -253
+          "x": 20,
+          "y": -260
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -372,11 +372,11 @@
         "title": "Gateway",
         "description": "p99 310 ms",
         "position": {
-          "x": 0,
-          "y": -253
+          "x": 20,
+          "y": -260
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -393,11 +393,11 @@
         "title": "Gateway",
         "description": "lỗi 6%",
         "position": {
-          "x": 0,
-          "y": -253
+          "x": 20,
+          "y": -260
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -414,11 +414,11 @@
         "title": "Đơn hàng",
         "description": "?",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -435,11 +435,11 @@
         "title": "Đơn hàng",
         "description": "p99 2,3 s",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -455,11 +455,11 @@
         "type": "process",
         "title": "Đơn hàng",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -476,11 +476,11 @@
         "title": "Kho",
         "description": "?",
         "position": {
-          "x": -230,
-          "y": 0
+          "x": -220,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -497,11 +497,11 @@
         "title": "Kho",
         "description": "p99 30 ms",
         "position": {
-          "x": -230,
-          "y": 0
+          "x": -220,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -517,11 +517,11 @@
         "type": "process",
         "title": "Kho",
         "position": {
-          "x": -230,
-          "y": 0
+          "x": -220,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -538,11 +538,11 @@
         "title": "Kho",
         "description": "⚠ thay đổi cấu hình 03:10",
         "position": {
-          "x": -230,
-          "y": 0
+          "x": -220,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -559,11 +559,11 @@
         "title": "Thanh toán",
         "description": "?",
         "position": {
-          "x": 230,
+          "x": 260,
           "y": 0
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -580,11 +580,11 @@
         "title": "Thanh toán",
         "description": "p99 2,2 s",
         "position": {
-          "x": 230,
+          "x": 260,
           "y": 0
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -600,11 +600,11 @@
         "type": "process",
         "title": "Thanh toán",
         "position": {
-          "x": 230,
+          "x": 260,
           "y": 0
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -621,11 +621,11 @@
         "title": "Thanh toán",
         "description": "✓ timeout 300 ms + cache",
         "position": {
-          "x": 230,
+          "x": 260,
           "y": 0
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -641,11 +641,11 @@
         "type": "process",
         "title": "DB đơn hàng",
         "position": {
-          "x": 0,
-          "y": 253
+          "x": 20,
+          "y": 260
         },
         "width": 200,
-        "height": 104,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -662,11 +662,11 @@
         "title": "DB đơn hàng",
         "description": "p99 8 ms",
         "position": {
-          "x": 0,
-          "y": 253
+          "x": 20,
+          "y": 260
         },
         "width": 200,
-        "height": 104,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -683,11 +683,11 @@
         "title": "API chống gian lận",
         "description": "bên thứ ba",
         "position": {
-          "x": 230,
-          "y": 253
+          "x": 260,
+          "y": 260
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",

@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -62,
-          "y": 270
+          "x": -60,
+          "y": 200
         },
-        "width": 1328,
-        "height": 135,
+        "width": 1400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 843,
-          "y": -965
+          "x": 900,
+          "y": -680
         },
-        "width": 338,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -44,11 +44,11 @@
         "type": "text",
         "title": "UUID V4\nf47ac10b-58cc-4372-a567-0e02b2c3d479\n122 bit ngẫu nhiên\n→ tạo ở đâu cũng được, không hỏi ai\n# 16 byte thay vì 8",
         "position": {
-          "x": 843,
-          "y": -965
+          "x": 900,
+          "y": -680
         },
-        "width": 314,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -60,10 +60,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 893,
-          "y": -967
+          "x": 940,
+          "y": -700
         },
-        "width": 437,
+        "width": 440,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -78,11 +78,11 @@
         "type": "text",
         "title": "DÒNG TIẾP THEO ĐI ĐÂU?\nid bộ đếm     → luôn là trang cuối\n⚠ id ngẫu nhiên → trang bất kỳ, lần nào cũng vậy\n# trang nguội, tách trang, phình to",
         "position": {
-          "x": 893,
-          "y": -967
+          "x": 940,
+          "y": -700
         },
-        "width": 413,
-        "height": 100,
+        "width": 440,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -94,11 +94,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 860,
-          "y": -965
+          "x": 920,
+          "y": -680
         },
-        "width": 371,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -112,11 +112,11 @@
         "type": "text",
         "title": "UUID V7\n018f6b1c-3a40-7d2e-9b6f-5c1a2e4d7f90\n48 bit   mili giây từ năm 1970\n74 bit   ngẫu nhiên\n→ xếp theo thời gian, không cần phối hợp",
         "position": {
-          "x": 860,
-          "y": -965
+          "x": 920,
+          "y": -680
         },
-        "width": 347,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -128,11 +128,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 843,
-          "y": -965
+          "x": 900,
+          "y": -680
         },
-        "width": 338,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -146,11 +146,11 @@
         "type": "text",
         "title": "MỘT ID 64 BIT\n41 bit   mili giây      ≈ 69 năm\n10 bit   id máy         1.024 máy\n12 bit   số thứ tự      4.096 mỗi ms\n→ thời gian | máy | số thứ tự",
         "position": {
-          "x": 843,
-          "y": -965
+          "x": 900,
+          "y": -680
         },
-        "width": 314,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -162,11 +162,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 852,
-          "y": -965
+          "x": 900,
+          "y": -680
         },
-        "width": 355,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -180,11 +180,11 @@
         "type": "text",
         "title": "BỘ TẠO ID CỦA MÁY CHỦ 1\nid đóng dấu cuối    12:00:07.250\n⚠ đồng hồ giờ chỉ     12:00:05.250\n→ chờ 2 s rồi tiếp tục\n# không bao giờ dùng lại dấu thời gian",
         "position": {
-          "x": 852,
-          "y": -965
+          "x": 900,
+          "y": -680
         },
-        "width": 331,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -196,11 +196,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 819,
-          "y": -965
+          "x": 880,
+          "y": -680
         },
-        "width": 289,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -214,11 +214,11 @@
         "type": "text",
         "title": "ĐỌC CÁC ID\nT2 09:00   /orders/1004\nT3 09:00   /orders/1250\n⚠ ≈ 246 đơn mỗi ngày\n→ id công khai: ord_8fK2xQ9dLm",
         "position": {
-          "x": 819,
-          "y": -965
+          "x": 880,
+          "y": -680
         },
-        "width": 265,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -230,11 +230,11 @@
         "type": "process",
         "title": "Máy chủ ứng dụng 1",
         "position": {
-          "x": -315,
-          "y": -540
+          "x": -220,
+          "y": -380
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -251,11 +251,11 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "khối 1000–1999",
         "position": {
-          "x": -315,
-          "y": -540
+          "x": -220,
+          "y": -380
         },
-        "width": 184,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -272,11 +272,11 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "f47ac10b-58cc-…",
         "position": {
-          "x": -315,
-          "y": -540
+          "x": -220,
+          "y": -380
         },
-        "width": 192,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -293,11 +293,11 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "018f6b1c-3a40-7…",
         "position": {
-          "x": -315,
-          "y": -540
+          "x": -220,
+          "y": -380
         },
-        "width": 196,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -314,11 +314,11 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "máy 1",
         "position": {
-          "x": -315,
-          "y": -540
+          "x": -220,
+          "y": -380
         },
-        "width": 184,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -335,11 +335,11 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "đồng hồ −2 s · đang chờ",
         "position": {
-          "x": -315,
-          "y": -540
+          "x": -220,
+          "y": -380
         },
-        "width": 188,
-        "height": 98,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -356,11 +356,11 @@
         "title": "CSDL đơn hàng",
         "description": "id kế tiếp: 1004",
         "position": {
-          "x": -315,
-          "y": 270
+          "x": -240,
+          "y": 180
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -377,11 +377,11 @@
         "title": "shard A",
         "description": "⚠ đơn 1004 · Ana",
         "position": {
-          "x": -315,
-          "y": 270
+          "x": -240,
+          "y": 180
         },
-        "width": 176,
-        "height": 106,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -397,11 +397,11 @@
         "type": "process",
         "title": "shard A",
         "position": {
-          "x": -315,
-          "y": 270
+          "x": -240,
+          "y": 180
         },
-        "width": 176,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -418,11 +418,11 @@
         "title": "shard B",
         "description": "⚠ đơn 1004 · Ben",
         "position": {
-          "x": 315,
-          "y": 270
+          "x": 220,
+          "y": 180
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -438,11 +438,11 @@
         "type": "process",
         "title": "shard B",
         "position": {
-          "x": 315,
-          "y": 270
+          "x": 220,
+          "y": 180
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -458,11 +458,11 @@
         "type": "process",
         "title": "Máy chủ ứng dụng 2",
         "position": {
-          "x": 315,
-          "y": -540
+          "x": 220,
+          "y": -380
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -479,11 +479,11 @@
         "title": "Máy chủ ứng dụng 2",
         "description": "khối 2000–2999",
         "position": {
-          "x": 315,
-          "y": -540
+          "x": 220,
+          "y": -380
         },
-        "width": 184,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -500,11 +500,11 @@
         "title": "Máy chủ ứng dụng 2",
         "description": "9c1e6a2d-03b7-…",
         "position": {
-          "x": 315,
-          "y": -540
+          "x": 220,
+          "y": -380
         },
-        "width": 192,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -521,11 +521,11 @@
         "title": "Máy chủ ứng dụng 2",
         "description": "018f6b1c-3a41-7…",
         "position": {
-          "x": 315,
-          "y": -540
+          "x": 220,
+          "y": -380
         },
-        "width": 196,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -542,11 +542,11 @@
         "title": "Máy chủ ứng dụng 2",
         "description": "máy 2",
         "position": {
-          "x": 315,
-          "y": -540
+          "x": 220,
+          "y": -380
         },
-        "width": 184,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -563,11 +563,11 @@
         "title": "Máy cấp số",
         "description": "id kế tiếp: 1005",
         "position": {
-          "x": 0,
-          "y": -990
+          "x": 20,
+          "y": -720
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -584,11 +584,11 @@
         "title": "Máy cấp số",
         "description": "khối kế tiếp: 3000",
         "position": {
-          "x": 0,
-          "y": -990
+          "x": 20,
+          "y": -720
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -604,11 +604,11 @@
         "type": "process",
         "title": "chỉ mục khóa chính · trang sắp theo id →",
         "position": {
-          "x": -590,
-          "y": 270
+          "x": -600,
+          "y": 200
         },
-        "width": 216,
-        "height": 72,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -624,11 +624,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -403,
-          "y": 270
+          "x": -400,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -644,11 +644,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -403,
-          "y": 270
+          "x": -400,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -664,11 +664,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -286,
-          "y": 270
+          "x": -280,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -684,11 +684,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -169,
-          "y": 270
+          "x": -160,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -704,11 +704,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -169,
-          "y": 270
+          "x": -160,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -724,11 +724,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -52,
-          "y": 270
+          "x": -40,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -744,11 +744,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -52,
-          "y": 270
+          "x": -40,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -764,11 +764,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 66,
-          "y": 270
+          "x": 80,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -784,11 +784,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 183,
-          "y": 270
+          "x": 200,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -804,11 +804,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 183,
-          "y": 270
+          "x": 200,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -824,11 +824,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 300,
-          "y": 270
+          "x": 320,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -844,11 +844,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 417,
-          "y": 270
+          "x": 440,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -864,11 +864,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 417,
-          "y": 270
+          "x": 440,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -884,11 +884,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 535,
-          "y": 270
+          "x": 560,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -904,11 +904,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 535,
-          "y": 270
+          "x": 560,
+          "y": 200
         },
-        "width": 77,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -924,11 +924,11 @@
         "type": "process",
         "title": "đối thủ",
         "position": {
-          "x": -315,
-          "y": -990
+          "x": -220,
+          "y": -720
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -1054,12 +1054,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1081,12 +1081,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1108,12 +1108,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1135,12 +1135,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1162,12 +1162,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1190,12 +1190,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           }
         ],
         "effect": "none"
@@ -1212,12 +1212,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           },
           {
-            "x": -315,
-            "y": -135
+            "x": -240,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1239,12 +1239,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           },
           {
-            "x": -315,
-            "y": -135
+            "x": -240,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1266,12 +1266,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           },
           {
-            "x": -315,
-            "y": -135
+            "x": -240,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1293,12 +1293,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           },
           {
-            "x": -315,
-            "y": -135
+            "x": -240,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1450,12 +1450,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": -403,
-            "y": -135
+            "x": -400,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1477,12 +1477,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": -52,
-            "y": -135
+            "x": -40,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1504,12 +1504,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": 417,
-            "y": -135
+            "x": 440,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1531,12 +1531,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -315,
-            "y": -135
+            "x": -220,
+            "y": -100
           },
           {
-            "x": 535,
-            "y": -135
+            "x": 560,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1558,12 +1558,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           },
           {
-            "x": -169,
-            "y": -135
+            "x": -160,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1585,12 +1585,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           },
           {
-            "x": 183,
-            "y": -135
+            "x": 200,
+            "y": -100
           }
         ],
         "effect": "dots",
@@ -1612,12 +1612,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 315,
-            "y": -135
+            "x": 220,
+            "y": -100
           },
           {
-            "x": 535,
-            "y": -135
+            "x": 560,
+            "y": -100
           }
         ],
         "effect": "dots",

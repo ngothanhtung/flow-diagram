@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 787,
-          "y": -436
+          "x": 880,
+          "y": -480
         },
-        "width": 371,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "BẮT TAY TLS\nmáy chủ đưa ra chứng chỉ\ntrình duyệt kiểm tra chữ ký CA\nhai bên thống nhất khóa phiên mới\n→ mọi thứ sau đó: mã hóa + chống giả mạo",
         "position": {
-          "x": 787,
-          "y": -436
+          "x": 880,
+          "y": -480
         },
-        "width": 347,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 779,
-          "y": -436
+          "x": 860,
+          "y": -480
         },
-        "width": 355,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "KHÔNG BAO GIỜ HẾT HẠN BẤT NGỜ\n⚠ gia hạn thủ công, mỗi năm một lần\n→ ACME: tự gia hạn mỗi 60 ngày\n→ cảnh báo 30 ngày trước mọi hạn\n# kiểm tra mọi endpoint, không chỉ www",
         "position": {
-          "x": 779,
-          "y": -436
+          "x": 860,
+          "y": -480
         },
-        "width": 331,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 787,
-          "y": -436
+          "x": 880,
+          "y": -480
         },
-        "width": 371,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "MÃ HÓA PHONG BÌ\ndữ liệu  —mã hóa bằng→  khóa dữ liệu\nkhóa dữ liệu —mã hóa bằng→ khóa chủ KMS\n→ trộm đĩa: không có khóa dùng được\n# xoay vòng khóa, kiểm toán mọi lần dùng",
         "position": {
-          "x": 787,
-          "y": -436
+          "x": 880,
+          "y": -480
         },
-        "width": 347,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 783,
-          "y": -436
+          "x": 880,
+          "y": -480
         },
-        "width": 363,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "XOAY VÒNG KHÓA\nkhóa chủ mới v2 trong KMS\nbọc lại từng khóa dữ liệu: vài kilobyte\n→ dữ liệu không bao giờ bị mã hóa lại\n# lần ghi mới dùng khóa dữ liệu mới",
         "position": {
-          "x": 783,
-          "y": -436
+          "x": 880,
+          "y": -480
         },
-        "width": 339,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -146,10 +146,10 @@
         "description": "http:// · mật khẩu dạng rõ",
         "position": {
           "x": 0,
-          "y": -441
+          "y": -500
         },
-        "width": 216,
-        "height": 98,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -167,10 +167,10 @@
         "description": "https:// · đã mã hóa",
         "position": {
           "x": 0,
-          "y": -441
+          "y": -500
         },
-        "width": 216,
-        "height": 98,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -188,10 +188,10 @@
         "description": "⚠ “Kết nối của bạn không phải là kết nối riêng tư”",
         "position": {
           "x": 0,
-          "y": -441
+          "y": -500
         },
-        "width": 220,
-        "height": 115,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -208,10 +208,10 @@
         "title": "Alice · Wi-Fi quán cà phê",
         "position": {
           "x": 0,
-          "y": -441
+          "y": -500
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -229,10 +229,10 @@
         "description": "mã hóa bằng khóa công khai của Bob",
         "position": {
           "x": 0,
-          "y": -441
+          "y": -500
         },
-        "width": 176,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -248,11 +248,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 0,
-          "y": -252
+          "x": 20,
+          "y": -280
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Wifi",
         "iconPosition": "left",
@@ -269,10 +269,10 @@
         "title": "Bộ cân bằng tải",
         "position": {
           "x": 0,
-          "y": -63
+          "y": -80
         },
-        "width": 228,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Split",
         "iconPosition": "left",
@@ -290,10 +290,10 @@
         "description": "chứng chỉ: shop.example",
         "position": {
           "x": 0,
-          "y": -63
+          "y": -80
         },
-        "width": 228,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Split",
         "iconPosition": "left",
@@ -311,10 +311,10 @@
         "description": "chứng chỉ hết hạn 03:00",
         "position": {
           "x": 0,
-          "y": -63
+          "y": -80
         },
-        "width": 228,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Split",
         "iconPosition": "left",
@@ -330,11 +330,11 @@
         "type": "process",
         "title": "Ứng dụng",
         "position": {
-          "x": 0,
-          "y": 126
+          "x": 20,
+          "y": 140
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -351,11 +351,11 @@
         "title": "Ứng dụng",
         "description": "mTLS · chứng chỉ riêng",
         "position": {
-          "x": 0,
-          "y": 126
+          "x": 20,
+          "y": 140
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -372,11 +372,11 @@
         "title": "Ứng dụng",
         "description": "Khóa API trong mã nguồn",
         "position": {
-          "x": 0,
-          "y": 126
+          "x": 20,
+          "y": 140
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -393,11 +393,11 @@
         "title": "Ứng dụng",
         "description": "✓ không có bí mật trong mã",
         "position": {
-          "x": 0,
-          "y": 126
+          "x": 20,
+          "y": 140
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -414,11 +414,11 @@
         "title": "Ứng dụng",
         "description": "✓ không bao giờ thấy số thẻ",
         "position": {
-          "x": 0,
-          "y": 126
+          "x": 20,
+          "y": 140
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -435,10 +435,10 @@
         "title": "DB khách hàng",
         "position": {
           "x": 0,
-          "y": 315
+          "y": 380
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -456,10 +456,10 @@
         "description": "⚠ sao lưu trong bucket công khai",
         "position": {
           "x": 0,
-          "y": 315
+          "y": 380
         },
-        "width": 220,
-        "height": 106,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -477,10 +477,10 @@
         "description": "đã mã hóa · AES-256",
         "position": {
           "x": 0,
-          "y": 315
+          "y": 380
         },
-        "width": 220,
-        "height": 106,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -498,10 +498,10 @@
         "description": "khóa dữ liệu được bọc lại · v2",
         "position": {
           "x": 0,
-          "y": 315
+          "y": 380
         },
-        "width": 220,
-        "height": 106,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -519,10 +519,10 @@
         "description": "thẻ: tok_4f2c",
         "position": {
           "x": 0,
-          "y": 315
+          "y": 380
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -539,11 +539,11 @@
         "title": "Mallory · cùng Wi-Fi",
         "description": "đọc: alice / hunter2",
         "position": {
-          "x": -294,
-          "y": -63
+          "x": -340,
+          "y": -60
         },
-        "width": 188,
-        "height": 98,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -560,11 +560,11 @@
         "title": "Mallory · cùng Wi-Fi",
         "description": "thấy byte ngẫu nhiên",
         "position": {
-          "x": -294,
-          "y": -63
+          "x": -340,
+          "y": -60
         },
-        "width": 188,
-        "height": 98,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -581,11 +581,11 @@
         "title": "kẻ trộm",
         "description": "đọc mọi khách hàng",
         "position": {
-          "x": 273,
-          "y": 315
+          "x": 300,
+          "y": 360
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -602,11 +602,11 @@
         "title": "kẻ trộm",
         "description": "chỉ bản mã",
         "position": {
-          "x": 273,
-          "y": 315
+          "x": 300,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -623,11 +623,11 @@
         "title": "kẻ trộm",
         "description": "trộm token · vô dụng",
         "position": {
-          "x": 273,
-          "y": 315
+          "x": 300,
+          "y": 360
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -644,11 +644,11 @@
         "title": "KMS",
         "description": "dịch vụ khóa",
         "position": {
-          "x": 0,
-          "y": 525
+          "x": 20,
+          "y": 600
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Key",
         "iconPosition": "left",
@@ -665,11 +665,11 @@
         "title": "Kho công khai",
         "description": "⚠ sk_live_… trong lịch sử",
         "position": {
-          "x": 273,
-          "y": 126
+          "x": 320,
+          "y": 160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -686,11 +686,11 @@
         "title": "Kho công khai",
         "description": "✓ quét bí mật: sạch",
         "position": {
-          "x": 273,
-          "y": 126
+          "x": 320,
+          "y": 160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -707,11 +707,11 @@
         "title": "bot quét",
         "description": "tìm thấy khóa sau 4 phút",
         "position": {
-          "x": 441,
-          "y": -105
+          "x": 500,
+          "y": -120
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -728,11 +728,11 @@
         "title": "Trình quản lý bí mật",
         "description": "xoay vòng mỗi 30 ngày",
         "position": {
-          "x": -252,
-          "y": 126
+          "x": -300,
+          "y": 140
         },
-        "width": 188,
-        "height": 98,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -748,11 +748,11 @@
         "type": "process",
         "title": "Trình quản lý bí mật",
         "position": {
-          "x": -252,
-          "y": 126
+          "x": -300,
+          "y": 140
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -769,11 +769,11 @@
         "title": "Nhà cung cấp thanh toán",
         "description": "giữ số thẻ thật",
         "position": {
-          "x": -252,
-          "y": 315
+          "x": -280,
+          "y": 380
         },
-        "width": 204,
-        "height": 81,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -790,11 +790,11 @@
         "title": "Máy chủ chat",
         "description": "chỉ thấy bản mã",
         "position": {
-          "x": 0,
-          "y": -126
+          "x": 20,
+          "y": -160
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -811,11 +811,11 @@
         "title": "Bob",
         "description": "giải mã bằng khóa riêng",
         "position": {
-          "x": 273,
-          "y": -126
+          "x": 300,
+          "y": -160
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -1454,12 +1454,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": -126,
-            "y": 126
+            "x": -140,
+            "y": 140
           },
           {
-            "x": -126,
-            "y": 315
+            "x": -140,
+            "y": 380
           }
         ],
         "effect": "chase",

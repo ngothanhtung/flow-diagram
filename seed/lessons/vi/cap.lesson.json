@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 182,
-          "y": 320
+          "x": 220,
+          "y": 340
         },
-        "width": 672,
-        "height": 288,
+        "width": 760,
+        "height": 360,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "VÙNG MỸ",
         "position": {
-          "x": -109,
-          "y": 197
+          "x": -120,
+          "y": 180
         },
-        "width": 70,
-        "height": 33,
+        "width": 80,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 184,
-          "y": -320
+          "x": 220,
+          "y": -340
         },
-        "width": 668,
-        "height": 288,
+        "width": 760,
+        "height": 360,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "VÙNG EU",
         "position": {
-          "x": -105,
-          "y": -443
+          "x": -120,
+          "y": -500
         },
-        "width": 70,
-        "height": 33,
+        "width": 80,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 751,
-          "y": -393
+          "x": 860,
+          "y": -440
         },
-        "width": 322,
-        "height": 142,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "ĐỒNG HỒ CỦA AI?\nthực 12:00:03   Mỹ lưu “12 Elm St”\n# dấu 12:00:06: đồng hồ nhanh 3 s\nthực 12:00:05   EU lưu bản sửa\n# dấu 12:00:05\n⚠ đồng bộ giữ 12:00:06: địa chỉ cũ",
         "position": {
-          "x": 751,
-          "y": -393
+          "x": 860,
+          "y": -440
         },
-        "width": 298,
-        "height": 122,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 768,
-          "y": -393
+          "x": 860,
+          "y": -440
         },
-        "width": 355,
-        "height": 142,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "KHI CÓ PHÂN VÙNG, HÃY CHỌN\nC: từ chối, không bao giờ sai\n    thanh toán, tồn kho, đặt chỗ\nA: trả lời, có thể đã cũ\n    lượt thích, giỏ hàng, bảng tin\n# không phân vùng: độ trễ vs nhất quán",
         "position": {
-          "x": 768,
-          "y": -393
+          "x": 860,
+          "y": -440
         },
-        "width": 331,
-        "height": 122,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,10 +144,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 739,
-          "y": -404
+          "x": 840,
+          "y": -460
         },
-        "width": 297,
+        "width": 320,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "N = 3, W = 2, R = 2\nghi → chờ 2 trên 3\nđọc → hỏi 2, lấy bản mới nhất\n→ W + R = 4 > 3: luôn giao nhau",
         "position": {
-          "x": 739,
-          "y": -404
+          "x": 840,
+          "y": -460
         },
-        "width": 273,
-        "height": 100,
+        "width": 320,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,10 +178,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 792,
-          "y": -404
+          "x": 900,
+          "y": -460
         },
-        "width": 404,
+        "width": 440,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "CHỌN THEO TỪNG THAO TÁC\nthích       W = 1, R = 1 · nhanh, eventual\nthanh toán  W = 2, R = 2 · chậm hơn, an toàn\n→ cái giá của sai quyết định",
         "position": {
-          "x": 792,
-          "y": -404
+          "x": 900,
+          "y": -460
         },
-        "width": 380,
-        "height": 100,
+        "width": 440,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 792,
-          "y": -393
+          "x": 900,
+          "y": -440
         },
-        "width": 404,
-        "height": 142,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "MẠNH NHẤT → YẾU NHẤT\nlinearizable     ai cũng thấy cái mới nhất\nnhân quả         kết quả sau nguyên nhân\nread-your-writes bạn thấy của mình\nmonotonic        không bao giờ lùi thời gian\neventual         bản sao hội tụ… sau đó",
         "position": {
-          "x": 792,
-          "y": -393
+          "x": 900,
+          "y": -440
         },
-        "width": 380,
-        "height": 122,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -246,11 +246,11 @@
         "type": "process",
         "title": "ghế còn: 1",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 192,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -267,11 +267,11 @@
         "type": "process",
         "title": "ghế còn: 0 · bán cho Ana",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 208,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -288,11 +288,11 @@
         "type": "process",
         "title": "ghế còn: 0 · Ana",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -309,11 +309,11 @@
         "type": "process",
         "title": "12:00:05 · 5 Rue Cler: bản sửa",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 244,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -330,11 +330,11 @@
         "type": "process",
         "title": "ghế còn: 0",
         "position": {
-          "x": 0,
-          "y": -320
+          "x": 20,
+          "y": -340
         },
-        "width": 192,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -351,11 +351,11 @@
         "type": "process",
         "title": "ghế còn: 1",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 360
         },
-        "width": 192,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -373,11 +373,11 @@
         "title": "ghế còn: 1",
         "description": "⚠ không tới được EU",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 360
         },
-        "width": 192,
-        "height": 106,
+        "width": 280,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -394,11 +394,11 @@
         "type": "process",
         "title": "chỉ đọc · từ chối ghi",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 360
         },
-        "width": 200,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -415,11 +415,11 @@
         "type": "process",
         "title": "ghế còn: 0 · bán cho Ben",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 360
         },
-        "width": 208,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -437,11 +437,11 @@
         "title": "ghế còn: 0 · Ana",
         "description": "đã hoàn tiền cho Ben",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 360
         },
-        "width": 184,
-        "height": 130,
+        "width": 280,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -458,11 +458,11 @@
         "type": "process",
         "title": "12:00:06 · 12 Elm St: đồng hồ +3 s",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 360
         },
-        "width": 252,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -479,11 +479,11 @@
         "type": "process",
         "title": "ghế còn: 0",
         "position": {
-          "x": 0,
-          "y": 320
+          "x": 20,
+          "y": 360
         },
-        "width": 192,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -500,11 +500,11 @@
         "type": "process",
         "title": "người dùng EU",
         "position": {
-          "x": 384,
-          "y": -320
+          "x": 440,
+          "y": -360
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -522,11 +522,11 @@
         "type": "process",
         "title": "người dùng Mỹ",
         "position": {
-          "x": 384,
-          "y": 320
+          "x": 440,
+          "y": 360
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -544,11 +544,11 @@
         "type": "process",
         "title": "người dùng Mỹ: lỗi",
         "position": {
-          "x": 384,
-          "y": 320
+          "x": 440,
+          "y": 360
         },
-        "width": 184,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -566,11 +566,11 @@
         "type": "process",
         "title": "client",
         "position": {
-          "x": 0,
-          "y": -384
+          "x": 20,
+          "y": -400
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -586,11 +586,11 @@
         "type": "process",
         "title": "v2",
         "position": {
-          "x": -224,
-          "y": 0
+          "x": -260,
+          "y": 20
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -606,11 +606,11 @@
         "type": "process",
         "title": "v2",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -626,11 +626,11 @@
         "type": "process",
         "title": "v1 · đã cũ",
         "position": {
-          "x": 224,
-          "y": 0
+          "x": 260,
+          "y": 20
         },
-        "width": 192,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -646,11 +646,11 @@
         "type": "process",
         "title": "v2",
         "position": {
-          "x": 224,
-          "y": 0
+          "x": 260,
+          "y": 20
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

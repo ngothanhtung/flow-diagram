@@ -17,7 +17,7 @@
 
 import type { EdgeEffect, EdgeMarker, FlowDocumentJSON, FlowEdge, FlowNode, NodeIcon, NodeShape } from '../flowchart-types';
 import { type CalloutKind, type ElementOverride, type ElementPresence, type LessonChapter, type LessonDocumentJSON, type LessonLevel, type LessonStep, LESSON_CHAPTERS, LESSON_LEVELS, toLessonDocument } from './lesson-types';
-import { cardSize, placeScene, textSize, type PlacementInput, type Point, type Size } from './tutorial-layout';
+import { GRID, cardSize, placeScene, snapCenter, snapSize, textSize, type PlacementInput, type Point, type Size } from './tutorial-layout';
 
 export interface TutorialImportOptions {
   /** EN source text → its translation; return the input when there is none. Default: identity. */
@@ -386,9 +386,8 @@ function idRegistry(reserved: Iterable<string>) {
 
 const CALLOUTS: Record<string, CalloutKind> = { insight: 'insight', tip: 'tip', warn: 'warning', warning: 'warning', next: 'tip' };
 const GAP = 40;
-const PANEL_GAP = 72;
+const PANEL_GAP = 80;
 const FRAME_PADDING = 28;
-const FRAME_LABEL_INSET = 10;
 /** A frame's smallest side (`nodeSizeLimits`). */
 const FRAME_MIN = 120;
 
@@ -622,7 +621,8 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
     });
   };
   const isAnchor = (variant: Variant<Look>) => anchorLooks.has(variant.sourceId);
-  const sizeOf = (variant: Variant<Look>, scale: number): Size => (isAnchor(variant) || variant.value.dot ? { width: 28, height: 28 } : cardContent(variant.value, scale));
+  // Every box is whole grid cells, so its edges land on grid lines.
+  const sizeOf = (variant: Variant<Look>, scale: number): Size => snapSize(isAnchor(variant) || variant.value.dot ? { width: 28, height: 28 } : cardContent(variant.value, scale));
 
   // A placement is one spot an entity occupies; its variants there share it.
   const placementKey = (variant: Variant<Look>) => `${variant.sourceId}@${variant.value.ux},${variant.value.uy}`;
@@ -651,10 +651,10 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
           return { width: Math.max(max.width, size.width), height: Math.max(max.height, size.height) };
         }, { width: 0, height: 0 }),
     })),
-    ...ringLabels.map((variant) => ({ key: `label:${variant.id}`, ux: variant.value.ux, uy: variant.value.uy, steps: new Set(variant.steps), size: () => textSize(ringLabelLines(variant), 13) })),
+    ...ringLabels.map((variant) => ({ key: `label:${variant.id}`, ux: variant.value.ux, uy: variant.value.uy, steps: new Set(variant.steps), size: () => snapSize(textSize(ringLabelLines(variant), 13)) })),
   ];
-  const { scale, positions } = placeScene(items, { minScale: 16, maxScale: 46, gap: GAP });
-  const positionOf = (variant: Variant<Look>): Point => positions.get(placementKey(variant)) ?? { x: Math.round(variant.value.ux * scale), y: Math.round(variant.value.uy * scale) };
+  const { scale, positions } = placeScene(items, { minScale: 16, maxScale: 46, gap: GAP, grid: GRID });
+  const positionOf = (variant: Variant<Look>): Point => positions.get(placementKey(variant)) ?? snapCenter({ x: variant.value.ux * scale, y: variant.value.uy * scale }, sizeOf(variant, scale));
 
   const nodes: FlowNode[] = [];
   // Text that belongs to a frame (a panel's lines, a ring's label) shares its range, so it enters with it.
@@ -664,7 +664,14 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
 
   // Frames first so they paint behind everything.
   const cardVariants = nodeVariants.filter((variant) => variant.value.kind === 'card');
-  for (const variant of cardVariants) box(variant.id, positionOf(variant), sizeOf(variant, scale));
+  // Every variant at one placement takes the placement's (largest) box: the
+  // block keeps one size across Lesson steps and all its edges stay on the grid.
+  const placementSize = (variant: Variant<Look>): Size =>
+    (placements.get(placementKey(variant))?.variants ?? [variant]).reduce<Size>((max, other) => {
+      const size = sizeOf(other, scale);
+      return { width: Math.max(max.width, size.width), height: Math.max(max.height, size.height) };
+    }, { width: 0, height: 0 });
+  for (const variant of cardVariants) box(variant.id, positionOf(variant), placementSize(variant));
   const parents = new Map<string, string>();
   const frameLabels = new Map<string, { id: string; position: Point; size: Size }>();
   const frames = nodeVariants.filter((variant) => variant.value.kind === 'zone' || variant.value.kind === 'frame');
@@ -677,8 +684,8 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
     let right = (look.ux + half.w) * scale;
     let top = (look.uy - half.h) * scale;
     let bottom = (look.uy + half.h) * scale;
-    const label = look.title ? textSize([look.title], LABEL_SIZE) : null;
-    const header = label ? label.height + 4 : 0;
+    const label = look.title ? snapSize(textSize([look.title], LABEL_SIZE)) : null;
+    const header = label ? label.height : 0;
     const frameSteps = new Set(frame.steps);
     for (const member of [...cardVariants, ...frames]) {
       if (member === frame || parents.has(member.id) || !member.steps.every((step) => frameSteps.has(step))) continue;
@@ -691,18 +698,23 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
       top = Math.min(top, memberBox.y - memberBox.height / 2 - FRAME_PADDING - header);
       bottom = Math.max(bottom, memberBox.y + memberBox.height / 2 + FRAME_PADDING);
     }
-    if (label) right = Math.max(right, left + label.width + 2 * FRAME_LABEL_INSET);
-    const size = { width: Math.max(FRAME_MIN, Math.round(right - left)), height: Math.max(FRAME_MIN, Math.round(bottom - top)) };
-    const center = { x: Math.round((left + right) / 2), y: Math.round((top + bottom) / 2) };
+    if (label) right = Math.max(right, left + label.width);
+    // Outward onto the grid, so the frame still holds every member.
+    left = Math.floor(left / GRID) * GRID;
+    top = Math.floor(top / GRID) * GRID;
+    right = Math.ceil(right / GRID) * GRID;
+    bottom = Math.ceil(bottom / GRID) * GRID;
+    const size = { width: Math.max(FRAME_MIN, right - left), height: Math.max(FRAME_MIN, bottom - top) };
+    const center = { x: left + size.width / 2, y: top + size.height / 2 };
     box(frame.id, center, size);
     if (label) {
       // Top left inside the frame; if a card shown with it is in the way, top right, then just above the frame.
-      const insideY = center.y - size.height / 2 + 4 + label.height / 2;
-      const leftX = center.x - size.width / 2 + FRAME_LABEL_INSET + label.width / 2;
+      const insideY = top + label.height / 2;
+      const leftX = left + label.width / 2;
       const candidates: Point[] = [
         { x: leftX, y: insideY },
-        { x: center.x + size.width / 2 - FRAME_LABEL_INSET - label.width / 2, y: insideY },
-        { x: leftX, y: center.y - size.height / 2 - 4 - label.height / 2 },
+        { x: left + size.width - label.width / 2, y: insideY },
+        { x: leftX, y: top - label.height / 2 },
       ];
       const clear = (point: Point) =>
         cardVariants.every((card) => {
@@ -711,7 +723,7 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
           return Math.abs(other.x - point.x) >= (other.width + label.width) / 2 || Math.abs(other.y - point.y) >= (other.height + label.height) / 2;
         });
       const position = candidates.find(clear) ?? candidates[0];
-      frameLabels.set(frame.id, { id: ids.claim(`${frame.id}-label`), position: { x: Math.round(position.x), y: Math.round(position.y) }, size: label });
+      frameLabels.set(frame.id, { id: ids.claim(`${frame.id}-label`), position: snapCenter(position, label), size: label });
     }
   }
   // Paint order: outer frames before inner ones.
@@ -720,8 +732,9 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
   // Panels: a column to the right of the scene.
   const sceneBoxes = [...boxes.values()];
   for (const variant of nodeVariants.filter((v) => v.value.kind === 'ring')) {
-    const diameter = Math.round(variant.value.foot!.w * scale);
-    box(variant.id, { x: Math.round(variant.value.ux * scale), y: Math.round(variant.value.uy * scale) }, { width: diameter, height: diameter });
+    const diameter = Math.ceil((variant.value.foot!.w * scale) / GRID) * GRID;
+    const ringSize = { width: diameter, height: diameter };
+    box(variant.id, snapCenter({ x: variant.value.ux * scale, y: variant.value.uy * scale }, ringSize), ringSize);
     sceneBoxes.push(boxes.get(variant.id)!);
   }
   const sceneRight = Math.max(0, ...sceneBoxes.map((b) => b.x + b.width / 2));
@@ -730,8 +743,9 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
   const panelSize = (variant: Variant<Look>) => {
     const lines = [variant.value.title, ...(variant.value.lines ?? [])].filter((line, index) => index > 0 || line !== '');
     const text = textSize(lines, PANEL_TEXT_SIZE);
-    const outer = { width: Math.max(FRAME_MIN, text.width + 24), height: Math.max(FRAME_MIN, text.height + 20) };
-    return { inner: { width: outer.width - 24, height: outer.height - 20 }, outer };
+    // Whole cells with room around the text; the text box is the panel's own box.
+    const outer = snapSize({ width: Math.max(FRAME_MIN, text.width + 24), height: Math.max(FRAME_MIN, text.height + 20) });
+    return { inner: outer, outer };
   };
   const slots: { sources: Set<string>; steps: Set<number>; height: number }[] = [];
   const slotOf = new Map<string, number>();
@@ -751,7 +765,8 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
   const panelText = new Map<string, { id: string; lines: string[]; size: Size; center: Point }>();
   for (const panel of panels) {
     const { inner, outer } = panelSize(panel);
-    const center = { x: Math.round(sceneRight + PANEL_GAP + outer.width / 2), y: Math.round(slotTop(slotOf.get(panel.sourceId)!) + outer.height / 2) };
+    const panelLeft = Math.ceil((sceneRight + PANEL_GAP) / GRID) * GRID;
+    const center = { x: panelLeft + outer.width / 2, y: slotTop(slotOf.get(panel.sourceId)!) + outer.height / 2 };
     box(panel.id, center, outer);
     const lines = [panel.value.title, ...(panel.value.lines ?? [])].filter((line, index) => index > 0 || line !== '');
     panelText.set(panel.id, { id: ids.claim(`${panel.id}-text`), lines, size: inner, center });
@@ -785,7 +800,7 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
   for (const ring of nodeVariants.filter((v) => v.value.kind === 'ring')) {
     nodes.push(frameNode(ring, { shape: 'circle', borderWidth: 2, borderStyle: 'solid' }));
     if (ring.value.title) {
-      const size = textSize(ringLabelLines(ring), 13);
+      const size = snapSize(textSize(ringLabelLines(ring), 13));
       const center = positions.get(`label:${ring.id}`)!;
       const id = ids.claim(`${ring.id}-label`);
       companions.push({ id, steps: ring.steps });
@@ -844,7 +859,8 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
         const unit = key === 'x' ? 'ux' : 'uy';
         const end = ends.map((id) => variantAt.get(id)?.get(step)).find((variant) => variant && Math.abs(variant.value[unit] - ref) < 0.01);
         const b = end ? boxes.get(end.id) : undefined;
-        return b ? b[key] : ref * scale;
+        // A free bend lands on the half grid, where box centres fall.
+        return b ? b[key] : Math.round((ref * scale) / (GRID / 2)) * (GRID / 2);
       }
       const variant = variantAt.get(ref)?.get(step);
       const b = variant ? boxes.get(variant.id) : undefined;

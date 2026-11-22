@@ -8,10 +8,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 628,
-          "y": -351
+          "x": 660,
+          "y": -380
         },
-        "width": 338,
+        "width": 360,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "AI ĐỌC GÌ\n1% sản phẩm hàng đầu  → 60% lượt đọc\n10% sản phẩm hàng đầu → 90% lượt đọc\n# cùng những dòng đó, đọc đi đọc lại",
         "position": {
-          "x": 628,
-          "y": -351
+          "x": 660,
+          "y": -380
         },
-        "width": 314,
-        "height": 100,
+        "width": 360,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 628,
-          "y": -349
+          "x": 660,
+          "y": -360
         },
-        "width": 338,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "THỜI GIAN ĐỌC TRUNG BÌNH\ntrúng cache ≈ 1 ms\nCSDL        ≈ 20 ms\n80% trúng:  0,8×1 + 0,2×20  = 4,8 ms\n→ 95% trúng: 0,95×1 + 0,05×20 = 2 ms",
         "position": {
-          "x": 628,
-          "y": -349
+          "x": 660,
+          "y": -360
         },
-        "width": 314,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 624,
-          "y": -349
+          "x": 660,
+          "y": -360
         },
-        "width": 330,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "LÂU NHẤT KHÔNG DÙNG\nproduct:42    dùng 1 giây trước\nproduct:7     dùng 4 giây trước\nproduct:913   dùng 2 phút trước\n⚠ loại product:5 · không dùng 3 giờ",
         "position": {
-          "x": 624,
-          "y": -349
+          "x": 660,
+          "y": -360
         },
-        "width": 306,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 645,
-          "y": -349
+          "x": 680,
+          "y": -360
         },
-        "width": 371,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "BLOOM FILTER · 12 TRIỆU ID TRONG 15 MB\nproduct:99900017 có thật không?\n→ “chắc chắn không” → 404, không tra cứu\n“có lẽ có” → cache, rồi CSDL\n# không bao giờ sai khi nói “không”",
         "position": {
-          "x": 645,
-          "y": -349
+          "x": 680,
+          "y": -360
         },
-        "width": 347,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 653,
-          "y": -340
+          "x": 680,
+          "y": -360
         },
-        "width": 388,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "LƯỢT ĐỌC CÓ THỂ DỪNG Ở ĐÂU\ncache trình duyệt   0 ms · mỗi người dùng\nbiên CDN            ~10 ms · mỗi thành phố\nbộ nhớ tiến trình   ~0 ms · mỗi server\ncache dùng chung    ~1 ms\ncơ sở dữ liệu       ~20 ms",
         "position": {
-          "x": 653,
-          "y": -340
+          "x": 680,
+          "y": -360
         },
-        "width": 364,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "process",
         "title": "20.000 người dùng",
         "position": {
-          "x": 0,
-          "y": -375
+          "x": 20,
+          "y": -400
         },
-        "width": 184,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -199,11 +199,11 @@
         "type": "process",
         "title": "người dùng thấy $20",
         "position": {
-          "x": 0,
-          "y": -375
+          "x": 20,
+          "y": -400
         },
-        "width": 184,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -220,11 +220,11 @@
         "type": "process",
         "title": "người dùng thấy $25",
         "position": {
-          "x": 0,
-          "y": -375
+          "x": 20,
+          "y": -400
         },
-        "width": 184,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -241,11 +241,11 @@
         "type": "process",
         "title": "mọi người mở trang chủ",
         "position": {
-          "x": 0,
-          "y": -375
+          "x": 20,
+          "y": -400
         },
-        "width": 200,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -262,11 +262,11 @@
         "type": "process",
         "title": "người dùng thật + crawler đoán ID",
         "position": {
-          "x": 0,
-          "y": -375
+          "x": 20,
+          "y": -400
         },
-        "width": 248,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -284,10 +284,10 @@
         "title": "Server ứng dụng",
         "position": {
           "x": 0,
-          "y": -75
+          "y": -80
         },
-        "width": 228,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -304,11 +304,11 @@
         "title": "cơ sở dữ liệu",
         "description": "CPU 92%",
         "position": {
-          "x": 275,
-          "y": -75
+          "x": 280,
+          "y": -80
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -325,11 +325,11 @@
         "title": "cơ sở dữ liệu",
         "description": "CPU 25%",
         "position": {
-          "x": 275,
-          "y": -75
+          "x": 280,
+          "y": -80
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -346,11 +346,11 @@
         "title": "cơ sở dữ liệu",
         "description": "CPU 8%",
         "position": {
-          "x": 275,
-          "y": -75
+          "x": 280,
+          "y": -80
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -367,11 +367,11 @@
         "title": "cơ sở dữ liệu",
         "description": "giá: $25 · CPU 8%",
         "position": {
-          "x": 275,
-          "y": -75
+          "x": 280,
+          "y": -80
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -388,11 +388,11 @@
         "title": "cơ sở dữ liệu",
         "description": "giá: $25 · CPU 9%",
         "position": {
-          "x": 275,
-          "y": -75
+          "x": 280,
+          "y": -80
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -409,11 +409,11 @@
         "title": "cơ sở dữ liệu",
         "description": "CPU 12%",
         "position": {
-          "x": 275,
-          "y": -75
+          "x": 280,
+          "y": -80
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -430,11 +430,11 @@
         "title": "cơ sở dữ liệu",
         "description": "⚠ 2.000 truy vấn giống hệt · CPU 100%",
         "position": {
-          "x": 275,
-          "y": -75
+          "x": 280,
+          "y": -80
         },
-        "width": 224,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -451,11 +451,11 @@
         "title": "cơ sở dữ liệu",
         "description": "CPU 9%",
         "position": {
-          "x": 275,
-          "y": -75
+          "x": 280,
+          "y": -80
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -472,11 +472,11 @@
         "title": "cơ sở dữ liệu",
         "description": "tìm thấy 0 dòng · CPU 85%",
         "position": {
-          "x": 275,
-          "y": -75
+          "x": 280,
+          "y": -80
         },
-        "width": 220,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -493,11 +493,11 @@
         "title": "Cache",
         "description": "trong bộ nhớ",
         "position": {
-          "x": -275,
-          "y": -75
+          "x": -300,
+          "y": -60
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -514,11 +514,11 @@
         "title": "Cache",
         "description": "trong bộ nhớ · ⚠ giá: $20 · đã cũ",
         "position": {
-          "x": -275,
-          "y": -75
+          "x": -300,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -535,11 +535,11 @@
         "title": "Cache",
         "description": "trong bộ nhớ · TTL 60 s · giá: $25",
         "position": {
-          "x": -275,
-          "y": -75
+          "x": -300,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -556,11 +556,11 @@
         "title": "Cache",
         "description": "trong bộ nhớ · ⚠ bộ nhớ đầy",
         "position": {
-          "x": -275,
-          "y": -75
+          "x": -300,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -577,11 +577,11 @@
         "title": "Cache",
         "description": "trong bộ nhớ · trang chủ · hết hạn",
         "position": {
-          "x": -275,
-          "y": -75
+          "x": -300,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -598,11 +598,11 @@
         "title": "Cache",
         "description": "trong bộ nhớ · ✓ làm mới sớm · 1 lần lấy",
         "position": {
-          "x": -275,
-          "y": -75
+          "x": -300,
+          "y": -60
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -619,11 +619,11 @@
         "title": "Cache",
         "description": "trong bộ nhớ · ⚠ không có gì để cache",
         "position": {
-          "x": -275,
-          "y": -75
+          "x": -300,
+          "y": -60
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -640,11 +640,11 @@
         "title": "Cache",
         "description": "trong bộ nhớ · “không tìm thấy” · TTL 30 giây",
         "position": {
-          "x": -275,
-          "y": -75
+          "x": -300,
+          "y": -60
         },
-        "width": 180,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",

@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 633,
-          "y": -502
+          "x": 720,
+          "y": -560
         },
-        "width": 297,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "DATABASE PER SERVICE\n⚠ no shared tables\n⚠ no joins across services\n→ ask the owner: API or events\n# each team picks its own store",
         "position": {
-          "x": 633,
-          "y": -502
+          "x": 720,
+          "y": -560
         },
-        "width": 273,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "process",
         "title": "shoppers",
         "position": {
-          "x": 0,
-          "y": -528
+          "x": 20,
+          "y": -600
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -64,10 +64,10 @@
         "title": "Load Balancer",
         "position": {
           "x": 0,
-          "y": -288
+          "y": -320
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Split",
         "iconPosition": "left",
@@ -84,11 +84,11 @@
         "title": "Monolith",
         "description": "all features · users · catalog · orders · payments",
         "position": {
-          "x": -120,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
         "width": 200,
-        "height": 108,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -105,11 +105,11 @@
         "title": "Monolith",
         "description": "all features · reports leak · out of memory · CPU 97%",
         "position": {
-          "x": -120,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 192,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -126,11 +126,11 @@
         "title": "Monolith",
         "description": "all features · users · catalog · orders",
         "position": {
-          "x": -144,
-          "y": 0
+          "x": -180,
+          "y": 20
         },
-        "width": 180,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -147,11 +147,11 @@
         "title": "Monolith",
         "description": "all features",
         "position": {
-          "x": 120,
-          "y": 0
+          "x": 140,
+          "y": 20
         },
-        "width": 176,
-        "height": 80,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -168,11 +168,11 @@
         "title": "Monolith",
         "description": "all features · ⚠ crashed · checkout down too",
         "position": {
-          "x": 120,
-          "y": 0
+          "x": 140,
+          "y": 20
         },
-        "width": 180,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -190,10 +190,10 @@
         "title": "one database",
         "position": {
           "x": 0,
-          "y": 264
+          "y": 300
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -210,10 +210,10 @@
         "title": "shared tables",
         "position": {
           "x": 0,
-          "y": 264
+          "y": 300
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -229,11 +229,11 @@
         "type": "process",
         "title": "monolith DB",
         "position": {
-          "x": -144,
-          "y": 264
+          "x": -180,
+          "y": 300
         },
         "width": 200,
-        "height": 104,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -249,11 +249,11 @@
         "type": "process",
         "title": "API Gateway",
         "position": {
-          "x": 0,
-          "y": -288
+          "x": 20,
+          "y": -320
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -270,11 +270,11 @@
         "title": "API Gateway",
         "description": "⚠ release train: all 4 together",
         "position": {
-          "x": 0,
-          "y": -288
+          "x": 20,
+          "y": -320
         },
-        "width": 196,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -290,11 +290,11 @@
         "type": "process",
         "title": "Users",
         "position": {
-          "x": -324,
+          "x": -380,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -310,11 +310,11 @@
         "type": "process",
         "title": "Catalog",
         "position": {
-          "x": -108,
+          "x": -140,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Layers",
         "iconPosition": "left",
@@ -330,11 +330,11 @@
         "type": "process",
         "title": "Catalog",
         "position": {
-          "x": -108,
+          "x": -140,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Layers",
         "iconPosition": "left",
@@ -350,11 +350,11 @@
         "type": "process",
         "title": "Orders",
         "position": {
-          "x": 108,
+          "x": 140,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -371,11 +371,11 @@
         "title": "Orders",
         "description": "history: 20 orders",
         "position": {
-          "x": 108,
+          "x": 140,
           "y": 0
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -392,11 +392,11 @@
         "title": "Orders",
         "description": "local copy: name · photo",
         "position": {
-          "x": 108,
+          "x": 140,
           "y": 0
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -413,11 +413,11 @@
         "title": "Orders",
         "description": "contract: needs amount",
         "position": {
-          "x": 108,
+          "x": 140,
           "y": 0
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -433,11 +433,11 @@
         "type": "process",
         "title": "Payments",
         "position": {
-          "x": 324,
-          "y": 0
+          "x": 380,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -454,11 +454,11 @@
         "title": "Payments",
         "description": "slow · 2 s",
         "position": {
-          "x": 324,
-          "y": 0
+          "x": 380,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -475,11 +475,11 @@
         "title": "Payments",
         "description": "CI: breaks Orders’ contract ✗",
         "position": {
-          "x": 324,
-          "y": 0
+          "x": 380,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -496,11 +496,11 @@
         "title": "Payments",
         "description": "new",
         "position": {
-          "x": 324,
-          "y": 0
+          "x": 380,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -516,11 +516,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -324,
-          "y": 240
+          "x": -380,
+          "y": 260
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -536,11 +536,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -108,
-          "y": 240
+          "x": -140,
+          "y": 260
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -556,11 +556,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 108,
-          "y": 240
+          "x": 140,
+          "y": 260
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -576,11 +576,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 324,
-          "y": 240
+          "x": 380,
+          "y": 260
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -596,11 +596,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 216,
-          "y": 240
+          "x": 260,
+          "y": 260
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 437,
-          "y": -279
+          "x": 500,
+          "y": -320
         },
-        "width": 330,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "THE PROFILE SCREEN, IN REST\nGET /users/42           → 18 KB\nGET /users/42/posts     → 26 KB\nGET /users/42/followers →  4 KB\n# three requests, one after another",
         "position": {
-          "x": 437,
-          "y": -279
+          "x": 500,
+          "y": -320
         },
-        "width": 306,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 433,
-          "y": -279
+          "x": 500,
+          "y": -320
         },
-        "width": 322,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "WHAT THE SCREEN NEEDS\nname, avatar URL           ~0.4 KB\nlast 3 posts + previews    ~2.5 KB\nfollower count             ~0.1 KB\n⚠ downloaded 48 KB · used ~3 KB",
         "position": {
-          "x": 433,
-          "y": -279
+          "x": 500,
+          "y": -320
         },
-        "width": 298,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 441,
-          "y": -262
+          "x": 500,
+          "y": -320
         },
-        "width": 338,
-        "height": 159,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "ONE QUERY\nquery {\n  user(id: 42) { name avatar\n    posts(last: 3) { title preview }\n    followers { count } }\n}\n→ 1 round trip · 3 KB",
         "position": {
-          "x": 441,
-          "y": -262
+          "x": 500,
+          "y": -320
         },
-        "width": 314,
-        "height": 139,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 441,
-          "y": -270
+          "x": 500,
+          "y": -320
         },
-        "width": 338,
-        "height": 142,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "A “SMALL” QUERY\nfollowers {\n  followers {\n    followers { posts { comments } }\n  } }\n⚠ 41,000 database lookups",
         "position": {
-          "x": 441,
-          "y": -270
+          "x": 500,
+          "y": -320
         },
-        "width": 314,
-        "height": 122,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 474,
-          "y": -279
+          "x": 540,
+          "y": -320
         },
-        "width": 404,
-        "height": 124,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "A GRPC CONTRACT\nservice Users {\n  rpc GetUser (UserId) returns (User);\n}\n→ binary · typed · a few × smaller than JSON",
         "position": {
-          "x": 474,
-          "y": -279
+          "x": 540,
+          "y": -320
         },
-        "width": 380,
-        "height": 104,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,10 +178,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 491,
-          "y": -281
+          "x": 540,
+          "y": -340
         },
-        "width": 437,
+        "width": 440,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "PAGING A LONG LIST\n⚠ ?offset=40000&limit=20  → walks 40,020 rows\n→ ?after=9f3c&limit=20     → index seek, 20 rows\n# response includes next cursor: \"a71b\"",
         "position": {
-          "x": 491,
-          "y": -281
+          "x": 540,
+          "y": -340
         },
-        "width": 413,
-        "height": 100,
+        "width": 440,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 479,
-          "y": -279
+          "x": 540,
+          "y": -320
         },
-        "width": 413,
-        "height": 124,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "EVOLVING SAFELY\n⚠ remove or rename a field   → old apps break\n→ add a field                → nothing breaks\n→ deprecate, measure, remove later\n# breaking change? → /v2 alongside /v1",
         "position": {
-          "x": 479,
-          "y": -279
+          "x": 540,
+          "y": -320
         },
-        "width": 389,
-        "height": 104,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -246,11 +246,11 @@
         "type": "process",
         "title": "mobile app",
         "position": {
-          "x": 0,
-          "y": -304
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -267,11 +267,11 @@
         "title": "mobile app",
         "description": "loading…",
         "position": {
-          "x": 0,
-          "y": -304
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -288,11 +288,11 @@
         "title": "mobile app",
         "description": "followers · page 2,001",
         "position": {
-          "x": 0,
-          "y": -304
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -309,11 +309,11 @@
         "title": "mobile app",
         "description": "⚠ app v3.2 · crashed",
         "position": {
-          "x": 0,
-          "y": -304
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -330,10 +330,10 @@
         "title": "REST API",
         "position": {
           "x": 0,
-          "y": -112
+          "y": -140
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -351,10 +351,10 @@
         "description": "GET /users/42/followers · GET /users/42/posts · GET /users/42",
         "position": {
           "x": 0,
-          "y": -112
+          "y": -140
         },
-        "width": 236,
-        "height": 108,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -372,10 +372,10 @@
         "description": "one endpoint",
         "position": {
           "x": 0,
-          "y": -112
+          "y": -140
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Braces",
         "iconPosition": "left",
@@ -393,10 +393,10 @@
         "description": "one endpoint · name → display_name",
         "position": {
           "x": 0,
-          "y": -112
+          "y": -140
         },
-        "width": 176,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Braces",
         "iconPosition": "left",
@@ -413,11 +413,11 @@
         "title": "Users",
         "description": "service",
         "position": {
-          "x": -112,
-          "y": 64
+          "x": -140,
+          "y": 60
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -434,11 +434,11 @@
         "title": "Users",
         "description": "service · ⚠ 41,000 lookups · CPU 97%",
         "position": {
-          "x": -112,
-          "y": 64
+          "x": -140,
+          "y": 60
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -455,11 +455,11 @@
         "title": "Users",
         "description": "service · CPU 30%",
         "position": {
-          "x": -112,
-          "y": 64
+          "x": -140,
+          "y": 60
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -476,11 +476,11 @@
         "title": "Users",
         "description": "service · 2,000,000 followers · CPU 30%",
         "position": {
-          "x": -112,
-          "y": 64
+          "x": -140,
+          "y": 60
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -497,11 +497,11 @@
         "title": "Posts",
         "description": "service",
         "position": {
-          "x": 112,
-          "y": 64
+          "x": 140,
+          "y": 80
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -518,11 +518,11 @@
         "title": "Posts",
         "description": "service · CPU 30%",
         "position": {
-          "x": 112,
-          "y": 64
+          "x": 140,
+          "y": 80
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",

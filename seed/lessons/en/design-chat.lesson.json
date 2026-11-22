@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 872,
-          "y": -381
+          "x": 960,
+          "y": -400
         },
-        "width": 379,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "REQUIREMENTS\nsend      to a person or a group\nreceive   at once if online, later if not\n→ never lost · in order · shown once\n# under 200 ms when both are online",
         "position": {
-          "x": 872,
-          "y": -381
+          "x": 960,
+          "y": -400
         },
-        "width": 355,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 868,
-          "y": -381
+          "x": 960,
+          "y": -400
         },
-        "width": 371,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "NAPKIN MATH\n50 M users × 40 messages  ≈ 23,000 / s\n× 200 bytes               ≈ 400 GB / day\n20 M connected at peak\n→ ÷ 200 k per server ≈ 100 gateways",
         "position": {
-          "x": 868,
-          "y": -381
+          "x": 960,
+          "y": -400
         },
-        "width": 347,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 876,
-          "y": -381
+          "x": 960,
+          "y": -400
         },
-        "width": 388,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "ONE ROW PER MESSAGE\npartition key   conversation_id\nsort key        seq   41, 42, 43 …\nmessage_id · sender · body · sent_at\n→ “latest 50 of conv 88” is one range read",
         "position": {
-          "x": 876,
-          "y": -381
+          "x": 960,
+          "y": -400
         },
-        "width": 364,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "process",
         "title": "Alice",
         "position": {
-          "x": -261,
-          "y": -406
+          "x": -300,
+          "y": -440
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -131,11 +131,11 @@
         "title": "Alice",
         "description": "retry · same id 7f3a",
         "position": {
-          "x": -261,
-          "y": -406
+          "x": -300,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -152,11 +152,11 @@
         "title": "Alice",
         "description": "sees: Bob is online",
         "position": {
-          "x": -261,
-          "y": -406
+          "x": -300,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -172,11 +172,11 @@
         "type": "process",
         "title": "Bob",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 176,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -192,11 +192,11 @@
         "type": "process",
         "title": "Bob · offline, has up to #41",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 220,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -213,11 +213,11 @@
         "type": "process",
         "title": "Bob · sees it once ✓✓",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 184,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -233,11 +233,11 @@
         "type": "process",
         "title": "Bob · typing…",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 212,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -253,11 +253,11 @@
         "type": "process",
         "title": "Bob · reconnected, synced from #43",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 256,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -274,11 +274,11 @@
         "title": "Chat Service",
         "description": "to be designed",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -295,11 +295,11 @@
         "title": "Chat Server",
         "description": "sockets: alice, bob",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -316,11 +316,11 @@
         "title": "Chat Service",
         "description": "which gateway has Bob?",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -336,11 +336,11 @@
         "type": "process",
         "title": "Chat Service",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -357,11 +357,11 @@
         "title": "Chat Service",
         "description": "conv 88 · next seq 43",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -378,11 +378,11 @@
         "title": "Chat Service",
         "description": "seen 7f3a → just ack",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -399,11 +399,11 @@
         "title": "Chat Service",
         "description": "3 members",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -419,11 +419,11 @@
         "type": "process",
         "title": "Gateway 1",
         "position": {
-          "x": -261,
-          "y": -116
+          "x": -300,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Network",
         "iconPosition": "left",
@@ -439,11 +439,11 @@
         "type": "process",
         "title": "Gateway 2",
         "position": {
-          "x": 261,
-          "y": -116
+          "x": 300,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Network",
         "iconPosition": "left",
@@ -460,11 +460,11 @@
         "title": "Gateway 2",
         "description": "⚠ DOWN",
         "position": {
-          "x": 261,
-          "y": -116
+          "x": 300,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Network",
         "iconPosition": "left",
@@ -482,11 +482,11 @@
         "title": "Sessions",
         "description": "bob → gateway 2",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -502,11 +502,11 @@
         "type": "process",
         "title": "Sessions",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -523,11 +523,11 @@
         "title": "Sessions",
         "description": "bob: no entry",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -544,11 +544,11 @@
         "title": "Sessions",
         "description": "bob: online · 30 s TTL",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -565,11 +565,11 @@
         "title": "Sessions",
         "description": "bob → gateway 1",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -585,11 +585,11 @@
         "type": "process",
         "title": "message store",
         "position": {
-          "x": -261,
-          "y": 203
+          "x": -280,
+          "y": 220
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -606,11 +606,11 @@
         "title": "message store",
         "description": "conv 88 · #42 #43 waiting",
         "position": {
-          "x": -261,
-          "y": 203
+          "x": -280,
+          "y": 220
         },
-        "width": 220,
-        "height": 106,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -627,11 +627,11 @@
         "title": "Push",
         "description": "APNs / FCM",
         "position": {
-          "x": 261,
-          "y": 203
+          "x": 300,
+          "y": 240
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Bell",
         "iconPosition": "left",
@@ -647,11 +647,11 @@
         "type": "process",
         "title": "Cara",
         "position": {
-          "x": 522,
-          "y": -116
+          "x": 580,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -1266,12 +1266,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "meteor",
@@ -1293,12 +1293,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "none"
@@ -1316,12 +1316,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "none"
@@ -1339,12 +1339,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "none"
@@ -1362,12 +1362,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "none"
@@ -1398,12 +1398,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 261,
-            "y": -261
+            "x": 300,
+            "y": -280
           },
           {
-            "x": -220,
-            "y": -261
+            "x": -240,
+            "y": -280
           }
         ],
         "effect": "convoy",

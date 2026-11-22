@@ -11,8 +11,8 @@
           "x": 0,
           "y": 20
         },
-        "width": 540,
-        "height": 380,
+        "width": 640,
+        "height": 440,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "CONSENSUS CLUSTER · etcd",
         "position": {
-          "x": -160,
-          "y": -190
+          "x": -220,
+          "y": -180
         },
         "width": 200,
-        "height": 33,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 541,
-          "y": -335
+          "x": 620,
+          "y": -360
         },
-        "width": 322,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "MAJORITY (QUORUM)\n3 nodes → 2 must agree\n5 nodes → 3 must agree\n→ two majorities always overlap\n# so only one side can ever decide",
         "position": {
-          "x": 541,
-          "y": -335
+          "x": 620,
+          "y": -360
         },
-        "width": 298,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 529,
-          "y": -326
+          "x": 600,
+          "y": -360
         },
-        "width": 297,
-        "height": 142,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "ELECTION · TERM 2\nB: timer fires — no heartbeat\nB: term 1 → 2, votes for itself\nB → C: “vote for me?”\n→ C: yes → 2 of 3 → B leads\n# one vote per node per term",
         "position": {
-          "x": 529,
-          "y": -326
+          "x": 600,
+          "y": -360
         },
-        "width": 273,
-        "height": 122,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 520,
-          "y": -335
+          "x": 580,
+          "y": -360
         },
         "width": 280,
-        "height": 124,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "COMMIT RULE\n1  leader appends the entry\n2  sends it to every follower\n3  a majority has stored it\n→ committed → reply “saved”",
         "position": {
-          "x": 520,
-          "y": -335
+          "x": 580,
+          "y": -360
         },
-        "width": 256,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 512,
-          "y": -335
+          "x": 580,
+          "y": -360
         },
-        "width": 264,
-        "height": 124,
+        "width": 280,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "NODES → MAJORITY → CAN LOSE\n3  →  2  →  1\n⚠ 4  →  3  →  1   no gain\n5  →  3  →  2\n7  →  4  →  3",
         "position": {
-          "x": 512,
-          "y": -335
+          "x": 580,
+          "y": -360
         },
-        "width": 240,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 553,
-          "y": -335
+          "x": 620,
+          "y": -360
         },
-        "width": 346,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "THE BILL\nevery write: + 1 majority round trip\none leader → one machine’s throughput\n⚠ no majority → no writes\n# an election pauses writes ≈ 1 s",
         "position": {
-          "x": 553,
-          "y": -335
+          "x": 620,
+          "y": -360
         },
-        "width": 322,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "process",
         "title": "App Server 1",
         "position": {
-          "x": 0,
-          "y": -340
+          "x": 20,
+          "y": -360
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -233,11 +233,11 @@
         "title": "node A",
         "description": "leader",
         "position": {
-          "x": 0,
-          "y": -100
+          "x": 20,
+          "y": -120
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -254,11 +254,11 @@
         "title": "node A",
         "description": "leader · seat 7 → Ana",
         "position": {
-          "x": 0,
-          "y": -100
+          "x": 20,
+          "y": -120
         },
-        "width": 176,
-        "height": 122,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -275,11 +275,11 @@
         "title": "node A",
         "description": "1 of 3 · can’t commit",
         "position": {
-          "x": 0,
-          "y": -100
+          "x": 20,
+          "y": -120
         },
-        "width": 176,
-        "height": 122,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -296,11 +296,11 @@
         "title": "node A",
         "description": "still on term 1",
         "position": {
-          "x": 0,
-          "y": -100
+          "x": 20,
+          "y": -120
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -317,11 +317,11 @@
         "title": "node A",
         "description": "log 1 2 3 · 4′ Ana, unconfirmed",
         "position": {
-          "x": 0,
-          "y": -100
+          "x": 20,
+          "y": -120
         },
-        "width": 176,
-        "height": 123,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -338,11 +338,11 @@
         "title": "node A",
         "description": "✓ follower · term 2 · caught up",
         "position": {
-          "x": 0,
-          "y": -100
+          "x": 20,
+          "y": -120
         },
-        "width": 176,
-        "height": 123,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -359,11 +359,11 @@
         "title": "node A",
         "description": "zone 1",
         "position": {
-          "x": 0,
-          "y": -100
+          "x": 20,
+          "y": -120
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -380,11 +380,11 @@
         "title": "node A",
         "description": "✓ follower",
         "position": {
-          "x": 0,
-          "y": -100
+          "x": 20,
+          "y": -120
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -401,11 +401,11 @@
         "title": "node B",
         "description": "✓ follower",
         "position": {
-          "x": -200,
-          "y": 140
+          "x": -220,
+          "y": 160
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -422,11 +422,11 @@
         "title": "node B",
         "description": "leader · seat 7 → Ben",
         "position": {
-          "x": -200,
-          "y": 140
+          "x": -220,
+          "y": 160
         },
-        "width": 176,
-        "height": 122,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -443,11 +443,11 @@
         "title": "node B",
         "description": "leader · term 2",
         "position": {
-          "x": -200,
-          "y": 140
+          "x": -220,
+          "y": 160
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -464,11 +464,11 @@
         "title": "node B",
         "description": "leader · term 2 · log 1 2 3 · 4 Ben ✓",
         "position": {
-          "x": -200,
-          "y": 140
+          "x": -220,
+          "y": 160
         },
-        "width": 176,
-        "height": 140,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -485,11 +485,11 @@
         "title": "node B",
         "description": "leader · term 2 · zone 2",
         "position": {
-          "x": -200,
-          "y": 140
+          "x": -220,
+          "y": 160
         },
-        "width": 176,
-        "height": 123,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -506,11 +506,11 @@
         "title": "node B",
         "description": "⚠ awake · thinks it leads term 2",
         "position": {
-          "x": -200,
-          "y": 140
+          "x": -220,
+          "y": 160
         },
-        "width": 176,
-        "height": 140,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -527,11 +527,11 @@
         "title": "node B",
         "description": "refused → steps down",
         "position": {
-          "x": -200,
-          "y": 140
+          "x": -220,
+          "y": 160
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -548,11 +548,11 @@
         "title": "node C",
         "description": "✓ follower",
         "position": {
-          "x": 200,
-          "y": 140
+          "x": 220,
+          "y": 160
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -569,11 +569,11 @@
         "title": "node C",
         "description": "✓ voted for B",
         "position": {
-          "x": 200,
-          "y": 140
+          "x": 220,
+          "y": 160
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -590,11 +590,11 @@
         "title": "node C",
         "description": "log 1 2 3 · 4 Ben ✓",
         "position": {
-          "x": 200,
-          "y": 140
+          "x": 220,
+          "y": 160
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -611,11 +611,11 @@
         "title": "node C",
         "description": "zone 3",
         "position": {
-          "x": 200,
-          "y": 140
+          "x": 220,
+          "y": 160
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -632,11 +632,11 @@
         "title": "node C",
         "description": "leader · term 3",
         "position": {
-          "x": 200,
-          "y": 140
+          "x": 220,
+          "y": 160
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -653,11 +653,11 @@
         "title": "node C",
         "description": "leader · term 3 · waits for 1 more ack",
         "position": {
-          "x": 200,
-          "y": 140
+          "x": 220,
+          "y": 160
         },
-        "width": 176,
-        "height": 140,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -673,11 +673,11 @@
         "type": "process",
         "title": "App Server 2",
         "position": {
-          "x": -440,
-          "y": 140
+          "x": -500,
+          "y": 160
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -695,10 +695,10 @@
         "description": "⚠ report.csv · overwritten by B",
         "position": {
           "x": 0,
-          "y": 380
+          "y": 420
         },
-        "width": 228,
-        "height": 106,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -716,10 +716,10 @@
         "description": "highest token seen: 3",
         "position": {
           "x": 0,
-          "y": 380
+          "y": 420
         },
-        "width": 228,
-        "height": 106,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -736,11 +736,11 @@
         "title": "Kubernetes",
         "description": "cluster state",
         "position": {
-          "x": -220,
-          "y": -360
+          "x": -260,
+          "y": -400
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -757,11 +757,11 @@
         "title": "Database",
         "description": "who is primary?",
         "position": {
-          "x": 0,
-          "y": -360
+          "x": 20,
+          "y": -400
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -778,11 +778,11 @@
         "title": "Scheduler",
         "description": "one runner lock",
         "position": {
-          "x": 220,
-          "y": -360
+          "x": 260,
+          "y": -400
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Clock",
         "iconPosition": "left",

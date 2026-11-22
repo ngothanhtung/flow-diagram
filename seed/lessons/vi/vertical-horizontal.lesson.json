@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 322,
-        "height": 289,
+        "width": 360,
+        "height": 320,
         "color": "#bfbfbf",
         "backgroundColor": "#141414",
         "borderColor": "#8c8c8c",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "máy lớn nhất có thể mua",
         "position": {
-          "x": -55,
-          "y": -124
+          "x": -60,
+          "y": -140
         },
-        "width": 192,
-        "height": 33,
+        "width": 200,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "process",
         "title": "100 người dùng",
         "position": {
-          "x": 0,
-          "y": -456
+          "x": 20,
+          "y": -480
         },
-        "width": 220,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -63,11 +63,11 @@
         "type": "process",
         "title": "12.000 người dùng",
         "position": {
-          "x": 0,
-          "y": -456
+          "x": 20,
+          "y": -480
         },
-        "width": 184,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -84,11 +84,11 @@
         "type": "process",
         "title": "500.000 người dùng",
         "position": {
-          "x": 0,
-          "y": -456
+          "x": 20,
+          "y": -480
         },
-        "width": 184,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -105,11 +105,11 @@
         "type": "process",
         "title": "4 giờ sáng · 50.000 người dùng",
         "position": {
-          "x": 0,
-          "y": -456
+          "x": 20,
+          "y": -480
         },
-        "width": 248,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -126,11 +126,11 @@
         "type": "process",
         "title": "4 giờ sáng · 50.000 người dùng",
         "position": {
-          "x": -266,
-          "y": -456
+          "x": -260,
+          "y": -480
         },
-        "width": 248,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -147,11 +147,11 @@
         "type": "process",
         "title": "trưa · 750.000 người dùng",
         "position": {
-          "x": 0,
-          "y": -456
+          "x": 20,
+          "y": -480
         },
-        "width": 220,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -169,11 +169,11 @@
         "title": "Server ứng dụng",
         "description": "4 vCPU · 16 GB · CPU 1%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 228,
-        "height": 75,
+        "width": 280,
+        "height": 200,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -190,11 +190,11 @@
         "title": "Server ứng dụng",
         "description": "4 vCPU · 16 GB · CPU 100%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 228,
-        "height": 75,
+        "width": 280,
+        "height": 200,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -211,11 +211,11 @@
         "title": "Server ứng dụng",
         "description": "16 vCPU · 64 GB · CPU 30%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 228,
-        "height": 137,
+        "width": 280,
+        "height": 200,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -232,11 +232,11 @@
         "title": "Server ứng dụng",
         "description": "192 vCPU · 768 GB · CPU 100%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 266,
-        "height": 160,
+        "width": 280,
+        "height": 200,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -254,11 +254,11 @@
         "title": "Server ứng dụng",
         "description": "⚠ SẬP",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 266,
-        "height": 160,
+        "width": 280,
+        "height": 200,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -276,11 +276,11 @@
         "title": "Server A",
         "description": "CPU 54%",
         "position": {
-          "x": -399,
+          "x": -420,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -297,11 +297,11 @@
         "title": "Server A",
         "description": "CPU 5%",
         "position": {
-          "x": -399,
+          "x": -420,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -318,11 +318,11 @@
         "title": "Server A",
         "description": "CPU 11%",
         "position": {
-          "x": -399,
+          "x": -420,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -339,11 +339,11 @@
         "title": "Server A",
         "description": "CPU 99%",
         "position": {
-          "x": -399,
+          "x": -420,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -360,11 +360,11 @@
         "title": "Server B",
         "description": "CPU 52%",
         "position": {
-          "x": -133,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -381,11 +381,11 @@
         "title": "Server B",
         "description": "CPU 5%",
         "position": {
-          "x": -133,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -402,11 +402,11 @@
         "title": "Server B",
         "description": "tự co giãn: 2 trong 2–8 · CPU 10%",
         "position": {
-          "x": -133,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -423,11 +423,11 @@
         "title": "Server B",
         "description": "CPU 99%",
         "position": {
-          "x": -133,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -444,11 +444,11 @@
         "title": "Server B",
         "description": "⚠ SẬP",
         "position": {
-          "x": -133,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -466,11 +466,11 @@
         "title": "Server C",
         "description": "CPU 50%",
         "position": {
-          "x": 133,
+          "x": 160,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -487,11 +487,11 @@
         "title": "Server C",
         "description": "CPU 6%",
         "position": {
-          "x": 133,
+          "x": 160,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -507,11 +507,11 @@
         "type": "process",
         "title": "đang khởi động",
         "position": {
-          "x": 133,
+          "x": 160,
           "y": 0
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -529,11 +529,11 @@
         "title": "Server D",
         "description": "CPU 48%",
         "position": {
-          "x": 399,
+          "x": 440,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -550,11 +550,11 @@
         "title": "Server D",
         "description": "CPU 5%",
         "position": {
-          "x": 399,
+          "x": 440,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -570,11 +570,11 @@
         "type": "process",
         "title": "đang khởi động",
         "position": {
-          "x": 399,
+          "x": 440,
           "y": 0
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -592,11 +592,11 @@
         "title": "đang khởi động",
         "description": "≈ 3 phút",
         "position": {
-          "x": -665,
+          "x": -680,
           "y": 0
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -613,11 +613,11 @@
         "type": "process",
         "title": "đang khởi động",
         "position": {
-          "x": 665,
+          "x": 720,
           "y": 0
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",

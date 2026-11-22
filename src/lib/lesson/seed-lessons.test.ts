@@ -15,6 +15,7 @@ import { normalizeLessonDocument } from './lesson-normalize';
 import { resolveStepView } from './lesson-step-view';
 import { contentOf, type LessonDocumentJSON } from './lesson-types';
 
+const GRID = 40;
 const seedRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../seed/lessons');
 const LANGUAGES = ['en', 'vi'] as const;
 
@@ -54,6 +55,15 @@ describe('seed lessons', () => {
           expect(node.height, node.id).toBeLessThanOrEqual(limits.maxHeight);
           if (typeof node.icon === 'string') expect(Object.hasOwn(icons, node.icon.replace(/^lucide:/, '')), node.icon).toBe(true);
         }
+
+        // Snapped to the editor's 40px grid: every box's edges sit on grid lines,
+        // and a Line's bends on half-grid points (where box centres fall).
+        const offGrid = nodes
+          .filter((node) => [node.position.x - (node.width ?? 0) / 2, node.position.y - (node.height ?? 0) / 2, node.width ?? 0, node.height ?? 0].some((value) => value % GRID !== 0))
+          .map((node) => node.id);
+        expect(offGrid, 'boxes off the grid').toEqual([]);
+        const offBends = lesson.diagram.edges.filter((edge) => (edge.bendPoints ?? []).some((point) => point.x % (GRID / 2) !== 0 || point.y % (GRID / 2) !== 0)).map((edge) => edge.id);
+        expect(offBends, 'bends off the half grid').toEqual([]);
 
         const content = contentOf(lesson);
         for (const step of lesson.steps) {

@@ -9,10 +9,10 @@
         "title": "",
         "position": {
           "x": 0,
-          "y": -44
+          "y": -40
         },
-        "width": 1314,
-        "height": 211,
+        "width": 1520,
+        "height": 240,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 724,
-          "y": -242
+          "x": 700,
+          "y": -240
         },
-        "width": 612,
-        "height": 273,
+        "width": 680,
+        "height": 320,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -44,11 +44,11 @@
         "type": "text",
         "title": "LOG FILE · APPEND ONLY",
         "position": {
-          "x": 520,
-          "y": -358
+          "x": 460,
+          "y": -380
         },
-        "width": 184,
-        "height": 33,
+        "width": 200,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -60,11 +60,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -55,
-          "y": 396
+          "x": -40,
+          "y": 400
         },
-        "width": 1426,
-        "height": 194,
+        "width": 1520,
+        "height": 240,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -78,11 +78,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1321,
-          "y": -634
+          "x": 1340,
+          "y": -600
         },
-        "width": 437,
-        "height": 124,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -96,11 +96,11 @@
         "type": "text",
         "title": "THE DURABILITY DIAL\nfsync every commit    safest · slowest\n→ group commit        same safety, shared fsync\nfsync every 100 ms    fast · may lose 100 ms\n⚠ fsync never         fastest · may lose minutes",
         "position": {
-          "x": 1321,
-          "y": -634
+          "x": 1340,
+          "y": -600
         },
-        "width": 413,
-        "height": 104,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -113,10 +113,10 @@
         "title": "App",
         "position": {
           "x": 0,
-          "y": -660
+          "y": -640
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -133,10 +133,10 @@
         "title": "200,000 writes / s",
         "position": {
           "x": 0,
-          "y": -660
+          "y": -640
         },
-        "width": 184,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -153,10 +153,10 @@
         "title": "Analytics query",
         "position": {
           "x": 0,
-          "y": -660
+          "y": -640
         },
-        "width": 228,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -175,8 +175,8 @@
           "x": 0,
           "y": -220
         },
-        "width": 230,
-        "height": 117,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -196,8 +196,8 @@
           "x": 0,
           "y": -220
         },
-        "width": 230,
-        "height": 117,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -218,8 +218,8 @@
           "x": 0,
           "y": -220
         },
-        "width": 230,
-        "height": 117,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -239,8 +239,8 @@
           "x": 0,
           "y": -220
         },
-        "width": 230,
-        "height": 117,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -260,8 +260,8 @@
           "x": 0,
           "y": -220
         },
-        "width": 194,
-        "height": 117,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -281,8 +281,8 @@
           "x": 0,
           "y": -220
         },
-        "width": 194,
-        "height": 117,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -298,11 +298,11 @@
         "type": "process",
         "title": "data file · 8 KB pages",
         "position": {
-          "x": -624,
-          "y": 396
+          "x": -640,
+          "y": 400
         },
-        "width": 232,
-        "height": 72,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -318,11 +318,11 @@
         "type": "process",
         "title": "B-tree pages · updated in place",
         "position": {
-          "x": -624,
-          "y": 396
+          "x": -640,
+          "y": 400
         },
-        "width": 180,
-        "height": 72,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -338,11 +338,11 @@
         "type": "process",
         "title": "B-tree pages · updated in place",
         "position": {
-          "x": -624,
-          "y": 396
+          "x": -640,
+          "y": 400
         },
-        "width": 180,
-        "height": 72,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -358,11 +358,11 @@
         "type": "process",
         "title": "row store · every page read",
         "position": {
-          "x": -624,
-          "y": 396
+          "x": -640,
+          "y": 400
         },
-        "width": 176,
-        "height": 72,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -378,11 +378,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -431,
-          "y": 396
+          "x": -440,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -398,11 +398,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -431,
-          "y": 396
+          "x": -440,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -418,11 +418,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -316,
-          "y": 396
+          "x": -320,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -438,11 +438,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -316,
-          "y": 396
+          "x": -320,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -458,11 +458,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -201,
-          "y": 396
+          "x": -200,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -478,11 +478,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -201,
-          "y": 396
+          "x": -200,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -498,11 +498,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -85,
-          "y": 396
+          "x": -80,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -518,11 +518,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -85,
-          "y": 396
+          "x": -80,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -538,11 +538,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 31,
-          "y": 396
+          "x": 40,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -558,11 +558,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 31,
-          "y": 396
+          "x": 40,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -578,11 +578,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 196,
-          "y": 396
+          "x": 220,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -598,11 +598,11 @@
         "type": "process",
         "title": "⚠ torn page",
         "position": {
-          "x": 196,
-          "y": 396
+          "x": 220,
+          "y": 400
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -618,11 +618,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 196,
-          "y": 396
+          "x": 220,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -638,11 +638,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 362,
-          "y": 396
+          "x": 400,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -658,11 +658,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 362,
-          "y": 396
+          "x": 400,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -678,11 +678,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 477,
-          "y": 396
+          "x": 520,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -698,11 +698,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 477,
-          "y": 396
+          "x": 520,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -718,11 +718,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 592,
-          "y": 396
+          "x": 640,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -738,11 +738,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 592,
-          "y": 396
+          "x": 640,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -759,11 +759,11 @@
         "title": "Log",
         "description": "✓ fsync before “saved”",
         "position": {
-          "x": 534,
+          "x": 500,
           "y": -220
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -781,11 +781,11 @@
         "title": "Log",
         "description": "1 fsync for 8 transactions",
         "position": {
-          "x": 534,
+          "x": 500,
           "y": -220
         },
-        "width": 176,
-        "height": 90,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -803,11 +803,11 @@
         "title": "Log",
         "description": "✓ older entries discarded",
         "position": {
-          "x": 534,
+          "x": 500,
           "y": -220
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -824,11 +824,11 @@
         "type": "process",
         "title": "Log",
         "position": {
-          "x": 534,
+          "x": 500,
           "y": -220
         },
-        "width": 176,
-        "height": 90,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -845,11 +845,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -865,11 +865,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -885,11 +885,11 @@
         "type": "process",
         "title": "▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -905,11 +905,11 @@
         "type": "process",
         "title": "▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -925,11 +925,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -945,11 +945,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -965,11 +965,11 @@
         "type": "process",
         "title": "sorted files (SSTables) · oldest",
         "position": {
-          "x": -337,
-          "y": 396
+          "x": -360,
+          "y": 380
         },
-        "width": 208,
-        "height": 93,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -985,11 +985,11 @@
         "type": "process",
         "title": "not here",
         "position": {
-          "x": -337,
-          "y": 396
+          "x": -360,
+          "y": 380
         },
-        "width": 176,
-        "height": 93,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1005,11 +1005,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -104,
-          "y": 396
+          "x": -100,
+          "y": 380
         },
-        "width": 154,
-        "height": 92,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1025,11 +1025,11 @@
         "type": "process",
         "title": "✓ maybe → found",
         "position": {
-          "x": -104,
-          "y": 396
+          "x": -100,
+          "y": 380
         },
-        "width": 176,
-        "height": 93,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1045,11 +1045,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 112,
-          "y": 396
+          "x": 140,
+          "y": 380
         },
-        "width": 154,
-        "height": 92,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1065,11 +1065,11 @@
         "type": "process",
         "title": "not here",
         "position": {
-          "x": 112,
-          "y": 396
+          "x": 140,
+          "y": 380
         },
-        "width": 176,
-        "height": 93,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1085,11 +1085,11 @@
         "type": "process",
         "title": "newest",
         "position": {
-          "x": 330,
-          "y": 396
+          "x": 380,
+          "y": 380
         },
-        "width": 176,
-        "height": 93,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1105,11 +1105,11 @@
         "type": "process",
         "title": "not here",
         "position": {
-          "x": 330,
-          "y": 396
+          "x": 380,
+          "y": 380
         },
-        "width": 176,
-        "height": 93,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1125,11 +1125,11 @@
         "type": "process",
         "title": "merged · newest values only",
         "position": {
-          "x": -176,
-          "y": 396
+          "x": -160,
+          "y": 400
         },
-        "width": 229,
-        "height": 138,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1145,11 +1145,11 @@
         "type": "process",
         "title": "sorted files · never modified",
         "position": {
-          "x": -176,
-          "y": 396
+          "x": -160,
+          "y": 400
         },
-        "width": 229,
-        "height": 138,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1166,11 +1166,11 @@
         "title": "id",
         "description": "column store · one file per column",
         "position": {
-          "x": -541,
-          "y": -44
+          "x": -620,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1186,11 +1186,11 @@
         "type": "process",
         "title": "user",
         "position": {
-          "x": -325,
-          "y": -44
+          "x": -380,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1206,11 +1206,11 @@
         "type": "process",
         "title": "item",
         "position": {
-          "x": -108,
-          "y": -44
+          "x": -140,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1226,11 +1226,11 @@
         "type": "process",
         "title": "price",
         "position": {
-          "x": 109,
-          "y": -44
+          "x": 140,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#b7eb8f",
@@ -1246,11 +1246,11 @@
         "type": "process",
         "title": "date",
         "position": {
-          "x": 325,
-          "y": -44
+          "x": 380,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1266,11 +1266,11 @@
         "type": "process",
         "title": "+35",
         "position": {
-          "x": 541,
-          "y": -44
+          "x": 620,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1286,11 +1286,11 @@
         "type": "text",
         "title": "",
         "position": {
-          "x": 484,
-          "y": 290
+          "x": 460,
+          "y": 300
         },
-        "width": 28,
-        "height": 28
+        "width": 40,
+        "height": 40
       }
     ],
     "edges": [
@@ -1418,11 +1418,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -431,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1446,11 +1446,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -431,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -1468,11 +1468,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -431,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1495,11 +1495,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -431,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "ants",
@@ -1522,11 +1522,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -431,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1550,11 +1550,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -85,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1578,11 +1578,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -85,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -1600,11 +1600,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -85,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1627,11 +1627,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -85,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "ants",
@@ -1654,11 +1654,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -85,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1682,11 +1682,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 196,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1710,11 +1710,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 196,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -1732,11 +1732,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 196,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1759,11 +1759,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 196,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "ants",
@@ -1786,11 +1786,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 196,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1814,11 +1814,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 477,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1842,11 +1842,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 477,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -1864,11 +1864,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 477,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1891,11 +1891,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 477,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "ants",
@@ -1918,11 +1918,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 477,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2053,11 +2053,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -624,
-            "y": 88
+            "x": -640,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2080,11 +2080,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -316,
-            "y": 88
+            "x": -320,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2107,11 +2107,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -201,
-            "y": 88
+            "x": -200,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2134,11 +2134,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 31,
-            "y": 88
+            "x": 40,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2161,11 +2161,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 362,
-            "y": 88
+            "x": 400,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2188,11 +2188,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 592,
-            "y": 88
+            "x": 640,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2217,11 +2217,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 330,
-            "y": 88
+            "x": 380,
+            "y": 80
           }
         ],
         "effect": "pulse",
@@ -2245,11 +2245,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 330,
-            "y": 88
+            "x": 380,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -2269,11 +2269,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 330,
-            "y": 88
+            "x": 380,
+            "y": 80
           }
         ],
         "effect": "pulse",
@@ -2297,11 +2297,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -337,
-            "y": 88
+            "x": -360,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -2319,11 +2319,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": -104,
-            "y": 88
+            "x": -100,
+            "y": 80
           }
         ],
         "effect": "comet",
@@ -2347,11 +2347,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": 88
+            "y": 80
           },
           {
-            "x": 112,
-            "y": 88
+            "x": 140,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -2373,11 +2373,11 @@
         "bendPoints": [
           {
             "x": 0,
-            "y": -352
+            "y": -340
           },
           {
-            "x": 109,
-            "y": -352
+            "x": 140,
+            "y": -340
           }
         ],
         "effect": "comet",
@@ -2399,12 +2399,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -660,
-            "y": -660
+            "x": -640,
+            "y": -640
           },
           {
-            "x": -660,
-            "y": 290
+            "x": -640,
+            "y": 300
           }
         ],
         "effect": "ants",

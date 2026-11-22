@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 510,
-          "y": -398
+          "x": 560,
+          "y": -440
         },
-        "width": 363,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "BOOK A SEAT\nn = SELECT left FROM seats WHERE id = 7\nif n > 0:\n  UPDATE seats SET left = {n − 1}\n  INSERT INTO bookings …\n# n − 1 is worked out in the app",
         "position": {
-          "x": 510,
-          "y": -398
+          "x": 560,
+          "y": -440
         },
-        "width": 339,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 497,
-          "y": -407
+          "x": 540,
+          "y": -440
         },
-        "width": 338,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "WHAT HAPPENED\nAna reads   ██░░░░░░░░░░  left = 1\nBen reads   ███░░░░░░░░░  left = 1\nAna writes  ██████░░░░░░  left = 0\nBen writes  ████████░░░░  left = 0 !",
         "position": {
-          "x": 497,
-          "y": -407
+          "x": 540,
+          "y": -440
         },
-        "width": 314,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 497,
-          "y": -398
+          "x": 540,
+          "y": -440
         },
-        "width": 338,
-        "height": 142,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "INSIDE A TRANSACTION\nBEGIN\n  SELECT left …          → 1 (both!)\n  UPDATE … INSERT …\nCOMMIT\n⚠ all-or-nothing ≠ one-at-a-time",
         "position": {
-          "x": 497,
-          "y": -398
+          "x": 540,
+          "y": -440
         },
-        "width": 314,
-        "height": 122,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 481,
-          "y": -407
+          "x": 520,
+          "y": -440
         },
-        "width": 305,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "ONE ATOMIC STATEMENT\nUPDATE seats SET left = left − 1\n WHERE id = 7 AND left > 0\n→ Ana: 1 row changed → booked\n# Ben: 0 rows changed → sold out",
         "position": {
-          "x": 481,
-          "y": -407
+          "x": 520,
+          "y": -440
         },
-        "width": 281,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 493,
-          "y": -407
+          "x": 540,
+          "y": -440
         },
-        "width": 330,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "COMPARE-AND-SET\nread:  left = 1, version = 8\nwrite: … SET left = 0, version = 9\n       WHERE id = 7 AND version = 8\n⚠ Ben: 0 rows → reload, retry",
         "position": {
-          "x": 493,
-          "y": -407
+          "x": 540,
+          "y": -440
         },
-        "width": 306,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 506,
-          "y": -407
+          "x": 540,
+          "y": -440
         },
-        "width": 355,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "NOTHING TO LOCK\nSELECT … FROM bookings\n  WHERE seat = 7 FOR UPDATE   → 0 rows\nINSERT INTO bookings (seat = 7)\n⚠ both see 0 rows → both insert",
         "position": {
-          "x": 506,
-          "y": -407
+          "x": 540,
+          "y": -440
         },
-        "width": 331,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 489,
-          "y": -407
+          "x": 540,
+          "y": -440
         },
-        "width": 322,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "A WAIT CYCLE\nAna: lock A … waiting for B\nBen: lock B … waiting for A\n⚠ cycle → database aborts one\n→ fix: always lock lowest id first",
         "position": {
-          "x": 489,
-          "y": -407
+          "x": 540,
+          "y": -440
         },
-        "width": 298,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -246,11 +246,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 497,
-          "y": -398
+          "x": 540,
+          "y": -440
         },
-        "width": 338,
-        "height": 142,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -264,11 +264,11 @@
         "type": "text",
         "title": "THREE SHORT STEPS\n1. UPDATE seat 7 SET held_by = Ana,\n     held_until = now() + 10 min\n2. charge card (no transaction open)\n3. UPDATE seat 7 SET sold_to = Ana\n# job: release holds past held_until",
         "position": {
-          "x": 497,
-          "y": -398
+          "x": 540,
+          "y": -440
         },
-        "width": 314,
-        "height": 122,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -280,11 +280,11 @@
         "type": "process",
         "title": "Ana",
         "position": {
-          "x": -168,
-          "y": -432
+          "x": -180,
+          "y": -480
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -301,11 +301,11 @@
         "title": "Ana",
         "description": "booked seat 7 ✓",
         "position": {
-          "x": -168,
-          "y": -432
+          "x": -180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -322,11 +322,11 @@
         "title": "Ana",
         "description": "v8 → v9 ✓",
         "position": {
-          "x": -168,
-          "y": -432
+          "x": -180,
+          "y": -480
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -343,11 +343,11 @@
         "title": "Ana",
         "description": "transfer A → B",
         "position": {
-          "x": -168,
-          "y": -432
+          "x": -180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -364,11 +364,11 @@
         "title": "Ana",
         "description": "paying… (lock held)",
         "position": {
-          "x": -168,
-          "y": -432
+          "x": -180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -385,11 +385,11 @@
         "title": "Ana",
         "description": "seat held · paying",
         "position": {
-          "x": -168,
-          "y": -432
+          "x": -180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -405,11 +405,11 @@
         "type": "process",
         "title": "Ben",
         "position": {
-          "x": 168,
-          "y": -432
+          "x": 180,
+          "y": -480
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -426,11 +426,11 @@
         "title": "Ben",
         "description": "booked seat 7 ✓",
         "position": {
-          "x": 168,
-          "y": -432
+          "x": 180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -447,11 +447,11 @@
         "title": "Ben",
         "description": "sold out · sorry",
         "position": {
-          "x": 168,
-          "y": -432
+          "x": 180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -468,11 +468,11 @@
         "title": "Ben",
         "description": "v8 is stale · retry",
         "position": {
-          "x": 168,
-          "y": -432
+          "x": 180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -489,11 +489,11 @@
         "title": "Ben",
         "description": "aborted · retrying",
         "position": {
-          "x": 168,
-          "y": -432
+          "x": 180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -510,11 +510,11 @@
         "title": "Ben",
         "description": "duplicate key · sold out",
         "position": {
-          "x": 168,
-          "y": -432
+          "x": 180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -531,11 +531,11 @@
         "title": "Ben",
         "description": "waiting for seat 7",
         "position": {
-          "x": 168,
-          "y": -432
+          "x": 180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -552,11 +552,11 @@
         "title": "Ben",
         "description": "seat 7 held · pick another",
         "position": {
-          "x": 168,
-          "y": -432
+          "x": 180,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -572,11 +572,11 @@
         "type": "process",
         "title": "Server 1",
         "position": {
-          "x": -168,
-          "y": -144
+          "x": -180,
+          "y": -160
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -592,11 +592,11 @@
         "type": "process",
         "title": "Server 2",
         "position": {
-          "x": 168,
-          "y": -144
+          "x": 180,
+          "y": -160
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -614,10 +614,10 @@
         "description": "seat 7 · left: 1",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 192,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -635,10 +635,10 @@
         "description": "seat 7 · left: 0 · 2 bookings!",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 196,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -656,10 +656,10 @@
         "description": "seat 7 · left: 0 · 2 bookings! · read committed",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 200,
-        "height": 140,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -677,10 +677,10 @@
         "description": "seat 7 · left: 0 · row 7 locked by Ana",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 196,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -698,10 +698,10 @@
         "description": "seat 7 · left: 0",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 192,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -719,10 +719,10 @@
         "description": "seat 7 · left: 0 · version 9",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 192,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -740,10 +740,10 @@
         "description": "seat 7 · left: 0 · serializable",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 196,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -761,10 +761,10 @@
         "description": "⚠ bookings: seat 7 × 2",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 192,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -782,10 +782,10 @@
         "description": "Ana holds A · waits for B · Ben holds B · waits for A",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 208,
-        "height": 140,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -803,10 +803,10 @@
         "description": "seat 7 · left: 0 · UNIQUE (concert, seat)",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 200,
-        "height": 136,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -824,10 +824,10 @@
         "description": "seat 7 · left: 1 · locked 3 s · 40 waiting",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 196,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -845,10 +845,10 @@
         "description": "seat 7: held for Ana · 12:10",
         "position": {
           "x": 0,
-          "y": 144
+          "y": 160
         },
-        "width": 196,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -865,11 +865,11 @@
         "title": "Payment Provider",
         "description": "3 s per charge",
         "position": {
-          "x": -384,
-          "y": -144
+          "x": -420,
+          "y": -180
         },
-        "width": 176,
-        "height": 98,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -885,11 +885,11 @@
         "type": "process",
         "title": "Payment Provider",
         "position": {
-          "x": -384,
-          "y": -144
+          "x": -420,
+          "y": -180
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",

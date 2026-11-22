@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 984,
-          "y": -722
+          "x": 1100,
+          "y": -800
         },
-        "width": 355,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "WHO PICKS THE INSTANCE?\nclient-side   Orders gets the list,\n              balances itself\nserver-side   Orders calls “payments”,\n              a proxy picks for it",
         "position": {
-          "x": 984,
-          "y": -722
+          "x": 1100,
+          "y": -800
         },
-        "width": 331,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -43,11 +43,11 @@
         "title": "Orders",
         "description": "config: 10.0.3.7, 10.0.3.8",
         "position": {
-          "x": -408,
-          "y": -25
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -64,11 +64,11 @@
         "title": "Orders",
         "description": "cached list · 10 s",
         "position": {
-          "x": -408,
-          "y": -25
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -84,11 +84,11 @@
         "type": "process",
         "title": "Orders",
         "position": {
-          "x": -408,
-          "y": -25
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -105,11 +105,11 @@
         "title": "Orders",
         "description": "resolves payments.internal",
         "position": {
-          "x": -408,
-          "y": -25
+          "x": -440,
+          "y": -20
         },
-        "width": 204,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -126,11 +126,11 @@
         "title": "Orders",
         "description": "cached list · still works",
         "position": {
-          "x": -408,
-          "y": -25
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -147,11 +147,11 @@
         "title": "Orders",
         "description": "retries · TLS · metrics (Java)",
         "position": {
-          "x": -408,
-          "y": -25
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 108,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -168,11 +168,11 @@
         "title": "Payments",
         "description": "10.0.3.7",
         "position": {
-          "x": 0,
-          "y": -306
+          "x": 20,
+          "y": -360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -189,11 +189,11 @@
         "title": "Payments",
         "description": "10.0.3.7 · ⚠ replaced",
         "position": {
-          "x": 0,
-          "y": -306
+          "x": 20,
+          "y": -360
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -211,11 +211,11 @@
         "title": "Payments",
         "description": "10.0.3.8",
         "position": {
-          "x": 0,
-          "y": -16
+          "x": 20,
+          "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -232,11 +232,11 @@
         "title": "Payments",
         "description": "10.0.5.21 · idle · nobody knows it",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -254,11 +254,11 @@
         "title": "Payments",
         "description": "10.0.5.21",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -275,11 +275,11 @@
         "title": "Payments",
         "description": "10.0.5.21 · missed 3 heartbeats",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -297,11 +297,11 @@
         "title": "Payments",
         "description": "10.0.5.21 · just started · cold",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -318,11 +318,11 @@
         "title": "Payments",
         "description": "10.0.5.21 · ready ✓ · ramping 10% → 100%",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -339,11 +339,11 @@
         "title": "Registry",
         "description": "payments → .3.8, .5.21",
         "position": {
-          "x": 408,
+          "x": 440,
           "y": 0
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -360,11 +360,11 @@
         "title": "Registry",
         "description": "payments → .3.8, .6.4",
         "position": {
-          "x": 408,
+          "x": 440,
           "y": 0
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -380,11 +380,11 @@
         "type": "process",
         "title": "Registry",
         "position": {
-          "x": 408,
+          "x": 440,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -401,11 +401,11 @@
         "title": "DNS",
         "description": "TTL 10 s",
         "position": {
-          "x": 408,
+          "x": 440,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -422,11 +422,11 @@
         "title": "Registry",
         "description": "✓ leader · 2 of 3 up",
         "position": {
-          "x": 408,
+          "x": 440,
           "y": 0
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -442,11 +442,11 @@
         "type": "process",
         "title": "Control Plane",
         "position": {
-          "x": 408,
+          "x": 440,
           "y": 0
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Settings",
         "iconPosition": "left",
@@ -463,11 +463,11 @@
         "title": "Payments",
         "description": "10.0.6.4 · ✓ new · registered",
         "position": {
-          "x": 0,
-          "y": -331
+          "x": 20,
+          "y": -380
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -484,11 +484,11 @@
         "title": "Payments",
         "description": "10.0.6.4",
         "position": {
-          "x": 0,
-          "y": -331
+          "x": 20,
+          "y": -380
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -505,11 +505,11 @@
         "title": "Payments",
         "description": "10.0.6.4 · retries · TLS · metrics (Go)",
         "position": {
-          "x": 0,
-          "y": -331
+          "x": 20,
+          "y": -380
         },
-        "width": 180,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -525,11 +525,11 @@
         "type": "process",
         "title": "⚠ DOWN",
         "position": {
-          "x": 646,
+          "x": 740,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -546,11 +546,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 408,
-          "y": -272
+          "x": 460,
+          "y": -320
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -566,11 +566,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -326,
-          "y": 107
+          "x": -380,
+          "y": 120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",
@@ -586,11 +586,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 82,
-          "y": -199
+          "x": 100,
+          "y": -240
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",
@@ -606,11 +606,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 82,
-          "y": 98
+          "x": 100,
+          "y": 120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",
@@ -626,11 +626,11 @@
         "type": "process",
         "title": "apps & browsers",
         "position": {
-          "x": -408,
-          "y": -748
+          "x": -440,
+          "y": -840
         },
-        "width": 228,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -648,11 +648,11 @@
         "title": "API Gateway",
         "description": "auth · rate limits · routing",
         "position": {
-          "x": -408,
-          "y": -374
+          "x": -460,
+          "y": -400
         },
-        "width": 196,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -677,12 +677,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -306
+            "x": -220,
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -704,12 +704,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -306
+            "x": -220,
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -821,12 +821,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": 306
+            "x": -220,
+            "y": 340
           }
         ],
         "effect": "comet",
@@ -848,12 +848,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": 306
+            "x": -220,
+            "y": 340
           }
         ],
         "effect": "comet",
@@ -876,12 +876,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": 306
+            "x": -220,
+            "y": 340
           }
         ],
         "effect": "comet",
@@ -988,11 +988,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": 306
+            "x": 220,
+            "y": 340
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1014,11 +1014,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": 306
+            "x": 220,
+            "y": 340
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1037,11 +1037,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": 306
+            "x": 220,
+            "y": 340
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1063,11 +1063,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": 306
+            "x": 220,
+            "y": 340
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1090,12 +1090,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1119,12 +1119,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1148,12 +1148,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1177,12 +1177,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1206,12 +1206,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1235,12 +1235,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1262,12 +1262,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -331
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1289,12 +1289,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -331
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1316,12 +1316,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -331
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1343,12 +1343,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -331
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1370,12 +1370,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -25
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -331
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1398,11 +1398,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -331
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1424,11 +1424,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -331
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1450,11 +1450,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -331
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1476,11 +1476,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -331
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1502,11 +1502,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -331
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1528,11 +1528,11 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -331
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
+            "x": 220,
             "y": 0
           }
         ],
@@ -1581,12 +1581,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           },
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           }
         ],
         "effect": "dots",

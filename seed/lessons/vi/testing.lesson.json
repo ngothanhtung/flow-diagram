@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 633,
-          "y": -406
+          "x": 700,
+          "y": -440
         },
-        "width": 322,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "MỘT UNIT TEST\nbasket = [{ price: 9.99, qty: 3 }]\ntotal(basket, \"SAVE10\")\n→ expect 26.97  ✓\n# không DB, không mạng, ~1 ms",
         "position": {
-          "x": 633,
-          "y": -406
+          "x": 700,
+          "y": -440
         },
-        "width": 298,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 670,
-          "y": -406
+          "x": 720,
+          "y": -440
         },
-        "width": 396,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "HỢP ĐỒNG\nGET /stock/sku-42\n→ 200 { \"sku\": \"sku-42\", \"in_stock\": 3 }\n⚠ đổi tên in_stock → build của Kho thất bại\n# kiểm tra ở cả hai phía, riêng rẽ",
         "position": {
-          "x": 670,
-          "y": -406
+          "x": 720,
+          "y": -440
         },
-        "width": 372,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 674,
-          "y": -406
+          "x": 740,
+          "y": -440
         },
-        "width": 404,
-        "height": 124,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "BA TẦNG\nđầu cuối      20   15 phút   cả hành trình\ntích hợp     200    4 phút   hàng xóm thật\n→ unit       2.000   30 s      từng phần một\n# nhanh và nhiều ở đáy, ít ở đỉnh",
         "position": {
-          "x": 674,
-          "y": -406
+          "x": 740,
+          "y": -440
         },
-        "width": 380,
-        "height": 104,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "process",
         "title": "người mua",
         "position": {
-          "x": 0,
-          "y": -432
+          "x": 20,
+          "y": -480
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -131,11 +131,11 @@
         "type": "process",
         "title": "người mua · bị tính thừa",
         "position": {
-          "x": 0,
-          "y": -432
+          "x": 20,
+          "y": -480
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -152,11 +152,11 @@
         "type": "process",
         "title": "trình duyệt test",
         "position": {
-          "x": 0,
-          "y": -432
+          "x": 20,
+          "y": -480
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -173,11 +173,11 @@
         "type": "process",
         "title": "bộ tạo tải · 5× lưu lượng",
         "position": {
-          "x": 0,
-          "y": -432
+          "x": 20,
+          "y": -480
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -195,11 +195,11 @@
         "title": "Checkout",
         "description": "mã của bạn",
         "position": {
-          "x": 0,
-          "y": -96
+          "x": 20,
+          "y": -100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -216,11 +216,11 @@
         "title": "Checkout",
         "description": "mã của bạn · 26,98 €, đúng ra là 26,97 €",
         "position": {
-          "x": 0,
-          "y": -96
+          "x": 20,
+          "y": -100
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -237,11 +237,11 @@
         "title": "Checkout",
         "description": "mã của bạn · p99 tăng ở mức 4,2× · CPU 82%",
         "position": {
-          "x": 0,
-          "y": -96
+          "x": 20,
+          "y": -100
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -257,11 +257,11 @@
         "type": "process",
         "title": "DB đơn hàng",
         "position": {
-          "x": 264,
-          "y": -96
+          "x": 300,
+          "y": -100
         },
-        "width": 200,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -277,11 +277,11 @@
         "type": "process",
         "title": "DB đơn hàng · thật, trong container",
         "position": {
-          "x": 264,
-          "y": -96
+          "x": 300,
+          "y": -100
         },
-        "width": 272,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -298,11 +298,11 @@
         "title": "DB đơn hàng",
         "description": "CPU 70%",
         "position": {
-          "x": 264,
-          "y": -96
+          "x": 300,
+          "y": -100
         },
-        "width": 200,
-        "height": 104,
+        "width": 280,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -320,10 +320,10 @@
         "description": "bên ngoài",
         "position": {
           "x": 0,
-          "y": 216
+          "y": 220
         },
-        "width": 204,
-        "height": 81,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -341,10 +341,10 @@
         "description": "sandbox",
         "position": {
           "x": 0,
-          "y": 216
+          "y": 220
         },
-        "width": 204,
-        "height": 81,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -362,10 +362,10 @@
         "description": "bên ngoài · chèn vào: trễ 5 s",
         "position": {
           "x": 0,
-          "y": 216
+          "y": 220
         },
-        "width": 208,
-        "height": 98,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -382,11 +382,11 @@
         "title": "Kho",
         "description": "nhóm khác",
         "position": {
-          "x": 264,
-          "y": 216
+          "x": 300,
+          "y": 220
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Boxes",
         "iconPosition": "left",
@@ -403,11 +403,11 @@
         "title": "Kho",
         "description": "nhóm khác · xác minh hợp đồng",
         "position": {
-          "x": 264,
-          "y": 216
+          "x": 300,
+          "y": 220
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Boxes",
         "iconPosition": "left",
@@ -424,11 +424,11 @@
         "title": "Test",
         "description": "✓ 2.000 test · 30 s",
         "position": {
-          "x": -312,
-          "y": -96
+          "x": -340,
+          "y": -100
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:FlaskConical",
         "iconPosition": "left",
@@ -445,11 +445,11 @@
         "title": "Test",
         "description": "✓ 200 test · 4 phút",
         "position": {
-          "x": -312,
-          "y": -96
+          "x": -340,
+          "y": -100
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:FlaskConical",
         "iconPosition": "left",
@@ -466,11 +466,11 @@
         "title": "Test",
         "description": "✓ 20 hành trình · 15 phút",
         "position": {
-          "x": -312,
-          "y": -96
+          "x": -340,
+          "y": -100
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:FlaskConical",
         "iconPosition": "left",
@@ -486,11 +486,11 @@
         "type": "process",
         "title": "Test",
         "position": {
-          "x": -312,
-          "y": -96
+          "x": -340,
+          "y": -100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:FlaskConical",
         "iconPosition": "left",
@@ -507,11 +507,11 @@
         "title": "Test",
         "description": "chờ email 2 s",
         "position": {
-          "x": -312,
-          "y": -96
+          "x": -340,
+          "y": -100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:FlaskConical",
         "iconPosition": "left",
@@ -527,11 +527,11 @@
         "type": "process",
         "title": "DB fake · trong bộ nhớ",
         "position": {
-          "x": 264,
-          "y": -96
+          "x": 280,
+          "y": -120
         },
-        "width": 232,
-        "height": 72,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#bfbfbf",
@@ -549,10 +549,10 @@
         "title": "stub: “đã duyệt”",
         "position": {
           "x": 0,
-          "y": 216
+          "y": 240
         },
-        "width": 180,
-        "height": 72,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#bfbfbf",
@@ -570,10 +570,10 @@
         "title": "sandbox nhà cung cấp",
         "position": {
           "x": 0,
-          "y": 216
+          "y": 240
         },
-        "width": 216,
-        "height": 72,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#bfbfbf",
@@ -590,11 +590,11 @@
         "type": "process",
         "title": "stub: “còn hàng”",
         "position": {
-          "x": 264,
-          "y": 216
+          "x": 300,
+          "y": 240
         },
-        "width": 180,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#bfbfbf",
@@ -835,8 +835,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 132,
-            "y": 216
+            "x": 140,
+            "y": 220
           }
         ],
         "effect": "comet",
@@ -858,8 +858,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 132,
-            "y": 216
+            "x": 140,
+            "y": 220
           }
         ],
         "effect": "comet",
@@ -882,8 +882,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 132,
-            "y": 216
+            "x": 140,
+            "y": 240
           }
         ],
         "effect": "comet",
@@ -907,8 +907,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 132,
-            "y": 216
+            "x": 140,
+            "y": 220
           }
         ],
         "effect": "comet",
@@ -930,8 +930,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 132,
-            "y": 216
+            "x": 140,
+            "y": 220
           }
         ],
         "effect": "comet",

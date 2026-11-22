@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 335,
-          "y": -394
+          "x": 380,
+          "y": -400
         },
-        "width": 322,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "MỘT LỆNH GỌI, CÓ BACKOFF\nlần thử 1  █░░░░░░░░░░░  timeout\nthử lại 1  ██░░░░░░░░░░  +100 ms\nthử lại 2  █████░░░░░░░  +200 ms\nthử lại 3  ██████████░░  +400 ms ✓",
         "position": {
-          "x": 335,
-          "y": -394
+          "x": 380,
+          "y": -400
         },
-        "width": 298,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 385,
-          "y": -394
+          "x": 420,
+          "y": -400
         },
-        "width": 421,
-        "height": 124,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "IDEMPOTENCY-KEY: 7F3A\nlần thử 1 → trừ $40, lưu kết quả với khóa 7f3a\n⚠ mất phản hồi → dịch vụ đơn hàng thử lại\nlần thử 2 → đã thấy 7f3a: trả kết quả đã lưu\n→ một lần trừ tiền, dù thử lại bao nhiêu lần",
         "position": {
-          "x": 385,
-          "y": -394
+          "x": 420,
+          "y": -400
         },
-        "width": 397,
-        "height": 104,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "process",
         "title": "người mua",
         "position": {
-          "x": 0,
-          "y": -420
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -99,10 +99,10 @@
         "description": "200 / 200 thread đang chờ · CPU 98%",
         "position": {
           "x": 0,
-          "y": -210
+          "y": -240
         },
-        "width": 180,
-        "height": 131,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -120,10 +120,10 @@
         "description": "dự phòng: chờ thanh toán · CPU 40%",
         "position": {
           "x": 0,
-          "y": -210
+          "y": -240
         },
-        "width": 180,
-        "height": 131,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -141,10 +141,10 @@
         "description": "CPU 40%",
         "position": {
           "x": 0,
-          "y": -210
+          "y": -240
         },
-        "width": 176,
-        "height": 81,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -162,10 +162,10 @@
         "description": "200 / 200 thread đang chờ · CPU 95%",
         "position": {
           "x": 0,
-          "y": -210
+          "y": -240
         },
-        "width": 180,
-        "height": 131,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -183,10 +183,10 @@
         "description": "CPU 45%",
         "position": {
           "x": 0,
-          "y": -210
+          "y": -240
         },
-        "width": 176,
-        "height": 81,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -204,10 +204,10 @@
         "description": "dự phòng: chờ thanh toán · CPU 25%",
         "position": {
           "x": 0,
-          "y": -210
+          "y": -240
         },
-        "width": 180,
-        "height": 131,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -225,10 +225,10 @@
         "description": "CPU 35%",
         "position": {
           "x": 0,
-          "y": -210
+          "y": -240
         },
-        "width": 176,
-        "height": 81,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -246,10 +246,10 @@
         "description": "deadline: 2 s · còn 1,4 s · CPU 35%",
         "position": {
           "x": 0,
-          "y": -210
+          "y": -240
         },
-        "width": 176,
-        "height": 115,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -267,10 +267,10 @@
         "description": "pool thanh toán 40 / 40 · các pool khác trống · CPU 40%",
         "position": {
           "x": 0,
-          "y": -210
+          "y": -240
         },
-        "width": 204,
-        "height": 131,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -287,11 +287,11 @@
         "title": "Thanh toán",
         "description": "trả lời sau 30 s",
         "position": {
-          "x": 0,
-          "y": 84
+          "x": 20,
+          "y": 100
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -308,11 +308,11 @@
         "title": "Thanh toán",
         "description": "thường chậm",
         "position": {
-          "x": 0,
-          "y": 84
+          "x": 20,
+          "y": 100
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -329,11 +329,11 @@
         "title": "Thanh toán",
         "description": "CPU 50%",
         "position": {
-          "x": 0,
-          "y": 84
+          "x": 20,
+          "y": 100
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -350,11 +350,11 @@
         "title": "Thanh toán",
         "description": "⚠ 4× tải bình thường · CPU 100%",
         "position": {
-          "x": 0,
-          "y": 84
+          "x": 20,
+          "y": 100
         },
-        "width": 188,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -371,11 +371,11 @@
         "title": "Thanh toán",
         "description": "đang hồi phục · CPU 62%",
         "position": {
-          "x": 0,
-          "y": 84
+          "x": 20,
+          "y": 100
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -392,11 +392,11 @@
         "title": "Thanh toán",
         "description": "⚠ SẬP",
         "position": {
-          "x": 0,
-          "y": 84
+          "x": 20,
+          "y": 100
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -414,11 +414,11 @@
         "title": "Thanh toán",
         "description": "✓ chỉ trừ tiền một lần · CPU 50%",
         "position": {
-          "x": 0,
-          "y": 84
+          "x": 20,
+          "y": 100
         },
-        "width": 188,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -435,11 +435,11 @@
         "title": "Thanh toán",
         "description": "ngân sách: 1,4 s · CPU 45%",
         "position": {
-          "x": 0,
-          "y": 84
+          "x": 20,
+          "y": 100
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -456,11 +456,11 @@
         "title": "Thanh toán",
         "description": "lại chậm",
         "position": {
-          "x": 0,
-          "y": 84
+          "x": 20,
+          "y": 100
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -476,11 +476,11 @@
         "type": "process",
         "title": "MỞ · lỗi sau 1 ms",
         "position": {
-          "x": 0,
-          "y": -63
+          "x": 20,
+          "y": -80
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Unplug",
         "iconPosition": "left",
@@ -496,11 +496,11 @@
         "type": "process",
         "title": "✓ ĐÓNG",
         "position": {
-          "x": 0,
-          "y": -63
+          "x": 20,
+          "y": -80
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Unplug",
         "iconPosition": "left",

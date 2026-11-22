@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 979,
-          "y": -722
+          "x": 1100,
+          "y": -800
         },
-        "width": 346,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "AI CHỌN INSTANCE?\nphía client  Đơn hàng lấy danh sách,\n             tự cân bằng\nphía server  Đơn hàng gọi “payments”,\n             proxy chọn hộ",
         "position": {
-          "x": 979,
-          "y": -722
+          "x": 1100,
+          "y": -800
         },
-        "width": 322,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -43,11 +43,11 @@
         "title": "Đơn hàng",
         "description": "config: 10.0.3.7, 10.0.3.8",
         "position": {
-          "x": -408,
-          "y": -21
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -64,11 +64,11 @@
         "title": "Đơn hàng",
         "description": "danh sách trong cache · 10 s",
         "position": {
-          "x": -408,
-          "y": -21
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -84,11 +84,11 @@
         "type": "process",
         "title": "Đơn hàng",
         "position": {
-          "x": -408,
-          "y": -21
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -105,11 +105,11 @@
         "title": "Đơn hàng",
         "description": "phân giải payments.internal",
         "position": {
-          "x": -408,
-          "y": -21
+          "x": -440,
+          "y": -20
         },
-        "width": 204,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -126,11 +126,11 @@
         "title": "Đơn hàng",
         "description": "danh sách trong cache · vẫn chạy",
         "position": {
-          "x": -408,
-          "y": -21
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -147,11 +147,11 @@
         "title": "Đơn hàng",
         "description": "retry · TLS · metric (Java)",
         "position": {
-          "x": -408,
-          "y": -21
+          "x": -440,
+          "y": -20
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -168,11 +168,11 @@
         "title": "Thanh toán",
         "description": "10.0.3.7",
         "position": {
-          "x": 0,
-          "y": -306
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -189,11 +189,11 @@
         "title": "Thanh toán",
         "description": "10.0.3.7 · ⚠ đã bị thay",
         "position": {
-          "x": 0,
-          "y": -306
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -211,11 +211,11 @@
         "title": "Thanh toán",
         "description": "10.0.3.8",
         "position": {
-          "x": 0,
-          "y": -16
+          "x": 20,
+          "y": 0
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -232,11 +232,11 @@
         "title": "Thanh toán",
         "description": "10.0.5.21 · ngồi không · không ai biết",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 188,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -254,11 +254,11 @@
         "title": "Thanh toán",
         "description": "10.0.5.21",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -275,11 +275,11 @@
         "title": "Thanh toán",
         "description": "10.0.5.21 · lỡ 3 heartbeat",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -297,11 +297,11 @@
         "title": "Thanh toán",
         "description": "10.0.5.21 · vừa khởi động · còn lạnh",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 188,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -318,11 +318,11 @@
         "title": "Thanh toán",
         "description": "10.0.5.21 · sẵn sàng ✓ · tăng 10% → 100%",
         "position": {
-          "x": 0,
-          "y": 306
+          "x": 20,
+          "y": 340
         },
-        "width": 192,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -339,11 +339,11 @@
         "title": "Registry",
         "description": "payments → .3.8, .5.21",
         "position": {
-          "x": 408,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -360,11 +360,11 @@
         "title": "Registry",
         "description": "payments → .3.8, .6.4",
         "position": {
-          "x": 408,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -380,11 +380,11 @@
         "type": "process",
         "title": "Registry",
         "position": {
-          "x": 408,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -401,11 +401,11 @@
         "title": "DNS",
         "description": "TTL 10 s",
         "position": {
-          "x": 408,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -422,11 +422,11 @@
         "title": "Registry",
         "description": "✓ leader · 2 trên 3 còn chạy",
         "position": {
-          "x": 408,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -442,11 +442,11 @@
         "type": "process",
         "title": "Control plane",
         "position": {
-          "x": 408,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Settings",
         "iconPosition": "left",
@@ -463,11 +463,11 @@
         "title": "Thanh toán",
         "description": "10.0.6.4 · ✓ mới · đã đăng ký",
         "position": {
-          "x": 0,
-          "y": -327
+          "x": 20,
+          "y": -380
         },
-        "width": 188,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -484,11 +484,11 @@
         "title": "Thanh toán",
         "description": "10.0.6.4",
         "position": {
-          "x": 0,
-          "y": -327
+          "x": 20,
+          "y": -380
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -505,11 +505,11 @@
         "title": "Thanh toán",
         "description": "10.0.6.4 · retry · TLS · metric (Go)",
         "position": {
-          "x": 0,
-          "y": -327
+          "x": 20,
+          "y": -380
         },
-        "width": 188,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -525,11 +525,11 @@
         "type": "process",
         "title": "⚠ SẬP",
         "position": {
-          "x": 646,
+          "x": 740,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -546,11 +546,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 408,
-          "y": -272
+          "x": 460,
+          "y": -320
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -566,11 +566,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -326,
-          "y": 102
+          "x": -380,
+          "y": 120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",
@@ -586,11 +586,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 82,
-          "y": -204
+          "x": 100,
+          "y": -240
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",
@@ -606,11 +606,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 82,
-          "y": 98
+          "x": 100,
+          "y": 120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",
@@ -626,11 +626,11 @@
         "type": "process",
         "title": "ứng dụng & trình duyệt",
         "position": {
-          "x": -408,
-          "y": -748
+          "x": -460,
+          "y": -840
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -648,11 +648,11 @@
         "title": "API Gateway",
         "description": "xác thực · giới hạn tốc độ · định tuyến",
         "position": {
-          "x": -408,
-          "y": -374
+          "x": -460,
+          "y": -420
         },
-        "width": 196,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -677,12 +677,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -306
+            "x": -220,
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -704,12 +704,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -306
+            "x": -220,
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -821,12 +821,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": 306
+            "x": -220,
+            "y": 340
           }
         ],
         "effect": "comet",
@@ -848,12 +848,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": 306
+            "x": -220,
+            "y": 340
           }
         ],
         "effect": "comet",
@@ -876,12 +876,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": 306
+            "x": -220,
+            "y": 340
           }
         ],
         "effect": "comet",
@@ -988,12 +988,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": 306
+            "x": 220,
+            "y": 340
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "heartbeat",
@@ -1014,12 +1014,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": 306
+            "x": 220,
+            "y": 340
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "none"
@@ -1037,12 +1037,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": 306
+            "x": 220,
+            "y": 340
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "heartbeat",
@@ -1063,12 +1063,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": 306
+            "x": 220,
+            "y": 340
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "heartbeat",
@@ -1090,12 +1090,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1119,12 +1119,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1148,12 +1148,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1177,12 +1177,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1206,12 +1206,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1235,12 +1235,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           },
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           }
         ],
         "effect": "comet",
@@ -1262,12 +1262,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -327
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1289,12 +1289,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -327
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1316,12 +1316,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -327
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1343,12 +1343,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -327
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1370,12 +1370,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -204,
-            "y": -21
+            "x": -220,
+            "y": -20
           },
           {
-            "x": -204,
-            "y": -327
+            "x": -220,
+            "y": -380
           }
         ],
         "effect": "comet",
@@ -1398,12 +1398,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -327
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "heartbeat",
@@ -1424,12 +1424,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -327
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "heartbeat",
@@ -1450,12 +1450,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -327
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "heartbeat",
@@ -1476,12 +1476,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -327
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "heartbeat",
@@ -1502,12 +1502,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -327
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "heartbeat",
@@ -1528,12 +1528,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 204,
-            "y": -327
+            "x": 220,
+            "y": -380
           },
           {
-            "x": 204,
-            "y": 0
+            "x": 220,
+            "y": 20
           }
         ],
         "effect": "heartbeat",
@@ -1581,12 +1581,12 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": 408,
-            "y": 442
+            "x": 440,
+            "y": 500
           },
           {
-            "x": -408,
-            "y": 442
+            "x": -440,
+            "y": 500
           }
         ],
         "effect": "dots",

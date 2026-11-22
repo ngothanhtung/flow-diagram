@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -431,
-          "y": -18
+          "x": -480,
+          "y": -20
         },
-        "width": 334,
-        "height": 486,
+        "width": 400,
+        "height": 600,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "KEY–VALUE · 3 NODES",
         "position": {
-          "x": -507,
-          "y": -240
+          "x": -580,
+          "y": -300
         },
-        "width": 162,
-        "height": 33,
+        "width": 200,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 677,
-          "y": -403
+          "x": 740,
+          "y": -440
         },
-        "width": 272,
-        "height": 124,
+        "width": 280,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "TABLES\nusers   (id, name, email)\norders  (id, user_id, total)\n# orders.user_id → users.id\n→ JOIN them in one query",
         "position": {
-          "x": 677,
-          "y": -403
+          "x": 740,
+          "y": -440
         },
-        "width": 248,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 714,
-          "y": -403
+          "x": 780,
+          "y": -440
         },
-        "width": 346,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "ONE TRANSACTION\nBEGIN\n  UPDATE balance − 50  WHERE id = Ana\n  UPDATE balance + 50  WHERE id = Ben\n→ COMMIT — both happen, or neither",
         "position": {
-          "x": 714,
-          "y": -403
+          "x": 780,
+          "y": -440
         },
-        "width": 322,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 735,
-          "y": -394
+          "x": 800,
+          "y": -440
         },
-        "width": 388,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "TWO DOCUMENTS\n{ \"sku\": \"shoe-42\",\n  \"size\": 42, \"colors\": [\"red\", \"black\"] }\n{ \"sku\": \"laptop-7\",\n  \"cpu\": \"M3\", \"ram_gb\": 16 }\n# same collection, different shapes",
         "position": {
-          "x": 735,
-          "y": -394
+          "x": 800,
+          "y": -440
         },
-        "width": 364,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,10 +144,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 743,
-          "y": -405
+          "x": 820,
+          "y": -460
         },
-        "width": 404,
+        "width": 440,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "KEY → VALUE\nsession:9f2c  →  { user: 42, cart: [7, 13] }\nGET / SET by key · ~1 ms\n# nothing to query — only lookups",
         "position": {
-          "x": 743,
-          "y": -405
+          "x": 820,
+          "y": -460
         },
-        "width": 380,
-        "height": 100,
+        "width": 440,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 723,
-          "y": -394
+          "x": 800,
+          "y": -440
         },
-        "width": 363,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "BUILT FOR ONE JOB\nsearch        free text, ranking, typos\ntime-series   metrics, sensor data\ngraph         friends-of-friends\nwide-column   huge write volumes\nobject store  files, images, backups",
         "position": {
-          "x": 723,
-          "y": -394
+          "x": 800,
+          "y": -440
         },
-        "width": 339,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "process",
         "title": "1M users",
         "position": {
-          "x": 0,
-          "y": -429
+          "x": 20,
+          "y": -480
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -233,11 +233,11 @@
         "type": "process",
         "title": "App Server",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -253,11 +253,11 @@
         "type": "process",
         "title": "SQL database",
         "position": {
-          "x": 363,
+          "x": 400,
           "y": 0
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -274,11 +274,11 @@
         "title": "SQL database",
         "description": "ACID",
         "position": {
-          "x": 363,
+          "x": 400,
           "y": 0
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -295,11 +295,11 @@
         "title": "SQL database",
         "description": "ALTER TABLE · 400M rows · 6 h · CPU 90%",
         "position": {
-          "x": 363,
+          "x": 400,
           "y": 0
         },
-        "width": 212,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -316,11 +316,11 @@
         "title": "SQL database",
         "description": "CPU 45%",
         "position": {
-          "x": 363,
+          "x": 400,
           "y": 0
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -337,11 +337,11 @@
         "title": "SQL database",
         "description": "CPU 40%",
         "position": {
-          "x": 363,
+          "x": 400,
           "y": 0
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -358,10 +358,10 @@
         "title": "document store",
         "position": {
           "x": 0,
-          "y": 363
+          "y": 420
         },
-        "width": 228,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -377,11 +377,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -396,
-          "y": -144
+          "x": -460,
+          "y": -180
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -398,11 +398,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -396,
-          "y": 145
+          "x": -460,
+          "y": 180
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -419,11 +419,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -482,
-          "y": 0
+          "x": -540,
+          "y": -20
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -441,11 +441,11 @@
         "title": "Search",
         "description": "inverted index",
         "position": {
-          "x": 363,
-          "y": 363
+          "x": 420,
+          "y": 400
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Search",
         "iconPosition": "left",
@@ -674,12 +674,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 182,
+            "x": 200,
             "y": 0
           },
           {
-            "x": 182,
-            "y": 363
+            "x": 200,
+            "y": 400
           }
         ],
         "effect": "comet",
@@ -701,12 +701,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 182,
+            "x": 200,
             "y": 0
           },
           {
-            "x": 182,
-            "y": 363
+            "x": 200,
+            "y": 400
           }
         ],
         "effect": "comet",

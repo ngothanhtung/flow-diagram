@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 979,
-          "y": -443
+          "x": 1020,
+          "y": -440
         },
-        "width": 272,
-        "height": 124,
+        "width": 280,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "WHERE DOES EACH USER GO?\nuser 1001 → hash % 4 = 2 → C\nuser 1002 → hash % 4 = 0 → A\nuser 1003 → hash % 4 = 3 → D\n→ neighbours scatter evenly",
         "position": {
-          "x": 979,
-          "y": -443
+          "x": 1020,
+          "y": -440
         },
-        "width": 248,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,10 +42,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1000,
-          "y": -445
+          "x": 1040,
+          "y": -460
         },
-        "width": 313,
+        "width": 320,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "SPLIT A HOT COUNTER\nwrite: likes:42#rand(0..7) += 1\nread:  sum of likes:42#0 … #7\n→ 8 sub-keys spread over 4 shards",
         "position": {
-          "x": 1000,
-          "y": -445
+          "x": 1040,
+          "y": -460
         },
-        "width": 289,
-        "height": 100,
+        "width": 320,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,10 +76,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1000,
-          "y": -445
+          "x": 1040,
+          "y": -460
         },
-        "width": 313,
+        "width": 320,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "SCATTER–GATHER\nask all 4 shards for their top 10\nmerge 40 results, keep the top 10\n⚠ as slow as the slowest shard",
         "position": {
-          "x": 1000,
-          "y": -445
+          "x": 1040,
+          "y": -460
         },
-        "width": 289,
-        "height": 100,
+        "width": 320,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,10 +110,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1012,
-          "y": -445
+          "x": 1060,
+          "y": -460
         },
-        "width": 338,
+        "width": 360,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "% 4 → % 5\nuser 1001: % 4 = 2, % 5 = 1  → moves\nuser 1002: % 4 = 0, % 5 = 0  → stays\n⚠ ~80% of keys change shard",
         "position": {
-          "x": 1012,
-          "y": -445
+          "x": 1060,
+          "y": -460
         },
-        "width": 314,
-        "height": 100,
+        "width": 360,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "process",
         "title": "App",
         "position": {
-          "x": 0,
-          "y": -468
+          "x": 20,
+          "y": -480
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -165,11 +165,11 @@
         "title": "App",
         "description": "route by user_id",
         "position": {
-          "x": 0,
-          "y": -468
+          "x": 20,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -186,11 +186,11 @@
         "title": "App",
         "description": "hash(user_id) % 4",
         "position": {
-          "x": 0,
-          "y": -468
+          "x": 20,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -207,11 +207,11 @@
         "title": "App",
         "description": "likes:42 → #0…#7",
         "position": {
-          "x": 0,
-          "y": -468
+          "x": 20,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -228,11 +228,11 @@
         "title": "App",
         "description": "top 10 by followers?",
         "position": {
-          "x": 0,
-          "y": -468
+          "x": 20,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -249,11 +249,11 @@
         "title": "App",
         "description": "hash(user_id) % 5",
         "position": {
-          "x": 0,
-          "y": -468
+          "x": 20,
+          "y": -480
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -273,8 +273,8 @@
           "x": 0,
           "y": 0
         },
-        "width": 239,
-        "height": 132,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -291,11 +291,11 @@
         "title": "A · ids 1–25M",
         "description": "CPU 50%",
         "position": {
-          "x": -409,
-          "y": 0
+          "x": -400,
+          "y": 20
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -312,11 +312,11 @@
         "title": "A · ids 1–25M",
         "description": "CPU 12%",
         "position": {
-          "x": -409,
-          "y": 0
+          "x": -400,
+          "y": 20
         },
-        "width": 216,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -333,11 +333,11 @@
         "title": "A · hash % 4 = 0",
         "description": "CPU 50%",
         "position": {
-          "x": -409,
-          "y": 0
+          "x": -400,
+          "y": 20
         },
-        "width": 176,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -354,11 +354,11 @@
         "title": "A · hash % 4 = 0",
         "description": "CPU 20%",
         "position": {
-          "x": -409,
-          "y": 0
+          "x": -400,
+          "y": 20
         },
-        "width": 176,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -375,11 +375,11 @@
         "title": "A · likes:42#0,#1",
         "description": "CPU 50%",
         "position": {
-          "x": -409,
-          "y": 0
+          "x": -400,
+          "y": 20
         },
-        "width": 220,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -396,11 +396,11 @@
         "title": "A · moving",
         "description": "CPU 50%",
         "position": {
-          "x": -409,
-          "y": 0
+          "x": -400,
+          "y": 20
         },
-        "width": 192,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -417,11 +417,11 @@
         "title": "B · ids 25–50M",
         "description": "CPU 50%",
         "position": {
-          "x": -136,
-          "y": 0
+          "x": -120,
+          "y": 20
         },
-        "width": 228,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -438,11 +438,11 @@
         "title": "B · ids 25–50M",
         "description": "CPU 14%",
         "position": {
-          "x": -136,
-          "y": 0
+          "x": -120,
+          "y": 20
         },
-        "width": 228,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -459,11 +459,11 @@
         "title": "B · hash % 4 = 1",
         "description": "CPU 50%",
         "position": {
-          "x": -136,
-          "y": 0
+          "x": -120,
+          "y": 20
         },
-        "width": 176,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -480,11 +480,11 @@
         "title": "B · hash % 4 = 1",
         "description": "CPU 20%",
         "position": {
-          "x": -136,
-          "y": 0
+          "x": -120,
+          "y": 20
         },
-        "width": 176,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -501,11 +501,11 @@
         "title": "B · likes:42#2,#3",
         "description": "CPU 50%",
         "position": {
-          "x": -136,
-          "y": 0
+          "x": -120,
+          "y": 20
         },
-        "width": 220,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -522,11 +522,11 @@
         "title": "B · moving",
         "description": "CPU 50%",
         "position": {
-          "x": -136,
-          "y": 0
+          "x": -120,
+          "y": 20
         },
-        "width": 192,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -543,11 +543,11 @@
         "title": "C · ids 50–75M",
         "description": "CPU 50%",
         "position": {
-          "x": 137,
-          "y": 0
+          "x": 160,
+          "y": 20
         },
-        "width": 228,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -564,11 +564,11 @@
         "title": "C · ids 50–75M",
         "description": "CPU 20%",
         "position": {
-          "x": 137,
-          "y": 0
+          "x": 160,
+          "y": 20
         },
-        "width": 228,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -585,11 +585,11 @@
         "title": "C · hash % 4 = 2",
         "description": "CPU 50%",
         "position": {
-          "x": 137,
-          "y": 0
+          "x": 160,
+          "y": 20
         },
-        "width": 176,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -606,11 +606,11 @@
         "title": "⚠ user 42 · pop star · 70%",
         "description": "CPU 98%",
         "position": {
-          "x": 137,
-          "y": 0
+          "x": 160,
+          "y": 20
         },
-        "width": 228,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -627,11 +627,11 @@
         "title": "C · likes:42#4,#5",
         "description": "CPU 50%",
         "position": {
-          "x": 137,
-          "y": 0
+          "x": 160,
+          "y": 20
         },
-        "width": 220,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -648,11 +648,11 @@
         "title": "C · moving",
         "description": "CPU 50%",
         "position": {
-          "x": 137,
-          "y": 0
+          "x": 160,
+          "y": 20
         },
-        "width": 192,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -669,11 +669,11 @@
         "title": "D · ids 75M+",
         "description": "CPU 50%",
         "position": {
-          "x": 410,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -690,11 +690,11 @@
         "title": "⚠ D · ids 75M+ · all new users",
         "description": "CPU 97%",
         "position": {
-          "x": 410,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 236,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -711,11 +711,11 @@
         "title": "D · hash % 4 = 3",
         "description": "CPU 50%",
         "position": {
-          "x": 410,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 176,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -732,11 +732,11 @@
         "title": "D · hash % 4 = 3",
         "description": "CPU 20%",
         "position": {
-          "x": 410,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 176,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -753,11 +753,11 @@
         "title": "D · likes:42#6,#7",
         "description": "CPU 50%",
         "position": {
-          "x": 410,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 220,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -774,11 +774,11 @@
         "title": "D · moving",
         "description": "CPU 50%",
         "position": {
-          "x": 410,
-          "y": 0
+          "x": 440,
+          "y": 20
         },
-        "width": 192,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -795,11 +795,11 @@
         "title": "E · new",
         "description": "CPU 50%",
         "position": {
-          "x": 683,
-          "y": 0
+          "x": 700,
+          "y": 20
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -1308,12 +1308,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -409,
-            "y": -125
+            "x": -400,
+            "y": -120
           },
           {
-            "x": 683,
-            "y": -125
+            "x": 700,
+            "y": -120
           }
         ],
         "effect": "dots",
@@ -1336,12 +1336,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -136,
-            "y": -125
+            "x": -120,
+            "y": -120
           },
           {
-            "x": 683,
-            "y": -125
+            "x": 700,
+            "y": -120
           }
         ],
         "effect": "dots",
@@ -1364,12 +1364,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 137,
-            "y": -125
+            "x": 160,
+            "y": -120
           },
           {
-            "x": 683,
-            "y": -125
+            "x": 700,
+            "y": -120
           }
         ],
         "effect": "dots",
@@ -1392,12 +1392,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 410,
-            "y": -125
+            "x": 440,
+            "y": -120
           },
           {
-            "x": 683,
-            "y": -125
+            "x": 700,
+            "y": -120
           }
         ],
         "effect": "dots",

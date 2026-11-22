@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 901,
-          "y": -381
+          "x": 980,
+          "y": -400
         },
-        "width": 437,
-        "height": 124,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "ĐÒI HỎI\ngửi    tới một người hoặc một nhóm\nnhận   ngay nếu online, sau nếu không\n→ không bao giờ mất · đúng thứ tự · hiện một lần\n# dưới 200 ms khi cả hai đều online",
         "position": {
-          "x": 901,
-          "y": -381
+          "x": 980,
+          "y": -400
         },
-        "width": 413,
-        "height": 104,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 876,
-          "y": -381
+          "x": 960,
+          "y": -400
         },
-        "width": 388,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "TÍNH NHẨM\n50 tr người dùng × 40 tin  ≈ 23.000 / s\n× 200 byte                 ≈ 400 GB / ngày\n20 tr kết nối lúc cao điểm\n→ ÷ 200 nghìn mỗi máy ≈ 100 gateway",
         "position": {
-          "x": 876,
-          "y": -381
+          "x": 960,
+          "y": -400
         },
-        "width": 364,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 942,
-          "y": -381
+          "x": 1020,
+          "y": -400
         },
         "width": 520,
-        "height": 124,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "MỖI TIN MỘT DÒNG\nkhóa phân vùng   conversation_id\nkhóa sắp xếp     seq   41, 42, 43 …\nmessage_id · sender · body · sent_at\n→ “50 tin mới nhất của cuộc 88” là một lần đọc theo khoảng",
         "position": {
-          "x": 942,
-          "y": -381
+          "x": 1020,
+          "y": -400
         },
-        "width": 496,
-        "height": 104,
+        "width": 520,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "process",
         "title": "Alice",
         "position": {
-          "x": -261,
-          "y": -406
+          "x": -300,
+          "y": -440
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -131,11 +131,11 @@
         "title": "Alice",
         "description": "thử lại · cùng id 7f3a",
         "position": {
-          "x": -261,
-          "y": -406
+          "x": -300,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -152,11 +152,11 @@
         "title": "Alice",
         "description": "thấy: Bob đang online",
         "position": {
-          "x": -261,
-          "y": -406
+          "x": -300,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -172,11 +172,11 @@
         "type": "process",
         "title": "Bob",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 176,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -192,11 +192,11 @@
         "type": "process",
         "title": "Bob · offline, có tới #41",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 220,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -213,11 +213,11 @@
         "type": "process",
         "title": "Bob · thấy một lần ✓✓",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 184,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -233,11 +233,11 @@
         "type": "process",
         "title": "Bob · đang gõ…",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 220,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -253,11 +253,11 @@
         "type": "process",
         "title": "Bob · đã kết nối lại, đồng bộ từ #43",
         "position": {
-          "x": 261,
-          "y": -406
+          "x": 300,
+          "y": -440
         },
-        "width": 264,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -274,11 +274,11 @@
         "title": "Dịch vụ chat",
         "description": "cần thiết kế",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -295,11 +295,11 @@
         "title": "Máy chủ chat",
         "description": "sockets: alice, bob",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -316,11 +316,11 @@
         "title": "Dịch vụ chat",
         "description": "gateway nào đang giữ Bob?",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -336,11 +336,11 @@
         "type": "process",
         "title": "Dịch vụ chat",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -357,11 +357,11 @@
         "title": "Dịch vụ chat",
         "description": "cuộc 88 · seq kế tiếp 43",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -378,11 +378,11 @@
         "title": "Dịch vụ chat",
         "description": "7f3a đã có → chỉ xác nhận",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -399,11 +399,11 @@
         "title": "Dịch vụ chat",
         "description": "3 thành viên",
         "position": {
-          "x": 0,
-          "y": -116
+          "x": 20,
+          "y": -120
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -419,11 +419,11 @@
         "type": "process",
         "title": "Gateway 1",
         "position": {
-          "x": -261,
-          "y": -116
+          "x": -300,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Network",
         "iconPosition": "left",
@@ -439,11 +439,11 @@
         "type": "process",
         "title": "Gateway 2",
         "position": {
-          "x": 261,
-          "y": -116
+          "x": 300,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Network",
         "iconPosition": "left",
@@ -460,11 +460,11 @@
         "title": "Gateway 2",
         "description": "⚠ SẬP",
         "position": {
-          "x": 261,
-          "y": -116
+          "x": 300,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Network",
         "iconPosition": "left",
@@ -482,11 +482,11 @@
         "title": "Phiên",
         "description": "bob → gateway 2",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -502,11 +502,11 @@
         "type": "process",
         "title": "Phiên",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -523,11 +523,11 @@
         "title": "Phiên",
         "description": "bob: không có dòng",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -544,11 +544,11 @@
         "title": "Phiên",
         "description": "bob: online · TTL 30 s",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -565,11 +565,11 @@
         "title": "Phiên",
         "description": "bob → gateway 1",
         "position": {
-          "x": 0,
-          "y": -406
+          "x": 20,
+          "y": -440
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -585,11 +585,11 @@
         "type": "process",
         "title": "kho tin nhắn",
         "position": {
-          "x": -261,
-          "y": 203
+          "x": -280,
+          "y": 220
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -606,11 +606,11 @@
         "title": "kho tin nhắn",
         "description": "cuộc 88 · #42 #43 đang chờ",
         "position": {
-          "x": -261,
-          "y": 203
+          "x": -280,
+          "y": 220
         },
-        "width": 208,
-        "height": 106,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -627,11 +627,11 @@
         "title": "Push",
         "description": "APNs / FCM",
         "position": {
-          "x": 261,
-          "y": 203
+          "x": 300,
+          "y": 240
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Bell",
         "iconPosition": "left",
@@ -647,11 +647,11 @@
         "type": "process",
         "title": "Cara",
         "position": {
-          "x": 522,
-          "y": -116
+          "x": 580,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -1266,12 +1266,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "meteor",
@@ -1293,12 +1293,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "none"
@@ -1316,12 +1316,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "none"
@@ -1339,12 +1339,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "none"
@@ -1362,12 +1362,12 @@
         "toSide": "right",
         "bendPoints": [
           {
-            "x": 392,
-            "y": 203
+            "x": 440,
+            "y": 240
           },
           {
-            "x": 392,
-            "y": -406
+            "x": 440,
+            "y": -440
           }
         ],
         "effect": "none"
@@ -1398,12 +1398,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 261,
-            "y": -261
+            "x": 300,
+            "y": -280
           },
           {
-            "x": -220,
-            "y": -261
+            "x": -240,
+            "y": -280
           }
         ],
         "effect": "convoy",

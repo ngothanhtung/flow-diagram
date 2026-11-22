@@ -9,10 +9,10 @@
         "title": "",
         "position": {
           "x": 0,
-          "y": -44
+          "y": -40
         },
-        "width": 1314,
-        "height": 211,
+        "width": 1520,
+        "height": 240,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 724,
-          "y": -242
+          "x": 700,
+          "y": -240
         },
-        "width": 612,
-        "height": 273,
+        "width": 680,
+        "height": 320,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -44,11 +44,11 @@
         "type": "text",
         "title": "TỆP LOG · CHỈ NỐI THÊM",
         "position": {
-          "x": 520,
-          "y": -358
+          "x": 460,
+          "y": -380
         },
-        "width": 184,
-        "height": 33,
+        "width": 200,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -60,11 +60,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -32,
-          "y": 396
+          "x": -20,
+          "y": 400
         },
-        "width": 1374,
-        "height": 194,
+        "width": 1480,
+        "height": 240,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -78,11 +78,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1354,
-          "y": -634
+          "x": 1380,
+          "y": -600
         },
-        "width": 504,
-        "height": 124,
+        "width": 520,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -96,11 +96,11 @@
         "type": "text",
         "title": "NÚM VẶN ĐỘ BỀN\nfsync mỗi commit     an toàn nhất · chậm nhất\n→ group commit        an toàn như nhau, fsync dùng chung\nfsync mỗi 100 ms     nhanh · có thể mất 100 ms\n⚠ không fsync         nhanh nhất · có thể mất vài phút",
         "position": {
-          "x": 1354,
-          "y": -634
+          "x": 1380,
+          "y": -600
         },
-        "width": 480,
-        "height": 104,
+        "width": 520,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -112,11 +112,11 @@
         "type": "process",
         "title": "Ứng dụng",
         "position": {
-          "x": 0,
-          "y": -660
+          "x": 20,
+          "y": -640
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -132,11 +132,11 @@
         "type": "process",
         "title": "200.000 lượt ghi / s",
         "position": {
-          "x": 0,
-          "y": -660
+          "x": 20,
+          "y": -640
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -152,11 +152,11 @@
         "type": "process",
         "title": "Truy vấn phân tích",
         "position": {
-          "x": 0,
-          "y": -660
+          "x": 20,
+          "y": -640
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -172,11 +172,11 @@
         "type": "process",
         "title": "Trang trong bộ nhớ",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -220
         },
-        "width": 194,
-        "height": 117,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -193,11 +193,11 @@
         "title": "Trang trong bộ nhớ",
         "description": "mất điện · mất 4 giây ghi",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -220
         },
-        "width": 198,
-        "height": 117,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -215,11 +215,11 @@
         "title": "Trang trong bộ nhớ",
         "description": "checkpoint: đang flush",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -220
         },
-        "width": 198,
-        "height": 117,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -236,11 +236,11 @@
         "title": "Trang trong bộ nhớ",
         "description": "⚠ đầy trang đã đổi · CPU 100%",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -220
         },
-        "width": 198,
-        "height": 117,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -257,11 +257,11 @@
         "title": "Memtable",
         "description": "đã sắp xếp · trong bộ nhớ",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -220
         },
-        "width": 194,
-        "height": 117,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -278,11 +278,11 @@
         "title": "Memtable",
         "description": "đã sắp xếp · trong bộ nhớ · GET user:42 · không ở đây",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -220
         },
-        "width": 194,
-        "height": 117,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -298,11 +298,11 @@
         "type": "process",
         "title": "tệp dữ liệu · trang 8 KB",
         "position": {
-          "x": -601,
-          "y": 396
+          "x": -620,
+          "y": 400
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -318,11 +318,11 @@
         "type": "process",
         "title": "trang B-tree · cập nhật tại chỗ",
         "position": {
-          "x": -601,
-          "y": 396
+          "x": -620,
+          "y": 400
         },
-        "width": 180,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -338,11 +338,11 @@
         "type": "process",
         "title": "trang B-tree · cập nhật tại chỗ",
         "position": {
-          "x": -601,
-          "y": 396
+          "x": -620,
+          "y": 400
         },
-        "width": 180,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -358,11 +358,11 @@
         "type": "process",
         "title": "kho theo dòng · đọc mọi trang",
         "position": {
-          "x": -601,
-          "y": 396
+          "x": -620,
+          "y": 400
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -378,11 +378,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -433,
-          "y": 396
+          "x": -440,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -398,11 +398,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -433,
-          "y": 396
+          "x": -440,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -418,11 +418,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -318,
-          "y": 396
+          "x": -320,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -438,11 +438,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -318,
-          "y": 396
+          "x": -320,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -458,11 +458,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -203,
-          "y": 396
+          "x": -200,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -478,11 +478,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -203,
-          "y": 396
+          "x": -200,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -498,11 +498,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -88,
-          "y": 396
+          "x": -80,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -518,11 +518,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -88,
-          "y": 396
+          "x": -80,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -538,11 +538,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 28,
-          "y": 396
+          "x": 40,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -558,11 +558,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 28,
-          "y": 396
+          "x": 40,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -578,11 +578,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 193,
-          "y": 396
+          "x": 220,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -598,11 +598,11 @@
         "type": "process",
         "title": "⚠ trang rách",
         "position": {
-          "x": 193,
-          "y": 396
+          "x": 220,
+          "y": 400
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -618,11 +618,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 193,
-          "y": 396
+          "x": 220,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -638,11 +638,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 359,
-          "y": 396
+          "x": 400,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -658,11 +658,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 359,
-          "y": 396
+          "x": 400,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -678,11 +678,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 474,
-          "y": 396
+          "x": 520,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -698,11 +698,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 474,
-          "y": 396
+          "x": 520,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -718,11 +718,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 589,
-          "y": 396
+          "x": 640,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -738,11 +738,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 589,
-          "y": 396
+          "x": 640,
+          "y": 400
         },
-        "width": 75,
-        "height": 72,
+        "width": 80,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -759,11 +759,11 @@
         "title": "Log",
         "description": "✓ fsync trước “đã lưu”",
         "position": {
-          "x": 534,
+          "x": 500,
           "y": -220
         },
-        "width": 176,
-        "height": 90,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -781,11 +781,11 @@
         "title": "Log",
         "description": "1 fsync cho 8 giao dịch",
         "position": {
-          "x": 534,
+          "x": 500,
           "y": -220
         },
-        "width": 176,
-        "height": 90,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -803,11 +803,11 @@
         "title": "Log",
         "description": "✓ bỏ các mục cũ",
         "position": {
-          "x": 534,
+          "x": 500,
           "y": -220
         },
-        "width": 176,
-        "height": 90,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -824,11 +824,11 @@
         "type": "process",
         "title": "Log",
         "position": {
-          "x": 534,
+          "x": 500,
           "y": -220
         },
-        "width": 176,
-        "height": 90,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -845,11 +845,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -865,11 +865,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -885,11 +885,11 @@
         "type": "process",
         "title": "▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -905,11 +905,11 @@
         "type": "process",
         "title": "▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -925,11 +925,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -945,11 +945,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": 751,
-          "y": -220
+          "x": 740,
+          "y": -200
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#8d99ae",
@@ -965,11 +965,11 @@
         "type": "process",
         "title": "tệp đã sắp xếp (SSTable) · cũ nhất",
         "position": {
-          "x": -357,
-          "y": 396
+          "x": -400,
+          "y": 380
         },
-        "width": 208,
-        "height": 93,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -985,11 +985,11 @@
         "type": "process",
         "title": "không ở đây",
         "position": {
-          "x": -357,
-          "y": 396
+          "x": -400,
+          "y": 380
         },
-        "width": 176,
-        "height": 93,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1005,11 +1005,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -108,
-          "y": 396
+          "x": -120,
+          "y": 380
         },
-        "width": 154,
-        "height": 92,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1025,11 +1025,11 @@
         "type": "process",
         "title": "✓ có thể → tìm thấy",
         "position": {
-          "x": -108,
-          "y": 396
+          "x": -120,
+          "y": 380
         },
-        "width": 208,
-        "height": 93,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1045,11 +1045,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 125,
-          "y": 396
+          "x": 140,
+          "y": 380
         },
-        "width": 154,
-        "height": 92,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1065,11 +1065,11 @@
         "type": "process",
         "title": "không ở đây",
         "position": {
-          "x": 125,
-          "y": 396
+          "x": 140,
+          "y": 380
         },
-        "width": 176,
-        "height": 93,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1085,11 +1085,11 @@
         "type": "process",
         "title": "mới nhất",
         "position": {
-          "x": 341,
-          "y": 396
+          "x": 380,
+          "y": 380
         },
-        "width": 176,
-        "height": 93,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1105,11 +1105,11 @@
         "type": "process",
         "title": "không ở đây",
         "position": {
-          "x": 341,
-          "y": 396
+          "x": 380,
+          "y": 380
         },
-        "width": 176,
-        "height": 93,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1125,11 +1125,11 @@
         "type": "process",
         "title": "đã gộp · chỉ giá trị mới nhất",
         "position": {
-          "x": -176,
-          "y": 396
+          "x": -160,
+          "y": 400
         },
-        "width": 229,
-        "height": 138,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1145,11 +1145,11 @@
         "type": "process",
         "title": "tệp đã sắp xếp · không bao giờ sửa",
         "position": {
-          "x": -176,
-          "y": 396
+          "x": -160,
+          "y": 400
         },
-        "width": 229,
-        "height": 138,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1166,11 +1166,11 @@
         "title": "id",
         "description": "kho theo cột · mỗi cột một tệp",
         "position": {
-          "x": -541,
-          "y": -44
+          "x": -620,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1186,11 +1186,11 @@
         "type": "process",
         "title": "user",
         "position": {
-          "x": -325,
-          "y": -44
+          "x": -380,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1206,11 +1206,11 @@
         "type": "process",
         "title": "item",
         "position": {
-          "x": -108,
-          "y": -44
+          "x": -140,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1226,11 +1226,11 @@
         "type": "process",
         "title": "price",
         "position": {
-          "x": 109,
-          "y": -44
+          "x": 140,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#b7eb8f",
@@ -1246,11 +1246,11 @@
         "type": "process",
         "title": "date",
         "position": {
-          "x": 325,
-          "y": -44
+          "x": 380,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1266,11 +1266,11 @@
         "type": "process",
         "title": "+35",
         "position": {
-          "x": 541,
-          "y": -44
+          "x": 620,
+          "y": -40
         },
-        "width": 176,
-        "height": 82,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": null,
         "color": "#d9d9d9",
@@ -1286,11 +1286,11 @@
         "type": "text",
         "title": "",
         "position": {
-          "x": 484,
-          "y": 290
+          "x": 460,
+          "y": 300
         },
-        "width": 28,
-        "height": 28
+        "width": 40,
+        "height": 40
       }
     ],
     "edges": [
@@ -1417,12 +1417,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -433,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1445,12 +1445,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -433,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -1467,12 +1467,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -433,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1494,12 +1494,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -433,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "ants",
@@ -1521,12 +1521,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -433,
-            "y": 88
+            "x": -440,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1549,12 +1549,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -88,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1577,12 +1577,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -88,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -1599,12 +1599,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -88,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1626,12 +1626,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -88,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "ants",
@@ -1653,12 +1653,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -88,
-            "y": 88
+            "x": -80,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1681,12 +1681,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 193,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1709,12 +1709,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 193,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -1731,12 +1731,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 193,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1758,12 +1758,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 193,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "ants",
@@ -1785,12 +1785,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 193,
-            "y": 88
+            "x": 220,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1813,12 +1813,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 474,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1841,12 +1841,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 474,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -1863,12 +1863,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 474,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -1890,12 +1890,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 474,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "ants",
@@ -1917,12 +1917,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 474,
-            "y": 88
+            "x": 520,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2052,12 +2052,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -601,
-            "y": 88
+            "x": -620,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2079,12 +2079,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -318,
-            "y": 88
+            "x": -320,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2106,12 +2106,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -203,
-            "y": 88
+            "x": -200,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2133,12 +2133,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 28,
-            "y": 88
+            "x": 40,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2160,12 +2160,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 359,
-            "y": 88
+            "x": 400,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2187,12 +2187,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 589,
-            "y": 88
+            "x": 640,
+            "y": 80
           }
         ],
         "effect": "dots",
@@ -2216,12 +2216,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 341,
-            "y": 88
+            "x": 380,
+            "y": 80
           }
         ],
         "effect": "pulse",
@@ -2244,12 +2244,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 341,
-            "y": 88
+            "x": 380,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -2268,12 +2268,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 341,
-            "y": 88
+            "x": 380,
+            "y": 80
           }
         ],
         "effect": "pulse",
@@ -2296,12 +2296,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -357,
-            "y": 88
+            "x": -400,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -2318,12 +2318,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": -108,
-            "y": 88
+            "x": -120,
+            "y": 80
           }
         ],
         "effect": "comet",
@@ -2346,12 +2346,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": 88
+            "x": 20,
+            "y": 80
           },
           {
-            "x": 125,
-            "y": 88
+            "x": 140,
+            "y": 80
           }
         ],
         "effect": "none"
@@ -2372,12 +2372,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
-            "y": -352
+            "x": 20,
+            "y": -340
           },
           {
-            "x": 109,
-            "y": -352
+            "x": 140,
+            "y": -340
           }
         ],
         "effect": "comet",
@@ -2399,12 +2399,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": -660,
-            "y": -660
+            "x": -640,
+            "y": -640
           },
           {
-            "x": -660,
-            "y": 290
+            "x": -640,
+            "y": 300
           }
         ],
         "effect": "ants",

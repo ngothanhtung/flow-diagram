@@ -9,10 +9,10 @@
         "title": "",
         "position": {
           "x": 0,
-          "y": 18
+          "y": 20
         },
-        "width": 468,
-        "height": 144,
+        "width": 560,
+        "height": 200,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "QUEUE · 50,000 JOBS · OLDEST 25 MIN",
         "position": {
-          "x": -82,
-          "y": -33
+          "x": -120,
+          "y": -60
         },
-        "width": 284,
-        "height": 33,
+        "width": 320,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -43,10 +43,10 @@
         "title": "",
         "position": {
           "x": 0,
-          "y": 18
+          "y": 20
         },
-        "width": 468,
-        "height": 144,
+        "width": 560,
+        "height": 200,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "TOPIC · 4 PARTITIONS BY ACCOUNT",
         "position": {
-          "x": -97,
-          "y": -33
+          "x": -140,
+          "y": -60
         },
-        "width": 253,
-        "height": 33,
+        "width": 280,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -77,10 +77,10 @@
         "title": "",
         "position": {
           "x": 0,
-          "y": 18
+          "y": 20
         },
-        "width": 468,
-        "height": 144,
+        "width": 560,
+        "height": 200,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "QUEUE · ACCOUNT EVENTS",
         "position": {
-          "x": -132,
-          "y": -33
+          "x": -180,
+          "y": -60
         },
-        "width": 184,
-        "height": 33,
+        "width": 200,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 42,
-          "y": 18
+          "x": 40,
+          "y": 20
         },
-        "width": 552,
-        "height": 165,
+        "width": 640,
+        "height": 200,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "QUEUE · DRAINING",
         "position": {
-          "x": -154,
-          "y": -44
+          "x": -200,
+          "y": -60
         },
-        "width": 139,
-        "height": 33,
+        "width": 160,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -145,10 +145,10 @@
         "title": "",
         "position": {
           "x": 0,
-          "y": 18
+          "y": 20
         },
-        "width": 468,
-        "height": 144,
+        "width": 560,
+        "height": 200,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "QUEUE · 1,200 JOBS WAITING",
         "position": {
-          "x": -116,
-          "y": -33
+          "x": -160,
+          "y": -60
         },
-        "width": 215,
-        "height": 33,
+        "width": 240,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 42,
-          "y": 18
+          "x": 40,
+          "y": 20
         },
-        "width": 552,
-        "height": 165,
+        "width": 640,
+        "height": 200,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "QUEUE · VIDEO JOBS",
         "position": {
-          "x": -147,
-          "y": -44
+          "x": -200,
+          "y": -60
         },
-        "width": 154,
-        "height": 33,
+        "width": 160,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 790,
-          "y": -622
+          "x": 880,
+          "y": -680
         },
-        "width": 396,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "ACKNOWLEDGEMENTS\n1. worker takes a job → hidden, not deleted\n2. worker finishes → ack → deleted\n3. no ack in 60 s → visible again\n⚠ may run twice → make jobs idempotent",
         "position": {
-          "x": 790,
-          "y": -622
+          "x": 880,
+          "y": -680
         },
-        "width": 372,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -247,10 +247,10 @@
         "title": "creators uploading",
         "position": {
           "x": 0,
-          "y": -648
+          "y": -720
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -268,10 +268,10 @@
         "title": "creators · ×10",
         "position": {
           "x": 0,
-          "y": -648
+          "y": -720
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -289,10 +289,10 @@
         "title": "all-day surge",
         "position": {
           "x": 0,
-          "y": -648
+          "y": -720
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -310,11 +310,11 @@
         "title": "Web Server",
         "description": "transcoding · 30 s · CPU 96%",
         "position": {
-          "x": 0,
-          "y": -324
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -331,11 +331,11 @@
         "title": "Web Server",
         "description": "✓ 202 Accepted · 80 ms",
         "position": {
-          "x": 0,
-          "y": -324
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -352,11 +352,11 @@
         "title": "Web Server",
         "description": "✓ 202 Accepted · 85 ms",
         "position": {
-          "x": 0,
-          "y": -324
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -372,11 +372,11 @@
         "type": "process",
         "title": "Web Server",
         "position": {
-          "x": 0,
-          "y": -324
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -393,11 +393,11 @@
         "title": "Web Server",
         "description": "503 · try again in 60 s",
         "position": {
-          "x": 0,
-          "y": -324
+          "x": 20,
+          "y": -360
         },
-        "width": 184,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -413,11 +413,11 @@
         "type": "process",
         "title": "▮ ▮",
         "position": {
-          "x": 202,
-          "y": 36
+          "x": 220,
+          "y": 40
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#d9d9d9",
@@ -433,11 +433,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": 202,
-          "y": 36
+          "x": 220,
+          "y": 40
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#d9d9d9",
@@ -452,11 +452,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮",
         "position": {
-          "x": 202,
-          "y": 36
+          "x": 220,
+          "y": 40
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#d9d9d9",
@@ -472,11 +472,11 @@
         "type": "process",
         "title": "▮ ▮ ▮",
         "position": {
-          "x": 202,
-          "y": 36
+          "x": 220,
+          "y": 40
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#d9d9d9",
@@ -491,11 +491,11 @@
         "type": "process",
         "title": "Worker",
         "position": {
-          "x": -144,
-          "y": 324
+          "x": -140,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -512,11 +512,11 @@
         "title": "Worker",
         "description": "steady pace",
         "position": {
-          "x": -144,
-          "y": 324
+          "x": -140,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -532,11 +532,11 @@
         "type": "process",
         "title": "Worker",
         "position": {
-          "x": -216,
-          "y": 324
+          "x": -220,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -553,11 +553,11 @@
         "title": "Worker",
         "description": "“deleted” ✓",
         "position": {
-          "x": -216,
-          "y": 324
+          "x": -220,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -574,11 +574,11 @@
         "title": "Worker",
         "description": "partition 1",
         "position": {
-          "x": -216,
-          "y": 324
+          "x": -220,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -595,11 +595,11 @@
         "title": "Worker",
         "description": "CPU 100%",
         "position": {
-          "x": -216,
-          "y": 324
+          "x": -220,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -615,11 +615,11 @@
         "type": "process",
         "title": "Worker",
         "position": {
-          "x": 144,
-          "y": 324
+          "x": 180,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -636,11 +636,11 @@
         "title": "Worker",
         "description": "steady pace",
         "position": {
-          "x": 144,
-          "y": 324
+          "x": 180,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -656,11 +656,11 @@
         "type": "process",
         "title": "Worker",
         "position": {
-          "x": 216,
-          "y": 324
+          "x": 260,
+          "y": 380
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -677,11 +677,11 @@
         "title": "Worker",
         "description": "⚠ “email changed” · late",
         "position": {
-          "x": 216,
-          "y": 324
+          "x": 260,
+          "y": 380
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -698,11 +698,11 @@
         "title": "Worker",
         "description": "partition 2",
         "position": {
-          "x": 216,
-          "y": 324
+          "x": 260,
+          "y": 380
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -719,11 +719,11 @@
         "title": "Worker",
         "description": "CPU 100%",
         "position": {
-          "x": 216,
-          "y": 324
+          "x": 260,
+          "y": 380
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -739,11 +739,11 @@
         "type": "process",
         "title": "Worker",
         "position": {
-          "x": -432,
-          "y": 324
+          "x": -460,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -760,11 +760,11 @@
         "title": "Worker",
         "description": "partition 0",
         "position": {
-          "x": -432,
-          "y": 324
+          "x": -460,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -781,11 +781,11 @@
         "title": "Worker",
         "description": "CPU 100%",
         "position": {
-          "x": -432,
-          "y": 324
+          "x": -460,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -801,11 +801,11 @@
         "type": "process",
         "title": "Worker",
         "position": {
-          "x": 0,
-          "y": 324
+          "x": 20,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -822,11 +822,11 @@
         "title": "Worker",
         "description": "⚠ DOWN",
         "position": {
-          "x": 0,
-          "y": 324
+          "x": 20,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -843,11 +843,11 @@
         "type": "process",
         "title": "Worker",
         "position": {
-          "x": 432,
-          "y": 324
+          "x": 500,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -864,11 +864,11 @@
         "title": "Worker",
         "description": "partition 3",
         "position": {
-          "x": 432,
-          "y": 324
+          "x": 500,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -885,11 +885,11 @@
         "title": "Worker",
         "description": "CPU 100%",
         "position": {
-          "x": 432,
-          "y": 324
+          "x": 500,
+          "y": 360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -905,11 +905,11 @@
         "type": "process",
         "title": "dead letters",
         "position": {
-          "x": -540,
-          "y": 18
+          "x": -600,
+          "y": 20
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Skull",
         "iconPosition": "left",

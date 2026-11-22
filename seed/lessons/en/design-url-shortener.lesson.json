@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 825,
-          "y": -470
+          "x": 880,
+          "y": -480
         },
-        "width": 305,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "REQUIREMENTS\ncreate     long URL → short code\nopen       short code → redirect\n→ redirects: fast, always up\n# creating a link may be slower",
         "position": {
-          "x": 825,
-          "y": -470
+          "x": 880,
+          "y": -480
         },
-        "width": 281,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 854,
-          "y": -470
+          "x": 920,
+          "y": -480
         },
-        "width": 363,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "NAPKIN MATH\n100 M links / month    ≈ 40 writes/s\n× 100 opens each       ≈ 4,000 reads/s\nevening peak × 3       ≈ 12,000 reads/s\n→ 5 years: 6 billion links ≈ 3 TB",
         "position": {
-          "x": 854,
-          "y": -470
+          "x": 920,
+          "y": -480
         },
-        "width": 339,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,10 +76,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 858,
-          "y": -472
+          "x": 920,
+          "y": -500
         },
-        "width": 371,
+        "width": 400,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "THE API\nPOST /links  { url }   →  { code }\nGET  /x7Kp2Qa          →  302 + Location\n# table: code PK · long_url · expires_at",
         "position": {
-          "x": 858,
-          "y": -472
+          "x": 920,
+          "y": -500
         },
-        "width": 347,
-        "height": 100,
+        "width": 400,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 850,
-          "y": -470
+          "x": 900,
+          "y": -480
         },
-        "width": 355,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "TWO URLS, ONE CODE\nhash(“…/summer-sale”)  →  x7Kp2Qa…\nhash(“…/cat-video”)    →  x7Kp2Qa…\n⚠ same 7 characters → collision\n# check, tweak, retry — on every write",
         "position": {
-          "x": 850,
-          "y": -470
+          "x": 900,
+          "y": -480
         },
-        "width": 331,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 800,
-          "y": -470
+          "x": 860,
+          "y": -480
         },
-        "width": 255,
-        "height": 124,
+        "width": 280,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "BASE 62\nalphabet   0–9  a–z  A–Z\n125        →  21\n7,000,000  →  tn1e\n→ 62⁷ ≈ 3.5 trillion codes",
         "position": {
-          "x": 800,
-          "y": -470
+          "x": 860,
+          "y": -480
         },
-        "width": 231,
-        "height": 104,
+        "width": 280,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 854,
-          "y": -470
+          "x": 920,
+          "y": -480
         },
-        "width": 363,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "SAME IDS, SHUFFLED\n⚠ 7,000,000 → tn1e     next is obvious\n⚠ 7,000,001 → tn1f\n→ 7,000,000 → x7Kp2Qa  after scrambling\n→ 7,000,001 → Lm03vTe",
         "position": {
-          "x": 854,
-          "y": -470
+          "x": 920,
+          "y": -480
         },
-        "width": 339,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 845,
-          "y": -461
+          "x": 900,
+          "y": -480
         },
-        "width": 346,
-        "height": 142,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "TWO KINDS OF REDIRECT\n301 permanent  browser remembers it\n→ least load\n⚠ no click counts, edits or expiry\n302 temporary  every click comes back\n→ analytics and control · more load",
         "position": {
-          "x": 845,
-          "y": -461
+          "x": 900,
+          "y": -480
         },
-        "width": 322,
-        "height": 122,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -247,10 +247,10 @@
         "title": "people clicking links",
         "position": {
           "x": 0,
-          "y": -496
+          "y": -520
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -269,10 +269,10 @@
         "description": "to be designed",
         "position": {
           "x": 0,
-          "y": -124
+          "y": -140
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Share2",
         "iconPosition": "left",
@@ -289,10 +289,10 @@
         "title": "API Servers",
         "position": {
           "x": 0,
-          "y": -124
+          "y": -140
         },
-        "width": 192,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -310,10 +310,10 @@
         "description": "code = hash(url)[0..7]",
         "position": {
           "x": 0,
-          "y": -124
+          "y": -140
         },
-        "width": 192,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -331,10 +331,10 @@
         "description": "block 7,000,000 – 7,999,999",
         "position": {
           "x": 0,
-          "y": -124
+          "y": -140
         },
-        "width": 192,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -352,10 +352,10 @@
         "description": "code = base62(scramble(id))",
         "position": {
           "x": 0,
-          "y": -124
+          "y": -140
         },
-        "width": 224,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -373,10 +373,10 @@
         "description": "302 Found",
         "position": {
           "x": 0,
-          "y": -124
+          "y": -140
         },
-        "width": 192,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -394,10 +394,10 @@
         "description": "rate limit · destination check",
         "position": {
           "x": 0,
-          "y": -124
+          "y": -140
         },
-        "width": 196,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -413,11 +413,11 @@
         "type": "process",
         "title": "links table",
         "position": {
-          "x": 372,
-          "y": -124
+          "x": 380,
+          "y": -140
         },
         "width": 200,
-        "height": 104,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -434,11 +434,11 @@
         "title": "links table",
         "description": "⚠ code taken → retry",
         "position": {
-          "x": 372,
-          "y": -124
+          "x": 380,
+          "y": -140
         },
         "width": 200,
-        "height": 106,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -454,11 +454,11 @@
         "type": "process",
         "title": "ID Blocks",
         "position": {
-          "x": -217,
-          "y": 310
+          "x": -220,
+          "y": 320
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Hash",
         "iconPosition": "left",
@@ -474,11 +474,11 @@
         "type": "process",
         "title": "scraper",
         "position": {
-          "x": -341,
-          "y": -341
+          "x": -380,
+          "y": -360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -494,11 +494,11 @@
         "type": "process",
         "title": "spam script",
         "position": {
-          "x": -341,
-          "y": -341
+          "x": -380,
+          "y": -360
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -515,11 +515,11 @@
         "title": "Cache",
         "description": "code → URL · 90% hits",
         "position": {
-          "x": -372,
-          "y": -124
+          "x": -380,
+          "y": -120
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -536,11 +536,11 @@
         "title": "Cache",
         "description": "code → URL",
         "position": {
-          "x": -372,
-          "y": -124
+          "x": -380,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -556,11 +556,11 @@
         "type": "process",
         "title": "partition = hash(code)",
         "position": {
-          "x": 372,
-          "y": -310
+          "x": 380,
+          "y": -340
         },
         "width": 200,
-        "height": 104,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -576,11 +576,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 372,
-          "y": -310
+          "x": 380,
+          "y": -340
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -596,11 +596,11 @@
         "type": "process",
         "title": "key–value store",
         "position": {
-          "x": 372,
-          "y": -124
+          "x": 380,
+          "y": -140
         },
-        "width": 184,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -616,11 +616,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 372,
-          "y": 62
+          "x": 380,
+          "y": 60
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -636,11 +636,11 @@
         "type": "process",
         "title": "Click Stream",
         "position": {
-          "x": 248,
-          "y": 310
+          "x": 260,
+          "y": 320
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:WavesHorizontal",
         "iconPosition": "left",
@@ -656,11 +656,11 @@
         "type": "process",
         "title": "click counts",
         "position": {
-          "x": 496,
-          "y": 310
+          "x": 520,
+          "y": 340
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -867,7 +867,7 @@
         "bendPoints": [
           {
             "x": -40,
-            "y": 310
+            "y": 320
           }
         ],
         "effect": "comet",
@@ -891,7 +891,7 @@
         "bendPoints": [
           {
             "x": -40,
-            "y": 310
+            "y": 320
           }
         ],
         "effect": "comet",
@@ -915,7 +915,7 @@
         "bendPoints": [
           {
             "x": -40,
-            "y": 310
+            "y": 320
           }
         ],
         "effect": "none"
@@ -934,7 +934,7 @@
         "bendPoints": [
           {
             "x": -40,
-            "y": 310
+            "y": 320
           }
         ],
         "effect": "none"
@@ -953,7 +953,7 @@
         "bendPoints": [
           {
             "x": -40,
-            "y": 310
+            "y": 320
           }
         ],
         "effect": "none"
@@ -972,8 +972,8 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -43,
-            "y": -341
+            "x": -40,
+            "y": -360
           }
         ],
         "effect": "blink",
@@ -997,8 +997,8 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -43,
-            "y": -341
+            "x": -40,
+            "y": -360
           }
         ],
         "effect": "blink",
@@ -1078,12 +1078,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 217,
-            "y": -124
+            "x": 240,
+            "y": -140
           },
           {
-            "x": 217,
-            "y": -310
+            "x": 240,
+            "y": -340
           }
         ],
         "effect": "comet",
@@ -1105,12 +1105,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 217,
-            "y": -124
+            "x": 240,
+            "y": -140
           },
           {
-            "x": 217,
-            "y": -310
+            "x": 240,
+            "y": -340
           }
         ],
         "effect": "comet",
@@ -1132,12 +1132,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 217,
-            "y": -124
+            "x": 240,
+            "y": -140
           },
           {
-            "x": 217,
-            "y": -310
+            "x": 240,
+            "y": -340
           }
         ],
         "effect": "comet",
@@ -1189,12 +1189,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 217,
-            "y": -124
+            "x": 240,
+            "y": -140
           },
           {
-            "x": 217,
-            "y": 62
+            "x": 240,
+            "y": 60
           }
         ],
         "effect": "comet",
@@ -1216,12 +1216,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 217,
-            "y": -124
+            "x": 240,
+            "y": -140
           },
           {
-            "x": 217,
-            "y": 62
+            "x": 240,
+            "y": 60
           }
         ],
         "effect": "comet",
@@ -1244,7 +1244,7 @@
         "bendPoints": [
           {
             "x": 40,
-            "y": 310
+            "y": 320
           }
         ],
         "effect": "dots",
@@ -1267,7 +1267,7 @@
         "bendPoints": [
           {
             "x": 40,
-            "y": 310
+            "y": 320
           }
         ],
         "effect": "dots",

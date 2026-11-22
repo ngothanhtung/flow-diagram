@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 524,
-          "y": -451
+          "x": 600,
+          "y": -520
         },
-        "width": 363,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "ĐẶT MỘT GHẾ\nn = SELECT left FROM seats WHERE id = 7\nif n > 0:\n  UPDATE seats SET left = {n − 1}\n  INSERT INTO bookings …\n# n − 1 được tính trong ứng dụng",
         "position": {
-          "x": 524,
-          "y": -451
+          "x": 600,
+          "y": -520
         },
-        "width": 339,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 499,
-          "y": -460
+          "x": 560,
+          "y": -520
         },
-        "width": 313,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "CHUYỆN GÌ ĐÃ XẢY RA\nAna đọc  ██░░░░░░░░░░  left = 1\nBen đọc  ███░░░░░░░░░  left = 1\nAna ghi  ██████░░░░░░  left = 0\nBen ghi  ████████░░░░  left = 0 !",
         "position": {
-          "x": 499,
-          "y": -460
+          "x": 560,
+          "y": -520
         },
-        "width": 289,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 524,
-          "y": -451
+          "x": 600,
+          "y": -520
         },
-        "width": 363,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "BÊN TRONG GIAO DỊCH\nBEGIN\n  SELECT left …          → 1 (cả hai!)\n  UPDATE … INSERT …\nCOMMIT\n⚠ tất-cả-hoặc-không ≠ lần lượt từng cái",
         "position": {
-          "x": 524,
-          "y": -451
+          "x": 600,
+          "y": -520
         },
-        "width": 339,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 495,
-          "y": -460
+          "x": 560,
+          "y": -520
         },
-        "width": 305,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "MỘT CÂU LỆNH NGUYÊN TỬ\nUPDATE seats SET left = left − 1\n WHERE id = 7 AND left > 0\n→ Ana: đổi 1 dòng → đã đặt\n# Ben: đổi 0 dòng → hết vé",
         "position": {
-          "x": 495,
-          "y": -460
+          "x": 560,
+          "y": -520
         },
-        "width": 281,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 503,
-          "y": -460
+          "x": 580,
+          "y": -520
         },
-        "width": 322,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "COMPARE-AND-SET\nđọc:  left = 1, version = 8\nghi:  … SET left = 0, version = 9\n      WHERE id = 7 AND version = 8\n⚠ Ben: 0 dòng → tải lại, thử lại",
         "position": {
-          "x": 503,
-          "y": -460
+          "x": 580,
+          "y": -520
         },
-        "width": 298,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 520,
-          "y": -460
+          "x": 580,
+          "y": -520
         },
-        "width": 355,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "KHÔNG CÓ GÌ ĐỂ KHÓA\nSELECT … FROM bookings\n  WHERE seat = 7 FOR UPDATE   → 0 dòng\nINSERT INTO bookings (seat = 7)\n⚠ cả hai thấy 0 dòng → cả hai chèn",
         "position": {
-          "x": 520,
-          "y": -460
+          "x": 580,
+          "y": -520
         },
-        "width": 331,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 524,
-          "y": -460
+          "x": 600,
+          "y": -520
         },
-        "width": 363,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "MỘT VÒNG CHỜ\nAna: khóa A … chờ B\nBen: khóa B … chờ A\n⚠ vòng lặp → CSDL hủy một bên\n→ cách sửa: luôn khóa id nhỏ nhất trước",
         "position": {
-          "x": 524,
-          "y": -460
+          "x": 600,
+          "y": -520
         },
-        "width": 339,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -246,11 +246,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 540,
-          "y": -451
+          "x": 600,
+          "y": -520
         },
-        "width": 396,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -264,11 +264,11 @@
         "type": "text",
         "title": "BA BƯỚC NGẮN\n1. UPDATE seat 7 SET held_by = Ana,\n     held_until = now() + 10 min\n2. trừ tiền thẻ (không có giao dịch mở)\n3. UPDATE seat 7 SET sold_to = Ana\n# tác vụ: giải phóng chỗ giữ quá held_until",
         "position": {
-          "x": 540,
-          "y": -451
+          "x": 600,
+          "y": -520
         },
-        "width": 372,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -280,11 +280,11 @@
         "type": "process",
         "title": "Ana",
         "position": {
-          "x": -182,
-          "y": -468
+          "x": -220,
+          "y": -520
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -301,11 +301,11 @@
         "title": "Ana",
         "description": "đã đặt ghế 7 ✓",
         "position": {
-          "x": -182,
-          "y": -468
+          "x": -220,
+          "y": -520
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -322,11 +322,11 @@
         "title": "Ana",
         "description": "v8 → v9 ✓",
         "position": {
-          "x": -182,
-          "y": -468
+          "x": -220,
+          "y": -520
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -343,11 +343,11 @@
         "title": "Ana",
         "description": "chuyển A → B",
         "position": {
-          "x": -182,
-          "y": -468
+          "x": -220,
+          "y": -520
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -364,11 +364,11 @@
         "title": "Ana",
         "description": "đang trả… (giữ khóa)",
         "position": {
-          "x": -182,
-          "y": -468
+          "x": -220,
+          "y": -520
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -385,11 +385,11 @@
         "title": "Ana",
         "description": "đang giữ ghế · thanh toán",
         "position": {
-          "x": -182,
-          "y": -468
+          "x": -220,
+          "y": -520
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -405,11 +405,11 @@
         "type": "process",
         "title": "Ben",
         "position": {
-          "x": 182,
-          "y": -468
+          "x": 220,
+          "y": -540
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -426,11 +426,11 @@
         "title": "Ben",
         "description": "đã đặt ghế 7 ✓",
         "position": {
-          "x": 182,
-          "y": -468
+          "x": 220,
+          "y": -540
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -447,11 +447,11 @@
         "title": "Ben",
         "description": "hết vé · xin lỗi",
         "position": {
-          "x": 182,
-          "y": -468
+          "x": 220,
+          "y": -540
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -468,11 +468,11 @@
         "title": "Ben",
         "description": "v8 đã cũ · thử lại",
         "position": {
-          "x": 182,
-          "y": -468
+          "x": 220,
+          "y": -540
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -489,11 +489,11 @@
         "title": "Ben",
         "description": "đã hủy · đang thử lại",
         "position": {
-          "x": 182,
-          "y": -468
+          "x": 220,
+          "y": -540
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -510,11 +510,11 @@
         "title": "Ben",
         "description": "trùng khóa · hết vé",
         "position": {
-          "x": 182,
-          "y": -468
+          "x": 220,
+          "y": -540
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -531,11 +531,11 @@
         "title": "Ben",
         "description": "đang chờ ghế 7",
         "position": {
-          "x": 182,
-          "y": -468
+          "x": 220,
+          "y": -540
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -552,11 +552,11 @@
         "title": "Ben",
         "description": "ghế 7 đang được giữ · chọn ghế khác",
         "position": {
-          "x": 182,
-          "y": -468
+          "x": 220,
+          "y": -540
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -572,11 +572,11 @@
         "type": "process",
         "title": "Máy chủ 1",
         "position": {
-          "x": -182,
-          "y": -156
+          "x": -220,
+          "y": -160
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -592,11 +592,11 @@
         "type": "process",
         "title": "Máy chủ 2",
         "position": {
-          "x": 182,
-          "y": -156
+          "x": 220,
+          "y": -160
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -614,10 +614,10 @@
         "description": "ghế 7 · còn: 1",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 176,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -635,10 +635,10 @@
         "description": "ghế 7 · còn: 0 · 2 lượt đặt!",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 176,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -656,10 +656,10 @@
         "description": "ghế 7 · còn: 0 · 2 lượt đặt! · read committed",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 188,
-        "height": 140,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -677,10 +677,10 @@
         "description": "ghế 7 · còn: 0 · dòng 7 bị Ana khóa",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 176,
-        "height": 140,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -698,10 +698,10 @@
         "description": "ghế 7 · còn: 0",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 176,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -719,10 +719,10 @@
         "description": "ghế 7 · còn: 0 · phiên bản 9",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 176,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -740,10 +740,10 @@
         "description": "ghế 7 · còn: 0 · serializable",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 184,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -761,10 +761,10 @@
         "description": "⚠ đặt chỗ: ghế 7 × 2",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 176,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -782,10 +782,10 @@
         "description": "Ana giữ A · chờ B · Ben giữ B · chờ A",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 228,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -803,10 +803,10 @@
         "description": "ghế 7 · còn: 0 · UNIQUE (concert, seat)",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 188,
-        "height": 140,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -824,10 +824,10 @@
         "description": "ghế 7 · còn: 1 · khóa 3 s · 40 đang chờ",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 180,
-        "height": 140,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -845,10 +845,10 @@
         "description": "ghế 7: giữ cho Ana · 12:10",
         "position": {
           "x": 0,
-          "y": 156
+          "y": 160
         },
-        "width": 176,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Ticket",
         "iconPosition": "left",
@@ -865,11 +865,11 @@
         "title": "Nhà cung cấp thanh toán",
         "description": "3 s mỗi lần trừ tiền",
         "position": {
-          "x": -416,
-          "y": -156
+          "x": -480,
+          "y": -180
         },
-        "width": 208,
-        "height": 98,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -885,11 +885,11 @@
         "type": "process",
         "title": "Nhà cung cấp thanh toán",
         "position": {
-          "x": -416,
-          "y": -156
+          "x": -480,
+          "y": -180
         },
-        "width": 200,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",

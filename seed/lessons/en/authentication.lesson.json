@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 606,
-          "y": -372
+          "x": 660,
+          "y": -400
         },
-        "width": 355,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "SALTED, SLOW HASHING\nhunter2 + salt 9f2c → $argon2id$…7Qe\nsame password, other salt → other hash\n→ ~100 ms per guess, on purpose\n⚠ MD5 / SHA-256: billions per second",
         "position": {
-          "x": 606,
-          "y": -372
+          "x": 660,
+          "y": -400
         },
-        "width": 331,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 610,
-          "y": -372
+          "x": 680,
+          "y": -400
         },
-        "width": 363,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "A SAFE RESET\ntoken: 32 random bytes, single use\nexpires after 15 minutes\nsame reply whether the email exists\n→ after the reset: revoke every session",
         "position": {
-          "x": 610,
-          "y": -372
+          "x": 680,
+          "y": -400
         },
-        "width": 339,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "process",
         "title": "Alice",
         "position": {
-          "x": 0,
-          "y": -380
+          "x": 20,
+          "y": -420
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -97,11 +97,11 @@
         "title": "Alice",
         "description": "cookie: HttpOnly · Secure",
         "position": {
-          "x": 0,
-          "y": -380
+          "x": 20,
+          "y": -420
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -118,11 +118,11 @@
         "title": "Alice",
         "description": "reset link · expires 15 min",
         "position": {
-          "x": 0,
-          "y": -380
+          "x": 20,
+          "y": -420
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -139,11 +139,11 @@
         "title": "Alice",
         "description": "⚠ typed password + code",
         "position": {
-          "x": 0,
-          "y": -380
+          "x": 20,
+          "y": -420
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -160,11 +160,11 @@
         "title": "Alice",
         "description": "passkey · shop.example only",
         "position": {
-          "x": 0,
-          "y": -380
+          "x": 20,
+          "y": -420
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -181,11 +181,11 @@
         "title": "Alice",
         "description": "access 15 min · refresh revocable",
         "position": {
-          "x": 0,
-          "y": -380
+          "x": 20,
+          "y": -420
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -202,10 +202,10 @@
         "title": "Login Service",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -223,10 +223,10 @@
         "description": "hash attempt, compare",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -244,10 +244,10 @@
         "description": "same reply for every email",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -265,10 +265,10 @@
         "description": "5,000 logins / s",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -286,10 +286,10 @@
         "description": "5 tries / account / min",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -307,10 +307,10 @@
         "description": "✓ password ✓ + phone ✓",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -328,10 +328,10 @@
         "description": "looks like a normal login",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -349,10 +349,10 @@
         "description": "✓ checks signature + domain",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -370,10 +370,10 @@
         "description": "✓ verifies ID token signature",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -391,10 +391,10 @@
         "description": "token expired → 401",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -412,10 +412,10 @@
         "description": "⚠ alice@… : hunter2",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 120
         },
-        "width": 200,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -433,10 +433,10 @@
         "description": "alice@… : $argon2id$…7Qe",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 120
         },
-        "width": 200,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -454,10 +454,10 @@
         "description": "alice@… : public key only",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 120
         },
-        "width": 200,
-        "height": 106,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -475,10 +475,10 @@
         "description": "alice@… : google-id 1042 · no password",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 120
         },
-        "width": 204,
-        "height": 123,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -495,10 +495,10 @@
         "title": "users table",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 120
         },
-        "width": 200,
-        "height": 104,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -515,11 +515,11 @@
         "title": "attacker",
         "description": "reads every password",
         "position": {
-          "x": 260,
+          "x": 300,
           "y": 100
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -536,11 +536,11 @@
         "title": "attacker",
         "description": "gets hashes · years to crack",
         "position": {
-          "x": 260,
+          "x": 300,
           "y": 100
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -556,11 +556,11 @@
         "type": "process",
         "title": "Email",
         "position": {
-          "x": -240,
-          "y": -140
+          "x": -260,
+          "y": -160
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Mail",
         "iconPosition": "left",
@@ -577,11 +577,11 @@
         "title": "bot",
         "description": "1B leaked passwords",
         "position": {
-          "x": 260,
-          "y": -380
+          "x": 300,
+          "y": -400
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -598,11 +598,11 @@
         "title": "bot",
         "description": "slowed to a crawl",
         "position": {
-          "x": 260,
-          "y": -380
+          "x": 300,
+          "y": -400
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -619,11 +619,11 @@
         "title": "bot",
         "description": "no phone → blocked",
         "position": {
-          "x": 260,
-          "y": -380
+          "x": 300,
+          "y": -400
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -640,11 +640,11 @@
         "title": "bot",
         "description": "token from leaked logs",
         "position": {
-          "x": 260,
-          "y": -380
+          "x": 300,
+          "y": -400
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -660,11 +660,11 @@
         "type": "process",
         "title": "Alice’s phone",
         "position": {
-          "x": -240,
-          "y": -380
+          "x": -280,
+          "y": -400
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -681,11 +681,11 @@
         "title": "Fake Login",
         "description": "shop-example.co · ⚠ relays in real time",
         "position": {
-          "x": 260,
+          "x": 300,
           "y": -140
         },
-        "width": 192,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -702,11 +702,11 @@
         "title": "Fake Login",
         "description": "shop-example.co · no passkey for this domain",
         "position": {
-          "x": 260,
+          "x": 300,
           "y": -140
         },
-        "width": 192,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -723,11 +723,11 @@
         "title": "Identity Provider",
         "description": "e.g. Google",
         "position": {
-          "x": -240,
+          "x": -260,
           "y": -140
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:IdCard",
         "iconPosition": "left",

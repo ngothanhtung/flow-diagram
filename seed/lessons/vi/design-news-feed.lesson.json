@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 676,
-          "y": -374
+          "x": 720,
+          "y": -400
         },
-        "width": 396,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "ĐÒI HỎI\nđăng bài         chữ và một ảnh\nfeed trang chủ   bài của người tôi theo dõi\n→ feed mở trong dưới 200 ms\n# bài mới có thể mất vài giây",
         "position": {
-          "x": 676,
-          "y": -374
+          "x": 720,
+          "y": -400
         },
-        "width": 372,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 693,
-          "y": -374
+          "x": 740,
+          "y": -400
         },
-        "width": 429,
-        "height": 124,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "TÍNH NHẨM\n200 tr người × 10 lần mở   ≈ 23.000 feed/s\n50 tr bài mỗi ngày         ≈ 600 bài/s\n→ khoảng 40 lượt đọc feed cho mỗi bài được viết\n# người dùng điển hình theo dõi 200 tài khoản",
         "position": {
-          "x": 693,
-          "y": -374
+          "x": 740,
+          "y": -400
         },
-        "width": 405,
-        "height": 104,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 651,
-          "y": -374
+          "x": 700,
+          "y": -400
         },
-        "width": 346,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "CHI PHÍ CỦA PULL\n23.000 lượt tải feed / s\n× mỗi lượt 200 tác giả\n⚠ = 4,6 triệu lượt tra / s\n# và mỗi lượt tải chờ shard chậm nhất",
         "position": {
-          "x": 651,
-          "y": -374
+          "x": 700,
+          "y": -400
         },
-        "width": 322,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 660,
-          "y": -374
+          "x": 720,
+          "y": -400
         },
-        "width": 363,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "PHÂN TRANG BẰNG CON TRỎ\nGET /feed?limit=20\n# → bài 9041 … 9017 · tiếp: before=9017\nGET /feed?before=9017&limit=20\n→ đứng yên khi có bài mới đến",
         "position": {
-          "x": 660,
-          "y": -374
+          "x": 720,
+          "y": -400
         },
-        "width": 339,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -145,10 +145,10 @@
         "title": "người mở feed",
         "position": {
           "x": 0,
-          "y": -400
+          "y": -440
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -166,11 +166,11 @@
         "title": "API feed",
         "description": "cần thiết kế",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -187,11 +187,11 @@
         "title": "API feed",
         "description": "trộn 200 dòng thời gian",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -100
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -207,11 +207,11 @@
         "type": "process",
         "title": "API feed",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -228,11 +228,11 @@
         "title": "API feed",
         "description": "trộn: danh sách của tôi + 3 người nổi tiếng",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -100
         },
-        "width": 180,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -249,11 +249,11 @@
         "title": "API feed",
         "description": "dựng lại khi mở · tối đa 500 cùng lúc",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": -100
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -269,11 +269,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 300,
-          "y": -250
+          "x": 340,
+          "y": -260
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -289,11 +289,11 @@
         "type": "process",
         "title": "CPU 97%",
         "position": {
-          "x": 300,
-          "y": -250
+          "x": 340,
+          "y": -260
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -309,11 +309,11 @@
         "type": "process",
         "title": "bài viết, theo tác giả",
         "position": {
-          "x": 300,
+          "x": 320,
           "y": -100
         },
-        "width": 208,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -330,11 +330,11 @@
         "title": "bài viết, theo tác giả",
         "description": "CPU 97%",
         "position": {
-          "x": 300,
+          "x": 320,
           "y": -100
         },
-        "width": 212,
-        "height": 113,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -350,11 +350,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 300,
-          "y": 50
+          "x": 340,
+          "y": 60
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -370,11 +370,11 @@
         "type": "process",
         "title": "CPU 97%",
         "position": {
-          "x": 300,
-          "y": 50
+          "x": 340,
+          "y": 60
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -390,11 +390,11 @@
         "type": "process",
         "title": "Ana đăng bài",
         "position": {
-          "x": -400,
-          "y": -300
+          "x": -420,
+          "y": -320
         },
-        "width": 200,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -410,11 +410,11 @@
         "type": "process",
         "title": "ngôi sao pop · 50 tr người theo dõi",
         "position": {
-          "x": -400,
-          "y": -300
+          "x": -420,
+          "y": -320
         },
-        "width": 248,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -431,11 +431,11 @@
         "title": "Cache feed",
         "description": "danh sách theo người dùng",
         "position": {
-          "x": -300,
+          "x": -320,
           "y": -100
         },
-        "width": 184,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -452,11 +452,11 @@
         "title": "Cache feed",
         "description": "danh sách theo người dùng · alice → [9041, 9038, 9017 …]",
         "position": {
-          "x": -300,
+          "x": -320,
           "y": -100
         },
-        "width": 192,
-        "height": 108,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -473,11 +473,11 @@
         "title": "Cache feed",
         "description": "danh sách theo người dùng · danh sách không hoạt động hết hạn",
         "position": {
-          "x": -300,
+          "x": -320,
           "y": -100
         },
-        "width": 212,
-        "height": 108,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -494,11 +494,11 @@
         "title": "Cache feed",
         "description": "danh sách theo người dùng · trống · đang làm ấm",
         "position": {
-          "x": -300,
+          "x": -320,
           "y": -100
         },
-        "width": 192,
-        "height": 108,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -514,11 +514,11 @@
         "type": "process",
         "title": "Hàng đợi",
         "position": {
-          "x": 0,
-          "y": 225
+          "x": 20,
+          "y": 260
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Inbox",
         "iconPosition": "left",
@@ -535,11 +535,11 @@
         "title": "Hàng đợi",
         "description": "⚠ tồn đọng: 50 tr lượt giao",
         "position": {
-          "x": 0,
-          "y": 225
+          "x": 20,
+          "y": 260
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Inbox",
         "iconPosition": "left",
@@ -556,11 +556,11 @@
         "title": "Hàng đợi",
         "description": "✓ bỏ qua người nổi tiếng",
         "position": {
-          "x": 0,
-          "y": 225
+          "x": 20,
+          "y": 260
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Inbox",
         "iconPosition": "left",
@@ -576,11 +576,11 @@
         "type": "process",
         "title": "Worker fan-out",
         "position": {
-          "x": -300,
-          "y": 225
+          "x": -320,
+          "y": 240
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Workflow",
         "iconPosition": "left",
@@ -597,11 +597,11 @@
         "title": "Worker fan-out",
         "description": "CPU 100%",
         "position": {
-          "x": -300,
-          "y": 225
+          "x": -320,
+          "y": 240
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Workflow",
         "iconPosition": "left",
@@ -618,11 +618,11 @@
         "title": "Worker fan-out",
         "description": "chỉ người hoạt động trong 30 ngày",
         "position": {
-          "x": -300,
-          "y": 225
+          "x": -320,
+          "y": 240
         },
-        "width": 220,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Workflow",
         "iconPosition": "left",
@@ -638,11 +638,11 @@
         "type": "process",
         "title": "ai theo dõi ai",
         "position": {
-          "x": -300,
-          "y": 475
+          "x": -320,
+          "y": 500
         },
-        "width": 228,
-        "height": 104,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Network",
         "iconPosition": "left",
@@ -742,12 +742,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": -250
+            "x": 180,
+            "y": -260
           }
         ],
         "effect": "ants",
@@ -769,12 +769,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": -250
+            "x": 180,
+            "y": -260
           }
         ],
         "effect": "ants",
@@ -796,12 +796,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": -250
+            "x": 180,
+            "y": -260
           }
         ],
         "effect": "comet",
@@ -823,12 +823,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": -250
+            "x": 180,
+            "y": -260
           }
         ],
         "effect": "comet",
@@ -850,12 +850,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": -250
+            "x": 180,
+            "y": -260
           }
         ],
         "effect": "ants",
@@ -971,12 +971,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": 50
+            "x": 180,
+            "y": 60
           }
         ],
         "effect": "ants",
@@ -998,12 +998,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": 50
+            "x": 180,
+            "y": 60
           }
         ],
         "effect": "ants",
@@ -1025,12 +1025,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": 50
+            "x": 180,
+            "y": 60
           }
         ],
         "effect": "comet",
@@ -1052,12 +1052,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": 50
+            "x": 180,
+            "y": 60
           }
         ],
         "effect": "comet",
@@ -1079,12 +1079,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 175,
+            "x": 180,
             "y": -100
           },
           {
-            "x": 175,
-            "y": 50
+            "x": 180,
+            "y": 60
           }
         ],
         "effect": "ants",
@@ -1106,8 +1106,8 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -35,
-            "y": -300
+            "x": -40,
+            "y": -320
           }
         ],
         "effect": "dots",
@@ -1129,8 +1129,8 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -35,
-            "y": -300
+            "x": -40,
+            "y": -320
           }
         ],
         "effect": "dots",
@@ -1152,8 +1152,8 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -35,
-            "y": -300
+            "x": -40,
+            "y": -320
           }
         ],
         "effect": "dots",
@@ -1175,8 +1175,8 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -35,
-            "y": -300
+            "x": -40,
+            "y": -320
           }
         ],
         "effect": "dots",

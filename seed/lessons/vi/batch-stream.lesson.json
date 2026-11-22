@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -495,
-          "y": 135
+          "x": -360,
+          "y": 100
         },
-        "width": 450,
-        "height": 540,
+        "width": 400,
+        "height": 440,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "BAN ĐÊM · CHÍNH XÁC",
         "position": {
-          "x": -629,
-          "y": -114
+          "x": -460,
+          "y": -100
         },
-        "width": 162,
-        "height": 33,
+        "width": 200,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -494,
-          "y": 135
+          "x": -380,
+          "y": 100
         },
-        "width": 521,
-        "height": 540,
+        "width": 600,
+        "height": 440,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "MAP + COMBINE → REDUCE",
         "position": {
-          "x": -652,
-          "y": -114
+          "x": -580,
+          "y": -100
         },
-        "width": 184,
-        "height": 33,
+        "width": 200,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -494,
-          "y": 135
+          "x": -380,
+          "y": 100
         },
-        "width": 485,
-        "height": 540,
+        "width": 600,
+        "height": 440,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "MAP → SHUFFLE → REDUCE",
         "position": {
-          "x": -634,
-          "y": -114
+          "x": -580,
+          "y": -100
         },
-        "width": 184,
-        "height": 33,
+        "width": 200,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -495,
-          "y": 135
+          "x": -360,
+          "y": 100
         },
-        "width": 450,
-        "height": 540,
+        "width": 400,
+        "height": 440,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "BATCH JOB BAN ĐÊM",
         "position": {
-          "x": -637,
-          "y": -114
+          "x": -480,
+          "y": -100
         },
-        "width": 146,
-        "height": 33,
+        "width": 160,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1120,
-          "y": -964
+          "x": 980,
+          "y": -680
         },
-        "width": 346,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "ĐẾM 2 TỶ LƯỢT XEM\nmap:     mỗi worker đếm phần của mình\nshuffle: cùng video → cùng worker\nreduce:  cộng số đếm theo video\n→ 100 worker: ~20 phút",
         "position": {
-          "x": 1120,
-          "y": -964
+          "x": 980,
+          "y": -680
         },
-        "width": 322,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1133,
-          "y": -964
+          "x": 1000,
+          "y": -680
         },
-        "width": 371,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "THUẦN HÓA MỘT KHÓA NÓNG\n⚠ video viral: 800 tr dòng → một reducer\n→ combiner: mỗi mapper gửi 1 số đếm\n→ salting: 4f2#0 … 4f2#9 → 10 reducer\n# job: 3 giờ → 20 phút",
         "position": {
-          "x": 1133,
-          "y": -964
+          "x": 1000,
+          "y": -680
         },
-        "width": 347,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1129,
-          "y": -964
+          "x": 1000,
+          "y": -680
         },
-        "width": 363,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "LƯỢT XEM VIDEO 4F2 MỖI PHÚT\n12:01  █░░░░░░░░░░░  120\n12:02  █░░░░░░░░░░░  140\n12:03  ████░░░░░░░░  780\n12:04  ████████████  2.500 ↑ thịnh hành",
         "position": {
-          "x": 1129,
-          "y": -964
+          "x": 1000,
+          "y": -680
         },
-        "width": 339,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -246,11 +246,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1108,
-          "y": -964
+          "x": 980,
+          "y": -680
         },
-        "width": 322,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -264,11 +264,11 @@
         "type": "text",
         "title": "THỜI GIAN SỰ KIỆN VS THỜI GIAN TỚI\nxem lúc 12:04, tới lúc 14:10\nwatermark: “sự kiện trễ ≤ 5 phút”\n⚠ trễ 2 giờ → đúng cửa sổ, sau đó\n→ id trùng → bị loại",
         "position": {
-          "x": 1108,
-          "y": -964
+          "x": 980,
+          "y": -680
         },
-        "width": 298,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -280,11 +280,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1100,
-          "y": -964
+          "x": 960,
+          "y": -680
         },
-        "width": 305,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -298,11 +298,11 @@
         "type": "text",
         "title": "NGƯỜI XEM DUY NHẤT CỦA 4F2\nchính xác: nhớ mọi id người xem\n⚠ 50 tr id × 16 byte ≈ 800 MB\n→ HyperLogLog: 12 KB, ~1% sai số\n# sketch gộp được giữa các máy",
         "position": {
-          "x": 1100,
-          "y": -964
+          "x": 960,
+          "y": -680
         },
-        "width": 281,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -314,11 +314,11 @@
         "type": "process",
         "title": "người xem",
         "position": {
-          "x": 0,
-          "y": -990
+          "x": 20,
+          "y": -720
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -336,10 +336,10 @@
         "title": "Ứng dụng video",
         "position": {
           "x": 0,
-          "y": -495
+          "y": -360
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -356,11 +356,11 @@
         "title": "DB production",
         "description": "CPU 95%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 40,
+          "y": 20
         },
-        "width": 216,
-        "height": 108,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -377,11 +377,11 @@
         "title": "DB production",
         "description": "CPU 30%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 40,
+          "y": 20
         },
-        "width": 216,
-        "height": 108,
+        "width": 240,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -397,11 +397,11 @@
         "type": "process",
         "title": "Dashboard",
         "position": {
-          "x": 0,
-          "y": 675
+          "x": 20,
+          "y": 500
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
         "iconPosition": "left",
@@ -418,11 +418,11 @@
         "title": "Dashboard",
         "description": "thịnh hành: của hôm qua",
         "position": {
-          "x": 0,
-          "y": 675
+          "x": 20,
+          "y": 500
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
         "iconPosition": "left",
@@ -439,11 +439,11 @@
         "title": "Dashboard",
         "description": "thịnh hành: bây giờ",
         "position": {
-          "x": 0,
-          "y": 675
+          "x": 20,
+          "y": 500
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
         "iconPosition": "left",
@@ -460,11 +460,11 @@
         "title": "Dashboard",
         "description": "số đếm trực tiếp: cũ 4 phút",
         "position": {
-          "x": 0,
-          "y": 675
+          "x": 20,
+          "y": 500
         },
-        "width": 180,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
         "iconPosition": "left",
@@ -481,11 +481,11 @@
         "title": "Dashboard",
         "description": "người xem duy nhất ≈ 48,2 tr",
         "position": {
-          "x": 0,
-          "y": 675
+          "x": 20,
+          "y": 500
         },
-        "width": 180,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
         "iconPosition": "left",
@@ -501,11 +501,11 @@
         "type": "process",
         "title": "log sự kiện",
         "position": {
-          "x": -495,
-          "y": -495
+          "x": -380,
+          "y": -380
         },
         "width": 200,
-        "height": 104,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -521,11 +521,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -621,
+          "x": -520,
           "y": 0
         },
-        "width": 176,
-        "height": 81,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -541,11 +541,11 @@
         "type": "process",
         "title": "map",
         "position": {
-          "x": -621,
+          "x": -520,
           "y": 0
         },
-        "width": 176,
-        "height": 81,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -562,11 +562,11 @@
         "type": "process",
         "title": "map + combine",
         "position": {
-          "x": -621,
+          "x": -520,
           "y": 0
         },
-        "width": 212,
-        "height": 81,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -583,11 +583,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -368,
+          "x": -240,
           "y": 0
         },
-        "width": 176,
-        "height": 81,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -603,11 +603,11 @@
         "type": "process",
         "title": "map",
         "position": {
-          "x": -368,
+          "x": -240,
           "y": 0
         },
-        "width": 176,
-        "height": 81,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -624,11 +624,11 @@
         "type": "process",
         "title": "map + combine",
         "position": {
-          "x": -368,
+          "x": -240,
           "y": 0
         },
-        "width": 212,
-        "height": 81,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -645,11 +645,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -607,
-          "y": 270
+          "x": -500,
+          "y": 200
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -665,11 +665,11 @@
         "type": "process",
         "title": "reduce",
         "position": {
-          "x": -607,
-          "y": 270
+          "x": -500,
+          "y": 200
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -686,11 +686,11 @@
         "type": "process",
         "title": "40% dữ liệu · 3 giờ",
         "position": {
-          "x": -607,
-          "y": 270
+          "x": -500,
+          "y": 200
         },
-        "width": 192,
-        "height": 81,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -707,11 +707,11 @@
         "type": "process",
         "title": "reduce · đều nhau",
         "position": {
-          "x": -607,
-          "y": 270
+          "x": -500,
+          "y": 200
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -728,11 +728,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -382,
-          "y": 270
+          "x": -260,
+          "y": 200
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -748,11 +748,11 @@
         "type": "process",
         "title": "reduce",
         "position": {
-          "x": -382,
-          "y": 270
+          "x": -260,
+          "y": 200
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -769,11 +769,11 @@
         "type": "process",
         "title": "5 phút",
         "position": {
-          "x": -382,
-          "y": 270
+          "x": -260,
+          "y": 200
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -790,11 +790,11 @@
         "type": "process",
         "title": "reduce · đều nhau",
         "position": {
-          "x": -382,
-          "y": 270
+          "x": -260,
+          "y": 200
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
         "iconPosition": "left",
@@ -811,11 +811,11 @@
         "type": "process",
         "title": "kho dữ liệu",
         "position": {
-          "x": -495,
-          "y": 675
+          "x": -380,
+          "y": 500
         },
         "width": 200,
-        "height": 104,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -831,11 +831,11 @@
         "type": "process",
         "title": "Luồng sự kiện",
         "position": {
-          "x": 495,
-          "y": -495
+          "x": 360,
+          "y": -360
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:WavesHorizontal",
         "iconPosition": "left",
@@ -852,11 +852,11 @@
         "title": "Luồng sự kiện",
         "description": "sự kiện từ 2 giờ trước",
         "position": {
-          "x": 495,
-          "y": -495
+          "x": 360,
+          "y": -360
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:WavesHorizontal",
         "iconPosition": "left",
@@ -873,11 +873,11 @@
         "title": "Luồng sự kiện",
         "description": "lag: 4 phút · 18 tr sự kiện",
         "position": {
-          "x": 495,
-          "y": -495
+          "x": 360,
+          "y": -360
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:WavesHorizontal",
         "iconPosition": "left",
@@ -894,11 +894,11 @@
         "title": "Luồng sự kiện",
         "description": "4 phân vùng · lag 2 s",
         "position": {
-          "x": 495,
-          "y": -495
+          "x": 360,
+          "y": -360
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:WavesHorizontal",
         "iconPosition": "left",
@@ -914,11 +914,11 @@
         "type": "process",
         "title": "Bộ xử lý luồng",
         "position": {
-          "x": 495,
-          "y": 135
+          "x": 320,
+          "y": 80
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Activity",
         "iconPosition": "left",
@@ -935,11 +935,11 @@
         "title": "Bộ xử lý luồng",
         "description": "cửa sổ: 1 phút",
         "position": {
-          "x": 495,
-          "y": 135
+          "x": 320,
+          "y": 80
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Activity",
         "iconPosition": "left",
@@ -956,11 +956,11 @@
         "title": "Bộ xử lý luồng",
         "description": "watermark: 12:05 · bật khử trùng",
         "position": {
-          "x": 495,
-          "y": 135
+          "x": 320,
+          "y": 80
         },
-        "width": 220,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Activity",
         "iconPosition": "left",
@@ -977,11 +977,11 @@
         "title": "Bộ xử lý luồng",
         "description": "⚠ đang tụt lại",
         "position": {
-          "x": 495,
-          "y": 135
+          "x": 320,
+          "y": 80
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Activity",
         "iconPosition": "left",
@@ -998,11 +998,11 @@
         "title": "Bộ xử lý luồng",
         "description": "phân vùng 0–1",
         "position": {
-          "x": 495,
-          "y": 135
+          "x": 320,
+          "y": 80
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Activity",
         "iconPosition": "left",
@@ -1019,11 +1019,11 @@
         "title": "Bộ xử lý luồng",
         "description": "HyperLogLog theo video",
         "position": {
-          "x": 495,
-          "y": 135
+          "x": 320,
+          "y": 80
         },
-        "width": 220,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Activity",
         "iconPosition": "left",
@@ -1039,11 +1039,11 @@
         "type": "process",
         "title": "số đếm trực tiếp",
         "position": {
-          "x": 495,
-          "y": 675
+          "x": 380,
+          "y": 500
         },
-        "width": 184,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -1060,11 +1060,11 @@
         "title": "Bộ xử lý luồng",
         "description": "phân vùng 2–3",
         "position": {
-          "x": 765,
-          "y": 135
+          "x": 600,
+          "y": 80
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Activity",
         "iconPosition": "left",

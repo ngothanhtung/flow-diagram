@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 498,
-          "y": -352
+          "x": 540,
+          "y": -400
         },
-        "width": 317,
-        "height": 120,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "SCRIPT · RỖNG",
         "position": {
-          "x": 408,
-          "y": -391
+          "x": 420,
+          "y": -460
         },
-        "width": 116,
-        "height": 33,
+        "width": 120,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -449,
-          "y": -351
+          "x": -480,
+          "y": -380
         },
-        "width": 411,
-        "height": 165,
+        "width": 480,
+        "height": 200,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "NGƯỜI DÙNG · 8 TOKEN",
         "position": {
-          "x": -560,
-          "y": -413
+          "x": -620,
+          "y": -460
         },
-        "width": 169,
-        "height": 33,
+        "width": 200,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 935,
-          "y": -618
+          "x": 1020,
+          "y": -680
         },
-        "width": 413,
-        "height": 142,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "GIỚI HẠN: 100 MỖI PHÚT\ncửa sổ cố định  đặt lại lúc :00\n⚠ 100 lúc 0:59 + 100 lúc 1:00 = 200 trong 2 s\ncửa sổ trượt    60 s gần nhất, liên tục\ntoken bucket    bùng ≤ 100, rồi nạp lại\n→ cho phép bùng, trung bình bị giới hạn",
         "position": {
-          "x": 935,
-          "y": -618
+          "x": 1020,
+          "y": -680
         },
-        "width": 389,
-        "height": 122,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "process",
         "title": "người dùng thật",
         "position": {
-          "x": -192,
-          "y": -640
+          "x": -220,
+          "y": -680
         },
-        "width": 228,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -131,11 +131,11 @@
         "type": "process",
         "title": "Acme Corp · 10.000 người dùng",
         "position": {
-          "x": -192,
-          "y": -640
+          "x": -220,
+          "y": -680
         },
-        "width": 248,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -152,11 +152,11 @@
         "type": "process",
         "title": "ngày ra mắt · ×5",
         "position": {
-          "x": -192,
-          "y": -640
+          "x": -220,
+          "y": -680
         },
-        "width": 176,
-        "height": 73,
+        "width": 280,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -174,11 +174,11 @@
         "title": "script mất kiểm soát",
         "description": "5.000 req/s",
         "position": {
-          "x": 256,
-          "y": -640
+          "x": 300,
+          "y": -700
         },
-        "width": 184,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -195,11 +195,11 @@
         "title": "script mất kiểm soát",
         "description": "✓ đang lùi · 10 req/s",
         "position": {
-          "x": 256,
-          "y": -640
+          "x": 300,
+          "y": -700
         },
-        "width": 188,
-        "height": 98,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -215,11 +215,11 @@
         "type": "process",
         "title": "script mất kiểm soát",
         "position": {
-          "x": 256,
-          "y": -640
+          "x": 300,
+          "y": -700
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -236,11 +236,11 @@
         "title": "API",
         "description": "⚠ chủ yếu phục vụ một client · CPU 99%",
         "position": {
-          "x": 0,
-          "y": 96
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -257,11 +257,11 @@
         "title": "API",
         "description": "CPU 45%",
         "position": {
-          "x": 0,
-          "y": 96
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -278,11 +278,11 @@
         "title": "API",
         "description": "CPU 42%",
         "position": {
-          "x": 0,
-          "y": 96
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -299,11 +299,11 @@
         "title": "API",
         "description": "CPU 55%",
         "position": {
-          "x": 0,
-          "y": 96
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -320,11 +320,11 @@
         "title": "API",
         "description": "CPU 82%",
         "position": {
-          "x": 0,
-          "y": 96
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -341,11 +341,11 @@
         "title": "Gateway",
         "description": "bộ giới hạn tốc độ · giới hạn: 10 req/s mỗi client",
         "position": {
-          "x": 0,
-          "y": -288
+          "x": 20,
+          "y": -300
         },
-        "width": 184,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
         "iconPosition": "left",
@@ -362,11 +362,11 @@
         "title": "Gateway",
         "description": "bộ giới hạn tốc độ",
         "position": {
-          "x": -192,
-          "y": -288
+          "x": -220,
+          "y": -300
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
         "iconPosition": "left",
@@ -383,11 +383,11 @@
         "title": "Gateway",
         "description": "bộ giới hạn tốc độ · tenant Acme: 2.000 req/s",
         "position": {
-          "x": -192,
-          "y": -288
+          "x": -220,
+          "y": -300
         },
-        "width": 180,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
         "iconPosition": "left",
@@ -404,11 +404,11 @@
         "title": "Gateway",
         "description": "bộ giới hạn tốc độ · đang cắt việc chạy nền",
         "position": {
-          "x": -192,
-          "y": -288
+          "x": -220,
+          "y": -300
         },
-        "width": 184,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
         "iconPosition": "left",
@@ -424,11 +424,11 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": -538,
-          "y": -333
+          "x": -580,
+          "y": -360
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#9fd28f",
@@ -445,11 +445,11 @@
         "title": "Gateway",
         "description": "bộ giới hạn tốc độ · giới hạn: 10 req/s mỗi client",
         "position": {
-          "x": 256,
-          "y": -288
+          "x": 300,
+          "y": -300
         },
-        "width": 184,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
         "iconPosition": "left",
@@ -466,11 +466,11 @@
         "title": "Gateway",
         "description": "bộ giới hạn tốc độ · Retry-After: 30",
         "position": {
-          "x": 256,
-          "y": -288
+          "x": 300,
+          "y": -300
         },
-        "width": 180,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
         "iconPosition": "left",
@@ -487,11 +487,11 @@
         "title": "Gateway",
         "description": "bộ giới hạn tốc độ",
         "position": {
-          "x": 256,
-          "y": -288
+          "x": 300,
+          "y": -300
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
         "iconPosition": "left",
@@ -507,11 +507,11 @@
         "type": "process",
         "title": "bộ đếm",
         "position": {
-          "x": 32,
-          "y": -288
+          "x": 20,
+          "y": -300
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Zap",
         "iconPosition": "left",

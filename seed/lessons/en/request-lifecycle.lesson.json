@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 570,
-          "y": -529
+          "x": 640,
+          "y": -600
         },
-        "width": 371,
-        "height": 159,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "WHERE THE TIME WENT\nDNS lookup           20 ms\nTCP + TLS handshake  60 ms\nrequest + server     55 ms\ndownload             20 ms\n→ total             155 ms\n# 130 ms of it is waiting on the network",
         "position": {
-          "x": 570,
-          "y": -529
+          "x": 640,
+          "y": -600
         },
-        "width": 347,
-        "height": 139,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -44,10 +44,10 @@
         "description": "https://shop.example",
         "position": {
           "x": 0,
-          "y": -264
+          "y": -280
         },
-        "width": 224,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -65,10 +65,10 @@
         "description": "✓ page ready · 155 ms",
         "position": {
           "x": 0,
-          "y": -264
+          "y": -280
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -86,10 +86,10 @@
         "description": "40 files · 1 connection",
         "position": {
           "x": 0,
-          "y": -264
+          "y": -280
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -107,10 +107,10 @@
         "description": "https://shop.example",
         "position": {
           "x": 0,
-          "y": -572
+          "y": -640
         },
-        "width": 224,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -127,11 +127,11 @@
         "title": "DNS",
         "description": "resolver · → 203.0.113.7",
         "position": {
-          "x": 0,
-          "y": 22
+          "x": 20,
+          "y": 40
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -148,11 +148,11 @@
         "title": "DNS",
         "description": "resolver",
         "position": {
-          "x": 0,
-          "y": 22
+          "x": 20,
+          "y": 40
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -168,11 +168,11 @@
         "type": "process",
         "title": "Web Server",
         "position": {
-          "x": 220,
-          "y": -22
+          "x": 260,
+          "y": -40
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -189,11 +189,11 @@
         "title": "Web Server",
         "description": "CPU 30%",
         "position": {
-          "x": 220,
-          "y": -22
+          "x": 260,
+          "y": -40
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -210,11 +210,11 @@
         "title": "Web Server",
         "description": "CPU 35%",
         "position": {
-          "x": 220,
-          "y": -22
+          "x": 260,
+          "y": -40
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -231,11 +231,11 @@
         "title": "Web Server",
         "description": "Virginia",
         "position": {
-          "x": 220,
-          "y": -22
+          "x": 260,
+          "y": -40
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -251,11 +251,11 @@
         "type": "process",
         "title": "database",
         "position": {
-          "x": 220,
-          "y": 264
+          "x": 260,
+          "y": 300
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -272,11 +272,11 @@
         "title": "database",
         "description": "400 ms · scanning",
         "position": {
-          "x": 220,
-          "y": 264
+          "x": 260,
+          "y": 300
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

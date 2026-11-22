@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 341,
-          "y": -334
+          "x": 380,
+          "y": -360
         },
-        "width": 322,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "ONE CALL, WITH BACKOFF\nattempt 1  █░░░░░░░░░░░  timeout\nretry 1    ██░░░░░░░░░░  +100 ms\nretry 2    █████░░░░░░░  +200 ms\nretry 3    ██████████░░  +400 ms ✓",
         "position": {
-          "x": 341,
-          "y": -334
+          "x": 380,
+          "y": -360
         },
-        "width": 298,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 382,
-          "y": -334
+          "x": 420,
+          "y": -360
         },
-        "width": 404,
-        "height": 124,
+        "width": 440,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "IDEMPOTENCY-KEY: 7F3A\nattempt 1 → charge $40, store result as 7f3a\n⚠ response lost → order service retries\nattempt 2 → 7f3a seen: return stored result\n→ one charge, however many retries",
         "position": {
-          "x": 382,
-          "y": -334
+          "x": 420,
+          "y": -360
         },
-        "width": 380,
-        "height": 104,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "process",
         "title": "shoppers",
         "position": {
-          "x": 0,
-          "y": -360
+          "x": 20,
+          "y": -400
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -101,8 +101,8 @@
           "x": 0,
           "y": -180
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -122,8 +122,8 @@
           "x": 0,
           "y": -180
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -143,8 +143,8 @@
           "x": 0,
           "y": -180
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -164,8 +164,8 @@
           "x": 0,
           "y": -180
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -185,8 +185,8 @@
           "x": 0,
           "y": -180
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -206,8 +206,8 @@
           "x": 0,
           "y": -180
         },
-        "width": 212,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -227,8 +227,8 @@
           "x": 0,
           "y": -180
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -248,8 +248,8 @@
           "x": 0,
           "y": -180
         },
-        "width": 216,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -269,8 +269,8 @@
           "x": 0,
           "y": -180
         },
-        "width": 216,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -287,11 +287,11 @@
         "title": "Payments",
         "description": "answering in 30 s",
         "position": {
-          "x": 0,
-          "y": 72
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -308,11 +308,11 @@
         "title": "Payments",
         "description": "often slow",
         "position": {
-          "x": 0,
-          "y": 72
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -329,11 +329,11 @@
         "title": "Payments",
         "description": "CPU 50%",
         "position": {
-          "x": 0,
-          "y": 72
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -350,11 +350,11 @@
         "title": "Payments",
         "description": "⚠ 4× normal load · CPU 100%",
         "position": {
-          "x": 0,
-          "y": 72
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -371,11 +371,11 @@
         "title": "Payments",
         "description": "recovering · CPU 62%",
         "position": {
-          "x": 0,
-          "y": 72
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -392,11 +392,11 @@
         "title": "Payments",
         "description": "⚠ DOWN",
         "position": {
-          "x": 0,
-          "y": 72
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -414,11 +414,11 @@
         "title": "Payments",
         "description": "✓ charged once · CPU 50%",
         "position": {
-          "x": 0,
-          "y": 72
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -435,11 +435,11 @@
         "title": "Payments",
         "description": "budget: 1.4 s · CPU 45%",
         "position": {
-          "x": 0,
-          "y": 72
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -456,11 +456,11 @@
         "title": "Payments",
         "description": "slow again",
         "position": {
-          "x": 0,
-          "y": 72
+          "x": 20,
+          "y": 100
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -476,11 +476,11 @@
         "type": "process",
         "title": "OPEN · fails in 1 ms",
         "position": {
-          "x": 0,
-          "y": -54
+          "x": 20,
+          "y": -40
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Unplug",
         "iconPosition": "left",
@@ -496,11 +496,11 @@
         "type": "process",
         "title": "✓ CLOSED",
         "position": {
-          "x": 0,
-          "y": -54
+          "x": 20,
+          "y": -40
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Unplug",
         "iconPosition": "left",

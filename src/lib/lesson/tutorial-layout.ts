@@ -9,6 +9,26 @@ export interface Size {
   height: number;
 }
 
+/**
+ * The editor's default snap grid. A converted lesson is laid out on it:
+ * every box's edges sit on grid lines (top-left on the grid, width and height
+ * whole cells), so it looks tidy and an author's snapped drag never jumps it.
+ */
+export const GRID = 40;
+
+/** Rounds a size up to whole grid cells. */
+export function snapSize(size: Size, grid = GRID): Size {
+  return { width: Math.max(grid, Math.ceil(size.width / grid) * grid), height: Math.max(grid, Math.ceil(size.height / grid) * grid) };
+}
+
+/** The centre of a box of `size` (whole cells) whose top-left is the grid point nearest to where `center` puts it. */
+export function snapCenter(center: { x: number; y: number }, size: Size, grid = GRID): { x: number; y: number } {
+  return {
+    x: Math.round((center.x - size.width / 2) / grid) * grid + size.width / 2,
+    y: Math.round((center.y - size.height / 2) / grid) * grid + size.height / 2,
+  };
+}
+
 export interface Point {
   x: number;
   y: number;
@@ -137,6 +157,8 @@ export interface PlacementOptions {
   maxScale: number;
   /** Clear space kept between two Elements shown together. */
   gap: number;
+  /** Snap every placement's top-left to this grid (sizes must already be whole cells). */
+  grid?: number;
 }
 
 function sharesStep(a: ReadonlySet<number>, b: ReadonlySet<number>): boolean {
@@ -198,6 +220,26 @@ export function placeScene(items: readonly PlacementInput[], options: PlacementO
       }
     }
     if (!moved) break;
+  }
+  if (options.grid) {
+    const grid = options.grid;
+    // Onto the grid, then any pair the rounding brought too close is pushed
+    // apart in whole cells (only the later one moves, so others stay put).
+    points.forEach((point, index) => Object.assign(point, snapCenter(point, sizes[index], grid)));
+    for (let pass = 0; pass < 500; pass += 1) {
+      let moved = false;
+      for (const [i, j] of pairs) {
+        const push = overlap(i, j, points[i], points[j], sizes[i], sizes[j]);
+        if (!push) continue;
+        moved = true;
+        const sameRow = items[i].uy === items[j].uy;
+        const sameColumn = items[i].ux === items[j].ux;
+        if (sameRow || (!sameColumn && push.x <= push.y)) points[j].x += (points[j].x >= points[i].x ? 1 : -1) * Math.ceil(push.x / grid) * grid;
+        else points[j].y += (points[j].y >= points[i].y ? 1 : -1) * Math.ceil(push.y / grid) * grid;
+      }
+      if (!moved) break;
+    }
+    return { scale, positions: new Map(items.map((item, index) => [item.key, { x: points[index].x, y: points[index].y }])) };
   }
   return { scale, positions: new Map(items.map((item, index) => [item.key, { x: Math.round(points[index].x), y: Math.round(points[index].y) }])) };
 }

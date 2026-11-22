@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 421,
-          "y": -299
+          "x": 480,
+          "y": -320
         },
-        "width": 297,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "MÀN HÌNH HỒ SƠ, BẰNG REST\nGET /users/42           → 18 KB\nGET /users/42/posts     → 26 KB\nGET /users/42/followers →  4 KB\n# ba yêu cầu, lần lượt từng cái",
         "position": {
-          "x": 421,
-          "y": -299
+          "x": 480,
+          "y": -320
         },
-        "width": 273,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 437,
-          "y": -299
+          "x": 500,
+          "y": -320
         },
-        "width": 330,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "MÀN HÌNH CẦN GÌ\ntên, URL ảnh đại diện       ~0,4 KB\n3 bài gần nhất + xem trước  ~2,5 KB\nsố người theo dõi           ~0,1 KB\n⚠ tải về 48 KB · dùng ~3 KB",
         "position": {
-          "x": 437,
-          "y": -299
+          "x": 500,
+          "y": -320
         },
-        "width": 306,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 441,
-          "y": -282
+          "x": 500,
+          "y": -320
         },
-        "width": 338,
-        "height": 159,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "MỘT TRUY VẤN\nquery {\n  user(id: 42) { name avatar\n    posts(last: 3) { title preview }\n    followers { count } }\n}\n→ 1 lượt khứ hồi · 3 KB",
         "position": {
-          "x": 441,
-          "y": -282
+          "x": 500,
+          "y": -320
         },
-        "width": 314,
-        "height": 139,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 441,
-          "y": -290
+          "x": 500,
+          "y": -320
         },
-        "width": 338,
-        "height": 142,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "MỘT TRUY VẤN “NHỎ”\nfollowers {\n  followers {\n    followers { posts { comments } }\n  } }\n⚠ 41.000 lượt tra cứu cơ sở dữ liệu",
         "position": {
-          "x": 441,
-          "y": -290
+          "x": 500,
+          "y": -320
         },
-        "width": 314,
-        "height": 122,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 470,
-          "y": -299
+          "x": 520,
+          "y": -320
         },
-        "width": 396,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "MỘT HỢP ĐỒNG GRPC\nservice Users {\n  rpc GetUser (UserId) returns (User);\n}\n→ nhị phân · có kiểu · nhỏ hơn JSON vài lần",
         "position": {
-          "x": 470,
-          "y": -299
+          "x": 520,
+          "y": -320
         },
-        "width": 372,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,10 +178,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 516,
-          "y": -301
+          "x": 580,
+          "y": -340
         },
-        "width": 487,
+        "width": 520,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -196,11 +196,11 @@
         "type": "text",
         "title": "PHÂN TRANG DANH SÁCH DÀI\n⚠ ?offset=40000&limit=20  → duyệt 40.020 hàng\n→ ?after=9f3c&limit=20     → tìm theo chỉ mục, 20 hàng\n# phản hồi kèm con trỏ kế tiếp: \"a71b\"",
         "position": {
-          "x": 516,
-          "y": -301
+          "x": 580,
+          "y": -340
         },
-        "width": 463,
-        "height": 100,
+        "width": 520,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -212,11 +212,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 495,
-          "y": -299
+          "x": 560,
+          "y": -320
         },
-        "width": 446,
-        "height": 124,
+        "width": 480,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -230,11 +230,11 @@
         "type": "text",
         "title": "PHÁT TRIỂN AN TOÀN\n⚠ xóa hoặc đổi tên trường → ứng dụng cũ hỏng\n→ thêm một trường         → không gì hỏng\n→ đánh dấu lỗi thời, đo, xóa sau\n# thay đổi không tương thích? → /v2 song song /v1",
         "position": {
-          "x": 495,
-          "y": -299
+          "x": 560,
+          "y": -320
         },
-        "width": 422,
-        "height": 104,
+        "width": 480,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -246,11 +246,11 @@
         "type": "process",
         "title": "ứng dụng di động",
         "position": {
-          "x": 0,
-          "y": -304
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -267,11 +267,11 @@
         "title": "ứng dụng di động",
         "description": "đang tải…",
         "position": {
-          "x": 0,
-          "y": -304
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 81,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -288,11 +288,11 @@
         "title": "ứng dụng di động",
         "description": "người theo dõi · trang 2.001",
         "position": {
-          "x": 0,
-          "y": -304
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 115,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -309,11 +309,11 @@
         "title": "ứng dụng di động",
         "description": "⚠ ứng dụng v3.2 · crash",
         "position": {
-          "x": 0,
-          "y": -304
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 98,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -330,10 +330,10 @@
         "title": "REST API",
         "position": {
           "x": 0,
-          "y": -112
+          "y": -140
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -351,10 +351,10 @@
         "description": "GET /users/42/followers · GET /users/42/posts · GET /users/42",
         "position": {
           "x": 0,
-          "y": -112
+          "y": -140
         },
-        "width": 236,
-        "height": 108,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -372,10 +372,10 @@
         "description": "một endpoint",
         "position": {
           "x": 0,
-          "y": -112
+          "y": -140
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Braces",
         "iconPosition": "left",
@@ -393,10 +393,10 @@
         "description": "một endpoint · name → display_name",
         "position": {
           "x": 0,
-          "y": -112
+          "y": -140
         },
-        "width": 176,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Braces",
         "iconPosition": "left",
@@ -413,11 +413,11 @@
         "title": "Users",
         "description": "dịch vụ",
         "position": {
-          "x": -112,
-          "y": 64
+          "x": -140,
+          "y": 60
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -434,11 +434,11 @@
         "title": "Users",
         "description": "dịch vụ · ⚠ 41.000 lượt tra cứu · CPU 97%",
         "position": {
-          "x": -112,
-          "y": 64
+          "x": -140,
+          "y": 60
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -455,11 +455,11 @@
         "title": "Users",
         "description": "dịch vụ · CPU 30%",
         "position": {
-          "x": -112,
-          "y": 64
+          "x": -140,
+          "y": 60
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -476,11 +476,11 @@
         "title": "Users",
         "description": "dịch vụ · 2.000.000 người theo dõi · CPU 30%",
         "position": {
-          "x": -112,
-          "y": 64
+          "x": -140,
+          "y": 60
         },
-        "width": 184,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -497,11 +497,11 @@
         "title": "Posts",
         "description": "dịch vụ",
         "position": {
-          "x": 112,
-          "y": 64
+          "x": 140,
+          "y": 80
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -518,11 +518,11 @@
         "title": "Posts",
         "description": "dịch vụ · CPU 30%",
         "position": {
-          "x": 112,
-          "y": 64
+          "x": 140,
+          "y": 80
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",

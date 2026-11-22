@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 0,
-          "y": -6
+          "x": 20,
+          "y": 0
         },
-        "width": 273,
-        "height": 248,
+        "width": 360,
+        "height": 320,
         "color": "#bfbfbf",
         "backgroundColor": "#141414",
         "borderColor": "#8c8c8c",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "largest machine you can buy",
         "position": {
-          "x": -15,
-          "y": -109
+          "x": -40,
+          "y": -140
         },
-        "width": 223,
-        "height": 33,
+        "width": 240,
+        "height": 40,
         "fontSize": 12,
         "fontWeight": "semibold",
         "textAlign": "left",
@@ -43,10 +43,10 @@
         "title": "100 users",
         "position": {
           "x": 0,
-          "y": -372
+          "y": -400
         },
-        "width": 176,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -64,10 +64,10 @@
         "title": "12,000 users",
         "position": {
           "x": 0,
-          "y": -372
+          "y": -400
         },
-        "width": 200,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -85,10 +85,10 @@
         "title": "500,000 users",
         "position": {
           "x": 0,
-          "y": -372
+          "y": -400
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -106,10 +106,10 @@
         "title": "4 a.m. · 50,000 users",
         "position": {
           "x": 0,
-          "y": -372
+          "y": -400
         },
-        "width": 200,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -126,11 +126,11 @@
         "type": "process",
         "title": "4 a.m. · 50,000 users",
         "position": {
-          "x": -217,
-          "y": -372
+          "x": -260,
+          "y": -400
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -148,10 +148,10 @@
         "title": "noon · 750,000 users",
         "position": {
           "x": 0,
-          "y": -372
+          "y": -400
         },
-        "width": 212,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -169,11 +169,11 @@
         "title": "App Server",
         "description": "4 vCPU · 16 GB · CPU 1%",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 184,
-        "height": 75,
+        "width": 280,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -190,11 +190,11 @@
         "title": "App Server",
         "description": "4 vCPU · 16 GB · CPU 100%",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 184,
-        "height": 75,
+        "width": 280,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -211,11 +211,11 @@
         "title": "App Server",
         "description": "16 vCPU · 64 GB · CPU 30%",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 186,
-        "height": 112,
+        "width": 280,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -232,11 +232,11 @@
         "title": "App Server",
         "description": "192 vCPU · 768 GB · CPU 100%",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 217,
-        "height": 131,
+        "width": 280,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -254,11 +254,11 @@
         "title": "App Server",
         "description": "⚠ DOWN",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 217,
-        "height": 131,
+        "width": 280,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -276,11 +276,11 @@
         "title": "Server A",
         "description": "CPU 54%",
         "position": {
-          "x": -325,
+          "x": -380,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -297,11 +297,11 @@
         "title": "Server A",
         "description": "CPU 5%",
         "position": {
-          "x": -325,
+          "x": -380,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -318,11 +318,11 @@
         "title": "Server A",
         "description": "CPU 11%",
         "position": {
-          "x": -325,
+          "x": -380,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -339,11 +339,11 @@
         "title": "Server A",
         "description": "CPU 99%",
         "position": {
-          "x": -325,
+          "x": -380,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -360,11 +360,11 @@
         "title": "Server B",
         "description": "CPU 52%",
         "position": {
-          "x": -108,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -381,11 +381,11 @@
         "title": "Server B",
         "description": "CPU 5%",
         "position": {
-          "x": -108,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -402,11 +402,11 @@
         "title": "Server B",
         "description": "autoscaled: 2 of 2–8 · CPU 10%",
         "position": {
-          "x": -108,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -423,11 +423,11 @@
         "title": "Server B",
         "description": "CPU 99%",
         "position": {
-          "x": -108,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -444,11 +444,11 @@
         "title": "Server B",
         "description": "⚠ DOWN",
         "position": {
-          "x": -108,
-          "y": 0
+          "x": -140,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -466,11 +466,11 @@
         "title": "Server C",
         "description": "CPU 50%",
         "position": {
-          "x": 109,
+          "x": 140,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -487,11 +487,11 @@
         "title": "Server C",
         "description": "CPU 6%",
         "position": {
-          "x": 109,
+          "x": 140,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -507,11 +507,11 @@
         "type": "process",
         "title": "booting",
         "position": {
-          "x": 109,
+          "x": 140,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -529,11 +529,11 @@
         "title": "Server D",
         "description": "CPU 48%",
         "position": {
-          "x": 326,
+          "x": 380,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -550,11 +550,11 @@
         "title": "Server D",
         "description": "CPU 5%",
         "position": {
-          "x": 326,
+          "x": 380,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -570,11 +570,11 @@
         "type": "process",
         "title": "booting",
         "position": {
-          "x": 326,
+          "x": 380,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -592,11 +592,11 @@
         "title": "booting",
         "description": "≈ 3 min",
         "position": {
-          "x": -542,
+          "x": -620,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -613,11 +613,11 @@
         "type": "process",
         "title": "booting",
         "position": {
-          "x": 543,
+          "x": 620,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",

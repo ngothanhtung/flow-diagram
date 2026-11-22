@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1228,
-          "y": -791
+          "x": 1300,
+          "y": -800
         },
-        "width": 330,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "A PRESIGNED UPLOAD\nPUT https://bucket…/videos/7a1e.mp4\n  ?expires=900&signature=3b9f…\n→ one key · one upload · 15 minutes\n# the app never touches the bytes",
         "position": {
-          "x": 1228,
-          "y": -791
+          "x": 1300,
+          "y": -800
         },
-        "width": 306,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1236,
-          "y": -791
+          "x": 1300,
+          "y": -800
         },
-        "width": 346,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "MULTIPART UPLOAD\nstart      → upload id + 200 URLs\npart 1…200  10 MB each, 4 at a time\n⚠ part 37 failed → send part 37 again\n→ complete  → videos/7a1e.mp4",
         "position": {
-          "x": 1236,
-          "y": -791
+          "x": 1300,
+          "y": -800
         },
-        "width": 322,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1257,
-          "y": -782
+          "x": 1320,
+          "y": -800
         },
-        "width": 388,
-        "height": 142,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "ONE VIDEO, FIVE QUALITIES\n1080p   5 Mbit/s\n 720p   3 Mbit/s\n→ 480p   1.5 Mbit/s   ← now: 2 Mbit/s link\n 360p   0.8 Mbit/s\n 240p   0.4 Mbit/s",
         "position": {
-          "x": 1257,
-          "y": -782
+          "x": 1320,
+          "y": -800
         },
-        "width": 364,
-        "height": 122,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1294,
-          "y": -791
+          "x": 1360,
+          "y": -800
         },
-        "width": 462,
-        "height": 124,
+        "width": 480,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "STORAGE CLASSES · PER TB-MONTH\nstandard            ≈ $23    hot, cheap to read\ninfrequent access   ≈ $12.50  pay per read\narchive             ≈ $1–4   slow or costly to read\n→ after a year: 730 TB → ≈ $6,300 / month",
         "position": {
-          "x": 1294,
-          "y": -791
+          "x": 1360,
+          "y": -800
         },
-        "width": 438,
-        "height": 104,
+        "width": 480,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -145,10 +145,10 @@
         "title": "people sharing photos",
         "position": {
           "x": 0,
-          "y": -817
+          "y": -840
         },
-        "width": 220,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -166,10 +166,10 @@
         "title": "people uploading videos",
         "position": {
           "x": 0,
-          "y": -817
+          "y": -840
         },
-        "width": 236,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -186,11 +186,11 @@
         "type": "process",
         "title": "App Servers",
         "position": {
-          "x": 0,
-          "y": -258
+          "x": 20,
+          "y": -260
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -207,11 +207,11 @@
         "title": "App Servers",
         "description": "CPU 85%",
         "position": {
-          "x": 0,
-          "y": -258
+          "x": 20,
+          "y": -260
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -228,11 +228,11 @@
         "title": "App Servers",
         "description": "relaying 2 GB uploads · CPU 90%",
         "position": {
-          "x": 0,
-          "y": -258
+          "x": 20,
+          "y": -260
         },
-        "width": 196,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -249,11 +249,11 @@
         "title": "App Servers",
         "description": "CPU 20%",
         "position": {
-          "x": 0,
-          "y": -258
+          "x": 20,
+          "y": -260
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -270,11 +270,11 @@
         "title": "database",
         "description": "photos as BLOBs",
         "position": {
-          "x": 0,
-          "y": 258
+          "x": 20,
+          "y": 260
         },
-        "width": 181,
-        "height": 109,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -291,11 +291,11 @@
         "title": "database",
         "description": "⚠ +2 TB / day · CPU 95%",
         "position": {
-          "x": 0,
-          "y": 258
+          "x": 20,
+          "y": 260
         },
-        "width": 181,
-        "height": 123,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -312,11 +312,11 @@
         "title": "metadata",
         "description": "key · owner · size · type",
         "position": {
-          "x": -430,
-          "y": 258
+          "x": -460,
+          "y": 280
         },
-        "width": 176,
-        "height": 123,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -332,11 +332,11 @@
         "type": "process",
         "title": "metadata",
         "position": {
-          "x": -430,
-          "y": 258
+          "x": -460,
+          "y": 280
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -353,11 +353,11 @@
         "title": "metadata",
         "description": "status: pending → uploaded",
         "position": {
-          "x": -430,
-          "y": 258
+          "x": -460,
+          "y": 280
         },
-        "width": 176,
-        "height": 123,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -374,11 +374,11 @@
         "title": "metadata",
         "description": "✓ status: ready",
         "position": {
-          "x": -430,
-          "y": 258
+          "x": -460,
+          "y": 280
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -395,11 +395,11 @@
         "title": "metadata",
         "description": "312 pending > 1 day",
         "position": {
-          "x": -430,
-          "y": 258
+          "x": -460,
+          "y": 280
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -416,11 +416,11 @@
         "title": "Object Storage",
         "description": "photos/9f2c.jpg",
         "position": {
-          "x": 430,
-          "y": 258
+          "x": 440,
+          "y": 280
         },
-        "width": 219,
-        "height": 129,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -436,11 +436,11 @@
         "type": "process",
         "title": "Object Storage",
         "position": {
-          "x": 430,
-          "y": 258
+          "x": 440,
+          "y": 280
         },
-        "width": 219,
-        "height": 129,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -457,11 +457,11 @@
         "title": "Object Storage",
         "description": "parts 1–200 → one object",
         "position": {
-          "x": 430,
-          "y": 258
+          "x": 440,
+          "y": 280
         },
-        "width": 219,
-        "height": 129,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -478,11 +478,11 @@
         "title": "Object Storage",
         "description": "originals > 90 days → archive",
         "position": {
-          "x": 430,
-          "y": 258
+          "x": 440,
+          "y": 280
         },
-        "width": 219,
-        "height": 129,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -499,11 +499,11 @@
         "title": "Object Storage",
         "description": "public access blocked",
         "position": {
-          "x": 430,
-          "y": 258
+          "x": 440,
+          "y": 280
         },
-        "width": 219,
-        "height": 129,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -519,11 +519,11 @@
         "type": "process",
         "title": "▮ ▮ ▮",
         "position": {
-          "x": 671,
-          "y": 258
+          "x": 700,
+          "y": 280
         },
-        "width": 176,
-        "height": 72,
+        "width": 200,
+        "height": 80,
         "shape": "queue",
         "icon": null,
         "color": "#d9d9d9",
@@ -539,11 +539,11 @@
         "title": "Workers",
         "description": "resize · strip GPS · transcode",
         "position": {
-          "x": 903,
-          "y": 258
+          "x": 940,
+          "y": 260
         },
-        "width": 176,
-        "height": 99,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Workflow",
         "iconPosition": "left",
@@ -559,11 +559,11 @@
         "type": "process",
         "title": "Workers",
         "position": {
-          "x": 903,
-          "y": 258
+          "x": 940,
+          "y": 260
         },
-        "width": 176,
-        "height": 99,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Workflow",
         "iconPosition": "left",
@@ -579,11 +579,11 @@
         "type": "process",
         "title": "CDN",
         "position": {
-          "x": 430,
-          "y": -344
+          "x": 460,
+          "y": -360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -600,11 +600,11 @@
         "title": "CDN",
         "description": "segments · 4 s each",
         "position": {
-          "x": 430,
-          "y": -344
+          "x": 460,
+          "y": -360
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -621,11 +621,11 @@
         "title": "Cleanup",
         "description": "nightly",
         "position": {
-          "x": -430,
-          "y": -258
+          "x": -460,
+          "y": -260
         },
-        "width": 176,
-        "height": 93,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:RefreshCw",
         "iconPosition": "left",
@@ -641,11 +641,11 @@
         "type": "process",
         "title": "anyone",
         "position": {
-          "x": 860,
-          "y": -344
+          "x": 900,
+          "y": -360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -790,11 +790,11 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           },
           {
-            "x": -430,
+            "x": -460,
             "y": 0
           }
         ],
@@ -817,11 +817,11 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           },
           {
-            "x": -430,
+            "x": -460,
             "y": 0
           }
         ],
@@ -839,11 +839,11 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           },
           {
-            "x": -430,
+            "x": -460,
             "y": 0
           }
         ],
@@ -866,11 +866,11 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           },
           {
-            "x": -430,
+            "x": -460,
             "y": 0
           }
         ],
@@ -893,11 +893,11 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           },
           {
-            "x": -430,
+            "x": -460,
             "y": 0
           }
         ],
@@ -920,11 +920,11 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           },
           {
-            "x": -430,
+            "x": -460,
             "y": 0
           }
         ],
@@ -947,11 +947,11 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           },
           {
-            "x": -430,
+            "x": -460,
             "y": 0
           }
         ],
@@ -974,11 +974,11 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           },
           {
-            "x": 430,
+            "x": 440,
             "y": 0
           }
         ],
@@ -1002,11 +1002,11 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           },
           {
-            "x": 430,
+            "x": 440,
             "y": 0
           }
         ],
@@ -1032,12 +1032,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 301,
-            "y": -817
+            "x": 320,
+            "y": -840
           },
           {
-            "x": 301,
-            "y": 258
+            "x": 320,
+            "y": 280
           }
         ],
         "effect": "pulse",
@@ -1059,12 +1059,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 301,
-            "y": -817
+            "x": 320,
+            "y": -840
           },
           {
-            "x": 301,
-            "y": 258
+            "x": 320,
+            "y": 280
           }
         ],
         "effect": "pulse",
@@ -1087,12 +1087,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 301,
-            "y": -817
+            "x": 320,
+            "y": -840
           },
           {
-            "x": 301,
-            "y": 258
+            "x": 320,
+            "y": 280
           }
         ],
         "effect": "pulse",
@@ -1114,12 +1114,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 301,
-            "y": -817
+            "x": 320,
+            "y": -840
           },
           {
-            "x": 301,
-            "y": 258
+            "x": 320,
+            "y": 280
           }
         ],
         "effect": "pulse",
@@ -1141,12 +1141,12 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 301,
-            "y": -817
+            "x": 320,
+            "y": -840
           },
           {
-            "x": 301,
-            "y": 258
+            "x": 320,
+            "y": 280
           }
         ],
         "effect": "pulse",
@@ -1170,11 +1170,11 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": 430,
+            "x": 440,
             "y": 0
           },
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           }
         ],
@@ -1197,11 +1197,11 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": 430,
+            "x": 440,
             "y": 0
           },
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           }
         ],
@@ -1220,11 +1220,11 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": 430,
+            "x": 440,
             "y": 0
           },
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           }
         ],
@@ -1248,11 +1248,11 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": 430,
+            "x": 440,
             "y": 0
           },
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           }
         ],
@@ -1271,11 +1271,11 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": 430,
+            "x": 440,
             "y": 0
           },
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           }
         ],
@@ -1294,11 +1294,11 @@
         "toSide": "bottom",
         "bendPoints": [
           {
-            "x": 430,
+            "x": 440,
             "y": 0
           },
           {
-            "x": 0,
+            "x": 20,
             "y": 0
           }
         ],
@@ -1476,12 +1476,12 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -430,
-            "y": -86
+            "x": -460,
+            "y": -80
           },
           {
-            "x": 430,
-            "y": -86
+            "x": 440,
+            "y": -80
           }
         ],
         "effect": "laser",

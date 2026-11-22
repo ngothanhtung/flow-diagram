@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 904,
+          "x": 960,
           "y": -520
         },
-        "width": 371,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "WHAT A PAGE IS MADE OF\nHTML (per user)     30 KB\nimages             1.6 MB\nscripts + styles   400 KB\n→ 98% of bytes are the same for everyone",
         "position": {
-          "x": 904,
+          "x": 960,
           "y": -520
         },
-        "width": 347,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,11 +42,11 @@
         "type": "process",
         "title": "London",
         "position": {
-          "x": 0,
-          "y": -546
+          "x": 20,
+          "y": -560
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -63,11 +63,11 @@
         "type": "process",
         "title": "London · ×20",
         "position": {
-          "x": 0,
-          "y": -546
+          "x": 20,
+          "y": -560
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -84,11 +84,11 @@
         "type": "process",
         "title": "Sydney",
         "position": {
-          "x": 546,
+          "x": 580,
           "y": 0
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -105,11 +105,11 @@
         "type": "process",
         "title": "Sydney · ×20",
         "position": {
-          "x": 546,
+          "x": 580,
           "y": 0
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
         "iconPosition": "left",
@@ -127,11 +127,11 @@
         "title": "Origin",
         "description": "Virginia · CPU 88%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -148,11 +148,11 @@
         "title": "Origin",
         "description": "Virginia · CPU 20%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -169,11 +169,11 @@
         "title": "Origin",
         "description": "Virginia · CPU 32%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -190,11 +190,11 @@
         "title": "Origin",
         "description": "Virginia · logo.png · new · CPU 20%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -211,11 +211,11 @@
         "title": "Origin",
         "description": "Virginia · logo.3f9a.png · CPU 15%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 180,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -232,11 +232,11 @@
         "title": "Origin",
         "description": "Virginia · CPU 22%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -253,11 +253,11 @@
         "title": "Origin",
         "description": "Virginia · CPU 5%",
         "position": {
-          "x": -234,
-          "y": 234
+          "x": -260,
+          "y": 240
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -274,11 +274,11 @@
         "title": "Origin",
         "description": "Virginia · CPU 15%",
         "position": {
-          "x": 0,
-          "y": 0
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -295,11 +295,11 @@
         "title": "Edge",
         "description": "London",
         "position": {
-          "x": 0,
-          "y": -312
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -316,11 +316,11 @@
         "title": "Edge",
         "description": "London · warm",
         "position": {
-          "x": 0,
-          "y": -312
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -337,11 +337,11 @@
         "title": "Edge",
         "description": "London · ⚠ logo.png · old",
         "position": {
-          "x": 0,
-          "y": -312
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -358,11 +358,11 @@
         "title": "Edge",
         "description": "London · logo.3f9a.png · 1 yr",
         "position": {
-          "x": 0,
-          "y": -312
+          "x": 20,
+          "y": -340
         },
-        "width": 180,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -379,11 +379,11 @@
         "title": "Edge",
         "description": "London · CPU 60%",
         "position": {
-          "x": 0,
-          "y": -312
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -400,11 +400,11 @@
         "title": "Edge",
         "description": "London · /cart → private · pass",
         "position": {
-          "x": 0,
-          "y": -312
+          "x": 20,
+          "y": -340
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -421,11 +421,11 @@
         "title": "Edge",
         "description": "Sydney",
         "position": {
-          "x": 312,
-          "y": 0
+          "x": 340,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -442,11 +442,11 @@
         "title": "Edge",
         "description": "Sydney · ⚠ cold · filling",
         "position": {
-          "x": 312,
-          "y": 0
+          "x": 340,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -463,11 +463,11 @@
         "title": "Edge",
         "description": "Sydney · ⚠ logo.png · old",
         "position": {
-          "x": 312,
-          "y": 0
+          "x": 340,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -484,11 +484,11 @@
         "title": "Edge",
         "description": "Sydney · logo.3f9a.png · 1 yr",
         "position": {
-          "x": 312,
-          "y": 0
+          "x": 340,
+          "y": 20
         },
-        "width": 180,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -505,11 +505,11 @@
         "title": "Edge",
         "description": "Sydney · CPU 60%",
         "position": {
-          "x": 312,
-          "y": 0
+          "x": 340,
+          "y": 20
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -526,11 +526,11 @@
         "title": "Edge",
         "description": "Sydney · /cart → private · pass",
         "position": {
-          "x": 312,
-          "y": 0
+          "x": 340,
+          "y": 20
         },
-        "width": 176,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -547,11 +547,11 @@
         "title": "Shield",
         "description": "mid-tier cache",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 0
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",

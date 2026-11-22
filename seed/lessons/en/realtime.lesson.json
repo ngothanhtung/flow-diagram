@@ -8,10 +8,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 551,
-          "y": -319
+          "x": 600,
+          "y": -340
         },
-        "width": 313,
+        "width": 320,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "THE BILL\n1,000,000 users ÷ 2 s\n→ 500,000 requests / s\n⚠ ~475,000 of them: “nothing new”",
         "position": {
-          "x": 551,
-          "y": -319
+          "x": 600,
+          "y": -340
         },
-        "width": 289,
-        "height": 100,
+        "width": 320,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -43,11 +43,11 @@
         "title": "Alice",
         "description": "anything new?",
         "position": {
-          "x": 0,
-          "y": -342
+          "x": 20,
+          "y": -360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -63,11 +63,11 @@
         "type": "process",
         "title": "Alice",
         "position": {
-          "x": 0,
-          "y": -342
+          "x": 20,
+          "y": -360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -84,11 +84,11 @@
         "title": "Alice",
         "description": "one of 1,000,000",
         "position": {
-          "x": 0,
-          "y": -342
+          "x": 20,
+          "y": -360
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -105,11 +105,11 @@
         "title": "Alice",
         "description": "new message from Bob",
         "position": {
-          "x": 0,
-          "y": -342
+          "x": 20,
+          "y": -360
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -126,11 +126,11 @@
         "title": "Alice",
         "description": "offline · subway",
         "position": {
-          "x": 0,
-          "y": -342
+          "x": 20,
+          "y": -360
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -147,11 +147,11 @@
         "title": "Alice",
         "description": "online",
         "position": {
-          "x": 0,
-          "y": -342
+          "x": 20,
+          "y": -360
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -168,11 +168,11 @@
         "title": "Chat Server",
         "description": "1 new message for Alice",
         "position": {
-          "x": 0,
-          "y": -108
+          "x": 20,
+          "y": -100
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -189,11 +189,11 @@
         "title": "Chat Server",
         "description": "CPU 15%",
         "position": {
-          "x": 0,
-          "y": -108
+          "x": 20,
+          "y": -100
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -210,11 +210,11 @@
         "title": "Chat Server",
         "description": "⚠ 500,000 req/s · 95% empty · CPU 94%",
         "position": {
-          "x": 0,
-          "y": -108
+          "x": 20,
+          "y": -100
         },
-        "width": 196,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -231,11 +231,11 @@
         "title": "Chat Server",
         "description": "holding until news · CPU 20%",
         "position": {
-          "x": 0,
-          "y": -108
+          "x": 20,
+          "y": -100
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -252,11 +252,11 @@
         "title": "Server 1",
         "description": "Alice’s socket",
         "position": {
-          "x": 0,
-          "y": -108
+          "x": 20,
+          "y": -100
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -273,11 +273,11 @@
         "title": "Server 1",
         "description": "no socket for Alice",
         "position": {
-          "x": 0,
-          "y": -108
+          "x": 20,
+          "y": -100
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -293,11 +293,11 @@
         "type": "process",
         "title": "Bob",
         "position": {
-          "x": 234,
-          "y": -108
+          "x": 260,
+          "y": -120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -313,11 +313,11 @@
         "type": "process",
         "title": "Bob",
         "position": {
-          "x": 234,
-          "y": -144
+          "x": 260,
+          "y": -160
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
         "iconPosition": "left",
@@ -334,11 +334,11 @@
         "title": "Server 2",
         "description": "Bob’s socket",
         "position": {
-          "x": 234,
-          "y": 108
+          "x": 260,
+          "y": 120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -355,11 +355,11 @@
         "title": "Pub/Sub",
         "description": "Redis",
         "position": {
-          "x": 0,
-          "y": 108
+          "x": 20,
+          "y": 120
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Radio",
         "iconPosition": "left",
@@ -376,11 +376,11 @@
         "title": "messages",
         "description": "saved: 1042, 1043",
         "position": {
-          "x": -234,
-          "y": 108
+          "x": -260,
+          "y": 100
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 120,
         "shape": "database",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -397,11 +397,11 @@
         "title": "presence",
         "description": "alice · seen 4 s ago",
         "position": {
-          "x": -234,
-          "y": 108
+          "x": -260,
+          "y": 120
         },
-        "width": 176,
-        "height": 122,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Zap",
         "iconPosition": "left",

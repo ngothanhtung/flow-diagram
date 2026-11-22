@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 600,
-          "y": -355
+          "x": 680,
+          "y": -360
         },
-        "width": 371,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "GIỚI HẠN MỌI TRUY VẤN\nSELECT * FROM invoices\n WHERE id = 1043\n   AND org_id = :caller_org\n→ Eve (Globex) → không có dòng nào → 404",
         "position": {
-          "x": 600,
-          "y": -355
+          "x": 680,
+          "y": -360
         },
-        "width": 347,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -42,10 +42,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 612,
-          "y": -357
+          "x": 680,
+          "y": -380
         },
-        "width": 396,
+        "width": 400,
         "height": 120,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -60,11 +60,11 @@
         "type": "text",
         "title": "DANH SÁCH TRƯỜNG ĐƯỢC GHI\n⚠ update(user, request.body)\n→ update(user, pick(body, \"name\", \"email\"))\n# role: endpoint chỉ cho admin",
         "position": {
-          "x": 612,
-          "y": -357
+          "x": 680,
+          "y": -380
         },
-        "width": 372,
-        "height": 100,
+        "width": 400,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -76,11 +76,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 583,
-          "y": -355
+          "x": 660,
+          "y": -360
         },
-        "width": 338,
-        "height": 124,
+        "width": 360,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -94,11 +94,11 @@
         "type": "text",
         "title": "CƠ SỞ DỮ LIỆU CŨNG LỌC\nCREATE POLICY tenant ON invoices\n  USING (org_id = current_org())\n→ SELECT * FROM invoices\n#   → only the caller’s organisation",
         "position": {
-          "x": 583,
-          "y": -355
+          "x": 660,
+          "y": -360
         },
-        "width": 314,
-        "height": 104,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -110,11 +110,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 571,
-          "y": -355
+          "x": 640,
+          "y": -360
         },
-        "width": 313,
-        "height": 124,
+        "width": 320,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -128,11 +128,11 @@
         "type": "text",
         "title": "VAI TRÒ → QUYỀN\nngười xem    đọc\nkế toán      đọc · sửa\nngười duyệt  đọc · duyệt\nadmin        mọi thứ + người dùng",
         "position": {
-          "x": 571,
-          "y": -355
+          "x": 640,
+          "y": -360
         },
-        "width": 289,
-        "height": 104,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -144,11 +144,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 608,
-          "y": -355
+          "x": 680,
+          "y": -360
         },
-        "width": 388,
-        "height": 124,
+        "width": 400,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -162,11 +162,11 @@
         "type": "text",
         "title": "VÌ SAO ALICE XEM ĐƯỢC 1042?\nhóa đơn 1042    trong       thư mục Q3\nthư mục Q3      chia sẻ     nhóm Tài chính\nnhóm Tài chính  thành viên  alice\n→ alice được xem hóa đơn 1042",
         "position": {
-          "x": 608,
-          "y": -355
+          "x": 680,
+          "y": -360
         },
-        "width": 364,
-        "height": 104,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -178,11 +178,11 @@
         "type": "process",
         "title": "Alice · Acme",
         "position": {
-          "x": -240,
+          "x": -260,
           "y": -120
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -199,11 +199,11 @@
         "title": "Alice · Acme",
         "description": "vai trò: kế toán",
         "position": {
-          "x": -240,
+          "x": -260,
           "y": -120
         },
         "width": 200,
-        "height": 73,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -220,11 +220,11 @@
         "title": "Alice · Acme",
         "description": "thành viên nhóm Tài chính",
         "position": {
-          "x": -240,
+          "x": -260,
           "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -241,11 +241,11 @@
         "title": "Alice · Acme",
         "description": "⚠ báo cáo có cả Globex!",
         "position": {
-          "x": -240,
+          "x": -260,
           "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -262,11 +262,11 @@
         "title": "Alice · Acme",
         "description": "✓ chỉ hóa đơn của Acme",
         "position": {
-          "x": -240,
+          "x": -260,
           "y": -120
         },
         "width": 200,
-        "height": 75,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -283,11 +283,11 @@
         "title": "Eve · Globex",
         "description": "GET /invoices/1043 → của Acme!",
         "position": {
-          "x": 240,
-          "y": -120
+          "x": 280,
+          "y": -140
         },
-        "width": 204,
-        "height": 91,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -304,11 +304,11 @@
         "title": "Eve · Globex",
         "description": "/invoices/1043 → 404",
         "position": {
-          "x": 240,
-          "y": -120
+          "x": 280,
+          "y": -140
         },
-        "width": 200,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -325,11 +325,11 @@
         "title": "Eve · Globex",
         "description": "⚠ PATCH /me { \"role\": \"admin\" }",
         "position": {
-          "x": 240,
-          "y": -120
+          "x": 280,
+          "y": -140
         },
-        "width": 204,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -346,11 +346,11 @@
         "title": "Eve · Globex",
         "description": "Chỉ các dòng của Globex",
         "position": {
-          "x": 240,
-          "y": -120
+          "x": 280,
+          "y": -140
         },
-        "width": 200,
-        "height": 75,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -366,11 +366,11 @@
         "type": "process",
         "title": "Eve · Globex",
         "position": {
-          "x": 240,
-          "y": -120
+          "x": 280,
+          "y": -140
         },
-        "width": 200,
-        "height": 73,
+        "width": 240,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -387,11 +387,11 @@
         "title": "API hóa đơn",
         "description": "kiểm tra: đã đăng nhập? ✓",
         "position": {
-          "x": 0,
-          "y": -120
+          "x": 20,
+          "y": -140
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -408,11 +408,11 @@
         "title": "API hóa đơn",
         "description": "kiểm tra: chủ sở hữu = tổ chức người gọi",
         "position": {
-          "x": 0,
-          "y": -120
+          "x": 20,
+          "y": -140
         },
-        "width": 196,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -429,11 +429,11 @@
         "title": "API hóa đơn",
         "description": "lưu mọi trường được gửi",
         "position": {
-          "x": 0,
-          "y": -120
+          "x": 20,
+          "y": -140
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -450,11 +450,11 @@
         "title": "API hóa đơn",
         "description": "SET app.org = tổ chức người gọi",
         "position": {
-          "x": 0,
-          "y": -120
+          "x": 20,
+          "y": -140
         },
-        "width": 196,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -471,11 +471,11 @@
         "title": "API hóa đơn",
         "description": "vai trò cho phép “sửa”? ✓",
         "position": {
-          "x": 0,
-          "y": -120
+          "x": 20,
+          "y": -140
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -492,11 +492,11 @@
         "title": "API hóa đơn",
         "description": "lần theo chuỗi quan hệ",
         "position": {
-          "x": 0,
-          "y": -120
+          "x": 20,
+          "y": -140
         },
-        "width": 192,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -512,11 +512,11 @@
         "type": "process",
         "title": "API hóa đơn",
         "position": {
-          "x": 0,
-          "y": -120
+          "x": 20,
+          "y": -140
         },
-        "width": 192,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -533,11 +533,11 @@
         "title": "hóa đơn",
         "description": "1043 · Acme · 48.200 $",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 120
         },
-        "width": 176,
-        "height": 106,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -553,11 +553,11 @@
         "type": "process",
         "title": "hóa đơn",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 120
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -574,11 +574,11 @@
         "title": "hóa đơn",
         "description": "⚠ eve · role = admin!",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 120
         },
-        "width": 176,
-        "height": 122,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -595,11 +595,11 @@
         "title": "hóa đơn",
         "description": "row-level security: org_id",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 120
         },
-        "width": 176,
-        "height": 123,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -616,11 +616,11 @@
         "title": "hóa đơn",
         "description": "⚠ người dùng · thanh toán · hóa đơn bị lấy",
         "position": {
-          "x": 0,
+          "x": 20,
           "y": 120
         },
-        "width": 188,
-        "height": 140,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -637,11 +637,11 @@
         "title": "Dịch vụ chính sách",
         "description": "✓ cho phép: sửa · từ chối: duyệt",
         "position": {
-          "x": 0,
-          "y": -360
+          "x": 20,
+          "y": -380
         },
-        "width": 192,
-        "height": 115,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",
@@ -657,11 +657,11 @@
         "type": "process",
         "title": "Dịch vụ chính sách",
         "position": {
-          "x": 0,
-          "y": -360
+          "x": 20,
+          "y": -380
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Shield",
         "iconPosition": "left",
@@ -678,11 +678,11 @@
         "title": "Báo cáo",
         "description": "quyền admin · lỗi injection",
         "position": {
-          "x": 240,
-          "y": 120
+          "x": 260,
+          "y": 140
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -699,11 +699,11 @@
         "title": "Báo cáo",
         "description": "chỉ đọc · view hóa đơn · bảng users: bị từ chối",
         "position": {
-          "x": 240,
-          "y": 120
+          "x": 260,
+          "y": 140
         },
-        "width": 184,
-        "height": 108,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -720,11 +720,11 @@
         "title": "Báo cáo",
         "description": "danh tính riêng · mọi khách hàng",
         "position": {
-          "x": 240,
-          "y": 120
+          "x": 260,
+          "y": 140
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -741,11 +741,11 @@
         "title": "Báo cáo",
         "description": "hành động như Alice · chỉ Acme",
         "position": {
-          "x": 240,
-          "y": 120
+          "x": 260,
+          "y": 140
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -762,11 +762,11 @@
         "title": "Báo cáo",
         "description": "chỉ đọc · view hóa đơn",
         "position": {
-          "x": 240,
-          "y": 120
+          "x": 260,
+          "y": 140
         },
-        "width": 176,
-        "height": 75,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -782,11 +782,11 @@
         "type": "process",
         "title": "Báo cáo",
         "position": {
-          "x": 240,
-          "y": 120
+          "x": 260,
+          "y": 140
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -803,11 +803,11 @@
         "title": "nhật ký kiểm toán",
         "description": "alice đã xem 1042 · 09:14",
         "position": {
-          "x": -240,
+          "x": -260,
           "y": 120
         },
-        "width": 188,
-        "height": 130,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Clipboard",
         "iconPosition": "left",
@@ -823,11 +823,11 @@
         "type": "process",
         "title": "nhật ký kiểm toán",
         "position": {
-          "x": -240,
+          "x": -260,
           "y": 120
         },
-        "width": 184,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Clipboard",
         "iconPosition": "left",

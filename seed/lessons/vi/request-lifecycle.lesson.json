@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 524,
-          "y": -529
+          "x": 580,
+          "y": -600
         },
         "width": 280,
-        "height": 159,
+        "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,11 +26,11 @@
         "type": "text",
         "title": "THỜI GIAN ĐÃ ĐI ĐÂU\ntra DNS              20 ms\nbắt tay TCP + TLS    60 ms\nyêu cầu + server     55 ms\ntải về               20 ms\n→ tổng              155 ms\n# trong đó 130 ms là chờ mạng",
         "position": {
-          "x": 524,
-          "y": -529
+          "x": 580,
+          "y": -600
         },
-        "width": 256,
-        "height": 139,
+        "width": 280,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
@@ -44,10 +44,10 @@
         "description": "https://shop.example",
         "position": {
           "x": 0,
-          "y": -264
+          "y": -280
         },
-        "width": 224,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -65,10 +65,10 @@
         "description": "✓ trang sẵn sàng · 155 ms",
         "position": {
           "x": 0,
-          "y": -264
+          "y": -280
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -86,10 +86,10 @@
         "description": "40 tệp · 1 kết nối",
         "position": {
           "x": 0,
-          "y": -264
+          "y": -280
         },
-        "width": 176,
-        "height": 75,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -107,10 +107,10 @@
         "description": "https://shop.example",
         "position": {
           "x": 0,
-          "y": -572
+          "y": -640
         },
-        "width": 224,
-        "height": 73,
+        "width": 240,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -127,11 +127,11 @@
         "title": "DNS",
         "description": "bộ phân giải · → 203.0.113.7",
         "position": {
-          "x": 0,
-          "y": 22
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 91,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -148,11 +148,11 @@
         "title": "DNS",
         "description": "bộ phân giải",
         "position": {
-          "x": 0,
-          "y": 22
+          "x": 20,
+          "y": 20
         },
-        "width": 176,
-        "height": 73,
+        "width": 200,
+        "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -168,11 +168,11 @@
         "type": "process",
         "title": "Web server",
         "position": {
-          "x": 220,
-          "y": -22
+          "x": 260,
+          "y": -40
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -189,11 +189,11 @@
         "title": "Web server",
         "description": "CPU 30%",
         "position": {
-          "x": 220,
-          "y": -22
+          "x": 260,
+          "y": -40
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -210,11 +210,11 @@
         "title": "Web server",
         "description": "CPU 35%",
         "position": {
-          "x": 220,
-          "y": -22
+          "x": 260,
+          "y": -40
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -231,11 +231,11 @@
         "title": "Web server",
         "description": "Virginia",
         "position": {
-          "x": 220,
-          "y": -22
+          "x": 260,
+          "y": -40
         },
-        "width": 184,
-        "height": 73,
+        "width": 200,
+        "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -251,11 +251,11 @@
         "type": "process",
         "title": "CSDL",
         "position": {
-          "x": 220,
-          "y": 264
+          "x": 260,
+          "y": 280
         },
-        "width": 176,
-        "height": 104,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -272,11 +272,11 @@
         "title": "CSDL",
         "description": "400 ms · quét toàn bộ",
         "position": {
-          "x": 220,
-          "y": 264
+          "x": 260,
+          "y": 280
         },
-        "width": 176,
-        "height": 122,
+        "width": 200,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
