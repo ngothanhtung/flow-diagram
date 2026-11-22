@@ -102,3 +102,35 @@ describe('LessonPlayer metrics bar', () => {
     expect(html).toMatch(/data-changed="false"[^>]*>(?:(?!data-changed).)*20 ms/);
   });
 });
+
+describe('LessonPlayer controls', () => {
+  function lesson(): LessonDocumentJSON {
+    const base = emptyLessonDocument('Controls');
+    return {
+      ...base,
+      meta: { ...base.meta, goals: [{ text: 'What DNS does', step: 's2' }] },
+      steps: [
+        { ...base.steps[0], id: 's1', short: 'Hit Enter' },
+        { ...base.steps[0], id: 's2', short: 'Find address' },
+      ],
+    };
+  }
+
+  it('names the next Lesson step on the Next button', () => {
+    const html = renderToStaticMarkup(createElement(LessonPlayer, { lesson: lesson() }));
+    expect(html).toContain('Next: Find address');
+    expect(html).toContain('Back');
+  });
+
+  it('lists the keyboard keys under the buttons', () => {
+    const html = renderToStaticMarkup(createElement(LessonPlayer, { lesson: lesson() }));
+    for (const key of ['←', '→', 'Space', '0']) expect(html).toContain(`>${key}</kbd>`);
+  });
+
+  it('shows the goals as a "What you\'ll learn" checklist', () => {
+    const html = renderToStaticMarkup(createElement(LessonPlayer, { lesson: lesson() }));
+    expect(html).toContain('What you’ll learn');
+    // Not visited yet: an empty box. Each goal is a button to its Lesson step.
+    expect(html).toMatch(/data-done="false"[^>]*title="Go to lesson step 2"/);
+  });
+});

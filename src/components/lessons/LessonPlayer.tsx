@@ -1,6 +1,6 @@
 'use client';
 
-import { AlertTriangle, ChevronLeft, ChevronRight, Check, Lightbulb, Lock, Maximize, PanelLeft, X, Zap } from 'lucide-react';
+import { AlertTriangle, ArrowLeft, ArrowRight, Check, Keyboard, Lightbulb, Lock, Maximize, PanelLeft, X, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { FlowCanvas } from '@/components/FlowCanvas';
@@ -33,6 +33,10 @@ const CALLOUT_STYLE: Record<CalloutKind, { icon: ReactNode; box: string }> = {
 const CHANGE_TONE = { '+': 'text-emerald-600 dark:text-emerald-400', '~': 'text-amber-600 dark:text-amber-400', '-': 'text-red-600 dark:text-red-400' } as const;
 
 const noop = () => undefined;
+
+function Kbd({ children }: { children: string }) {
+  return <kbd className='rounded border border-border bg-muted px-1 py-px font-mono text-[10px] leading-none text-foreground/80'>{children}</kbd>;
+}
 
 function isTypingTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
@@ -230,37 +234,62 @@ export function LessonPlayer({
           </div>
 
           <div className='space-y-3 border-t border-border p-4'>
-            <div className='flex items-center justify-between gap-2'>
-              <Button variant='toolbar' size='lg' disabled={index <= 0} onClick={() => goTo(index - 1)} title='Previous (Left arrow)'>
-                <ChevronLeft size={13} /> Previous
+            <div className='grid grid-cols-[auto_minmax(0,1fr)] gap-2'>
+              <Button variant='outline' size='lg' className='h-11 px-4' disabled={index <= 0} onClick={() => goTo(index - 1)} title='Previous lesson step (Left arrow)'>
+                <ArrowLeft size={14} /> Back
               </Button>
               {atEnd && nextLessonHref ? (
-                <Button variant='accent' size='lg' nativeButton={false} render={<Link href={nextLessonHref} />} title='Next lesson in the course'>
-                  Next lesson <ChevronRight size={13} />
+                <Button variant='accent' size='lg' className='h-11 justify-between px-4' nativeButton={false} render={<Link href={nextLessonHref} />} title='Next lesson in the course'>
+                  <span className='truncate'>Next lesson</span>
+                  <ArrowRight size={14} />
                 </Button>
               ) : (
-                <Button variant='toolbar' size='lg' disabled={index >= count - 1} onClick={() => goTo(index + 1)} title='Next (Right arrow)'>
-                  Next <ChevronRight size={13} />
+                <Button variant='accent' size='lg' className='h-11 justify-between px-4' disabled={atEnd} onClick={() => goTo(index + 1)} title='Next lesson step (Right arrow)'>
+                  <span className='truncate'>{atEnd ? 'Last lesson step' : `Next: ${steps[index + 1]?.short || steps[index + 1]?.title || `Lesson step ${index + 2}`}`}</span>
+                  <ArrowRight size={14} />
                 </Button>
               )}
             </div>
+            <p className='flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-[11px] text-muted-foreground'>
+              <Keyboard size={13} aria-hidden='true' />
+              <Kbd>←</Kbd>
+              <Kbd>→</Kbd>
+              <span>lesson step ·</span>
+              <Kbd>Space</Kbd>
+              <span>pause ·</span>
+              <Kbd>0</Kbd>
+              <span>fit</span>
+            </p>
             {meta.goals.length > 0 && (
-              <ul className='space-y-1 text-xs'>
-                {meta.goals.map((goal, i) => {
-                  const done = nav.visited.has(goal.step);
-                  const target = steps.findIndex((s) => s.id === goal.step);
-                  return (
-                    <li key={i}>
-                      <button type='button' disabled={target < 0} onClick={() => goTo(target)} className='flex w-full items-start gap-2 text-left hover:text-foreground disabled:cursor-default'>
-                        <span className={`mt-0.5 grid size-3.5 shrink-0 place-items-center rounded-full ring-1 ${done ? 'bg-emerald-500/20 text-emerald-600 ring-emerald-500/50 dark:text-emerald-400' : 'text-transparent ring-border'}`}>
-                          {target < 0 ? <Lock size={8} /> : <Check size={9} />}
-                        </span>
-                        <span className={done ? 'text-foreground' : 'text-muted-foreground'}>{goal.text}</span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
+              <section aria-label='What you’ll learn' className='rounded-lg bg-card/60 p-3 ring-1 ring-border'>
+                <h3 className='mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground'>What you’ll learn</h3>
+                <ul className='space-y-1.5 text-[13px] leading-snug'>
+                  {meta.goals.map((goal, i) => {
+                    const done = nav.visited.has(goal.step);
+                    const target = steps.findIndex((s) => s.id === goal.step);
+                    return (
+                      <li key={i}>
+                        <button
+                          type='button'
+                          data-done={String(done)}
+                          title={target < 0 ? undefined : `Go to lesson step ${target + 1}`}
+                          disabled={target < 0}
+                          onClick={() => goTo(target)}
+                          className='flex w-full items-start gap-2.5 rounded text-left transition hover:text-foreground disabled:cursor-default'
+                        >
+                          <span aria-hidden='true' className={`mt-0.5 grid size-4 shrink-0 place-items-center rounded-[4px] border transition ${done ? 'border-emerald-600 bg-emerald-600 text-white dark:border-emerald-500 dark:bg-emerald-500' : 'border-muted-foreground/50 text-transparent'}`}>
+                            {target < 0 ? <Lock size={9} className='text-muted-foreground' /> : <Check size={11} strokeWidth={3} />}
+                          </span>
+                          <span className={done ? 'text-foreground' : 'text-muted-foreground'}>
+                            {goal.text}
+                            <span className='sr-only'>{done ? ' (done)' : ''}</span>
+                          </span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
             )}
           </div>
         </aside>
