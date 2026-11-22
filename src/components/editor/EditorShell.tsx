@@ -34,6 +34,8 @@ export interface EditorLessonSurface {
   hints: Record<string, string>;
   leftPanel: ReactNode;
   footer: ReactNode;
+  /** True while the Preview covers the editor: the Inspector steps aside (the selection is kept). */
+  inspectorHidden?: boolean;
 }
 
 interface EditorShellProps {
@@ -141,7 +143,7 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
             />
           )}
 
-          <InspectorSidebar document={document} ariaLabel={inspectorLabel}>
+          <InspectorSidebar document={document} ariaLabel={inspectorLabel} hidden={lesson?.inspectorHidden}>
             {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
           </InspectorSidebar>
         </div>

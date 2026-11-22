@@ -21,7 +21,8 @@ import { resolveNodeStyle } from '@/lib/node-style';
  * surface; `children` carries whatever info panels that surface wants
  * below them (rendered only while Info is toggled on).
  */
-export function InspectorSidebar({ document, ariaLabel, children }: { document: FlowDocumentJSON; ariaLabel: string; children?: ReactNode }) {
+/** `hidden` keeps the drawer shut without touching the selection, so it comes back as it was (e.g. while a Lesson Preview covers the editor). */
+export function InspectorSidebar({ document, ariaLabel, children, hidden = false }: { document: FlowDocumentJSON; ariaLabel: string; children?: ReactNode; hidden?: boolean }) {
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
   const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
   const infoOpen = useEditorStore((state) => state.infoOpen);
@@ -42,7 +43,7 @@ export function InspectorSidebar({ document, ariaLabel, children }: { document: 
   return (
     <div {...historyGestures} className='contents'>
       <Drawer
-        open={selectedNode !== null || selectedEdge !== null || infoOpen}
+        open={!hidden && (selectedNode !== null || selectedEdge !== null || infoOpen)}
         // Escape and the swipe gesture dismiss the whole inspector; clearing
         // both selections and Info is what actually drives `open` back to false.
         onOpenChange={(next) => {

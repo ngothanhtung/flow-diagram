@@ -341,6 +341,7 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
         looks: view.looks,
         hints: view.hints,
         leftPanel: <LessonSidePanel />,
+        inspectorHidden: previewOpen,
         footer: <LessonStepBar />,
       }}
     >
