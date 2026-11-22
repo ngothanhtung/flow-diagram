@@ -264,7 +264,8 @@ export function FlowNodeCard({
   const motionStyle = nodeMotionStyle(effect, effectSpeed, effectIntensity, effectsPaused);
   const chargeGradientId = `node-charge-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
   const clipId = `node-clip-${node.id.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
-  const cardAccent = ['server', 'component', 'predefined-process', 'internal-storage', 'folder', 'note'].includes(style.shape);
+  // A note's folded corner already marks it; a bar there read as a stray second left border.
+  const cardAccent = ['server', 'component', 'predefined-process', 'internal-storage', 'folder'].includes(style.shape);
 
   const dragRef = useRef<{
     pointerId: number;
