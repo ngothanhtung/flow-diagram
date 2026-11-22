@@ -217,6 +217,7 @@ export default function HelpPage() {
             ['Next', 'Manual mode only: run the next execution step.'],
             ['Repeat', 'Sequential mode only: automatically restart the run after it completes.'],
             ['Replay', 'Sequential, Concurrent or Manual: restart the animation from the beginning. Static has no run to restart, so Next / Repeat / Replay all disappear when it is selected.'],
+            ['Present', 'Full screen, the Diagram alone, stepped by hand: → / Space / PageDown next, ← / PageUp back, Home / End first / last, Esc to leave. It stops at the last step instead of starting over, and a presentation clicker works too. Also on the read-only view. Presenting never changes the Diagram.'],
           ]}
         />
         <p>

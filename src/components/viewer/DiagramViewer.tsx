@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';
+import { PresentButton } from '@/components/present/PresentButton';
 import { findPublicDiagramById, listAllDiagrams, openDiagram, toViewerRow, type AdminDiagramRow } from '@/lib/firebase/diagrams';
 import { ACCESS_LEVEL_LABELS, routeForRole, type DiagramRole } from '@/lib/sharing';
 import { normalizeDocument } from '@/lib/document-validation';
@@ -165,6 +166,7 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
             onToggleRepeat={run.toggleRepeat}
             onReplay={run.replay}
           />
+          <PresentButton document={diagram.document} name={diagram.name} />
           {/* Works signed out: the export renders the already-loaded
               document locally, it never reads Firestore. Icon-only below
               `sm`, like the run controls beside it. */}

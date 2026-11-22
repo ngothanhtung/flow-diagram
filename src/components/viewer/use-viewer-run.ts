@@ -16,6 +16,12 @@ export interface ViewerRun {
   toggleRepeat: () => void;
   replay: () => void;
   advanceStep: () => void;
+  /** The run cursor: an index into the run timeline. */
+  step: number;
+  /** How many steps the run timeline has (0 for an empty Diagram). */
+  stepCount: number;
+  /** Jumps the cursor to a step (clamped), forwards or back. */
+  goToStep: (step: number) => void;
 }
 
 /**
@@ -26,8 +32,8 @@ export interface ViewerRun {
  * and repeat are initialised from the saved diagram settings and never
  * written back, since the viewer must not mutate the document.
  */
-export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
-  const [runMode, setRunModeState] = useState<RunMode>(document.settings?.runMode ?? 'sequential');
+export function useViewerRun(document: FlowDocumentJSON, options: { runMode?: RunMode } = {}): ViewerRun {
+  const [runMode, setRunModeState] = useState<RunMode>(options.runMode ?? document.settings?.runMode ?? 'sequential');
   const [repeatEnabled, setRepeatEnabled] = useState(document.settings?.repeatEnabled ?? false);
   const [seed, setSeed] = useState(0);
   const [step, setStep] = useState(0);
@@ -88,6 +94,13 @@ export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
     setStep((current) => (current >= timeline.length - 1 ? 0 : current + 1));
   }, [timeline.length]);
 
+  const goToStep = useCallback(
+    (target: number) => {
+      setStep(Math.min(Math.max(0, timeline.length - 1), Math.max(0, Math.round(target))));
+    },
+    [timeline.length],
+  );
+
   // Sequential auto-timer, identical to the editor page's effect.
   useEffect(() => {
     if (runMode !== 'sequential' || timeline.length === 0) return;
@@ -110,5 +123,8 @@ export function useViewerRun(document: FlowDocumentJSON): ViewerRun {
     toggleRepeat,
     replay,
     advanceStep,
+    step,
+    stepCount: timeline.length,
+    goToStep,
   };
 }

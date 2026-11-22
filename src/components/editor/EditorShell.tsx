@@ -8,6 +8,7 @@ import { ResizableAside } from '@/components/editor/ResizableAside';
 import { EditorCanvas } from '@/components/editor/EditorCanvas';
 import { EditorInfoPanels, InspectorSidebar } from '@/components/editor/InspectorSidebar';
 import { PlaybackControls } from '@/components/editor/PlaybackControls';
+import { PresentButton } from '@/components/present/PresentButton';
 import { ShortcutsDialog } from '@/components/editor/ShortcutsDialog';
 import { useEditorShortcuts } from '@/components/editor/use-editor-shortcuts';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -75,6 +76,7 @@ interface EditorShellProps {
  */
 export function EditorShell({ document, icon, subtitle, fileMenu, actions, headerEnd, subBar, info, inspectorLabel, fullScreen = false, children, onSave, lesson }: EditorShellProps) {
   const infoOpen = useEditorStore((state) => state.infoOpen);
+  const diagramName = useEditorStore((state) => state.currentDiagramName);
   const playback = useExecutionPlayback(document);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   // The one keyboard handler for both editors (the Viewer has none).
@@ -103,6 +105,7 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
 
         <div className='flex flex-wrap items-center justify-end gap-2'>
           {!lesson && <PlaybackControls runMode={playback.runMode} repeatEnabled={playback.repeatEnabled} stepCount={playback.orderedGroups.length} />}
+          {!lesson && <PresentButton document={document} name={diagramName || 'Untitled diagram'} />}
           <Button variant='toolbar' size='lg' nativeButton={false} render={<Link href='/help' title='User guide — press ? for keyboard shortcuts' />}>
             <BookOpen size={13} />
             <span className='hidden sm:inline'>Help</span>

@@ -123,6 +123,8 @@ interface FlowCanvasProps {
   elementHints?: Record<string, string>;
   /** Each change after mount re-fits the view, like the Fit button. */
   fitSignal?: number;
+  /** Hides the Info / zoom / Fit dock (Present mode shows the Diagram bare). */
+  hideViewControls?: boolean;
 }
 
 const MIN_ZOOM_RATIO = 0.25;
@@ -200,6 +202,7 @@ export function FlowCanvas({
   elementLooks,
   elementHints,
   fitSignal,
+  hideViewControls = false,
 }: FlowCanvasProps) {
   // Named line styles are merged in once, here, rather than at each of
   // the dozen places downstream that read an edge's colour, width,
@@ -946,6 +949,7 @@ export function FlowCanvas({
 
       {/* Info + zoom + Fit live in the bottom-left corner; the shape dock
           owns the bottom centre and the grid controls the right corner. */}
+      {!hideViewControls && (
       <div
         className='absolute bottom-4 left-4 z-20 flex items-center overflow-hidden rounded-lg bg-popover/92 p-0.5 text-muted-foreground ring-1 ring-border shadow-[0_14px_40px_rgba(0,0,0,.28)] backdrop-blur-xl'
         role='group'
@@ -976,6 +980,7 @@ export function FlowCanvas({
           <Maximize2 size={12} /> Fit
         </Button>
       </div>
+      )}
 
       {!readOnly && (
         <div

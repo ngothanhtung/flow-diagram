@@ -218,6 +218,7 @@ export default function HelpViPage() {
             ['Next', 'Chỉ trong chế độ Manual: chạy bước thực thi kế tiếp.'],
             ['Repeat', 'Chỉ trong chế độ Sequential: tự động chạy lại sau khi hoàn thành.'],
             ['Replay', 'Ở Sequential, Concurrent hoặc Manual: chạy lại hiệu ứng từ đầu. Static không có gì để chạy lại, nên khi chọn Static thì cả Next / Repeat / Replay đều biến mất.'],
+            ['Present', 'Trình chiếu toàn màn hình, chỉ còn sơ đồ, tự điều khiển từng bước: → / Space / PageDown để sang bước, ← / PageUp để lùi, Home / End về đầu / tới cuối, Esc để thoát. Dừng ở bước cuối chứ không quay lại từ đầu, dùng được bút trình chiếu. Có cả ở trang xem. Trình chiếu không làm thay đổi sơ đồ.'],
           ]}
         />
         <p>
