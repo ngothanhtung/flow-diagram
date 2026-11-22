@@ -251,10 +251,15 @@ export default function LessonGuidePage() {
                 ['*italic*', 'italic'],
                 ['`code`', 'code'],
                 ['[[term]]', 'a highlighted glossary term'],
+                ['- item  or  * item (one per line)', 'a bulleted list'],
+                ['1. item (one per line)', 'a numbered list'],
+                ['### Heading  (# to ###)', 'a small heading'],
+                ['``` on its own line, the code, then ```', 'a code block — shown as written, no markup inside'],
               ]}
             />
             <p>
-              Markers do not nest, and an unclosed one stays literal text. Each <Pill>changes</Pill> line starts with <Pill>+</Pill> (added), <Pill>~</Pill> (changed) or <Pill>-</Pill>{' '}
+              Lists, headings and code blocks are for <Pill>body</Pill> and <Pill>callout.text</Pill>; a <Pill>changes</Pill> line shows only the inline markers. There are no links and no
+              images. Markers do not nest, and an unclosed one stays literal text; an unclosed code block runs to the end. Each <Pill>changes</Pill> line starts with <Pill>+</Pill> (added), <Pill>~</Pill> (changed) or <Pill>-</Pill>{' '}
               (removed); these are sentences you write, not Element ids.
             </p>
           </Section>
