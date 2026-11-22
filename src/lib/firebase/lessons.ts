@@ -1,8 +1,10 @@
 'use client';
 
-import { collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, runTransaction, serverTimestamp, writeBatch, type Timestamp } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, runTransaction, serverTimestamp, type Timestamp } from 'firebase/firestore';
+import { emptyLessonTree, removeLessonEntry, upsertLessonEntry } from '../lesson/lesson-tree';
 import { emptyLessonDocument, lessonNameOf, type LessonDocumentJSON } from '../lesson/lesson-types';
 import { firestore } from './client';
+import { readTreeIn, writeTreeIn } from './lesson-tree';
 
 export interface StoredLesson {
   id: string;
@@ -37,11 +39,21 @@ function mirrorData(ownerUid: string, name: string, document: LessonDocumentJSON
   return { ownerUid, name, document, public: true, updatedAt: serverTimestamp() };
 }
 
-export async function createLesson(userId: string, document: LessonDocumentJSON): Promise<string> {
+/**
+ * Creates a Lesson. When the user has a Lesson tree (or a folder is given,
+ * which creates the tree) its index gets the new entry in the same
+ * transaction — in `folderId`, last, or Unfiled.
+ */
+export async function createLesson(userId: string, document: LessonDocumentJSON, folderId: string | null = null): Promise<string> {
   const reference = doc(lessonsCollection(userId));
-  await writeBatch(firestore)
-    .set(reference, { name: lessonNameOf(document), document: cleanDocument(document), public: false, createdAt: serverTimestamp(), updatedAt: serverTimestamp() })
-    .commit();
+  const name = lessonNameOf(document);
+  await runTransaction(firestore, async (transaction) => {
+    const tree = await readTreeIn(transaction, userId);
+    transaction.set(reference, { name, document: cleanDocument(document), public: false, createdAt: serverTimestamp(), updatedAt: serverTimestamp() });
+    if (tree || folderId !== null) {
+      writeTreeIn(transaction, userId, upsertLessonEntry(tree ?? emptyLessonTree(), reference.id, { folderId, title: name, public: false }));
+    }
+  });
   return reference.id;
 }
 
@@ -74,41 +86,55 @@ export async function saveLesson(userId: string, lessonId: string, document: Les
   return runTransaction(firestore, async (transaction) => {
     const snapshot = await transaction.get(reference);
     if (!snapshot.exists()) return { status: 'missing' } as const;
+    const tree = await readTreeIn(transaction, userId);
     const isPublic = snapshot.data().public === true;
     transaction.update(reference, { name, document: clean, updatedAt: serverTimestamp() });
     if (isPublic) transaction.set(publicLessonDoc(lessonId), mirrorData(userId, name, clean));
+    // The tree's index carries the title: refresh it only when it changed.
+    const entry = tree && Object.hasOwn(tree.lessons, lessonId) ? tree.lessons[lessonId] : null;
+    if (tree && (!entry || entry.title !== name || entry.public !== isPublic)) {
+      writeTreeIn(transaction, userId, upsertLessonEntry(tree, lessonId, { title: name, public: isPublic }));
+    }
     return { status: 'saved', isPublic } as const;
   });
 }
 
 /**
  * Turns a Lesson's public link on or off now. On publishes what is *saved*
- * (read from the server, not the editor's unsaved state) in the same batch
- * as the flag; off removes the mirror in the same batch. Throws on failure.
+ * (read from the server, not the editor's unsaved state) in the same
+ * transaction as the flag; off removes the mirror in it. The Lesson tree's
+ * entry and public copy follow in the same transaction. Throws on failure.
  */
 export async function setLessonPublic(userId: string, lessonId: string, isPublic: boolean): Promise<void> {
   const reference = doc(lessonsCollection(userId), lessonId);
-  const batch = writeBatch(firestore);
-  batch.update(reference, { public: isPublic });
-  if (isPublic) {
-    const snapshot = await getDoc(reference);
+  await runTransaction(firestore, async (transaction) => {
+    const snapshot = await transaction.get(reference);
     if (!snapshot.exists()) throw new Error('The lesson no longer exists.');
-    const saved = snapshot.data() as Partial<StoredLesson>;
-    batch.set(publicLessonDoc(lessonId), mirrorData(userId, saved.name ?? 'Untitled lesson', cleanDocument(saved.document ?? emptyLessonDocument())));
-  } else {
-    batch.delete(publicLessonDoc(lessonId));
-  }
-  await batch.commit();
+    const tree = await readTreeIn(transaction, userId);
+    transaction.update(reference, { public: isPublic });
+    if (isPublic) {
+      const saved = snapshot.data() as Partial<StoredLesson>;
+      transaction.set(publicLessonDoc(lessonId), mirrorData(userId, saved.name ?? 'Untitled lesson', cleanDocument(saved.document ?? emptyLessonDocument())));
+    } else {
+      transaction.delete(publicLessonDoc(lessonId));
+    }
+    if (tree) writeTreeIn(transaction, userId, upsertLessonEntry(tree, lessonId, { public: isPublic }));
+  });
 }
 
-/** Removes the mirror first (an error is ignored), then the Lesson. */
+/** Removes the mirror first (an error is ignored), then the Lesson and its tree entry. */
 export async function deleteLesson(userId: string, lessonId: string): Promise<void> {
   try {
     await deleteDoc(publicLessonDoc(lessonId));
   } catch (err) {
     console.error('Failed to delete public lesson mirror', err);
   }
-  await deleteDoc(doc(lessonsCollection(userId), lessonId));
+  const reference = doc(lessonsCollection(userId), lessonId);
+  await runTransaction(firestore, async (transaction) => {
+    const tree = await readTreeIn(transaction, userId);
+    transaction.delete(reference);
+    if (tree && Object.hasOwn(tree.lessons, lessonId)) writeTreeIn(transaction, userId, removeLessonEntry(tree, lessonId));
+  });
 }
 
 export async function findPublicLessonById(lessonId: string): Promise<PublicLesson | null> {
