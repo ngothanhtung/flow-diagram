@@ -34,3 +34,16 @@ describe('textBoxStyle', () => {
     expect(textBoxStyle({ ...text({ backgroundColor: '#111827' }), type: 'process' }).fill).toBeNull();
   });
 });
+
+describe('a new text object', () => {
+  it('is born with 24px padding and 24px corners, tall enough to show a line of text inside them', async () => {
+    const { useEditorStore } = await import('./editor-store');
+    useEditorStore.setState({ doc: { nodes: [], edges: [] } });
+    const id = useEditorStore.getState().onShapeCreate('text', { x: 0, y: 0 }, 40, 30);
+    const node = useEditorStore.getState().doc.nodes.find((n) => n.id === id)!;
+    expect(node).toMatchObject({ padding: 24, cornerRadius: 24 });
+    const style = textBoxStyle(node);
+    expect(node.height! - 2 * style.padding).toBeGreaterThanOrEqual((node.fontSize ?? 16) * 1.35);
+    expect(node.width! - 2 * style.padding).toBeGreaterThanOrEqual(120);
+  });
+});

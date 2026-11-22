@@ -33,7 +33,7 @@ export interface EditorLessonSurface {
   looks: Record<string, ElementLook>;
   hints: Record<string, string>;
   leftPanel: ReactNode;
-  /** Right of the canvas (the Narration preview). It moves in beside the Inspector while that is open. */
+  /** Right of the canvas (the Narration preview), with the docked Inspector, when open, beyond it at the right edge. */
   rightPanel?: ReactNode;
   footer: ReactNode;
   /** True while the Preview covers the editor: the Inspector steps aside (the selection is kept). */
@@ -75,11 +75,6 @@ interface EditorShellProps {
  */
 export function EditorShell({ document, icon, subtitle, fileMenu, actions, headerEnd, subBar, info, inspectorLabel, fullScreen = false, children, onSave, lesson }: EditorShellProps) {
   const infoOpen = useEditorStore((state) => state.infoOpen);
-  const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
-  const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
-  // Mirrors InspectorSidebar's own `open`.
-  const inspectorOpen =
-    !lesson?.inspectorHidden && ((selectedNodeId !== null && document.nodes.some((n) => n.id === selectedNodeId)) || (selectedEdgeId !== null && document.edges.some((e) => e.id === selectedEdgeId)) || infoOpen);
   const playback = useExecutionPlayback(document);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   // The one keyboard handler for both editors (the Viewer has none).
@@ -150,20 +145,23 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
             />
           )}
 
-          <InspectorSidebar document={document} ariaLabel={inspectorLabel} hidden={lesson?.inspectorHidden}>
-            {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
-          </InspectorSidebar>
+          {!lesson && (
+            <InspectorSidebar document={document} ariaLabel={inspectorLabel}>
+              {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
+            </InspectorSidebar>
+          )}
         </div>
+        {/* Lesson mode: canvas · Narration preview · Inspector — two docked
+            columns of one look, the Inspector at the right edge. */}
         {lesson?.rightPanel && (
-          // The Inspector is a fixed 24rem drawer at the window's right edge: while
-          // it is open this panel keeps clear of it, so it sits Inspector-left.
-          <aside
-            aria-label='Narration preview'
-            className='hidden w-80 shrink-0 border-l border-border bg-card/40 transition-[margin] duration-300 ease-out lg:block xl:w-96'
-            style={{ marginRight: inspectorOpen ? '24rem' : 0 }}
-          >
+          <aside aria-label='Narration preview' className='hidden w-80 shrink-0 border-l border-border bg-card/40 lg:block xl:w-96'>
             {lesson.rightPanel}
           </aside>
+        )}
+        {lesson && (
+          <InspectorSidebar document={document} ariaLabel={inspectorLabel} hidden={lesson.inspectorHidden} docked>
+            {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
+          </InspectorSidebar>
         )}
       </main>
       {lesson?.footer}

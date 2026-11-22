@@ -39,12 +39,13 @@ describe('a free text object', () => {
     expect(html).not.toContain('<strong>');
   });
 
-  it('wears one outline when emphasised in a Lesson step: the box’s own rounded corners, not a square around it', () => {
-    const html = render({ title: 'x', borderColor: '#64748b', borderWidth: 1, cornerRadius: 12 }, { t: 'emphasis' });
-    const cyan = html.match(/<(rect|path)[^>]*stroke="#22d3ee"[^>]*>/g) ?? [];
-    expect(cyan).toHaveLength(1);
-    expect(cyan[0]).toContain('rx="16"');
-    // …outside the border, which keeps its own colour.
-    expect(html).toMatch(/<rect[^>]*stroke="#64748b"/);
+  it('shows no neon when emphasised in a Lesson step: just its own border, in its own colour', () => {
+    for (const node of [{ title: 'x', borderColor: '#64748b', borderWidth: 1, cornerRadius: 12 }, { title: 'plain words' }] as const) {
+      const html = render(node, { t: 'emphasis' });
+      expect(html).not.toContain('#22d3ee');
+      expect(html).not.toMatch(/drop-shadow\(0 0 6px rgba\(34, ?211, ?238/);
+    }
+    const boxed = render({ title: 'x', borderColor: '#64748b', borderWidth: 1, cornerRadius: 12 }, { t: 'emphasis' });
+    expect(boxed.match(/<rect[^>]*stroke="#64748b"[^>]*rx="12"|<rect[^>]*rx="12"[^>]*stroke="#64748b"/g) ?? []).toHaveLength(1);
   });
 });

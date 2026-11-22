@@ -125,6 +125,9 @@ export const TEXT_MAX_WIDTH = 1600;
 export const TEXT_MAX_HEIGHT = 1200;
 /** Inset between the text and its box, so a selected label isn't cramped. */
 export const TEXT_PADDING = 6;
+/** What a newly drawn text object is born with (older ones keep TEXT_PADDING and square corners). */
+export const NEW_TEXT_PADDING = 24;
+export const NEW_TEXT_RADIUS = 24;
 
 export interface TextBoxStyle {
   /** Box fill, or none. */

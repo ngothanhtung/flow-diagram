@@ -14,7 +14,7 @@ import type { StoredDiagram } from './firebase/diagrams';
 import { pruneMissingElements, stampNewElements } from './lesson/lesson-edit';
 import { contentOf, toLessonDocument, type LessonContent, type LessonDocumentJSON } from './lesson/lesson-types';
 import { revisionOf, type DiagramRole } from './sharing';
-import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight } from './node-style';
+import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight, NEW_TEXT_PADDING, NEW_TEXT_RADIUS } from './node-style';
 import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, isSceneryNode, nodeBounds } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
 import type { VersionActor } from './version-history';
@@ -1185,8 +1185,11 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
               sortOrder: Math.max(0, ...doc.nodes.map((node, index) => node.sortOrder ?? index + 1)) + 1,
               // The canvas already substitutes a sensible box for a plain
               // click, so the drawn rectangle just needs clamping.
-              width: Math.max(limits.minWidth, Math.min(limits.maxWidth, width)),
-              height: Math.max(limits.minHeight, Math.min(limits.maxHeight, height)),
+              // Room for one line inside the 24px padding it is born with.
+              width: Math.max(NEW_TEXT_PADDING * 2 + 120, limits.minWidth, Math.min(limits.maxWidth, width)),
+              height: Math.max(NEW_TEXT_PADDING * 2 + 32, limits.minHeight, Math.min(limits.maxHeight, height)),
+              padding: NEW_TEXT_PADDING,
+              cornerRadius: NEW_TEXT_RADIUS,
               icon: null,
               color: DEFAULT_NODE_PAINT.text.color,
               fontSize: 16,

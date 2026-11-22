@@ -1,5 +1,6 @@
 'use client';
 
+import { SlidersHorizontal, X } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
 import { EdgeInspector } from '@/components/EdgeInspector';
 import { JsonInspector } from '@/components/JsonInspector';
@@ -22,7 +23,12 @@ import { resolveNodeStyle } from '@/lib/node-style';
  * below them (rendered only while Info is toggled on).
  */
 /** `hidden` keeps the drawer shut without touching the selection, so it comes back as it was (e.g. while a Lesson Preview covers the editor). */
-export function InspectorSidebar({ document, ariaLabel, children, hidden = false }: { document: FlowDocumentJSON; ariaLabel: string; children?: ReactNode; hidden?: boolean }) {
+/**
+ * `docked` (the Lesson editor) lays it out as a column at the right edge
+ * instead — the same look as the Narration preview beside it: a small
+ * uppercase header strip, a hairline on the left, no floating card.
+ */
+export function InspectorSidebar({ document, ariaLabel, children, hidden = false, docked = false }: { document: FlowDocumentJSON; ariaLabel: string; children?: ReactNode; hidden?: boolean; docked?: boolean }) {
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
   const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
   const infoOpen = useEditorStore((state) => state.infoOpen);
@@ -40,10 +46,102 @@ export function InspectorSidebar({ document, ariaLabel, children, hidden = false
   const selectedEdge = document.edges.find((edge) => edge.id === selectedEdgeId) ?? null;
   const edgeSource = selectedEdge ? document.nodes.find((node) => node.id === selectedEdge.from) : undefined;
 
+  const open = !hidden && (selectedNode !== null || selectedEdge !== null || infoOpen);
+  const body = (
+    <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
+      <div className='flex min-h-full flex-col gap-3 p-2'>
+        {selectedNode && !selectedEdge && (
+          <NodeInspector
+            key={`${selectedNode.id}:${historyRevision}`}
+            node={selectedNode}
+            memberCount={document.nodes.filter((node) => node.parentId === selectedNode.id).length}
+            parentTitle={selectedNode.parentId ? (document.nodes.find((node) => node.id === selectedNode.parentId)?.title ?? null) : null}
+            onUngroup={ungroupNode}
+            onFitGroup={fitGroupToContents}
+            onUpdate={onNodeUpdate}
+            onDuplicate={(id) => {
+              const duplicateId = onNodeDuplicate(id);
+              if (duplicateId) selectNode(duplicateId);
+            }}
+            onDelete={(id) => {
+              onNodeDelete(id);
+              selectNode(null);
+            }}
+            onClose={() => selectNode(null)}
+          />
+        )}
+
+        {selectedEdge && (
+          <EdgeInspector
+            key={`${selectedEdge.id}:${historyRevision}`}
+            edge={selectedEdge}
+            styles={edgeStylesOf(document.settings)}
+            sourceTitle={edgeSource?.title ?? selectedEdge.from}
+            targetTitle={document.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
+            fallbackColor={edgeSource ? resolveNodeStyle(edgeSource).foreground : '#67e8f9'}
+            sourceColumns={edgeSource?.table?.columns}
+            targetColumns={document.nodes.find((node) => node.id === selectedEdge.to)?.table?.columns}
+            onUpdate={onEdgeUpdate}
+            onAssignStyle={assignEdgeStyle}
+            onManageStyles={() => setStylePaletteOpen(true)}
+            onDelete={(id) => {
+              onEdgeDelete(id);
+              selectEdge(null);
+            }}
+            onClose={() => selectEdge(null)}
+          />
+        )}
+
+        {children}
+      </div>
+    </ScrollArea>
+  );
+
+  if (docked) {
+    return (
+      <div {...historyGestures} className='contents'>
+        {open && (
+          <aside
+            aria-label={ariaLabel}
+            data-shortcuts='all'
+            className='flex w-80 shrink-0 flex-col border-l border-border bg-card/40 lg:w-96'
+            onKeyDown={(event) => {
+              if (event.key !== 'Escape') return;
+              const target = event.target as HTMLElement;
+              if (target.closest('input, textarea, select, [contenteditable="true"]')) return;
+              selectNode(null);
+              selectEdge(null);
+              if (infoOpen) toggleInfo();
+            }}
+          >
+            <div className='flex shrink-0 items-center gap-1.5 border-b border-border px-4 py-2 font-reading text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>
+              <SlidersHorizontal size={12} /> Inspector
+              <button
+                type='button'
+                aria-label='Close the inspector'
+                title='Close (Esc)'
+                onClick={() => {
+                  selectNode(null);
+                  selectEdge(null);
+                  if (infoOpen) toggleInfo();
+                }}
+                className='ml-auto grid size-5 place-items-center rounded transition hover:bg-accent hover:text-foreground'
+              >
+                <X size={12} />
+              </button>
+            </div>
+            <div className='min-h-0 flex-1'>{body}</div>
+          </aside>
+        )}
+        <EdgeStylePaletteDialog open={stylePaletteOpen} onOpenChange={setStylePaletteOpen} />
+      </div>
+    );
+  }
+
   return (
     <div {...historyGestures} className='contents'>
       <Drawer
-        open={!hidden && (selectedNode !== null || selectedEdge !== null || infoOpen)}
+        open={open}
         // Escape and the swipe gesture dismiss the whole inspector; clearing
         // both selections and Info is what actually drives `open` back to false.
         onOpenChange={(next) => {
@@ -61,53 +159,7 @@ export function InspectorSidebar({ document, ariaLabel, children, hidden = false
         {/* Part of the editing surface, not a popup: keyboard shortcuts
             work while focus is in here (outside its fields). */}
         <DrawerContent aria-label={ariaLabel} data-shortcuts='all'>
-          <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
-            <div className='flex min-h-full flex-col gap-3 p-2'>
-              {selectedNode && !selectedEdge && (
-                <NodeInspector
-                  key={`${selectedNode.id}:${historyRevision}`}
-                  node={selectedNode}
-                  memberCount={document.nodes.filter((node) => node.parentId === selectedNode.id).length}
-                  parentTitle={selectedNode.parentId ? (document.nodes.find((node) => node.id === selectedNode.parentId)?.title ?? null) : null}
-                  onUngroup={ungroupNode}
-                  onFitGroup={fitGroupToContents}
-                  onUpdate={onNodeUpdate}
-                  onDuplicate={(id) => {
-                    const duplicateId = onNodeDuplicate(id);
-                    if (duplicateId) selectNode(duplicateId);
-                  }}
-                  onDelete={(id) => {
-                    onNodeDelete(id);
-                    selectNode(null);
-                  }}
-                  onClose={() => selectNode(null)}
-                />
-              )}
-
-              {selectedEdge && (
-                <EdgeInspector
-                  key={`${selectedEdge.id}:${historyRevision}`}
-                  edge={selectedEdge}
-                  styles={edgeStylesOf(document.settings)}
-                  sourceTitle={edgeSource?.title ?? selectedEdge.from}
-                  targetTitle={document.nodes.find((node) => node.id === selectedEdge.to)?.title ?? selectedEdge.to}
-                  fallbackColor={edgeSource ? resolveNodeStyle(edgeSource).foreground : '#67e8f9'}
-                  sourceColumns={edgeSource?.table?.columns}
-                  targetColumns={document.nodes.find((node) => node.id === selectedEdge.to)?.table?.columns}
-                  onUpdate={onEdgeUpdate}
-                  onAssignStyle={assignEdgeStyle}
-                  onManageStyles={() => setStylePaletteOpen(true)}
-                  onDelete={(id) => {
-                    onEdgeDelete(id);
-                    selectEdge(null);
-                  }}
-                  onClose={() => selectEdge(null)}
-                />
-              )}
-
-              {children}
-            </div>
-          </ScrollArea>
+          {body}
         </DrawerContent>
 
         {/* Mounted from the sidebar rather than inside `EdgeInspector` so

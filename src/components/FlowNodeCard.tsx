@@ -177,9 +177,6 @@ function ShapeDecoration({ shape, color }: { shape: NodeShape; color: string }) 
  * ports snap to the real outline. The icon and text live inside a
  * `<foreignObject>` clipped to the same bounding box.
  */
-/** How far outside a boxed text object its Lesson emphasis outline runs, clear of the box's own border. */
-const EMPHASIS_OUTSET = 4;
-
 export function FlowNodeCard({
   node,
   performanceMode = false,
@@ -554,7 +551,22 @@ export function FlowNodeCard({
           not a box, and ringing its bounding box would draw exactly the
           frame the object is defined not to have; it highlights its own
           stroke instead (see the line branch below). */}
-        {isSelected && !isLine && (
+        {isSelected && isText && (textBox.fill || textBox.stroke) ? (
+          // A boxed text object: the ring follows the box's rounded corners, a few px outside its border.
+          <rect
+            x={-width / 2 - 5}
+            y={-height / 2 - 5}
+            width={width + 10}
+            height={height + 10}
+            rx={textBox.radius > 0 ? textBox.radius + 5 : 0}
+            fill='none'
+            stroke={foreground}
+            strokeWidth={2}
+            strokeDasharray='4 4'
+            vectorEffect='non-scaling-stroke'
+            pointerEvents='none'
+          />
+        ) : isSelected && !isLine && (
           <g transform={selectionOutline.transform} pointerEvents='none'>
             <path
               d={selectionOutline.d}
@@ -1087,23 +1099,8 @@ export function FlowNodeCard({
             paused={effectsPaused}
           />
         )}
-        {look === 'emphasis' && isText && (textBox.fill || textBox.stroke) ? (
-          // A boxed text object: the outline follows its own (rounded) box rather than a square around it,
-          // a few px outside it so the box's own border keeps showing its colour.
-          <rect
-            x={-width / 2 - EMPHASIS_OUTSET}
-            y={-height / 2 - EMPHASIS_OUTSET}
-            width={width + EMPHASIS_OUTSET * 2}
-            height={height + EMPHASIS_OUTSET * 2}
-            rx={textBox.radius > 0 ? textBox.radius + EMPHASIS_OUTSET : 0}
-            fill='none'
-            stroke='#22d3ee'
-            strokeWidth={2.5}
-            vectorEffect='non-scaling-stroke'
-            pointerEvents='none'
-            style={{ filter: 'drop-shadow(0 0 6px rgba(34, 211, 238, 0.6))' }}
-          />
-        ) : look === 'emphasis' && (
+        {/* A text object never glows: it is a caption or a framed note, not a component to call out. */}
+        {look === 'emphasis' && !isText && (
           <g transform={outline.transform} pointerEvents='none'>
             <path
               d={outline.d}
