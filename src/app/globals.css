@@ -21,7 +21,7 @@
   }
 }
 
-/* The current Lesson step's stop on the "In this lesson" rail: a soft lime
+/* The current Lesson step's stop on the "In this lesson" rail: a soft green
    ring that swells out and fades, over and over (LessonTimeline). */
 @keyframes lesson-step-ripple {
   0% {
