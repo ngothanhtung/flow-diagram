@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getCoreRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, type ColumnDef, type SortingState } from '@tanstack/react-table';
-import { Boxes, ExternalLink, GraduationCap, LoaderCircle, Plus, RefreshCw, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, Boxes, ExternalLink, FolderInput, GraduationCap, LoaderCircle, MoreHorizontal, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -12,11 +12,37 @@ import { UserMenu } from '@/components/auth/UserMenu';
 import { DataTable, DataTableFooter, formatDateTime, formatNumber } from '@/components/data-table';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogTitle } from '@/components/ui/alert-dialog';
+import { FolderIcon } from '@/components/lessons/FolderIcon';
+import { LessonTreePanel, type TreeSelection } from '@/components/lessons/LessonTreePanel';
+import { MoveToFolderDialog } from '@/components/lessons/lesson-tree-dialogs';
 import { Button } from '@/components/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { reconcileStoredTree, updateLessonTree } from '@/lib/firebase/lesson-tree';
 import { createLesson, deleteLesson, listLessons, setLessonPublic, type StoredLesson } from '@/lib/firebase/lessons';
+import { childFolders, emptyLessonTree, folderLessons, folderNumber, moveLesson, reconcileLessonTree, reorderLesson, type LessonTree, type TreeEdit } from '@/lib/lesson/lesson-tree';
 import { emptyLessonDocument, lessonNameOf } from '@/lib/lesson/lesson-types';
 
-const NARROW_COLUMNS = new Set(['stepCount', 'public', 'updatedAt', 'actions']);
+/** Which folders are expanded on `/lessons`, per user, in this browser. */
+const openKey = (uid: string) => `xflow:lesson-tree-open:${uid}`;
+
+function loadOpenIds(uid: string): Set<string> | null {
+  try {
+    const raw: unknown = JSON.parse(window.localStorage.getItem(openKey(uid)) ?? 'null');
+    return Array.isArray(raw) ? new Set(raw.filter((id): id is string => typeof id === 'string')) : null;
+  } catch {
+    return null;
+  }
+}
+
+function saveOpenIds(uid: string, ids: ReadonlySet<string>) {
+  try {
+    window.localStorage.setItem(openKey(uid), JSON.stringify([...ids]));
+  } catch {
+    // Storage full or blocked: the tree just won't remember what was open.
+  }
+}
+
+const NARROW_COLUMNS = new Set(['stepCount', 'public', 'updatedAt', 'actions', 'folder']);
 const RIGHT_ALIGNED_COLUMNS = new Set(['stepCount', 'actions']);
 
 interface LessonRow {
@@ -62,7 +88,7 @@ function PublicSwitch({ checked, disabled, label, onChange }: { checked: boolean
   );
 }
 
-/** `/lessons`: every Lesson owned by the signed-in user. */
+/** `/lessons`: every Lesson owned by the signed-in user, organised in their Lesson tree. */
 export function LessonsHome() {
   const { user, loading } = useAuth();
   const router = useRouter();
@@ -72,11 +98,21 @@ export function LessonsHome() {
   const [busy, setBusy] = useState(false);
   const [togglingId, setTogglingId] = useState<string | null>(null);
   const [deleting, setDeleting] = useState<LessonRow | null>(null);
+  // The stored tree (null = the user has none yet) and what the panel shows.
+  const [storedTree, setStoredTree] = useState<LessonTree | null>(null);
+  const [selection, setSelection] = useState<TreeSelection>({ kind: 'all' });
+  const [openIds, setOpenIds] = useState<ReadonlySet<string>>(new Set());
+  const [movingLesson, setMovingLesson] = useState<LessonRow | null>(null);
 
   const refresh = useCallback(async (userId: string) => {
     setStatus('loading');
     try {
-      setRows((await listLessons(userId)).map(toLessonRow));
+      const lessons = await listLessons(userId);
+      setRows(lessons.map(toLessonRow));
+      // The tree is extra: failing to read or repair it never hides the list.
+      const tree = await reconcileStoredTree(userId, lessons).catch(() => null);
+      setStoredTree(tree);
+      setOpenIds(loadOpenIds(userId) ?? new Set(tree ? childFolders(tree, null).map((folder) => folder.id) : []));
       setStatus('ready');
     } catch {
       setStatus('error');
@@ -88,11 +124,55 @@ export function LessonsHome() {
     void refresh(user.uid);
   }, [user, refresh]);
 
+  // The index always lists every Lesson on screen, even before the stored tree caught up.
+  const summaries = useMemo(() => rows.map((row) => ({ id: row.id, title: row.name, public: row.public })), [rows]);
+  const tree = useMemo(() => reconcileLessonTree(storedTree ?? emptyLessonTree(), summaries).tree, [storedTree, summaries]);
+  // A selected folder that was deleted (or moved away in another tab) falls back to All lessons.
+  const view = useMemo<TreeSelection>(() => (selection.kind === 'folder' && !Object.hasOwn(tree.folders, selection.id) ? { kind: 'all' } : selection), [selection, tree]);
+
+  const editTree = async (edit: (tree: LessonTree) => TreeEdit): Promise<boolean> => {
+    if (!user) return false;
+    try {
+      const result = await updateLessonTree(user.uid, (current) => edit(reconcileLessonTree(current, summaries).tree));
+      if (!result.ok) {
+        toast.error(result.reason);
+        return false;
+      }
+      setStoredTree(result.tree);
+      return true;
+    } catch {
+      toast.error('Could not update folders', { description: 'Check your connection and try again.' });
+      return false;
+    }
+  };
+
+  const select = (next: TreeSelection) => {
+    setSelection(next);
+    // A folder lists its lessons in their own order; the other views sort by date.
+    setSorting(next.kind === 'folder' ? [] : [{ id: 'updatedAt', desc: true }]);
+  };
+
+  const toggleOpen = (folderId: string, open?: boolean) => {
+    if (!user) return;
+    const next = new Set(openIds);
+    if (open ?? !next.has(folderId)) next.add(folderId);
+    else next.delete(folderId);
+    setOpenIds(next);
+    saveOpenIds(user.uid, next);
+  };
+
+  const visibleRows = useMemo(() => {
+    const byId = new Map(rows.map((row) => [row.id, row]));
+    if (view.kind === 'folder') return folderLessons(tree, view.id).flatMap((entry) => byId.get(entry.id) ?? []);
+    if (view.kind === 'unfiled') return rows.filter((row) => (Object.hasOwn(tree.lessons, row.id) ? tree.lessons[row.id].folderId : null) === null);
+    return rows;
+  }, [rows, tree, view]);
+
   const handleCreate = async () => {
     if (!user) return;
     setBusy(true);
     try {
-      const id = await createLesson(user.uid, emptyLessonDocument());
+      const id = await createLesson(user.uid, emptyLessonDocument(), view.kind === 'folder' ? view.id : null);
       router.push(`/lessons/${id}/edit`);
     } catch {
       toast.error('Could not create lesson', { description: 'Check sign-in and Firestore rules.' });
@@ -128,6 +208,8 @@ export function LessonsHome() {
     }
   };
 
+  const folderLabel = (folderId: string | null) => (folderId !== null && Object.hasOwn(tree.folders, folderId) ? `${folderNumber(tree, folderId)} ${tree.folders[folderId].name}` : null);
+
   const columns = useMemo<ColumnDef<LessonRow>[]>(
     () => [
       {
@@ -139,6 +221,22 @@ export function LessonsHome() {
             <p className='truncate font-mono text-[10px] text-muted-foreground'>{row.original.id}</p>
           </Link>
         ),
+      },
+      {
+        id: 'folder',
+        header: 'Folder',
+        enableSorting: false,
+        cell: ({ row }) => {
+          const folderId = Object.hasOwn(tree.lessons, row.original.id) ? tree.lessons[row.original.id].folderId : null;
+          const label = folderLabel(folderId);
+          if (!label || folderId === null) return <span className='text-xs text-muted-foreground'>Unfiled</span>;
+          return (
+            <button type='button' className='flex max-w-48 items-center gap-1.5 text-xs text-muted-foreground transition hover:text-foreground' onClick={() => select({ kind: 'folder', id: folderId })} title={`Show ${label}`}>
+              <FolderIcon color={tree.folders[folderId].color} size={12} className='shrink-0' />
+              <span className='truncate'>{label}</span>
+            </button>
+          );
+        },
       },
       {
         accessorKey: 'stepCount',
@@ -168,23 +266,42 @@ export function LessonsHome() {
               <ExternalLink size={12} />
               View
             </Button>
-            <Button variant='ghost' size='xs' className='text-rose-600 dark:text-rose-300' onClick={() => setDeleting(row.original)}>
-              <Trash2 size={12} />
-              Delete
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger render={<Button variant='ghost' size='icon-xs' aria-label={`More actions: ${row.original.name}`} className='text-muted-foreground hover:text-foreground' />}>
+                <MoreHorizontal size={14} />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align='end' className='w-48 border-border bg-popover'>
+                <DropdownMenuItem onClick={() => setMovingLesson(row.original)}>
+                  <FolderInput /> Move to folder…
+                </DropdownMenuItem>
+                {view.kind === 'folder' && (
+                  <>
+                    <DropdownMenuItem disabled={row.index === 0} onClick={() => void editTree((current) => reorderLesson(current, row.original.id, -1))}>
+                      <ArrowUp /> Move up
+                    </DropdownMenuItem>
+                    <DropdownMenuItem disabled={row.index >= visibleRows.length - 1} onClick={() => void editTree((current) => reorderLesson(current, row.original.id, 1))}>
+                      <ArrowDown /> Move down
+                    </DropdownMenuItem>
+                  </>
+                )}
+                <DropdownMenuItem variant='destructive' onClick={() => setDeleting(row.original)}>
+                  <Trash2 /> Delete
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         ),
       },
     ],
-    // handleTogglePublic only closes over `user`.
+    // The handlers only close over `user`, the tree and the rows on screen.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [togglingId, user],
+    [togglingId, user, tree, view.kind, visibleRows],
   );
 
   const table = useReactTable({
-    data: rows,
+    data: visibleRows,
     columns,
-    state: { sorting },
+    state: { sorting, columnVisibility: { folder: view.kind === 'all' } },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -204,7 +321,7 @@ export function LessonsHome() {
           </div>
           <div>
             <h1 className='text-base font-semibold'>X Flow Tool</h1>
-            <p className='text-xs text-muted-foreground'>Your lessons · click one to open the editor</p>
+            <p className='text-xs text-muted-foreground'>Your lessons · organise them in folders, click one to open the editor</p>
           </div>
         </div>
         <div className='flex items-center gap-2'>
@@ -225,14 +342,50 @@ export function LessonsHome() {
         </div>
       </header>
 
-      <p className='px-6 py-3 text-xs text-muted-foreground'>{status === 'ready' ? `${rows.length} lesson(s)` : status === 'error' ? 'Failed to load lessons' : 'Loading lessons…'}</p>
-      <DataTable
-        table={table}
-        narrowColumns={NARROW_COLUMNS}
-        rightAlignedColumns={RIGHT_ALIGNED_COLUMNS}
-        emptyMessage={status === 'error' ? 'Could not read Firestore. Check sign-in and rules.' : status === 'loading' ? 'Loading…' : 'No lessons yet — create your first one with “New lesson”.'}
+      <div className='flex min-h-0 flex-1 flex-col md:flex-row'>
+        <aside className='max-h-[40vh] shrink-0 overflow-auto border-b border-border md:max-h-none md:w-72 md:border-r md:border-b-0'>
+          <LessonTreePanel tree={tree} totalCount={rows.length} selection={view} openIds={openIds} onSelect={select} onToggle={toggleOpen} onEdit={editTree} />
+        </aside>
+        <section className='flex min-h-0 min-w-0 flex-1 flex-col'>
+          <div className='flex items-center gap-2 px-6 py-3 text-xs text-muted-foreground'>
+            {view.kind === 'folder' && <FolderIcon color={tree.folders[view.id].color} size={13} />}
+            <span className='font-medium text-foreground'>{view.kind === 'folder' ? folderLabel(view.id) : view.kind === 'unfiled' ? 'Unfiled' : 'All lessons'}</span>
+            <span>{status === 'ready' ? `· ${visibleRows.length} lesson(s)` : status === 'error' ? '· Failed to load lessons' : '· Loading lessons…'}</span>
+          </div>
+          <DataTable
+            table={table}
+            narrowColumns={NARROW_COLUMNS}
+            rightAlignedColumns={RIGHT_ALIGNED_COLUMNS}
+            emptyMessage={
+              status === 'error'
+                ? 'Could not read Firestore. Check sign-in and rules.'
+                : status === 'loading'
+                  ? 'Loading…'
+                  : view.kind === 'all'
+                    ? 'No lessons yet — create your first one with “New lesson”.'
+                    : view.kind === 'unfiled'
+                      ? 'Every lesson is in a folder.'
+                      : 'No lessons directly in this folder — “New lesson” creates one here.'
+            }
+          />
+          <DataTableFooter table={table} />
+        </section>
+      </div>
+
+      <MoveToFolderDialog
+        open={movingLesson !== null}
+        tree={tree}
+        title='Move lesson'
+        description={`Choose a folder for “${movingLesson?.name ?? ''}”.`}
+        noneLabel='Unfiled'
+        currentId={movingLesson && Object.hasOwn(tree.lessons, movingLesson.id) ? tree.lessons[movingLesson.id].folderId : null}
+        onPick={(folderId) => {
+          if (!movingLesson) return;
+          const id = movingLesson.id;
+          void editTree((current) => moveLesson(current, id, folderId)).then((moved) => moved && folderId && toggleOpen(folderId, true));
+        }}
+        onOpenChange={(next) => !next && setMovingLesson(null)}
       />
-      <DataTableFooter table={table} />
 
       <AlertDialog open={deleting !== null} onOpenChange={(open) => !open && setDeleting(null)}>
         <AlertDialogContent className='border border-border bg-popover'>
