@@ -268,13 +268,14 @@ export function removeLessonEntry(tree: LessonTree, lessonId: string): LessonTre
 /**
  * Brings the index in line with the Lessons that actually exist: a missing
  * Lesson is added as Unfiled, a deleted one dropped (unless `prune: false`),
- * titles and Public flags refreshed. The safety net for every write made
- * outside the app.
+ * titles and Public flags refreshed (unless `refresh: false`). The safety net
+ * for every write made outside the app. Both options are for a list that may
+ * be stale — a page's own — where only adding is safe.
  */
 export function reconcileLessonTree(
   tree: LessonTree,
   lessons: { id: string; title: string; public: boolean }[],
-  options: { prune?: boolean } = {},
+  options: { prune?: boolean; refresh?: boolean } = {},
 ): { tree: LessonTree; changed: boolean } {
   let next = tree;
   let changed = false;
@@ -285,7 +286,7 @@ export function reconcileLessonTree(
     if (!entry) {
       next = upsertLessonEntry(next, lesson.id, { title: lesson.title, public: lesson.public });
       changed = true;
-    } else if (entry.title !== lesson.title || entry.public !== lesson.public) {
+    } else if (options.refresh !== false && (entry.title !== lesson.title || entry.public !== lesson.public)) {
       next = upsertLessonEntry(next, lesson.id, { title: lesson.title, public: lesson.public });
       changed = true;
     }

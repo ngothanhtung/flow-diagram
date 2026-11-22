@@ -134,9 +134,10 @@ export function LessonsHome() {
   const editTree = async (edit: (tree: LessonTree) => TreeEdit): Promise<boolean> => {
     if (!user) return false;
     try {
-      // Index what this page shows (the first folder ever created indexes every Lesson), but never
-      // prune here: this page's list may predate a Lesson another tab created into a folder.
-      const result = await updateLessonTree(user.uid, (current) => edit(reconcileLessonTree(current, summaries, { prune: false }).tree));
+      // Index what this page shows (the first folder ever created indexes every Lesson), but only add:
+      // this page's list may predate a Lesson another tab created into a folder, or a title it saved.
+      // Titles and Public flags are kept current by Save / Public themselves and by the load-time reconcile.
+      const result = await updateLessonTree(user.uid, (current) => edit(reconcileLessonTree(current, summaries, { prune: false, refresh: false }).tree));
       if (!result.ok) {
         toast.error(result.reason);
         return false;
@@ -305,6 +306,9 @@ export function LessonsHome() {
     data: visibleRows,
     columns,
     state: { sorting, columnVisibility: { folder: view.kind === 'all' } },
+    // A folder lists its lessons in their own order — the one Move up/down changes — so its
+    // columns don't sort; All lessons and Unfiled do.
+    enableSorting: view.kind !== 'folder',
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),

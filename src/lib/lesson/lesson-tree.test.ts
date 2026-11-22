@@ -179,6 +179,13 @@ describe('reconcileLessonTree', () => {
     expect(tree.lessons.l3).toMatchObject({ folderId: 'B' });
   });
 
+  it('only adds missing lessons when refreshing is off (a newer title saved in another tab stays)', () => {
+    const { tree, changed } = reconcileLessonTree(sample(), [{ id: 'l1', title: 'Old title', public: false }, { id: 'new', title: 'New', public: false }], { prune: false, refresh: false });
+    expect(changed).toBe(true);
+    expect(tree.lessons.l1).toMatchObject({ title: 'L1', public: true });
+    expect(tree.lessons.new).toMatchObject({ folderId: null, title: 'New' });
+  });
+
   it('reports no change when the index already matches', () => {
     const tree = sample();
     const lessons = Object.entries(tree.lessons).map(([id, entry]) => ({ id, title: entry.title, public: entry.public }));
