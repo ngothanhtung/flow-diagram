@@ -4,7 +4,7 @@ import type { LessonStep } from '@/lib/lesson/lesson-types';
  * "In this lesson": every Lesson step as a numbered stop on a rail, its short
  * name underneath — the timeline system-design-tutorials shows under its
  * stage. The rail fills up to the current Lesson step; steps before it read
- * as done (solid green), the current one is the card colour with a white border and a soft ripple.
+ * as done (solid green), the current one is #006046 with a white border and a soft ripple.
  * Click a stop to go there. Scrolls sideways when there are more steps than fit.
  */
 export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]; index: number; onSelect: (index: number) => void }) {
@@ -33,7 +33,7 @@ export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]
               const label = step.short || step.title || `Lesson step ${i + 1}`;
               // Seen = solid green; the step on screen stands out in green (#52c41a).
               const dot = current
-                ? 'scale-110 border-foreground bg-card text-foreground shadow-[0_0_0_3px_color-mix(in_oklab,var(--foreground)_18%,transparent)]'
+                ? 'scale-110 border-foreground bg-[#006046] text-white shadow-[0_0_0_3px_color-mix(in_oklab,var(--foreground)_18%,transparent)]'
                 : done
                   ? 'border-emerald-300 bg-emerald-700 text-white dark:border-emerald-200 dark:bg-emerald-800 group-hover:-translate-y-px'
                   : 'border-foreground/15 bg-card text-foreground group-hover:-translate-y-px group-hover:bg-accent';
