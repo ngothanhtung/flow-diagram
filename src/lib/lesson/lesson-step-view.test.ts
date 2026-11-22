@@ -1,13 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import type { FlowDocumentJSON, FlowNode } from '../flowchart-types';
-import { LOOK_TRANSITION, lookStyle, resolveStepView, stepExportDocument } from './lesson-step-view';
+import { hiddenElementIds, LOOK_TRANSITION, lookStyle, resolveStepView, stepExportDocument } from './lesson-step-view';
 import { emptyStep, type ElementOverride, type ElementPresence, type LessonContent } from './lesson-types';
 
 const node = (id: string, extra: Partial<FlowNode> = {}): FlowNode =>
   ({ id, type: 'process', title: id, position: { x: 0, y: 0 }, ...extra }) as FlowNode;
 
 const diagram: FlowDocumentJSON = {
-  nodes: [node('a'), node('b'), node('f', { type: 'group' }), node('c', { parentId: 'f' })],
+  // Spread out so no two boxes overlap (the editor hides a ghost that does).
+  nodes: [
+    node('a'),
+    node('b', { position: { x: 300, y: 0 } }),
+    node('f', { type: 'group', position: { x: 0, y: 400 }, width: 400, height: 300 }),
+    node('c', { parentId: 'f', position: { x: 0, y: 400 } }),
+  ],
   edges: [{ id: 'ab', from: 'a', to: 'b' }, { id: 'bc', from: 'b', to: 'c' }],
 };
 
@@ -80,6 +86,65 @@ describe('resolveStepView', () => {
     const c = content({ b: { from: 's2' } });
     expect(view(c, 's1', 'editor').looks.b).toBe('ghost');
     expect(view(c, 's1', 'viewer').looks.b).toBe('gone');
+  });
+
+  describe('editor ghosts never pile up', () => {
+    const at = (x: number, extra: Partial<FlowNode> = {}) => ({ position: { x, y: 0 }, ...extra });
+    const editor = (d: FlowDocumentJSON, c: LessonContent, step: string) => resolveStepView(d, c, step, 'editor').looks;
+
+    it('a hidden node on top of a shown node is gone, not ghost', () => {
+      const d: FlowDocumentJSON = { nodes: [node('v1', at(0)), node('v2', at(10)), node('far', at(500))], edges: [] };
+      const looks = editor(d, content({ v1: { until: 's2' }, v2: { from: 's2' }, far: { from: 's2' } }), 's1');
+      expect(looks.v1).toBe('normal');
+      expect(looks.v2).toBe('gone');
+      expect(looks.far).toBe('ghost');
+    });
+
+    it('of overlapping hidden nodes only the one nearest the current step is ghost', () => {
+      const d: FlowDocumentJSON = { nodes: [node('x3', at(0)), node('x2', at(5)), node('x4', at(10))], edges: [] };
+      const looks = editor(d, content({ x2: { from: 's2', until: 's3' }, x3: { from: 's3', until: 's4' }, x4: { from: 's4' } }), 's1');
+      expect(looks.x2).toBe('ghost');
+      expect(looks.x3).toBe('gone');
+      expect(looks.x4).toBe('gone');
+    });
+
+    it('a hidden node inside a shown group is still ghost', () => {
+      expect(editor(diagram, content({ c: { from: 's2' } }), 's1').c).toBe('ghost');
+    });
+
+    it('a hidden group on top of a shown group is gone, members included', () => {
+      const d: FlowDocumentJSON = {
+        nodes: [
+          node('g1', at(0, { type: 'group', width: 300, height: 200 })),
+          node('t1', at(0, { parentId: 'g1' })),
+          node('g2', at(20, { type: 'group', width: 300, height: 200 })),
+          node('t2', at(20, { parentId: 'g2' })),
+        ],
+        edges: [],
+      };
+      const looks = editor(d, content({ g1: { until: 's2' }, t1: { until: 's2' }, g2: { from: 's2' }, t2: { from: 's2' } }), 's1');
+      expect([looks.g1, looks.t1]).toEqual(['normal', 'normal']);
+      expect([looks.g2, looks.t2]).toEqual(['gone', 'gone']);
+    });
+
+    it('an edge to a gone node is gone; other hidden edges stay ghost', () => {
+      const d: FlowDocumentJSON = {
+        nodes: [node('v1', at(0)), node('v2', at(10)), node('far', at(500))],
+        edges: [{ id: 'toV2', from: 'far', to: 'v2' }, { id: 'toV1', from: 'far', to: 'v1' }],
+      };
+      const looks = editor(d, content({ v1: { until: 's2' }, v2: { from: 's2' }, far: { from: 's2' } }), 's1');
+      expect(looks.toV2).toBe('gone');
+      expect(looks.toV1).toBe('ghost');
+    });
+
+    it('the viewer is unchanged: hidden is always gone', () => {
+      const d: FlowDocumentJSON = { nodes: [node('v1', at(0)), node('far', at(500))], edges: [] };
+      expect(resolveStepView(d, content({ far: { from: 's2' } }), 's1', 'viewer').looks.far).toBe('gone');
+    });
+  });
+
+  it('hiddenElementIds lists ghost and gone ids only', () => {
+    expect(hiddenElementIds({ a: 'normal', b: 'ghost', c: 'gone', d: 'muted', e: 'emphasis' })).toEqual(new Set(['b', 'c']));
   });
 
   it('overrides change title, label and effect only in that step', () => {

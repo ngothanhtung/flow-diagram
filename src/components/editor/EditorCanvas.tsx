@@ -5,6 +5,7 @@ import { ShapeToolbar } from '@/components/ShapeToolbar';
 import { SelectionToolbar } from '@/components/editor/SelectionToolbar';
 import { useHistoryGestureScope } from '@/components/editor/use-history-gesture-scope';
 import { useEditorStore } from '@/lib/editor-store';
+import { hiddenElementIds } from '@/lib/lesson/lesson-step-view';
 import type { ElementLook } from '@/lib/lesson/lesson-types';
 import type { ExecutionState, FlowDocumentJSON } from '@/lib/flowchart-types';
 
@@ -66,8 +67,11 @@ export function EditorCanvas({ document, activeNodeIds, runningEdgeIds, nodeExec
         onNodeDragStart={(id) => setDraggingNodeId(id)}
         onNodeDragEnd={(id) => {
           setDraggingNodeId(null);
-          // Where it landed decides which group frame it belongs to.
-          onNodeDrop(id);
+          // Where it landed decides which group frame it belongs to — in a
+          // Lesson, only among the frames this Lesson step shows: a ghost
+          // frame from another step stacked on the same spot must not
+          // capture the node (it would vanish from this step).
+          onNodeDrop(id, elementLooks ? hiddenElementIds(elementLooks) : undefined);
         }}
         onConnect={onConnect}
         isDragging={draggingNodeId !== null}

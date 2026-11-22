@@ -115,15 +115,21 @@ export function sortByTreeDepth(nodes: FlowNode[]): FlowNode[] {
  * the deepest frame whose box contains `point`. `draggedId` and its own
  * descendants are skipped, so a group can never become its own ancestor.
  * Returns null when the drop lands outside every frame — which is what
- * releases a node from its group.
+ * releases a node from its group. Frames in `skipIds` are not candidates
+ * (the Lesson editor passes the frames the current Lesson step hides).
  */
-export function findDropTarget(nodes: FlowNode[], draggedId: string, point: { x: number; y: number }): FlowNode | null {
+export function findDropTarget(
+  nodes: FlowNode[],
+  draggedId: string,
+  point: { x: number; y: number },
+  skipIds?: ReadonlySet<string>,
+): FlowNode | null {
   const byId = new Map(nodes.map((node) => [node.id, node]));
   const excluded = descendantIds(nodes, draggedId);
   let best: FlowNode | null = null;
   let bestDepth = -1;
   for (const node of nodes) {
-    if (!isGroupNode(node) || node.id === draggedId || excluded.has(node.id)) continue;
+    if (!isGroupNode(node) || node.id === draggedId || excluded.has(node.id) || skipIds?.has(node.id)) continue;
     if (!contains(nodeBounds(node), point)) continue;
     const depth = nodeDepth(node, byId);
     // `>=` so that among equally deep frames the last one in document

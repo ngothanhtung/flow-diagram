@@ -422,7 +422,8 @@ interface EditorState {
   // Document mutations
   onNodeMove: (id: string, position: { x: number; y: number }) => void;
   /** Drag finished — join, leave or stay in whatever frame it landed on. */
-  onNodeDrop: (id: string) => void;
+  /** `skipFrameIds`: frames the node may not join (hidden in the current Lesson step). */
+  onNodeDrop: (id: string, skipFrameIds?: ReadonlySet<string>) => void;
   /** Release every member of a group frame, keeping the frame. */
   ungroupNode: (id: string) => void;
   /** Resize a frame so it wraps its members with even padding. */
@@ -926,11 +927,11 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
 
   // Called when a drag ends: whichever frame the node was dropped into
   // becomes its parent, and a drop outside every frame releases it.
-  onNodeDrop: (id) =>
+  onNodeDrop: (id, skipFrameIds) =>
     set((state) => {
       const dropped = state.doc.nodes.find((node) => node.id === id);
       if (!dropped) return {};
-      const target = findDropTarget(state.doc.nodes, id, dropped.position);
+      const target = findDropTarget(state.doc.nodes, id, dropped.position, skipFrameIds);
       const nextParentId = target?.id;
       if ((dropped.parentId ?? undefined) === nextParentId) return {};
       return {

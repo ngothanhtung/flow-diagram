@@ -440,7 +440,8 @@ export default function HelpPage() {
           </li>
           <li>
             <strong>Record per step:</strong> there is one drawing shared by all Lesson steps. While you are on Lesson step 4, anything you draw, paste or duplicate <em>appears from Lesson step 4</em>{' '}
-            (on Lesson step 1 it is simply always there). Elements that don&apos;t belong to the Lesson step you are viewing stay on the canvas, faded and marked <Pill>From lesson step 4</Pill>, <Pill>Until lesson step 3</Pill> or <Pill>Hidden in this lesson step</Pill>, so you can still select them.
+            (on Lesson step 1 it is simply always there). Elements that don&apos;t belong to the Lesson step you are viewing stay on the canvas, faded and marked <Pill>From lesson step 4</Pill>, <Pill>Until lesson step 3</Pill> or <Pill>Hidden in this lesson step</Pill>, so you can still select them. A faded Element that would sit on top of a shown one (or of another faded one) is left out
+            instead, so the canvas stays readable — go to its own Lesson step to select it. Dropping a block into a Group frame only joins frames shown in the current Lesson step.
           </li>
           <li>
             <strong>Remove from this lesson step:</strong> in the <strong>This lesson step</strong> panel it makes the selected Elements and Lines vanish from here on, without deleting them from the

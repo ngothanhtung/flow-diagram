@@ -3,6 +3,7 @@
 // React; the editor and the viewer both render from this.
 
 import type { EdgeEffect, FlowDocumentJSON, FlowEdge, FlowNode, NodeEffect } from '../flowchart-types';
+import { nodeBounds, type NodeBounds } from '../node-tree';
 import type { ElementLook, ElementOverride, LessonContent } from './lesson-types';
 
 export interface StepView {
@@ -96,10 +97,17 @@ export function resolveStepView(
     else looks[id] = emphasised.has(id) ? 'emphasis' : 'muted';
   }
 
+  if (mode === 'editor') hidePiledGhosts(diagram, visibleIds, looks, (id) => {
+    const gap = overrides[id]?.visible === undefined ? presenceGap(id) : null;
+    if (gap?.from !== undefined) return gap.from - index;
+    if (gap?.until !== undefined) return index - gap.until + 1;
+    return 0;
+  });
+
   const hints: Record<string, string> = {};
   if (mode === 'editor') {
     for (const id of allIds) {
-      if (visibleIds.has(id)) continue;
+      if (visibleIds.has(id) || looks[id] === 'gone') continue;
       const gap = overrides[id]?.visible === undefined ? presenceGap(id) : null;
       if (gap?.from !== undefined) hints[id] = `From lesson step ${gap.from + 1}`;
       else if (gap?.until !== undefined) hints[id] = `Until lesson step ${gap.until + 1}`;
@@ -130,6 +138,57 @@ export function resolveStepView(
   };
 
   return { document, looks, visibleIds, enteringIds, hints };
+}
+
+const intersects = (a: NodeBounds, b: NodeBounds) =>
+  a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+
+/**
+ * The editor draws hidden Elements as faint ghosts so the author can see
+ * them — but a ghost on top of a shown block, or of another ghost, only
+ * blurs both (a block that changes across steps is often several Elements
+ * in one place). Such a ghost becomes 'gone' instead: among overlapping
+ * ghosts the one whose step is nearest the current one is kept. A node
+ * never clashes with its own group or members (a child sits inside its
+ * group by design); the members of a gone group, and edges to a gone
+ * node, go with it.
+ */
+function hidePiledGhosts(
+  diagram: FlowDocumentJSON,
+  visibleIds: ReadonlySet<string>,
+  looks: Record<string, ElementLook>,
+  stepDistance: (id: string) => number,
+): void {
+  const parentOf = new Map(diagram.nodes.map((node) => [node.id, node.parentId]));
+  const ancestorsOf = (id: string): Set<string> => {
+    const found = new Set<string>();
+    for (let cur = parentOf.get(id); cur !== undefined && !found.has(cur); cur = parentOf.get(cur)) found.add(cur);
+    return found;
+  };
+  const ancestors = new Map(diagram.nodes.map((node) => [node.id, ancestorsOf(node.id)]));
+  const related = (a: string, b: string) => ancestors.get(a)?.has(b) || ancestors.get(b)?.has(a);
+
+  const drawn = diagram.nodes.filter((node) => visibleIds.has(node.id)).map((node) => ({ id: node.id, box: nodeBounds(node) }));
+  const hidden = diagram.nodes
+    .filter((node) => !visibleIds.has(node.id))
+    .map((node, order) => ({ node, order, distance: stepDistance(node.id) }))
+    .sort((a, b) => a.distance - b.distance || a.order - b.order);
+  for (const { node } of hidden) {
+    const box = nodeBounds(node);
+    if (drawn.some((other) => !related(other.id, node.id) && intersects(other.box, box))) looks[node.id] = 'gone';
+    else drawn.push({ id: node.id, box });
+  }
+  for (const node of diagram.nodes) {
+    if (looks[node.id] === 'ghost' && [...(ancestors.get(node.id) ?? [])].some((id) => looks[id] === 'gone')) looks[node.id] = 'gone';
+  }
+  for (const edge of diagram.edges) {
+    if (!visibleIds.has(edge.id) && (looks[edge.from] === 'gone' || looks[edge.to] === 'gone')) looks[edge.id] = 'gone';
+  }
+}
+
+/** Ids whose look keeps them out of the step (ghost or gone). */
+export function hiddenElementIds(looks: Record<string, ElementLook>): Set<string> {
+  return new Set(Object.keys(looks).filter((id) => looks[id] === 'ghost' || looks[id] === 'gone'));
 }
 
 /** The Diagram as the step shows it: visible Elements only, muted nodes faded. */

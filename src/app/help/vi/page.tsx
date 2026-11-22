@@ -438,7 +438,8 @@ export default function HelpViPage() {
           </li>
           <li>
             <strong>Ghi theo bước:</strong> mọi bước bài học dùng chung một hình. Khi đang ở bước bài học 4, thứ gì bạn vẽ, dán hay nhân bản sẽ <em>xuất hiện từ bước bài học 4</em> (ở bước bài học 1 thì có mặt ở mọi bước).
-            Element không thuộc bước bài học đang xem vẫn nằm trên canvas, mờ đi và có dấu <Pill>From lesson step 4</Pill>, <Pill>Until lesson step 3</Pill> hoặc <Pill>Hidden in this lesson step</Pill>, nên bạn vẫn chọn và sửa được.
+            Element không thuộc bước bài học đang xem vẫn nằm trên canvas, mờ đi và có dấu <Pill>From lesson step 4</Pill>, <Pill>Until lesson step 3</Pill> hoặc <Pill>Hidden in this lesson step</Pill>, nên bạn vẫn chọn và sửa được. Element mờ nào nằm đè lên một Element đang hiện (hoặc lên một Element mờ khác)
+            thì được ẩn hẳn cho canvas dễ đọc — muốn chọn nó, hãy chuyển sang bước bài học của nó. Thả một khối vào Group frame chỉ nhận các frame đang hiện ở bước bài học hiện tại.
           </li>
           <li>
             <strong>Remove from this lesson step:</strong> trong panel <strong>This lesson step</strong>, lệnh này làm Element và Line đang chọn biến mất từ bước đó trở đi mà không xoá khỏi hình.{' '}

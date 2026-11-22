@@ -50,6 +50,20 @@ SEED_EMAIL=you@example.com SEED_PASSWORD=… npx vite-node scripts/seed-emulator
 It refuses anything but a `demo-*` project on local emulator hosts. Stop the
 emulators with Ctrl+C so the data is exported to `.emulator-data/`.
 
+**Into a real Firebase project** (rules deployed first, see below), all of
+them at once, owned by one account — every write goes through the deployed
+rules, as the app's own Save does:
+
+```bash
+FIREBASE_API_KEY=… SEED_EMAIL=… SEED_PASSWORD=… \
+  npx vite-node scripts/import-lessons.ts --project <project-id> [--lang en|vi|all] [--create-account]
+```
+
+Without the account's password, a project owner can import for it by uid
+instead (this bypasses the rules): `FIREBASE_ACCESS_TOKEN=… npx vite-node
+scripts/import-lessons.ts --project <project-id> --uid <uid>`. Neither grants
+the account a role.
+
 **By hand, anywhere**: on `/lessons` press **New lesson**, then in the lesson
 editor **File → Import JSON…** and pick a file; Save, then set Public if
 wanted.

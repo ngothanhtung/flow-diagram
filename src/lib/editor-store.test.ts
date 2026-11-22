@@ -611,3 +611,29 @@ describe('editor store — Share and Save conflicts (PRD v0.3 §4.2)', () => {
     expect(store().currentRevision).toBe(0);
   });
 });
+
+describe('editor store — dropping into a frame', () => {
+  /** Two frames stacked in one place, the way one Lesson card changes across Lesson steps. */
+  function stacked(): FlowDocumentJSON {
+    return {
+      nodes: [
+        block('card', 400, 300, { type: 'group', width: 400, height: 200 }),
+        block('text', 400, 300, { parentId: 'card' }),
+        block('card-2', 400, 300, { type: 'group', width: 400, height: 200 }),
+      ],
+      edges: [],
+    };
+  }
+
+  it('joins the top frame under the drop point', () => {
+    openDiagram('d1', stacked());
+    store().onNodeDrop('text');
+    expect(nodeById('text').parentId).toBe('card-2');
+  });
+
+  it('skips frames the caller rules out (a Lesson step does not show them)', () => {
+    openDiagram('d1', stacked());
+    store().onNodeDrop('text', new Set(['card-2']));
+    expect(nodeById('text').parentId).toBe('card');
+  });
+});

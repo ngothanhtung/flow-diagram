@@ -2,7 +2,7 @@
 // system-design-tutorials by scripts/convert-tutorials.ts) must load as they
 // are: no normalizer fix, every Lesson step resolvable, and a readable 2D
 // layout — sizes inside what the canvas renders and no two blocks shown in
-// the same step overlapping.
+// the same step overlapping, in the viewer or (ghosts included) in the editor.
 
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
@@ -65,6 +65,27 @@ describe('seed lessons', () => {
             for (let j = i + 1; j < shown.length; j += 1) if (overlaps(shown[i], shown[j])) clashes.push(`${shown[i].id} × ${shown[j].id}`);
           }
           expect(clashes, `${step.id} overlaps`).toEqual([]);
+
+          // The editor also draws hidden Elements, as faint ghosts: those
+          // must not pile up on each other or on the shown blocks either.
+          const editorLooks = resolveStepView(lesson.diagram, content, step.id, 'editor').looks;
+          // Groups count too, except against their own members (at any depth).
+          const byId = new Map(nodes.map((node) => [node.id, node]));
+          const within = (child: FlowNode, group: FlowNode) => {
+            for (let cur = child.parentId; cur !== undefined; cur = byId.get(cur)?.parentId) if (cur === group.id) return true;
+            return false;
+          };
+          const drawn = nodes.filter((node) => editorLooks[node.id] !== 'gone');
+          const ghostClashes: string[] = [];
+          for (let i = 0; i < drawn.length; i += 1) {
+            for (let j = i + 1; j < drawn.length; j += 1) {
+              const [a, b] = [drawn[i], drawn[j]];
+              if (editorLooks[a.id] !== 'ghost' && editorLooks[b.id] !== 'ghost') continue;
+              if (within(a, b) || within(b, a)) continue;
+              if (overlaps(a, b)) ghostClashes.push(`${a.id} × ${b.id}`);
+            }
+          }
+          expect(ghostClashes, `${step.id} editor overlaps`).toEqual([]);
         }
       });
     }
