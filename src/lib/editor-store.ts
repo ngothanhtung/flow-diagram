@@ -14,7 +14,7 @@ import type { StoredDiagram } from './firebase/diagrams';
 import { pruneMissingElements, stampNewElements } from './lesson/lesson-edit';
 import { contentOf, toLessonDocument, type LessonContent, type LessonDocumentJSON } from './lesson/lesson-types';
 import { revisionOf, type DiagramRole } from './sharing';
-import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight, NEW_TEXT_PADDING, NEW_TEXT_RADIUS } from './node-style';
+import { GROUP_MAX_HEIGHT, GROUP_MAX_WIDTH, GROUP_MIN_SIZE, TABLE_DEFAULT_WIDTH, TABLE_MAX_WIDTH, nodeSizeLimits, resolveNodeStyle, tableCardHeight, NEW_BLOCK_FONT_SIZE, NEW_BLOCK_PADDING, NEW_TEXT_PADDING, NEW_TEXT_RADIUS } from './node-style';
 import { boundsOfNodes, childrenOf, descendantIds, findDropTarget, groupGeometryFor, isSceneryNode, nodeBounds } from './node-tree';
 import { starterColumns } from '@/components/TableColumnsEditor';
 import type { VersionActor } from './version-history';
@@ -1264,8 +1264,9 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
     // of the editor's coordinate convention. Width/height are clamped
     // to a sensible minimum so a stray click doesn't produce a
     // 1-pixel sliver.
-    const w = Math.max(40, Math.min(640, width));
-    const h = Math.max(40, Math.min(480, height));
+    // Room for the icon badge (18 + 25) and a line of title inside the 24px padding a new block is born with.
+    const w = Math.max(NEW_BLOCK_PADDING * 2 + 120, Math.min(640, width));
+    const h = Math.max(NEW_BLOCK_PADDING * 2 + 48, Math.min(480, height));
     set({
       doc: {
         nodes: [
@@ -1285,7 +1286,8 @@ export const useEditorStore = create<EditorState>()(recordingHistory((set, get) 
             icon: 'lucide:LucideSettings',
             iconPosition: 'left',
             iconSize: 18,
-            fontSize: 13,
+            fontSize: NEW_BLOCK_FONT_SIZE,
+            padding: NEW_BLOCK_PADDING,
             fontWeight: 'medium',
             blockAlign: 'left',
             textAlign: 'left',

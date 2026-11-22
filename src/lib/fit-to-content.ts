@@ -17,7 +17,7 @@
 
 import type { FlowNode } from './flowchart-types';
 import { NODE_FONT_FAMILIES, NODE_FONT_WEIGHTS } from './node-fonts';
-import { nodeSizeLimits, resolveNodeStyle, textBoxStyle } from './node-style';
+import { nodeSizeLimits, resolveNodeStyle, textBoxStyle, blockPadding } from './node-style';
 
 function measureNaturalSize(build: (container: HTMLDivElement) => void): { width: number; height: number } {
   const container = document.createElement('div');
@@ -143,6 +143,7 @@ export function fitBlockNodeSize(node: FlowNode): { width: number; height: numbe
     container.appendChild(cluster);
   });
 
-  const cardPadding = Math.max(10, Math.min(content.width, content.height) * 0.13);
-  return clampSize(node, content.width + 2 * (cardPadding + 8), content.height + 2 * cardPadding);
+  // Own padding as is; the size-derived one from the content size (see above).
+  const padding = blockPadding(node, content.width, content.height);
+  return clampSize(node, content.width + 2 * padding.x, content.height + 2 * padding.y);
 }

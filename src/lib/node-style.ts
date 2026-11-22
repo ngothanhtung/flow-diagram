@@ -164,6 +164,27 @@ export function textBoxStyle(node: FlowNode): TextBoxStyle {
   };
 }
 
+// --- Block padding -----------------------------------------------------------
+
+/** A new block's padding and title size; blocks drawn before keep their size-derived padding. */
+export const NEW_BLOCK_PADDING = 24;
+export const NEW_BLOCK_FONT_SIZE = 16;
+
+/**
+ * The space between a block's edge and its icon + text cluster. The block's
+ * own `padding` (0–64), the same on every side, when it has one; otherwise
+ * the old size-derived padding — wider at the sides so text never crowds
+ * the rounded corners or the side ports — so existing Diagrams draw as before.
+ */
+export function blockPadding(node: Pick<FlowNode, 'padding'>, width: number, height: number): { x: number; y: number } {
+  if (typeof node.padding === 'number' && Number.isFinite(node.padding)) {
+    const padding = Math.min(64, Math.max(0, node.padding));
+    return { x: padding, y: padding };
+  }
+  const y = Math.max(10, Math.min(width, height) * 0.13);
+  return { x: y + 8, y };
+}
+
 // --- Free icon / logo ------------------------------------------------------
 // The graphic counterpart to free text: a single glyph or brand mark on
 // the canvas, no silhouette, no fill, no ports. Its box is only the drag

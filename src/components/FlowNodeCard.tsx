@@ -10,7 +10,7 @@ import { useResolvedIcon } from '@/lib/icon-library';
 import { localEndpointsOfLine } from '@/lib/line-geometry';
 import type { ConnectionSide, EdgeMarker, ExecutionState, FlowNode, NodeShape } from '@/lib/flowchart-types';
 import { NarrationText } from '@/components/lessons/NarrationText';
-import { GROUP_HEADER_HEIGHT, nodeOutline, nodeSizeLimits, resolveNodeStyle, textBoxStyle } from '@/lib/node-style';
+import { GROUP_HEADER_HEIGHT, nodeOutline, nodeSizeLimits, resolveNodeStyle, textBoxStyle, blockPadding } from '@/lib/node-style';
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from './node-effect-layer';
 import type { ElementLook } from '@/lib/lesson/lesson-types';
 import { LookGroup } from './look-group';
@@ -212,9 +212,8 @@ export function FlowNodeCard({
   const hasIcon = Boolean(Icon || logoSlug);
   const { shapeSpec, foreground, background, borderColor, width, height, rotation, borderWidth, borderStyle, opacity, fill, shadow, iconSize, iconPosition, blockAlign, fontSize, fontFamily, fontWeight, textAlign, portSize } = style;
   const clusterAlign = blockAlign === 'left' ? 'flex-start' : blockAlign === 'right' ? 'flex-end' : 'center';
-  // Horizontal padding runs wider than vertical so text never crowds the
-  // rounded corners or the side ports.
-  const cardPadding = Math.max(10, Math.min(width, height) * 0.13);
+  // The block's own padding, or the old size-derived one (see `blockPadding`).
+  const cardPadding = blockPadding(node, width, height);
   const scaleX = width / BASE_SIZE;
   const scaleY = height / BASE_SIZE;
   const outline = nodeOutline(style.shape, width, height);
@@ -892,7 +891,7 @@ export function FlowNodeCard({
               justifyContent: iconPosition === 'top' ? 'center' : clusterAlign,
               alignItems: iconPosition === 'top' ? clusterAlign : 'center',
               gap: hasIcon ? (iconPosition === 'top' ? 7 : 12) : 0,
-              padding: `${cardPadding}px ${cardPadding + 8}px`,
+              padding: `${cardPadding.y}px ${cardPadding.x}px`,
             }}
           >
             {hasIcon && (

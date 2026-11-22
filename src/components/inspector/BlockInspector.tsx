@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/u
 import { Textarea } from '@/components/ui/textarea';
 import { DEFAULT_STEP_DELAY_MS, NODE_FADE_DURATION_MS } from '@/lib/execution-timing';
 import { fitBlockNodeSize } from '@/lib/fit-to-content';
-import { SHAPES, resolveNodeStyle, type NodeShape } from '@/lib/node-style';
+import { SHAPES, blockPadding, resolveNodeStyle, type NodeShape } from '@/lib/node-style';
 import {
   ActionsSection,
   ColorField,
@@ -87,6 +87,13 @@ export function BlockInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
         // (`TableColumnsEditor`) — icon+title fitting doesn't apply to it.
         onFitToContent={node.table ? undefined : () => onUpdate(node.id, fitBlockNodeSize({ ...node, title: title.value, description: description.value }))}
       />
+      {/* Space between the block's edge and its icon + text, the same on every side. A block from
+          before this field shows its size-derived padding until it is set. Tables lay out their own rows. */}
+      {!node.table && (
+        <div className='grid grid-cols-2 gap-2'>
+          <NumberField label='Padding' value={Math.round(blockPadding(node, style.width, style.height).y)} min={0} max={64} onChange={(padding) => onUpdate(node.id, { padding })} />
+        </div>
+      )}
       <SectionLabel>Sort order</SectionLabel>
       <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>0 = automatic (document order). Nodes sharing a number animate together as one replay step. Lines share this same number line — see a line&apos;s own Order field.</p>
       <div className='mt-1.5 grid grid-cols-2 gap-2'>

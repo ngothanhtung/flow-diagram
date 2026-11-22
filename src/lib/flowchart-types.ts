@@ -164,7 +164,7 @@ export interface FlowNode {
   borderStyle?: 'solid' | 'dashed' | 'dotted';
   /** A free text object's box: corner radius (px). Unset = square. */
   cornerRadius?: number;
-  /** A free text object's box: space between its edge and the words (px). Unset = `TEXT_PADDING`. */
+  /** Space between the edge and the content (px, 0–64). A free text object's box (unset = `TEXT_PADDING`); a block's, on every side (unset = the old size-derived padding, see `blockPadding`). */
   padding?: number;
   opacity?: number;
   /**
