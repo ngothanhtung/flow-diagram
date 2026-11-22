@@ -1084,7 +1084,22 @@ export function FlowNodeCard({
             paused={effectsPaused}
           />
         )}
-        {look === 'emphasis' && (
+        {look === 'emphasis' && isText && (textBox.fill || textBox.stroke) ? (
+          // A boxed text object: the outline follows its own (rounded) box rather than a square around it.
+          <rect
+            x={-width / 2 + textBox.strokeWidth / 2}
+            y={-height / 2 + textBox.strokeWidth / 2}
+            width={Math.max(0, width - textBox.strokeWidth)}
+            height={Math.max(0, height - textBox.strokeWidth)}
+            rx={textBox.radius}
+            fill='none'
+            stroke='#22d3ee'
+            strokeWidth={2.5}
+            vectorEffect='non-scaling-stroke'
+            pointerEvents='none'
+            style={{ filter: 'drop-shadow(0 0 6px rgba(34, 211, 238, 0.6))' }}
+          />
+        ) : look === 'emphasis' && (
           <g transform={outline.transform} pointerEvents='none'>
             <path
               d={outline.d}
