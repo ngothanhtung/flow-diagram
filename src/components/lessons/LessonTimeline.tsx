@@ -15,10 +15,10 @@ export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]
   const inset = `calc(100% / ${count} / 2)`;
 
   return (
-    <section aria-label='Lesson steps' className='shrink-0 border-t border-border bg-card/40 px-4 pt-2.5 pb-2 sm:px-6'>
-      <div className='flex items-baseline justify-between gap-3 font-mono'>
-        <span className='text-[11px] font-bold uppercase tracking-[0.14em] text-foreground'>In this lesson</span>
-        <span className='text-[11px] font-semibold text-muted-foreground'>{`Lesson step ${index + 1} of ${count}`}</span>
+    <section aria-label='Lesson steps' className='shrink-0 border-t border-border bg-card/40 px-4 pt-2.5 pb-2 font-reading sm:px-6'>
+      <div className='flex items-baseline justify-between gap-3'>
+        <span className='text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground'>In this lesson</span>
+        <span className='text-xs font-medium tabular-nums text-muted-foreground'>{`Lesson step ${index + 1} of ${count}`}</span>
       </div>
       <div className='overflow-x-auto'>
         <div className='relative mt-2' style={{ minWidth: `${count * 3.75}rem` }}>
@@ -42,10 +42,10 @@ export function LessonTimeline({ steps, index, onSelect }: { steps: LessonStep[]
                     aria-current={current ? 'step' : undefined}
                     title={step.title || label}
                     onClick={() => onSelect(i)}
-                    className='group flex w-full flex-col items-center px-0.5 font-mono focus-visible:outline-none'
+                    className='group flex w-full flex-col items-center px-0.5 focus-visible:outline-none'
                   >
-                    <span className={`grid size-[26px] place-items-center rounded-full border text-[11px] font-bold tabular-nums transition group-focus-visible:ring-2 group-focus-visible:ring-ring ${dot}`}>{i + 1}</span>
-                    <span className={`mt-1.5 line-clamp-2 min-h-[2.6em] text-center text-[11px] leading-[1.3] ${current ? 'font-bold text-foreground' : done ? 'text-foreground/80' : 'text-muted-foreground'}`}>{label}</span>
+                    <span className={`grid size-[26px] place-items-center rounded-full border text-xs font-semibold tabular-nums transition group-focus-visible:ring-2 group-focus-visible:ring-ring ${dot}`}>{i + 1}</span>
+                    <span className={`mt-1.5 line-clamp-2 min-h-[2.7em] text-center text-xs leading-[1.35] ${current ? 'font-semibold text-foreground' : done ? 'text-foreground/85' : 'text-muted-foreground'}`}>{label}</span>
                   </button>
                 </li>
               );

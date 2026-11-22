@@ -125,7 +125,7 @@ export function LessonPlayer({
 
   return (
     <div className='flex h-dvh flex-col bg-background text-foreground'>
-      <header className='flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-border px-3 py-3 sm:px-6'>
+      <header className='flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-b border-border px-3 py-3 font-reading sm:px-6'>
         <div className='flex min-w-0 items-center gap-3'>
           {sidebar && (
             <Button variant='toolbar' size='icon-lg' title='Course' aria-label='Show or hide the course' onClick={toggleCourse}>
@@ -152,7 +152,7 @@ export function LessonPlayer({
       </header>
 
       <main className='flex min-h-0 flex-1 flex-col lg:flex-row'>
-        {sidebar && dockOpen && <aside className='hidden min-h-0 w-72 shrink-0 flex-col border-r border-border lg:flex'>{sidebar}</aside>}
+        {sidebar && dockOpen && <aside className='hidden min-h-0 w-72 shrink-0 flex-col border-r border-border font-reading lg:flex'>{sidebar}</aside>}
         <div className='flex min-h-0 min-w-0 flex-1 flex-col'>
           <section className='relative min-h-0 flex-1 overflow-hidden bg-background'>
             <FlowCanvas
@@ -188,7 +188,7 @@ export function LessonPlayer({
           <LessonTimeline steps={steps} index={index} onSelect={goTo} />
         </div>
 
-        <aside className='flex max-h-[50%] min-h-0 shrink-0 flex-col border-t border-border lg:max-h-none lg:w-96 lg:border-t-0 lg:border-l' aria-label='Narration'>
+        <aside className='flex max-h-[50%] min-h-0 shrink-0 flex-col border-t border-border font-reading lg:max-h-none lg:w-96 lg:border-t-0 lg:border-l' aria-label='Narration'>
           <div className='min-h-0 flex-1 space-y-3 overflow-y-auto p-4'>
             {step ? (
               <>
@@ -276,7 +276,7 @@ export function LessonPlayer({
 
       {sidebar && (
         <Sheet open={drawerOpen} onOpenChange={setDrawerOpen}>
-          <SheetContent side='left' className='w-80 border-border p-0'>
+          <SheetContent side='left' className='w-80 border-border p-0 font-reading'>
             <SheetTitle className='sr-only'>Course</SheetTitle>
             {/* A click on a lesson closes the drawer (the page then changes). */}
             <div className='min-h-0 flex-1 overflow-y-auto [&>nav>div:first-child]:pr-12' onClick={(event) => (event.target as HTMLElement).closest('a') && setDrawerOpen(false)}>

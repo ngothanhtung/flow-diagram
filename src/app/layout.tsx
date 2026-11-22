@@ -3,6 +3,8 @@ import {
   Be_Vietnam_Pro,
   Geist,
   Geist_Mono,
+  Inter,
+  JetBrains_Mono,
   Merriweather,
   Noto_Sans,
   Roboto_Slab,
@@ -54,6 +56,22 @@ const merriweather = Merriweather({
   weight: "variable",
 });
 
+// Reading and code fonts of the lesson pages (narration, step timeline,
+// course sidebar), the pair DocsHub uses. Unlike Geist / Geist Mono they
+// ship a Vietnamese subset, so tone-marked letters (ị, ữ, ồ…) come from
+// the same font instead of a fallback.
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin", "vietnamese"],
+  preload: false,
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin", "vietnamese"],
+  preload: false,
+});
+
 export const metadata: Metadata = {
   title: "X Flow Tool",
   description: "Animated flowchart editor built with Next.js and flowgram.ai",
@@ -68,9 +86,11 @@ export default function RootLayout({
     <html
       lang="vi"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${beVietnamPro.variable} ${notoSans.variable} ${sourceSans3.variable} ${robotoSlab.variable} ${merriweather.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${beVietnamPro.variable} ${notoSans.variable} ${sourceSans3.variable} ${robotoSlab.variable} ${merriweather.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      {/* Browser extensions add attributes to <body> before React hydrates
+          (ColorZilla's cz-shortcut-listen, Grammarly's data-*): not a real mismatch. */}
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <TooltipProvider>
             <AuthProvider>{children}</AuthProvider>

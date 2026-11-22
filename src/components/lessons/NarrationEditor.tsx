@@ -53,7 +53,8 @@ const HIGHLIGHT = HighlightStyle.define([
 const THEME = EditorView.theme({
   '&': { backgroundColor: 'transparent', color: 'var(--foreground)', fontSize: '11px' },
   '&.cm-focused': { outline: 'none' },
-  '.cm-scroller': { fontFamily: 'var(--font-mono)', lineHeight: '1.6' },
+  // next/font's own variables: Tailwind's @theme inline tokens aren't CSS variables at runtime.
+  '.cm-scroller': { fontFamily: 'var(--font-jetbrains-mono), var(--font-geist-mono), ui-monospace, monospace', lineHeight: '1.6' },
   '.cm-content': { padding: '6px 0', caretColor: 'var(--foreground)' },
   '.cm-line': { padding: '0 10px' },
   '.cm-cursor, .cm-dropCursor': { borderLeftColor: 'var(--foreground)' },
@@ -180,7 +181,7 @@ export function NarrationEditor({ label, value, onChange, placeholder, minLines 
             maxHeight='420px'
           />
         ) : (
-          <div className='overflow-auto px-2.5 py-1.5 text-[12px] leading-relaxed text-foreground/90' style={{ minHeight, maxHeight: 420 }}>
+          <div className='overflow-auto px-2.5 py-1.5 font-reading text-[12px] leading-relaxed text-foreground/90' style={{ minHeight, maxHeight: 420 }}>
             {draft.trim() ? <NarrationText source={draft} /> : <p className='text-muted-foreground'>Nothing to preview yet.</p>}
           </div>
         )}

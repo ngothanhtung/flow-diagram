@@ -9,7 +9,7 @@ function renderInline(item: NarrationInline, key: number) {
       return <em key={key}>{item.text}</em>;
     case 'code':
       return (
-        <code key={key} className="rounded bg-muted px-1 py-0.5 font-mono text-[0.9em]">
+        <code key={key} className="rounded bg-muted px-1 py-0.5 font-code text-[0.9em]">
           {item.text}
         </code>
       );
@@ -48,7 +48,7 @@ function renderBlock(block: NarrationBlock, key: number) {
     }
     case "code":
       return (
-        <pre key={key} className={`overflow-x-auto rounded-md bg-muted px-3 py-2 font-mono text-[0.85em] leading-relaxed ${spacing}`}>
+        <pre key={key} className={`overflow-x-auto rounded-md bg-muted px-3 py-2 font-code text-[0.85em] leading-relaxed ${spacing}`}>
           <code>{block.text}</code>
         </pre>
       );
