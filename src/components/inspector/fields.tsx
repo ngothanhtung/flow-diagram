@@ -213,6 +213,10 @@ export const INSPECTOR_SECTIONS = {
 export type InspectorSectionId = keyof typeof INSPECTOR_SECTIONS;
 export const INSPECTOR_SECTION_ORDER = Object.keys(INSPECTOR_SECTIONS) as InspectorSectionId[];
 
+/** A section's title: bright, bold, small caps with a short accent bar before it — the one look of every section heading (Inspector, Lesson panel, line-style palette). */
+export const SECTION_TITLE_CLASS =
+  'flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground before:h-3 before:w-0.5 before:rounded-full before:bg-sky-500 before:content-[""]';
+
 /**
  * One section of a panel: a hairline across the column, its name in the
  * small uppercase of the panel headers, an optional one-line hint and a
@@ -222,7 +226,7 @@ export function InspectorSection({ id, hint, aside, children }: { id: InspectorS
   return (
     <section data-section={id} aria-label={INSPECTOR_SECTIONS[id]} className='-mx-4 mt-3 border-t border-border px-4 pt-3'>
       <div className='flex min-h-6 items-center justify-between gap-2'>
-        <h3 className='text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>{INSPECTOR_SECTIONS[id]}</h3>
+        <h3 className={SECTION_TITLE_CLASS}>{INSPECTOR_SECTIONS[id]}</h3>
         {aside}
       </div>
       {hint && <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>{hint}</p>}

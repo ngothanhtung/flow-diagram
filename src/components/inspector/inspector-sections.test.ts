@@ -56,3 +56,14 @@ describe('Inspector sections', () => {
     expect(html).not.toContain('text-cyan-300/80');
   });
 });
+
+describe('section titles', () => {
+  it('stand out: foreground colour, bold, an accent mark — one shared style', async () => {
+    const { SECTION_TITLE_CLASS } = await import('@/components/inspector/fields');
+    expect(SECTION_TITLE_CLASS).toContain('text-foreground');
+    expect(SECTION_TITLE_CLASS).toContain('font-bold');
+    expect(SECTION_TITLE_CLASS).toContain('before:');
+    const html = PANELS[0][1].replaceAll('&quot;', '"');
+    expect(html).toContain(`<h3 class="${SECTION_TITLE_CLASS}">Content</h3>`);
+  });
+});

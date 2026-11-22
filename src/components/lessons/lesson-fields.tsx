@@ -1,5 +1,7 @@
 'use client';
 
+import { SECTION_TITLE_CLASS } from '@/components/inspector/fields';
+
 // Small field primitives shared by the Lesson side panel and the Lesson
 // info dialog. Text fields keep a local draft (so the box never echoes a
 // normalised value mid-typing) and write on every change; the parent keys
@@ -122,5 +124,5 @@ export function SwitchRow({ label, checked, onChange }: { label: string; checked
 
 /** A section heading in the Lesson panel — the same look as the Inspector's sections: a hairline above, small uppercase name. */
 export function PanelHeading({ children }: { children: string }) {
-  return <h3 className='mt-5 mb-2 border-t border-border pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground first:mt-0 first:border-t-0 first:pt-0'>{children}</h3>;
+  return <h3 className={`mt-5 mb-2 border-t border-border pt-3 first:mt-0 first:border-t-0 first:pt-0 ${SECTION_TITLE_CLASS}`}>{children}</h3>;
 }

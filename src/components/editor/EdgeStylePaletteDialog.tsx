@@ -3,7 +3,7 @@
 import { Plus, Sparkles, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { EDGE_EFFECTS, LINE_STYLE_OPTIONS, MarkerPicker, ROUTING_OPTIONS, EdgeStyleSample } from '@/components/edge-style-fields';
-import { ColorField, HuePresetRow, NumberField } from '@/components/inspector/fields';
+import { ColorField, HuePresetRow, NumberField, SECTION_TITLE_CLASS } from '@/components/inspector/fields';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -131,7 +131,7 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
                   <NumberField label='Width' value={selected.width ?? 2} min={1} max={6} step={0.5} onChange={(width) => patch({ width })} />
                 </div>
 
-                <h3 className='mt-5 mb-2 border-t border-border pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>Stroke</h3>
+                <h3 className={`mt-5 mb-2 border-t border-border pt-3 ${SECTION_TITLE_CLASS}`}>Stroke</h3>
                 <LineStyleToggle value={selected.lineStyle ?? 'solid'} onChange={(lineStyle) => patch({ lineStyle })} />
                 <p className='mt-1.5 text-[9px] leading-relaxed text-muted-foreground'>The pattern of the line itself, which stays put whether or not the diagram is playing — unlike an animated effect&apos;s moving marks.</p>
 
@@ -140,7 +140,7 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
                   <MarkerPicker label='Line end' value={selected.endMarker ?? 'none'} onChange={(endMarker) => patch({ endMarker })} />
                 </div>
 
-                <h3 className='mt-5 mb-2 border-t border-border pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>Routing</h3>
+                <h3 className={`mt-5 mb-2 border-t border-border pt-3 ${SECTION_TITLE_CLASS}`}>Routing</h3>
                 <Select value={selected.routing ?? 'smooth-step'} onValueChange={(next) => next && patch({ routing: next as EdgeRouting })}>
                   <SelectTrigger className='h-9 w-full border-border bg-muted/30 px-3 text-left hover:bg-accent focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15'>
                     <span className='flex-1 truncate text-[11px] font-semibold text-foreground'>{ROUTING_OPTIONS.find((option) => option.value === (selected.routing ?? 'smooth-step'))?.label}</span>
@@ -157,7 +157,7 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
                   </SelectContent>
                 </Select>
 
-                <h3 className='mt-5 mb-2 border-t border-border pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>Animation</h3>
+                <h3 className={`mt-5 mb-2 border-t border-border pt-3 ${SECTION_TITLE_CLASS}`}>Animation</h3>
                 <Select value={selected.effect ?? 'none'} onValueChange={(next) => next && patch({ effect: next as EdgeEffect })}>
                   <SelectTrigger className='h-9 w-full border-border bg-muted/30 px-3 text-left hover:bg-accent focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
                     <span className='flex-1 truncate text-[11px] font-semibold text-foreground'>{EDGE_EFFECTS.find((option) => option.value === (selected.effect ?? 'none'))?.label}</span>
