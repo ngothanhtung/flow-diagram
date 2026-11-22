@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { NodeEffectLayer, nodeMotionStyle, resolveEffectKnobs } from '@/components/node-effect-layer';
 import type { FlowNode, NodeEffect } from '@/lib/flowchart-types';
 import { nodeOutline } from '@/lib/node-style';
-import { ColorField, RangeField, SectionLabel, type InspectorPanelProps } from './fields';
+import { ColorField, InspectorSection, RangeField, type InspectorPanelProps } from './fields';
 
 interface EffectOption {
   value: NodeEffect;
@@ -67,8 +67,7 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
   const motionSubject = node.type === 'text' ? 'text' : node.type === 'icon' ? 'icon' : node.type === 'line' ? 'line' : 'block';
 
   return (
-    <>
-      <SectionLabel>Effect</SectionLabel>
+    <InspectorSection id='effect'>
       <Dialog
         open={draft !== null}
         onOpenChange={(open) => {
@@ -79,7 +78,7 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
           render={
             <button
               type='button'
-              className='mt-1.5 flex h-auto w-full cursor-pointer items-center gap-2.5 rounded-md border border-border bg-muted/40 px-3 py-2.5 text-left hover:bg-muted/60 focus-visible:border-cyan-400/50 focus-visible:ring-1 focus-visible:ring-cyan-400/15 focus-visible:outline-hidden'
+              className='flex h-auto w-full cursor-pointer items-center gap-2.5 rounded-md border border-border bg-muted/40 px-3 py-2.5 text-left hover:bg-muted/60 focus-visible:border-cyan-400/50 focus-visible:ring-1 focus-visible:ring-cyan-400/15 focus-visible:outline-hidden'
             >
               <span className='grid size-7 shrink-0 place-items-center rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-200'>
                 <SelectedIcon size={14} />
@@ -140,7 +139,7 @@ export function NodeEffectField({ node, onUpdate, foreground }: { node: FlowNode
           </div>
         </DialogContent>
       </Dialog>
-    </>
+    </InspectorSection>
   );
 }
 

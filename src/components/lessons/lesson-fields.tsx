@@ -120,11 +120,7 @@ export function SwitchRow({ label, checked, onChange }: { label: string; checked
   );
 }
 
+/** A section heading in the Lesson panel — the same look as the Inspector's sections: a hairline above, small uppercase name. */
 export function PanelHeading({ children }: { children: string }) {
-  return (
-    <div className='mt-5 mb-2 flex items-center gap-2 first:mt-0'>
-      <span className='text-[10px] font-bold uppercase tracking-[0.16em] text-sky-600/80 dark:text-sky-300/80'>{children}</span>
-      <div className='h-px flex-1 bg-border' />
-    </div>
-  );
+  return <h3 className='mt-5 mb-2 border-t border-border pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground first:mt-0 first:border-t-0 first:pt-0'>{children}</h3>;
 }

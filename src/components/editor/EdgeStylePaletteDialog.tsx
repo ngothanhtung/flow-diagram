@@ -111,7 +111,7 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
 
             {selected && (
               <div className='col-span-3 min-h-0 overflow-y-auto px-6 py-4'>
-                <Label htmlFor='edge-style-name' className='block text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>
+                <Label htmlFor='edge-style-name' className='mb-1 block text-[10px] font-normal text-muted-foreground'>
                   Name
                 </Label>
                 <Input
@@ -123,7 +123,7 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
                 />
                 <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>Shown wherever this style is picked, so write it as the reader should read it.</p>
 
-                <Label className='mt-4 mb-1 block text-[9px] text-muted-foreground'>Colour</Label>
+                <Label className='mt-4 mb-1 block text-[10px] font-normal text-muted-foreground'>Colour</Label>
                 <HuePresetRow value={selected.color ?? '#94a3b8'} onPick={(color) => patch({ color })} />
 
                 <div className='mt-3 grid grid-cols-2 gap-2'>
@@ -131,14 +131,16 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
                   <NumberField label='Width' value={selected.width ?? 2} min={1} max={6} step={0.5} onChange={(width) => patch({ width })} />
                 </div>
 
-                <Label className='mt-4 mb-1.5 block text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>Stroke</Label>
+                <h3 className='mt-5 mb-2 border-t border-border pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>Stroke</h3>
                 <LineStyleToggle value={selected.lineStyle ?? 'solid'} onChange={(lineStyle) => patch({ lineStyle })} />
                 <p className='mt-1.5 text-[9px] leading-relaxed text-muted-foreground'>The pattern of the line itself, which stays put whether or not the diagram is playing — unlike an animated effect&apos;s moving marks.</p>
 
-                <MarkerPicker label='Line start' value={selected.startMarker ?? 'none'} onChange={(startMarker) => patch({ startMarker })} />
-                <MarkerPicker label='Line end' value={selected.endMarker ?? 'none'} onChange={(endMarker) => patch({ endMarker })} />
+                <div className='mt-3 grid gap-2'>
+                  <MarkerPicker label='Line start' value={selected.startMarker ?? 'none'} onChange={(startMarker) => patch({ startMarker })} />
+                  <MarkerPicker label='Line end' value={selected.endMarker ?? 'none'} onChange={(endMarker) => patch({ endMarker })} />
+                </div>
 
-                <Label className='mt-3 mb-1.5 block text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>Routing</Label>
+                <h3 className='mt-5 mb-2 border-t border-border pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>Routing</h3>
                 <Select value={selected.routing ?? 'smooth-step'} onValueChange={(next) => next && patch({ routing: next as EdgeRouting })}>
                   <SelectTrigger className='h-9 w-full border-border bg-muted/30 px-3 text-left hover:bg-accent focus-visible:border-violet-400/50 focus-visible:ring-violet-400/15'>
                     <span className='flex-1 truncate text-[11px] font-semibold text-foreground'>{ROUTING_OPTIONS.find((option) => option.value === (selected.routing ?? 'smooth-step'))?.label}</span>
@@ -155,7 +157,7 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
                   </SelectContent>
                 </Select>
 
-                <Label className='mt-3 mb-1.5 block text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>Animation</Label>
+                <h3 className='mt-5 mb-2 border-t border-border pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>Animation</h3>
                 <Select value={selected.effect ?? 'none'} onValueChange={(next) => next && patch({ effect: next as EdgeEffect })}>
                   <SelectTrigger className='h-9 w-full border-border bg-muted/30 px-3 text-left hover:bg-accent focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
                     <span className='flex-1 truncate text-[11px] font-semibold text-foreground'>{EDGE_EFFECTS.find((option) => option.value === (selected.effect ?? 'none'))?.label}</span>

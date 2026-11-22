@@ -76,15 +76,15 @@ export const MARKERS: Array<{ value: EdgeMarker; label: string }> = [
 export function MarkerPicker({ label, value, onChange }: { label: string; value: EdgeMarker; onChange: (marker: EdgeMarker) => void }) {
   const selected = MARKERS.find((m) => m.value === value) ?? MARKERS[0];
   return (
-    <div className='mt-3'>
-      <Label className='text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>{label}</Label>
+    <div>
+      <Label className='mb-1 block text-[10px] font-normal text-muted-foreground'>{label}</Label>
       <Select
         value={value}
         onValueChange={(nextValue) => {
           if (nextValue) onChange(nextValue as EdgeMarker);
         }}
       >
-        <SelectTrigger className='mt-1.5 h-auto w-full gap-2.5 border-border bg-muted/40 px-3 py-2.5 text-left hover:bg-muted/60 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
+        <SelectTrigger className='h-auto w-full gap-2.5 border-border bg-muted/40 px-3 py-2.5 text-left hover:bg-muted/60 focus-visible:border-cyan-400/50 focus-visible:ring-cyan-400/15'>
           <span className='grid h-7 w-9 shrink-0 place-items-center rounded-md bg-cyan-500/10 text-cyan-700 dark:text-cyan-200'>
             <MarkerSwatch marker={value} />
           </span>

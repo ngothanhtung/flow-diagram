@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Separator } from '@/components/ui/separator';
 import { Slider } from '@/components/ui/slider';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import type { FlowNode, NodeFont } from '@/lib/flowchart-types';
@@ -191,12 +190,53 @@ export function InspectorShell({ title, nodeId, children }: { title: string; nod
   );
 }
 
-export function SectionLabel({ children }: { children: string }) {
+/**
+ * The sections every Inspector panel is split into — one vocabulary, one
+ * order. A panel shows only the sections its element has, but never renames
+ * or reorders them, so a property sits in the same place whatever is selected.
+ */
+export const INSPECTOR_SECTIONS = {
+  content: 'Content',
+  members: 'Members',
+  columns: 'Columns',
+  relationship: 'Relationship',
+  layout: 'Layout',
+  typography: 'Typography',
+  appearance: 'Appearance',
+  icon: 'Icon',
+  routing: 'Routing',
+  replay: 'Replay',
+  effect: 'Effect',
+  group: 'Group',
+  actions: 'Actions',
+} as const;
+export type InspectorSectionId = keyof typeof INSPECTOR_SECTIONS;
+export const INSPECTOR_SECTION_ORDER = Object.keys(INSPECTOR_SECTIONS) as InspectorSectionId[];
+
+/**
+ * One section of a panel: a hairline across the column, its name in the
+ * small uppercase of the panel headers, an optional one-line hint and a
+ * control on the right (e.g. Layout's Fit), then its fields.
+ */
+export function InspectorSection({ id, hint, aside, children }: { id: InspectorSectionId; hint?: React.ReactNode; aside?: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div className='mt-4 flex items-center gap-2'>
-      <span className='text-[10px] font-bold uppercase tracking-[0.16em] text-sky-600/80 dark:text-sky-300/80'>{children}</span>
-      <Separator className='flex-1 bg-border' />
-    </div>
+    <section data-section={id} aria-label={INSPECTOR_SECTIONS[id]} className='-mx-4 mt-3 border-t border-border px-4 pt-3'>
+      <div className='flex min-h-6 items-center justify-between gap-2'>
+        <h3 className='text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>{INSPECTOR_SECTIONS[id]}</h3>
+        {aside}
+      </div>
+      {hint && <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>{hint}</p>}
+      <div className='mt-2 flex flex-col gap-2'>{children}</div>
+    </section>
+  );
+}
+
+/** The label over a field — the one style every field in every panel uses. */
+export function FieldLabel({ htmlFor, children }: { htmlFor?: string; children: React.ReactNode }) {
+  return (
+    <Label htmlFor={htmlFor} className='mb-1 block text-[10px] font-normal text-muted-foreground'>
+      {children}
+    </Label>
   );
 }
 
@@ -206,55 +246,58 @@ export function SectionLabel({ children }: { children: string }) {
  * icon) — a group frame fits to its *members* instead, via its own "Fit to
  * contents" action in `GroupInspector`, so it never sets this.
  */
-export function GeometryFields({ node, onUpdate, width, height, onFitToContent }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; width: number; height: number; onFitToContent?: () => void }) {
+export function LayoutSection({ node, onUpdate, width, height, onFitToContent, children }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; width: number; height: number; onFitToContent?: () => void; children?: React.ReactNode }) {
   // Same limits the renderer clamps to, so typing an exact size can
   // reach what dragging a corner can.
   const limits = nodeSizeLimits(node);
   return (
-    <>
-      <SectionLabel>Geometry</SectionLabel>
-      <div className='mt-1 flex items-start justify-between gap-2'>
-        <p className='text-[10px] leading-relaxed text-muted-foreground'>Drag one of the 4 corner handles, or enter an exact size below.</p>
-        {onFitToContent && (
+    <InspectorSection
+      id='layout'
+      hint='Drag one of the 4 corner handles, or enter an exact size.'
+      aside={
+        onFitToContent && (
           <Button variant='outline' size='sm' onClick={onFitToContent} className='h-6 shrink-0 border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
             <Shrink size={11} /> Fit
           </Button>
-        )}
-      </div>
-      <div className='mt-1.5 grid grid-cols-2 gap-2'>
+        )
+      }
+    >
+      <div className='grid grid-cols-2 gap-2'>
         <NumberField label='X' value={Math.round(node.position.x)} onChange={(x) => onUpdate(node.id, { position: { ...node.position, x } })} />
         <NumberField label='Y' value={Math.round(node.position.y)} onChange={(y) => onUpdate(node.id, { position: { ...node.position, y } })} />
         <NumberField label='Width' value={width} min={limits.minWidth} max={limits.maxWidth} onChange={(nextWidth) => onUpdate(node.id, { width: nextWidth })} />
         <NumberField label='Height' value={height} min={limits.minHeight} max={limits.maxHeight} onChange={(nextHeight) => onUpdate(node.id, { height: nextHeight })} />
       </div>
-    </>
+      {children}
+    </InspectorSection>
   );
 }
 
-/** Font family, size and weight — every panel renders text of some kind. */
-export function TypographyFields({
+/** Font family, size and weight (plus whatever the panel adds, e.g. text alignment). */
+export function TypographySection({
   node,
   onUpdate,
   fontFamily,
   fontSize,
   fontWeight,
+  children,
 }: {
   node: FlowNode;
   onUpdate: InspectorPanelProps['onUpdate'];
   fontFamily: NodeFont;
   fontSize: number;
   fontWeight: NonNullable<FlowNode['fontWeight']>;
+  children?: React.ReactNode;
 }) {
   return (
-    <>
-      <SectionLabel>Typography</SectionLabel>
+    <InspectorSection id='typography'>
       <Select
         value={fontFamily}
         onValueChange={(nextValue) => {
           if (nextValue) onUpdate(node.id, { fontFamily: nextValue as NodeFont });
         }}
       >
-        <SelectTrigger className='mt-1.5 h-auto w-full border-border bg-muted/30 px-2.5 py-2 text-left hover:bg-accent focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'>
+        <SelectTrigger aria-label='Font' className='h-auto w-full border-border bg-muted/30 px-2.5 py-2 text-left hover:bg-accent focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'>
           <span className='min-w-0 flex-1 truncate text-[11px] font-semibold text-foreground' style={{ fontFamily: NODE_FONT_FAMILIES[fontFamily] }}>
             {NODE_FONT_OPTIONS.find((option) => option.value === fontFamily)?.character}
             <span className='ml-1 font-normal text-muted-foreground'>({NODE_FONT_OPTIONS.find((option) => option.value === fontFamily)?.label})</span>
@@ -274,10 +317,10 @@ export function TypographyFields({
           </SelectGroup>
         </SelectContent>
       </Select>
-      <div className='mt-1.5 grid grid-cols-2 gap-2'>
+      <div className='grid grid-cols-2 gap-2'>
         <NumberField label='Font size' value={fontSize} min={10} max={28} onChange={(nextSize) => onUpdate(node.id, { fontSize: nextSize })} />
         <div>
-          <Label className='mb-1 block text-[9px] text-muted-foreground'>Weight</Label>
+          <FieldLabel>Weight</FieldLabel>
           <Select
             value={fontWeight}
             onValueChange={(nextValue) => {
@@ -296,7 +339,8 @@ export function TypographyFields({
           </Select>
         </div>
       </div>
-    </>
+      {children}
+    </InspectorSection>
   );
 }
 
@@ -342,17 +386,20 @@ export function TextAlignField({ node, onUpdate, textAlign }: { node: FlowNode; 
 export function GroupMembershipSection({ node, onUpdate, parentTitle }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; parentTitle: string | null }) {
   if (!node.parentId) return null;
   return (
-    <>
-      <SectionLabel>Group</SectionLabel>
-      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>
-        Inside <span className='text-muted-foreground'>{parentTitle ?? 'a group'}</span>. Drag it out of the frame to leave, or:
-      </p>
-      <div className='mt-2'>
+    <InspectorSection
+      id='group'
+      hint={
+        <>
+          Inside <span className='text-foreground'>{parentTitle ?? 'a group'}</span>. Drag it out of the frame to leave, or:
+        </>
+      }
+    >
+      <div>
         <Button variant='outline' size='sm' onClick={() => onUpdate(node.id, { parentId: undefined })} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
           <Ungroup size={11} /> Remove from group
         </Button>
       </div>
-    </>
+    </InspectorSection>
   );
 }
 
@@ -360,9 +407,8 @@ export function GroupMembershipSection({ node, onUpdate, parentTitle }: { node: 
 export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node: FlowNode; onUpdate: InspectorPanelProps['onUpdate']; onDuplicate: (id: string) => void; onDelete: (id: string) => void }) {
   const duplicateKeys = useShortcutLabel(['mod', 'D']);
   return (
-    <>
-      <SectionLabel>Actions</SectionLabel>
-      <div className='mt-1.5 grid grid-cols-3 gap-2'>
+    <InspectorSection id='actions'>
+      <div className='grid grid-cols-3 gap-2'>
         <Button variant='outline' size='sm' onClick={() => onDuplicate(node.id)} title={`Duplicate (${duplicateKeys})`} className='border-border bg-muted/30 px-2 text-[10px] text-foreground hover:bg-accent'>
           <Copy size={12} /> Duplicate
         </Button>
@@ -411,7 +457,7 @@ export function ActionsSection({ node, onUpdate, onDuplicate, onDelete }: { node
           <Trash2 size={12} /> Delete
         </Button>
       </div>
-    </>
+    </InspectorSection>
   );
 }
 
@@ -445,7 +491,7 @@ export function NumberField({ label, value, min, max, step = 1, onChange }: { la
   const [draft, setDraft] = useState<string | null>(null);
   return (
     <div>
-      <Label className='mb-1 block text-[9px] text-muted-foreground'>{label}</Label>
+      <FieldLabel>{label}</FieldLabel>
       <Input
         type='number'
         value={draft ?? value}
@@ -474,7 +520,7 @@ export function NumberField({ label, value, min, max, step = 1, onChange }: { la
 
 export function RangeField({ label, value, min, max, suffix, onChange }: { label: string; value: number; min: number; max: number; suffix: string; onChange: (value: number) => void }) {
   return (
-    <div className='mt-2'>
+    <div>
       <span className='flex items-center justify-between text-[10px] text-muted-foreground'>
         <span>{label}</span>
         <span className='font-mono text-muted-foreground'>
@@ -490,7 +536,7 @@ export function RangeField({ label, value, min, max, suffix, onChange }: { label
 export function SelectField<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: readonly T[]; onChange: (value: T) => void }) {
   return (
     <div>
-      <Label className='mb-1 block text-[9px] text-muted-foreground'>{label}</Label>
+      <FieldLabel>{label}</FieldLabel>
       <Select
         value={value}
         onValueChange={(nextValue) => {
@@ -514,7 +560,7 @@ export function SelectField<T extends string>({ label, value, options, onChange 
 
 export function SegmentedButtons<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: { value: T; label: string; Icon: LucideIcon }[]; onChange: (value: T) => void }) {
   return (
-    <div className='mt-2 grid grid-cols-[70px_1fr] items-center gap-2'>
+    <div className='grid grid-cols-[70px_1fr] items-center gap-2'>
       <span className='text-[10px] text-muted-foreground'>{label}</span>
       <ToggleGroup
         value={[value]}

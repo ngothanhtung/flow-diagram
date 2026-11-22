@@ -3,21 +3,21 @@
 import { Shrink, Ungroup } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { resolveNodeStyle } from '@/lib/node-style';
 import {
   ActionsSection,
   ColorField,
   ColorPresetRow,
+  FieldLabel,
   FillField,
-  GeometryFields,
   GroupMembershipSection,
+  InspectorSection,
   InspectorShell,
+  LayoutSection,
   NumberField,
   RangeField,
-  SectionLabel,
   SelectField,
-  TypographyFields,
+  TypographySection,
   useNodeFieldDraft,
   type InspectorPanelProps,
 } from './fields';
@@ -45,49 +45,55 @@ export function GroupInspector({ node, onUpdate, onDuplicate, onDelete, parentTi
 
   return (
     <InspectorShell title='Group Inspector' nodeId={node.id}>
-      <Label htmlFor='node-title' className='mt-3 block text-[10px] font-semibold uppercase tracking-wider text-muted-foreground'>
-        Title
-      </Label>
-      <Input
-        id='node-title'
-        value={title.value}
-        onChange={(event) => title.setValue(event.target.value)}
-        onBlur={title.commit}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
-        }}
-        className='mt-1 border-border bg-muted/30 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
-      />
+      <InspectorSection id='content'>
+        <div>
+          <FieldLabel htmlFor='node-title'>Title</FieldLabel>
+          <Input
+            id='node-title'
+            value={title.value}
+            onChange={(event) => title.setValue(event.target.value)}
+            onBlur={title.commit}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') (event.target as HTMLInputElement).blur();
+            }}
+            className='border-border bg-muted/30 text-sm focus-visible:border-sky-400/50 focus-visible:ring-sky-400/15'
+          />
+        </div>
+      </InspectorSection>
 
-      <SectionLabel>Contents</SectionLabel>
-      <p className='mt-1 text-[10px] leading-relaxed text-muted-foreground'>
-        {memberCount === 0
-          ? 'Empty frame — drag blocks inside to add them. Moving the frame moves everything in it.'
-          : `Holds ${memberCount} ${memberCount === 1 ? 'block' : 'blocks'}. Moving the frame moves them with it; deleting it deletes them too.`}
-      </p>
-      <div className='mt-2 flex flex-wrap gap-1.5'>
-        <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onFitGroup?.(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
-          <Shrink size={11} /> Fit to contents
-        </Button>
-        <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onUngroup?.(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
-          <Ungroup size={11} /> Ungroup
-        </Button>
-      </div>
+      <InspectorSection
+        id='members'
+        hint={
+          memberCount === 0
+            ? 'Empty frame — drag blocks inside to add them. Moving the frame moves everything in it.'
+            : `Holds ${memberCount} ${memberCount === 1 ? 'block' : 'blocks'}. Moving the frame moves them with it; deleting it deletes them too.`
+        }
+      >
+        <div className='flex flex-wrap gap-1.5'>
+          <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onFitGroup?.(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
+            <Shrink size={11} /> Fit to contents
+          </Button>
+          <Button variant='outline' size='sm' disabled={memberCount === 0} onClick={() => onUngroup?.(node.id)} className='border-border bg-muted/30 px-2 text-[10px] text-muted-foreground hover:bg-accent'>
+            <Ungroup size={11} /> Ungroup
+          </Button>
+        </div>
+      </InspectorSection>
 
-      <GeometryFields node={node} onUpdate={onUpdate} width={style.width} height={style.height} />
+      <LayoutSection node={node} onUpdate={onUpdate} width={style.width} height={style.height} />
 
-      <TypographyFields node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
+      <TypographySection node={node} onUpdate={onUpdate} fontFamily={style.fontFamily} fontSize={style.fontSize} fontWeight={style.fontWeight} />
 
-      <SectionLabel>Colour</SectionLabel>
-      <div className='mt-1.5 grid grid-cols-2 gap-2'>
-        <ColorPresetRow onPick={(preset) => onUpdate(node.id, { color: preset.foreground, borderColor: preset.foreground, backgroundColor: preset.background })} />
-        <ColorField label='Title · Border' value={style.foreground} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
-        <ColorField label='Wash' value={style.background} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
-        <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />
-        <SelectField label='Border style' value={style.borderStyle} options={['solid', 'dashed', 'dotted']} onChange={(borderStyle) => onUpdate(node.id, { borderStyle })} />
-      </div>
-      <FillField node={node} onUpdate={onUpdate} fill={style.fill} />
-      <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
+      <InspectorSection id='appearance'>
+        <div className='grid grid-cols-2 gap-2'>
+          <ColorPresetRow onPick={(preset) => onUpdate(node.id, { color: preset.foreground, borderColor: preset.foreground, backgroundColor: preset.background })} />
+          <ColorField label='Title · Border' value={style.foreground} onChange={(color) => onUpdate(node.id, { color, borderColor: color })} />
+          <ColorField label='Wash' value={style.background} onChange={(backgroundColor) => onUpdate(node.id, { backgroundColor })} />
+          <NumberField label='Border width' value={style.borderWidth} min={0} max={8} step={0.5} onChange={(borderWidth) => onUpdate(node.id, { borderWidth })} />
+          <SelectField label='Border style' value={style.borderStyle} options={['solid', 'dashed', 'dotted']} onChange={(borderStyle) => onUpdate(node.id, { borderStyle })} />
+        </div>
+        <FillField node={node} onUpdate={onUpdate} fill={style.fill} />
+        <RangeField label='Opacity' value={Math.round(style.opacity * 100)} min={20} max={100} suffix='%' onChange={(opacity) => onUpdate(node.id, { opacity: opacity / 100 })} />
+      </InspectorSection>
 
       <NodeEffectField node={node} onUpdate={onUpdate} foreground={style.foreground} />
 
