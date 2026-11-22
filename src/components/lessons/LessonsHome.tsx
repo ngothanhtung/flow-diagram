@@ -108,9 +108,10 @@ export function LessonsHome() {
     setStatus('loading');
     try {
       const lessons = await listLessons(userId);
-      setRows(lessons.map(toLessonRow));
       // The tree is extra: failing to read or repair it never hides the list.
       const tree = await reconcileStoredTree(userId, lessons).catch(() => null);
+      // Rows and tree land together, so the list never flashes everything as Unfiled.
+      setRows(lessons.map(toLessonRow));
       setStoredTree(tree);
       setOpenIds(loadOpenIds(userId) ?? new Set(tree ? childFolders(tree, null).map((folder) => folder.id) : []));
       setStatus('ready');
