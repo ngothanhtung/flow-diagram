@@ -9,10 +9,10 @@
         "title": "Alice",
         "description": "✓ cart: 2 items",
         "position": {
-          "x": 20,
-          "y": -680
+          "x": 0,
+          "y": -720
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -30,10 +30,10 @@
         "title": "Alice",
         "description": "⚠ signed out · cart empty",
         "position": {
-          "x": 20,
-          "y": -680
+          "x": 0,
+          "y": -720
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -51,10 +51,10 @@
         "title": "Alice",
         "description": "signed token: Alice",
         "position": {
-          "x": 20,
-          "y": -680
+          "x": 0,
+          "y": -720
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -72,10 +72,10 @@
         "title": "Alice",
         "description": "⚠ avatar: broken image",
         "position": {
-          "x": 20,
-          "y": -680
+          "x": 0,
+          "y": -720
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -93,10 +93,10 @@
         "title": "Alice",
         "description": "✓ avatar ✓",
         "position": {
-          "x": 20,
-          "y": -680
+          "x": 0,
+          "y": -720
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -114,7 +114,7 @@
         "title": "Load Balancer",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -135,7 +135,7 @@
         "description": "round robin",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -156,7 +156,7 @@
         "description": "sticky: Alice → A",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -177,7 +177,7 @@
         "description": "sticky: Alice → B",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -198,10 +198,10 @@
         "description": "session: Alice · cart 2",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -219,10 +219,10 @@
         "description": "⚠ DOWN",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -241,10 +241,10 @@
         "description": "stateless",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -262,10 +262,10 @@
         "description": "avatar.png on local disk",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -281,10 +281,10 @@
         "type": "process",
         "title": "Server B",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -302,10 +302,10 @@
         "title": "Server B",
         "description": "⚠ no session for Alice",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -323,10 +323,10 @@
         "title": "Server B",
         "description": "stateless",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -344,10 +344,10 @@
         "title": "Server B",
         "description": "⚠ avatar.png?",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -449,7 +449,7 @@
         "description": "Alice · cart 2",
         "position": {
           "x": 0,
-          "y": 340
+          "y": 380
         },
         "width": 240,
         "height": 120,
@@ -470,7 +470,7 @@
         "description": "avatar.png",
         "position": {
           "x": 0,
-          "y": 340
+          "y": 380
         },
         "width": 240,
         "height": 120,

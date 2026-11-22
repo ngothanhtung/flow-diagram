@@ -280,10 +280,10 @@
         "type": "process",
         "title": "1M users",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -480
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -449,11 +449,11 @@
         "type": "process",
         "title": "App",
         "position": {
-          "x": 20,
-          "y": 20
+          "x": 0,
+          "y": 0
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -470,11 +470,11 @@
         "title": "App",
         "description": "⚠ single point of failure",
         "position": {
-          "x": 20,
-          "y": 20
+          "x": 0,
+          "y": 0
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -644,10 +644,10 @@
         "type": "process",
         "title": "database",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 240
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -665,10 +665,10 @@
         "title": "database",
         "description": "⚠ single point of failure",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 240
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -686,10 +686,10 @@
         "title": "leader",
         "position": {
           "x": -100,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -707,10 +707,10 @@
         "description": "⚠ DOWN",
         "position": {
           "x": -100,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -729,10 +729,10 @@
         "title": "leader",
         "position": {
           "x": -180,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -751,10 +751,10 @@
         "description": "⚠ DOWN",
         "position": {
           "x": -180,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -773,10 +773,10 @@
         "title": "EU primary",
         "position": {
           "x": -180,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -902,10 +902,10 @@
         "title": "follower",
         "position": {
           "x": 140,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -923,10 +923,10 @@
         "description": "⚠ DOWN",
         "position": {
           "x": 140,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -945,10 +945,10 @@
         "title": "follower",
         "position": {
           "x": 180,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -967,10 +967,10 @@
         "description": "✓ promoted",
         "position": {
           "x": 180,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -988,10 +988,10 @@
         "title": "US replica",
         "position": {
           "x": 180,
-          "y": 260
+          "y": 240
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

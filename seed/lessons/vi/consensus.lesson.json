@@ -212,10 +212,10 @@
         "type": "process",
         "title": "Máy chủ ứng dụng 1",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -400
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -233,10 +233,10 @@
         "title": "node A",
         "description": "leader",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -254,10 +254,10 @@
         "title": "node A",
         "description": "leader · ghế 7 → Ana",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -275,10 +275,10 @@
         "title": "node A",
         "description": "1 trên 3 · không commit được",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -296,10 +296,10 @@
         "title": "node A",
         "description": "vẫn ở nhiệm kỳ 1",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -317,10 +317,10 @@
         "title": "node A",
         "description": "log 1 2 3 · 4′ Ana, chưa xác nhận",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -338,10 +338,10 @@
         "title": "node A",
         "description": "✓ follower · nhiệm kỳ 2 · đã bắt kịp",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -359,10 +359,10 @@
         "title": "node A",
         "description": "zone 1",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -380,10 +380,10 @@
         "title": "node A",
         "description": "✓ follower",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -694,10 +694,10 @@
         "title": "kho lưu trữ chung",
         "description": "⚠ report.csv · bị B ghi đè",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 440
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:File",
@@ -715,10 +715,10 @@
         "title": "kho lưu trữ chung",
         "description": "token cao nhất đã thấy: 3",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 440
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:File",

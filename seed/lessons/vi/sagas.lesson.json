@@ -9,7 +9,7 @@
         "title": "",
         "position": {
           "x": 660,
-          "y": -520
+          "y": -560
         },
         "width": 440,
         "height": 160,
@@ -27,7 +27,7 @@
         "title": "SAGA\n1. đặt vé bay      ✓   hoàn tác: hủy vé bay\n2. đặt khách sạn   ✓   hoàn tác: hủy khách sạn\n⚠ 3. thuê xe         ✗\n→ hoàn tác theo thứ tự ngược: 2 ← 1",
         "position": {
           "x": 660,
-          "y": -520
+          "y": -560
         },
         "width": 440,
         "height": 160,
@@ -43,7 +43,7 @@
         "title": "",
         "position": {
           "x": 640,
-          "y": -520
+          "y": -560
         },
         "width": 400,
         "height": 160,
@@ -61,7 +61,7 @@
         "title": "SẮP THỨ TỰ CÁC BƯỚC\n1. kiểm tra xe   dễ lỗi → đầu tiên\n2. giữ vé bay + khách sạn\n3. trừ tiền thẻ  khó hoàn tác → sau cùng\n4. xác nhận + email",
         "position": {
           "x": 640,
-          "y": -520
+          "y": -560
         },
         "width": 400,
         "height": 160,
@@ -78,7 +78,7 @@
         "description": "⚠ vé máy bay + khách sạn, không có xe",
         "position": {
           "x": 0,
-          "y": -540
+          "y": -580
         },
         "width": 240,
         "height": 120,
@@ -99,7 +99,7 @@
         "description": "không có xe → không đặt gì",
         "position": {
           "x": 0,
-          "y": -540
+          "y": -580
         },
         "width": 240,
         "height": 120,
@@ -120,7 +120,7 @@
         "description": "đang chờ…",
         "position": {
           "x": 0,
-          "y": -540
+          "y": -580
         },
         "width": 240,
         "height": 120,
@@ -141,7 +141,7 @@
         "description": "✓ không có xe → hoàn tiền đủ",
         "position": {
           "x": 0,
-          "y": -540
+          "y": -580
         },
         "width": 240,
         "height": 120,
@@ -161,7 +161,7 @@
         "title": "khách du lịch",
         "position": {
           "x": 0,
-          "y": -540
+          "y": -580
         },
         "width": 240,
         "height": 120,
@@ -182,7 +182,7 @@
         "description": "chỉ trừ tiền ở cuối",
         "position": {
           "x": 0,
-          "y": -540
+          "y": -580
         },
         "width": 240,
         "height": 120,
@@ -203,7 +203,7 @@
         "description": "đang chờ hoàn tiền",
         "position": {
           "x": 0,
-          "y": -540
+          "y": -580
         },
         "width": 240,
         "height": 120,
@@ -224,7 +224,7 @@
         "description": "✓ chuyến đi đã xác nhận",
         "position": {
           "x": 0,
-          "y": -540
+          "y": -580
         },
         "width": 240,
         "height": 120,
@@ -244,10 +244,10 @@
         "title": "Dịch vụ chuyến đi",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -265,10 +265,10 @@
         "description": "phiếu: có · có · không → rollback",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -286,10 +286,10 @@
         "description": "⚠ SẬP",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -308,10 +308,10 @@
         "description": "chuyến 81: khách sạn ✓ · xe đang chờ",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -328,10 +328,10 @@
         "title": "Orchestrator của saga",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -349,10 +349,10 @@
         "description": "đã khởi động lại · tiếp tục chuyến 81",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -370,10 +370,10 @@
         "description": "hủy khách sạn · lần thử 4",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -391,10 +391,10 @@
         "description": "xe: không rõ → đang hỏi",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -558,11 +558,11 @@
         "title": "Khách sạn",
         "description": "✓ đã đặt phòng",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -579,11 +579,11 @@
         "title": "Khách sạn",
         "description": "đã chuẩn bị ✓",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -600,11 +600,11 @@
         "title": "Khách sạn",
         "description": "bị khóa",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -621,11 +621,11 @@
         "title": "Khách sạn",
         "description": "đã đặt → đã hủy",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -642,11 +642,11 @@
         "title": "Khách sạn",
         "description": "→ HotelBooked",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -663,11 +663,11 @@
         "title": "Khách sạn",
         "description": "phòng: đã giữ chỗ",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -684,11 +684,11 @@
         "title": "Khách sạn",
         "description": "khóa 81-hotel đã thấy → cùng phòng",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -705,11 +705,11 @@
         "title": "Khách sạn",
         "description": "⚠ API sập",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -913,10 +913,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 300
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -954,10 +954,10 @@
         "title": "trạng thái saga",
         "position": {
           "x": -300,
-          "y": -260
+          "y": -280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -973,10 +973,10 @@
         "type": "process",
         "title": "Bus sự kiện",
         "position": {
-          "x": 20,
-          "y": -240
+          "x": 0,
+          "y": -280
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Radio",

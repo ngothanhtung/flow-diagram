@@ -8,8 +8,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 880,
-          "y": -780
+          "x": 720,
+          "y": -500
         },
         "width": 320,
         "height": 120,
@@ -26,8 +26,8 @@
         "type": "text",
         "title": "CHECKOUT TIME\nsave the order          120 ms\n+ 4 calls × ~200 ms     800 ms\n→ ~920 ms before “thank you”",
         "position": {
-          "x": 880,
-          "y": -780
+          "x": 720,
+          "y": -500
         },
         "width": 320,
         "height": 120,
@@ -42,8 +42,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 920,
-          "y": -760
+          "x": 760,
+          "y": -480
         },
         "width": 400,
         "height": 160,
@@ -60,8 +60,8 @@
         "type": "text",
         "title": "QUEUE VS TOPIC\nqueue → each message to ONE consumer\n        share out work\ntopic → each message to EVERY subscriber\n        broadcast what happened",
         "position": {
-          "x": 920,
-          "y": -760
+          "x": 760,
+          "y": -480
         },
         "width": 400,
         "height": 160,
@@ -76,8 +76,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 920,
-          "y": -760
+          "x": 760,
+          "y": -480
         },
         "width": 400,
         "height": 160,
@@ -94,8 +94,8 @@
         "type": "text",
         "title": "EVENTS: THE FINE PRINT\nwho reacts to OrderPlaced? check 5 repos\nsubscribers act a little later\nduplicates & reordering happen\n→ idempotent subscribers + tracing",
         "position": {
-          "x": 920,
-          "y": -760
+          "x": 760,
+          "y": -480
         },
         "width": 400,
         "height": 160,
@@ -110,10 +110,10 @@
         "type": "process",
         "title": "shoppers",
         "position": {
-          "x": 20,
-          "y": -800
+          "x": 0,
+          "y": -520
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -133,7 +133,7 @@
         "description": "waits for 4 calls",
         "position": {
           "x": 0,
-          "y": -400
+          "y": -280
         },
         "width": 240,
         "height": 80,
@@ -154,7 +154,7 @@
         "description": "⚠ checkout failed",
         "position": {
           "x": 0,
-          "y": -400
+          "y": -280
         },
         "width": 240,
         "height": 80,
@@ -174,7 +174,7 @@
         "title": "Order Service",
         "position": {
           "x": 0,
-          "y": -400
+          "y": -280
         },
         "width": 240,
         "height": 80,
@@ -193,11 +193,11 @@
         "type": "process",
         "title": "Email",
         "position": {
-          "x": -540,
-          "y": 340
+          "x": -340,
+          "y": 280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Mail",
         "iconPosition": "left",
@@ -214,11 +214,11 @@
         "title": "Email",
         "description": "⚠ DOWN",
         "position": {
-          "x": -540,
-          "y": 340
+          "x": -340,
+          "y": 280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Mail",
         "iconPosition": "left",
@@ -236,11 +236,11 @@
         "title": "Email",
         "description": "⚠ down · 4 events waiting",
         "position": {
-          "x": -540,
-          "y": 340
+          "x": -340,
+          "y": 280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Mail",
         "iconPosition": "left",
@@ -257,8 +257,8 @@
         "type": "process",
         "title": "Inventory",
         "position": {
-          "x": -180,
-          "y": 360
+          "x": -100,
+          "y": 240
         },
         "width": 200,
         "height": 80,
@@ -277,8 +277,8 @@
         "type": "process",
         "title": "Analytics",
         "position": {
-          "x": 180,
-          "y": 360
+          "x": 140,
+          "y": 240
         },
         "width": 200,
         "height": 80,
@@ -298,8 +298,8 @@
         "title": "Analytics",
         "description": "rewound to 30 days ago",
         "position": {
-          "x": 180,
-          "y": 360
+          "x": 140,
+          "y": 240
         },
         "width": 200,
         "height": 80,
@@ -318,8 +318,8 @@
         "type": "process",
         "title": "Loyalty",
         "position": {
-          "x": 540,
-          "y": 360
+          "x": 380,
+          "y": 240
         },
         "width": 200,
         "height": 80,
@@ -339,10 +339,10 @@
         "title": "Event Bus",
         "description": "topic: orders",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -20
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Radio",
@@ -360,10 +360,10 @@
         "title": "Event Bus",
         "description": "topic: orders · retains 30 days",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -20
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Radio",
@@ -380,10 +380,10 @@
         "type": "process",
         "title": "Fraud Check",
         "position": {
-          "x": 20,
-          "y": 720
+          "x": 0,
+          "y": 480
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Shield",
@@ -400,8 +400,8 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮",
         "position": {
-          "x": -540,
-          "y": 200
+          "x": -340,
+          "y": 120
         },
         "width": 200,
         "height": 80,
@@ -419,11 +419,11 @@
         "type": "process",
         "title": "orders + outbox",
         "position": {
-          "x": -500,
-          "y": -380
+          "x": -340,
+          "y": -280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

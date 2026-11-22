@@ -8,8 +8,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 700,
-          "y": -440
+          "x": 740,
+          "y": -480
         },
         "width": 360,
         "height": 160,
@@ -26,8 +26,8 @@
         "type": "text",
         "title": "A UNIT TEST\nbasket = [{ price: 9.99, qty: 3 }]\ntotal(basket, \"SAVE10\")\n→ expect 26.97  ✓\n# no database, no network, ~1 ms",
         "position": {
-          "x": 700,
-          "y": -440
+          "x": 740,
+          "y": -480
         },
         "width": 360,
         "height": 160,
@@ -42,8 +42,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 720,
-          "y": -440
+          "x": 760,
+          "y": -480
         },
         "width": 400,
         "height": 160,
@@ -60,8 +60,8 @@
         "type": "text",
         "title": "THE CONTRACT\nGET /stock/sku-42\n→ 200 { \"sku\": \"sku-42\", \"in_stock\": 3 }\n⚠ rename in_stock → Inventory’s build fails\n# checked on both sides, run separately",
         "position": {
-          "x": 720,
-          "y": -440
+          "x": 760,
+          "y": -480
         },
         "width": 400,
         "height": 160,
@@ -76,8 +76,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 760,
-          "y": -440
+          "x": 800,
+          "y": -480
         },
         "width": 480,
         "height": 160,
@@ -94,8 +94,8 @@
         "type": "text",
         "title": "THREE LAYERS\nend-to-end      20    15 min   whole journeys\nintegration    200     4 min   real neighbours\n→ unit         2,000    30 s    one piece at a time\n# fast and many at the bottom, few at the top",
         "position": {
-          "x": 760,
-          "y": -440
+          "x": 800,
+          "y": -480
         },
         "width": 480,
         "height": 160,
@@ -111,7 +111,7 @@
         "title": "shoppers",
         "position": {
           "x": 0,
-          "y": -480
+          "y": -520
         },
         "width": 240,
         "height": 80,
@@ -132,7 +132,7 @@
         "title": "shoppers · overcharged",
         "position": {
           "x": 0,
-          "y": -480
+          "y": -520
         },
         "width": 240,
         "height": 80,
@@ -153,7 +153,7 @@
         "title": "a test browser",
         "position": {
           "x": 0,
-          "y": -480
+          "y": -520
         },
         "width": 240,
         "height": 80,
@@ -174,7 +174,7 @@
         "title": "load generator · 5× traffic",
         "position": {
           "x": 0,
-          "y": -480
+          "y": -520
         },
         "width": 240,
         "height": 80,
@@ -195,11 +195,11 @@
         "title": "Checkout",
         "description": "your code",
         "position": {
-          "x": 20,
-          "y": -100
+          "x": 0,
+          "y": -120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -216,11 +216,11 @@
         "title": "Checkout",
         "description": "your code · €26.98 — should be €26.97",
         "position": {
-          "x": 20,
-          "y": -100
+          "x": 0,
+          "y": -120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -237,11 +237,11 @@
         "title": "Checkout",
         "description": "your code · p99 rises at 4.2× · CPU 82%",
         "position": {
-          "x": 20,
-          "y": -100
+          "x": 0,
+          "y": -120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -257,11 +257,11 @@
         "type": "process",
         "title": "orders db",
         "position": {
-          "x": 300,
-          "y": -100
+          "x": 320,
+          "y": -120
         },
-        "width": 280,
-        "height": 120,
+        "width": 320,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -277,11 +277,11 @@
         "type": "process",
         "title": "orders db · real, in a container",
         "position": {
-          "x": 300,
-          "y": -100
+          "x": 320,
+          "y": -120
         },
-        "width": 280,
-        "height": 120,
+        "width": 320,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -298,11 +298,11 @@
         "title": "orders db",
         "description": "CPU 70%",
         "position": {
-          "x": 300,
-          "y": -100
+          "x": 320,
+          "y": -120
         },
-        "width": 280,
-        "height": 120,
+        "width": 320,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -319,11 +319,11 @@
         "title": "Payment provider",
         "description": "external",
         "position": {
-          "x": 20,
-          "y": 220
+          "x": 0,
+          "y": 280
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -340,11 +340,11 @@
         "title": "Payment provider",
         "description": "sandbox",
         "position": {
-          "x": 20,
-          "y": 220
+          "x": 0,
+          "y": 280
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -361,11 +361,11 @@
         "title": "Payment provider",
         "description": "external · injected: 5 s delay",
         "position": {
-          "x": 20,
-          "y": 220
+          "x": 0,
+          "y": 280
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -382,11 +382,11 @@
         "title": "Inventory",
         "description": "another team",
         "position": {
-          "x": 300,
-          "y": 220
+          "x": 320,
+          "y": 280
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Boxes",
         "iconPosition": "left",
@@ -403,11 +403,11 @@
         "title": "Inventory",
         "description": "another team · verifies the contract",
         "position": {
-          "x": 300,
-          "y": 220
+          "x": 320,
+          "y": 280
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Boxes",
         "iconPosition": "left",
@@ -424,7 +424,7 @@
         "title": "Tests",
         "description": "✓ 2,000 tests · 30 s",
         "position": {
-          "x": -340,
+          "x": -380,
           "y": -120
         },
         "width": 200,
@@ -445,7 +445,7 @@
         "title": "Tests",
         "description": "✓ 200 tests · 4 min",
         "position": {
-          "x": -340,
+          "x": -380,
           "y": -120
         },
         "width": 200,
@@ -466,7 +466,7 @@
         "title": "Tests",
         "description": "✓ 20 journeys · 15 min",
         "position": {
-          "x": -340,
+          "x": -380,
           "y": -120
         },
         "width": 200,
@@ -486,7 +486,7 @@
         "type": "process",
         "title": "Tests",
         "position": {
-          "x": -340,
+          "x": -380,
           "y": -120
         },
         "width": 200,
@@ -507,7 +507,7 @@
         "title": "Tests",
         "description": "wait 2 s for the email",
         "position": {
-          "x": -340,
+          "x": -380,
           "y": -120
         },
         "width": 200,
@@ -527,7 +527,7 @@
         "type": "process",
         "title": "fake db · in memory",
         "position": {
-          "x": 280,
+          "x": 320,
           "y": -120
         },
         "width": 240,
@@ -548,10 +548,10 @@
         "type": "process",
         "title": "stub: “approved”",
         "position": {
-          "x": 20,
-          "y": 240
+          "x": 0,
+          "y": 280
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": null,
@@ -569,10 +569,10 @@
         "type": "process",
         "title": "provider sandbox",
         "position": {
-          "x": 20,
-          "y": 240
+          "x": 0,
+          "y": 280
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": null,
@@ -590,10 +590,10 @@
         "type": "process",
         "title": "stub: “in stock”",
         "position": {
-          "x": 300,
-          "y": 240
+          "x": 320,
+          "y": 280
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": null,
@@ -835,8 +835,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 140,
-            "y": 220
+            "x": 160,
+            "y": 280
           }
         ],
         "effect": "comet",
@@ -858,8 +858,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 140,
-            "y": 220
+            "x": 160,
+            "y": 280
           }
         ],
         "effect": "comet",
@@ -882,8 +882,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 140,
-            "y": 240
+            "x": 160,
+            "y": 280
           }
         ],
         "effect": "comet",
@@ -907,8 +907,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 140,
-            "y": 220
+            "x": 160,
+            "y": 280
           }
         ],
         "effect": "comet",
@@ -930,8 +930,8 @@
         "toSide": "left",
         "bendPoints": [
           {
-            "x": 140,
-            "y": 220
+            "x": 160,
+            "y": 280
           }
         ],
         "effect": "comet",

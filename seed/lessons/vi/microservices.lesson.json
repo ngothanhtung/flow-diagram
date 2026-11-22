@@ -42,10 +42,10 @@
         "type": "process",
         "title": "người mua",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -600
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -85,10 +85,10 @@
         "description": "mọi tính năng · tài khoản · danh mục · đơn hàng · thanh toán",
         "position": {
           "x": -120,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -106,10 +106,10 @@
         "description": "mọi tính năng · rò rỉ ở báo cáo · hết bộ nhớ · CPU 97%",
         "position": {
           "x": -120,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -127,10 +127,10 @@
         "description": "mọi tính năng · tài khoản · danh mục · đơn hàng",
         "position": {
           "x": -180,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -148,10 +148,10 @@
         "description": "mọi tính năng",
         "position": {
           "x": 140,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -169,10 +169,10 @@
         "description": "mọi tính năng · ⚠ đã sập · thanh toán cũng chết",
         "position": {
           "x": 140,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -189,10 +189,10 @@
         "type": "process",
         "title": "một cơ sở dữ liệu",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 300
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -209,10 +209,10 @@
         "type": "process",
         "title": "bảng dùng chung",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 300
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -249,11 +249,11 @@
         "type": "process",
         "title": "API Gateway",
         "position": {
-          "x": 20,
-          "y": -340
+          "x": 0,
+          "y": -320
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -270,11 +270,11 @@
         "title": "API Gateway",
         "description": "⚠ chuyến tàu phát hành: cả 4 cùng lúc",
         "position": {
-          "x": 20,
-          "y": -340
+          "x": 0,
+          "y": -320
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -434,10 +434,10 @@
         "title": "Thanh toán",
         "position": {
           "x": 380,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -455,10 +455,10 @@
         "description": "chậm · 2 s",
         "position": {
           "x": 380,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -476,10 +476,10 @@
         "description": "CI: phá hợp đồng của Đơn hàng ✗",
         "position": {
           "x": 380,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -497,10 +497,10 @@
         "description": "mới",
         "position": {
           "x": 380,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",

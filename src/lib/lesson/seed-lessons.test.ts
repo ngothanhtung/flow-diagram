@@ -62,6 +62,22 @@ describe('seed lessons', () => {
           .filter((node) => [node.position.x - (node.width ?? 0) / 2, node.position.y - (node.height ?? 0) / 2, node.width ?? 0, node.height ?? 0].some((value) => value % GRID !== 0))
           .map((node) => node.id);
         expect(offGrid, 'boxes off the grid').toEqual([]);
+        // A Line between two blocks that share a row (or a column) of the source
+        // runs straight: their centres line up, so it needs no jog.
+        const byId = new Map(nodes.map((node) => [node.id, node]));
+        const jogs = lesson.diagram.edges
+          .filter((edge) => !edge.bendPoints?.length)
+          .filter((edge) => {
+            const a = byId.get(edge.from);
+            const b = byId.get(edge.to);
+            if (!a || !b || a.type !== 'process' || b.type !== 'process') return false;
+            const dy = Math.abs(a.position.y - b.position.y);
+            const dx = Math.abs(a.position.x - b.position.x);
+            // Side by side but a few pixels off-centre, or stacked but a few pixels off-axis.
+            return (dy > 0 && dy < GRID && dx > GRID) || (dx > 0 && dx < GRID && dy > GRID);
+          })
+          .map((edge) => edge.id);
+        expect(jogs, 'lines with a small jog').toEqual([]);
         const offBends = lesson.diagram.edges.filter((edge) => (edge.bendPoints ?? []).some((point) => point.x % (GRID / 2) !== 0 || point.y % (GRID / 2) !== 0)).map((edge) => edge.id);
         expect(offBends, 'bends off the half grid').toEqual([]);
 

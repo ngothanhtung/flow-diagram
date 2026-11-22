@@ -230,10 +230,10 @@
         "type": "process",
         "title": "Máy chủ ứng dụng 1",
         "position": {
-          "x": -220,
+          "x": -240,
           "y": -380
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -251,10 +251,10 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "khối 1000–1999",
         "position": {
-          "x": -220,
+          "x": -240,
           "y": -380
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -272,10 +272,10 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "f47ac10b-58cc-…",
         "position": {
-          "x": -220,
+          "x": -240,
           "y": -380
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -293,10 +293,10 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "018f6b1c-3a40-7…",
         "position": {
-          "x": -220,
+          "x": -240,
           "y": -380
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -314,10 +314,10 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "máy 1",
         "position": {
-          "x": -220,
+          "x": -240,
           "y": -380
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -335,10 +335,10 @@
         "title": "Máy chủ ứng dụng 1",
         "description": "đồng hồ −2 s · đang chờ",
         "position": {
-          "x": -220,
+          "x": -240,
           "y": -380
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -357,10 +357,10 @@
         "description": "id kế tiếp: 1004",
         "position": {
           "x": -240,
-          "y": 180
+          "y": 200
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -378,10 +378,10 @@
         "description": "⚠ đơn 1004 · Ana",
         "position": {
           "x": -240,
-          "y": 180
+          "y": 200
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -398,10 +398,10 @@
         "title": "shard A",
         "position": {
           "x": -240,
-          "y": 180
+          "y": 200
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -419,10 +419,10 @@
         "description": "⚠ đơn 1004 · Ben",
         "position": {
           "x": 220,
-          "y": 180
+          "y": 200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -439,10 +439,10 @@
         "title": "shard B",
         "position": {
           "x": 220,
-          "y": 180
+          "y": 200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -924,10 +924,10 @@
         "type": "process",
         "title": "đối thủ",
         "position": {
-          "x": -220,
+          "x": -240,
           "y": -720
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -1054,7 +1054,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {
@@ -1081,7 +1081,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {
@@ -1108,7 +1108,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {
@@ -1135,7 +1135,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {
@@ -1162,7 +1162,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {
@@ -1190,7 +1190,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {
@@ -1450,7 +1450,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {
@@ -1477,7 +1477,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {
@@ -1504,7 +1504,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {
@@ -1531,7 +1531,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": -220,
+            "x": -240,
             "y": -100
           },
           {

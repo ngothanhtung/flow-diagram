@@ -76,10 +76,10 @@
         "type": "process",
         "title": "người mua",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -440
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -287,10 +287,10 @@
         "title": "Thanh toán",
         "description": "trả lời sau 30 s",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -308,10 +308,10 @@
         "title": "Thanh toán",
         "description": "thường chậm",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -329,10 +329,10 @@
         "title": "Thanh toán",
         "description": "CPU 50%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -350,10 +350,10 @@
         "title": "Thanh toán",
         "description": "⚠ 4× tải bình thường · CPU 100%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -371,10 +371,10 @@
         "title": "Thanh toán",
         "description": "đang hồi phục · CPU 62%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -392,10 +392,10 @@
         "title": "Thanh toán",
         "description": "⚠ SẬP",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -414,10 +414,10 @@
         "title": "Thanh toán",
         "description": "✓ chỉ trừ tiền một lần · CPU 50%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -435,10 +435,10 @@
         "title": "Thanh toán",
         "description": "ngân sách: 1,4 s · CPU 45%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -456,10 +456,10 @@
         "title": "Thanh toán",
         "description": "lại chậm",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -476,10 +476,10 @@
         "type": "process",
         "title": "MỞ · lỗi sau 1 ms",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -80
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Unplug",
@@ -496,10 +496,10 @@
         "type": "process",
         "title": "✓ ĐÓNG",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -80
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Unplug",

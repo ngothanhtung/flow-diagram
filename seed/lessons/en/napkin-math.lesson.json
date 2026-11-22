@@ -42,11 +42,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 760,
-          "y": -300
+          "x": 780,
+          "y": -320
         },
-        "width": 640,
-        "height": 440,
+        "width": 600,
+        "height": 480,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -60,8 +60,8 @@
         "type": "text",
         "title": "STORAGE",
         "position": {
-          "x": 480,
-          "y": -500
+          "x": 520,
+          "y": -540
         },
         "width": 80,
         "height": 40,
@@ -77,7 +77,7 @@
         "title": "",
         "position": {
           "x": 1360,
-          "y": -760
+          "y": -840
         },
         "width": 400,
         "height": 160,
@@ -95,7 +95,7 @@
         "title": "THE BRIEF\nPhotoShare: **10M** daily active users\neach makes **~20** requests a day\nthey upload **1M** photos a day, 2 MB each\n# Will one server cope? How much storage?",
         "position": {
           "x": 1360,
-          "y": -760
+          "y": -840
         },
         "width": 400,
         "height": 160,
@@ -111,7 +111,7 @@
         "title": "",
         "position": {
           "x": 1340,
-          "y": -780
+          "y": -860
         },
         "width": 360,
         "height": 120,
@@ -129,7 +129,7 @@
         "title": "REQUESTS PER SECOND\n10M users × 20 = **200M** requests/day\n1 day = 86,400 s  (≈ 100k)\n→ 200M ÷ 86,400 ≈ 2,300 req/s",
         "position": {
           "x": 1340,
-          "y": -780
+          "y": -860
         },
         "width": 360,
         "height": 120,
@@ -145,7 +145,7 @@
         "title": "",
         "position": {
           "x": 1300,
-          "y": -780
+          "y": -860
         },
         "width": 280,
         "height": 120,
@@ -163,7 +163,7 @@
         "title": "PEAK TRAFFIC\nevenings run ~3× the average\n→ 2,300 × 3 ≈ 7,000 req/s",
         "position": {
           "x": 1300,
-          "y": -780
+          "y": -860
         },
         "width": 280,
         "height": 120,
@@ -179,7 +179,7 @@
         "title": "",
         "position": {
           "x": 1340,
-          "y": -760
+          "y": -840
         },
         "width": 360,
         "height": 160,
@@ -197,7 +197,7 @@
         "title": "SERVERS\n1 server ≈ 1,000 req/s (load test)\n7,000 ÷ 1,000 = 7 servers\n+ ~30% headroom for spikes & failures\n→ 10 servers",
         "position": {
           "x": 1340,
-          "y": -760
+          "y": -840
         },
         "width": 360,
         "height": 160,
@@ -213,7 +213,7 @@
         "title": "",
         "position": {
           "x": 1340,
-          "y": -760
+          "y": -840
         },
         "width": 360,
         "height": 160,
@@ -231,7 +231,7 @@
         "title": "STORAGE\n1M photos × 2 MB = **2 TB** per day\n× 365 days ≈ **730 TB** per year\n× 3 copies ≈ 2.2 PB\n→ plan for ~2 PB in year one",
         "position": {
           "x": 1340,
-          "y": -760
+          "y": -840
         },
         "width": 360,
         "height": 160,
@@ -247,7 +247,7 @@
         "title": "",
         "position": {
           "x": 1320,
-          "y": -760
+          "y": -840
         },
         "width": 320,
         "height": 160,
@@ -265,7 +265,7 @@
         "title": "BYTES PER SECOND\nin:  2 TB/day ÷ 100k s ≈ 20 MB/s\nout: 10M × 100 views × 200 KB\n     = 200 TB/day ≈ 2 GB/s\n→ ~16 Gbit/s → serve from a CDN",
         "position": {
           "x": 1320,
-          "y": -760
+          "y": -840
         },
         "width": 320,
         "height": 160,
@@ -281,7 +281,7 @@
         "title": "",
         "position": {
           "x": 1320,
-          "y": -780
+          "y": -860
         },
         "width": 320,
         "height": 120,
@@ -299,7 +299,7 @@
         "title": "HOT DATA IN RAM\nprofiles: 10M × 2 KB  = 20 GB\nnew photos: 1M × 1 KB = 1 GB\n→ ~21 GB → one 64 GB cache server",
         "position": {
           "x": 1320,
-          "y": -780
+          "y": -860
         },
         "width": 320,
         "height": 120,
@@ -315,7 +315,7 @@
         "title": "",
         "position": {
           "x": 1280,
-          "y": -760
+          "y": -840
         },
         "width": 240,
         "height": 160,
@@ -333,7 +333,7 @@
         "title": "HANDY NUMBERS\n1 day ≈ 100,000 s\n1M req/day ≈ 12 req/s\n1 KB × 1M = 1 GB\n1 MB × 1M = 1 TB",
         "position": {
           "x": 1280,
-          "y": -760
+          "y": -840
         },
         "width": 240,
         "height": 160,
@@ -349,7 +349,7 @@
         "title": "",
         "position": {
           "x": 1300,
-          "y": -760
+          "y": -840
         },
         "width": 280,
         "height": 160,
@@ -367,7 +367,7 @@
         "title": "THE ESTIMATE\naverage  ≈ 2,300 req/s\npeak     ≈ 7,000 req/s\nservers  = 10\nstorage  ≈ 730 TB / year (×3)",
         "position": {
           "x": 1300,
-          "y": -760
+          "y": -840
         },
         "width": 280,
         "height": 160,
@@ -383,7 +383,7 @@
         "title": "10M daily users",
         "position": {
           "x": 0,
-          "y": -800
+          "y": -880
         },
         "width": 240,
         "height": 80,
@@ -404,10 +404,10 @@
         "title": "One server?",
         "description": "enough?",
         "position": {
-          "x": 20,
-          "y": -280
+          "x": 0,
+          "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -425,10 +425,10 @@
         "title": "One server?",
         "description": "CPU 80%",
         "position": {
-          "x": 20,
-          "y": -280
+          "x": 0,
+          "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -446,10 +446,10 @@
         "title": "One server?",
         "description": "CPU 100%",
         "position": {
-          "x": 20,
-          "y": -280
+          "x": 0,
+          "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -466,10 +466,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -60,
-          "y": -360
+          "x": -40,
+          "y": -400
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -508,8 +508,8 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -500,
-          "y": -200
+          "x": -540,
+          "y": -240
         },
         "width": 200,
         "height": 80,
@@ -530,7 +530,7 @@
         "title": "",
         "position": {
           "x": -300,
-          "y": -360
+          "y": -400
         },
         "width": 200,
         "height": 80,
@@ -550,8 +550,8 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -260,
-          "y": -200
+          "x": -300,
+          "y": -240
         },
         "width": 200,
         "height": 80,
@@ -571,10 +571,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -20,
-          "y": -200
+          "x": -40,
+          "y": -240
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -592,8 +592,8 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 180,
-          "y": -360
+          "x": 220,
+          "y": -400
         },
         "width": 200,
         "height": 80,
@@ -614,7 +614,7 @@
         "title": "",
         "position": {
           "x": 220,
-          "y": -200
+          "y": -240
         },
         "width": 200,
         "height": 80,
@@ -634,8 +634,8 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 420,
-          "y": -360
+          "x": 460,
+          "y": -400
         },
         "width": 200,
         "height": 80,
@@ -656,7 +656,7 @@
         "title": "",
         "position": {
           "x": 460,
-          "y": -200
+          "y": -240
         },
         "width": 200,
         "height": 80,
@@ -676,8 +676,8 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 660,
-          "y": -380
+          "x": 700,
+          "y": -420
         },
         "width": 200,
         "height": 120,
@@ -697,8 +697,8 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 900,
-          "y": -380
+          "x": 940,
+          "y": -420
         },
         "width": 200,
         "height": 120,
@@ -760,8 +760,8 @@
         "type": "process",
         "title": "CDN",
         "position": {
-          "x": 460,
-          "y": -800
+          "x": 500,
+          "y": -880
         },
         "width": 200,
         "height": 80,
@@ -781,7 +781,7 @@
         "title": "Cache",
         "description": "~21 GB",
         "position": {
-          "x": -740,
+          "x": -780,
           "y": -280
         },
         "width": 200,

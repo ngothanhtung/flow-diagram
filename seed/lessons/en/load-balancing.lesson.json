@@ -9,7 +9,7 @@
         "title": "200,000 users",
         "position": {
           "x": 0,
-          "y": -480
+          "y": -520
         },
         "width": 240,
         "height": 80,
@@ -30,7 +30,7 @@
         "title": "200,000 users",
         "position": {
           "x": 0,
-          "y": -720
+          "y": -800
         },
         "width": 240,
         "height": 80,
@@ -219,10 +219,10 @@
         "title": "Server B",
         "description": "CPU 100%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -240,10 +240,10 @@
         "title": "Server B",
         "description": "CPU 36%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -261,10 +261,10 @@
         "title": "Server B",
         "description": "23 queued · CPU 97%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -282,10 +282,10 @@
         "title": "Server B",
         "description": "9 active · CPU 52%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -303,10 +303,10 @@
         "title": "Server B",
         "description": "CPU 57%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -324,10 +324,10 @@
         "title": "Server B",
         "description": "CPU 2%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -345,10 +345,10 @@
         "title": "API B",
         "description": "CPU 42%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -366,10 +366,10 @@
         "title": "Server B",
         "description": "draining → v2 · CPU 5%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -557,7 +557,7 @@
         "title": "Load Balancer",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -578,7 +578,7 @@
         "description": "round robin",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -599,7 +599,7 @@
         "description": "least connections",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -620,7 +620,7 @@
         "description": "⚠ DOWN",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -642,7 +642,7 @@
         "description": "ACTIVE · VIP",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -662,8 +662,8 @@
         "title": "Standby LB",
         "description": "STANDBY",
         "position": {
-          "x": -500,
-          "y": -320
+          "x": -540,
+          "y": -360
         },
         "width": 200,
         "height": 80,
@@ -685,7 +685,7 @@
         "description": "ACTIVE · VIP",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -706,7 +706,7 @@
         "description": "L7 · routes by path",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -727,7 +727,7 @@
         "description": "rolling deploy",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -748,7 +748,7 @@
         "description": "VIP",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,

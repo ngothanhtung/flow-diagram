@@ -457,10 +457,10 @@
         "title": "App Server",
         "description": "London · CPU 35%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -540,10 +540,10 @@
         "type": "process",
         "title": "▮ ▮",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -80
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "queue",
         "icon": null,
@@ -559,10 +559,10 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -80
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "queue",
         "icon": null,
@@ -578,10 +578,10 @@
         "type": "process",
         "title": "▮",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -80
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "queue",
         "icon": null,
@@ -718,10 +718,10 @@
         "title": "database",
         "position": {
           "x": 340,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

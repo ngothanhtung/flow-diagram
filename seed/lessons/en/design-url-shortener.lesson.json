@@ -269,10 +269,10 @@
         "description": "to be designed",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Share2",
         "iconPosition": "left",
@@ -289,10 +289,10 @@
         "title": "API Servers",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -310,10 +310,10 @@
         "description": "code = hash(url)[0..7]",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -331,10 +331,10 @@
         "description": "block 7,000,000 – 7,999,999",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -352,10 +352,10 @@
         "description": "code = base62(scramble(id))",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -373,10 +373,10 @@
         "description": "302 Found",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -394,10 +394,10 @@
         "description": "rate limit · destination check",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -414,10 +414,10 @@
         "title": "links table",
         "position": {
           "x": 380,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -435,10 +435,10 @@
         "description": "⚠ code taken → retry",
         "position": {
           "x": 380,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -597,10 +597,10 @@
         "title": "key–value store",
         "position": {
           "x": 380,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -657,10 +657,10 @@
         "title": "click counts",
         "position": {
           "x": 520,
-          "y": 340
+          "y": 320
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -1079,7 +1079,7 @@
         "bendPoints": [
           {
             "x": 240,
-            "y": -140
+            "y": -120
           },
           {
             "x": 240,
@@ -1106,7 +1106,7 @@
         "bendPoints": [
           {
             "x": 240,
-            "y": -140
+            "y": -120
           },
           {
             "x": 240,
@@ -1133,7 +1133,7 @@
         "bendPoints": [
           {
             "x": 240,
-            "y": -140
+            "y": -120
           },
           {
             "x": 240,
@@ -1190,7 +1190,7 @@
         "bendPoints": [
           {
             "x": 240,
-            "y": -140
+            "y": -120
           },
           {
             "x": 240,
@@ -1217,7 +1217,7 @@
         "bendPoints": [
           {
             "x": 240,
-            "y": -140
+            "y": -120
           },
           {
             "x": 240,

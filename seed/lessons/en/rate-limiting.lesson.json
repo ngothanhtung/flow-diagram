@@ -8,10 +8,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 540,
+          "x": 600,
           "y": -400
         },
-        "width": 360,
+        "width": 400,
         "height": 160,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
@@ -26,7 +26,7 @@
         "type": "text",
         "title": "SCRIPT · EMPTY",
         "position": {
-          "x": 440,
+          "x": 480,
           "y": -460
         },
         "width": 160,
@@ -42,8 +42,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -480,
-          "y": -380
+          "x": -520,
+          "y": -420
         },
         "width": 480,
         "height": 200,
@@ -60,8 +60,8 @@
         "type": "text",
         "title": "USER · 8 TOKENS",
         "position": {
-          "x": -640,
-          "y": -460
+          "x": -680,
+          "y": -500
         },
         "width": 160,
         "height": 40,
@@ -76,8 +76,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1000,
-          "y": -640
+          "x": 1080,
+          "y": -720
         },
         "width": 400,
         "height": 160,
@@ -94,8 +94,8 @@
         "type": "text",
         "title": "LIMIT: 100 PER MINUTE\nfixed window     resets at :00\n⚠ 100 at 0:59 + 100 at 1:00 = 200 in 2 s\nsliding window   rolling last 60 s\ntoken bucket     burst ≤ 100, then refill\n→ bursts allowed, average capped",
         "position": {
-          "x": 1000,
-          "y": -640
+          "x": 1080,
+          "y": -720
         },
         "width": 400,
         "height": 160,
@@ -110,8 +110,8 @@
         "type": "process",
         "title": "real users",
         "position": {
-          "x": -200,
-          "y": -680
+          "x": -240,
+          "y": -760
         },
         "width": 240,
         "height": 80,
@@ -131,8 +131,8 @@
         "type": "process",
         "title": "Acme Corp · 10,000 users",
         "position": {
-          "x": -200,
-          "y": -680
+          "x": -240,
+          "y": -760
         },
         "width": 240,
         "height": 80,
@@ -152,8 +152,8 @@
         "type": "process",
         "title": "launch day · ×5",
         "position": {
-          "x": -200,
-          "y": -680
+          "x": -240,
+          "y": -760
         },
         "width": 240,
         "height": 80,
@@ -174,8 +174,8 @@
         "title": "runaway script",
         "description": "5,000 req/s",
         "position": {
-          "x": 280,
-          "y": -680
+          "x": 320,
+          "y": -760
         },
         "width": 240,
         "height": 80,
@@ -195,8 +195,8 @@
         "title": "runaway script",
         "description": "✓ backing off · 10 req/s",
         "position": {
-          "x": 280,
-          "y": -680
+          "x": 320,
+          "y": -760
         },
         "width": 240,
         "height": 80,
@@ -215,8 +215,8 @@
         "type": "process",
         "title": "runaway script",
         "position": {
-          "x": 280,
-          "y": -680
+          "x": 320,
+          "y": -760
         },
         "width": 240,
         "height": 80,
@@ -342,7 +342,7 @@
         "description": "rate limiter · limit: 10 req/s per client",
         "position": {
           "x": 20,
-          "y": -300
+          "y": -340
         },
         "width": 200,
         "height": 120,
@@ -362,10 +362,10 @@
         "title": "Gateway",
         "description": "rate limiter",
         "position": {
-          "x": -220,
-          "y": -300
+          "x": -240,
+          "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
@@ -383,10 +383,10 @@
         "title": "Gateway",
         "description": "rate limiter · tenant Acme: 2,000 req/s",
         "position": {
-          "x": -220,
-          "y": -300
+          "x": -240,
+          "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
@@ -404,10 +404,10 @@
         "title": "Gateway",
         "description": "rate limiter · shedding background work",
         "position": {
-          "x": -220,
-          "y": -300
+          "x": -240,
+          "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
@@ -424,8 +424,8 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": -580,
-          "y": -360
+          "x": -620,
+          "y": -400
         },
         "width": 200,
         "height": 80,
@@ -445,10 +445,10 @@
         "title": "Gateway",
         "description": "rate limiter · limit: 10 req/s per client",
         "position": {
-          "x": 300,
-          "y": -300
+          "x": 320,
+          "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
@@ -466,10 +466,10 @@
         "title": "Gateway",
         "description": "rate limiter · Retry-After: 30",
         "position": {
-          "x": 300,
-          "y": -300
+          "x": 320,
+          "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
@@ -487,10 +487,10 @@
         "title": "Gateway",
         "description": "rate limiter",
         "position": {
-          "x": 300,
-          "y": -300
+          "x": 320,
+          "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Gauge",
@@ -508,7 +508,7 @@
         "title": "counters",
         "position": {
           "x": 20,
-          "y": -300
+          "y": -340
         },
         "width": 200,
         "height": 120,

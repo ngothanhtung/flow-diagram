@@ -9,7 +9,7 @@
         "title": "",
         "position": {
           "x": 640,
-          "y": -520
+          "y": -560
         },
         "width": 400,
         "height": 160,
@@ -27,7 +27,7 @@
         "title": "THE SAGA\n1. book flight   ✓   undo: cancel flight\n2. book hotel    ✓   undo: cancel hotel\n⚠ 3. rent car     ✗\n→ run undos in reverse: 2 ← 1",
         "position": {
           "x": 640,
-          "y": -520
+          "y": -560
         },
         "width": 400,
         "height": 160,
@@ -43,7 +43,7 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -520
+          "y": -560
         },
         "width": 360,
         "height": 160,
@@ -61,7 +61,7 @@
         "title": "ORDER THE STEPS\n1. check car    likely to fail → first\n2. reserve flight + hotel\n3. charge card   hard to undo → last\n4. confirm + email",
         "position": {
           "x": 620,
-          "y": -520
+          "y": -560
         },
         "width": 360,
         "height": 160,
@@ -77,10 +77,10 @@
         "title": "traveller",
         "description": "⚠ flight + hotel, no car",
         "position": {
-          "x": 20,
-          "y": -540
+          "x": 0,
+          "y": -580
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -98,10 +98,10 @@
         "title": "traveller",
         "description": "no car → nothing booked",
         "position": {
-          "x": 20,
-          "y": -540
+          "x": 0,
+          "y": -580
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -119,10 +119,10 @@
         "title": "traveller",
         "description": "waiting…",
         "position": {
-          "x": 20,
-          "y": -540
+          "x": 0,
+          "y": -580
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -140,10 +140,10 @@
         "title": "traveller",
         "description": "✓ no car → fully refunded",
         "position": {
-          "x": 20,
-          "y": -540
+          "x": 0,
+          "y": -580
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -160,10 +160,10 @@
         "type": "process",
         "title": "traveller",
         "position": {
-          "x": 20,
-          "y": -540
+          "x": 0,
+          "y": -580
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -181,10 +181,10 @@
         "title": "traveller",
         "description": "charged only at the end",
         "position": {
-          "x": 20,
-          "y": -540
+          "x": 0,
+          "y": -580
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -202,10 +202,10 @@
         "title": "traveller",
         "description": "refund pending",
         "position": {
-          "x": 20,
-          "y": -540
+          "x": 0,
+          "y": -580
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -223,10 +223,10 @@
         "title": "traveller",
         "description": "✓ trip confirmed",
         "position": {
-          "x": 20,
-          "y": -540
+          "x": 0,
+          "y": -580
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -244,10 +244,10 @@
         "title": "Trip Service",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -265,10 +265,10 @@
         "description": "votes: yes · yes · no → roll back",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -286,10 +286,10 @@
         "description": "⚠ DOWN",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -308,10 +308,10 @@
         "description": "trip 81: hotel ✓ · car pending",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -328,10 +328,10 @@
         "title": "Saga Orchestrator",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -349,10 +349,10 @@
         "description": "restarted · resuming trip 81",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -370,10 +370,10 @@
         "description": "cancel hotel · attempt 4",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -391,10 +391,10 @@
         "description": "car: unknown → asking",
         "position": {
           "x": 0,
-          "y": -260
+          "y": -280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Route",
         "iconPosition": "left",
@@ -558,11 +558,11 @@
         "title": "Hotels",
         "description": "✓ room booked",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -579,11 +579,11 @@
         "title": "Hotels",
         "description": "prepared ✓",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -600,11 +600,11 @@
         "title": "Hotels",
         "description": "locked",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -621,11 +621,11 @@
         "title": "Hotels",
         "description": "booked → cancelled",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -642,11 +642,11 @@
         "title": "Hotels",
         "description": "→ HotelBooked",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -663,11 +663,11 @@
         "title": "Hotels",
         "description": "room: reserved",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -684,11 +684,11 @@
         "title": "Hotels",
         "description": "key 81-hotel seen → same room",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -705,11 +705,11 @@
         "title": "Hotels",
         "description": "⚠ API down",
         "position": {
-          "x": 20,
-          "y": 60
+          "x": 0,
+          "y": 40
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hotel",
         "iconPosition": "left",
@@ -913,10 +913,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 300
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -954,10 +954,10 @@
         "title": "saga state",
         "position": {
           "x": -300,
-          "y": -260
+          "y": -280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -973,10 +973,10 @@
         "type": "process",
         "title": "Event Bus",
         "position": {
-          "x": 20,
-          "y": -240
+          "x": 0,
+          "y": -280
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Radio",

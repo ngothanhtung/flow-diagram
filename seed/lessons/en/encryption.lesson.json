@@ -8,8 +8,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 860,
-          "y": -440
+          "x": 900,
+          "y": -480
         },
         "width": 440,
         "height": 160,
@@ -26,8 +26,8 @@
         "type": "text",
         "title": "THE TLS HANDSHAKE\nserver shows its certificate\nbrowser checks the CA signature\nboth agree on fresh session keys\n→ everything after: encrypted + tamper-proof",
         "position": {
-          "x": 860,
-          "y": -440
+          "x": 900,
+          "y": -480
         },
         "width": 440,
         "height": 160,
@@ -42,8 +42,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 820,
-          "y": -440
+          "x": 860,
+          "y": -480
         },
         "width": 360,
         "height": 160,
@@ -60,8 +60,8 @@
         "type": "text",
         "title": "NEVER EXPIRE BY SURPRISE\n⚠ renewed by hand, once a year\n→ ACME: auto-renew every 60 days\n→ alert 30 days before any expiry\n# check every endpoint, not just www",
         "position": {
-          "x": 820,
-          "y": -440
+          "x": 860,
+          "y": -480
         },
         "width": 360,
         "height": 160,
@@ -76,8 +76,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 820,
-          "y": -440
+          "x": 860,
+          "y": -480
         },
         "width": 360,
         "height": 160,
@@ -94,8 +94,8 @@
         "type": "text",
         "title": "ENVELOPE ENCRYPTION\ndata  —encrypted with→  data key\ndata key —encrypted by→ KMS master key\n→ steal the disk: no usable key\n# rotate keys, audit every use",
         "position": {
-          "x": 820,
-          "y": -440
+          "x": 860,
+          "y": -480
         },
         "width": 360,
         "height": 160,
@@ -110,8 +110,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 800,
-          "y": -440
+          "x": 840,
+          "y": -480
         },
         "width": 320,
         "height": 160,
@@ -128,8 +128,8 @@
         "type": "text",
         "title": "ROTATING KEYS\nnew master key v2 in the KMS\nre-wrap each data key: kilobytes\n→ the data is never re-encrypted\n# new writes use fresh data keys",
         "position": {
-          "x": 800,
-          "y": -440
+          "x": 840,
+          "y": -480
         },
         "width": 320,
         "height": 160,
@@ -145,10 +145,10 @@
         "title": "Alice · café Wi-Fi",
         "description": "http:// · password in clear",
         "position": {
-          "x": 20,
-          "y": -460
+          "x": 0,
+          "y": -500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -166,10 +166,10 @@
         "title": "Alice · café Wi-Fi",
         "description": "https:// · encrypted",
         "position": {
-          "x": 20,
-          "y": -460
+          "x": 0,
+          "y": -500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -187,10 +187,10 @@
         "title": "Alice · café Wi-Fi",
         "description": "⚠ “Your connection is not private”",
         "position": {
-          "x": 20,
-          "y": -460
+          "x": 0,
+          "y": -500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -207,10 +207,10 @@
         "type": "process",
         "title": "Alice · café Wi-Fi",
         "position": {
-          "x": 20,
-          "y": -460
+          "x": 0,
+          "y": -500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -228,10 +228,10 @@
         "title": "Alice",
         "description": "encrypt with Bob’s public key",
         "position": {
-          "x": 20,
-          "y": -460
+          "x": 0,
+          "y": -500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -248,10 +248,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -280
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Wifi",
@@ -330,10 +330,10 @@
         "type": "process",
         "title": "App",
         "position": {
-          "x": 20,
-          "y": 120
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -351,10 +351,10 @@
         "title": "App",
         "description": "mTLS · own certificate",
         "position": {
-          "x": 20,
-          "y": 120
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -372,10 +372,10 @@
         "title": "App",
         "description": "API key in source code",
         "position": {
-          "x": 20,
-          "y": 120
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -393,10 +393,10 @@
         "title": "App",
         "description": "✓ no secrets in code",
         "position": {
-          "x": 20,
-          "y": 120
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -414,10 +414,10 @@
         "title": "App",
         "description": "✓ never sees card numbers",
         "position": {
-          "x": 20,
-          "y": 120
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -434,11 +434,11 @@
         "type": "process",
         "title": "customer DB",
         "position": {
-          "x": 20,
-          "y": 340
+          "x": 0,
+          "y": 360
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -455,11 +455,11 @@
         "title": "customer DB",
         "description": "⚠ backup in public bucket",
         "position": {
-          "x": 20,
-          "y": 340
+          "x": 0,
+          "y": 360
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -476,11 +476,11 @@
         "title": "customer DB",
         "description": "encrypted · AES-256",
         "position": {
-          "x": 20,
-          "y": 340
+          "x": 0,
+          "y": 360
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -497,11 +497,11 @@
         "title": "customer DB",
         "description": "data keys re-wrapped · v2",
         "position": {
-          "x": 20,
-          "y": 340
+          "x": 0,
+          "y": 360
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -518,11 +518,11 @@
         "title": "customer DB",
         "description": "card: tok_4f2c",
         "position": {
-          "x": 20,
-          "y": 340
+          "x": 0,
+          "y": 360
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -539,11 +539,11 @@
         "title": "Mallory · same Wi-Fi",
         "description": "reads: alice / hunter2",
         "position": {
-          "x": -300,
-          "y": -60
+          "x": -340,
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -560,11 +560,11 @@
         "title": "Mallory · same Wi-Fi",
         "description": "sees random bytes",
         "position": {
-          "x": -300,
-          "y": -60
+          "x": -340,
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -582,7 +582,7 @@
         "description": "reads every customer",
         "position": {
           "x": 300,
-          "y": 320
+          "y": 360
         },
         "width": 200,
         "height": 80,
@@ -603,7 +603,7 @@
         "description": "only ciphertext",
         "position": {
           "x": 300,
-          "y": 320
+          "y": 360
         },
         "width": 200,
         "height": 80,
@@ -624,7 +624,7 @@
         "description": "steals tokens · useless",
         "position": {
           "x": 300,
-          "y": 320
+          "y": 360
         },
         "width": 200,
         "height": 80,
@@ -644,10 +644,10 @@
         "title": "KMS",
         "description": "key service",
         "position": {
-          "x": 20,
-          "y": 560
+          "x": 0,
+          "y": 600
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Key",
@@ -666,7 +666,7 @@
         "description": "⚠ sk_live_… in history",
         "position": {
           "x": 300,
-          "y": 120
+          "y": 160
         },
         "width": 200,
         "height": 80,
@@ -687,7 +687,7 @@
         "description": "✓ secret scan: clean",
         "position": {
           "x": 300,
-          "y": 120
+          "y": 160
         },
         "width": 200,
         "height": 80,
@@ -707,7 +707,7 @@
         "title": "scanner bot",
         "description": "key found in 4 min",
         "position": {
-          "x": 460,
+          "x": 500,
           "y": -120
         },
         "width": 200,
@@ -729,7 +729,7 @@
         "description": "rotated every 30 days",
         "position": {
           "x": -280,
-          "y": 120
+          "y": 160
         },
         "width": 240,
         "height": 80,
@@ -749,7 +749,7 @@
         "title": "Secrets Manager",
         "position": {
           "x": -280,
-          "y": 120
+          "y": 160
         },
         "width": 240,
         "height": 80,
@@ -769,11 +769,11 @@
         "title": "Payment Provider",
         "description": "holds real card numbers",
         "position": {
-          "x": -260,
-          "y": 340
+          "x": -280,
+          "y": 360
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -790,10 +790,10 @@
         "title": "Chat Server",
         "description": "sees only ciphertext",
         "position": {
-          "x": 20,
-          "y": -120
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
@@ -812,7 +812,7 @@
         "description": "decrypt with private key",
         "position": {
           "x": 300,
-          "y": -120
+          "y": -160
         },
         "width": 200,
         "height": 80,
@@ -1455,11 +1455,11 @@
         "bendPoints": [
           {
             "x": -140,
-            "y": 120
+            "y": 160
           },
           {
             "x": -140,
-            "y": 340
+            "y": 360
           }
         ],
         "effect": "chase",

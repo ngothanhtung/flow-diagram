@@ -44,10 +44,10 @@
         "description": "config: 10.0.3.7, 10.0.3.8",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -65,10 +65,10 @@
         "description": "cached list · 10 s",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -85,10 +85,10 @@
         "title": "Orders",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -106,10 +106,10 @@
         "description": "resolves payments.internal",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -127,10 +127,10 @@
         "description": "cached list · still works",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -148,10 +148,10 @@
         "description": "retries · TLS · metrics (Java)",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -464,10 +464,10 @@
         "description": "10.0.6.4 · ✓ new · registered",
         "position": {
           "x": 20,
-          "y": -380
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -485,10 +485,10 @@
         "description": "10.0.6.4",
         "position": {
           "x": 20,
-          "y": -380
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -506,10 +506,10 @@
         "description": "10.0.6.4 · retries · TLS · metrics (Go)",
         "position": {
           "x": 20,
-          "y": -380
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -546,10 +546,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 460,
+          "x": 440,
           "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
@@ -587,7 +587,7 @@
         "title": "",
         "position": {
           "x": 100,
-          "y": -240
+          "y": -200
         },
         "width": 200,
         "height": 80,
@@ -648,10 +648,10 @@
         "title": "API Gateway",
         "description": "auth · rate limits · routing",
         "position": {
-          "x": -460,
+          "x": -440,
           "y": -400
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Route",
@@ -678,7 +678,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -705,7 +705,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -822,7 +822,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -849,7 +849,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -877,7 +877,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -1263,11 +1263,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1290,11 +1290,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1317,11 +1317,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1344,11 +1344,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1371,11 +1371,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1399,7 +1399,7 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
@@ -1425,7 +1425,7 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
@@ -1451,7 +1451,7 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
@@ -1477,7 +1477,7 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
@@ -1503,7 +1503,7 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
@@ -1529,7 +1529,7 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,

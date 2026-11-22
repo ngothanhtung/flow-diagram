@@ -284,10 +284,10 @@
         "description": "GET /invoices/1043 → của Acme!",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -305,10 +305,10 @@
         "description": "/invoices/1043 → 404",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -326,10 +326,10 @@
         "description": "⚠ PATCH /me { \"role\": \"admin\" }",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -347,10 +347,10 @@
         "description": "Chỉ các dòng của Globex",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -367,10 +367,10 @@
         "title": "Eve · Globex",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -388,10 +388,10 @@
         "description": "kiểm tra: đã đăng nhập? ✓",
         "position": {
           "x": 20,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -409,10 +409,10 @@
         "description": "kiểm tra: chủ sở hữu = tổ chức người gọi",
         "position": {
           "x": 20,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -430,10 +430,10 @@
         "description": "lưu mọi trường được gửi",
         "position": {
           "x": 20,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -451,10 +451,10 @@
         "description": "SET app.org = tổ chức người gọi",
         "position": {
           "x": 20,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -472,10 +472,10 @@
         "description": "vai trò cho phép “sửa”? ✓",
         "position": {
           "x": 20,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -493,10 +493,10 @@
         "description": "lần theo chuỗi quan hệ",
         "position": {
           "x": 20,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -513,10 +513,10 @@
         "title": "API hóa đơn",
         "position": {
           "x": 20,
-          "y": -140
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -678,11 +678,11 @@
         "title": "Báo cáo",
         "description": "quyền admin · lỗi injection",
         "position": {
-          "x": 260,
-          "y": 140
+          "x": 280,
+          "y": 120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -699,11 +699,11 @@
         "title": "Báo cáo",
         "description": "chỉ đọc · view hóa đơn · bảng users: bị từ chối",
         "position": {
-          "x": 260,
-          "y": 140
+          "x": 280,
+          "y": 120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -720,11 +720,11 @@
         "title": "Báo cáo",
         "description": "danh tính riêng · mọi khách hàng",
         "position": {
-          "x": 260,
-          "y": 140
+          "x": 280,
+          "y": 120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -741,11 +741,11 @@
         "title": "Báo cáo",
         "description": "hành động như Alice · chỉ Acme",
         "position": {
-          "x": 260,
-          "y": 140
+          "x": 280,
+          "y": 120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -762,11 +762,11 @@
         "title": "Báo cáo",
         "description": "chỉ đọc · view hóa đơn",
         "position": {
-          "x": 260,
-          "y": 140
+          "x": 280,
+          "y": 120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -782,11 +782,11 @@
         "type": "process",
         "title": "Báo cáo",
         "position": {
-          "x": 260,
-          "y": 140
+          "x": 280,
+          "y": 120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",

@@ -314,10 +314,10 @@
         "type": "process",
         "title": "viewers",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -880
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -335,10 +335,10 @@
         "type": "process",
         "title": "Video App",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -440
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -357,10 +357,10 @@
         "description": "CPU 95%",
         "position": {
           "x": 0,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -378,10 +378,10 @@
         "description": "CPU 30%",
         "position": {
           "x": 0,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -397,10 +397,10 @@
         "type": "process",
         "title": "Dashboard",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 620
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -418,10 +418,10 @@
         "title": "Dashboard",
         "description": "trending: yesterday’s",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 620
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -439,10 +439,10 @@
         "title": "Dashboard",
         "description": "trending: now",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 620
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -460,10 +460,10 @@
         "title": "Dashboard",
         "description": "live counts: 4 min old",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 620
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -481,10 +481,10 @@
         "title": "Dashboard",
         "description": "unique viewers ≈ 48.2M",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 620
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -502,10 +502,10 @@
         "title": "event logs",
         "position": {
           "x": -420,
-          "y": -420
+          "y": -440
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Box",
         "iconPosition": "left",

@@ -246,10 +246,10 @@
         "type": "process",
         "title": "ứng dụng di động",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -267,10 +267,10 @@
         "title": "ứng dụng di động",
         "description": "đang tải…",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -288,10 +288,10 @@
         "title": "ứng dụng di động",
         "description": "người theo dõi · trang 2.001",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -309,10 +309,10 @@
         "title": "ứng dụng di động",
         "description": "⚠ ứng dụng v3.2 · crash",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -340
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -414,10 +414,10 @@
         "description": "dịch vụ",
         "position": {
           "x": -140,
-          "y": 60
+          "y": 80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -435,10 +435,10 @@
         "description": "dịch vụ · ⚠ 41.000 lượt tra cứu · CPU 97%",
         "position": {
           "x": -140,
-          "y": 60
+          "y": 80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -456,10 +456,10 @@
         "description": "dịch vụ · CPU 30%",
         "position": {
           "x": -140,
-          "y": 60
+          "y": 80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -477,10 +477,10 @@
         "description": "dịch vụ · 2.000.000 người theo dõi · CPU 30%",
         "position": {
           "x": -140,
-          "y": 60
+          "y": 80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",

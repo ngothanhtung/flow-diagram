@@ -494,10 +494,10 @@
         "description": "in memory",
         "position": {
           "x": -260,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -515,10 +515,10 @@
         "description": "in memory · ⚠ price: $20 · stale",
         "position": {
           "x": -260,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -536,10 +536,10 @@
         "description": "in memory · TTL 60 s · price: $25",
         "position": {
           "x": -260,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -557,10 +557,10 @@
         "description": "in memory · ⚠ memory full",
         "position": {
           "x": -260,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -578,10 +578,10 @@
         "description": "in memory · home page · expired",
         "position": {
           "x": -260,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -599,10 +599,10 @@
         "description": "in memory · ✓ refreshed early · 1 fetch",
         "position": {
           "x": -260,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -620,10 +620,10 @@
         "description": "in memory · ⚠ nothing to cache",
         "position": {
           "x": -260,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -641,10 +641,10 @@
         "description": "in memory · “not found” · TTL 30 s",
         "position": {
           "x": -260,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",

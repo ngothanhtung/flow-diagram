@@ -169,10 +169,10 @@
         "description": "1 new message for Alice",
         "position": {
           "x": 20,
-          "y": -100
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -190,10 +190,10 @@
         "description": "CPU 15%",
         "position": {
           "x": 20,
-          "y": -100
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -211,10 +211,10 @@
         "description": "⚠ 500,000 req/s · 95% empty · CPU 94%",
         "position": {
           "x": 20,
-          "y": -100
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -232,10 +232,10 @@
         "description": "holding until news · CPU 20%",
         "position": {
           "x": 20,
-          "y": -100
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -253,10 +253,10 @@
         "description": "Alice’s socket",
         "position": {
           "x": 20,
-          "y": -100
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -274,10 +274,10 @@
         "description": "no socket for Alice",
         "position": {
           "x": 20,
-          "y": -100
+          "y": -120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -377,10 +377,10 @@
         "description": "saved: 1042, 1043",
         "position": {
           "x": -260,
-          "y": 100
+          "y": 120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",

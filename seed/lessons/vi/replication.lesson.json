@@ -76,10 +76,10 @@
         "type": "process",
         "title": "300.000 người dùng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -440
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -97,10 +97,10 @@
         "type": "process",
         "title": "Alice thấy tên cũ",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -440
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -118,10 +118,10 @@
         "type": "process",
         "title": "Alice thấy tên mới",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -440
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -139,10 +139,10 @@
         "type": "process",
         "title": "Máy chủ ứng dụng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -370,10 +370,10 @@
         "title": "leader",
         "description": "✓ thăng cấp · CPU 30%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -391,10 +391,10 @@
         "title": "leader",
         "description": "CPU 30%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -412,10 +412,10 @@
         "title": "leader",
         "description": "⚠ email = NULL · 2 tr dòng · CPU 30%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -558,10 +558,10 @@
         "title": "bản sao phân tích",
         "description": "báo cáo 20 phút",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 440
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:ChartColumn",
@@ -599,10 +599,10 @@
         "title": "sao lưu",
         "description": "✓ snapshot 03:00 + log ghi",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 440
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Clock",

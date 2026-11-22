@@ -166,10 +166,10 @@
         "title": "API feed",
         "description": "cần thiết kế",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -187,10 +187,10 @@
         "title": "API feed",
         "description": "trộn 200 dòng thời gian",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -207,10 +207,10 @@
         "type": "process",
         "title": "API feed",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -228,10 +228,10 @@
         "title": "API feed",
         "description": "trộn: danh sách của tôi + 3 người nổi tiếng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -249,10 +249,10 @@
         "title": "API feed",
         "description": "dựng lại khi mở · tối đa 500 cùng lúc",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -269,10 +269,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 340,
+          "x": 320,
           "y": -260
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -289,10 +289,10 @@
         "type": "process",
         "title": "CPU 97%",
         "position": {
-          "x": 340,
+          "x": 320,
           "y": -260
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -350,10 +350,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 340,
+          "x": 320,
           "y": 60
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -370,10 +370,10 @@
         "type": "process",
         "title": "CPU 97%",
         "position": {
-          "x": 340,
+          "x": 320,
           "y": 60
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -514,11 +514,11 @@
         "type": "process",
         "title": "Hàng đợi",
         "position": {
-          "x": 20,
-          "y": 260
+          "x": 0,
+          "y": 240
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Inbox",
         "iconPosition": "left",
@@ -535,11 +535,11 @@
         "title": "Hàng đợi",
         "description": "⚠ tồn đọng: 50 tr lượt giao",
         "position": {
-          "x": 20,
-          "y": 260
+          "x": 0,
+          "y": 240
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Inbox",
         "iconPosition": "left",
@@ -556,11 +556,11 @@
         "title": "Hàng đợi",
         "description": "✓ bỏ qua người nổi tiếng",
         "position": {
-          "x": 20,
-          "y": 260
+          "x": 0,
+          "y": 240
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Inbox",
         "iconPosition": "left",

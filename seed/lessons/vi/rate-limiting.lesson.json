@@ -175,10 +175,10 @@
         "description": "5.000 req/s",
         "position": {
           "x": 300,
-          "y": -700
+          "y": -680
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -196,10 +196,10 @@
         "description": "✓ đang lùi · 10 req/s",
         "position": {
           "x": 300,
-          "y": -700
+          "y": -680
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -216,10 +216,10 @@
         "title": "script mất kiểm soát",
         "position": {
           "x": 300,
-          "y": -700
+          "y": -680
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",

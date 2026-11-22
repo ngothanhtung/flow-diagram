@@ -637,6 +637,39 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
     placements.set(key, entry);
   }
   const ringLabelLines = (variant: Variant<Look>) => [variant.value.title];
+  // A placement's box: its largest variant, in whole grid cells. Blocks that
+  // share a source row get heights of the same cell parity (and a column,
+  // widths), bumping the odd ones a cell when the row mixes both: then their
+  // centres can line up on the grid and a Line between them runs straight.
+  const placementSizeCache = new Map<number, Map<string, Size>>();
+  const placementSizes = (scale: number): Map<string, Size> => {
+    const cached = placementSizeCache.get(scale);
+    if (cached) return cached;
+    const sizes = new Map<string, Size>();
+    for (const [key, entry] of placements) {
+      sizes.set(
+        key,
+        entry.variants.reduce<Size>((max, variant) => {
+          const size = sizeOf(variant, scale);
+          return { width: Math.max(max.width, size.width), height: Math.max(max.height, size.height) };
+        }, { width: 0, height: 0 }),
+      );
+    }
+    const oddCells = (length: number) => (length / GRID) % 2 === 1;
+    const harmonize = (lineOf: (entry: { ux: number; uy: number }) => number, axis: 'width' | 'height') => {
+      const lines = new Map<number, string[]>();
+      for (const [key, entry] of placements) lines.set(lineOf(entry), [...(lines.get(lineOf(entry)) ?? []), key]);
+      for (const keys of lines.values()) {
+        const odd = keys.filter((key) => oddCells(sizes.get(key)![axis]));
+        if (odd.length === 0 || odd.length === keys.length) continue;
+        for (const key of odd) sizes.set(key, { ...sizes.get(key)!, [axis]: sizes.get(key)![axis] + GRID });
+      }
+    };
+    harmonize((entry) => entry.uy, 'height');
+    harmonize((entry) => entry.ux, 'width');
+    placementSizeCache.set(scale, sizes);
+    return sizes;
+  };
   const items: PlacementInput[] = [
     ...[...placements].map(([key, entry]) => ({
       key,
@@ -645,11 +678,7 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
       steps: entry.steps,
       // Ring dots may sit close to each other and to the servers on the ring.
       ...(entry.variants.every((variant) => variant.value.dot) ? { gap: 6 } : {}),
-      size: (scale: number) =>
-        entry.variants.reduce<Size>((max, variant) => {
-          const size = sizeOf(variant, scale);
-          return { width: Math.max(max.width, size.width), height: Math.max(max.height, size.height) };
-        }, { width: 0, height: 0 }),
+      size: (scale: number) => placementSizes(scale).get(key)!,
     })),
     ...ringLabels.map((variant) => ({ key: `label:${variant.id}`, ux: variant.value.ux, uy: variant.value.uy, steps: new Set(variant.steps), size: () => snapSize(textSize(ringLabelLines(variant), 13)) })),
   ];
@@ -666,11 +695,7 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
   const cardVariants = nodeVariants.filter((variant) => variant.value.kind === 'card');
   // Every variant at one placement takes the placement's (largest) box: the
   // block keeps one size across Lesson steps and all its edges stay on the grid.
-  const placementSize = (variant: Variant<Look>): Size =>
-    (placements.get(placementKey(variant))?.variants ?? [variant]).reduce<Size>((max, other) => {
-      const size = sizeOf(other, scale);
-      return { width: Math.max(max.width, size.width), height: Math.max(max.height, size.height) };
-    }, { width: 0, height: 0 });
+  const placementSize = (variant: Variant<Look>): Size => placementSizes(scale).get(placementKey(variant)) ?? sizeOf(variant, scale);
   for (const variant of cardVariants) box(variant.id, positionOf(variant), placementSize(variant));
   const parents = new Map<string, string>();
   const frameLabels = new Map<string, { id: string; position: Point; size: Size }>();

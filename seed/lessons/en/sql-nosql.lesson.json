@@ -8,11 +8,11 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": -480,
-          "y": -20
+          "x": -500,
+          "y": -40
         },
-        "width": 400,
-        "height": 600,
+        "width": 520,
+        "height": 480,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -26,8 +26,8 @@
         "type": "text",
         "title": "KEY–VALUE · 3 NODES",
         "position": {
-          "x": -580,
-          "y": -300
+          "x": -660,
+          "y": -260
         },
         "width": 200,
         "height": 40,
@@ -212,10 +212,10 @@
         "type": "process",
         "title": "1M users",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -480
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -233,10 +233,10 @@
         "type": "process",
         "title": "App Server",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -358,10 +358,10 @@
         "title": "document store",
         "position": {
           "x": 0,
-          "y": 420
+          "y": 400
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -378,7 +378,7 @@
         "title": "",
         "position": {
           "x": -460,
-          "y": -180
+          "y": -140
         },
         "width": 200,
         "height": 120,
@@ -398,8 +398,8 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -460,
-          "y": 180
+          "x": -380,
+          "y": 100
         },
         "width": 200,
         "height": 120,
@@ -419,11 +419,11 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -540,
-          "y": -20
+          "x": -620,
+          "y": 40
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -441,10 +441,10 @@
         "title": "Search",
         "description": "inverted index",
         "position": {
-          "x": 420,
+          "x": 400,
           "y": 400
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Search",

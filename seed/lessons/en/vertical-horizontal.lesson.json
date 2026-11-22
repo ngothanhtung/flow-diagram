@@ -8,10 +8,10 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 360,
+        "width": 400,
         "height": 320,
         "color": "#bfbfbf",
         "backgroundColor": "#141414",
@@ -26,7 +26,7 @@
         "type": "text",
         "title": "largest machine you can buy",
         "position": {
-          "x": -40,
+          "x": -80,
           "y": -140
         },
         "width": 240,
@@ -169,10 +169,10 @@
         "title": "App Server",
         "description": "4 vCPU · 16 GB · CPU 1%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 280,
+        "width": 320,
         "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -190,10 +190,10 @@
         "title": "App Server",
         "description": "4 vCPU · 16 GB · CPU 100%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 280,
+        "width": 320,
         "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -211,10 +211,10 @@
         "title": "App Server",
         "description": "16 vCPU · 64 GB · CPU 30%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 280,
+        "width": 320,
         "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -232,10 +232,10 @@
         "title": "App Server",
         "description": "192 vCPU · 768 GB · CPU 100%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 280,
+        "width": 320,
         "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -254,10 +254,10 @@
         "title": "App Server",
         "description": "⚠ DOWN",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 280,
+        "width": 320,
         "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -361,10 +361,10 @@
         "description": "CPU 52%",
         "position": {
           "x": -140,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -382,10 +382,10 @@
         "description": "CPU 5%",
         "position": {
           "x": -140,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -403,10 +403,10 @@
         "description": "autoscaled: 2 of 2–8 · CPU 10%",
         "position": {
           "x": -140,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -424,10 +424,10 @@
         "description": "CPU 99%",
         "position": {
           "x": -140,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -445,10 +445,10 @@
         "description": "⚠ DOWN",
         "position": {
           "x": -140,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",

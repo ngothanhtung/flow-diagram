@@ -128,10 +128,10 @@
         "description": "Virginia · CPU 88%",
         "position": {
           "x": 20,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -149,10 +149,10 @@
         "description": "Virginia · CPU 20%",
         "position": {
           "x": 20,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -170,10 +170,10 @@
         "description": "Virginia · CPU 32%",
         "position": {
           "x": 20,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -191,10 +191,10 @@
         "description": "Virginia · logo.png · new · CPU 20%",
         "position": {
           "x": 20,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -212,10 +212,10 @@
         "description": "Virginia · logo.3f9a.png · CPU 15%",
         "position": {
           "x": 20,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -233,10 +233,10 @@
         "description": "Virginia · CPU 22%",
         "position": {
           "x": 20,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -275,10 +275,10 @@
         "description": "Virginia · CPU 15%",
         "position": {
           "x": 20,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -422,10 +422,10 @@
         "description": "Sydney",
         "position": {
           "x": 340,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -443,10 +443,10 @@
         "description": "Sydney · ⚠ cold · filling",
         "position": {
           "x": 340,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -464,10 +464,10 @@
         "description": "Sydney · ⚠ logo.png · old",
         "position": {
           "x": 340,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -485,10 +485,10 @@
         "description": "Sydney · logo.3f9a.png · 1 yr",
         "position": {
           "x": 340,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -506,10 +506,10 @@
         "description": "Sydney · CPU 60%",
         "position": {
           "x": 340,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -527,10 +527,10 @@
         "description": "Sydney · /cart → private · pass",
         "position": {
           "x": 340,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",

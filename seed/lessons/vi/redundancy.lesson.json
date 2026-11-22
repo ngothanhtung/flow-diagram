@@ -145,10 +145,10 @@
         "title": "",
         "position": {
           "x": -180,
-          "y": 120
+          "y": 100
         },
         "width": 360,
-        "height": 480,
+        "height": 520,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -163,7 +163,7 @@
         "title": "ZONE A · NGOẠI TUYẾN",
         "position": {
           "x": -260,
-          "y": -100
+          "y": -140
         },
         "width": 200,
         "height": 40,
@@ -179,10 +179,10 @@
         "title": "",
         "position": {
           "x": -180,
-          "y": 120
+          "y": 100
         },
         "width": 360,
-        "height": 480,
+        "height": 520,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -197,7 +197,7 @@
         "title": "ZONE A",
         "position": {
           "x": -320,
-          "y": -100
+          "y": -140
         },
         "width": 80,
         "height": 40,
@@ -280,10 +280,10 @@
         "type": "process",
         "title": "1 triệu người dùng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -480
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -449,10 +449,10 @@
         "type": "process",
         "title": "Ứng dụng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -470,10 +470,10 @@
         "title": "Ứng dụng",
         "description": "⚠ điểm lỗi đơn",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -534,10 +534,10 @@
         "title": "Ứng dụng",
         "position": {
           "x": -180,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -555,10 +555,10 @@
         "description": "⚠ SẬP",
         "position": {
           "x": -180,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -578,10 +578,10 @@
         "description": "bị bài kiểm thử hỗn loạn giết",
         "position": {
           "x": -180,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -601,10 +601,10 @@
         "description": "v2.4 · đang sập",
         "position": {
           "x": -180,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -624,10 +624,10 @@
         "description": "v2.3 · 99%",
         "position": {
           "x": -180,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",

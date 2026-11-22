@@ -9,7 +9,7 @@
         "title": "",
         "position": {
           "x": 660,
-          "y": -400
+          "y": -440
         },
         "width": 360,
         "height": 160,
@@ -27,7 +27,7 @@
         "title": "SALTED, SLOW HASHING\nhunter2 + salt 9f2c → $argon2id$…7Qe\nsame password, other salt → other hash\n→ ~100 ms per guess, on purpose\n⚠ MD5 / SHA-256: billions per second",
         "position": {
           "x": 660,
-          "y": -400
+          "y": -440
         },
         "width": 360,
         "height": 160,
@@ -43,7 +43,7 @@
         "title": "",
         "position": {
           "x": 680,
-          "y": -400
+          "y": -440
         },
         "width": 400,
         "height": 160,
@@ -61,7 +61,7 @@
         "title": "A SAFE RESET\ntoken: 32 random bytes, single use\nexpires after 15 minutes\nsame reply whether the email exists\n→ after the reset: revoke every session",
         "position": {
           "x": 680,
-          "y": -400
+          "y": -440
         },
         "width": 400,
         "height": 160,
@@ -76,11 +76,11 @@
         "type": "process",
         "title": "Alice",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -97,11 +97,11 @@
         "title": "Alice",
         "description": "cookie: HttpOnly · Secure",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -118,11 +118,11 @@
         "title": "Alice",
         "description": "reset link · expires 15 min",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -139,11 +139,11 @@
         "title": "Alice",
         "description": "⚠ typed password + code",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -160,11 +160,11 @@
         "title": "Alice",
         "description": "passkey · shop.example only",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -181,11 +181,11 @@
         "title": "Alice",
         "description": "access 15 min · refresh revocable",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -516,10 +516,10 @@
         "description": "reads every password",
         "position": {
           "x": 300,
-          "y": 100
+          "y": 120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -537,10 +537,10 @@
         "description": "gets hashes · years to crack",
         "position": {
           "x": 300,
-          "y": 100
+          "y": 120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -556,10 +556,10 @@
         "type": "process",
         "title": "Email",
         "position": {
-          "x": -260,
+          "x": -280,
           "y": -160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Mail",
@@ -578,7 +578,7 @@
         "description": "1B leaked passwords",
         "position": {
           "x": 300,
-          "y": -400
+          "y": -440
         },
         "width": 200,
         "height": 80,
@@ -599,7 +599,7 @@
         "description": "slowed to a crawl",
         "position": {
           "x": 300,
-          "y": -400
+          "y": -440
         },
         "width": 200,
         "height": 80,
@@ -620,7 +620,7 @@
         "description": "no phone → blocked",
         "position": {
           "x": 300,
-          "y": -400
+          "y": -440
         },
         "width": 200,
         "height": 80,
@@ -641,7 +641,7 @@
         "description": "token from leaked logs",
         "position": {
           "x": 300,
-          "y": -400
+          "y": -440
         },
         "width": 200,
         "height": 80,
@@ -661,7 +661,7 @@
         "title": "Alice’s phone",
         "position": {
           "x": -280,
-          "y": -400
+          "y": -440
         },
         "width": 240,
         "height": 80,
@@ -682,10 +682,10 @@
         "description": "shop-example.co · ⚠ relays in real time",
         "position": {
           "x": 300,
-          "y": -140
+          "y": -160
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -703,10 +703,10 @@
         "description": "shop-example.co · no passkey for this domain",
         "position": {
           "x": 300,
-          "y": -140
+          "y": -160
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -723,11 +723,11 @@
         "title": "Identity Provider",
         "description": "e.g. Google",
         "position": {
-          "x": -260,
-          "y": -140
+          "x": -280,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:IdCard",
         "iconPosition": "left",

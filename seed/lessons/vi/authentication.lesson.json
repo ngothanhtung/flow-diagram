@@ -8,8 +8,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 660,
-          "y": -400
+          "x": 700,
+          "y": -440
         },
         "width": 360,
         "height": 160,
@@ -26,8 +26,8 @@
         "type": "text",
         "title": "HASH CHẬM, CÓ SALT\nhunter2 + salt 9f2c → $argon2id$…7Qe\ncùng mật khẩu, salt khác → hash khác\n→ ~100 ms mỗi lần đoán, có chủ đích\n⚠ MD5 / SHA-256: hàng tỷ lần mỗi giây",
         "position": {
-          "x": 660,
-          "y": -400
+          "x": 700,
+          "y": -440
         },
         "width": 360,
         "height": 160,
@@ -42,8 +42,8 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 700,
-          "y": -400
+          "x": 740,
+          "y": -440
         },
         "width": 440,
         "height": 160,
@@ -60,8 +60,8 @@
         "type": "text",
         "title": "ĐẶT LẠI AN TOÀN\ntoken: 32 byte ngẫu nhiên, dùng một lần\nhết hạn sau 15 phút\ncùng câu trả lời dù email có tồn tại hay không\n→ sau khi đặt lại: thu hồi mọi phiên",
         "position": {
-          "x": 700,
-          "y": -400
+          "x": 740,
+          "y": -440
         },
         "width": 440,
         "height": 160,
@@ -76,11 +76,11 @@
         "type": "process",
         "title": "Alice",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -97,11 +97,11 @@
         "title": "Alice",
         "description": "cookie: HttpOnly · Secure",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -118,11 +118,11 @@
         "title": "Alice",
         "description": "liên kết đặt lại · hết hạn sau 15 phút",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -139,11 +139,11 @@
         "title": "Alice",
         "description": "⚠ đã gõ mật khẩu + mã",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -160,11 +160,11 @@
         "title": "Alice",
         "description": "passkey · chỉ shop.example",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -181,11 +181,11 @@
         "title": "Alice",
         "description": "access 15 phút · refresh thu hồi được",
         "position": {
-          "x": 20,
-          "y": -420
+          "x": 0,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -201,11 +201,11 @@
         "type": "process",
         "title": "Dịch vụ đăng nhập",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -222,11 +222,11 @@
         "title": "Dịch vụ đăng nhập",
         "description": "băm lần thử, so sánh",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -243,11 +243,11 @@
         "title": "Dịch vụ đăng nhập",
         "description": "cùng câu trả lời cho mọi email",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -264,11 +264,11 @@
         "title": "Dịch vụ đăng nhập",
         "description": "5.000 lượt đăng nhập / s",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -285,11 +285,11 @@
         "title": "Dịch vụ đăng nhập",
         "description": "5 lần thử / tài khoản / phút",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -306,11 +306,11 @@
         "title": "Dịch vụ đăng nhập",
         "description": "✓ mật khẩu ✓ + điện thoại ✓",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -327,11 +327,11 @@
         "title": "Dịch vụ đăng nhập",
         "description": "trông như đăng nhập bình thường",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -348,11 +348,11 @@
         "title": "Dịch vụ đăng nhập",
         "description": "✓ kiểm tra chữ ký + tên miền",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -369,11 +369,11 @@
         "title": "Dịch vụ đăng nhập",
         "description": "✓ kiểm tra chữ ký ID token",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -390,11 +390,11 @@
         "title": "Dịch vụ đăng nhập",
         "description": "token hết hạn → 401",
         "position": {
-          "x": 20,
-          "y": -140
+          "x": 0,
+          "y": -160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -412,7 +412,7 @@
         "description": "⚠ alice@… : hunter2",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 140
         },
         "width": 240,
         "height": 200,
@@ -433,7 +433,7 @@
         "description": "alice@… : $argon2id$…7Qe",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 140
         },
         "width": 240,
         "height": 200,
@@ -454,7 +454,7 @@
         "description": "alice@… : chỉ khóa công khai",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 140
         },
         "width": 240,
         "height": 200,
@@ -475,7 +475,7 @@
         "description": "alice@… : google-id 1042 · không mật khẩu",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 140
         },
         "width": 240,
         "height": 200,
@@ -495,7 +495,7 @@
         "title": "bảng người dùng",
         "position": {
           "x": 0,
-          "y": 100
+          "y": 140
         },
         "width": 240,
         "height": 200,
@@ -515,10 +515,10 @@
         "title": "kẻ tấn công",
         "description": "đọc mọi mật khẩu",
         "position": {
-          "x": 300,
-          "y": 100
+          "x": 320,
+          "y": 140
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -536,10 +536,10 @@
         "title": "kẻ tấn công",
         "description": "lấy được hash · nhiều năm mới bẻ được",
         "position": {
-          "x": 300,
-          "y": 100
+          "x": 320,
+          "y": 140
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -556,10 +556,10 @@
         "type": "process",
         "title": "Email",
         "position": {
-          "x": -260,
+          "x": -280,
           "y": -160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Mail",
@@ -577,11 +577,11 @@
         "title": "bot",
         "description": "1 tỷ mật khẩu bị lộ",
         "position": {
-          "x": 300,
-          "y": -420
+          "x": 320,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -598,11 +598,11 @@
         "title": "bot",
         "description": "bị làm chậm tới mức bò",
         "position": {
-          "x": 300,
-          "y": -420
+          "x": 320,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -619,11 +619,11 @@
         "title": "bot",
         "description": "không có điện thoại → bị chặn",
         "position": {
-          "x": 300,
-          "y": -420
+          "x": 320,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -640,11 +640,11 @@
         "title": "bot",
         "description": "token từ log bị lộ",
         "position": {
-          "x": 300,
-          "y": -420
+          "x": 320,
+          "y": -440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -660,10 +660,10 @@
         "type": "process",
         "title": "Điện thoại của Alice",
         "position": {
-          "x": -260,
-          "y": -400
+          "x": -280,
+          "y": -440
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -681,11 +681,11 @@
         "title": "Đăng nhập giả",
         "description": "shop-example.co · ⚠ chuyển tiếp theo thời gian thực",
         "position": {
-          "x": 280,
-          "y": -140
+          "x": 320,
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -702,11 +702,11 @@
         "title": "Đăng nhập giả",
         "description": "shop-example.co · không có passkey cho tên miền này",
         "position": {
-          "x": 280,
-          "y": -140
+          "x": 320,
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -724,10 +724,10 @@
         "description": "vd. Google",
         "position": {
           "x": -280,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:IdCard",
         "iconPosition": "left",

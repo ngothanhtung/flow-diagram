@@ -657,10 +657,10 @@
         "title": "Worker",
         "position": {
           "x": 260,
-          "y": 380
+          "y": 360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -678,10 +678,10 @@
         "description": "⚠ “email changed” · trễ",
         "position": {
           "x": 260,
-          "y": 380
+          "y": 360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -699,10 +699,10 @@
         "description": "phân vùng 2",
         "position": {
           "x": 260,
-          "y": 380
+          "y": 360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",
@@ -720,10 +720,10 @@
         "description": "CPU 100%",
         "position": {
           "x": 260,
-          "y": 380
+          "y": 360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Video",
         "iconPosition": "left",

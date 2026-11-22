@@ -406,10 +406,10 @@
         "title": "Ben",
         "position": {
           "x": 220,
-          "y": -540
+          "y": -520
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -427,10 +427,10 @@
         "description": "đã đặt ghế 7 ✓",
         "position": {
           "x": 220,
-          "y": -540
+          "y": -520
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -448,10 +448,10 @@
         "description": "hết vé · xin lỗi",
         "position": {
           "x": 220,
-          "y": -540
+          "y": -520
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -469,10 +469,10 @@
         "description": "v8 đã cũ · thử lại",
         "position": {
           "x": 220,
-          "y": -540
+          "y": -520
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -490,10 +490,10 @@
         "description": "đã hủy · đang thử lại",
         "position": {
           "x": 220,
-          "y": -540
+          "y": -520
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -511,10 +511,10 @@
         "description": "trùng khóa · hết vé",
         "position": {
           "x": 220,
-          "y": -540
+          "y": -520
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -532,10 +532,10 @@
         "description": "đang chờ ghế 7",
         "position": {
           "x": 220,
-          "y": -540
+          "y": -520
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -553,10 +553,10 @@
         "description": "ghế 7 đang được giữ · chọn ghế khác",
         "position": {
           "x": 220,
-          "y": -540
+          "y": -520
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -866,10 +866,10 @@
         "description": "3 s mỗi lần trừ tiền",
         "position": {
           "x": -480,
-          "y": -180
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -886,10 +886,10 @@
         "title": "Nhà cung cấp thanh toán",
         "position": {
           "x": -480,
-          "y": -180
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",

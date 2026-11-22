@@ -247,10 +247,10 @@
         "title": "ghế còn: 1",
         "position": {
           "x": 20,
-          "y": -340
+          "y": -360
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -268,10 +268,10 @@
         "title": "ghế còn: 0 · bán cho Ana",
         "position": {
           "x": 20,
-          "y": -340
+          "y": -360
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -289,10 +289,10 @@
         "title": "ghế còn: 0 · Ana",
         "position": {
           "x": 20,
-          "y": -340
+          "y": -360
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -310,10 +310,10 @@
         "title": "12:00:05 · 5 Rue Cler: bản sửa",
         "position": {
           "x": 20,
-          "y": -340
+          "y": -360
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -331,10 +331,10 @@
         "title": "ghế còn: 0",
         "position": {
           "x": 20,
-          "y": -340
+          "y": -360
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

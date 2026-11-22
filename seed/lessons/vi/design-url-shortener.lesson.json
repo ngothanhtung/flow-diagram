@@ -268,10 +268,10 @@
         "title": "sho.rt",
         "description": "cần thiết kế",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Share2",
@@ -288,10 +288,10 @@
         "type": "process",
         "title": "Máy chủ API",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -309,10 +309,10 @@
         "title": "Máy chủ API",
         "description": "mã = hash(url)[0..7]",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -330,10 +330,10 @@
         "title": "Máy chủ API",
         "description": "khối 7.000.000 – 7.999.999",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -351,10 +351,10 @@
         "title": "Máy chủ API",
         "description": "mã = base62(xáo(id))",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -372,10 +372,10 @@
         "title": "Máy chủ API",
         "description": "302 Found",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -393,10 +393,10 @@
         "title": "Máy chủ API",
         "description": "giới hạn tốc độ · kiểm tra đích",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -413,11 +413,11 @@
         "type": "process",
         "title": "bảng links",
         "position": {
-          "x": 380,
-          "y": -100
+          "x": 360,
+          "y": -120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -434,11 +434,11 @@
         "title": "bảng links",
         "description": "⚠ mã đã dùng → thử lại",
         "position": {
-          "x": 380,
-          "y": -100
+          "x": 360,
+          "y": -120
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -556,10 +556,10 @@
         "type": "process",
         "title": "phân vùng = hash(mã)",
         "position": {
-          "x": 380,
+          "x": 360,
           "y": -300
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -576,10 +576,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 380,
+          "x": 360,
           "y": -300
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -597,10 +597,10 @@
         "title": "kho key-value",
         "position": {
           "x": 360,
-          "y": -100
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -616,10 +616,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 380,
+          "x": 360,
           "y": 60
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Database",
@@ -657,10 +657,10 @@
         "title": "số click",
         "position": {
           "x": 500,
-          "y": 300
+          "y": 320
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",

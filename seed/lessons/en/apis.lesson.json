@@ -246,10 +246,10 @@
         "type": "process",
         "title": "mobile app",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -267,10 +267,10 @@
         "title": "mobile app",
         "description": "loading…",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -288,10 +288,10 @@
         "title": "mobile app",
         "description": "followers · page 2,001",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -309,10 +309,10 @@
         "title": "mobile app",
         "description": "⚠ app v3.2 · crashed",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -414,10 +414,10 @@
         "description": "service",
         "position": {
           "x": -140,
-          "y": 60
+          "y": 80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -435,10 +435,10 @@
         "description": "service · ⚠ 41,000 lookups · CPU 97%",
         "position": {
           "x": -140,
-          "y": 60
+          "y": 80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -456,10 +456,10 @@
         "description": "service · CPU 30%",
         "position": {
           "x": -140,
-          "y": 60
+          "y": 80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -477,10 +477,10 @@
         "description": "service · 2,000,000 followers · CPU 30%",
         "position": {
           "x": -140,
-          "y": 60
+          "y": 80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:User",
         "iconPosition": "left",

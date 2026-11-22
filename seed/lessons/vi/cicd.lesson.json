@@ -45,10 +45,10 @@
         "title": "",
         "position": {
           "x": 20,
-          "y": -360
+          "y": -380
         },
         "width": 520,
-        "height": 240,
+        "height": 280,
         "color": "#6b7a90",
         "backgroundColor": "#64748b",
         "borderColor": "#64748b",
@@ -63,7 +63,7 @@
         "title": "PIPELINE CI",
         "position": {
           "x": -180,
-          "y": -460
+          "y": -500
         },
         "width": 120,
         "height": 40,
@@ -316,10 +316,10 @@
         "description": "✓ máy sạch",
         "position": {
           "x": -100,
-          "y": -340
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hammer",
         "iconPosition": "left",
@@ -337,10 +337,10 @@
         "title": "Build",
         "position": {
           "x": -100,
-          "y": -340
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Hammer",
         "iconPosition": "left",
@@ -358,10 +358,10 @@
         "title": "Test",
         "position": {
           "x": 140,
-          "y": -340
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:FlaskConical",
         "iconPosition": "left",
@@ -380,10 +380,10 @@
         "description": "checkout:3f9c2a1",
         "position": {
           "x": 400,
-          "y": -340
+          "y": -360
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -400,10 +400,10 @@
         "title": "artifact",
         "position": {
           "x": 400,
-          "y": -340
+          "y": -360
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -420,10 +420,10 @@
         "title": "Staging",
         "description": "✓ smoke tests ✓",
         "position": {
-          "x": 420,
+          "x": 400,
           "y": 100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:FlaskConical",
@@ -441,10 +441,10 @@
         "title": "Production",
         "description": "CPU 40%",
         "position": {
-          "x": 420,
+          "x": 400,
           "y": 520
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -814,10 +814,10 @@
         "description": "name → full_name",
         "position": {
           "x": -300,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -835,10 +835,10 @@
         "description": "new_checkout: nhân viên + 1%",
         "position": {
           "x": -300,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ToggleRight",
         "iconPosition": "left",
@@ -1514,7 +1514,7 @@
           },
           {
             "x": -120,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "none"
@@ -1536,7 +1536,7 @@
           },
           {
             "x": -120,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "none"
@@ -1555,7 +1555,7 @@
         "bendPoints": [
           {
             "x": -120,
-            "y": 20
+            "y": 0
           },
           {
             "x": -120,
@@ -1581,7 +1581,7 @@
         "bendPoints": [
           {
             "x": -120,
-            "y": 20
+            "y": 0
           },
           {
             "x": -120,
@@ -1607,7 +1607,7 @@
         "bendPoints": [
           {
             "x": -120,
-            "y": 20
+            "y": 0
           },
           {
             "x": -120,
@@ -1633,7 +1633,7 @@
         "bendPoints": [
           {
             "x": -120,
-            "y": 20
+            "y": 0
           },
           {
             "x": -120,

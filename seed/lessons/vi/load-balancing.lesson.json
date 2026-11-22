@@ -8,10 +8,10 @@
         "type": "process",
         "title": "200.000 người dùng",
         "position": {
-          "x": 20,
-          "y": -480
+          "x": 0,
+          "y": -520
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -29,10 +29,10 @@
         "type": "process",
         "title": "200.000 người dùng",
         "position": {
-          "x": 20,
-          "y": -720
+          "x": 0,
+          "y": -800
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -52,10 +52,10 @@
         "description": "CPU 3%",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -73,10 +73,10 @@
         "description": "CPU 34%",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -94,10 +94,10 @@
         "description": "CPU 24%",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -115,10 +115,10 @@
         "description": "4 đang chạy · CPU 50%",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -136,10 +136,10 @@
         "description": "CPU 55%",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -157,10 +157,10 @@
         "description": "CPU 2%",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -178,10 +178,10 @@
         "description": "CPU 40%",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -199,10 +199,10 @@
         "description": "v1 · tiếp theo · CPU 50%",
         "position": {
           "x": -260,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -219,10 +219,10 @@
         "title": "Server B",
         "description": "CPU 100%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -240,10 +240,10 @@
         "title": "Server B",
         "description": "CPU 36%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -261,10 +261,10 @@
         "title": "Server B",
         "description": "23 đang chờ · CPU 97%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -282,10 +282,10 @@
         "title": "Server B",
         "description": "9 đang chạy · CPU 52%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -303,10 +303,10 @@
         "title": "Server B",
         "description": "CPU 57%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -324,10 +324,10 @@
         "title": "Server B",
         "description": "CPU 2%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -345,10 +345,10 @@
         "title": "API B",
         "description": "CPU 42%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -366,10 +366,10 @@
         "title": "Server B",
         "description": "rút cạn → v2 · CPU 5%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -557,7 +557,7 @@
         "title": "Bộ cân bằng tải",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -578,7 +578,7 @@
         "description": "round robin",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -599,7 +599,7 @@
         "description": "ít kết nối nhất",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -620,7 +620,7 @@
         "description": "⚠ SẬP",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -642,7 +642,7 @@
         "description": "CHỦ ĐỘNG · VIP",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -662,8 +662,8 @@
         "title": "LB dự phòng",
         "description": "DỰ PHÒNG",
         "position": {
-          "x": -500,
-          "y": -320
+          "x": -540,
+          "y": -360
         },
         "width": 200,
         "height": 80,
@@ -685,7 +685,7 @@
         "description": "CHỦ ĐỘNG · VIP",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -706,7 +706,7 @@
         "description": "L7 · định tuyến theo đường dẫn",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -727,7 +727,7 @@
         "description": "rolling deploy",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -748,7 +748,7 @@
         "description": "VIP",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,

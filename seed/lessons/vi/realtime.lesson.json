@@ -43,10 +43,10 @@
         "title": "Alice",
         "description": "có gì mới không?",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -63,10 +63,10 @@
         "type": "process",
         "title": "Alice",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -84,10 +84,10 @@
         "title": "Alice",
         "description": "một trong 1.000.000",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -105,10 +105,10 @@
         "title": "Alice",
         "description": "tin nhắn mới từ Bob",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -126,10 +126,10 @@
         "title": "Alice",
         "description": "ngoại tuyến · tàu điện ngầm",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -147,10 +147,10 @@
         "title": "Alice",
         "description": "online",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -169,10 +169,10 @@
         "description": "1 tin nhắn mới cho Alice",
         "position": {
           "x": 0,
-          "y": -100
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -190,10 +190,10 @@
         "description": "CPU 15%",
         "position": {
           "x": 0,
-          "y": -100
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -211,10 +211,10 @@
         "description": "⚠ 500.000 req/s · 95% trống · CPU 94%",
         "position": {
           "x": 0,
-          "y": -100
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -232,10 +232,10 @@
         "description": "giữ đến khi có tin · CPU 20%",
         "position": {
           "x": 0,
-          "y": -100
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -253,10 +253,10 @@
         "description": "socket của Alice",
         "position": {
           "x": 0,
-          "y": -100
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -274,10 +274,10 @@
         "description": "không có socket cho Alice",
         "position": {
           "x": 0,
-          "y": -100
+          "y": -120
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -355,10 +355,10 @@
         "title": "Pub/Sub",
         "description": "Redis",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 120
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Radio",
@@ -377,10 +377,10 @@
         "description": "đã lưu: 1042, 1043",
         "position": {
           "x": -260,
-          "y": 140
+          "y": 120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:MessageSquare",
         "iconPosition": "left",
@@ -398,10 +398,10 @@
         "description": "alice · thấy 4 s trước",
         "position": {
           "x": -260,
-          "y": 140
+          "y": 120
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Zap",
         "iconPosition": "left",

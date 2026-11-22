@@ -284,10 +284,10 @@
         "description": "GET /invoices/1043 → Acme’s!",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -305,10 +305,10 @@
         "description": "/invoices/1043 → 404",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -326,10 +326,10 @@
         "description": "⚠ PATCH /me { \"role\": \"admin\" }",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -347,10 +347,10 @@
         "description": "Globex rows only",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -367,10 +367,10 @@
         "title": "Eve · Globex",
         "position": {
           "x": 280,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -388,10 +388,10 @@
         "description": "checks: logged in? ✓",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -409,10 +409,10 @@
         "description": "checks: owner = caller’s org",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -430,10 +430,10 @@
         "description": "saves every field sent",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -451,10 +451,10 @@
         "description": "SET app.org = caller’s org",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -472,10 +472,10 @@
         "description": "role allows “edit”? ✓",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -493,10 +493,10 @@
         "description": "follows the relationship chain",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -513,10 +513,10 @@
         "title": "Invoices API",
         "position": {
           "x": 0,
-          "y": -140
+          "y": -160
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:File",
         "iconPosition": "left",
@@ -533,10 +533,10 @@
         "title": "invoices",
         "description": "1043 · Acme · $48,200",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:File",
@@ -553,10 +553,10 @@
         "type": "process",
         "title": "invoices",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:File",
@@ -574,10 +574,10 @@
         "title": "invoices",
         "description": "⚠ eve · role = admin!",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:File",
@@ -595,10 +595,10 @@
         "title": "invoices",
         "description": "row-level security: org_id",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:File",
@@ -616,10 +616,10 @@
         "title": "invoices",
         "description": "⚠ users · payments · invoices dumped",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 160
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:File",
@@ -678,11 +678,11 @@
         "title": "Reports",
         "description": "admin creds · injection bug",
         "position": {
-          "x": 300,
-          "y": 140
+          "x": 280,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -699,11 +699,11 @@
         "title": "Reports",
         "description": "read-only · invoices view · users table: denied",
         "position": {
-          "x": 300,
-          "y": 140
+          "x": 280,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -720,11 +720,11 @@
         "title": "Reports",
         "description": "own identity · all tenants",
         "position": {
-          "x": 300,
-          "y": 140
+          "x": 280,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -741,11 +741,11 @@
         "title": "Reports",
         "description": "acts as Alice · Acme only",
         "position": {
-          "x": 300,
-          "y": 140
+          "x": 280,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -762,11 +762,11 @@
         "title": "Reports",
         "description": "read-only · invoices view",
         "position": {
-          "x": 300,
-          "y": 140
+          "x": 280,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -782,11 +782,11 @@
         "type": "process",
         "title": "Reports",
         "position": {
-          "x": 300,
-          "y": 140
+          "x": 280,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -804,10 +804,10 @@
         "description": "alice viewed 1042 · 09:14",
         "position": {
           "x": -300,
-          "y": 140
+          "y": 160
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Clipboard",
         "iconPosition": "left",
@@ -824,10 +824,10 @@
         "title": "audit log",
         "position": {
           "x": -300,
-          "y": 140
+          "y": 160
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Clipboard",
         "iconPosition": "left",

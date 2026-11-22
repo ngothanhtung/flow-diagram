@@ -9,7 +9,7 @@
         "title": "",
         "position": {
           "x": 580,
-          "y": -600
+          "y": -640
         },
         "width": 280,
         "height": 160,
@@ -27,7 +27,7 @@
         "title": "THỜI GIAN ĐÃ ĐI ĐÂU\ntra DNS              20 ms\nbắt tay TCP + TLS    60 ms\nyêu cầu + server     55 ms\ntải về               20 ms\n→ tổng              155 ms\n# trong đó 130 ms là chờ mạng",
         "position": {
           "x": 580,
-          "y": -600
+          "y": -640
         },
         "width": 280,
         "height": 160,
@@ -44,7 +44,7 @@
         "description": "https://shop.example",
         "position": {
           "x": 0,
-          "y": -280
+          "y": -320
         },
         "width": 240,
         "height": 80,
@@ -65,7 +65,7 @@
         "description": "✓ trang sẵn sàng · 155 ms",
         "position": {
           "x": 0,
-          "y": -280
+          "y": -320
         },
         "width": 240,
         "height": 80,
@@ -86,7 +86,7 @@
         "description": "40 tệp · 1 kết nối",
         "position": {
           "x": 0,
-          "y": -280
+          "y": -320
         },
         "width": 240,
         "height": 80,
@@ -107,7 +107,7 @@
         "description": "https://shop.example",
         "position": {
           "x": 0,
-          "y": -640
+          "y": -680
         },
         "width": 240,
         "height": 80,
@@ -127,10 +127,10 @@
         "title": "DNS",
         "description": "bộ phân giải · → 203.0.113.7",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 20
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
@@ -148,10 +148,10 @@
         "title": "DNS",
         "description": "bộ phân giải",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 20
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Globe",
@@ -252,7 +252,7 @@
         "title": "CSDL",
         "position": {
           "x": 260,
-          "y": 280
+          "y": 320
         },
         "width": 200,
         "height": 160,
@@ -273,7 +273,7 @@
         "description": "400 ms · quét toàn bộ",
         "position": {
           "x": 260,
-          "y": 280
+          "y": 320
         },
         "width": 200,
         "height": 160,

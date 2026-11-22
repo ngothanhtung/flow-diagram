@@ -166,10 +166,10 @@
         "title": "Feed API",
         "description": "to be designed",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -187,10 +187,10 @@
         "title": "Feed API",
         "description": "merge 200 timelines",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -207,10 +207,10 @@
         "type": "process",
         "title": "Feed API",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -228,10 +228,10 @@
         "title": "Feed API",
         "description": "merge: my list + 3 celebrities",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -249,10 +249,10 @@
         "title": "Feed API",
         "description": "rebuild on open · max 500 at once",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -431,10 +431,10 @@
         "title": "Feed Cache",
         "description": "per-user lists",
         "position": {
-          "x": -340,
+          "x": -320,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
@@ -452,10 +452,10 @@
         "title": "Feed Cache",
         "description": "per-user lists · alice → [9041, 9038, 9017 …]",
         "position": {
-          "x": -340,
+          "x": -320,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
@@ -473,10 +473,10 @@
         "title": "Feed Cache",
         "description": "per-user lists · idle lists expire",
         "position": {
-          "x": -340,
+          "x": -320,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
@@ -494,10 +494,10 @@
         "title": "Feed Cache",
         "description": "per-user lists · empty · warming up",
         "position": {
-          "x": -340,
+          "x": -320,
           "y": -100
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Zap",
@@ -514,10 +514,10 @@
         "type": "process",
         "title": "Queue",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 240
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Inbox",
@@ -535,10 +535,10 @@
         "title": "Queue",
         "description": "⚠ backlog: 50 M deliveries",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 240
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Inbox",
@@ -556,10 +556,10 @@
         "title": "Queue",
         "description": "✓ celebrities skipped",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 240
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Inbox",
@@ -638,10 +638,10 @@
         "type": "process",
         "title": "who follows whom",
         "position": {
-          "x": -340,
+          "x": -320,
           "y": 500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Network",

@@ -178,10 +178,10 @@
         "type": "process",
         "title": "20.000 người dùng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -400
         },
-        "width": 280,
+        "width": 320,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -199,10 +199,10 @@
         "type": "process",
         "title": "người dùng thấy $20",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -400
         },
-        "width": 280,
+        "width": 320,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -220,10 +220,10 @@
         "type": "process",
         "title": "người dùng thấy $25",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -400
         },
-        "width": 280,
+        "width": 320,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -241,10 +241,10 @@
         "type": "process",
         "title": "mọi người mở trang chủ",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -400
         },
-        "width": 280,
+        "width": 320,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -262,10 +262,10 @@
         "type": "process",
         "title": "người dùng thật + crawler đoán ID",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -400
         },
-        "width": 280,
+        "width": 320,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -494,10 +494,10 @@
         "description": "trong bộ nhớ",
         "position": {
           "x": -300,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -515,10 +515,10 @@
         "description": "trong bộ nhớ · ⚠ giá: $20 · đã cũ",
         "position": {
           "x": -300,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -536,10 +536,10 @@
         "description": "trong bộ nhớ · TTL 60 s · giá: $25",
         "position": {
           "x": -300,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -557,10 +557,10 @@
         "description": "trong bộ nhớ · ⚠ bộ nhớ đầy",
         "position": {
           "x": -300,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -578,10 +578,10 @@
         "description": "trong bộ nhớ · trang chủ · hết hạn",
         "position": {
           "x": -300,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -599,10 +599,10 @@
         "description": "trong bộ nhớ · ✓ làm mới sớm · 1 lần lấy",
         "position": {
           "x": -300,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -620,10 +620,10 @@
         "description": "trong bộ nhớ · ⚠ không có gì để cache",
         "position": {
           "x": -300,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -641,10 +641,10 @@
         "description": "trong bộ nhớ · “không tìm thấy” · TTL 30 giây",
         "position": {
           "x": -300,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",

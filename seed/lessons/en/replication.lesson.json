@@ -139,10 +139,10 @@
         "type": "process",
         "title": "App Server",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -160,10 +160,10 @@
         "title": "database",
         "description": "CPU 90%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -181,10 +181,10 @@
         "title": "leader",
         "description": "CPU 90%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -202,10 +202,10 @@
         "title": "leader",
         "description": "CPU 30%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -223,10 +223,10 @@
         "title": "leader",
         "description": "name: Alice Kim · CPU 30%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -244,10 +244,10 @@
         "title": "leader",
         "description": "name: Alice Kim · CPU 32%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -265,10 +265,10 @@
         "title": "leader",
         "description": "⚠ DOWN",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -370,10 +370,10 @@
         "title": "leader",
         "description": "✓ promoted · CPU 30%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -391,10 +391,10 @@
         "title": "leader",
         "description": "CPU 30%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -412,10 +412,10 @@
         "title": "leader",
         "description": "⚠ email = NULL · 2M rows · CPU 30%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 0
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
@@ -558,11 +558,11 @@
         "title": "analytics replica",
         "description": "20-min report",
         "position": {
-          "x": 20,
-          "y": 420
+          "x": 0,
+          "y": 440
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:ChartColumn",
         "iconPosition": "left",
@@ -599,10 +599,10 @@
         "title": "backups",
         "description": "✓ snapshot 03:00 + write log",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 440
         },
-        "width": 200,
+        "width": 240,
         "height": 160,
         "shape": "database",
         "icon": "lucide:Clock",

@@ -287,10 +287,10 @@
         "type": "process",
         "title": "API Gateway",
         "position": {
-          "x": -140,
+          "x": -160,
           "y": -280
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
@@ -368,10 +368,10 @@
         "title": "Payments",
         "description": "another service",
         "position": {
-          "x": 60,
+          "x": 40,
           "y": 520
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
@@ -431,10 +431,10 @@
         "title": "orders table",
         "position": {
           "x": -320,
-          "y": 540
+          "y": 520
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -452,10 +452,10 @@
         "description": "index (user_id, created_at)",
         "position": {
           "x": -320,
-          "y": 540
+          "y": 520
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -575,10 +575,10 @@
         "title": "Controller",
         "description": "HTTP in",
         "position": {
-          "x": -140,
+          "x": -160,
           "y": -80
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Braces",
@@ -639,10 +639,10 @@
         "type": "process",
         "title": "Repository",
         "position": {
-          "x": -340,
+          "x": -320,
           "y": 320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Database",
@@ -1019,7 +1019,7 @@
             "y": 220
           },
           {
-            "x": -340,
+            "x": -320,
             "y": 220
           }
         ],
@@ -1046,7 +1046,7 @@
             "y": 220
           },
           {
-            "x": -340,
+            "x": -320,
             "y": 220
           }
         ],

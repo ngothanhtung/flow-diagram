@@ -314,10 +314,10 @@
         "type": "process",
         "title": "người xem",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -720
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -357,10 +357,10 @@
         "description": "CPU 95%",
         "position": {
           "x": 40,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -378,10 +378,10 @@
         "description": "CPU 30%",
         "position": {
           "x": 40,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -397,10 +397,10 @@
         "type": "process",
         "title": "Dashboard",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -418,10 +418,10 @@
         "title": "Dashboard",
         "description": "thịnh hành: của hôm qua",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -439,10 +439,10 @@
         "title": "Dashboard",
         "description": "thịnh hành: bây giờ",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -460,10 +460,10 @@
         "title": "Dashboard",
         "description": "số đếm trực tiếp: cũ 4 phút",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -481,10 +481,10 @@
         "title": "Dashboard",
         "description": "người xem duy nhất ≈ 48,2 tr",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:ChartLine",
@@ -502,10 +502,10 @@
         "title": "log sự kiện",
         "position": {
           "x": -380,
-          "y": -380
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Box",
         "iconPosition": "left",
@@ -645,10 +645,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -500,
+          "x": -520,
           "y": 200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
@@ -665,10 +665,10 @@
         "type": "process",
         "title": "reduce",
         "position": {
-          "x": -500,
+          "x": -520,
           "y": 200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
@@ -686,10 +686,10 @@
         "type": "process",
         "title": "40% dữ liệu · 3 giờ",
         "position": {
-          "x": -500,
+          "x": -520,
           "y": 200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
@@ -707,10 +707,10 @@
         "type": "process",
         "title": "reduce · đều nhau",
         "position": {
-          "x": -500,
+          "x": -520,
           "y": 200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
@@ -728,10 +728,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": -260,
+          "x": -240,
           "y": 200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
@@ -748,10 +748,10 @@
         "type": "process",
         "title": "reduce",
         "position": {
-          "x": -260,
+          "x": -240,
           "y": 200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
@@ -769,10 +769,10 @@
         "type": "process",
         "title": "5 phút",
         "position": {
-          "x": -260,
+          "x": -240,
           "y": 200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
@@ -790,10 +790,10 @@
         "type": "process",
         "title": "reduce · đều nhau",
         "position": {
-          "x": -260,
+          "x": -240,
           "y": 200
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Cpu",
@@ -1039,10 +1039,10 @@
         "type": "process",
         "title": "số đếm trực tiếp",
         "position": {
-          "x": 380,
+          "x": 360,
           "y": 500
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Zap",

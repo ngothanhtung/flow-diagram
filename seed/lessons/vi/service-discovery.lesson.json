@@ -44,10 +44,10 @@
         "description": "config: 10.0.3.7, 10.0.3.8",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -65,10 +65,10 @@
         "description": "danh sách trong cache · 10 s",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -85,10 +85,10 @@
         "title": "Đơn hàng",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -106,10 +106,10 @@
         "description": "phân giải payments.internal",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -127,10 +127,10 @@
         "description": "danh sách trong cache · vẫn chạy",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -148,10 +148,10 @@
         "description": "retry · TLS · metric (Java)",
         "position": {
           "x": -440,
-          "y": -20
+          "y": -40
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ShoppingCart",
         "iconPosition": "left",
@@ -340,10 +340,10 @@
         "description": "payments → .3.8, .5.21",
         "position": {
           "x": 440,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -361,10 +361,10 @@
         "description": "payments → .3.8, .6.4",
         "position": {
           "x": 440,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -381,10 +381,10 @@
         "title": "Registry",
         "position": {
           "x": 440,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -402,10 +402,10 @@
         "description": "TTL 10 s",
         "position": {
           "x": 440,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Globe",
         "iconPosition": "left",
@@ -423,10 +423,10 @@
         "description": "✓ leader · 2 trên 3 còn chạy",
         "position": {
           "x": 440,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Signpost",
         "iconPosition": "left",
@@ -443,10 +443,10 @@
         "title": "Control plane",
         "position": {
           "x": 440,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Settings",
         "iconPosition": "left",
@@ -464,10 +464,10 @@
         "description": "10.0.6.4 · ✓ mới · đã đăng ký",
         "position": {
           "x": 20,
-          "y": -380
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -485,10 +485,10 @@
         "description": "10.0.6.4",
         "position": {
           "x": 20,
-          "y": -380
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -506,10 +506,10 @@
         "description": "10.0.6.4 · retry · TLS · metric (Go)",
         "position": {
           "x": 20,
-          "y": -380
+          "y": -360
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -546,10 +546,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 460,
+          "x": 440,
           "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Signpost",
@@ -587,7 +587,7 @@
         "title": "",
         "position": {
           "x": 100,
-          "y": -240
+          "y": -200
         },
         "width": 200,
         "height": 80,
@@ -626,10 +626,10 @@
         "type": "process",
         "title": "ứng dụng & trình duyệt",
         "position": {
-          "x": -460,
+          "x": -440,
           "y": -840
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -648,10 +648,10 @@
         "title": "API Gateway",
         "description": "xác thực · giới hạn tốc độ · định tuyến",
         "position": {
-          "x": -460,
+          "x": -440,
           "y": -420
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Route",
@@ -678,7 +678,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -705,7 +705,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -822,7 +822,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -849,7 +849,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -877,7 +877,7 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
@@ -993,7 +993,7 @@
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "heartbeat",
@@ -1019,7 +1019,7 @@
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "none"
@@ -1042,7 +1042,7 @@
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "heartbeat",
@@ -1068,7 +1068,7 @@
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "heartbeat",
@@ -1263,11 +1263,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1290,11 +1290,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1317,11 +1317,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1344,11 +1344,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1371,11 +1371,11 @@
         "bendPoints": [
           {
             "x": -220,
-            "y": -20
+            "y": -40
           },
           {
             "x": -220,
-            "y": -380
+            "y": -360
           }
         ],
         "effect": "comet",
@@ -1399,11 +1399,11 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "heartbeat",
@@ -1425,11 +1425,11 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "heartbeat",
@@ -1451,11 +1451,11 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "heartbeat",
@@ -1477,11 +1477,11 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "heartbeat",
@@ -1503,11 +1503,11 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "heartbeat",
@@ -1529,11 +1529,11 @@
         "bendPoints": [
           {
             "x": 220,
-            "y": -380
+            "y": -360
           },
           {
             "x": 220,
-            "y": 20
+            "y": 0
           }
         ],
         "effect": "heartbeat",

@@ -477,10 +477,10 @@
         "description": "?",
         "position": {
           "x": -220,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -498,10 +498,10 @@
         "description": "p99 30 ms",
         "position": {
           "x": -220,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -518,10 +518,10 @@
         "title": "Kho",
         "position": {
           "x": -220,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",
@@ -539,10 +539,10 @@
         "description": "⚠ thay đổi cấu hình 03:10",
         "position": {
           "x": -220,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Package",
         "iconPosition": "left",

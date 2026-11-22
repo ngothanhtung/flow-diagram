@@ -173,10 +173,10 @@
         "title": "Trang trong bộ nhớ",
         "position": {
           "x": 20,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -194,10 +194,10 @@
         "description": "mất điện · mất 4 giây ghi",
         "position": {
           "x": 20,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -216,10 +216,10 @@
         "description": "checkpoint: đang flush",
         "position": {
           "x": 20,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -237,10 +237,10 @@
         "description": "⚠ đầy trang đã đổi · CPU 100%",
         "position": {
           "x": 20,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Zap",
         "iconPosition": "left",
@@ -258,10 +258,10 @@
         "description": "đã sắp xếp · trong bộ nhớ",
         "position": {
           "x": 20,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -279,10 +279,10 @@
         "description": "đã sắp xếp · trong bộ nhớ · GET user:42 · không ở đây",
         "position": {
           "x": 20,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:ListOrdered",
         "iconPosition": "left",
@@ -760,10 +760,10 @@
         "description": "✓ fsync trước “đã lưu”",
         "position": {
           "x": 500,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -782,10 +782,10 @@
         "description": "1 fsync cho 8 giao dịch",
         "position": {
           "x": 500,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -804,10 +804,10 @@
         "description": "✓ bỏ các mục cũ",
         "position": {
           "x": 500,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -825,10 +825,10 @@
         "title": "Log",
         "position": {
           "x": 500,
-          "y": -220
+          "y": -200
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Scroll",
         "iconPosition": "left",
@@ -966,10 +966,10 @@
         "title": "tệp đã sắp xếp (SSTable) · cũ nhất",
         "position": {
           "x": -400,
-          "y": 380
+          "y": 400
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -986,10 +986,10 @@
         "title": "không ở đây",
         "position": {
           "x": -400,
-          "y": 380
+          "y": 400
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1006,10 +1006,10 @@
         "title": "",
         "position": {
           "x": -120,
-          "y": 380
+          "y": 400
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1026,10 +1026,10 @@
         "title": "✓ có thể → tìm thấy",
         "position": {
           "x": -120,
-          "y": 380
+          "y": 400
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1046,10 +1046,10 @@
         "title": "",
         "position": {
           "x": 140,
-          "y": 380
+          "y": 400
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1066,10 +1066,10 @@
         "title": "không ở đây",
         "position": {
           "x": 140,
-          "y": 380
+          "y": 400
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1086,10 +1086,10 @@
         "title": "mới nhất",
         "position": {
           "x": 380,
-          "y": 380
+          "y": 400
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",
@@ -1106,10 +1106,10 @@
         "title": "không ở đây",
         "position": {
           "x": 380,
-          "y": 380
+          "y": 400
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": null,
         "color": "#d3adf7",

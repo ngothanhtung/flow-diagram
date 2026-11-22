@@ -9,10 +9,10 @@
         "title": "Alice",
         "description": "✓ giỏ: 2 món",
         "position": {
-          "x": 20,
-          "y": -660
+          "x": 0,
+          "y": -740
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -30,10 +30,10 @@
         "title": "Alice",
         "description": "⚠ đã đăng xuất · giỏ trống",
         "position": {
-          "x": 20,
-          "y": -660
+          "x": 0,
+          "y": -740
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -51,10 +51,10 @@
         "title": "Alice",
         "description": "token có chữ ký: Alice",
         "position": {
-          "x": 20,
-          "y": -660
+          "x": 0,
+          "y": -740
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -72,10 +72,10 @@
         "title": "Alice",
         "description": "⚠ ảnh đại diện: ảnh hỏng",
         "position": {
-          "x": 20,
-          "y": -660
+          "x": 0,
+          "y": -740
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -93,10 +93,10 @@
         "title": "Alice",
         "description": "✓ ảnh đại diện ✓",
         "position": {
-          "x": 20,
-          "y": -660
+          "x": 0,
+          "y": -740
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -114,7 +114,7 @@
         "title": "Bộ cân bằng tải",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -135,7 +135,7 @@
         "description": "round robin",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -156,7 +156,7 @@
         "description": "sticky: Alice → A",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -177,7 +177,7 @@
         "description": "sticky: Alice → B",
         "position": {
           "x": 0,
-          "y": -320
+          "y": -360
         },
         "width": 240,
         "height": 80,
@@ -281,10 +281,10 @@
         "type": "process",
         "title": "Server B",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 20
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -302,10 +302,10 @@
         "title": "Server B",
         "description": "⚠ không có phiên của Alice",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 20
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -323,10 +323,10 @@
         "title": "Server B",
         "description": "phi trạng thái",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 20
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -344,10 +344,10 @@
         "title": "Server B",
         "description": "⚠ avatar.png?",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 20
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -448,10 +448,10 @@
         "title": "kho phiên",
         "description": "Alice · giỏ 2",
         "position": {
-          "x": 20,
-          "y": 340
+          "x": 0,
+          "y": 380
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "database",
         "icon": "lucide:Zap",
@@ -470,7 +470,7 @@
         "description": "avatar.png",
         "position": {
           "x": 0,
-          "y": 340
+          "y": 380
         },
         "width": 240,
         "height": 120,

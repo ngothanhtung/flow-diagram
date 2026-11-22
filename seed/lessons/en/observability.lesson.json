@@ -642,10 +642,10 @@
         "title": "orders DB",
         "position": {
           "x": 20,
-          "y": 260
+          "y": 280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -663,10 +663,10 @@
         "description": "p99 8 ms",
         "position": {
           "x": 20,
-          "y": 260
+          "y": 280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

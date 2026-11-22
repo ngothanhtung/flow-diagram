@@ -9,7 +9,7 @@
         "title": "",
         "position": {
           "x": 640,
-          "y": -600
+          "y": -640
         },
         "width": 400,
         "height": 160,
@@ -27,7 +27,7 @@
         "title": "WHERE THE TIME WENT\nDNS lookup           20 ms\nTCP + TLS handshake  60 ms\nrequest + server     55 ms\ndownload             20 ms\n→ total             155 ms\n# 130 ms of it is waiting on the network",
         "position": {
           "x": 640,
-          "y": -600
+          "y": -640
         },
         "width": 400,
         "height": 160,
@@ -44,7 +44,7 @@
         "description": "https://shop.example",
         "position": {
           "x": 0,
-          "y": -280
+          "y": -320
         },
         "width": 240,
         "height": 80,
@@ -65,7 +65,7 @@
         "description": "✓ page ready · 155 ms",
         "position": {
           "x": 0,
-          "y": -280
+          "y": -320
         },
         "width": 240,
         "height": 80,
@@ -86,7 +86,7 @@
         "description": "40 files · 1 connection",
         "position": {
           "x": 0,
-          "y": -280
+          "y": -320
         },
         "width": 240,
         "height": 80,
@@ -107,7 +107,7 @@
         "description": "https://shop.example",
         "position": {
           "x": 0,
-          "y": -640
+          "y": -680
         },
         "width": 240,
         "height": 80,
@@ -127,10 +127,10 @@
         "title": "DNS",
         "description": "resolver · → 203.0.113.7",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 40
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Globe",
@@ -148,10 +148,10 @@
         "title": "DNS",
         "description": "resolver",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 40
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Globe",

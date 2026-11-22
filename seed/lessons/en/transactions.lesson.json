@@ -866,10 +866,10 @@
         "description": "3 s per charge",
         "position": {
           "x": -420,
-          "y": -180
+          "y": -160
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -886,10 +886,10 @@
         "title": "Payment Provider",
         "position": {
           "x": -420,
-          "y": -180
+          "y": -160
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",

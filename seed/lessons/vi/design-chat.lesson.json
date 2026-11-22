@@ -110,10 +110,10 @@
         "type": "process",
         "title": "Alice",
         "position": {
-          "x": -300,
+          "x": -280,
           "y": -440
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -131,10 +131,10 @@
         "title": "Alice",
         "description": "thử lại · cùng id 7f3a",
         "position": {
-          "x": -300,
+          "x": -280,
           "y": -440
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -152,10 +152,10 @@
         "title": "Alice",
         "description": "thấy: Bob đang online",
         "position": {
-          "x": -300,
+          "x": -280,
           "y": -440
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -419,10 +419,10 @@
         "type": "process",
         "title": "Gateway 1",
         "position": {
-          "x": -300,
+          "x": -280,
           "y": -120
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Network",
@@ -586,10 +586,10 @@
         "title": "kho tin nhắn",
         "position": {
           "x": -280,
-          "y": 220
+          "y": 240
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -607,10 +607,10 @@
         "description": "cuộc 88 · #42 #43 đang chờ",
         "position": {
           "x": -280,
-          "y": 220
+          "y": 240
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

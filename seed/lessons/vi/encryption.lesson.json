@@ -248,10 +248,10 @@
         "type": "process",
         "title": "",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -280
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Wifi",
@@ -330,11 +330,11 @@
         "type": "process",
         "title": "Ứng dụng",
         "position": {
-          "x": 20,
-          "y": 140
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -351,11 +351,11 @@
         "title": "Ứng dụng",
         "description": "mTLS · chứng chỉ riêng",
         "position": {
-          "x": 20,
-          "y": 140
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -372,11 +372,11 @@
         "title": "Ứng dụng",
         "description": "Khóa API trong mã nguồn",
         "position": {
-          "x": 20,
-          "y": 140
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -393,11 +393,11 @@
         "title": "Ứng dụng",
         "description": "✓ không có bí mật trong mã",
         "position": {
-          "x": 20,
-          "y": 140
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -414,11 +414,11 @@
         "title": "Ứng dụng",
         "description": "✓ không bao giờ thấy số thẻ",
         "position": {
-          "x": 20,
-          "y": 140
+          "x": 0,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Server",
         "iconPosition": "left",
@@ -435,10 +435,10 @@
         "title": "DB khách hàng",
         "position": {
           "x": 0,
-          "y": 380
+          "y": 360
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -456,10 +456,10 @@
         "description": "⚠ sao lưu trong bucket công khai",
         "position": {
           "x": 0,
-          "y": 380
+          "y": 360
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -477,10 +477,10 @@
         "description": "đã mã hóa · AES-256",
         "position": {
           "x": 0,
-          "y": 380
+          "y": 360
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -498,10 +498,10 @@
         "description": "khóa dữ liệu được bọc lại · v2",
         "position": {
           "x": 0,
-          "y": 380
+          "y": 360
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -519,10 +519,10 @@
         "description": "thẻ: tok_4f2c",
         "position": {
           "x": 0,
-          "y": 380
+          "y": 360
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:User",
         "iconPosition": "left",
@@ -540,10 +540,10 @@
         "description": "đọc: alice / hunter2",
         "position": {
           "x": -340,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -561,10 +561,10 @@
         "description": "thấy byte ngẫu nhiên",
         "position": {
           "x": -340,
-          "y": -60
+          "y": -80
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Laptop",
         "iconPosition": "left",
@@ -581,10 +581,10 @@
         "title": "kẻ trộm",
         "description": "đọc mọi khách hàng",
         "position": {
-          "x": 300,
+          "x": 320,
           "y": 360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -602,10 +602,10 @@
         "title": "kẻ trộm",
         "description": "chỉ bản mã",
         "position": {
-          "x": 300,
+          "x": 320,
           "y": 360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -623,10 +623,10 @@
         "title": "kẻ trộm",
         "description": "trộm token · vô dụng",
         "position": {
-          "x": 300,
+          "x": 320,
           "y": 360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Laptop",
@@ -644,10 +644,10 @@
         "title": "KMS",
         "description": "dịch vụ khóa",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": 600
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Key",
@@ -728,11 +728,11 @@
         "title": "Trình quản lý bí mật",
         "description": "xoay vòng mỗi 30 ngày",
         "position": {
-          "x": -300,
-          "y": 140
+          "x": -280,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -748,11 +748,11 @@
         "type": "process",
         "title": "Trình quản lý bí mật",
         "position": {
-          "x": -300,
-          "y": 140
+          "x": -280,
+          "y": 160
         },
-        "width": 200,
-        "height": 120,
+        "width": 240,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:LockKeyhole",
         "iconPosition": "left",
@@ -770,10 +770,10 @@
         "description": "giữ số thẻ thật",
         "position": {
           "x": -280,
-          "y": 380
+          "y": 360
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:CreditCard",
         "iconPosition": "left",
@@ -790,10 +790,10 @@
         "title": "Máy chủ chat",
         "description": "chỉ thấy bản mã",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:MessageSquare",
@@ -811,10 +811,10 @@
         "title": "Bob",
         "description": "giải mã bằng khóa riêng",
         "position": {
-          "x": 300,
+          "x": 320,
           "y": -160
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Smartphone",
@@ -1455,11 +1455,11 @@
         "bendPoints": [
           {
             "x": -140,
-            "y": 140
+            "y": 160
           },
           {
             "x": -140,
-            "y": 380
+            "y": 360
           }
         ],
         "effect": "chase",

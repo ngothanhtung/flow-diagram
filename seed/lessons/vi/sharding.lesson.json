@@ -292,10 +292,10 @@
         "description": "CPU 50%",
         "position": {
           "x": -480,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -313,10 +313,10 @@
         "description": "CPU 12%",
         "position": {
           "x": -480,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -334,10 +334,10 @@
         "description": "CPU 50%",
         "position": {
           "x": -480,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -355,10 +355,10 @@
         "description": "CPU 20%",
         "position": {
           "x": -480,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -376,10 +376,10 @@
         "description": "CPU 50%",
         "position": {
           "x": -480,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -397,10 +397,10 @@
         "description": "CPU 50%",
         "position": {
           "x": -480,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -418,10 +418,10 @@
         "description": "CPU 50%",
         "position": {
           "x": -160,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -439,10 +439,10 @@
         "description": "CPU 14%",
         "position": {
           "x": -160,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -460,10 +460,10 @@
         "description": "CPU 50%",
         "position": {
           "x": -160,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -481,10 +481,10 @@
         "description": "CPU 20%",
         "position": {
           "x": -160,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -502,10 +502,10 @@
         "description": "CPU 50%",
         "position": {
           "x": -160,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -523,10 +523,10 @@
         "description": "CPU 50%",
         "position": {
           "x": -160,
-          "y": 20
+          "y": 0
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -544,10 +544,10 @@
         "description": "CPU 50%",
         "position": {
           "x": 180,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -565,10 +565,10 @@
         "description": "CPU 20%",
         "position": {
           "x": 180,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -586,10 +586,10 @@
         "description": "CPU 50%",
         "position": {
           "x": 180,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -607,10 +607,10 @@
         "description": "CPU 98%",
         "position": {
           "x": 180,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -628,10 +628,10 @@
         "description": "CPU 50%",
         "position": {
           "x": 180,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -649,10 +649,10 @@
         "description": "CPU 50%",
         "position": {
           "x": 180,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -670,10 +670,10 @@
         "description": "CPU 50%",
         "position": {
           "x": 500,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -691,10 +691,10 @@
         "description": "CPU 97%",
         "position": {
           "x": 500,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -712,10 +712,10 @@
         "description": "CPU 50%",
         "position": {
           "x": 500,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -733,10 +733,10 @@
         "description": "CPU 20%",
         "position": {
           "x": 500,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -754,10 +754,10 @@
         "description": "CPU 50%",
         "position": {
           "x": 500,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -775,10 +775,10 @@
         "description": "CPU 50%",
         "position": {
           "x": 500,
-          "y": 20
+          "y": 0
         },
         "width": 280,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -796,10 +796,10 @@
         "description": "CPU 50%",
         "position": {
           "x": 820,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

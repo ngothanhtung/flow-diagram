@@ -246,10 +246,10 @@
         "type": "process",
         "title": "1.000 người dùng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -267,10 +267,10 @@
         "type": "process",
         "title": "7.000 người dùng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -288,10 +288,10 @@
         "type": "process",
         "title": "9.600 người dùng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -309,10 +309,10 @@
         "type": "process",
         "title": "người dùng ở New York",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -330,10 +330,10 @@
         "type": "process",
         "title": "7.000 lượt tìm kiếm",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -351,10 +351,10 @@
         "type": "process",
         "title": "sự kiện từ ứng dụng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Users",
@@ -540,10 +540,10 @@
         "type": "process",
         "title": "▮ ▮",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -80
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "queue",
         "icon": null,
@@ -559,10 +559,10 @@
         "type": "process",
         "title": "▮ ▮ ▮ ▮ ▮ ▮",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -80
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "queue",
         "icon": null,
@@ -578,10 +578,10 @@
         "type": "process",
         "title": "▮",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -80
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "queue",
         "icon": null,
@@ -718,10 +718,10 @@
         "title": "CSDL",
         "position": {
           "x": 300,
-          "y": 20
+          "y": 0
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",

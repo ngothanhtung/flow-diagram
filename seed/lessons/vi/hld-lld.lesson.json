@@ -639,10 +639,10 @@
         "type": "process",
         "title": "Repository",
         "position": {
-          "x": -340,
+          "x": -320,
           "y": 320
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Database",
@@ -1019,7 +1019,7 @@
             "y": 220
           },
           {
-            "x": -340,
+            "x": -320,
             "y": 220
           }
         ],
@@ -1046,7 +1046,7 @@
             "y": 220
           },
           {
-            "x": -340,
+            "x": -320,
             "y": 220
           }
         ],

@@ -186,10 +186,10 @@
         "type": "process",
         "title": "Máy chủ ứng dụng",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -260
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -207,10 +207,10 @@
         "title": "Máy chủ ứng dụng",
         "description": "CPU 85%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -260
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -228,10 +228,10 @@
         "title": "Máy chủ ứng dụng",
         "description": "chuyển tiếp lượt tải 2 GB · CPU 90%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -260
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -249,10 +249,10 @@
         "title": "Máy chủ ứng dụng",
         "description": "CPU 20%",
         "position": {
-          "x": 20,
+          "x": 0,
           "y": -260
         },
-        "width": 200,
+        "width": 240,
         "height": 120,
         "shape": "rounded",
         "icon": "lucide:Server",
@@ -271,10 +271,10 @@
         "description": "ảnh dạng BLOB",
         "position": {
           "x": 0,
-          "y": 260
+          "y": 280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -292,10 +292,10 @@
         "description": "⚠ +2 TB / ngày · CPU 95%",
         "position": {
           "x": 0,
-          "y": 260
+          "y": 280
         },
         "width": 240,
-        "height": 120,
+        "height": 160,
         "shape": "database",
         "icon": "lucide:Database",
         "iconPosition": "left",
@@ -540,10 +540,10 @@
         "description": "đổi kích thước · xóa GPS · chuyển mã",
         "position": {
           "x": 940,
-          "y": 260
+          "y": 280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Workflow",
         "iconPosition": "left",
@@ -560,10 +560,10 @@
         "title": "Worker",
         "position": {
           "x": 940,
-          "y": 260
+          "y": 280
         },
         "width": 200,
-        "height": 120,
+        "height": 160,
         "shape": "rounded",
         "icon": "lucide:Workflow",
         "iconPosition": "left",
@@ -579,10 +579,10 @@
         "type": "process",
         "title": "CDN",
         "position": {
-          "x": 460,
+          "x": 440,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Globe",
@@ -600,10 +600,10 @@
         "title": "CDN",
         "description": "các đoạn · mỗi đoạn 4 s",
         "position": {
-          "x": 460,
+          "x": 440,
           "y": -360
         },
-        "width": 200,
+        "width": 240,
         "height": 80,
         "shape": "rounded",
         "icon": "lucide:Globe",
@@ -790,7 +790,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           },
           {
@@ -817,7 +817,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           },
           {
@@ -839,7 +839,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           },
           {
@@ -866,7 +866,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           },
           {
@@ -893,7 +893,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           },
           {
@@ -920,7 +920,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           },
           {
@@ -947,7 +947,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           },
           {
@@ -974,7 +974,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           },
           {
@@ -1002,7 +1002,7 @@
         "toSide": "top",
         "bendPoints": [
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           },
           {
@@ -1174,7 +1174,7 @@
             "y": 0
           },
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           }
         ],
@@ -1201,7 +1201,7 @@
             "y": 0
           },
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           }
         ],
@@ -1224,7 +1224,7 @@
             "y": 0
           },
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           }
         ],
@@ -1252,7 +1252,7 @@
             "y": 0
           },
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           }
         ],
@@ -1275,7 +1275,7 @@
             "y": 0
           },
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           }
         ],
@@ -1298,7 +1298,7 @@
             "y": 0
           },
           {
-            "x": 20,
+            "x": 0,
             "y": 0
           }
         ],
