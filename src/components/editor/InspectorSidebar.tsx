@@ -6,7 +6,6 @@ import { EdgeInspector } from '@/components/EdgeInspector';
 import { JsonInspector } from '@/components/JsonInspector';
 import { JsonPlaygroundPanel } from '@/components/editor/JsonPlaygroundPanel';
 import { NodeInspector } from '@/components/inspector/NodeInspector';
-import { Drawer, DrawerContent } from '@/components/ui/drawer';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { EdgeStylePaletteDialog } from '@/components/editor/EdgeStylePaletteDialog';
 import { useHistoryGestureScope } from '@/components/editor/use-history-gesture-scope';
@@ -16,19 +15,16 @@ import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { resolveNodeStyle } from '@/lib/node-style';
 
 /**
- * Right-hand inspector, rendered as a non-modal drawer that floats over
- * the canvas so the canvas keeps its full width and stays clickable while
- * you edit. Node and edge inspectors are identical on every editing
+ * The Inspector: a column docked at the right edge of every editor, in the
+ * Narration preview's look — a small uppercase header strip, a hairline on
+ * the left, flat sections inside. It opens while a node or line is selected
+ * or Info is on. Node and edge panels are identical on every editing
  * surface; `children` carries whatever info panels that surface wants
- * below them (rendered only while Info is toggled on).
+ * below them (rendered only while Info is toggled on). `hidden` keeps it
+ * shut without touching the selection, so it comes back as it was (e.g.
+ * while a Lesson Preview covers the editor).
  */
-/** `hidden` keeps the drawer shut without touching the selection, so it comes back as it was (e.g. while a Lesson Preview covers the editor). */
-/**
- * `docked` (the Lesson editor) lays it out as a column at the right edge
- * instead — the same look as the Narration preview beside it: a small
- * uppercase header strip, a hairline on the left, no floating card.
- */
-export function InspectorSidebar({ document, ariaLabel, children, hidden = false, docked = false }: { document: FlowDocumentJSON; ariaLabel: string; children?: ReactNode; hidden?: boolean; docked?: boolean }) {
+export function InspectorSidebar({ document, ariaLabel, children, hidden = false }: { document: FlowDocumentJSON; ariaLabel: string; children?: ReactNode; hidden?: boolean }) {
   const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
   const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
   const infoOpen = useEditorStore((state) => state.infoOpen);
@@ -49,7 +45,8 @@ export function InspectorSidebar({ document, ariaLabel, children, hidden = false
   const open = !hidden && (selectedNode !== null || selectedEdge !== null || infoOpen);
   const body = (
     <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
-      <div className='flex min-h-full flex-col gap-3 p-2'>
+      {/* Flat sections divided by hairlines, like the Narration preview — no card per panel. */}
+      <div className='flex min-h-full flex-col divide-y divide-border'>
         {selectedNode && !selectedEdge && (
           <NodeInspector
             key={`${selectedNode.id}:${historyRevision}`}
@@ -97,77 +94,51 @@ export function InspectorSidebar({ document, ariaLabel, children, hidden = false
     </ScrollArea>
   );
 
-  if (docked) {
-    return (
-      <div {...historyGestures} className='contents'>
-        {open && (
-          <aside
-            aria-label={ariaLabel}
-            data-shortcuts='all'
-            className='flex w-80 shrink-0 flex-col border-l border-border bg-card/40 lg:w-96'
-            onKeyDown={(event) => {
-              if (event.key !== 'Escape') return;
-              const target = event.target as HTMLElement;
-              if (target.closest('input, textarea, select, [contenteditable="true"]')) return;
-              selectNode(null);
-              selectEdge(null);
-              if (infoOpen) toggleInfo();
-            }}
-          >
-            <div className='flex shrink-0 items-center gap-1.5 border-b border-border px-4 py-2 font-reading text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>
-              <SlidersHorizontal size={12} /> Inspector
-              <button
-                type='button'
-                aria-label='Close the inspector'
-                title='Close (Esc)'
-                onClick={() => {
-                  selectNode(null);
-                  selectEdge(null);
-                  if (infoOpen) toggleInfo();
-                }}
-                className='ml-auto grid size-5 place-items-center rounded transition hover:bg-accent hover:text-foreground'
-              >
-                <X size={12} />
-              </button>
-            </div>
-            <div className='min-h-0 flex-1'>{body}</div>
-          </aside>
-        )}
-        <EdgeStylePaletteDialog open={stylePaletteOpen} onOpenChange={setStylePaletteOpen} />
-      </div>
-    );
-  }
-
   return (
     <div {...historyGestures} className='contents'>
-      <Drawer
-        open={open}
-        // Escape and the swipe gesture dismiss the whole inspector; clearing
-        // both selections and Info is what actually drives `open` back to false.
-        onOpenChange={(next) => {
-          if (next) return;
-          selectNode(null);
-          selectEdge(null);
-          if (infoOpen) toggleInfo();
-        }}
-        modal={false}
-        // Without this, every click on the canvas (selecting the next node)
-        // counts as an outside press and races the new selection.
-        disablePointerDismissal
-        swipeDirection='right'
-      >
-        {/* Part of the editing surface, not a popup: keyboard shortcuts
-            work while focus is in here (outside its fields). */}
-        <DrawerContent aria-label={ariaLabel} data-shortcuts='all'>
+      {open && (
+        <InspectorColumn
+          ariaLabel={ariaLabel}
+          onClose={() => {
+            selectNode(null);
+            selectEdge(null);
+            if (infoOpen) toggleInfo();
+          }}
+        >
           {body}
-        </DrawerContent>
-
-        {/* Mounted from the sidebar rather than inside `EdgeInspector` so
-            the palette survives the line being deselected while it's open
-            — the inspector unmounts the moment the selection clears. */}
-        <EdgeStylePaletteDialog open={stylePaletteOpen} onOpenChange={setStylePaletteOpen} />
-      </Drawer>
+        </InspectorColumn>
+      )}
+      <EdgeStylePaletteDialog open={stylePaletteOpen} onOpenChange={setStylePaletteOpen} />
     </div>
+  );
+}
+
+/**
+ * The docked column itself, in the Narration preview's look: a hairline on
+ * the left, a small uppercase "Inspector" strip with a close button, the
+ * panels below. Esc (outside a field) closes it.
+ */
+export function InspectorColumn({ ariaLabel, onClose, children }: { ariaLabel: string; onClose: () => void; children: ReactNode }) {
+  return (
+    <aside
+      aria-label={ariaLabel}
+      data-shortcuts='all'
+      className='flex w-80 shrink-0 flex-col border-l border-border bg-card/40 lg:w-96'
+      onKeyDown={(event) => {
+        if (event.key !== 'Escape') return;
+        const target = event.target as HTMLElement;
+        if (target.closest('input, textarea, select, [contenteditable="true"]')) return;
+        onClose();
+      }}
+    >
+      <div className='flex shrink-0 items-center gap-1.5 border-b border-border px-4 py-2 font-reading text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>
+        <SlidersHorizontal size={12} /> Inspector
+        <button type='button' aria-label='Close the inspector' title='Close (Esc)' onClick={onClose} className='ml-auto grid size-5 place-items-center rounded transition hover:bg-accent hover:text-foreground'>
+          <X size={12} />
+        </button>
+      </div>
+      <div className='min-h-0 flex-1'>{children}</div>
+    </aside>
   );
 }
 
@@ -191,7 +162,7 @@ export function EditorInfoPanels({ category, title, description, note, document 
 /** Header block of an Info panel: category, title, block/line counts. */
 function InfoPanel({ category, title, description, document, children }: { category: string; title: string; description: string; document: FlowDocumentJSON; children?: ReactNode }) {
   return (
-    <div className='rounded-xl bg-card py-3 pr-3 pl-1'>
+    <div className='px-4 py-3'>
       <div className='flex items-start justify-between gap-3'>
         <div>
           <p className='text-[9px] font-semibold uppercase tracking-[0.18em] text-sky-600 dark:text-sky-400'>{category}</p>

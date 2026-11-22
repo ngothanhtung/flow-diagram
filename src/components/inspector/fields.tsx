@@ -8,7 +8,6 @@ import { AlignCenter, AlignLeft, AlignRight, Blend, Copy, RotateCcw, Shrink, Squ
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -177,16 +176,18 @@ export function useNodeFieldDraft(node: FlowNode, field: 'title' | 'description'
 }
 
 /** Panel shell: the card, the heading and the node id. */
+/**
+ * One panel of the docked Inspector: a flat section like the Narration
+ * preview's body — the kind as a small tag (the column's header strip
+ * already says "Inspector"), the id under it, then the fields.
+ */
 export function InspectorShell({ title, nodeId, children }: { title: string; nodeId: string; children: React.ReactNode }) {
   return (
-    <Card size='sm' className='gap-0 bg-card py-3 pr-3 pl-1 ring-0'>
-      <div className='flex items-center justify-between'>
-        <h2 className='text-sm font-semibold'>{title}</h2>
-      </div>
-      <p className='mt-1 mb-2 text-[10px] uppercase tracking-wider text-muted-foreground'>{nodeId}</p>
-      <hr />
+    <section aria-label={title} className='px-4 pt-3 pb-4'>
+      <h2 className='text-[10px] font-semibold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400'>{title.replace(/\s*inspector$/i, '')}</h2>
+      <p className='mt-0.5 truncate font-mono text-[10px] text-muted-foreground'>{nodeId}</p>
       {children}
-    </Card>
+    </section>
   );
 }
 

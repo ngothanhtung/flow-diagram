@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowLeft, ArrowLeftRight, ArrowRight, CircleDot, Gauge, Hash, Palette, Shapes, SlidersHorizontal, Sparkles, Trash2, Undo2, X } from 'lucide-react';
+import { ArrowLeft, ArrowLeftRight, ArrowRight, CircleDot, Gauge, Hash, Palette, Shapes, SlidersHorizontal, Sparkles, Trash2, Undo2 } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
 import { EdgeEffectLayer, PATTERN_DASHES, TRAVEL_VELOCITY } from './edge-effect-layer';
@@ -8,7 +8,6 @@ import { EDGE_EFFECTS as EFFECTS, EdgeStyleSample, LINE_STYLE_OPTIONS, MarkerPic
 import { IconPicker } from './IconPicker';
 import { ColorField, HuePresetRow, NumberField, SectionLabel } from './inspector/fields';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -38,7 +37,8 @@ interface EdgeInspectorProps {
   /** Open the document-wide style palette. */
   onManageStyles: () => void;
   onDelete: (id: string) => void;
-  onClose: () => void;
+  /** Unused: the docked column's header strip closes the Inspector. */
+  onClose?: () => void;
 }
 
 const LABEL_POSITION_OPTIONS: Array<{ value: EdgeLabelPosition; label: string }> = [
@@ -73,7 +73,7 @@ const STYLE_FIELD_LABELS: Record<EdgeStyleField, string> = {
   glowColor: 'glow colour',
 };
 
-export function EdgeInspector({ edge, styles, sourceTitle, targetTitle, fallbackColor, sourceColumns, targetColumns, onUpdate, onAssignStyle, onManageStyles, onDelete, onClose }: EdgeInspectorProps) {
+export function EdgeInspector({ edge, styles, sourceTitle, targetTitle, fallbackColor, sourceColumns, targetColumns, onUpdate, onAssignStyle, onManageStyles, onDelete }: EdgeInspectorProps) {
   const [label, setLabel] = useState(edge.label ?? '');
   const [draftEffect, setDraftEffect] = useState<EdgeEffect | null>(null);
   // Every control below shows what the line actually *paints*, which for
@@ -110,20 +110,12 @@ export function EdgeInspector({ edge, styles, sourceTitle, targetTitle, fallback
   const SelectedEffectIcon = selectedEffect.Icon;
 
   return (
-    <Card size='sm' className='gap-0 bg-card py-0 ring-0'>
-      <CardHeader className='sticky top-0 z-10 grid grid-cols-[1fr_auto] border-b border-border bg-card/95 py-3 pr-4 pl-1 backdrop-blur-xl'>
-        <div className='min-w-0'>
-          <CardTitle className='text-sm font-semibold'>Line inspector</CardTitle>
-          <CardDescription className='mt-1 max-w-57.5 truncate text-[10px] text-muted-foreground'>
-            {sourceTitle} → {targetTitle}
-          </CardDescription>
-        </div>
-        <Button variant='ghost' size='icon-sm' onClick={onClose} aria-label='Close line inspector' className='text-muted-foreground hover:bg-accent hover:text-foreground'>
-          <X />
-        </Button>
-      </CardHeader>
-
-      <CardContent className='pb-4 pr-4 pl-1'>
+    <section aria-label='Line inspector' className='px-4 pt-3 pb-4'>
+      <h2 className='text-[10px] font-semibold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400'>Line</h2>
+      <p className='mt-0.5 truncate font-mono text-[10px] text-muted-foreground'>
+        {sourceTitle} → {targetTitle}
+      </p>
+      <div>
         <Label htmlFor='edge-label' className='mt-4 block text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300/80'>
           Label
         </Label>
@@ -759,8 +751,8 @@ export function EdgeInspector({ edge, styles, sourceTitle, targetTitle, fallback
         <Button variant='destructive' onClick={() => onDelete(edge.id)} title='Delete line (Delete key)' className='mt-4 w-full'>
           <Trash2 size={12} /> Delete line
         </Button>
-      </CardContent>
-    </Card>
+      </div>
+    </section>
   );
 }
 

@@ -119,13 +119,10 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
       {children}
       <ShortcutsDialog open={shortcutsOpen} onOpenChange={setShortcutsOpen} />
 
-      {/* The inspector is a drawer floating over the canvas, so the canvas
-          always owns the full width. */}
-      <main className={lesson ? 'flex min-h-0 flex-1 overflow-hidden' : 'min-h-0 flex-1 overflow-hidden'}>
+      {/* canvas · (Lesson: Narration preview ·) Inspector — docked columns of one look, the Inspector at the right edge. */}
+      <main className='flex min-h-0 flex-1 overflow-hidden'>
         {lesson && <ResizableAside label='the lesson panel'>{lesson.leftPanel}</ResizableAside>}
-        {/* In lesson mode the canvas column is its own positioning context so
-            the inspector drawer floats over it, not over the left panel. */}
-        <div className={lesson ? 'relative min-h-0 min-w-0 flex-1' : 'contents'}>
+        <div className='relative min-h-0 min-w-0 flex-1'>
           {lesson ? (
             <EditorCanvas
               document={lesson.canvasDocument}
@@ -148,11 +145,6 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
             />
           )}
 
-          {!lesson && (
-            <InspectorSidebar document={document} ariaLabel={inspectorLabel}>
-              {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
-            </InspectorSidebar>
-          )}
         </div>
         {/* Lesson mode: canvas · Narration preview · Inspector — two docked
             columns of one look, the Inspector at the right edge. */}
@@ -161,11 +153,9 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
             {lesson.rightPanel}
           </aside>
         )}
-        {lesson && (
-          <InspectorSidebar document={document} ariaLabel={inspectorLabel} hidden={lesson.inspectorHidden} docked>
-            {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
-          </InspectorSidebar>
-        )}
+        <InspectorSidebar document={document} ariaLabel={inspectorLabel} hidden={lesson?.inspectorHidden}>
+          {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
+        </InspectorSidebar>
       </main>
       {lesson?.footer}
     </div>

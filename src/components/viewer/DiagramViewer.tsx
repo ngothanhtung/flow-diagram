@@ -1,7 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Boxes, Eye, FileQuestion, ImageDown, Pencil } from 'lucide-react';
+import { Boxes, Eye, FileQuestion, ImageDown, Info, Pencil, X } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AuthLoadingScreen } from '@/components/auth/LoginForm';
@@ -178,7 +177,7 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
         </div>
       </header>
 
-      <main className={['grid min-h-0 flex-1 gap-2 overflow-hidden', infoOpen ? 'grid-cols-[1fr_320px]' : 'grid-cols-1'].join(' ')}>
+      <main className={['grid min-h-0 flex-1 overflow-hidden', infoOpen ? 'grid-cols-[1fr_384px]' : 'grid-cols-1'].join(' ')}>
         <section className='relative h-full min-h-0 overflow-hidden bg-background'>
           <FlowCanvas
             document={diagram.document}
@@ -211,13 +210,20 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
         </section>
 
         {infoOpen && (
-          <aside className='h-full min-h-0 overflow-hidden' aria-label='Diagram info'>
-            <ScrollArea className='h-full pr-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
-              <motion.div initial={{ x: 18, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.24, ease: 'easeOut' }} className='flex min-h-full flex-col gap-3 pb-1'>
-                <div className='rounded-xl bg-card py-3 pr-3 pl-1'>
+          // The same docked column as the editors' Inspector: hairline, header strip, flat sections.
+          <aside className='flex h-full min-h-0 flex-col border-l border-border bg-card/40' aria-label='Diagram info'>
+            <div className='flex shrink-0 items-center gap-1.5 border-b border-border px-4 py-2 font-reading text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground'>
+              <Info size={12} /> Info
+              <button type='button' aria-label='Close the info panel' title='Close' onClick={() => setInfoOpen(false)} className='ml-auto grid size-5 place-items-center rounded transition hover:bg-accent hover:text-foreground'>
+                <X size={12} />
+              </button>
+            </div>
+            <ScrollArea className='min-h-0 flex-1 [&_[data-slot=scroll-area-scrollbar]]:w-2 [&_[data-slot=scroll-area-thumb]]:bg-cyan-300/25'>
+              <div className='flex min-h-full flex-col divide-y divide-border'>
+                <section className='px-4 py-3'>
                   <div className='flex items-start justify-between gap-3'>
                     <div>
-                      <p className='text-[9px] font-semibold uppercase tracking-[0.18em] text-sky-600 dark:text-sky-400'>Read-only view</p>
+                      <p className='text-[10px] font-semibold uppercase tracking-[0.14em] text-sky-600 dark:text-sky-400'>Read-only view</p>
                       <h2 className='mt-1 text-sm font-semibold'>{diagram.name}</h2>
                     </div>
                     <div className='shrink-0 rounded-lg bg-accent px-2 py-1 text-right ring-1 ring-border'>
@@ -228,10 +234,9 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
                     </div>
                   </div>
                   <p className='mt-2 text-[11px] leading-relaxed text-muted-foreground'>This diagram is shared in read-only mode. Pan and zoom the canvas, replay the path with the play bar, or inspect the raw document below.</p>
-                </div>
-
+                </section>
                 <JsonInspector value={JSON.stringify(diagram.document, null, 2)} />
-              </motion.div>
+              </div>
             </ScrollArea>
           </aside>
         )}

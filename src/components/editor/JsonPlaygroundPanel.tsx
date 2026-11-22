@@ -47,7 +47,7 @@ export function JsonPlaygroundPanel({ document }: { document: FlowDocumentJSON }
   };
 
   return (
-    <div className='rounded-xl bg-card p-3'>
+    <div className='px-4 py-3'>
       <span className='flex items-center gap-1.5 text-xs font-semibold text-foreground'>
         <FlaskConical size={13} className='text-cyan-600 dark:text-cyan-300' />
         JSON Playground
