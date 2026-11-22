@@ -4,6 +4,7 @@ import { BookOpen, Redo2, Undo2 } from 'lucide-react';
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
+import { ResizableAside } from '@/components/editor/ResizableAside';
 import { EditorCanvas } from '@/components/editor/EditorCanvas';
 import { EditorInfoPanels, InspectorSidebar } from '@/components/editor/InspectorSidebar';
 import { PlaybackControls } from '@/components/editor/PlaybackControls';
@@ -114,7 +115,7 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
       {/* The inspector is a drawer floating over the canvas, so the canvas
           always owns the full width. */}
       <main className={lesson ? 'flex min-h-0 flex-1 overflow-hidden' : 'min-h-0 flex-1 overflow-hidden'}>
-        {lesson && <aside className='w-80 shrink-0 border-r border-border overflow-y-auto'>{lesson.leftPanel}</aside>}
+        {lesson && <ResizableAside label='the lesson panel'>{lesson.leftPanel}</ResizableAside>}
         {/* In lesson mode the canvas column is its own positioning context so
             the inspector drawer floats over it, not over the left panel. */}
         <div className={lesson ? 'relative min-h-0 min-w-0 flex-1' : 'contents'}>

@@ -437,7 +437,8 @@ export default function HelpPage() {
           <li>
             <strong>Add Lesson steps:</strong> press <strong>Add lesson step</strong> on the step bar at the bottom. Click a chip to show that Lesson step; drag chips to reorder; duplicate or
             remove from the chip&apos;s menu. Write the <strong>Narration</strong> in the left panel: <strong>Body</strong> and <strong>Callout</strong> are small Markdown editors — the toolbar (or
-            <Kbd>⌘B</Kbd> <Kbd>⌘I</Kbd> <Kbd>⌘E</Kbd>) adds bold, italic, code, a term, bulleted or numbered lists, a small heading or a code block, and <strong>Preview</strong> shows it as learners will.
+            <Kbd>⌘B</Kbd> <Kbd>⌘I</Kbd> <Kbd>⌘E</Kbd>) adds bold, italic, code, a term, bulleted or numbered lists, a small heading or a code block, and <strong>Preview</strong> shows it as learners will. Need more room to write? Drag the panel&apos;s right edge (or focus it and use <Kbd>←</Kbd> <Kbd>→</Kbd>); double-click
+            it to reset. The width is remembered in this browser.
           </li>
           <li>
             <strong>Record per step:</strong> there is one drawing shared by all Lesson steps. While you are on Lesson step 4, anything you draw, paste or duplicate <em>appears from Lesson step 4</em>{' '}

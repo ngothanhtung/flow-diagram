@@ -31,7 +31,7 @@ const POPUP_SELECTOR = ['[data-shortcuts]', '[role=dialog]', '[role=alertdialog]
 const FIELD_SELECTOR = 'input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role=textbox], [role=searchbox], [role=spinbutton], [role=combobox], [role=slider]';
 
 /** Widgets that move focus (or a value) with the arrow keys. */
-const ARROW_WIDGET_SELECTOR = '[role=radiogroup], [role=radio], [role=tablist], [role=tab], [role=listbox], [role=option], [role=menu], [role=menuitem], [role=tree], [role=grid], [data-slot=toggle-group]';
+const ARROW_WIDGET_SELECTOR = '[role=radiogroup], [role=radio], [role=tablist], [role=tab], [role=listbox], [role=option], [role=menu], [role=menuitem], [role=tree], [role=grid], [role=separator], [data-slot=toggle-group]';
 
 interface Context {
   scope: Scope;

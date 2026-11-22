@@ -435,7 +435,8 @@ export default function HelpViPage() {
           <li>
             <strong>Thêm bước bài học:</strong> bấm <strong>Add lesson step</strong> trên thanh bước ở đáy. Bấm một chip để xem bước đó; kéo chip để đổi thứ tự; nhân bản hoặc xoá trong menu của chip.
             Viết <strong>Narration</strong> ở panel bên trái: ô <strong>Body</strong> và <strong>Callout</strong> là editor Markdown nhỏ — thanh công cụ (hoặc <Kbd>⌘B</Kbd> <Kbd>⌘I</Kbd>{' '}
-            <Kbd>⌘E</Kbd>) thêm chữ đậm, nghiêng, code, thuật ngữ, danh sách gạch đầu dòng hoặc đánh số, tiêu đề nhỏ hay code block, và <strong>Preview</strong> cho xem đúng như người học thấy.
+            <Kbd>⌘E</Kbd>) thêm chữ đậm, nghiêng, code, thuật ngữ, danh sách gạch đầu dòng hoặc đánh số, tiêu đề nhỏ hay code block, và <strong>Preview</strong> cho xem đúng như người học thấy. Cần chỗ rộng hơn để viết? Kéo mép phải của panel (hoặc focus vào đó rồi dùng <Kbd>←</Kbd> <Kbd>→</Kbd>);
+            nhấp đúp để về độ rộng mặc định. Độ rộng được nhớ trên trình duyệt.
           </li>
           <li>
             <strong>Ghi theo bước:</strong> mọi bước bài học dùng chung một hình. Khi đang ở bước bài học 4, thứ gì bạn vẽ, dán hay nhân bản sẽ <em>xuất hiện từ bước bài học 4</em> (ở bước bài học 1 thì có mặt ở mọi bước).
