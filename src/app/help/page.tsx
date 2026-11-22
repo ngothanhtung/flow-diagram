@@ -459,6 +459,17 @@ export default function HelpPage() {
             <strong>Public link:</strong> the <strong>Private / Public</strong> control in the header turns the link on at once and copies it. Anyone can open it without signing in; it shows the last
             <em> saved</em> version, so press <strong>Save</strong> first. Undo/Redo covers everything in a Lesson — drawing, Lesson steps, Narration.
           </li>
+          <li>
+            <strong>Organise lessons in folders:</strong> the left column of the Lessons page is your <strong>Lesson tree</strong>. <strong>New folder</strong> adds one at the top level; a
+            folder&apos;s <Pill>⋯</Pill> menu adds a subfolder, renames it, sets its colour, moves it up, down or into another folder. Its number (<Pill>01.</Pill>) follows its position. Click a
+            folder to list the lessons directly in it; <strong>New lesson</strong> then creates the lesson there, and a lesson&apos;s <Pill>⋯</Pill> menu moves it to another folder or up and down.
+            Lessons in no folder are under <strong>Unfiled</strong>. A folder that still holds lessons — even in a subfolder — can&apos;t be deleted: move or delete them first.
+          </li>
+          <li>
+            <strong>What learners see:</strong> when a lesson is in a folder, its viewer shows your tree beside it as the <strong>Course</strong> — only Public lessons, and folders that hold
+            some. A ✓ marks lessons they finished (reached the last Lesson step) in that browser, each folder shows how many, and on the last Lesson step <strong>Next lesson</strong> opens the
+            following one. On a phone the course opens from the button at the top left.
+          </li>
         </ul>
       </Section>
 

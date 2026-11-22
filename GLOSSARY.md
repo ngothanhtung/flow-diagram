@@ -146,3 +146,18 @@ _Avoid_: Slide, scene, Step (without "Lesson")
 **Narration**:
 The explanatory text of one Lesson step: title, paragraphs, callout, changes and metrics.
 _Avoid_: Notes, description
+
+**Lesson tree**:
+How one user organises their Lessons: nested Lesson folders, each Lesson in at most one of them (or Unfiled). Learners see it as the Course sidebar.
+_Avoid_: Curriculum, playlist
+
+**Lesson folder**:
+One branch of a Lesson tree, with a name and a colour; its number ("01.") follows its position. Cannot be deleted while it, or any folder inside it, still holds a Lesson.
+_Avoid_: Module, chapter (a Lesson step's Chapter is something else), category
+
+**Unfiled**:
+The Lessons that are in no Lesson folder. Shown only to their owner; not part of the Course sidebar.
+
+**Course sidebar**:
+The Lesson tree beside a Lesson being viewed, for moving between Lessons: only Public Lessons, unless the viewer is their owner. "Course" here names the tree as a whole, never a single Lesson.
+_Avoid_: Table of contents, menu

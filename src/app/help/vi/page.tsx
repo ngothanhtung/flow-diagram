@@ -457,6 +457,17 @@ export default function HelpViPage() {
             <strong>Public link:</strong> nút <strong>Private / Public</strong> trên header bật link ngay và sao chép nó. Ai cũng mở được mà không cần đăng nhập; link hiện bản <em>đã Save</em> gần nhất nên hãy
             bấm <strong>Save</strong> trước. Undo/Redo phủ mọi thứ trong bài — hình, bước bài học, Narration.
           </li>
+          <li>
+            <strong>Xếp bài vào thư mục:</strong> cột trái của trang Lessons là <strong>cây bài học</strong> (Lesson tree) của bạn. <strong>New folder</strong> thêm một thư mục ở cấp ngoài cùng; menu{' '}
+            <Pill>⋯</Pill> của thư mục để thêm thư mục con, đổi tên, đổi màu, chuyển lên, xuống hoặc vào thư mục khác. Số thứ tự (<Pill>01.</Pill>) đi theo vị trí. Bấm một thư mục để xem các bài
+            nằm trực tiếp trong nó; lúc đó <strong>New lesson</strong> tạo bài ngay trong thư mục, và menu <Pill>⋯</Pill> của một bài chuyển nó sang thư mục khác hoặc lên, xuống. Bài chưa nằm
+            trong thư mục nào ở mục <strong>Unfiled</strong>. Thư mục còn bài — kể cả bài trong thư mục con — thì không xoá được: hãy chuyển hoặc xoá các bài đó trước.
+          </li>
+          <li>
+            <strong>Người học thấy gì:</strong> khi bài nằm trong một thư mục, trang xem bài hiện cây của bạn bên cạnh dưới tên <strong>Course</strong> — chỉ các bài Public và thư mục có chứa
+            chúng. Dấu ✓ đánh dấu bài người học đã xem tới bước cuối (trên trình duyệt đó), mỗi thư mục hiện số bài đã học, và ở bước cuối có nút <strong>Next lesson</strong> sang bài kế tiếp.
+            Trên điện thoại, mở cây bằng nút ở góc trên bên trái.
+          </li>
         </ul>
       </Section>
 

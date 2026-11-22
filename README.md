@@ -28,6 +28,7 @@ Static diagramming tools don't show which way data moves or in what order, so th
 
 **Teach with Lessons**
 - **Lessons**: a Diagram plus Lesson steps with Narration — Elements appear and disappear step by step, with per-step overrides, a Preview, and a Public link viewer. Format reference for AI and developers at `/guide/lessons`.
+- **Lesson tree**: organise your Lessons in nested, coloured folders on `/lessons` (a folder that still holds Lessons can't be deleted); learners move between them in a Course sidebar beside the lesson, with done marks and a Next lesson link.
 
 **Start from text or AI**
 - **Diagram JSON** — the whole Diagram is one JSON document with an authoring reference at `/guide` written for AI and developers. Paste it into the JSON Playground, or paste a fragment straight onto the canvas.
@@ -112,9 +113,9 @@ The app supports **Google** and **Email/Password** sign-in:
    firebase deploy --only firestore
    ```
 
-   These rules ensure each user can only read/write their own diagrams (`users/{uid}/diagrams/{id}`), support public diagrams via the `public-diagrams` collection, gate administrator access via the `users-roles` collection, and enforce the optional Access list in `config/access` (step 1.5). They also cover Lessons (`users/{uid}/lessons/{id}` and the `public-lessons` mirror).
+   These rules ensure each user can only read/write their own diagrams (`users/{uid}/diagrams/{id}`), support public diagrams via the `public-diagrams` collection, gate administrator access via the `users-roles` collection, and enforce the optional Access list in `config/access` (step 1.5). They also cover Lessons (`users/{uid}/lessons/{id}` and the `public-lessons` mirror) and Lesson trees (`users/{uid}/lesson-trees/main` and the `public-lesson-trees/{uid}` copy).
 
-   **Upgrading an existing deployment:** Lessons need the new rules. Run `firebase deploy --only firestore` again before anyone uses `/lessons`; until then the deployed rules deny every Lesson read and write (`Missing or insufficient permissions`).
+   **Upgrading an existing deployment:** Lessons need the new rules. Run `firebase deploy --only firestore` again before anyone uses `/lessons` (and again for Lesson trees); until then the deployed rules deny every Lesson read and write (`Missing or insufficient permissions`).
 
 ### 1.4. (Optional) Grant administrator access
 
@@ -309,6 +310,7 @@ Công cụ vẽ sơ đồ tĩnh không cho thấy dữ liệu chạy theo hướ
 
 **Dạy bằng Lesson**
 - **Lesson (bài học)**: một Diagram cộng các bước bài học (Lesson step) kèm lời giảng (Narration) — Element hiện/ẩn theo từng bước, ghi đè theo bước, có Preview và trang xem qua Public link. Tài liệu định dạng cho AI và lập trình viên ở `/guide/lessons`.
+- **Cây bài học (Lesson tree)**: xếp bài vào các thư mục lồng nhau, có màu, ở `/lessons` (thư mục còn bài thì không xoá được); người học chuyển giữa các bài bằng thanh khoá học (Course sidebar) bên cạnh bài, có dấu đã học và nút Next lesson.
 
 **Bắt đầu từ văn bản hoặc AI**
 - **Diagram JSON** — cả Diagram là một tài liệu JSON, có tài liệu đặc tả `/guide` viết cho AI và lập trình viên. Dán vào JSON Playground, hoặc dán một mảnh thẳng lên canvas.
@@ -392,9 +394,9 @@ Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · shadcn/ui
    firebase deploy --only firestore
    ```
 
-   Rules này đảm bảo mỗi người dùng chỉ đọc/ghi được sơ đồ của chính mình (`users/{uid}/diagrams/{id}`), hỗ trợ sơ đồ public qua collection `public-diagrams`, phân quyền administrator qua collection `users-roles`, và thực thi Access list tuỳ chọn trong `config/access` (bước 1.5). Rules cũng bao gồm Lesson (`users/{uid}/lessons/{id}` và bản sao `public-lessons`).
+   Rules này đảm bảo mỗi người dùng chỉ đọc/ghi được sơ đồ của chính mình (`users/{uid}/diagrams/{id}`), hỗ trợ sơ đồ public qua collection `public-diagrams`, phân quyền administrator qua collection `users-roles`, và thực thi Access list tuỳ chọn trong `config/access` (bước 1.5). Rules cũng bao gồm Lesson (`users/{uid}/lessons/{id}` và bản sao `public-lessons`) và cây bài học (`users/{uid}/lesson-trees/main` và bản công khai `public-lesson-trees/{uid}`).
 
-   **Nâng cấp một bản đã triển khai:** Lesson cần rules mới. Chạy lại `firebase deploy --only firestore` trước khi ai đó dùng `/lessons`; nếu chưa, rules đang chạy sẽ chặn mọi thao tác đọc/ghi Lesson (`Missing or insufficient permissions`).
+   **Nâng cấp một bản đã triển khai:** Lesson cần rules mới. Chạy lại `firebase deploy --only firestore` trước khi ai đó dùng `/lessons` (và chạy lại lần nữa cho cây bài học); nếu chưa, rules đang chạy sẽ chặn mọi thao tác đọc/ghi Lesson (`Missing or insufficient permissions`).
 
 ### 1.4. (Tuỳ chọn) Cấp quyền administrator
 
