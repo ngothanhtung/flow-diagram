@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseChangeLine, parseNarration } from './narration';
+import { parseChangeLine, parseNarration, parseNarrationBlocks } from './narration';
 
 describe('parseNarration', () => {
   it('splits paragraphs on blank lines', () => {
@@ -29,6 +29,51 @@ describe('parseNarration', () => {
     const [p] = parseNarration(src);
     expect(p.every((i) => i.kind === 'text')).toBe(true);
     expect(p.map((i) => i.text).join('')).toBe(src);
+  });
+});
+
+describe('parseNarrationBlocks', () => {
+  const text = (t: string) => [{ kind: 'text', text: t }];
+
+  it('keeps old Narration as paragraphs, single newlines included', () => {
+    expect(parseNarrationBlocks('first line\nsame paragraph\n\nsecond **b**')).toEqual([
+      { kind: 'paragraph', content: text('first line\nsame paragraph') },
+      { kind: 'paragraph', content: [{ kind: 'text', text: 'second ' }, { kind: 'bold', text: 'b' }] },
+    ]);
+  });
+
+  it('groups bullet and numbered items into lists', () => {
+    expect(parseNarrationBlocks('Steps:\n- one\n* two **b**\n\n1. first\n2) second')).toEqual([
+      { kind: 'paragraph', content: text('Steps:') },
+      { kind: 'list', ordered: false, items: [text('one'), [{ kind: 'text', text: 'two ' }, { kind: 'bold', text: 'b' }]] },
+      { kind: 'list', ordered: true, items: [text('first'), text('second')] },
+    ]);
+  });
+
+  it('reads # to ### as a small heading', () => {
+    expect(parseNarrationBlocks('### Why\nBecause.')).toEqual([
+      { kind: 'heading', content: text('Why') },
+      { kind: 'paragraph', content: text('Because.') },
+    ]);
+    expect(parseNarrationBlocks('#### four')).toEqual([{ kind: 'paragraph', content: text('#### four') }]);
+  });
+
+  it('keeps a code block raw, markers included, and runs an unclosed one to the end', () => {
+    expect(parseNarrationBlocks('```sql\nSELECT **x** [[y]]\n\n  indented\n```\nafter')).toEqual([
+      { kind: 'code', text: 'SELECT **x** [[y]]\n\n  indented' },
+      { kind: 'paragraph', content: text('after') },
+    ]);
+    expect(parseNarrationBlocks('```\nopen')).toEqual([{ kind: 'code', text: 'open' }]);
+  });
+
+  it('does not read *italic* at the start of a line as a list', () => {
+    expect(parseNarrationBlocks('*only* this')).toEqual([{ kind: 'paragraph', content: [{ kind: 'italic', text: 'only' }, { kind: 'text', text: ' this' }] }]);
+  });
+
+  it('keeps HTML as text in every block', () => {
+    const blocks = parseNarrationBlocks('- <b>x</b>\n### <i>y</i>');
+    expect(JSON.stringify(blocks)).toContain('<b>x</b>');
+    expect(blocks.flatMap((b) => (b.kind === 'list' ? b.items.flat() : b.kind === 'code' ? [] : b.content)).every((i) => i.kind === 'text')).toBe(true);
   });
 });
 
