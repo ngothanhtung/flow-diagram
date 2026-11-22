@@ -62,3 +62,15 @@ describe('LessonPlayer step timeline', () => {
     expect(html).toMatch(/aria-current="step"[^>]*>\s*<span[^>]*>2</);
   });
 });
+
+describe('LessonPlayer Narration blocks', () => {
+  it('renders lists, a small heading and a raw code block', () => {
+    const base = emptyLessonDocument('Blocks');
+    const body = 'Intro.\n\n### Steps\n- one\n- two\n\n1. first\n\n```sql\nSELECT **x** [[y]] <b>\n```';
+    const html = renderToStaticMarkup(createElement(LessonPlayer, { lesson: { ...base, steps: [{ ...base.steps[0], body }] } }));
+    expect(html).toMatch(/<h4[^>]*>Steps<\/h4>/);
+    expect(html).toMatch(/<ul[^>]*><li[^>]*>one<\/li><li[^>]*>two<\/li><\/ul>/);
+    expect(html).toMatch(/<ol[^>]*><li[^>]*>first<\/li><\/ol>/);
+    expect(html).toMatch(/<pre[^>]*><code[^>]*>SELECT \*\*x\*\* \[\[y\]\] &lt;b&gt;<\/code><\/pre>/);
+  });
+});

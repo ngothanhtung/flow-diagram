@@ -1,5 +1,5 @@
 import type { JSX } from 'react';
-import { parseNarration, type NarrationInline } from '@/lib/lesson/narration';
+import { parseNarration, parseNarrationBlocks, type NarrationBlock, type NarrationInline } from '@/lib/lesson/narration';
 
 function renderInline(item: NarrationInline, key: number) {
   switch (item.kind) {
@@ -27,8 +27,43 @@ function renderInline(item: NarrationInline, key: number) {
   }
 }
 
-// Renders parseNarration output as React nodes only (never raw HTML).
-// inline: first paragraph only, inside a <span> (callouts, change lines).
+function renderBlock(block: NarrationBlock, key: number) {
+  const spacing = "[&:not(:first-child)]:mt-2";
+  switch (block.kind) {
+    case "heading":
+      return (
+        <h4 key={key} className={`text-[0.95em] font-semibold text-foreground ${spacing}`}>
+          {block.content.map(renderInline)}
+        </h4>
+      );
+    case "list": {
+      const List = block.ordered ? "ol" : "ul";
+      return (
+        <List key={key} className={`space-y-0.5 pl-5 ${block.ordered ? "list-decimal" : "list-disc"} marker:text-muted-foreground ${spacing}`}>
+          {block.items.map((item, i) => (
+            <li key={i}>{item.map(renderInline)}</li>
+          ))}
+        </List>
+      );
+    }
+    case "code":
+      return (
+        <pre key={key} className={`overflow-x-auto rounded-md bg-muted px-3 py-2 font-mono text-[0.85em] leading-relaxed ${spacing}`}>
+          <code>{block.text}</code>
+        </pre>
+      );
+    default:
+      return (
+        <p key={key} className={`whitespace-pre-line ${spacing}`}>
+          {block.content.map(renderInline)}
+        </p>
+      );
+  }
+}
+
+// Renders Narration as React nodes only (never raw HTML): paragraphs,
+// small headings, lists and code blocks (parseNarrationBlocks).
+// inline: first paragraph only, inside a <span> (change lines).
 export function NarrationText({
   source,
   inline,
@@ -36,17 +71,8 @@ export function NarrationText({
   source: string;
   inline?: boolean;
 }): JSX.Element {
-  const paragraphs = parseNarration(source);
   if (inline) {
-    return <span>{(paragraphs[0] ?? []).map(renderInline)}</span>;
+    return <span>{(parseNarration(source)[0] ?? []).map(renderInline)}</span>;
   }
-  return (
-    <>
-      {paragraphs.map((p, i) => (
-        <p key={i} className="whitespace-pre-line [&:not(:first-child)]:mt-2">
-          {p.map(renderInline)}
-        </p>
-      ))}
-    </>
-  );
+  return <>{parseNarrationBlocks(source).map(renderBlock)}</>;
 }
