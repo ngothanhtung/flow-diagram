@@ -213,115 +213,33 @@
         "title": "",
         "position": {
           "x": 600,
-          "y": -400
+          "y": -440
         },
         "width": 320,
-        "height": 240,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# THE NINES",
+        "title": "THE NINES\n99%     → 3.7 days down / year\n99.9%   → 8.8 hours\n99.99%  → 53 minutes\n99.999% → 5 minutes\n⚠ in a chain: 0.999³ = 99.7%",
         "position": {
           "x": 600,
-          "y": -500
+          "y": -440
         },
         "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "99%     → 3.7 days down / year",
-        "position": {
-          "x": 600,
-          "y": -460
-        },
-        "width": 320,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "99.9%   → 8.8 hours",
-        "position": {
-          "x": 600,
-          "y": -420
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "99.99%  → 53 minutes",
-        "position": {
-          "x": 600,
-          "y": -380
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "99.999% → 5 minutes",
-        "position": {
-          "x": 600,
-          "y": -340
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-6",
-        "type": "text",
-        "title": "in a chain: 0.999³ = 99.7%",
-        "position": {
-          "x": 600,
-          "y": -300
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -329,116 +247,33 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -400
+          "y": -440
         },
         "width": 360,
-        "height": 240,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# THIS FAILOVER",
+        "title": "THIS FAILOVER\ndetect: 3 missed health checks   10 s\npromote follower                 20 s\nreconnect apps                   30 s\n→ RTO ≈ 1 minute\n⚠ RPO ≈ 2 s of async writes lost",
         "position": {
           "x": 620,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "detect: 3 missed health checks   10 s",
-        "position": {
-          "x": 620,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "promote follower                 20 s",
-        "position": {
-          "x": 620,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "reconnect apps                   30 s",
-        "position": {
-          "x": 620,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "RTO ≈ 1 minute",
-        "position": {
-          "x": 620,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-2-row-6",
-        "type": "text",
-        "title": "RPO ≈ 2 s of async writes lost",
-        "position": {
-          "x": 620,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "users",
@@ -2101,45 +1936,10 @@
     "za-label": {
       "from": "s5"
     },
-    "card-row-1": {
+    "card-text": {
       "until": "s2"
     },
-    "card-row-2": {
-      "until": "s2"
-    },
-    "card-row-3": {
-      "until": "s2"
-    },
-    "card-row-4": {
-      "until": "s2"
-    },
-    "card-row-5": {
-      "until": "s2"
-    },
-    "card-row-6": {
-      "until": "s2"
-    },
-    "card-2-row-1": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-2-row-2": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-2-row-3": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-2-row-4": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-2-row-5": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-2-row-6": {
+    "card-2-text": {
       "from": "s7",
       "until": "s8"
     },

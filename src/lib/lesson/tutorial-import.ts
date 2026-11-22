@@ -199,48 +199,11 @@ const HOT_BORDER = '#ff4d4f';
 // both a light and a dark canvas. Their words are free text objects in a
 // mid slate, legible on either.
 const FRAME_PAINT: Paint = { color: '#6b7a90', backgroundColor: '#64748b', borderColor: '#64748b' };
-// A panel is a dark card on either canvas theme, like a terminal: its rows read the same everywhere.
-const PANEL_PAINT: Paint = { color: '#cbd5e1', backgroundColor: '#111827', borderColor: '#64748b' };
-const PANEL_INK = '#cbd5e1';
+const PANEL_PAINT = FRAME_PAINT;
 const FRAME_OPACITY = 0.45;
 const TEXT_INK = '#6b7a90';
 const LABEL_SIZE = 12;
 const PANEL_TEXT_SIZE = 13;
-/** A panel is a stack of rows, one grid cell tall each: its heading, then one per line. */
-const PANEL_ROW = GRID;
-const PANEL_PAD = 16;
-/** Row looks: the heading, a good line (source mark "="), a bad one ("!"), the rest. */
-const PANEL_GOOD: Pick<FlowNode, 'backgroundColor' | 'color'> = { backgroundColor: '#3f9e6a55', color: '#7ee0a6' };
-const PANEL_BAD: Pick<FlowNode, 'backgroundColor' | 'color'> = { backgroundColor: '#c8505a55', color: '#ff9aa2' };
-const PANEL_HEAD: Pick<FlowNode, 'backgroundColor' | 'color'> = { backgroundColor: '#64748b40', color: '#94a3b8' };
-export interface PanelRow {
-  text: string;
-  look: 'head' | 'good' | 'bad' | 'plain';
-}
-/** A panel's size for its rows: wide enough for the longest, one cell per row. */
-export function panelSizeOf(rows: readonly PanelRow[]): Size {
-  const widest = Math.max(0, ...rows.map((row) => textSize([row.text], PANEL_TEXT_SIZE).width));
-  return snapSize({ width: Math.max(FRAME_MIN, widest + 2 * PANEL_PAD), height: Math.max(FRAME_MIN, rows.length * PANEL_ROW) });
-}
-/** The row nodes of a panel laid on `frame` (its centre and size), each a child of `panelId`. */
-export function panelRowNodes(panelId: string, rows: readonly { id: string; row: PanelRow }[], frame: { center: Point; size: Size }): FlowNode[] {
-  const top = frame.center.y - frame.size.height / 2;
-  return rows.map(({ id, row }, index) => {
-    const paint = row.look === 'good' ? PANEL_GOOD : row.look === 'bad' ? PANEL_BAD : row.look === 'head' ? PANEL_HEAD : ({ color: PANEL_INK } as const);
-    return { id, type: 'text', title: row.text, position: { x: frame.center.x, y: top + (index + 0.5) * PANEL_ROW }, width: frame.size.width, height: PANEL_ROW, fontSize: PANEL_TEXT_SIZE, fontWeight: row.look === 'head' ? 'bold' : 'medium', textAlign: 'left', parentId: panelId, ...paint };
-  });
-}
-/** The rows of a panel: its heading (as "# TITLE"), then its lines, a marked line stripped of its mark and given its colour. */
-export function panelRows(title: string, lines: readonly string[]): PanelRow[] {
-  const rows: PanelRow[] = title ? [{ text: `# ${title}`, look: 'head' }] : [];
-  for (const line of lines) {
-    if (line.startsWith('→ ')) rows.push({ text: line.slice(2), look: 'good' });
-    else if (line.startsWith('⚠ ')) rows.push({ text: line.slice(2), look: 'bad' });
-    else if (line.startsWith('# ')) rows.push({ text: line, look: 'head' });
-    else rows.push({ text: line, look: 'plain' });
-  }
-  return rows;
-}
 const LINE_INK = '#64748b';
 
 function paintOf(value: unknown, fallback: Paint): Paint {
@@ -803,8 +766,11 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
   const sceneTop = Math.min(0, ...sceneBoxes.map((b) => b.y - b.height / 2));
   const panels = nodeVariants.filter((variant) => variant.value.kind === 'panel');
   const panelSize = (variant: Variant<Look>) => {
-    const rows = panelRows(variant.value.title ?? '', variant.value.lines ?? []);
-    return { outer: panelSizeOf(rows), rows };
+    const lines = [variant.value.title, ...(variant.value.lines ?? [])].filter((line, index) => index > 0 || line !== '');
+    const text = textSize(lines, PANEL_TEXT_SIZE);
+    // Whole cells with room around the text; the text box is the panel's own box.
+    const outer = snapSize({ width: Math.max(FRAME_MIN, text.width + 24), height: Math.max(FRAME_MIN, text.height + 20) });
+    return { inner: outer, outer };
   };
   const slots: { sources: Set<string>; steps: Set<number>; height: number }[] = [];
   const slotOf = new Map<string, number>();
@@ -821,13 +787,14 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
     slot.height = Math.max(slot.height, panelSize(panel).outer.height);
   }
   const slotTop = (index: number) => sceneTop + slots.slice(0, index).reduce((sum, slot) => sum + slot.height + GAP, 0);
-  const panelText = new Map<string, { rows: { id: string; row: PanelRow }[]; center: Point; size: Size }>();
+  const panelText = new Map<string, { id: string; lines: string[]; size: Size; center: Point }>();
   for (const panel of panels) {
-    const { outer, rows } = panelSize(panel);
+    const { inner, outer } = panelSize(panel);
     const panelLeft = Math.ceil((sceneRight + PANEL_GAP) / GRID) * GRID;
     const center = { x: panelLeft + outer.width / 2, y: slotTop(slotOf.get(panel.sourceId)!) + outer.height / 2 };
     box(panel.id, center, outer);
-    panelText.set(panel.id, { center, size: outer, rows: rows.map((row, index) => ({ id: ids.claim(`${panel.id}-row-${index + 1}`), row })) });
+    const lines = [panel.value.title, ...(panel.value.lines ?? [])].filter((line, index) => index > 0 || line !== '');
+    panelText.set(panel.id, { id: ids.claim(`${panel.id}-text`), lines, size: inner, center });
   }
 
   // ---- Nodes -----------------------------------------------------------------
@@ -866,10 +833,10 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
     }
   }
   for (const panel of panels) {
-    nodes.push(frameNode(panel, { borderStyle: 'solid', borderWidth: 1, opacity: 1 }));
+    nodes.push(frameNode(panel, { borderStyle: 'solid', borderWidth: 1 }));
     const label = panelText.get(panel.id)!;
-    for (const row of label.rows) companions.push({ id: row.id, steps: panel.steps });
-    nodes.push(...panelRowNodes(panel.id, label.rows, label));
+    companions.push({ id: label.id, steps: panel.steps });
+    nodes.push({ id: label.id, type: 'text', title: label.lines.join('\n'), position: label.center, width: label.size.width, height: label.size.height, fontSize: PANEL_TEXT_SIZE, fontWeight: 'medium', textAlign: 'left', color: TEXT_INK, parentId: panel.id });
   }
   for (const variant of cardVariants) {
     const look = variant.value;

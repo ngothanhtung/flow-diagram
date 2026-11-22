@@ -145,99 +145,33 @@
         "title": "",
         "position": {
           "x": 1060,
-          "y": -820
+          "y": -840
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# COUNTING 2 BILLION VIEWS",
+        "title": "COUNTING 2 BILLION VIEWS\nmap:     each worker counts its chunk\nshuffle: same video → same worker\nreduce:  sum the counts per video\n→ 100 workers: ~20 minutes",
         "position": {
           "x": 1060,
-          "y": -900
+          "y": -840
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "map:     each worker counts its chunk",
-        "position": {
-          "x": 1060,
-          "y": -860
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "shuffle: same video → same worker",
-        "position": {
-          "x": 1060,
-          "y": -820
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "reduce:  sum the counts per video",
-        "position": {
-          "x": 1060,
-          "y": -780
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "100 workers: ~20 minutes",
-        "position": {
-          "x": 1060,
-          "y": -740
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -245,102 +179,33 @@
         "title": "",
         "position": {
           "x": 1060,
-          "y": -820
+          "y": -840
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# TAMING A HOT KEY",
+        "title": "TAMING A HOT KEY\n⚠ viral video: 800M rows → one reducer\n→ combiner: each mapper sends 1 count\n→ salting: 4f2#0 … 4f2#9 → 10 reducers\n# job: 3 h → 20 min",
         "position": {
           "x": 1060,
-          "y": -900
+          "y": -840
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "viral video: 800M rows → one reducer",
-        "position": {
-          "x": 1060,
-          "y": -860
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "combiner: each mapper sends 1 count",
-        "position": {
-          "x": 1060,
-          "y": -820
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "salting: 4f2#0 … 4f2#9 → 10 reducers",
-        "position": {
-          "x": 1060,
-          "y": -780
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "# job: 3 h → 20 min",
-        "position": {
-          "x": 1060,
-          "y": -740
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "card-3",
@@ -348,98 +213,33 @@
         "title": "",
         "position": {
           "x": 1060,
-          "y": -820
+          "y": -840
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-3-text",
         "type": "text",
-        "title": "# VIEWS OF VIDEO 4F2 PER MINUTE",
+        "title": "VIEWS OF VIDEO 4F2 PER MINUTE\n12:01  █░░░░░░░░░░░  120\n12:02  █░░░░░░░░░░░  140\n12:03  ████░░░░░░░░  780\n12:04  ████████████  2,500 ↑ trending",
         "position": {
           "x": 1060,
-          "y": -900
+          "y": -840
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "12:01  █░░░░░░░░░░░  120",
-        "position": {
-          "x": 1060,
-          "y": -860
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "12:02  █░░░░░░░░░░░  140",
-        "position": {
-          "x": 1060,
-          "y": -820
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "12:03  ████░░░░░░░░  780",
-        "position": {
-          "x": 1060,
-          "y": -780
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-5",
-        "type": "text",
-        "title": "12:04  ████████████  2,500 ↑ trending",
-        "position": {
-          "x": 1060,
-          "y": -740
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "card-4",
@@ -447,100 +247,33 @@
         "title": "",
         "position": {
           "x": 1040,
-          "y": -820
+          "y": -840
         },
         "width": 320,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-row-1",
+        "id": "card-4-text",
         "type": "text",
-        "title": "# EVENT TIME VS ARRIVAL TIME",
+        "title": "EVENT TIME VS ARRIVAL TIME\nview at 12:04, arrives 14:10\nwatermark: “events ≤ 5 min late”\n⚠ 2 h late → correct window later\n→ duplicate id → dropped",
         "position": {
           "x": 1040,
-          "y": -900
+          "y": -840
         },
         "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4-row-2",
-        "type": "text",
-        "title": "view at 12:04, arrives 14:10",
-        "position": {
-          "x": 1040,
-          "y": -860
-        },
-        "width": 320,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-3",
-        "type": "text",
-        "title": "watermark: “events ≤ 5 min late”",
-        "position": {
-          "x": 1040,
-          "y": -820
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-4",
-        "type": "text",
-        "title": "2 h late → correct window later",
-        "position": {
-          "x": 1040,
-          "y": -780
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-4-row-5",
-        "type": "text",
-        "title": "duplicate id → dropped",
-        "position": {
-          "x": 1040,
-          "y": -740
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-4"
       },
       {
         "id": "card-5",
@@ -548,101 +281,33 @@
         "title": "",
         "position": {
           "x": 1040,
-          "y": -820
+          "y": -840
         },
         "width": 320,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-row-1",
+        "id": "card-5-text",
         "type": "text",
-        "title": "# UNIQUE VIEWERS OF 4F2",
+        "title": "UNIQUE VIEWERS OF 4F2\nexact: remember every viewer id\n⚠ 50M ids × 16 bytes ≈ 800 MB\n→ HyperLogLog: 12 KB, ~1% error\n# sketches merge across machines",
         "position": {
           "x": 1040,
-          "y": -900
+          "y": -840
         },
         "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-5-row-2",
-        "type": "text",
-        "title": "exact: remember every viewer id",
-        "position": {
-          "x": 1040,
-          "y": -860
-        },
-        "width": 320,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-3",
-        "type": "text",
-        "title": "50M ids × 16 bytes ≈ 800 MB",
-        "position": {
-          "x": 1040,
-          "y": -820
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-5-row-4",
-        "type": "text",
-        "title": "HyperLogLog: 12 KB, ~1% error",
-        "position": {
-          "x": 1040,
-          "y": -780
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-5-row-5",
-        "type": "text",
-        "title": "# sketches merge across machines",
-        "position": {
-          "x": 1040,
-          "y": -740
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-5"
       },
       {
         "id": "viewers",
@@ -2239,103 +1904,23 @@
       "from": "s2",
       "until": "s7"
     },
-    "card-row-1": {
+    "card-text": {
       "from": "s3",
       "until": "s4"
     },
-    "card-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-row-4": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-row-5": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s5",
       "until": "s6"
     },
-    "card-2-row-2": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-2-row-3": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-2-row-4": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-2-row-5": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-3-row-1": {
+    "card-3-text": {
       "from": "s8",
       "until": "s9"
     },
-    "card-3-row-2": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-3-row-3": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-3-row-4": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-3-row-5": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-4-row-1": {
+    "card-4-text": {
       "from": "s9",
       "until": "s10"
     },
-    "card-4-row-2": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-4-row-3": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-4-row-4": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-4-row-5": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-5-row-1": {
-      "from": "s12",
-      "until": "s13"
-    },
-    "card-5-row-2": {
-      "from": "s12",
-      "until": "s13"
-    },
-    "card-5-row-3": {
-      "from": "s12",
-      "until": "s13"
-    },
-    "card-5-row-4": {
-      "from": "s12",
-      "until": "s13"
-    },
-    "card-5-row-5": {
+    "card-5-text": {
       "from": "s12",
       "until": "s13"
     },

@@ -13,62 +13,29 @@
         },
         "width": 240,
         "height": 120,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-row-1",
+        "id": "chart-text",
         "type": "text",
-        "title": "# LATENCY VS. HOW BUSY",
-        "position": {
-          "x": 920,
-          "y": -340
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-row-2",
-        "type": "text",
-        "title": "▁▁▁▁▁▁▁▁▁▂▂▃▄▆█",
+        "title": "LATENCY VS. HOW BUSY\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n          ▲ 70%",
         "position": {
           "x": 920,
           "y": -300
         },
         "width": 240,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-row-3",
-        "type": "text",
-        "title": "          ▲ 70%",
-        "position": {
-          "x": 920,
-          "y": -260
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "chart"
       },
       {
         "id": "chart-2",
@@ -80,62 +47,29 @@
         },
         "width": 240,
         "height": 120,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-2-row-1",
+        "id": "chart-2-text",
         "type": "text",
-        "title": "# LATENCY VS. HOW BUSY",
-        "position": {
-          "x": 920,
-          "y": -340
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-2-row-2",
-        "type": "text",
-        "title": "▁▁▁▁▁▁▁▁▁▂▂▃▄▆█",
+        "title": "LATENCY VS. HOW BUSY\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n             ▲ 96%",
         "position": {
           "x": 920,
           "y": -300
         },
         "width": 240,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-2-row-3",
-        "type": "text",
-        "title": "             ▲ 96%",
-        "position": {
-          "x": 920,
-          "y": -260
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-2",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "chart-2"
       },
       {
         "id": "chart-3",
@@ -143,100 +77,33 @@
         "title": "",
         "position": {
           "x": 980,
-          "y": -260
+          "y": -280
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-3-row-1",
+        "id": "chart-3-text",
         "type": "text",
-        "title": "# PERCENTILES",
+        "title": "PERCENTILES\navg   180 ms   looks fine\np50   160 ms   half are faster\n⚠ p99   600 ms   1 in 100 is slower\n# the average hides the slow 1%",
         "position": {
           "x": 980,
-          "y": -340
+          "y": -280
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-3-row-2",
-        "type": "text",
-        "title": "avg   180 ms   looks fine",
-        "position": {
-          "x": 980,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-3-row-3",
-        "type": "text",
-        "title": "p50   160 ms   half are faster",
-        "position": {
-          "x": 980,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-3-row-4",
-        "type": "text",
-        "title": "p99   600 ms   1 in 100 is slower",
-        "position": {
-          "x": 980,
-          "y": -220
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-3",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "chart-3-row-5",
-        "type": "text",
-        "title": "# the average hides the slow 1%",
-        "position": {
-          "x": 980,
-          "y": -180
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "chart-3"
       },
       {
         "id": "chart-4",
@@ -248,62 +115,29 @@
         },
         "width": 240,
         "height": 120,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-4-row-1",
+        "id": "chart-4-text",
         "type": "text",
-        "title": "# LATENCY VS. HOW BUSY",
-        "position": {
-          "x": 920,
-          "y": -340
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-4-row-2",
-        "type": "text",
-        "title": "▁▁▁▁▁▁▁▁▁▂▂▃▄▆█",
+        "title": "LATENCY VS. HOW BUSY\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n     ▲ 35%",
         "position": {
           "x": 920,
           "y": -300
         },
         "width": 240,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-4-row-3",
-        "type": "text",
-        "title": "     ▲ 35%",
-        "position": {
-          "x": 920,
-          "y": -260
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-4",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "chart-4"
       },
       {
         "id": "chart-5",
@@ -311,83 +145,33 @@
         "title": "",
         "position": {
           "x": 960,
-          "y": -280
+          "y": -300
         },
         "width": 320,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-5-row-1",
+        "id": "chart-5-text",
         "type": "text",
-        "title": "# LITTLE’S LAW",
-        "position": {
-          "x": 960,
-          "y": -340
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-5-row-2",
-        "type": "text",
-        "title": "in flight = throughput × latency",
+        "title": "LITTLE’S LAW\nin flight = throughput × latency\n350 req/s × 0.12 s ≈ 42\n⚠ latency 1 s → 350 in flight",
         "position": {
           "x": 960,
           "y": -300
         },
         "width": 320,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-5-row-3",
-        "type": "text",
-        "title": "350 req/s × 0.12 s ≈ 42",
-        "position": {
-          "x": 960,
-          "y": -260
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-5-row-4",
-        "type": "text",
-        "title": "latency 1 s → 350 in flight",
-        "position": {
-          "x": 960,
-          "y": -220
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-5",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "chart-5"
       },
       {
         "id": "chart-6",
@@ -395,83 +179,33 @@
         "title": "",
         "position": {
           "x": 960,
-          "y": -280
+          "y": -300
         },
         "width": 320,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-6-row-1",
+        "id": "chart-6-text",
         "type": "text",
-        "title": "# WAITING FOR THE SLOWEST",
-        "position": {
-          "x": 960,
-          "y": -340
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-6",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-6-row-2",
-        "type": "text",
-        "title": "each server slow 1% of the time",
+        "title": "WAITING FOR THE SLOWEST\neach server slow 1% of the time\n1 server:   1% of pages slow\n⚠ 100 servers: 1 − 0.99¹⁰⁰ ≈ 63%",
         "position": {
           "x": 960,
           "y": -300
         },
         "width": 320,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-6-row-3",
-        "type": "text",
-        "title": "1 server:   1% of pages slow",
-        "position": {
-          "x": 960,
-          "y": -260
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-6-row-4",
-        "type": "text",
-        "title": "100 servers: 1 − 0.99¹⁰⁰ ≈ 63%",
-        "position": {
-          "x": 960,
-          "y": -220
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-6",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "chart-6"
       },
       {
         "id": "chart-7",
@@ -479,84 +213,33 @@
         "title": "",
         "position": {
           "x": 960,
-          "y": -280
+          "y": -300
         },
         "width": 320,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-7-row-1",
+        "id": "chart-7-text",
         "type": "text",
-        "title": "# ROWS PER SECOND",
-        "position": {
-          "x": 960,
-          "y": -340
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-7",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-7-row-2",
-        "type": "text",
-        "title": "1 row per INSERT      2,000 / s",
+        "title": "ROWS PER SECOND\n1 row per INSERT      2,000 / s\n→ 100 rows per INSERT  50,000 / s\n⚠ each row waits ≤ 50 ms",
         "position": {
           "x": 960,
           "y": -300
         },
         "width": 320,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-7",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-7-row-3",
-        "type": "text",
-        "title": "100 rows per INSERT  50,000 / s",
-        "position": {
-          "x": 960,
-          "y": -260
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-7",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "chart-7-row-4",
-        "type": "text",
-        "title": "each row waits ≤ 50 ms",
-        "position": {
-          "x": 960,
-          "y": -220
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-7",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "chart-7"
       },
       {
         "id": "users",
@@ -1470,104 +1153,30 @@
       "from": "s9",
       "until": "s10"
     },
-    "chart-row-1": {
+    "chart-text": {
       "from": "s2",
       "until": "s3"
     },
-    "chart-row-2": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "chart-row-3": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "chart-2-row-1": {
+    "chart-2-text": {
       "from": "s3",
       "until": "s4"
     },
-    "chart-2-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "chart-2-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "chart-3-row-1": {
+    "chart-3-text": {
       "from": "s4",
       "until": "s5"
     },
-    "chart-3-row-2": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "chart-3-row-3": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "chart-3-row-4": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "chart-3-row-5": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "chart-4-row-1": {
+    "chart-4-text": {
       "from": "s5"
     },
-    "chart-4-row-2": {
-      "from": "s5"
-    },
-    "chart-4-row-3": {
-      "from": "s5"
-    },
-    "chart-5-row-1": {
+    "chart-5-text": {
       "from": "s7",
       "until": "s8"
     },
-    "chart-5-row-2": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "chart-5-row-3": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "chart-5-row-4": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "chart-6-row-1": {
+    "chart-6-text": {
       "from": "s8",
       "until": "s9"
     },
-    "chart-6-row-2": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "chart-6-row-3": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "chart-6-row-4": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "chart-7-row-1": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "chart-7-row-2": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "chart-7-row-3": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "chart-7-row-4": {
+    "chart-7-text": {
       "from": "s9",
       "until": "s10"
     },
@@ -1803,13 +1412,7 @@
         "chart-4": {
           "visible": false
         },
-        "chart-4-row-1": {
-          "visible": false
-        },
-        "chart-4-row-2": {
-          "visible": false
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "visible": false
         },
         "u-4": {
@@ -1846,13 +1449,7 @@
         "chart-4": {
           "visible": false
         },
-        "chart-4-row-1": {
-          "visible": false
-        },
-        "chart-4-row-2": {
-          "visible": false
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "visible": false
         },
         "u-4": {
@@ -1891,13 +1488,7 @@
         "chart-4": {
           "visible": false
         },
-        "chart-4-row-1": {
-          "visible": false
-        },
-        "chart-4-row-2": {
-          "visible": false
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "visible": false
         },
         "u-4": {
@@ -1936,13 +1527,7 @@
         "chart-4": {
           "visible": false
         },
-        "chart-4-row-1": {
-          "visible": false
-        },
-        "chart-4-row-2": {
-          "visible": false
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "visible": false
         },
         "u-4": {
@@ -1977,13 +1562,7 @@
         "chart-4": {
           "emphasis": true
         },
-        "chart-4-row-1": {
-          "emphasis": true
-        },
-        "chart-4-row-2": {
-          "emphasis": true
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "emphasis": true
         },
         "u-4": {

@@ -9,203 +9,36 @@
         "title": "",
         "position": {
           "x": 860,
-          "y": -420
+          "y": -440
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# ĐÒI HỎI",
+        "title": "ĐÒI HỎI\ntạo     URL dài → mã ngắn\nmở      mã ngắn → chuyển hướng\n→ chuyển hướng: nhanh, luôn hoạt động\n# tạo link có thể chậm hơn",
         "position": {
           "x": 860,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "tạo     URL dài → mã ngắn",
-        "position": {
-          "x": 860,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "mở      mã ngắn → chuyển hướng",
-        "position": {
-          "x": 860,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "chuyển hướng: nhanh, luôn hoạt động",
-        "position": {
-          "x": 860,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "# tạo link có thể chậm hơn",
-        "position": {
-          "x": 860,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
-        "type": "group",
-        "title": "",
-        "position": {
-          "x": 880,
-          "y": -420
-        },
-        "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
-        "borderColor": "#64748b",
-        "borderWidth": 1,
-        "fill": "flat",
-        "opacity": 1,
-        "borderStyle": "solid"
-      },
-      {
-        "id": "card-2-row-1",
-        "type": "text",
-        "title": "# TÍNH NHẨM",
-        "position": {
-          "x": 880,
-          "y": -500
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "100 tr link / tháng      ≈ 40 ghi/s",
-        "position": {
-          "x": 880,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "× 100 lần mở mỗi link    ≈ 4.000 đọc/s",
-        "position": {
-          "x": 880,
-          "y": -420
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "đỉnh buổi tối × 3        ≈ 12.000 đọc/s",
-        "position": {
-          "x": 880,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "5 năm: 6 tỷ link ≈ 3 TB",
-        "position": {
-          "x": 880,
-          "y": -340
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-3",
         "type": "group",
         "title": "",
         "position": {
@@ -214,79 +47,63 @@
         },
         "width": 400,
         "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# API",
+        "title": "TÍNH NHẨM\n100 tr link / tháng      ≈ 40 ghi/s\n× 100 lần mở mỗi link    ≈ 4.000 đọc/s\nđỉnh buổi tối × 3        ≈ 12.000 đọc/s\n→ 5 năm: 6 tỷ link ≈ 3 TB",
         "position": {
           "x": 880,
-          "y": -500
+          "y": -440
         },
         "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
-        "fontWeight": "bold",
+        "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "POST /links  { url }   →  { code }",
+        "id": "card-3",
+        "type": "group",
+        "title": "",
         "position": {
           "x": 880,
           "y": -460
         },
         "width": 400,
-        "height": 40,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-3-text",
+        "type": "text",
+        "title": "API\nPOST /links  { url }   →  { code }\nGET  /x7Kp2Qa          →  302 + Location\n# bảng: code PK · long_url · expires_at",
+        "position": {
+          "x": 880,
+          "y": -460
+        },
+        "width": 400,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "GET  /x7Kp2Qa          →  302 + Location",
-        "position": {
-          "x": 880,
-          "y": -420
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "# bảng: code PK · long_url · expires_at",
-        "position": {
-          "x": 880,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "card-4",
@@ -294,200 +111,67 @@
         "title": "",
         "position": {
           "x": 880,
-          "y": -420
+          "y": -440
         },
         "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-row-1",
+        "id": "card-4-text",
         "type": "text",
-        "title": "# HAI URL, MỘT MÃ",
+        "title": "HAI URL, MỘT MÃ\nhash(“…/summer-sale”)  →  x7Kp2Qa…\nhash(“…/cat-video”)    →  x7Kp2Qa…\n⚠ cùng 7 ký tự → trùng\n# kiểm tra, chỉnh, thử lại: mỗi lần ghi",
         "position": {
           "x": 880,
-          "y": -500
+          "y": -440
         },
         "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4-row-2",
-        "type": "text",
-        "title": "hash(“…/summer-sale”)  →  x7Kp2Qa…",
-        "position": {
-          "x": 880,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-3",
-        "type": "text",
-        "title": "hash(“…/cat-video”)    →  x7Kp2Qa…",
-        "position": {
-          "x": 880,
-          "y": -420
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-4",
-        "type": "text",
-        "title": "cùng 7 ký tự → trùng",
-        "position": {
-          "x": 880,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-4-row-5",
-        "type": "text",
-        "title": "# kiểm tra, chỉnh, thử lại: mỗi lần ghi",
-        "position": {
-          "x": 880,
-          "y": -340
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-4"
       },
       {
         "id": "card-5",
         "type": "group",
         "title": "",
         "position": {
-          "x": 820,
-          "y": -420
+          "x": 800,
+          "y": -440
         },
-        "width": 280,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 240,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-row-1",
+        "id": "card-5-text",
         "type": "text",
-        "title": "# CƠ SỐ 62",
+        "title": "CƠ SỐ 62\nbảng chữ   0–9  a–z  A–Z\n125        →  21\n7.000.000  →  tn1e\n→ 62⁷ ≈ 3,5 nghìn tỷ mã",
         "position": {
-          "x": 820,
-          "y": -500
+          "x": 800,
+          "y": -440
         },
-        "width": 280,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-5-row-2",
-        "type": "text",
-        "title": "bảng chữ   0–9  a–z  A–Z",
-        "position": {
-          "x": 820,
-          "y": -460
-        },
-        "width": 280,
-        "height": 40,
+        "width": 240,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-3",
-        "type": "text",
-        "title": "125        →  21",
-        "position": {
-          "x": 820,
-          "y": -420
-        },
-        "width": 280,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-4",
-        "type": "text",
-        "title": "7.000.000  →  tn1e",
-        "position": {
-          "x": 820,
-          "y": -380
-        },
-        "width": 280,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-5",
-        "type": "text",
-        "title": "62⁷ ≈ 3,5 nghìn tỷ mã",
-        "position": {
-          "x": 820,
-          "y": -340
-        },
-        "width": 280,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-5"
       },
       {
         "id": "card-6",
@@ -495,102 +179,33 @@
         "title": "",
         "position": {
           "x": 860,
-          "y": -420
+          "y": -440
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-6-row-1",
+        "id": "card-6-text",
         "type": "text",
-        "title": "# CÙNG ID, ĐÃ XÁO",
+        "title": "CÙNG ID, ĐÃ XÁO\n⚠ 7.000.000 → tn1e     số sau quá rõ\n⚠ 7.000.001 → tn1f\n→ 7.000.000 → x7Kp2Qa  sau khi xáo\n→ 7.000.001 → Lm03vTe",
         "position": {
           "x": 860,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-6-row-2",
-        "type": "text",
-        "title": "7.000.000 → tn1e     số sau quá rõ",
-        "position": {
-          "x": 860,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-6-row-3",
-        "type": "text",
-        "title": "7.000.001 → tn1f",
-        "position": {
-          "x": 860,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-6-row-4",
-        "type": "text",
-        "title": "7.000.000 → x7Kp2Qa  sau khi xáo",
-        "position": {
-          "x": 860,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-6-row-5",
-        "type": "text",
-        "title": "7.000.001 → Lm03vTe",
-        "position": {
-          "x": 860,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-6"
       },
       {
         "id": "card-7",
@@ -598,117 +213,33 @@
         "title": "",
         "position": {
           "x": 880,
-          "y": -400
+          "y": -440
         },
         "width": 400,
-        "height": 240,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-7-row-1",
+        "id": "card-7-text",
         "type": "text",
-        "title": "# HAI KIỂU CHUYỂN HƯỚNG",
+        "title": "HAI KIỂU CHUYỂN HƯỚNG\n301 vĩnh viễn  trình duyệt ghi nhớ\n→ tải ít nhất\n⚠ không đếm click, không sửa, không hết hạn\n302 tạm thời   mọi click đều quay lại\n→ phân tích và kiểm soát · tải nhiều hơn",
         "position": {
           "x": 880,
-          "y": -500
+          "y": -440
         },
         "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-7-row-2",
-        "type": "text",
-        "title": "301 vĩnh viễn  trình duyệt ghi nhớ",
-        "position": {
-          "x": 880,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-7",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-7-row-3",
-        "type": "text",
-        "title": "tải ít nhất",
-        "position": {
-          "x": 880,
-          "y": -420
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-7-row-4",
-        "type": "text",
-        "title": "không đếm click, không sửa, không hết hạn",
-        "position": {
-          "x": 880,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-7-row-5",
-        "type": "text",
-        "title": "302 tạm thời   mọi click đều quay lại",
-        "position": {
-          "x": 880,
-          "y": -340
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-7-row-6",
-        "type": "text",
-        "title": "phân tích và kiểm soát · tải nhiều hơn",
-        "position": {
-          "x": 880,
-          "y": -300
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-7"
       },
       {
         "id": "users",
@@ -1908,138 +1439,30 @@
     "counts": {
       "from": "s10"
     },
-    "card-row-1": {
+    "card-text": {
       "until": "s2"
     },
-    "card-row-2": {
-      "until": "s2"
-    },
-    "card-row-3": {
-      "until": "s2"
-    },
-    "card-row-4": {
-      "until": "s2"
-    },
-    "card-row-5": {
-      "until": "s2"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s2",
       "until": "s3"
     },
-    "card-2-row-2": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-3": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-4": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-5": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-3-row-1": {
+    "card-3-text": {
       "from": "s3",
       "until": "s4"
     },
-    "card-3-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-4": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-4-row-1": {
+    "card-4-text": {
       "from": "s4",
       "until": "s5"
     },
-    "card-4-row-2": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-4-row-3": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-4-row-4": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-4-row-5": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-5-row-1": {
+    "card-5-text": {
       "from": "s5",
       "until": "s6"
     },
-    "card-5-row-2": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-5-row-3": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-5-row-4": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-5-row-5": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-6-row-1": {
+    "card-6-text": {
       "from": "s6",
       "until": "s7"
     },
-    "card-6-row-2": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-6-row-3": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-6-row-4": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-6-row-5": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-7-row-1": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-2": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-3": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-4": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-5": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-6": {
+    "card-7-text": {
       "from": "s8",
       "until": "s9"
     },

@@ -9,100 +9,33 @@
         "title": "",
         "position": {
           "x": 740,
-          "y": -460
+          "y": -480
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# MỘT UNIT TEST",
+        "title": "MỘT UNIT TEST\nbasket = [{ price: 9.99, qty: 3 }]\ntotal(basket, \"SAVE10\")\n→ expect 26.97  ✓\n# không DB, không mạng, ~1 ms",
         "position": {
           "x": 740,
-          "y": -540
+          "y": -480
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "basket = [{ price: 9.99, qty: 3 }]",
-        "position": {
-          "x": 740,
-          "y": -500
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "total(basket, \"SAVE10\")",
-        "position": {
-          "x": 740,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "expect 26.97  ✓",
-        "position": {
-          "x": 740,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "# không DB, không mạng, ~1 ms",
-        "position": {
-          "x": 740,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -110,202 +43,67 @@
         "title": "",
         "position": {
           "x": 760,
-          "y": -460
+          "y": -480
         },
         "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# HỢP ĐỒNG",
+        "title": "HỢP ĐỒNG\nGET /stock/sku-42\n→ 200 { \"sku\": \"sku-42\", \"in_stock\": 3 }\n⚠ đổi tên in_stock → build của Kho thất bại\n# kiểm tra ở cả hai phía, riêng rẽ",
         "position": {
           "x": 760,
-          "y": -540
+          "y": -480
         },
         "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "GET /stock/sku-42",
-        "position": {
-          "x": 760,
-          "y": -500
-        },
-        "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "200 { \"sku\": \"sku-42\", \"in_stock\": 3 }",
-        "position": {
-          "x": 760,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "đổi tên in_stock → build của Kho thất bại",
-        "position": {
-          "x": 760,
-          "y": -420
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "# kiểm tra ở cả hai phía, riêng rẽ",
-        "position": {
-          "x": 760,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "card-3",
         "type": "group",
         "title": "",
         "position": {
-          "x": 760,
-          "y": -460
+          "x": 780,
+          "y": -480
         },
-        "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 440,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-3-text",
         "type": "text",
-        "title": "# BA TẦNG",
+        "title": "BA TẦNG\nđầu cuối      20   15 phút   cả hành trình\ntích hợp     200    4 phút   hàng xóm thật\n→ unit       2.000   30 s      từng phần một\n# nhanh và nhiều ở đáy, ít ở đỉnh",
         "position": {
-          "x": 760,
-          "y": -540
+          "x": 780,
+          "y": -480
         },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "đầu cuối      20   15 phút   cả hành trình",
-        "position": {
-          "x": 760,
-          "y": -500
-        },
-        "width": 400,
-        "height": 40,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "tích hợp     200    4 phút   hàng xóm thật",
-        "position": {
-          "x": 760,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "unit       2.000   30 s      từng phần một",
-        "position": {
-          "x": 760,
-          "y": -420
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-3-row-5",
-        "type": "text",
-        "title": "# nhanh và nhiều ở đáy, ít ở đỉnh",
-        "position": {
-          "x": 760,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "users",
@@ -1356,63 +1154,15 @@
       "from": "s4",
       "until": "s6"
     },
-    "card-row-1": {
+    "card-text": {
       "from": "s3",
       "until": "s4"
     },
-    "card-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-row-4": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-row-5": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s6",
       "until": "s7"
     },
-    "card-2-row-2": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-2-row-3": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-2-row-4": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-2-row-5": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-3-row-1": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-3-row-2": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-3-row-3": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-3-row-4": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-3-row-5": {
+    "card-3-text": {
       "from": "s8",
       "until": "s9"
     },

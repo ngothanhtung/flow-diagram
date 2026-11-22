@@ -9,99 +9,33 @@
         "title": "",
         "position": {
           "x": 1180,
-          "y": -500
+          "y": -520
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# MỖI NGƯỜI DÙNG ĐI ĐÂU?",
+        "title": "MỖI NGƯỜI DÙNG ĐI ĐÂU?\nngười dùng 1001 → hash % 4 = 2 → C\nngười dùng 1002 → hash % 4 = 0 → A\nngười dùng 1003 → hash % 4 = 3 → D\n→ hàng xóm tản ra đều nhau",
         "position": {
           "x": 1180,
-          "y": -580
+          "y": -520
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "người dùng 1001 → hash % 4 = 2 → C",
-        "position": {
-          "x": 1180,
-          "y": -540
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "người dùng 1002 → hash % 4 = 0 → A",
-        "position": {
-          "x": 1180,
-          "y": -500
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "người dùng 1003 → hash % 4 = 3 → D",
-        "position": {
-          "x": 1180,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "hàng xóm tản ra đều nhau",
-        "position": {
-          "x": 1180,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -109,83 +43,33 @@
         "title": "",
         "position": {
           "x": 1160,
-          "y": -520
+          "y": -540
         },
         "width": 320,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# CHIA NHỎ MỘT BỘ ĐẾM NÓNG",
-        "position": {
-          "x": 1160,
-          "y": -580
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "ghi: likes:42#rand(0..7) += 1",
+        "title": "CHIA NHỎ MỘT BỘ ĐẾM NÓNG\nghi: likes:42#rand(0..7) += 1\nđọc: tổng likes:42#0 … #7\n→ 8 khóa con trải trên 4 shard",
         "position": {
           "x": 1160,
           "y": -540
         },
         "width": 320,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "đọc: tổng likes:42#0 … #7",
-        "position": {
-          "x": 1160,
-          "y": -500
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "8 khóa con trải trên 4 shard",
-        "position": {
-          "x": 1160,
-          "y": -460
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "card-3",
@@ -193,83 +77,33 @@
         "title": "",
         "position": {
           "x": 1160,
-          "y": -520
+          "y": -540
         },
         "width": 320,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-3-text",
         "type": "text",
-        "title": "# SCATTER–GATHER",
-        "position": {
-          "x": 1160,
-          "y": -580
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "hỏi cả 4 shard top 10 của chúng",
+        "title": "SCATTER–GATHER\nhỏi cả 4 shard top 10 của chúng\ngộp 40 kết quả, giữ top 10\n⚠ chậm như shard chậm nhất",
         "position": {
           "x": 1160,
           "y": -540
         },
         "width": 320,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "gộp 40 kết quả, giữ top 10",
-        "position": {
-          "x": 1160,
-          "y": -500
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "chậm như shard chậm nhất",
-        "position": {
-          "x": 1160,
-          "y": -460
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "card-4",
@@ -277,83 +111,33 @@
         "title": "",
         "position": {
           "x": 1200,
-          "y": -520
+          "y": -540
         },
         "width": 400,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-row-1",
+        "id": "card-4-text",
         "type": "text",
-        "title": "# % 4 → % 5",
-        "position": {
-          "x": 1200,
-          "y": -580
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4-row-2",
-        "type": "text",
-        "title": "người dùng 1001: % 4 = 2, % 5 = 1  → dời",
+        "title": "% 4 → % 5\nngười dùng 1001: % 4 = 2, % 5 = 1  → dời\nngười dùng 1002: % 4 = 0, % 5 = 0  → ở lại\n⚠ ~80% khóa đổi shard",
         "position": {
           "x": 1200,
           "y": -540
         },
         "width": 400,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-3",
-        "type": "text",
-        "title": "người dùng 1002: % 4 = 0, % 5 = 0  → ở lại",
-        "position": {
-          "x": 1200,
-          "y": -500
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-4",
-        "type": "text",
-        "title": "~80% khóa đổi shard",
-        "position": {
-          "x": 1200,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card-4"
       },
       {
         "id": "app",
@@ -1809,71 +1593,19 @@
       "from": "s8",
       "until": "s9"
     },
-    "card-row-1": {
+    "card-text": {
       "from": "s4",
       "until": "s5"
     },
-    "card-row-2": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-row-3": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-row-4": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-row-5": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s6",
       "until": "s7"
     },
-    "card-2-row-2": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-2-row-3": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-2-row-4": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-3-row-1": {
+    "card-3-text": {
       "from": "s7",
       "until": "s8"
     },
-    "card-3-row-2": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-3-row-3": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-3-row-4": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-4-row-1": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-4-row-2": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-4-row-3": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-4-row-4": {
+    "card-4-text": {
       "from": "s8",
       "until": "s9"
     },

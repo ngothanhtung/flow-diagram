@@ -9,83 +9,33 @@
         "title": "",
         "position": {
           "x": 800,
-          "y": -640
+          "y": -660
         },
         "width": 320,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# THỜI GIAN THANH TOÁN",
-        "position": {
-          "x": 800,
-          "y": -700
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "lưu đơn hàng            120 ms",
+        "title": "THỜI GIAN THANH TOÁN\nlưu đơn hàng            120 ms\n+ 4 lệnh gọi × ~200 ms  800 ms\n→ ~920 ms trước lời “cảm ơn”",
         "position": {
           "x": 800,
           "y": -660
         },
         "width": 320,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "+ 4 lệnh gọi × ~200 ms  800 ms",
-        "position": {
-          "x": 800,
-          "y": -620
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "~920 ms trước lời “cảm ơn”",
-        "position": {
-          "x": 800,
-          "y": -580
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -93,98 +43,33 @@
         "title": "",
         "position": {
           "x": 860,
-          "y": -620
+          "y": -640
         },
         "width": 440,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# HÀNG ĐỢI HAY TOPIC",
+        "title": "HÀNG ĐỢI HAY TOPIC\nhàng đợi → mỗi thông điệp tới MỘT consumer\n           chia việc\ntopic    → mỗi thông điệp tới MỌI subscriber\n           loan báo điều đã xảy ra",
         "position": {
           "x": 860,
-          "y": -700
+          "y": -640
         },
         "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "hàng đợi → mỗi thông điệp tới MỘT consumer",
-        "position": {
-          "x": 860,
-          "y": -660
-        },
-        "width": 440,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "           chia việc",
-        "position": {
-          "x": 860,
-          "y": -620
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "topic    → mỗi thông điệp tới MỌI subscriber",
-        "position": {
-          "x": 860,
-          "y": -580
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "           loan báo điều đã xảy ra",
-        "position": {
-          "x": 860,
-          "y": -540
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "card-3",
@@ -192,99 +77,33 @@
         "title": "",
         "position": {
           "x": 840,
-          "y": -620
+          "y": -640
         },
         "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-3-text",
         "type": "text",
-        "title": "# SỰ KIỆN: NHỮNG ĐIỀU KHOẢN NHỎ",
+        "title": "SỰ KIỆN: NHỮNG ĐIỀU KHOẢN NHỎ\nai phản ứng với OrderPlaced? xem 5 repo\nsubscriber hành động muộn hơn chút\ntrùng lặp & sai thứ tự xảy ra\n→ subscriber idempotent + tracing",
         "position": {
           "x": 840,
-          "y": -700
+          "y": -640
         },
         "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "ai phản ứng với OrderPlaced? xem 5 repo",
-        "position": {
-          "x": 840,
-          "y": -660
-        },
-        "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "subscriber hành động muộn hơn chút",
-        "position": {
-          "x": 840,
-          "y": -620
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "trùng lặp & sai thứ tự xảy ra",
-        "position": {
-          "x": 840,
-          "y": -580
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-5",
-        "type": "text",
-        "title": "subscriber idempotent + tracing",
-        "position": {
-          "x": 840,
-          "y": -540
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "shoppers",
@@ -1121,55 +940,14 @@
       "from": "s8",
       "until": "s9"
     },
-    "card-row-1": {
+    "card-text": {
       "until": "s2"
     },
-    "card-row-2": {
-      "until": "s2"
-    },
-    "card-row-3": {
-      "until": "s2"
-    },
-    "card-row-4": {
-      "until": "s2"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s4",
       "until": "s5"
     },
-    "card-2-row-2": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-2-row-3": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-2-row-4": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-2-row-5": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-3-row-1": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-3-row-2": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-3-row-3": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-3-row-4": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-3-row-5": {
+    "card-3-text": {
       "from": "s7",
       "until": "s8"
     },

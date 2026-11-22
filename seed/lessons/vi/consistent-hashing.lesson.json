@@ -41,151 +41,67 @@
         "title": "",
         "position": {
           "x": 780,
-          "y": -440
+          "y": -460
         },
         "width": 280,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# % 4 → % 5",
-        "position": {
-          "x": 780,
-          "y": -500
-        },
-        "width": 280,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "hash(k) % 4  →  hash(k) % 5",
+        "title": "% 4 → % 5\nhash(k) % 4  →  hash(k) % 5\n⚠ ~80% khóa rơi vào chỗ mới\n# ta muốn chỉ ~1/5 phải dời",
         "position": {
           "x": 780,
           "y": -460
         },
         "width": 280,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "~80% khóa rơi vào chỗ mới",
-        "position": {
-          "x": 780,
-          "y": -420
-        },
-        "width": 280,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "# ta muốn chỉ ~1/5 phải dời",
-        "position": {
-          "x": 780,
-          "y": -380
-        },
-        "width": 280,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
         "type": "group",
         "title": "",
         "position": {
-          "x": 800,
+          "x": 780,
           "y": -460
         },
-        "width": 320,
+        "width": 280,
         "height": 120,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# MISS SAU KHI THÊM MÁY CHỦ",
+        "title": "MISS SAU KHI THÊM MÁY CHỦ\nhash % N    ██████████░░  80%\nconsistent  ██░░░░░░░░░░  20%",
         "position": {
-          "x": 800,
-          "y": -500
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "hash % N    ██████████░░  80%",
-        "position": {
-          "x": 800,
+          "x": 780,
           "y": -460
         },
-        "width": 320,
-        "height": 40,
+        "width": 280,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "consistent  ██░░░░░░░░░░  20%",
-        "position": {
-          "x": 800,
-          "y": -420
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "a",
@@ -1586,27 +1502,10 @@
     "ring-label": {
       "from": "s2"
     },
-    "card-row-1": {
+    "card-text": {
       "until": "s2"
     },
-    "card-row-2": {
-      "until": "s2"
-    },
-    "card-row-3": {
-      "until": "s2"
-    },
-    "card-row-4": {
-      "until": "s2"
-    },
-    "card-2-row-1": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-2-row-2": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-2-row-3": {
+    "card-2-text": {
       "from": "s9",
       "until": "s10"
     },

@@ -9,115 +9,33 @@
         "title": "",
         "position": {
           "x": 560,
-          "y": -400
+          "y": -440
         },
         "width": 400,
-        "height": 240,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# BOOK A SEAT",
+        "title": "BOOK A SEAT\nn = SELECT left FROM seats WHERE id = 7\nif n > 0:\n  UPDATE seats SET left = {n − 1}\n  INSERT INTO bookings …\n# n − 1 is worked out in the app",
         "position": {
           "x": 560,
-          "y": -500
+          "y": -440
         },
         "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "n = SELECT left FROM seats WHERE id = 7",
-        "position": {
-          "x": 560,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "if n > 0:",
-        "position": {
-          "x": 560,
-          "y": -420
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "  UPDATE seats SET left = {n − 1}",
-        "position": {
-          "x": 560,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "  INSERT INTO bookings …",
-        "position": {
-          "x": 560,
-          "y": -340
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-6",
-        "type": "text",
-        "title": "# n − 1 is worked out in the app",
-        "position": {
-          "x": 560,
-          "y": -300
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -125,98 +43,33 @@
         "title": "",
         "position": {
           "x": 540,
-          "y": -420
+          "y": -440
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# WHAT HAPPENED",
+        "title": "WHAT HAPPENED\nAna reads   ██░░░░░░░░░░  left = 1\nBen reads   ███░░░░░░░░░  left = 1\nAna writes  ██████░░░░░░  left = 0\nBen writes  ████████░░░░  left = 0 !",
         "position": {
           "x": 540,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "Ana reads   ██░░░░░░░░░░  left = 1",
-        "position": {
-          "x": 540,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "Ben reads   ███░░░░░░░░░  left = 1",
-        "position": {
-          "x": 540,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "Ana writes  ██████░░░░░░  left = 0",
-        "position": {
-          "x": 540,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "Ben writes  ████████░░░░  left = 0 !",
-        "position": {
-          "x": 540,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "card-3",
@@ -224,115 +77,33 @@
         "title": "",
         "position": {
           "x": 540,
-          "y": -400
+          "y": -440
         },
         "width": 360,
-        "height": 240,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-3-text",
         "type": "text",
-        "title": "# INSIDE A TRANSACTION",
+        "title": "INSIDE A TRANSACTION\nBEGIN\n  SELECT left …          → 1 (both!)\n  UPDATE … INSERT …\nCOMMIT\n⚠ all-or-nothing ≠ one-at-a-time",
         "position": {
           "x": 540,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "BEGIN",
-        "position": {
-          "x": 540,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "  SELECT left …          → 1 (both!)",
-        "position": {
-          "x": 540,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "  UPDATE … INSERT …",
-        "position": {
-          "x": 540,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-5",
-        "type": "text",
-        "title": "COMMIT",
-        "position": {
-          "x": 540,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-6",
-        "type": "text",
-        "title": "all-or-nothing ≠ one-at-a-time",
-        "position": {
-          "x": 540,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "card-4",
@@ -340,100 +111,33 @@
         "title": "",
         "position": {
           "x": 520,
-          "y": -420
+          "y": -440
         },
         "width": 320,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-row-1",
+        "id": "card-4-text",
         "type": "text",
-        "title": "# ONE ATOMIC STATEMENT",
+        "title": "ONE ATOMIC STATEMENT\nUPDATE seats SET left = left − 1\n WHERE id = 7 AND left > 0\n→ Ana: 1 row changed → booked\n# Ben: 0 rows changed → sold out",
         "position": {
           "x": 520,
-          "y": -500
+          "y": -440
         },
         "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4-row-2",
-        "type": "text",
-        "title": "UPDATE seats SET left = left − 1",
-        "position": {
-          "x": 520,
-          "y": -460
-        },
-        "width": 320,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-3",
-        "type": "text",
-        "title": " WHERE id = 7 AND left > 0",
-        "position": {
-          "x": 520,
-          "y": -420
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-4",
-        "type": "text",
-        "title": "Ana: 1 row changed → booked",
-        "position": {
-          "x": 520,
-          "y": -380
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-4-row-5",
-        "type": "text",
-        "title": "# Ben: 0 rows changed → sold out",
-        "position": {
-          "x": 520,
-          "y": -340
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-4"
       },
       {
         "id": "card-5",
@@ -441,300 +145,101 @@
         "title": "",
         "position": {
           "x": 540,
-          "y": -420
+          "y": -440
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-row-1",
+        "id": "card-5-text",
         "type": "text",
-        "title": "# COMPARE-AND-SET",
+        "title": "COMPARE-AND-SET\nread:  left = 1, version = 8\nwrite: … SET left = 0, version = 9\n       WHERE id = 7 AND version = 8\n⚠ Ben: 0 rows → reload, retry",
         "position": {
           "x": 540,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-5-row-2",
-        "type": "text",
-        "title": "read:  left = 1, version = 8",
-        "position": {
-          "x": 540,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-3",
-        "type": "text",
-        "title": "write: … SET left = 0, version = 9",
-        "position": {
-          "x": 540,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-4",
-        "type": "text",
-        "title": "       WHERE id = 7 AND version = 8",
-        "position": {
-          "x": 540,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-5",
-        "type": "text",
-        "title": "Ben: 0 rows → reload, retry",
-        "position": {
-          "x": 540,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card-5"
       },
       {
         "id": "card-6",
         "type": "group",
         "title": "",
         "position": {
-          "x": 560,
-          "y": -420
+          "x": 540,
+          "y": -440
         },
-        "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 360,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-6-row-1",
+        "id": "card-6-text",
         "type": "text",
-        "title": "# NOTHING TO LOCK",
+        "title": "NOTHING TO LOCK\nSELECT … FROM bookings\n  WHERE seat = 7 FOR UPDATE   → 0 rows\nINSERT INTO bookings (seat = 7)\n⚠ both see 0 rows → both insert",
         "position": {
-          "x": 560,
-          "y": -500
+          "x": 540,
+          "y": -440
         },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-6-row-2",
-        "type": "text",
-        "title": "SELECT … FROM bookings",
-        "position": {
-          "x": 560,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-6-row-3",
-        "type": "text",
-        "title": "  WHERE seat = 7 FOR UPDATE   → 0 rows",
-        "position": {
-          "x": 560,
-          "y": -420
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-6-row-4",
-        "type": "text",
-        "title": "INSERT INTO bookings (seat = 7)",
-        "position": {
-          "x": 560,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-6-row-5",
-        "type": "text",
-        "title": "both see 0 rows → both insert",
-        "position": {
-          "x": 560,
-          "y": -340
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card-6"
       },
       {
         "id": "card-7",
         "type": "group",
         "title": "",
         "position": {
-          "x": 520,
-          "y": -420
+          "x": 540,
+          "y": -440
         },
-        "width": 320,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 360,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-7-row-1",
+        "id": "card-7-text",
         "type": "text",
-        "title": "# A WAIT CYCLE",
+        "title": "A WAIT CYCLE\nAna: lock A … waiting for B\nBen: lock B … waiting for A\n⚠ cycle → database aborts one\n→ fix: always lock lowest id first",
         "position": {
-          "x": 520,
-          "y": -500
+          "x": 540,
+          "y": -440
         },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-7-row-2",
-        "type": "text",
-        "title": "Ana: lock A … waiting for B",
-        "position": {
-          "x": 520,
-          "y": -460
-        },
-        "width": 320,
-        "height": 40,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-7",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-7-row-3",
-        "type": "text",
-        "title": "Ben: lock B … waiting for A",
-        "position": {
-          "x": 520,
-          "y": -420
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-7-row-4",
-        "type": "text",
-        "title": "cycle → database aborts one",
-        "position": {
-          "x": 520,
-          "y": -380
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-7-row-5",
-        "type": "text",
-        "title": "fix: always lock lowest id first",
-        "position": {
-          "x": 520,
-          "y": -340
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-7"
       },
       {
         "id": "card-8",
@@ -742,115 +247,33 @@
         "title": "",
         "position": {
           "x": 540,
-          "y": -400
+          "y": -440
         },
         "width": 360,
-        "height": 240,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-8-row-1",
+        "id": "card-8-text",
         "type": "text",
-        "title": "# THREE SHORT STEPS",
+        "title": "THREE SHORT STEPS\n1. UPDATE seat 7 SET held_by = Ana,\n     held_until = now() + 10 min\n2. charge card (no transaction open)\n3. UPDATE seat 7 SET sold_to = Ana\n# job: release holds past held_until",
         "position": {
           "x": 540,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-8",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-8-row-2",
-        "type": "text",
-        "title": "1. UPDATE seat 7 SET held_by = Ana,",
-        "position": {
-          "x": 540,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-8",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-8-row-3",
-        "type": "text",
-        "title": "     held_until = now() + 10 min",
-        "position": {
-          "x": 540,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-8",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-8-row-4",
-        "type": "text",
-        "title": "2. charge card (no transaction open)",
-        "position": {
-          "x": 540,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-8",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-8-row-5",
-        "type": "text",
-        "title": "3. UPDATE seat 7 SET sold_to = Ana",
-        "position": {
-          "x": 540,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-8",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-8-row-6",
-        "type": "text",
-        "title": "# job: release holds past held_until",
-        "position": {
-          "x": 540,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-8",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-8"
       },
       {
         "id": "ana",
@@ -2326,169 +1749,34 @@
       "from": "s12",
       "until": "s13"
     },
-    "card-row-1": {
+    "card-text": {
       "until": "s2"
     },
-    "card-row-2": {
-      "until": "s2"
-    },
-    "card-row-3": {
-      "until": "s2"
-    },
-    "card-row-4": {
-      "until": "s2"
-    },
-    "card-row-5": {
-      "until": "s2"
-    },
-    "card-row-6": {
-      "until": "s2"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s2",
       "until": "s3"
     },
-    "card-2-row-2": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-3": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-4": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-5": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-3-row-1": {
+    "card-3-text": {
       "from": "s3",
       "until": "s4"
     },
-    "card-3-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-4": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-5": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-6": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-4-row-1": {
+    "card-4-text": {
       "from": "s5",
       "until": "s6"
     },
-    "card-4-row-2": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-3": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-4": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-5": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-5-row-1": {
+    "card-5-text": {
       "from": "s6",
       "until": "s7"
     },
-    "card-5-row-2": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-3": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-4": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-5": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-6-row-1": {
+    "card-6-text": {
       "from": "s8",
       "until": "s9"
     },
-    "card-6-row-2": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-6-row-3": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-6-row-4": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-6-row-5": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-1": {
+    "card-7-text": {
       "from": "s9",
       "until": "s10"
     },
-    "card-7-row-2": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-7-row-3": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-7-row-4": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-7-row-5": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-8-row-1": {
-      "from": "s12",
-      "until": "s13"
-    },
-    "card-8-row-2": {
-      "from": "s12",
-      "until": "s13"
-    },
-    "card-8-row-3": {
-      "from": "s12",
-      "until": "s13"
-    },
-    "card-8-row-4": {
-      "from": "s12",
-      "until": "s13"
-    },
-    "card-8-row-5": {
-      "from": "s12",
-      "until": "s13"
-    },
-    "card-8-row-6": {
+    "card-8-text": {
       "from": "s12",
       "until": "s13"
     },

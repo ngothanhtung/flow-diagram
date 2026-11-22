@@ -9,102 +9,138 @@
         "title": "",
         "position": {
           "x": 680,
-          "y": -340
+          "y": -360
         },
         "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# GIỚI HẠN MỌI TRUY VẤN",
+        "title": "GIỚI HẠN MỌI TRUY VẤN\nSELECT * FROM invoices\n WHERE id = 1043\n   AND org_id = :caller_org\n→ Eve (Globex) → không có dòng nào → 404",
         "position": {
           "x": 680,
-          "y": -420
+          "y": -360
         },
         "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
-        "fontWeight": "bold",
+        "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "SELECT * FROM invoices",
+        "id": "card-2",
+        "type": "group",
+        "title": "",
         "position": {
           "x": 680,
           "y": -380
         },
         "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
       },
       {
-        "id": "card-row-3",
+        "id": "card-2-text",
         "type": "text",
-        "title": " WHERE id = 1043",
+        "title": "DANH SÁCH TRƯỜNG ĐƯỢC GHI\n⚠ update(user, request.body)\n→ update(user, pick(body, \"name\", \"email\"))\n# role: endpoint chỉ cho admin",
         "position": {
           "x": 680,
-          "y": -340
+          "y": -380
         },
         "width": 400,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "   AND org_id = :caller_org",
+        "id": "card-3",
+        "type": "group",
+        "title": "",
         "position": {
-          "x": 680,
-          "y": -300
+          "x": 660,
+          "y": -360
         },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
+        "width": 360,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
       },
       {
-        "id": "card-row-5",
+        "id": "card-3-text",
         "type": "text",
-        "title": "Eve (Globex) → không có dòng nào → 404",
+        "title": "CƠ SỞ DỮ LIỆU CŨNG LỌC\nCREATE POLICY tenant ON invoices\n  USING (org_id = current_org())\n→ SELECT * FROM invoices\n#   → only the caller’s organisation",
         "position": {
-          "x": 680,
-          "y": -260
+          "x": 660,
+          "y": -360
         },
-        "width": 400,
-        "height": 40,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
-        "id": "card-2",
+        "id": "card-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 640,
+          "y": -360
+        },
+        "width": 320,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-4-text",
+        "type": "text",
+        "title": "VAI TRÒ → QUYỀN\nngười xem    đọc\nkế toán      đọc · sửa\nngười duyệt  đọc · duyệt\nadmin        mọi thứ + người dùng",
+        "position": {
+          "x": 640,
+          "y": -360
+        },
+        "width": 320,
+        "height": 160,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-4"
+      },
+      {
+        "id": "card-5",
         "type": "group",
         "title": "",
         "position": {
@@ -113,381 +149,29 @@
         },
         "width": 400,
         "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-5-text",
         "type": "text",
-        "title": "# DANH SÁCH TRƯỜNG ĐƯỢC GHI",
+        "title": "VÌ SAO ALICE XEM ĐƯỢC 1042?\nhóa đơn 1042    trong       thư mục Q3\nthư mục Q3      chia sẻ     nhóm Tài chính\nnhóm Tài chính  thành viên  alice\n→ alice được xem hóa đơn 1042",
         "position": {
           "x": 680,
-          "y": -420
+          "y": -360
         },
         "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "update(user, request.body)",
-        "position": {
-          "x": 680,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "update(user, pick(body, \"name\", \"email\"))",
-        "position": {
-          "x": 680,
-          "y": -340
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "# role: endpoint chỉ cho admin",
-        "position": {
-          "x": 680,
-          "y": -300
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3",
-        "type": "group",
-        "title": "",
-        "position": {
-          "x": 660,
-          "y": -340
-        },
-        "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
-        "borderColor": "#64748b",
-        "borderWidth": 1,
-        "fill": "flat",
-        "opacity": 1,
-        "borderStyle": "solid"
-      },
-      {
-        "id": "card-3-row-1",
-        "type": "text",
-        "title": "# CƠ SỞ DỮ LIỆU CŨNG LỌC",
-        "position": {
-          "x": 660,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "CREATE POLICY tenant ON invoices",
-        "position": {
-          "x": 660,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "  USING (org_id = current_org())",
-        "position": {
-          "x": 660,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "SELECT * FROM invoices",
-        "position": {
-          "x": 660,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-3-row-5",
-        "type": "text",
-        "title": "#   → only the caller’s organisation",
-        "position": {
-          "x": 660,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4",
-        "type": "group",
-        "title": "",
-        "position": {
-          "x": 660,
-          "y": -340
-        },
-        "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
-        "borderColor": "#64748b",
-        "borderWidth": 1,
-        "fill": "flat",
-        "opacity": 1,
-        "borderStyle": "solid"
-      },
-      {
-        "id": "card-4-row-1",
-        "type": "text",
-        "title": "# VAI TRÒ → QUYỀN",
-        "position": {
-          "x": 660,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4-row-2",
-        "type": "text",
-        "title": "người xem    đọc",
-        "position": {
-          "x": 660,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-3",
-        "type": "text",
-        "title": "kế toán      đọc · sửa",
-        "position": {
-          "x": 660,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-4",
-        "type": "text",
-        "title": "người duyệt  đọc · duyệt",
-        "position": {
-          "x": 660,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-5",
-        "type": "text",
-        "title": "admin        mọi thứ + người dùng",
-        "position": {
-          "x": 660,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5",
-        "type": "group",
-        "title": "",
-        "position": {
-          "x": 680,
-          "y": -340
-        },
-        "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
-        "borderColor": "#64748b",
-        "borderWidth": 1,
-        "fill": "flat",
-        "opacity": 1,
-        "borderStyle": "solid"
-      },
-      {
-        "id": "card-5-row-1",
-        "type": "text",
-        "title": "# VÌ SAO ALICE XEM ĐƯỢC 1042?",
-        "position": {
-          "x": 680,
-          "y": -420
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-5-row-2",
-        "type": "text",
-        "title": "hóa đơn 1042    trong       thư mục Q3",
-        "position": {
-          "x": 680,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-3",
-        "type": "text",
-        "title": "thư mục Q3      chia sẻ     nhóm Tài chính",
-        "position": {
-          "x": 680,
-          "y": -340
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-4",
-        "type": "text",
-        "title": "nhóm Tài chính  thành viên  alice",
-        "position": {
-          "x": 680,
-          "y": -300
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-5",
-        "type": "text",
-        "title": "alice được xem hóa đơn 1042",
-        "position": {
-          "x": 680,
-          "y": -260
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-5"
       },
       {
         "id": "alice",
@@ -1896,99 +1580,23 @@
     "audit-2": {
       "from": "s13"
     },
-    "card-row-1": {
+    "card-text": {
       "from": "s2",
       "until": "s3"
     },
-    "card-row-2": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-3": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-4": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-5": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s3",
       "until": "s4"
     },
-    "card-2-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-4": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-1": {
+    "card-3-text": {
       "from": "s4",
       "until": "s5"
     },
-    "card-3-row-2": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-3-row-3": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-3-row-4": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-3-row-5": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-4-row-1": {
+    "card-4-text": {
       "from": "s5",
       "until": "s6"
     },
-    "card-4-row-2": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-3": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-4": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-5": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-5-row-1": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-2": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-3": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-4": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-5": {
+    "card-5-text": {
       "from": "s6",
       "until": "s7"
     },

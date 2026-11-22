@@ -8,134 +8,68 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 920,
+          "x": 900,
           "y": -300
         },
-        "width": 240,
+        "width": 200,
         "height": 120,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-row-1",
+        "id": "chart-text",
         "type": "text",
-        "title": "# ĐỘ TRỄ THEO MỨC BẬN",
+        "title": "ĐỘ TRỄ THEO MỨC BẬN\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n          ▲ 70%",
         "position": {
-          "x": 920,
-          "y": -340
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-row-2",
-        "type": "text",
-        "title": "▁▁▁▁▁▁▁▁▁▂▂▃▄▆█",
-        "position": {
-          "x": 920,
+          "x": 900,
           "y": -300
         },
-        "width": 240,
-        "height": 40,
+        "width": 200,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-row-3",
-        "type": "text",
-        "title": "          ▲ 70%",
-        "position": {
-          "x": 920,
-          "y": -260
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "chart"
       },
       {
         "id": "chart-2",
         "type": "group",
         "title": "",
         "position": {
-          "x": 920,
+          "x": 900,
           "y": -300
         },
-        "width": 240,
+        "width": 200,
         "height": 120,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-2-row-1",
+        "id": "chart-2-text",
         "type": "text",
-        "title": "# ĐỘ TRỄ THEO MỨC BẬN",
+        "title": "ĐỘ TRỄ THEO MỨC BẬN\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n             ▲ 96%",
         "position": {
-          "x": 920,
-          "y": -340
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-2-row-2",
-        "type": "text",
-        "title": "▁▁▁▁▁▁▁▁▁▂▂▃▄▆█",
-        "position": {
-          "x": 920,
+          "x": 900,
           "y": -300
         },
-        "width": 240,
-        "height": 40,
+        "width": 200,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-2-row-3",
-        "type": "text",
-        "title": "             ▲ 96%",
-        "position": {
-          "x": 920,
-          "y": -260
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-2",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "chart-2"
       },
       {
         "id": "chart-3",
@@ -143,251 +77,101 @@
         "title": "",
         "position": {
           "x": 980,
-          "y": -260
+          "y": -280
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-3-row-1",
+        "id": "chart-3-text",
         "type": "text",
-        "title": "# PHÂN VỊ",
-        "position": {
-          "x": 980,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-3-row-2",
-        "type": "text",
-        "title": "TB    180 ms   trông ổn",
-        "position": {
-          "x": 980,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-3-row-3",
-        "type": "text",
-        "title": "p50   160 ms   một nửa nhanh hơn",
-        "position": {
-          "x": 980,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-3-row-4",
-        "type": "text",
-        "title": "p99   600 ms   1 trên 100 chậm hơn",
-        "position": {
-          "x": 980,
-          "y": -220
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-3",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "chart-3-row-5",
-        "type": "text",
-        "title": "# trung bình che giấu 1% chậm",
-        "position": {
-          "x": 980,
-          "y": -180
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-4",
-        "type": "group",
-        "title": "",
-        "position": {
-          "x": 920,
-          "y": -300
-        },
-        "width": 240,
-        "height": 120,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
-        "borderColor": "#64748b",
-        "borderWidth": 1,
-        "fill": "flat",
-        "opacity": 1,
-        "borderStyle": "solid"
-      },
-      {
-        "id": "chart-4-row-1",
-        "type": "text",
-        "title": "# ĐỘ TRỄ THEO MỨC BẬN",
-        "position": {
-          "x": 920,
-          "y": -340
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-4-row-2",
-        "type": "text",
-        "title": "▁▁▁▁▁▁▁▁▁▂▂▃▄▆█",
-        "position": {
-          "x": 920,
-          "y": -300
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-4-row-3",
-        "type": "text",
-        "title": "     ▲ 35%",
-        "position": {
-          "x": 920,
-          "y": -260
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-5",
-        "type": "group",
-        "title": "",
+        "title": "PHÂN VỊ\nTB    180 ms   trông ổn\np50   160 ms   một nửa nhanh hơn\n⚠ p99   600 ms   1 trên 100 chậm hơn\n# trung bình che giấu 1% chậm",
         "position": {
           "x": 980,
           "y": -280
         },
         "width": 360,
         "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "chart-3"
+      },
+      {
+        "id": "chart-4",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 900,
+          "y": -300
+        },
+        "width": 200,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-5-row-1",
+        "id": "chart-4-text",
         "type": "text",
-        "title": "# ĐỊNH LUẬT LITTLE",
+        "title": "ĐỘ TRỄ THEO MỨC BẬN\n▁▁▁▁▁▁▁▁▁▂▂▃▄▆█\n     ▲ 35%",
         "position": {
-          "x": 980,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-5-row-2",
-        "type": "text",
-        "title": "đang xử lý = thông lượng × độ trễ",
-        "position": {
-          "x": 980,
+          "x": 900,
           "y": -300
         },
-        "width": 360,
-        "height": 40,
+        "width": 200,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-5",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "chart-4"
       },
       {
-        "id": "chart-5-row-3",
-        "type": "text",
-        "title": "350 yc/s × 0,12 s ≈ 42",
+        "id": "chart-5",
+        "type": "group",
+        "title": "",
         "position": {
-          "x": 980,
-          "y": -260
+          "x": 960,
+          "y": -300
         },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-5",
-        "color": "#cbd5e1"
+        "width": 320,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
       },
       {
-        "id": "chart-5-row-4",
+        "id": "chart-5-text",
         "type": "text",
-        "title": "độ trễ 1 s → 350 đang xử lý",
+        "title": "ĐỊNH LUẬT LITTLE\nđang xử lý = thông lượng × độ trễ\n350 yc/s × 0,12 s ≈ 42\n⚠ độ trễ 1 s → 350 đang xử lý",
         "position": {
-          "x": 980,
-          "y": -220
+          "x": 960,
+          "y": -300
         },
-        "width": 360,
-        "height": 40,
+        "width": 320,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-5",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "chart-5"
       },
       {
         "id": "chart-6",
@@ -395,168 +179,67 @@
         "title": "",
         "position": {
           "x": 960,
-          "y": -280
+          "y": -300
         },
         "width": 320,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-6-row-1",
+        "id": "chart-6-text",
         "type": "text",
-        "title": "# CHỜ SERVER CHẬM NHẤT",
-        "position": {
-          "x": 960,
-          "y": -340
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-6",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-6-row-2",
-        "type": "text",
-        "title": "mỗi server chậm 1% thời gian",
+        "title": "CHỜ SERVER CHẬM NHẤT\nmỗi server chậm 1% thời gian\n1 server:    1% trang chậm\n⚠ 100 server:  1 − 0,99¹⁰⁰ ≈ 63%",
         "position": {
           "x": 960,
           "y": -300
         },
         "width": 320,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-6-row-3",
-        "type": "text",
-        "title": "1 server:    1% trang chậm",
-        "position": {
-          "x": 960,
-          "y": -260
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-6-row-4",
-        "type": "text",
-        "title": "100 server:  1 − 0,99¹⁰⁰ ≈ 63%",
-        "position": {
-          "x": 960,
-          "y": -220
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-6",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "chart-6"
       },
       {
         "id": "chart-7",
         "type": "group",
         "title": "",
         "position": {
-          "x": 980,
-          "y": -280
+          "x": 960,
+          "y": -300
         },
-        "width": 360,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 320,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "chart-7-row-1",
+        "id": "chart-7-text",
         "type": "text",
-        "title": "# DÒNG MỖI GIÂY",
+        "title": "DÒNG MỖI GIÂY\n1 dòng mỗi INSERT       2.000 / s\n→ 100 dòng mỗi INSERT  50.000 / s\n⚠ mỗi dòng chờ ≤ 50 ms",
         "position": {
-          "x": 980,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "chart-7",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "chart-7-row-2",
-        "type": "text",
-        "title": "1 dòng mỗi INSERT       2.000 / s",
-        "position": {
-          "x": 980,
+          "x": 960,
           "y": -300
         },
-        "width": 360,
-        "height": 40,
+        "width": 320,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "chart-7",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "chart-7-row-3",
-        "type": "text",
-        "title": "100 dòng mỗi INSERT  50.000 / s",
-        "position": {
-          "x": 980,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-7",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "chart-7-row-4",
-        "type": "text",
-        "title": "mỗi dòng chờ ≤ 50 ms",
-        "position": {
-          "x": 980,
-          "y": -220
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "chart-7",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "chart-7"
       },
       {
         "id": "users",
@@ -1470,104 +1153,30 @@
       "from": "s9",
       "until": "s10"
     },
-    "chart-row-1": {
+    "chart-text": {
       "from": "s2",
       "until": "s3"
     },
-    "chart-row-2": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "chart-row-3": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "chart-2-row-1": {
+    "chart-2-text": {
       "from": "s3",
       "until": "s4"
     },
-    "chart-2-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "chart-2-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "chart-3-row-1": {
+    "chart-3-text": {
       "from": "s4",
       "until": "s5"
     },
-    "chart-3-row-2": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "chart-3-row-3": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "chart-3-row-4": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "chart-3-row-5": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "chart-4-row-1": {
+    "chart-4-text": {
       "from": "s5"
     },
-    "chart-4-row-2": {
-      "from": "s5"
-    },
-    "chart-4-row-3": {
-      "from": "s5"
-    },
-    "chart-5-row-1": {
+    "chart-5-text": {
       "from": "s7",
       "until": "s8"
     },
-    "chart-5-row-2": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "chart-5-row-3": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "chart-5-row-4": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "chart-6-row-1": {
+    "chart-6-text": {
       "from": "s8",
       "until": "s9"
     },
-    "chart-6-row-2": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "chart-6-row-3": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "chart-6-row-4": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "chart-7-row-1": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "chart-7-row-2": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "chart-7-row-3": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "chart-7-row-4": {
+    "chart-7-text": {
       "from": "s9",
       "until": "s10"
     },
@@ -1803,13 +1412,7 @@
         "chart-4": {
           "visible": false
         },
-        "chart-4-row-1": {
-          "visible": false
-        },
-        "chart-4-row-2": {
-          "visible": false
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "visible": false
         },
         "u-4": {
@@ -1846,13 +1449,7 @@
         "chart-4": {
           "visible": false
         },
-        "chart-4-row-1": {
-          "visible": false
-        },
-        "chart-4-row-2": {
-          "visible": false
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "visible": false
         },
         "u-4": {
@@ -1891,13 +1488,7 @@
         "chart-4": {
           "visible": false
         },
-        "chart-4-row-1": {
-          "visible": false
-        },
-        "chart-4-row-2": {
-          "visible": false
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "visible": false
         },
         "u-4": {
@@ -1936,13 +1527,7 @@
         "chart-4": {
           "visible": false
         },
-        "chart-4-row-1": {
-          "visible": false
-        },
-        "chart-4-row-2": {
-          "visible": false
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "visible": false
         },
         "u-4": {
@@ -1977,13 +1562,7 @@
         "chart-4": {
           "emphasis": true
         },
-        "chart-4-row-1": {
-          "emphasis": true
-        },
-        "chart-4-row-2": {
-          "emphasis": true
-        },
-        "chart-4-row-3": {
+        "chart-4-text": {
           "emphasis": true
         },
         "u-4": {

@@ -9,100 +9,33 @@
         "title": "",
         "position": {
           "x": 700,
-          "y": -420
+          "y": -440
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# HASH CHẬM, CÓ SALT",
+        "title": "HASH CHẬM, CÓ SALT\nhunter2 + salt 9f2c → $argon2id$…7Qe\ncùng mật khẩu, salt khác → hash khác\n→ ~100 ms mỗi lần đoán, có chủ đích\n⚠ MD5 / SHA-256: hàng tỷ lần mỗi giây",
         "position": {
           "x": 700,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "hunter2 + salt 9f2c → $argon2id$…7Qe",
-        "position": {
-          "x": 700,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "cùng mật khẩu, salt khác → hash khác",
-        "position": {
-          "x": 700,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "~100 ms mỗi lần đoán, có chủ đích",
-        "position": {
-          "x": 700,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "MD5 / SHA-256: hàng tỷ lần mỗi giây",
-        "position": {
-          "x": 700,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -110,99 +43,33 @@
         "title": "",
         "position": {
           "x": 740,
-          "y": -420
+          "y": -440
         },
         "width": 440,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# ĐẶT LẠI AN TOÀN",
+        "title": "ĐẶT LẠI AN TOÀN\ntoken: 32 byte ngẫu nhiên, dùng một lần\nhết hạn sau 15 phút\ncùng câu trả lời dù email có tồn tại hay không\n→ sau khi đặt lại: thu hồi mọi phiên",
         "position": {
           "x": 740,
-          "y": -500
+          "y": -440
         },
         "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "token: 32 byte ngẫu nhiên, dùng một lần",
-        "position": {
-          "x": 740,
-          "y": -460
-        },
-        "width": 440,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "hết hạn sau 15 phút",
-        "position": {
-          "x": 740,
-          "y": -420
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "cùng câu trả lời dù email có tồn tại hay không",
-        "position": {
-          "x": 740,
-          "y": -380
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "sau khi đặt lại: thu hồi mọi phiên",
-        "position": {
-          "x": 740,
-          "y": -340
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "alice",
@@ -1695,43 +1562,11 @@
     "idp": {
       "from": "s10"
     },
-    "card-row-1": {
+    "card-text": {
       "from": "s2",
       "until": "s3"
     },
-    "card-row-2": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-3": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-4": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-5": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-1": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-2-row-2": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-2-row-3": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-2-row-4": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-2-row-5": {
+    "card-2-text": {
       "from": "s4",
       "until": "s5"
     },

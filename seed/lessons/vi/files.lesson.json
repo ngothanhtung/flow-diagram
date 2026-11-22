@@ -8,101 +8,34 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1320,
-          "y": -780
+          "x": 1300,
+          "y": -800
         },
-        "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 360,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# MỘT LƯỢT TẢI LÊN PRESIGNED",
+        "title": "MỘT LƯỢT TẢI LÊN PRESIGNED\nPUT https://bucket…/videos/7a1e.mp4\n  ?expires=900&signature=3b9f…\n→ một khóa · một lượt tải · 15 phút\n# ứng dụng không bao giờ chạm vào byte",
         "position": {
-          "x": 1320,
-          "y": -860
+          "x": 1300,
+          "y": -800
         },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "PUT https://bucket…/videos/7a1e.mp4",
-        "position": {
-          "x": 1320,
-          "y": -820
-        },
-        "width": 400,
-        "height": 40,
+        "width": 360,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "  ?expires=900&signature=3b9f…",
-        "position": {
-          "x": 1320,
-          "y": -780
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "một khóa · một lượt tải · 15 phút",
-        "position": {
-          "x": 1320,
-          "y": -740
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "# ứng dụng không bao giờ chạm vào byte",
-        "position": {
-          "x": 1320,
-          "y": -700
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -110,100 +43,33 @@
         "title": "",
         "position": {
           "x": 1320,
-          "y": -780
+          "y": -800
         },
         "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# TẢI LÊN NHIỀU PHẦN",
+        "title": "TẢI LÊN NHIỀU PHẦN\nbắt đầu      → id tải lên + 200 URL\nphần 1…200  mỗi phần 10 MB, 4 phần một lúc\n⚠ phần 37 lỗi → gửi lại phần 37\n→ hoàn tất  → videos/7a1e.mp4",
         "position": {
           "x": 1320,
-          "y": -860
+          "y": -800
         },
         "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "bắt đầu      → id tải lên + 200 URL",
-        "position": {
-          "x": 1320,
-          "y": -820
-        },
-        "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "phần 1…200  mỗi phần 10 MB, 4 phần một lúc",
-        "position": {
-          "x": 1320,
-          "y": -780
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "phần 37 lỗi → gửi lại phần 37",
-        "position": {
-          "x": 1320,
-          "y": -740
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "hoàn tất  → videos/7a1e.mp4",
-        "position": {
-          "x": 1320,
-          "y": -700
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "card-3",
@@ -211,115 +77,33 @@
         "title": "",
         "position": {
           "x": 1380,
-          "y": -760
+          "y": -800
         },
         "width": 520,
-        "height": 240,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-3-text",
         "type": "text",
-        "title": "# MỘT VIDEO, NĂM CHẤT LƯỢNG",
+        "title": "MỘT VIDEO, NĂM CHẤT LƯỢNG\n1080p   5 Mbit/s\n 720p   3 Mbit/s\n→ 480p   1,5 Mbit/s   ← hiện tại: đường truyền 2 Mbit/s\n 360p   0,8 Mbit/s\n 240p   0,4 Mbit/s",
         "position": {
           "x": 1380,
-          "y": -860
+          "y": -800
         },
         "width": 520,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "1080p   5 Mbit/s",
-        "position": {
-          "x": 1380,
-          "y": -820
-        },
-        "width": 520,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": " 720p   3 Mbit/s",
-        "position": {
-          "x": 1380,
-          "y": -780
-        },
-        "width": 520,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "480p   1,5 Mbit/s   ← hiện tại: đường truyền 2 Mbit/s",
-        "position": {
-          "x": 1380,
-          "y": -740
-        },
-        "width": 520,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-3-row-5",
-        "type": "text",
-        "title": " 360p   0,8 Mbit/s",
-        "position": {
-          "x": 1380,
-          "y": -700
-        },
-        "width": 520,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-6",
-        "type": "text",
-        "title": " 240p   0,4 Mbit/s",
-        "position": {
-          "x": 1380,
-          "y": -660
-        },
-        "width": 520,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "card-4",
@@ -327,99 +111,33 @@
         "title": "",
         "position": {
           "x": 1360,
-          "y": -780
+          "y": -800
         },
         "width": 480,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-row-1",
+        "id": "card-4-text",
         "type": "text",
-        "title": "# LỚP LƯU TRỮ · MỖI TB-THÁNG",
+        "title": "LỚP LƯU TRỮ · MỖI TB-THÁNG\ntiêu chuẩn          ≈ $23     nóng, đọc rẻ\nít truy cập         ≈ $12,50  trả tiền mỗi lần đọc\nlưu trữ lâu dài     ≈ $1–4    đọc chậm hoặc đắt\n→ sau một năm: 730 TB → ≈ $6.300 / tháng",
         "position": {
           "x": 1360,
-          "y": -860
+          "y": -800
         },
         "width": 480,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4-row-2",
-        "type": "text",
-        "title": "tiêu chuẩn          ≈ $23     nóng, đọc rẻ",
-        "position": {
-          "x": 1360,
-          "y": -820
-        },
-        "width": 480,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-3",
-        "type": "text",
-        "title": "ít truy cập         ≈ $12,50  trả tiền mỗi lần đọc",
-        "position": {
-          "x": 1360,
-          "y": -780
-        },
-        "width": 480,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-4",
-        "type": "text",
-        "title": "lưu trữ lâu dài     ≈ $1–4    đọc chậm hoặc đắt",
-        "position": {
-          "x": 1360,
-          "y": -740
-        },
-        "width": 480,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-5",
-        "type": "text",
-        "title": "sau một năm: 730 TB → ≈ $6.300 / tháng",
-        "position": {
-          "x": 1360,
-          "y": -700
-        },
-        "width": 480,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-4"
       },
       {
         "id": "users",
@@ -1942,87 +1660,19 @@
       "from": "s12",
       "until": "s13"
     },
-    "card-row-1": {
+    "card-text": {
       "from": "s5",
       "until": "s6"
     },
-    "card-row-2": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-row-3": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-row-4": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-row-5": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s6",
       "until": "s7"
     },
-    "card-2-row-2": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-2-row-3": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-2-row-4": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-2-row-5": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-3-row-1": {
+    "card-3-text": {
       "from": "s9",
       "until": "s10"
     },
-    "card-3-row-2": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-3-row-3": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-3-row-4": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-3-row-5": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-3-row-6": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-4-row-1": {
-      "from": "s11",
-      "until": "s12"
-    },
-    "card-4-row-2": {
-      "from": "s11",
-      "until": "s12"
-    },
-    "card-4-row-3": {
-      "from": "s11",
-      "until": "s12"
-    },
-    "card-4-row-4": {
-      "from": "s11",
-      "until": "s12"
-    },
-    "card-4-row-5": {
+    "card-4-text": {
       "from": "s11",
       "until": "s12"
     },

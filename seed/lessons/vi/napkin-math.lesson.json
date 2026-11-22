@@ -77,183 +77,67 @@
         "title": "",
         "position": {
           "x": 1420,
-          "y": -740
+          "y": -760
         },
         "width": 520,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# YÊU CẦU BÀI TOÁN",
+        "title": "YÊU CẦU BÀI TOÁN\nPhotoShare: **10M** người dùng hoạt động mỗi ngày\nmỗi người gửi **~20** yêu cầu mỗi ngày\nhọ tải lên **1M** ảnh mỗi ngày, mỗi ảnh 2 MB\n# Một server có chịu nổi không? Cần bao nhiêu lưu trữ?",
         "position": {
           "x": 1420,
-          "y": -820
+          "y": -760
         },
         "width": 520,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "PhotoShare: **10M** người dùng hoạt động mỗi ngày",
-        "position": {
-          "x": 1420,
-          "y": -780
-        },
-        "width": 520,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "mỗi người gửi **~20** yêu cầu mỗi ngày",
-        "position": {
-          "x": 1420,
-          "y": -740
-        },
-        "width": 520,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "họ tải lên **1M** ảnh mỗi ngày, mỗi ảnh 2 MB",
-        "position": {
-          "x": 1420,
-          "y": -700
-        },
-        "width": 520,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "# Một server có chịu nổi không? Cần bao nhiêu lưu trữ?",
-        "position": {
-          "x": 1420,
-          "y": -660
-        },
-        "width": 520,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
         "type": "group",
         "title": "",
         "position": {
-          "x": 1360,
-          "y": -760
+          "x": 1340,
+          "y": -780
         },
-        "width": 400,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 360,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# YÊU CẦU MỖI GIÂY",
+        "title": "YÊU CẦU MỖI GIÂY\n10M người × 20 = **200M** yêu cầu/ngày\n1 ngày = 86.400 s  (≈ 100k)\n→ 200M ÷ 86.400 ≈ 2.300 yc/s",
         "position": {
-          "x": 1360,
-          "y": -820
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "10M người × 20 = **200M** yêu cầu/ngày",
-        "position": {
-          "x": 1360,
+          "x": 1340,
           "y": -780
         },
-        "width": 400,
-        "height": 40,
+        "width": 360,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "1 ngày = 86.400 s  (≈ 100k)",
-        "position": {
-          "x": 1360,
-          "y": -740
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "200M ÷ 86.400 ≈ 2.300 yc/s",
-        "position": {
-          "x": 1360,
-          "y": -700
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "card-3",
@@ -265,63 +149,29 @@
         },
         "width": 280,
         "height": 120,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-3-text",
         "type": "text",
-        "title": "# LƯU LƯỢNG ĐỈNH",
-        "position": {
-          "x": 1300,
-          "y": -820
-        },
-        "width": 280,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "buổi tối ~3 lần trung bình",
+        "title": "LƯU LƯỢNG ĐỈNH\nbuổi tối ~3 lần trung bình\n→ 2.300 × 3 ≈ 7.000 yc/s",
         "position": {
           "x": 1300,
           "y": -780
         },
         "width": 280,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "2.300 × 3 ≈ 7.000 yc/s",
-        "position": {
-          "x": 1300,
-          "y": -740
-        },
-        "width": 280,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "card-4",
@@ -329,302 +179,36 @@
         "title": "",
         "position": {
           "x": 1340,
-          "y": -740
+          "y": -760
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-row-1",
+        "id": "card-4-text",
         "type": "text",
-        "title": "# SERVER",
+        "title": "SERVER\n1 server ≈ 1.000 yc/s (kiểm thử tải)\n7.000 ÷ 1.000 = 7 server\n+ ~30% dư địa cho đột biến & sự cố\n→ 10 server",
         "position": {
           "x": 1340,
-          "y": -820
+          "y": -760
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4-row-2",
-        "type": "text",
-        "title": "1 server ≈ 1.000 yc/s (kiểm thử tải)",
-        "position": {
-          "x": 1340,
-          "y": -780
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-3",
-        "type": "text",
-        "title": "7.000 ÷ 1.000 = 7 server",
-        "position": {
-          "x": 1340,
-          "y": -740
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-4",
-        "type": "text",
-        "title": "+ ~30% dư địa cho đột biến & sự cố",
-        "position": {
-          "x": 1340,
-          "y": -700
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-5",
-        "type": "text",
-        "title": "10 server",
-        "position": {
-          "x": 1340,
-          "y": -660
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-4"
       },
       {
         "id": "card-5",
-        "type": "group",
-        "title": "",
-        "position": {
-          "x": 1340,
-          "y": -740
-        },
-        "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
-        "borderColor": "#64748b",
-        "borderWidth": 1,
-        "fill": "flat",
-        "opacity": 1,
-        "borderStyle": "solid"
-      },
-      {
-        "id": "card-5-row-1",
-        "type": "text",
-        "title": "# LƯU TRỮ",
-        "position": {
-          "x": 1340,
-          "y": -820
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-5-row-2",
-        "type": "text",
-        "title": "1M ảnh × 2 MB = **2 TB** mỗi ngày",
-        "position": {
-          "x": 1340,
-          "y": -780
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-3",
-        "type": "text",
-        "title": "× 365 ngày ≈ **730 TB** mỗi năm",
-        "position": {
-          "x": 1340,
-          "y": -740
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-4",
-        "type": "text",
-        "title": "× 3 bản sao ≈ 2,2 PB",
-        "position": {
-          "x": 1340,
-          "y": -700
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-5",
-        "type": "text",
-        "title": "dự trù ~2 PB năm đầu",
-        "position": {
-          "x": 1340,
-          "y": -660
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-6",
-        "type": "group",
-        "title": "",
-        "position": {
-          "x": 1340,
-          "y": -740
-        },
-        "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
-        "borderColor": "#64748b",
-        "borderWidth": 1,
-        "fill": "flat",
-        "opacity": 1,
-        "borderStyle": "solid"
-      },
-      {
-        "id": "card-6-row-1",
-        "type": "text",
-        "title": "# BYTE MỖI GIÂY",
-        "position": {
-          "x": 1340,
-          "y": -820
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-6-row-2",
-        "type": "text",
-        "title": "vào: 2 TB/ngày ÷ 100k s ≈ 20 MB/s",
-        "position": {
-          "x": 1340,
-          "y": -780
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-6-row-3",
-        "type": "text",
-        "title": "ra:  10M × 100 lượt xem × 200 KB",
-        "position": {
-          "x": 1340,
-          "y": -740
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-6-row-4",
-        "type": "text",
-        "title": "     = 200 TB/ngày ≈ 2 GB/s",
-        "position": {
-          "x": 1340,
-          "y": -700
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-6-row-5",
-        "type": "text",
-        "title": "~16 Gbit/s → phục vụ từ CDN",
-        "position": {
-          "x": 1340,
-          "y": -660
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-7",
         "type": "group",
         "title": "",
         "position": {
@@ -633,79 +217,97 @@
         },
         "width": 320,
         "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-7-row-1",
+        "id": "card-5-text",
         "type": "text",
-        "title": "# DỮ LIỆU NÓNG TRONG RAM",
+        "title": "LƯU TRỮ\n1M ảnh × 2 MB = **2 TB** mỗi ngày\n× 365 ngày ≈ **730 TB** mỗi năm\n× 3 bản sao ≈ 2,2 PB\n→ dự trù ~2 PB năm đầu",
         "position": {
           "x": 1320,
-          "y": -820
+          "y": -760
         },
         "width": 320,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
-        "fontWeight": "bold",
+        "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-5"
       },
       {
-        "id": "card-7-row-2",
+        "id": "card-6",
+        "type": "group",
+        "title": "",
+        "position": {
+          "x": 1320,
+          "y": -760
+        },
+        "width": 320,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
         "type": "text",
-        "title": "hồ sơ: 10M × 2 KB      = 20 GB",
+        "title": "BYTE MỖI GIÂY\nvào: 2 TB/ngày ÷ 100k s ≈ 20 MB/s\nra:  10M × 100 lượt xem × 200 KB\n     = 200 TB/ngày ≈ 2 GB/s\n→ ~16 Gbit/s → phục vụ từ CDN",
+        "position": {
+          "x": 1320,
+          "y": -760
+        },
+        "width": 320,
+        "height": 160,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "color": "#6b7a90",
+        "parentId": "card-6"
+      },
+      {
+        "id": "card-7",
+        "type": "group",
+        "title": "",
         "position": {
           "x": 1320,
           "y": -780
         },
         "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "color": "#cbd5e1"
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
       },
       {
-        "id": "card-7-row-3",
+        "id": "card-7-text",
         "type": "text",
-        "title": "ảnh mới: 1M × 1 KB     = 1 GB",
+        "title": "DỮ LIỆU NÓNG TRONG RAM\nhồ sơ: 10M × 2 KB      = 20 GB\nảnh mới: 1M × 1 KB     = 1 GB\n→ ~21 GB → một server cache 64 GB",
         "position": {
           "x": 1320,
-          "y": -740
+          "y": -780
         },
         "width": 320,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-7",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-7-row-4",
-        "type": "text",
-        "title": "~21 GB → một server cache 64 GB",
-        "position": {
-          "x": 1320,
-          "y": -700
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-7"
       },
       {
         "id": "card-8",
@@ -713,98 +315,33 @@
         "title": "",
         "position": {
           "x": 1280,
-          "y": -740
+          "y": -760
         },
         "width": 240,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-8-row-1",
+        "id": "card-8-text",
         "type": "text",
-        "title": "# CON SỐ TIỆN DỤNG",
+        "title": "CON SỐ TIỆN DỤNG\n1 ngày ≈ 100.000 s\n1M yc/ngày ≈ 12 yc/s\n1 KB × 1M = 1 GB\n1 MB × 1M = 1 TB",
         "position": {
           "x": 1280,
-          "y": -820
+          "y": -760
         },
         "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-8",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-8-row-2",
-        "type": "text",
-        "title": "1 ngày ≈ 100.000 s",
-        "position": {
-          "x": 1280,
-          "y": -780
-        },
-        "width": 240,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-8",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-8-row-3",
-        "type": "text",
-        "title": "1M yc/ngày ≈ 12 yc/s",
-        "position": {
-          "x": 1280,
-          "y": -740
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-8",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-8-row-4",
-        "type": "text",
-        "title": "1 KB × 1M = 1 GB",
-        "position": {
-          "x": 1280,
-          "y": -700
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-8",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-8-row-5",
-        "type": "text",
-        "title": "1 MB × 1M = 1 TB",
-        "position": {
-          "x": 1280,
-          "y": -660
-        },
-        "width": 240,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-8",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-8"
       },
       {
         "id": "card-9",
@@ -812,98 +349,33 @@
         "title": "",
         "position": {
           "x": 1320,
-          "y": -740
+          "y": -760
         },
         "width": 320,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-9-row-1",
+        "id": "card-9-text",
         "type": "text",
-        "title": "# BẢN ƯỚC TÍNH",
+        "title": "BẢN ƯỚC TÍNH\ntrung bình ≈ 2.300 yc/s\nđỉnh       ≈ 7.000 yc/s\nserver     = 10\nlưu trữ    ≈ 730 TB / năm (×3)",
         "position": {
           "x": 1320,
-          "y": -820
+          "y": -760
         },
         "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-9",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-9-row-2",
-        "type": "text",
-        "title": "trung bình ≈ 2.300 yc/s",
-        "position": {
-          "x": 1320,
-          "y": -780
-        },
-        "width": 320,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-9",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-9-row-3",
-        "type": "text",
-        "title": "đỉnh       ≈ 7.000 yc/s",
-        "position": {
-          "x": 1320,
-          "y": -740
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-9",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-9-row-4",
-        "type": "text",
-        "title": "server     = 10",
-        "position": {
-          "x": 1320,
-          "y": -700
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-9",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-9-row-5",
-        "type": "text",
-        "title": "lưu trữ    ≈ 730 TB / năm (×3)",
-        "position": {
-          "x": 1320,
-          "y": -660
-        },
-        "width": 320,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-9",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-9"
       },
       {
         "id": "users",
@@ -1604,158 +1076,38 @@
     "store-label": {
       "from": "s5"
     },
-    "card-row-1": {
+    "card-text": {
       "until": "s2"
     },
-    "card-row-2": {
-      "until": "s2"
-    },
-    "card-row-3": {
-      "until": "s2"
-    },
-    "card-row-4": {
-      "until": "s2"
-    },
-    "card-row-5": {
-      "until": "s2"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s2",
       "until": "s3"
     },
-    "card-2-row-2": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-3": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-4": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-3-row-1": {
+    "card-3-text": {
       "from": "s3",
       "until": "s4"
     },
-    "card-3-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-4-row-1": {
+    "card-4-text": {
       "from": "s4",
       "until": "s5"
     },
-    "card-4-row-2": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-4-row-3": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-4-row-4": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-4-row-5": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-5-row-1": {
+    "card-5-text": {
       "from": "s5",
       "until": "s6"
     },
-    "card-5-row-2": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-5-row-3": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-5-row-4": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-5-row-5": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-6-row-1": {
+    "card-6-text": {
       "from": "s6",
       "until": "s7"
     },
-    "card-6-row-2": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-6-row-3": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-6-row-4": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-6-row-5": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-7-row-1": {
+    "card-7-text": {
       "from": "s7",
       "until": "s8"
     },
-    "card-7-row-2": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-7-row-3": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-7-row-4": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-8-row-1": {
+    "card-8-text": {
       "from": "s8",
       "until": "s9"
     },
-    "card-8-row-2": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-8-row-3": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-8-row-4": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-8-row-5": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-9-row-1": {
-      "from": "s9"
-    },
-    "card-9-row-2": {
-      "from": "s9"
-    },
-    "card-9-row-3": {
-      "from": "s9"
-    },
-    "card-9-row-4": {
-      "from": "s9"
-    },
-    "card-9-row-5": {
+    "card-9-text": {
       "from": "s9"
     },
     "u": {

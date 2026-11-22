@@ -9,99 +9,33 @@
         "title": "",
         "position": {
           "x": 500,
-          "y": -300
+          "y": -320
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# THE PROFILE SCREEN, IN REST",
+        "title": "THE PROFILE SCREEN, IN REST\nGET /users/42           → 18 KB\nGET /users/42/posts     → 26 KB\nGET /users/42/followers →  4 KB\n# three requests, one after another",
         "position": {
           "x": 500,
-          "y": -380
+          "y": -320
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "GET /users/42           → 18 KB",
-        "position": {
-          "x": 500,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "GET /users/42/posts     → 26 KB",
-        "position": {
-          "x": 500,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "GET /users/42/followers →  4 KB",
-        "position": {
-          "x": 500,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "# three requests, one after another",
-        "position": {
-          "x": 500,
-          "y": -220
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -109,99 +43,33 @@
         "title": "",
         "position": {
           "x": 500,
-          "y": -300
+          "y": -320
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# WHAT THE SCREEN NEEDS",
+        "title": "WHAT THE SCREEN NEEDS\nname, avatar URL           ~0.4 KB\nlast 3 posts + previews    ~2.5 KB\nfollower count             ~0.1 KB\n⚠ downloaded 48 KB · used ~3 KB",
         "position": {
           "x": 500,
-          "y": -380
+          "y": -320
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "name, avatar URL           ~0.4 KB",
-        "position": {
-          "x": 500,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "last 3 posts + previews    ~2.5 KB",
-        "position": {
-          "x": 500,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "follower count             ~0.1 KB",
-        "position": {
-          "x": 500,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "downloaded 48 KB · used ~3 KB",
-        "position": {
-          "x": 500,
-          "y": -220
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "card-3",
@@ -209,131 +77,33 @@
         "title": "",
         "position": {
           "x": 500,
-          "y": -260
+          "y": -320
         },
         "width": 360,
-        "height": 280,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-3-text",
         "type": "text",
-        "title": "# ONE QUERY",
+        "title": "ONE QUERY\nquery {\n  user(id: 42) { name avatar\n    posts(last: 3) { title preview }\n    followers { count } }\n}\n→ 1 round trip · 3 KB",
         "position": {
           "x": 500,
-          "y": -380
+          "y": -320
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "query {",
-        "position": {
-          "x": 500,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "  user(id: 42) { name avatar",
-        "position": {
-          "x": 500,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "    posts(last: 3) { title preview }",
-        "position": {
-          "x": 500,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-5",
-        "type": "text",
-        "title": "    followers { count } }",
-        "position": {
-          "x": 500,
-          "y": -220
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-6",
-        "type": "text",
-        "title": "}",
-        "position": {
-          "x": 500,
-          "y": -180
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-7",
-        "type": "text",
-        "title": "1 round trip · 3 KB",
-        "position": {
-          "x": 500,
-          "y": -140
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "card-4",
@@ -341,218 +111,36 @@
         "title": "",
         "position": {
           "x": 500,
-          "y": -280
+          "y": -320
         },
         "width": 360,
-        "height": 240,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-row-1",
+        "id": "card-4-text",
         "type": "text",
-        "title": "# A “SMALL” QUERY",
+        "title": "A “SMALL” QUERY\nfollowers {\n  followers {\n    followers { posts { comments } }\n  } }\n⚠ 41,000 database lookups",
         "position": {
           "x": 500,
-          "y": -380
+          "y": -320
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4-row-2",
-        "type": "text",
-        "title": "followers {",
-        "position": {
-          "x": 500,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-3",
-        "type": "text",
-        "title": "  followers {",
-        "position": {
-          "x": 500,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-4",
-        "type": "text",
-        "title": "    followers { posts { comments } }",
-        "position": {
-          "x": 500,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-5",
-        "type": "text",
-        "title": "  } }",
-        "position": {
-          "x": 500,
-          "y": -220
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-6",
-        "type": "text",
-        "title": "41,000 database lookups",
-        "position": {
-          "x": 500,
-          "y": -180
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card-4"
       },
       {
         "id": "card-5",
-        "type": "group",
-        "title": "",
-        "position": {
-          "x": 520,
-          "y": -300
-        },
-        "width": 400,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
-        "borderColor": "#64748b",
-        "borderWidth": 1,
-        "fill": "flat",
-        "opacity": 1,
-        "borderStyle": "solid"
-      },
-      {
-        "id": "card-5-row-1",
-        "type": "text",
-        "title": "# A GRPC CONTRACT",
-        "position": {
-          "x": 520,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-5-row-2",
-        "type": "text",
-        "title": "service Users {",
-        "position": {
-          "x": 520,
-          "y": -340
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-3",
-        "type": "text",
-        "title": "  rpc GetUser (UserId) returns (User);",
-        "position": {
-          "x": 520,
-          "y": -300
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-4",
-        "type": "text",
-        "title": "}",
-        "position": {
-          "x": 520,
-          "y": -260
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-5",
-        "type": "text",
-        "title": "binary · typed · a few × smaller than JSON",
-        "position": {
-          "x": 520,
-          "y": -220
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-6",
         "type": "group",
         "title": "",
         "position": {
@@ -561,81 +149,63 @@
         },
         "width": 440,
         "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-6-row-1",
+        "id": "card-5-text",
         "type": "text",
-        "title": "# PAGING A LONG LIST",
+        "title": "A GRPC CONTRACT\nservice Users {\n  rpc GetUser (UserId) returns (User);\n}\n→ binary · typed · a few × smaller than JSON",
         "position": {
           "x": 540,
-          "y": -380
+          "y": -320
         },
         "width": 440,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
-        "fontWeight": "bold",
+        "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-5"
       },
       {
-        "id": "card-6-row-2",
-        "type": "text",
-        "title": "?offset=40000&limit=20  → walks 40,020 rows",
+        "id": "card-6",
+        "type": "group",
+        "title": "",
         "position": {
           "x": 540,
           "y": -340
         },
         "width": 440,
-        "height": 40,
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
+        "borderColor": "#64748b",
+        "borderWidth": 1,
+        "fill": "flat",
+        "opacity": 0.45,
+        "borderStyle": "solid"
+      },
+      {
+        "id": "card-6-text",
+        "type": "text",
+        "title": "PAGING A LONG LIST\n⚠ ?offset=40000&limit=20  → walks 40,020 rows\n→ ?after=9f3c&limit=20     → index seek, 20 rows\n# response includes next cursor: \"a71b\"",
+        "position": {
+          "x": 540,
+          "y": -340
+        },
+        "width": 440,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-6-row-3",
-        "type": "text",
-        "title": "?after=9f3c&limit=20     → index seek, 20 rows",
-        "position": {
-          "x": 540,
-          "y": -300
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-6-row-4",
-        "type": "text",
-        "title": "# response includes next cursor: \"a71b\"",
-        "position": {
-          "x": 540,
-          "y": -260
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-6",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-6"
       },
       {
         "id": "card-7",
@@ -643,102 +213,33 @@
         "title": "",
         "position": {
           "x": 540,
-          "y": -300
+          "y": -320
         },
         "width": 440,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-7-row-1",
+        "id": "card-7-text",
         "type": "text",
-        "title": "# EVOLVING SAFELY",
+        "title": "EVOLVING SAFELY\n⚠ remove or rename a field   → old apps break\n→ add a field                → nothing breaks\n→ deprecate, measure, remove later\n# breaking change? → /v2 alongside /v1",
         "position": {
           "x": 540,
-          "y": -380
+          "y": -320
         },
         "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-7-row-2",
-        "type": "text",
-        "title": "remove or rename a field   → old apps break",
-        "position": {
-          "x": 540,
-          "y": -340
-        },
-        "width": 440,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-7-row-3",
-        "type": "text",
-        "title": "add a field                → nothing breaks",
-        "position": {
-          "x": 540,
-          "y": -300
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-7-row-4",
-        "type": "text",
-        "title": "deprecate, measure, remove later",
-        "position": {
-          "x": 540,
-          "y": -260
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-7-row-5",
-        "type": "text",
-        "title": "# breaking change? → /v2 alongside /v1",
-        "position": {
-          "x": 540,
-          "y": -220
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-7",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-7"
       },
       {
         "id": "phone",
@@ -1429,151 +930,31 @@
     "ps-2": {
       "from": "s6"
     },
-    "card-row-1": {
+    "card-text": {
       "from": "s2",
       "until": "s3"
     },
-    "card-row-2": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-3": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-4": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-5": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s3",
       "until": "s4"
     },
-    "card-2-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-4": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-5": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-1": {
+    "card-3-text": {
       "from": "s4",
       "until": "s5"
     },
-    "card-3-row-2": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-3-row-3": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-3-row-4": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-3-row-5": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-3-row-6": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-3-row-7": {
-      "from": "s4",
-      "until": "s5"
-    },
-    "card-4-row-1": {
+    "card-4-text": {
       "from": "s5",
       "until": "s6"
     },
-    "card-4-row-2": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-3": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-4": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-5": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-6": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-5-row-1": {
+    "card-5-text": {
       "from": "s6",
       "until": "s7"
     },
-    "card-5-row-2": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-3": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-4": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-5": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-6-row-1": {
+    "card-6-text": {
       "from": "s7",
       "until": "s8"
     },
-    "card-6-row-2": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-6-row-3": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-6-row-4": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-7-row-1": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-2": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-3": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-4": {
-      "from": "s8",
-      "until": "s9"
-    },
-    "card-7-row-5": {
+    "card-7-text": {
       "from": "s8",
       "until": "s9"
     },

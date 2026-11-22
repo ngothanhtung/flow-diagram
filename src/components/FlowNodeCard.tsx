@@ -628,10 +628,9 @@ export function FlowNodeCard({
              fill or border to click, so an invisible rectangle over the
              box provides the hit area for selecting and dragging, and a
              hairline appears on hover so an empty or short label is
-             still findable. A text object with an explicit `backgroundColor`
-             is a highlight band (a Lesson panel's good/bad line). */
+             still findable. */
           <>
-            <rect x={-width / 2} y={-height / 2} width={width} height={height} fill={typeof node.backgroundColor === 'string' && node.backgroundColor ? node.backgroundColor : 'transparent'} pointerEvents='all' />
+            <rect x={-width / 2} y={-height / 2} width={width} height={height} fill='transparent' pointerEvents='all' />
             {!isSelected && (
               <rect
                 x={-width / 2}

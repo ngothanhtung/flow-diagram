@@ -8,101 +8,34 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 660,
-          "y": -380
+          "x": 680,
+          "y": -400
         },
-        "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 400,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# KHÔI PHỤC VỀ MỘT THỜI ĐIỂM",
+        "title": "KHÔI PHỤC VỀ MỘT THỜI ĐIỂM\n03:00  khôi phục snapshot đêm qua\n       phát lại log ghi…\n→ 14:02  dừng ở đây: dữ liệu nguyên vẹn\n⚠ 14:03  migration hỏng",
         "position": {
-          "x": 660,
-          "y": -460
+          "x": 680,
+          "y": -400
         },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "03:00  khôi phục snapshot đêm qua",
-        "position": {
-          "x": 660,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
+        "width": 400,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "       phát lại log ghi…",
-        "position": {
-          "x": 660,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "14:02  dừng ở đây: dữ liệu nguyên vẹn",
-        "position": {
-          "x": 660,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "14:03  migration hỏng",
-        "position": {
-          "x": 660,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -110,82 +43,33 @@
         "title": "",
         "position": {
           "x": 680,
-          "y": -400
+          "y": -420
         },
         "width": 400,
-        "height": 160,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 120,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# CÁC KIỂU SAO CHÉP",
-        "position": {
-          "x": 680,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "một leader     một người ghi · đơn giản",
+        "title": "CÁC KIỂU SAO CHÉP\nmột leader     một người ghi · đơn giản\nnhiều leader   ghi theo vùng · xung đột\nkhông leader   ghi N, đọc R · quorum",
         "position": {
           "x": 680,
           "y": -420
         },
         "width": 400,
-        "height": 40,
+        "height": 120,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "nhiều leader   ghi theo vùng · xung đột",
-        "position": {
-          "x": 680,
-          "y": -380
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "không leader   ghi N, đọc R · quorum",
-        "position": {
-          "x": 680,
-          "y": -340
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "users",
@@ -1511,39 +1395,11 @@
       "from": "s10",
       "until": "s11"
     },
-    "card-row-1": {
+    "card-text": {
       "from": "s9",
       "until": "s10"
     },
-    "card-row-2": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-row-3": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-row-4": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-row-5": {
-      "from": "s9",
-      "until": "s10"
-    },
-    "card-2-row-1": {
-      "from": "s10",
-      "until": "s11"
-    },
-    "card-2-row-2": {
-      "from": "s10",
-      "until": "s11"
-    },
-    "card-2-row-3": {
-      "from": "s10",
-      "until": "s11"
-    },
-    "card-2-row-4": {
+    "card-2-text": {
       "from": "s10",
       "until": "s11"
     },

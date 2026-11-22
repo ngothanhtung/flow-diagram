@@ -76,99 +76,34 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 620,
-          "y": -420
+          "x": 600,
+          "y": -440
         },
-        "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 320,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-row-1",
+        "id": "card-text",
         "type": "text",
-        "title": "# HLD QUYẾT ĐỊNH",
+        "title": "HLD QUYẾT ĐỊNH\ncó dịch vụ nào, mỗi cái sở hữu gì\nlời gọi hay sự kiện giữa chúng\nkho nào cho dữ liệu nào\nmở rộng ra sao, hỏng ra sao",
         "position": {
-          "x": 620,
-          "y": -500
+          "x": 600,
+          "y": -440
         },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-row-2",
-        "type": "text",
-        "title": "có dịch vụ nào, mỗi cái sở hữu gì",
-        "position": {
-          "x": 620,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "width": 320,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-3",
-        "type": "text",
-        "title": "lời gọi hay sự kiện giữa chúng",
-        "position": {
-          "x": 620,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-4",
-        "type": "text",
-        "title": "kho nào cho dữ liệu nào",
-        "position": {
-          "x": 620,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-row-5",
-        "type": "text",
-        "title": "mở rộng ra sao, hỏng ra sao",
-        "position": {
-          "x": 620,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card"
       },
       {
         "id": "card-2",
@@ -176,201 +111,67 @@
         "title": "",
         "position": {
           "x": 660,
-          "y": -420
+          "y": -440
         },
         "width": 440,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-row-1",
+        "id": "card-2-text",
         "type": "text",
-        "title": "# CÁC QUYẾT ĐỊNH Ở CẤP NÀY",
+        "title": "CÁC QUYẾT ĐỊNH Ở CẤP NÀY\nĐơn hàng → Tài xế   sự kiện, không phải lời gọi\nthanh toán         SQL: giao dịch\nvị trí tài xế      key-value: 40 nghìn ghi/s\n# mỗi cái đều có một phương án bạn đã bỏ",
         "position": {
           "x": 660,
-          "y": -500
+          "y": -440
         },
         "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-2-row-2",
-        "type": "text",
-        "title": "Đơn hàng → Tài xế   sự kiện, không phải lời gọi",
-        "position": {
-          "x": 660,
-          "y": -460
-        },
-        "width": 440,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-3",
-        "type": "text",
-        "title": "thanh toán         SQL: giao dịch",
-        "position": {
-          "x": 660,
-          "y": -420
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-4",
-        "type": "text",
-        "title": "vị trí tài xế      key-value: 40 nghìn ghi/s",
-        "position": {
-          "x": 660,
-          "y": -380
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-2-row-5",
-        "type": "text",
-        "title": "# mỗi cái đều có một phương án bạn đã bỏ",
-        "position": {
-          "x": 660,
-          "y": -340
-        },
-        "width": 440,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-2",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-2"
       },
       {
         "id": "card-3",
         "type": "group",
         "title": "",
         "position": {
-          "x": 680,
-          "y": -420
+          "x": 660,
+          "y": -440
         },
-        "width": 480,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "width": 440,
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-row-1",
+        "id": "card-3-text",
         "type": "text",
-        "title": "# TRẠNG THÁI ĐƠN HÀNG",
+        "title": "TRẠNG THÁI ĐƠN HÀNG\nplaced → paid → cooking → on the way → delivered\n→ hủy: chỉ từ placed hoặc paid\n⚠ cooking → cancelled: không được phép\n# thử lại dùng lại khóa idempotency",
         "position": {
-          "x": 680,
-          "y": -500
+          "x": 660,
+          "y": -440
         },
-        "width": 480,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-3-row-2",
-        "type": "text",
-        "title": "placed → paid → cooking → on the way → delivered",
-        "position": {
-          "x": 680,
-          "y": -460
-        },
-        "width": 480,
-        "height": 40,
+        "width": 440,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-3",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-3-row-3",
-        "type": "text",
-        "title": "hủy: chỉ từ placed hoặc paid",
-        "position": {
-          "x": 680,
-          "y": -420
-        },
-        "width": 480,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-3-row-4",
-        "type": "text",
-        "title": "cooking → cancelled: không được phép",
-        "position": {
-          "x": 680,
-          "y": -380
-        },
-        "width": 480,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#c8505a55",
-        "color": "#ff9aa2"
-      },
-      {
-        "id": "card-3-row-5",
-        "type": "text",
-        "title": "# thử lại dùng lại khóa idempotency",
-        "position": {
-          "x": 680,
-          "y": -340
-        },
-        "width": 480,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-3",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "card-3"
       },
       {
         "id": "card-4",
@@ -378,99 +179,33 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -420
+          "y": -440
         },
         "width": 360,
-        "height": 200,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-row-1",
+        "id": "card-4-text",
         "type": "text",
-        "title": "# LỜI HỨA",
+        "title": "LỜI HỨA\nPOST /orders  { items, address }\n  Idempotency-Key: 7f3a…\n→ 201 { order_id, status: \"placed\" }\nevent OrderPlaced { order_id, items }",
         "position": {
           "x": 620,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-4-row-2",
-        "type": "text",
-        "title": "POST /orders  { items, address }",
-        "position": {
-          "x": 620,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-3",
-        "type": "text",
-        "title": "  Idempotency-Key: 7f3a…",
-        "position": {
-          "x": 620,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-4-row-4",
-        "type": "text",
-        "title": "201 { order_id, status: \"placed\" }",
-        "position": {
-          "x": 620,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-4-row-5",
-        "type": "text",
-        "title": "event OrderPlaced { order_id, items }",
-        "position": {
-          "x": 620,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-4",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-4"
       },
       {
         "id": "card-5",
@@ -478,131 +213,33 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -380
+          "y": -440
         },
         "width": 360,
-        "height": 280,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-row-1",
+        "id": "card-5-text",
         "type": "text",
-        "title": "# MỘT BUỔI THIẾT KẾ",
+        "title": "MỘT BUỔI THIẾT KẾ\n1  yêu cầu        phải làm gì?\n2  ước lượng      quy mô bao nhiêu?\n3  API + mô hình dữ liệu\n4  thiết kế cấp cao\n→ 5  đào sâu  (LLD chỗ rủi ro)\n6  sự cố và đánh đổi",
         "position": {
           "x": 620,
-          "y": -500
+          "y": -440
         },
         "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "card-5-row-2",
-        "type": "text",
-        "title": "1  yêu cầu        phải làm gì?",
-        "position": {
-          "x": 620,
-          "y": -460
-        },
-        "width": 360,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-3",
-        "type": "text",
-        "title": "2  ước lượng      quy mô bao nhiêu?",
-        "position": {
-          "x": 620,
-          "y": -420
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-4",
-        "type": "text",
-        "title": "3  API + mô hình dữ liệu",
-        "position": {
-          "x": 620,
-          "y": -380
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-5",
-        "type": "text",
-        "title": "4  thiết kế cấp cao",
-        "position": {
-          "x": 620,
-          "y": -340
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "card-5-row-6",
-        "type": "text",
-        "title": "5  đào sâu  (LLD chỗ rủi ro)",
-        "position": {
-          "x": 620,
-          "y": -300
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "card-5-row-7",
-        "type": "text",
-        "title": "6  sự cố và đánh đổi",
-        "position": {
-          "x": 620,
-          "y": -260
-        },
-        "width": 360,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "card-5",
-        "color": "#cbd5e1"
+        "color": "#6b7a90",
+        "parentId": "card-5"
       },
       {
         "id": "users",
@@ -1633,111 +1270,23 @@
       "from": "s4",
       "until": "s7"
     },
-    "card-row-1": {
+    "card-text": {
       "from": "s2",
       "until": "s3"
     },
-    "card-row-2": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-3": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-4": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-row-5": {
-      "from": "s2",
-      "until": "s3"
-    },
-    "card-2-row-1": {
+    "card-2-text": {
       "from": "s3",
       "until": "s4"
     },
-    "card-2-row-2": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-3": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-4": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-2-row-5": {
-      "from": "s3",
-      "until": "s4"
-    },
-    "card-3-row-1": {
+    "card-3-text": {
       "from": "s5",
       "until": "s6"
     },
-    "card-3-row-2": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-3-row-3": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-3-row-4": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-3-row-5": {
-      "from": "s5",
-      "until": "s6"
-    },
-    "card-4-row-1": {
+    "card-4-text": {
       "from": "s6",
       "until": "s7"
     },
-    "card-4-row-2": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-4-row-3": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-4-row-4": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-4-row-5": {
-      "from": "s6",
-      "until": "s7"
-    },
-    "card-5-row-1": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-5-row-2": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-5-row-3": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-5-row-4": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-5-row-5": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-5-row-6": {
-      "from": "s7",
-      "until": "s8"
-    },
-    "card-5-row-7": {
+    "card-5-text": {
       "from": "s7",
       "until": "s8"
     },

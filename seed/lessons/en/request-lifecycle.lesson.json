@@ -9,132 +9,33 @@
         "title": "",
         "position": {
           "x": 640,
-          "y": -580
+          "y": -640
         },
         "width": 400,
-        "height": 280,
-        "color": "#cbd5e1",
-        "backgroundColor": "#111827",
+        "height": 160,
+        "color": "#6b7a90",
+        "backgroundColor": "#64748b",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 1,
+        "opacity": 0.45,
         "borderStyle": "solid"
       },
       {
-        "id": "sum-row-1",
+        "id": "sum-text",
         "type": "text",
-        "title": "# WHERE THE TIME WENT",
+        "title": "WHERE THE TIME WENT\nDNS lookup           20 ms\nTCP + TLS handshake  60 ms\nrequest + server     55 ms\ndownload             20 ms\n→ total             155 ms\n# 130 ms of it is waiting on the network",
         "position": {
           "x": 640,
-          "y": -700
+          "y": -640
         },
         "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "sum",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
-      },
-      {
-        "id": "sum-row-2",
-        "type": "text",
-        "title": "DNS lookup           20 ms",
-        "position": {
-          "x": 640,
-          "y": -660
-        },
-        "width": 400,
-        "height": 40,
+        "height": 160,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "parentId": "sum",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "sum-row-3",
-        "type": "text",
-        "title": "TCP + TLS handshake  60 ms",
-        "position": {
-          "x": 640,
-          "y": -620
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "sum",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "sum-row-4",
-        "type": "text",
-        "title": "request + server     55 ms",
-        "position": {
-          "x": 640,
-          "y": -580
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "sum",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "sum-row-5",
-        "type": "text",
-        "title": "download             20 ms",
-        "position": {
-          "x": 640,
-          "y": -540
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "sum",
-        "color": "#cbd5e1"
-      },
-      {
-        "id": "sum-row-6",
-        "type": "text",
-        "title": "total             155 ms",
-        "position": {
-          "x": 640,
-          "y": -500
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "medium",
-        "textAlign": "left",
-        "parentId": "sum",
-        "backgroundColor": "#3f9e6a55",
-        "color": "#7ee0a6"
-      },
-      {
-        "id": "sum-row-7",
-        "type": "text",
-        "title": "# 130 ms of it is waiting on the network",
-        "position": {
-          "x": 640,
-          "y": -460
-        },
-        "width": 400,
-        "height": 40,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "textAlign": "left",
-        "parentId": "sum",
-        "backgroundColor": "#64748b40",
-        "color": "#94a3b8"
+        "color": "#6b7a90",
+        "parentId": "sum"
       },
       {
         "id": "dev",
@@ -752,25 +653,7 @@
     "sum": {
       "from": "s10"
     },
-    "sum-row-1": {
-      "from": "s10"
-    },
-    "sum-row-2": {
-      "from": "s10"
-    },
-    "sum-row-3": {
-      "from": "s10"
-    },
-    "sum-row-4": {
-      "from": "s10"
-    },
-    "sum-row-5": {
-      "from": "s10"
-    },
-    "sum-row-6": {
-      "from": "s10"
-    },
-    "sum-row-7": {
+    "sum-text": {
       "from": "s10"
     },
     "q": {
