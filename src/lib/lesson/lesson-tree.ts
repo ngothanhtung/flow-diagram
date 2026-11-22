@@ -267,10 +267,15 @@ export function removeLessonEntry(tree: LessonTree, lessonId: string): LessonTre
 
 /**
  * Brings the index in line with the Lessons that actually exist: a missing
- * Lesson is added as Unfiled, a deleted one dropped, titles and Public
- * flags refreshed. The safety net for every write made outside the app.
+ * Lesson is added as Unfiled, a deleted one dropped (unless `prune: false`),
+ * titles and Public flags refreshed. The safety net for every write made
+ * outside the app.
  */
-export function reconcileLessonTree(tree: LessonTree, lessons: { id: string; title: string; public: boolean }[]): { tree: LessonTree; changed: boolean } {
+export function reconcileLessonTree(
+  tree: LessonTree,
+  lessons: { id: string; title: string; public: boolean }[],
+  options: { prune?: boolean } = {},
+): { tree: LessonTree; changed: boolean } {
   let next = tree;
   let changed = false;
   const existing = new Set<string>();
@@ -285,6 +290,9 @@ export function reconcileLessonTree(tree: LessonTree, lessons: { id: string; tit
       changed = true;
     }
   }
+  // Pruning needs a complete, fresh list: a page's own (possibly stale) list
+  // must not drop a Lesson another tab created since, with its folder.
+  if (options.prune === false) return { tree: next, changed };
   for (const id of Object.keys(next.lessons)) {
     if (!existing.has(id)) {
       next = removeLessonEntry(next, id);

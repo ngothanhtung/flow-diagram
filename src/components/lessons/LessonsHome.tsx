@@ -134,7 +134,9 @@ export function LessonsHome() {
   const editTree = async (edit: (tree: LessonTree) => TreeEdit): Promise<boolean> => {
     if (!user) return false;
     try {
-      const result = await updateLessonTree(user.uid, (current) => edit(reconcileLessonTree(current, summaries).tree));
+      // Index what this page shows (the first folder ever created indexes every Lesson), but never
+      // prune here: this page's list may predate a Lesson another tab created into a folder.
+      const result = await updateLessonTree(user.uid, (current) => edit(reconcileLessonTree(current, summaries, { prune: false }).tree));
       if (!result.ok) {
         toast.error(result.reason);
         return false;

@@ -173,6 +173,12 @@ describe('reconcileLessonTree', () => {
     expect(tree.lessons.l1).toMatchObject({ folderId: 'A1', title: 'L1 renamed', public: false });
   });
 
+  it('keeps entries it does not know about when pruning is off (a lesson made in another tab)', () => {
+    const { tree, changed } = reconcileLessonTree(sample(), [{ id: 'l1', title: 'L1', public: true }], { prune: false });
+    expect(changed).toBe(false);
+    expect(tree.lessons.l3).toMatchObject({ folderId: 'B' });
+  });
+
   it('reports no change when the index already matches', () => {
     const tree = sample();
     const lessons = Object.entries(tree.lessons).map(([id, entry]) => ({ id, title: entry.title, public: entry.public }));
