@@ -364,6 +364,25 @@ service cloud.firestore {
       allow delete: if hasAccess() && (resource == null || resource.data.ownerUid == request.auth.uid);
     }
 
+    // A user's Lesson tree: Lesson folders plus an index of their Lessons
+    // (lib/lesson/lesson-tree.ts). One per user, always `main`.
+    match /users/{userId}/lesson-trees/{treeId} {
+      allow get: if hasAccess() && (request.auth.uid == userId || isAdministrator());
+      allow create, update, delete: if hasAccess() && request.auth.uid == userId && treeId == 'main';
+    }
+
+    // The tree's public copy — only Public Lessons and the folders leading
+    // to them — read with one get() by the Course sidebar. Keyed by the
+    // owner's uid, so unlike public-lessons the slot can't be claimed by
+    // anyone else.
+    match /public-lesson-trees/{ownerUid} {
+      allow get: if true;
+      allow list: if false;
+      allow create, update: if hasAccess() && request.auth.uid == ownerUid
+        && request.resource.data.ownerUid == ownerUid;
+      allow delete: if hasAccess() && request.auth.uid == ownerUid;
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
