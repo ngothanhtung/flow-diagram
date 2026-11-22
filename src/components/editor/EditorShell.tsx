@@ -33,6 +33,8 @@ export interface EditorLessonSurface {
   looks: Record<string, ElementLook>;
   hints: Record<string, string>;
   leftPanel: ReactNode;
+  /** Right of the canvas (the Narration preview). It moves in beside the Inspector while that is open. */
+  rightPanel?: ReactNode;
   footer: ReactNode;
   /** True while the Preview covers the editor: the Inspector steps aside (the selection is kept). */
   inspectorHidden?: boolean;
@@ -73,6 +75,11 @@ interface EditorShellProps {
  */
 export function EditorShell({ document, icon, subtitle, fileMenu, actions, headerEnd, subBar, info, inspectorLabel, fullScreen = false, children, onSave, lesson }: EditorShellProps) {
   const infoOpen = useEditorStore((state) => state.infoOpen);
+  const selectedNodeId = useEditorStore((state) => state.selectedNodeId);
+  const selectedEdgeId = useEditorStore((state) => state.selectedEdgeId);
+  // Mirrors InspectorSidebar's own `open`.
+  const inspectorOpen =
+    !lesson?.inspectorHidden && ((selectedNodeId !== null && document.nodes.some((n) => n.id === selectedNodeId)) || (selectedEdgeId !== null && document.edges.some((e) => e.id === selectedEdgeId)) || infoOpen);
   const playback = useExecutionPlayback(document);
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   // The one keyboard handler for both editors (the Viewer has none).
@@ -147,6 +154,17 @@ export function EditorShell({ document, icon, subtitle, fileMenu, actions, heade
             {infoOpen && <EditorInfoPanels category={info.category} title={info.title} description={info.description} note={info.note} document={document} />}
           </InspectorSidebar>
         </div>
+        {lesson?.rightPanel && (
+          // The Inspector is a fixed 24rem drawer at the window's right edge: while
+          // it is open this panel keeps clear of it, so it sits Inspector-left.
+          <aside
+            aria-label='Narration preview'
+            className='hidden w-80 shrink-0 border-l border-border bg-card/40 transition-[margin] duration-300 ease-out lg:block xl:w-96'
+            style={{ marginRight: inspectorOpen ? '24rem' : 0 }}
+          >
+            {lesson.rightPanel}
+          </aside>
+        )}
       </main>
       {lesson?.footer}
     </div>

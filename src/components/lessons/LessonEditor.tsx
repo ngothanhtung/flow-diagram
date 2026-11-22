@@ -9,6 +9,7 @@ import { AuthLoadingScreen } from '@/components/auth/LoginForm';
 import { UserMenu } from '@/components/auth/UserMenu';
 import { ConvertColorThemeDialog, EditorFileMenu, EditorStatusScreen, FileMenuItem, InlineNameField, SaveButton, downloadDocumentJson } from '@/components/editor/EditorChrome';
 import { EditorShell } from '@/components/editor/EditorShell';
+import { LessonNarrationPreview } from '@/components/lessons/LessonNarrationPreview';
 import { SqlExportDialog } from '@/components/editor/SqlExportDialog';
 import { LessonImportDialog } from '@/components/lessons/LessonImportDialog';
 import { LessonInfoDialog } from '@/components/lessons/LessonInfoDialog';
@@ -341,6 +342,7 @@ export function LessonEditor({ lessonId }: { lessonId: string }) {
         looks: view.looks,
         hints: view.hints,
         leftPanel: <LessonSidePanel />,
+        rightPanel: <LessonNarrationPreview />,
         inspectorHidden: previewOpen,
         footer: <LessonStepBar />,
       }}

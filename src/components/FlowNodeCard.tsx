@@ -177,6 +177,9 @@ function ShapeDecoration({ shape, color }: { shape: NodeShape; color: string }) 
  * ports snap to the real outline. The icon and text live inside a
  * `<foreignObject>` clipped to the same bounding box.
  */
+/** How far outside a boxed text object its Lesson emphasis outline runs, clear of the box's own border. */
+const EMPHASIS_OUTSET = 4;
+
 export function FlowNodeCard({
   node,
   performanceMode = false,
@@ -1085,13 +1088,14 @@ export function FlowNodeCard({
           />
         )}
         {look === 'emphasis' && isText && (textBox.fill || textBox.stroke) ? (
-          // A boxed text object: the outline follows its own (rounded) box rather than a square around it.
+          // A boxed text object: the outline follows its own (rounded) box rather than a square around it,
+          // a few px outside it so the box's own border keeps showing its colour.
           <rect
-            x={-width / 2 + textBox.strokeWidth / 2}
-            y={-height / 2 + textBox.strokeWidth / 2}
-            width={Math.max(0, width - textBox.strokeWidth)}
-            height={Math.max(0, height - textBox.strokeWidth)}
-            rx={textBox.radius}
+            x={-width / 2 - EMPHASIS_OUTSET}
+            y={-height / 2 - EMPHASIS_OUTSET}
+            width={width + EMPHASIS_OUTSET * 2}
+            height={height + EMPHASIS_OUTSET * 2}
+            rx={textBox.radius > 0 ? textBox.radius + EMPHASIS_OUTSET : 0}
             fill='none'
             stroke='#22d3ee'
             strokeWidth={2.5}

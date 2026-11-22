@@ -1,36 +1,17 @@
 'use client';
 
-import { AlertTriangle, ArrowLeft, ArrowRight, Check, Keyboard, Lightbulb, Lock, Maximize, PanelLeft, X, Zap } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Keyboard, Lock, Maximize, PanelLeft, X } from 'lucide-react';
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { FlowCanvas } from '@/components/FlowCanvas';
 import { LessonMetricsBar } from '@/components/lessons/LessonMetricsBar';
 import { LessonTimeline } from '@/components/lessons/LessonTimeline';
-import { NarrationText } from '@/components/lessons/NarrationText';
+import { StepNarration } from '@/components/lessons/StepNarration';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
-import { parseChangeLine } from '@/lib/lesson/narration';
 import { resolveStepView } from '@/lib/lesson/lesson-step-view';
-import { CALLOUT_KINDS, LESSON_CHAPTERS, contentOf, lessonNameOf, type CalloutKind, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
-
-const CHAPTER_TONE = {
-  sand: 'bg-amber-700/10 text-amber-800 ring-amber-700/30 dark:bg-amber-200/10 dark:text-amber-200 dark:ring-amber-200/30',
-  red: 'bg-red-500/10 text-red-700 ring-red-500/30 dark:text-red-300',
-  green: 'bg-emerald-500/10 text-emerald-700 ring-emerald-500/30 dark:text-emerald-300',
-  blue: 'bg-sky-500/10 text-sky-700 ring-sky-500/30 dark:text-sky-300',
-  amber: 'bg-amber-500/10 text-amber-700 ring-amber-500/30 dark:text-amber-300',
-  violet: 'bg-violet-500/10 text-violet-700 ring-violet-500/30 dark:text-violet-300',
-  ink: 'bg-accent text-accent-foreground ring-border',
-} as const;
-
-const CALLOUT_STYLE: Record<CalloutKind, { icon: ReactNode; box: string }> = {
-  insight: { icon: <Zap size={14} />, box: 'bg-violet-500/10 text-violet-800 ring-violet-500/30 dark:text-violet-200' },
-  tip: { icon: <Lightbulb size={14} />, box: 'bg-emerald-500/10 text-emerald-800 ring-emerald-500/30 dark:text-emerald-200' },
-  warning: { icon: <AlertTriangle size={14} />, box: 'bg-amber-500/10 text-amber-800 ring-amber-500/30 dark:text-amber-200' },
-};
-
-const CHANGE_TONE = { '+': 'text-emerald-600 dark:text-emerald-400', '~': 'text-amber-600 dark:text-amber-400', '-': 'text-red-600 dark:text-red-400' } as const;
+import { contentOf, lessonNameOf, type LessonDocumentJSON } from '@/lib/lesson/lesson-types';
 
 const noop = () => undefined;
 
@@ -125,8 +106,6 @@ export function LessonPlayer({
   }, [goTo, index, onClose]);
 
   const { meta } = lesson;
-  const chapter = step?.chapter ? LESSON_CHAPTERS[step.chapter] : null;
-  const callout = step?.callout && CALLOUT_KINDS.includes(step.callout.kind) ? step.callout : null;
 
   return (
     <div className='flex h-dvh flex-col bg-background text-foreground'>
@@ -197,37 +176,7 @@ export function LessonPlayer({
         <aside className='flex max-h-[50%] min-h-0 shrink-0 flex-col border-t border-border font-reading lg:max-h-none lg:w-96 lg:border-t-0 lg:border-l' aria-label='Narration'>
           <div className='min-h-0 flex-1 space-y-3 overflow-y-auto p-4'>
             {step ? (
-              <>
-                <div className='flex items-center gap-2'>
-                  {chapter && <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ring-1 ${CHAPTER_TONE[chapter.tone]}`}>{chapter.label}</span>}
-                  <span className='text-xs text-muted-foreground'>Lesson step {index + 1}/{count}</span>
-                </div>
-                <h2 className='text-lg font-semibold leading-snug'>{step.title || step.short}</h2>
-                <div className='text-sm leading-relaxed text-foreground/90'>
-                  <NarrationText source={step.body} />
-                </div>
-                {callout && (
-                  <div className={`flex gap-2 rounded-lg px-3 py-2 text-sm ring-1 ${CALLOUT_STYLE[callout.kind].box}`}>
-                    <span className='mt-0.5 shrink-0'>{CALLOUT_STYLE[callout.kind].icon}</span>
-                    <div className='min-w-0'>
-                      <NarrationText source={callout.text} />
-                    </div>
-                  </div>
-                )}
-                {step.changes.length > 0 && (
-                  <ul className='space-y-1 text-xs'>
-                    {step.changes.map((line, i) => {
-                      const { sign, text } = parseChangeLine(line);
-                      return (
-                        <li key={i} className='flex gap-2'>
-                          <span className={`w-3 shrink-0 text-center font-mono font-bold ${sign ? CHANGE_TONE[sign] : 'text-muted-foreground'}`}>{sign ?? '•'}</span>
-                          <NarrationText source={text} inline />
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </>
+              <StepNarration step={step} index={index} count={count} />
             ) : (
               <p className='text-sm text-muted-foreground'>This lesson has no steps.</p>
             )}

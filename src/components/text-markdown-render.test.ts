@@ -43,6 +43,8 @@ describe('a free text object', () => {
     const html = render({ title: 'x', borderColor: '#64748b', borderWidth: 1, cornerRadius: 12 }, { t: 'emphasis' });
     const cyan = html.match(/<(rect|path)[^>]*stroke="#22d3ee"[^>]*>/g) ?? [];
     expect(cyan).toHaveLength(1);
-    expect(cyan[0]).toContain('rx="12"');
+    expect(cyan[0]).toContain('rx="16"');
+    // …outside the border, which keeps its own colour.
+    expect(html).toMatch(/<rect[^>]*stroke="#64748b"/);
   });
 });
