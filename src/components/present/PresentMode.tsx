@@ -1,8 +1,9 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, RotateCcw, X } from 'lucide-react';
+import { Box, ChevronLeft, ChevronRight, RotateCcw, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { FlowCanvas } from '@/components/FlowCanvas';
+import { IsometricStage } from '@/components/present/IsometricStage';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { presentKeyAction, presentTarget } from '@/lib/present';
@@ -24,6 +25,7 @@ export function PresentMode({ document, name, onExit }: { document: FlowDocument
   const run = useViewerRun(document, { runMode: 'manual' });
   const rootRef = useRef<HTMLDivElement>(null);
   const [idle, setIdle] = useState(false);
+  const [isometric, setIsometric] = useState(false);
   const idleTimer = useRef<number | undefined>(undefined);
   const { step, stepCount, goToStep } = run;
 
@@ -47,6 +49,11 @@ export function PresentMode({ document, name, onExit }: { document: FlowDocument
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.key === 'i' || event.key === 'I') {
+        event.preventDefault();
+        setIsometric((on) => !on);
+        return;
+      }
       const action = presentKeyAction(event.key);
       if (!action) return;
       event.preventDefault();
@@ -80,6 +87,7 @@ export function PresentMode({ document, name, onExit }: { document: FlowDocument
       onMouseMove={wake}
       className={`fixed inset-0 z-[100] bg-background text-foreground ${idle ? 'cursor-none' : ''}`}
     >
+      <IsometricStage enabled={isometric}>
       <FlowCanvas
         document={document}
         readOnly
@@ -108,6 +116,7 @@ export function PresentMode({ document, name, onExit }: { document: FlowDocument
         activeShape={null}
         onShapeDrawn={noop}
       />
+      </IsometricStage>
 
       {/* Fades out while the mouse rests, so the room sees only the Diagram. */}
       <div
@@ -126,6 +135,9 @@ export function PresentMode({ document, name, onExit }: { document: FlowDocument
         </button>
         <button type='button' className={control} disabled={atStart} aria-label='Back to the first step' title='Back to the first step (Home)' onClick={() => goToStep(0)}>
           <RotateCcw size={15} />
+        </button>
+        <button type='button' className={`${control} ${isometric ? 'bg-accent text-sky-500' : ''}`} aria-label='Isometric view' aria-pressed={isometric} title='Isometric view (I)' onClick={() => setIsometric((on) => !on)}>
+          <Box size={15} />
         </button>
         <span className='mx-1 h-4 w-px bg-border' aria-hidden='true' />
         <button type='button' className={control} aria-label='Exit presentation' title='Exit (Esc)' onClick={onExit}>

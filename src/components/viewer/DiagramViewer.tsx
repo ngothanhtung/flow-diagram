@@ -1,6 +1,6 @@
 'use client';
 
-import { Boxes, Eye, FileQuestion, ImageDown, Info, Pencil } from 'lucide-react';
+import { Box, Boxes, Eye, FileQuestion, ImageDown, Info, Pencil } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AuthLoadingScreen } from '@/components/auth/LoginForm';
@@ -15,6 +15,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useViewerRun } from '@/components/viewer/use-viewer-run';
 import { PresentButton } from '@/components/present/PresentButton';
+import { IsometricStage } from '@/components/present/IsometricStage';
 import { findPublicDiagramById, listAllDiagrams, openDiagram, toViewerRow, type AdminDiagramRow } from '@/lib/firebase/diagrams';
 import { ACCESS_LEVEL_LABELS, routeForRole, type DiagramRole } from '@/lib/sharing';
 import { normalizeDocument } from '@/lib/document-validation';
@@ -121,6 +122,7 @@ export function DiagramViewer({ diagramId }: { diagramId: string }) {
 function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: DiagramRole | null }) {
   const [infoOpen, setInfoOpen] = useState(false);
   const [imageOpen, setImageOpen] = useState(false);
+  const [isometric, setIsometric] = useState(false);
   const run = useViewerRun(diagram.document);
   const empty = diagram.document.nodes.length === 0;
 
@@ -166,6 +168,10 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
             onToggleRepeat={run.toggleRepeat}
             onReplay={run.replay}
           />
+          <Button variant='toolbar' size='lg' aria-label='Isometric view' aria-pressed={isometric} title='Isometric view — tilt the Diagram (a look only)' onClick={() => setIsometric((on) => !on)} className={isometric ? 'text-sky-500' : undefined}>
+            <Box size={13} />
+            <span className='hidden sm:inline'>Isometric</span>
+          </Button>
           <PresentButton document={diagram.document} name={diagram.name} />
           {/* Works signed out: the export renders the already-loaded
               document locally, it never reads Firestore. Icon-only below
@@ -180,9 +186,12 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
 
       <main className={['grid min-h-0 flex-1 overflow-hidden', infoOpen ? 'grid-cols-[1fr_384px]' : 'grid-cols-1'].join(' ')}>
         <section className='relative h-full min-h-0 overflow-hidden bg-background'>
+          <IsometricStage enabled={isometric}>
           <FlowCanvas
             document={diagram.document}
             readOnly
+            // Tilted, the zoom dock would tilt too: the isometric view shows the Diagram alone.
+            hideViewControls={isometric}
             infoOpen={infoOpen}
             onToggleInfo={() => setInfoOpen((open) => !open)}
             runningEdgeIds={run.runningEdgeIds}
@@ -208,6 +217,7 @@ function ViewerReady({ diagram, role }: { diagram: AdminDiagramRow; role: Diagra
             activeShape={null}
             onShapeDrawn={noop}
           />
+          </IsometricStage>
         </section>
 
         {infoOpen && (
