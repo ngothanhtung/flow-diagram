@@ -3,6 +3,7 @@
 import { useHistoryGestureScope } from '@/components/editor/use-history-gesture-scope';
 import { EDGE_EFFECTS as EDGE_EFFECT_OPTIONS } from '@/components/edge-style-fields';
 import { LabeledSelect, PanelHeading, SwitchRow, TextAreaField, TextField, type SelectOption } from '@/components/lessons/lesson-fields';
+import { NarrationEditor } from '@/components/lessons/NarrationEditor';
 import { Button } from '@/components/ui/button';
 import { NODE_EFFECTS } from '@/lib/document-vocabulary';
 import { useEditorStore } from '@/lib/editor-store';
@@ -25,7 +26,7 @@ function nodeEffectOptions(nodeType: string | undefined): SelectOption[] {
 }
 const EDGE_EFFECT_SELECT: SelectOption[] = [{ value: SAME, label: 'Same as diagram' }, ...EDGE_EFFECT_OPTIONS.map(({ value, label }) => ({ value, label }))];
 
-const BODY_HINT = '**bold** *italic* `code` [[term]] — blank line = new paragraph';
+const BODY_HINT = '**bold** *italic* `code` [[term]] · - list · 1. list · ### heading · ``` code — blank line = new paragraph';
 const CHANGES_HINT = 'One per line. Start with + added, ~ changed or - removed.';
 
 function splitLines(text: string): string[] {
@@ -44,7 +45,7 @@ function NarrationSection({ step, content, keyPrefix }: { step: LessonStep; cont
         <TextField key={k('short')} label='Short name' value={step.short} onChange={(short) => patch({ short })} />
         <TextField key={k('title')} label='Title' value={step.title} onChange={(title) => patch({ title })} />
         <LabeledSelect label='Chapter' value={step.chapter ?? NONE} options={CHAPTER_OPTIONS} onChange={(value) => patch({ chapter: value === NONE ? undefined : (value as LessonChapter) })} />
-        <TextAreaField key={k('body')} label='Body' rows={6} value={step.body} hint={BODY_HINT} onChange={(body) => patch({ body })} />
+        <NarrationEditor key={k('body')} label='Body' minLines={6} value={step.body} hint={BODY_HINT} onChange={(body) => patch({ body })} />
         <LabeledSelect
           label='Callout'
           value={step.callout?.kind ?? NONE}
@@ -52,7 +53,7 @@ function NarrationSection({ step, content, keyPrefix }: { step: LessonStep; cont
           onChange={(value) => patch({ callout: value === NONE ? undefined : { kind: value as CalloutKind, text: step.callout?.text ?? '' } })}
         />
         {step.callout && (
-          <TextAreaField key={k('callout')} label='' value={step.callout.text} placeholder='Callout text' rows={2} onChange={(text) => patch({ callout: { kind: step.callout?.kind ?? 'insight', text } })} />
+          <NarrationEditor key={k('callout')} label='' value={step.callout.text} placeholder='Callout text' minLines={2} onChange={(text) => patch({ callout: { kind: step.callout?.kind ?? 'insight', text } })} />
         )}
         <TextAreaField
           key={k('changes')}
