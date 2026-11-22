@@ -37,6 +37,8 @@ yarn-error.log*
 
 # firebase emulators
 /.emulator-data/
+# temp dirs an emulator export leaves behind when it is interrupted
+/firebase-export-*/
 firebase-debug.log
 firestore-debug.log
 ui-debug.log
