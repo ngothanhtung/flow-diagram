@@ -21,6 +21,20 @@
   }
 }
 
+/* The current Lesson step's stop on the "In this lesson" rail: a soft lime
+   ring that swells out and fades, over and over (LessonTimeline). */
+@keyframes lesson-step-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
 /* Sequential execution states: pending nodes look unpowered. The current
    node fades in while its color and restrained electrical glow return in a
    single composited animation. Only one node animates at a time. */
