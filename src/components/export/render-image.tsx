@@ -4,9 +4,8 @@ import { flushSync } from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import type { FlowDocumentJSON } from '@/lib/flowchart-types';
 import { loadIconLibrary, parseNodeIcon } from '@/lib/icon-library';
-import { exportBox, exportPixelSize, PNG_PIXEL_RATIO, type Box, type ImageBackground, type ImageFormat, type ImageView } from '@/lib/image-export';
+import { contentBounds, exportPixelSize, PNG_PIXEL_RATIO, type Box, type ImageBackground, type ImageFormat } from '@/lib/image-export';
 import { LEGACY_ICONS, resolveNodeStyle } from '@/lib/node-style';
-import { IsometricDiagram } from '@/components/present/IsometricDiagram';
 import { ExportScene } from './ExportScene';
 import { flattenSvg } from './flatten-svg';
 
@@ -56,8 +55,8 @@ export interface RenderedSvg {
  * so the viewport, culling, selection and Replay state can't leak in —
  * then flattened (see `flatten-svg.ts`).
  */
-export async function renderDiagramSvg(doc: FlowDocumentJSON, background: ImageBackground, view: ImageView = 'flat'): Promise<RenderedSvg> {
-  const box = exportBox(doc, view);
+export async function renderDiagramSvg(doc: FlowDocumentJSON, background: ImageBackground): Promise<RenderedSvg> {
+  const box = contentBounds(doc);
   if (!box) throw new EmptyDiagramError();
   await preloadIcons(doc);
   await document.fonts.ready;
@@ -68,10 +67,7 @@ export async function renderDiagramSvg(doc: FlowDocumentJSON, background: ImageB
   document.body.appendChild(host);
   const root = createRoot(host);
   try {
-    const backdrop = background === 'theme' ? themeCanvasColor() : null;
-    flushSync(() =>
-      root.render(view === 'isometric' ? <IsometricDiagram document={doc} background={backdrop} size={{ width: box.width, height: box.height }} /> : <ExportScene document={doc} box={box} background={backdrop} />),
-    );
+    flushSync(() => root.render(<ExportScene document={doc} box={box} background={background === 'theme' ? themeCanvasColor() : null} />));
     const svg = host.querySelector('svg');
     if (!svg) throw new Error('Export render produced no SVG');
     // Layout first, so any face the picture needs starts loading, then wait.
@@ -108,8 +104,8 @@ export async function svgToPng({ markup, box }: RenderedSvg): Promise<Blob> {
 }
 
 /** Renders and returns the file for one export. */
-export async function exportDiagramImage(doc: FlowDocumentJSON, format: ImageFormat, background: ImageBackground, view: ImageView = 'flat'): Promise<Blob> {
-  const svg = await renderDiagramSvg(doc, background, view);
+export async function exportDiagramImage(doc: FlowDocumentJSON, format: ImageFormat, background: ImageBackground): Promise<Blob> {
+  const svg = await renderDiagramSvg(doc, background);
   if (format === 'svg') return new Blob([svg.markup], { type: 'image/svg+xml' });
   return svgToPng(svg);
 }

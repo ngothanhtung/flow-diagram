@@ -170,20 +170,3 @@ describe('imageFilename', () => {
     expect(imageFilename('x'.repeat(300), 'png')).toBe(`${'x'.repeat(100)}.png`);
   });
 });
-
-describe('isometric export', () => {
-  it('names the file after its view', async () => {
-    expect(imageFilename('Checkout flow', 'png', false, 'isometric')).toBe('Checkout flow-isometric.png');
-    expect(imageFilename('Checkout flow', 'svg', true, 'isometric')).toBe('Checkout flow-selection-isometric.svg');
-    expect(imageFilename('Checkout flow', 'png', false, 'flat')).toBe('Checkout flow.png');
-  });
-
-  it('frames the picture to the isometric scene', async () => {
-    const { exportBox } = await import('./image-export');
-    const { isometricScene } = await import('./isometric');
-    const doc = { nodes: [{ id: 'a', type: 'process', title: 'A', position: { x: 0, y: 0 } }], edges: [] } as Parameters<typeof isometricScene>[0];
-    expect(exportBox(doc, 'isometric')).toEqual(isometricScene(doc).bounds);
-    expect(exportBox(doc, 'flat')).toEqual(contentBounds(doc));
-    expect(exportBox({ nodes: [], edges: [] }, 'isometric')).toBeNull();
-  });
-});
