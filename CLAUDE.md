@@ -404,6 +404,7 @@ Prefer extending an existing `components/ui` primitive over a raw `<dialog>` or 
 
 - `Button` variants `toolbar` (frosted header/toolbar control, theme-aware — see below) and `accent` (cyan call-to-action: New diagram, Copy link, Sign in) — added on top of the stock shadcn variants.
 - `Input` variant `toolbar`, matching the `toolbar` button.
+- `DialogContent size="workspace"` — the one shape for every dialog that needs room (Lesson info, Lesson/Mermaid import, the Effect galleries, Line styles, Logo picker, Version preview, SQL export, the admin JSON view): the window minus a 48px margin on every side (16px on phones), laid out as a column so the child with `min-h-0 flex-1 overflow-auto` scrolls under a fixed header. Callers pass only their look (padding, border tint) — never a width or height; small dialogs (confirmations, naming, Share, shortcuts, Export image, pickers) keep the default size.
 - `src/components/data-table.tsx` — `DataTable`, `DataTableFooter`, `SortHeaderButton`, `formatDateTime`, `formatNumber`, shared by the diagrams list and both admin tables (TanStack Table).
 
 ### Light/dark theme

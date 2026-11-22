@@ -61,7 +61,7 @@ export function MermaidImportDialog({ open, onOpenChange }: { open: boolean; onO
         onOpenChange(next);
       }}
     >
-      <DialogContent className='flex h-[88vh] max-h-210 w-[92vw] max-w-5xl sm:max-w-5xl flex-col gap-0 overflow-hidden border-cyan-400/25 bg-popover p-0 ring-1 ring-cyan-400/25'>
+      <DialogContent size='workspace' className='gap-0 overflow-hidden border-cyan-400/25 bg-popover p-0 ring-1 ring-cyan-400/25'>
         <DialogHeader className='shrink-0 px-8 pt-6 pb-4'>
           <DialogTitle className='text-base font-semibold text-foreground'>Import from mermaid</DialogTitle>
           <p className='mt-1 text-[11px] leading-relaxed text-muted-foreground'>

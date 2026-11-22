@@ -417,7 +417,7 @@ export function EdgeInspector({ edge, styles, sourceTitle, targetTitle, fallback
               </button>
             }
           />
-          <DialogContent className='flex h-[90vh] max-h-225 w-[92vw] max-w-6xl sm:max-w-6xl flex-col gap-0 overflow-hidden border-cyan-400/25 bg-popover p-0 ring-1 ring-cyan-400/25'>
+          <DialogContent size='workspace' className='gap-0 overflow-hidden border-cyan-400/25 bg-popover p-0 ring-1 ring-cyan-400/25'>
             <DialogHeader className='shrink-0 px-8 pt-6 pb-4'>
               <DialogTitle className='text-base font-semibold text-foreground'>Line effect</DialogTitle>
             </DialogHeader>

@@ -45,7 +45,7 @@ export function SqlExportDialog({ document, filename, open, onOpenChange }: { do
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className='max-w-3xl border-border bg-popover/95 text-foreground backdrop-blur-xl'>
+      <DialogContent size='workspace' className='border-border bg-popover/95 text-foreground backdrop-blur-xl'>
         <DialogHeader>
           <DialogTitle className='flex items-center gap-2 text-sm font-semibold'>
             <Database size={14} className='text-sky-600 dark:text-sky-300' />
@@ -55,7 +55,7 @@ export function SqlExportDialog({ document, filename, open, onOpenChange }: { do
             {result ? `${result.tableCount} table(s), ${result.foreignKeyCount} foreign key(s). Data types are exactly what you typed, so this suits whichever database you had in mind.` : ''}
           </DialogDescription>
         </DialogHeader>
-        <pre className='max-h-[55vh] overflow-auto rounded-lg bg-muted/40 p-4 font-mono text-[11px] leading-relaxed text-foreground ring-1 ring-border'>{result?.sql ?? ''}</pre>
+        <pre className='min-h-0 flex-1 overflow-auto rounded-lg bg-muted/40 p-4 font-mono text-[11px] leading-relaxed text-foreground ring-1 ring-border'>{result?.sql ?? ''}</pre>
         <div className='flex justify-end gap-2'>
           <Button variant='toolbar' onClick={download} disabled={!result?.tableCount}>
             <Download size={13} />

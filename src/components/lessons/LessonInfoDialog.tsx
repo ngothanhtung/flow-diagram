@@ -66,88 +66,94 @@ function InfoForm() {
   const rev = String(historyRevision);
 
   return (
-    <div className='max-h-[70vh] space-y-2.5 overflow-y-auto pr-1'>
-      <TextField key={`title:${rev}`} label='Title' value={meta.title} onChange={(title) => patchMeta({ title })} />
-      <TextAreaField key={`summary:${rev}`} label='Summary' rows={3} value={meta.summary} onChange={(summary) => patchMeta({ summary })} />
-      <div className='grid grid-cols-2 gap-2'>
-        <div>
-          <FieldLabel>Minutes</FieldLabel>
-          <DraftInput
-            key={`minutes:${rev}`}
-            type='number'
-            min={1}
-            aria-label='Minutes'
-            value={String(meta.minutes ?? '')}
-            onChange={(text) => {
-              const minutes = Number.parseInt(text, 10);
-              if (text === '') patchMeta({ minutes: undefined });
-              else if (Number.isFinite(minutes) && minutes > 0) patchMeta({ minutes });
-            }}
-            className={INPUT_CLASS}
-          />
-        </div>
-        <LabeledSelect label='Level' value={meta.level ?? NO_LEVEL} options={LEVEL_OPTIONS} onChange={(value) => patchMeta({ level: value === NO_LEVEL ? undefined : (value as LessonLevel) })} />
-      </div>
-
-      <PanelHeading>Metrics</PanelHeading>
-      <p className='text-[9px] leading-relaxed text-muted-foreground'>Each metric gets a box in the Narration of every lesson step.</p>
-      {meta.metrics.map((metric, index) => (
-        <div key={`${index}:${meta.metrics.length}:${metric.id}:${rev}`} className='flex items-center gap-2'>
-          <MetricIdField id={metric.id} taken={(id) => meta.metrics.some((m) => m.id === id)} onCommit={(id) => edit((c) => renameMetric(c, index, id))} />
-          <DraftInput
-            aria-label='Metric label'
-            value={metric.label}
-            placeholder='Label'
-            onChange={(label) => patchMeta({ metrics: meta.metrics.map((m, i) => (i === index ? { ...m, label } : m)) })}
-            className={INPUT_CLASS}
-          />
-          <Button
-            type='button'
-            variant='ghost'
-            size='icon-sm'
-            aria-label={`Remove metric ${metric.id}`}
-            onClick={() =>
-              edit((c) => ({
-                ...c,
-                meta: { ...c.meta, metrics: c.meta.metrics.filter((_, i) => i !== index) },
-                steps: c.steps.map((step) => {
-                  const { [metric.id]: _gone, ...rest } = step.metrics;
-                  void _gone;
-                  return { ...step, metrics: rest };
-                }),
-              }))
-            }
-          >
-            <Trash2 size={13} />
-          </Button>
-        </div>
-      ))}
-      <Button type='button' variant='outline' size='sm' className='text-[11px]' onClick={() => patchMeta({ metrics: [...meta.metrics, { id: nextMetricId(meta.metrics.map((m) => m.id)), label: '' }] })}>
-        <Plus size={12} /> Add metric
-      </Button>
-
-      <PanelHeading>Goals</PanelHeading>
-      <p className='text-[9px] leading-relaxed text-muted-foreground'>What the learner should be able to do, and the lesson step that delivers it.</p>
-      {meta.goals.map((goal, index) => (
-        <div key={`${index}:${meta.goals.length}:${rev}`} className='flex items-center gap-2'>
-          <DraftInput
-            aria-label='Goal'
-            value={goal.text}
-            placeholder='Goal'
-            onChange={(text) => patchMeta({ goals: meta.goals.map((g, i) => (i === index ? { ...g, text } : g)) })}
-            className={INPUT_CLASS}
-          />
-          <div className='w-44 shrink-0'>
-            <LabeledSelect hideLabel label='Lesson step' value={goal.step} options={stepOptions} onChange={(step) => patchMeta({ goals: meta.goals.map((g, i) => (i === index ? { ...g, step } : g)) })} />
+    <div className='-mr-2 grid min-h-0 flex-1 content-start gap-x-10 gap-y-2.5 overflow-y-auto pr-2 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]'>
+      <section aria-label='Details' className='space-y-2.5'>
+        <PanelHeading>Details</PanelHeading>
+        <TextField key={`title:${rev}`} label='Title' value={meta.title} onChange={(title) => patchMeta({ title })} />
+        <TextAreaField key={`summary:${rev}`} label='Summary' rows={6} value={meta.summary} onChange={(summary) => patchMeta({ summary })} className='min-h-32' />
+        <div className='grid grid-cols-2 gap-2'>
+          <div>
+            <FieldLabel>Minutes</FieldLabel>
+            <DraftInput
+              key={`minutes:${rev}`}
+              type='number'
+              min={1}
+              aria-label='Minutes'
+              value={String(meta.minutes ?? '')}
+              onChange={(text) => {
+                const minutes = Number.parseInt(text, 10);
+                if (text === '') patchMeta({ minutes: undefined });
+                else if (Number.isFinite(minutes) && minutes > 0) patchMeta({ minutes });
+              }}
+              className={INPUT_CLASS}
+            />
           </div>
-          <Button type='button' variant='ghost' size='icon-sm' aria-label='Remove goal' onClick={() => patchMeta({ goals: meta.goals.filter((_, i) => i !== index) })}>
-            <Trash2 size={13} />
-          </Button>
+          <LabeledSelect label='Level' value={meta.level ?? NO_LEVEL} options={LEVEL_OPTIONS} onChange={(value) => patchMeta({ level: value === NO_LEVEL ? undefined : (value as LessonLevel) })} />
         </div>
-      ))}
-      <Button type='button' variant='outline' size='sm' className='text-[11px]' onClick={() => patchMeta({ goals: [...meta.goals, { text: '', step: steps[0].id }] })}>
-        <Plus size={12} /> Add goal
-      </Button>
+
+      </section>
+
+      <section aria-label='Metrics and goals' className='space-y-2.5'>
+        <PanelHeading>Metrics</PanelHeading>
+        <p className='text-[9px] leading-relaxed text-muted-foreground'>Each metric gets a box in the Narration of every lesson step.</p>
+        {meta.metrics.map((metric, index) => (
+          <div key={`${index}:${meta.metrics.length}:${metric.id}:${rev}`} className='flex items-center gap-2'>
+            <MetricIdField id={metric.id} taken={(id) => meta.metrics.some((m) => m.id === id)} onCommit={(id) => edit((c) => renameMetric(c, index, id))} />
+            <DraftInput
+              aria-label='Metric label'
+              value={metric.label}
+              placeholder='Label'
+              onChange={(label) => patchMeta({ metrics: meta.metrics.map((m, i) => (i === index ? { ...m, label } : m)) })}
+              className={INPUT_CLASS}
+            />
+            <Button
+              type='button'
+              variant='ghost'
+              size='icon-sm'
+              aria-label={`Remove metric ${metric.id}`}
+              onClick={() =>
+                edit((c) => ({
+                  ...c,
+                  meta: { ...c.meta, metrics: c.meta.metrics.filter((_, i) => i !== index) },
+                  steps: c.steps.map((step) => {
+                    const { [metric.id]: _gone, ...rest } = step.metrics;
+                    void _gone;
+                    return { ...step, metrics: rest };
+                  }),
+                }))
+              }
+            >
+              <Trash2 size={13} />
+            </Button>
+          </div>
+        ))}
+        <Button type='button' variant='outline' size='sm' className='text-[11px]' onClick={() => patchMeta({ metrics: [...meta.metrics, { id: nextMetricId(meta.metrics.map((m) => m.id)), label: '' }] })}>
+          <Plus size={12} /> Add metric
+        </Button>
+
+        <PanelHeading>Goals</PanelHeading>
+        <p className='text-[9px] leading-relaxed text-muted-foreground'>What the learner should be able to do, and the lesson step that delivers it.</p>
+        {meta.goals.map((goal, index) => (
+          <div key={`${index}:${meta.goals.length}:${rev}`} className='flex items-center gap-2'>
+            <DraftInput
+              aria-label='Goal'
+              value={goal.text}
+              placeholder='Goal'
+              onChange={(text) => patchMeta({ goals: meta.goals.map((g, i) => (i === index ? { ...g, text } : g)) })}
+              className={INPUT_CLASS}
+            />
+            <div className='w-56 shrink-0 xl:w-72'>
+              <LabeledSelect hideLabel label='Lesson step' value={goal.step} options={stepOptions} onChange={(step) => patchMeta({ goals: meta.goals.map((g, i) => (i === index ? { ...g, step } : g)) })} />
+            </div>
+            <Button type='button' variant='ghost' size='icon-sm' aria-label='Remove goal' onClick={() => patchMeta({ goals: meta.goals.filter((_, i) => i !== index) })}>
+              <Trash2 size={13} />
+            </Button>
+          </div>
+        ))}
+        <Button type='button' variant='outline' size='sm' className='text-[11px]' onClick={() => patchMeta({ goals: [...meta.goals, { text: '', step: steps[0].id }] })}>
+          <Plus size={12} /> Add goal
+        </Button>
+      </section>
     </div>
   );
 }
@@ -159,7 +165,7 @@ export function LessonInfoDialog({ open, onOpenChange }: { open: boolean; onOpen
   const historyGestures = useHistoryGestureScope();
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className='max-w-xl border border-border bg-popover'>
+      <DialogContent size='workspace' className='gap-5 border border-border bg-popover p-6'>
         <div {...historyGestures} className='contents'>
           <DialogHeader>
             <DialogTitle>Lesson info</DialogTitle>

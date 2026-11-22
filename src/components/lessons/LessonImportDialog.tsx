@@ -71,7 +71,7 @@ export function LessonImportDialog({ open, onOpenChange }: { open: boolean; onOp
         onOpenChange(next);
       }}
     >
-      <DialogContent className='flex w-[92vw] max-w-2xl sm:max-w-2xl flex-col gap-3 border border-border bg-popover'>
+      <DialogContent size='workspace' className='gap-3 border border-border bg-popover'>
         <DialogHeader>
           <DialogTitle className='text-base font-semibold text-foreground'>Import lesson JSON</DialogTitle>
           <p className='mt-1 text-[11px] leading-relaxed text-muted-foreground'>
@@ -87,7 +87,7 @@ export function LessonImportDialog({ open, onOpenChange }: { open: boolean; onOp
           spellCheck={false}
           aria-label='Lesson JSON'
           placeholder='{ "format": "x-flow-lesson", … }'
-          className='h-64 resize-none border-border bg-muted/30 font-mono text-[11px] leading-relaxed'
+          className='min-h-0 flex-1 resize-none border-border bg-muted/30 font-mono text-[11px] leading-relaxed [field-sizing:fixed]'
         />
         {error && (
           <p role='alert' className='flex items-start gap-1.5 text-[11px] leading-5 text-red-700 dark:text-red-300'>

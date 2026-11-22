@@ -297,7 +297,7 @@ export function LogoPicker({ value, onChange, className }: LogoPickerProps) {
         <span className="truncate">{currentLabel}</span>
       </DialogTrigger>
 
-      <DialogContent className="flex h-[calc(100vh-3rem)] max-h-[calc(100vh-3rem)] w-[calc(100vw-3rem)] max-w-none! flex-col gap-0 overflow-hidden rounded-xl border-border bg-popover p-0">
+      <DialogContent size="workspace" className="gap-0 overflow-hidden rounded-xl border-border bg-popover p-0">
         <DialogHeader className="border-b border-border px-5 py-4">
           <DialogTitle className="text-sm">Choose logo</DialogTitle>
         </DialogHeader>

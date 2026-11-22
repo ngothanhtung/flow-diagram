@@ -54,7 +54,7 @@ export function DraftInput({ value, onChange, className, ...rest }: { value: str
 }
 
 /** `transform` maps the typed text to what is stored (the draft stays raw). */
-export function TextAreaField({ label, value, onChange, placeholder, rows = 3, hint, transform }: { label: string; value: string; onChange: (value: string) => void; placeholder?: string; rows?: number; hint?: string; transform?: (text: string) => string }) {
+export function TextAreaField({ label, value, onChange, placeholder, rows = 3, hint, transform, className }: { label: string; value: string; onChange: (value: string) => void; placeholder?: string; rows?: number; hint?: string; transform?: (text: string) => string; className?: string }) {
   const [draft, setDraft] = useState(value);
   return (
     <div>
@@ -68,7 +68,7 @@ export function TextAreaField({ label, value, onChange, placeholder, rows = 3, h
           setDraft(event.target.value);
           onChange(transform ? transform(event.target.value) : event.target.value);
         }}
-        className={`min-h-0 resize-y ${FIELD_CLASS} md:text-[11px]`}
+        className={`min-h-0 resize-y ${FIELD_CLASS} md:text-[11px] ${className ?? ''}`}
       />
       {hint && <p className='mt-1 text-[9px] leading-relaxed text-muted-foreground'>{hint}</p>}
     </div>

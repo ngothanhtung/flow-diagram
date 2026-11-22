@@ -290,7 +290,7 @@ function VersionRow({ version, latest, now, ownerUid, diagramId, currentUid, onR
 function VersionPreviewDialog({ version, currentUid, onOpenChange, onRestore, onSaveAsNew }: { version: StoredVersion | null; currentUid: string; onOpenChange: (open: boolean) => void } & VersionActions) {
   return (
     <Dialog open={version !== null} onOpenChange={onOpenChange}>
-      <DialogContent className='flex h-[min(88vh,900px)] w-[min(96vw,1400px)] max-w-none flex-col gap-0 overflow-hidden border-border bg-popover p-0 sm:max-w-none' showCloseButton={false}>
+      <DialogContent size='workspace' className='gap-0 overflow-hidden border-border bg-popover p-0' showCloseButton={false}>
         {/* Keyed by id: the run state starts from this Version's own run mode. */}
         {version && <VersionPreviewBody key={version.id} version={version} currentUid={currentUid} onClose={() => onOpenChange(false)} onRestore={onRestore} onSaveAsNew={onSaveAsNew} />}
       </DialogContent>

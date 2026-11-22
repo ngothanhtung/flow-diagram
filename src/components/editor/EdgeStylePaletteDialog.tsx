@@ -46,7 +46,7 @@ export function EdgeStylePaletteDialog({ open, onOpenChange }: { open: boolean; 
       {/* Modal, so the header's Undo/Redo are out of reach while it is
           open — it edits the document live, so ⌘Z / ⌘⇧Z (and ⌘S) work
           here; every other shortcut stays inert. */}
-      <DialogContent data-shortcuts='history' className='flex h-[86vh] max-h-200 w-[92vw] max-w-4xl sm:max-w-4xl flex-col gap-0 overflow-hidden border-cyan-400/25 bg-popover p-0 ring-1 ring-cyan-400/25'>
+      <DialogContent data-shortcuts='history' size='workspace' className='gap-0 overflow-hidden border-cyan-400/25 bg-popover p-0 ring-1 ring-cyan-400/25'>
         <DialogHeader className='shrink-0 px-8 pt-6 pb-4'>
           <DialogTitle className='text-base font-semibold text-foreground'>Line styles</DialogTitle>
           <p className='mt-1 text-[11px] leading-relaxed text-muted-foreground'>Name the kinds of line this diagram uses, then point lines at them. Editing a style here restyles every line following it.</p>

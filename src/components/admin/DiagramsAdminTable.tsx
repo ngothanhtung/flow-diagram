@@ -161,7 +161,7 @@ export function AdminDiagramsPage() {
       <DataTableFooter table={table} />
 
       <Dialog open={viewing !== null} onOpenChange={(open) => !open && setViewing(null)}>
-        <DialogContent className='max-w-3xl border-border bg-popover/95 text-foreground backdrop-blur-xl'>
+        <DialogContent size='workspace' className='border-border bg-popover/95 text-foreground backdrop-blur-xl'>
           <DialogHeader>
             <DialogTitle className='flex items-center gap-2 text-sm font-semibold'>
               <Braces size={14} className='text-sky-600 dark:text-sky-300' />
@@ -171,7 +171,7 @@ export function AdminDiagramsPage() {
               users/{viewing?.ownerUid}/diagrams/{viewing?.id}
             </DialogDescription>
           </DialogHeader>
-          <pre className='max-h-[60vh] overflow-auto rounded-lg bg-muted/40 p-4 font-mono text-[11px] leading-relaxed text-foreground ring-1 ring-border'>{viewing ? JSON.stringify(viewing.document, null, 2) : ''}</pre>
+          <pre className='min-h-0 flex-1 overflow-auto rounded-lg bg-muted/40 p-4 font-mono text-[11px] leading-relaxed text-foreground ring-1 ring-border'>{viewing ? JSON.stringify(viewing.document, null, 2) : ''}</pre>
         </DialogContent>
       </Dialog>
     </div>
