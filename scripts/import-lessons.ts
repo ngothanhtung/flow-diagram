@@ -15,13 +15,14 @@
 // Each lesson lands at `users/{uid}/lessons/tutorial-<lang>-<id>` with
 // Public on, then its `public-lessons/{id}` mirror (the rules only admit a
 // mirror whose source exists, hence the order). A re-run overwrites rather
-// than duplicates. Unlike seed-emulator-lessons.ts this grants no role:
+// than duplicates. Then the Lesson tree (seed/lessons/tree.json) is merged
+// into the account's own tree and its public copy rewritten. Unlike seed-emulator-lessons.ts this grants no role:
 // making an account an administrator is done by hand in the console.
 // Deploy the rules first: `firebase deploy --only firestore`.
 
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { argValue, fail, readSeedLessons, toFields } from './seed-lessons-shared';
+import { argValue, fail, fromFields, readSeedLessons, readSeedTree, seededTreeDocs, toFields, type FirestoreValue } from './seed-lessons-shared';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const project = argValue('--project', '');
@@ -68,6 +69,14 @@ async function signIn(): Promise<{ uid: string; token: string }> {
 
 const { uid, token } = accessToken ? { uid: ownerUid, token: accessToken } : await signIn();
 
+async function readDoc(docPath: string): Promise<Record<string, unknown> | null> {
+  const response = await fetch(`https://firestore.googleapis.com/v1/projects/${project}/databases/(default)/documents/${docPath}`, { headers: { Authorization: `Bearer ${token}` } });
+  if (response.status === 404) return null;
+  if (!response.ok) fail(`Reading ${docPath} failed: ${response.status} ${await response.text()}`);
+  const body = (await response.json()) as { fields?: Record<string, FirestoreValue> };
+  return fromFields(body.fields ?? {});
+}
+
 async function writeDoc(docPath: string, data: Record<string, unknown>): Promise<void> {
   const response = await fetch(`https://firestore.googleapis.com/v1/projects/${project}/databases/(default)/documents/${docPath}`, {
     method: 'PATCH',
@@ -87,4 +96,11 @@ for (const { id, name, document, updatedAt } of lessons) {
   await writeDoc(`public-lessons/${id}`, { ownerUid: uid, name, document, public: true, updatedAt });
 }
 for (const lang of languages) console.log(`${lang}: ${lessons.filter((lesson) => lesson.lang === lang).length} lessons imported`);
+
+// The Lesson tree: the curriculum's chapters, merged into the account's own
+// tree (written after the lessons; the public copy last).
+const treeDocs = seededTreeDocs(await readDoc(`users/${uid}/lesson-trees/main`), readSeedTree(dir, languages), uid, new Date());
+await writeDoc(`users/${uid}/lesson-trees/main`, treeDocs.tree);
+await writeDoc(`public-lesson-trees/${uid}`, treeDocs.mirror);
+console.log('Lesson tree imported.');
 console.log(`Done — ${lessons.length} lessons for uid ${uid} in ${project}.`);

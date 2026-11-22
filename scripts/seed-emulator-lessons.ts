@@ -11,11 +11,13 @@
 // API as `Bearer owner`, which bypasses the rules. The Vietnamese copies
 // are titled "<title> (VI)" so both sets can be told apart in the list; the
 // suffix goes into `meta.title` too, since that is the Lesson's one name
-// (the stored `name` is always a copy of it).
+// (the stored `name` is always a copy of it). Then the Lesson tree from
+// seed/lessons/tree.json is merged into the account's tree (its own folders
+// and lessons are kept) and its public copy rewritten.
 
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { argValue, fail, readSeedLessons, toFields } from './seed-lessons-shared';
+import { argValue, fail, fromFields, readSeedLessons, readSeedTree, seededTreeDocs, toFields, type FirestoreValue } from './seed-lessons-shared';
 
 const PROJECT = process.env.SEED_PROJECT ?? 'demo-x-flow-tool';
 const FIRESTORE = process.env.FIRESTORE_EMULATOR_HOST ?? '127.0.0.1:8080';
@@ -50,6 +52,14 @@ async function signIn(): Promise<string> {
   return result.localId;
 }
 
+async function readDoc(docPath: string): Promise<Record<string, unknown> | null> {
+  const response = await fetch(`http://${FIRESTORE}/v1/projects/${PROJECT}/databases/(default)/documents/${docPath}`, { headers: { Authorization: 'Bearer owner' } });
+  if (response.status === 404) return null;
+  if (!response.ok) fail(`Reading ${docPath} failed: ${response.status} ${await response.text()}`);
+  const body = (await response.json()) as { fields?: Record<string, FirestoreValue> };
+  return fromFields(body.fields ?? {});
+}
+
 async function writeDoc(docPath: string, data: Record<string, unknown>): Promise<void> {
   const response = await fetch(`http://${FIRESTORE}/v1/projects/${PROJECT}/databases/(default)/documents/${docPath}`, {
     method: 'PATCH',
@@ -68,4 +78,10 @@ for (const { id, name, document, updatedAt } of lessons) {
   await writeDoc(`public-lessons/${id}`, { ownerUid: uid, name, document, public: true, updatedAt });
 }
 for (const lang of languages) console.log(`${lang}: ${lessons.filter((lesson) => lesson.lang === lang).length} lessons seeded`);
+
+// The Lesson tree: the curriculum's chapters, merged into the account's own tree.
+const treeDocs = seededTreeDocs(await readDoc(`users/${uid}/lesson-trees/main`), readSeedTree(dir, languages), uid, new Date());
+await writeDoc(`users/${uid}/lesson-trees/main`, treeDocs.tree);
+await writeDoc(`public-lesson-trees/${uid}`, treeDocs.mirror);
+console.log('Lesson tree seeded.');
 console.log(`Done — ${email} (uid ${uid}) is an administrator in ${PROJECT}.`);

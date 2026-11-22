@@ -9,6 +9,13 @@ Tool Lessons (`LessonDocumentJSON`, see `/guide/lessons`):
   `backend/data/translations/<id>.json`; a string with no translation stays
   English.
 
+`tree.json` is the Lesson tree for them (spec
+`docs/superpowers/specs/2026-11-22-lesson-tree-design.md` §5.4): roots
+"System Design (EN)" / "System Design (VI)" (ids `tutorial-en` / `tutorial-vi`),
+under each the curriculum's 9 chapters in order with their colours (ids
+`tutorial-<lang>-<chapter>`, Vietnamese names from the source's
+`i18n/vi.json`), and in each chapter its lessons.
+
 Every file passes `normalizeLessonDocument` with no fix, and no two blocks
 shown in the same Lesson step overlap — `src/lib/lesson/seed-lessons.test.ts`
 checks both on `npm test`.
@@ -30,7 +37,8 @@ Regenerate after changing the converter or the source:
 npx vite-node scripts/convert-tutorials.ts [--src ../system-design-tutorials] [--out seed/lessons]
 ```
 
-It reads the source's `backend/data/{lessons,translations,i18n}` and imports
+It reads the source's `backend/data/{lessons,translations,i18n}` and
+`curriculum.json` (for `tree.json`), and imports
 `METRIC_DEFS` from its `frontend/src/engine/metrics.ts` (labels and value
 formats). The script fails if any output needs a normalizer fix.
 
@@ -46,6 +54,11 @@ lesson's `/lessons/<id>/view` link works at once. Ids are
 ```bash
 SEED_EMAIL=you@example.com SEED_PASSWORD=… npx vite-node scripts/seed-emulator-lessons.ts [--lang en|vi|all]
 ```
+
+Both loaders then merge `tree.json` into the account's Lesson tree — the
+seeded folders are overwritten by id, the account's own folders and lessons
+are kept — and rewrite its public copy. Other lessons the account has show up
+as Unfiled the next time its owner opens `/lessons`.
 
 It refuses anything but a `demo-*` project on local emulator hosts. Stop the
 emulators with Ctrl+C so the data is exported to `.emulator-data/`.

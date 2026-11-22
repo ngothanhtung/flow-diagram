@@ -1,0 +1,608 @@
+{
+  "format": "x-flow-lesson-tree",
+  "version": 1,
+  "folders": {
+    "tutorial-en": {
+      "parentId": null,
+      "name": "System Design (EN)",
+      "color": "slate",
+      "order": 0
+    },
+    "tutorial-en-foundations": {
+      "parentId": "tutorial-en",
+      "name": "Foundations",
+      "color": "sand",
+      "order": 0
+    },
+    "tutorial-en-scaling": {
+      "parentId": "tutorial-en",
+      "name": "Scaling",
+      "color": "green",
+      "order": 1
+    },
+    "tutorial-en-data": {
+      "parentId": "tutorial-en",
+      "name": "Data & Storage",
+      "color": "violet",
+      "order": 2
+    },
+    "tutorial-en-communication": {
+      "parentId": "tutorial-en",
+      "name": "Communication",
+      "color": "orange",
+      "order": 3
+    },
+    "tutorial-en-reliability": {
+      "parentId": "tutorial-en",
+      "name": "Reliability",
+      "color": "blue",
+      "order": 4
+    },
+    "tutorial-en-architecture": {
+      "parentId": "tutorial-en",
+      "name": "Architecture",
+      "color": "teal",
+      "order": 5
+    },
+    "tutorial-en-security": {
+      "parentId": "tutorial-en",
+      "name": "Security",
+      "color": "rose",
+      "order": 6
+    },
+    "tutorial-en-shipping": {
+      "parentId": "tutorial-en",
+      "name": "Shipping",
+      "color": "olive",
+      "order": 7
+    },
+    "tutorial-en-design": {
+      "parentId": "tutorial-en",
+      "name": "Whole Systems",
+      "color": "slate",
+      "order": 8
+    },
+    "tutorial-vi": {
+      "parentId": null,
+      "name": "System Design (VI)",
+      "color": "slate",
+      "order": 1
+    },
+    "tutorial-vi-foundations": {
+      "parentId": "tutorial-vi",
+      "name": "Nền tảng",
+      "color": "sand",
+      "order": 0
+    },
+    "tutorial-vi-scaling": {
+      "parentId": "tutorial-vi",
+      "name": "Mở rộng",
+      "color": "green",
+      "order": 1
+    },
+    "tutorial-vi-data": {
+      "parentId": "tutorial-vi",
+      "name": "Dữ liệu & lưu trữ",
+      "color": "violet",
+      "order": 2
+    },
+    "tutorial-vi-communication": {
+      "parentId": "tutorial-vi",
+      "name": "Giao tiếp",
+      "color": "orange",
+      "order": 3
+    },
+    "tutorial-vi-reliability": {
+      "parentId": "tutorial-vi",
+      "name": "Độ tin cậy",
+      "color": "blue",
+      "order": 4
+    },
+    "tutorial-vi-architecture": {
+      "parentId": "tutorial-vi",
+      "name": "Kiến trúc",
+      "color": "teal",
+      "order": 5
+    },
+    "tutorial-vi-security": {
+      "parentId": "tutorial-vi",
+      "name": "Bảo mật",
+      "color": "rose",
+      "order": 6
+    },
+    "tutorial-vi-shipping": {
+      "parentId": "tutorial-vi",
+      "name": "Phát hành",
+      "color": "olive",
+      "order": 7
+    },
+    "tutorial-vi-design": {
+      "parentId": "tutorial-vi",
+      "name": "Hệ thống hoàn chỉnh",
+      "color": "slate",
+      "order": 8
+    }
+  },
+  "lessons": {
+    "tutorial-en-request-lifecycle": {
+      "folderId": "tutorial-en-foundations",
+      "order": 0,
+      "title": "How a Request Travels",
+      "public": true
+    },
+    "tutorial-en-latency-throughput": {
+      "folderId": "tutorial-en-foundations",
+      "order": 1,
+      "title": "Latency & Throughput",
+      "public": true
+    },
+    "tutorial-en-napkin-math": {
+      "folderId": "tutorial-en-foundations",
+      "order": 2,
+      "title": "Napkin Math",
+      "public": true
+    },
+    "tutorial-en-vertical-horizontal": {
+      "folderId": "tutorial-en-scaling",
+      "order": 0,
+      "title": "Vertical vs Horizontal Scaling",
+      "public": true
+    },
+    "tutorial-en-load-balancing": {
+      "folderId": "tutorial-en-scaling",
+      "order": 1,
+      "title": "Load Balancing",
+      "public": true
+    },
+    "tutorial-en-stateless": {
+      "folderId": "tutorial-en-scaling",
+      "order": 2,
+      "title": "Stateless Services",
+      "public": true
+    },
+    "tutorial-en-caching": {
+      "folderId": "tutorial-en-scaling",
+      "order": 3,
+      "title": "Caching",
+      "public": true
+    },
+    "tutorial-en-cdn": {
+      "folderId": "tutorial-en-scaling",
+      "order": 4,
+      "title": "Content Delivery",
+      "public": true
+    },
+    "tutorial-en-sql-nosql": {
+      "folderId": "tutorial-en-data",
+      "order": 0,
+      "title": "SQL vs NoSQL",
+      "public": true
+    },
+    "tutorial-en-indexes": {
+      "folderId": "tutorial-en-data",
+      "order": 1,
+      "title": "Indexes",
+      "public": true
+    },
+    "tutorial-en-storage-engines": {
+      "folderId": "tutorial-en-data",
+      "order": 2,
+      "title": "Storage Engines",
+      "public": true
+    },
+    "tutorial-en-replication": {
+      "folderId": "tutorial-en-data",
+      "order": 3,
+      "title": "Replication",
+      "public": true
+    },
+    "tutorial-en-sharding": {
+      "folderId": "tutorial-en-data",
+      "order": 4,
+      "title": "Sharding",
+      "public": true
+    },
+    "tutorial-en-consistent-hashing": {
+      "folderId": "tutorial-en-data",
+      "order": 5,
+      "title": "Consistent Hashing",
+      "public": true
+    },
+    "tutorial-en-unique-ids": {
+      "folderId": "tutorial-en-data",
+      "order": 6,
+      "title": "Unique IDs at Scale",
+      "public": true
+    },
+    "tutorial-en-cap": {
+      "folderId": "tutorial-en-data",
+      "order": 7,
+      "title": "CAP & Consistency",
+      "public": true
+    },
+    "tutorial-en-consensus": {
+      "folderId": "tutorial-en-data",
+      "order": 8,
+      "title": "Consensus & Leader Election",
+      "public": true
+    },
+    "tutorial-en-transactions": {
+      "folderId": "tutorial-en-data",
+      "order": 9,
+      "title": "Transactions & Isolation",
+      "public": true
+    },
+    "tutorial-en-files": {
+      "folderId": "tutorial-en-data",
+      "order": 10,
+      "title": "Files & Media",
+      "public": true
+    },
+    "tutorial-en-apis": {
+      "folderId": "tutorial-en-communication",
+      "order": 0,
+      "title": "REST, RPC & GraphQL",
+      "public": true
+    },
+    "tutorial-en-queues": {
+      "folderId": "tutorial-en-communication",
+      "order": 1,
+      "title": "Message Queues",
+      "public": true
+    },
+    "tutorial-en-pubsub": {
+      "folderId": "tutorial-en-communication",
+      "order": 2,
+      "title": "Pub/Sub & Events",
+      "public": true
+    },
+    "tutorial-en-realtime": {
+      "folderId": "tutorial-en-communication",
+      "order": 3,
+      "title": "Real-time Updates",
+      "public": true
+    },
+    "tutorial-en-redundancy": {
+      "folderId": "tutorial-en-reliability",
+      "order": 0,
+      "title": "Redundancy & Failover",
+      "public": true
+    },
+    "tutorial-en-rate-limiting": {
+      "folderId": "tutorial-en-reliability",
+      "order": 1,
+      "title": "Rate Limiting",
+      "public": true
+    },
+    "tutorial-en-timeouts-retries": {
+      "folderId": "tutorial-en-reliability",
+      "order": 2,
+      "title": "Timeouts & Retries",
+      "public": true
+    },
+    "tutorial-en-observability": {
+      "folderId": "tutorial-en-reliability",
+      "order": 3,
+      "title": "Observability",
+      "public": true
+    },
+    "tutorial-en-microservices": {
+      "folderId": "tutorial-en-architecture",
+      "order": 0,
+      "title": "Monolith vs Microservices",
+      "public": true
+    },
+    "tutorial-en-service-discovery": {
+      "folderId": "tutorial-en-architecture",
+      "order": 1,
+      "title": "Service Discovery & Gateways",
+      "public": true
+    },
+    "tutorial-en-sagas": {
+      "folderId": "tutorial-en-architecture",
+      "order": 2,
+      "title": "Sagas & Distributed Transactions",
+      "public": true
+    },
+    "tutorial-en-batch-stream": {
+      "folderId": "tutorial-en-architecture",
+      "order": 3,
+      "title": "Batch & Stream Processing",
+      "public": true
+    },
+    "tutorial-en-authentication": {
+      "folderId": "tutorial-en-security",
+      "order": 0,
+      "title": "Authentication",
+      "public": true
+    },
+    "tutorial-en-authorization": {
+      "folderId": "tutorial-en-security",
+      "order": 1,
+      "title": "Authorization",
+      "public": true
+    },
+    "tutorial-en-encryption": {
+      "folderId": "tutorial-en-security",
+      "order": 2,
+      "title": "Encryption & Secrets",
+      "public": true
+    },
+    "tutorial-en-testing": {
+      "folderId": "tutorial-en-shipping",
+      "order": 0,
+      "title": "Testing",
+      "public": true
+    },
+    "tutorial-en-cicd": {
+      "folderId": "tutorial-en-shipping",
+      "order": 1,
+      "title": "CI/CD & Deployments",
+      "public": true
+    },
+    "tutorial-en-hld-lld": {
+      "folderId": "tutorial-en-design",
+      "order": 0,
+      "title": "HLD & LLD",
+      "public": true
+    },
+    "tutorial-en-design-url-shortener": {
+      "folderId": "tutorial-en-design",
+      "order": 1,
+      "title": "Design a URL Shortener",
+      "public": true
+    },
+    "tutorial-en-design-news-feed": {
+      "folderId": "tutorial-en-design",
+      "order": 2,
+      "title": "Design a News Feed",
+      "public": true
+    },
+    "tutorial-en-design-chat": {
+      "folderId": "tutorial-en-design",
+      "order": 3,
+      "title": "Design a Chat System",
+      "public": true
+    },
+    "tutorial-vi-request-lifecycle": {
+      "folderId": "tutorial-vi-foundations",
+      "order": 0,
+      "title": "Hành trình của một yêu cầu (VI)",
+      "public": true
+    },
+    "tutorial-vi-latency-throughput": {
+      "folderId": "tutorial-vi-foundations",
+      "order": 1,
+      "title": "Độ trễ & thông lượng (VI)",
+      "public": true
+    },
+    "tutorial-vi-napkin-math": {
+      "folderId": "tutorial-vi-foundations",
+      "order": 2,
+      "title": "Tính nhẩm nhanh (VI)",
+      "public": true
+    },
+    "tutorial-vi-vertical-horizontal": {
+      "folderId": "tutorial-vi-scaling",
+      "order": 0,
+      "title": "Mở rộng theo chiều dọc hay chiều ngang (VI)",
+      "public": true
+    },
+    "tutorial-vi-load-balancing": {
+      "folderId": "tutorial-vi-scaling",
+      "order": 1,
+      "title": "Cân bằng tải (VI)",
+      "public": true
+    },
+    "tutorial-vi-stateless": {
+      "folderId": "tutorial-vi-scaling",
+      "order": 2,
+      "title": "Dịch vụ phi trạng thái (VI)",
+      "public": true
+    },
+    "tutorial-vi-caching": {
+      "folderId": "tutorial-vi-scaling",
+      "order": 3,
+      "title": "Bộ nhớ đệm (VI)",
+      "public": true
+    },
+    "tutorial-vi-cdn": {
+      "folderId": "tutorial-vi-scaling",
+      "order": 4,
+      "title": "Phân phối nội dung (VI)",
+      "public": true
+    },
+    "tutorial-vi-sql-nosql": {
+      "folderId": "tutorial-vi-data",
+      "order": 0,
+      "title": "SQL hay NoSQL (VI)",
+      "public": true
+    },
+    "tutorial-vi-indexes": {
+      "folderId": "tutorial-vi-data",
+      "order": 1,
+      "title": "Chỉ mục (VI)",
+      "public": true
+    },
+    "tutorial-vi-storage-engines": {
+      "folderId": "tutorial-vi-data",
+      "order": 2,
+      "title": "Storage engine (VI)",
+      "public": true
+    },
+    "tutorial-vi-replication": {
+      "folderId": "tutorial-vi-data",
+      "order": 3,
+      "title": "Sao chép dữ liệu (VI)",
+      "public": true
+    },
+    "tutorial-vi-sharding": {
+      "folderId": "tutorial-vi-data",
+      "order": 4,
+      "title": "Sharding (VI)",
+      "public": true
+    },
+    "tutorial-vi-consistent-hashing": {
+      "folderId": "tutorial-vi-data",
+      "order": 5,
+      "title": "Consistent hashing (VI)",
+      "public": true
+    },
+    "tutorial-vi-unique-ids": {
+      "folderId": "tutorial-vi-data",
+      "order": 6,
+      "title": "ID duy nhất ở quy mô lớn (VI)",
+      "public": true
+    },
+    "tutorial-vi-cap": {
+      "folderId": "tutorial-vi-data",
+      "order": 7,
+      "title": "CAP & tính nhất quán (VI)",
+      "public": true
+    },
+    "tutorial-vi-consensus": {
+      "folderId": "tutorial-vi-data",
+      "order": 8,
+      "title": "Đồng thuận & bầu leader (VI)",
+      "public": true
+    },
+    "tutorial-vi-transactions": {
+      "folderId": "tutorial-vi-data",
+      "order": 9,
+      "title": "Giao dịch & cô lập (VI)",
+      "public": true
+    },
+    "tutorial-vi-files": {
+      "folderId": "tutorial-vi-data",
+      "order": 10,
+      "title": "Tệp & đa phương tiện (VI)",
+      "public": true
+    },
+    "tutorial-vi-apis": {
+      "folderId": "tutorial-vi-communication",
+      "order": 0,
+      "title": "REST, RPC & GraphQL (VI)",
+      "public": true
+    },
+    "tutorial-vi-queues": {
+      "folderId": "tutorial-vi-communication",
+      "order": 1,
+      "title": "Hàng đợi tin nhắn (VI)",
+      "public": true
+    },
+    "tutorial-vi-pubsub": {
+      "folderId": "tutorial-vi-communication",
+      "order": 2,
+      "title": "Pub/Sub & sự kiện (VI)",
+      "public": true
+    },
+    "tutorial-vi-realtime": {
+      "folderId": "tutorial-vi-communication",
+      "order": 3,
+      "title": "Cập nhật thời gian thực (VI)",
+      "public": true
+    },
+    "tutorial-vi-redundancy": {
+      "folderId": "tutorial-vi-reliability",
+      "order": 0,
+      "title": "Dự phòng & failover (VI)",
+      "public": true
+    },
+    "tutorial-vi-rate-limiting": {
+      "folderId": "tutorial-vi-reliability",
+      "order": 1,
+      "title": "Giới hạn tốc độ (VI)",
+      "public": true
+    },
+    "tutorial-vi-timeouts-retries": {
+      "folderId": "tutorial-vi-reliability",
+      "order": 2,
+      "title": "Timeout & thử lại (VI)",
+      "public": true
+    },
+    "tutorial-vi-observability": {
+      "folderId": "tutorial-vi-reliability",
+      "order": 3,
+      "title": "Khả năng quan sát (VI)",
+      "public": true
+    },
+    "tutorial-vi-microservices": {
+      "folderId": "tutorial-vi-architecture",
+      "order": 0,
+      "title": "Monolith hay microservice (VI)",
+      "public": true
+    },
+    "tutorial-vi-service-discovery": {
+      "folderId": "tutorial-vi-architecture",
+      "order": 1,
+      "title": "Khám phá dịch vụ & gateway (VI)",
+      "public": true
+    },
+    "tutorial-vi-sagas": {
+      "folderId": "tutorial-vi-architecture",
+      "order": 2,
+      "title": "Saga & giao dịch phân tán (VI)",
+      "public": true
+    },
+    "tutorial-vi-batch-stream": {
+      "folderId": "tutorial-vi-architecture",
+      "order": 3,
+      "title": "Xử lý theo lô & luồng (VI)",
+      "public": true
+    },
+    "tutorial-vi-authentication": {
+      "folderId": "tutorial-vi-security",
+      "order": 0,
+      "title": "Xác thực (VI)",
+      "public": true
+    },
+    "tutorial-vi-authorization": {
+      "folderId": "tutorial-vi-security",
+      "order": 1,
+      "title": "Phân quyền (VI)",
+      "public": true
+    },
+    "tutorial-vi-encryption": {
+      "folderId": "tutorial-vi-security",
+      "order": 2,
+      "title": "Mã hóa & bí mật (VI)",
+      "public": true
+    },
+    "tutorial-vi-testing": {
+      "folderId": "tutorial-vi-shipping",
+      "order": 0,
+      "title": "Kiểm thử (VI)",
+      "public": true
+    },
+    "tutorial-vi-cicd": {
+      "folderId": "tutorial-vi-shipping",
+      "order": 1,
+      "title": "CI/CD & triển khai (VI)",
+      "public": true
+    },
+    "tutorial-vi-hld-lld": {
+      "folderId": "tutorial-vi-design",
+      "order": 0,
+      "title": "HLD & LLD (VI)",
+      "public": true
+    },
+    "tutorial-vi-design-url-shortener": {
+      "folderId": "tutorial-vi-design",
+      "order": 1,
+      "title": "Thiết kế dịch vụ rút gọn URL (VI)",
+      "public": true
+    },
+    "tutorial-vi-design-news-feed": {
+      "folderId": "tutorial-vi-design",
+      "order": 2,
+      "title": "Thiết kế news feed (VI)",
+      "public": true
+    },
+    "tutorial-vi-design-chat": {
+      "folderId": "tutorial-vi-design",
+      "order": 3,
+      "title": "Thiết kế một hệ thống chat (VI)",
+      "public": true
+    }
+  }
+}

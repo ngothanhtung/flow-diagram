@@ -15,6 +15,8 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { normalizeLessonDocument } from '../src/lib/lesson/lesson-normalize';
 import { convertTutorialLesson } from '../src/lib/lesson/tutorial-import';
+import { lessonNameOf } from '../src/lib/lesson/lesson-types';
+import { tutorialTree, type CurriculumModule } from '../src/lib/lesson/tutorial-tree';
 
 type Lang = 'en' | 'vi';
 interface MetricDef {
@@ -73,6 +75,8 @@ function formatMetric(lang: Lang, id: string, value: unknown): string {
 
 const files = readdirSync(lessonsDir).filter((file) => file.endsWith('.json')).sort();
 let failed = false;
+// Converted titles per language, for the Lesson tree (tree.json, below).
+const titles: Record<Lang, Record<string, string>> = { en: {}, vi: {} };
 for (const lang of ['en', 'vi'] as Lang[]) {
   mkdirSync(path.join(out, lang), { recursive: true });
   let missing = 0;
@@ -103,7 +107,22 @@ for (const lang of ['en', 'vi'] as Lang[]) {
       console.error(`${lang}/${id}: ${result.ok ? result.fixes.join('\n  ') : result.error}`);
     }
     writeFileSync(path.join(out, lang, `${id}.lesson.json`), `${JSON.stringify(lesson, null, 2)}\n`);
+    // The seed scripts title Vietnamese copies "<title> (VI)"; the tree index matches.
+    const title = lessonNameOf(lesson);
+    titles[lang][id] = lang === 'vi' ? `${title} (VI)` : title;
   }
   console.log(`${lang}: ${files.length} lessons written to ${path.relative(root, path.join(out, lang))}${lang === 'vi' ? ` (${missing} of ${looked} strings had no translation and stay English)` : ''}`);
 }
+
+// The Lesson tree: the curriculum's chapters under one root per language.
+const curriculum = JSON.parse(readFileSync(path.join(src, 'backend/data/curriculum.json'), 'utf8')) as CurriculumModule[];
+const tree = tutorialTree(curriculum, uiVi, titles);
+const placed = Object.keys(tree.lessons).length;
+if (placed !== files.length * 2) {
+  failed = true;
+  console.error(`tree.json places ${placed} lessons, expected ${files.length * 2}.`);
+}
+writeFileSync(path.join(out, 'tree.json'), `${JSON.stringify(tree, null, 2)}\n`);
+console.log(`tree: ${Object.keys(tree.folders).length} folders, ${placed} lessons written to ${path.relative(root, path.join(out, 'tree.json'))}`);
+
 if (failed) process.exit(1);

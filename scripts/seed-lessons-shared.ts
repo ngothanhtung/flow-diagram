@@ -4,6 +4,8 @@
 
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
+import { normalizeLessonTree, publicTreeOf, type LessonTree } from '../src/lib/lesson/lesson-tree';
+import { mergeSeedTree } from '../src/lib/lesson/tutorial-tree';
 
 export type SeedLesson = {
   lang: string;
@@ -47,6 +49,46 @@ export function toValue(value: unknown): FirestoreValue {
 
 export function toFields(object: Record<string, unknown>): Record<string, FirestoreValue> {
   return Object.fromEntries(Object.entries(object).filter(([, value]) => value !== undefined).map(([key, value]) => [key, toValue(value)]));
+}
+
+/** A Firestore REST `Value` back to JSON (the inverse of `toValue`; timestamps stay ISO strings). */
+export function fromValue(value: FirestoreValue): unknown {
+  if ('mapValue' in value) return fromFields(((value.mapValue as { fields?: Record<string, FirestoreValue> }).fields) ?? {});
+  if ('arrayValue' in value) return (((value.arrayValue as { values?: FirestoreValue[] }).values) ?? []).map(fromValue);
+  if ('integerValue' in value) return Number(value.integerValue);
+  if ('doubleValue' in value) return value.doubleValue;
+  if ('booleanValue' in value) return value.booleanValue;
+  if ('nullValue' in value) return null;
+  if ('timestampValue' in value) return value.timestampValue;
+  return value.stringValue;
+}
+
+export function fromFields(fields: Record<string, FirestoreValue>): Record<string, unknown> {
+  return Object.fromEntries(Object.entries(fields).map(([key, value]) => [key, fromValue(value)]));
+}
+
+/** The seed's Lesson tree (seed/lessons/tree.json, written by scripts/convert-tutorials.ts). */
+export function readSeedTree(dir: string, languages: string[]): LessonTree {
+  const { tree } = normalizeLessonTree(JSON.parse(readFileSync(path.join(dir, 'tree.json'), 'utf8')));
+  // Seeding one language: keep only that root, its chapters and lessons.
+  const keepRoots = new Set(languages.map((lang) => `tutorial-${lang}`));
+  const folders = Object.fromEntries(Object.entries(tree.folders).filter(([id, folder]) => keepRoots.has(folder.parentId ?? id)));
+  const lessons = Object.fromEntries(Object.entries(tree.lessons).filter(([, entry]) => entry.folderId !== null && Object.hasOwn(folders, entry.folderId)));
+  return { ...tree, folders, lessons };
+}
+
+/**
+ * The two documents a Lesson tree is stored as — `users/{uid}/lesson-trees/main`
+ * and `public-lesson-trees/{uid}` — after merging the seed into what the
+ * account already has (its own folders and lessons are kept).
+ */
+export function seededTreeDocs(existing: unknown, seed: LessonTree, uid: string, now: Date) {
+  const current = existing === null ? null : normalizeLessonTree(existing).tree;
+  const tree = mergeSeedTree(current, seed);
+  return {
+    tree: { ...tree, updatedAt: now } as Record<string, unknown>,
+    mirror: { ...publicTreeOf(tree, uid), updatedAt: now } as Record<string, unknown>,
+  };
 }
 
 export function argValue(name: string, fallback: string): string {
