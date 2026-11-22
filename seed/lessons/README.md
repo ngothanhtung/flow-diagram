@@ -19,7 +19,9 @@ under each the curriculum's 9 chapters in order with their colours (ids
 Every lesson is laid out on the editor's 40px grid: each box's top-left on a
 grid point and its size whole cells (so all edges sit on grid lines), a Line's
 free bends on the half grid, and blocks that share a source row or column sized
-so their centres line up (a Line between them runs straight). Lessons someone
+so their centres line up (a Line between them runs straight). A data store is
+a `cylinder`, whose caps fill its box, so every Line end lands on the half grid
+too (the classic `database` shape's top and bottom ports sit inside its box). Lessons someone
 has already edited are tidied in place instead of re-imported:
 `scripts/snap-lessons-to-grid.ts` (see below).
 
@@ -89,7 +91,7 @@ real Lessons — their names and Public flags — before it is written).
 **Re-importing over edited lessons**: `import-lessons.ts --skip a,b` leaves the
 named lessons alone. To put lessons a person has edited onto the grid without
 losing their changes, snap them in place (only `document` is written, plus the
-Public copy):
+Public copy; `database` shapes become `cylinder` first):
 
 ```bash
 npx vite-node scripts/snap-lessons-to-grid.ts --emulator --uid <uid> [--ids a,b]

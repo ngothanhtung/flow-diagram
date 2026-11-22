@@ -149,7 +149,7 @@ export default function GuidePage() {
             />
             <p>
               <Pill>shape</Pill> can be overridden to any of the ~35 values in <Pill>NodeShape</Pill> — common ones for system diagrams: <Pill>rounded</Pill> (generic block),{' '}
-              <Pill>database</Pill>, <Pill>server</Pill>, <Pill>cloud</Pill>, <Pill>queue</Pill>, <Pill>component</Pill> (UML component), <Pill>document</Pill>, <Pill>diamond</Pill> (decision),{' '}
+              <Pill>database</Pill> (or <Pill>cylinder</Pill>, whose caps fill the box so top/bottom Line ends sit on its edge), <Pill>server</Pill>, <Pill>cloud</Pill>, <Pill>queue</Pill>, <Pill>component</Pill> (UML component), <Pill>document</Pill>, <Pill>diamond</Pill> (decision),{' '}
               <Pill>folder</Pill>. Full list is in <Pill>src/lib/flowchart-types.ts</Pill> (<Pill>NodeShape</Pill>) / <Pill>src/lib/node-style.ts</Pill> (<Pill>SHAPES</Pill>).
             </p>
             <p>

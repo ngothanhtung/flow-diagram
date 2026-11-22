@@ -682,6 +682,8 @@ export function ShapeThumb({ shape, fill, stroke }: { shape: NodeShape; fill: st
     switch (shape) {
       case 'database':
         return <path d='M -56 -34 C -56 -19 56 -19 56 -34 M -56 2 C -56 17 56 17 56 2' />;
+      case 'cylinder':
+        return <path d='M -56 -44.75 C -56 -29.75 56 -29.75 56 -44.75' />;
       case 'server':
         return <path d='M -56 -19 H 56 M -56 19 H 56' />;
       case 'queue':

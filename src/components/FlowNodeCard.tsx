@@ -115,6 +115,9 @@ function ShapeDecoration({ shape, color }: { shape: NodeShape; color: string }) 
           <path d='M -56 -34 C -56 -19 56 -19 56 -34' {...common} />
         </>
       );
+    case 'cylinder':
+      // The top cap's front rim: the outline's top curve, mirrored downwards.
+      return <path d='M -56 -44.75 C -56 -29.75 56 -29.75 56 -44.75' {...common} />;
     case 'server':
       return (
         <>

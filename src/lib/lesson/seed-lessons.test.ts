@@ -11,6 +11,7 @@ import { icons } from 'lucide-react';
 import { describe, expect, it } from 'vitest';
 import type { FlowNode } from '../flowchart-types';
 import { nodeSizeLimits } from '../node-style';
+import { facingSides, nodePortAnchor } from '../../components/edge-geometry';
 import { normalizeLessonDocument } from './lesson-normalize';
 import { resolveStepView } from './lesson-step-view';
 import { contentOf, type LessonDocumentJSON } from './lesson-types';
@@ -80,6 +81,29 @@ describe('seed lessons', () => {
         expect(jogs, 'lines with a small jog').toEqual([]);
         const offBends = lesson.diagram.edges.filter((edge) => (edge.bendPoints ?? []).some((point) => point.x % (GRID / 2) !== 0 || point.y % (GRID / 2) !== 0)).map((edge) => edge.id);
         expect(offBends, 'bends off the half grid').toEqual([]);
+        // …and so does each end of a Line: the port it leaves or enters sits on a
+        // box edge (a data store is a `cylinder`, whose caps fill its box — the
+        // classic `database` silhouette's top and bottom ports fall inside it).
+        const offEnds = lesson.diagram.edges.flatMap((edge) => {
+          const [from, to] = [byId.get(edge.from), byId.get(edge.to)];
+          if (!from || !to) return [];
+          const facing = facingSides(from, to);
+          return (
+            [
+              [from, edge.fromSide ?? facing.fromSide],
+              [to, edge.toSide ?? facing.toSide],
+            ] as const
+          )
+            .filter(([node, side]) => {
+              const anchor = nodePortAnchor(node, side);
+              // Anchors are scaled from a 112px box (920/112·56 = 459.99…), so allow float dust.
+              const off = (value: number) => Math.abs(value - Math.round(value / (GRID / 2)) * (GRID / 2)) > 1e-6;
+              return off(node.position.x + anchor.x) || off(node.position.y + anchor.y);
+            })
+            .map(([node, side]) => `${edge.id}:${node.id}.${side}`);
+        });
+        expect(offEnds, 'line ends off the half grid').toEqual([]);
+        expect(nodes.filter((node) => node.shape === 'database').map((node) => node.id), 'classic database shapes').toEqual([]);
 
         const content = contentOf(lesson);
         for (const step of lesson.steps) {

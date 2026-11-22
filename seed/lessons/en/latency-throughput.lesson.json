@@ -722,7 +722,7 @@
         },
         "width": 200,
         "height": 160,
-        "shape": "database",
+        "shape": "cylinder",
         "icon": "lucide:Database",
         "iconPosition": "left",
         "color": "#87e8de",

@@ -8,7 +8,9 @@
 //   Real:      FIREBASE_ACCESS_TOKEN=… npx vite-node scripts/snap-lessons-to-grid.ts --project <id> --uid <uid> [--ids a,b]
 //
 // Without --ids every Lesson of the account is snapped; one already on the
-// grid is left untouched.
+// grid is left untouched. A classic `database` silhouette becomes a `cylinder`
+// first — the Lessons' data store, whose caps fill the box so a Line's end on
+// its top or bottom lands on the grid too.
 
 import { snapDiagramToGrid } from '../src/lib/snap-diagram';
 import type { FlowDocumentJSON } from '../src/lib/flowchart-types';
@@ -53,7 +55,8 @@ for (const lesson of await listLessons()) {
   const document = lesson.fields.document as { diagram?: FlowDocumentJSON } | undefined;
   if (!document?.diagram || !Array.isArray(document.diagram.nodes)) continue;
   checked += 1;
-  const diagram = snapDiagramToGrid({ ...document.diagram, edges: document.diagram.edges ?? [] });
+  const nodes = document.diagram.nodes.map((node) => (node.shape === 'database' ? { ...node, shape: 'cylinder' as const } : node));
+  const diagram = snapDiagramToGrid({ ...document.diagram, nodes, edges: document.diagram.edges ?? [] });
   if (JSON.stringify(diagram) === JSON.stringify(document.diagram)) continue;
   const next = { ...document, diagram };
   await writeDocument(`users/${uid}/lessons/${lesson.id}`, next);

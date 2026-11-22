@@ -53,6 +53,7 @@ export const NODE_SHAPES = allOf<NodeShape>()(
   'database',
   'server',
   'cloud',
+  'cylinder',
   'queue',
   'component',
   'predefined-process',

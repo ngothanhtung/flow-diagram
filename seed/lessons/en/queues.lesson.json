@@ -910,7 +910,7 @@
         },
         "width": 240,
         "height": 120,
-        "shape": "database",
+        "shape": "cylinder",
         "icon": "lucide:Skull",
         "iconPosition": "left",
         "color": "#87e8de",

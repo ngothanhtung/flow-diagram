@@ -31,6 +31,7 @@ export type NodeShape =
   | 'parallelogram'
   | 'document'
   | 'database'
+  | 'cylinder'
   | 'server'
   | 'cloud'
   | 'queue'

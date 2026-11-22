@@ -90,6 +90,10 @@ describe('convertTutorialLesson', () => {
     expect(lesson.steps[1].metrics).toEqual({});
   });
 
+  it('draws a data store as a cylinder that fills its box', () => {
+    expect(lesson.diagram.nodes.find((n) => n.id === 'db')?.shape).toBe('cylinder');
+  });
+
   it('an entity present only in step 2 is present from step 2 until step 3', () => {
     expect(nodeIds).toContain('db');
     expect(lesson.presence.db).toEqual({ from: 's2', until: 's3' });

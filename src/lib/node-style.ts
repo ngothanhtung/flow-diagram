@@ -361,6 +361,24 @@ export const SHAPES: Record<NodeShape, ShapeSpec> = {
     },
     label: 'Database',
   },
+  // A database that fills its box, the way the Lessons draw a data store: the
+  // caps' extremes reach the box edges (±R), so the top and bottom ports — and
+  // a Line's end there — sit on the box edge, on the grid when the box is. (A
+  // cubic's extreme here is its end + ¾ of the end-to-control distance:
+  // 44.75 + 0.75·15 = 56.)
+  cylinder: {
+    d: `M ${-R} -44.75
+        C ${-R} -59.75, ${R} -59.75, ${R} -44.75
+        L ${R} 44.75
+        C ${R} 59.75, ${-R} 59.75, ${-R} 44.75 Z`,
+    anchors: {
+      top: { x: 0, y: -R },
+      right: { x: R, y: 0 },
+      bottom: { x: 0, y: R },
+      left: { x: -R, y: 0 },
+    },
+    label: 'Cylinder',
+  },
   server: {
     d: `M ${-R + 8} ${-R}
         L ${R - 8} ${-R} Q ${R} ${-R} ${R} ${-R + 8}

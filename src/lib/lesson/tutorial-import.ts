@@ -451,7 +451,7 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
       }
       case 'db': {
         const r = finite(entity.r);
-        return { ...base, kind: 'card', shape: 'database', ...named(entity.label, load), icon: iconOf(entity.glyph, 'lucide:Database'), paint: dead ? PAINTS.dead : paintOf(entity.color, PAINTS.store), dashed: dead, hot, opacity: dim, ux: x, uy: y, foot: r !== undefined ? { w: 2 * r, h: 1.2 * r } : undefined };
+        return { ...base, kind: 'card', shape: 'cylinder', ...named(entity.label, load), icon: iconOf(entity.glyph, 'lucide:Database'), paint: dead ? PAINTS.dead : paintOf(entity.color, PAINTS.store), dashed: dead, hot, opacity: dim, ux: x, uy: y, foot: r !== undefined ? { w: 2 * r, h: 1.2 * r } : undefined };
       }
       case 'device':
         return { ...base, kind: 'card', ...named(entity.label), icon: entity.form === 'phone' ? 'lucide:Smartphone' : 'lucide:Laptop', paint: PAINTS.slab, opacity: finite(entity.opacity) !== undefined && (entity.opacity as number) < 1 ? (entity.opacity as number) : undefined, ux: x, uy: y };
@@ -615,7 +615,7 @@ export function convertTutorialLesson(raw: unknown, options: TutorialImportOptio
       title: look.title,
       description: look.description,
       hasIcon: look.icon !== null,
-      extraHeight: look.shape === 'database' ? 24 : 0,
+      extraHeight: look.shape === 'cylinder' ? 24 : 0,
       minWidth: look.foot ? look.foot.w * scale : undefined,
       minHeight: look.foot ? look.foot.h * scale : undefined,
     });
