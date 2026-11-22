@@ -77,33 +77,117 @@
         "title": "",
         "position": {
           "x": 840,
-          "y": -440
+          "y": -400
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "WHOSE CLOCK?\nreal 12:00:03   US saves “12 Elm St”\n# stamped 12:00:06 — clock is 3 s fast\nreal 12:00:05   EU saves the correction\n# stamped 12:00:05\n⚠ sync keeps 12:00:06: the old address",
+        "title": "# WHOSE CLOCK?",
         "position": {
           "x": 840,
-          "y": -440
+          "y": -500
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "real 12:00:03   US saves “12 Elm St”",
+        "position": {
+          "x": 840,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "# stamped 12:00:06 — clock is 3 s fast",
+        "position": {
+          "x": 840,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "real 12:00:05   EU saves the correction",
+        "position": {
+          "x": 840,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "# stamped 12:00:05",
+        "position": {
+          "x": 840,
+          "y": -340
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-6",
+        "type": "text",
+        "title": "sync keeps 12:00:06: the old address",
+        "position": {
+          "x": 840,
+          "y": -300
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "card-2",
@@ -111,33 +195,115 @@
         "title": "",
         "position": {
           "x": 860,
-          "y": -440
+          "y": -400
         },
         "width": 440,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "DURING A PARTITION, CHOOSE\nC — refuse, never be wrong\n    payments, inventory, bookings\nA — answer, maybe be stale\n    likes, carts, feeds\n# without a partition: latency vs consistency",
+        "title": "# DURING A PARTITION, CHOOSE",
         "position": {
           "x": 860,
-          "y": -440
+          "y": -500
         },
         "width": 440,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "C — refuse, never be wrong",
+        "position": {
+          "x": 860,
+          "y": -460
+        },
+        "width": 440,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "    payments, inventory, bookings",
+        "position": {
+          "x": 860,
+          "y": -420
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "A — answer, maybe be stale",
+        "position": {
+          "x": 860,
+          "y": -380
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "    likes, carts, feeds",
+        "position": {
+          "x": 860,
+          "y": -340
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-6",
+        "type": "text",
+        "title": "# without a partition: latency vs consistency",
+        "position": {
+          "x": 860,
+          "y": -300
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-3",
@@ -145,33 +311,83 @@
         "title": "",
         "position": {
           "x": 800,
-          "y": -460
+          "y": -440
         },
         "width": 320,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "N = 3, W = 2, R = 2\nwrite → wait for 2 of 3\nread  → ask 2, keep the newest\n→ W + R = 4 > 3: always overlaps",
+        "title": "# N = 3, W = 2, R = 2",
+        "position": {
+          "x": 800,
+          "y": -500
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "write → wait for 2 of 3",
         "position": {
           "x": 800,
           "y": -460
         },
         "width": 320,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "read  → ask 2, keep the newest",
+        "position": {
+          "x": 800,
+          "y": -420
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "W + R = 4 > 3: always overlaps",
+        "position": {
+          "x": 800,
+          "y": -380
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-4",
@@ -179,33 +395,83 @@
         "title": "",
         "position": {
           "x": 840,
-          "y": -460
+          "y": -440
         },
         "width": 400,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "CHOOSE PER OPERATION\nlike      W = 1, R = 1 · fast, eventual\npayment   W = 2, R = 2 · slower, safe\n→ cost of being wrong decides",
+        "title": "# CHOOSE PER OPERATION",
+        "position": {
+          "x": 840,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "like      W = 1, R = 1 · fast, eventual",
         "position": {
           "x": 840,
           "y": -460
         },
         "width": 400,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": "payment   W = 2, R = 2 · slower, safe",
+        "position": {
+          "x": 840,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "cost of being wrong decides",
+        "position": {
+          "x": 840,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-5",
@@ -213,33 +479,114 @@
         "title": "",
         "position": {
           "x": 840,
-          "y": -440
+          "y": -400
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-text",
+        "id": "card-5-row-1",
         "type": "text",
-        "title": "STRONGEST → WEAKEST\nlinearizable   everyone sees the latest\ncausal         effects after causes\nread-your-writes  you see your own\nmonotonic      never go back in time\neventual       copies converge… later",
+        "title": "# STRONGEST → WEAKEST",
         "position": {
           "x": 840,
-          "y": -440
+          "y": -500
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-5-row-2",
+        "type": "text",
+        "title": "linearizable   everyone sees the latest",
+        "position": {
+          "x": 840,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-5"
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-3",
+        "type": "text",
+        "title": "causal         effects after causes",
+        "position": {
+          "x": 840,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-4",
+        "type": "text",
+        "title": "read-your-writes  you see your own",
+        "position": {
+          "x": 840,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-5",
+        "type": "text",
+        "title": "monotonic      never go back in time",
+        "position": {
+          "x": 840,
+          "y": -340
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-6",
+        "type": "text",
+        "title": "eventual       copies converge… later",
+        "position": {
+          "x": 840,
+          "y": -300
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
       },
       {
         "id": "eu",
@@ -1175,23 +1522,107 @@
     "euz-label": {
       "until": "s8"
     },
-    "card-text": {
+    "card-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-row-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-row-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2-row-1": {
       "from": "s7",
       "until": "s8"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-2-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-2-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-2-row-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-2-row-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-1": {
       "from": "s8",
       "until": "s9"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-3-row-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-3-row-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4-row-1": {
       "from": "s9",
       "until": "s10"
     },
-    "card-5-text": {
+    "card-4-row-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-4-row-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-4-row-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "card-5-row-1": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-5-row-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-5-row-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-5-row-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-5-row-5": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-5-row-6": {
       "from": "s10",
       "until": "s11"
     },

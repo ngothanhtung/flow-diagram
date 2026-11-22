@@ -9,33 +9,99 @@
         "title": "",
         "position": {
           "x": 1020,
-          "y": -440
+          "y": -420
         },
         "width": 280,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "WHERE DOES EACH USER GO?\nuser 1001 → hash % 4 = 2 → C\nuser 1002 → hash % 4 = 0 → A\nuser 1003 → hash % 4 = 3 → D\n→ neighbours scatter evenly",
+        "title": "# WHERE DOES EACH USER GO?",
         "position": {
           "x": 1020,
-          "y": -440
+          "y": -500
         },
         "width": 280,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "user 1001 → hash % 4 = 2 → C",
+        "position": {
+          "x": 1020,
+          "y": -460
+        },
+        "width": 280,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "user 1002 → hash % 4 = 0 → A",
+        "position": {
+          "x": 1020,
+          "y": -420
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "user 1003 → hash % 4 = 3 → D",
+        "position": {
+          "x": 1020,
+          "y": -380
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "neighbours scatter evenly",
+        "position": {
+          "x": 1020,
+          "y": -340
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-2",
@@ -43,67 +109,167 @@
         "title": "",
         "position": {
           "x": 1040,
-          "y": -460
+          "y": -440
         },
         "width": 320,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "SPLIT A HOT COUNTER\nwrite: likes:42#rand(0..7) += 1\nread:  sum of likes:42#0 … #7\n→ 8 sub-keys spread over 4 shards",
+        "title": "# SPLIT A HOT COUNTER",
+        "position": {
+          "x": 1040,
+          "y": -500
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "write: likes:42#rand(0..7) += 1",
         "position": {
           "x": 1040,
           "y": -460
         },
         "width": 320,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "read:  sum of likes:42#0 … #7",
+        "position": {
+          "x": 1040,
+          "y": -420
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "8 sub-keys spread over 4 shards",
+        "position": {
+          "x": 1040,
+          "y": -380
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-3",
         "type": "group",
         "title": "",
         "position": {
-          "x": 1040,
-          "y": -460
+          "x": 1060,
+          "y": -440
         },
-        "width": 320,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 360,
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "SCATTER–GATHER\nask all 4 shards for their top 10\nmerge 40 results, keep the top 10\n⚠ as slow as the slowest shard",
+        "title": "# SCATTER–GATHER",
         "position": {
-          "x": 1040,
+          "x": 1060,
+          "y": -500
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "ask all 4 shards for their top 10",
+        "position": {
+          "x": 1060,
           "y": -460
         },
-        "width": 320,
-        "height": 120,
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "merge 40 results, keep the top 10",
+        "position": {
+          "x": 1060,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "as slow as the slowest shard",
+        "position": {
+          "x": 1060,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "card-4",
@@ -111,33 +277,83 @@
         "title": "",
         "position": {
           "x": 1060,
-          "y": -460
+          "y": -440
         },
         "width": 360,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "% 4 → % 5\nuser 1001: % 4 = 2, % 5 = 1  → moves\nuser 1002: % 4 = 0, % 5 = 0  → stays\n⚠ ~80% of keys change shard",
+        "title": "# % 4 → % 5",
+        "position": {
+          "x": 1060,
+          "y": -500
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "user 1001: % 4 = 2, % 5 = 1  → moves",
         "position": {
           "x": 1060,
           "y": -460
         },
         "width": 360,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": "user 1002: % 4 = 0, % 5 = 0  → stays",
+        "position": {
+          "x": 1060,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "~80% of keys change shard",
+        "position": {
+          "x": 1060,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "app",
@@ -1593,19 +1809,71 @@
       "from": "s8",
       "until": "s9"
     },
-    "card-text": {
+    "card-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-row-1": {
       "from": "s7",
       "until": "s8"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4-row-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4-row-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-4-row-4": {
       "from": "s8",
       "until": "s9"
     },

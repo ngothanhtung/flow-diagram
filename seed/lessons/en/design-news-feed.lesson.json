@@ -8,34 +8,101 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 700,
-          "y": -400
+          "x": 720,
+          "y": -380
         },
-        "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 400,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "REQUIREMENTS\npost        text and a photo\nhome feed   posts from people I follow\n→ feed opens in under 200 ms\n# a new post may take a few seconds",
+        "title": "# REQUIREMENTS",
         "position": {
-          "x": 700,
-          "y": -400
+          "x": 720,
+          "y": -460
         },
-        "width": 360,
-        "height": 160,
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "post        text and a photo",
+        "position": {
+          "x": 720,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "home feed   posts from people I follow",
+        "position": {
+          "x": 720,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "feed opens in under 200 ms",
+        "position": {
+          "x": 720,
+          "y": -340
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "# a new post may take a few seconds",
+        "position": {
+          "x": 720,
+          "y": -300
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-2",
@@ -43,67 +110,201 @@
         "title": "",
         "position": {
           "x": 720,
-          "y": -400
+          "y": -380
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "NAPKIN MATH\n200 M users × 10 opens   ≈ 23,000 feeds/s\n50 M posts a day         ≈ 600 posts/s\n→ about 40 feed reads per post written\n# a typical user follows 200 accounts",
+        "title": "# NAPKIN MATH",
         "position": {
           "x": 720,
-          "y": -400
+          "y": -460
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "200 M users × 10 opens   ≈ 23,000 feeds/s",
+        "position": {
+          "x": 720,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "50 M posts a day         ≈ 600 posts/s",
+        "position": {
+          "x": 720,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "about 40 feed reads per post written",
+        "position": {
+          "x": 720,
+          "y": -340
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "# a typical user follows 200 accounts",
+        "position": {
+          "x": 720,
+          "y": -300
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-3",
         "type": "group",
         "title": "",
         "position": {
-          "x": 720,
-          "y": -400
+          "x": 740,
+          "y": -380
         },
-        "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 440,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "COST OF PULL\n23,000 feed loads / s\n× 200 authors each\n⚠ = 4.6 million lookups / s\n# and each load waits for the slowest shard",
+        "title": "# COST OF PULL",
         "position": {
-          "x": 720,
-          "y": -400
+          "x": 740,
+          "y": -460
         },
-        "width": 400,
-        "height": 160,
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "23,000 feed loads / s",
+        "position": {
+          "x": 740,
+          "y": -420
+        },
+        "width": 440,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "× 200 authors each",
+        "position": {
+          "x": 740,
+          "y": -380
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "= 4.6 million lookups / s",
+        "position": {
+          "x": 740,
+          "y": -340
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "card-3-row-5",
+        "type": "text",
+        "title": "# and each load waits for the slowest shard",
+        "position": {
+          "x": 740,
+          "y": -300
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-4",
@@ -111,33 +312,100 @@
         "title": "",
         "position": {
           "x": 720,
-          "y": -400
+          "y": -380
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "CURSOR PAGINATION\nGET /feed?limit=20\n# → posts 9041 … 9017 · next: before=9017\nGET /feed?before=9017&limit=20\n→ stays put while new posts arrive",
+        "title": "# CURSOR PAGINATION",
         "position": {
           "x": 720,
-          "y": -400
+          "y": -460
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "GET /feed?limit=20",
+        "position": {
+          "x": 720,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": "# → posts 9041 … 9017 · next: before=9017",
+        "position": {
+          "x": 720,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "GET /feed?before=9017&limit=20",
+        "position": {
+          "x": 720,
+          "y": -340
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-5",
+        "type": "text",
+        "title": "stays put while new posts arrive",
+        "position": {
+          "x": 720,
+          "y": -300
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "readers",
@@ -1635,18 +1903,78 @@
     "graph": {
       "from": "s5"
     },
-    "card-text": {
+    "card-row-1": {
       "until": "s2"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "until": "s2"
+    },
+    "card-row-3": {
+      "until": "s2"
+    },
+    "card-row-4": {
+      "until": "s2"
+    },
+    "card-row-5": {
+      "until": "s2"
+    },
+    "card-2-row-1": {
       "from": "s2",
       "until": "s3"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-5": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-row-1": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-4-row-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-4-row-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-4-row-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-4-row-5": {
       "from": "s10",
       "until": "s11"
     },

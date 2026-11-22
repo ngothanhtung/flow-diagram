@@ -9,33 +9,84 @@
         "title": "",
         "position": {
           "x": 640,
-          "y": -340
+          "y": -320
         },
         "width": 400,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "HÓA ĐƠN\n1.000.000 người dùng ÷ 2 s\n→ 500.000 yêu cầu / s\n⚠ ~475.000 trong số đó: “không có gì mới”",
+        "title": "# HÓA ĐƠN",
+        "position": {
+          "x": 640,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "1.000.000 người dùng ÷ 2 s",
         "position": {
           "x": 640,
           "y": -340
         },
         "width": 400,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "500.000 yêu cầu / s",
+        "position": {
+          "x": 640,
+          "y": -300
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "~475.000 trong số đó: “không có gì mới”",
+        "position": {
+          "x": 640,
+          "y": -260
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "alice",
@@ -969,7 +1020,19 @@
       "from": "s9",
       "until": "s10"
     },
-    "card-text": {
+    "card-row-1": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-row-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-row-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-row-4": {
       "from": "s3",
       "until": "s4"
     },

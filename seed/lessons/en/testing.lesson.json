@@ -9,33 +9,100 @@
         "title": "",
         "position": {
           "x": 740,
-          "y": -480
+          "y": -460
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "A UNIT TEST\nbasket = [{ price: 9.99, qty: 3 }]\ntotal(basket, \"SAVE10\")\n→ expect 26.97  ✓\n# no database, no network, ~1 ms",
+        "title": "# A UNIT TEST",
         "position": {
           "x": 740,
-          "y": -480
+          "y": -540
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "basket = [{ price: 9.99, qty: 3 }]",
+        "position": {
+          "x": 740,
+          "y": -500
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "total(basket, \"SAVE10\")",
+        "position": {
+          "x": 740,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "expect 26.97  ✓",
+        "position": {
+          "x": 740,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "# no database, no network, ~1 ms",
+        "position": {
+          "x": 740,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-2",
@@ -43,33 +110,101 @@
         "title": "",
         "position": {
           "x": 760,
-          "y": -480
+          "y": -460
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "THE CONTRACT\nGET /stock/sku-42\n→ 200 { \"sku\": \"sku-42\", \"in_stock\": 3 }\n⚠ rename in_stock → Inventory’s build fails\n# checked on both sides, run separately",
+        "title": "# THE CONTRACT",
         "position": {
           "x": 760,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "GET /stock/sku-42",
+        "position": {
+          "x": 760,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "200 { \"sku\": \"sku-42\", \"in_stock\": 3 }",
+        "position": {
+          "x": 760,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "rename in_stock → Inventory’s build fails",
+        "position": {
+          "x": 760,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "# checked on both sides, run separately",
+        "position": {
+          "x": 760,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-3",
@@ -77,33 +212,100 @@
         "title": "",
         "position": {
           "x": 800,
-          "y": -480
+          "y": -460
         },
         "width": 480,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "THREE LAYERS\nend-to-end      20    15 min   whole journeys\nintegration    200     4 min   real neighbours\n→ unit         2,000    30 s    one piece at a time\n# fast and many at the bottom, few at the top",
+        "title": "# THREE LAYERS",
         "position": {
           "x": 800,
-          "y": -480
+          "y": -540
         },
         "width": 480,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "end-to-end      20    15 min   whole journeys",
+        "position": {
+          "x": 800,
+          "y": -500
+        },
+        "width": 480,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "integration    200     4 min   real neighbours",
+        "position": {
+          "x": 800,
+          "y": -460
+        },
+        "width": 480,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "unit         2,000    30 s    one piece at a time",
+        "position": {
+          "x": 800,
+          "y": -420
+        },
+        "width": 480,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-3-row-5",
+        "type": "text",
+        "title": "# fast and many at the bottom, few at the top",
+        "position": {
+          "x": 800,
+          "y": -380
+        },
+        "width": 480,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "users",
@@ -1154,15 +1356,63 @@
       "from": "s4",
       "until": "s6"
     },
-    "card-text": {
+    "card-row-1": {
       "from": "s3",
       "until": "s4"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-row-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-row-4": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-row-5": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-2-row-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-row-1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-3-row-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-3-row-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-3-row-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-3-row-5": {
       "from": "s8",
       "until": "s9"
     },

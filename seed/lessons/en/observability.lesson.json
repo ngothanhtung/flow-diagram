@@ -9,33 +9,114 @@
         "title": "",
         "position": {
           "x": 600,
-          "y": -480
+          "y": -440
         },
         "width": 320,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "DASHBOARD · P99 LATENCY\ngateway    ████████████  2.4 s\norders     ████████████  2.3 s\npayments   ███████████░  2.2 s\ninventory  ░░░░░░░░░░░░  30 ms\norders DB  ░░░░░░░░░░░░  8 ms",
+        "title": "# DASHBOARD · P99 LATENCY",
         "position": {
           "x": 600,
-          "y": -480
+          "y": -540
         },
         "width": 320,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "gateway    ████████████  2.4 s",
+        "position": {
+          "x": 600,
+          "y": -500
+        },
+        "width": 320,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "orders     ████████████  2.3 s",
+        "position": {
+          "x": 600,
+          "y": -460
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "payments   ███████████░  2.2 s",
+        "position": {
+          "x": 600,
+          "y": -420
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "inventory  ░░░░░░░░░░░░  30 ms",
+        "position": {
+          "x": 600,
+          "y": -380
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-6",
+        "type": "text",
+        "title": "orders DB  ░░░░░░░░░░░░  8 ms",
+        "position": {
+          "x": 600,
+          "y": -340
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-2",
@@ -43,33 +124,99 @@
         "title": "",
         "position": {
           "x": 640,
-          "y": -480
+          "y": -460
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "CHECKOUT SLO\nSLI: checkouts faster than 1 s\nSLO: 99.9% over 30 days\nerror budget: 0.1% may be slow\n⚠ last hour: 1.4% slow = 14× budget → page",
+        "title": "# CHECKOUT SLO",
         "position": {
           "x": 640,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "SLI: checkouts faster than 1 s",
+        "position": {
+          "x": 640,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "SLO: 99.9% over 30 days",
+        "position": {
+          "x": 640,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "error budget: 0.1% may be slow",
+        "position": {
+          "x": 640,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "last hour: 1.4% slow = 14× budget → page",
+        "position": {
+          "x": 640,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "card-3",
@@ -77,33 +224,115 @@
         "title": "",
         "position": {
           "x": 660,
-          "y": -480
+          "y": -440
         },
         "width": 440,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "LOGS · FILTERED BY REQ=A91\n07.112 gateway  req=a91 POST /checkout\n07.118 orders   req=a91 reserve stock: ok\n07.121 payments req=a91 calling fraud-api\n09.243 payments req=a91 fraud-api ok (2122 ms)\n→ 2.1 s inside one call",
+        "title": "# LOGS · FILTERED BY REQ=A91",
         "position": {
           "x": 660,
-          "y": -480
+          "y": -540
         },
         "width": 440,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "07.112 gateway  req=a91 POST /checkout",
+        "position": {
+          "x": 660,
+          "y": -500
+        },
+        "width": 440,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "07.118 orders   req=a91 reserve stock: ok",
+        "position": {
+          "x": 660,
+          "y": -460
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "07.121 payments req=a91 calling fraud-api",
+        "position": {
+          "x": 660,
+          "y": -420
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-5",
+        "type": "text",
+        "title": "09.243 payments req=a91 fraud-api ok (2122 ms)",
+        "position": {
+          "x": 660,
+          "y": -380
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-6",
+        "type": "text",
+        "title": "2.1 s inside one call",
+        "position": {
+          "x": 660,
+          "y": -340
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-4",
@@ -111,33 +340,114 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -480
+          "y": -440
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "TRACE A91 · 2.4 S\ngateway       ████████████  2.4 s\n orders       ████████████  2.35 s\n  inventory   █░░░░░░░░░░░  30 ms\n  payments    ████████████  2.2 s\n   fraud API  ███████████░  2.1 s",
+        "title": "# TRACE A91 · 2.4 S",
         "position": {
           "x": 620,
-          "y": -480
+          "y": -540
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "gateway       ████████████  2.4 s",
+        "position": {
+          "x": 620,
+          "y": -500
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": " orders       ████████████  2.35 s",
+        "position": {
+          "x": 620,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "  inventory   █░░░░░░░░░░░  30 ms",
+        "position": {
+          "x": 620,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-5",
+        "type": "text",
+        "title": "  payments    ████████████  2.2 s",
+        "position": {
+          "x": 620,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-6",
+        "type": "text",
+        "title": "   fraud API  ███████████░  2.1 s",
+        "position": {
+          "x": 620,
+          "y": -340
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-5",
@@ -145,33 +455,114 @@
         "title": "",
         "position": {
           "x": 640,
-          "y": -480
+          "y": -440
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-text",
+        "id": "card-5-row-1",
         "type": "text",
-        "title": "TRACE B17 · 310 MS\ngateway       ████████████  310 ms\n orders       ████████████  300 ms\n  inventory   ██░░░░░░░░░░  30 ms\n  payments    ███████████░  220 ms\n   fraud API  ████░░░░░░░░  30 ms (cached)",
+        "title": "# TRACE B17 · 310 MS",
         "position": {
           "x": 640,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-5-row-2",
+        "type": "text",
+        "title": "gateway       ████████████  310 ms",
+        "position": {
+          "x": 640,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-5"
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-3",
+        "type": "text",
+        "title": " orders       ████████████  300 ms",
+        "position": {
+          "x": 640,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-4",
+        "type": "text",
+        "title": "  inventory   ██░░░░░░░░░░  30 ms",
+        "position": {
+          "x": 640,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-5",
+        "type": "text",
+        "title": "  payments    ███████████░  220 ms",
+        "position": {
+          "x": 640,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-6",
+        "type": "text",
+        "title": "   fraud API  ████░░░░░░░░  30 ms (cached)",
+        "position": {
+          "x": 640,
+          "y": -340
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-6",
@@ -179,33 +570,114 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -480
+          "y": -440
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-6-text",
+        "id": "card-6-row-1",
         "type": "text",
-        "title": "CHECKOUT ERRORS · LAST HOUR\n02:50           ░░░░░░░░░░░░  0.1%\n03:00           ░░░░░░░░░░░░  0.1%\n03:10 deploy    ░░░░░░░░░░░░  0.2%\n03:12           ████████████  6%\n03:16 rollback  ░░░░░░░░░░░░  0.2%",
+        "title": "# CHECKOUT ERRORS · LAST HOUR",
         "position": {
           "x": 620,
-          "y": -480
+          "y": -540
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-6-row-2",
+        "type": "text",
+        "title": "02:50           ░░░░░░░░░░░░  0.1%",
+        "position": {
+          "x": 620,
+          "y": -500
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-6"
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-3",
+        "type": "text",
+        "title": "03:00           ░░░░░░░░░░░░  0.1%",
+        "position": {
+          "x": 620,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-4",
+        "type": "text",
+        "title": "03:10 deploy    ░░░░░░░░░░░░  0.2%",
+        "position": {
+          "x": 620,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-5",
+        "type": "text",
+        "title": "03:12           ████████████  6%",
+        "position": {
+          "x": 620,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-6",
+        "type": "text",
+        "title": "03:16 rollback  ░░░░░░░░░░░░  0.2%",
+        "position": {
+          "x": 620,
+          "y": -340
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-7",
@@ -213,33 +685,116 @@
         "title": "",
         "position": {
           "x": 640,
-          "y": -480
+          "y": -440
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-7-text",
+        "id": "card-7-row-1",
         "type": "text",
-        "title": "POST-MORTEM · CHECKOUT ERRORS\nimpact: 6% of checkouts failed, 4 min\ncause: bad timeout in inventory config\ndetect 1 min · mitigate 4 min (rollback)\n→ action: canary rollout for config\n→ action: alert on config-change errors",
+        "title": "# POST-MORTEM · CHECKOUT ERRORS",
         "position": {
           "x": 640,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-7-row-2",
+        "type": "text",
+        "title": "impact: 6% of checkouts failed, 4 min",
+        "position": {
+          "x": 640,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-7"
+        "parentId": "card-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-7-row-3",
+        "type": "text",
+        "title": "cause: bad timeout in inventory config",
+        "position": {
+          "x": 640,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-7-row-4",
+        "type": "text",
+        "title": "detect 1 min · mitigate 4 min (rollback)",
+        "position": {
+          "x": 640,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-7-row-5",
+        "type": "text",
+        "title": "action: canary rollout for config",
+        "position": {
+          "x": 640,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-7-row-6",
+        "type": "text",
+        "title": "action: alert on config-change errors",
+        "position": {
+          "x": 640,
+          "y": -340
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "shoppers",
@@ -1299,31 +1854,167 @@
       "from": "s8",
       "until": "s9"
     },
-    "card-text": {
+    "card-row-1": {
       "from": "s2",
       "until": "s3"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-5": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-6": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-1": {
       "from": "s3",
       "until": "s4"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-4": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-5": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-6": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-row-1": {
       "from": "s5",
       "until": "s6"
     },
-    "card-5-text": {
+    "card-4-row-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-row-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-row-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-row-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-row-6": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "card-6-text": {
+    "card-5-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-row-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-row-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-row-1": {
       "from": "s7",
       "until": "s8"
     },
-    "card-7-text": {
+    "card-6-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-6-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-6-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-6-row-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-6-row-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7-row-1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-6": {
       "from": "s8",
       "until": "s9"
     },

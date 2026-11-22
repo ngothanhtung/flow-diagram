@@ -9,33 +9,83 @@
         "title": "",
         "position": {
           "x": 720,
-          "y": -500
+          "y": -480
         },
         "width": 320,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "CHECKOUT TIME\nsave the order          120 ms\n+ 4 calls × ~200 ms     800 ms\n→ ~920 ms before “thank you”",
+        "title": "# CHECKOUT TIME",
+        "position": {
+          "x": 720,
+          "y": -540
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "save the order          120 ms",
         "position": {
           "x": 720,
           "y": -500
         },
         "width": 320,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "+ 4 calls × ~200 ms     800 ms",
+        "position": {
+          "x": 720,
+          "y": -460
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "~920 ms before “thank you”",
+        "position": {
+          "x": 720,
+          "y": -420
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-2",
@@ -43,33 +93,98 @@
         "title": "",
         "position": {
           "x": 760,
-          "y": -480
+          "y": -460
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "QUEUE VS TOPIC\nqueue → each message to ONE consumer\n        share out work\ntopic → each message to EVERY subscriber\n        broadcast what happened",
+        "title": "# QUEUE VS TOPIC",
         "position": {
           "x": 760,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "queue → each message to ONE consumer",
+        "position": {
+          "x": 760,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "        share out work",
+        "position": {
+          "x": 760,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "topic → each message to EVERY subscriber",
+        "position": {
+          "x": 760,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "        broadcast what happened",
+        "position": {
+          "x": 760,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-3",
@@ -77,33 +192,99 @@
         "title": "",
         "position": {
           "x": 760,
-          "y": -480
+          "y": -460
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "EVENTS: THE FINE PRINT\nwho reacts to OrderPlaced? check 5 repos\nsubscribers act a little later\nduplicates & reordering happen\n→ idempotent subscribers + tracing",
+        "title": "# EVENTS: THE FINE PRINT",
         "position": {
           "x": 760,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "who reacts to OrderPlaced? check 5 repos",
+        "position": {
+          "x": 760,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "subscribers act a little later",
+        "position": {
+          "x": 760,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "duplicates & reordering happen",
+        "position": {
+          "x": 760,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-5",
+        "type": "text",
+        "title": "idempotent subscribers + tracing",
+        "position": {
+          "x": 760,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "shoppers",
@@ -940,14 +1121,55 @@
       "from": "s8",
       "until": "s9"
     },
-    "card-text": {
+    "card-row-1": {
       "until": "s2"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "until": "s2"
+    },
+    "card-row-3": {
+      "until": "s2"
+    },
+    "card-row-4": {
+      "until": "s2"
+    },
+    "card-2-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-1": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-5": {
       "from": "s7",
       "until": "s8"
     },

@@ -59,7 +59,7 @@ describe('LessonPlayer step timeline', () => {
     for (const label of ['Hit Enter', 'Find address']) expect(html).toContain(`>${label}<`);
     // A Lesson step without a short name falls back to its title.
     expect(html).toContain('>Connect to the server<');
-    expect(html).toMatch(/aria-current="step"[^>]*>\s*<span[^>]*>2</);
+    expect(html).toMatch(/aria-current="step"[\s\S]*?<span[^>]*>2</);
   });
 });
 

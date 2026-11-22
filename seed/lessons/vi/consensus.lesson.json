@@ -43,33 +43,100 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -400
+          "y": -380
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "ĐA SỐ (QUORUM)\n3 node → 2 phải đồng ý\n5 node → 3 phải đồng ý\n→ hai đa số luôn giao nhau\n# nên chỉ một phía có thể quyết định",
+        "title": "# ĐA SỐ (QUORUM)",
         "position": {
           "x": 620,
-          "y": -400
+          "y": -460
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "3 node → 2 phải đồng ý",
+        "position": {
+          "x": 620,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "5 node → 3 phải đồng ý",
+        "position": {
+          "x": 620,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "hai đa số luôn giao nhau",
+        "position": {
+          "x": 620,
+          "y": -340
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "# nên chỉ một phía có thể quyết định",
+        "position": {
+          "x": 620,
+          "y": -300
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-2",
@@ -77,135 +144,417 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -400
+          "y": -360
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "BẦU CỬ · NHIỆM KỲ 2\nB: hết giờ, không có heartbeat\nB: nhiệm kỳ 1 → 2, tự bầu mình\nB → C: “bầu cho tôi nhé?”\n→ C: đồng ý → 2 trên 3 → B lãnh đạo\n# mỗi node một phiếu mỗi nhiệm kỳ",
+        "title": "# BẦU CỬ · NHIỆM KỲ 2",
         "position": {
           "x": 620,
-          "y": -400
+          "y": -460
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "B: hết giờ, không có heartbeat",
+        "position": {
+          "x": 620,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "B: nhiệm kỳ 1 → 2, tự bầu mình",
+        "position": {
+          "x": 620,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "B → C: “bầu cho tôi nhé?”",
+        "position": {
+          "x": 620,
+          "y": -340
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "C: đồng ý → 2 trên 3 → B lãnh đạo",
+        "position": {
+          "x": 620,
+          "y": -300
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-2-row-6",
+        "type": "text",
+        "title": "# mỗi node một phiếu mỗi nhiệm kỳ",
+        "position": {
+          "x": 620,
+          "y": -260
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-3",
         "type": "group",
         "title": "",
         "position": {
-          "x": 600,
-          "y": -400
+          "x": 580,
+          "y": -380
         },
-        "width": 320,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 280,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "QUY TẮC COMMIT\n1  leader nối thêm mục\n2  gửi tới mọi follower\n3  đa số đã lưu nó\n→ đã commit → trả lời “đã lưu”",
+        "title": "# QUY TẮC COMMIT",
         "position": {
-          "x": 600,
-          "y": -400
+          "x": 580,
+          "y": -460
         },
-        "width": 320,
-        "height": 160,
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "1  leader nối thêm mục",
+        "position": {
+          "x": 580,
+          "y": -420
+        },
+        "width": 280,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "2  gửi tới mọi follower",
+        "position": {
+          "x": 580,
+          "y": -380
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "3  đa số đã lưu nó",
+        "position": {
+          "x": 580,
+          "y": -340
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-5",
+        "type": "text",
+        "title": "đã commit → trả lời “đã lưu”",
+        "position": {
+          "x": 580,
+          "y": -300
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-4",
         "type": "group",
         "title": "",
         "position": {
-          "x": 600,
-          "y": -400
+          "x": 580,
+          "y": -380
         },
-        "width": 320,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 280,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "NODE → ĐA SỐ → ĐƯỢC MẤT\n3  →  2  →  1\n⚠ 4  →  3  →  1   không lợi gì\n5  →  3  →  2\n7  →  4  →  3",
+        "title": "# NODE → ĐA SỐ → ĐƯỢC MẤT",
         "position": {
-          "x": 600,
-          "y": -400
+          "x": 580,
+          "y": -460
         },
-        "width": 320,
-        "height": 160,
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "3  →  2  →  1",
+        "position": {
+          "x": 580,
+          "y": -420
+        },
+        "width": 280,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": "4  →  3  →  1   không lợi gì",
+        "position": {
+          "x": 580,
+          "y": -380
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "5  →  3  →  2",
+        "position": {
+          "x": 580,
+          "y": -340
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-5",
+        "type": "text",
+        "title": "7  →  4  →  3",
+        "position": {
+          "x": 580,
+          "y": -300
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-5",
         "type": "group",
         "title": "",
         "position": {
-          "x": 620,
-          "y": -400
+          "x": 640,
+          "y": -380
         },
-        "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 400,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-text",
+        "id": "card-5-row-1",
         "type": "text",
-        "title": "HÓA ĐƠN\nmỗi lượt ghi: + 1 lượt đi về tới đa số\nmột leader → thông lượng một máy\n⚠ không đa số → không ghi\n# bầu cử tạm dừng ghi ≈ 1 s",
+        "title": "# HÓA ĐƠN",
         "position": {
-          "x": 620,
-          "y": -400
+          "x": 640,
+          "y": -460
         },
-        "width": 360,
-        "height": 160,
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-5-row-2",
+        "type": "text",
+        "title": "mỗi lượt ghi: + 1 lượt đi về tới đa số",
+        "position": {
+          "x": 640,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-5"
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-3",
+        "type": "text",
+        "title": "một leader → thông lượng một máy",
+        "position": {
+          "x": 640,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-4",
+        "type": "text",
+        "title": "không đa số → không ghi",
+        "position": {
+          "x": 640,
+          "y": -340
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "card-5-row-5",
+        "type": "text",
+        "title": "# bầu cử tạm dừng ghi ≈ 1 s",
+        "position": {
+          "x": 640,
+          "y": -300
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "app1",
@@ -1664,23 +2013,107 @@
       "from": "s11",
       "until": "s12"
     },
-    "card-text": {
+    "card-row-1": {
       "from": "s3",
       "until": "s4"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-row-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-row-4": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-row-5": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-6": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-1": {
       "from": "s5",
       "until": "s6"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-3-row-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-3-row-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-3-row-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-row-1": {
       "from": "s7",
       "until": "s8"
     },
-    "card-5-text": {
+    "card-4-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-5-row-1": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-5-row-2": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-5-row-3": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-5-row-4": {
+      "from": "s10",
+      "until": "s11"
+    },
+    "card-5-row-5": {
       "from": "s10",
       "until": "s11"
     },

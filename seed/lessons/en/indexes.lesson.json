@@ -178,34 +178,84 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1000,
-          "y": -500
+          "x": 1020,
+          "y": -480
         },
-        "width": 320,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 360,
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-text",
+        "id": "q-row-1",
         "type": "text",
-        "title": "THE QUERY\nSELECT * FROM users\nWHERE email = 'alice@example.com'\n# 50,000,000 rows · no index",
+        "title": "# THE QUERY",
         "position": {
-          "x": 1000,
+          "x": 1020,
+          "y": -540
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-row-2",
+        "type": "text",
+        "title": "SELECT * FROM users",
+        "position": {
+          "x": 1020,
           "y": -500
         },
-        "width": 320,
-        "height": 120,
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q"
+        "parentId": "q",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-row-3",
+        "type": "text",
+        "title": "WHERE email = 'alice@example.com'",
+        "position": {
+          "x": 1020,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-row-4",
+        "type": "text",
+        "title": "# 50,000,000 rows · no index",
+        "position": {
+          "x": 1020,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "q-2",
@@ -213,67 +263,183 @@
         "title": "",
         "position": {
           "x": 1000,
-          "y": -500
+          "y": -480
         },
         "width": 320,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-2-text",
+        "id": "q-2-row-1",
         "type": "text",
-        "title": "SORTED → BINARY SEARCH\nhalve the range at every step\nlog₂(50,000,000) ≈ 26 steps\n→ 26 comparisons, not 50 million",
+        "title": "# SORTED → BINARY SEARCH",
+        "position": {
+          "x": 1000,
+          "y": -540
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-2-row-2",
+        "type": "text",
+        "title": "halve the range at every step",
         "position": {
           "x": 1000,
           "y": -500
         },
         "width": 320,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-2"
+        "parentId": "q-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-2-row-3",
+        "type": "text",
+        "title": "log₂(50,000,000) ≈ 26 steps",
+        "position": {
+          "x": 1000,
+          "y": -460
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-2-row-4",
+        "type": "text",
+        "title": "26 comparisons, not 50 million",
+        "position": {
+          "x": 1000,
+          "y": -420
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "q-3",
         "type": "group",
         "title": "",
         "position": {
-          "x": 1000,
-          "y": -480
+          "x": 1020,
+          "y": -460
         },
-        "width": 320,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 360,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-3-text",
+        "id": "q-3-row-1",
         "type": "text",
-        "title": "FAN-OUT PER LEVEL\neach node ≈ 500 keys\n2 levels: 500² = 250,000 rows\n3 levels: 500³ = 125,000,000 rows\n→ ~4 page reads to find any row",
+        "title": "# FAN-OUT PER LEVEL",
         "position": {
-          "x": 1000,
-          "y": -480
+          "x": 1020,
+          "y": -540
         },
-        "width": 320,
-        "height": 160,
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-3-row-2",
+        "type": "text",
+        "title": "each node ≈ 500 keys",
+        "position": {
+          "x": 1020,
+          "y": -500
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-3"
+        "parentId": "q-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-3-row-3",
+        "type": "text",
+        "title": "2 levels: 500² = 250,000 rows",
+        "position": {
+          "x": 1020,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-3-row-4",
+        "type": "text",
+        "title": "3 levels: 500³ = 125,000,000 rows",
+        "position": {
+          "x": 1020,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-3-row-5",
+        "type": "text",
+        "title": "~4 page reads to find any row",
+        "position": {
+          "x": 1020,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "q-4",
@@ -281,33 +447,83 @@
         "title": "",
         "position": {
           "x": 1020,
-          "y": -500
+          "y": -480
         },
         "width": 360,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-4-text",
+        "id": "q-4-row-1",
         "type": "text",
-        "title": "CAN IT USE THE INDEX?\ncountry = 'NL' AND city = 'Delft'  ✓\ncountry = 'NL'                     ✓\n⚠ city = 'Delft'  ✗ full scan",
+        "title": "# CAN IT USE THE INDEX?",
+        "position": {
+          "x": 1020,
+          "y": -540
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-4-row-2",
+        "type": "text",
+        "title": "country = 'NL' AND city = 'Delft'  ✓",
         "position": {
           "x": 1020,
           "y": -500
         },
         "width": 360,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-4"
+        "parentId": "q-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-4-row-3",
+        "type": "text",
+        "title": "country = 'NL'                     ✓",
+        "position": {
+          "x": 1020,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-4-row-4",
+        "type": "text",
+        "title": "city = 'Delft'  ✗ full scan",
+        "position": {
+          "x": 1020,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-4",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "q-5",
@@ -315,33 +531,100 @@
         "title": "",
         "position": {
           "x": 1020,
-          "y": -480
+          "y": -460
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-5-text",
+        "id": "q-5-row-1",
         "type": "text",
-        "title": "CAN IT USE THE INDEX?\nemail = 'alice@…'          ✓ seek\nemail LIKE 'alice%'          ✓ range\n⚠ email LIKE '%@gmail.com'  ✗ scan\n⚠ LOWER(email) = '…'        ✗ scan",
+        "title": "# CAN IT USE THE INDEX?",
         "position": {
           "x": 1020,
-          "y": -480
+          "y": -540
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-5",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-5-row-2",
+        "type": "text",
+        "title": "email = 'alice@…'          ✓ seek",
+        "position": {
+          "x": 1020,
+          "y": -500
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-5"
+        "parentId": "q-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-5-row-3",
+        "type": "text",
+        "title": "email LIKE 'alice%'          ✓ range",
+        "position": {
+          "x": 1020,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-5-row-4",
+        "type": "text",
+        "title": "email LIKE '%@gmail.com'  ✗ scan",
+        "position": {
+          "x": 1020,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-5",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "q-5-row-5",
+        "type": "text",
+        "title": "LOWER(email) = '…'        ✗ scan",
+        "position": {
+          "x": 1020,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-5",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "q-6",
@@ -349,67 +632,219 @@
         "title": "",
         "position": {
           "x": 1080,
-          "y": -480
+          "y": -460
         },
         "width": 480,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-6-text",
+        "id": "q-6-row-1",
         "type": "text",
-        "title": "HOW MANY ROWS MATCH?\nemail = 'alice@…'      1 row    ✓ index\n→ status = 'pending'    0.1%     ✓ partial index\n⚠ country = 'US'        40%      ✗ scan is cheaper\n# an index helps when it rules out most rows",
+        "title": "# HOW MANY ROWS MATCH?",
         "position": {
           "x": 1080,
-          "y": -480
+          "y": -540
         },
         "width": 480,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-6",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-6-row-2",
+        "type": "text",
+        "title": "email = 'alice@…'      1 row    ✓ index",
+        "position": {
+          "x": 1080,
+          "y": -500
+        },
+        "width": 480,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-6"
+        "parentId": "q-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-6-row-3",
+        "type": "text",
+        "title": "status = 'pending'    0.1%     ✓ partial index",
+        "position": {
+          "x": 1080,
+          "y": -460
+        },
+        "width": 480,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-6",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "q-6-row-4",
+        "type": "text",
+        "title": "country = 'US'        40%      ✗ scan is cheaper",
+        "position": {
+          "x": 1080,
+          "y": -420
+        },
+        "width": 480,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-6",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "q-6-row-5",
+        "type": "text",
+        "title": "# an index helps when it rules out most rows",
+        "position": {
+          "x": 1080,
+          "y": -380
+        },
+        "width": 480,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-6",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "q-7",
         "type": "group",
         "title": "",
         "position": {
-          "x": 1040,
-          "y": -480
+          "x": 1060,
+          "y": -440
         },
-        "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 440,
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-7-text",
+        "id": "q-7-row-1",
         "type": "text",
-        "title": "EXPLAIN\nSELECT * FROM users WHERE email = 'a@…'\n→ Index Scan using users_email_idx\n#   rows=1  time=0.04 ms\nSELECT * FROM users WHERE email LIKE '%@g…'\n⚠ Seq Scan on users  rows=50,000,000",
+        "title": "# EXPLAIN",
         "position": {
-          "x": 1040,
-          "y": -480
+          "x": 1060,
+          "y": -540
         },
-        "width": 400,
-        "height": 160,
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-7-row-2",
+        "type": "text",
+        "title": "SELECT * FROM users WHERE email = 'a@…'",
+        "position": {
+          "x": 1060,
+          "y": -500
+        },
+        "width": 440,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-7"
+        "parentId": "q-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-7-row-3",
+        "type": "text",
+        "title": "Index Scan using users_email_idx",
+        "position": {
+          "x": 1060,
+          "y": -460
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "q-7-row-4",
+        "type": "text",
+        "title": "#   rows=1  time=0.04 ms",
+        "position": {
+          "x": 1060,
+          "y": -420
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-7-row-5",
+        "type": "text",
+        "title": "SELECT * FROM users WHERE email LIKE '%@g…'",
+        "position": {
+          "x": 1060,
+          "y": -380
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-7-row-6",
+        "type": "text",
+        "title": "Seq Scan on users  rows=50,000,000",
+        "position": {
+          "x": 1060,
+          "y": -340
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "app",
@@ -1596,30 +2031,131 @@
     "idx-label": {
       "from": "s3"
     },
-    "q-text": {
+    "q-row-1": {
       "until": "s2"
     },
-    "q-2-text": {
+    "q-row-2": {
+      "until": "s2"
+    },
+    "q-row-3": {
+      "until": "s2"
+    },
+    "q-row-4": {
+      "until": "s2"
+    },
+    "q-2-row-1": {
       "from": "s2",
       "until": "s3"
     },
-    "q-3-text": {
+    "q-2-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-2-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-2-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-3-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "q-4-text": {
+    "q-3-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-3-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-3-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-3-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-4-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "q-5-text": {
+    "q-4-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-4-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-4-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-5-row-1": {
       "from": "s7",
       "until": "s8"
     },
-    "q-6-text": {
+    "q-5-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-5-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-5-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-5-row-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-6-row-1": {
       "from": "s8",
       "until": "s9"
     },
-    "q-7-text": {
+    "q-6-row-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-6-row-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-6-row-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-6-row-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-7-row-1": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-6": {
       "from": "s9",
       "until": "s10"
     },

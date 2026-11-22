@@ -9,33 +9,114 @@
         "title": "",
         "position": {
           "x": 600,
-          "y": -480
+          "y": -440
         },
         "width": 320,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "DASHBOARD · ĐỘ TRỄ P99\ngateway      ████████████  2,4 s\nđơn hàng     ████████████  2,3 s\nthanh toán   ███████████░  2,2 s\nkho          ░░░░░░░░░░░░  30 ms\nDB đơn hàng  ░░░░░░░░░░░░  8 ms",
+        "title": "# DASHBOARD · ĐỘ TRỄ P99",
         "position": {
           "x": 600,
-          "y": -480
+          "y": -540
         },
         "width": 320,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "gateway      ████████████  2,4 s",
+        "position": {
+          "x": 600,
+          "y": -500
+        },
+        "width": 320,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "đơn hàng     ████████████  2,3 s",
+        "position": {
+          "x": 600,
+          "y": -460
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "thanh toán   ███████████░  2,2 s",
+        "position": {
+          "x": 600,
+          "y": -420
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "kho          ░░░░░░░░░░░░  30 ms",
+        "position": {
+          "x": 600,
+          "y": -380
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-6",
+        "type": "text",
+        "title": "DB đơn hàng  ░░░░░░░░░░░░  8 ms",
+        "position": {
+          "x": 600,
+          "y": -340
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-2",
@@ -43,33 +124,99 @@
         "title": "",
         "position": {
           "x": 660,
-          "y": -480
+          "y": -460
         },
         "width": 440,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "SLO THANH TOÁN\nSLI: lượt thanh toán nhanh hơn 1 s\nSLO: 99,9% trong 30 ngày\nngân sách lỗi: 0,1% được phép chậm\n⚠ giờ qua: 1,4% chậm = 14× ngân sách → gọi trực",
+        "title": "# SLO THANH TOÁN",
         "position": {
           "x": 660,
-          "y": -480
+          "y": -540
         },
         "width": 440,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "SLI: lượt thanh toán nhanh hơn 1 s",
+        "position": {
+          "x": 660,
+          "y": -500
+        },
+        "width": 440,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "SLO: 99,9% trong 30 ngày",
+        "position": {
+          "x": 660,
+          "y": -460
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "ngân sách lỗi: 0,1% được phép chậm",
+        "position": {
+          "x": 660,
+          "y": -420
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "giờ qua: 1,4% chậm = 14× ngân sách → gọi trực",
+        "position": {
+          "x": 660,
+          "y": -380
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "card-3",
@@ -77,101 +224,345 @@
         "title": "",
         "position": {
           "x": 660,
-          "y": -480
+          "y": -440
         },
         "width": 440,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "LOG · LỌC THEO REQ=A91\n07.112 gateway  req=a91 POST /checkout\n07.118 orders   req=a91 reserve stock: ok\n07.121 payments req=a91 calling fraud-api\n09.243 payments req=a91 fraud-api ok (2122 ms)\n→ 2,1 s nằm trong một lần gọi",
+        "title": "# LOG · LỌC THEO REQ=A91",
         "position": {
           "x": 660,
-          "y": -480
+          "y": -540
         },
         "width": 440,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "07.112 gateway  req=a91 POST /checkout",
+        "position": {
+          "x": 660,
+          "y": -500
+        },
+        "width": 440,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "07.118 orders   req=a91 reserve stock: ok",
+        "position": {
+          "x": 660,
+          "y": -460
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "07.121 payments req=a91 calling fraud-api",
+        "position": {
+          "x": 660,
+          "y": -420
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-5",
+        "type": "text",
+        "title": "09.243 payments req=a91 fraud-api ok (2122 ms)",
+        "position": {
+          "x": 660,
+          "y": -380
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-6",
+        "type": "text",
+        "title": "2,1 s nằm trong một lần gọi",
+        "position": {
+          "x": 660,
+          "y": -340
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-4",
         "type": "group",
         "title": "",
         "position": {
-          "x": 640,
-          "y": -480
+          "x": 660,
+          "y": -440
         },
-        "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 440,
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "TRACE A91 · 2,4 S\ngateway                ████████████  2,4 s\n đơn hàng              ████████████  2,35 s\n  kho                  █░░░░░░░░░░░  30 ms\n  thanh toán           ████████████  2,2 s\n   API chống gian lận  ███████████░  2,1 s",
+        "title": "# TRACE A91 · 2,4 S",
         "position": {
-          "x": 640,
-          "y": -480
+          "x": 660,
+          "y": -540
         },
-        "width": 400,
-        "height": 160,
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "gateway                ████████████  2,4 s",
+        "position": {
+          "x": 660,
+          "y": -500
+        },
+        "width": 440,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": " đơn hàng              ████████████  2,35 s",
+        "position": {
+          "x": 660,
+          "y": -460
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "  kho                  █░░░░░░░░░░░  30 ms",
+        "position": {
+          "x": 660,
+          "y": -420
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-5",
+        "type": "text",
+        "title": "  thanh toán           ████████████  2,2 s",
+        "position": {
+          "x": 660,
+          "y": -380
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-6",
+        "type": "text",
+        "title": "   API chống gian lận  ███████████░  2,1 s",
+        "position": {
+          "x": 660,
+          "y": -340
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-5",
         "type": "group",
         "title": "",
         "position": {
-          "x": 680,
-          "y": -480
+          "x": 700,
+          "y": -440
         },
-        "width": 480,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 520,
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-text",
+        "id": "card-5-row-1",
         "type": "text",
-        "title": "TRACE B17 · 310 MS\ngateway                ████████████  310 ms\n đơn hàng              ████████████  300 ms\n  kho                  ██░░░░░░░░░░  30 ms\n  thanh toán           ███████████░  220 ms\n   API chống gian lận  ████░░░░░░░░  30 ms (từ cache)",
+        "title": "# TRACE B17 · 310 MS",
         "position": {
-          "x": 680,
-          "y": -480
+          "x": 700,
+          "y": -540
         },
-        "width": 480,
-        "height": 160,
+        "width": 520,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-5-row-2",
+        "type": "text",
+        "title": "gateway                ████████████  310 ms",
+        "position": {
+          "x": 700,
+          "y": -500
+        },
+        "width": 520,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-5"
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-3",
+        "type": "text",
+        "title": " đơn hàng              ████████████  300 ms",
+        "position": {
+          "x": 700,
+          "y": -460
+        },
+        "width": 520,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-4",
+        "type": "text",
+        "title": "  kho                  ██░░░░░░░░░░  30 ms",
+        "position": {
+          "x": 700,
+          "y": -420
+        },
+        "width": 520,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-5",
+        "type": "text",
+        "title": "  thanh toán           ███████████░  220 ms",
+        "position": {
+          "x": 700,
+          "y": -380
+        },
+        "width": 520,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-6",
+        "type": "text",
+        "title": "   API chống gian lận  ████░░░░░░░░  30 ms (từ cache)",
+        "position": {
+          "x": 700,
+          "y": -340
+        },
+        "width": 520,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-6",
@@ -179,33 +570,114 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -480
+          "y": -440
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-6-text",
+        "id": "card-6-row-1",
         "type": "text",
-        "title": "LỖI THANH TOÁN · GIỜ QUA\n02:50             ░░░░░░░░░░░░  0,1%\n03:00             ░░░░░░░░░░░░  0,1%\n03:10 triển khai  ░░░░░░░░░░░░  0,2%\n03:12             ████████████  6%\n03:16 rollback    ░░░░░░░░░░░░  0,2%",
+        "title": "# LỖI THANH TOÁN · GIỜ QUA",
         "position": {
           "x": 620,
-          "y": -480
+          "y": -540
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-6-row-2",
+        "type": "text",
+        "title": "02:50             ░░░░░░░░░░░░  0,1%",
+        "position": {
+          "x": 620,
+          "y": -500
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-6"
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-3",
+        "type": "text",
+        "title": "03:00             ░░░░░░░░░░░░  0,1%",
+        "position": {
+          "x": 620,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-4",
+        "type": "text",
+        "title": "03:10 triển khai  ░░░░░░░░░░░░  0,2%",
+        "position": {
+          "x": 620,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-5",
+        "type": "text",
+        "title": "03:12             ████████████  6%",
+        "position": {
+          "x": 620,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-6",
+        "type": "text",
+        "title": "03:16 rollback    ░░░░░░░░░░░░  0,2%",
+        "position": {
+          "x": 620,
+          "y": -340
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-7",
@@ -213,33 +685,116 @@
         "title": "",
         "position": {
           "x": 660,
-          "y": -480
+          "y": -440
         },
         "width": 440,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-7-text",
+        "id": "card-7-row-1",
         "type": "text",
-        "title": "POST-MORTEM · LỖI THANH TOÁN\nảnh hưởng: 6% lượt thanh toán thất bại, 4 phút\nnguyên nhân: timeout sai trong cấu hình kho\nphát hiện 1 phút · giảm thiểu 4 phút (rollback)\n→ hành động: triển khai canary cho cấu hình\n→ hành động: cảnh báo lỗi sau khi đổi cấu hình",
+        "title": "# POST-MORTEM · LỖI THANH TOÁN",
         "position": {
           "x": 660,
-          "y": -480
+          "y": -540
         },
         "width": 440,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-7-row-2",
+        "type": "text",
+        "title": "ảnh hưởng: 6% lượt thanh toán thất bại, 4 phút",
+        "position": {
+          "x": 660,
+          "y": -500
+        },
+        "width": 440,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-7"
+        "parentId": "card-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-7-row-3",
+        "type": "text",
+        "title": "nguyên nhân: timeout sai trong cấu hình kho",
+        "position": {
+          "x": 660,
+          "y": -460
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-7-row-4",
+        "type": "text",
+        "title": "phát hiện 1 phút · giảm thiểu 4 phút (rollback)",
+        "position": {
+          "x": 660,
+          "y": -420
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-7-row-5",
+        "type": "text",
+        "title": "hành động: triển khai canary cho cấu hình",
+        "position": {
+          "x": 660,
+          "y": -380
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-7-row-6",
+        "type": "text",
+        "title": "hành động: cảnh báo lỗi sau khi đổi cấu hình",
+        "position": {
+          "x": 660,
+          "y": -340
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "shoppers",
@@ -1299,31 +1854,167 @@
       "from": "s8",
       "until": "s9"
     },
-    "card-text": {
+    "card-row-1": {
       "from": "s2",
       "until": "s3"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-5": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-6": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-1": {
       "from": "s3",
       "until": "s4"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-4": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-5": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-6": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-row-1": {
       "from": "s5",
       "until": "s6"
     },
-    "card-5-text": {
+    "card-4-row-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-row-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-row-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-row-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-4-row-6": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "card-6-text": {
+    "card-5-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-row-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-5-row-6": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-row-1": {
       "from": "s7",
       "until": "s8"
     },
-    "card-7-text": {
+    "card-6-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-6-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-6-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-6-row-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-6-row-6": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7-row-1": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-7-row-6": {
       "from": "s8",
       "until": "s9"
     },

@@ -9,33 +9,99 @@
         "title": "",
         "position": {
           "x": 960,
-          "y": -520
+          "y": -500
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "WHAT A PAGE IS MADE OF\nHTML (per user)     30 KB\nimages             1.6 MB\nscripts + styles   400 KB\n→ 98% of bytes are the same for everyone",
+        "title": "# WHAT A PAGE IS MADE OF",
         "position": {
           "x": 960,
-          "y": -520
+          "y": -580
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "HTML (per user)     30 KB",
+        "position": {
+          "x": 960,
+          "y": -540
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "images             1.6 MB",
+        "position": {
+          "x": 960,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "scripts + styles   400 KB",
+        "position": {
+          "x": 960,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "98% of bytes are the same for everyone",
+        "position": {
+          "x": 960,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "lon",
@@ -1250,7 +1316,23 @@
       "from": "s9",
       "until": "s10"
     },
-    "card-text": {
+    "card-row-1": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-5": {
       "from": "s2",
       "until": "s3"
     },

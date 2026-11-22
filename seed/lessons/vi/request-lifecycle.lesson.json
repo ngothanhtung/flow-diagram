@@ -8,34 +8,133 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 580,
-          "y": -640
+          "x": 600,
+          "y": -580
         },
-        "width": 280,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 320,
+        "height": 280,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "sum-text",
+        "id": "sum-row-1",
         "type": "text",
-        "title": "THỜI GIAN ĐÃ ĐI ĐÂU\ntra DNS              20 ms\nbắt tay TCP + TLS    60 ms\nyêu cầu + server     55 ms\ntải về               20 ms\n→ tổng              155 ms\n# trong đó 130 ms là chờ mạng",
+        "title": "# THỜI GIAN ĐÃ ĐI ĐÂU",
         "position": {
-          "x": 580,
-          "y": -640
+          "x": 600,
+          "y": -700
         },
-        "width": 280,
-        "height": 160,
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "sum",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "sum-row-2",
+        "type": "text",
+        "title": "tra DNS              20 ms",
+        "position": {
+          "x": 600,
+          "y": -660
+        },
+        "width": 320,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "sum"
+        "parentId": "sum",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "sum-row-3",
+        "type": "text",
+        "title": "bắt tay TCP + TLS    60 ms",
+        "position": {
+          "x": 600,
+          "y": -620
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "sum",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "sum-row-4",
+        "type": "text",
+        "title": "yêu cầu + server     55 ms",
+        "position": {
+          "x": 600,
+          "y": -580
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "sum",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "sum-row-5",
+        "type": "text",
+        "title": "tải về               20 ms",
+        "position": {
+          "x": 600,
+          "y": -540
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "sum",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "sum-row-6",
+        "type": "text",
+        "title": "tổng              155 ms",
+        "position": {
+          "x": 600,
+          "y": -500
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "sum",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "sum-row-7",
+        "type": "text",
+        "title": "# trong đó 130 ms là chờ mạng",
+        "position": {
+          "x": 600,
+          "y": -460
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "sum",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "dev",
@@ -653,7 +752,25 @@
     "sum": {
       "from": "s10"
     },
-    "sum-text": {
+    "sum-row-1": {
+      "from": "s10"
+    },
+    "sum-row-2": {
+      "from": "s10"
+    },
+    "sum-row-3": {
+      "from": "s10"
+    },
+    "sum-row-4": {
+      "from": "s10"
+    },
+    "sum-row-5": {
+      "from": "s10"
+    },
+    "sum-row-6": {
+      "from": "s10"
+    },
+    "sum-row-7": {
       "from": "s10"
     },
     "q": {

@@ -9,67 +9,202 @@
         "title": "",
         "position": {
           "x": 880,
-          "y": -480
+          "y": -460
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "BẮT TAY TLS\nmáy chủ đưa ra chứng chỉ\ntrình duyệt kiểm tra chữ ký CA\nhai bên thống nhất khóa phiên mới\n→ mọi thứ sau đó: mã hóa + chống giả mạo",
+        "title": "# BẮT TAY TLS",
         "position": {
           "x": 880,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "máy chủ đưa ra chứng chỉ",
+        "position": {
+          "x": 880,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "trình duyệt kiểm tra chữ ký CA",
+        "position": {
+          "x": 880,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "hai bên thống nhất khóa phiên mới",
+        "position": {
+          "x": 880,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "mọi thứ sau đó: mã hóa + chống giả mạo",
+        "position": {
+          "x": 880,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-2",
         "type": "group",
         "title": "",
         "position": {
-          "x": 860,
-          "y": -480
+          "x": 880,
+          "y": -460
         },
-        "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 400,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "KHÔNG BAO GIỜ HẾT HẠN BẤT NGỜ\n⚠ gia hạn thủ công, mỗi năm một lần\n→ ACME: tự gia hạn mỗi 60 ngày\n→ cảnh báo 30 ngày trước mọi hạn\n# kiểm tra mọi endpoint, không chỉ www",
+        "title": "# KHÔNG BAO GIỜ HẾT HẠN BẤT NGỜ",
         "position": {
-          "x": 860,
-          "y": -480
+          "x": 880,
+          "y": -540
         },
-        "width": 360,
-        "height": 160,
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "gia hạn thủ công, mỗi năm một lần",
+        "position": {
+          "x": 880,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "ACME: tự gia hạn mỗi 60 ngày",
+        "position": {
+          "x": 880,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "cảnh báo 30 ngày trước mọi hạn",
+        "position": {
+          "x": 880,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "# kiểm tra mọi endpoint, không chỉ www",
+        "position": {
+          "x": 880,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-3",
@@ -77,33 +212,100 @@
         "title": "",
         "position": {
           "x": 880,
-          "y": -480
+          "y": -460
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "MÃ HÓA PHONG BÌ\ndữ liệu  —mã hóa bằng→  khóa dữ liệu\nkhóa dữ liệu —mã hóa bằng→ khóa chủ KMS\n→ trộm đĩa: không có khóa dùng được\n# xoay vòng khóa, kiểm toán mọi lần dùng",
+        "title": "# MÃ HÓA PHONG BÌ",
         "position": {
           "x": 880,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "dữ liệu  —mã hóa bằng→  khóa dữ liệu",
+        "position": {
+          "x": 880,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "khóa dữ liệu —mã hóa bằng→ khóa chủ KMS",
+        "position": {
+          "x": 880,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "trộm đĩa: không có khóa dùng được",
+        "position": {
+          "x": 880,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-3-row-5",
+        "type": "text",
+        "title": "# xoay vòng khóa, kiểm toán mọi lần dùng",
+        "position": {
+          "x": 880,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-4",
@@ -111,33 +313,100 @@
         "title": "",
         "position": {
           "x": 880,
-          "y": -480
+          "y": -460
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "XOAY VÒNG KHÓA\nkhóa chủ mới v2 trong KMS\nbọc lại từng khóa dữ liệu: vài kilobyte\n→ dữ liệu không bao giờ bị mã hóa lại\n# lần ghi mới dùng khóa dữ liệu mới",
+        "title": "# XOAY VÒNG KHÓA",
         "position": {
           "x": 880,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "khóa chủ mới v2 trong KMS",
+        "position": {
+          "x": 880,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": "bọc lại từng khóa dữ liệu: vài kilobyte",
+        "position": {
+          "x": 880,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "dữ liệu không bao giờ bị mã hóa lại",
+        "position": {
+          "x": 880,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-4-row-5",
+        "type": "text",
+        "title": "# lần ghi mới dùng khóa dữ liệu mới",
+        "position": {
+          "x": 880,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "alice",
@@ -1667,19 +1936,83 @@
       "from": "s11",
       "until": "s12"
     },
-    "card-text": {
+    "card-row-1": {
       "from": "s2",
       "until": "s3"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-5": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-1": {
       "from": "s3",
       "until": "s4"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-4": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-5": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-row-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-4-row-1": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-5": {
       "from": "s7",
       "until": "s8"
     },

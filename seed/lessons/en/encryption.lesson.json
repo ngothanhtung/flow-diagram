@@ -8,34 +8,100 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 900,
-          "y": -480
+          "x": 880,
+          "y": -460
         },
-        "width": 440,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 400,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "THE TLS HANDSHAKE\nserver shows its certificate\nbrowser checks the CA signature\nboth agree on fresh session keys\n→ everything after: encrypted + tamper-proof",
+        "title": "# THE TLS HANDSHAKE",
         "position": {
-          "x": 900,
-          "y": -480
+          "x": 880,
+          "y": -540
         },
-        "width": 440,
-        "height": 160,
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "server shows its certificate",
+        "position": {
+          "x": 880,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "browser checks the CA signature",
+        "position": {
+          "x": 880,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "both agree on fresh session keys",
+        "position": {
+          "x": 880,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "everything after: encrypted + tamper-proof",
+        "position": {
+          "x": 880,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-2",
@@ -43,67 +109,203 @@
         "title": "",
         "position": {
           "x": 860,
-          "y": -480
+          "y": -460
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "NEVER EXPIRE BY SURPRISE\n⚠ renewed by hand, once a year\n→ ACME: auto-renew every 60 days\n→ alert 30 days before any expiry\n# check every endpoint, not just www",
+        "title": "# NEVER EXPIRE BY SURPRISE",
         "position": {
           "x": 860,
-          "y": -480
+          "y": -540
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "renewed by hand, once a year",
+        "position": {
+          "x": 860,
+          "y": -500
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "ACME: auto-renew every 60 days",
+        "position": {
+          "x": 860,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "alert 30 days before any expiry",
+        "position": {
+          "x": 860,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "# check every endpoint, not just www",
+        "position": {
+          "x": 860,
+          "y": -380
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-3",
         "type": "group",
         "title": "",
         "position": {
-          "x": 860,
-          "y": -480
+          "x": 880,
+          "y": -460
         },
-        "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 400,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "ENVELOPE ENCRYPTION\ndata  —encrypted with→  data key\ndata key —encrypted by→ KMS master key\n→ steal the disk: no usable key\n# rotate keys, audit every use",
+        "title": "# ENVELOPE ENCRYPTION",
         "position": {
-          "x": 860,
-          "y": -480
+          "x": 880,
+          "y": -540
         },
-        "width": 360,
-        "height": 160,
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "data  —encrypted with→  data key",
+        "position": {
+          "x": 880,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "data key —encrypted by→ KMS master key",
+        "position": {
+          "x": 880,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "steal the disk: no usable key",
+        "position": {
+          "x": 880,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-3-row-5",
+        "type": "text",
+        "title": "# rotate keys, audit every use",
+        "position": {
+          "x": 880,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-4",
@@ -111,33 +313,100 @@
         "title": "",
         "position": {
           "x": 840,
-          "y": -480
+          "y": -460
         },
         "width": 320,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "ROTATING KEYS\nnew master key v2 in the KMS\nre-wrap each data key: kilobytes\n→ the data is never re-encrypted\n# new writes use fresh data keys",
+        "title": "# ROTATING KEYS",
         "position": {
           "x": 840,
-          "y": -480
+          "y": -540
         },
         "width": 320,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "new master key v2 in the KMS",
+        "position": {
+          "x": 840,
+          "y": -500
+        },
+        "width": 320,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": "re-wrap each data key: kilobytes",
+        "position": {
+          "x": 840,
+          "y": -460
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "the data is never re-encrypted",
+        "position": {
+          "x": 840,
+          "y": -420
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-4-row-5",
+        "type": "text",
+        "title": "# new writes use fresh data keys",
+        "position": {
+          "x": 840,
+          "y": -380
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "alice",
@@ -1667,19 +1936,83 @@
       "from": "s11",
       "until": "s12"
     },
-    "card-text": {
+    "card-row-1": {
       "from": "s2",
       "until": "s3"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-5": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-1": {
       "from": "s3",
       "until": "s4"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-4": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-2-row-5": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-3-row-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-4-row-1": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-5": {
       "from": "s7",
       "until": "s8"
     },

@@ -77,67 +77,183 @@
         "title": "",
         "position": {
           "x": 1360,
-          "y": -840
+          "y": -820
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "THE BRIEF\nPhotoShare: **10M** daily active users\neach makes **~20** requests a day\nthey upload **1M** photos a day, 2 MB each\n# Will one server cope? How much storage?",
+        "title": "# THE BRIEF",
         "position": {
           "x": 1360,
-          "y": -840
+          "y": -900
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "PhotoShare: **10M** daily active users",
+        "position": {
+          "x": 1360,
+          "y": -860
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "each makes **~20** requests a day",
+        "position": {
+          "x": 1360,
+          "y": -820
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "they upload **1M** photos a day, 2 MB each",
+        "position": {
+          "x": 1360,
+          "y": -780
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-5",
+        "type": "text",
+        "title": "# Will one server cope? How much storage?",
+        "position": {
+          "x": 1360,
+          "y": -740
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-2",
         "type": "group",
         "title": "",
         "position": {
-          "x": 1340,
-          "y": -860
+          "x": 1360,
+          "y": -840
         },
-        "width": 360,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 400,
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "REQUESTS PER SECOND\n10M users × 20 = **200M** requests/day\n1 day = 86,400 s  (≈ 100k)\n→ 200M ÷ 86,400 ≈ 2,300 req/s",
+        "title": "# REQUESTS PER SECOND",
         "position": {
-          "x": 1340,
+          "x": 1360,
+          "y": -900
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "10M users × 20 = **200M** requests/day",
+        "position": {
+          "x": 1360,
           "y": -860
         },
-        "width": 360,
-        "height": 120,
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "1 day = 86,400 s  (≈ 100k)",
+        "position": {
+          "x": 1360,
+          "y": -820
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "200M ÷ 86,400 ≈ 2,300 req/s",
+        "position": {
+          "x": 1360,
+          "y": -780
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-3",
@@ -149,29 +265,63 @@
         },
         "width": 280,
         "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "PEAK TRAFFIC\nevenings run ~3× the average\n→ 2,300 × 3 ≈ 7,000 req/s",
+        "title": "# PEAK TRAFFIC",
+        "position": {
+          "x": 1300,
+          "y": -900
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "evenings run ~3× the average",
         "position": {
           "x": 1300,
           "y": -860
         },
         "width": 280,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "2,300 × 3 ≈ 7,000 req/s",
+        "position": {
+          "x": 1300,
+          "y": -820
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-4",
@@ -179,33 +329,99 @@
         "title": "",
         "position": {
           "x": 1340,
-          "y": -840
+          "y": -820
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "SERVERS\n1 server ≈ 1,000 req/s (load test)\n7,000 ÷ 1,000 = 7 servers\n+ ~30% headroom for spikes & failures\n→ 10 servers",
+        "title": "# SERVERS",
         "position": {
           "x": 1340,
-          "y": -840
+          "y": -900
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "1 server ≈ 1,000 req/s (load test)",
+        "position": {
+          "x": 1340,
+          "y": -860
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": "7,000 ÷ 1,000 = 7 servers",
+        "position": {
+          "x": 1340,
+          "y": -820
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "+ ~30% headroom for spikes & failures",
+        "position": {
+          "x": 1340,
+          "y": -780
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-5",
+        "type": "text",
+        "title": "10 servers",
+        "position": {
+          "x": 1340,
+          "y": -740
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-5",
@@ -213,33 +429,99 @@
         "title": "",
         "position": {
           "x": 1340,
-          "y": -840
+          "y": -820
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-text",
+        "id": "card-5-row-1",
         "type": "text",
-        "title": "STORAGE\n1M photos × 2 MB = **2 TB** per day\n× 365 days ≈ **730 TB** per year\n× 3 copies ≈ 2.2 PB\n→ plan for ~2 PB in year one",
+        "title": "# STORAGE",
         "position": {
           "x": 1340,
-          "y": -840
+          "y": -900
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-5-row-2",
+        "type": "text",
+        "title": "1M photos × 2 MB = **2 TB** per day",
+        "position": {
+          "x": 1340,
+          "y": -860
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-5"
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-3",
+        "type": "text",
+        "title": "× 365 days ≈ **730 TB** per year",
+        "position": {
+          "x": 1340,
+          "y": -820
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-4",
+        "type": "text",
+        "title": "× 3 copies ≈ 2.2 PB",
+        "position": {
+          "x": 1340,
+          "y": -780
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-5",
+        "type": "text",
+        "title": "plan for ~2 PB in year one",
+        "position": {
+          "x": 1340,
+          "y": -740
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-6",
@@ -247,33 +529,99 @@
         "title": "",
         "position": {
           "x": 1320,
-          "y": -840
+          "y": -820
         },
         "width": 320,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-6-text",
+        "id": "card-6-row-1",
         "type": "text",
-        "title": "BYTES PER SECOND\nin:  2 TB/day ÷ 100k s ≈ 20 MB/s\nout: 10M × 100 views × 200 KB\n     = 200 TB/day ≈ 2 GB/s\n→ ~16 Gbit/s → serve from a CDN",
+        "title": "# BYTES PER SECOND",
         "position": {
           "x": 1320,
-          "y": -840
+          "y": -900
         },
         "width": 320,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-6-row-2",
+        "type": "text",
+        "title": "in:  2 TB/day ÷ 100k s ≈ 20 MB/s",
+        "position": {
+          "x": 1320,
+          "y": -860
+        },
+        "width": 320,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-6"
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-3",
+        "type": "text",
+        "title": "out: 10M × 100 views × 200 KB",
+        "position": {
+          "x": 1320,
+          "y": -820
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-4",
+        "type": "text",
+        "title": "     = 200 TB/day ≈ 2 GB/s",
+        "position": {
+          "x": 1320,
+          "y": -780
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-6-row-5",
+        "type": "text",
+        "title": "~16 Gbit/s → serve from a CDN",
+        "position": {
+          "x": 1320,
+          "y": -740
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-6",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-7",
@@ -281,33 +629,83 @@
         "title": "",
         "position": {
           "x": 1320,
-          "y": -860
+          "y": -840
         },
         "width": 320,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-7-text",
+        "id": "card-7-row-1",
         "type": "text",
-        "title": "HOT DATA IN RAM\nprofiles: 10M × 2 KB  = 20 GB\nnew photos: 1M × 1 KB = 1 GB\n→ ~21 GB → one 64 GB cache server",
+        "title": "# HOT DATA IN RAM",
+        "position": {
+          "x": 1320,
+          "y": -900
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-7-row-2",
+        "type": "text",
+        "title": "profiles: 10M × 2 KB  = 20 GB",
         "position": {
           "x": 1320,
           "y": -860
         },
         "width": 320,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-7"
+        "parentId": "card-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-7-row-3",
+        "type": "text",
+        "title": "new photos: 1M × 1 KB = 1 GB",
+        "position": {
+          "x": 1320,
+          "y": -820
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-7-row-4",
+        "type": "text",
+        "title": "~21 GB → one 64 GB cache server",
+        "position": {
+          "x": 1320,
+          "y": -780
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-7",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-8",
@@ -315,67 +713,197 @@
         "title": "",
         "position": {
           "x": 1280,
-          "y": -840
+          "y": -820
         },
         "width": 240,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-8-text",
+        "id": "card-8-row-1",
         "type": "text",
-        "title": "HANDY NUMBERS\n1 day ≈ 100,000 s\n1M req/day ≈ 12 req/s\n1 KB × 1M = 1 GB\n1 MB × 1M = 1 TB",
+        "title": "# HANDY NUMBERS",
         "position": {
           "x": 1280,
-          "y": -840
+          "y": -900
         },
         "width": 240,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-8",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-8-row-2",
+        "type": "text",
+        "title": "1 day ≈ 100,000 s",
+        "position": {
+          "x": 1280,
+          "y": -860
+        },
+        "width": 240,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-8"
+        "parentId": "card-8",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-8-row-3",
+        "type": "text",
+        "title": "1M req/day ≈ 12 req/s",
+        "position": {
+          "x": 1280,
+          "y": -820
+        },
+        "width": 240,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-8",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-8-row-4",
+        "type": "text",
+        "title": "1 KB × 1M = 1 GB",
+        "position": {
+          "x": 1280,
+          "y": -780
+        },
+        "width": 240,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-8",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-8-row-5",
+        "type": "text",
+        "title": "1 MB × 1M = 1 TB",
+        "position": {
+          "x": 1280,
+          "y": -740
+        },
+        "width": 240,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-8",
+        "color": "#cbd5e1"
       },
       {
         "id": "card-9",
         "type": "group",
         "title": "",
         "position": {
-          "x": 1300,
-          "y": -840
+          "x": 1320,
+          "y": -820
         },
-        "width": 280,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 320,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-9-text",
+        "id": "card-9-row-1",
         "type": "text",
-        "title": "THE ESTIMATE\naverage  ≈ 2,300 req/s\npeak     ≈ 7,000 req/s\nservers  = 10\nstorage  ≈ 730 TB / year (×3)",
+        "title": "# THE ESTIMATE",
         "position": {
-          "x": 1300,
-          "y": -840
+          "x": 1320,
+          "y": -900
         },
-        "width": 280,
-        "height": 160,
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-9",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-9-row-2",
+        "type": "text",
+        "title": "average  ≈ 2,300 req/s",
+        "position": {
+          "x": 1320,
+          "y": -860
+        },
+        "width": 320,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-9"
+        "parentId": "card-9",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-9-row-3",
+        "type": "text",
+        "title": "peak     ≈ 7,000 req/s",
+        "position": {
+          "x": 1320,
+          "y": -820
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-9",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-9-row-4",
+        "type": "text",
+        "title": "servers  = 10",
+        "position": {
+          "x": 1320,
+          "y": -780
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-9",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-9-row-5",
+        "type": "text",
+        "title": "storage  ≈ 730 TB / year (×3)",
+        "position": {
+          "x": 1320,
+          "y": -740
+        },
+        "width": 320,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-9",
+        "color": "#cbd5e1"
       },
       {
         "id": "users",
@@ -1076,38 +1604,158 @@
     "store-label": {
       "from": "s5"
     },
-    "card-text": {
+    "card-row-1": {
       "until": "s2"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "until": "s2"
+    },
+    "card-row-3": {
+      "until": "s2"
+    },
+    "card-row-4": {
+      "until": "s2"
+    },
+    "card-row-5": {
+      "until": "s2"
+    },
+    "card-2-row-1": {
       "from": "s2",
       "until": "s3"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-3-row-1": {
       "from": "s3",
       "until": "s4"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-3-row-3": {
+      "from": "s3",
+      "until": "s4"
+    },
+    "card-4-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "card-5-text": {
+    "card-4-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-4-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-5-row-1": {
       "from": "s5",
       "until": "s6"
     },
-    "card-6-text": {
+    "card-5-row-2": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-row-3": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-row-4": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-5-row-5": {
+      "from": "s5",
+      "until": "s6"
+    },
+    "card-6-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "card-7-text": {
+    "card-6-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-6-row-5": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "card-7-row-1": {
       "from": "s7",
       "until": "s8"
     },
-    "card-8-text": {
+    "card-7-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-7-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-8-row-1": {
       "from": "s8",
       "until": "s9"
     },
-    "card-9-text": {
+    "card-8-row-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-8-row-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-8-row-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-8-row-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "card-9-row-1": {
+      "from": "s9"
+    },
+    "card-9-row-2": {
+      "from": "s9"
+    },
+    "card-9-row-3": {
+      "from": "s9"
+    },
+    "card-9-row-4": {
+      "from": "s9"
+    },
+    "card-9-row-5": {
       "from": "s9"
     },
     "u": {

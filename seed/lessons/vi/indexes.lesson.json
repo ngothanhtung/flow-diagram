@@ -178,34 +178,84 @@
         "type": "group",
         "title": "",
         "position": {
-          "x": 1000,
-          "y": -500
+          "x": 1020,
+          "y": -480
         },
-        "width": 320,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 360,
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-text",
+        "id": "q-row-1",
         "type": "text",
-        "title": "TRUY VẤN\nSELECT * FROM users\nWHERE email = 'alice@example.com'\n# 50.000.000 dòng · không chỉ mục",
+        "title": "# TRUY VẤN",
         "position": {
-          "x": 1000,
+          "x": 1020,
+          "y": -540
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-row-2",
+        "type": "text",
+        "title": "SELECT * FROM users",
+        "position": {
+          "x": 1020,
           "y": -500
         },
-        "width": 320,
-        "height": 120,
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q"
+        "parentId": "q",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-row-3",
+        "type": "text",
+        "title": "WHERE email = 'alice@example.com'",
+        "position": {
+          "x": 1020,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-row-4",
+        "type": "text",
+        "title": "# 50.000.000 dòng · không chỉ mục",
+        "position": {
+          "x": 1020,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "q-2",
@@ -213,33 +263,83 @@
         "title": "",
         "position": {
           "x": 1020,
-          "y": -500
+          "y": -480
         },
         "width": 360,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-2-text",
+        "id": "q-2-row-1",
         "type": "text",
-        "title": "ĐÃ SẮP XẾP → TÌM KIẾM NHỊ PHÂN\nchia đôi khoảng tìm ở mỗi bước\nlog₂(50.000.000) ≈ 26 bước\n→ 26 phép so sánh, không phải 50 triệu",
+        "title": "# ĐÃ SẮP XẾP → TÌM KIẾM NHỊ PHÂN",
+        "position": {
+          "x": 1020,
+          "y": -540
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-2-row-2",
+        "type": "text",
+        "title": "chia đôi khoảng tìm ở mỗi bước",
         "position": {
           "x": 1020,
           "y": -500
         },
         "width": 360,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-2"
+        "parentId": "q-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-2-row-3",
+        "type": "text",
+        "title": "log₂(50.000.000) ≈ 26 bước",
+        "position": {
+          "x": 1020,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-2-row-4",
+        "type": "text",
+        "title": "26 phép so sánh, không phải 50 triệu",
+        "position": {
+          "x": 1020,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "q-3",
@@ -247,33 +347,99 @@
         "title": "",
         "position": {
           "x": 1040,
-          "y": -480
+          "y": -460
         },
         "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-3-text",
+        "id": "q-3-row-1",
         "type": "text",
-        "title": "ĐỘ PHÂN NHÁNH MỖI TẦNG\nmỗi nút ≈ 500 khóa\n2 tầng: 500² = 250.000 dòng\n3 tầng: 500³ = 125.000.000 dòng\n→ ~4 lần đọc trang để tìm bất kỳ dòng nào",
+        "title": "# ĐỘ PHÂN NHÁNH MỖI TẦNG",
         "position": {
           "x": 1040,
-          "y": -480
+          "y": -540
         },
         "width": 400,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-3-row-2",
+        "type": "text",
+        "title": "mỗi nút ≈ 500 khóa",
+        "position": {
+          "x": 1040,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-3"
+        "parentId": "q-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-3-row-3",
+        "type": "text",
+        "title": "2 tầng: 500² = 250.000 dòng",
+        "position": {
+          "x": 1040,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-3-row-4",
+        "type": "text",
+        "title": "3 tầng: 500³ = 125.000.000 dòng",
+        "position": {
+          "x": 1040,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-3-row-5",
+        "type": "text",
+        "title": "~4 lần đọc trang để tìm bất kỳ dòng nào",
+        "position": {
+          "x": 1040,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-3",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "q-4",
@@ -281,67 +447,184 @@
         "title": "",
         "position": {
           "x": 1020,
-          "y": -500
+          "y": -480
         },
         "width": 360,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-4-text",
+        "id": "q-4-row-1",
         "type": "text",
-        "title": "CÓ DÙNG ĐƯỢC CHỈ MỤC KHÔNG?\ncountry = 'NL' AND city = 'Delft'  ✓\ncountry = 'NL'                     ✓\n⚠ city = 'Delft'  ✗ quét toàn bảng",
+        "title": "# CÓ DÙNG ĐƯỢC CHỈ MỤC KHÔNG?",
+        "position": {
+          "x": 1020,
+          "y": -540
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-4-row-2",
+        "type": "text",
+        "title": "country = 'NL' AND city = 'Delft'  ✓",
         "position": {
           "x": 1020,
           "y": -500
         },
         "width": 360,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-4"
+        "parentId": "q-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-4-row-3",
+        "type": "text",
+        "title": "country = 'NL'                     ✓",
+        "position": {
+          "x": 1020,
+          "y": -460
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-4-row-4",
+        "type": "text",
+        "title": "city = 'Delft'  ✗ quét toàn bảng",
+        "position": {
+          "x": 1020,
+          "y": -420
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-4",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "q-5",
         "type": "group",
         "title": "",
         "position": {
-          "x": 1020,
-          "y": -480
+          "x": 1040,
+          "y": -460
         },
-        "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 400,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-5-text",
+        "id": "q-5-row-1",
         "type": "text",
-        "title": "CÓ DÙNG ĐƯỢC CHỈ MỤC KHÔNG?\nemail = 'alice@…'          ✓ tra thẳng\nemail LIKE 'alice%'          ✓ khoảng\n⚠ email LIKE '%@gmail.com'  ✗ quét\n⚠ LOWER(email) = '…'        ✗ quét",
+        "title": "# CÓ DÙNG ĐƯỢC CHỈ MỤC KHÔNG?",
         "position": {
-          "x": 1020,
-          "y": -480
+          "x": 1040,
+          "y": -540
         },
-        "width": 360,
-        "height": 160,
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-5",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-5-row-2",
+        "type": "text",
+        "title": "email = 'alice@…'          ✓ tra thẳng",
+        "position": {
+          "x": 1040,
+          "y": -500
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-5"
+        "parentId": "q-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-5-row-3",
+        "type": "text",
+        "title": "email LIKE 'alice%'          ✓ khoảng",
+        "position": {
+          "x": 1040,
+          "y": -460
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-5-row-4",
+        "type": "text",
+        "title": "email LIKE '%@gmail.com'  ✗ quét",
+        "position": {
+          "x": 1040,
+          "y": -420
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-5",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "q-5-row-5",
+        "type": "text",
+        "title": "LOWER(email) = '…'        ✗ quét",
+        "position": {
+          "x": 1040,
+          "y": -380
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-5",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "q-6",
@@ -349,67 +632,219 @@
         "title": "",
         "position": {
           "x": 1080,
-          "y": -480
+          "y": -460
         },
         "width": 480,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-6-text",
+        "id": "q-6-row-1",
         "type": "text",
-        "title": "BAO NHIÊU DÒNG KHỚP?\nemail = 'alice@…'      1 dòng   ✓ chỉ mục\n→ status = 'pending'    0,1%     ✓ chỉ mục một phần\n⚠ country = 'US'        40%      ✗ quét rẻ hơn\n# chỉ mục có ích khi nó loại được phần lớn số dòng",
+        "title": "# BAO NHIÊU DÒNG KHỚP?",
         "position": {
           "x": 1080,
-          "y": -480
+          "y": -540
         },
         "width": 480,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-6",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-6-row-2",
+        "type": "text",
+        "title": "email = 'alice@…'      1 dòng   ✓ chỉ mục",
+        "position": {
+          "x": 1080,
+          "y": -500
+        },
+        "width": 480,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-6"
+        "parentId": "q-6",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-6-row-3",
+        "type": "text",
+        "title": "status = 'pending'    0,1%     ✓ chỉ mục một phần",
+        "position": {
+          "x": 1080,
+          "y": -460
+        },
+        "width": 480,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-6",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "q-6-row-4",
+        "type": "text",
+        "title": "country = 'US'        40%      ✗ quét rẻ hơn",
+        "position": {
+          "x": 1080,
+          "y": -420
+        },
+        "width": 480,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-6",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
+      },
+      {
+        "id": "q-6-row-5",
+        "type": "text",
+        "title": "# chỉ mục có ích khi nó loại được phần lớn số dòng",
+        "position": {
+          "x": 1080,
+          "y": -380
+        },
+        "width": 480,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-6",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "q-7",
         "type": "group",
         "title": "",
         "position": {
-          "x": 1040,
-          "y": -480
+          "x": 1060,
+          "y": -440
         },
-        "width": 400,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 440,
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "q-7-text",
+        "id": "q-7-row-1",
         "type": "text",
-        "title": "EXPLAIN\nSELECT * FROM users WHERE email = 'a@…'\n→ Index Scan using users_email_idx\n#   rows=1  time=0.04 ms\nSELECT * FROM users WHERE email LIKE '%@g…'\n⚠ Seq Scan on users  rows=50,000,000",
+        "title": "# EXPLAIN",
         "position": {
-          "x": 1040,
-          "y": -480
+          "x": 1060,
+          "y": -540
         },
-        "width": 400,
-        "height": 160,
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-7-row-2",
+        "type": "text",
+        "title": "SELECT * FROM users WHERE email = 'a@…'",
+        "position": {
+          "x": 1060,
+          "y": -500
+        },
+        "width": 440,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "q-7"
+        "parentId": "q-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-7-row-3",
+        "type": "text",
+        "title": "Index Scan using users_email_idx",
+        "position": {
+          "x": 1060,
+          "y": -460
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "q-7-row-4",
+        "type": "text",
+        "title": "#   rows=1  time=0.04 ms",
+        "position": {
+          "x": 1060,
+          "y": -420
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "q-7-row-5",
+        "type": "text",
+        "title": "SELECT * FROM users WHERE email LIKE '%@g…'",
+        "position": {
+          "x": 1060,
+          "y": -380
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "q-7-row-6",
+        "type": "text",
+        "title": "Seq Scan on users  rows=50,000,000",
+        "position": {
+          "x": 1060,
+          "y": -340
+        },
+        "width": 440,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "q-7",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "app",
@@ -1596,30 +2031,131 @@
     "idx-label": {
       "from": "s3"
     },
-    "q-text": {
+    "q-row-1": {
       "until": "s2"
     },
-    "q-2-text": {
+    "q-row-2": {
+      "until": "s2"
+    },
+    "q-row-3": {
+      "until": "s2"
+    },
+    "q-row-4": {
+      "until": "s2"
+    },
+    "q-2-row-1": {
       "from": "s2",
       "until": "s3"
     },
-    "q-3-text": {
+    "q-2-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-2-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-2-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "q-3-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "q-4-text": {
+    "q-3-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-3-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-3-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-3-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "q-4-row-1": {
       "from": "s6",
       "until": "s7"
     },
-    "q-5-text": {
+    "q-4-row-2": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-4-row-3": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-4-row-4": {
+      "from": "s6",
+      "until": "s7"
+    },
+    "q-5-row-1": {
       "from": "s7",
       "until": "s8"
     },
-    "q-6-text": {
+    "q-5-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-5-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-5-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-5-row-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "q-6-row-1": {
       "from": "s8",
       "until": "s9"
     },
-    "q-7-text": {
+    "q-6-row-2": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-6-row-3": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-6-row-4": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-6-row-5": {
+      "from": "s8",
+      "until": "s9"
+    },
+    "q-7-row-1": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-2": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-3": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-4": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-5": {
+      "from": "s9",
+      "until": "s10"
+    },
+    "q-7-row-6": {
       "from": "s9",
       "until": "s10"
     },

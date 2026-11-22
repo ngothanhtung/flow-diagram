@@ -94,6 +94,23 @@ describe('convertTutorialLesson', () => {
     expect(lesson.diagram.nodes.find((n) => n.id === 'db')?.shape).toBe('cylinder');
   });
 
+  it('turns a panel into one grid-cell row per line: a heading, then good / bad / plain lines', () => {
+    const panelRaw = {
+      ...raw,
+      steps: [{ ...raw.steps[0], scene: { entities: { phone, p: { type: 'panel', x: 3, y: 0, title: 'Salted hashing', lines: ['plain line', '= fast is good', '! slow is bad'] } }, links: {}, flows: [] } }],
+    };
+    const nodes = convertTutorialLesson(panelRaw, options).diagram.nodes;
+    const frame = nodes.find((n) => n.id === 'p')!;
+    const rows = nodes.filter((n) => n.parentId === 'p');
+    expect(rows.map((n) => n.title)).toEqual(['# SALTED HASHING', 'plain line', 'fast is good', 'slow is bad']);
+    expect(frame.height).toBe(4 * 40);
+    expect(rows.every((n) => n.type === 'text' && n.height === 40 && n.width === frame.width)).toBe(true);
+    expect(rows[2].backgroundColor).toBeDefined();
+    expect(rows[3].backgroundColor).toBeDefined();
+    expect(rows[2].backgroundColor).not.toBe(rows[3].backgroundColor);
+    expect(rows[1].backgroundColor).toBeUndefined();
+  });
+
   it('an entity present only in step 2 is present from step 2 until step 3', () => {
     expect(nodeIds).toContain('db');
     expect(lesson.presence.db).toEqual({ from: 's2', until: 's3' });

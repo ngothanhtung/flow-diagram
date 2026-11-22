@@ -9,33 +9,83 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -300
+          "y": -280
         },
         "width": 360,
-        "height": 120,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 160,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-text",
+        "id": "card-row-1",
         "type": "text",
-        "title": "WHO READS WHAT\ntop 1% of products   → 60% of reads\ntop 10% of products  → 90% of reads\n# the same rows, read again and again",
+        "title": "# WHO READS WHAT",
+        "position": {
+          "x": 620,
+          "y": -340
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-row-2",
+        "type": "text",
+        "title": "top 1% of products   → 60% of reads",
         "position": {
           "x": 620,
           "y": -300
         },
         "width": 360,
-        "height": 120,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card"
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-3",
+        "type": "text",
+        "title": "top 10% of products  → 90% of reads",
+        "position": {
+          "x": 620,
+          "y": -260
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-row-4",
+        "type": "text",
+        "title": "# the same rows, read again and again",
+        "position": {
+          "x": 620,
+          "y": -220
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-2",
@@ -43,67 +93,199 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -280
+          "y": -260
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-2-text",
+        "id": "card-2-row-1",
         "type": "text",
-        "title": "AVERAGE READ TIME\ncache hit  ≈ 1 ms\ndatabase   ≈ 20 ms\n80% hits:  0.8×1 + 0.2×20  = 4.8 ms\n→ 95% hits: 0.95×1 + 0.05×20 = 2 ms",
+        "title": "# AVERAGE READ TIME",
         "position": {
           "x": 620,
-          "y": -280
+          "y": -340
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-2-row-2",
+        "type": "text",
+        "title": "cache hit  ≈ 1 ms",
+        "position": {
+          "x": 620,
+          "y": -300
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-2"
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-3",
+        "type": "text",
+        "title": "database   ≈ 20 ms",
+        "position": {
+          "x": 620,
+          "y": -260
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-4",
+        "type": "text",
+        "title": "80% hits:  0.8×1 + 0.2×20  = 4.8 ms",
+        "position": {
+          "x": 620,
+          "y": -220
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-2-row-5",
+        "type": "text",
+        "title": "95% hits: 0.95×1 + 0.05×20 = 2 ms",
+        "position": {
+          "x": 620,
+          "y": -180
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-2",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
       },
       {
         "id": "card-3",
         "type": "group",
         "title": "",
         "position": {
-          "x": 600,
-          "y": -280
+          "x": 580,
+          "y": -260
         },
-        "width": 320,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 280,
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-3-text",
+        "id": "card-3-row-1",
         "type": "text",
-        "title": "LEAST RECENTLY USED\nproduct:42    used 1 s ago\nproduct:7     used 4 s ago\nproduct:913   used 2 min ago\n⚠ evict product:5 · unused 3 h",
+        "title": "# LEAST RECENTLY USED",
         "position": {
-          "x": 600,
-          "y": -280
+          "x": 580,
+          "y": -340
         },
-        "width": 320,
-        "height": 160,
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-3-row-2",
+        "type": "text",
+        "title": "product:42    used 1 s ago",
+        "position": {
+          "x": 580,
+          "y": -300
+        },
+        "width": 280,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-3"
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-3",
+        "type": "text",
+        "title": "product:7     used 4 s ago",
+        "position": {
+          "x": 580,
+          "y": -260
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-4",
+        "type": "text",
+        "title": "product:913   used 2 min ago",
+        "position": {
+          "x": 580,
+          "y": -220
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-3-row-5",
+        "type": "text",
+        "title": "evict product:5 · unused 3 h",
+        "position": {
+          "x": 580,
+          "y": -180
+        },
+        "width": 280,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-3",
+        "backgroundColor": "#c8505a55",
+        "color": "#ff9aa2"
       },
       {
         "id": "card-4",
@@ -111,67 +293,215 @@
         "title": "",
         "position": {
           "x": 620,
-          "y": -280
+          "y": -260
         },
         "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "height": 200,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-4-text",
+        "id": "card-4-row-1",
         "type": "text",
-        "title": "BLOOM FILTER · 12 M IDS IN 15 MB\nis product:99900017 real?\n→ “definitely not” → 404, no lookup\n“probably yes” → cache, then database\n# never wrong about a “no”",
+        "title": "# BLOOM FILTER · 12 M IDS IN 15 MB",
         "position": {
           "x": 620,
-          "y": -280
+          "y": -340
         },
         "width": 360,
-        "height": 160,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-4-row-2",
+        "type": "text",
+        "title": "is product:99900017 real?",
+        "position": {
+          "x": 620,
+          "y": -300
+        },
+        "width": 360,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-4"
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-3",
+        "type": "text",
+        "title": "“definitely not” → 404, no lookup",
+        "position": {
+          "x": 620,
+          "y": -260
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#3f9e6a55",
+        "color": "#7ee0a6"
+      },
+      {
+        "id": "card-4-row-4",
+        "type": "text",
+        "title": "“probably yes” → cache, then database",
+        "position": {
+          "x": 620,
+          "y": -220
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-4-row-5",
+        "type": "text",
+        "title": "# never wrong about a “no”",
+        "position": {
+          "x": 620,
+          "y": -180
+        },
+        "width": 360,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-4",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
       },
       {
         "id": "card-5",
         "type": "group",
         "title": "",
         "position": {
-          "x": 620,
-          "y": -280
+          "x": 640,
+          "y": -240
         },
-        "width": 360,
-        "height": 160,
-        "color": "#6b7a90",
-        "backgroundColor": "#64748b",
+        "width": 400,
+        "height": 240,
+        "color": "#cbd5e1",
+        "backgroundColor": "#111827",
         "borderColor": "#64748b",
         "borderWidth": 1,
         "fill": "flat",
-        "opacity": 0.45,
+        "opacity": 1,
         "borderStyle": "solid"
       },
       {
-        "id": "card-5-text",
+        "id": "card-5-row-1",
         "type": "text",
-        "title": "WHERE A READ CAN STOP\nbrowser cache       0 ms · per user\nCDN edge            ~10 ms · per city\nin-process memory   ~0 ms · per server\nshared cache        ~1 ms\ndatabase            ~20 ms",
+        "title": "# WHERE A READ CAN STOP",
         "position": {
-          "x": 620,
-          "y": -280
+          "x": 640,
+          "y": -340
         },
-        "width": 360,
-        "height": 160,
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "backgroundColor": "#64748b40",
+        "color": "#94a3b8"
+      },
+      {
+        "id": "card-5-row-2",
+        "type": "text",
+        "title": "browser cache       0 ms · per user",
+        "position": {
+          "x": 640,
+          "y": -300
+        },
+        "width": 400,
+        "height": 40,
         "fontSize": 13,
         "fontWeight": "medium",
         "textAlign": "left",
-        "color": "#6b7a90",
-        "parentId": "card-5"
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-3",
+        "type": "text",
+        "title": "CDN edge            ~10 ms · per city",
+        "position": {
+          "x": 640,
+          "y": -260
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-4",
+        "type": "text",
+        "title": "in-process memory   ~0 ms · per server",
+        "position": {
+          "x": 640,
+          "y": -220
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-5",
+        "type": "text",
+        "title": "shared cache        ~1 ms",
+        "position": {
+          "x": 640,
+          "y": -180
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
+      },
+      {
+        "id": "card-5-row-6",
+        "type": "text",
+        "title": "database            ~20 ms",
+        "position": {
+          "x": 640,
+          "y": -140
+        },
+        "width": 400,
+        "height": 40,
+        "fontSize": 13,
+        "fontWeight": "medium",
+        "textAlign": "left",
+        "parentId": "card-5",
+        "color": "#cbd5e1"
       },
       {
         "id": "users",
@@ -1134,23 +1464,103 @@
       "from": "s11",
       "until": "s12"
     },
-    "card-text": {
+    "card-row-1": {
       "from": "s2",
       "until": "s3"
     },
-    "card-2-text": {
+    "card-row-2": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-3": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-row-4": {
+      "from": "s2",
+      "until": "s3"
+    },
+    "card-2-row-1": {
       "from": "s4",
       "until": "s5"
     },
-    "card-3-text": {
+    "card-2-row-2": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-3": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-4": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-2-row-5": {
+      "from": "s4",
+      "until": "s5"
+    },
+    "card-3-row-1": {
       "from": "s7",
       "until": "s8"
     },
-    "card-4-text": {
+    "card-3-row-2": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-3": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-4": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-3-row-5": {
+      "from": "s7",
+      "until": "s8"
+    },
+    "card-4-row-1": {
       "from": "s11",
       "until": "s12"
     },
-    "card-5-text": {
+    "card-4-row-2": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-4-row-3": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-4-row-4": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-4-row-5": {
+      "from": "s11",
+      "until": "s12"
+    },
+    "card-5-row-1": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-5-row-2": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-5-row-3": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-5-row-4": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-5-row-5": {
+      "from": "s12",
+      "until": "s13"
+    },
+    "card-5-row-6": {
       "from": "s12",
       "until": "s13"
     },
