@@ -1100,16 +1100,21 @@ export function FlowNodeCard({
           />
         )}
         {/* A text object never glows: it is a caption or a framed note, not a component to call out. */}
+        {/* Emphasis keeps the block's own border — colour, width, dashes — and
+            lights it up in that colour, so a border the author picked stays
+            visible (a cyan stroke used to cover it). */}
         {look === 'emphasis' && !isText && (
           <g transform={outline.transform} pointerEvents='none'>
             <path
+              data-emphasis='glow'
               d={outline.d}
               className='fill-none'
-              stroke='#22d3ee'
-              strokeWidth={2.5}
+              stroke={borderColor}
+              strokeWidth={Math.max(borderWidth, 1.5)}
+              strokeDasharray={dashArray}
               strokeLinejoin='round'
               vectorEffect='non-scaling-stroke'
-              style={{ filter: 'drop-shadow(0 0 6px rgba(34, 211, 238, 0.6))' }}
+              style={{ filter: `drop-shadow(0 0 6px ${borderColor}) drop-shadow(0 0 14px color-mix(in srgb, ${borderColor} 60%, transparent))` }}
             />
           </g>
         )}
